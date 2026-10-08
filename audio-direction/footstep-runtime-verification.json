@@ -1,0 +1,597 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-terrain-footstep-runtime-integration",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "status": "approved_scope_implemented_and_verified",
+  "authority": {
+    "path": "audio-direction/footstep-runtime-authority.json",
+    "sha256": "d0b5fbdd651336ffdfa6cce7a4262a13a3afd9dfe7b3db779568faa6bbb98936"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/footstep-runtime-scope.md",
+      "sha256": "2d8609f9798d7cc7e98ddc26daae9c31f0306b840dbc5f9bbb62ea7fbdc6fffc"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-scope.json",
+      "sha256": "8c7700ef320d9b8a6c34605e7177d52ef9960e84f94de9a189f8a1abf8c21097"
+    }
+  ],
+  "implemented": {
+    "seeker_only": true,
+    "materials": [
+      "Earth",
+      "Gravel",
+      "Leaves",
+      "Timber"
+    ],
+    "exact_pcm24_contacts": 24,
+    "variants_per_material": 6,
+    "duration_seconds": 0.5,
+    "contact_distance_pixels": 86.4,
+    "minimum_interval_seconds": 0.18,
+    "maximum_contact_players": 2,
+    "foreground_leases": 0,
+    "post_collision_displacement": true,
+    "independent_footstep_caption": true,
+    "packaged_credits_provenance": true
+  },
+  "validation": {
+    "restore": "pass",
+    "build": "pass, zero warnings/errors",
+    "format": "pass",
+    "workflows": "pass",
+    "scenario_validator": "pass",
+    "unit_tests": {
+      "domain": 2839,
+      "application": 976,
+      "infrastructure": 1272,
+      "architecture": 8,
+      "total": 5095,
+      "new_footstep_tests": 23
+    },
+    "retained_godot_launches": 293,
+    "main_audio_modes": [
+      "normal",
+      "muted",
+      "missing",
+      "captions-off"
+    ],
+    "main_checks": [
+      "all 11 anchors and 12 connection samples",
+      "actual four-material movement",
+      "wall pressure and stop",
+      "subscriber exception isolation",
+      "pause and disabled physics",
+      "successful and rejected restore",
+      "owned teardown and unrelated lease preservation",
+      "captions and credits at two viewports",
+      "mode-independent full save roots"
+    ],
+    "save_root_sha256": "ce47a7c8968f6b404d8fc7cd40f8416962fda00a983e7ff3f5d1cf61ad896d2a",
+    "output_cases": 67,
+    "native_import": "24 stereo PCM16 48 kHz streams, 96000 bytes each, no loops; exact PCM24 >> 8 parity",
+    "export": "24 footstep streams, six retained streams, eight notices; 68 unchanged entries retained",
+    "boundary_rejection_probes": 4,
+    "accepted_audition_bindings": 82
+  },
+  "output": {
+    "master_wave_sha256": "c32b38253f730504bf703b89f8d635936a8d4dc8009da5117e64f703de3514e3",
+    "actual_integrated_lufs": -35.31,
+    "actual_true_peak_dbtp": -12.7,
+    "actual_lra_lu": 16.5,
+    "render_source_reuse": "Playback/mixer/PCM sources match render-inputs.json; subsequent changes affected Main diagnostics and credits ancestry only."
+  },
+  "preserved_editor_binding": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "limits": [
+    "No anatomical synchronization, sample leg attribution or device listening claim.",
+    "Diagnostic sequence with control silences/gaps/preset changes does not establish ordinary-play loudness compliance; LUFS below provisional audition range and LRA above Default target.",
+    "Godot imports uncompressed PCM24 files at PCM16 precision; exact native shift parity verified.",
+    "Resource packaging verified; full macOS executable unavailable due to missing mono template and inherited solution lookup mismatch.",
+    "Other action/interior/NPC/positional/music/voice scopes remain unfinished. No release or Git publication authorized."
+  ],
+  "reviewed_inputs": [
+    {
+      "path": "audio-direction/footstep-runtime-authority.json",
+      "sha256": "d0b5fbdd651336ffdfa6cce7a4262a13a3afd9dfe7b3db779568faa6bbb98936"
+    },
+    {
+      "path": "game/FootstepAudioRuntimeProof.cs",
+      "sha256": "448aca73b3df601aa630212a6ce89caf029cca53fa4c020e0cfd3f29bc08c1c8"
+    },
+    {
+      "path": "game/FootstepAudioRuntimeProof.cs.uid",
+      "sha256": "775741d3bf75a9f73fd4777ac78bf3e86d684fc47b8f31fea3be56304b2fca3a"
+    },
+    {
+      "path": "game/FootstepAudioRuntimeProof.tscn",
+      "sha256": "7f1564bc02e039d18924bcb8f45a20730301cbb14776b5bd4d3e1eaab15c07ba"
+    },
+    {
+      "path": "game/FootstepAudioRuntimeSmokeCheck.cs",
+      "sha256": "88019098c56c93c1fa2819e504e5bc6b0ade8102f08e11a938e13fab29c426eb"
+    },
+    {
+      "path": "game/FootstepAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "4fef48ae7b20bf3332db90f16efb6e15b6fb3d6846712c5490358a0545788166"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "f8eab62fdafdb054ce97aa880145732e874b74026bd8d2aff0bb92800189dc17"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "f693a2c1f4e88a148f82e9f09150fe52957dd5ee2915bf95832d1ad42eea5535"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "b40d802907aaf468558bc30dd831ed31104931f756c5fe40e81dc29bd98305dc"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs",
+      "sha256": "d917538a3c6c5ffc8a3d6b837313b1f58fc88a2a030891a5fd8e378a2d37d6ea"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs.uid",
+      "sha256": "0e6fc6dc9b1f87d1766fc3c10ab4c6b87e1756880686df88fd18690822251757"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs",
+      "sha256": "a62e63de90e7af6aaa4deba8b072c4da09066dcb73ff7c9e6036ebfae19b79ca"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs.uid",
+      "sha256": "63b51d30c2b57024764f34c94021ed8854218291b505b93ebd932e7fbd0401ab"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CREDITS.txt",
+      "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav.import",
+      "sha256": "155473ed5acb93c4c45b5be3171fe9e3f2856395880ee145c351878a9f762ca9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav.import",
+      "sha256": "9d3884914cb0fede1a4bdaa59ca587a1de75d4daad39170994f99319167c29a8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav.import",
+      "sha256": "41bfed746f64e893c628088689b80cd55959d19fd9330c4649d735b3c1ba4287"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav.import",
+      "sha256": "7a5b6fbdd6a03bef401fe0b6e9cd624059f83c900997207546e498819249afc3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav.import",
+      "sha256": "23d5bb66009483c7b22e03b348bad50ea04af386fe5705ed5f42d1dda6001e3d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav.import",
+      "sha256": "b20d4fc8630086eeafc463f2032f6ffb50cee7b637a0082e6bfb53d1356d8b07"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav",
+      "sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav.import",
+      "sha256": "70dd332acab2196c129ee59155522dad0d9040a98751523600e6bdd1ec1d7732"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav",
+      "sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav.import",
+      "sha256": "02c2ed2b533be405aae1ed5bcfb2be65431993411585c27a9121174b4d3cbde2"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav",
+      "sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav.import",
+      "sha256": "2d0a20f6db8cb4677119144183346c05b5d3a4293980fd85898031d1e8c071ce"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav",
+      "sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav.import",
+      "sha256": "b93a94502ac1d13672a40fc82ca07b12ebf0f9597e94b6e37017d770ddd8d758"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav",
+      "sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav.import",
+      "sha256": "2df0675a744c79b4f7a6b3ff64626d87f7dbe0d4c04994732cb7fe57350a415f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav",
+      "sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav.import",
+      "sha256": "d46572a27ca194a4bf147be7888f683d11bd8a092d21821eb117011c681b010d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav.import",
+      "sha256": "bdd0c4470077e7083925374d76246b743e4570d6f531a7f18a96c308452a8852"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav",
+      "sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav.import",
+      "sha256": "e87ce57279aff0c5c703478f19077ac319a04d64aac002ad057fc9e72143cc4d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav",
+      "sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav.import",
+      "sha256": "d9ce60a15830eb1d011fba1c7a92e46aedbca11d6e80468b696c30cc4e34bcab"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav",
+      "sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav.import",
+      "sha256": "304bcc5b81b56add75b024fc6436f0b562aad1053181b2765ac63e848ff17c5d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav",
+      "sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav.import",
+      "sha256": "b8647fe2f2f27992402cb2e4b440f00c0283a08e55ef62952bc44b44d9ab10ea"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav",
+      "sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav.import",
+      "sha256": "6e6120f8e9a6bd96899b5d89c6b37cb73582a695752158367243ccf2832e7272"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav.import",
+      "sha256": "154e81c03c6cb74d8d48e983ed13702d7d7c80347291b79e0900da73dc7291a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav.import",
+      "sha256": "d339f0a4bf6b39817d8fb85b1ef5784e57d55a95cee35ba399ef5f9362d9627b"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav.import",
+      "sha256": "a9608c1b31d9910d4afee9b77e4ce4be492663171cadd46a083cd1e225ebd6ba"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav.import",
+      "sha256": "0a139e3f528ca452ffde28b60d300cc5852dcfeb54c65579eb104b3b9d1ef1b0"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav.import",
+      "sha256": "314a8669bbd6edfdf5fd82698865b91cd2651ccf6be1a27f7c47672b9ba85072"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav.import",
+      "sha256": "f91bf3371f4331ab37eef6572d53b486fa1c94f43c26d4cf9ed3802f00ffb116"
+    },
+    {
+      "path": "game/assets/audio/footsteps/provenance.json",
+      "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "37a38ec35647436af48fa2a020914ccfc36b5972927580a66290b0f2dc5f41b0"
+    },
+    {
+      "path": "scripts/check-footstep-audio-output.py",
+      "sha256": "712e972d94e3e233469659d458aa59dd8dc48321da280b5e76798498911d086f"
+    },
+    {
+      "path": "scripts/prepare-footstep-contacts.py",
+      "sha256": "9ea4cd4918b610dbe86ede77379ca4324612328b7ad12aae093e9fe6c5b1950b"
+    },
+    {
+      "path": "scripts/validate-footstep-audio-runtime.py",
+      "sha256": "cbd5313e25fa99959acf8d9f81d2a5680ae610d93d6784b5d2ad9a49a162afdd"
+    },
+    {
+      "path": "src/Application/Audio/FootstepContactCadence.cs",
+      "sha256": "1ed70cfea163857db49fd7d6d0e7f49ece8ec845c933eb35ac4442eb87f19d56"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionFootstepMaterialProjection.cs",
+      "sha256": "94ab08a67e1ecec15935ea20e0f927c831799f837eaffa289e9a0ddc575b605d"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/FootstepContactCadenceTests.cs",
+      "sha256": "3e0d58b5dafbffff45fdc742b47efcbb9f711b882ec6c14c2cc676f956ccba24"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/OpeningRegionFootstepMaterialProjectionTests.cs",
+      "sha256": "ae4936f381719de53578a241ac29cc0f67a514fda50cd2d6b2ffb1622c3401ea"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/footstep-runtime-review/README.md",
+      "sha256": "4b4c0d66aa6bf5f48658098cf363322776b2f03e022f1c81a61fcbd1dc6d9c48"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/captions-off.json",
+      "sha256": "ce47a7c8968f6b404d8fc7cd40f8416962fda00a983e7ff3f5d1cf61ad896d2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/captions-off.json.movement.json",
+      "sha256": "44a9b6a59ab6cd9868a2792843a35b66642ed6fc7e848527d220fe410b3f7db3"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/missing.json",
+      "sha256": "ce47a7c8968f6b404d8fc7cd40f8416962fda00a983e7ff3f5d1cf61ad896d2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/missing.json.movement.json",
+      "sha256": "44a9b6a59ab6cd9868a2792843a35b66642ed6fc7e848527d220fe410b3f7db3"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/muted.json",
+      "sha256": "ce47a7c8968f6b404d8fc7cd40f8416962fda00a983e7ff3f5d1cf61ad896d2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/muted.json.movement.json",
+      "sha256": "44a9b6a59ab6cd9868a2792843a35b66642ed6fc7e848527d220fe410b3f7db3"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/normal.json",
+      "sha256": "ce47a7c8968f6b404d8fc7cd40f8416962fda00a983e7ff3f5d1cf61ad896d2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/actions/normal.json.movement.json",
+      "sha256": "44a9b6a59ab6cd9868a2792843a35b66642ed6fc7e848527d220fe410b3f7db3"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/audio-resource-subset.zip",
+      "sha256": "156bbd872d5a3c5235487e578c0baa324bc6a7a389e08d0dc5fea29c73c525e1"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/application-tests.log",
+      "sha256": "d76930d253f44e0a8b27a3a78daf6ef16298e0c45671e03e7d90b09502978176"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/architecture-tests.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/build-game.log",
+      "sha256": "ebf197602714e273ee061eb7d603f935e558a9df081ea9d162f57db8cf605ec7"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/build.log",
+      "sha256": "539668d39276c7227d9076bdaa19fa61d217ac9732d93dfed212a5c31d741f44"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/decoded.log",
+      "sha256": "f5f3cb483c4cb0e9447ccc1063ea4345398fcaf4885188e22c8c76d1d063cff4"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/domain-tests.log",
+      "sha256": "54368ce0909649d6115e8b54e8f42e12fbb82f8aefc571d2aa80e760575183c0"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/export.log",
+      "sha256": "29f3b01d145d6ce4bd07781ce9d46bf449020d6ff6f3e91dcc87480424792aeb"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/extraction.log",
+      "sha256": "9b25fee8c64e2eec68738e3be24cc88c4095490afbefdc162a25cd799da27d56"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/format-applied.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/import.log",
+      "sha256": "b89c667b24ec7edae4c69dddb1d1ba7c9fd7afcb7dcf82575474456486f394f0"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/infrastructure-tests.log",
+      "sha256": "4db478e0ef17b18c8ba65d5f5f4acf913acb70dd686c3ea5a397ca768968e811"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/inspect-footstep-streams.gd",
+      "sha256": "01397186d25e12c3fadd626eb7d65aa25485882000856c55435e903dc51ceb9e"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/main-captions-off.log",
+      "sha256": "1d77e4f11f99372e4b79f584fe9b16a3f01ff7b3d7aa5b777e8178bd4e52c9ff"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/main-missing.log",
+      "sha256": "5d2d5017863e92f94e4814abd62bd6e64beeafc356ed6bb41c89fc9251fb93c9"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/main-muted.log",
+      "sha256": "ce1108d7a047e44281790c7c86eaefd0a86db5625414e859b6439bbbed394baf"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/main-normal.log",
+      "sha256": "1d77e4f11f99372e4b79f584fe9b16a3f01ff7b3d7aa5b777e8178bd4e52c9ff"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/main-views.log",
+      "sha256": "f48632418ef7df0b131c449bc874ab155440ce9351c05467561789e2bde864e3"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/output-analysis.log",
+      "sha256": "81c08e1946b2743f8bc1b4dd36c19b17a3e0d83f5bd0d1a76c9b6bba6bdd18f9"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/output-render.log",
+      "sha256": "654353d68d0131fa80ff9c3d0bda39e789d5f62e3269ded67e23747c548a89a5"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/restore.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/retained-godot.log",
+      "sha256": "ca7c7f031102ca8ce0a683f85b0f41c9cbe5a4392ec716f431056565e1a1c7f9"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/scenario.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/verify-export.py",
+      "sha256": "308a1f8eb9b04830f612bc3c1ce0b9482dd530a754a7ae9594cf49722737e1cb"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/checks/workflows.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/decoded-streams.json",
+      "sha256": "8aa69934e47b893e08da050a75958162668ba7bb9e81950eff863f336db24a7d"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/export-inventory.json",
+      "sha256": "a44a52be9135c9f3eceda813c1f7e79a5e58bbe8c68db2434ca680396e947b4d"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/output/master.wav.gz",
+      "sha256": "5e60302942569f3a495976ea21a87442bff1c162cf00a75baa26efe0baf3fd97"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/output/measurements.json",
+      "sha256": "7eb7321bae63d4b01eda5bcea0b3798b4b98ce5f05f31af18b750cb3b4a2a16d"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/output/render-inputs.json",
+      "sha256": "d3a16870469275cb4ecb85d6e6705abd22373bf510b2ead0131b02b2ee855e2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/output/timeline.json",
+      "sha256": "345f2ff8d68bf729c1f1059f07ad877b1cbe7a225f78332e34121e81a6710c7f"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/captions-1280.png",
+      "sha256": "ed8a6fb0b9f4b99065d0c5e58048e8bdb4d44918bf20193f16ac60fd4c510469"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/captions-1600.png",
+      "sha256": "f105834d7f3b44d3f2c86d19c6a829e6fda58f279df26ba100add36a094cc405"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/contact-Earth.png",
+      "sha256": "721d331e243f01b3b4ecd0576455bb6a476795950a6b7145d2717944d9e99627"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/contact-Gravel.png",
+      "sha256": "932b247769845efabf556608844f56571be3a7de0e335aac29377c8f30e70b87"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/contact-Leaves.png",
+      "sha256": "9a2e326f54bcb9bac4c87581cfa20e92a930eab1ba638d4ad17196cb829dcb2a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/contact-Timber.png",
+      "sha256": "519cbc1bbf60d082e39ac571db0a42fee7ffcdc1dc6208124c6462c2489112ca"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/credits-1280.png",
+      "sha256": "e64f3b6983a7e2f70c4e122874485e452e577c4c877d3b67460c9b7030448439"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/credits-1600.png",
+      "sha256": "4bf00b2d313bb6dc99b3305ce67ff6972ce08ece4793cd3edf34d58a5b24548a"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/credits-footsteps-1280.png",
+      "sha256": "200907540035ac9fe1edaf6d2fff5bfedde735a61e6d3aaa1bbe306d4712e02f"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/views/credits-footsteps-1600.png",
+      "sha256": "779e9468553c0941e399c66c97cc6df1fc654736aa49eba0358d206a5d3233d4"
+    }
+  ]
+}

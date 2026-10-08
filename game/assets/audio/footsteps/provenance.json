@@ -1,0 +1,769 @@
+{
+  "schema_version": 1,
+  "authority": "audio-direction/footstep-runtime-authority.json",
+  "operation": "Header-only WAV extraction; PCM24 stereo 48000 Hz, original accepted frame bytes.",
+  "accepted_parent_ancestry": [
+    {
+      "id": "W01",
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "accepted_source_edits": [
+        {
+          "source_id": "earth",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+          "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 531840,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 28800,
+              "end_sample": 52800,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 56640,
+              "end_sample": 80640,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 127680,
+              "end_sample": 151680,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 215520,
+              "end_sample": 239520,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 420480,
+              "end_sample": 444480,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 464640,
+              "end_sample": 488640,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -3.255690674306525,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "title": "Dirt Footsteps 3",
+      "author": "simonjeffery13",
+      "source_url": "https://freesound.org/people/simonjeffery13/sounds/750796/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "id": "W02",
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "accepted_source_edits": [
+        {
+          "source_id": "gravel",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+          "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1032000,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 341280,
+              "end_sample": 365280,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 393120,
+              "end_sample": 417120,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 791040,
+              "end_sample": 815040,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 892320,
+              "end_sample": 916320,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 964320,
+              "end_sample": 988320,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 999360,
+              "end_sample": 1023360,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -15.36725882652675,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "title": "Footsteps_Gravel_01.wav",
+      "author": "BenDrain",
+      "source_url": "https://freesound.org/people/BenDrain/sounds/488075/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "id": "W03",
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "accepted_source_edits": [
+        {
+          "source_id": "leaves",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+          "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 575125,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 4320,
+              "end_sample": 28320,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 34080,
+              "end_sample": 58080,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 70080,
+              "end_sample": 94080,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 105600,
+              "end_sample": 129600,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 136800,
+              "end_sample": 160800,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 175200,
+              "end_sample": 199200,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -2.906414930433319,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "title": "Footsteps / Walking on foliage in a forest",
+      "author": "Dominik_W",
+      "source_url": "https://freesound.org/people/Dominik_W/sounds/398685/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "id": "W04",
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "accepted_source_edits": [
+        {
+          "source_id": "timber",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+          "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1295256,
+          "lossy_original": true,
+          "contact_windows": [
+            {
+              "begin_sample": 42240,
+              "end_sample": 66240,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 282720,
+              "end_sample": 306720,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 422880,
+              "end_sample": 446880,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 578880,
+              "end_sample": 602880,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 650400,
+              "end_sample": 674400,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 781440,
+              "end_sample": 805440,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -2.3995917525037473,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "title": "Footsteps on hollow wood",
+      "author": "florianreichelt",
+      "source_url": "https://freesound.org/people/florianreichelt/sounds/459970/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  ],
+  "clips": [
+    {
+      "variant": 1,
+      "proposed_path": "game/assets/audio/footsteps/W01-01.wav",
+      "parent_pcm_begin_frame": 48000,
+      "parent_pcm_end_frame_exclusive": 72000,
+      "source_begin_frame": 28800,
+      "source_end_frame_exclusive": 52800,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "9d4a8fe2f8f392677e6f6f8bd9e0af59ad66e91f189e47df872ac4b6b33cdac1",
+      "derived_wav_sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 2,
+      "proposed_path": "game/assets/audio/footsteps/W01-02.wav",
+      "parent_pcm_begin_frame": 110400,
+      "parent_pcm_end_frame_exclusive": 134400,
+      "source_begin_frame": 56640,
+      "source_end_frame_exclusive": 80640,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "684dfc8486059886966473bf363ebfd4866c49c220f5255da46202dbbc214ef5",
+      "derived_wav_sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 3,
+      "proposed_path": "game/assets/audio/footsteps/W01-03.wav",
+      "parent_pcm_begin_frame": 172800,
+      "parent_pcm_end_frame_exclusive": 196800,
+      "source_begin_frame": 127680,
+      "source_end_frame_exclusive": 151680,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "2ac8f009676c00b0be97692069cde8a080d1c75d63f687d74b7dc2aad8a601c5",
+      "derived_wav_sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 4,
+      "proposed_path": "game/assets/audio/footsteps/W01-04.wav",
+      "parent_pcm_begin_frame": 235200,
+      "parent_pcm_end_frame_exclusive": 259200,
+      "source_begin_frame": 215520,
+      "source_end_frame_exclusive": 239520,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "84b804be24a08567297038bc8fde6eae6b68dfc495e22afad5de07dc025a6995",
+      "derived_wav_sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 5,
+      "proposed_path": "game/assets/audio/footsteps/W01-05.wav",
+      "parent_pcm_begin_frame": 297600,
+      "parent_pcm_end_frame_exclusive": 321600,
+      "source_begin_frame": 420480,
+      "source_end_frame_exclusive": 444480,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "4e9b026d2e01861c5108ede3e848fe318560ed1d78db9384260d09c9854e64a1",
+      "derived_wav_sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 6,
+      "proposed_path": "game/assets/audio/footsteps/W01-06.wav",
+      "parent_pcm_begin_frame": 360000,
+      "parent_pcm_end_frame_exclusive": 384000,
+      "source_begin_frame": 464640,
+      "source_end_frame_exclusive": 488640,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "352cf3555e09621f3387db660d81dba99068abdac917fce12b72e0a85f2da68e",
+      "derived_wav_sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+        "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 1,
+      "proposed_path": "game/assets/audio/footsteps/W02-01.wav",
+      "parent_pcm_begin_frame": 48000,
+      "parent_pcm_end_frame_exclusive": 72000,
+      "source_begin_frame": 341280,
+      "source_end_frame_exclusive": 365280,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "65e408c11a7830d9becf45a6f13798118c8be86426b2f67aecc7c39af7c26e30",
+      "derived_wav_sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 2,
+      "proposed_path": "game/assets/audio/footsteps/W02-02.wav",
+      "parent_pcm_begin_frame": 110400,
+      "parent_pcm_end_frame_exclusive": 134400,
+      "source_begin_frame": 393120,
+      "source_end_frame_exclusive": 417120,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "1d737651d8866aa8c2e0ea8d231b7bb1301e96be7e3d664498b93901c923fa72",
+      "derived_wav_sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 3,
+      "proposed_path": "game/assets/audio/footsteps/W02-03.wav",
+      "parent_pcm_begin_frame": 172800,
+      "parent_pcm_end_frame_exclusive": 196800,
+      "source_begin_frame": 791040,
+      "source_end_frame_exclusive": 815040,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "935da63ba6a306778d674178d0335e57416cc3046041e8f9de17a43d8a5c0c83",
+      "derived_wav_sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 4,
+      "proposed_path": "game/assets/audio/footsteps/W02-04.wav",
+      "parent_pcm_begin_frame": 235200,
+      "parent_pcm_end_frame_exclusive": 259200,
+      "source_begin_frame": 892320,
+      "source_end_frame_exclusive": 916320,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "b7b2395cde89977277c16d156cedd6608ad8435d6a1b260566abac84ebba8a98",
+      "derived_wav_sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 5,
+      "proposed_path": "game/assets/audio/footsteps/W02-05.wav",
+      "parent_pcm_begin_frame": 297600,
+      "parent_pcm_end_frame_exclusive": 321600,
+      "source_begin_frame": 964320,
+      "source_end_frame_exclusive": 988320,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "c54faec6d8d68ec1aae7de553e44976f7f3eaff3a682828f318875c2d058801d",
+      "derived_wav_sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 6,
+      "proposed_path": "game/assets/audio/footsteps/W02-06.wav",
+      "parent_pcm_begin_frame": 360000,
+      "parent_pcm_end_frame_exclusive": 384000,
+      "source_begin_frame": 999360,
+      "source_end_frame_exclusive": 1023360,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "6b18982cc79e41062e3f4ae91f125e8f91a96235ce1e3f44113a40505c359df3",
+      "derived_wav_sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+        "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 1,
+      "proposed_path": "game/assets/audio/footsteps/W03-01.wav",
+      "parent_pcm_begin_frame": 48000,
+      "parent_pcm_end_frame_exclusive": 72000,
+      "source_begin_frame": 4320,
+      "source_end_frame_exclusive": 28320,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "91ee3888e1e7d56b23aef6d1cf2733ff657ceb7e81250eac8733f76e19270458",
+      "derived_wav_sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 2,
+      "proposed_path": "game/assets/audio/footsteps/W03-02.wav",
+      "parent_pcm_begin_frame": 110400,
+      "parent_pcm_end_frame_exclusive": 134400,
+      "source_begin_frame": 34080,
+      "source_end_frame_exclusive": 58080,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "96a0a37954311df289b6cccb481622391a1ff165741440a10de98ac11d22f325",
+      "derived_wav_sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 3,
+      "proposed_path": "game/assets/audio/footsteps/W03-03.wav",
+      "parent_pcm_begin_frame": 172800,
+      "parent_pcm_end_frame_exclusive": 196800,
+      "source_begin_frame": 70080,
+      "source_end_frame_exclusive": 94080,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "9ca237df9ccef7e34673dab48c7638b3850695332570a0a557c86cc3d9509528",
+      "derived_wav_sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 4,
+      "proposed_path": "game/assets/audio/footsteps/W03-04.wav",
+      "parent_pcm_begin_frame": 235200,
+      "parent_pcm_end_frame_exclusive": 259200,
+      "source_begin_frame": 105600,
+      "source_end_frame_exclusive": 129600,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "372abe3ddbbe22a5af038c15163d57522b20ce9136ae0c78e52446d9e9c2b360",
+      "derived_wav_sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 5,
+      "proposed_path": "game/assets/audio/footsteps/W03-05.wav",
+      "parent_pcm_begin_frame": 297600,
+      "parent_pcm_end_frame_exclusive": 321600,
+      "source_begin_frame": 136800,
+      "source_end_frame_exclusive": 160800,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "ac656ca143ffae1e03262f0ceaf787c7186b29394d902513728247e9db248fe5",
+      "derived_wav_sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 6,
+      "proposed_path": "game/assets/audio/footsteps/W03-06.wav",
+      "parent_pcm_begin_frame": 360000,
+      "parent_pcm_end_frame_exclusive": 384000,
+      "source_begin_frame": 175200,
+      "source_end_frame_exclusive": 199200,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "cbc18f597f99e8dd5abdd7589d5c918efe3fff6212c0670407becaa18ba6e0ee",
+      "derived_wav_sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+        "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+      },
+      "lossy_original": false
+    },
+    {
+      "variant": 1,
+      "proposed_path": "game/assets/audio/footsteps/W04-01.wav",
+      "parent_pcm_begin_frame": 48000,
+      "parent_pcm_end_frame_exclusive": 72000,
+      "source_begin_frame": 42240,
+      "source_end_frame_exclusive": 66240,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "ba093f159a5b5c8c4e2984680c9c69151e1aeac9b74b143357556c5a5011f03c",
+      "derived_wav_sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    },
+    {
+      "variant": 2,
+      "proposed_path": "game/assets/audio/footsteps/W04-02.wav",
+      "parent_pcm_begin_frame": 110400,
+      "parent_pcm_end_frame_exclusive": 134400,
+      "source_begin_frame": 282720,
+      "source_end_frame_exclusive": 306720,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "f9af75ef2bc39b47a1b814e615f939fdd5301e200c115670bdd638e2f6446464",
+      "derived_wav_sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    },
+    {
+      "variant": 3,
+      "proposed_path": "game/assets/audio/footsteps/W04-03.wav",
+      "parent_pcm_begin_frame": 172800,
+      "parent_pcm_end_frame_exclusive": 196800,
+      "source_begin_frame": 422880,
+      "source_end_frame_exclusive": 446880,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "1ac675e5c933d9567ffaad00def021ea64924883683fc721a8cb697696c56091",
+      "derived_wav_sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    },
+    {
+      "variant": 4,
+      "proposed_path": "game/assets/audio/footsteps/W04-04.wav",
+      "parent_pcm_begin_frame": 235200,
+      "parent_pcm_end_frame_exclusive": 259200,
+      "source_begin_frame": 578880,
+      "source_end_frame_exclusive": 602880,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "f62723ab5bcd7f40339293fdfdf18aa191cbf875c5c1a0e4547db5b978f22201",
+      "derived_wav_sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    },
+    {
+      "variant": 5,
+      "proposed_path": "game/assets/audio/footsteps/W04-05.wav",
+      "parent_pcm_begin_frame": 297600,
+      "parent_pcm_end_frame_exclusive": 321600,
+      "source_begin_frame": 650400,
+      "source_end_frame_exclusive": 674400,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "73bd5854dda1d9e4ae5dea8de29811d4063d3a9144c36fff24c7f55726baed0e",
+      "derived_wav_sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    },
+    {
+      "variant": 6,
+      "proposed_path": "game/assets/audio/footsteps/W04-06.wav",
+      "parent_pcm_begin_frame": 360000,
+      "parent_pcm_end_frame_exclusive": 384000,
+      "source_begin_frame": 781440,
+      "source_end_frame_exclusive": 805440,
+      "frame_count": 24000,
+      "pcm_byte_count": 144000,
+      "expected_pcm_sha256": "546ddc034f44db384cf575d04aa883a6e7607636299da614892ea8843332dc24",
+      "derived_wav_sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560",
+      "derived_file_created": true,
+      "parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "source_ancestry": {
+        "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+        "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+      },
+      "lossy_original": true
+    }
+  ]
+}

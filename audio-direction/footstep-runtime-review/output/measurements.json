@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "cases": 67,
+  "rate_hz": 48000,
+  "wave_sha256": "c32b38253f730504bf703b89f8d635936a8d4dc8009da5117e64f703de3514e3",
+  "timeline_sha256": "345f2ff8d68bf729c1f1059f07ad877b1cbe7a225f78332e34121e81a6710c7f",
+  "duration_seconds": 136.01666666666668,
+  "metrics": {
+    "Earth-01": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -48.89234796310912,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "Earth-02": {
+      "peak_dbfs": -19.25297366636511,
+      "rms_dbfs": -47.627815429464306,
+      "first_signal_seconds": 0.21383333333333332,
+      "contact_window_to_signal_seconds": 0.013833333333333309
+    },
+    "Earth-03": {
+      "peak_dbfs": -20.127385618506537,
+      "rms_dbfs": -54.8020071883792,
+      "first_signal_seconds": 0.209375,
+      "contact_window_to_signal_seconds": 0.009374999999999994
+    },
+    "Earth-04": {
+      "peak_dbfs": -23.199728834547017,
+      "rms_dbfs": -52.715169110569,
+      "first_signal_seconds": 0.21152083333333332,
+      "contact_window_to_signal_seconds": 0.011520833333333313
+    },
+    "Earth-05": {
+      "peak_dbfs": -17.394414440207697,
+      "rms_dbfs": -52.788231329379144,
+      "first_signal_seconds": 0.21672916666666667,
+      "contact_window_to_signal_seconds": 0.016729166666666656
+    },
+    "Earth-06": {
+      "peak_dbfs": -15.99875075922391,
+      "rms_dbfs": -52.98307045810512,
+      "first_signal_seconds": 0.20552083333333335,
+      "contact_window_to_signal_seconds": 0.005520833333333336
+    },
+    "Earth-normal": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -50.141735329192116,
+      "first_signal_seconds": 0.20920833333333333,
+      "contact_window_to_signal_seconds": 0.009208333333333318
+    },
+    "Earth-half": {
+      "peak_dbfs": -23.348502331697304,
+      "rms_dbfs": -56.162394816758166,
+      "first_signal_seconds": 0.20433333333333334,
+      "contact_window_to_signal_seconds": 0.004333333333333328,
+      "measured_rms_ratio": 0.4999965706401637
+    },
+    "Earth-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Earth-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Earth-master-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Earth-master-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Earth-mono": {
+      "peak_dbfs": -21.999306784729526,
+      "rms_dbfs": -52.02547108748871,
+      "first_signal_seconds": 0.20964583333333334,
+      "contact_window_to_signal_seconds": 0.009645833333333326
+    },
+    "Earth-reduced": {
+      "peak_dbfs": -22.294462320254823,
+      "rms_dbfs": -53.64491603081418,
+      "first_signal_seconds": 0.203875,
+      "contact_window_to_signal_seconds": 0.0038749999999999896
+    },
+    "Earth-ambience-zero": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -50.141735329192116,
+      "first_signal_seconds": 0.20920833333333333,
+      "contact_window_to_signal_seconds": 0.009208333333333318,
+      "measured_rms_ratio": 1.0
+    },
+    "Gravel-01": {
+      "peak_dbfs": -19.029667158083765,
+      "rms_dbfs": -48.05723786296505,
+      "first_signal_seconds": 0.20425,
+      "contact_window_to_signal_seconds": 0.004249999999999976
+    },
+    "Gravel-02": {
+      "peak_dbfs": -26.39636683105784,
+      "rms_dbfs": -50.80520603346979,
+      "first_signal_seconds": 0.20839583333333334,
+      "contact_window_to_signal_seconds": 0.008395833333333325
+    },
+    "Gravel-03": {
+      "peak_dbfs": -21.294588836541823,
+      "rms_dbfs": -48.309377943931196,
+      "first_signal_seconds": 0.21329166666666666,
+      "contact_window_to_signal_seconds": 0.013291666666666646
+    },
+    "Gravel-04": {
+      "peak_dbfs": -21.291512619978935,
+      "rms_dbfs": -49.079147899930234,
+      "first_signal_seconds": 0.2055,
+      "contact_window_to_signal_seconds": 0.005499999999999977
+    },
+    "Gravel-05": {
+      "peak_dbfs": -15.99875075922391,
+      "rms_dbfs": -48.499666354606354,
+      "first_signal_seconds": 0.21045833333333333,
+      "contact_window_to_signal_seconds": 0.01045833333333332
+    },
+    "Gravel-06": {
+      "peak_dbfs": -16.033939248335894,
+      "rms_dbfs": -44.845368827011285,
+      "first_signal_seconds": 0.21641666666666667,
+      "contact_window_to_signal_seconds": 0.016416666666666663
+    },
+    "Gravel-normal": {
+      "peak_dbfs": -19.029667158083765,
+      "rms_dbfs": -49.30662522904805,
+      "first_signal_seconds": 0.20691666666666667,
+      "contact_window_to_signal_seconds": 0.006916666666666654
+    },
+    "Gravel-half": {
+      "peak_dbfs": -25.050341151129683,
+      "rms_dbfs": -55.32729204700913,
+      "first_signal_seconds": 0.2134375,
+      "contact_window_to_signal_seconds": 0.013437499999999991,
+      "measured_rms_ratio": 0.49999614867177866
+    },
+    "Gravel-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Gravel-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Gravel-master-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Gravel-master-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Gravel-mono": {
+      "peak_dbfs": -19.029667158083765,
+      "rms_dbfs": -49.30662522904805,
+      "first_signal_seconds": 0.20691666666666667,
+      "contact_window_to_signal_seconds": 0.006916666666666654
+    },
+    "Gravel-reduced": {
+      "peak_dbfs": -22.47915945664328,
+      "rms_dbfs": -51.74505244230414,
+      "first_signal_seconds": 0.21225,
+      "contact_window_to_signal_seconds": 0.012249999999999983
+    },
+    "Gravel-ambience-zero": {
+      "peak_dbfs": -19.029667158083765,
+      "rms_dbfs": -49.30662522904805,
+      "first_signal_seconds": 0.20691666666666667,
+      "contact_window_to_signal_seconds": 0.006916666666666654,
+      "measured_rms_ratio": 1.0
+    },
+    "Leaves-01": {
+      "peak_dbfs": -19.15381842572654,
+      "rms_dbfs": -45.7693420466238,
+      "first_signal_seconds": 0.21177083333333332,
+      "contact_window_to_signal_seconds": 0.011770833333333314
+    },
+    "Leaves-02": {
+      "peak_dbfs": -16.723848557346074,
+      "rms_dbfs": -43.19265679361614,
+      "first_signal_seconds": 0.20508333333333334,
+      "contact_window_to_signal_seconds": 0.005083333333333329
+    },
+    "Leaves-03": {
+      "peak_dbfs": -19.643489848396506,
+      "rms_dbfs": -43.573997890514484,
+      "first_signal_seconds": 0.2091875,
+      "contact_window_to_signal_seconds": 0.009187499999999987
+    },
+    "Leaves-04": {
+      "peak_dbfs": -15.99875075922391,
+      "rms_dbfs": -43.49364786707169,
+      "first_signal_seconds": 0.21329166666666666,
+      "contact_window_to_signal_seconds": 0.013291666666666646
+    },
+    "Leaves-05": {
+      "peak_dbfs": -20.08177752974913,
+      "rms_dbfs": -44.79233100326305,
+      "first_signal_seconds": 0.20710416666666667,
+      "contact_window_to_signal_seconds": 0.007104166666666661
+    },
+    "Leaves-06": {
+      "peak_dbfs": -20.320584284947554,
+      "rms_dbfs": -44.72175913620295,
+      "first_signal_seconds": 0.21047916666666666,
+      "contact_window_to_signal_seconds": 0.01047916666666665
+    },
+    "Leaves-normal": {
+      "peak_dbfs": -19.15381842572654,
+      "rms_dbfs": -47.0187294127068,
+      "first_signal_seconds": 0.20377083333333335,
+      "contact_window_to_signal_seconds": 0.0037708333333333344
+    },
+    "Leaves-half": {
+      "peak_dbfs": -25.174493485235516,
+      "rms_dbfs": -53.039374466506075,
+      "first_signal_seconds": 0.20939583333333334,
+      "contact_window_to_signal_seconds": 0.009395833333333325,
+      "measured_rms_ratio": 0.49999740150956096
+    },
+    "Leaves-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Leaves-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Leaves-master-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Leaves-master-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Leaves-mono": {
+      "peak_dbfs": -21.16934887962777,
+      "rms_dbfs": -47.50971636371003,
+      "first_signal_seconds": 0.2040625,
+      "contact_window_to_signal_seconds": 0.004062499999999997
+    },
+    "Leaves-reduced": {
+      "peak_dbfs": -23.22670981351422,
+      "rms_dbfs": -49.661904784260535,
+      "first_signal_seconds": 0.20910416666666667,
+      "contact_window_to_signal_seconds": 0.009104166666666663
+    },
+    "Leaves-ambience-zero": {
+      "peak_dbfs": -19.15381842572654,
+      "rms_dbfs": -47.0187294127068,
+      "first_signal_seconds": 0.20377083333333335,
+      "contact_window_to_signal_seconds": 0.0037708333333333344,
+      "measured_rms_ratio": 1.0
+    },
+    "Timber-01": {
+      "peak_dbfs": -20.42851715382278,
+      "rms_dbfs": -43.39784504263683,
+      "first_signal_seconds": 0.21877083333333333,
+      "contact_window_to_signal_seconds": 0.01877083333333332
+    },
+    "Timber-02": {
+      "peak_dbfs": -16.000423172935893,
+      "rms_dbfs": -40.4157407780243,
+      "first_signal_seconds": 0.22060416666666666,
+      "contact_window_to_signal_seconds": 0.020604166666666646
+    },
+    "Timber-03": {
+      "peak_dbfs": -17.36500809933795,
+      "rms_dbfs": -44.73527602891997,
+      "first_signal_seconds": 0.20808333333333334,
+      "contact_window_to_signal_seconds": 0.008083333333333331
+    },
+    "Timber-04": {
+      "peak_dbfs": -22.03944092131693,
+      "rms_dbfs": -44.895512472528274,
+      "first_signal_seconds": 0.21852083333333333,
+      "contact_window_to_signal_seconds": 0.01852083333333332
+    },
+    "Timber-05": {
+      "peak_dbfs": -17.580996181238056,
+      "rms_dbfs": -44.1657949376561,
+      "first_signal_seconds": 0.20972916666666666,
+      "contact_window_to_signal_seconds": 0.00972916666666665
+    },
+    "Timber-06": {
+      "peak_dbfs": -16.48007471158463,
+      "rms_dbfs": -44.24370494797509,
+      "first_signal_seconds": 0.21827083333333333,
+      "contact_window_to_signal_seconds": 0.01827083333333332
+    },
+    "Timber-normal": {
+      "peak_dbfs": -20.42851715382278,
+      "rms_dbfs": -44.64723240871983,
+      "first_signal_seconds": 0.2214375,
+      "contact_window_to_signal_seconds": 0.021437499999999998
+    },
+    "Timber-half": {
+      "peak_dbfs": -26.4491170671024,
+      "rms_dbfs": -50.66793508653482,
+      "first_signal_seconds": 0.22454166666666667,
+      "contact_window_to_signal_seconds": 0.024541666666666656,
+      "measured_rms_ratio": 0.4999940844328142
+    },
+    "Timber-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Timber-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Timber-master-zero": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Timber-master-mute": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "first_signal_seconds": null,
+      "contact_window_to_signal_seconds": null
+    },
+    "Timber-mono": {
+      "peak_dbfs": -20.42851715382278,
+      "rms_dbfs": -44.64723560101941,
+      "first_signal_seconds": 0.2214375,
+      "contact_window_to_signal_seconds": 0.021437499999999998
+    },
+    "Timber-reduced": {
+      "peak_dbfs": -26.341699910837573,
+      "rms_dbfs": -51.22048482067485,
+      "first_signal_seconds": 0.21610416666666668,
+      "contact_window_to_signal_seconds": 0.01610416666666667
+    },
+    "Timber-ambience-zero": {
+      "peak_dbfs": -20.42851715382278,
+      "rms_dbfs": -44.64723240871983,
+      "first_signal_seconds": 0.2214375,
+      "contact_window_to_signal_seconds": 0.021437499999999998,
+      "measured_rms_ratio": 1.0
+    },
+    "overlap": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -49.463252144261475,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "rate": {
+      "peak_dbfs": -15.601562425263701,
+      "rms_dbfs": -39.56704165273165,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "material-change": {
+      "peak_dbfs": -15.988723033583902,
+      "rms_dbfs": -44.09724694903925,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "stop": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -53.17762612840355,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "mute-unmute": {
+      "peak_dbfs": -17.327902418417683,
+      "rms_dbfs": -53.178555090370104,
+      "first_signal_seconds": 0.20654166666666668,
+      "contact_window_to_signal_seconds": 0.006541666666666668
+    },
+    "mix": {
+      "peak_dbfs": -12.763479949567092,
+      "rms_dbfs": -34.3437548638306,
+      "first_signal_seconds": 0.20608333333333334,
+      "contact_window_to_signal_seconds": 0.0060833333333333295
+    },
+    "missing": {
+      "peak_dbfs": -24.02506858398342,
+      "rms_dbfs": -61.15810571811937,
+      "first_signal_seconds": 0.0,
+      "contact_window_to_signal_seconds": -0.2
+    }
+  },
+  "final_master_loudness": {
+    "input_i": "-35.31",
+    "input_tp": "-12.70",
+    "input_lra": "16.50",
+    "input_thresh": "-46.69",
+    "output_i": "-20.73",
+    "output_tp": "-1.00",
+    "output_lra": "9.70",
+    "output_thresh": "-32.05",
+    "normalization_type": "dynamic",
+    "target_offset": "-2.27"
+  },
+  "limits": [
+    "Measured diagnostic sequence, not ordinary-play LUFS compliance or device listening.",
+    "Full accepted contact windows retain leading samples; no anatomical animation synchronization claim.",
+    "Overlap/fast contact/mix output uses the actual controller; actual movement/cadence is checked in Main and pure tests."
+  ]
+}

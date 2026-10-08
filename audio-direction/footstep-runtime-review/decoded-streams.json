@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "streams": [
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-01",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "e0bd6001f0befd0b3e133dd10c71cefae7627a6f44f9d839ee480a640ffde33f",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-02",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "f5ef4873fe4e8c39bd6e92396a683386803682cdf06fa6eab656e18e42244c62",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-03",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "8c07d4d0ab53dc5b97bc87684d83011994265fb922330fc32985473b8166f4fd",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-04",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "9fe28e52dccb9badc540e558977ec81673f5401aabc06b08d9be5e1cd00b5b63",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-05",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "7abafa473b76463e5f33c0973ff56c84d02442de334b57831650d579c83ab319",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W01-06",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "52fd36923c9102ee7fd354ce8a5028a324bde616a11778a1ccc82715f077cba6",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-01",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "6e40cfb804c93301399130675e6abdf3bbd1b39e90fa367abcf9d1dc1efb988a",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-02",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "87a8f224cc3e2baa3e9f2d5f1b1896cf082badd2f0ee4c3c21a91e5941c59746",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-03",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "ba626bfc089c07fee5261b013442d7d4ddccbbfbec7921cded009be8fa075aaf",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-04",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "e5abc4c2573edd6d4a4bb6c3f65a8890d2837185e5831357893648b4de344331",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-05",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "f8223ab9c737f3612e68b65a0baa91be3075236c38f5bc1293eb8a057cfd197a",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W02-06",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "216b135dc93aca5f335696d20fe6552c81cb585ab3782cedd709abb9aadb6ff1",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-01",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "b2f702fa141f08b0a8e64b26ff53ae57719a234c9ca129c50a75466971d87bd4",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-02",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "09907476e83b730079c8bb83407d14e677083607e444812bab8f1bcf7bada525",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-03",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "bb5ffa04101165b02a8164ae317d092944fa67da9fdcbc6c7c8a258a6d8bfb2a",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-04",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "c62a03a88eb2cd74c90bafe013233a6b7bba0c295b86f49217c2748101ecc462",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-05",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "671116e79caee070bbf260a2505ac31bfbc0a0b13b825c2caaaffa2a32205d51",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W03-06",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "86ed1683895f6ab5acb1c7c875fc1c7dd9d83e518c420ec190aec89e298e4c65",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-01",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "0dc8fe7920514489e38ca6497e73eb84369855c8ee84915ef63ecc31ce4061fa",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-02",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "29c0035b3ab197c52a3a3da883536020e4e7488f025e58e172aa93ad65d6ed9b",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-03",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "1acf43fb7405e13b2eb952f10c63e5028ebc06b94058c3c66b5c8176ee3a08fe",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-04",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "ce684b3b564e3c405e8601f40c95498b6f5991630d56e45e8223fc5ec9e43fcb",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-05",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "13b20eff147d17991491799b26ff7e758dab3485edb6ab58bbc931db9b81b080",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    },
+    {
+      "bytes": 96000,
+      "format": "PCM16",
+      "id": "W04-06",
+      "loop_disabled": true,
+      "rate_hz": 48000,
+      "stereo": true,
+      "decoded_pcm_sha256": "ce3c9d8eb0dcc2da263db5b53105d5ef5f344653e81434546c2f7e3425eb6666",
+      "maximum_difference_from_pcm24_truncation_lsb": 0
+    }
+  ],
+  "qualification": "Actual Godot decoder PCM16; accepted resources remain PCM24. Differences measured against signed PCM24-to-PCM16 truncation."
+}

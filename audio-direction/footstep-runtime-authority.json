@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-terrain-footstep-runtime-integration",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "status": "runtime_and_exact_pcm_extraction_authorized",
+  "context": "Direct response to the single approval request for the exact Seeker material registry, modeled displacement cadence and 24-resource PCM extraction/runtime/captions/credits/checks.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/footstep-runtime-scope.md",
+      "sha256": "2d8609f9798d7cc7e98ddc26daae9c31f0306b840dbc5f9bbb62ea7fbdc6fffc"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-scope.json",
+      "sha256": "8c7700ef320d9b8a6c34605e7177d52ef9960e84f94de9a189f8a1abf8c21097"
+    }
+  ],
+  "authorized_material_ids": [
+    "W01",
+    "W02",
+    "W03",
+    "W04"
+  ],
+  "resource_count": 24,
+  "seeker_only": true,
+  "publication_authorized": false,
+  "release_authorized": false,
+  "exclusions": [
+    "Healer/NPC footsteps",
+    "Art/gait/animation changes or cloak Main promotion",
+    "Physical material system/navigation/collision/layout changes",
+    "Accepted waveform edits or source regeneration",
+    "Other interiors/water/tools/actions",
+    "Positional/offscreen perception cues",
+    "Music/voice/providers",
+    "Save schema/world/time/disease/perception changes",
+    "Release/signing/distribution",
+    "Git publication"
+  ]
+}

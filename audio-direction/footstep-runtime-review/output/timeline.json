@@ -1,0 +1,538 @@
+[
+  {
+    "name": "Earth-01",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "sample",
+    "start": 0,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-02",
+    "material": "Earth",
+    "variant": 2,
+    "mode": "sample",
+    "start": 1.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-03",
+    "material": "Earth",
+    "variant": 3,
+    "mode": "sample",
+    "start": 3,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-04",
+    "material": "Earth",
+    "variant": 4,
+    "mode": "sample",
+    "start": 4.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-05",
+    "material": "Earth",
+    "variant": 5,
+    "mode": "sample",
+    "start": 6,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-06",
+    "material": "Earth",
+    "variant": 6,
+    "mode": "sample",
+    "start": 7.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Earth-normal",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "normal",
+    "start": 9,
+    "duration": 2
+  },
+  {
+    "name": "Earth-half",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "half",
+    "start": 11,
+    "duration": 2
+  },
+  {
+    "name": "Earth-zero",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "zero",
+    "start": 13,
+    "duration": 2
+  },
+  {
+    "name": "Earth-mute",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "mute",
+    "start": 15,
+    "duration": 2
+  },
+  {
+    "name": "Earth-master-zero",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "master-zero",
+    "start": 17,
+    "duration": 2
+  },
+  {
+    "name": "Earth-master-mute",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "master-mute",
+    "start": 19,
+    "duration": 2
+  },
+  {
+    "name": "Earth-mono",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "mono",
+    "start": 21,
+    "duration": 2
+  },
+  {
+    "name": "Earth-reduced",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "reduced",
+    "start": 23,
+    "duration": 2
+  },
+  {
+    "name": "Earth-ambience-zero",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "ambience-zero",
+    "start": 25,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-01",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "sample",
+    "start": 27,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-02",
+    "material": "Gravel",
+    "variant": 2,
+    "mode": "sample",
+    "start": 28.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-03",
+    "material": "Gravel",
+    "variant": 3,
+    "mode": "sample",
+    "start": 30,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-04",
+    "material": "Gravel",
+    "variant": 4,
+    "mode": "sample",
+    "start": 31.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-05",
+    "material": "Gravel",
+    "variant": 5,
+    "mode": "sample",
+    "start": 33,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-06",
+    "material": "Gravel",
+    "variant": 6,
+    "mode": "sample",
+    "start": 34.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Gravel-normal",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "normal",
+    "start": 36,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-half",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "half",
+    "start": 38,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-zero",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "zero",
+    "start": 40,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-mute",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "mute",
+    "start": 42,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-master-zero",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "master-zero",
+    "start": 44,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-master-mute",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "master-mute",
+    "start": 46,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-mono",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "mono",
+    "start": 48,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-reduced",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "reduced",
+    "start": 50,
+    "duration": 2
+  },
+  {
+    "name": "Gravel-ambience-zero",
+    "material": "Gravel",
+    "variant": 1,
+    "mode": "ambience-zero",
+    "start": 52,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-01",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "sample",
+    "start": 54,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-02",
+    "material": "Leaves",
+    "variant": 2,
+    "mode": "sample",
+    "start": 55.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-03",
+    "material": "Leaves",
+    "variant": 3,
+    "mode": "sample",
+    "start": 57,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-04",
+    "material": "Leaves",
+    "variant": 4,
+    "mode": "sample",
+    "start": 58.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-05",
+    "material": "Leaves",
+    "variant": 5,
+    "mode": "sample",
+    "start": 60,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-06",
+    "material": "Leaves",
+    "variant": 6,
+    "mode": "sample",
+    "start": 61.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Leaves-normal",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "normal",
+    "start": 63,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-half",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "half",
+    "start": 65,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-zero",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "zero",
+    "start": 67,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-mute",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "mute",
+    "start": 69,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-master-zero",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "master-zero",
+    "start": 71,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-master-mute",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "master-mute",
+    "start": 73,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-mono",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "mono",
+    "start": 75,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-reduced",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "reduced",
+    "start": 77,
+    "duration": 2
+  },
+  {
+    "name": "Leaves-ambience-zero",
+    "material": "Leaves",
+    "variant": 1,
+    "mode": "ambience-zero",
+    "start": 79,
+    "duration": 2
+  },
+  {
+    "name": "Timber-01",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "sample",
+    "start": 81,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-02",
+    "material": "Timber",
+    "variant": 2,
+    "mode": "sample",
+    "start": 82.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-03",
+    "material": "Timber",
+    "variant": 3,
+    "mode": "sample",
+    "start": 84,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-04",
+    "material": "Timber",
+    "variant": 4,
+    "mode": "sample",
+    "start": 85.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-05",
+    "material": "Timber",
+    "variant": 5,
+    "mode": "sample",
+    "start": 87,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-06",
+    "material": "Timber",
+    "variant": 6,
+    "mode": "sample",
+    "start": 88.5,
+    "duration": 1.5
+  },
+  {
+    "name": "Timber-normal",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "normal",
+    "start": 90,
+    "duration": 2
+  },
+  {
+    "name": "Timber-half",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "half",
+    "start": 92,
+    "duration": 2
+  },
+  {
+    "name": "Timber-zero",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "zero",
+    "start": 94,
+    "duration": 2
+  },
+  {
+    "name": "Timber-mute",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "mute",
+    "start": 96,
+    "duration": 2
+  },
+  {
+    "name": "Timber-master-zero",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "master-zero",
+    "start": 98,
+    "duration": 2
+  },
+  {
+    "name": "Timber-master-mute",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "master-mute",
+    "start": 100,
+    "duration": 2
+  },
+  {
+    "name": "Timber-mono",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "mono",
+    "start": 102,
+    "duration": 2
+  },
+  {
+    "name": "Timber-reduced",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "reduced",
+    "start": 104,
+    "duration": 2
+  },
+  {
+    "name": "Timber-ambience-zero",
+    "material": "Timber",
+    "variant": 1,
+    "mode": "ambience-zero",
+    "start": 106,
+    "duration": 2
+  },
+  {
+    "name": "overlap",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "overlap",
+    "start": 108,
+    "duration": 4
+  },
+  {
+    "name": "rate",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "rate",
+    "start": 112,
+    "duration": 4
+  },
+  {
+    "name": "material-change",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "material-change",
+    "start": 116,
+    "duration": 4
+  },
+  {
+    "name": "stop",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "stop",
+    "start": 120,
+    "duration": 4
+  },
+  {
+    "name": "mute-unmute",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "mute-unmute",
+    "start": 124,
+    "duration": 4
+  },
+  {
+    "name": "mix",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "mix",
+    "start": 128,
+    "duration": 4
+  },
+  {
+    "name": "missing",
+    "material": "Earth",
+    "variant": 1,
+    "mode": "missing",
+    "start": 132,
+    "duration": 4
+  }
+]

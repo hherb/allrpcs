@@ -1,4 +1,4 @@
-[gd_scene load_steps=398 format=3]
+[gd_scene load_steps=401 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -602,6 +602,10 @@
 [ext_resource type="Script" path="res://OpeningRegionMaterialAudioController.cs" id="material_audio"]
 [ext_resource type="PackedScene" path="res://MaterialSoundCaptionPanel.tscn" id="material_captions"]
 [ext_resource type="Script" path="res://MaterialAudioRuntimeSmokeCheck.cs" id="material_check"]
+
+[ext_resource type="Script" path="res://OpeningRegionFootstepMaterialSource.cs" id="footstep_material"]
+[ext_resource type="Script" path="res://OpeningRegionFootstepAudioController.cs" id="footstep_audio"]
+[ext_resource type="Script" path="res://FootstepAudioRuntimeSmokeCheck.cs" id="footstep_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4212,6 +4216,15 @@ script = ExtResource("material_audio")
 
 [node name="MaterialAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("material_check")
+
+[node name="OpeningRegionFootstepMaterialSource" type="Node" parent="."]
+script = ExtResource("footstep_material")
+
+[node name="OpeningRegionFootstepAudioController" type="Node" parent="."]
+script = ExtResource("footstep_audio")
+
+[node name="FootstepAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("footstep_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

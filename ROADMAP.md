@@ -328,8 +328,8 @@ poses and every predecessor remain unchanged. Use this as the reference for futu
 walking animation work. Historical pending fields are superseded; the whole gait
 correction and the approved audio-policy slice are closed. The audio bus/control
 implementation is verified, and the complete material audition is accepted. The approved
-six-sound runtime subset is implemented; footsteps and the other remaining audio scopes
-stay unfinished.
+six-sound runtime subset and approved Seeker terrain footsteps are implemented; the other
+remaining audio scopes stay unfinished.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -397,9 +397,15 @@ independent captions, source credits and success/load/lease isolation.
 unit tests, the retained Godot suite, ordinary action parity and 36 measured output cases.
 The six shipping WAVs remain byte-identical to the accepted audition. Full macOS
 application export is unavailable on this host; scoped audio/resource packaging passes.
-Terrain footsteps, water/tool actions, positional cues, music and voice stay unfinished.
-The next finite boundary is a concrete terrain-footstep runtime proposal, with material
-coverage and actual-contact prerequisites recorded before seeking implementation authority.
+The approved Seeker terrain-footstep scope is now implemented with four explicit
+materials, post-collision supported displacement cadence, 24 exact PCM contact slices,
+independent captions and packaged provenance. [Footstep verification](audio-direction/footstep-runtime-verification.json)
+and [review evidence](audio-direction/footstep-runtime-review/README.md) retain 5,095 unit
+tests, 293 retained Godot launches, four Main modes with identical full save roots, 67
+Master-output cases, native PCM parity and resource packaging. The named slice is closed;
+other interiors, Healer/NPC steps, water/tool actions, positional cues, music and voice
+remain unfinished. No anatomical animation synchronization, device listening or runnable
+release is claimed. The broader material-sound roadmap item remains unchecked.
 
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.

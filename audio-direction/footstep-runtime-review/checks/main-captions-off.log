@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Footstep observer failed: InvalidOperationException
+Footstep Main checks passed: actual four-material movement, wall pressure, observer isolation, stop/pause/disable/load, captions, credits and save parity fixture.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

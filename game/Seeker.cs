@@ -1,3 +1,4 @@
+using Allrpcs.Application.Audio;
 using Allrpcs.Application.Movement;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
@@ -15,6 +16,10 @@ public partial class Seeker : CharacterBody2D
     private static readonly StringName MoveUpAction = new("move_up");
     private static readonly StringName MoveDownAction = new("move_down");
     private SeekerWalkAnimationPresenter? walkAnimationPresenter;
+    private long motionTick;
+
+    /// <summary>Observes completed displacement without allowing presentation to deny movement.</summary>
+    public event Action<FootstepMotionSample>? MotionCompleted;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -31,8 +36,6 @@ public partial class Seeker : CharacterBody2D
     /// <inheritdoc />
     public override void _PhysicsProcess(double delta)
     {
-        _ = delta;
-
         Vector2 input = Input.GetVector(
             MoveLeftAction,
             MoveRightAction,
@@ -44,6 +47,15 @@ public partial class Seeker : CharacterBody2D
 
         Velocity = new Vector2(velocity.X, velocity.Y);
         walkAnimationPresenter?.PresentMovement(Velocity);
+        Vector2 start = GlobalPosition;
         MoveAndSlide();
+        FootstepMotionSample sample = new(++motionTick,
+            new NumericsVector2(start.X, start.Y), new NumericsVector2(GlobalPosition.X, GlobalPosition.Y),
+            delta, MovementSpeedPixelsPerSecond);
+        foreach (Delegate listener in MotionCompleted?.GetInvocationList() ?? [])
+        {
+            try { ((Action<FootstepMotionSample>)listener)(sample); }
+            catch (Exception error) { GD.PrintErr($"Footstep observer failed: {error.GetType().Name}"); }
+        }
     }
 }

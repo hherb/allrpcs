@@ -1,0 +1,32 @@
+Allrpcs Seeker footstep contact resources
+24 exact PCM slices from owner-accepted passages; headers only, no new sample processing.
+No anatomical left/right attribution is inferred from source recordings.
+
+Dirt Footsteps 3 by simonjeffery13
+Source: https://freesound.org/people/simonjeffery13/sounds/750796/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Accepted parent passages: W01
+Runtime W01-01 through W01-06: exact half-second PCM slices; parent/source ranges in provenance.json.
+
+Footsteps_Gravel_01.wav by BenDrain
+Source: https://freesound.org/people/BenDrain/sounds/488075/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Accepted parent passages: W02
+Runtime W02-01 through W02-06: exact half-second PCM slices; parent/source ranges in provenance.json.
+
+Footsteps / Walking on foliage in a forest by Dominik_W
+Source: https://freesound.org/people/Dominik_W/sounds/398685/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Accepted parent passages: W03
+Runtime W03-01 through W03-06: exact half-second PCM slices; parent/source ranges in provenance.json.
+
+Footsteps on hollow wood by florianreichelt
+Source: https://freesound.org/people/florianreichelt/sounds/459970/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Accepted parent passages: W04
+Runtime W04-01 through W04-06: exact half-second PCM slices; parent/source ranges in provenance.json.
+

@@ -1,0 +1,1063 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-footstep-runtime-scope",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "status": "planning_complete_implementation_authority_pending",
+  "implementation_scope_id": "phase9-terrain-footstep-runtime-integration",
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "proposal": {
+    "path": "audio-direction/footstep-runtime-scope.md",
+    "sha256": "2d8609f9798d7cc7e98ddc26daae9c31f0306b840dbc5f9bbb62ea7fbdc6fffc"
+  },
+  "inspected_commit": "240f18000a6825e6a46fea27135af2072b82f911",
+  "authority": {
+    "current": "Read-only proposal preparation and continuation documentation",
+    "required_next": "Exact Seeker material registry, modeled displacement cadence, 24 PCM slice extraction, runtime/captions/credits and finite checks",
+    "record_path": "audio-direction/footstep-runtime-authority.json",
+    "owner_grant": null,
+    "publication_authorized": false,
+    "release_authorized": false
+  },
+  "missing_prerequisites": [
+    "Post-collision Seeker motion notification",
+    "Explicit owner-granted audio-material registry",
+    "Grounded top-down support/cadence/cancellation contract",
+    "Authorized 24-resource PCM extraction",
+    "Successor runtime/output evidence"
+  ],
+  "owners": {
+    "emitter": "Main/Seeker",
+    "motion_operation": "game/Seeker.cs:_PhysicsProcess after existing MoveAndSlide",
+    "projection": "Main/OpeningRegionProjectionSource.Projection",
+    "navigation": "Main/GreyboxNavigation current map",
+    "materials": "new OpeningRegionFootstepMaterialSource + pure OpeningRegionFootstepMaterialProjection",
+    "cadence": "new pure FootstepContactCadence",
+    "playback": "new OpeningRegionFootstepAudioController",
+    "settings": "Main/AudioSettingsController",
+    "captions": "Main/MaterialSoundCaptionPanel independent footstep line",
+    "reset": "SaveSnapshotRestorationController.PresentationReset",
+    "credits": "Main/MaterialAudioCreditsPanel",
+    "healer": "Deferred; polygon placeholder and no perceived-source/contact contract"
+  },
+  "material_registry": {
+    "new_declarations_require_owner_grant": true,
+    "coordinates": "Retained projection-local world pixels",
+    "world_bounds": [
+      0,
+      0,
+      3200,
+      1800
+    ],
+    "point": "Seeker body origin support proxy",
+    "exact_topology_and_geometry_binding_required": true,
+    "live_navigation_gate": {
+      "ready_map_required": true,
+      "closest_point_maximum_distance_pixels": 1
+    },
+    "rectangles_inclusive": true,
+    "capsules": "distance to clamped segment <= radius",
+    "precedence": "Descending priority, then ordinal rule id for equal priority; equal-priority overlaps here have identical result",
+    "rules": [
+      {
+        "priority": 100,
+        "id": "unsupported-sickhouse-interior",
+        "material": null,
+        "shape": "rectangle",
+        "bounds": [
+          2480,
+          1310,
+          2800,
+          1502
+        ],
+        "owner": "OpeningRegionFirstPatientSceneSource.Layout.RoomBounds"
+      },
+      {
+        "priority": 100,
+        "id": "unsupported-laundry-interior",
+        "material": null,
+        "shape": "rectangle",
+        "bounds": [
+          1420,
+          120,
+          1580,
+          360
+        ],
+        "owner": "OpeningRegionStreamLaundryGeometry.LaundryBounds"
+      },
+      {
+        "priority": 80,
+        "id": "stream-crossing-timber",
+        "material": "W04",
+        "shape": "rectangle",
+        "bounds": [
+          1736,
+          452,
+          1864,
+          548
+        ],
+        "owner": "OpeningRegionStreamLaundryGeometry.StreamBounds"
+      },
+      {
+        "priority": 70,
+        "id": "sickhouse-north-gravel",
+        "material": "W02",
+        "shape": "rectangle",
+        "bounds": [
+          2480,
+          1214,
+          2576,
+          1310
+        ],
+        "owner": "OpeningRegionFirstPatientSceneSource.Layout.EntranceCenter",
+        "derivation": "entrance=(2528,1310), x +/-48, y -96 to y"
+      },
+      {
+        "priority": 60,
+        "id": "clearing-shrine-leaves",
+        "material": "W03",
+        "shape": "capsule",
+        "start": [
+          1000,
+          350
+        ],
+        "end": [
+          380,
+          300
+        ],
+        "radius": 24
+      },
+      {
+        "priority": 60,
+        "id": "clearing-closed-path-leaves",
+        "material": "W03",
+        "shape": "capsule",
+        "start": [
+          1000,
+          350
+        ],
+        "end": [
+          650,
+          150
+        ],
+        "radius": 24
+      },
+      {
+        "priority": 10,
+        "id": "remaining-navigation-earth",
+        "material": "W01",
+        "shape": "remaining-live-navigation-surface"
+      }
+    ],
+    "route_coverage": [
+      {
+        "first": "village-square",
+        "second": "sickhouse",
+        "default": "W01",
+        "applicable_overrides": [
+          "sickhouse-north-gravel",
+          "unsupported-sickhouse-interior"
+        ]
+      },
+      {
+        "first": "village-square",
+        "second": "healer-garden",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "village-square",
+        "second": "village-edge",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "village-square",
+        "second": "southern-road",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "village-edge",
+        "second": "stream",
+        "default": "W01",
+        "applicable_overrides": [
+          "stream-crossing-timber"
+        ]
+      },
+      {
+        "first": "stream",
+        "second": "abandoned-laundry",
+        "default": "W01",
+        "applicable_overrides": [
+          "stream-crossing-timber",
+          "unsupported-laundry-interior"
+        ]
+      },
+      {
+        "first": "village-edge",
+        "second": "woodland-clearing",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "abandoned-laundry",
+        "second": "woodland-clearing",
+        "default": "W01",
+        "applicable_overrides": [
+          "unsupported-laundry-interior"
+        ]
+      },
+      {
+        "first": "woodland-clearing",
+        "second": "old-shrine",
+        "default": "W01",
+        "applicable_overrides": [
+          "clearing-shrine-leaves"
+        ]
+      },
+      {
+        "first": "old-shrine",
+        "second": "southern-road",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "southern-road",
+        "second": "abandoned-wagon",
+        "default": "W01",
+        "applicable_overrides": []
+      },
+      {
+        "first": "woodland-clearing",
+        "second": "closed-deeper-forest-path",
+        "default": "W01",
+        "applicable_overrides": [
+          "clearing-closed-path-leaves"
+        ]
+      }
+    ],
+    "unmapped": "Silence, clear transient cadence/tails/caption, bounded diagnostic for invalid/missing inputs",
+    "no_artwork_ambience_or_visit_inference": true,
+    "changes_physics_or_world_facts": false
+  },
+  "motion_contract": {
+    "notification": [
+      "pre_position",
+      "post_position",
+      "physics_delta",
+      "movement_speed_limit",
+      "monotonic_tick"
+    ],
+    "notification_exceptions_isolated": true,
+    "existing_movement_and_animation_order_unchanged": true,
+    "position_continuity_tolerance_pixels": 1,
+    "stationary_threshold_pixels": 0.01,
+    "maximum_delta_seconds": 0.1,
+    "maximum_displacement": "speed * delta + 1 pixel",
+    "duplicate_or_out_of_order": "cancel/rebase",
+    "segment_support_sample_spacing_maximum_pixels": 4,
+    "displacement": "post-collision start-to-end distance; never requested velocity",
+    "support_semantics": "Static top-down mapped support proxy; no IsOnFloor, elevation, painted-sole or animation-frame contact claim",
+    "pause_disable_watcher": "New controller ProcessMode.Always observes tree pause and Seeker.CanProcess; no cadence advancement while inactive",
+    "small_in_step_teleport_limit": "Movement inside displacement/continuity bounds is indistinguishable; future explicit teleport owners must reset before relocation"
+  },
+  "cadence": {
+    "distance_per_contact_pixels": 86.4,
+    "distance_per_cycle_pixels": 172.8,
+    "benchmark_speed_pixels_per_second": 240,
+    "benchmark_contact_seconds": 0.36,
+    "reference_cycle_ms": 720,
+    "reference_half_cycle_offset": 0.5,
+    "first_contact": "after first distance threshold, never on keypress",
+    "logical_feet": [
+      "left",
+      "right"
+    ],
+    "recorded_sample_anatomical_identity": false,
+    "material_at": "interpolated distance-threshold point",
+    "material_change_or_turn": "preserve partial distance and logical identity",
+    "contact_maximum_per_tick": 1,
+    "minimum_contact_interval_seconds": 0.18,
+    "overflow": "consume all crossings; advance identity/variant state; discard excess without queue",
+    "variant_order": "01 through 06, separate counter per material, reset to 01",
+    "main_animation": "Existing six-frame cycle unchanged; no reference-cloak promotion or frame synchronization"
+  },
+  "cancellation": {
+    "triggers": [
+      "stationary/blocked",
+      "unmapped segment support",
+      "discontinuity",
+      "invalid tick/delta/speed",
+      "stall",
+      "pause",
+      "disable",
+      "successful load",
+      "reset",
+      "teardown"
+    ],
+    "result": "stop both players, clear partial distance/eligible time/footstep captions, reset identity and per-material variants, rebase without cue",
+    "failed_load_resets": false,
+    "settings_mute": "stop tails; continue logical cadence/captions without replay on unmute",
+    "no_save_or_event_log_state": true,
+    "no_gameplay_changes": true
+  },
+  "extraction": {
+    "parent_count": 4,
+    "resources_per_parent": 6,
+    "resource_count": 24,
+    "contacts": [
+      {
+        "id": "W01",
+        "title": "Packed earth",
+        "source_id": "earth",
+        "accepted_parent": {
+          "path": "audio-direction/material-audition/clips/W01.wav",
+          "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+        },
+        "source_ancestry": {
+          "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+          "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+        },
+        "lossy_original": false,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "sample_bytes": 3,
+        "bus": "Effects",
+        "variants": [
+          {
+            "variant": 1,
+            "proposed_path": "game/assets/audio/footsteps/W01-01.wav",
+            "parent_pcm_begin_frame": 48000,
+            "parent_pcm_end_frame_exclusive": 72000,
+            "source_begin_frame": 28800,
+            "source_end_frame_exclusive": 52800,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "9d4a8fe2f8f392677e6f6f8bd9e0af59ad66e91f189e47df872ac4b6b33cdac1",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 2,
+            "proposed_path": "game/assets/audio/footsteps/W01-02.wav",
+            "parent_pcm_begin_frame": 110400,
+            "parent_pcm_end_frame_exclusive": 134400,
+            "source_begin_frame": 56640,
+            "source_end_frame_exclusive": 80640,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "684dfc8486059886966473bf363ebfd4866c49c220f5255da46202dbbc214ef5",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 3,
+            "proposed_path": "game/assets/audio/footsteps/W01-03.wav",
+            "parent_pcm_begin_frame": 172800,
+            "parent_pcm_end_frame_exclusive": 196800,
+            "source_begin_frame": 127680,
+            "source_end_frame_exclusive": 151680,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "2ac8f009676c00b0be97692069cde8a080d1c75d63f687d74b7dc2aad8a601c5",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 4,
+            "proposed_path": "game/assets/audio/footsteps/W01-04.wav",
+            "parent_pcm_begin_frame": 235200,
+            "parent_pcm_end_frame_exclusive": 259200,
+            "source_begin_frame": 215520,
+            "source_end_frame_exclusive": 239520,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "84b804be24a08567297038bc8fde6eae6b68dfc495e22afad5de07dc025a6995",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 5,
+            "proposed_path": "game/assets/audio/footsteps/W01-05.wav",
+            "parent_pcm_begin_frame": 297600,
+            "parent_pcm_end_frame_exclusive": 321600,
+            "source_begin_frame": 420480,
+            "source_end_frame_exclusive": 444480,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "4e9b026d2e01861c5108ede3e848fe318560ed1d78db9384260d09c9854e64a1",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 6,
+            "proposed_path": "game/assets/audio/footsteps/W01-06.wav",
+            "parent_pcm_begin_frame": 360000,
+            "parent_pcm_end_frame_exclusive": 384000,
+            "source_begin_frame": 464640,
+            "source_end_frame_exclusive": 488640,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "352cf3555e09621f3387db660d81dba99068abdac917fce12b72e0a85f2da68e",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          }
+        ]
+      },
+      {
+        "id": "W02",
+        "title": "Gravel",
+        "source_id": "gravel",
+        "accepted_parent": {
+          "path": "audio-direction/material-audition/clips/W02.wav",
+          "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+        },
+        "source_ancestry": {
+          "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+          "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+        },
+        "lossy_original": false,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "sample_bytes": 3,
+        "bus": "Effects",
+        "variants": [
+          {
+            "variant": 1,
+            "proposed_path": "game/assets/audio/footsteps/W02-01.wav",
+            "parent_pcm_begin_frame": 48000,
+            "parent_pcm_end_frame_exclusive": 72000,
+            "source_begin_frame": 341280,
+            "source_end_frame_exclusive": 365280,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "65e408c11a7830d9becf45a6f13798118c8be86426b2f67aecc7c39af7c26e30",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 2,
+            "proposed_path": "game/assets/audio/footsteps/W02-02.wav",
+            "parent_pcm_begin_frame": 110400,
+            "parent_pcm_end_frame_exclusive": 134400,
+            "source_begin_frame": 393120,
+            "source_end_frame_exclusive": 417120,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "1d737651d8866aa8c2e0ea8d231b7bb1301e96be7e3d664498b93901c923fa72",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 3,
+            "proposed_path": "game/assets/audio/footsteps/W02-03.wav",
+            "parent_pcm_begin_frame": 172800,
+            "parent_pcm_end_frame_exclusive": 196800,
+            "source_begin_frame": 791040,
+            "source_end_frame_exclusive": 815040,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "935da63ba6a306778d674178d0335e57416cc3046041e8f9de17a43d8a5c0c83",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 4,
+            "proposed_path": "game/assets/audio/footsteps/W02-04.wav",
+            "parent_pcm_begin_frame": 235200,
+            "parent_pcm_end_frame_exclusive": 259200,
+            "source_begin_frame": 892320,
+            "source_end_frame_exclusive": 916320,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "b7b2395cde89977277c16d156cedd6608ad8435d6a1b260566abac84ebba8a98",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 5,
+            "proposed_path": "game/assets/audio/footsteps/W02-05.wav",
+            "parent_pcm_begin_frame": 297600,
+            "parent_pcm_end_frame_exclusive": 321600,
+            "source_begin_frame": 964320,
+            "source_end_frame_exclusive": 988320,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "c54faec6d8d68ec1aae7de553e44976f7f3eaff3a682828f318875c2d058801d",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 6,
+            "proposed_path": "game/assets/audio/footsteps/W02-06.wav",
+            "parent_pcm_begin_frame": 360000,
+            "parent_pcm_end_frame_exclusive": 384000,
+            "source_begin_frame": 999360,
+            "source_end_frame_exclusive": 1023360,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "6b18982cc79e41062e3f4ae91f125e8f91a96235ce1e3f44113a40505c359df3",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          }
+        ]
+      },
+      {
+        "id": "W03",
+        "title": "Leaf litter",
+        "source_id": "leaves",
+        "accepted_parent": {
+          "path": "audio-direction/material-audition/clips/W03.wav",
+          "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+        },
+        "source_ancestry": {
+          "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+          "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+        },
+        "lossy_original": false,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "sample_bytes": 3,
+        "bus": "Effects",
+        "variants": [
+          {
+            "variant": 1,
+            "proposed_path": "game/assets/audio/footsteps/W03-01.wav",
+            "parent_pcm_begin_frame": 48000,
+            "parent_pcm_end_frame_exclusive": 72000,
+            "source_begin_frame": 4320,
+            "source_end_frame_exclusive": 28320,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "91ee3888e1e7d56b23aef6d1cf2733ff657ceb7e81250eac8733f76e19270458",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 2,
+            "proposed_path": "game/assets/audio/footsteps/W03-02.wav",
+            "parent_pcm_begin_frame": 110400,
+            "parent_pcm_end_frame_exclusive": 134400,
+            "source_begin_frame": 34080,
+            "source_end_frame_exclusive": 58080,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "96a0a37954311df289b6cccb481622391a1ff165741440a10de98ac11d22f325",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 3,
+            "proposed_path": "game/assets/audio/footsteps/W03-03.wav",
+            "parent_pcm_begin_frame": 172800,
+            "parent_pcm_end_frame_exclusive": 196800,
+            "source_begin_frame": 70080,
+            "source_end_frame_exclusive": 94080,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "9ca237df9ccef7e34673dab48c7638b3850695332570a0a557c86cc3d9509528",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 4,
+            "proposed_path": "game/assets/audio/footsteps/W03-04.wav",
+            "parent_pcm_begin_frame": 235200,
+            "parent_pcm_end_frame_exclusive": 259200,
+            "source_begin_frame": 105600,
+            "source_end_frame_exclusive": 129600,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "372abe3ddbbe22a5af038c15163d57522b20ce9136ae0c78e52446d9e9c2b360",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 5,
+            "proposed_path": "game/assets/audio/footsteps/W03-05.wav",
+            "parent_pcm_begin_frame": 297600,
+            "parent_pcm_end_frame_exclusive": 321600,
+            "source_begin_frame": 136800,
+            "source_end_frame_exclusive": 160800,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "ac656ca143ffae1e03262f0ceaf787c7186b29394d902513728247e9db248fe5",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 6,
+            "proposed_path": "game/assets/audio/footsteps/W03-06.wav",
+            "parent_pcm_begin_frame": 360000,
+            "parent_pcm_end_frame_exclusive": 384000,
+            "source_begin_frame": 175200,
+            "source_end_frame_exclusive": 199200,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "cbc18f597f99e8dd5abdd7589d5c918efe3fff6212c0670407becaa18ba6e0ee",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          }
+        ]
+      },
+      {
+        "id": "W04",
+        "title": "Timber",
+        "source_id": "timber",
+        "accepted_parent": {
+          "path": "audio-direction/material-audition/clips/W04.wav",
+          "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+        },
+        "source_ancestry": {
+          "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+          "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+        },
+        "lossy_original": true,
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "sample_bytes": 3,
+        "bus": "Effects",
+        "variants": [
+          {
+            "variant": 1,
+            "proposed_path": "game/assets/audio/footsteps/W04-01.wav",
+            "parent_pcm_begin_frame": 48000,
+            "parent_pcm_end_frame_exclusive": 72000,
+            "source_begin_frame": 42240,
+            "source_end_frame_exclusive": 66240,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "ba093f159a5b5c8c4e2984680c9c69151e1aeac9b74b143357556c5a5011f03c",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 2,
+            "proposed_path": "game/assets/audio/footsteps/W04-02.wav",
+            "parent_pcm_begin_frame": 110400,
+            "parent_pcm_end_frame_exclusive": 134400,
+            "source_begin_frame": 282720,
+            "source_end_frame_exclusive": 306720,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "f9af75ef2bc39b47a1b814e615f939fdd5301e200c115670bdd638e2f6446464",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 3,
+            "proposed_path": "game/assets/audio/footsteps/W04-03.wav",
+            "parent_pcm_begin_frame": 172800,
+            "parent_pcm_end_frame_exclusive": 196800,
+            "source_begin_frame": 422880,
+            "source_end_frame_exclusive": 446880,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "1ac675e5c933d9567ffaad00def021ea64924883683fc721a8cb697696c56091",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 4,
+            "proposed_path": "game/assets/audio/footsteps/W04-04.wav",
+            "parent_pcm_begin_frame": 235200,
+            "parent_pcm_end_frame_exclusive": 259200,
+            "source_begin_frame": 578880,
+            "source_end_frame_exclusive": 602880,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "f62723ab5bcd7f40339293fdfdf18aa191cbf875c5c1a0e4547db5b978f22201",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 5,
+            "proposed_path": "game/assets/audio/footsteps/W04-05.wav",
+            "parent_pcm_begin_frame": 297600,
+            "parent_pcm_end_frame_exclusive": 321600,
+            "source_begin_frame": 650400,
+            "source_end_frame_exclusive": 674400,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "73bd5854dda1d9e4ae5dea8de29811d4063d3a9144c36fff24c7f55726baed0e",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          },
+          {
+            "variant": 6,
+            "proposed_path": "game/assets/audio/footsteps/W04-06.wav",
+            "parent_pcm_begin_frame": 360000,
+            "parent_pcm_end_frame_exclusive": 384000,
+            "source_begin_frame": 781440,
+            "source_end_frame_exclusive": 805440,
+            "frame_count": 24000,
+            "pcm_byte_count": 144000,
+            "expected_pcm_sha256": "546ddc034f44db384cf575d04aa883a6e7607636299da614892ea8843332dc24",
+            "derived_wav_sha256": null,
+            "derived_file_created": false
+          }
+        ]
+      }
+    ],
+    "operation": "Copy exact accepted interleaved PCM bytes into standard PCM24 WAV headers",
+    "windows_end_exclusive": true,
+    "sample_duration_seconds": 0.5,
+    "accepted_parent_and_source_bytes_unchanged": true,
+    "resampling_normalization_pitch_filter_fade_or_original_regeneration": false,
+    "onset_qualification": "Full retained window begins about 100 ms before detected RMS peak; exact heel onset/zero perceived delay not claimed",
+    "derived_files_created_in_planning": false,
+    "repeated_listening": false
+  },
+  "playback": {
+    "bus": "Effects",
+    "emitter_gain": 1,
+    "positional": false,
+    "players_maximum": 2,
+    "voice_steal": "Idle player first, otherwise oldest tail",
+    "whole_passage_loops": false,
+    "queue": false,
+    "foreground_lease": false,
+    "retained_controls": [
+      "Effects/Master gain and mute",
+      "mono",
+      "Default/Reduced range"
+    ],
+    "missing_resource": "silence with bounded diagnostic; keep caption cadence; never throw through movement"
+  },
+  "captions": {
+    "preference": "AudioSettingsController.Preferences.Captions",
+    "independent_of_gain_mute_and_resource_availability": true,
+    "separate_footstep_line": true,
+    "panel_total_lines": 3,
+    "noninteractive": true,
+    "duration_seconds": 0.75,
+    "text": {
+      "W01": "Footsteps on earth",
+      "W02": "Footsteps on gravel",
+      "W03": "Footsteps in leaves",
+      "W04": "Footsteps on timber"
+    },
+    "cancel": "clear only own line immediately",
+    "offscreen_npc_hidden_or_direction_information": false
+  },
+  "credits": {
+    "retained_record_basis": "Accepted material-audition provenance/credits; no new rights audit",
+    "contributors": [
+      {
+        "source_id": "earth",
+        "author": "simonjeffery13",
+        "recorded_license": "CC0-1.0"
+      },
+      {
+        "source_id": "gravel",
+        "author": "BenDrain",
+        "recorded_license": "CC0-1.0"
+      },
+      {
+        "source_id": "leaves",
+        "author": "Dominik_W",
+        "recorded_license": "CC0-1.0"
+      },
+      {
+        "source_id": "timber",
+        "author": "florianreichelt",
+        "recorded_license": "CC0-1.0"
+      }
+    ],
+    "new_download_purchase_or_account_activity": false,
+    "existing_six_sound_credits_retained": true,
+    "export_notice_filters": [
+      "assets/audio/footsteps/*.txt",
+      "assets/audio/footsteps/*.json",
+      "assets/audio/footsteps/*.html"
+    ]
+  },
+  "implementation_files": {
+    "bounded_changes": [
+      "game/Seeker.cs",
+      "game/Main.tscn",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs",
+      "game/export_presets.cfg"
+    ],
+    "new_files": [
+      "game/OpeningRegionFootstepMaterialSource.cs",
+      "game/OpeningRegionFootstepMaterialSource.cs.uid",
+      "src/Application/Audio/OpeningRegionFootstepMaterialProjection.cs",
+      "src/Application/Audio/FootstepContactCadence.cs",
+      "game/OpeningRegionFootstepAudioController.cs",
+      "game/OpeningRegionFootstepAudioController.cs.uid",
+      "tests/Application.Tests/Audio/OpeningRegionFootstepMaterialProjectionTests.cs",
+      "tests/Application.Tests/Audio/FootstepContactCadenceTests.cs",
+      "game/FootstepAudioRuntimeSmokeCheck.cs",
+      "game/FootstepAudioRuntimeSmokeCheck.cs.uid",
+      "game/FootstepAudioRuntimeProof.cs",
+      "game/FootstepAudioRuntimeProof.cs.uid",
+      "game/FootstepAudioRuntimeProof.tscn",
+      "scripts/prepare-footstep-contacts.py",
+      "scripts/validate-footstep-audio-runtime.py",
+      "scripts/check-footstep-audio-output.py",
+      "audio-direction/footstep-runtime-authority.json",
+      "audio-direction/footstep-runtime-verification.json",
+      "game/assets/audio/footsteps/CREDITS.txt",
+      "game/assets/audio/footsteps/provenance.json",
+      "game/assets/audio/footsteps/CC0-1.0-deed.html",
+      "game/assets/audio/footsteps/W01-01.wav",
+      "game/assets/audio/footsteps/W01-01.wav.import",
+      "game/assets/audio/footsteps/W01-02.wav",
+      "game/assets/audio/footsteps/W01-02.wav.import",
+      "game/assets/audio/footsteps/W01-03.wav",
+      "game/assets/audio/footsteps/W01-03.wav.import",
+      "game/assets/audio/footsteps/W01-04.wav",
+      "game/assets/audio/footsteps/W01-04.wav.import",
+      "game/assets/audio/footsteps/W01-05.wav",
+      "game/assets/audio/footsteps/W01-05.wav.import",
+      "game/assets/audio/footsteps/W01-06.wav",
+      "game/assets/audio/footsteps/W01-06.wav.import",
+      "game/assets/audio/footsteps/W02-01.wav",
+      "game/assets/audio/footsteps/W02-01.wav.import",
+      "game/assets/audio/footsteps/W02-02.wav",
+      "game/assets/audio/footsteps/W02-02.wav.import",
+      "game/assets/audio/footsteps/W02-03.wav",
+      "game/assets/audio/footsteps/W02-03.wav.import",
+      "game/assets/audio/footsteps/W02-04.wav",
+      "game/assets/audio/footsteps/W02-04.wav.import",
+      "game/assets/audio/footsteps/W02-05.wav",
+      "game/assets/audio/footsteps/W02-05.wav.import",
+      "game/assets/audio/footsteps/W02-06.wav",
+      "game/assets/audio/footsteps/W02-06.wav.import",
+      "game/assets/audio/footsteps/W03-01.wav",
+      "game/assets/audio/footsteps/W03-01.wav.import",
+      "game/assets/audio/footsteps/W03-02.wav",
+      "game/assets/audio/footsteps/W03-02.wav.import",
+      "game/assets/audio/footsteps/W03-03.wav",
+      "game/assets/audio/footsteps/W03-03.wav.import",
+      "game/assets/audio/footsteps/W03-04.wav",
+      "game/assets/audio/footsteps/W03-04.wav.import",
+      "game/assets/audio/footsteps/W03-05.wav",
+      "game/assets/audio/footsteps/W03-05.wav.import",
+      "game/assets/audio/footsteps/W03-06.wav",
+      "game/assets/audio/footsteps/W03-06.wav.import",
+      "game/assets/audio/footsteps/W04-01.wav",
+      "game/assets/audio/footsteps/W04-01.wav.import",
+      "game/assets/audio/footsteps/W04-02.wav",
+      "game/assets/audio/footsteps/W04-02.wav.import",
+      "game/assets/audio/footsteps/W04-03.wav",
+      "game/assets/audio/footsteps/W04-03.wav.import",
+      "game/assets/audio/footsteps/W04-04.wav",
+      "game/assets/audio/footsteps/W04-04.wav.import",
+      "game/assets/audio/footsteps/W04-05.wav",
+      "game/assets/audio/footsteps/W04-05.wav.import",
+      "game/assets/audio/footsteps/W04-06.wav",
+      "game/assets/audio/footsteps/W04-06.wav.import"
+    ],
+    "evidence_directory": "audio-direction/footstep-runtime-review/",
+    "documentation_maintenance": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md"
+    ]
+  },
+  "unchanged_inputs": [
+    {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "d3a3b31dd2a345b4e064d2a9c7748e02e320fd803176afbda0a4b8dee2f66ca0"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "76d79b96d13b6f581be88f8e4f906c6b39063e46b24839b429399a9b350d2aaf"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "3d71d2333a9f6372798458ea11c56ea46682ddc5ef471f1a0725d10abda7b1ce"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/SeekerWalkAnimationPresenter.cs",
+      "sha256": "f0114fd5c1e23e2881cc4554a78fb5549a9625fa9cf7a6d05c357243499bb62f"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "9209cb602ccece0b754ff886df46bdb90c0613787197b55c4012ceef6b831eb0"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "0b95af82b2646aca7965f46576911fd38db1bc35b6e5981b212bc7165c5e98f4"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "57b94aa4fe944e741cd210c59040d408b1a96906afe5e6380aa4ace775c24c1a"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "81a97a4d20ba516356e6a493b54cc532c80936d92e0e6095f6d769ec9e26661b"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundryGeometry.cs",
+      "sha256": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72"
+    },
+    {
+      "path": "game/OpeningRegionVillageTransitionGeometry.cs",
+      "sha256": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/art/runtime/characters/seeker/walk-animations.tres",
+      "sha256": "c1843c3b9c2f518c0a19f922ade34597a1a3d17cf1da9776cab9bdb66da18475"
+    },
+    {
+      "path": "art-direction/reference-gait-model.md",
+      "sha256": "1070a345771f47cd851c5edbed48dcd694e6034601b3b8dd1bcdd09249a62961"
+    },
+    {
+      "path": "art-direction/reference-gait-model.json",
+      "sha256": "e7b5e543b772e7a47b233902c87e94b6b5036b9e7ef494fa1ddf86f4c32b75ad"
+    },
+    {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    {
+      "path": "audio-direction/material-audition/candidates.json",
+      "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+    },
+    {
+      "path": "audio-direction/material-audition/provenance.json",
+      "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+    },
+    {
+      "path": "audio-direction/material-audition/CREDITS.txt",
+      "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/licenses.json",
+      "sha256": "25a5e66b40c633b953324560aae6b0f7090514309bb1b4a6c8d048fc12b1b9c5"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/material-audition/prepare-excerpts.py",
+      "sha256": "b1c0aabd49fac2e5cff7d8f3d25e79f5628b8efd3e3f299b0a46b53fe100bae6"
+    },
+    {
+      "path": "audio-direction/material-runtime-verification.json",
+      "sha256": "7b90f02114805c6b03cc85942ba5fb729d7f6d17b98d058a25ce3ee3aa73fc77"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/publication/authority.json",
+      "sha256": "a0a874ac66e558182040264a39758df84ab827b6be71bce0277dae26420a12f3"
+    },
+    {
+      "path": "art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json",
+      "sha256": "88c90fa7bc441d05c887a81ba4a6b7098c44214d76c209c041d46591f51d2fe7"
+    },
+    {
+      "path": "art-direction/seeker-cloak-reference-gait-revision/candidate.json",
+      "sha256": "584518b95fc6eb2bd13a8f02f9ba83e25426b62a990a8fe0969ca1a10de20b65"
+    },
+    {
+      "path": "art-direction/seeker-cloak-reference-gait-revision/rig.json",
+      "sha256": "38159702a6852193a1b8e872d1e593b178593a67a462f53e2b965d9bdd035377"
+    },
+    {
+      "path": "game/art/seeker-cloak-reference-gait-revision/walk.tres",
+      "sha256": "e9cc7adb25d4f66d0a5c796f766faf219d4f8163c6995ab1c54d52dda7ec0cef"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W01.wav",
+      "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+      "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W02.wav",
+      "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+      "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W03.wav",
+      "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+      "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W04.wav",
+      "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+      "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+    }
+  ],
+  "excluded": [
+    "Healer/NPC footsteps",
+    "Art/gait/animation changes or cloak Main promotion",
+    "Physical material system/navigation/collision/layout changes",
+    "Accepted waveform edits or source regeneration",
+    "Other interiors/water/tools/actions",
+    "Positional/offscreen perception cues",
+    "Music/voice/providers",
+    "Save schema/world/time/disease/perception changes",
+    "Release/signing/distribution",
+    "Git publication"
+  ],
+  "verification_required": [
+    "24 PCM ranges/import precision; accepted/reference/boundary hashes and successor rejection probes",
+    "All 12 routes/11 anchors, material boundaries/exclusions/ties/transforms/nav readiness",
+    "Ordinary Seeker movement/cadence/cancellation/teleport/load negatives and gameplay/save parity in four modes; no Healer cues",
+    "Final Master output for four materials/six variants, overlap/rate cap/bed-action mix/gain/mute/mono/ranges; onset latency and honest numerical limits",
+    "Changed Main captions/credits at 1280x720 and 1600x900; exported 24 resources/notices plus retained six sounds",
+    "Applicable pure tests then restore/format/build/four unit projects/ScenarioValidator/retained Godot suite/new movement probes"
+  ],
+  "completion_condition": "Approved Seeker registry, 24 exact contact resources, actual displacement and cancellation, captions/credits/existing controls, finite successor/product/output evidence; wider material roadmap remains unfinished",
+  "planning_checks": {
+    "terminal_acceptance_bindings_verified": 82,
+    "waveform_headers_verified": 4,
+    "contact_ranges_and_pcm_hashes_inspected": 24,
+    "retained_reference_metadata_bindings_verified": 4,
+    "runtime_product_inputs_changed": false,
+    "samples_extracted_or_installed": false,
+    "product_tests_run": false,
+    "reason": "Read-only planning; retained product evidence reused"
+  }
+}

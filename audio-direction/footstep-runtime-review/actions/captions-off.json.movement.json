@@ -1,0 +1,142 @@
+[
+  {
+    "anchor": "sickhouse",
+    "material": null
+  },
+  {
+    "anchor": "healer-garden",
+    "material": "Earth"
+  },
+  {
+    "anchor": "village-square",
+    "material": "Earth"
+  },
+  {
+    "anchor": "village-edge",
+    "material": "Earth"
+  },
+  {
+    "anchor": "stream",
+    "material": "Timber"
+  },
+  {
+    "anchor": "abandoned-laundry",
+    "material": null
+  },
+  {
+    "anchor": "woodland-clearing",
+    "material": "Leaves"
+  },
+  {
+    "anchor": "old-shrine",
+    "material": "Leaves"
+  },
+  {
+    "anchor": "southern-road",
+    "material": "Earth"
+  },
+  {
+    "anchor": "abandoned-wagon",
+    "material": "Earth"
+  },
+  {
+    "anchor": "closed-deeper-forest-path",
+    "material": "Leaves"
+  },
+  {
+    "route": "village-square/sickhouse",
+    "material": "Earth"
+  },
+  {
+    "route": "village-square/healer-garden",
+    "material": "Earth"
+  },
+  {
+    "route": "village-square/village-edge",
+    "material": "Earth"
+  },
+  {
+    "route": "village-square/southern-road",
+    "material": "Earth"
+  },
+  {
+    "route": "village-edge/stream",
+    "material": "Earth"
+  },
+  {
+    "route": "stream/abandoned-laundry",
+    "material": "Earth"
+  },
+  {
+    "route": "village-edge/woodland-clearing",
+    "material": "Earth"
+  },
+  {
+    "route": "abandoned-laundry/woodland-clearing",
+    "material": "Earth"
+  },
+  {
+    "route": "woodland-clearing/old-shrine",
+    "material": "Leaves"
+  },
+  {
+    "route": "old-shrine/southern-road",
+    "material": "Earth"
+  },
+  {
+    "route": "southern-road/abandoned-wagon",
+    "material": "Earth"
+  },
+  {
+    "route": "woodland-clearing/closed-deeper-forest-path",
+    "material": "Leaves"
+  },
+  {
+    "movement": "Earth",
+    "start": {
+      "X": 2150,
+      "Y": 900
+    },
+    "end": {
+      "X": 2046,
+      "Y": 900
+    },
+    "contacts": 1
+  },
+  {
+    "movement": "Leaves",
+    "start": {
+      "X": 700,
+      "Y": 325.80646
+    },
+    "end": {
+      "X": 803.6636,
+      "Y": 334.16632
+    },
+    "contacts": 1
+  },
+  {
+    "movement": "Gravel",
+    "start": {
+      "X": 2440,
+      "Y": 1200
+    },
+    "end": {
+      "X": 2499.9707,
+      "Y": 1274.9648
+    },
+    "contacts": 1
+  },
+  {
+    "movement": "Timber",
+    "start": {
+      "X": 1776,
+      "Y": 596
+    },
+    "end": {
+      "X": 1801.2224,
+      "Y": 495.10544
+    },
+    "contacts": 1
+  }
+]
