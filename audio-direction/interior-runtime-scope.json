@@ -1,0 +1,689 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-interior-audio-runtime-scope",
+  "status": "planning_complete_runtime_grant_pending",
+  "inspected_commit": "3f9eac25fb3a1ae84bafbe21018dd8cc4751b8c3",
+  "proposal_document": {
+    "path": "audio-direction/interior-runtime-scope.md",
+    "sha256": "010244ee727134b33a8a3a7010a6d459a27187d4cba874ea5264d9df6a3810ce"
+  },
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "authority": {
+    "preparation": "Read HANDOVER.md and follow the instructions; ledger active interior planning slice",
+    "runtime_implementation": false,
+    "new_audio_material_assignments": false,
+    "physical_or_layout_changes": false,
+    "pcm_generation_or_extraction": false,
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    }
+  },
+  "next_decision": {
+    "scope_id": "phase9-interior-audio-runtime-integration",
+    "status": "pending_owner_grant",
+    "covers": [
+      "Sickhouse W04 timber and laundry W01 earth audio-only material footprints",
+      "Two listener enclosure attenuation profiles and live doorway blend",
+      "Existing-stream indoor contacts and one shared transient source",
+      "One generic caption line and finite successor verification"
+    ],
+    "record_response_in": "audio-direction/interior-runtime-authority.json",
+    "bind_response_to": [
+      "audio-direction/interior-runtime-scope.md",
+      "audio-direction/interior-runtime-scope.json"
+    ],
+    "required_by": "AGENTS.md Approval and progress: A genuinely new runtime/layout/physical scope still needs the applicable authority."
+  },
+  "model": {
+    "kind": "Audio-only listener enclosure and two floor defaults; no physical room simulation",
+    "coordinate_space": "OpeningRegionProjectionSource projection-local pixels",
+    "support": "Existing ready live navigation closest-point test within one local pixel; exact retained identities",
+    "world_bounds": [
+      0,
+      0,
+      3200,
+      1800
+    ],
+    "wall_collar_pixels": 8,
+    "floor_boundary_rule": "Strict inner rectangle plus closed-depth/open-width portal strips; other shell points remain silent",
+    "profiles": [
+      {
+        "id": "sickhouse",
+        "owner": "OpeningRegionFirstPatientSceneSource.Layout",
+        "shell": [
+          2480,
+          1310,
+          2800,
+          1502
+        ],
+        "strict_inner_floor": [
+          2488,
+          1318,
+          2792,
+          1494
+        ],
+        "portals": [
+          {
+            "side": "north",
+            "center": [
+              2528,
+              1310
+            ],
+            "width": 64,
+            "strip": "2496 < x < 2560; 1310 <= y <= 1318"
+          }
+        ],
+        "footstep_material": "Timber",
+        "installed_parent_id": "W04",
+        "full_depth_bed_db": {
+          "B01": 0,
+          "B02": -9,
+          "B03": -9,
+          "B04": -9
+        }
+      },
+      {
+        "id": "abandoned-laundry",
+        "owner": "OpeningRegionStreamLaundrySceneSource.Layout",
+        "shell": [
+          1420,
+          120,
+          1580,
+          360
+        ],
+        "strict_inner_floor": [
+          1428,
+          128,
+          1572,
+          352
+        ],
+        "portals": [
+          {
+            "side": "west",
+            "center_approximate": [
+              1420,
+              240.8
+            ],
+            "width": 96,
+            "strip": "1420 <= x <= 1428; live westY-48 < y < live westY+48"
+          },
+          {
+            "side": "east",
+            "center_approximate": [
+              1580,
+              294.6667
+            ],
+            "width": 96,
+            "strip": "1572 <= x <= 1580; live eastY-48 < y < live eastY+48"
+          }
+        ],
+        "portal_derivation": "Current projected bridge branch; use live layout portals, not LaundryOpeningY=220",
+        "footstep_material": "Earth",
+        "installed_parent_id": "W01",
+        "full_depth_bed_db": {
+          "B01": 0,
+          "B02": -3,
+          "B03": -3,
+          "B04": -3
+        }
+      }
+    ],
+    "descriptor_tolerance_pixels": 0.01,
+    "blend": "b=clamp(shortest Euclidean distance to any live room opening segment / 32, 0, 1)",
+    "target_gain": "10 ** (profile_bed_db * b / 20)",
+    "ramp": {
+      "seconds_per_amplitude_unit": 0.75,
+      "operation": "MoveToward current gain toward target by delta/0.75 once per process frame",
+      "gain_bounds": [
+        0,
+        1
+      ],
+      "maximum_delta_seconds": 0.25,
+      "source_process_priority": -50
+    },
+    "reset_gain": 1,
+    "teleport_threshold_world_pixels": 96,
+    "reset_on": [
+      "negative/nonfinite/delta over 0.25",
+      "missing/replaced owner or navigation",
+      "pause",
+      "disabled Seeker",
+      "window focus loss",
+      "successful restore",
+      "teleport",
+      "teardown"
+    ],
+    "resume": "Recompute valid position; no entry event, replay, backlog or world indoor state",
+    "invalid_fallback": "Neutral ambience; original interior footstep silence; original exterior projection",
+    "exterior_projection_change": false,
+    "cadence_change": false,
+    "player_composition": "regional weight * interior gain * existing spatial gain (B02 only) * existing bus processing",
+    "bed_players": {
+      "B01/B03/B04": "OpeningRegionMaterialAudioController",
+      "B02": "OpeningRegionPositionalAudioController"
+    },
+    "unaffected_players": [
+      "A04",
+      "A05",
+      "recorded reply",
+      "Music",
+      "Speech",
+      "local contact gain"
+    ],
+    "new_buses": 0,
+    "new_effects": 0,
+    "new_listeners": 0,
+    "new_ducking_leases": 0,
+    "standalone_default": "Automatic=false; legacy proofs without the source use gain 1",
+    "ordinary_exit": "Neutral target; gains return to unity within at most 0.75 seconds; exterior equality after settling"
+  },
+  "accessibility": {
+    "caption": "Outdoor sounds softened",
+    "show_if": "Eligible profile, target blend >= 0.5, captions enabled",
+    "independent_of_output_gain": true,
+    "new_history_or_perception_event": false,
+    "ownership": "One new noninteractive interior line; existing four caption owners unchanged",
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ]
+  },
+  "reused_resources": [
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5",
+      "import": {
+        "path": "game/assets/audio/material/B01.wav.import",
+        "sha256": "e8734f661265e2b63d68a49e70dedcb7984bf41dd65fc8f8fa874a49ed228500"
+      },
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54",
+      "import": {
+        "path": "game/assets/audio/material/B02.wav.import",
+        "sha256": "9e8b8969f5d3823a34b34067764483cae6bfbf62f8bec4c7b3f16e3a701c03ef"
+      },
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625",
+      "import": {
+        "path": "game/assets/audio/material/B03.wav.import",
+        "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+      },
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286",
+      "import": {
+        "path": "game/assets/audio/material/B04.wav.import",
+        "sha256": "36c998c366bceb554ee2f7788d7b6b61f66502aebb8da8c36136fa10c81de4ad"
+      },
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-01.wav.import",
+        "sha256": "155473ed5acb93c4c45b5be3171fe9e3f2856395880ee145c351878a9f762ca9"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-02.wav.import",
+        "sha256": "9d3884914cb0fede1a4bdaa59ca587a1de75d4daad39170994f99319167c29a8"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-03.wav.import",
+        "sha256": "41bfed746f64e893c628088689b80cd55959d19fd9330c4649d735b3c1ba4287"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-04.wav.import",
+        "sha256": "7a5b6fbdd6a03bef401fe0b6e9cd624059f83c900997207546e498819249afc3"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-05.wav.import",
+        "sha256": "23d5bb66009483c7b22e03b348bad50ea04af386fe5705ed5f42d1dda6001e3d"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-06.wav.import",
+        "sha256": "b20d4fc8630086eeafc463f2032f6ffb50cee7b637a0082e6bfb53d1356d8b07"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-01.wav.import",
+        "sha256": "154e81c03c6cb74d8d48e983ed13702d7d7c80347291b79e0900da73dc7291a1"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-02.wav.import",
+        "sha256": "d339f0a4bf6b39817d8fb85b1ef5784e57d55a95cee35ba399ef5f9362d9627b"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-03.wav.import",
+        "sha256": "a9608c1b31d9910d4afee9b77e4ce4be492663171cadd46a083cd1e225ebd6ba"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-04.wav.import",
+        "sha256": "0a139e3f528ca452ffde28b60d300cc5852dcfeb54c65579eb104b3b9d1ef1b0"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-05.wav.import",
+        "sha256": "314a8669bbd6edfdf5fd82698865b91cd2651ccf6be1a27f7c47672b9ba85072"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-06.wav.import",
+        "sha256": "f91bf3371f4331ab37eef6572d53b486fa1c94f43c26d4cf9ed3802f00ffb116"
+      },
+      "frames": 24000,
+      "rate_hz": 48000,
+      "channels": 2,
+      "sample_bytes": 3,
+      "operation": "Reuse installed stream unchanged; no copy, extraction, resampling or new importer edits"
+    }
+  ],
+  "retained_rights": [
+    {
+      "path": "game/assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "game/assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "game/assets/audio/footsteps/provenance.json",
+      "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CREDITS.txt",
+      "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+    }
+  ],
+  "new_WAVs": 0,
+  "PCM_ranges": 0,
+  "new_downloads": 0,
+  "asset_import_edits": 0,
+  "implementation_files": {
+    "existing_files_to_change": [
+      "game/Main.tscn",
+      "game/OpeningRegionFootstepMaterialSource.cs",
+      "game/OpeningRegionMaterialAudioController.cs",
+      "game/OpeningRegionPositionalAudioController.cs",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs"
+    ],
+    "new_files": [
+      "src/Application/Audio/OpeningRegionInteriorAudioProjection.cs",
+      "src/Application/Audio/InteriorAudioRamp.cs",
+      "game/OpeningRegionInteriorAudioSource.cs",
+      "tests/Application.Tests/Audio/OpeningRegionInteriorAudioProjectionTests.cs",
+      "tests/Application.Tests/Audio/InteriorAudioRampTests.cs",
+      "game/InteriorAudioRuntimeSmokeCheck.cs",
+      "game/InteriorAudioRuntimeProof.cs",
+      "game/InteriorAudioRuntimeProof.tscn",
+      "scripts/check-interior-audio-output.py",
+      "scripts/validate-interior-audio-runtime.py"
+    ],
+    "documentation_maintenance": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "audio-direction/interior-runtime-authority.json",
+      "audio-direction/interior-runtime-verification.json"
+    ],
+    "review_prefix": "audio-direction/interior-runtime-review/",
+    "ignored_generated_UIDs": "Three new game C# scripts; follow existing ignored UID policy"
+  },
+  "unchanged_inspected_inputs": [
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "src/Application/Navigation/OpeningRegionSickhouseLayout.cs",
+      "sha256": "1ea1cdc620535bce84f93e5e5c566356ec31a2db0041bdce0194b7ab7daf404e"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundryGeometry.cs",
+      "sha256": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72"
+    },
+    {
+      "path": "src/Application/Navigation/OpeningRegionStreamLaundryLayout.cs",
+      "sha256": "59fe76996cf71b76fee541cdd6aeb3576d2cacedb388ee0b73c5ddc655b7f761"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs",
+      "sha256": "a62e63de90e7af6aaa4deba8b072c4da09066dcb73ff7c9e6036ebfae19b79ca"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionFootstepMaterialProjection.cs",
+      "sha256": "94ab08a67e1ecec15935ea20e0f927c831799f837eaffa289e9a0ddc575b605d"
+    },
+    {
+      "path": "src/Application/Audio/FootstepContactCadence.cs",
+      "sha256": "1ed70cfea163857db49fd7d6d0e7f49ece8ec845c933eb35ac4442eb87f19d56"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs",
+      "sha256": "d917538a3c6c5ffc8a3d6b837313b1f58fc88a2a030891a5fd8e378a2d37d6ea"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "0b51ced33e60bd32018acb67953c6cb7676fea59b7b32da1cde8dafc4a2f3bf5"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "2ef88e4bfeb5c37c453b40d6592addfa3fc6808b756192e355eb045b70e90770"
+    },
+    {
+      "path": "game/OpeningRegionMusicAudioController.cs",
+      "sha256": "29523e6bc62b307bb73555e1d0e865ad87a4f91fd581deb84199b5bb41c3808b"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "634150ca8d388d47a982542fd82c012dced21235da77e8806c32800b11471d48"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "684a7f02278332794bc213d25a6cfd4cb56cbad678246022fcca721681942fbe"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "7824b44db615b5dac799ba7e479f88b9b1dd5db44375bef3f87a4d5a13e12402"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "8a307ac25b5008086d25e136ee6b2e3a3d90467864db3ba6b3eff1c94529569b"
+    },
+    {
+      "path": "scripts/quality.sh",
+      "sha256": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3"
+    },
+    {
+      "path": "scripts/smoke-godot.sh",
+      "sha256": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    }
+  ],
+  "protected_product_snapshot": {
+    "roots": [
+      "game",
+      "src",
+      "tests",
+      "scripts",
+      ".github",
+      "Allrpcs.sln"
+    ],
+    "tracked_file_count": 4793,
+    "manifest_encoding": "Sorted path/sha256 rows; JSON sort_keys=true,separators=(comma,colon); UTF-8; no newline; current working bytes including separately identified editor exception",
+    "manifest_sha256": "2b7f2d11237f1cd999e309a9f5b6ea2f31a9926f914800abf6578e182466bb15",
+    "local_editor_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    },
+    "tracked_changes_from_inspected_commit": [
+      "game/project.godot"
+    ],
+    "untracked_product_files": []
+  },
+  "retained_evidence": [
+    {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    {
+      "path": "audio-direction/material-runtime-authority.json",
+      "sha256": "085dc5176bc713c37307cac22a76b2b47343eb3869c38aadc8692da269dc030f"
+    },
+    {
+      "path": "audio-direction/material-runtime-verification.json",
+      "sha256": "7b90f02114805c6b03cc85942ba5fb729d7f6d17b98d058a25ce3ee3aa73fc77"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-authority.json",
+      "sha256": "d0b5fbdd651336ffdfa6cce7a4262a13a3afd9dfe7b3db779568faa6bbb98936"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-verification.json",
+      "sha256": "1d1dc71a01c0146494d87f50274ca113b694ec272a92b1c3410ce2d932a5a403"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-authority.json",
+      "sha256": "3732acdec8f21f235e92a617a632ec84fecba63eaef2398fad9e572ded05d598"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-verification.json",
+      "sha256": "f0c4a334b7236ca5af65c6dedcc8f3a0e5eeb774468ca8e2e2222856e6ae7fd4"
+    },
+    {
+      "path": "audio-direction/music-runtime-authority.json",
+      "sha256": "5e1300378e902f8739e46230e28ca82e57a66fb16853e62c4e8d8ef72f85d7f2"
+    },
+    {
+      "path": "audio-direction/music-runtime-verification.json",
+      "sha256": "244a24f1dcdd824ca4e5aaa94bbf577a0851752958b044a2122162e4054f792e"
+    },
+    {
+      "path": "art-direction/reference-gait-model.json",
+      "sha256": "e7b5e543b772e7a47b233902c87e94b6b5036b9e7ef494fa1ddf86f4c32b75ad"
+    }
+  ],
+  "verification_required": {
+    "unit_and_scene": "Exact floor/portal boundaries, foreign/live descriptors, support, blend/ramp/reset, traversal/collision preservation",
+    "product": "Format/build, four test projects, scenario validation, retained smoke and new successor smoke",
+    "Master_output_cases": 39,
+    "output_matrix": {
+      "single_bed_profile_depth": 24,
+      "doorway_jitter": 2,
+      "reset_owner_loss": 2,
+      "floor_contacts": 2,
+      "unsupported_wall": 1,
+      "foreground_overlap": 1,
+      "mute_isolation": 4,
+      "mono": 1,
+      "range_mixes": 2
+    },
+    "steady_default_relative_RMS_tolerance_db": 0.25,
+    "presets": "Measure nonlinear full mixes; do not infer linear RMS ratios",
+    "save_transcript_parity_modes": [
+      "default",
+      "muted",
+      "all zero",
+      "mono/reduced"
+    ],
+    "views": "Both retained viewports, five captions, credits/history and keyboard return",
+    "resource_packaging": "Reused bytes/import/notices unchanged; archive resources verified",
+    "rejection_probes": [
+      "changed proposal/resource",
+      "changed protected geometry",
+      "duplicate B02 owner",
+      "missing measured output"
+    ],
+    "limits": [
+      "No measured room reverb/transmission/filtering",
+      "Existing executable-export/template limitation",
+      "No new device listening or ordinary-play loudness compliance claim"
+    ]
+  },
+  "planning_checks": {
+    "input_hashes": "Bound from live inspection",
+    "protected_product": "Only recorded editor exception differs from inspected commit",
+    "new_runtime_or_PCM": false,
+    "product_tests_run": false,
+    "reused_product_evidence": "Current retained music verification and final caption/lease checks; no product input changed",
+    "continuation_self_test": "PASS: 11 regression probes; persistent closures and projected handover checked after queue maintenance",
+    "authored_whitespace": "PASS: exact four-file authored scope and staged whitespace checked before publication"
+  },
+  "completion_condition": "Two hash-bound proposal files with exact structures, model, resources/files, finite checks and one owner decision; no runtime implementation",
+  "excluded": [
+    "accepted art/audio scope reopening",
+    "physical/layout/art/geometry changes",
+    "world material/save/hearing changes",
+    "NPC footsteps",
+    "room reverb/filtering/wall transmission",
+    "water/tool/new laundry actions",
+    "voice",
+    "rest gameplay",
+    "release",
+    "game/project.godot editor rewrite",
+    ".DS_Store",
+    "frozen validator/provenance edits"
+  ]
+}
