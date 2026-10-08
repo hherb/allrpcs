@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-interior-audio-runtime-integration",
+  "date": "2026-10-09",
+  "timezone": "Australia/Sydney",
+  "status": "approved_scope_implemented_and_verified",
+  "authority": {
+    "path": "audio-direction/interior-runtime-authority.json",
+    "sha256": "9a5b616bc20865a82f4770cd1720e0866ef19754cad545c51dd044a4889a8387"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/interior-runtime-scope.md",
+      "sha256": "010244ee727134b33a8a3a7010a6d459a27187d4cba874ea5264d9df6a3810ce"
+    },
+    {
+      "path": "audio-direction/interior-runtime-scope.json",
+      "sha256": "8d45c706b9bbd65480702818d13f22bdaa7830ef08aba1a632ccbc421ca82941"
+    }
+  ],
+  "implemented": {
+    "structures": [
+      "sickhouse",
+      "abandoned-laundry"
+    ],
+    "live_route_derived_portals": true,
+    "conservative_supported_floor_override": true,
+    "new_audio_only_material_assignments": {
+      "sickhouse": "W04 timber",
+      "abandoned-laundry": "W01 earth"
+    },
+    "full_depth_B02_B03_B04_db": {
+      "sickhouse": -9,
+      "abandoned-laundry": -3
+    },
+    "B01_unmodified_gain": true,
+    "opening_distance_full_depth_pixels": 32,
+    "slew_seconds_per_amplitude_unit": 0.75,
+    "one_shared_source_priority": -50,
+    "once_per_player_multiplier": true,
+    "single_B02_owner_listener_preserved": true,
+    "independent_generic_caption": true,
+    "neutral_cancellation_missing_owner_fallback": true,
+    "standing_startup_load_silent_contacts": true,
+    "channel_final_root_child_preserved": true,
+    "new_PCM_or_resources": 0,
+    "unchanged_art_geometry_cadence_save_hearing_music": true
+  },
+  "validation": {
+    "unit_tests": {
+      "domain": 2839,
+      "application": 1054,
+      "infrastructure": 1272,
+      "architecture": 8,
+      "total": 5173,
+      "new_interior_cases": 35
+    },
+    "builds": "solution and game pass, zero warnings/errors",
+    "format": "solution/game verify pass",
+    "scenario_validator": "PASS: five evidence definitions",
+    "retained_godot_launches": 293,
+    "identical_native_shutdown_retries": 0,
+    "retained_smoke_contract": "Exact retained commands; retry only native mutex-lock shutdown abort, no product/fixture modification",
+    "four_mode_full_save_transcript_parity": true,
+    "Main_modes": [
+      "normal",
+      "muted",
+      "zero",
+      "mono-reduced"
+    ],
+    "actual_Master_output_cases": 39,
+    "aggregate_render_seconds": 234,
+    "native_reused_stream_parity": 16,
+    "actual_resource_packaging": {
+      "native_streams": 33,
+      "notices": 14,
+      "audio_entries": 80
+    },
+    "five_simultaneous_caption_lines_both_viewports": true,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native_window_focus_loss_reset": true,
+    "credits_history_keyboard_return": true,
+    "standalone_proof_stopped": true,
+    "successor_mutation_rejections": 4,
+    "quality_wrapper": "Stops in unchanged historical garden predecessor validation: ordinary Pillow lacks Image.get_flattened_data; required product checks ran independently"
+  },
+  "output_measurements": {
+    "input_i": "-28.28",
+    "input_tp": "-10.74",
+    "input_lra": "13.50",
+    "input_thresh": "-38.50"
+  },
+  "retained_resource_bindings": [
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560"
+    }
+  ],
+  "limits": [
+    "Bounded listener enclosure model; no measured room acoustics, reverb, filtering or wall transmission.",
+    "Existing mono-template and C# export lookup constraints; resource packaging only, no executable release.",
+    "Controlled Master matrix; no new device listening or ordinary-play loudness compliance claim.",
+    "Full quality wrapper retains its unrelated historical Pillow limitation; no frozen validator edited.",
+    "Wider material/positional audio, water/tool/NPC owners, rest gameplay and voice remain unfinished."
+  ],
+  "publication": {
+    "status": "standing_task_publication_authorized",
+    "authority": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    }
+  },
+  "reviewed_inputs": [
+    {
+      "path": "game/Main.tscn",
+      "sha256": "f4fd9a775c8b15c1e270d8c7f718529b48dac9c019fff251bf6fadafd6dc7daf"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs",
+      "sha256": "d2574297a2c2e56798c5aaeb347d2fa711a2335ee6d00f22bd8fb1ec2f73ad28"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "f83c96d6b4b6f19ef2a626680c5fe81665e0532ce8a24d9f005fd1cebef0a75b"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "62e36c15aea10032a4df6709c056f2405388a47a653cd9de1dfb46e2682758cf"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "e7cde3ffe61ddccf71248530902f239d6d7e181fb0865a693da514b7d6cb0a14"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "e074d95fbbfdb564ccaf73cd451a22e56fa3e2dcfe6820ac350ba2a91c815058"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionInteriorAudioProjection.cs",
+      "sha256": "8baf30b2da210ddb4448135f68cebf048dd9471ac8949dbddd84e51498cd89b0"
+    },
+    {
+      "path": "src/Application/Audio/InteriorAudioRamp.cs",
+      "sha256": "949201fdba2a7b6108eb4925afb25e6b39a9b6a8ac1fa1319017b867a2fb14cd"
+    },
+    {
+      "path": "game/OpeningRegionInteriorAudioSource.cs",
+      "sha256": "a911e744c723e382227890445a70a79ec6af205e4d37233e1c51c09cb16f22bd"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/OpeningRegionInteriorAudioProjectionTests.cs",
+      "sha256": "6d548424b59f1feb8fe899f93df18385749fa3331fca5241225b173d80c2f734"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/InteriorAudioRampTests.cs",
+      "sha256": "bdcbd8636df7811af2da50943cf4bdb21d758f61e9dd5dc4280c9fa7602451bf"
+    },
+    {
+      "path": "game/InteriorAudioRuntimeSmokeCheck.cs",
+      "sha256": "375cbf979451bac6719d603157d098726cc947da6c5ee7280a23c8649679afa9"
+    },
+    {
+      "path": "game/InteriorAudioRuntimeProof.cs",
+      "sha256": "9622541ae88ae0a95cc6e0bdda976610accd8ecb2443ad439f15e94072feda59"
+    },
+    {
+      "path": "game/InteriorAudioRuntimeProof.tscn",
+      "sha256": "03c8253ed77ad976db2d928d5116aa4a63691bebc5257a4b185aeeb1b83753b1"
+    },
+    {
+      "path": "scripts/check-interior-audio-output.py",
+      "sha256": "a1eca72ff974734498aff862ebfa3e146da5a4efc96a99017263b38f90108957"
+    },
+    {
+      "path": "scripts/validate-interior-audio-runtime.py",
+      "sha256": "71e62f5525e0a5e60e30be651c5fee207f82b12ff5910ca608948852fe51136a"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/interior-runtime-review/README.md",
+      "sha256": "33d173a272b41affa0bd786b8fd1f16dd9b415937a8bf246a7db0ed852515635"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/checks/check-stopped.gd",
+      "sha256": "786ad41becb91c35a374e0322fc9874825ac7ceff02910d6cc8a5f4dbf1c71c5"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/checks/run-retained-smoke.py",
+      "sha256": "da758989feb19ddc48fca28e7bc76be51b0763fa4daba19eff065af5b343973c"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/checks/verify-export.py",
+      "sha256": "faf0f9502bb44998d20945837bcf06ff2ce3458f32365a577d56d53157c0383e"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/channel-order.log",
+      "sha256": "37fbe98871aed1893af342314ecdefdb01858342af576a3b704e1699c5c1805f"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/focused-tests.log",
+      "sha256": "8d899bd17d1ee4855465c5e88af3565bc3a999ecb2d267b6890513f146243cd9"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/format-game-fixture.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/format-game-verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/format-game.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/format-solution-verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/format-solution.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/game-build.log",
+      "sha256": "c91ff2cff2350f733f779dd537ee4cbc8ded48d32a4765dae30d519446bf23c0"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/main-mono-reduced.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/main-muted.log",
+      "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/main-normal.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/main-zero.log",
+      "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/master-extract.log",
+      "sha256": "439df1eb869143f011ac9e02b5d10f42d02f5ebafc144f26112b5154fbf720bf"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/output-measurements.log",
+      "sha256": "b5d1fdcc23d1781f57f4d048add56bdf79272ce3d8028897e5725a98b2520f26"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/output-render.log",
+      "sha256": "0bae16b4318e51330c279286430c87d9c8c8e279f5884f647a92cf1887a741a4"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/packaging-check.log",
+      "sha256": "23855849f1ef8b331fd6930ee3812bcd621391f8ff40e40402daf55b047f1dc0"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/proof-stopped.log",
+      "sha256": "564737ee115e9f0565aaac0380b45cec97888ed4d199b39ef436d993fda32fa3"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/quality.log",
+      "sha256": "d81281860efaf9851f0ed6e6ab7d7a37d27a52aa310165f4f3ca03c2b23515f2"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/resource-export.log",
+      "sha256": "607687dc014e3198e00bab808c8f6d18128710d1747980ea1e29032484b0e344"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/retained-godot-smoke.log",
+      "sha256": "47b198419ca240ac884dff2ebc8734ca5cbdd4f3b158dda3851131f5d744c6eb"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/scenario.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/sickhouse-baseline.log",
+      "sha256": "0773d78925cc5703d904256997070767ceee3f3a3cb1e325d8f13e8b1cb46544"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/sickhouse-retry.log",
+      "sha256": "0773d78925cc5703d904256997070767ceee3f3a3cb1e325d8f13e8b1cb46544"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/solution-build.log",
+      "sha256": "d863c07ec98abb0b360008855fd4dbea1469d0e56739e11dbe3dc113cd229c71"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/tests-application.log",
+      "sha256": "a0e47d1381c300a8d90b282fd7d8f0cc75e9391f3a4dad45edc5c8d570d7e684"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/tests-architecture.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/tests-domain.log",
+      "sha256": "cec827654d54ff8f245ecd2014c0c9c4b1747e497e62b8bc59f8ed33ca282f5b"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/tests-infrastructure.log",
+      "sha256": "ccded591cc2de2e63e8c11ffa949958cc7eb9651a5c067f02f9410687176d301"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/logs/views.log",
+      "sha256": "b85645de288a64ff3bff1dc48644d7bcb1fe078f48cc2c8b4967c234cb2e54a7"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-mono-reduced.json",
+      "sha256": "69e206d7d377b0fa1ac34b38fad4fd17ebf576b845044d1998aec33de2822b4c"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-mono-reduced.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-muted.json",
+      "sha256": "91ec0ea2bc640084d88e704b5455b950e330253a220ffd838680931ef43df9c6"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-muted.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-normal.json",
+      "sha256": "fc1208db158742481c0979666385e40a22ac76f95c56b986b35de9d6cd927480"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-normal.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-zero.json",
+      "sha256": "20d7f4c54a48b859e2ce8d512dc9f64d4f6722270177147548098c47229dbeef"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/main-zero.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/output/measurements.json",
+      "sha256": "33376dcbe03b1f3e9f491d4a3a6ecbab2c790ea091053947dc758a2510d9c5f1"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/output/packaging.json",
+      "sha256": "fbf4fc1c29ca482aad9c3d9eeeb253750525dd33ae7fd93f1616debcfca9304b"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/output/timeline.json",
+      "sha256": "005bd8f3d3105f06ac908987013969235859258398959b9f64004bee00b8e476"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/retained-smoke.json",
+      "sha256": "0141d357d9708ef2b7144189ed8377a35c7de2d30580d7bf84069c2cc96f22cc"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/captions-1280.png",
+      "sha256": "d3fcae4b5ed1c54ee9febbed5de625a3d4ddca7e9d49ce98c6055aa12d9c29e0"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/captions-1920.png",
+      "sha256": "024017892f10fd4fa69753f7daf8de2ae88dd674fb900191efd0d3466561d676"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/checks.json",
+      "sha256": "766849f8cf1a7a18ba306b31c7ca3ed69e6d8153ed583620f95da71ed6ccfb1a"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/credits-1280.png",
+      "sha256": "a2d74ff157bd0c03728bc4f1b98e130308bcc827884961d2b117be7faf2cdc05"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/credits-1920.png",
+      "sha256": "1c0c71f31a470f9d1870382103ec84e39af21ba9725ce03364535245712ab068"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/history-1280.png",
+      "sha256": "d691401cf17e5d31f84879cc3dd29adbf7c6bdfc9029dc033982a1daaa54f3fb"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/history-1920.png",
+      "sha256": "154761d86ad20dbbbd723bbc06a0ecd819fcf4256bcfc64a0027c8f40078e1bb"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/muted-1280.png",
+      "sha256": "e444bce65b1e3acc1b286cab111c6a20ef944279a201be86e804557ce3799817"
+    },
+    {
+      "path": "audio-direction/interior-runtime-review/views/muted-1920.png",
+      "sha256": "10523d5dc8b3d1896dc2b4bcacbb48b382f87892fb7aec4fa41c61f7dcffbec8"
+    }
+  ]
+}

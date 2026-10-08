@@ -1,0 +1,12 @@
+{
+  "mode": "zero",
+  "checks": [
+    "live sickhouse/laundry layouts, exact derived doors, supported floors, unchanged shelter/exterior/topology/collision owners",
+    "actual collision-resolved sickhouse entry/interior motion, laundry earth contacts and both opening/return paths",
+    "ordinary preparation/treatment/recorded reply and failed/successful complete save restore without indoor world/perception state",
+    "pause, disabled, long frame, teleport, foreign transform, missing bus/source, neutral fallback and owned cancellation"
+  ],
+  "transcript": [
+    "Interior fixture reply."
+  ]
+}

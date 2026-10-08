@@ -1,0 +1,5 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region sickhouse navigation smoke passed: five collision-backed wall sections retained one entrance, and the Seeker can enter, reach the exact patient approach, and leave over bounded synchronized navigation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

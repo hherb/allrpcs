@@ -2,7 +2,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Two noninteractive caption lines, independent of user output attenuation.</summary>
+/// <summary>Independently owned noninteractive caption lines, regardless of user output attenuation.</summary>
 public partial class MaterialSoundCaptionPanel : CanvasLayer
 {
     private AudioSettingsController settings = null!;
@@ -10,6 +10,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label actionLabel = null!;
     private Label footstepLabel = null!;
     private Label conversationLabel = null!;
+    private Label interiorLabel = null!;
+    private string interior = string.Empty;
     private string conversation = string.Empty;
     private string region = string.Empty;
     private string action = string.Empty;
@@ -24,7 +26,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -136; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -176; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -43,6 +45,10 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(footstepLabel);
         conversationLabel = new() { Name = "Conversation", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(conversationLabel);
+        interiorLabel = new() { Name = "Interior", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(interiorLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel })
+        { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
     }
@@ -61,6 +67,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
 
     /// <summary>Sets only the independently owned heard reply line.</summary>
     internal void SetConversation(string text) { conversation = text; Refresh(); }
+
+    /// <summary>Changes only the generic local enclosure line, without adding cue history.</summary>
+    internal void SetInterior(string text) { interior = text; Refresh(); }
+    /// <summary>Clears only enclosure ownership on invalid sources, load or stop.</summary>
+    internal void ClearInterior() { interior = string.Empty; Refresh(); }
 
     /// <inheritdoc />
     public override void _Process(double delta)
@@ -85,6 +96,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         actionLabel.Text = enabled ? action : string.Empty;
         footstepLabel.Text = enabled ? footstep : string.Empty;
         conversationLabel.Text = enabled ? conversation : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0);
+        interiorLabel.Text = enabled ? interior : string.Empty;
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0);
     }
 }

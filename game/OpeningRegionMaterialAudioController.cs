@@ -17,6 +17,7 @@ public partial class OpeningRegionMaterialAudioController : Node
     private AudioSettingsController settings = null!;
     private MaterialSoundCaptionPanel captions = null!;
     private OpeningRegionPositionalAudioController positional = null!;
+    private OpeningRegionInteriorAudioSource? interior;
     private OpeningRegionProjectionSource? projection;
     private OpeningRegionEnvironmentalStateSource? environment;
     private Seeker? seeker;
@@ -36,6 +37,7 @@ public partial class OpeningRegionMaterialAudioController : Node
     {
         settings = GetNode<AudioSettingsController>("../AudioSettingsController");
         captions = GetNode<MaterialSoundCaptionPanel>("../MaterialSoundCaptionPanel");
+        interior = GetNodeOrNull<OpeningRegionInteriorAudioSource>("../OpeningRegionInteriorAudioSource");
         positional = GetNodeOrNull<OpeningRegionPositionalAudioController>("../OpeningRegionPositionalAudioController")!;
         if (positional is null && !Automatic)
         {
@@ -93,7 +95,7 @@ public partial class OpeningRegionMaterialAudioController : Node
             double gain = ramp.Gain(index);
             if (index == 1) { positional.PresentWaterway(gain, current?.ClipId == "B02"); continue; }
             AudioStreamPlayer player = players[BedIds[index]];
-            player.VolumeLinear = (float)gain;
+            player.VolumeLinear = (float)(gain * (interior is not null && GodotObject.IsInstanceValid(interior) && interior.IsInsideTree() ? interior.Gain(index) : 1));
             if (gain > 0 && !player.Playing && player.Stream is not null) { player.Play(); }
         }
         if (!players["A05"].Playing

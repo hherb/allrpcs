@@ -1,0 +1,353 @@
+[
+  {
+    "name": "Sickhouse-B01-0.0",
+    "room": "Sickhouse",
+    "blend": 0,
+    "bed": 0,
+    "mode": "bed",
+    "start": 0,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B01-0.5",
+    "room": "Sickhouse",
+    "blend": 0.5,
+    "bed": 0,
+    "mode": "bed",
+    "start": 4,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B01-1.0",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 0,
+    "mode": "bed",
+    "start": 8,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B02-0.0",
+    "room": "Sickhouse",
+    "blend": 0,
+    "bed": 1,
+    "mode": "bed",
+    "start": 12,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B02-0.5",
+    "room": "Sickhouse",
+    "blend": 0.5,
+    "bed": 1,
+    "mode": "bed",
+    "start": 16,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B02-1.0",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 1,
+    "mode": "bed",
+    "start": 20,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B03-0.0",
+    "room": "Sickhouse",
+    "blend": 0,
+    "bed": 2,
+    "mode": "bed",
+    "start": 24,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B03-0.5",
+    "room": "Sickhouse",
+    "blend": 0.5,
+    "bed": 2,
+    "mode": "bed",
+    "start": 28,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B03-1.0",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "bed",
+    "start": 32,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B04-0.0",
+    "room": "Sickhouse",
+    "blend": 0,
+    "bed": 3,
+    "mode": "bed",
+    "start": 36,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B04-0.5",
+    "room": "Sickhouse",
+    "blend": 0.5,
+    "bed": 3,
+    "mode": "bed",
+    "start": 40,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-B04-1.0",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 3,
+    "mode": "bed",
+    "start": 44,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B01-0.0",
+    "room": "Laundry",
+    "blend": 0,
+    "bed": 0,
+    "mode": "bed",
+    "start": 48,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B01-0.5",
+    "room": "Laundry",
+    "blend": 0.5,
+    "bed": 0,
+    "mode": "bed",
+    "start": 52,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B01-1.0",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 0,
+    "mode": "bed",
+    "start": 56,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B02-0.0",
+    "room": "Laundry",
+    "blend": 0,
+    "bed": 1,
+    "mode": "bed",
+    "start": 60,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B02-0.5",
+    "room": "Laundry",
+    "blend": 0.5,
+    "bed": 1,
+    "mode": "bed",
+    "start": 64,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B02-1.0",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 1,
+    "mode": "bed",
+    "start": 68,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B03-0.0",
+    "room": "Laundry",
+    "blend": 0,
+    "bed": 2,
+    "mode": "bed",
+    "start": 72,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B03-0.5",
+    "room": "Laundry",
+    "blend": 0.5,
+    "bed": 2,
+    "mode": "bed",
+    "start": 76,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B03-1.0",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 2,
+    "mode": "bed",
+    "start": 80,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B04-0.0",
+    "room": "Laundry",
+    "blend": 0,
+    "bed": 3,
+    "mode": "bed",
+    "start": 84,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B04-0.5",
+    "room": "Laundry",
+    "blend": 0.5,
+    "bed": 3,
+    "mode": "bed",
+    "start": 88,
+    "duration": 4
+  },
+  {
+    "name": "Laundry-B04-1.0",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 3,
+    "mode": "bed",
+    "start": 92,
+    "duration": 4
+  },
+  {
+    "name": "Sickhouse-doorway",
+    "room": "Sickhouse",
+    "blend": 0,
+    "bed": 2,
+    "mode": "doorway",
+    "start": 96,
+    "duration": 5
+  },
+  {
+    "name": "Laundry-doorway",
+    "room": "Laundry",
+    "blend": 0,
+    "bed": 2,
+    "mode": "doorway",
+    "start": 101,
+    "duration": 5
+  },
+  {
+    "name": "reset",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "reset",
+    "start": 106,
+    "duration": 4
+  },
+  {
+    "name": "owner-loss",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "owner-loss",
+    "start": 110,
+    "duration": 4
+  },
+  {
+    "name": "timber-contact",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": -1,
+    "mode": "contact",
+    "start": 114,
+    "duration": 2
+  },
+  {
+    "name": "earth-contact",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": -1,
+    "mode": "contact",
+    "start": 116,
+    "duration": 2
+  },
+  {
+    "name": "unsupported-wall",
+    "room": "None",
+    "blend": 0,
+    "bed": -1,
+    "mode": "wall",
+    "start": 118,
+    "duration": 2
+  },
+  {
+    "name": "foreground-overlap",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mix",
+    "start": 120,
+    "duration": 28
+  },
+  {
+    "name": "mute-Ambience",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mute-Ambience",
+    "start": 148,
+    "duration": 6
+  },
+  {
+    "name": "mute-Effects",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mute-Effects",
+    "start": 154,
+    "duration": 6
+  },
+  {
+    "name": "mute-Music",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mute-Music",
+    "start": 160,
+    "duration": 6
+  },
+  {
+    "name": "mute-Master",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mute-Master",
+    "start": 166,
+    "duration": 6
+  },
+  {
+    "name": "mono",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mono",
+    "start": 172,
+    "duration": 6
+  },
+  {
+    "name": "mix-default",
+    "room": "Sickhouse",
+    "blend": 1,
+    "bed": 2,
+    "mode": "mix",
+    "start": 178,
+    "duration": 28
+  },
+  {
+    "name": "mix-reduced",
+    "room": "Laundry",
+    "blend": 1,
+    "bed": 2,
+    "mode": "reduced",
+    "start": 206,
+    "duration": 28
+  }
+]

@@ -51,6 +51,8 @@ public partial class OpeningRegionFootstepMaterialSource : Node
         Vector2 local = projection.ToLocal(world);
         Vector2 localClosest = projection.ToLocal(closest);
         Status = $"local {local}, closest {localClosest}";
+        OpeningRegionInteriorAudioSource? interior = GetNodeOrNull<OpeningRegionInteriorAudioSource>("../OpeningRegionInteriorAudioSource");
+        if (interior is not null && interior.TrySelectMaterial(worldPosition, out FootstepMaterial? material)) { return material; }
         return OpeningRegionFootstepMaterialProjection.Select(new(local.X, local.Y),
             local.DistanceSquaredTo(localClosest) <= 1);
     }

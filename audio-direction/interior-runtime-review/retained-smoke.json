@@ -1,0 +1,5776 @@
+{
+  "schema_version": 1,
+  "script_sha256": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f",
+  "launches": 293,
+  "commands": [
+    {
+      "launch": 1,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 2,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://DirectionAImportProof.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 3,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-shrine-southern-road-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 4,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-woodland-shrine-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 5,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-woodland-village-edge-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 6,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-village-edge-stream-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 7,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-stream-laundry-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 8,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-closed-forest-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 9,
+      "environment": {
+        "ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 10,
+      "environment": {
+        "ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 11,
+      "environment": {
+        "ALLRPCS_RUNTIME_PREPARATION_TABLE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 12,
+      "environment": {
+        "ALLRPCS_RUNTIME_HERB_BED_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 13,
+      "environment": {
+        "ALLRPCS_RUNTIME_SEEKER_WALK_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 14,
+      "environment": {
+        "ALLRPCS_ADAPTIVE_DISPLAY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 15,
+      "environment": {
+        "ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 16,
+      "environment": {
+        "ALLRPCS_NAVIGATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 17,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_PROJECTION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 18,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 19,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_SICKHOUSE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 20,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_ADMINISTRATION_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 21,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_STABILIZATION_TESTIMONY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 22,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_SAGE_CONSULTATION_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 23,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_RECOVERY_RESTORATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 24,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_REMEDY_PREPARATION_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 25,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_REMEDY_PREPARATION_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 26,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_VILLAGE_TRANSITION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 27,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_STREAM_LAUNDRY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 28,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_WOODLAND_CLEARING_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 29,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 30,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK": "route"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 31,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_ENVIRONMENTAL_STATE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 32,
+      "environment": {
+        "ALLRPCS_SEEKER_CUSTOMIZATION_SELECTION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 33,
+      "environment": {
+        "ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 34,
+      "environment": {
+        "ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 35,
+      "environment": {
+        "ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 36,
+      "environment": {
+        "ALLRPCS_SEEKER_APOTHECARY_PREPARATION_ACCESS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 37,
+      "environment": {
+        "ALLRPCS_SEEKER_TRAVELLER_ROAD_WAGON_ACCESS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 38,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_SOUTHERN_ROAD_WAGON_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 39,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_CLOSED_FOREST_PATH_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 40,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--script",
+        "/Users/hherb/src/allrpcs/scripts/check-whole-channel-runtime.gd"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 41,
+      "environment": {
+        "ALLRPCS_HEALER_COMMAND_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "1500"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 42,
+      "environment": {
+        "ALLRPCS_INTERACTION_FOCUS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 43,
+      "environment": {
+        "ALLRPCS_SEEKER_BOUNDARY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 44,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_INDICATOR_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 45,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 46,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_OUTCOME_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 47,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_OUTCOME_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 48,
+      "environment": {
+        "ALLRPCS_WORLD_OBJECT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 49,
+      "environment": {
+        "ALLRPCS_WORLD_OBJECT_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 50,
+      "environment": {
+        "ALLRPCS_WORLD_EVENT_LOG_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 51,
+      "environment": {
+        "ALLRPCS_WORLD_EVENT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 52,
+      "environment": {
+        "ALLRPCS_INITIAL_WORLD_EVENT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 53,
+      "environment": {
+        "ALLRPCS_WORLD_TIME_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 54,
+      "environment": {
+        "ALLRPCS_WORLD_EVENT_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 55,
+      "environment": {
+        "ALLRPCS_CHARACTER_MEMORY_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 56,
+      "environment": {
+        "ALLRPCS_JOURNAL_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 57,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 58,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_PROGRESS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 59,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_AUTHORITY_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 60,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 61,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_CONSUMPTION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 62,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_PRESENTATION_CHECK": "success"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 63,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_PRESENTATION_CHECK": "failed"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 64,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_PRESENTATION_CHECK": "restored"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 65,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_OBSERVATION_ROUTING_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 66,
+      "environment": {
+        "ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK": "missing"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 67,
+      "environment": {
+        "ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK": "route"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 68,
+      "environment": {
+        "ALLRPCS_WAGON_CLUE_ROUTE_CHECK": "missing"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 69,
+      "environment": {
+        "ALLRPCS_WAGON_CLUE_ROUTE_CHECK": "route"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 70,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 71,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_PANEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 72,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_OPEN_CLOSE_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 73,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_NOTE_EDITING_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 74,
+      "environment": {
+        "ALLRPCS_OPENING_REGION_MAP_VISIT_VERIFICATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 75,
+      "environment": {
+        "ALLRPCS_SEEKER_MAP_TESTIMONY_REPORTING_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 76,
+      "environment": {
+        "ALLRPCS_REPRESENTATIVE_JOURNAL_COMPOSITION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 77,
+      "environment": {
+        "ALLRPCS_JOURNAL_SECTION_SELECTION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 78,
+      "environment": {
+        "ALLRPCS_JOURNAL_SECTION_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 79,
+      "environment": {
+        "ALLRPCS_JOURNAL_SECTION_PRESENTATION_REFRESH_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 80,
+      "environment": {
+        "ALLRPCS_JOURNAL_SECTION_PANEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 81,
+      "environment": {
+        "ALLRPCS_JOURNAL_OPEN_CLOSE_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 82,
+      "environment": {
+        "ALLRPCS_FIRST_PATIENT_STATE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 83,
+      "environment": {
+        "ALLRPCS_FIRST_PATIENT_CONTEXT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 84,
+      "environment": {
+        "ALLRPCS_FIRST_PATIENT_PREPARATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 85,
+      "environment": {
+        "ALLRPCS_FIRST_PATIENT_ADMINISTRATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 86,
+      "environment": {
+        "ALLRPCS_FIRST_PATIENT_SAVE_STATE_CAPTURE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 87,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_WORLD_EVENT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 88,
+      "environment": {
+        "ALLRPCS_WORLD_OBJECT_INTERACTION_FOCUS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 89,
+      "environment": {
+        "ALLRPCS_SEEKER_CHARACTER_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 90,
+      "environment": {
+        "ALLRPCS_PASSIVE_CANDIDATE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 91,
+      "environment": {
+        "ALLRPCS_PASSIVE_RESOLUTION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 92,
+      "environment": {
+        "ALLRPCS_PASSIVE_CANDIDATE_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 93,
+      "environment": {
+        "ALLRPCS_REINTERPRETATION_CANDIDATE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 94,
+      "environment": {
+        "ALLRPCS_REINTERPRETATION_RESOLUTION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 95,
+      "environment": {
+        "ALLRPCS_REINTERPRETATION_CANDIDATE_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 96,
+      "environment": {
+        "ALLRPCS_SEEKER_PERCEPTION_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 97,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_PERCEPTION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 98,
+      "environment": {
+        "ALLRPCS_FOCUSED_SEARCH_OUTCOME_RESOLUTION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 99,
+      "environment": {
+        "ALLRPCS_DISCOVERY_SAVE_STATE_RESTORATION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 100,
+      "environment": {
+        "ALLRPCS_WORLD_EVENT_SAVE_STATE_RESTORATION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 101,
+      "environment": {
+        "ALLRPCS_SAVE_SNAPSHOT_RESTORATION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 102,
+      "environment": {
+        "ALLRPCS_SAVE_SNAPSHOT_CAPTURE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 103,
+      "environment": {
+        "ALLRPCS_SAVE_SNAPSHOT_JSON_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 104,
+      "environment": {
+        "ALLRPCS_SAVE_DOCUMENT_STORAGE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 105,
+      "environment": {
+        "ALLRPCS_SAVE_LOAD_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 106,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 107,
+      "environment": {
+        "ALLRPCS_AUTONOMOUS_CONVERSATION_BUDGET_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 108,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_DEPARTURE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 109,
+      "environment": {
+        "ALLRPCS_CHARACTER_INDEPENDENT_TASK_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 110,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_OCCURRENCE_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 111,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_TRAVEL_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 112,
+      "environment": {
+        "ALLRPCS_CHARACTER_INDEPENDENT_TASK_TRAVEL_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 113,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_RETURN_TRAVEL_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 114,
+      "environment": {
+        "ALLRPCS_CHARACTER_INDEPENDENT_TASK_RETURN_TRAVEL_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 115,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_RETURN_REJOIN_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 116,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_ROUND_TRIP_COORDINATOR_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 117,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_STEP_CLOCK_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 118,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_TIMED_ROUND_TRIP_COORDINATOR_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 119,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_LIVE_ROUND_TRIP_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 120,
+      "environment": {
+        "ALLRPCS_INDEPENDENT_TASK_BODY_PRESENTATION_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 121,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 122,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_MOVE_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 123,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_SUBSTITUTION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 124,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_SUBSTITUTION_PRESENTATION_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 125,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_SUBSTITUTION_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 126,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_MOVE_PRESENTATION_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 127,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 128,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_MODEL_PRESENTATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 129,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_CONCEALMENT_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 130,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_PRESENTATION_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 131,
+      "environment": {
+        "ALLRPCS_WATER_CASK_INTERACTION_FOCUS_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 132,
+      "environment": {
+        "ALLRPCS_WATER_CASK_SABOTAGE_INVESTIGATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 133,
+      "environment": {
+        "ALLRPCS_WATER_CASK_MOVE_SABOTAGE_INVESTIGATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 134,
+      "environment": {
+        "ALLRPCS_WATER_CASK_SUBSTITUTION_SABOTAGE_INVESTIGATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 135,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageConcealmentControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 136,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageMoveControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 137,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageSubstitutionControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 138,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageSubstitutionConsiderationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 139,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageContaminationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 140,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageContaminationTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 141,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageContaminationModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 142,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidenceModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 143,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 144,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterSabotageActionModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 145,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterSabotageActionModelCompositionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 146,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 147,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionSelectionCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 148,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionConcealmentRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 149,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionMoveRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 150,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionSubstitutionRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 151,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionContaminationRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 152,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionMisquotationRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 153,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionDelayRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 154,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionInfluenceRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 155,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionRequestComposerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 156,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "300"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 157,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterSabotageActionRequestConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 158,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterSabotageActionConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 159,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 160,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 161,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 162,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 163,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayResolutionCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 164,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceRecoveryModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 165,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayRecoveryModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 166,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceRecoveryModelCompositionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 167,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayRecoveryModelCompositionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 168,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 169,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 170,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 171,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 172,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 173,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 174,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryResolutionCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 175,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryResolutionCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 176,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryCandidateControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 177,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryCandidateControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 178,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryCandidateRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 179,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 180,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageDelayRecoveryStartCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 181,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryCandidateRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 182,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 183,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceRecoveryStartCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 184,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceModelCompositionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 185,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageDelayModelCompositionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 186,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 187,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterTargetSabotageInfluenceConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 188,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 189,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterTargetSabotageInfluenceResolutionCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 190,
+      "environment": {
+        "ALLRPCS_TARGET_SABOTAGE_INFLUENCE_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 191,
+      "environment": {
+        "ALLRPCS_TARGET_SABOTAGE_DELAY_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 192,
+      "environment": {
+        "ALLRPCS_TARGET_SABOTAGE_DELAY_RECOVERY_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 193,
+      "environment": {
+        "ALLRPCS_TARGET_SABOTAGE_INFLUENCE_RECOVERY_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 194,
+      "environment": {
+        "ALLRPCS_SABOTAGE_ACTION_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 195,
+      "environment": {
+        "ALLRPCS_SABOTAGE_ACTION_REQUEST_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 196,
+      "environment": {
+        "ALLRPCS_SABOTAGE_ORDINARY_TURN_AUTHORING_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 197,
+      "environment": {
+        "ALLRPCS_SABOTAGE_TURN_OPPORTUNITY_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 198,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_MOVE_RECOVERY_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 199,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_SUBSTITUTION_RECOVERY_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 200,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_CONTAMINATION_RECOVERY_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 201,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_MISQUOTATION_VIEW_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 202,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_DELAY_RECOVERY_REQUEST_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 203,
+      "environment": {
+        "ALLRPCS_SABOTAGE_OUTCOME_INFLUENCE_RECOVERY_REQUEST_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 204,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 205,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 206,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidenceSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 207,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceExposureControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 208,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceViewControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 209,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidencePresentationSelectionControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 210,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidencePresentationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 211,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 212,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanelSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 213,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanelSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 214,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterDialogueMisquotationEvidenceReviewSelectionSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 215,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationOccurrenceCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 216,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceCandidateControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 217,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceCandidateRequestControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 218,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 219,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterDialogueMisquotationEvidenceExposureCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 220,
+      "environment": {
+        "ALLRPCS_DIALOGUE_MISQUOTATION_EVIDENCE_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 221,
+      "environment": {
+        "ALLRPCS_DIALOGUE_MISQUOTATION_OCCURRENCE_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 222,
+      "environment": {
+        "ALLRPCS_OBJECT_SABOTAGE_CONTAMINATION_CONSIDERATION_MAIN_SCENE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 223,
+      "environment": {
+        "ALLRPCS_WATER_CASK_CONTAMINATION_SABOTAGE_INVESTIGATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 224,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageSubstitutionTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 225,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageSubstitutionModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 226,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageSubstitutionSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 227,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageSubstitutionFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 228,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageSubstitutionPresentationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 229,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageMoveConsiderationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 230,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageMoveTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 231,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageMoveModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 232,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 233,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageMoveSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 234,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageMoveFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 235,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageMovePresentationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 236,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageConcealmentConsiderationControllerSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 237,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageConcealmentTaskControllerSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 238,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://CharacterObjectSabotageConcealmentPresentationCoordinatorSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 239,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageConcealmentModelSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 240,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageConsiderationFlowSmokeCheck.tscn",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 241,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageSourceSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 242,
+      "environment": {},
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "res://TemporaryCharacterObjectSabotageFlowSmokeCheck.tscn",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 243,
+      "environment": {
+        "ALLRPCS_PARTICIPATION_ROUND_TASK_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 244,
+      "environment": {
+        "ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 245,
+      "environment": {
+        "ALLRPCS_ORDINARY_PLAYER_PARTICIPATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 246,
+      "environment": {
+        "ALLRPCS_ORDINARY_PARTICIPATION_SCHEDULING_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 247,
+      "environment": {
+        "ALLRPCS_ORDINARY_CHARACTER_PARTICIPANT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 248,
+      "environment": {
+        "ALLRPCS_ORDINARY_SAGE_INTERJECTION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "1000"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 249,
+      "environment": {
+        "ALLRPCS_ORDINARY_BOUNDED_LOOP_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "1000"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 250,
+      "environment": {
+        "ALLRPCS_ORDINARY_AUTONOMOUS_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "1000"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 251,
+      "environment": {
+        "ALLRPCS_ORDINARY_PARTICIPATION_CANCELLATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "1000"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 252,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 253,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_INPUT_CHECK": "awaiting"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 254,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_INPUT_CHECK": "speaking"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 255,
+      "environment": {
+        "ALLRPCS_DIALOGUE_INPUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 256,
+      "environment": {
+        "ALLRPCS_DIALOGUE_EVENT_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 257,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_TRANSCRIPT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 258,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_REQUEST_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 259,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_REQUEST_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 260,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_RESPONSE_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 261,
+      "environment": {
+        "ALLRPCS_CHARACTER_EXAMINATION_RESULT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 262,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_WORLD_EVENT_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 263,
+      "environment": {
+        "ALLRPCS_CHARACTER_EXAMINATION_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 264,
+      "environment": {
+        "ALLRPCS_CHARACTER_EXAMINATION_FLOW_CHECK": "generated"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 265,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_RESPONSE_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 266,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_RESPONSE_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 267,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_RESPONSE_SPEECH_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 268,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_COMPLETION_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 269,
+      "environment": {
+        "ALLRPCS_CHARACTER_TURN_REPEAT_FLOW_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 270,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_STATUS_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 271,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_STREAM_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 272,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_STREAM_TEXT_PRESENTATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 273,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_FLOW_CHECK": "timeout"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 274,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_FLOW_CHECK": "cancel"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 275,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_FLOW_CHECK": "complete"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 276,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_FLOW_CHECK": "failed"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 277,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_GENERATION_INPUT_SOURCE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 278,
+      "environment": {
+        "ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 279,
+      "environment": {
+        "ALLRPCS_SCRIPTED_CHARACTER_MODEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "180"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 280,
+      "environment": {
+        "ALLRPCS_INVALID_MODEL_RESPONSE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 281,
+      "environment": {
+        "ALLRPCS_ORDINARY_MODEL_CANCELLATION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 282,
+      "environment": {
+        "ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK": "retry"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "180"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 283,
+      "environment": {
+        "ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK": "terminal"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 284,
+      "environment": {
+        "ALLRPCS_ORDINARY_MODEL_TIMEOUT_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "100000000"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 285,
+      "environment": {
+        "ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "240"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 286,
+      "environment": {
+        "ALLRPCS_ORDINARY_MALFORMED_MODEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "120"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 287,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_STORAGE_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 288,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 289,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 290,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_PANEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 291,
+      "environment": {
+        "ALLRPCS_OPENAI_CREDENTIAL_TEST_STORE": "1",
+        "ALLRPCS_OPENAI_CREDENTIAL_CONTROLLER_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 292,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_OPENAI_CREDENTIAL_TEST_STORE": "1",
+        "ALLRPCS_OPENAI_CREDENTIAL_PANEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "launch": 293,
+      "environment": {
+        "ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE": "1",
+        "ALLRPCS_OPENAI_CREDENTIAL_TEST_STORE": "1",
+        "ALLRPCS_CHARACTER_MODEL_CONNECTION_PANEL_CHECK": "1"
+      },
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "/Users/hherb/src/allrpcs/game",
+        "--quit-after",
+        "30"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "native_shutdown_retry_count": 0,
+  "retry_contract": "Identical retained command and environment; retry only abort with native mutex-lock shutdown error; no fixture or product changes."
+}

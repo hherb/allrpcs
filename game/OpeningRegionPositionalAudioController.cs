@@ -13,6 +13,7 @@ public partial class OpeningRegionPositionalAudioController : Node
     private AudioStreamPlayer2D water = null!;
     private AudioStreamPlayer2D reply = null!;
     private MaterialSoundCaptionPanel captions = null!;
+    private OpeningRegionInteriorAudioSource? interior;
     private OpeningRegionProjectionSource? projection;
     private Seeker? seeker;
     private TemporaryCharacterTurnResponseSpeechRecorder? recorder;
@@ -37,6 +38,7 @@ public partial class OpeningRegionPositionalAudioController : Node
     public override void _Ready()
     {
         captions = GetNode<MaterialSoundCaptionPanel>("../MaterialSoundCaptionPanel");
+        interior = GetNodeOrNull<OpeningRegionInteriorAudioSource>("../OpeningRegionInteriorAudioSource");
         listener = new() { Name = "SeekerListener", TopLevel = true, Rotation = 0, Scale = Vector2.One };
         AddChild(listener);
         listener.MakeCurrent();
@@ -148,7 +150,7 @@ public partial class OpeningRegionPositionalAudioController : Node
         if (Automatic) { throw new InvalidOperationException("Live source ownership cannot be overridden."); }
         listener.GlobalPosition = listenerPosition; water.GlobalPosition = sourcePosition;
         waterWeight = (float)weight; waterSelected = true;
-        water.VolumeLinear = waterWeight;
+        water.VolumeLinear = waterWeight * InteriorGain();
         if (water.Stream is not null && RequiredBusExists("Ambience")) { water.Play(); }
     }
 
@@ -185,7 +187,7 @@ public partial class OpeningRegionPositionalAudioController : Node
             if (point is null) { water.VolumeLinear = 0; if (waterSelected) { captions.SetRegion(string.Empty); } return; }
             water.GlobalPosition = projection.ToGlobal(new(point.Value.X, point.Value.Y));
         }
-        water.VolumeLinear = waterWeight;
+        water.VolumeLinear = waterWeight * InteriorGain();
         if (waterWeight > 0 && !water.Playing && water.Stream is not null && RequiredBusExists("Ambience")) { water.Play(); }
         if (waterSelected)
         {
@@ -210,6 +212,7 @@ public partial class OpeningRegionPositionalAudioController : Node
 
     private void CancelReply() { reply.Stop(); active = null; captionRemaining = 0; captions.SetConversation(string.Empty); }
     private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
+    private float InteriorGain() => interior is not null && GodotObject.IsInstanceValid(interior) && interior.IsInsideTree() ? (float)interior.Gain(1) : 1;
     private static bool RequiredBusExists(string bus) => AudioServer.GetBusIndex(bus) >= 0;
 
     private AudioStreamPlayer2D Player(string name, string bus, string path, float range, bool loop)

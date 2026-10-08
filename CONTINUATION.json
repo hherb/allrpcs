@@ -444,6 +444,20 @@
           "sha256": "8d45c706b9bbd65480702818d13f22bdaa7830ef08aba1a632ccbc421ca82941"
         }
       ]
+    },
+    {
+      "id": "phase9-interior-audio-runtime-integration",
+      "reason": "Owner approved the exact published proposal on 2026-10-09. Sickhouse/laundry live supported floors, W04 timber/W01 earth reuse, two enclosure profiles, one shared source, once-per-bed gains, independent caption and neutral lifecycle fallback are implemented. Verified by 5173 unit tests, all 293 retained Godot commands, four-mode full-save/transcript parity, 39 actual Master cases, 16 native reused streams, 33-stream/14-notice resource packaging and five-line captions/keyboard/native focus loss at both viewports. Channel final-child order and all accepted art/resources/geometry/cadence/hearing/music/save authority remain unchanged. Whole named implementation is complete; numerical, historical Pillow/native-shutdown and executable/device limitations remain recorded. Wider water/tool/positional/voice/full-room work is unfinished; standing task publication applies.",
+      "evidence": [
+        {
+          "path": "audio-direction/interior-runtime-authority.json",
+          "sha256": "9a5b616bc20865a82f4770cd1720e0866ef19754cad545c51dd044a4889a8387"
+        },
+        {
+          "path": "audio-direction/interior-runtime-verification.json",
+          "sha256": "546ff4f977b498a4eeaa03aa64d84f362cdf839394256cb9aac6497d1528aaca"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -551,19 +565,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-interior-audio-runtime-integration",
-    "title": "Implement the proposed sickhouse and laundry interior audio model after its scope grant",
+    "id": "phase9-water-tool-action-owner-scope",
+    "title": "Prepare one concrete first water or tool action-owner proposal",
     "status": "ready",
-    "workstream": "audio-interior-runtime-integration",
+    "workstream": "audio-water-tool-owner-scope",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "The completed interior proposal has no owner implementation/material grant or installed shared enclosure model, interior footstep override and independently verified output.",
-    "instructions": "Present the exact hash-bound interior proposal for one owner scope decision. Record the response in audio-direction/interior-runtime-authority.json before runtime work. If granted, implement its two structure footprints, doorway transitions, W04/W01 resource reuse, per-player enclosure gains, generic caption and finite checks in the same session. Do not repeat accepted audio/art selection or completed-scope audits.",
-    "completion_condition": "The exact proposed interior implementation is authorized, installed and verified, including 39 output cases, traversal/cancellation/caption checks, save/transcript parity and retained resource/geometry hashes, with scope limitations recorded. Standing publication authority covers completed work.",
+    "missing_deliverable": "Existing stream/laundry geometry and tool eligibility supply no independently authorized new water/tool action commit owner. One finite first-action gameplay/material/audio proposal does not exist.",
+    "instructions": "Prepare one concrete read-only first water or tool action-owner proposal from actual current stream/layout/inventory and action contracts. Name the missing action commit, bounded model/prerequisites, exact proposed files/resources and finite checks; distinguish proposed new gameplay/physical/save/perception/material authority from existing eligibility and accepted audio. Carry all completed audio/art scopes forward unchanged; do not reopen them or implement an action while planning.",
+    "completion_condition": "One hash-bound proposal chooses a finite first new action owner, defines exact gameplay/audio contracts, prerequisites, resources/files, verification and its applicable new owner scope decision. No implementation or physical/save/perception change is inferred.",
     "outputs": [
-      "audio-direction/interior-runtime-authority.json",
-      "audio-direction/interior-runtime-verification.json"
+      "audio-direction/water-tool-owner-scope.md",
+      "audio-direction/water-tool-owner-scope.json"
     ],
-    "boundary": "One new interior audio implementation/material grant is pending. Planning and publication are complete; no runtime, physical/layout, new PCM, save/perception, water/tool owner, voice or release authority is inferred. Preserve the local editor exception and all frozen predecessor evidence."
+    "boundary": "Read-only planning for a genuinely missing water/tool action owner. No new action commit, physical/layout/save/perception/runtime changes, PCM generation, voice or release. Completed interior/audio/art scopes remain closed; preserve editor state and frozen evidence."
   },
   "deferred_slices": []
 }

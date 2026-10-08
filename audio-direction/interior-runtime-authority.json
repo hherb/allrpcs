@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-09",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-interior-audio-runtime-integration",
+  "owner_statement": "approved",
+  "status": "implementation_authorized",
+  "context": "Direct approval of the exact published interior implementation/material proposal after its single scope decision was presented.",
+  "proposal_commit": "d519bbe720b3fc9079e2cde84784982c96a0ee35",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/interior-runtime-scope.md",
+      "sha256": "010244ee727134b33a8a3a7010a6d459a27187d4cba874ea5264d9df6a3810ce"
+    },
+    {
+      "path": "audio-direction/interior-runtime-scope.json",
+      "sha256": "8d45c706b9bbd65480702818d13f22bdaa7830ef08aba1a632ccbc421ca82941"
+    }
+  ],
+  "authorized": [
+    "Sickhouse W04 timber and laundry W01 earth audio footprints",
+    "Two listener enclosure profiles and live doorway transitions",
+    "One shared transient source, existing installed streams and generic caption",
+    "Exact proposed implementation and finite verification"
+  ],
+  "excluded": [
+    "New PCM/assets",
+    "Physical/layout/art/collision changes",
+    "Save/perception/hearing changes",
+    "Water/tool actions",
+    "Voice",
+    "Release"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

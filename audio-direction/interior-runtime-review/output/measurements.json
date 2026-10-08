@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "cases": 39,
+  "metrics": {
+    "Sickhouse-B01-0.0": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972
+    },
+    "Sickhouse-B01-0.5": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972,
+      "relative_db": 0.0,
+      "expected_db": 0
+    },
+    "Sickhouse-B01-1.0": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972,
+      "relative_db": 0.0,
+      "expected_db": 0
+    },
+    "Sickhouse-B02-0.0": {
+      "rms_dbfs": -32.16084515022062,
+      "peak_dbfs": -14.85963063812875
+    },
+    "Sickhouse-B02-0.5": {
+      "rms_dbfs": -36.66169502917141,
+      "peak_dbfs": -19.358427169998716,
+      "relative_db": -4.500804313489014,
+      "expected_db": -4.5
+    },
+    "Sickhouse-B02-1.0": {
+      "rms_dbfs": -41.16185778508755,
+      "peak_dbfs": -23.856344465349892,
+      "relative_db": -9.000897170775117,
+      "expected_db": -9.0
+    },
+    "Sickhouse-B03-0.0": {
+      "rms_dbfs": -31.86277120406237,
+      "peak_dbfs": -10.821528557565895
+    },
+    "Sickhouse-B03-0.5": {
+      "rms_dbfs": -36.36449785704808,
+      "peak_dbfs": -15.322003487244826,
+      "relative_db": -4.501740913648133,
+      "expected_db": -4.5
+    },
+    "Sickhouse-B03-1.0": {
+      "rms_dbfs": -40.86468663715948,
+      "peak_dbfs": -19.823673323854784,
+      "relative_db": -9.001928509283273,
+      "expected_db": -9.0
+    },
+    "Sickhouse-B04-0.0": {
+      "rms_dbfs": -30.16507113607513,
+      "peak_dbfs": -14.201700549865453
+    },
+    "Sickhouse-B04-0.5": {
+      "rms_dbfs": -34.6665908350639,
+      "peak_dbfs": -18.701905477062525,
+      "relative_db": -4.501451994187809,
+      "expected_db": -4.5
+    },
+    "Sickhouse-B04-1.0": {
+      "rms_dbfs": -39.1667639388547,
+      "peak_dbfs": -23.19996829666401,
+      "relative_db": -9.001563723845488,
+      "expected_db": -9.0
+    },
+    "Laundry-B01-0.0": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972
+    },
+    "Laundry-B01-0.5": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972,
+      "relative_db": 0.0,
+      "expected_db": 0
+    },
+    "Laundry-B01-1.0": {
+      "rms_dbfs": -29.833157232754903,
+      "peak_dbfs": -13.775842861676972,
+      "relative_db": 0.0,
+      "expected_db": 0
+    },
+    "Laundry-B02-0.0": {
+      "rms_dbfs": -32.16084515022062,
+      "peak_dbfs": -14.85963063812875
+    },
+    "Laundry-B02-0.5": {
+      "rms_dbfs": -33.66162054013448,
+      "peak_dbfs": -16.35918095577322,
+      "relative_db": -1.5007531312467302,
+      "expected_db": -1.5
+    },
+    "Laundry-B02-1.0": {
+      "rms_dbfs": -35.16164481745975,
+      "peak_dbfs": -17.858501451122994,
+      "relative_db": -3.000763289175246,
+      "expected_db": -3.0
+    },
+    "Laundry-B03-0.0": {
+      "rms_dbfs": -31.86277120406237,
+      "peak_dbfs": -10.821528557565895
+    },
+    "Laundry-B03-0.5": {
+      "rms_dbfs": -33.364463210718796,
+      "peak_dbfs": -12.321344588529058,
+      "relative_db": -1.5017035624936634,
+      "expected_db": -1.5
+    },
+    "Laundry-B03-1.0": {
+      "rms_dbfs": -34.864473183583826,
+      "peak_dbfs": -13.82127465281888,
+      "relative_db": -3.0017198579741518,
+      "expected_db": -3.0
+    },
+    "Laundry-B04-0.0": {
+      "rms_dbfs": -30.16507113607513,
+      "peak_dbfs": -14.201700549865453
+    },
+    "Laundry-B04-0.5": {
+      "rms_dbfs": -31.66654586166512,
+      "peak_dbfs": -15.7014293274415,
+      "relative_db": -1.5014236518801498,
+      "expected_db": -1.5
+    },
+    "Laundry-B04-1.0": {
+      "rms_dbfs": -33.16656104857829,
+      "peak_dbfs": -17.20238753900754,
+      "relative_db": -3.001429909824921,
+      "expected_db": -3.0
+    },
+    "Sickhouse-doorway": {
+      "rms_dbfs": -34.25685931613289,
+      "peak_dbfs": -12.724786593359177,
+      "exterior_before_rms": 0.02158098496790815,
+      "interior_rms": 0.009683610043172811,
+      "exterior_after_rms": 0.027215042968936055
+    },
+    "Laundry-doorway": {
+      "rms_dbfs": -32.918854896648774,
+      "peak_dbfs": -12.724786593359177,
+      "exterior_before_rms": 0.02158765950665809,
+      "interior_rms": 0.019287733355537396,
+      "exterior_after_rms": 0.02722321781332812
+    },
+    "reset": {
+      "rms_dbfs": -33.94257169698762,
+      "peak_dbfs": -13.037783408669508,
+      "post_reset_rms_ratio": 2.9417246564866377
+    },
+    "owner-loss": {
+      "rms_dbfs": -33.94257169698762,
+      "peak_dbfs": -13.037783408669508,
+      "post_reset_rms_ratio": 2.9417246564866377
+    },
+    "timber-contact": {
+      "rms_dbfs": -58.610903887292864,
+      "peak_dbfs": -33.557229934484134
+    },
+    "earth-contact": {
+      "rms_dbfs": -68.49299053129147,
+      "peak_dbfs": -34.322187710122726
+    },
+    "unsupported-wall": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "foreground-overlap": {
+      "rms_dbfs": -28.846643676343096,
+      "peak_dbfs": -12.374066387046248
+    },
+    "mute-Ambience": {
+      "rms_dbfs": -49.03861497074491,
+      "peak_dbfs": -20.425906818825503,
+      "muted_first_then_unrelated_audible": true
+    },
+    "mute-Effects": {
+      "rms_dbfs": -42.418972547356844,
+      "peak_dbfs": -19.823673323854784,
+      "muted_first_then_unrelated_audible": true
+    },
+    "mute-Music": {
+      "rms_dbfs": -42.424788337386055,
+      "peak_dbfs": -19.823673323854784,
+      "muted_first_then_unrelated_audible": true
+    },
+    "mute-Master": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "mono": {
+      "rms_dbfs": -27.640581262636953,
+      "peak_dbfs": -12.696156171108658
+    },
+    "mix-default": {
+      "rms_dbfs": -28.846434404095035,
+      "peak_dbfs": -12.374066387046248
+    },
+    "mix-reduced": {
+      "rms_dbfs": -40.65086123692318,
+      "peak_dbfs": -21.64640834758465
+    }
+  },
+  "native_parity": [
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "decoded_bytes": 5760000,
+      "native_sha256": "bcc0bcd4b0fde60d78bd083a87d564aec6dbd1c4c922e8d83236d6a16900c474",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "decoded_bytes": 5760000,
+      "native_sha256": "4d933f5f58e28113a531b84662c64bf6feb16b727c72dc65bfb2d1839c1f7ef5",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "decoded_bytes": 5760000,
+      "native_sha256": "d13a17dbea83144d41f0cff3129ae3f4e0ba9d3c795bd2c850ed7341fba63049",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "decoded_bytes": 5760000,
+      "native_sha256": "55c8b5f0d5e97056d2de1d648bf698a73f426e44ed7682a8b9428106c2465f3c",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "e0bd6001f0befd0b3e133dd10c71cefae7627a6f44f9d839ee480a640ffde33f",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "f5ef4873fe4e8c39bd6e92396a683386803682cdf06fa6eab656e18e42244c62",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "8c07d4d0ab53dc5b97bc87684d83011994265fb922330fc32985473b8166f4fd",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "9fe28e52dccb9badc540e558977ec81673f5401aabc06b08d9be5e1cd00b5b63",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "7abafa473b76463e5f33c0973ff56c84d02442de334b57831650d579c83ab319",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "52fd36923c9102ee7fd354ce8a5028a324bde616a11778a1ccc82715f077cba6",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "0dc8fe7920514489e38ca6497e73eb84369855c8ee84915ef63ecc31ce4061fa",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "29c0035b3ab197c52a3a3da883536020e4e7488f025e58e172aa93ad65d6ed9b",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "1acf43fb7405e13b2eb952f10c63e5028ebc06b94058c3c66b5c8176ee3a08fe",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "ce684b3b564e3c405e8601f40c95498b6f5991630d56e45e8223fc5ec9e43fcb",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "13b20eff147d17991491799b26ff7e758dab3485edb6ab58bbc931db9b81b080",
+      "PCM24_to_PCM16_exact": true
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "decoded_bytes": 96000,
+      "native_sha256": "ce3c9d8eb0dcc2da263db5b53105d5ef5f344653e81434546c2f7e3425eb6666",
+      "PCM24_to_PCM16_exact": true
+    }
+  ],
+  "wave_sha256": "1f6a49c82d04c2471066c44e75cfec54e29937936bb68ab4835f73af1e90b376",
+  "timeline_sha256": "005bd8f3d3105f06ac908987013969235859258398959b9f64004bee00b8e476",
+  "final_master_measurements": {
+    "input_i": "-28.28",
+    "input_tp": "-10.74",
+    "input_lra": "13.50",
+    "input_thresh": "-38.50"
+  },
+  "limits": [
+    "Actual controlled Master output; no physical room acoustic measurement.",
+    "No normalization written; accepted bytes unchanged.",
+    "No new device listening or ordinary-play loudness compliance claim."
+  ]
+}

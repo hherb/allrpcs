@@ -1,4 +1,4 @@
-[gd_scene load_steps=405 format=3]
+[gd_scene load_steps=407 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -596,6 +596,8 @@
 [ext_resource type="Script" path="res://OpeningRegionMusicAudioController.cs" id="music_controller"]
 [ext_resource type="Script" path="res://MusicAudioRuntimeSmokeCheck.cs" id="music_check"]
 
+[ext_resource type="Script" path="res://OpeningRegionInteriorAudioSource.cs" id="interior_source"]
+[ext_resource type="Script" path="res://InteriorAudioRuntimeSmokeCheck.cs" id="interior_check"]
 [ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="audio_storage"]
 [ext_resource type="Script" path="res://AudioSettingsController.cs" id="audio_settings"]
 [ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="audio_panel"]
@@ -4243,6 +4245,14 @@ script = ExtResource("positional_audio")
 
 [node name="PositionalAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("positional_check")
+
+[node name="OpeningRegionInteriorAudioSource" type="Node" parent="."]
+process_priority = -50
+script = ExtResource("interior_source")
+Automatic = true
+
+[node name="InteriorAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("interior_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

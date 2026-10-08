@@ -147,14 +147,16 @@ The [audio direction](audio-direction/README.md), buses/independent controls and
 sixteen-excerpt audition are accepted. Default range and the accepted waveforms stay
 unchanged, including M02 shakuhachi. Completed runtime slices cover B01–B04 regional beds,
 A04 grinding/A05 treatment, Seeker terrain footsteps, the named spatial B02/recorded-reply
-cue subset and restrained optional M01/M02 music. Detailed verification is retained in
-the ledger and [current music review](audio-direction/music-runtime-review/README.md).
+cue subset, restrained optional M01/M02 music and the bounded sickhouse/laundry interior
+model (W04/W01 contacts and listener enclosure gains). Detailed verification is retained in
+the ledger and [current interior review](audio-direction/interior-runtime-review/README.md).
 No repeat listening or unchanged-runtime acceptance gate remains.
 
-The material and positional items below remain partially complete. Interior acoustics,
+The material and positional items below remain partially complete. Full room acoustics,
 water/tool actions, wider positional emitters and off-screen cues need concrete new scopes
 and actual authorized owners. Qualitative shelter ambience does not establish an interior
-model; crossing water or tool eligibility does not establish an action event. Keep hearing,
+model; the completed two-structure enclosure subset does not establish full room acoustics.
+Crossing water or tool eligibility does not establish an action event. Keep hearing,
 captions/history, ducking and gameplay authority intact. Provisional numerical mix targets,
 device listening and ordinary-play loudness compliance remain distinct from controlled
 output evidence; resource packaging does not establish an executable release.
