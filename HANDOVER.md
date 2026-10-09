@@ -77,8 +77,14 @@ Run `python3 scripts/check-continuation.py --self-test` and
 `python3 scripts/check-continuation.py --sync`, then rerun the checker. Keep evidence in
 linked packages; preserve ledger closures and reuse passing product checks for prose alone.
 
-The quality wrapper still stops at historical garden validation because ordinary Pillow
-lacks `Image.get_flattened_data`; required product checks passed independently. Native
+For the full quality wrapper, first activate the isolated Python environment documented
+under [Local quality checks](README.md#local-quality-checks). The pinned source-built
+Pillow supplies `Image.get_flattened_data` and system zlib reproduces byte-exact retained
+PNGs; the older ordinary-Python failure remains historical evidence in frozen reviews.
+The 2026-10-09 wrapper rerun passed inherited artwork checks, then stopped at the frozen
+Clearing baseline's `OpeningRegionFirstPatientAdministrationInputCoordinator.cs` hash.
+That file changed in approved material-audio commit `240f1800`; the current interior
+successor validator and retained product evidence remain valid. Native
 Godot mutex-lock shutdown aborts are retried only with the identical retained command;
 all successful exits and retry counts are bound in the review. Do not edit frozen validators.
 Full macOS export still lacks a mono template and has the existing C# solution lookup

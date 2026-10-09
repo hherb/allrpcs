@@ -534,11 +534,37 @@ versions together, then rerun the complete local quality sequence before committ
 
 ## Local quality checks
 
-From the repository root:
+From the repository root, create the isolated Python environment once (Python 3.12
+or newer):
 
 ```sh
+python3 -m venv artifacts/quality-python
+artifacts/quality-python/bin/python -m pip install --no-cache-dir -r requirements-quality.txt
+```
+
+Activate it before running the checks in each shell:
+
+```sh
+. artifacts/quality-python/bin/activate
 ./scripts/quality.sh
 ```
+
+The pinned Pillow version supplies `Image.get_flattened_data`, which the frozen
+channel artwork helpers require. It builds from source against system image libraries:
+prebuilt wheels using zlib-ng produce different compressed PNG bytes and fail the
+retained byte-exact reviews. On macOS this requires the Xcode command-line tools;
+the verified PNG backend is system zlib 1.2.12. NumPy supports the artwork and audio
+measurement checks. The environment lives under ignored `artifacts/`; activation also selects
+the same interpreter for historical validator subprocesses without editing their
+accepted source or changing globally installed Python packages.
+
+On the current audio successor, the retained `quality.sh` wrapper passes its inherited
+art checks with this environment, then stops at the Clearing validator's old product
+baseline: `OpeningRegionFirstPatientAdministrationInputCoordinator.cs` changed in the
+approved material-audio implementation (`240f1800`). This separate frozen-scope mismatch
+is not a Pillow failure. Current interior product and evidence checks use
+`python3 scripts/validate-interior-audio-runtime.py --reviewed`; its review records the
+passing unit tests, scenario checks and Godot smoke suite.
 
 The sequence restores packages serially, rejects C# formatting drift, builds with current
 recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
