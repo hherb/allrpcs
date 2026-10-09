@@ -77,14 +77,17 @@ Run `python3 scripts/check-continuation.py --self-test` and
 `python3 scripts/check-continuation.py --sync`, then rerun the checker. Keep evidence in
 linked packages; preserve ledger closures and reuse passing product checks for prose alone.
 
-For the full quality wrapper, first activate the isolated Python environment documented
-under [Local quality checks](README.md#local-quality-checks). The pinned source-built
-Pillow supplies `Image.get_flattened_data` and system zlib reproduces byte-exact retained
-PNGs; the older ordinary-Python failure remains historical evidence in frozen reviews.
-The 2026-10-09 wrapper rerun passed inherited artwork checks, then stopped at the frozen
-Clearing baseline's `OpeningRegionFirstPatientAdministrationInputCoordinator.cs` hash.
-That file changed in approved material-audio commit `240f1800`; the current interior
-successor validator and retained product evidence remain valid. Native
+Full quality now uses `./quality.sh` at the repository root; dependency setup and
+reproduction are under [Local quality checks](README.md#local-quality-checks) and
+[quality maintenance](quality-review/README.md). It selects the pinned source-built Pillow
+environment, checks frozen art/audio contracts at their recorded commits, then runs all
+original product checks plus current interior parity and a final boundary check. The
+2026-10-09 [full result](quality-review/verification.json) passes: 5,173 unit tests,
+all 293 retained smoke launches, eight terrain checks, graphical Main, four fixed-FPS
+interior modes with identical saves/transcripts, and the final current boundary.
+Run on the host where Godot can write editor settings and user logs. The
+hash-bound `scripts/quality.sh` and frozen validators remain unchanged; their historical
+ordinary-Python and later-successor failures remain evidence in frozen reviews. Native
 Godot mutex-lock shutdown aborts are retried only with the identical retained command;
 all successful exits and retry counts are bound in the review. Do not edit frozen validators.
 Full macOS export still lacks a mono template and has the existing C# solution lookup
