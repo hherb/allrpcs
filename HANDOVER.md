@@ -26,6 +26,15 @@ hearing/save/music authority and the channel's final-child order stay unchanged.
 [grant](audio-direction/interior-runtime-authority.json). Wider water/tool and positional
 owners, full room acoustics, voice and complete regional identity remain unfinished.
 
+The first water-action [proposal](audio-direction/water-tool-owner-scope.md) and its
+[hash-bound contract](audio-direction/water-tool-owner-scope.json) are complete. It names
+one human Seeker touch-water action beside the existing bridge, a new 32-pixel reach,
+transient commit/cooldown, contextual button/status and the first accepted A01 splash.
+No action or derived PCM has been installed. One new gameplay/reach/audio decision is
+pending; no inventory, clean-water, geometry, save, perception or LLM change is proposed.
+Planning verified all 82 accepted audio bindings, 11 continuation probes and unchanged
+protected repository/editor bytes; the source-derived reachable example still needs live proof.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. This does not authorize a new runtime/layout/physical scope
@@ -34,34 +43,38 @@ or release. Preserve and exclude unrelated `game/project.godot` editor state and
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-water-tool-action-owner-scope — Prepare one concrete first water or tool action-owner proposal** (ready).
+**phase9-stream-water-contact-runtime-integration — Obtain the single new stream-contact grant, then implement the exact proposal** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: Existing stream/laundry geometry and tool eligibility supply no independently
-authorized new water/tool action commit owner. One finite first-action gameplay/material/audio
-proposal does not exist.
+Missing deliverable: A water-contact commit owner, one-site reach, contextual input/status and
+accepted A01 splash feedback do not exist. The concrete proposal is complete; its genuinely new
+gameplay/reach/audio grant is pending.
 
-Prepare one concrete read-only first water or tool action-owner proposal from actual current
-stream/layout/inventory and action contracts. Name the missing action commit, bounded
-model/prerequisites, exact proposed files/resources and finite checks; distinguish proposed new
-gameplay/physical/save/perception/material authority from existing eligibility and accepted audio.
-Carry all completed audio/art scopes forward unchanged; do not reopen them or implement an action
-while planning.
+The single owner decision is pending for audio-direction/water-tool-owner-scope.md and .json. Do not
+implement or extract PCM before that response. On approval, record the exact response and both
+proposal hashes in water-contact-runtime-authority.json, then complete the named Seeker-only action,
+transient state/cooldown, 32-pixel one-site reach, button/status, A01-W01 slice, independent
+caption/credits and finite successor/quality checks in the same session. Carry all closed art/audio
+scopes forward unchanged. Do not ask the same pending decision again in a new chat.
 
-Done when: One hash-bound proposal chooses a finite first new action owner, defines exact
-gameplay/audio contracts, prerequisites, resources/files, verification and its applicable new owner
-scope decision. No implementation or physical/save/perception change is inferred.
+Done when: The exact proposal has recorded owner authority; one explicit valid action produces one
+commit/splash/caption, invalid/duplicate requests are silent, live reach and lifecycle pass, five-
+mode full-state parity and 16 output cases plus both-viewports/native/packaging/current-quality
+evidence are reviewed and published. No geometry/save/perception or broader water/tool scope is
+inferred.
 
 Expected outputs:
 
-- `audio-direction/water-tool-owner-scope.md`
-- `audio-direction/water-tool-owner-scope.json`
+- `audio-direction/water-contact-runtime-authority.json`
+- `audio-direction/water-contact-runtime-verification.json`
+- `audio-direction/water-contact-runtime-review/README.md`
 
-Boundary: Read-only planning for a genuinely missing water/tool action owner. No new action commit,
-physical/layout/save/perception/runtime changes, PCM generation, voice or release. Completed
-interior/audio/art scopes remain closed; preserve editor state and frozen evidence.
+Boundary: Await the one new owner gameplay/reach/audio grant. Only the exact human Seeker touch-
+water proposal may then be implemented. No inventory/refill/drinking/washing/LLM, navigation/layout,
+durable save/perception, new source acquisition, accepted-art revision or release. Preserve editor
+state and frozen evidence.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

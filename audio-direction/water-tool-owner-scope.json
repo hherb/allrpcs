@@ -1,0 +1,566 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-water-tool-action-owner-scope",
+  "status": "planning_complete_implementation_grant_pending",
+  "inspected_commit": "7b8dd659d409974126790b8a417533bded9c2e5e",
+  "proposal_document": {
+    "path": "audio-direction/water-tool-owner-scope.md",
+    "sha256": "1d091a79a8f9f6c633c5a100618dd04942b55a9dad514041b2ce0b7c90a4b96d"
+  },
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "authority": {
+    "preparation": "Read HANDOVER.md and follow the instructions; ledger-selected read-only proposal",
+    "gameplay_implementation": false,
+    "new_contact_reach": false,
+    "runtime_audio_installation": false,
+    "pcm_extraction": false,
+    "physical_geometry_changes": false,
+    "save_or_perception_changes": false,
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    }
+  },
+  "next_decision": {
+    "scope_id": "phase9-stream-water-contact-runtime-integration",
+    "status": "pending_owner_grant",
+    "covers": [
+      "One human Seeker touch-water commit at the retained bridge site",
+      "New 32-pixel hand reach and supported dry standing footprint",
+      "Transient exact request/state/commit ownership and two-second cooldown",
+      "Contextual native button/status with mouse and keyboard activation",
+      "One byte-exact A01 splash slice on Effects with independent caption/credits",
+      "Finite successor validation and quality integration"
+    ],
+    "record_response_in": "audio-direction/water-contact-runtime-authority.json",
+    "bind_response_to": [
+      "audio-direction/water-tool-owner-scope.md",
+      "audio-direction/water-tool-owner-scope.json"
+    ],
+    "required_by": "AGENTS.md: A genuinely new runtime/layout/physical scope still needs the applicable authority."
+  },
+  "model": {
+    "kind": "Immediate local hand contact, no durable world effects",
+    "actor": "Exact current TemporarySeekerCharacterSource.Character; human controller only",
+    "site_id": "stream-west-bridge-contact",
+    "site_id_is_world_object": false,
+    "coordinate_space": "Retained projection-local pixels",
+    "water_bounds": [
+      1600,
+      452,
+      2000,
+      548
+    ],
+    "crossing_bounds": [
+      1736,
+      452,
+      1864,
+      548
+    ],
+    "bank_x_ranges": [
+      [
+        1600,
+        1700
+      ],
+      [
+        1900,
+        2000
+      ]
+    ],
+    "contact_formula": "(live crossing.Left - 2, live crossing.Top + 32)",
+    "contact_point": [
+      1734,
+      484
+    ],
+    "standing_inset_pixels": 12,
+    "closed_standing_bounds": [
+      1748,
+      464,
+      1852,
+      536
+    ],
+    "inclusive_reach_pixels": 32,
+    "navigation_support_tolerance_pixels": 1,
+    "required_live_owners": [
+      "Projection/stream layout/binding identities",
+      "Seeker node and current character",
+      "Ready navigation map/region and retained polygon",
+      "Retained source transforms and exact geometry/network"
+    ],
+    "static_example": {
+      "position": [
+        1756,
+        484
+      ],
+      "route_start": [
+        1800,
+        500
+      ],
+      "route_end": [
+        1500,
+        220
+      ],
+      "cell_size_pixels": 8,
+      "route_distance_pixels": 18.325118723954585,
+      "navigation_halfwidth_pixels": 24,
+      "contact_distance_pixels": 22,
+      "qualification": "Source calculation only; ordinary movement/reach not verified"
+    },
+    "request_commit": "Exact current request/actor/site/state; reject duplicates, stale/value-equal copies; swap state before exception-isolated notifications",
+    "cooldown_seconds": 2,
+    "maximum_active_delta_seconds": 0.25,
+    "invalid_delta": "Cancel feedback, retain remaining cooldown",
+    "lifecycle": "Pause/focus loss freezes cooldown and cancels feedback; successful load resets without replay; failed load changes nothing",
+    "request_guards": [
+      "Ready exact live sources",
+      "Supported finite actual Seeker position",
+      "Human, processing Seeker; tree active and focused window",
+      "No text-entry focus or visible reading/customization overlays",
+      "No nonterminal/reserved shared character turn",
+      "Fresh explicit button activation; cooldown elapsed"
+    ],
+    "unchanged_authority": [
+      "Navigation/collision/layout",
+      "Inventory/ownership",
+      "Ingredient clean-water supply",
+      "Disease/world time",
+      "Discovery/perception/knowledge",
+      "Transcript/provider schemas/LLM intentions",
+      "Durable saves"
+    ],
+    "not_claimed": [
+      "Drinking/safety/temperature",
+      "Washing/cleanliness",
+      "Collection/vessel/refill",
+      "Wading/swimming",
+      "New hand animation",
+      "Real-world bridge height or physical splash realism"
+    ]
+  },
+  "presentation": {
+    "button": "Touch water",
+    "status": "You touch the flowing water.",
+    "status_seconds": 1.5,
+    "caption": "Water contact",
+    "caption_seconds": 1.5,
+    "independent_caption_line": true,
+    "caption_line_count": 6,
+    "button_input": "Mouse or native Tab/Enter/Space; no InputMap edits",
+    "bus": "Effects",
+    "player": "One local nonlooping AudioStreamPlayer",
+    "player_gain_db": 0,
+    "new_listener": false,
+    "new_spatial_emitter": false,
+    "new_ducking_lease": false,
+    "caption_independent_of": [
+      "Master/Effects gain and mute",
+      "range preset",
+      "missing resources/bus",
+      "mono"
+    ],
+    "no_audio_commit_retry": true,
+    "new_cue_history": false,
+    "teleport_cancel_pixels": 96,
+    "cancellation": [
+      "Pause/focus loss",
+      "Disabled/removed Seeker",
+      "Departure from valid access",
+      "Teleport",
+      "Invalid/replaced source",
+      "Reading overlay",
+      "Successful load",
+      "Teardown",
+      "Expiration"
+    ]
+  },
+  "proposed_resources": [
+    {
+      "id": "A01-W01",
+      "output": "game/assets/audio/water-contact/A01-W01.wav",
+      "source": {
+        "path": "audio-direction/material-audition/clips/A01.wav",
+        "sha256": "a23db3992116b598b5dc652c95b18c51f5409691c747637ddacc5d0320f97a90"
+      },
+      "frame_interval_half_open": [
+        48000,
+        120000
+      ],
+      "source_seconds_half_open": [
+        1,
+        2.5
+      ],
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "frames": 72000,
+      "seconds": 1.5,
+      "pcm_bytes": 432000,
+      "pcm_sha256": "553260f239cce9bd4c5fcb24009512274838b6a3a8faeaffd7fe72f563bf12ea",
+      "edits": "Slice only; retain bytes/fades/gain; first splash and recovery silence; no second splash",
+      "created_during_planning": false
+    }
+  ],
+  "rights": {
+    "basis": "Existing accepted local provenance; no new legal/catalogue assessment",
+    "author": "rubberduck",
+    "title": "40 CC0 water / splash / slime SFX",
+    "license": "CC0-1.0",
+    "catalogue_url": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "records": [
+      {
+        "path": "audio-direction/material-audition/provenance.json",
+        "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+      },
+      {
+        "path": "audio-direction/material-audition/CREDITS.txt",
+        "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+      },
+      {
+        "path": "audio-direction/material-audition/owner-acceptance.json",
+        "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+      },
+      {
+        "path": "audio-direction/material-audition/candidates.json",
+        "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+      },
+      {
+        "path": "game/assets/audio/material/CC0-1.0-deed.html",
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "new_downloads": 0,
+    "accepted_material_bindings_retained": 82
+  },
+  "implementation_files": {
+    "new": [
+      "src/Domain/Actions/StreamWaterContactRequest.cs",
+      "src/Domain/Actions/StreamWaterContactCommit.cs",
+      "src/Domain/Actions/StreamWaterContactState.cs",
+      "src/Application/Actions/StreamWaterContactAccessPolicy.cs",
+      "src/Application/Actions/StreamWaterContactController.cs",
+      "tests/Domain.Tests/Actions/StreamWaterContactRequestTests.cs",
+      "tests/Domain.Tests/Actions/StreamWaterContactCommitTests.cs",
+      "tests/Domain.Tests/Actions/StreamWaterContactStateTests.cs",
+      "tests/Application.Tests/Actions/StreamWaterContactAccessPolicyTests.cs",
+      "tests/Application.Tests/Actions/StreamWaterContactControllerTests.cs",
+      "game/OpeningRegionStreamWaterContactCoordinator.cs",
+      "game/StreamWaterContactPanel.cs",
+      "game/OpeningRegionWaterContactAudioController.cs",
+      "game/WaterContactRuntimeSmokeCheck.cs",
+      "game/WaterContactRuntimeSmokeCheck.tscn",
+      "game/WaterContactAudioOutputCheck.cs",
+      "game/WaterContactAudioOutputCheck.tscn",
+      "scripts/prepare-water-contact-audio.py",
+      "scripts/check-water-contact-audio-output.py",
+      "scripts/validate-water-contact-runtime.py",
+      "game/assets/audio/water-contact/A01-W01.wav",
+      "game/assets/audio/water-contact/A01-W01.wav.import",
+      "game/assets/audio/water-contact/CREDITS.txt",
+      "game/assets/audio/water-contact/CC0-1.0-deed.html",
+      "game/assets/audio/water-contact/provenance.json",
+      "game/OpeningRegionStreamWaterContactCoordinator.cs.uid",
+      "game/StreamWaterContactPanel.cs.uid",
+      "game/OpeningRegionWaterContactAudioController.cs.uid",
+      "game/WaterContactRuntimeSmokeCheck.cs.uid",
+      "game/WaterContactAudioOutputCheck.cs.uid"
+    ],
+    "modify": [
+      "game/Main.tscn",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs",
+      "quality.py"
+    ],
+    "new_review_and_queue_records": [
+      "audio-direction/water-contact-runtime-authority.json",
+      "audio-direction/water-contact-runtime-verification.json",
+      "audio-direction/water-contact-runtime-review/README.md",
+      "audio-direction/water-contact-runtime-review/checks/",
+      "audio-direction/water-contact-runtime-review/output/",
+      "audio-direction/water-contact-runtime-review/parity/",
+      "audio-direction/water-contact-runtime-review/native/",
+      "audio-direction/water-contact-runtime-review/packaging/",
+      "audio-direction/water-contact-runtime-review/quality/",
+      "CONTINUATION.json",
+      "HANDOVER.md"
+    ],
+    "quality": "Pin unchanged interior validator at inspected commit; retain all product/interior commands, add five action parity modes, run new current/final successor validator",
+    "excluded": [
+      "game/project.godot",
+      "scripts/quality.sh",
+      "Frozen art/audio validators",
+      "Accepted art/evidence/resources",
+      "Save schemas",
+      "Existing geometry/navigation sources",
+      "Existing Seeker motion/input mapping"
+    ]
+  },
+  "unchanged_inspected_inputs": [
+    {
+      "path": "game/OpeningRegionStreamLaundryGeometry.cs",
+      "sha256": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "src/Application/Navigation/OpeningRegionStreamLaundryLayout.cs",
+      "sha256": "59fe76996cf71b76fee541cdd6aeb3576d2cacedb388ee0b73c5ddc655b7f761"
+    },
+    {
+      "path": "src/Application/Navigation/OpeningRegionStreamLaundrySceneBinding.cs",
+      "sha256": "3860932cfebbbec607cc1b6f0288b965093761caabf732a2b55962f251b1628c"
+    },
+    {
+      "path": "game/InteractionFocusController.cs",
+      "sha256": "6d552fd6b74a09d80414ef3733bbc85be0d834cdde83447be120ff19ce00380d"
+    },
+    {
+      "path": "src/Application/Interaction/InteractionFocusSelector.cs",
+      "sha256": "bcf4295b10482fba6e0a5370c9e060b48a0f7dc79e43cf75a6244d930121a42b"
+    },
+    {
+      "path": "game/TemporaryWorldObjectSource.cs",
+      "sha256": "612bd6e679c652cf8af6fa228e9af0b7fe07ac8d49475a5a1433fd9b50210045"
+    },
+    {
+      "path": "game/TemporaryFocusedSearchContextSource.cs",
+      "sha256": "e7b817319eba38a40f584c617f617db143c9066cabc1f0895c58d53ac0d978d4"
+    },
+    {
+      "path": "game/TemporarySeekerCharacterSource.cs",
+      "sha256": "75ae4d461630b88a47b76dc531fca7d03921c37bd595c1951e0694299c2d29c6"
+    },
+    {
+      "path": "src/Domain/Discovery/RepresentativeDiscoveryScenarioSource.cs",
+      "sha256": "2fe4cac128c2686cdf694d579c6a270b2fb876c4a899908e59a3b5eb8f3ac30b"
+    },
+    {
+      "path": "src/Domain/Discovery/DiscoveryToolPolicy.cs",
+      "sha256": "72ad080f2fcd7d24575ece53b03089778fc0fb9a2146bc2833b7785fac58690d"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryUsePolicy.cs",
+      "sha256": "f9b186178edf1c02ef91abca27317333d12a4d8705e76c1bef6664bbf8e0934f"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryOwnershipSnapshot.cs",
+      "sha256": "c29c8db93dbd1630033f34bd71da3de4b6cec722b7ccfb05ead3a7bec5349058"
+    },
+    {
+      "path": "src/Domain/Characters/CharacterPhysicalAccessSnapshot.cs",
+      "sha256": "37fa501946e6ab0d6c43405399cc489ebc5c5be75e63a6d08c89e31dfb63f50e"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterIntentionType.cs",
+      "sha256": "672e7b3e7ac8fec3e0018cf1928be21e93a3c4a7209382129d62ed75341e15a7"
+    },
+    {
+      "path": "src/Domain/Diseases/RepresentativeFirstPatientScenarioSource.cs",
+      "sha256": "19fdea430b431ec0bcb769c9fc9807d30fce058c49823e6abfbb0de4c3ca2287"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "dd410c7711abd7ba4fc9f64f53f20eb6750d216b12d689f3fdaad26ea07f379b"
+    },
+    {
+      "path": "game/FirstPatientPreparationController.cs",
+      "sha256": "c14ffe86d742e214308f3c4b8fa888490c334dedc97d58353ccde81fdbc21988"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "f83c96d6b4b6f19ef2a626680c5fe81665e0532ce8a24d9f005fd1cebef0a75b"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "62e36c15aea10032a4df6709c056f2405388a47a653cd9de1dfb46e2682758cf"
+    },
+    {
+      "path": "game/OpeningRegionInteriorAudioSource.cs",
+      "sha256": "a911e744c723e382227890445a70a79ec6af205e4d37233e1c51c09cb16f22bd"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs",
+      "sha256": "d2574297a2c2e56798c5aaeb347d2fa711a2335ee6d00f22bd8fb1ec2f73ad28"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "e7cde3ffe61ddccf71248530902f239d6d7e181fb0865a693da514b7d6cb0a14"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "e074d95fbbfdb564ccaf73cd451a22e56fa3e2dcfe6820ac350ba2a91c815058"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e835e2bf51d3976ca6104f96be3d04618c862c0ad0ff41ef2249b6cb2c2b6867"
+    },
+    {
+      "path": "game/SeekerMapPanel.cs",
+      "sha256": "1665cff446ecfd2f635aa1bcf502ee2b2a4c121037d63091735f6aabcf97a283"
+    },
+    {
+      "path": "game/SeekerCustomizationMenuController.cs",
+      "sha256": "b0b01c2750c1dd68a39641cfd69fb28bb41262bd0063d16c07dad9f458b8a6aa"
+    },
+    {
+      "path": "game/TemporaryDialogueInputPanel.cs",
+      "sha256": "c80f984253ad3f9163ef2451e10233043f2b3de7dabe65201e3449ef9fc3931d"
+    },
+    {
+      "path": "game/CharacterTurnActivityController.cs",
+      "sha256": "00d07cbceb97e67236c03cfb098684e5cac36f54c269c399e2a2f326cb8454d2"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "f4fd9a775c8b15c1e270d8c7f718529b48dac9c019fff251bf6fadafd6dc7daf"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "7a8e4ca9d0616a25fc770d46237e0f783e8281a375baa8bf94fc3eb93de7d42f"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "scripts/check-continuation.py",
+      "sha256": "cedfd8ff820590463ff7e1ac64ed6b514bd77978a07e1c04f6d867ba0e6a7193"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "a2bd62c147de2f2fe5984cd1f4062dda868ff98dd03b351a41d8b4ef8ed9b8c9"
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f150f8721bfd69641c7f96c6cf60f939a975dac961f30e98939e68b704b2b259"
+    }
+  ],
+  "protected_repository_snapshot": {
+    "baseline_commit": "7b8dd659d409974126790b8a417533bded9c2e5e",
+    "tracked_file_count": 11695,
+    "algorithm": "At baseline commit, git ls-tree -r --name-only; exclude listed paths; UTF-8 path sort; SHA256 of lines path + TAB + current-file-SHA256 + LF",
+    "manifest_sha256": "8e4928fe33518c580e76c1b88038d028203bcf7640e5a2f60c5f975cdbff1bb0",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_evidence": [
+    {
+      "path": "quality-review/verification.json",
+      "sha256": "a9541a1bfaf0bdb5cfbd04b9f4a1137228b2c546ae2ccc4106375838737c9c95"
+    },
+    {
+      "path": "audio-direction/interior-runtime-verification.json",
+      "sha256": "546ff4f977b498a4eeaa03aa64d84f362cdf839394256cb9aac6497d1528aaca"
+    },
+    {
+      "path": "audio-direction/interior-runtime-authority.json",
+      "sha256": "9a5b616bc20865a82f4770cd1720e0866ef19754cad545c51dd044a4889a8387"
+    }
+  ],
+  "verification_required": {
+    "unit_contracts": "Request/state/commit identity, human/access guards, cooldown/reset, geometry boundaries and observer isolation",
+    "live_reach": "Ordinary movement to example position and return without geometry edits",
+    "parity_modes": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream"
+    ],
+    "parity": "Identical explicit action schedules: same commits, full saves/state/transcripts; no-action control has zero new commits and same durable bytes",
+    "master_output_cases": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream",
+      "master-half",
+      "effects-half",
+      "mono",
+      "captions-off",
+      "unsupported-request",
+      "duplicate-request",
+      "overlay-rejection",
+      "focus-loss",
+      "restore-cancellation",
+      "missing-effects-bus",
+      "a04-a05-coexistence"
+    ],
+    "master_output_case_count": 16,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native": "Keyboard activation/focus return, six captions, status, credits, focus-loss cancellation",
+    "packaging": {
+      "expected_streams": 34,
+      "expected_notice_bundles": 15,
+      "is_executable_release": false
+    },
+    "validator_rejection_probes": [
+      "Altered proposal/PCM",
+      "Forged commit",
+      "Changed reach/geometry",
+      "Missing measured output"
+    ],
+    "quality_command": "./quality.sh; current successor validation before and after runtime; reuse frozen contracts on pinned sources only"
+  },
+  "planning_checks": {
+    "status": "passed",
+    "accepted_material_bindings": "82 hashes verified unchanged",
+    "source_pcm_range": "Exact raw-frame SHA256 verified in memory; no derivative created",
+    "static_navigation_example": "Source cell calculation only; not live/runtime approval",
+    "product_evidence": "Unchanged 2026-10-09 quality success reused; full quality not rerun for prose",
+    "continuation_self_test_probes": 11,
+    "publication": "Standing scope publication; only proposal/ledger/handover",
+    "limits": "No implementation, derived asset, runtime proof or device test completed",
+    "repository_boundary": "Only the two proposal documents, ledger and handover differ; local editor exception preserved"
+  },
+  "completion_condition": "One hash-bound finite first new water-contact owner proposal and one pending owner scope decision; no implementation inferred",
+  "excluded": [
+    "Any new action execution during planning",
+    "Physical/layout/save/perception changes",
+    "New PCM during planning",
+    "Closed art/audio scopes",
+    "Broader water/tool actions",
+    "Voice",
+    "Release"
+  ]
+}
