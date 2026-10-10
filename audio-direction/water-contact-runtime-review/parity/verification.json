@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "transcript": [],
+  "commits": 5,
+  "presentations": 5,
+  "no_action_commits": 0,
+  "results": [
+    {
+      "mode": "default",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-default-1.log",
+          "exit_code": 0,
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+        }
+      ]
+    },
+    {
+      "mode": "quiet",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-quiet-1.log",
+          "exit_code": 0,
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+        }
+      ]
+    },
+    {
+      "mode": "master-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-master-muted-1.log",
+          "exit_code": 0,
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+        }
+      ]
+    },
+    {
+      "mode": "effects-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-effects-muted-1.log",
+          "exit_code": 0,
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+        }
+      ]
+    },
+    {
+      "mode": "missing-stream",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-missing-stream-1.log",
+          "exit_code": 0,
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+        }
+      ]
+    },
+    {
+      "mode": "no-action",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/water-contact-runtime-review/checks/main-no-action-1.log",
+          "exit_code": 0,
+          "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+        }
+      ]
+    }
+  ]
+}

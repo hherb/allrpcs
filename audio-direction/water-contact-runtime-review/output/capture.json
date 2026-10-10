@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source": "Actual native Godot MovieMaker Master mix; WAV audio track copied losslessly from AVI",
+  "render_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_WATER_OUTPUT_CHECK=1",
+    "ALLRPCS_WATER_TIMELINE=/tmp/allrpcs-water-timeline.json",
+    "ALLRPCS_WATER_DECODE_PATH=/tmp/allrpcs-water-native.pcm16",
+    "godot",
+    "--path",
+    "game",
+    "res://WaterContactAudioOutputCheck.tscn",
+    "--write-movie",
+    "/tmp/allrpcs-water-output.avi",
+    "--fixed-fps",
+    "60",
+    "--quit-after",
+    "4100"
+  ],
+  "extract_command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-y",
+    "-i",
+    "/tmp/allrpcs-water-output.avi",
+    "-map",
+    "0:a:0",
+    "-c:a",
+    "copy",
+    "/tmp/allrpcs-water-output.wav"
+  ],
+  "render_exit_code": 0,
+  "master_analysis_exit_code": 0,
+  "native_source_cache_format": "PCM16, exact arithmetic conversion from approved PCM24; new import compress/mode=0",
+  "background_control": "Retained beds/music stopped in disposable output fixture; A04/A05 explicitly start in coexistence case",
+  "qualification": "No new device listening, executable export or ordinary-play loudness claim"
+}

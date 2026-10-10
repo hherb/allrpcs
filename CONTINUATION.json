@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -472,6 +472,20 @@
           "sha256": "9196f5e82afb3011bf44d553ce99b8f57d347216d86c36b4834b898143f4f451"
         }
       ]
+    },
+    {
+      "id": "phase9-stream-water-contact-runtime-integration",
+      "reason": "The owner granted the exact published stream-contact proposal with scope approved. Its single human action/reach/transient ownership, contextual input/status, accepted A01-W01 feedback/caption/notices and finite full-quality verification are complete under that authority. No further selection or approval of this unchanged scope is pending; broader water/container/cloth/tool actions remain distinct.",
+      "evidence": [
+        {
+          "path": "audio-direction/water-contact-runtime-authority.json",
+          "sha256": "35c065c18eb42711e7bfe6e1221ee0825beb64bcc7bad6ba69c8a339a452f7dc"
+        },
+        {
+          "path": "audio-direction/water-contact-runtime-verification.json",
+          "sha256": "bd5099197aa8dac20935801a06451022b1d60daa2ded92db13d46e1b54f1b764"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -502,6 +516,20 @@
         {
           "path": "audio-direction/material-audition/owner-acceptance.json",
           "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+        }
+      ]
+    },
+    {
+      "id": "audio-stream-water-contact-runtime",
+      "reason": "Approved single-site water-contact implementation and its exact dependent review/validation are complete. Renaming an audit or proof does not reopen this owner or feedback. Only a new explicit owner request can reopen it.",
+      "evidence": [
+        {
+          "path": "audio-direction/water-contact-runtime-authority.json",
+          "sha256": "35c065c18eb42711e7bfe6e1221ee0825beb64bcc7bad6ba69c8a339a452f7dc"
+        },
+        {
+          "path": "audio-direction/water-contact-runtime-verification.json",
+          "sha256": "bd5099197aa8dac20935801a06451022b1d60daa2ded92db13d46e1b54f1b764"
         }
       ]
     }
@@ -579,31 +607,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-stream-water-contact-runtime-integration",
-    "title": "Obtain the single new stream-contact grant, then implement the exact proposal",
+    "id": "phase9-container-cloth-action-owner-scope",
+    "title": "Define the first container/cloth action owner",
     "status": "ready",
-    "workstream": "audio-stream-water-contact-runtime",
+    "workstream": "audio-container-cloth-owner-planning",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "A water-contact commit owner, one-site reach, contextual input/status and accepted A01 splash feedback do not exist. The concrete proposal is complete; its genuinely new gameplay/reach/audio grant is pending.",
-    "instructions": "The single owner decision is pending for audio-direction/water-tool-owner-scope.md and .json. Do not implement or extract PCM before that response. On approval, record the exact response and both proposal hashes in water-contact-runtime-authority.json, then complete the named Seeker-only action, transient state/cooldown, 32-pixel one-site reach, button/status, A01-W01 slice, independent caption/credits and finite successor/quality checks in the same session. Carry all closed art/audio scopes forward unchanged. Do not ask the same pending decision again in a new chat.",
-    "completion_condition": "The exact proposal has recorded owner authority; one explicit valid action produces one commit/splash/caption, invalid/duplicate requests are silent, live reach and lifecycle pass, five-mode full-state parity and 16 output cases plus both-viewports/native/packaging/current-quality evidence are reviewed and published. No geometry/save/perception or broader water/tool scope is inferred.",
+    "missing_deliverable": "Accepted A02 container/cloth material has no named action commit owner, authored interaction/material reach or extraction/presentation contract. The completed water action does not supply those distinct contracts.",
+    "instructions": "Prepare one concrete read-only first container/cloth action proposal against existing live action, inventory, material and access sources. Name the exact missing gameplay/material owner and minimum changes, with a finite validation/extraction plan. Preserve accepted A02 and closed water/grinding/treatment scopes unchanged; record one genuinely new scope decision before implementing a new action, reach, physical/material claim or PCM derivative.",
+    "completion_condition": "One hash-bound proposal names a single container/cloth action owner, its actual material/access/input/state boundaries, candidate extraction, changed files and finite verification; one new owner authority decision is identified. No runtime or PCM is installed during planning.",
     "outputs": [
-      "audio-direction/water-contact-runtime-authority.json",
-      "audio-direction/water-contact-runtime-verification.json",
-      "audio-direction/water-contact-runtime-review/README.md"
+      "audio-direction/container-cloth-owner-scope.md",
+      "audio-direction/container-cloth-owner-scope.json"
     ],
-    "boundary": "Await the one new owner gameplay/reach/audio grant. Only the exact human Seeker touch-water proposal may then be implemented. No inventory/refill/drinking/washing/LLM, navigation/layout, durable save/perception, new source acquisition, accepted-art revision or release. Preserve editor state and frozen evidence.",
-    "decision_status": "pending_owner_scope_grant",
-    "proposal_evidence": [
-      {
-        "path": "audio-direction/water-tool-owner-scope.md",
-        "sha256": "1d091a79a8f9f6c633c5a100618dd04942b55a9dad514041b2ce0b7c90a4b96d"
-      },
-      {
-        "path": "audio-direction/water-tool-owner-scope.json",
-        "sha256": "9196f5e82afb3011bf44d553ce99b8f57d347216d86c36b4834b898143f4f451"
-      }
-    ]
+    "boundary": "Read-only proposal preparation for the distinct missing container/cloth owner. No new gameplay/action execution, inventory/material/reach changes, PCM/assets, runtime installation, geometry/save/perception/provider changes, accepted-art/audio revision or release. Do not reopen completed water or other closed scopes."
   },
   "deferred_slices": []
 }

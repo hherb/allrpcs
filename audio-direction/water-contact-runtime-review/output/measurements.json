@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "cases": 16,
+  "metrics": {
+    "default": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -57.21207944550187,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 1.0001033844353202,
+      "expected_gain": 1,
+      "source_correlation": 0.99999997981565,
+      "residual_rms": 4.522751986452977e-07,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "quiet": {
+      "peak_dbfs": -19.907192136937507,
+      "rms_dbfs": -58.55398957240272,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "master-muted": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "effects-muted": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "missing-stream": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "master-half": {
+      "peak_dbfs": -25.02208855819251,
+      "rms_dbfs": -63.23256709918748,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 0.5000386411806114,
+      "expected_gain": 0.5,
+      "source_correlation": 0.9999609564980576,
+      "residual_rms": 9.945832751913033e-06,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "effects-half": {
+      "peak_dbfs": -25.02208855819251,
+      "rms_dbfs": -63.23256709918748,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 0.5000386411806114,
+      "expected_gain": 0.5,
+      "source_correlation": 0.9999609564980576,
+      "residual_rms": 9.945832751913033e-06,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "mono": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -57.21207944550187,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "captions-off": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -57.21207944550187,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 1.0001033844353202,
+      "expected_gain": 1,
+      "source_correlation": 0.99999997981565,
+      "residual_rms": 4.522751986452977e-07,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "unsupported-request": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "duplicate-request": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": false
+    },
+    "overlay-rejection": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "focus-loss": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -57.38513563215331,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "restore-cancellation": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -57.38513563215331,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "missing-effects-bus": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "a04-a05-coexistence": {
+      "peak_dbfs": -19.001488644912886,
+      "rms_dbfs": -46.49199943291098,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    }
+  },
+  "native_pcm16_sha256": "db23d6a977c07e08d85f6113daf43b9b2cdecb7ee4c2c6cfe0736042e7cd0201",
+  "native_exact": true,
+  "wave_sha256": "3765f913eae6f898901376febac70c33bcac0aba8d5a7aeebf6189acaf756122",
+  "timeline_sha256": "6bcf99d316b0458b87a2a51d72e8fe66583341436f23bbe93ac356e4dadba5fe",
+  "limits": [
+    "Controlled actual Master output, with unchanged background beds isolated.",
+    "No waveform normalization, new device listening or ordinary-play loudness compliance claim."
+  ]
+}

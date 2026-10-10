@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "fixed_before_completion": [
+    "Godot initially chose QOA for the new WAV; new import now PCM16 with exact accepted PCM24 conversion verified",
+    "Native Tab is also the prior overlay shortcut; contextual button consumes its own first focus event without changing InputMap",
+    "Controlled six-caption label properties alone did not establish rendered text; prior writers isolated for actual screenshots",
+    "Native mouse position uses viewport final transform at stretched 1920 output",
+    "Navigation region registration/map activation are deferred; bind the existing world map and observe activation changes after engine frames"
+  ],
+  "native_limit": "Full Main MovieMaker with headless dummy rendering hit a texture error during development; final actual Master capture uses native OpenGL MovieMaker and exits successfully",
+  "completed_evidence": "Only final passing commands and exact captures support completion; no accepted predecessor file was changed to accommodate these fixes"
+}

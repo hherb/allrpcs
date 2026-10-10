@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "real_completed_stages": 38,
+  "resume_position": "after product-9, before product-10",
+  "changed_command_rejected": true,
+  "ordinary_pipeline_ast_unchanged": true,
+  "executed_runner_sha256": "30079a417be63b105a9542a9473bc82b03f3c8ae1dc20e59eb8e3e82eb223701",
+  "current_runner_sha256": "bf17a94e77d91e482f9483f452ed7af6a58f59fcbdf94ceb44b939223f2b610d",
+  "qualification": "Focused resume-inventory repair only; all ordinary pipeline code, current product and commands are unchanged from the real completed run."
+}

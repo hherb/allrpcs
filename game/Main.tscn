@@ -1,4 +1,4 @@
-[gd_scene load_steps=407 format=3]
+[gd_scene load_steps=411 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -614,6 +614,11 @@
 
 [ext_resource type="Script" path="res://OpeningRegionPositionalAudioController.cs" id="positional_audio"]
 [ext_resource type="Script" path="res://PositionalAudioRuntimeSmokeCheck.cs" id="positional_check"]
+
+[ext_resource type="Script" path="res://OpeningRegionStreamWaterContactCoordinator.cs" id="water_0"]
+[ext_resource type="Script" path="res://StreamWaterContactPanel.cs" id="water_1"]
+[ext_resource type="Script" path="res://OpeningRegionWaterContactAudioController.cs" id="water_2"]
+[ext_resource type="Script" path="res://WaterContactRuntimeSmokeCheck.cs" id="water_3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4253,6 +4258,20 @@ Automatic = true
 
 [node name="InteriorAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("interior_check")
+
+[node name="OpeningRegionStreamWaterContactCoordinator" type="Node" parent="."]
+script = ExtResource("water_0")
+Automatic = true
+
+[node name="StreamWaterContactPanel" type="CanvasLayer" parent="."]
+script = ExtResource("water_1")
+
+[node name="OpeningRegionWaterContactAudioController" type="Node" parent="."]
+script = ExtResource("water_2")
+Automatic = true
+
+[node name="WaterContactRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("water_3")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

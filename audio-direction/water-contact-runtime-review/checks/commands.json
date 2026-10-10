@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "native_views_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_WATER_MAIN_CHECK=1",
+    "ALLRPCS_WATER_MODE=views",
+    "ALLRPCS_WATER_VIEWS=/Users/hherb/src/allrpcs/audio-direction/water-contact-runtime-review/views",
+    "ALLRPCS_WATER_CHECK_OUTPUT=/tmp/allrpcs-water-views.json",
+    "godot",
+    "--fixed-fps",
+    "60",
+    "--path",
+    "game",
+    "--quit-after",
+    "1600"
+  ],
+  "export_command": [
+    "godot",
+    "--headless",
+    "--path",
+    "game",
+    "--export-pack",
+    "macOS Development",
+    "/private/tmp/allrpcs-water-resources.zip"
+  ],
+  "standalone_stopped_command": [
+    "godot",
+    "--headless",
+    "--path",
+    "game",
+    "res://WaterContactRuntimeSmokeCheck.tscn",
+    "--quit-after",
+    "15"
+  ],
+  "parity_runner": "python3 audio-direction/water-contact-runtime-review/checks/run-parity.py",
+  "format_command": [
+    "dotnet",
+    "format",
+    "Allrpcs.sln",
+    "--no-restore",
+    "--verify-no-changes"
+  ],
+  "full_quality_command": "./quality.sh"
+}

@@ -1,0 +1,9 @@
+{
+  "mode": "no-action",
+  "checks": [
+    "ordinary collision-resolved movement to supported bridge-side example and route return; no walking/standing/startup contact"
+  ],
+  "commits": 0,
+  "presentations": 0,
+  "transcript": []
+}

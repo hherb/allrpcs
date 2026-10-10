@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "native_streams": 34,
+  "notices": 17,
+  "resource_parity": true,
+  "resource_pack_sha256": "61d8a4e82149cf13c3cacbbd1f0b631f424413bdb35c4e41727a8f8f791d500b",
+  "footstep_streams": 24,
+  "retained_material_streams": 6,
+  "positional_streams": 1,
+  "music_streams": 2,
+  "streams": [
+    {
+      "source": "assets/audio/footsteps/W01-01.wav",
+      "imported_path": ".godot/imported/W01-01.wav-a2780fadc82954e33c5226b9cb669eea.sample",
+      "cache_sha256": "8fed93f1ef19ab8c863a24b8536ed380f489e9744b4eb0d9e8b1403b9b28afc8",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W01-02.wav",
+      "imported_path": ".godot/imported/W01-02.wav-3e1704dfe6f4ea33e33e3f8cc326f73d.sample",
+      "cache_sha256": "cd907de9b36f198114a10edcbad8b408d83765d7197808a3b1008192ada8e376",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W01-03.wav",
+      "imported_path": ".godot/imported/W01-03.wav-522786966da6233a2ee6c9efd4197150.sample",
+      "cache_sha256": "efb3f939314fa2259d885baa5e0b115397ad0b982286ebaa8cb118ec72e8fce5",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W01-04.wav",
+      "imported_path": ".godot/imported/W01-04.wav-7bf1cd6923083bfd6a9c982f2d35b3cc.sample",
+      "cache_sha256": "3af194bccf8b7ed46cbe61132f897f59f9d38938e333b651a128ea0eca82d2d2",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W01-05.wav",
+      "imported_path": ".godot/imported/W01-05.wav-b00aa3a1f59501eb085b04102149ba3f.sample",
+      "cache_sha256": "bbea4676d24e711e470ae4ea60a6a043fa08ce9c94b0c6780a82d3c24da51cd4",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W01-06.wav",
+      "imported_path": ".godot/imported/W01-06.wav-58f2de6ce5fd1636fb619c86d443de4c.sample",
+      "cache_sha256": "4f4932e4af4632ce70fafaa176bf561da3b6aedc45f23242e1f3858f83b69f00",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-01.wav",
+      "imported_path": ".godot/imported/W02-01.wav-8dee6f861f329928d3670477e52d1c94.sample",
+      "cache_sha256": "64fab7a9f7835c79bc4bc072da934f0c8c0e2bbefbff3b057ca424759291b3d7",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-02.wav",
+      "imported_path": ".godot/imported/W02-02.wav-697e8bd1f5a23163449d1c80c7a68fca.sample",
+      "cache_sha256": "4012995ad1010b5fbea9e256252322a36dc6e7df4562936be5b782fe029bb508",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-03.wav",
+      "imported_path": ".godot/imported/W02-03.wav-9a7051143e1cb9459c69d9b88c6d562e.sample",
+      "cache_sha256": "d57861f277082f786b21d12c257ac9594f3101eb37bc6cfb76ad70072bbd6f74",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-04.wav",
+      "imported_path": ".godot/imported/W02-04.wav-d822bd91e2b673b93ee814b8d61872e9.sample",
+      "cache_sha256": "d72d32edf79846ca8b07bd2f5fbfafdf53b6138bcc7034a19ecc7b1cfb2a0f8c",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-05.wav",
+      "imported_path": ".godot/imported/W02-05.wav-1e4fb88c55e5b289eb39713177f3401f.sample",
+      "cache_sha256": "2f3ea6310969b7443b2bff3940ca3e7df1a147f7ff8607a0368048b60607e672",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W02-06.wav",
+      "imported_path": ".godot/imported/W02-06.wav-3f08f7a5d8abb627e0602beef8c0843c.sample",
+      "cache_sha256": "b4137101ed850059aee81f1ec718b61354b7d4877ed595176b96783842f0b218",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-01.wav",
+      "imported_path": ".godot/imported/W03-01.wav-cc6c79d16f4743ba92656920702a45a9.sample",
+      "cache_sha256": "1510c243e6b2425f441a69d246a0dc6b173cf3881cd49b010133cac40f037cb1",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-02.wav",
+      "imported_path": ".godot/imported/W03-02.wav-5ce4938527ad078fe2af2eda5fefe70d.sample",
+      "cache_sha256": "4dbcb8e31dc5918845b67bc64a60d15fd3ff45627902dc89b210de90442f9685",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-03.wav",
+      "imported_path": ".godot/imported/W03-03.wav-879c140b8b787f003f9c13cac0b84c0c.sample",
+      "cache_sha256": "de88580b9ec487b3d33198463e49352cbd85d7eb4fecc25661d5f22c35b66c9c",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-04.wav",
+      "imported_path": ".godot/imported/W03-04.wav-f1a120643997b13d7bd21d0288680d37.sample",
+      "cache_sha256": "b05ca14f080cbd48a8c3c522bfee2677c73b294251e9cb5e8f5cf3796ac48391",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-05.wav",
+      "imported_path": ".godot/imported/W03-05.wav-45bac0e86a2991c3cacd932b7836dcaf.sample",
+      "cache_sha256": "31c6ffa7b7f3ee2c81ccdbea9680af8a4f3238c5f6d6e66ce33b5730cddb9337",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W03-06.wav",
+      "imported_path": ".godot/imported/W03-06.wav-3221ce310e92d14623eb65511e1633eb.sample",
+      "cache_sha256": "9edec071fc46614d760661dd5e87ef7ffd195febecc505fda924118b66d9d479",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-01.wav",
+      "imported_path": ".godot/imported/W04-01.wav-c2bc9b3bfdaa39ea6bd80a3dbb32fd9f.sample",
+      "cache_sha256": "4bc32bcbeede2a84a1425f122c360bd51ce0188ed242164f60dcc9d60550d74f",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-02.wav",
+      "imported_path": ".godot/imported/W04-02.wav-85ce7516edbc66aaa86a529ddc3dfbca.sample",
+      "cache_sha256": "dc256bb0e48d6083d07388d151e618e9f1e80f51ae5c2194afc57a41f89c9dfd",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-03.wav",
+      "imported_path": ".godot/imported/W04-03.wav-21567964a9c4176da5aedba127881d69.sample",
+      "cache_sha256": "22fc25e9316441dbb31b608cf2674d347e105c3fc5a2dd4534c6f1053d694303",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-04.wav",
+      "imported_path": ".godot/imported/W04-04.wav-1bfa2c000b48dba717ad85d2329c9ea0.sample",
+      "cache_sha256": "d1d9091d2425e2ffa17f60e6844ab7965a99fad9dac4a8066c9dc9339536899e",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-05.wav",
+      "imported_path": ".godot/imported/W04-05.wav-4dc1461502a00702cf90b482a4fe70e3.sample",
+      "cache_sha256": "7cc682cd565f05457be286f16270ea17741886a4987e4dd19a2818305d197fbb",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/footsteps/W04-06.wav",
+      "imported_path": ".godot/imported/W04-06.wav-872d41670ed238b03efceb237a44749b.sample",
+      "cache_sha256": "1c528ffc4e583cd2aea730d79839626e65b0a14bade8269f8c17dddb28920391",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/B01.wav",
+      "imported_path": ".godot/imported/B01.wav-b041454b72bd214eda63556efe8a05aa.sample",
+      "cache_sha256": "6e1754492fd02857f083bf170d0e11834da1ea7f2ba5602abcb9258a9e05089d",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/B02.wav",
+      "imported_path": ".godot/imported/B02.wav-74c35fa0dcc91448c2b7be0654e9dafa.sample",
+      "cache_sha256": "18283032ebbcab6dbb8aa7f65f12b2b1cd282066f55be6c30f42e341a6ec667e",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/B03.wav",
+      "imported_path": ".godot/imported/B03.wav-03b7fb8338e9bd12e3e9948bdf4d70d3.sample",
+      "cache_sha256": "a672def9b1dd3816cd06999fc00069f12dad172524be96566e6bc13521f424fb",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/B04.wav",
+      "imported_path": ".godot/imported/B04.wav-bacf6bfa4aa035851de20b674042c66f.sample",
+      "cache_sha256": "e5bf6b2c95712a037bcf2208d27b7072672128183f3ce92f865cdd4556cdd0b9",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/A04.wav",
+      "imported_path": ".godot/imported/A04.wav-69caa5d711e0b757f24886e055606add.sample",
+      "cache_sha256": "fa4b83019c8f349dd53c5fe7125509461d076469800e981e2ff57b1ed4739c65",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/material/A05.wav",
+      "imported_path": ".godot/imported/A05.wav-33c27afd2a1a00bbe46bfc014cb9bac8.sample",
+      "cache_sha256": "6caae5188f0fd06c25ebaa2c87221054aaf5a18128ae05d737559b5ce83ba0dc",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/positional/A06-D01.wav",
+      "imported_path": ".godot/imported/A06-D01.wav-96009fe0c23dd460b360bce849934cdc.sample",
+      "cache_sha256": "77a841e23d898eeed47632c9f66e54b0767ecf573eb7424ade269d7d219b7091",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/music/M01.wav",
+      "imported_path": ".godot/imported/M01.wav-7d8d6554080e1365cfed3b544a39e728.sample",
+      "cache_sha256": "047638bad539139f8c1b5c9b5f7a0437f0a7e27575e234632f5a34c2738991cf",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/music/M02.wav",
+      "imported_path": ".godot/imported/M02.wav-0bbf13163d7a426bf8370bf2c18376d5.sample",
+      "cache_sha256": "8265378d45db414c1f4ae3036dff62a184c35cb6f93a25198800be43aeb653f4",
+      "packed_uid_matches": true
+    },
+    {
+      "source": "assets/audio/water-contact/A01-W01.wav",
+      "imported_path": ".godot/imported/A01-W01.wav-ea93a12c6a39161234af368b2e984f9c.sample",
+      "cache_sha256": "1abf788ce4729a96befbadf834342434cc94728d173cce6a2b0bf550ac3fd313",
+      "packed_uid_matches": true
+    }
+  ],
+  "notice_bindings": [
+    {
+      "path": "assets/audio/footsteps/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "assets/audio/footsteps/CREDITS.txt",
+      "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+    },
+    {
+      "path": "assets/audio/footsteps/provenance.json",
+      "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+    },
+    {
+      "path": "assets/audio/material/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "assets/audio/material/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "assets/audio/material/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "assets/audio/positional/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "assets/audio/positional/CREDITS.txt",
+      "sha256": "96d3b2e772bb725b686313ee4eff687f0e05fd5124074fdd66b3700794e9b8b9"
+    },
+    {
+      "path": "assets/audio/positional/provenance.json",
+      "sha256": "cf70804e9926d447801d5a5b44e518cf55d96a8bad8337e6a265f12672501c6c"
+    },
+    {
+      "path": "assets/audio/music/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "assets/audio/music/CREDITS.txt",
+      "sha256": "dd64c63c222bb1bb879a6c033422c633e68b87ad62cd069aa0e73928dc58c84b"
+    },
+    {
+      "path": "assets/audio/music/provenance.json",
+      "sha256": "ae449ee4e81cc5fcbeb41588cdb9e81b909bfea23454f67b9f6d5bfedce73486"
+    },
+    {
+      "path": "assets/audio/water-contact/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "assets/audio/water-contact/CREDITS.txt",
+      "sha256": "4bfa8118ba5a629eec7fa926c9f67fc5817ea4ce7c581e3e21376e01c9df8656"
+    },
+    {
+      "path": "assets/audio/water-contact/provenance.json",
+      "sha256": "444aa206c5bbf8196d30f86521ed2b949abbb833e16e72c8a598e738e100b54e"
+    }
+  ],
+  "proposal_notice_groups": 15,
+  "count_note": "Proposal uses 14 retained notices plus one new three-file bundle; actual files are 17.",
+  "retained_subset_path": "/private/tmp/allrpcs-water-audio-subset.zip",
+  "retained_subset_sha256": "ad456c6d525bc86f59bebcb7e7e31a387f6476c0afec8f83b60b33e9553b706e",
+  "retained_subset_entries": 85,
+  "limit": "Resource packaging only; no runnable application export or release claim."
+}

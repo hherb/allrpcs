@@ -1,0 +1,12 @@
+{
+  "mode": "effects-muted",
+  "checks": [
+    "ordinary collision-resolved movement to supported bridge-side example and route return; no walking/standing/startup contact",
+    "one explicit native button/one exact commit/one caption; copied/repeated commits rejected; complete durable state unchanged",
+    "pause/focus/invalid time/disabled input, overlays/text focus, changed transform/water/navigation and failed/successful full restore",
+    "missing Effects stream/bus retain commits/captions without fallback; departure cancels owned audio only"
+  ],
+  "commits": 5,
+  "presentations": 5,
+  "transcript": []
+}

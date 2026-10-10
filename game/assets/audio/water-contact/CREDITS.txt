@@ -1,0 +1,6 @@
+Water contact A01-W01
+40 CC0 water / splash / slime SFX by rubberduck
+Source: https://opengameart.org/content/40-cc0-water-splash-slime-sfx
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: frame interval [48000,120000) from the accepted A01 audition; original source edits and gain retained; no further processing.
+Original author does not endorse this game.

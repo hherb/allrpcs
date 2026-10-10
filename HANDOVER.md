@@ -2,7 +2,7 @@
 
 Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the active
 roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner instructions
-and terminal acceptance take precedence; the ledger retains all closed scopes.
+and terminal acceptance take precedence; retain all persistent closures.
 
 ## Current checkpoint
 
@@ -11,98 +11,81 @@ and the whole cloak correction stay closed. Future walking work uses the accepte
 [reference gait model](art-direction/reference-gait-model.md). Historical pending fields
 never reopen accepted views, placements or sounds.
 
-Audio policy, buses/controls, all sixteen audition excerpts, six-sound material runtime,
-Seeker terrain footsteps, named positional cues and M01/M02 optional music are complete.
-See [music review](audio-direction/music-runtime-review/README.md) and its
-[verification](audio-direction/music-runtime-verification.json). Default range, accepted
-WAVs, controls, captions/history, ducking and hearing gates remain intact.
+Audio policy, buses/controls, sixteen audition excerpts, six-sound material runtime,
+Seeker terrain footsteps, named positional cues, optional M01/M02 music and the approved
+sickhouse/laundry interior implementation are complete. Their frozen evidence is linked
+from [music review](audio-direction/music-runtime-review/README.md) and
+[interior review](audio-direction/interior-runtime-review/README.md).
 
-The **approved interior implementation is complete**: existing sickhouse timber/laundry
-earth contacts, two listener enclosure profiles, actual doorway transitions and one shared
-source with an independent caption. B01, all WAVs, exterior selection, cadence, geometry,
-hearing/save/music authority and the channel's final-child order stay unchanged. See the
-[interior review](audio-direction/interior-runtime-review/README.md),
-[verification](audio-direction/interior-runtime-verification.json) and
-[grant](audio-direction/interior-runtime-authority.json). Wider water/tool and positional
-owners, full room acoustics, voice and complete regional identity remain unfinished.
-
-The first water-action [proposal](audio-direction/water-tool-owner-scope.md) and its
-[hash-bound contract](audio-direction/water-tool-owner-scope.json) are complete. It names
-one human Seeker touch-water action beside the existing bridge, a new 32-pixel reach,
-transient commit/cooldown, contextual button/status and the first accepted A01 splash.
-No action or derived PCM has been installed. One new gameplay/reach/audio decision is
-pending; no inventory, clean-water, geometry, save, perception or LLM change is proposed.
-Planning verified all 82 accepted audio bindings, 11 continuation probes and unchanged
-protected repository/editor bytes; the source-derived reachable example still needs live proof.
+The owner-approved single-site **Touch water** action is implemented: 32-pixel reach,
+transient exact commits/two-second cooldown, mouse/Tab/Enter/Space controls, own status,
+accepted A01-W01 splash, independent sixth caption and packaged source notices.
+See [water review](audio-direction/water-contact-runtime-review/README.md),
+[verification](audio-direction/water-contact-runtime-verification.json) and
+[grant](audio-direction/water-contact-runtime-authority.json). The complete approved scope
+and dependent review are closed; current quality passes all 48 stages and 5,195 unit
+tests, including all 293 retained Godot launches and interior/water full-state parity.
+No inventory, refill/drinking/washing, physical geometry, save, perception, LLM or accepted
+artwork change is included. Wider container/cloth/tool actions, regional audio identity,
+full room acoustics and voice remain unfinished.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
-forward without asking again. This does not authorize a new runtime/layout/physical scope
-or release. Preserve and exclude unrelated `game/project.godot` editor state and `.DS_Store`.
+forward without asking again. It does not authorize new gameplay/layout/physical scope
+or a release.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-stream-water-contact-runtime-integration — Obtain the single new stream-contact grant, then implement the exact proposal** (ready).
+**phase9-container-cloth-action-owner-scope — Define the first container/cloth action owner** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: A water-contact commit owner, one-site reach, contextual input/status and
-accepted A01 splash feedback do not exist. The concrete proposal is complete; its genuinely new
-gameplay/reach/audio grant is pending.
+Missing deliverable: Accepted A02 container/cloth material has no named action commit owner,
+authored interaction/material reach or extraction/presentation contract. The completed water action
+does not supply those distinct contracts.
 
-The single owner decision is pending for audio-direction/water-tool-owner-scope.md and .json. Do not
-implement or extract PCM before that response. On approval, record the exact response and both
-proposal hashes in water-contact-runtime-authority.json, then complete the named Seeker-only action,
-transient state/cooldown, 32-pixel one-site reach, button/status, A01-W01 slice, independent
-caption/credits and finite successor/quality checks in the same session. Carry all closed art/audio
-scopes forward unchanged. Do not ask the same pending decision again in a new chat.
+Prepare one concrete read-only first container/cloth action proposal against existing live action,
+inventory, material and access sources. Name the exact missing gameplay/material owner and minimum
+changes, with a finite validation/extraction plan. Preserve accepted A02 and closed
+water/grinding/treatment scopes unchanged; record one genuinely new scope decision before
+implementing a new action, reach, physical/material claim or PCM derivative.
 
-Done when: The exact proposal has recorded owner authority; one explicit valid action produces one
-commit/splash/caption, invalid/duplicate requests are silent, live reach and lifecycle pass, five-
-mode full-state parity and 16 output cases plus both-viewports/native/packaging/current-quality
-evidence are reviewed and published. No geometry/save/perception or broader water/tool scope is
-inferred.
+Done when: One hash-bound proposal names a single container/cloth action owner, its actual
+material/access/input/state boundaries, candidate extraction, changed files and finite verification;
+one new owner authority decision is identified. No runtime or PCM is installed during planning.
 
 Expected outputs:
 
-- `audio-direction/water-contact-runtime-authority.json`
-- `audio-direction/water-contact-runtime-verification.json`
-- `audio-direction/water-contact-runtime-review/README.md`
+- `audio-direction/container-cloth-owner-scope.md`
+- `audio-direction/container-cloth-owner-scope.json`
 
-Boundary: Await the one new owner gameplay/reach/audio grant. Only the exact human Seeker touch-
-water proposal may then be implemented. No inventory/refill/drinking/washing/LLM, navigation/layout,
-durable save/perception, new source acquisition, accepted-art revision or release. Preserve editor
-state and frozen evidence.
+Boundary: Read-only proposal preparation for the distinct missing container/cloth owner. No new
+gameplay/action execution, inventory/material/reach changes, PCM/assets, runtime installation,
+geometry/save/perception/provider changes, accepted-art/audio revision or release. Do not reopen
+completed water or other closed scopes.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
-Interior evidence: 5,173 unit tests, all 293 retained Godot commands, four-mode complete
-save/transcript parity, 39 actual Master cases, sixteen native reused streams, and
-33-stream/14-notice resource packaging. All five captions, mute/captions-off, credits/history,
-keyboard return and native focus-loss reset pass at 1280x720 and 1920x1080. Exact commands
-and measurements live in the linked review; standalone proofs start stopped.
+Use `python3 scripts/check-continuation.py --self-test`,
+`python3 scripts/validate-water-contact-runtime.py --reviewed` and root `./quality.sh`.
+After queue maintenance use `python3 scripts/check-continuation.py --sync`, then rerun
+the checker. Keep detailed commands, measurements and captures in the linked reviews.
+Reuse passing product evidence for prose-only maintenance.
 
-Run `python3 scripts/check-continuation.py --self-test` and
-`python3 scripts/validate-interior-audio-runtime.py --reviewed`. After queue maintenance use
-`python3 scripts/check-continuation.py --sync`, then rerun the checker. Keep evidence in
-linked packages; preserve ledger closures and reuse passing product checks for prose alone.
+Root quality uses pinned source-built Pillow/numpy, frozen contracts at recorded commits,
+all retained product checks, four interior modes and six water/control modes, then the
+current successor boundary. Setup: [quality maintenance](quality-review/README.md).
+Run Godot on the host where user logs/editor settings are writable. Retry only diagnosed
+native mutex shutdown aborts with the identical command. Frozen validators and
+`scripts/quality.sh` remain unchanged; do not run historical current-boundary checks
+against successors or edit them to accommodate later work.
 
-Full quality now uses `./quality.sh` at the repository root; dependency setup and
-reproduction are under [Local quality checks](README.md#local-quality-checks) and
-[quality maintenance](quality-review/README.md). It selects the pinned source-built Pillow
-environment, checks frozen art/audio contracts at their recorded commits, then runs all
-original product checks plus current interior parity and a final boundary check. The
-2026-10-09 [full result](quality-review/verification.json) passes: 5,173 unit tests,
-all 293 retained smoke launches, eight terrain checks, graphical Main, four fixed-FPS
-interior modes with identical saves/transcripts, and the final current boundary.
-Run on the host where Godot can write editor settings and user logs. The
-hash-bound `scripts/quality.sh` and frozen validators remain unchanged; their historical
-ordinary-Python and later-successor failures remain evidence in frozen reviews. Native
-Godot mutex-lock shutdown aborts are retried only with the identical retained command;
-all successful exits and retry counts are bound in the review. Do not edit frozen validators.
-Full macOS export still lacks a mono template and has the existing C# solution lookup
-mismatch. Resource packaging is not an executable release or device/loudness compliance.
-Preserve and exclude the recorded local `game/project.godot` rewrite and `.DS_Store`.
+Resource packaging has 34 streams and 17 individual notices (14 retained plus the new
+three-file bundle; 15 proposal notice groups). Full macOS export still lacks a mono
+template and has the existing C# solution lookup mismatch. Packaging is not an executable
+release or fresh device/ordinary-play loudness claim.
+Preserve/exclude `game/project.godot` (recorded editor SHA
+`36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`) and `.DS_Store`.

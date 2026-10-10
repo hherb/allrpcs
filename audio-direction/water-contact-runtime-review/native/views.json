@@ -1,0 +1,10 @@
+{
+  "mode": "views",
+  "checks": [
+    "ordinary collision-resolved movement to supported bridge-side example and route return; no walking/standing/startup contact",
+    "1280x720 and 1920x1080: six captions/status, native mouse/Tab/Enter/Space activation/echo guard, captions-off, credits/history return; actual native focus loss"
+  ],
+  "commits": 7,
+  "presentations": 7,
+  "transcript": []
+}

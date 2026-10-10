@@ -1,0 +1,1131 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "started": "2026-10-10T04:08:05.081090+00:00",
+  "stages": [
+    {
+      "name": "continuation",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/check-continuation.py",
+        "--self-test"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "01-continuation-1.log",
+          "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-1",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-garden-ground-runtime.py",
+        "--historical-quality"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "02-art-1-1.log",
+          "sha256": "8fd8a178f361d8e7552528e89066393ce7b75d1235095250bb51f4882a52250d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-2",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "03-art-2-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-3",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-square-ground-runtime.py",
+        "--historical-garden"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "04-art-3-1.log",
+          "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-4",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-sickhouse-ground-runtime.py",
+        "--historical-square"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "05-art-4-1.log",
+          "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-5",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wagon-ground-runtime.py",
+        "--historical-sickhouse"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "06-art-5-1.log",
+          "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-6",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-shrine-ground-runtime.py",
+        "--historical-wagon"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "07-art-6-1.log",
+          "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-7",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-laundry-ground-runtime.py",
+        "--historical-shrine"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "08-art-7-1.log",
+          "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-8",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--historical-village-edge"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "09-art-8-1.log",
+          "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-9",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--check-rejections"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-pyosg37v/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "10-art-9-1.log",
+          "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-buses",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-audio-publication.py"
+      ],
+      "revision": "1b21d223d8329ead39973cfb81a290188780e84e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vfluz9rr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "11-boundary-buses-1.log",
+          "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-material",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "audio-direction/material-runtime-review/publication/validate-publication.py"
+      ],
+      "revision": "240f18000a6825e6a46fea27135af2072b82f911",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-73h0uv45/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "12-boundary-material-1.log",
+          "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-footstep",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-footstep-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "f5ae96894ba33cecddd8b7d8c4166a02c088aba5",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-17c371hi/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "13-boundary-footstep-1.log",
+          "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-positional",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-positional-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "b9b36889c35cb3c7773d8ac3cee7ee650d85af25",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-s__hj3vk/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "14-boundary-positional-1.log",
+          "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-music",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-music-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c472c0a31548e076bfee0252e4e4970714c8c019",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-k2044j0l/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "15-boundary-music-1.log",
+          "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-interior",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-interior-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "7b8dd659d409974126790b8a417533bded9c2e5e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-r841zu53/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "16-boundary-interior-1.log",
+          "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-water-contact-current",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-water-contact-runtime.py",
+        "--reviewed"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "17-boundary-water-contact-current-1.log",
+          "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "current-art-imports",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "18-current-art-imports-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-1",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/validate-workflows.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "19-product-1-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-2",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "20-product-2-1.log",
+          "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-3",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet format Allrpcs.sln --no-restore --verify-no-changes"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "21-product-3-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-4",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet build Allrpcs.sln --no-restore -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "22-product-4-1.log",
+          "sha256": "3dab500594430cd0146173b77708e24736e0f50e6192169e279d37d6ff95194f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-5",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "23-product-5-1.log",
+          "sha256": "cbb0e038068720e79ea4df81a2b587b5b7e5c99d17feae39d040d62e454e3b6a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-6",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "24-product-6-1.log",
+          "sha256": "8504b233bbe02ab4e819d752054a84f2e6a04b8110a496ca82caadf1ecc2f796",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-7",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "25-product-7-1.log",
+          "sha256": "d9ae051c3c5362348dfde74b4d36c0004d2f56f9fab9ea753225af5e2f75b0ae",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-8",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "26-product-8-1.log",
+          "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-9",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "27-product-9-1.log",
+          "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-10",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/smoke-godot.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "28-product-10-1.log",
+          "sha256": "e9284871259d1f0e9247ea46f77e6b77372141f328ee03e83bad1aaccf5fb5b5",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-11",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "29-product-11-1.log",
+          "sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-12",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SQUARE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "30-product-12-1.log",
+          "sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-13",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "31-product-13-1.log",
+          "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-14",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WAGON_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "32-product-14-1.log",
+          "sha256": "eb9812fe32ba5f4e0fe4dca12c3387d045fbe3e1eabd147f8f40eb8ab0e42727",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-15",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SHRINE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "33-product-15-1.log",
+          "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-16",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_LAUNDRY_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "34-product-16-1.log",
+          "sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-17",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "35-product-17-1.log",
+          "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-18",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WOODLAND_CLEARING_DRESSING_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "36-product-18-1.log",
+          "sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-19",
+      "arguments": [
+        "sh",
+        "-c",
+        "godot --path game --quit-after 60"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "37-product-19-1.log",
+          "sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-normal",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "normal",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-normal.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "38-interior-normal-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "muted",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "39-interior-muted-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-zero",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "zero",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-zero.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "40-interior-zero-1.log",
+          "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-mono-reduced",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "mono-reduced",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-mono-reduced.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "41-interior-mono-reduced-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "default",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "42-water-default-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "quiet",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "43-water-quiet-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "master-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "44-water-master-muted-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "effects-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "45-water-effects-muted-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "missing-stream",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "46-water-missing-stream-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "no-action",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "47-water-no-action-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-water-contact-after-runtime",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-water-contact-runtime.py",
+        "--reviewed"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "48-boundary-water-contact-after-runtime-1.log",
+          "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    }
+  ],
+  "product_revision": "ffc0f216c6fa8db06073ce88ac475bc1e202b1f9",
+  "python": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "pillow": "12.3.0",
+  "numpy": "2.5.3",
+  "zlib": "1.2.12",
+  "inputs": {
+    "quality.py": "30079a417be63b105a9542a9473bc82b03f3c8ae1dc20e59eb8e3e82eb223701",
+    "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+    "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+    "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+    "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+  },
+  "water_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "water_transcript": [],
+  "water_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "generated_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "finished": "2026-10-10T04:22:37.544156+00:00",
+  "interior_save_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+  "transcript": [
+    "Interior fixture reply."
+  ]
+}

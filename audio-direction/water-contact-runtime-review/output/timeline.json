@@ -1,0 +1,178 @@
+[
+  {
+    "name": "default",
+    "start": 0.13333333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "quiet",
+    "start": 4.133333333333334,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "master-muted",
+    "start": 8.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "effects-muted",
+    "start": 12.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "missing-stream",
+    "start": 16.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "master-half",
+    "start": 20.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "effects-half",
+    "start": 24.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "mono",
+    "start": 28.133333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "captions-off",
+    "start": 32.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": false,
+    "cancel_at": null
+  },
+  {
+    "name": "unsupported-request",
+    "start": 36.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": false,
+    "commits": 0,
+    "presentations": 0,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "duplicate-request",
+    "start": 40.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": false,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "overlay-rejection",
+    "start": 44.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": false,
+    "commits": 0,
+    "presentations": 0,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "focus-loss",
+    "start": 48.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": 0.8333333333333334
+  },
+  {
+    "name": "restore-cancellation",
+    "start": 52.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": 0.8333333333333334
+  },
+  {
+    "name": "missing-effects-bus",
+    "start": 56.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  },
+  {
+    "name": "a04-a05-coexistence",
+    "start": 60.13333333333333,
+    "duration": 4,
+    "trigger": 0.5,
+    "admitted": true,
+    "commits": 1,
+    "presentations": 1,
+    "caption_enabled": true,
+    "cancel_at": null
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-stream-water-contact-runtime-integration",
+  "owner_statement": "scope approved",
+  "status": "exact_proposal_scope_authorized",
+  "context": "Direct response to the single published stream-contact proposal approval request.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/water-tool-owner-scope.md",
+      "sha256": "1d091a79a8f9f6c633c5a100618dd04942b55a9dad514041b2ce0b7c90a4b96d"
+    },
+    {
+      "path": "audio-direction/water-tool-owner-scope.json",
+      "sha256": "9196f5e82afb3011bf44d553ce99b8f57d347216d86c36b4834b898143f4f451"
+    }
+  ],
+  "authorized": [
+    "Exact Seeker stream-contact action/reach/state/input/status",
+    "One A01-W01 PCM slice and Effects feedback/caption/credits",
+    "Named successor validation and quality integration"
+  ],
+  "not_authorized": [
+    "Broader water/tool actions",
+    "Inventory/refill/drinking/washing/LLM changes",
+    "Geometry/layout/save/perception changes",
+    "Accepted-art revision",
+    "Release"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

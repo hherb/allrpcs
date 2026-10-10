@@ -24,6 +24,7 @@ AUDIO_REVISIONS = (
     ('footstep', 'f5ae96894ba33cecddd8b7d8c4166a02c088aba5', 'scripts/validate-footstep-audio-runtime.py'),
     ('positional', 'b9b36889c35cb3c7773d8ac3cee7ee650d85af25', 'scripts/validate-positional-audio-runtime.py'),
     ('music', 'c472c0a31548e076bfee0252e4e4970714c8c019', 'scripts/validate-music-audio-runtime.py'),
+    ('interior', '7b8dd659d409974126790b8a417533bded9c2e5e', 'scripts/validate-interior-audio-runtime.py'),
 )
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
@@ -194,13 +195,13 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
     for name, revision, validator in AUDIO_REVISIONS:
         args = [sys.executable, validator] + (['--reviewed'] if name not in ('buses', 'material') else [])
         plan.append(('boundary-' + name, args, revision))
-    plan += [('boundary-interior-current', [sys.executable, 'scripts/validate-interior-audio-runtime.py', '--reviewed'], None),
+    plan += [('boundary-water-contact-current', [sys.executable, 'scripts/validate-water-contact-runtime.py', '--reviewed'], None),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
     if finish_interior and prior.get('resumed_from'):
-        plan.insert(26, ('boundary-interior-resume',
-                        [sys.executable, 'scripts/validate-interior-audio-runtime.py', '--reviewed'], None))
+        plan.insert(len(plan) - 19 + 9, ('boundary-water-contact-resume',
+                        [sys.executable, 'scripts/validate-water-contact-runtime.py', '--reviewed'], None))
     rows = prior['stages']
     if len(rows) != len(plan) + 1:
         raise ValueError('Resume stage inventory changed')
@@ -270,11 +271,11 @@ def main(resume_smoke=False, finish_interior=False):
                     if name not in ('buses', 'material'):
                         args.append('--reviewed')
                     run.stage('boundary-' + name, args, tree, env, revision)
-            run.stage('boundary-interior-current', [sys.executable, 'scripts/validate-interior-audio-runtime.py', '--reviewed'])
+            run.stage('boundary-water-contact-current', [sys.executable, 'scripts/validate-water-contact-runtime.py', '--reviewed'])
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
-            run.stage('boundary-interior-resume', [sys.executable, 'scripts/validate-interior-audio-runtime.py', '--reviewed'])
+            run.stage('boundary-water-contact-resume', [sys.executable, 'scripts/validate-water-contact-runtime.py', '--reviewed'])
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
@@ -293,13 +294,30 @@ def main(resume_smoke=False, finish_interior=False):
                        for mode in ('normal', 'muted', 'zero', 'mono-reduced')]
         if any(data != saves[0] for data in saves) or any(data != transcripts[0] for data in transcripts):
             raise ValueError('Current audio changed complete saves or transcripts')
+        water_modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'no-action')
+        for mode in water_modes:
+            output = run.directory / f'water-{mode}.json'
+            run.stage('water-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                      env=dict(environment, ALLRPCS_WATER_MAIN_CHECK='1', ALLRPCS_WATER_MODE=mode,
+                               ALLRPCS_WATER_CHECK_OUTPUT=str(output)), retry_native=True,
+                      completion='PASS: water Main:')
+        water_saves = [(run.directory / f'water-{mode}.json.save.json').read_bytes() for mode in water_modes]
+        water_reports = [json.loads((run.directory / f'water-{mode}.json').read_text()) for mode in water_modes]
+        if any(data != water_saves[0] for data in water_saves) or any(
+                row['transcript'] != water_reports[0]['transcript'] for row in water_reports):
+            raise ValueError('Water action changed complete saves or transcripts')
+        if any(row['commits'] != 5 or row['presentations'] != 5 for row in water_reports[:-1]) or any(
+                water_reports[-1][key] != 0 for key in ('commits', 'presentations')):
+            raise ValueError('Water action schedule changed or no-action emitted feedback')
+        run.report.update(water_save_sha256=sha(water_saves[0]), water_transcript=water_reports[0]['transcript'],
+                          water_modes=list(water_modes))
         generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
         run.report['generated_uid_cleanup'] = cleanup_generated_uids(ROOT, generated, existed, sources)
-        run.stage('boundary-interior-after-runtime', [sys.executable, 'scripts/validate-interior-audio-runtime.py', '--reviewed'])
+        run.stage('boundary-water-contact-after-runtime', [sys.executable, 'scripts/validate-water-contact-runtime.py', '--reviewed'])
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
-        print('PASS: full current quality; frozen contracts, current product and four-mode parity', flush=True)
+        print('PASS: full current quality; frozen contracts, current product, four interior modes and six water/control modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()

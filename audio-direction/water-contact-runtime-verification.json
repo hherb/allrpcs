@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-stream-water-contact-runtime-integration",
+  "status": "approved_scope_implemented_and_verified",
+  "owner_authority": {
+    "path": "audio-direction/water-contact-runtime-authority.json",
+    "sha256": "35c065c18eb42711e7bfe6e1221ee0825beb64bcc7bad6ba69c8a339a452f7dc"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/water-tool-owner-scope.md",
+      "sha256": "1d091a79a8f9f6c633c5a100618dd04942b55a9dad514041b2ce0b7c90a4b96d"
+    },
+    {
+      "path": "audio-direction/water-tool-owner-scope.json",
+      "sha256": "9196f5e82afb3011bf44d553ce99b8f57d347216d86c36b4834b898143f4f451"
+    }
+  ],
+  "baseline_commit": "7b8dd659d409974126790b8a417533bded9c2e5e",
+  "completion": "The exact owner-approved single-site action/reach/audio scope is implemented, cumulatively reviewed and verified. No additional selection or approval of this scope is pending. Standing scope commit/push authority applies; no wider action or release is inferred.",
+  "implementation_review": {
+    "request_ownership": "Exact current request/state/actor/site; state swapped before isolated observers; no durable mutation",
+    "live_access": "Actual finite supported position, exact retained layout/transforms/navigation contents, inclusive32 reach/inset12; human/turn/reading/focus/process guards",
+    "lifecycle": "Bounded active cooldown; invalid time preserves remaining cooldown/cancels; pause/focus freeze/cancel; failed restore unchanged/successful reset no replay",
+    "audio": "One consumed commit per presentation; independent Effects player, nonlooping, no Master fallback/retry, caption and status independent of output",
+    "protected_scope": "Closed scopes, all accepted art/audio evidence, save/perception/geometry/providers unchanged",
+    "necessary_packaging_detail": "Added water-contact notice-folder patterns to the three existing export presets; 34 streams/17 actual files (15 proposal groups)"
+  },
+  "verification": {
+    "new_unit_cases": 22,
+    "parity_modes": 6,
+    "master_cases": 16,
+    "native_viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "accepted_material_bindings": 82,
+    "packaged_streams": 34,
+    "packaged_notice_files": 17,
+    "proposal_notice_groups": 15,
+    "full_quality": "passed",
+    "full_quality_stages": 48,
+    "total_unit_tests": 5195,
+    "retained_godot_launches": 293,
+    "terrain_checks": 8,
+    "graphical_main": true,
+    "interior_modes": 4,
+    "quality_contract_tests": 7,
+    "resume_inventory": "38 stages; ordinary pipeline AST unchanged; changed commands rejected"
+  },
+  "rejection_probes": [
+    "altered proposal",
+    "altered PCM",
+    "forged/repeated presentation",
+    "changed retained geometry",
+    "missing measured case"
+  ],
+  "runtime_bindings": [
+    {
+      "path": "src/Domain/Actions/StreamWaterContactRequest.cs",
+      "sha256": "47b696044ceac4fc3026d0fb9a8ebbd8123de72ca74513431868ce26190677ca"
+    },
+    {
+      "path": "src/Domain/Actions/StreamWaterContactCommit.cs",
+      "sha256": "833d8eb26a6aa6ddb15776377c5f4816f6b4056efc6514e304ebbfc7892b54f9"
+    },
+    {
+      "path": "src/Domain/Actions/StreamWaterContactState.cs",
+      "sha256": "552f8bfe2e3c1b6a01f10a7ebcddfbd60f845c3a653db89234b78da6875f07ba"
+    },
+    {
+      "path": "src/Application/Actions/StreamWaterContactAccessPolicy.cs",
+      "sha256": "b2a2997c0e8b16e57e74c98514f03a639414522d0f0743271c992f89a1a3a19f"
+    },
+    {
+      "path": "src/Application/Actions/StreamWaterContactController.cs",
+      "sha256": "05ab6ae7251f178ce8a3892ead218e010ff96047b73e9fa1747d6096bc8500a9"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/StreamWaterContactRequestTests.cs",
+      "sha256": "6f255f504962c7a84fe674a94dc97aff94d1941f778d61b8fa9f1178b902031c"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/StreamWaterContactCommitTests.cs",
+      "sha256": "b9adbe0b85fcd9eadc62c44dd7a41f79ee34a87306b5a0e9a833498e2ffa4843"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/StreamWaterContactStateTests.cs",
+      "sha256": "064b6ea93234ab8573e749a8bd82c9a2f9e2de541e0e2cd07a3e98621b51b6b8"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/StreamWaterContactAccessPolicyTests.cs",
+      "sha256": "e74ebb8bd9f851f8f628a78b9cfa619cc578db1921fbf9fbb76ca4b45644d359"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/StreamWaterContactControllerTests.cs",
+      "sha256": "0c1e7ecbeedef9ad2ac84da7aa2fd4413003e6a186c764d37a21e895f2f8866d"
+    },
+    {
+      "path": "game/OpeningRegionStreamWaterContactCoordinator.cs",
+      "sha256": "00800f2830b11b3f07b6898e9e4674dfd90a492c9a95115ae9b32e22140f5cb4"
+    },
+    {
+      "path": "game/StreamWaterContactPanel.cs",
+      "sha256": "892ba4a805db2b0ce22f4e7061b765fb5066b23428249ab2157cf3a81cf2e753"
+    },
+    {
+      "path": "game/OpeningRegionWaterContactAudioController.cs",
+      "sha256": "c12ed29324ce1a54694d0a9d0cdb0bd1555848719248144493c179501bd6636b"
+    },
+    {
+      "path": "game/WaterContactRuntimeSmokeCheck.cs",
+      "sha256": "017497a1e6f50626c18d0f8f33ba4e96a68a3d26356c8baebcc87949caefabcf"
+    },
+    {
+      "path": "game/WaterContactRuntimeSmokeCheck.tscn",
+      "sha256": "5a921e3524a8face1446cc18ef61e239dd6c03a7330dd98ef7856bb9f9186d9a"
+    },
+    {
+      "path": "game/WaterContactAudioOutputCheck.cs",
+      "sha256": "73e8c008af3ad645715a2d24b5e1ef29e99b18c7001d261c199a1c2313ef8139"
+    },
+    {
+      "path": "game/WaterContactAudioOutputCheck.tscn",
+      "sha256": "fc2b1e38333f886c8b3ac24706b358dc66248dd37ecb8693e505b43c25279d1d"
+    },
+    {
+      "path": "scripts/prepare-water-contact-audio.py",
+      "sha256": "eba39892a5fae09ad23577d165a5d1ceb383b51a42aa9bf3a399feed3310e1f1"
+    },
+    {
+      "path": "scripts/check-water-contact-audio-output.py",
+      "sha256": "43ffa7fbe7e895ca07f56adcbbf811aea06ce73752f5daae03ff8a3ed994f58e"
+    },
+    {
+      "path": "scripts/validate-water-contact-runtime.py",
+      "sha256": "f55e91fe504192eef36dd9ddde04000e2cd8029c848423aa316c4e8e098fa2e1"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav",
+      "sha256": "d24f7e4473c49e19d62c024e5fee66d7ab944c2d73842314e841372ccac98ad4"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav.import",
+      "sha256": "8b8cf891e2af7b5429cb3aba0a169a51a2223a8ee073e9f2d193824932c0a73e"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CREDITS.txt",
+      "sha256": "4bfa8118ba5a629eec7fa926c9f67fc5817ea4ce7c581e3e21376e01c9df8656"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/water-contact/provenance.json",
+      "sha256": "444aa206c5bbf8196d30f86521ed2b949abbb833e16e72c8a598e738e100b54e"
+    },
+    {
+      "path": "game/OpeningRegionStreamWaterContactCoordinator.cs.uid",
+      "sha256": "e71d916d29d7e9b3b1578a6a7688006066d04b50381f588e137893b9c3566ba5"
+    },
+    {
+      "path": "game/StreamWaterContactPanel.cs.uid",
+      "sha256": "ce59dd043e684183d3783cd30859db91e638efe54ce00181a796e34a24d47e64"
+    },
+    {
+      "path": "game/OpeningRegionWaterContactAudioController.cs.uid",
+      "sha256": "787e3199b4105d62f150c58ca67a52d64370ea6bcb089378e48f70c4aad7bc0a"
+    },
+    {
+      "path": "game/WaterContactRuntimeSmokeCheck.cs.uid",
+      "sha256": "a4c8510c8f47189acc3316f0c026ce1118636dbe76bb5b2230d87aa911a9b997"
+    },
+    {
+      "path": "game/WaterContactAudioOutputCheck.cs.uid",
+      "sha256": "9e04ba26d1525fe928bc4b9526159e8f860169e3c5e6519526666886b89a0184"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "60887bad308a09f970276826b9ce5cbfd81376d3c63b459b4125e432485c7eae"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "27e18544e0e0daaf3562741408c0075f9945f38230e8b7cec7cf56b68392d889"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "36535bd6a678f99cef3506fbb77719bd8c3a7cd9456adf3a9817356bb041f9c8"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "bf17a94e77d91e482f9483f452ed7af6a58f59fcbdf94ceb44b939223f2b610d"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "51d346fd5ef0532c554a0b597833a2fbf41322af493df20bffd516a8c959db6a"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/water-contact-runtime-review/README.md",
+      "sha256": "aa671e6bca6c20af056e5d2dd3c88a6b87b80502c114a42607b413e09ad04480"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/build.log",
+      "sha256": "ed3ba4608d3b48b445149cf69ba1ecd309bee1afdb4751ec2b39f01b2ad9b89d"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/commands.json",
+      "sha256": "8f472166dd9d34594814c4d2ecf7c943deab78a6081b7d15adffed677d1776bf"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/development-notes.json",
+      "sha256": "be8374a1bcdf8915b1aeb25d7c91a6cc68157cdd05f38ed8f00d0cc3a99530cc"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/export.log.gz",
+      "sha256": "a2ac72c6e8f66309ec87848c76af97ed94cd717d7adaefac222edb0b1d9a3896"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/extract.log.gz",
+      "sha256": "e94b2234bc58396119b7fcbefb597a1a6a5c7718e6addece6fb6e7e60e369935"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-default-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-effects-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-master-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-missing-stream-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-no-action-1.log",
+      "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/main-quiet-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/render.log",
+      "sha256": "cf58f56ea2bca1920616d65814863a7947afae7ea6489da33dcd27738305d26a"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/run-parity.py",
+      "sha256": "1b2a507a1b3b93414547340eab69f2b5ceb623fff0aaa8c0d56c619f141fdb4c"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/stopped.log.gz",
+      "sha256": "44de4387e4416258953ec9461b9d77c7db03c9c6d42998279cbc54f45c8dd362"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/test-quality-resume.py",
+      "sha256": "2450e96844e11f7db98cfa07b60623751c1f8e5f746fe995ab431846f9383f27"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/verify-export.py",
+      "sha256": "aed591f350a4e91b0f2b022c622de6d427e45eb8278ba102ad3c0cbe0bf6c41d"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/checks/views.log",
+      "sha256": "4f2b1a3644a1b7527192ed49bc2c911a62a8255ee26aeaec21396b1103ad16c0"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/native/source.pcm16.gz",
+      "sha256": "b59139ba2710eadd78de79a988329b4871a804190ee450a987b8bb9d0251ea98"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/native/views.json",
+      "sha256": "4baf946357905921c259bd595ef7da068d73b8dfe590fefddfaf05d2f339c3ec"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/output/capture.json",
+      "sha256": "7fb33a190cd48f5affc3ce00bb0cb9287ccec8336b56dd9ec25c0160da3c36ca"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/output/master.wav.gz",
+      "sha256": "aa57b7598b6a6e3e5db1d55f0532c5a94b4696181edb1933e342d498c9c7583a"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/output/measurements.json",
+      "sha256": "56675eb5b95ee67ce5f3e89f581f3bc6a37103a92d7ed5d8d37698855fa7ca81"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/output/timeline.json",
+      "sha256": "6bcf99d316b0458b87a2a51d72e8fe66583341436f23bbe93ac356e4dadba5fe"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/packaging/audio-subset.zip",
+      "sha256": "ad456c6d525bc86f59bebcb7e7e31a387f6476c0afec8f83b60b33e9553b706e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/packaging/inventory.json",
+      "sha256": "6039fedafe1c05e7378a0ee822eea120dc37ba03551622221e06c7873dd21536"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/default.json",
+      "sha256": "4e019844b293048864a9676f0d39dd34c7d37e62c57727c1a29cacdc168d6f1b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/effects-muted.json",
+      "sha256": "65761c93889cf8309e7b389f6b938bf87cc9d27354dafd9953c2788e71b5964b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/master-muted.json",
+      "sha256": "9d1de9f0fa3d1496f928b5e7d207de0280af1a6f17ad7f563f61766e135cf9af"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/missing-stream.json",
+      "sha256": "6b849421fc6f4e72ad9166e50e22ba8ef8f03dbc015ba11fc93acf78e897d497"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/no-action.json",
+      "sha256": "9aaa0e2c5ccf07097dfab90092d9c180fd2fe0c12ea799ce5013d9f4d3f9cac3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/quiet.json",
+      "sha256": "9e20cb7df80b3b000db1819d797b5d173d0368c3802edc44cf7e11e2496ffeea"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/parity/verification.json",
+      "sha256": "c5f92b4c72d87622d39fc9458f35d42581c4bf159dbd8a1489688616096f3d92"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "10ea7064a517cea981f6cb4d52ae237c594d7244da9cb4451061501c0f6f5972"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/17-boundary-water-contact-current-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/18-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/19-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/20-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/21-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/22-product-4-1.log.gz",
+      "sha256": "a8e8bd7b29a7855aaaafbe3bbf4dafd5de15582f5a603eeb764570b53a91751d"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/23-product-5-1.log.gz",
+      "sha256": "17042b08e9c5a14d9fb0b414fc33356871b6130771db6866c12ee30e5df2559c"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/24-product-6-1.log.gz",
+      "sha256": "80669a87459f923497559a16f55d7466a83387c48dd85199a8dabfd51b8e9199"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/25-product-7-1.log.gz",
+      "sha256": "fc8e0a05501638f6380ad9e678a6de5a1656f88137a947e2f85d1a74ad90b29b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/26-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/27-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/28-product-10-1.log.gz",
+      "sha256": "7bf26570a8a70530ee799650080109357c282540e9485a89512580012056dd59"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/29-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/30-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/31-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/32-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/33-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/34-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/35-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/36-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/37-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/38-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/39-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/40-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/41-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/42-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/43-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/44-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/45-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/46-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/47-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/48-boundary-water-contact-after-runtime-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/executed-runner.py",
+      "sha256": "30079a417be63b105a9542a9473bc82b03f3c8ae1dc20e59eb8e3e82eb223701"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-mono-reduced.json",
+      "sha256": "69e206d7d377b0fa1ac34b38fad4fd17ebf576b845044d1998aec33de2822b4c"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-mono-reduced.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-muted.json",
+      "sha256": "91ec0ea2bc640084d88e704b5455b950e330253a220ffd838680931ef43df9c6"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-muted.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-normal.json",
+      "sha256": "fc1208db158742481c0979666385e40a22ac76f95c56b986b35de9d6cd927480"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-normal.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-zero.json",
+      "sha256": "20d7f4c54a48b859e2ce8d512dc9f64d4f6722270177147548098c47229dbeef"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/interior-zero.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/resume-before-fix.log",
+      "sha256": "8b1b81ec995c6449f9ef00ad6b986ea1633d7c5a01e54dbdd7841a2e0490d04f"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/resume-verification.json",
+      "sha256": "7a2128d272c13e271601a762badd697b59a245e5c4926547348e12dd3d120a36"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/resume.log",
+      "sha256": "abffdad979124da8bdaee99d8473fe51250886219c9a1f289603956ac226ae71"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/summary.json",
+      "sha256": "24d8d0e1cc63879866baa68d252beb35f16a3f85e21bc8438853a5ec74f6398b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-default.json",
+      "sha256": "4e019844b293048864a9676f0d39dd34c7d37e62c57727c1a29cacdc168d6f1b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-effects-muted.json",
+      "sha256": "65761c93889cf8309e7b389f6b938bf87cc9d27354dafd9953c2788e71b5964b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-master-muted.json",
+      "sha256": "9d1de9f0fa3d1496f928b5e7d207de0280af1a6f17ad7f563f61766e135cf9af"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-missing-stream.json",
+      "sha256": "6b849421fc6f4e72ad9166e50e22ba8ef8f03dbc015ba11fc93acf78e897d497"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-no-action.json",
+      "sha256": "9aaa0e2c5ccf07097dfab90092d9c180fd2fe0c12ea799ce5013d9f4d3f9cac3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-quiet.json",
+      "sha256": "9e20cb7df80b3b000db1819d797b5d173d0368c3802edc44cf7e11e2496ffeea"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/water-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/captions-off-1280.png",
+      "sha256": "51fda8ddef128d54413f231313b5a69b3e45ad93e674d4901a3c0784c29316e3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/captions-off-1920.png",
+      "sha256": "601942f354659bf2823b0332e47c382e99828290c5b095b305584f8ba02df367"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/contact-1280.png",
+      "sha256": "4e91c2f3e2523ceb106e6625a7610073ad7835700ea96a55eed6a50920a26b16"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/contact-1920.png",
+      "sha256": "09e3769db9412e8620f9e6cb0b663478f2e8482a42c0d3079793ef2f85cd6736"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/credits-1280.png",
+      "sha256": "d2084f3b65a9b713e4834a0db6ee284b121dd3bc9cb8202703401625d8c9a35b"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/credits-1920.png",
+      "sha256": "2e31f245a2f1096384221521e69271518ceb34a631d0222614e0ecf1ca312873"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/history-1280.png",
+      "sha256": "788ecd8fa586b2ef566ded93fb79165105efd40c0c9854bb21b4ba2d24232ef3"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/views/history-1920.png",
+      "sha256": "f185fdf5d84b4016b1923e79924766a0ad118001dc23e11c8ff2d9c0f13c9b6a"
+    }
+  ],
+  "limits": [
+    "Abstract hand contact; no drinking/washing/refill or new hand animation",
+    "Controlled Master output; no fresh device listening/ordinary-play loudness claim",
+    "Resource export only; existing missing template/C# solution lookup warnings; no executable release"
+  ],
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

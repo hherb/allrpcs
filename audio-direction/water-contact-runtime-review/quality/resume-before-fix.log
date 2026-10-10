@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/audio-direction/water-contact-runtime-review/checks/test-quality-resume.py", line 71, in <module>
+    main()
+  File "/Users/hherb/src/allrpcs/audio-direction/water-contact-runtime-review/checks/test-quality-resume.py", line 42, in main
+    reused = quality.resume_prefix(prior, directory, art, product, report, finish_interior=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hherb/src/allrpcs/quality.py", line 210, in resume_prefix
+    raise ValueError('Resume command did not complete unchanged: ' + row['name'])
+ValueError: Resume command did not complete unchanged: product-1
