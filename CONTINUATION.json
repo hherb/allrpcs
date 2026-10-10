@@ -486,6 +486,20 @@
           "sha256": "bd5099197aa8dac20935801a06451022b1d60daa2ded92db13d46e1b54f1b764"
         }
       ]
+    },
+    {
+      "id": "phase9-container-cloth-action-owner-scope",
+      "reason": "Finite read-only container/cloth proposal complete on 2026-10-10: one human cask-cover adjustment, explicit wooden lid/cotton outer cover, 32-pixel supported reach, transient exact owner/four-second cooldown, one byte-exact full A02 passage, controls/seventh caption/notices and finite validation/files. All 82 accepted material bindings and protected tracked inputs retained; no runtime/material/PCM/geometry/save/perception change. One genuinely new implementation grant remains pending. Standing task publication applies; completed scopes stay closed.",
+      "evidence": [
+        {
+          "path": "audio-direction/container-cloth-owner-scope.md",
+          "sha256": "520fe5159972ad217c796beb9e4fa21327cf4f16d3a4843e067bfe18aa1e8daa"
+        },
+        {
+          "path": "audio-direction/container-cloth-owner-scope.json",
+          "sha256": "e8deef9efab44006a5bd6c1306a4eb81195126f40cfa47cfd560ee8d50cf28ce"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -607,19 +621,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-container-cloth-action-owner-scope",
-    "title": "Define the first container/cloth action owner",
+    "id": "phase9-cask-cover-handling-runtime-integration",
+    "title": "Implement the first cask-cover handling action after the new scope grant",
     "status": "ready",
-    "workstream": "audio-container-cloth-owner-planning",
+    "workstream": "audio-cask-cover-handling-runtime",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "Accepted A02 container/cloth material has no named action commit owner, authored interaction/material reach or extraction/presentation contract. The completed water action does not supply those distinct contracts.",
-    "instructions": "Prepare one concrete read-only first container/cloth action proposal against existing live action, inventory, material and access sources. Name the exact missing gameplay/material owner and minimum changes, with a finite validation/extraction plan. Preserve accepted A02 and closed water/grinding/treatment scopes unchanged; record one genuinely new scope decision before implementing a new action, reach, physical/material claim or PCM derivative.",
-    "completion_condition": "One hash-bound proposal names a single container/cloth action owner, its actual material/access/input/state boundaries, candidate extraction, changed files and finite verification; one new owner authority decision is identified. No runtime or PCM is installed during planning.",
+    "missing_deliverable": "The concrete cask-cover action/material/reach and exact A02-C01 proposal is complete; its single new owner implementation grant is pending. No action/PCM has been installed.",
+    "instructions": "Await the one requested owner decision on audio-direction/container-cloth-owner-scope.md/.json. Do not infer implementation authority from continuation or publication. After approval, bind that exact grant and implement the whole finite proposal, verify/review/document and publish within the same session. Preserve all existing closures and accepted materials.",
+    "completion_condition": "Exact proposed action/material/reach, transient commit owner, controls/status/seventh caption, A02-C01 PCM/notices and finite unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded grant; standing scoped publication done.",
     "outputs": [
-      "audio-direction/container-cloth-owner-scope.md",
-      "audio-direction/container-cloth-owner-scope.json"
+      "audio-direction/cask-cover-runtime-authority.json",
+      "audio-direction/cask-cover-runtime-verification.json",
+      "audio-direction/cask-cover-runtime-review/README.md"
     ],
-    "boundary": "Read-only proposal preparation for the distinct missing container/cloth owner. No new gameplay/action execution, inventory/material/reach changes, PCM/assets, runtime installation, geometry/save/perception/provider changes, accepted-art/audio revision or release. Do not reopen completed water or other closed scopes."
+    "boundary": "Pending a genuinely new gameplay/material/reach/audio grant. No implementation before it arrives; after grant only the exact published cask-cover proposal. No water/grinding/treatment reopening, other actions, inventory/durable state/geometry/art/perception/provider changes or release."
   },
   "deferred_slices": []
 }

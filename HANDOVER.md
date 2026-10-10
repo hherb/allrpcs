@@ -29,6 +29,13 @@ No inventory, refill/drinking/washing, physical geometry, save, perception, LLM 
 artwork change is included. Wider container/cloth/tool actions, regional audio identity,
 full room acoustics and voice remain unfinished.
 
+The first container/cloth proposal is complete: **Adjust cask cover** at the existing
+village cask, explicitly proposed wooden lid/cotton cover, 32-pixel supported reach,
+four-second transient cooldown, exact 3.75-second A02 slice and independent feedback.
+See [proposal](audio-direction/container-cloth-owner-scope.md) and
+[hash-bound plan](audio-direction/container-cloth-owner-scope.json). No runtime or PCM
+is installed. One new scope grant is pending; do not restart proposal planning.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. It does not authorize new gameplay/layout/physical scope
@@ -37,34 +44,33 @@ or a release.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-container-cloth-action-owner-scope — Define the first container/cloth action owner** (ready).
+**phase9-cask-cover-handling-runtime-integration — Implement the first cask-cover handling action after the new scope grant** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: Accepted A02 container/cloth material has no named action commit owner,
-authored interaction/material reach or extraction/presentation contract. The completed water action
-does not supply those distinct contracts.
+Missing deliverable: The concrete cask-cover action/material/reach and exact A02-C01 proposal is
+complete; its single new owner implementation grant is pending. No action/PCM has been installed.
 
-Prepare one concrete read-only first container/cloth action proposal against existing live action,
-inventory, material and access sources. Name the exact missing gameplay/material owner and minimum
-changes, with a finite validation/extraction plan. Preserve accepted A02 and closed
-water/grinding/treatment scopes unchanged; record one genuinely new scope decision before
-implementing a new action, reach, physical/material claim or PCM derivative.
+Await the one requested owner decision on audio-direction/container-cloth-owner-scope.md/.json. Do
+not infer implementation authority from continuation or publication. After approval, bind that exact
+grant and implement the whole finite proposal, verify/review/document and publish within the same
+session. Preserve all existing closures and accepted materials.
 
-Done when: One hash-bound proposal names a single container/cloth action owner, its actual
-material/access/input/state boundaries, candidate extraction, changed files and finite verification;
-one new owner authority decision is identified. No runtime or PCM is installed during planning.
+Done when: Exact proposed action/material/reach, transient commit owner, controls/status/seventh
+caption, A02-C01 PCM/notices and finite unit/live/output/parity/native/packaging/full-quality
+evidence are complete under the recorded grant; standing scoped publication done.
 
 Expected outputs:
 
-- `audio-direction/container-cloth-owner-scope.md`
-- `audio-direction/container-cloth-owner-scope.json`
+- `audio-direction/cask-cover-runtime-authority.json`
+- `audio-direction/cask-cover-runtime-verification.json`
+- `audio-direction/cask-cover-runtime-review/README.md`
 
-Boundary: Read-only proposal preparation for the distinct missing container/cloth owner. No new
-gameplay/action execution, inventory/material/reach changes, PCM/assets, runtime installation,
-geometry/save/perception/provider changes, accepted-art/audio revision or release. Do not reopen
-completed water or other closed scopes.
+Boundary: Pending a genuinely new gameplay/material/reach/audio grant. No implementation before it
+arrives; after grant only the exact published cask-cover proposal. No water/grinding/treatment
+reopening, other actions, inventory/durable state/geometry/art/perception/provider changes or
+release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

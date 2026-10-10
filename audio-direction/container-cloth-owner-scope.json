@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-container-cloth-action-owner-scope",
+  "status": "proposal_complete_pending_new_owner_scope",
+  "implementation_scope_id": "phase9-cask-cover-handling-runtime-integration",
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "proposal_document": {
+    "path": "audio-direction/container-cloth-owner-scope.md",
+    "sha256": "520fe5159972ad217c796beb9e4fa21327cf4f16d3a4843e067bfe18aa1e8daa"
+  },
+  "authority": {
+    "planning": "Current owner: Read HANDOVER.md and follow the instructions; ledger selects read-only proposal.",
+    "implementation_granted": false,
+    "decision_count": 1,
+    "decision": "Approve one human cask-cover adjustment, wooden lid/cotton outer cover, new 32-pixel reach and transient owner, exact A02-C01 feedback/controls/notices and all finite dependent verification.",
+    "publication": "Standing ALWAYS commit and push when you finish a task; excludes release and new implementation authority.",
+    "publication_record": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    }
+  },
+  "live_findings": {
+    "target": "village-water-cask",
+    "world_object_owner": "TemporaryWorldObjectSource / WorldObjectController",
+    "scene_target": "InteractionCandidates/WaterCask",
+    "initial_position": [
+      2200,
+      900
+    ],
+    "current_description": "A covered cask beside the village well.",
+    "focus_range_pixels": 112,
+    "current_seeker_inventory": "Empty CharacterInventory; separate search context supplies field-lens only.",
+    "no_current_contract": [
+      "Container/cloth commit",
+      "Wooden lid/cotton cover material binding",
+      "Handling reach/permission",
+      "A02 runtime extraction"
+    ],
+    "new_material_declarations": [
+      "Wooden cask and lid",
+      "Cotton outer cover, integral to the cask, not collectible"
+    ],
+    "new_action": "Seat the wooden lid then smooth its cotton cover; end covered; do not inspect contents.",
+    "inventory_authority": "Environmental permission for this action only. No call to or alteration of inventory use/take/drop/give/ownership/capacity.",
+    "physical_access_authority": "New action-local reach; never populates CharacterPhysicalAccessSnapshot or authorizes another subsystem.",
+    "sabotage": "Visible original-body eligibility and actual target position only; no hidden contamination/evidence tests; no recovery/mutation."
+  },
+  "action_contract": {
+    "domain_owner": "CaskCoverHandlingRequest / Commit / State",
+    "application_owner": "CaskCoverHandlingController",
+    "sole_live_producer": "OpeningRegionCaskCoverHandlingCoordinator",
+    "material_owner": "OpeningRegionCaskCoverMaterialBinding bound to exact world object and named marker",
+    "request": "Exact current issued request/state/actor/object/material binding; reobserve access at commit; reject copies/stale/duplicate/overflow.",
+    "commit": "Replace immutable state and cooldown before isolated observers; no rollback/retry for presentation failure.",
+    "cooldown_active_seconds": 4,
+    "maximum_delta_seconds": 0.25,
+    "feedback_seconds": 3.75,
+    "pause_focus_loss": "Freeze cooldown; cancel feedback; no replay.",
+    "invalid_delta": "Cancel feedback; retain cooldown.",
+    "successful_load": "Invalidate requests/commits; clear cooldown/presentation; no replay.",
+    "failed_load": "No changes.",
+    "cancellation": [
+      "Invalid access/owners",
+      "Departure",
+      "Target translation during feedback",
+      "Teleport over 96 pixels",
+      "Pause/focus loss",
+      "Reading/customization overlay",
+      "Disabled actor/target",
+      "Successful load",
+      "Teardown",
+      "Expiry"
+    ],
+    "unchanged": [
+      "Save schemas/bytes",
+      "Inventory/ownership",
+      "Disease/world time",
+      "Sabotage/evidence/discovery",
+      "Perception/knowledge/hearing",
+      "Transcript/LLM/provider intentions",
+      "Navigation/collision/art",
+      "Water/grinding/treatment owners"
+    ]
+  },
+  "access": {
+    "reach_pixels_inclusive": 32,
+    "contact_point": "Current marker centre in world coordinates; no hand/height simulation.",
+    "navigation_tolerance_pixels": 1,
+    "supported_segment_maximum_sample_spacing_pixels": 4,
+    "live_guards": [
+      "Exact retained source nodes/world snapshot/object/material binding/current character",
+      "Current human processing Seeker; unpaused/focused",
+      "Current focus selects this cask",
+      "Target and original Body visible; substitute hidden; marker enabled/visible",
+      "Unchanged ready active navigation map/region/polygon and source transforms",
+      "Finite supported current actor/target positions and entire sampled straight segment",
+      "Preserved target scale/rotation; live translation allowed",
+      "No text entry/reading/customization overlay",
+      "No nonterminal/reserved character turn",
+      "Fresh explicit activation; cooldown elapsed"
+    ],
+    "initial_source_example": {
+      "actor": [
+        2168,
+        900
+      ],
+      "target": [
+        2200,
+        900
+      ],
+      "distance_pixels": 32,
+      "actor_cell_centre": [
+        2172,
+        900
+      ],
+      "route": [
+        "village-edge",
+        "village-square"
+      ],
+      "navigation_halfwidth_pixels": 24,
+      "status": "Source calculation only; live ordinary movement must be verified after grant."
+    },
+    "moved_target": [
+      1900,
+      1640
+    ],
+    "moved_rule": "Observe actual position, recheck support/segment/reach; old location never authorizes handling."
+  },
+  "presentation": {
+    "button": "Adjust cask cover",
+    "tooltip": "Seat the wooden lid and smooth its cotton cover.",
+    "status": "You adjust the cask cover.",
+    "caption": "Container and cloth handling",
+    "caption_line_count": 7,
+    "caption_owner": "Independent new line/timer; preserve six retained owners.",
+    "input": "Native mouse/Tab/Enter/Space; key echo/held rejection; no InputMap edit.",
+    "bus": "Effects",
+    "player": "One nonlooping local AudioStreamPlayer",
+    "gain_db": 0,
+    "caption_independent_of": [
+      "Master/Effects mute/gain",
+      "Range/mono",
+      "Missing stream/bus"
+    ],
+    "missing_bus": "Silence; no Master fallback; commit/status/caption remain valid.",
+    "no_new": [
+      "Spatial emitter/listener",
+      "Ducking/music interruption",
+      "Cue history",
+      "Art/hand animation"
+    ]
+  },
+  "proposed_resources": [
+    {
+      "id": "A02-C01",
+      "output": "game/assets/audio/cask-cover/A02-C01.wav",
+      "source": {
+        "path": "audio-direction/material-audition/clips/A02.wav",
+        "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d"
+      },
+      "frame_interval_half_open": [
+        48000,
+        228000
+      ],
+      "source_seconds_half_open": [
+        1,
+        4.75
+      ],
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "frames": 180000,
+      "seconds": 3.75,
+      "pcm_bytes": 1080000,
+      "pcm_sha256": "5dc4e93225eaad07ff94861d531aaed74e697d46bdcb7e85dea1db894c5bc041",
+      "first_last_frames_zero": true,
+      "edits": "Exact slice only; retain wood then full cotton sequence, all existing gain/fades; quarter-second silence tail.",
+      "created_during_planning": false
+    }
+  ],
+  "rights": {
+    "basis": "Accepted local provenance reused; no new legal/catalogue assessment or acquisition.",
+    "sources": [
+      {
+        "source_id": "wood-tool",
+        "title": "100 CC0 metal and wood SFX",
+        "author": "rubberduck",
+        "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "local_catalogue": {
+          "path": "audio-direction/material-audition/rights/wood-tool-catalogue.html",
+          "sha256": "9aa7dc287e83e5694be6c51f5880284a7b7cd9ed79c06a6c9e41f63fa24d1c56"
+        }
+      },
+      {
+        "source_id": "cloth",
+        "title": "Foley - Cotton clothes rustling - Fabric movement sound.wav",
+        "author": "khenshom",
+        "catalogue_url": "https://freesound.org/people/khenshom/sounds/481075/",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "local_catalogue": {
+          "path": "audio-direction/material-audition/rights/cloth-catalogue.html",
+          "sha256": "4c7992d381a1cae906275d6b53790fa46a541c7897bf5860a8ef93b8789206a2"
+        }
+      }
+    ],
+    "records": [
+      {
+        "path": "audio-direction/material-audition/provenance.json",
+        "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+      },
+      {
+        "path": "audio-direction/material-audition/candidates.json",
+        "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+      },
+      {
+        "path": "audio-direction/material-audition/CREDITS.txt",
+        "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+      },
+      {
+        "path": "audio-direction/material-audition/owner-acceptance.json",
+        "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+      },
+      {
+        "path": "game/assets/audio/material/CC0-1.0-deed.html",
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "new_downloads": 0,
+    "accepted_material_bindings_retained": 82
+  },
+  "implementation_files": {
+    "new": [
+      "src/Domain/Actions/CaskCoverHandlingRequest.cs",
+      "src/Domain/Actions/CaskCoverHandlingCommit.cs",
+      "src/Domain/Actions/CaskCoverHandlingState.cs",
+      "src/Application/Actions/CaskCoverHandlingAccessPolicy.cs",
+      "src/Application/Actions/CaskCoverHandlingController.cs",
+      "game/OpeningRegionCaskCoverMaterialBinding.cs",
+      "game/OpeningRegionCaskCoverHandlingCoordinator.cs",
+      "game/CaskCoverHandlingPanel.cs",
+      "game/OpeningRegionCaskCoverAudioController.cs",
+      "game/CaskCoverHandlingRuntimeSmokeCheck.cs",
+      "game/CaskCoverHandlingRuntimeSmokeCheck.tscn",
+      "game/CaskCoverHandlingAudioOutputCheck.cs",
+      "game/CaskCoverHandlingAudioOutputCheck.tscn",
+      "scripts/prepare-cask-cover-audio.py",
+      "scripts/check-cask-cover-audio-output.py",
+      "scripts/validate-cask-cover-runtime.py",
+      "tests/Domain.Tests/Actions/CaskCoverHandlingRequestTests.cs",
+      "tests/Domain.Tests/Actions/CaskCoverHandlingCommitTests.cs",
+      "tests/Domain.Tests/Actions/CaskCoverHandlingStateTests.cs",
+      "tests/Application.Tests/Actions/CaskCoverHandlingAccessPolicyTests.cs",
+      "tests/Application.Tests/Actions/CaskCoverHandlingControllerTests.cs",
+      "game/OpeningRegionCaskCoverMaterialBinding.cs.uid",
+      "game/OpeningRegionCaskCoverHandlingCoordinator.cs.uid",
+      "game/CaskCoverHandlingPanel.cs.uid",
+      "game/OpeningRegionCaskCoverAudioController.cs.uid",
+      "game/CaskCoverHandlingRuntimeSmokeCheck.cs.uid",
+      "game/CaskCoverHandlingAudioOutputCheck.cs.uid",
+      "game/assets/audio/cask-cover/A02-C01.wav",
+      "game/assets/audio/cask-cover/A02-C01.wav.import",
+      "game/assets/audio/cask-cover/CREDITS.txt",
+      "game/assets/audio/cask-cover/provenance.json",
+      "game/assets/audio/cask-cover/CC0-1.0-deed.html"
+    ],
+    "modify": [
+      "game/Main.tscn",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs",
+      "quality.py"
+    ],
+    "records": [
+      "audio-direction/cask-cover-runtime-authority.json",
+      "audio-direction/cask-cover-runtime-verification.json",
+      "audio-direction/cask-cover-runtime-review/README.md",
+      "audio-direction/cask-cover-runtime-review/checks/",
+      "audio-direction/cask-cover-runtime-review/output/",
+      "audio-direction/cask-cover-runtime-review/parity/",
+      "audio-direction/cask-cover-runtime-review/views/",
+      "audio-direction/cask-cover-runtime-review/native/",
+      "audio-direction/cask-cover-runtime-review/packaging/",
+      "audio-direction/cask-cover-runtime-review/quality/",
+      "CONTINUATION.json",
+      "HANDOVER.md"
+    ],
+    "quality": "Pin unchanged predecessor water validator and fixtures to baseline isolated Git snapshot; retain existing product/interior/water stages; add six cask/control modes, new output checks and before/after successor boundary.",
+    "channel_order": "Retain Channel final child.",
+    "excluded": [
+      "game/project.godot",
+      ".DS_Store",
+      "Frozen validators/scripts/quality.sh",
+      "Accepted art/audio/evidence",
+      "Existing world object description/placement/material resources",
+      "Existing water/grinding/treatment product owners",
+      "Existing navigation/collision/perception/inventory/save/provider source"
+    ]
+  },
+  "unchanged_inspected_inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a2bd62c147de2f2fe5984cd1f4062dda868ff98dd03b351a41d8b4ef8ed9b8c9"
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f150f8721bfd69641c7f96c6cf60f939a975dac961f30e98939e68b704b2b259"
+    },
+    {
+      "path": "scripts/check-continuation.py",
+      "sha256": "cedfd8ff820590463ff7e1ac64ed6b514bd77978a07e1c04f6d867ba0e6a7193"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "60887bad308a09f970276826b9ce5cbfd81376d3c63b459b4125e432485c7eae"
+    },
+    {
+      "path": "game/TemporaryWorldObjectSource.cs",
+      "sha256": "612bd6e679c652cf8af6fa228e9af0b7fe07ac8d49475a5a1433fd9b50210045"
+    },
+    {
+      "path": "game/WorldObjectController.cs",
+      "sha256": "3ff0882ef08393002fef63bbd7b9392dc667f1683da201a053526b1a1f0abc59"
+    },
+    {
+      "path": "game/GreyboxInteractionTarget.cs",
+      "sha256": "c2c3d103093a6eb8a2cf39c74f3d75334e80b0adac9c4735aacdbd5673ac1f1b"
+    },
+    {
+      "path": "game/InteractionFocusController.cs",
+      "sha256": "6d552fd6b74a09d80414ef3733bbc85be0d834cdde83447be120ff19ce00380d"
+    },
+    {
+      "path": "game/TemporarySeekerCharacterSource.cs",
+      "sha256": "75ae4d461630b88a47b76dc531fca7d03921c37bd595c1951e0694299c2d29c6"
+    },
+    {
+      "path": "game/TemporaryFocusedSearchContextSource.cs",
+      "sha256": "e7b817319eba38a40f584c617f617db143c9066cabc1f0895c58d53ac0d978d4"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryUsePolicy.cs",
+      "sha256": "f9b186178edf1c02ef91abca27317333d12a4d8705e76c1bef6664bbf8e0934f"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryOwnershipSnapshot.cs",
+      "sha256": "c29c8db93dbd1630033f34bd71da3de4b6cec722b7ccfb05ead3a7bec5349058"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryTakePolicy.cs",
+      "sha256": "e120e81f5a6f7a69d858bce630f07611b57f66b3baebb4fe95e7f0ff76ce4fb5"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryDropPolicy.cs",
+      "sha256": "301c5775a0842dd2ad4d110fc461f219ed1ce47e7ad61cb35b9e9e60903fc973"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryGivePolicy.cs",
+      "sha256": "dce4732a6da0fe1f9bdc4f3ac58bdebf756e0df701dd73172f45d1c404cbc5ad"
+    },
+    {
+      "path": "src/Domain/Characters/CharacterPhysicalAccessSnapshot.cs",
+      "sha256": "37fa501946e6ab0d6c43405399cc489ebc5c5be75e63a6d08c89e31dfb63f50e"
+    },
+    {
+      "path": "src/Domain/Characters/CharacterPhysicalAccessPolicy.cs",
+      "sha256": "917a27f5ea47e19ed133e81fbf9c77037c418bbf59cba4de3cbf3619432f842a"
+    },
+    {
+      "path": "game/TemporaryCharacterObjectSabotageMovePresentationFlowController.cs",
+      "sha256": "3ed2dae176722c611cdcc607ba5a263db848df057f305344019645660f5704c7"
+    },
+    {
+      "path": "game/TemporaryCharacterObjectSabotagePresentationFlowController.cs",
+      "sha256": "0a2de679dec887cfec7db20c420703dd7c89d3909c8030ba3c3d9cf814ebad94"
+    },
+    {
+      "path": "game/TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController.cs",
+      "sha256": "605de335219d8bcb021577d650cdc04fca4bb377f14e1a1f73987cccb3162970"
+    },
+    {
+      "path": "game/TemporaryCharacterObjectSabotageContaminationPresentationFlowController.cs",
+      "sha256": "a1154612fb6d8299b79d8fc0a854e0a881086b25433b87f5ecda3ef65ddf5d97"
+    },
+    {
+      "path": "game/CharacterObjectSabotageSubstitutionPresentationController.cs",
+      "sha256": "0afbe73cfd1f21e9b89b46e9033354b29ff40409cf56180c9e0bf78bae145f7c"
+    },
+    {
+      "path": "game/CharacterObjectSabotageConcealmentPresentationController.cs",
+      "sha256": "baea06803981076d9412999e60315aa1d1464d53b44d26075f328b2832830006"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundryGeometry.cs",
+      "sha256": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionStreamWaterContactCoordinator.cs",
+      "sha256": "00800f2830b11b3f07b6898e9e4674dfd90a492c9a95115ae9b32e22140f5cb4"
+    },
+    {
+      "path": "src/Application/Actions/StreamWaterContactController.cs",
+      "sha256": "05ab6ae7251f178ce8a3892ead218e010ff96047b73e9fa1747d6096bc8500a9"
+    },
+    {
+      "path": "src/Domain/Actions/StreamWaterContactState.cs",
+      "sha256": "552f8bfe2e3c1b6a01f10a7ebcddfbd60f845c3a653db89234b78da6875f07ba"
+    },
+    {
+      "path": "game/StreamWaterContactPanel.cs",
+      "sha256": "892ba4a805db2b0ce22f4e7061b765fb5066b23428249ab2157cf3a81cf2e753"
+    },
+    {
+      "path": "game/OpeningRegionWaterContactAudioController.cs",
+      "sha256": "c12ed29324ce1a54694d0a9d0cdb0bd1555848719248144493c179501bd6636b"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "27e18544e0e0daaf3562741408c0075f9945f38230e8b7cec7cf56b68392d889"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "36535bd6a678f99cef3506fbb77719bd8c3a7cd9456adf3a9817356bb041f9c8"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "bf17a94e77d91e482f9483f452ed7af6a58f59fcbdf94ceb44b939223f2b610d"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "audio-direction/material-audition/prepare-excerpts.py",
+      "sha256": "b1c0aabd49fac2e5cff7d8f3d25e79f5628b8efd3e3f299b0a46b53fe100bae6"
+    }
+  ],
+  "protected_repository_snapshot": {
+    "baseline_commit": "50f4a7516f7b5acb20119212985e2132a581c106",
+    "tracked_file_count": 11850,
+    "algorithm": "Baseline git ls-tree -r --name-only; exclude listed paths; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF.",
+    "manifest_sha256": "77c387b241ec78ca77edc081f23d4c60234f6c927ae289cc467d171870d0c1dd",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_evidence": [
+    {
+      "path": "audio-direction/water-contact-runtime-verification.json",
+      "sha256": "bd5099197aa8dac20935801a06451022b1d60daa2ded92db13d46e1b54f1b764"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-authority.json",
+      "sha256": "35c065c18eb42711e7bfe6e1221ee0825beb64bcc7bad6ba69c8a339a452f7dc"
+    },
+    {
+      "path": "audio-direction/water-contact-runtime-review/quality/summary.json",
+      "sha256": "24d8d0e1cc63879866baa68d252beb35f16a3f85e21bc8438853a5ec74f6398b"
+    }
+  ],
+  "verification_required": {
+    "unit_contracts": "Exact ownership/human/object/material issuance, state/cooldown/reset/observer isolation; finite reach/segment support/replacement tests.",
+    "live": "Ordinary movement; native mouse/keyboard; move/conceal/substitute/restore and cancellation; hidden contamination parity.",
+    "parity_modes": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream",
+      "no-action"
+    ],
+    "parity": "First five have equal explicit commits/full durable saves/transcripts; no-action zero new commits/equal durable bytes; retain interior/water schedules.",
+    "master_output_cases": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream",
+      "master-half",
+      "effects-half",
+      "mono",
+      "captions-off",
+      "missing-effects-bus",
+      "out-of-reach",
+      "unsupported-segment",
+      "duplicate-request",
+      "stale-target",
+      "overlay-rejection",
+      "focus-loss",
+      "restore-cancellation",
+      "target-moved-cancellation",
+      "concealed-or-substituted-target",
+      "a04-a05-water-caption-coexistence"
+    ],
+    "master_output_case_count": 20,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native": "Keyboard focus/activation, seven captions/status/credits, focus-loss cancellation; no ordinary-device loudness claim.",
+    "packaging": {
+      "expected_streams": 35,
+      "expected_individual_notices": 20,
+      "expected_notice_groups": 16,
+      "native_archive_pcm": "Exact full extracted-frame parity",
+      "is_executable_release": false
+    },
+    "rejection_probes": [
+      "Changed proposal/PCM",
+      "Forged commit",
+      "Changed reach/geometry",
+      "Missing measured output",
+      "Mutated sabotage/save truth"
+    ],
+    "quality_command": "./quality.sh; require fixture completion strings and current final boundary; frozen contracts remain pinned."
+  },
+  "planning_checks": {
+    "status": "passed",
+    "accepted_material_bindings": "82 hashes verified unchanged",
+    "source_pcm_range": "Exact in-memory raw-frame hash and silent edge frames; no derivative created.",
+    "static_reach": "Source cell/route calculation only, not live reach proof.",
+    "continuation_self_test_probes": 11,
+    "product_evidence": "Retain approved predecessor quality; product/CI bytes unchanged; no full quality rerun for prose.",
+    "repository_boundary": "Only two proposal documents, ledger and handover; local editor exception preserved.",
+    "limits": "No implementation, new PCM, live movement, new acoustic/device or executable validation performed."
+  },
+  "completion_condition": "One hash-bound finite proposal and one pending new owner implementation decision; no installed action or PCM.",
+  "excluded": [
+    "Drinking/washing/refill/pickup/laundry/tool actions",
+    "New geometry/art",
+    "Durable state changes",
+    "Perception/provider changes",
+    "Closed water/grinding/treatment revision",
+    "Release"
+  ]
+}
