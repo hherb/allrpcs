@@ -1,0 +1,9 @@
+Cask cover handling A02-C01
+100 CC0 metal and wood SFX by rubberduck
+Source: https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Foley - Cotton clothes rustling - Fabric movement sound.wav by khenshom
+Source: https://freesound.org/people/khenshom/sounds/481075/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: exact frame interval [48000,228000) from accepted A02; original source edits, fades, sequence and gain retained; no further processing.
+Original authors do not endorse this game.

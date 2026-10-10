@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "cases": 20,
+  "metrics": {
+    "default": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -43.468278307185315,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 1.0000732339292324,
+      "expected_gain": 1,
+      "source_correlation": 0.9999999751917065,
+      "residual_rms": 1.8899900462273839e-06,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "quiet": {
+      "peak_dbfs": -24.375694893963736,
+      "rms_dbfs": -44.935124117552704,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "master-muted": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "effects-muted": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "missing-stream": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "master-half": {
+      "peak_dbfs": -28.016779014550895,
+      "rms_dbfs": -49.48872640671177,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 0.5000441706059899,
+      "expected_gain": 0.5,
+      "source_correlation": 0.9999976030526966,
+      "residual_rms": 9.288971955628801e-06,
+      "mixer_start_seconds": 0.50475
+    },
+    "effects-half": {
+      "peak_dbfs": -28.016779014550895,
+      "rms_dbfs": -49.48872640671177,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 0.5000441706059899,
+      "expected_gain": 0.5,
+      "source_correlation": 0.9999976030526966,
+      "residual_rms": 9.288971955628801e-06,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "mono": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -43.468278307185315,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "captions-off": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -43.468278307185315,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true,
+      "source_gain": 1.0000732339292324,
+      "expected_gain": 1,
+      "source_correlation": 0.9999999751917065,
+      "residual_rms": 1.8899900462273839e-06,
+      "mixer_start_seconds": 0.5100833333333333
+    },
+    "missing-effects-bus": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "out-of-reach": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "unsupported-segment": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "duplicate-request": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": false
+    },
+    "stale-target": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "overlay-rejection": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "focus-loss": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -54.481218807710206,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "restore-cancellation": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -54.48122008855722,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "target-moved-cancellation": {
+      "peak_dbfs": -21.996179101271274,
+      "rms_dbfs": -54.48121791702913,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    },
+    "concealed-or-substituted-target": {
+      "peak_dbfs": -240.0,
+      "rms_dbfs": -240.0,
+      "commits": 0,
+      "presentations": 0,
+      "admitted": false
+    },
+    "a04-a05-water-caption-coexistence": {
+      "peak_dbfs": -18.996764201153184,
+      "rms_dbfs": -41.762264539729046,
+      "commits": 1,
+      "presentations": 1,
+      "admitted": true
+    }
+  },
+  "native_pcm16_sha256": "e3eeeef65fd119d4e6606e6b0ec8e41e6a23fa56dd688531517159428581a825",
+  "native_exact": true,
+  "wave_sha256": "adace73cfbfbb319b91e8bc8b4be182708371b9e893711eb985c6c422cef5e85",
+  "timeline_sha256": "3a60851314b16fb1d6e1f7af868c04353ac8a5d8fb2bc88d5b2e585dfdd6a1bb",
+  "limits": [
+    "Controlled actual Master output, with unchanged background beds isolated.",
+    "No waveform normalization, new device listening or ordinary-play loudness compliance claim."
+  ]
+}

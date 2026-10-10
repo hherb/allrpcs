@@ -1,0 +1,1 @@
+/Users/hherb/src/allrpcs/tests/Application.Tests/Actions/CaskCoverHandlingControllerTests.cs(57,21): error CS0246: The type or namespace name 'CaskCoverHandlingMaterial' could not be found (are you missing a using directive or an assembly reference?) [/Users/hherb/src/allrpcs/tests/Application.Tests/Allrpcs.Application.Tests.csproj]

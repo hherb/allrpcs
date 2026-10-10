@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-cask-cover-handling-runtime-integration",
+  "source": {
+    "path": "audio-direction/material-audition/clips/A02.wav",
+    "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d"
+  },
+  "frame_interval_half_open": [
+    48000,
+    228000
+  ],
+  "pcm_sha256": "5dc4e93225eaad07ff94861d531aaed74e697d46bdcb7e85dea1db894c5bc041",
+  "frames": 180000,
+  "rate_hz": 48000,
+  "channels": 2,
+  "sample_width": 3,
+  "output_sha256": "267dafd443a0e815d4449e33c66c67bda6aa9d883a550a493b7ea956b7375871",
+  "recorded_rights": {
+    "basis": "Accepted local provenance reused; no new legal/catalogue assessment or acquisition.",
+    "sources": [
+      {
+        "source_id": "wood-tool",
+        "title": "100 CC0 metal and wood SFX",
+        "author": "rubberduck",
+        "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "local_catalogue": {
+          "path": "audio-direction/material-audition/rights/wood-tool-catalogue.html",
+          "sha256": "9aa7dc287e83e5694be6c51f5880284a7b7cd9ed79c06a6c9e41f63fa24d1c56"
+        }
+      },
+      {
+        "source_id": "cloth",
+        "title": "Foley - Cotton clothes rustling - Fabric movement sound.wav",
+        "author": "khenshom",
+        "catalogue_url": "https://freesound.org/people/khenshom/sounds/481075/",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "local_catalogue": {
+          "path": "audio-direction/material-audition/rights/cloth-catalogue.html",
+          "sha256": "4c7992d381a1cae906275d6b53790fa46a541c7897bf5860a8ef93b8789206a2"
+        }
+      }
+    ],
+    "records": [
+      {
+        "path": "audio-direction/material-audition/provenance.json",
+        "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+      },
+      {
+        "path": "audio-direction/material-audition/candidates.json",
+        "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+      },
+      {
+        "path": "audio-direction/material-audition/CREDITS.txt",
+        "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+      },
+      {
+        "path": "audio-direction/material-audition/owner-acceptance.json",
+        "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+      },
+      {
+        "path": "game/assets/audio/material/CC0-1.0-deed.html",
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "new_downloads": 0,
+    "accepted_material_bindings_retained": 82
+  },
+  "new_source_acquisition": false
+}

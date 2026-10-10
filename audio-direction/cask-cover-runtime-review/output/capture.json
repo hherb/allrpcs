@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "source": "Actual native Godot MovieMaker Master mix; WAV copied losslessly from AVI",
+  "render_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_CASK_OUTPUT_CHECK=1",
+    "ALLRPCS_CASK_TIMELINE=/Users/hherb/src/allrpcs/audio-direction/cask-cover-runtime-review/output/timeline.json",
+    "ALLRPCS_CASK_DECODE_PATH=/private/tmp/allrpcs-cask-native.pcm16",
+    "godot",
+    "--path",
+    "game",
+    "res://CaskCoverHandlingAudioOutputCheck.tscn",
+    "--write-movie",
+    "/private/tmp/allrpcs-cask-output.avi",
+    "--fixed-fps",
+    "60",
+    "--quit-after",
+    "7500"
+  ],
+  "extract_command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-y",
+    "-i",
+    "/private/tmp/allrpcs-cask-output.avi",
+    "-map",
+    "0:a:0",
+    "-c:a",
+    "copy",
+    "/private/tmp/allrpcs-cask-output.wav"
+  ],
+  "render_exit_code": 0,
+  "master_analysis_exit_code": 0,
+  "native_source_cache_format": "PCM16; exact arithmetic PCM24-to-PCM16 conversion; compress/mode=0",
+  "background_control": "Retained beds/music stopped only in disposable output fixture; A04/A05 explicitly triggered and water caption set in coexistence case.",
+  "unsupported_segment_case": "Current navigation disabled; finite interior-sample rejection independently tested by pure access-policy tests.",
+  "limits": [
+    "No fresh device listening or ordinary-play loudness compliance",
+    "Native capture preceded whitespace-only formatting; full quality rebuilds final source."
+  ]
+}

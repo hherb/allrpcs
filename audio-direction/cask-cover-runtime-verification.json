@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-cask-cover-handling-runtime-integration",
+  "status": "approved_scope_implemented_and_verified",
+  "owner_authority": {
+    "path": "audio-direction/cask-cover-runtime-authority.json",
+    "sha256": "0b53c237c6d63f716db4d47d25a54adc2afd0f8b2d1b33886a050af4d9d040ef"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/container-cloth-owner-scope.md",
+      "sha256": "520fe5159972ad217c796beb9e4fa21327cf4f16d3a4843e067bfe18aa1e8daa"
+    },
+    {
+      "path": "audio-direction/container-cloth-owner-scope.json",
+      "sha256": "e8deef9efab44006a5bd6c1306a4eb81195126f40cfa47cfd560ee8d50cf28ce"
+    }
+  ],
+  "baseline_commit": "a23a14ad1165b27a30ca2409310cd44ca3627de1",
+  "completion": "The whole approved cask-cover runtime scope and its dependent review, validation and documentation are complete. No further unchanged selection or approval gate remains.",
+  "implementation_review": {
+    "request_ownership": "Exact issued request/state/actor/world target/material; replace accepted state/cooldown before isolated observers; reject stale/copied/repeated notifications.",
+    "live_access": "Actual human/visible original cask/current focus; inclusive32 reach, supported endpoints and4-pixel maximum sample spacing; retained ready navigation/sources. Live authored move placement is retained; no hidden contamination guard.",
+    "lifecycle": "Four active seconds cooldown, pause/focus freeze, bounded delta, owner/target/departure/teleport/overlay/restore/teardown cancellation; successful restore resets without replay; failed restore retains state.",
+    "authority_preservation": "No inventory/save/perception/provider/geometry/art changes; serialized world/discovery/sabotage truth retained around exact moved/contaminated handling.",
+    "presentation": "Fresh mouse/native Tab/Enter/Space, held echo rejection, independent own status/seventh caption, once-only Effects; missing stream/bus silence without fallback.",
+    "necessary_additional_file": "game/export_presets.cfg: append only the approved new notice-folder patterns in all three presets; required to fulfill packaging/credits grant.",
+    "review": "Cumulative implementation review; native contact-1280 and credits-1920 visually inspected; both viewport UI checks passed.",
+    "execution_note": "Output and native views preceded whitespace-only formatting and a stopped-diagnostic-only guard; active branches unchanged. Final full quality rebuilds all final source."
+  },
+  "verification": {
+    "unit_tests": {
+      "domain_new_cases": 3,
+      "application_new_cases": 13,
+      "status": "passed"
+    },
+    "actual_master_cases": 20,
+    "parity_modes": 6,
+    "active_schedule_commits_presentations": 7,
+    "no_action_commits_presentations": 0,
+    "complete_save_transcript_parity": "passed",
+    "serialized_truth_checks": [
+      "moved-cask",
+      "hidden-contamination"
+    ],
+    "native_viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native_focus_loss": "passed",
+    "native_source_pcm": "Exact approved PCM24 arithmetic PCM16 conversion",
+    "packaging": {
+      "streams": 35,
+      "individual_notices": 20,
+      "notice_groups": 16,
+      "exact_retained_entries": 90
+    },
+    "full_current_quality": {
+      "status": "passed",
+      "stages": 55,
+      "unit_tests": 5211,
+      "retained_godot_smoke_launches": 293,
+      "interior_modes": 4,
+      "water_modes": 6,
+      "cask_modes": 6,
+      "summary": {
+        "path": "audio-direction/cask-cover-runtime-review/quality/summary.json",
+        "sha256": "93aae8e9090a0c43fda0c71e1c016a906cb8e56c0ce38b54797bf6cb027e29c1"
+      }
+    }
+  },
+  "rejection_probes": [
+    "altered proposal",
+    "altered PCM",
+    "forged/repeated presentation",
+    "changed retained geometry",
+    "missing measured case",
+    "mutated protected truth"
+  ],
+  "runtime_bindings": [
+    {
+      "path": "game/CaskCoverHandlingAudioOutputCheck.cs",
+      "sha256": "1ba529adc75fc5f8d8dbdbc208cfa963e3f0aaf6efb75a0776f803118e40bed5"
+    },
+    {
+      "path": "game/CaskCoverHandlingAudioOutputCheck.cs.uid",
+      "sha256": "663751faedb4545fadc978e674d70b6eff65b2a59e336e7d378e2f0fd4e85d1a"
+    },
+    {
+      "path": "game/CaskCoverHandlingAudioOutputCheck.tscn",
+      "sha256": "b2386bd07edcb76015ed636e8ae40f58a4c8de4d97f76aa044baaa1cbd0825ed"
+    },
+    {
+      "path": "game/CaskCoverHandlingPanel.cs",
+      "sha256": "699252e4b16ee348423757e93e857f42bd5d7c139ab4bb7c8d0f7dc6c4134044"
+    },
+    {
+      "path": "game/CaskCoverHandlingPanel.cs.uid",
+      "sha256": "f0b0d83a3f165e792bf6e57d49a86223328a588a7fa16c2b2a6b760f9cf141de"
+    },
+    {
+      "path": "game/CaskCoverHandlingRuntimeSmokeCheck.cs",
+      "sha256": "ba1357502b17ecfa97a656f556c903fde4f84df9edfd04d59fe5e5980f1ef07d"
+    },
+    {
+      "path": "game/CaskCoverHandlingRuntimeSmokeCheck.cs.uid",
+      "sha256": "b01b2785661c7e255dcbbf8452aada0955f9460a4aa862ea4ae9fcef117edcac"
+    },
+    {
+      "path": "game/CaskCoverHandlingRuntimeSmokeCheck.tscn",
+      "sha256": "1e931dd52405d70189a878008526e69a5e5bccdc93abc9915acf8254723948cd"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "3c6cb997b3b0be93f71b7d2fb121631d2acd7f483f177311240e62d998b8edd8"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "24649d312ff8823ed543a5f1daca9373ab389021a3cee34689d87b74a8a8ad58"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "253e3d4b7c6be9d4135e4a2156d19b3a0f982c8aa86fbca6ed227fb7b9917b40"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverAudioController.cs",
+      "sha256": "a1a02f8d5d57ff0de1d34ab69f556cc6a05c1ea95147f96f5c608e30f638c004"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverAudioController.cs.uid",
+      "sha256": "997ac196a0ac9ec2e18e2bb5399094495d7a92c23f6ea12da0d29358750e9a96"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverHandlingCoordinator.cs",
+      "sha256": "6a80386a0ebe3beaa3a21595678b1dd31593b29c31da93dcfdbea0de35ebc21f"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverHandlingCoordinator.cs.uid",
+      "sha256": "8bf7f5536d165b0ec61ec29dd3572cd5c733fd4988f43f7a74d1fc672bd096b7"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverMaterialBinding.cs",
+      "sha256": "3360b3e2d651041deedfeecd7b6edc2ffe830a6b47e8ba096eacce97e2e93791"
+    },
+    {
+      "path": "game/OpeningRegionCaskCoverMaterialBinding.cs.uid",
+      "sha256": "e8019abf99d3d0766336a1acd3b37e3ddefc093b8b159fea6c725d5a797ee8ab"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav",
+      "sha256": "267dafd443a0e815d4449e33c66c67bda6aa9d883a550a493b7ea956b7375871"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav.import",
+      "sha256": "5e5a08e9cd47f1cd25f48edef7cabe46e5cfaff9ce76570b454d6a72f58861be"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CREDITS.txt",
+      "sha256": "f2befa0e79efb0ecbfd0ab289684358384607827a5ac118ddc12b788a24de31e"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/provenance.json",
+      "sha256": "cb15a0f4fda955f8311c3ddcf4b88770887c942865a6af5efb66b15cdd1b24a8"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "d71231d0f4ce6bb66f6646e943c97afbfc41e4c5034d62201f5d282d0430debb"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "626a674956a07545cc36da36e06d7178e1bf9106f587d0fe55e4722271f5db44"
+    },
+    {
+      "path": "scripts/check-cask-cover-audio-output.py",
+      "sha256": "17fedc79cbce108eacf563dde21b49d61d5b0b0dd51abd7ccf801c38192a7c14"
+    },
+    {
+      "path": "scripts/prepare-cask-cover-audio.py",
+      "sha256": "aa76dcbc0d291435c295592d3c3fbb10151b0dcd8894e1e4cb3b716a2413a27d"
+    },
+    {
+      "path": "scripts/validate-cask-cover-runtime.py",
+      "sha256": "7b94d37cf0df4b8f58676ee25e136d62da474d46db1214a617b08af5e4452eed"
+    },
+    {
+      "path": "src/Application/Actions/CaskCoverHandlingAccessPolicy.cs",
+      "sha256": "a02135d4c0bfb04e02e4385eac8f2791c383bdd9dfa9223b9e6c0eeed64cfb5f"
+    },
+    {
+      "path": "src/Application/Actions/CaskCoverHandlingController.cs",
+      "sha256": "b9f0629922bc37b5eb06efa2de6a1ae525395ea48eb5b292ce9a132afe407bd2"
+    },
+    {
+      "path": "src/Domain/Actions/CaskCoverHandlingCommit.cs",
+      "sha256": "de9ea1e0f6977d2c2c1b220687e7228c8bc489d6e62a52d8e7475ff8b15d2980"
+    },
+    {
+      "path": "src/Domain/Actions/CaskCoverHandlingRequest.cs",
+      "sha256": "2cb9ff5d7642ac635008f9c3c574061d893275bcdaf0a8a4b6165fe11464c32c"
+    },
+    {
+      "path": "src/Domain/Actions/CaskCoverHandlingState.cs",
+      "sha256": "f8345ddbad04c88cf03dc62e6f075fc0c190b8cba010bd88bfcf9b7ee4eb9c10"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/CaskCoverHandlingAccessPolicyTests.cs",
+      "sha256": "8897fd648911e560090ca60af71bf80b65f1f141831634879ce2cc0a3bfb74ee"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/CaskCoverHandlingControllerTests.cs",
+      "sha256": "56402c20f0be37235046c2b5600195357fcbdaae099250631ddeaf36eb3459d0"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/CaskCoverHandlingCommitTests.cs",
+      "sha256": "0f593567dd11d25f85859df08d17c599e3f18dbc2b4e9c434fa242def1eca6ec"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/CaskCoverHandlingRequestTests.cs",
+      "sha256": "6577a4e66ba72a111094d655f3483a58dbfb27be47cab5a5ffb7425c99bf0c5b"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/CaskCoverHandlingStateTests.cs",
+      "sha256": "977a7f08184f498ed9486f08cfdb70c7e05fd069fbe25d7a80e30bd97b196198"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/cask-cover-runtime-review/README.md",
+      "sha256": "d09ec7fea062d90e701fae2ab6481621ebf124d00dc30155bc065437947dd2c6"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/application-tests.log",
+      "sha256": "a764a0b9e3dbcd9ee5d60d370ea87aa8200649c6d0101b95288d9b016fbef7d1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/boundary-initial.log",
+      "sha256": "d7257c0ae832f3bc13a0be223dc047e0d03b88568710831a7910c108e7835079"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/build.log",
+      "sha256": "ffe4bcf778dad05ba3491c263c2f03b40ce31de6785905dda52e0b7d57aaec3a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/commands.json",
+      "sha256": "560f790ff1630c52c36b0a7f2926d10b5748320efc2b7e8b6a3817d34c5a70e5"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/domain-tests.log",
+      "sha256": "2528489e17bdc705365e1e9f95563ea69adeb6797a247c631a01c123164e2c11"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/export.log",
+      "sha256": "3627f58cf906cc3eb6ec1da5046a5acd8e62afc84199a6b9d8f6b15023c1f8c3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/extract.log",
+      "sha256": "041f2a19e6013316ba704f95bbb1d2d3bfc079095fd783bc947744962e182c97"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/format-repair.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/full-quality-run.log",
+      "sha256": "d1b9dc699f5be4ebd5c948e207bb7089e8d9c1dfd784705cada61f864acc6185"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/import.log",
+      "sha256": "ca292091999ac77e1684cd5d3ddaa83aa9411551f286d87f2cee3779ba49a690"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-default-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-default.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-effects-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-master-muted-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-missing-stream-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-no-action-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/main-quiet-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/quality-runner-self-test.log",
+      "sha256": "01beb9b3d6dbfd22bb6b357a570438b1780490127bfc860de7cedba42fd584c5"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/quality-self-test.log",
+      "sha256": "120ec30dd38f244e81df02a6b9aa5da2eaf65b35d934c4af83d47ecc8a9173fe"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/red.log",
+      "sha256": "fbdf6bd36c850e751dc1f691308dd9baa0aa686cb8c9cd8bb5daf5197b91b623"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/render.log",
+      "sha256": "4c7a61a1fcf91bd639338988b63fbb8c8aac76c51ee9da55d99ea9cf03e287c7"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/run-parity.py",
+      "sha256": "8ee3bff2b49b04dc134391e54f39f63e7900bd358f8b477f14997d6d3389ed1a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/stopped-output.log",
+      "sha256": "812d0ec6f5a8b46119098c2a27d0fb35bec2b313c9b778a7b1062a54fc0329d7"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/stopped-runtime.log",
+      "sha256": "0527b42e1723a98e2fb69bcbeb5938adaa29d7f0e40a274037f98baf9781b480"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/verify-export.py",
+      "sha256": "94b7f924ca6e259976884dfc749c989cccb6f5308ca84aab599f23238a6f00af"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/checks/views.log",
+      "sha256": "84398576b9485a9c5d97477476d8a97a02541585e7aa2c4d9db2f66949639422"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/native/source.pcm16.gz",
+      "sha256": "1533e3582c97bb67a22f406be0e01da47dacbdcd9ecb7cf601a018316edc2098"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/native/views.json",
+      "sha256": "7439a6f7a99e9ddb378a98b9f377a7e1f42e2fa0824a92c7192be7c58bd6b1e2"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/native/views.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/output/capture.json",
+      "sha256": "171f31c0015ca553562835df110fa4e47c0f2f0595fa7d5b4bd930d72647b0a2"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/output/master.wav.gz",
+      "sha256": "9a246806ebf710ce504eecb031c7f1a1d4e9420636c43273d234e46bbbfb7b08"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/output/measurements.json",
+      "sha256": "94eb917c5ee0ef72ac0c4ca6c02c4dc40374be53e57fa8b167923ed159e0803b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/output/timeline.json",
+      "sha256": "3a60851314b16fb1d6e1f7af868c04353ac8a5d8fb2bc88d5b2e585dfdd6a1bb"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/packaging/audio-subset.zip",
+      "sha256": "7ab36e947738bc62a579fcb2ce7ade390242a3c89447d733fd25494c970f1651"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/packaging/inventory.json",
+      "sha256": "b52f2e37419008155bf379e24c3343e6ec58a379924153d461f4d0fd2c5a38cf"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/default.json",
+      "sha256": "45208e1e47bbc849eb804e6ba6927b5b893de9e77bd26e6732c52051bea8588b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/effects-muted.json",
+      "sha256": "aef00c3a1f9b729c7df99007e62c2593e413dd66a5d29d3ffaaeb4c840bdaaef"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/master-muted.json",
+      "sha256": "d664ebf09d188edede3601bf331676a87451c0483b510859c11df4e3c1484576"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/missing-stream.json",
+      "sha256": "dcc0bc3ae7725ad30493ec11ac6bedcbd3c58f6af45f403858e61824541aaad9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/no-action.json",
+      "sha256": "c8264db0debddf0e6fe34f47f40e87cc6c1e85ce04268063e4279d36b9235ff9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/quiet.json",
+      "sha256": "c2e04351f5b3f34a368e1d43d03a28e6d7ad8ae1feeae74c92b8a4df5eb60df4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/parity/verification.json",
+      "sha256": "c49ce266acfd16d37efd16b15dbf8b3117092e08c189df55e6cb83ced8560742"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "703364abb7ce2d3f04a2d328324e6ab980180ac6f5b677dd18825b0200e683e6"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/18-boundary-cask-cover-current-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/19-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/20-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/21-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/22-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/23-product-4-1.log.gz",
+      "sha256": "5363c4791aa46f2efcf8a7c88432dc2d9c4955b618abc2d093bcd09d467a6ecf"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/24-product-5-1.log.gz",
+      "sha256": "14885d52aa7533f64fa35c75917ba2171378df2bcdac65a6c2c7d5a465fd1810"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/25-product-6-1.log.gz",
+      "sha256": "1e1644478ec33c9d523a638a51ea478a3ee57271c057bc8f09295f2fb1073f72"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/26-product-7-1.log.gz",
+      "sha256": "bbb331a43594133902f3b46e2c78f210210fd121b0cfb06c35d5112a12d104d5"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/27-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/28-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/29-product-10-1.log.gz",
+      "sha256": "fa9a3cd0ae03227c5326e9b41fe8b9fb7cd3a69d33fcc6ea674844ab2e30b552"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/30-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/31-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/32-product-13-1.log.gz",
+      "sha256": "8735b16d36f3ed7ba788c21cf3ab59584415dd88fd75b5f62652d7c959cf7024"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/33-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/34-product-15-1.log.gz",
+      "sha256": "7a02405132c2fb0b5576105546bfe32986312b6cae0100cf358ec29538467b3c"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/35-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/36-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/37-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/38-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/39-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/40-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/41-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/42-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/43-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/44-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/45-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/46-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/47-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/48-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/49-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/50-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/51-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/52-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/53-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/54-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/55-boundary-cask-cover-after-runtime-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-default.json",
+      "sha256": "45208e1e47bbc849eb804e6ba6927b5b893de9e77bd26e6732c52051bea8588b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-effects-muted.json",
+      "sha256": "aef00c3a1f9b729c7df99007e62c2593e413dd66a5d29d3ffaaeb4c840bdaaef"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-master-muted.json",
+      "sha256": "d664ebf09d188edede3601bf331676a87451c0483b510859c11df4e3c1484576"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-missing-stream.json",
+      "sha256": "dcc0bc3ae7725ad30493ec11ac6bedcbd3c58f6af45f403858e61824541aaad9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-no-action.json",
+      "sha256": "c8264db0debddf0e6fe34f47f40e87cc6c1e85ce04268063e4279d36b9235ff9"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-quiet.json",
+      "sha256": "c2e04351f5b3f34a368e1d43d03a28e6d7ad8ae1feeae74c92b8a4df5eb60df4"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/cask-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/executed-runner.py",
+      "sha256": "626a674956a07545cc36da36e06d7178e1bf9106f587d0fe55e4722271f5db44"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-mono-reduced.json",
+      "sha256": "69e206d7d377b0fa1ac34b38fad4fd17ebf576b845044d1998aec33de2822b4c"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-mono-reduced.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-muted.json",
+      "sha256": "91ec0ea2bc640084d88e704b5455b950e330253a220ffd838680931ef43df9c6"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-muted.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-normal.json",
+      "sha256": "fc1208db158742481c0979666385e40a22ac76f95c56b986b35de9d6cd927480"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-normal.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-zero.json",
+      "sha256": "20d7f4c54a48b859e2ce8d512dc9f64d4f6722270177147548098c47229dbeef"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/interior-zero.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/summary.json",
+      "sha256": "93aae8e9090a0c43fda0c71e1c016a906cb8e56c0ce38b54797bf6cb027e29c1"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-default.json",
+      "sha256": "4e019844b293048864a9676f0d39dd34c7d37e62c57727c1a29cacdc168d6f1b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-effects-muted.json",
+      "sha256": "65761c93889cf8309e7b389f6b938bf87cc9d27354dafd9953c2788e71b5964b"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-master-muted.json",
+      "sha256": "9d1de9f0fa3d1496f928b5e7d207de0280af1a6f17ad7f563f61766e135cf9af"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-missing-stream.json",
+      "sha256": "6b849421fc6f4e72ad9166e50e22ba8ef8f03dbc015ba11fc93acf78e897d497"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-no-action.json",
+      "sha256": "9aaa0e2c5ccf07097dfab90092d9c180fd2fe0c12ea799ce5013d9f4d3f9cac3"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-quiet.json",
+      "sha256": "9e20cb7df80b3b000db1819d797b5d173d0368c3802edc44cf7e11e2496ffeea"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/water-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/captions-off-1280.png",
+      "sha256": "1793b4ce396b6fa845c396949661a732118dbe2413356e8146ecb55dc5138343"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/captions-off-1920.png",
+      "sha256": "7845798537664bacb66082afbf00c24edb99c9df6ba56d39b196739cd247b837"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/contact-1280.png",
+      "sha256": "e5fbcfd376040229386778d77cd5abdd31cab35c1e0cc5ffb6e4f16fb1efdb02"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/contact-1920.png",
+      "sha256": "50508c31c32e20b2b79fef4e6162cecbc8ee8d31579f3eeac9e7df7c739c6b9f"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/credits-1280.png",
+      "sha256": "dcaee61996ede1fef7e657c7715ee1328f529bcaac4f7ff69db4565341039381"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/credits-1920.png",
+      "sha256": "ec1f9f7b55eff86ef37712beb4330fe761105f3c95dde529600b718e70ede27a"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/history-1280.png",
+      "sha256": "4b34026aa8b2aeafb38ad6f8095a4c6546f5c0551c64cd0b044450b8e218a035"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/views/history-1920.png",
+      "sha256": "96212de141fca05c807769f555ce1edc89a5f137e32e7e5b4a8b2dcec4679564"
+    }
+  ],
+  "limits": [
+    "Unsupported-segment Master case disables current navigation; unsupported interior sample rejection independently unit-tested.",
+    "Controlled output/native UI and resource-package evidence; no fresh device listening, ordinary-play loudness certification or executable release.",
+    "Existing missing mono template/C# solution lookup warnings retained."
+  ],
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

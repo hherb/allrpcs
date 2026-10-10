@@ -500,6 +500,20 @@
           "sha256": "e8deef9efab44006a5bd6c1306a4eb81195126f40cfa47cfd560ee8d50cf28ce"
         }
       ]
+    },
+    {
+      "id": "phase9-cask-cover-handling-runtime-integration",
+      "reason": "Owner approved the exact published cask-cover proposal. Whole implementation and all dependent review/validation are complete: one human village-cask lid/cotton-cover action, exact transient owner and reach, contextual controls/status/seventh caption, exact A02-C01 and source notices, twenty measured Master cases, six-mode complete parity/protected truth, native UI/focus, packaging, six rejection probes and full 55-stage quality. No further unchanged approval gate remains. Standing scoped publication applies.",
+      "evidence": [
+        {
+          "path": "audio-direction/cask-cover-runtime-authority.json",
+          "sha256": "0b53c237c6d63f716db4d47d25a54adc2afd0f8b2d1b33886a050af4d9d040ef"
+        },
+        {
+          "path": "audio-direction/cask-cover-runtime-verification.json",
+          "sha256": "0de66b532631c814ace4cc43fb26c88d9f17846ef9a3ac7ac7ff295b69afab68"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -544,6 +558,20 @@
         {
           "path": "audio-direction/water-contact-runtime-verification.json",
           "sha256": "bd5099197aa8dac20935801a06451022b1d60daa2ded92db13d46e1b54f1b764"
+        }
+      ]
+    },
+    {
+      "id": "audio-cask-cover-handling-runtime",
+      "reason": "Approved first cask-cover action and exact dependent review/validation are complete. A renamed audit/proof does not reopen it. New actions/materials require a new explicit owner grant.",
+      "evidence": [
+        {
+          "path": "audio-direction/cask-cover-runtime-authority.json",
+          "sha256": "0b53c237c6d63f716db4d47d25a54adc2afd0f8b2d1b33886a050af4d9d040ef"
+        },
+        {
+          "path": "audio-direction/cask-cover-runtime-verification.json",
+          "sha256": "0de66b532631c814ace4cc43fb26c88d9f17846ef9a3ac7ac7ff295b69afab68"
         }
       ]
     }
@@ -621,20 +649,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-cask-cover-handling-runtime-integration",
-    "title": "Implement the first cask-cover handling action after the new scope grant",
+    "id": "phase9-hand-tool-action-owner-scope",
+    "title": "Define the first remaining hand-tool action owner and bounded audio proposal",
     "status": "ready",
-    "workstream": "audio-cask-cover-handling-runtime",
+    "workstream": "audio-hand-tool-owner-planning",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "The concrete cask-cover action/material/reach and exact A02-C01 proposal is complete; its single new owner implementation grant is pending. No action/PCM has been installed.",
-    "instructions": "Await the one requested owner decision on audio-direction/container-cloth-owner-scope.md/.json. Do not infer implementation authority from continuation or publication. After approval, bind that exact grant and implement the whole finite proposal, verify/review/document and publish within the same session. Preserve all existing closures and accepted materials.",
-    "completion_condition": "Exact proposed action/material/reach, transient commit owner, controls/status/seventh caption, A02-C01 PCM/notices and finite unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded grant; standing scoped publication done.",
+    "missing_deliverable": "Accepted A03 hand-tool audio has no named authorized live action/material/access and extraction contract. A finite read-only owner proposal is missing.",
+    "instructions": "Inspect only the remaining hand-tool deliverable and prepare one concrete action/material/inventory/access, transient owner, exact accepted-source extraction, controls/caption/notices, finite verification and file list. Preserve all completed scopes. Request only the genuinely new implementation authority once the proposal is concrete.",
+    "completion_condition": "One bounded hand-tool proposal and machine-readable contract are complete, reviewed and published under standing task authority; any genuinely new runtime/material/physical authority is identified.",
     "outputs": [
-      "audio-direction/cask-cover-runtime-authority.json",
-      "audio-direction/cask-cover-runtime-verification.json",
-      "audio-direction/cask-cover-runtime-review/README.md"
+      "audio-direction/hand-tool-owner-scope.md",
+      "audio-direction/hand-tool-owner-scope.json"
     ],
-    "boundary": "Pending a genuinely new gameplay/material/reach/audio grant. No implementation before it arrives; after grant only the exact published cask-cover proposal. No water/grinding/treatment reopening, other actions, inventory/durable state/geometry/art/perception/provider changes or release."
+    "boundary": "Read-only proposal work only. No runtime/material/inventory/PCM/geometry/art/save/perception/provider changes. Closed water/cask/grinding/treatment and accepted evidence stay closed; no unchanged re-audit."
   },
   "deferred_slices": []
 }

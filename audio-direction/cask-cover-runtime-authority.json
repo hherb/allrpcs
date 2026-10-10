@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-cask-cover-handling-runtime-integration",
+  "owner_statement": "approved",
+  "status": "exact_proposal_scope_authorized",
+  "context": "Direct response to the single published cask-cover proposal approval request in this conversation. Covers its whole implementation and dependent verification.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/container-cloth-owner-scope.md",
+      "sha256": "520fe5159972ad217c796beb9e4fa21327cf4f16d3a4843e067bfe18aa1e8daa"
+    },
+    {
+      "path": "audio-direction/container-cloth-owner-scope.json",
+      "sha256": "e8deef9efab44006a5bd6c1306a4eb81195126f40cfa47cfd560ee8d50cf28ce"
+    }
+  ],
+  "authorized": [
+    "Exact human cask-cover action/material/reach/transient state/input/status",
+    "One A02-C01 exact PCM slice and Effects feedback/seventh caption/credits",
+    "Named successor validation and full quality integration"
+  ],
+  "not_authorized": [
+    "Other water/container/cloth/tool actions",
+    "Inventory/geometry/art/save/perception/provider changes",
+    "Closed water/grinding/treatment revision",
+    "Release"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

@@ -12,6 +12,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label conversationLabel = null!;
     private Label interiorLabel = null!;
     private Label waterLabel = null!;
+    private Label coverLabel = null!;
+    private string caskCover = string.Empty;
     private string waterContact = string.Empty;
     private string interior = string.Empty;
     private string conversation = string.Empty;
@@ -28,7 +30,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -208; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -244; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -51,7 +53,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(interiorLabel);
         waterLabel = new() { Name = "WaterContact", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(waterLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel })
+        coverLabel = new() { Name = "CaskCover", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(coverLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel })
         { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
@@ -82,6 +86,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     /// <summary>Clears only water-contact ownership without changing prior caption owners.</summary>
     internal void ClearWaterContact() { waterContact = string.Empty; Refresh(); }
 
+    /// <summary>Sets only the independently owned local cask-cover handling caption.</summary>
+    internal void SetCaskCover(string text) { caskCover = text; Refresh(); }
+    /// <summary>Clears only cask-cover ownership, preserving every retained caption timer.</summary>
+    internal void ClearCaskCover() { caskCover = string.Empty; Refresh(); }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -107,6 +116,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         conversationLabel.Text = enabled ? conversation : string.Empty;
         interiorLabel.Text = enabled ? interior : string.Empty;
         waterLabel.Text = enabled ? waterContact : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0);
+        coverLabel.Text = enabled ? caskCover : string.Empty;
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0);
     }
 }

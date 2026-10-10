@@ -1,0 +1,56 @@
+{
+  "native_views_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_CASK_MAIN_CHECK=1",
+    "ALLRPCS_CASK_MODE=views",
+    "ALLRPCS_CASK_VIEWS=/Users/hherb/src/allrpcs/audio-direction/cask-cover-runtime-review/views",
+    "ALLRPCS_CASK_CHECK_OUTPUT=/Users/hherb/src/allrpcs/audio-direction/cask-cover-runtime-review/native/views.json",
+    "godot",
+    "--fixed-fps",
+    "60",
+    "--path",
+    "game",
+    "--quit-after",
+    "1600"
+  ],
+  "export_command": [
+    "godot",
+    "--headless",
+    "--path",
+    "game",
+    "--export-pack",
+    "macOS Development",
+    "/private/tmp/allrpcs-cask-resources.zip"
+  ],
+  "standalone_stopped_commands": [
+    [
+      "godot",
+      "--headless",
+      "--path",
+      "game",
+      "res://CaskCoverHandlingRuntimeSmokeCheck.tscn",
+      "--quit-after",
+      "15"
+    ],
+    [
+      "godot",
+      "--headless",
+      "--path",
+      "game",
+      "res://CaskCoverHandlingAudioOutputCheck.tscn",
+      "--quit-after",
+      "15"
+    ]
+  ],
+  "parity_runner": "python3 audio-direction/cask-cover-runtime-review/checks/run-parity.py",
+  "format_command": [
+    "dotnet",
+    "format",
+    "Allrpcs.sln",
+    "--no-restore",
+    "--verify-no-changes"
+  ],
+  "full_quality_command": "./quality.sh"
+}

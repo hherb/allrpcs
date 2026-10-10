@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "transcript": [],
+  "commits": 7,
+  "presentations": 7,
+  "no_action_commits": 0,
+  "results": [
+    {
+      "mode": "default",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-default-1.log",
+          "exit_code": 0,
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+        }
+      ]
+    },
+    {
+      "mode": "quiet",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-quiet-1.log",
+          "exit_code": 0,
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+        }
+      ]
+    },
+    {
+      "mode": "master-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-master-muted-1.log",
+          "exit_code": 0,
+          "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+        }
+      ]
+    },
+    {
+      "mode": "effects-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-effects-muted-1.log",
+          "exit_code": 0,
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+        }
+      ]
+    },
+    {
+      "mode": "missing-stream",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-missing-stream-1.log",
+          "exit_code": 0,
+          "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+        }
+      ]
+    },
+    {
+      "mode": "no-action",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/cask-cover-runtime-review/checks/main-no-action-1.log",
+          "exit_code": 0,
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+        }
+      ]
+    }
+  ]
+}

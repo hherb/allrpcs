@@ -1,0 +1,10 @@
+.RUN: fails
+..RUN: incomplete
+..RUN: native
+RETRY identical command after diagnosed native shutdown: native
+PASS: native
+..
+----------------------------------------------------------------------
+Ran 7 tests in 0.374s
+
+OK
