@@ -1,0 +1,16 @@
+REUSE: 76 verified completed stages; repeat the affected cold foliage stages
+RUN: foliage-historical-build
+PASS: foliage-historical-build
+RUN: foliage-historical-import
+PASS: foliage-historical-import
+RUN: foliage-default
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/quality.py", line 655, in <module>
+    finish_foliage()
+  File "/Users/hherb/src/allrpcs/quality.py", line 522, in finish_foliage
+    foliage_runtime(run, {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
+  File "/Users/hherb/src/allrpcs/quality.py", line 446, in foliage_runtime
+    run.stage('foliage-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
+  File "/Users/hherb/src/allrpcs/quality.py", line 134, in stage
+    raise RuntimeError(f'{name} exited {result.returncode}; see {log}')
+RuntimeError: foliage-default exited 1; see /Users/hherb/src/allrpcs/artifacts/quality-current/79-foliage-default-1.log

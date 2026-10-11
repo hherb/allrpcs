@@ -170,8 +170,9 @@ native output/UI and resource packaging checks pass. The first
 [exterior wind proposal](audio-direction/wind-owner-scope.md) is complete:
 a dedicated derivative from the retained CC0 original and one fixed southern-road emitter,
 with anonymous accessible cues and finite checks. The original's catalogue warns of bag
-noise; no passage is qualified or installed yet. Its new source-use/emitter implementation
-grant remains distinct from the approved planning scope. Dedicated exterior wind runtime
+noise. Its source-use/emitter implementation is now approved; one four-second review
+candidate and pure range/schedule/history contracts are prepared. Listening qualification
+is pending, with no G01 runtime installation yet. Dedicated exterior wind runtime
 and wider emitters remain unfinished; the audio items below remain partial.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.

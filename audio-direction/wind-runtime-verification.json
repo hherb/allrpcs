@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-wind-runtime-integration",
+  "status": "preparation_verified_source_listening_pending_runtime_incomplete",
+  "baseline_commit": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+  "authority": "audio-direction/wind-runtime-authority.json",
+  "source": "audio-direction/wind-source/provenance.json",
+  "review": "audio-direction/wind-runtime-review/README.md",
+  "owner_source_assessment": "pending; no listening pass fabricated",
+  "source_qualified": false,
+  "runtime_installed": false,
+  "focused_unit_tests": 48,
+  "qualification_gate_rejections": 5,
+  "unqualified_runtime_cli_refuses_installation": true,
+  "candidate_reproduced_byte_identically": true,
+  "protected_tracked_inputs": 12554,
+  "quality": {
+    "status": "passed",
+    "required_command": "./quality.sh",
+    "host_resume_commands": [
+      "./quality.sh --resume-smoke",
+      "./quality.sh --finish-foliage"
+    ],
+    "stages": 88,
+    "retained_stages": 82,
+    "unit_tests": 5335,
+    "runner_self_tests": 9,
+    "summary": "audio-direction/wind-runtime-review/quality/summary.json",
+    "all_final_attempts_passed_and_complete": true,
+    "current_runner_input_hash_exact": "ac985867bb191af972cd665b173f1a66c6318c7ecbe6e629d0ec0f0c8e22de81",
+    "historical_generated_sidecars_removed": 17
+  },
+  "continuation_self_test_probes": 11,
+  "remaining": [
+    "Required candidate listening qualification",
+    "G01 runtime derivative/import/provenance/notices",
+    "Exact ordinary road source/controller and Main sibling wiring",
+    "Eleventh anonymous caption and independent history UI",
+    "Seven actual-motion wind parity modes",
+    "Measured native wind output and native UI cases",
+    "38-stream resource packaging; 100 prior entries byte-identical; 29 notices/19 groups",
+    "Complete wind rejection/quality/review and whole-slice closure/publication"
+  ],
+  "scope_closure": false,
+  "publication_scope": "This verified preparation checkpoint only; whole wind runtime remains in the same active slice.",
+  "editor_exception_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/wind-runtime-authority.json",
+      "sha256": "696509286f3b0cb30e9c09878de0ad1c66aa45cb0c078d69b5ca776680d3df85"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/README.md",
+      "sha256": "5d491fab55c6d9137f1725dec591afa2f8b97671493945413b8bae3cfb63458a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/02-art-1-1.log",
+      "sha256": "0954b208edc452f1ab8ef22fb389aa514c2f55fe534d1c01ef15b2fe43b9dae0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/25-product-3-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/26-product-4-1.log",
+      "sha256": "fc4e042bd38dc2983c0e5af7b63b2d927dbebc77c4cb75aa3443112ed8a0d9b1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/27-product-5-1.log",
+      "sha256": "f74fd670d51f13069c867d48095b482638cb51a501e6f7b910c6c9de94a11d7e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/28-product-6-1.log",
+      "sha256": "2cc2a314e28d66e93442662134cbe9e3439461740822b885a727874c40fee9e6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/29-product-7-1.log",
+      "sha256": "1485194b39703f50bc07f4660965aa1500a7d33896e29ddbfd902b4ff67a8efa"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/30-product-8-1.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/31-product-9-1.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/32-boundary-hand-tool-resume-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/33-boundary-healer-resume-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/34-boundary-foliage-resume-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/35-product-10-1.log",
+      "sha256": "f90113bf25ac31cfeb34894f2052d7189fdefcb87ac3a96834b44e4762708d71"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/36-product-11-1.log",
+      "sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/37-product-12-1.log",
+      "sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/38-product-13-1.log",
+      "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/39-product-14-1.log",
+      "sha256": "eb9812fe32ba5f4e0fe4dca12c3387d045fbe3e1eabd147f8f40eb8ab0e42727"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/40-product-15-1.log",
+      "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/41-product-16-1.log",
+      "sha256": "1d0c6390251592202b06737a5ba3d92e15e98e3f64aff5e13d0503fc62156b87"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/42-product-17-1.log",
+      "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/43-product-18-1.log",
+      "sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/45-interior-normal-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/46-interior-muted-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/47-interior-zero-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/48-interior-mono-reduced-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/49-water-default-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/50-water-quiet-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/51-water-master-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/52-water-effects-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/53-water-missing-stream-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/54-water-no-action-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/55-cask-default-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/56-cask-quiet-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/57-cask-master-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/58-cask-effects-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/59-cask-missing-stream-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/60-cask-no-action-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/61-hand-tool-default-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/62-hand-tool-quiet-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/63-hand-tool-master-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/64-hand-tool-effects-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/65-hand-tool-missing-stream-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/66-hand-tool-no-action-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/67-healer-footstep-default-1.log",
+      "sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/68-healer-footstep-quiet-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/69-healer-footstep-master-muted-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/70-healer-footstep-effects-muted-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/71-healer-footstep-missing-resources-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/72-healer-footstep-captions-off-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/73-healer-footstep-observer-disabled-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/75-healer-master-output-1.log",
+      "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/76-boundary-healer-after-runtime-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/77-foliage-historical-build-1.log",
+      "sha256": "7e724a9a55bcbb8afba94e0d77a29a2b3ec9d0793837859e61b27157fa52db01"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/78-foliage-historical-import-1.log",
+      "sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/79-foliage-default-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/80-foliage-quiet-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/81-foliage-master-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/82-foliage-ambience-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/83-foliage-missing-stream-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/84-foliage-captions-off-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/85-foliage-foliage-disabled-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/86-foliage-master-output-1.log",
+      "sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/87-boundary-foliage-after-runtime-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/88-boundary-wind-source-1.log",
+      "sha256": "7cf61394076c10540815952c11b90063c7126ebe9f4e48fdb0b1244ce7ebbbb4"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/cold-import-failed-summary.json",
+      "sha256": "0faa352dd99ec8fef501fddea72933bdd0261aa0927e568866aac977af70d57f"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/cold-import-failed.log",
+      "sha256": "3223bbbfe3807381709998ed571cbdb8576e58c0e0ee78b1478f42b38276e783"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/foliage-repair-final.log",
+      "sha256": "a0ca6516c69f1235e206dc0fd3f5493d8ccd2e436f0e6950554603ca1d3b94bd"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/foliage-repair.log",
+      "sha256": "47dcff6f0e4fcaa5962a692f76aba2f0b19b9fce1599c26f4dd33005ec1ae5ba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/host-resume.log",
+      "sha256": "d27608cb4c4dd5ea849dd7c27a0412c724574f90913496e631cd7137f1ef4656"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/import-wait-failed-summary.json",
+      "sha256": "8acdddf480929dd76dc5d6a82c22d1ad32bf1c485f84998505d26ecb15e8cd02"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/import-wait-failed.log",
+      "sha256": "b27ff273f56109c053efbb88f912b29560e75c1ec318618d175cffab6918c56f"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/import-wait-runtime-failed.log",
+      "sha256": "ac1a3ff0e681cb786d6ab3f19de96bb16dfa2d6ff6ab3a5a0bc5579a430295d1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/log-storage.json",
+      "sha256": "57c3eb23cbb1bb4a6c9939e8236c63aeae5e439566b41392767c948f6d89bea5"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/root.log",
+      "sha256": "118391a490b85bd0652fd0f08b06f0e4390eb73d34ec52ced6bd4d4c7955e810"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runner-before-import-wait-repair.py",
+      "sha256": "e341a856535418838f66d3c98ae6101bef901c54a218ad2899bb0da4f432b414"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runner-before-sidecar-repair.py",
+      "sha256": "f736e3521fed3e81ea24f5bdeff2abe8e509efb68cf5409a06be3e2da49ef2fe"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/sandbox-failed-summary.json",
+      "sha256": "2e13e457e4a53a9b1bb37312634ee7c567657fc8cb7e1b4572c3fcabe25515f8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/sandbox-native-startup.log",
+      "sha256": "b020306b802fcc95f0c6481ac4b3cd12e6a5531fb4429ff8f56d75233041be3a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/summary.json",
+      "sha256": "a9f1ed940aed9947d2cdf1437b38ac552213d6d1fb7ba74ed8f006a4f887e22a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/G01-candidate.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/focused-tests.log",
+      "sha256": "990f524347649ebff14a28007d2fe143070cc3d991c202fe86c0d601b72c24e1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/passage-measurements.json",
+      "sha256": "46055041cd2eac5c3dade820fb09186ca153c5057ee8bea22f7342e728fa461d"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/preparation-checks.json",
+      "sha256": "22450eb814203292bc15417cf77ad4fbdcfb50d187c8a16660d3ef95e549f908"
+    },
+    {
+      "path": "audio-direction/wind-source/README.md",
+      "sha256": "09ac4824070624e2842e083c5289e1222e70f84e20d32296032dd6e08254c87c"
+    },
+    {
+      "path": "audio-direction/wind-source/provenance.json",
+      "sha256": "9ee6d31d105b9fd61407e7799b314908558d3e837e174fe79bda8148a9ce7c86"
+    },
+    {
+      "path": "audio-direction/wind-source/rights/catalogue.html",
+      "sha256": "5322a57fcc1877e4ff4c95e0eda6cabcada6b5b4de7b44de7f2f2562dc03a0a9"
+    },
+    {
+      "path": "audio-direction/wind-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "ac985867bb191af972cd665b173f1a66c6318c7ecbe6e629d0ec0f0c8e22de81"
+    },
+    {
+      "path": "scripts/prepare-wind-passage.py",
+      "sha256": "b0b43807174b39b429281ca0708fab80af760b61afbe29712abd60fa5f55c3b9"
+    },
+    {
+      "path": "scripts/validate-wind-runtime.py",
+      "sha256": "d4158bfd37ed50d99d38c8998fad345d65880a0c01e202fb52e109e62158821c"
+    },
+    {
+      "path": "src/Application/Audio/WindCueHistory.cs",
+      "sha256": "5a5a716ab227128ba5cbd4f3bc21bf1f5ed8b6cfe5b34e84d3fcee8f36e580d2"
+    },
+    {
+      "path": "src/Application/Audio/WindPresentationSchedule.cs",
+      "sha256": "483cdb8723d03b864c740b95690106a07afd721622bcc188f4ecba2add756fb0"
+    },
+    {
+      "path": "src/Application/Audio/WindSpatialProjection.cs",
+      "sha256": "96bffe34af06dbb37524c482f83a3ad2f85d73c1a9644d081e12e1c82725db1d"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/WindCueHistoryTests.cs",
+      "sha256": "3f216f4d2bfac90d4e8805a0c19874faef2561dc54b69adad930bd8ddb5d91c2"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/WindPresentationScheduleTests.cs",
+      "sha256": "2a8adc30a40dd24db7926f1bc6306d32c9c96edd8dcd0beb8827189fb1c348e5"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/WindSpatialProjectionTests.cs",
+      "sha256": "74afa62c3c460658f44fa6fd18452cd8655b7e0d337220e97f7ed6fc0a906115"
+    }
+  ],
+  "retained_evidence": [
+    {
+      "path": "audio-direction/foliage-runtime-verification.json",
+      "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
+    },
+    {
+      "path": "audio-direction/wind-owner-scope.md",
+      "sha256": "2fa573fa74c8d1625da1e3e325f0dc9344cc7ee296fb06de01dbfc2a27c81dad"
+    },
+    {
+      "path": "audio-direction/wind-owner-scope.json",
+      "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
+    }
+  ],
+  "whitespace_check_exception": {
+    "path": "audio-direction/wind-source/rights/catalogue.html",
+    "reason": "Untouched source-specific catalogue capture preserves its original bytes, including existing trailing whitespace; check all other paths normally and disable only blank-at-eol for this capture."
+  }
+}

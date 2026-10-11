@@ -1,0 +1,26 @@
+REUSE: 76 verified completed stages; repeat the affected cold foliage stages
+RUN: foliage-historical-build
+PASS: foliage-historical-build
+RUN: foliage-historical-import
+PASS: foliage-historical-import
+RUN: foliage-default
+PASS: foliage-default
+RUN: foliage-quiet
+PASS: foliage-quiet
+RUN: foliage-master-muted
+PASS: foliage-master-muted
+RUN: foliage-ambience-muted
+PASS: foliage-ambience-muted
+RUN: foliage-missing-stream
+PASS: foliage-missing-stream
+RUN: foliage-captions-off
+PASS: foliage-captions-off
+RUN: foliage-foliage-disabled
+PASS: foliage-foliage-disabled
+RUN: foliage-master-output
+PASS: foliage-master-output
+RUN: boundary-foliage-after-runtime
+PASS: boundary-foliage-after-runtime
+RUN: boundary-wind-source
+PASS: boundary-wind-source
+PASS: full current quality with verified product prefix and repaired cold foliage stages

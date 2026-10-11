@@ -30,6 +30,7 @@ AUDIO_REVISIONS = (
 )
 HAND_TOOL_REVISION = '75c1aa04e4cfa840d75bee119de11afe7fb2484c'
 HEALER_REVISION = 'ae06c9abd939cc1c2df9bdc35654166f66c15c00'
+FOLIAGE_REVISION = 'c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -73,6 +74,21 @@ def native_shutdown(returncode, output):
     last_launch = output.rsplit('Godot Engine v', 1)[-1]
     return (returncode in (-6, 134) and 'mutex lock failed' in last_launch
             and not any(marker in last_launch for marker in ('ERROR:', 'AssertionError', 'Unhandled exception')))
+
+
+def sandbox_log_startup(returncode, output):
+    """Allow explicit host resume only for denied native log startup, never automatic retry or product errors."""
+    last_launch = re.split(r'(?m)^Godot Engine v', output)[-1]
+    errors = [line for line in last_launch.splitlines() if line.startswith('ERROR:')]
+    permitted = ("ERROR: Cannot save file '/Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres'.",
+                 'ERROR: Error saving editor settings to /Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres',
+                 "ERROR: Failed to open 'user://logs/")
+    return (returncode in (-6, 134) and errors
+            and any(line.startswith(permitted[2]) for line in errors)
+            and all(line.startswith(permitted) for line in errors)
+            and 'RotatedFileLogger::rotate_file()' in last_launch
+            and 'Main::setup(' in last_launch and 'handle_crash: Program crashed with signal 11' in last_launch
+            and not any(marker in last_launch for marker in ('AssertionError', 'Unhandled exception')))
 
 
 class Run:
@@ -160,6 +176,11 @@ def frozen_evidence():
         for row in record.get('evidence_bindings', []) + record.get('retained_evidence', []):
             if row in excluded:
                 continue
+            if path.name == 'foliage-runtime-verification.json' and row['path'] == 'quality.py':
+                # The wind grant explicitly permits the runner successor; retain its frozen predecessor.
+                if sha(git('show', FOLIAGE_REVISION + ':quality.py')) != row['sha256']:
+                    raise ValueError('Changed frozen foliage runner evidence')
+                continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
 
@@ -201,7 +222,7 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
         plan.append(('boundary-' + name, args, revision))
     plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
              ('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
-             ('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], None),
+             ('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], FOLIAGE_REVISION),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
@@ -210,7 +231,7 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
         plan[index:index] = [
             ('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
             ('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
-            ('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], None)]
+            ('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], FOLIAGE_REVISION)]
     rows = prior['stages']
     if len(rows) != len(plan) + 1:
         raise ValueError('Resume stage inventory changed')
@@ -232,8 +253,10 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
         expected = ['godot', '--headless', '--path', 'game', '--quit-after', '1200']
         if failed['arguments'] != expected or failed['attempts'][-1]['exit_code'] != 1 or 'Sickhouse profile not live' not in output:
             raise ValueError('Finish is limited to the recorded missing fixed-FPS invocation')
-    elif failed['arguments'] != ['sh', '-c', product[9]] or not native_shutdown(failed['attempts'][-1]['exit_code'], output):
-        raise ValueError('Resume is limited to the diagnosed native smoke abort')
+    elif failed['arguments'] != ['sh', '-c', product[9]] or not (
+            native_shutdown(failed['attempts'][-1]['exit_code'], output)
+            or sandbox_log_startup(failed['attempts'][-1]['exit_code'], output)):
+        raise ValueError('Resume is limited to diagnosed native shutdown or denied sandbox log startup')
     return rows[:-1]
 
 
@@ -262,7 +285,7 @@ def main(resume_smoke=False, finish_interior=False):
     if prior:
         run.report.update(stages=reused, resumed_from={'report_sha256': sha(prior_bytes),
                           'prior_source_inputs': prior['inputs'], 'verified_completed_stages': len(reused),
-                          'reason': 'Complete unchanged checks reused after verified native classification or fixed-FPS invocation repair; current product boundary runs again.'})
+                          'reason': 'Complete unchanged checks reused after verified native shutdown, denied sandbox log startup or fixed-FPS invocation repair; failed native command runs again.'})
     run.save()
     existed = set(git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines())
     sources = {name: sha((ROOT / name).read_bytes())
@@ -284,7 +307,8 @@ def main(resume_smoke=False, finish_interior=False):
                 run.stage('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
             with snapshot(HEALER_REVISION, editor=True) as (tree, env):
                 run.stage('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
-            run.stage('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
+            with snapshot(FOLIAGE_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], tree, env, FOLIAGE_REVISION)
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
@@ -292,7 +316,8 @@ def main(resume_smoke=False, finish_interior=False):
                 run.stage('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
             with snapshot(HEALER_REVISION, editor=True) as (tree, env):
                 run.stage('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
-            run.stage('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
+            with snapshot(FOLIAGE_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], tree, env, FOLIAGE_REVISION)
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
@@ -388,25 +413,8 @@ def main(resume_smoke=False, finish_interior=False):
         with snapshot(HEALER_REVISION, editor=True) as (tree, env):
             run.stage('healer-master-output', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--output-only'], tree, env, HEALER_REVISION)
             run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
-        foliage_modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'foliage-disabled')
-        for mode in foliage_modes:
-            output = run.directory / f'foliage-{mode}.json'
-            run.stage('foliage-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
-                      env=dict(environment, ALLRPCS_FOLIAGE_MAIN_CHECK='1', ALLRPCS_FOLIAGE_MODE=mode,
-                               ALLRPCS_FOLIAGE_REPORT=str(output)), retry_native=True,
-                      completion='PASS: foliage Main:')
-        foliage_reports = [json.loads((run.directory / f'foliage-{mode}.json').read_text()) for mode in foliage_modes]
-        foliage_saves = [(run.directory / f'foliage-{mode}.json.save.json').read_bytes() for mode in foliage_modes]
-        if any(data != foliage_saves[0] for data in foliage_saves) or any(
-                row['motion'] != foliage_reports[0]['motion'] or row['transcript'] != foliage_reports[0]['transcript']
-                or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != foliage_reports[0]['truthBefore'] for row in foliage_reports):
-            raise ValueError('Foliage presentation changed complete motion/save/transcript/protected truth')
-        if any(row['starts'] != 3 or row['presentations'] != 3 for row in foliage_reports[:-1]) or any(
-                foliage_reports[-1][key] != 0 for key in ('starts', 'presentations')):
-            raise ValueError('Foliage consumed/admitted schedule changed')
-        run.report.update(foliage_modes=list(foliage_modes), foliage_save_sha256=sha(foliage_saves[0]))
-        run.stage('foliage-master-output', [sys.executable, 'scripts/validate-foliage-runtime.py', '--output-only'])
-        run.stage('boundary-foliage-after-runtime', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
+        foliage_runtime(run, environment)
+        run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'])
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -420,6 +428,116 @@ def main(resume_smoke=False, finish_interior=False):
         run.report.setdefault('generated_uid_cleanup', []).extend(
             cleanup_generated_uids(ROOT, generated, existed, sources))
         run.save()
+
+
+def foliage_runtime(run, environment):
+    """Build/import the frozen owner, clean verified generated sidecars, and run every retained mode/check."""
+    with snapshot(FOLIAGE_REVISION, editor=True) as (tree, env):
+        run.stage('foliage-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, FOLIAGE_REVISION)
+        run.stage('foliage-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, FOLIAGE_REVISION, retry_native=True)
+        candidates = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '--', 'game'], cwd=tree, env=dict(os.environ, **env), text=True).splitlines()
+        tracked_scripts = subprocess.check_output(['git', 'ls-files', '--', 'game/*.gd'], cwd=tree, env=dict(os.environ, **env), text=True).splitlines()
+        source_hashes = {name: sha((tree / name).read_bytes()) for name in tracked_scripts}
+        run.report['historical_foliage_uid_cleanup'] = cleanup_generated_uids(tree, candidates, set(), source_hashes)
+        run.save()
+        foliage_modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'foliage-disabled')
+        for mode in foliage_modes:
+            output = run.directory / f'foliage-{mode}.json'
+            run.stage('foliage-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
+                      cwd=tree, revision=FOLIAGE_REVISION, env=dict(environment, **env, ALLRPCS_FOLIAGE_MAIN_CHECK='1', ALLRPCS_FOLIAGE_MODE=mode,
+                               ALLRPCS_FOLIAGE_REPORT=str(output)), retry_native=True,
+                      completion='PASS: foliage Main:')
+        foliage_reports = [json.loads((run.directory / f'foliage-{mode}.json').read_text()) for mode in foliage_modes]
+        foliage_saves = [(run.directory / f'foliage-{mode}.json.save.json').read_bytes() for mode in foliage_modes]
+        if any(data != foliage_saves[0] for data in foliage_saves) or any(
+                row['motion'] != foliage_reports[0]['motion'] or row['transcript'] != foliage_reports[0]['transcript']
+                or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != foliage_reports[0]['truthBefore'] for row in foliage_reports):
+            raise ValueError('Foliage presentation changed complete motion/save/transcript/protected truth')
+        if any(row['starts'] != 3 or row['presentations'] != 3 for row in foliage_reports[:-1]) or any(
+                foliage_reports[-1][key] != 0 for key in ('starts', 'presentations')):
+            raise ValueError('Foliage consumed/admitted schedule changed')
+        run.report.update(foliage_modes=list(foliage_modes), foliage_save_sha256=sha(foliage_saves[0]))
+        run.stage('foliage-master-output', [sys.executable, 'scripts/validate-foliage-runtime.py', '--output-only'], tree, env, FOLIAGE_REVISION)
+        run.stage('boundary-foliage-after-runtime', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], tree, env, FOLIAGE_REVISION)
+
+
+def resume_foliage_prefix(prior, directory):
+    """Reuse the exact known cold-import failure's completed prefix, verifying every retained command and log."""
+    sidecars = prior.get('failed_stage') == 'boundary-foliage-after-runtime' and prior['inputs']['quality.py'] == 'f736e3521fed3e81ea24f5bdeff2abe8e509efb68cf5409a06be3e2da49ef2fe'
+    import_wait = prior.get('failed_stage') == 'foliage-default' and prior['inputs']['quality.py'] == 'e341a856535418838f66d3c98ae6101bef901c54a218ad2899bb0da4f432b414'
+    if prior.get('status') != 'failed' or not (sidecars or import_wait):
+        raise ValueError('Foliage resume requires the recorded pre-cleanup runner failure')
+    previous = json.loads((ROOT / 'audio-direction/foliage-runtime-review/quality/summary.json').read_text())['stages']
+    expected = previous[:next(i for i, row in enumerate(previous) if row['name'] == 'foliage-default')]
+    expected = [dict(row) for row in expected]
+    slot = next(i for i, row in enumerate(expected) if row['name'] == 'product-10')
+    checks = [('hand-tool', HAND_TOOL_REVISION, 'scripts/validate-hand-tool-runtime.py'),
+              ('healer', HEALER_REVISION, 'scripts/validate-healer-footstep-runtime.py'),
+              ('foliage', FOLIAGE_REVISION, 'scripts/validate-foliage-runtime.py')]
+    expected[slot:slot] = [{'name': 'boundary-' + name + '-resume', 'arguments': [sys.executable, script, '--reviewed'],
+                           'revision': revision} for name, revision, script in checks]
+    for row in expected:
+        if row['name'] == 'boundary-foliage-current':
+            row['revision'] = FOLIAGE_REVISION
+    tail = ['foliage-historical-build', 'foliage-historical-import'] + [row['name'] for row in previous[len(previous) - 9:]]
+    if import_wait:
+        tail = tail[:3]
+    rows = prior['stages']
+    if [row['name'] for row in rows] != [row['name'] for row in expected] + tail:
+        raise ValueError('Cold foliage stage inventory changed')
+    for actual, planned in zip(rows, expected):
+        if any(actual[key] != planned[key] for key in ('name', 'arguments', 'revision')):
+            raise ValueError('Completed prefix command changed: ' + actual['name'])
+    for row in rows:
+        for attempt in row['attempts']:
+            path = directory / attempt['log']
+            if path.name != attempt['log'] or sha(path.read_bytes()) != attempt['sha256']:
+                raise ValueError('Cold foliage log changed')
+        if row is not rows[-1] and (row['attempts'][-1]['exit_code'] != 0 or not row['attempts'][-1]['completion_seen']):
+            raise ValueError('Incomplete prefix or native mode')
+    failed = rows[-1]['attempts'][-1]
+    output = (directory / failed['log']).read_text()
+    if failed['exit_code'] != 1:
+        raise ValueError('Unexpected cold foliage failure exit')
+    if sidecars and 'ValueError: Unapproved extra path' not in output:
+        raise ValueError('Foliage resume requires the exact generated-sidecar failure')
+    if import_wait:
+        imported = next(row for row in rows if row['name'] == 'foliage-historical-import')['attempts'][-1]
+        if ('Scan thread aborted...' not in (directory / imported['log']).read_text()
+                or 'OpeningRegionFoliageAudioSource.GardenValid()' not in output
+                or 'Failed loading resource:' not in output):
+            raise ValueError('Foliage resume requires the diagnosed aborted cold import/missing resource failure')
+    return rows[:len(expected)]
+
+
+def finish_foliage():
+    """Complete root quality after the isolated cold-import cleanup repair without repeating unchanged product checks."""
+    directory = ROOT / 'artifacts/quality-current'
+    prior_bytes = (directory / 'summary.json').read_bytes(); prior = json.loads(prior_bytes)
+    reused = resume_foliage_prefix(prior, directory)
+    if prior['product_revision'] != git('rev-parse', 'HEAD').decode().strip() or prior['python'] != sys.version:
+        raise ValueError('Foliage resume product or interpreter changed')
+    for name, value in prior['inputs'].items():
+        if name != 'quality.py' and sha((ROOT / name).read_bytes()) != value:
+            raise ValueError('Foliage resume input changed: ' + name)
+    frozen_evidence()
+    run = Run(directory)
+    metadata = {key: value for key, value in prior.items() if key not in
+                ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
+    metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
+    run.report.update(metadata, stages=reused, resumed_from={'report_sha256': sha(prior_bytes),
+        'prior_source_inputs': prior['inputs'], 'verified_completed_stages': len(reused),
+        'reason': 'Preserve the unchanged complete product prefix; rerun the full cold foliage build/import/modes/output/boundary after verified generated-sidecar cleanup.'})
+    run.save()
+    print(f'REUSE: {len(reused)} verified completed stages; repeat the affected cold foliage stages', flush=True)
+    try:
+        foliage_runtime(run, {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
+                             'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'})
+        run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'])
+        run.report.update(status='passed', finished=now()); run.save()
+        print('PASS: full current quality with verified product prefix and repaired cold foliage stages', flush=True)
+    except Exception:
+        run.report.update(status='failed', finished=now()); run.save(); raise
 
 
 class ContractTests(unittest.TestCase):
@@ -441,6 +559,29 @@ class ContractTests(unittest.TestCase):
         prior_errors = 'ERROR: earlier successful launch cleanup\nGodot Engine v4.6.3\nsmoke passed\nmutex lock failed'
         self.assertTrue(native_shutdown(134, prior_errors))
         self.assertFalse(native_shutdown(134, prior_errors.replace('smoke passed', 'ERROR: current check failed')))
+
+    def test_sandbox_log_startup_resume_is_narrow(self):
+        """A host retry may reuse prior passes only for the known settings/log-denial startup crash."""
+        output = ("Godot Engine v4.6.3\nERROR: Failed to open 'user://logs/godot-proof.log'.\n"
+                  'handle_crash: Program crashed with signal 11\nEngine version: Godot Engine v4.6.3\n'
+                  'RotatedFileLogger::rotate_file()\nMain::setup(')
+        self.assertTrue(sandbox_log_startup(134, output))
+        self.assertFalse(native_shutdown(134, output))
+        for code, changed in ((1, output), (134, output.replace('RotatedFileLogger::rotate_file()', 'OtherCrash')),
+                              (134, output + '\nERROR: product failed'), (134, output + '\nUnhandled exception'),
+                              (134, output.replace("user://logs/", "res://assets/"))):
+            self.assertFalse(sandbox_log_startup(code, changed))
+
+    def test_cold_foliage_resume_rejects_missing_stages(self):
+        """Only the exact retained 76-stage prefix can precede a repaired cold foliage tail."""
+        import copy
+        record = json.loads((ROOT / 'audio-direction/wind-runtime-review/quality/cold-import-failed-summary.json').read_text())
+        for changed in (dict(record, status='passed'), dict(record, failed_stage='other')):
+            with self.assertRaises(ValueError):
+                resume_foliage_prefix(changed, ROOT / 'artifacts/quality-current')
+        changed = copy.deepcopy(record); changed['stages'].pop(0)
+        with self.assertRaises(ValueError):
+            resume_foliage_prefix(changed, ROOT / 'artifacts/quality-current')
 
     def test_failure_persists(self):
         """A nonzero command yields a failed report, not a success or retry."""
@@ -518,8 +659,11 @@ if __name__ == '__main__':
     parser.add_argument('--self-test', action='store_true')
     parser.add_argument('--resume-smoke', action='store_true')
     parser.add_argument('--finish-interior', action='store_true')
+    parser.add_argument('--finish-foliage', action='store_true')
     arguments = parser.parse_args()
     if arguments.self_test:
         unittest.main(argv=[sys.argv[0]])
+    elif arguments.finish_foliage:
+        finish_foliage()
     else:
         main(arguments.resume_smoke, arguments.finish_interior)

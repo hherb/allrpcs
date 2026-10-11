@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+  "context": "The ledger now selects phase9-positional-wind-runtime-integration after the closed read-only wind proposal. This direct approval grants that current implementation slice.",
+  "scope_id": "phase9-positional-wind-runtime-integration",
+  "approved_scope": "Authorize qualification/preparation of G01 from the exact retained wind original, one southern-road-only 256-pixel Ambience emitter, four-second passages every 18 active seconds, the eleventh anonymous caption and separate capacity-16 transient history, plus named checks/review and standing publication.",
+  "proposal": [
+    {
+      "path": "audio-direction/wind-owner-scope.md",
+      "sha256": "2fa573fa74c8d1625da1e3e325f0dc9344cc7ee296fb06de01dbfc2a27c81dad"
+    },
+    {
+      "path": "audio-direction/wind-owner-scope.json",
+      "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
+    }
+  ],
+  "baseline_commit": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+  "source_condition": "Listen/select one clean four-second contiguous window without bags/buffeting, voices, wildlife, rain/leaf impacts, footsteps, machinery, clipping or abrupt edits. If no passage qualifies, report the blocker without substitution or runtime installation.",
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "protected_boundary": "All other runtime/controllers, original audio/art/gait, geometry/navigation/movement, Domain/hearing/perception/provider/persistence and frozen validators."
+}

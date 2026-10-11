@@ -24,19 +24,18 @@ anonymous tenth caption and independent history. See [review](audio-direction/fo
 parity and 37-stream packaging. Preserve all 100 current audio archive entries
 and 26 notice files in 18 groups. No further approval remains for this owner.
 
-The approved **first exterior wind proposal** is complete and closed. See
-[proposal](audio-direction/wind-owner-scope.md) and
-[hash-bound scope](audio-direction/wind-owner-scope.json). It proposes G01 from
-the exact retained CC0 original, the unchanged southern-road anchor (1500,1400),
-exclusive 256-pixel Ambience admission, four-second passages every 18 active
-seconds, an eleventh anonymous caption and separate transient history. The
-catalogue warns of bag noise: a clean passage must qualify before use. No new
-PCM/runtime is installed. One new implementation grant remains; the current
-“scope is approved” instruction approved the ledger-selected read-only proposal.
-Product/CI inputs are unchanged: all 12,558 protected tracked files, 100 audio
-files and passing quality input hashes were checked. Reuse retained product
-evidence for this documentation-only slice. Wider emitters, regional identity,
-full acoustics and voice remain open.
+The **first exterior wind runtime** is approved in this chat on 2026-10-12; see
+[grant](audio-direction/wind-runtime-authority.json) and the unchanged
+[proposal](audio-direction/wind-owner-scope.md). Source preparation has produced
+one review-only four-second candidate from the retained original's 12–16 second
+window. Its listening qualification is pending; measurements alone cannot exclude
+the catalogue's bag-noise warning. See [candidate review](audio-direction/wind-runtime-review/README.md).
+The source/range/schedule/history pure contracts are implemented independently:
+48 focused tests pass. Root quality passes all 88 stages (all 82 retained stages),
+with 5,335 unit tests and nine runner self-tests. See
+[preparation verification](audio-direction/wind-runtime-verification.json).
+No G01 runtime resource, emitter or eleventh UI owner is installed yet. The active
+slice stays open for source qualification and all dependent runtime checks.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -46,26 +45,23 @@ and download game sounds; see the foliage grant. Neither grants another runtime 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-positional-wind-runtime-integration — Implement the first fixed southern-road wind source and emitter after its new grant** (ready).
+**phase9-positional-wind-runtime-integration — Implement the approved first fixed southern-road wind source and emitter** (in_progress).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: The completed proposal has no new source-use/emitter implementation grant,
-qualified G01 passage, ordinary fixed road wind owner, eleventh caption/history or dependent runtime
-evidence.
+Missing deliverable: Qualify the nominated original passage by listening, then prepare G01 and
+implement the granted fixed road wind owner, eleventh caption/history and dependent evidence.
 
-Use audio-direction/wind-owner-scope.md and its hash-bound JSON. Obtain the one missing new
-implementation grant for G01 from the nominated retained original, exact (1500,1400) road owner,
-exclusive 256-pixel Ambience playback, four-second passages every 18 active seconds, eleventh
-anonymous caption and separate transient history. The current approval covers the completed planning
-scope only. Once granted, qualify the passage (catalogue warns of bag noise), prepare and implement
-only the named files, complete all focused/native/parity/UI/packaging checks and root quality,
-review and standing publication in the same session. Report an unqualified-source blocker without
-substitution. Preserve all closed owners and frozen evidence.
+The owner approved this current implementation slice on 2026-10-12; see audio-direction/wind-
+runtime-authority.json. Follow the frozen wind-owner-scope proposal. Qualify the nominated retained
+original before runtime installation; signal measurements alone cannot satisfy its listening
+condition. Complete the exact emitter/caption/history and named dependent checks/review/publication
+after qualification; report an unqualified-source blocker without substitution. Preserve all closed
+owners and frozen evidence.
 
-Done when: After the single new grant, qualified G01, ordinary exact road playback, accessible
-caption/history, finite verification/review and scoped publication are complete; record whole-slice
-closure without repeating an unchanged approval.
+Done when: Qualified G01, ordinary exact road playback, accessible caption/history, finite
+verification/review and scoped publication are complete under the recorded grant; record whole-slice
+closure without repeating scope approval.
 
 Expected outputs:
 
@@ -74,23 +70,26 @@ Expected outputs:
 - `audio-direction/wind-runtime-review/README.md`
 - `audio-direction/wind-runtime-verification.json`
 
-Boundary: Pending one distinct source-use/emitter implementation grant. Only the proposed fixed road
-owner and dependent checks; no B04/F01/other owner change, new original acquisition,
-physical/layout/weather/hearing/gameplay/provider/save/time/art/gait/full acoustics/voice/release
-scope.
+Boundary: Approved exact source-use/emitter implementation; source listening qualification remains a
+prerequisite. Only the named road owner and dependent checks; preserve every protected boundary in
+the grant.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Use `python3 scripts/check-continuation.py --self-test` for queue maintenance and
-`python3 scripts/check-continuation.py --sync` to render its handover. For the completed
-foliage boundary, use `artifacts/quality-python/bin/python scripts/validate-foliage-runtime.py --reviewed`.
+`python3 scripts/check-continuation.py --sync` to render its handover. For the current wind preparation
+checkpoint, use `python3 scripts/validate-wind-runtime.py --source-only`; full wind
+`--reviewed` intentionally refuses incomplete runtime evidence. Foliage checks run
+in their isolated frozen source tree.
 Reuse passing product evidence for prose alone. Runtime changes require their granted
 focused checks and root `./quality.sh`; runner changes also require `python3 quality.py --self-test`.
 
 The runner preserves frozen validators and all retained schedules in isolated historical
-source trees. Hand-tool checks are pinned at `75c1aa04`, Healer at `ae06c9ab`; current foliage
-runs separately. See [quality maintenance](quality-review/README.md). Run Godot on the host;
+source trees. Hand-tool checks are pinned at `75c1aa04`, Healer at `ae06c9ab`; foliage is pinned at `c4f24ea1`; current wind preparation runs separately.
+Cold historical imports now wait for completion and clean only verified generated
+UID sidecars. Explicit repair/resume guards preserve logged passing checks; no
+product errors or incomplete fixture markers are accepted. See [quality maintenance](quality-review/README.md). Run Godot on the host;
 retry only diagnosed native mutex shutdowns with the identical command. Native focus
 checks require an uninterrupted foreground fixture; concurrent Godot launches steal focus.
 

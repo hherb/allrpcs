@@ -804,20 +804,20 @@
   ],
   "active_slice": {
     "id": "phase9-positional-wind-runtime-integration",
-    "title": "Implement the first fixed southern-road wind source and emitter after its new grant",
-    "status": "ready",
+    "title": "Implement the approved first fixed southern-road wind source and emitter",
+    "status": "in_progress",
     "workstream": "audio-positional-southern-road-wind-runtime",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "The completed proposal has no new source-use/emitter implementation grant, qualified G01 passage, ordinary fixed road wind owner, eleventh caption/history or dependent runtime evidence.",
-    "instructions": "Use audio-direction/wind-owner-scope.md and its hash-bound JSON. Obtain the one missing new implementation grant for G01 from the nominated retained original, exact (1500,1400) road owner, exclusive 256-pixel Ambience playback, four-second passages every 18 active seconds, eleventh anonymous caption and separate transient history. The current approval covers the completed planning scope only. Once granted, qualify the passage (catalogue warns of bag noise), prepare and implement only the named files, complete all focused/native/parity/UI/packaging checks and root quality, review and standing publication in the same session. Report an unqualified-source blocker without substitution. Preserve all closed owners and frozen evidence.",
-    "completion_condition": "After the single new grant, qualified G01, ordinary exact road playback, accessible caption/history, finite verification/review and scoped publication are complete; record whole-slice closure without repeating an unchanged approval.",
+    "missing_deliverable": "Qualify the nominated original passage by listening, then prepare G01 and implement the granted fixed road wind owner, eleventh caption/history and dependent evidence.",
+    "instructions": "The owner approved this current implementation slice on 2026-10-12; see audio-direction/wind-runtime-authority.json. Follow the frozen wind-owner-scope proposal. Qualify the nominated retained original before runtime installation; signal measurements alone cannot satisfy its listening condition. Complete the exact emitter/caption/history and named dependent checks/review/publication after qualification; report an unqualified-source blocker without substitution. Preserve all closed owners and frozen evidence.",
+    "completion_condition": "Qualified G01, ordinary exact road playback, accessible caption/history, finite verification/review and scoped publication are complete under the recorded grant; record whole-slice closure without repeating scope approval.",
     "outputs": [
       "audio-direction/wind-runtime-authority.json",
       "game/assets/audio/wind/G01.wav",
       "audio-direction/wind-runtime-review/README.md",
       "audio-direction/wind-runtime-verification.json"
     ],
-    "boundary": "Pending one distinct source-use/emitter implementation grant. Only the proposed fixed road owner and dependent checks; no B04/F01/other owner change, new original acquisition, physical/layout/weather/hearing/gameplay/provider/save/time/art/gait/full acoustics/voice/release scope."
+    "boundary": "Approved exact source-use/emitter implementation; source listening qualification remains a prerequisite. Only the named road owner and dependent checks; preserve every protected boundary in the grant."
   },
   "deferred_slices": []
 }

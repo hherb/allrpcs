@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-burckodp/tree/scripts/validate-foliage-runtime.py", line 209, in <module>
+    main()
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-burckodp/tree/scripts/validate-foliage-runtime.py", line 177, in main
+    require(all(p in allowed or p.startswith('audio-direction/foliage-runtime-review/') for p in extra), 'Unapproved extra path')
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-burckodp/tree/scripts/validate-foliage-runtime.py", line 25, in require
+    raise ValueError(message)
+ValueError: Unapproved extra path

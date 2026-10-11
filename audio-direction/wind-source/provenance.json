@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "license": "CC0-1.0",
+  "creator": "Bashar3A",
+  "title": "Mild Wind Background Noise",
+  "supplied_credit": "Bashar from Skirmish.io",
+  "catalogue_url": "https://opengameart.org/content/mild-wind-background-noise",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "original": {
+    "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+    "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80"
+  },
+  "originals_acquired": 0,
+  "retained_original_only": true,
+  "rights": [
+    {
+      "path": "audio-direction/wind-source/rights/catalogue.html",
+      "sha256": "5322a57fcc1877e4ff4c95e0eda6cabcada6b5b4de7b44de7f2f2562dc03a0a9"
+    },
+    {
+      "path": "audio-direction/wind-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    }
+  ],
+  "live_catalogue_check": {
+    "date": "2026-10-12",
+    "CC0_listing_confirmed": true,
+    "bag_noise_warning_confirmed": true
+  },
+  "listening": {
+    "status": "pending_owner_assessment",
+    "start_frame": 529200,
+    "end_frame_exclusive": 705600,
+    "reason": "12-16 seconds selected for a review candidate by lower, steadier signal levels; signal measurements do not establish absence of audible handling or other excluded sounds.",
+    "required_assessment": "Listen/select one clean four-second contiguous window without bags/buffeting, voices, wildlife, rain/leaf impacts, footsteps, machinery, clipping or abrupt edits.",
+    "candidate_sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788",
+    "owner_statement": null
+  },
+  "derivative": null
+}
