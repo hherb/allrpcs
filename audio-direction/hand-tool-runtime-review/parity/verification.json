@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "transcript": [],
+  "commits": 6,
+  "presentations": 6,
+  "no_action_commits": 0,
+  "results": [
+    {
+      "mode": "default",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-default-1.log",
+          "exit_code": 0,
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+        }
+      ]
+    },
+    {
+      "mode": "quiet",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-quiet-1.log",
+          "exit_code": 0,
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+        }
+      ]
+    },
+    {
+      "mode": "master-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-master-muted-1.log",
+          "exit_code": 0,
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+        }
+      ]
+    },
+    {
+      "mode": "effects-muted",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-effects-muted-1.log",
+          "exit_code": 0,
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+        }
+      ]
+    },
+    {
+      "mode": "missing-stream",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-missing-stream-1.log",
+          "exit_code": 0,
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+        }
+      ]
+    },
+    {
+      "mode": "no-action",
+      "command": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "attempts": [
+        {
+          "log": "audio-direction/hand-tool-runtime-review/checks/main-no-action-1.log",
+          "exit_code": 0,
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+        }
+      ]
+    }
+  ]
+}

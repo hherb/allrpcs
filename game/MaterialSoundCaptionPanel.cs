@@ -13,6 +13,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label interiorLabel = null!;
     private Label waterLabel = null!;
     private Label coverLabel = null!;
+    private Label handToolLabel = null!;
+    private string handTool = string.Empty;
     private string caskCover = string.Empty;
     private string waterContact = string.Empty;
     private string interior = string.Empty;
@@ -30,7 +32,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -244; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -274; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -55,7 +57,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(waterLabel);
         coverLabel = new() { Name = "CaskCover", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(coverLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel })
+        handToolLabel = new() { Name = "HandToolTap", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(handToolLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel })
         { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
@@ -91,6 +95,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     /// <summary>Clears only cask-cover ownership, preserving every retained caption timer.</summary>
     internal void ClearCaskCover() { caskCover = string.Empty; Refresh(); }
 
+    /// <summary>Sets only the new wooden mallet caption.</summary>
+    internal void SetHandToolTap(string text) { handTool = text; Refresh(); }
+    /// <summary>Clears only tool ownership, retaining all prior captions and timers.</summary>
+    internal void ClearHandToolTap() { handTool = string.Empty; Refresh(); }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -117,6 +126,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         interiorLabel.Text = enabled ? interior : string.Empty;
         waterLabel.Text = enabled ? waterContact : string.Empty;
         coverLabel.Text = enabled ? caskCover : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0);
+        handToolLabel.Text = enabled ? handTool : string.Empty;
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0);
     }
 }

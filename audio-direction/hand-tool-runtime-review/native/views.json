@@ -1,0 +1,11 @@
+{
+  "mode": "views",
+  "checks": [
+    "ordinary collision-resolved movement to supported Village Edge example and route return; no walking/standing/startup contact",
+    "1280x720 and 1920x1080: eight captions/status, native mouse/Tab/Enter/Space activation/echo guard, captions-off, credits/history return; actual native focus loss"
+  ],
+  "truthChecks": [],
+  "commits": 7,
+  "presentations": 7,
+  "transcript": []
+}

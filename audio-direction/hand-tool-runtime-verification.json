@@ -1,0 +1,952 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-hand-tool-tap-runtime-integration",
+  "status": "approved_scope_implemented_and_verified",
+  "owner_authority": {
+    "path": "audio-direction/hand-tool-runtime-authority.json",
+    "sha256": "41dca7813673ea5b766b6a68f6fce28307c1b4967a85de85098573685edb60cc"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/hand-tool-owner-scope.md",
+      "sha256": "9cdede533e9ddc587ed96b4228009f756d5739c795b309a3d1c866fddbf0a579"
+    },
+    {
+      "path": "audio-direction/hand-tool-owner-scope.json",
+      "sha256": "946750088fafd5315375758e2ad0fa6f2ce7037791c63a65df9a0d19acfd4196"
+    }
+  ],
+  "baseline_commit": "7ef917685687ca5d6195ae34c11bd418d33bb159",
+  "completion": "The whole approved hand-tool tap runtime and all dependent review/verification/documentation are complete. No further unchanged selection or approval gate remains.",
+  "implementation_review": {
+    "site": "One fixed exact Village Edge anchor; new communal wooden mallet/block declaration, no item/world object/geometry.",
+    "request": "Exact actor/site/issuer-current request/state; duplicate/copy/replaced actor/site and stale state rejected; atomic cooldown before isolated observers.",
+    "access": "Actual inclusive32 reach, one-pixel navigation support and4-pixel segment samples; retained active/visible node and immutable layout/projection/anchor/nav contents; no hidden truth guard.",
+    "lifecycle": "One active second cooldown; bounded delta, pause/focus freeze, departure/teleport/overlay/source/actor/reset/teardown cancellation; successful load invalidates without replay; failed load retained.",
+    "presentation": "Fresh mouse/Tab/Enter/Space, held/echo rejection; own status/eighth caption, exact A03-T01 local Effects; mute/missing resource/bus independent, no Master fallback.",
+    "review": "Cumulative scope/code/fixture review; contact-1280 and credits-1920 visually inspected, corrected A03 source label.",
+    "capture_note": "Capture used graphical native renderer and explicit diagnostic focus setup. Active output branch unchanged by later stopped-label correction."
+  },
+  "verification": {
+    "unit_tests": {
+      "domain_new_cases": 4,
+      "application_new_cases": 12,
+      "status": "passed"
+    },
+    "actual_master_cases": 20,
+    "parity_modes": 6,
+    "active_schedule_commits_presentations": 6,
+    "no_action_commits_presentations": 0,
+    "complete_save_transcript_parity": "passed",
+    "serialized_truth_checks": [
+      "ordinary-tap",
+      "hidden-contamination"
+    ],
+    "native_viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native_focus_loss": "passed",
+    "native_source_pcm": "Exact approved PCM24 arithmetic PCM16 conversion; identical native decode from mounted export",
+    "packaging": {
+      "streams": 36,
+      "individual_notices": 23,
+      "notice_groups": 17,
+      "exact_retained_entries": 90,
+      "new_native_stream_exact": true
+    },
+    "full_current_quality": {
+      "status": "passed",
+      "stages": 62,
+      "unit_tests": 5227,
+      "retained_godot_smoke_launches": 293,
+      "interior_modes": 4,
+      "water_modes": 6,
+      "cask_modes": 6,
+      "hand_tool_modes": 6,
+      "summary": {
+        "path": "audio-direction/hand-tool-runtime-review/quality/summary.json",
+        "sha256": "58b3f59742907bc41ebea5640a32b8a2ee6eca76abfcb029a20ad8d5f4764651"
+      }
+    }
+  },
+  "rejection_probes": [
+    "Changed proposal/PCM",
+    "Forged commit",
+    "Changed access/site",
+    "Missing measured output",
+    "Mutated protected truth",
+    "Missing export notices"
+  ],
+  "runtime_bindings": [
+    {
+      "path": "src/Domain/Actions/HandToolTapSite.cs",
+      "sha256": "471bbca231eb260f1626a1118bf409b54b384a3633eab397665e4ab1f8162c4a"
+    },
+    {
+      "path": "src/Domain/Actions/HandToolTapRequest.cs",
+      "sha256": "5f6f45c523f42c8f3e3fc02cee273656c1a854578e0cbd3e27b4d84ba0158db8"
+    },
+    {
+      "path": "src/Domain/Actions/HandToolTapCommit.cs",
+      "sha256": "0cd5cff925ac771c29ce5ac8b05eac39c6a34db0516f521d53c22a106d67c801"
+    },
+    {
+      "path": "src/Domain/Actions/HandToolTapState.cs",
+      "sha256": "da05e9481dad28803b8004286266eb58a1f4c8aca08fc6b4c8e6326dd4d21125"
+    },
+    {
+      "path": "src/Application/Actions/HandToolTapAccessPolicy.cs",
+      "sha256": "ba5e62966a712f2bcfa55daad87eecf70add558814560630e73d1079bf297424"
+    },
+    {
+      "path": "src/Application/Actions/HandToolTapController.cs",
+      "sha256": "39935501f2430299671e23bb11874b01e00bfaaee73a34c2ebcc8c918791675c"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapSiteBinding.cs",
+      "sha256": "e703110bc1cab9b23cf767cf0b61feab0f4f7cfd1a64635c59ba457d632a083a"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapCoordinator.cs",
+      "sha256": "8e05e7ce1f47b699740691dffbe06966e71b90c07ab59a99b216961b2cf3902e"
+    },
+    {
+      "path": "game/HandToolTapPanel.cs",
+      "sha256": "55d0bb2044e58f65f6e60fb62d2f34b9efeec7ee4bb45456eebf80d241ab9979"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapAudioController.cs",
+      "sha256": "fae45e7f57d94438a17385d6b6c16887ce1d3f852bb511616251125ea30282ae"
+    },
+    {
+      "path": "game/HandToolTapRuntimeSmokeCheck.cs",
+      "sha256": "15ba3c731345e6820aff3e3fcf1a4591f4ce574a9310f1d8573bba83e90c1c1a"
+    },
+    {
+      "path": "game/HandToolTapAudioOutputCheck.cs",
+      "sha256": "df0fd0ca482762c6a7961d8ac72a8a9feadd3a8208b922c4e6facc89364f7060"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapSiteBinding.cs.uid",
+      "sha256": "1f04c7c1a25f411fce62fcdc301795c88972290eb5ce87f2703ae30f017eaf5f"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapCoordinator.cs.uid",
+      "sha256": "f93646ea1d81268fbcfb6d0724ab56d44154a8e891462406f09cd906b385846d"
+    },
+    {
+      "path": "game/HandToolTapPanel.cs.uid",
+      "sha256": "51e80c9ac09513f62a981b3c282e2e56a9483d4146b6fe608779e13ef170a494"
+    },
+    {
+      "path": "game/OpeningRegionHandToolTapAudioController.cs.uid",
+      "sha256": "30ebfd5c07f08f1495a7d738e34356e3ac949c8833ae289dc901f1b0608e1119"
+    },
+    {
+      "path": "game/HandToolTapRuntimeSmokeCheck.cs.uid",
+      "sha256": "2b8b992ee263ce5a81e4840d81c63d6c1ae8a0f470eea04aa2e53142605e78db"
+    },
+    {
+      "path": "game/HandToolTapAudioOutputCheck.cs.uid",
+      "sha256": "1d356a2117992fda8099ec18c5df3335d199822602e590740e53ee9a2046560a"
+    },
+    {
+      "path": "game/HandToolTapRuntimeSmokeCheck.tscn",
+      "sha256": "5605bdd1257da8f4267dbd93c90df2d95c701235410241152060ac77b87cd9d9"
+    },
+    {
+      "path": "game/HandToolTapAudioOutputCheck.tscn",
+      "sha256": "28a1ce3a134f13516729242e89d4af4e21905ef900d9d8eefa4a09622e12ba0d"
+    },
+    {
+      "path": "scripts/prepare-hand-tool-audio.py",
+      "sha256": "cdcf09325079a5ea92a13fe542348f7296b2b8e584e9bf7ba0e7e3c1f4e34472"
+    },
+    {
+      "path": "scripts/check-hand-tool-audio-output.py",
+      "sha256": "c391939ac34a339275dc6667bbc117daba8799bdaaed6bd75e8222340a080693"
+    },
+    {
+      "path": "scripts/validate-hand-tool-runtime.py",
+      "sha256": "28064b4c1168c5255e988395fc6ae108ee6ad2d292fadf55e55c8a54d3bd874e"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/HandToolTapSiteTests.cs",
+      "sha256": "34519d408d0c60f7c2911e6366b0f00fbe3ae134defb57bb852a413d5c3adbaa"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/HandToolTapRequestTests.cs",
+      "sha256": "1fd1aa47f8b6cac291efa37bba8ff145550c77b5bc300977f5714e7aada71ad3"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/HandToolTapCommitTests.cs",
+      "sha256": "cd8af822d5b14c32c747dce1da454684897b579ce44583a1012a3ce95e78c0a2"
+    },
+    {
+      "path": "tests/Domain.Tests/Actions/HandToolTapStateTests.cs",
+      "sha256": "534f7039722569f088f12699bce540443379892e9fed34c38cff06457b9dce31"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/HandToolTapAccessPolicyTests.cs",
+      "sha256": "6960be0c229346b6995c310a1b6499a4d977e0d434ade99b3614047647ecceb5"
+    },
+    {
+      "path": "tests/Application.Tests/Actions/HandToolTapControllerTests.cs",
+      "sha256": "8dceb166ef848f422290e4167c7fafde9fb812ee122b07e5afea8381ef3ad407"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav",
+      "sha256": "877bb9f0c68de4de644d03edf7185bf9cae66a81d054823fb7785a87bb763c91"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav.import",
+      "sha256": "f6f9dc0e4625628bd5a1491884fc5035adcea9f22a216f42d614a893c8ff1bfa"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CREDITS.txt",
+      "sha256": "62830578d808051954c05f1357ab40683ea8768a21db1b6055c04448f2704239"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/provenance.json",
+      "sha256": "82cb5873689bf858d1c79e0bc35ef08c914cc10958ce0288fb3cac295fdf426f"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "ff8f84636de70c48212fb065e63fad0ab37be928b7088496470a3724a15b85d7"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "ade3e74379ee197cf9bad212c820baaf7cf8f7b16b69279e53569ff1d1808f1b"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "da730ba120a72f9a9085438d7219d85f7e609b3e9416ce158956e57b90f74450"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "a404fb18803fad40c46c07d27c452ff3ed0d759b72e6776133493f0c11453f8c"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "e94ff2f2769ed3c8f0c1ff8c3f3fd1f1b5be6ce6eead42d963e73ac6761403f6"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/application-tests.log",
+      "sha256": "499d958896aeb0eb1df2543f0ec9e55d7a588f5fe7a5f77b8aa2dc0e97e236ac"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/build.log",
+      "sha256": "84146192625bef168f55c72294ebbe2a267788e6c4503d2ad0f51c75f5990692"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/commands.json",
+      "sha256": "c0569de54832f5fb1d3bf3f250ad8f5acb55be7110ebf136d7eaf9c4e9a31996"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/domain-tests.log",
+      "sha256": "edee40edbc7c019b3fa879b2c8c61cfb7b32176db15bdf4fb9c19ef95c303910"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/export-pack.log",
+      "sha256": "e88d7274eec89d8bdff030bac8412ab8566d798dca93da6779309d16b92790d1"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/extract-master.log",
+      "sha256": "0451f7b040c4e2496dc4b69ca28e52941bdb78a41e6c35c95d9e92e24bbe1f7d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/extract-master.log.raw.gz",
+      "sha256": "c4e2f673924baae773b77fd07c0205e9b7bb24fe874a4fef246fcffe42e43f52"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/format-output.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/format-verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/full-quality.log",
+      "sha256": "c5b5b83e58766f7bc25a37dcdea4891646ae40c7182016591d1a063a07cb039b"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/import-pcm.log",
+      "sha256": "5adb9e7a8778df3820a64f0e6c2b32db0c2bd6d930526ddef2041c42290a2d40"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/import.log",
+      "sha256": "6abdc5b8f7d18b314dc54c3184b00613bf5a910ea28c7a2d58e8c00df7112ad5"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-default-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-effects-muted-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-master-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-missing-stream-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-no-action-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/main-quiet-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/master-analysis.log",
+      "sha256": "9bb9c23c3265e743486bbcc6466dcb02b5eb294c34202fa1e2b0fcc500c016a1"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/master-capture-final.log",
+      "sha256": "d0ad8ac71d1bef1f85be54effefe80501b7e8dd84df37f6a3fd0c7448da04db9"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/master-capture-headless.log",
+      "sha256": "c51765852e58f0bc4a420734a74848007b19deb546613984ffc0253a20adebe4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/master-capture.log",
+      "sha256": "485c32c2cf9a28bf3d12da0ba46387ebef8e8ebf7f4613267df5c4cec59b9365"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/native-views.log",
+      "sha256": "492942dce01aa127aca94bda2439428a6cab208b25fb6831463524f95e367ddb"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/package-analysis.log",
+      "sha256": "39cb3b3f09cb61f1850c382e5b17befe58d6639f83fc72e8902f2f5178aaca51"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/packed-native.log",
+      "sha256": "1533ffa86d0da23275bcdad0af66e6ff29d394c4bedd0f4f0f9780936bb15676"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/quality-self-test.log",
+      "sha256": "fc73e682646c4df678a6088acd2f4c23a9ff17e6eee2870ce49feac0c6063ffe"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/run-parity.py",
+      "sha256": "1c450db7409677b90844f209b1660fee60b488815fbc10910e5e792cde3739a7"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/stopped-output.log",
+      "sha256": "0d1ed67baba3bac78e7ae9f34c04f17da97a711d2e573a397ddf123097eec5e6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/stopped-runtime.log",
+      "sha256": "9260dd0307aae3408aa51be5dccb670975ea0c815366d4f1854337045f5c5776"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/uids.log",
+      "sha256": "efc3923cf9b30336a54f87bf3012d7c4fd174a2599261e7ae80382fee162b615"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/uids.log.raw.gz",
+      "sha256": "e98a78e8dce5fc6a1f8d231196d76d4437f135a0cc29a969f36acc0159568711"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/verify-export.py",
+      "sha256": "ca0e72b57b8c2532b09df6743ec1a614249fff9de5f681278ddf6ebc6180d86e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/checks/verify-packed.gd",
+      "sha256": "b362a2fa081865cc4c9d94c924cad544d95ed3475ed5d468306eb308060b1b19"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/native/source.pcm16.gz",
+      "sha256": "73e1de7aba67f984ea7904b981fb74b8b9a6f6eeb00cf5e4713d26da02ebafb1"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/native/views.json",
+      "sha256": "e3935193e80239da8ff5769b808cd28fd7f757b5b919bdec03f8acd2bdd363a6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/native/views.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/output/capture.json",
+      "sha256": "885533f4203d026a8a424b2dee6e293aa4f89fa94e9271eac0f48a5d44c06961"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/output/master.wav.gz",
+      "sha256": "100f29199d45639a18f4ce2b11d13fdb17e586dca4a6cf7bc0a8edd97b9f41a4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/output/measurements.json",
+      "sha256": "87ead79c7cfbaa1e02421961261a798728560cd33f8cfe3b81b632db89729c8e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/output/timeline.json",
+      "sha256": "3eeea2b4f313386548e6b05126354d2a4b655121dbf331b31062a71dda8aafd2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/packaging/audio-subset.zip",
+      "sha256": "2d3b4ad884f348ddf7a2d20def530e29f544b905cc667bb8e80e10c3b10b540a"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/packaging/inventory.json",
+      "sha256": "fef933d9438f50fdfd06679614fccee730224646fdaa55cffe604b38616b95ed"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/default.json",
+      "sha256": "6848bad01a29f51be022568e3e2b62e71f504a325911488d443c0f9210ef0139"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/effects-muted.json",
+      "sha256": "fc88ac81dd40fbf0c840ef0519f36cd56021ee73af2f6f99a402120cf7a5ca4d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/master-muted.json",
+      "sha256": "05e60aa9cccc5a6f0e78b9274c4955488884be5d8ddb38a77b79a82957ec23e5"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/missing-stream.json",
+      "sha256": "dbdf9b0b123f17213865286fd4c57b10eaa50a74ff886a592425d4eb9645f797"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/no-action.json",
+      "sha256": "3e42a0b6f4b3272cef2eaac50f6acd53e53b2569b5ace97233dacdde03522e37"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/quiet.json",
+      "sha256": "4bca23f225cba122af4388bd2292d0db24c9d924b14cee0e89473696ccefb7ac"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/parity/verification.json",
+      "sha256": "e187adcbdef00055d85b4dc79aaea03aa66947268483a0db53c21c8f7e5149b4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "e16d10f86f1d1d88924377f6340e6275ee1c546552fcb7762bdc6dfa0f23825d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "6b036819cb58d0db4fd086df0de9d4ab04476813a3801fd067d96889769cc158"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "71c14ed9eceb9570c77a4148aadba26a86fbe37b4443511c2ab17f16dbaf4b44"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "c5886472a4c15a1425e41989343c3c7ddec19c21d2dfeb789dfc6c1015981c12"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "d838bfebe9179ae96128e43e9a1f5a543a79c7fbcd35c6c856404ccd9e9eded8"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "7fc38d362cf94df5d7aab2628256a1f4224a676571317e8504cf5ea0b10ff9e5"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "39aa83a5d002cdc76cd13305d56e9871bb08a362caafed4bd1ae5e1dada8aa2e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "21e5b0ab2a87b2aafe7322a0ccc57205aad15059c9166a8da237ce0647d1c216"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "a9a0c02388b7b31d1e66b294c1702be8fe5542489ae854c1af7d92c3a26a7e4f"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "86befab2effdf26aeed74870c46d3ecc2954f067946f0d72a86e59d28e10bb25"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "f51d2702459f486abfea8c5194e5caf24773d48fb050b854ed6115ab97cc3443"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "5c0caa942e08aeb78a2927dae73e938787ee7ab51ed897ce094af6f42ea5d8bc"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "c8604fe981785ebe349a1c1047e42e763b04d5fc81206c96e83fcaa7606d9655"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9efb97ffa0ae13eb2cc691c408388a360330245d8f161b6cf40bfda0c8e8f853"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "766c2cdeac369250abb722cd67c7c08d3346639644f2faf61c22498b61455dc4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "b35acac4ce768ee5d17d9f6d5c2887d887de2554bea2308db2cc579e29f7fc46"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "d5e4faa8775cfed8703e27c0dd0bf54d8cb5a1a1761f4b4473579093e2263b57"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "f8d40a1ff7c78d74f2157fe5fe3983221dfb0b04941953a8b677625017cccc58"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "88ffd941a1f0c285543163181df109f44988e2ba724f48acbe318504813f6c6e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/20-current-art-imports-1.log.gz",
+      "sha256": "e3ac5189fd949521a38e2ed05719725972197e1821b9fd512a314e1a8d360ce3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/21-product-1-1.log.gz",
+      "sha256": "f26fe05429b0a3eac1f1c10749636bd69c50dcfe06441d0774aa4641f5785638"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/22-product-2-1.log.gz",
+      "sha256": "e04568722ac432dda4652a2f2f6c5bc7d553b0588aeff8a9b1a4bd3b69ef0235"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/23-product-3-1.log.gz",
+      "sha256": "511209535dc053a1b1161a0ba20866694575dfb103ed6ba0e6868d2172659843"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/24-product-4-1.log.gz",
+      "sha256": "1ad9797be31a7834b6d15e02e500c0820633487cb35e504d31eb64a425e704b8"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/25-product-5-1.log.gz",
+      "sha256": "4aaf380a42015583b96c1a9a8a117eab843070aaf31d4c5b7dd2f8325f082fb5"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/26-product-6-1.log.gz",
+      "sha256": "9d2ff56b8f195f235b8bd9520d852aeccd80ee2eecab758559f0df3fcff7f400"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/27-product-7-1.log.gz",
+      "sha256": "4754f1535a88ca464ff7f186923725c5405f64a86786ba6576087c3c9cd65e4b"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/28-product-8-1.log.gz",
+      "sha256": "2fdf2ba6ad8773d93473bf359b56a46d053e80940303174b2fd0e5784d74a125"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/29-product-9-1.log.gz",
+      "sha256": "f0a46615f19fb5bb97f16050a37721135e142cc3a5adcebb119f1d25c69a360d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/30-product-10-1.log.gz",
+      "sha256": "f414411f7a81cd311650dd72487d0df5c12ab107e2b2fb4a349b2e0ede1f8814"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/31-product-11-1.log.gz",
+      "sha256": "26e7d3d3b525244206fb2d926185a67616ce6f4c7b41e7e229221212694bfc5d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/32-product-12-1.log.gz",
+      "sha256": "b994bd1440882c93f43857d045bccb4adfe2c615b04d655b8a070aa4cf8430d1"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/33-product-13-1.log.gz",
+      "sha256": "21684255836ed2f30405b23a53c68b7ac5b5d061fcd55e2f022305233ffadcef"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/34-product-14-1.log.gz",
+      "sha256": "33c542491b6ebaa0183aad67180f962aabf688dd30abe9f900e6ed9f05e7f110"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/35-product-15-1.log.gz",
+      "sha256": "3a379930a6e4132ad99a7ac1efa0e1555738b1fcb096133aaa15c0cbae99b88f"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/36-product-16-1.log.gz",
+      "sha256": "9856991eb7d7f13866470d868d711a8df2b9a3ba85dade2744c2dd49cd9f0f08"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/37-product-17-1.log.gz",
+      "sha256": "0a221a2f2a43ebfde8f539dd0f95668b64761cc54393b1440a0f9f67ce105724"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/38-product-18-1.log.gz",
+      "sha256": "528e57219bd1294991f297d74f41a394264da47905abd366b7c536ef13443c06"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/39-product-19-1.log.gz",
+      "sha256": "c10ebcb340598acecd49cae40e0795fef635ffc3d3c981ab004ad09b5935d7b6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/40-interior-normal-1.log.gz",
+      "sha256": "77b2a2a6692b7c28fd56a6304bf6959c9ad090f4fe2b60f36521dabacdc51f41"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/41-interior-muted-1.log.gz",
+      "sha256": "d11522cbbcf921502bf1ffe9131449590cb8d30f08d6ced4c0602d8b928fe37a"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/42-interior-zero-1.log.gz",
+      "sha256": "b58daa0912fc51fe675eef45034308f625ef3a05052239d0a56b2441e0fce816"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/43-interior-mono-reduced-1.log.gz",
+      "sha256": "df4565eabf8623f92466deb77427302ed0b1177eeb9c6346df559dfd2130ae2f"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/44-water-default-1.log.gz",
+      "sha256": "a4ba5b6919af72586e25acf70fe720f91f23f97d46f2c3c7b1e69af444f7ad5e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/45-water-quiet-1.log.gz",
+      "sha256": "2ac73c2978e1d29153c67266e51711a044890519759cf050cc72f0fe772ff3cb"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/46-water-master-muted-1.log.gz",
+      "sha256": "2bef875b22a10fff9c005fe019ed6ae0c9a113b5bdc0edb05cda1927d1b09216"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/47-water-effects-muted-1.log.gz",
+      "sha256": "721a75aaa08ba296fd13d1d00f925d091b8462627d11e0aacab77ef0523808fe"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/48-water-missing-stream-1.log.gz",
+      "sha256": "3ff86347272331117cee6a58a2e608c59fda7b7b7f64c380fbd3d22c1ef330fd"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/49-water-no-action-1.log.gz",
+      "sha256": "a6472978d0de733eabf0c3b8c16d82d8b75c667d2c274a81cf9ebbde2e793bf6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/50-cask-default-1.log.gz",
+      "sha256": "db011cef1f19cc0df38d53c92b099087ccd74de2fe6760ed4e02bd5e30cf8242"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/51-cask-quiet-1.log.gz",
+      "sha256": "814065b86b8da5fb162d703fe36d3b893cbaf8bb2c21c649612634ff8428ccc6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/52-cask-master-muted-1.log.gz",
+      "sha256": "22108adf53cedfc97bad0cf8313f86086f3b50bc9fc723274e1445d8272d64a4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/53-cask-effects-muted-1.log.gz",
+      "sha256": "f0fa50d89067768ec7be90d08607c07d6fddab92beaaec0c7fd807b63804b5e1"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/54-cask-missing-stream-1.log.gz",
+      "sha256": "af59426792bb4acf4fae970af839106838b6b3392a780dac429136080d4a8774"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/55-cask-no-action-1.log.gz",
+      "sha256": "7e3cf168a5dc0dd340a3f498bc9b1d41f8ed4e223d60a2b9a5f9af9034c58fd6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/56-hand-tool-default-1.log.gz",
+      "sha256": "45000e416cbdad3183c2b604b1eae6dbfc6bb435b9227c80f3f003f842fcb799"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/57-hand-tool-quiet-1.log.gz",
+      "sha256": "3e040b836b3d2c17fcba34caf8bdd4f04d048e9f4400f357eb56291d96ba1393"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/58-hand-tool-master-muted-1.log.gz",
+      "sha256": "21bd8a4e16c38990060feabee436365cd551b9a6abe9c306e19584d5e07879b2"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/59-hand-tool-effects-muted-1.log.gz",
+      "sha256": "d095f11ccba95805e9348e2de044a45bf86d4ea80e56412d2ce577e80b6f422e"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/60-hand-tool-missing-stream-1.log.gz",
+      "sha256": "1e9bc2b1467fe5e8336b0cbf89bcdced7849ff4ab9dafdbb37ad148af723395d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/61-hand-tool-no-action-1.log.gz",
+      "sha256": "087537f513b9f301ed1ebc2dbf9f389e9335f32db67c2ecd2a295ff6389f6b99"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/62-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "4c68c1d0720daab3a50502808b275c18743f1270e022536eb22118bcec7842e9"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-default.json",
+      "sha256": "45208e1e47bbc849eb804e6ba6927b5b893de9e77bd26e6732c52051bea8588b"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-effects-muted.json",
+      "sha256": "aef00c3a1f9b729c7df99007e62c2593e413dd66a5d29d3ffaaeb4c840bdaaef"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-master-muted.json",
+      "sha256": "d664ebf09d188edede3601bf331676a87451c0483b510859c11df4e3c1484576"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-missing-stream.json",
+      "sha256": "dcc0bc3ae7725ad30493ec11ac6bedcbd3c58f6af45f403858e61824541aaad9"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-no-action.json",
+      "sha256": "c8264db0debddf0e6fe34f47f40e87cc6c1e85ce04268063e4279d36b9235ff9"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-quiet.json",
+      "sha256": "c2e04351f5b3f34a368e1d43d03a28e6d7ad8ae1feeae74c92b8a4df5eb60df4"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/cask-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/executed-runner.py",
+      "sha256": "e94ff2f2769ed3c8f0c1ff8c3f3fd1f1b5be6ce6eead42d963e73ac6761403f6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-mono-reduced.json",
+      "sha256": "69e206d7d377b0fa1ac34b38fad4fd17ebf576b845044d1998aec33de2822b4c"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-mono-reduced.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-muted.json",
+      "sha256": "91ec0ea2bc640084d88e704b5455b950e330253a220ffd838680931ef43df9c6"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-muted.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-normal.json",
+      "sha256": "fc1208db158742481c0979666385e40a22ac76f95c56b986b35de9d6cd927480"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-normal.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-zero.json",
+      "sha256": "20d7f4c54a48b859e2ce8d512dc9f64d4f6722270177147548098c47229dbeef"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/interior-zero.json.save.json",
+      "sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/summary.json",
+      "sha256": "58b3f59742907bc41ebea5640a32b8a2ee6eca76abfcb029a20ad8d5f4764651"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-default.json",
+      "sha256": "6848bad01a29f51be022568e3e2b62e71f504a325911488d443c0f9210ef0139"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-effects-muted.json",
+      "sha256": "fc88ac81dd40fbf0c840ef0519f36cd56021ee73af2f6f99a402120cf7a5ca4d"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-master-muted.json",
+      "sha256": "05e60aa9cccc5a6f0e78b9274c4955488884be5d8ddb38a77b79a82957ec23e5"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-missing-stream.json",
+      "sha256": "dbdf9b0b123f17213865286fd4c57b10eaa50a74ff886a592425d4eb9645f797"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-no-action.json",
+      "sha256": "3e42a0b6f4b3272cef2eaac50f6acd53e53b2569b5ace97233dacdde03522e37"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-quiet.json",
+      "sha256": "4bca23f225cba122af4388bd2292d0db24c9d924b14cee0e89473696ccefb7ac"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/tool-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-default.json",
+      "sha256": "4e019844b293048864a9676f0d39dd34c7d37e62c57727c1a29cacdc168d6f1b"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-default.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-effects-muted.json",
+      "sha256": "65761c93889cf8309e7b389f6b938bf87cc9d27354dafd9953c2788e71b5964b"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-effects-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-master-muted.json",
+      "sha256": "9d1de9f0fa3d1496f928b5e7d207de0280af1a6f17ad7f563f61766e135cf9af"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-master-muted.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-missing-stream.json",
+      "sha256": "6b849421fc6f4e72ad9166e50e22ba8ef8f03dbc015ba11fc93acf78e897d497"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-missing-stream.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-no-action.json",
+      "sha256": "9aaa0e2c5ccf07097dfab90092d9c180fd2fe0c12ea799ce5013d9f4d3f9cac3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-no-action.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-quiet.json",
+      "sha256": "9e20cb7df80b3b000db1819d797b5d173d0368c3802edc44cf7e11e2496ffeea"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/water-quiet.json.save.json",
+      "sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/captions-off-1280.png",
+      "sha256": "c3222dadfcd0c5a72b234c87ca9292069503c0de98f8339158e2de43c6b83d41"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/captions-off-1920.png",
+      "sha256": "a4bd70dc173ce2d9a47209388869dad8c823fe68250809fe5fa721ba3bfe69eb"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/contact-1280.png",
+      "sha256": "a034676130f9d693ddefc312a0e2b29bceefd0a72859b2c58b75c2d5aad58495"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/contact-1920.png",
+      "sha256": "53bfbdfe7d26ac5037c8c62840fc7a50c0ad3fb2a7cac2ab4ef5670d65eafbf3"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/credits-1280.png",
+      "sha256": "46bb5729070095813ed96c40d80873ae768f62cc7e74a4a04d566d4c6b0ffd12"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/credits-1920.png",
+      "sha256": "42e7bfe76aafdd8c410d8be4b0d8f894ff9495c1a6160e0a68b9da297c9987a0"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/history-1280.png",
+      "sha256": "272acc6109d2a8798510f578a95c473dae2a1d51945e3012a404fab7e2d9bf18"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/views/history-1920.png",
+      "sha256": "567e6fe98a7c9c7bc6599b246ca77dfdbbf40d7f402e046c109ce8035a944fd8"
+    }
+  ],
+  "limits": [
+    "No depicted prop or hand animation; environmental material exists only in this granted action/UI.",
+    "Resource package is not an executable release; retained mono-template/C# solution lookup warnings.",
+    "No fresh device listening or ordinary-play numerical loudness claim.",
+    "Output unsupported-segment case disables navigation; pure tests reject interior unsupported samples separately.",
+    "Initial overlapping capture lost focus; headless MovieMaker crashed; final isolated graphical capture passed."
+  ],
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

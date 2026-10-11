@@ -1,0 +1,14 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+Movie Maker mode enabled, recording movie in 1280×720 @ 60 FPS...
+PASS: 20 actual hand-tool Master-output cases through live commit owner.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+--------------------------------------------------------------------------------
+Done recording movie at path: /private/tmp/allrpcs-tool-output.avi
+6348 frames at 60 FPS (movie length: 00:01:45:48), recorded in 00:01:38 (107% of real-time speed).
+CPU render time: 4.29 seconds (average: 0.68 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 38.38 seconds (average: 6.05 ms/frame)
+--------------------------------------------------------------------------------

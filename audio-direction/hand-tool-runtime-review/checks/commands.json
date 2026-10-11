@@ -1,0 +1,104 @@
+{
+  "native_views_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_TOOL_MAIN_CHECK=1",
+    "ALLRPCS_TOOL_MODE=views",
+    "ALLRPCS_TOOL_VIEWS=/Users/hherb/src/allrpcs/audio-direction/hand-tool-runtime-review/views",
+    "ALLRPCS_TOOL_CHECK_OUTPUT=/Users/hherb/src/allrpcs/audio-direction/hand-tool-runtime-review/native/views.json",
+    "godot",
+    "--fixed-fps",
+    "60",
+    "--path",
+    "game",
+    "--quit-after",
+    "1600"
+  ],
+  "export_command": [
+    "godot",
+    "--headless",
+    "--path",
+    "game",
+    "--export-pack",
+    "macOS Development",
+    "/private/tmp/allrpcs-tool-resources.zip"
+  ],
+  "standalone_stopped_commands": [
+    [
+      "godot",
+      "--headless",
+      "--path",
+      "game",
+      "res://HandToolTapRuntimeSmokeCheck.tscn",
+      "--quit-after",
+      "15"
+    ],
+    [
+      "godot",
+      "--headless",
+      "--path",
+      "game",
+      "res://HandToolTapAudioOutputCheck.tscn",
+      "--quit-after",
+      "15"
+    ]
+  ],
+  "parity_runner": "python3 audio-direction/hand-tool-runtime-review/checks/run-parity.py",
+  "format_command": [
+    "dotnet",
+    "format",
+    "Allrpcs.sln",
+    "--no-restore",
+    "--verify-no-changes"
+  ],
+  "full_quality_command": "./quality.sh",
+  "unit_commands": [
+    [
+      "dotnet",
+      "test",
+      "tests/Domain.Tests/Allrpcs.Domain.Tests.csproj",
+      "--no-build",
+      "--filter",
+      "FullyQualifiedName~HandToolTap"
+    ],
+    [
+      "dotnet",
+      "test",
+      "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+      "--no-build",
+      "--filter",
+      "FullyQualifiedName~HandToolTap"
+    ]
+  ],
+  "output_render_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_TOOL_OUTPUT_CHECK=1",
+    "ALLRPCS_TOOL_TIMELINE=/Users/hherb/src/allrpcs/audio-direction/hand-tool-runtime-review/output/timeline.json",
+    "ALLRPCS_TOOL_DECODE_PATH=/private/tmp/allrpcs-tool-native.pcm16",
+    "godot",
+    "--path",
+    "game",
+    "res://HandToolTapAudioOutputCheck.tscn",
+    "--write-movie",
+    "/private/tmp/allrpcs-tool-output.avi",
+    "--fixed-fps",
+    "60",
+    "--quit-after",
+    "7500"
+  ],
+  "output_extract_command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-y",
+    "-i",
+    "/private/tmp/allrpcs-tool-output.avi",
+    "-map",
+    "0:a:0",
+    "-c:a",
+    "copy",
+    "/private/tmp/allrpcs-tool-output.wav"
+  ]
+}

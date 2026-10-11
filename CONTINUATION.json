@@ -528,6 +528,20 @@
           "sha256": "946750088fafd5315375758e2ad0fa6f2ce7037791c63a65df9a0d19acfd4196"
         }
       ]
+    },
+    {
+      "id": "phase9-hand-tool-tap-runtime-integration",
+      "reason": "Owner approved the exact published Tap practice block proposal on 2026-10-11. Whole implementation and dependent verification/review are complete: fixed Village Edge environmental wooden mallet/block site, exact transient human owner/one-second cooldown, supported32 reach, contextual controls/status/eighth caption, exact A03-T01/notices, twenty measured Master cases, six-mode complete parity/protected truth, native UI/focus, native archived decoding and36-stream/23-notice packaging, six rejection groups and62-stage full quality. No additional unchanged approval gate remains. Standing scoped publication applies. Wider actions/positional emitters/room acoustics/voice remain separate.",
+      "evidence": [
+        {
+          "path": "audio-direction/hand-tool-runtime-authority.json",
+          "sha256": "41dca7813673ea5b766b6a68f6fce28307c1b4967a85de85098573685edb60cc"
+        },
+        {
+          "path": "audio-direction/hand-tool-runtime-verification.json",
+          "sha256": "9e7f9949a7b875a42fd0b180be13288e4d80cf72f620d13271ffa5e9c394dcde"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -586,6 +600,20 @@
         {
           "path": "audio-direction/cask-cover-runtime-verification.json",
           "sha256": "0de66b532631c814ace4cc43fb26c88d9f17846ef9a3ac7ac7ff295b69afab68"
+        }
+      ]
+    },
+    {
+      "id": "audio-hand-tool-tap-runtime",
+      "reason": "Approved first fixed environmental wooden mallet contact and its dependent review/validation are complete. A renamed audit/proof does not reopen this actor/site/input/feedback. Only a new explicit owner request can reopen it. Other actors, actions and spatial emitters require distinct scope authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/hand-tool-runtime-authority.json",
+          "sha256": "41dca7813673ea5b766b6a68f6fce28307c1b4967a85de85098573685edb60cc"
+        },
+        {
+          "path": "audio-direction/hand-tool-runtime-verification.json",
+          "sha256": "9e7f9949a7b875a42fd0b180be13288e4d80cf72f620d13271ffa5e9c394dcde"
         }
       ]
     }
@@ -663,20 +691,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-hand-tool-tap-runtime-integration",
-    "title": "Implement the first hand-tool tap after the new scope grant",
+    "id": "phase9-positional-healer-footstep-owner-scope",
+    "title": "Define the first Healer positional footstep owner and bounded proposal",
     "status": "ready",
-    "workstream": "audio-hand-tool-tap-runtime",
-    "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "The finite Tap practice block site/material/access and exact A03-T01 proposal is complete; its single new owner implementation grant is pending. No action/tool/inventory/PCM has been installed.",
-    "instructions": "Await the one owner decision on audio-direction/hand-tool-owner-scope.md/.json; do not repeat a pending question or infer implementation authority from continuation/publication. After approval, bind that exact grant and implement the whole finite proposal, verify/review/document and publish within the same session. Preserve all closed scopes and accepted materials.",
-    "completion_condition": "Exact proposed fixed environmental mallet/block site, supported reach, transient commit owner, contextual controls/status/eighth caption, A03-T01 PCM/notices and finite unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded grant; standing scoped publication done.",
+    "workstream": "audio-positional-healer-footstep-planning",
+    "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+    "missing_deliverable": "Only Seeker local terrain contacts and the named B02/recorded-reply spatial subset are installed. Healer movement has no authorized positional footstep contact/material/listener/caption or hearing-history contract. One finite read-only proposal for this new actor/emitter is missing.",
+    "instructions": "Inspect only the new Healer positional-footstep deliverable. Prepare one concrete exact actor/contact cadence/material/support/listener-distance-pan/caption/history contract using unchanged accepted source audio, with protected hearing/perception authority, finite checks and file list. Preserve completed Seeker/B02/reply/action/animation scopes; do not re-audit unchanged accepted areas. Request only genuinely new runtime/material/emitter authority once the proposal is concrete.",
+    "completion_condition": "One bounded Healer-only positional-footstep proposal and machine-readable contract are complete, reviewed and published under standing task authority; the single genuinely new implementation/material/emitter decision is identified.",
     "outputs": [
-      "audio-direction/hand-tool-runtime-authority.json",
-      "audio-direction/hand-tool-runtime-verification.json",
-      "audio-direction/hand-tool-runtime-review/README.md"
+      "audio-direction/healer-footstep-owner-scope.md",
+      "audio-direction/healer-footstep-owner-scope.json"
     ],
-    "boundary": "Pending genuinely new gameplay/material/environmental-access/audio grant. No implementation before it arrives; after grant only the exact published hand-tool proposal. No closed water/cask/grinding/treatment reopening, other tools/actions, inventory/durable state/geometry/art/perception/provider changes or release."
+    "boundary": "Read-only proposal work only. No runtime/material/cadence/PCM/inventory/geometry/art/save/perception/provider changes. No closed Seeker footsteps, B02/reply cues, hand-tool/water/cask/grinding/treatment or accepted gait reopening; no release."
   },
   "deferred_slices": []
 }

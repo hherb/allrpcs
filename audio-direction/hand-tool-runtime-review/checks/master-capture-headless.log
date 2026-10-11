@@ -1,0 +1,19 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Movie Maker mode enabled, recording movie in 1280×720 @ 60 FPS...
+ERROR: Parameter "t" is null.
+   at: texture_2d_get (./servers/rendering/dummy/storage/texture_storage.h:106)
+
+================================================================
+handle_crash: Program crashed with signal 11
+Engine version: Godot Engine v4.6.3.stable.mono.official (7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3)
+Dumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues
+[1] invoke_previous_action(sigaction*, int, __siginfo*, void*, bool)
+[2] 2   libsystem_platform.dylib            0x0000000188ea4144 _sigtramp + 56
+[3] MovieWriter::add_frame() (in Godot) + 1456
+[4] Main::iteration() (in Godot) + 1768
+[5] OS_MacOS_Headless::run() (in Godot) + 292
+[6] main (in Godot) + 924
+[7] 7   dyld                                0x0000000188ac3e80 start + 6688
+-- END OF C++ BACKTRACE --
+================================================================

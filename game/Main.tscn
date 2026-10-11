@@ -1,4 +1,4 @@
-[gd_scene load_steps=415 format=3]
+[gd_scene load_steps=419 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -624,6 +624,11 @@
 [ext_resource type="Script" path="res://CaskCoverHandlingPanel.cs" id="cask_1"]
 [ext_resource type="Script" path="res://OpeningRegionCaskCoverAudioController.cs" id="cask_2"]
 [ext_resource type="Script" path="res://CaskCoverHandlingRuntimeSmokeCheck.cs" id="cask_3"]
+
+[ext_resource type="Script" path="res://OpeningRegionHandToolTapCoordinator.cs" id="tool_0"]
+[ext_resource type="Script" path="res://HandToolTapPanel.cs" id="tool_1"]
+[ext_resource type="Script" path="res://OpeningRegionHandToolTapAudioController.cs" id="tool_2"]
+[ext_resource type="Script" path="res://HandToolTapRuntimeSmokeCheck.cs" id="tool_3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4292,6 +4297,20 @@ Automatic = true
 
 [node name="CaskCoverHandlingRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("cask_3")
+
+[node name="OpeningRegionHandToolTapCoordinator" type="Node" parent="."]
+script = ExtResource("tool_0")
+Automatic = true
+
+[node name="HandToolTapPanel" type="CanvasLayer" parent="."]
+script = ExtResource("tool_1")
+
+[node name="OpeningRegionHandToolTapAudioController" type="Node" parent="."]
+script = ExtResource("tool_2")
+Automatic = true
+
+[node name="HandToolTapRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("tool_3")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

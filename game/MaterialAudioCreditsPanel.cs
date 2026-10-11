@@ -39,6 +39,7 @@ public partial class MaterialAudioCreditsPanel : CanvasLayer
         text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/music/CREDITS.txt");
         text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/water-contact/CREDITS.txt");
         text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/cask-cover/CREDITS.txt");
+        text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/hand-tool/CREDITS.txt");
         text += "\n\nInterior footsteps reuse the timber recordings in the sickhouse and the earth recordings in the laundry. Their source notices are included above.";
         RichTextLabel credits = new()
         {

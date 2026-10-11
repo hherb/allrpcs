@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-hand-tool-tap-runtime-integration",
+  "owner_statement": "approved",
+  "status": "exact_proposal_scope_authorized",
+  "context": "Direct response to the single published Tap practice block scope request in this conversation; covers the whole implementation and dependent verification.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/hand-tool-owner-scope.md",
+      "sha256": "9cdede533e9ddc587ed96b4228009f756d5739c795b309a3d1c866fddbf0a579"
+    },
+    {
+      "path": "audio-direction/hand-tool-owner-scope.json",
+      "sha256": "946750088fafd5315375758e2ad0fa6f2ce7037791c63a65df9a0d19acfd4196"
+    }
+  ],
+  "authorized": [
+    "Exact human Tap practice block action at Village Edge; new communal wooden mallet/block environmental site and supported reach",
+    "Transient owner/one-second active cooldown/native controls/status/eighth caption",
+    "Byte-exact A03-T01 Effects feedback, source notices and export patterns",
+    "Named finite tests/live/output/parity/native/packaging/full-quality integration"
+  ],
+  "not_authorized": [
+    "Other actions or inventory items",
+    "Geometry/art/durable-save/world-event/perception/provider changes",
+    "Closed water/cask/grinding/treatment revision",
+    "Release"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "baseline_commit": "7ef917685687ca5d6195ae34c11bd418d33bb159"
+}

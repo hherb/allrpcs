@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "source": "Actual native Godot MovieMaker Master mix; WAV copied losslessly from AVI",
+  "render_command": [
+    "env",
+    "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1",
+    "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1",
+    "ALLRPCS_TOOL_OUTPUT_CHECK=1",
+    "ALLRPCS_TOOL_TIMELINE=/Users/hherb/src/allrpcs/audio-direction/hand-tool-runtime-review/output/timeline.json",
+    "ALLRPCS_TOOL_DECODE_PATH=/private/tmp/allrpcs-tool-native.pcm16",
+    "godot",
+    "--path",
+    "game",
+    "res://HandToolTapAudioOutputCheck.tscn",
+    "--write-movie",
+    "/private/tmp/allrpcs-tool-output.avi",
+    "--fixed-fps",
+    "60",
+    "--quit-after",
+    "7500"
+  ],
+  "extract_command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-y",
+    "-i",
+    "/private/tmp/allrpcs-tool-output.avi",
+    "-map",
+    "0:a:0",
+    "-c:a",
+    "copy",
+    "/private/tmp/allrpcs-tool-output.wav"
+  ],
+  "render_exit_code": 0,
+  "master_analysis_exit_code": 0,
+  "native_source_cache_format": "PCM16; exact arithmetic PCM24-to-PCM16 conversion; compress/mode=0",
+  "background_control": "Retained beds/music stopped in disposable output fixture; retained A04/A05 played and water/cask captions supplied in coexistence case.",
+  "unsupported_segment_case": "Live navigation disabled in output case; finite interior sample separately rejected in pure policy tests.",
+  "focus": "Explicit native focus before fixture triggers; separate real native focus-loss check and controlled cancellation case.",
+  "limits": [
+    "No fresh device listening or ordinary-play loudness compliance",
+    "Initial graphical fixture lost focus during overlapping export; isolated final command passed.",
+    "Headless MovieMaker crashes in this Godot dummy renderer; final evidence uses graphical native renderer.",
+    "Final stopped-diagnostic label changed after capture; active branch unchanged and full quality rebuilds final source."
+  ]
+}

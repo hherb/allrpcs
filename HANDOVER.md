@@ -28,22 +28,23 @@ See [cask review](audio-direction/cask-cover-runtime-review/README.md),
 [verification](audio-direction/cask-cover-runtime-verification.json) and
 [grant](audio-direction/cask-cover-runtime-authority.json).
 
-Full current quality passes 55 stages and 5,211 unit tests, all 293 retained Godot
-launches, four interior modes, six water/control modes and six cask/control modes.
-Twenty actual cask Master cases, complete save/transcript parity, serialized protected
-truth, native controls/views/focus loss, resource packaging and six rejection probes pass.
-The complete approved cask scope and dependent review are closed; no further unchanged
-selection or approval is pending. Wider water/container/cloth/hand-tool actions, regional
-audio identity, full room acoustics and voice remain unfinished.
+The approved **Tap practice block** action is complete: fixed Village Edge site,
+newly declared communal wooden mallet/block, inclusive supported 32-pixel reach,
+exact transient human commits/one-second active cooldown, contextual controls/status,
+independent eighth caption and exact A03-T01 feedback/notices. Tools stay at the site;
+there are no inventory items, depicted props, geometry, durable truth or perception
+changes. See [hand-tool review](audio-direction/hand-tool-runtime-review/README.md),
+[verification](audio-direction/hand-tool-runtime-verification.json) and
+[grant](audio-direction/hand-tool-runtime-authority.json).
 
-The first hand-tool proposal is complete: **Tap practice block** at the existing
-Village Edge anchor, a newly declared communal wooden mallet/block, supported
-32-pixel reach and one exact A03 wood-hammer excerpt. No action, tool, inventory or
-PCM is installed. One new gameplay/material/access grant is pending; see the
-[proposal](audio-direction/hand-tool-owner-scope.md) and
-[contract](audio-direction/hand-tool-owner-scope.json). Planning is closed; await
-that decision before implementing. Reuse current passing product evidence for this
-document-only checkpoint.
+Full current quality passes 62 stages and 5,227 unit tests, all 293 retained Godot
+launches, four interior modes and six modes each for water, cask and hand-tool/control.
+Twenty actual hand-tool Master cases, complete save/transcript and serialized protected
+truth parity, native controls/views/focus loss, mounted native archive decoding, resource
+packaging and six rejection groups pass. The complete approved hand-tool implementation
+and dependent review are closed; no further unchanged selection or approval is pending.
+Wider actions, positional emitters/off-screen cues, regional audio identity, full room
+acoustics and voice remain unfinished.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -53,56 +54,58 @@ or a release.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-hand-tool-tap-runtime-integration — Implement the first hand-tool tap after the new scope grant** (ready).
+**phase9-positional-healer-footstep-owner-scope — Define the first Healer positional footstep owner and bounded proposal** (ready).
 
-Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
-preparation.
+Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: The finite Tap practice block site/material/access and exact A03-T01 proposal
-is complete; its single new owner implementation grant is pending. No action/tool/inventory/PCM has
-been installed.
+Missing deliverable: Only Seeker local terrain contacts and the named B02/recorded-reply spatial
+subset are installed. Healer movement has no authorized positional footstep
+contact/material/listener/caption or hearing-history contract. One finite read-only proposal for
+this new actor/emitter is missing.
 
-Await the one owner decision on audio-direction/hand-tool-owner-scope.md/.json; do not repeat a
-pending question or infer implementation authority from continuation/publication. After approval,
-bind that exact grant and implement the whole finite proposal, verify/review/document and publish
-within the same session. Preserve all closed scopes and accepted materials.
+Inspect only the new Healer positional-footstep deliverable. Prepare one concrete exact
+actor/contact cadence/material/support/listener-distance-pan/caption/history contract using
+unchanged accepted source audio, with protected hearing/perception authority, finite checks and file
+list. Preserve completed Seeker/B02/reply/action/animation scopes; do not re-audit unchanged
+accepted areas. Request only genuinely new runtime/material/emitter authority once the proposal is
+concrete.
 
-Done when: Exact proposed fixed environmental mallet/block site, supported reach, transient commit
-owner, contextual controls/status/eighth caption, A03-T01 PCM/notices and finite
-unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded
-grant; standing scoped publication done.
+Done when: One bounded Healer-only positional-footstep proposal and machine-readable contract are
+complete, reviewed and published under standing task authority; the single genuinely new
+implementation/material/emitter decision is identified.
 
 Expected outputs:
 
-- `audio-direction/hand-tool-runtime-authority.json`
-- `audio-direction/hand-tool-runtime-verification.json`
-- `audio-direction/hand-tool-runtime-review/README.md`
+- `audio-direction/healer-footstep-owner-scope.md`
+- `audio-direction/healer-footstep-owner-scope.json`
 
-Boundary: Pending genuinely new gameplay/material/environmental-access/audio grant. No
-implementation before it arrives; after grant only the exact published hand-tool proposal. No closed
-water/cask/grinding/treatment reopening, other tools/actions, inventory/durable
-state/geometry/art/perception/provider changes or release.
+Boundary: Read-only proposal work only. No
+runtime/material/cadence/PCM/inventory/geometry/art/save/perception/provider changes. No closed
+Seeker footsteps, B02/reply cues, hand-tool/water/cask/grinding/treatment or accepted gait
+reopening; no release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Use `python3 scripts/check-continuation.py --self-test`,
-`python3 scripts/validate-cask-cover-runtime.py --reviewed` and root `./quality.sh`.
+`python3 scripts/validate-hand-tool-runtime.py --reviewed` and root `./quality.sh`.
 After queue maintenance use `python3 scripts/check-continuation.py --sync`, then rerun
 the checker. Reuse passing product evidence for prose-only maintenance.
 
 Root quality uses pinned source-built Pillow/numpy and isolated frozen contracts,
-including water at 50f4a751; all retained product/interior/water checks remain and the
-new cask schedules/current boundary are included. Setup:
+including water at 50f4a751 and cask at 5495202f; all retained product/interior/water/
+cask checks remain and six hand-tool schedules/current boundary are included. Setup:
 [quality maintenance](quality-review/README.md). Run Godot on the host where logs/editor
 settings are writable. Retry only diagnosed native mutex shutdowns with the identical
 command. Frozen validators and `scripts/quality.sh` remain unchanged; do not modify
 historical current-boundary checks to accommodate successors.
 
-Packaging has 35 streams and 20 individual notices (17 retained plus the new three-file
-bundle; 16 notice groups). Full macOS export still lacks a mono template and retains its
+Packaging has 36 streams and 23 individual notices (20 retained plus the new three-file
+bundle; 17 notice groups). Full macOS export still lacks a mono template and retains its
 C# solution lookup mismatch. Packaging is not an executable release or fresh device/
 ordinary-play loudness claim. The controlled unsupported-segment output case disables
-navigation; finite interior-sample rejection is independently unit-tested.
+navigation; finite interior-sample rejection is independently unit-tested. Native Master
+capture uses the graphical renderer with explicit fixture focus; headless Movie Maker
+crashes in this Godot dummy renderer. Its failed attempt is retained, not product evidence.
 Preserve/exclude `game/project.godot` (recorded editor SHA
 `36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`) and `.DS_Store`.

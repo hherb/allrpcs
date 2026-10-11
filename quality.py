@@ -26,6 +26,7 @@ AUDIO_REVISIONS = (
     ('music', 'c472c0a31548e076bfee0252e4e4970714c8c019', 'scripts/validate-music-audio-runtime.py'),
     ('interior', '7b8dd659d409974126790b8a417533bded9c2e5e', 'scripts/validate-interior-audio-runtime.py'),
     ('water', '50f4a7516f7b5acb20119212985e2132a581c106', 'scripts/validate-water-contact-runtime.py'),
+    ('cask', '5495202faecb257148309ad028faa3e0d95bf51c', 'scripts/validate-cask-cover-runtime.py'),
 )
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
@@ -196,13 +197,13 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
     for name, revision, validator in AUDIO_REVISIONS:
         args = [sys.executable, validator] + (['--reviewed'] if name not in ('buses', 'material') else [])
         plan.append(('boundary-' + name, args, revision))
-    plan += [('boundary-cask-cover-current', [sys.executable, 'scripts/validate-cask-cover-runtime.py', '--reviewed'], None),
+    plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], None),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
     if finish_interior and prior.get('resumed_from'):
-        plan.insert(len(plan) - 19 + 9, ('boundary-cask-cover-resume',
-                        [sys.executable, 'scripts/validate-cask-cover-runtime.py', '--reviewed'], None))
+        plan.insert(len(plan) - 19 + 9, ('boundary-hand-tool-resume',
+                        [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], None))
     rows = prior['stages']
     if len(rows) != len(plan) + 1:
         raise ValueError('Resume stage inventory changed')
@@ -272,11 +273,11 @@ def main(resume_smoke=False, finish_interior=False):
                     if name not in ('buses', 'material'):
                         args.append('--reviewed')
                     run.stage('boundary-' + name, args, tree, env, revision)
-            run.stage('boundary-cask-cover-current', [sys.executable, 'scripts/validate-cask-cover-runtime.py', '--reviewed'])
+            run.stage('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
-            run.stage('boundary-cask-cover-resume', [sys.executable, 'scripts/validate-cask-cover-runtime.py', '--reviewed'])
+            run.stage('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
@@ -329,13 +330,30 @@ def main(resume_smoke=False, finish_interior=False):
             raise ValueError('Cask action schedule changed or no-action emitted feedback')
         run.report.update(cask_save_sha256=sha(cask_saves[0]), cask_transcript=cask_reports[0]['transcript'],
                           cask_modes=list(cask_modes))
+        tool_modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'no-action')
+        for mode in tool_modes:
+            output = run.directory / f'tool-{mode}.json'
+            run.stage('hand-tool-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                      env=dict(environment, ALLRPCS_TOOL_MAIN_CHECK='1', ALLRPCS_TOOL_MODE=mode,
+                               ALLRPCS_TOOL_CHECK_OUTPUT=str(output)), retry_native=True,
+                      completion='PASS: hand-tool Main:')
+        tool_saves = [(run.directory / f'tool-{mode}.json.save.json').read_bytes() for mode in tool_modes]
+        tool_reports = [json.loads((run.directory / f'tool-{mode}.json').read_text()) for mode in tool_modes]
+        if any(data != tool_saves[0] for data in tool_saves) or any(
+                row['transcript'] != tool_reports[0]['transcript'] for row in tool_reports):
+            raise ValueError('Hand-tool tap changed complete saves or transcripts')
+        if any(row['commits'] != 6 or row['presentations'] != 6 for row in tool_reports[:-1]) or any(
+                tool_reports[-1][key] != 0 for key in ('commits', 'presentations')):
+            raise ValueError('Hand-tool action schedule changed or no-action emitted feedback')
+        run.report.update(tool_save_sha256=sha(tool_saves[0]), tool_transcript=tool_reports[0]['transcript'],
+                          tool_modes=list(tool_modes))
         generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
         run.report['generated_uid_cleanup'] = cleanup_generated_uids(ROOT, generated, existed, sources)
-        run.stage('boundary-cask-cover-after-runtime', [sys.executable, 'scripts/validate-cask-cover-runtime.py', '--reviewed'])
+        run.stage('boundary-hand-tool-after-runtime', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
-        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes', flush=True)
+        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()
