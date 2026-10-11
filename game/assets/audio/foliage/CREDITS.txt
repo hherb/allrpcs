@@ -1,0 +1,6 @@
+F01 — WIND AND LEAVES by SamuelGremaud
+Source: https://freesound.org/people/SamuelGremaud/sounds/544844/
+Licence: CC0-1.0 — https://creativecommons.org/publicdomain/zero/1.0/
+Original: 544844__samuelgremaud__wind-and-leaves.wav
+Changes: contiguous 8–11 second trim, 100 ms linear endpoint fades, uniform -5 dB gain; 48 kHz stereo PCM24 retained without resampling, layering, denoising, pitch or time changes.
+The original creator does not endorse this game. Exact source and derivative hashes and listening assessment are in provenance.json.

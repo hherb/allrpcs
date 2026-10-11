@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "measurement": "FFmpeg loudnorm analysis; waveform is unchanged",
+  "ffmpeg": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "file_sha256": "895a58f291254915a26eb57819e7bbf20e85ad4aca71d32a1f8237bb71981505",
+  "loudness": {
+    "input_i": "-34.69",
+    "input_tp": "-17.43",
+    "input_lra": "0.20",
+    "input_thresh": "-44.69",
+    "output_i": "-22.88",
+    "output_tp": "-5.63",
+    "output_lra": "0.00",
+    "output_thresh": "-32.88",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.12"
+  },
+  "limits": "Provisional source ceiling only; no device or ordinary-play loudness compliance."
+}

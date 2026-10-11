@@ -163,10 +163,11 @@ captions/history, ducking and gameplay authority intact. Provisional numerical m
 device listening and ordinary-play loudness compliance remain distinct from controlled
 output evidence; resource packaging does not establish an executable release.
 
-The [first fixed foliage proposal](audio-direction/foliage-owner-scope.md) defines one retained
-garden planting, its missing dedicated leaf-rustle source, spatial admission and independent
-anonymous captions/history. Planning is complete; acquisition and runtime installation need
-the new source/emitter grant identified there. It installs no PCM, artwork or runtime owner.
+The approved [fixed garden foliage runtime](audio-direction/foliage-runtime-review/README.md)
+is complete: one new CC0 leaf-rustle passage, the unchanged garden planting, bounded positional
+Ambience, an anonymous tenth caption and independent transient history. Its full-quality,
+native output/UI and resource packaging checks pass. Dedicated exterior wind and wider
+emitters remain unfinished; the audio items below remain partial.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

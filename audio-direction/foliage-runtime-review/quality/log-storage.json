@@ -1,0 +1,12 @@
+{
+  "status": "verbatim",
+  "note": "The native launch log ends in a blank line; preserve its exact bytes compressed rather than alter evidence for Git whitespace checks. Other stage logs are plain.",
+  "compressed_logs": [
+    {
+      "reported_log": "41-product-19-1.log",
+      "stored_path": "audio-direction/foliage-runtime-review/quality/41-product-19-1.log.gz",
+      "uncompressed_sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+      "encoding": "gzip"
+    }
+  ]
+}

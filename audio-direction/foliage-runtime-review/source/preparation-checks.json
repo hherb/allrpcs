@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "Exact deterministic derivative reproduction",
+    "Wrong listening window rejected",
+    "Gain boost rejected",
+    "Nonfinite gain rejected",
+    "Peak ceiling violation rejected",
+    "Missing listening rejected",
+    "Rights capture drift rejected",
+    "Original source drift rejected"
+  ],
+  "test_isolation": "Temporary source tree; installed source/output bytes unchanged"
+}

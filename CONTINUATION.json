@@ -584,6 +584,20 @@
           "sha256": "29b95ee64deec215e5e8380f133345bbdcee4229db2820b00d2c926389f39eaf"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-foliage-runtime-integration",
+      "reason": "Owner approved the exact fixed garden foliage implementation on 2026-10-11 and selected the clean 8-11 second passage from the one new CC0 original. F01, exact retained planting/192-pixel Ambience owner, twelve-active-second schedule, anonymous tenth caption and separate sixteen-entry history are complete. All 82 root quality stages and 5287 unit tests pass, with seven actual-motion modes and complete save/transcript/protected truth parity, 46 measured native Master cases, native ten-caption/keyboard/focus views, exact mounted PCM16 and 37-stream packaging preserving 95 prior entries. Explicit three new notices yield 26 files in 18 groups; frozen proposal arithmetic remains documented. Whole named slice is closed under standing publication authority. Wider wind/emitters/room acoustics/voice/gameplay and release remain distinct.",
+      "evidence": [
+        {
+          "path": "audio-direction/foliage-runtime-authority.json",
+          "sha256": "3a0bd32b584cddea6dfe35f8650700dd6239f01a80a491dc0c829a5bab7c71f1"
+        },
+        {
+          "path": "audio-direction/foliage-runtime-verification.json",
+          "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -672,6 +686,20 @@
           "sha256": "c4e82e2c364ca6c1ed0556370f0e854cfc9a75c28bfc0310bb8e5470b1d5362e"
         }
       ]
+    },
+    {
+      "id": "audio-positional-garden-foliage-runtime",
+      "reason": "The one owner-approved fixed garden foliage source/emitter implementation and dependent verification/review/publication are complete. An unchanged source/planting/caption/history audit is not a successor; wider wind and other emitter scope remain distinct.",
+      "evidence": [
+        {
+          "path": "audio-direction/foliage-runtime-authority.json",
+          "sha256": "3a0bd32b584cddea6dfe35f8650700dd6239f01a80a491dc0c829a5bab7c71f1"
+        },
+        {
+          "path": "audio-direction/foliage-runtime-verification.json",
+          "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -747,21 +775,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-foliage-runtime-integration",
-    "title": "Acquire and implement the first bounded garden foliage source/emitter after its new grant",
-    "status": "in_progress",
-    "workstream": "audio-positional-garden-foliage-runtime",
+    "id": "phase9-positional-wind-owner-scope",
+    "title": "Define the first bounded exterior wind source and emitter proposal",
+    "status": "ready",
+    "workstream": "audio-positional-wind-planning",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "The completed proposal has no dedicated F01 source, source-specific rights evidence or installed fixed garden emitter with anonymous tenth caption and independent transient history.",
-    "instructions": "The foliage proposal is complete and closed. One new source/acquisition/derivative/material/emitter/caption/history grant is pending for its exact contract; do not repeat the proposal or approval of closed owners. After that grant, record the exact owner statement and proposal hashes, acquire at most one qualifying free original, prepare F01, implement only the named garden owner, and complete its focused/native/parity/packaging/full-quality checks, dependent review and standing commit/push in the same session. If no qualifying source exists, report the source blocker without substituting old audio.",
-    "completion_condition": "The one granted garden F01 source/emitter subset and all named dependent checks/review are complete, hash-bound and published, with protected truth and prior owners unchanged.",
+    "missing_deliverable": "No dedicated exterior wind source qualification, exact retained owner/emitter, presentation-only admission/lifecycle, accessible cue boundary or finite implementation/check list has been proposed.",
+    "instructions": "Prepare one finite read-only proposal for the first distinct exterior wind owner from the live repository. Identify the missing source and exact unchanged physical/emitter context, spatial admission, schedule, bus/ducking, captions/history, cancellation and permitted implementation files/checks. Carry all completed audio/art owners forward unchanged. Standing game sound search/download permission is recorded; this planning slice need not acquire a source and does not grant new runtime or physical scope. Complete dependent documentation/review and standing publication in the same session.",
+    "completion_condition": "One concrete source/emitter proposal and hash-bound scope record identify the new wind implementation boundary and finite checks without changing current product/audio/art inputs.",
     "outputs": [
-      "audio-direction/foliage-runtime-authority.json",
-      "game/assets/audio/foliage/F01.wav",
-      "audio-direction/foliage-runtime-verification.json",
-      "audio-direction/foliage-runtime-review/README.md"
+      "audio-direction/wind-owner-scope.md",
+      "audio-direction/wind-owner-scope.json"
     ],
-    "boundary": "Pending one genuinely new bounded implementation grant from the completed foliage proposal. Planning approval does not imply PCM acquisition/derivative or runtime/source-material authority. No other emitter, gameplay hearing/perception/provider/save/time/weather, art/gait/geometry, full acoustics, voice or release scope."
+    "boundary": "Read-only planning for one distinct wind owner. No runtime, physical/layout/material, hearing/perception/provider/save/time/weather, art/gait, full acoustics, voice or release change. Closed garden foliage and all previous owners stay closed."
   },
   "deferred_slices": []
 }

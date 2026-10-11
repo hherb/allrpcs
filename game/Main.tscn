@@ -1,4 +1,4 @@
-[gd_scene load_steps=422 format=3]
+[gd_scene load_steps=425 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -634,6 +634,10 @@
 [ext_resource type="Script" path="res://OpeningRegionHealerFootstepAudioController.cs" id="healer_step_audio"]
 [ext_resource type="Script" path="res://HealerFootstepRuntimeSmokeCheck.cs" id="healer_step_check"]
 
+[ext_resource type="Script" path="res://OpeningRegionFoliageAudioSource.cs" id="foliage_source"]
+[ext_resource type="Script" path="res://OpeningRegionFoliageAudioController.cs" id="foliage_audio"]
+[ext_resource type="Script" path="res://FoliageAudioRuntimeSmokeCheck.cs" id="foliage_check"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
 
@@ -714,6 +718,7 @@ size = Vector2(8, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_bottom_left"]
 size = Vector2(144, 8)
+
 
 
 [node name="Main" type="Node2D"]
@@ -4324,6 +4329,15 @@ script = ExtResource("healer_step_audio")
 
 [node name="HealerFootstepRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("healer_step_check")
+
+[node name="OpeningRegionFoliageAudioSource" type="Node" parent="."]
+script = ExtResource("foliage_source")
+
+[node name="OpeningRegionFoliageAudioController" type="Node" parent="."]
+script = ExtResource("foliage_audio")
+
+[node name="FoliageAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("foliage_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+  "context": "The current ledger-selected slice is phase9-positional-foliage-runtime-integration, following the completed and closed first fixed foliage proposal. This new direct approval grants its exact implementation scope.",
+  "scope_id": "phase9-positional-foliage-runtime-integration",
+  "approved_scope": "One qualifying free CC0-1.0 or CC-BY-4.0 lossless original and F01 derivative, exact fixed garden-only 192-pixel Ambience emitter, anonymous tenth caption and independent transient history, all named dependent checks/review, and standing publication.",
+  "proposal": [
+    {
+      "path": "audio-direction/foliage-owner-scope.md",
+      "sha256": "e5cb4a8db63024d4859a5f978be6f98e4a713d035eb06e9258000f8f21e17386"
+    },
+    {
+      "path": "audio-direction/foliage-owner-scope.json",
+      "sha256": "29b95ee64deec215e5e8380f133345bbdcee4229db2820b00d2c926389f39eaf"
+    }
+  ],
+  "baseline_commit": "55c59c0b4b17f659104f677640ad3c549bc780ac",
+  "source_condition": "Acquire at most one qualifying free original; no new account, purchase, credentials, second source, synthesis or substitution of accepted prior PCM. If none qualifies, report blocker without runtime installation.",
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "protected_boundary": "No other emitter, world weather/hearing/perception/provider/save/time, geometry/art/gait, full acoustics, voice or release authority.",
+  "ongoing_sound_acquisition_authority": {
+    "owner_statement": "You also have my ongoing permission to search for and download sounds for the purpose of this game",
+    "interpretation": "Standing permission for game sound search/download; the exact current proposal still governs this one source and runtime owner."
+  },
+  "notice_accounting": {
+    "explicit_deliverables": "The grant includes CREDITS.txt, provenance.json and deed.html as individually permitted packaged paths.",
+    "actual_count": "Preserving 23 old notice files plus three new files yields 26 notice files in 18 groups, rather than the proposal's arithmetic prediction of 24.",
+    "authority": "Accounting correction only; source, prior notices, scope and frozen proposal remain unchanged."
+  }
+}

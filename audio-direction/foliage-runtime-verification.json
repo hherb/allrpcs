@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "status": "passed",
+  "scope_id": "phase9-positional-foliage-runtime-integration",
+  "baseline_commit": "55c59c0b4b17f659104f677640ad3c549bc780ac",
+  "authority": "audio-direction/foliage-runtime-authority.json",
+  "source": "audio-direction/foliage-source/provenance.json",
+  "review": "audio-direction/foliage-runtime-review/README.md",
+  "focused_unit_tests": 44,
+  "rejection_groups": 7,
+  "native_master_cases": 46,
+  "native_ui_viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "motion_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "foliage-disabled"
+  ],
+  "complete_save_transcript_motion_protected_truth_parity": true,
+  "packaging": {
+    "streams": 37,
+    "individual_notices": 26,
+    "notice_groups": 18,
+    "retained_byte_identical_entries": 95,
+    "mounted_pcm16_exact": true
+  },
+  "quality": {
+    "status": "passed",
+    "required_command": "./quality.sh",
+    "runner_self_tests": 7,
+    "stages": 82,
+    "unit_tests": 5287,
+    "summary": "audio-direction/foliage-runtime-review/quality/summary.json",
+    "retained_stages": 72
+  },
+  "editor_exception_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/foliage-runtime-authority.json",
+      "sha256": "3a0bd32b584cddea6dfe35f8650700dd6239f01a80a491dc0c829a5bab7c71f1"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/README.md",
+      "sha256": "affa14679a09af1702934099c34f618ea44b23ecd5beaccdc15976df0281d812"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/ambience-muted.json",
+      "sha256": "648ff0e075f26e2cc37e983381696b1343273e67ec5b07f6fb60bcb397f0eea5"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/ambience-muted.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/ambience-muted.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/captions-off.json",
+      "sha256": "45972164af6a5545e92c4ba3bbd67d8af0d15950aff9abbab202d25c306fc729"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/captions-off.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/captions-off.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/default.json",
+      "sha256": "280f75bba7f1dccd90703d098ebc31cfa1e6295adedba8681e52b54dfbbbf1f9"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/default.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/default.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/foliage-disabled.json",
+      "sha256": "ebee0fc5b2bf85d488d50ffe61b586c13c4ac7a28bb2aefd74a94b28a18c6cc3"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/foliage-disabled.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/foliage-disabled.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/master-muted.json",
+      "sha256": "95b4a0308418c7248fcd03d3bb2892e4ef50d0c7e0a81f67a8752117589043f1"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/master-muted.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/master-muted.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/missing-stream.json",
+      "sha256": "9a24bf46b7697b313b8b064f9cad45e787ee3ec2c856f72b5de2c920092e9da2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/missing-stream.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/quiet.json",
+      "sha256": "4cb94438cb5aeb7477f8aee2363dc1a87e231acedc6fca70fa116a29b477bc50"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/quiet.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/live/quiet.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/output/master.wav.gz",
+      "sha256": "3e30e2c39c539e38649f0c2bcc6d1dd6f4016d11a7409371d6632627bf0e11d0"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/output/measurements.json",
+      "sha256": "2cc12e4a00dce250cf292d1710ad3628a8ad90e966933f7f8cf2de98d4a5a80d"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/output/native.log",
+      "sha256": "1ad099a734409abb8c319c69bf272b87c1f2f770e22b8d46954bd0b655728556"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/output/timeline.json",
+      "sha256": "dc9cd30ecf36f46d4eaf2d3c9b0a573ecb0a01a2f724cdf5f526b97029f4291a"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/packaging/audio-subset.zip",
+      "sha256": "c804f873c2e32a1ec5deab34a99f39bb2f49e64965caa83a8fe4610495794557"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/packaging/expected-pcm16.bin",
+      "sha256": "f20c5cc0a21551ab29404a23c406a2a2093ba2f3c03544e5682c3e7f8e82ba97"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/packaging/inventory.json",
+      "sha256": "006ef2d79125e04f386c991f4760b60916e6befd7617c8828d4810a929f28912"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/packaging/native-decode.json",
+      "sha256": "b6fe105d1fc6d5facc3fb247a88006f1cb8ca40bab44ca4434ff7086d23894ee"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/packaging/native.log",
+      "sha256": "254415917fb07617b7eb4bb599c4453e2aa9b153f342b095021e1a2421c6bc6d"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/02-art-1-1.log",
+      "sha256": "642cda40dd68af2b66c4808a1c2531f9289e0a5116e340723fb0967efc6e562f"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/25-product-3-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/26-product-4-1.log",
+      "sha256": "5ac055d7656656c6f11911fc837947b105853b8aec442ec4fa850da754ce4044"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/27-product-5-1.log",
+      "sha256": "de672809afc0dc8b1277f5a43f21960409d0161492343bb124f10d0a3ee12141"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/28-product-6-1.log",
+      "sha256": "9a2b264d25e5950cfa633fdfa7a9f394a6697fb48eba24115ae0fe66337d4968"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/29-product-7-1.log",
+      "sha256": "9318f9183fc7a802e1e13d377bf59528a6bd568716860c8f059de0eceecbb0d5"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/30-product-8-1.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/31-product-9-1.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/32-product-10-1.log",
+      "sha256": "8d74aaf7ff0473ff8248c1d625617f7ab312c8bee7a58a9412489ca945e7e1c9"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/33-product-11-1.log",
+      "sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/34-product-12-1.log",
+      "sha256": "3fd35e37e7e118398972aef2b561519b6b091cedb7ab82ed97599a088711f871"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/35-product-13-1.log",
+      "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/36-product-14-1.log",
+      "sha256": "eb9812fe32ba5f4e0fe4dca12c3387d045fbe3e1eabd147f8f40eb8ab0e42727"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/37-product-15-1.log",
+      "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/38-product-16-1.log",
+      "sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/39-product-17-1.log",
+      "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/40-product-18-1.log",
+      "sha256": "29bd7368f754e9f18e69a39f811e5ab26db43872f9eb3db83136a5a1189adaf3"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/41-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/42-interior-normal-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/43-interior-muted-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/44-interior-zero-1.log",
+      "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/45-interior-mono-reduced-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/46-water-default-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/47-water-quiet-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/48-water-master-muted-1.log",
+      "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/49-water-effects-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/50-water-missing-stream-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/51-water-no-action-1.log",
+      "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/52-cask-default-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/53-cask-quiet-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/54-cask-master-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/55-cask-effects-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/56-cask-missing-stream-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/57-cask-no-action-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/58-hand-tool-default-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/59-hand-tool-quiet-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/60-hand-tool-master-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/61-hand-tool-effects-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/62-hand-tool-missing-stream-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/63-hand-tool-no-action-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/64-healer-footstep-default-1.log",
+      "sha256": "1ebf2a86424ddbe429c976514eb34ad0c66e8471e9ce024c29ef3c17d0df4319"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/65-healer-footstep-quiet-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/66-healer-footstep-master-muted-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/67-healer-footstep-effects-muted-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/68-healer-footstep-missing-resources-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/69-healer-footstep-captions-off-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/70-healer-footstep-observer-disabled-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/71-boundary-hand-tool-after-runtime-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/72-healer-master-output-1.log",
+      "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/73-boundary-healer-after-runtime-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/74-foliage-default-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/75-foliage-quiet-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/76-foliage-master-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/77-foliage-ambience-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/78-foliage-missing-stream-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/79-foliage-captions-off-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/80-foliage-foliage-disabled-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/81-foliage-master-output-1.log",
+      "sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/82-boundary-foliage-after-runtime-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/log-storage.json",
+      "sha256": "89b690791eaf49c9df64bf8f80999f1002b4c77b338d8bae51463dcd8b346b73"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/root.log",
+      "sha256": "36977017bc0135e2f9ed9fe2579f01e5b8642189caa1f45e55cf95e1143fdd35"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/quality/summary.json",
+      "sha256": "19f28c283e925c98c067ddd290dec61f2d0d17ce890e06b6e14e16f42113749e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/source/passage-measurements.json",
+      "sha256": "8b439c17a7a5f0c946f47fc8820378ffbe301cad8a6e236eeb27ab73518634fd"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/source/preparation-checks.json",
+      "sha256": "c2d53cf748775221af3ab21df6e69830993157a8f09eabb8bed639b79a8d36e1"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/history-muted-1280.png",
+      "sha256": "7d094e0c8fddc56057f8a2ab2577f2c879ff010931cf7521cda3cc9080bb69a5"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/history-muted-1920.png",
+      "sha256": "aa010d5d2d28c9d5dee9455217be24f3bfd79fb745ef7648994c290c9f828a0f"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/main.json",
+      "sha256": "6a569d9292d8ed3b1da60d8c104af9cbe0e60917ba498275c3c7d03b6ab46f85"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/main.json.save.json",
+      "sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/native.json",
+      "sha256": "c142b1a118288ff247ab1a71a80a52cd4672fa11fea15edde74f70075fa708cc"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/native.log",
+      "sha256": "b749558132feae92dbd35e1d23cd22db3c60616da56dc57bdfae411ea5a0332b"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/ordinary-offscreen.png",
+      "sha256": "6479b77a6a630c3113234f298cf91cda7edfe7c8ff8938b0b5a44c503c038d0e"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/ten-captions-1280.png",
+      "sha256": "6ee8dbe047e16b20a2b16b1564bf51f23a22a5bbc75b899f367f7a2bfae5e1fa"
+    },
+    {
+      "path": "audio-direction/foliage-runtime-review/views/ten-captions-1920.png",
+      "sha256": "d84bcdd5aa8ed8933e8175db17e26ae76f286c6ae10d8b204bf3ce25d3bbdeef"
+    },
+    {
+      "path": "audio-direction/foliage-source/README.md",
+      "sha256": "bc145f011664b21a85d07cd386e81e82a80078fbe8d88dd3619009f1ccc8d32d"
+    },
+    {
+      "path": "audio-direction/foliage-source/original.wav",
+      "sha256": "0633f88fa0422030401bd633d5ee73cca7b61687df950e96be55d64eafec7715"
+    },
+    {
+      "path": "audio-direction/foliage-source/provenance.json",
+      "sha256": "4d7525241aaf42c9e740e169db1707b6832d3e184c8df2802810122f0d070ff5"
+    },
+    {
+      "path": "audio-direction/foliage-source/rights/catalogue.html",
+      "sha256": "f34eafe7fbd5003c80983fa98b9585765273c5cd54bcfa8aeefdfca5222cc3df"
+    },
+    {
+      "path": "audio-direction/foliage-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/FoliageAudioRuntimeProof.cs",
+      "sha256": "11699e8c729e055e8966c6526912e30065c01b31fa21203738fad75e6e164b4c"
+    },
+    {
+      "path": "game/FoliageAudioRuntimeProof.cs.uid",
+      "sha256": "94e3d8eec26c7ef5552b1b89f35db245d0adbf85a7fbcedbb172d9c59a0f83c9"
+    },
+    {
+      "path": "game/FoliageAudioRuntimeProof.tscn",
+      "sha256": "963e2f3e94ce876f5fea827e81f4ced3e86ece1284e2f156ea78054ac0799c7a"
+    },
+    {
+      "path": "game/FoliageAudioRuntimeSmokeCheck.cs",
+      "sha256": "e59c92058c6b746074dd3ce5e9fa92ecbff4d81e13a41e8b915488f8e1bff24c"
+    },
+    {
+      "path": "game/FoliageAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "227a634a029fda4658f8bf062a376fcecf422866eaaa493356565c5971c5ea81"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "09f2358541b7d4d210fee2b8bdccda0818187efcdd68bd8e058431afcd938268"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "aa2328d3459db70921581f788f25d6aa635146af2382758c8b36cdc38094440e"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "470c321b38b530f0c7e36a3b30284dd956a431ac59a2786de381d8d1579709f6"
+    },
+    {
+      "path": "game/OpeningRegionFoliageAudioController.cs",
+      "sha256": "d5bf830194496b74f2cad0ae220a355ca2e4252d9f4ce8581379f4965142a921"
+    },
+    {
+      "path": "game/OpeningRegionFoliageAudioController.cs.uid",
+      "sha256": "c4ae6e38f1711890f588de6e6d0c0d925d2fe34c6ebb19bc7938b10380c88c6d"
+    },
+    {
+      "path": "game/OpeningRegionFoliageAudioSource.cs",
+      "sha256": "09aa240011567089b5949024b08deea2574056aae2fc3831577dad9ddceb95b7"
+    },
+    {
+      "path": "game/OpeningRegionFoliageAudioSource.cs.uid",
+      "sha256": "5f23594d20fad575e04c542a1bda69b96402046f6c213886441bc8d54ee4ad76"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "61d82d50ba33b64742e6bc09b81f3f03e56653855b0665c3e122ddf0ac34da06"
+    },
+    {
+      "path": "game/assets/audio/foliage/CREDITS.txt",
+      "sha256": "8a0377b2e494aa942c431bf5578c9976403ed05a066f498bfd1d4405e9c84782"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav",
+      "sha256": "895a58f291254915a26eb57819e7bbf20e85ad4aca71d32a1f8237bb71981505"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav.import",
+      "sha256": "ba6237b789af28d6f7ce3f4f20856ffc97349a9ca12e19906b5bd9f0c7a2c872"
+    },
+    {
+      "path": "game/assets/audio/foliage/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/foliage/provenance.json",
+      "sha256": "4d7525241aaf42c9e740e169db1707b6832d3e184c8df2802810122f0d070ff5"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "dbef0bd7f2c6a043e6c91b4b8f647169676bc7088ca2d2b855c228d742100255"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "9b08207a6582ab2f3db619647fdfd1b09ec668312a02df49d97164f047b87f5d"
+    },
+    {
+      "path": "scripts/check-foliage-audio-output.py",
+      "sha256": "d7be055272c6bae53d4a4570b3c30a293891da40e93556f8a781adc709d775bc"
+    },
+    {
+      "path": "scripts/prepare-foliage-passage.py",
+      "sha256": "6a83d5df8efc71b7e8c226db4972fcc3fa1b8e4e7b3796b1cf9e831375d45087"
+    },
+    {
+      "path": "scripts/validate-foliage-runtime.py",
+      "sha256": "48ed246e18416ba489451a69d3d4a6af4d5ed5045d7745d2331680a598a2af9f"
+    },
+    {
+      "path": "src/Application/Audio/FoliageCueHistory.cs",
+      "sha256": "a36c21bc58769ea83da3bf4d657fce7022b68ea2a1911e6473b68202de26f422"
+    },
+    {
+      "path": "src/Application/Audio/FoliagePresentationSchedule.cs",
+      "sha256": "52dbe9b31b1bb635681f4d6fa2d19259e316d385cc3c1a85e9bdf226cc5a9acf"
+    },
+    {
+      "path": "src/Application/Audio/FoliageSpatialProjection.cs",
+      "sha256": "9468f0264ac7a84fa7e98ccd2dd8b170ae21e9f7f8a3378c9e083e8239fb4c15"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/FoliageCueHistoryTests.cs",
+      "sha256": "ea5f9da75dafa7507d861f49f72e21ad13bc1f7181362e379c204acb33a3a802"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/FoliagePresentationScheduleTests.cs",
+      "sha256": "40f9617608637b9cad9f1afdc04a21e083222339832a9ebb3b1f0acab739d2fe"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/FoliageSpatialProjectionTests.cs",
+      "sha256": "f59bf5d6ab6df28440040f98433cd5c1edec2d4d909e16e85bf21440dd8694b6"
+    }
+  ],
+  "limits": [
+    "Resource archive is not an executable release.",
+    "Owner supplied listening assessment for selected 8-11 second source passage.",
+    "Controlled output measurements do not establish fresh-device or ordinary-play loudness compliance.",
+    "Proposal notice arithmetic corrected to preserve all three explicitly required new notices."
+  ]
+}

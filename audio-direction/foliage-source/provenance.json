@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "status": "original_rights_and_selected_passage_listening_verified",
+  "title": "WIND AND LEAVES",
+  "author": "SamuelGremaud",
+  "catalogue_url": "https://freesound.org/people/SamuelGremaud/sounds/544844/",
+  "download_url": "https://freesound.org/people/SamuelGremaud/sounds/544844/download/544844__samuelgremaud__wind-and-leaves.wav",
+  "original_filename": "544844__samuelgremaud__wind-and-leaves.wav",
+  "retrieval_date": "2026-10-11",
+  "retrieval_method": "Original Download sound link through the existing authenticated in-app browser session; no credentials read or collected, no account created.",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "rights_evidence": "Creator catalogue declares Creative Commons 0, links the CC0 1.0 deed, and states its recordings use that licence. Both are retained below.",
+  "author_notice": "Creator invites notification of use; no message was sent. Preserve acknowledgement in eventual packaged attribution.",
+  "original": {
+    "path": "audio-direction/foliage-source/original.wav",
+    "sha256": "0633f88fa0422030401bd633d5ee73cca7b61687df950e96be55d64eafec7715",
+    "bytes": 4888154,
+    "decoded_pcm_sha256": "95b5bb09a0daeae0a64d838020d855bd95cd3780129ea3322fdd1971fbca1bab",
+    "decoder": "Python wave, direct signed little-endian PCM24 decoding",
+    "sample_rate": 48000,
+    "frames": 814685,
+    "channels": 2,
+    "encoding": "PCM24",
+    "duration_seconds": 16.972604166666667,
+    "sample_peak_dbfs": -6.804816542182782,
+    "rms_dbfs": -36.523230545467946,
+    "clipped_samples": 0,
+    "integrated_loudness_lufs": -31.6,
+    "loudness_range_lu": 6.2
+  },
+  "rights": [
+    {
+      "path": "audio-direction/foliage-source/rights/catalogue.html",
+      "sha256": "f34eafe7fbd5003c80983fa98b9585765273c5cd54bcfa8aeefdfca5222cc3df",
+      "bytes": 37802,
+      "capture_normalization": "Trailing whitespace stripped from HTML lines; content otherwise retained."
+    },
+    {
+      "path": "audio-direction/foliage-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12",
+      "bytes": 30248
+    }
+  ],
+  "tool_versions": {
+    "python": "Python 3.12.3",
+    "ffprobe": "ffprobe version 9.0.1 Copyright (c) 2007-2026 the FFmpeg developers"
+  },
+  "decoded_metadata": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "pcm_s24le",
+        "codec_long_name": "PCM signed 24-bit little-endian",
+        "codec_type": "audio",
+        "codec_tag_string": "[1][0][0][0]",
+        "codec_tag": "0x0001",
+        "sample_fmt": "s32",
+        "sample_rate": "48000",
+        "channels": 2,
+        "bits_per_sample": 24,
+        "initial_padding": 0,
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "duration_ts": 814685,
+        "duration": "16.972604",
+        "bit_rate": "2304000",
+        "bits_per_raw_sample": "24",
+        "disposition": {
+          "default": 0,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        }
+      }
+    ],
+    "format": {
+      "filename": "audio-direction/foliage-source/original.wav",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "wav",
+      "format_long_name": "WAV / WAVE (Waveform Audio)",
+      "duration": "16.972604",
+      "size": "4888154",
+      "bit_rate": "2304020",
+      "probe_score": 99
+    }
+  },
+  "listening": {
+    "status": "passed",
+    "assessor": "Owner",
+    "start_frame": 384000,
+    "findings": "Owner confirms a clean three-second mild-wind leaf passage meeting the requested exclusions, starting at 0:08. Numerical inspection confirms lossless format and no clipped original samples.",
+    "required": "At least three contiguous seconds of mild wind moving leaves without voices, wildlife, rain impacts, footsteps, handling/bag noise, machinery, clipping or abrupt edits. Catalogue wording and decoded metrics alone do not establish this.",
+    "limitation": "Listening assessment supplied by the owner; the agent verified rights, decoded samples and preparation parameters.",
+    "start_seconds": 8,
+    "end_seconds_exclusive": 11,
+    "owner_statement": "yes, starting at 0:08. You also have my ongoing permission to search for and download sounds for the purpose of this game"
+  },
+  "derivative": {
+    "path": "game/assets/audio/foliage/F01.wav",
+    "sha256": "895a58f291254915a26eb57819e7bbf20e85ad4aca71d32a1f8237bb71981505",
+    "decoded_pcm_sha256": "81581b13991f9af8fcdfba9834d5de077c65471f28558a50ef640e61218d6682",
+    "trim_pcm_sha256": "927ba4239f1a5a8eb5a723c48e90fd4d29ef7bb4fc453aa1871be9cdaaf279b4",
+    "start_frame": 384000,
+    "end_frame_exclusive": 528000,
+    "frames": 144000,
+    "sample_rate": 48000,
+    "channels": 2,
+    "encoding": "PCM24",
+    "uniform_gain_db": -5.0,
+    "linear_fade_frames_each_end": 4800,
+    "loop": false,
+    "sample_peak_dbfs": -18.367647589934094,
+    "rms_dbfs": -39.4533100851939,
+    "clipped_samples": 0
+  },
+  "originals_acquired": 1,
+  "acquisition_limit": 1,
+  "source_replacement": "A second original is outside the recorded grant."
+}

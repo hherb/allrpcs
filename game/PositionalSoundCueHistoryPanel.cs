@@ -8,6 +8,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
     private RichTextLabel entries = null!;
     private Button close = null!;
     private Control? origin;
+    private OpeningRegionFoliageAudioController? foliage;
     private OpeningRegionHealerFootstepAudioController? footsteps;
     private OpeningRegionPositionalAudioController? audio;
     /// <summary>Restores the Audio surface when its child view closes.</summary>
@@ -16,6 +17,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Ready()
     {
+        foliage = GetNodeOrNull<OpeningRegionFoliageAudioController>("../../OpeningRegionFoliageAudioController");
         footsteps = GetNodeOrNull<OpeningRegionHealerFootstepAudioController>("../../OpeningRegionHealerFootstepAudioController");
         audio = GetNodeOrNull<OpeningRegionPositionalAudioController>("../../OpeningRegionPositionalAudioController");
         ColorRect shade = new() { Name = "Shade", Color = new(0, 0, 0, 0.55f) };
@@ -33,7 +35,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
         });
         VBoxContainer content = new(); panel.AddChild(content);
         content.AddChild(new Label { Text = "Recent sound cues", ThemeTypeVariation = "HeaderLarge" });
-        content.AddChild(new Label { Text = "Reply and nearby footstep cues · cleared when loading a save" });
+        content.AddChild(new Label { Text = "Reply, footstep and foliage cues · cleared when loading a save" });
         entries = new()
         {
             Name = "Entries",
@@ -66,6 +68,8 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
         string replies = cues.Count == 0 ? "No recent heard reply cues." : string.Join('\n', cues);
         IReadOnlyList<string> nearby = footsteps?.RecentCues ?? [];
         string steps = nearby.Count == 0 ? "No recent nearby footstep cues." : string.Join('\n', nearby);
-        entries.Text = "Heard reply cues\n" + replies + "\n\nNearby footstep cues\n" + steps;
+        IReadOnlyList<string> leaves = foliage?.RecentCues ?? [];
+        string rustling = leaves.Count == 0 ? "No recent nearby foliage cues." : string.Join('\n', leaves);
+        entries.Text = "Heard reply cues\n" + replies + "\n\nNearby footstep cues\n" + steps + "\n\nNearby foliage cues\n" + rustling;
     }
 }

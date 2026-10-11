@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "cases": 46,
+  "metrics": {
+    "distance-0": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.004087594461602698,
+      "right_rms": 0.0041611985225886135,
+      "rms": 0.004124560681267686,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 3.353854166666667
+    },
+    "distance-48": {
+      "peak": 0.04522705078125,
+      "left_rms": 0.0030655510635222275,
+      "right_rms": 0.003120732374888229,
+      "rms": 0.003093264770330677,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 3.346020833333333,
+      "ratio_to_center": 0.7499622406767357
+    },
+    "distance-96": {
+      "peak": 0.0301513671875,
+      "left_rms": 0.0020437179419372092,
+      "right_rms": 0.0020805159603852915,
+      "rms": 0.002062199031084778,
+      "presentations": 1,
+      "first_signal_seconds": 0.3634375,
+      "last_signal_seconds": 3.3486666666666665,
+      "ratio_to_center": 0.49998028649464793
+    },
+    "distance-144": {
+      "peak": 0.01507568359375,
+      "left_rms": 0.001021983586918285,
+      "right_rms": 0.001040395963126551,
+      "rms": 0.0010312308694032553,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 3.351166666666667,
+      "ratio_to_center": 0.25002198999926123
+    },
+    "distance-191": {
+      "peak": 0.00030517578125,
+      "left_rms": 2.486730117044806e-05,
+      "right_rms": 2.519033059932975e-05,
+      "rms": 2.5029337018839475e-05,
+      "presentations": 1,
+      "first_signal_seconds": 0.35960416666666667,
+      "last_signal_seconds": 3.349625,
+      "ratio_to_center": 0.006068364355145503
+    },
+    "distance-192": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "distance-193": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "left": {
+      "peak": 0.02947998046875,
+      "left_rms": 0.00208961537095918,
+      "right_rms": 0.0020336185875808504,
+      "rms": 0.002061807090673519,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 3.3511875,
+      "left_rms_relative": 0.5112090718852443,
+      "right_rms_relative": 0.4887098215914413
+    },
+    "right": {
+      "peak": 0.03082275390625,
+      "left_rms": 0.0019976514077348568,
+      "right_rms": 0.0021272199044244616,
+      "rms": 0.0020634528912244,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 3.353833333333333,
+      "left_rms_relative": 0.4887107628949084,
+      "right_rms_relative": 0.5112036575224853
+    },
+    "mono": {
+      "peak": 0.0340576171875,
+      "left_rms": 0.003636191962595611,
+      "right_rms": 0.003636191962595611,
+      "rms": 0.003636191962595611,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 3.346020833333333
+    },
+    "zoom-08": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.0040873448643508545,
+      "right_rms": 0.0041609320878820515,
+      "rms": 0.0041243026004466376,
+      "presentations": 1,
+      "first_signal_seconds": 0.3634375,
+      "last_signal_seconds": 3.3486875,
+      "ratio_to_center": 0.9999374282884914
+    },
+    "zoom-2": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.004087594461602698,
+      "right_rms": 0.0041611985225886135,
+      "rms": 0.004124560681267686,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 3.3511875,
+      "ratio_to_center": 1.0
+    },
+    "camera-offset": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.004087594461602698,
+      "right_rms": 0.0041611985225886135,
+      "rms": 0.004124560681267686,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 3.353854166666667
+    },
+    "quiet": {
+      "peak": 0.058441162109375,
+      "left_rms": 0.004049810680615397,
+      "right_rms": 0.00411560968941799,
+      "rms": 0.004082842739100894,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 3.346020833333333
+    },
+    "ambience-half": {
+      "peak": 0.0301513671875,
+      "left_rms": 0.0020437179419372092,
+      "right_rms": 0.0020805159603852915,
+      "rms": 0.002062199031084778,
+      "presentations": 1,
+      "first_signal_seconds": 0.3634375,
+      "last_signal_seconds": 3.3486666666666665,
+      "ratio_to_center": 0.49998028649464793
+    },
+    "master-half": {
+      "peak": 0.0301513671875,
+      "left_rms": 0.0020438426376312873,
+      "right_rms": 0.0020806490694004936,
+      "rms": 0.0020623279658430614,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 3.351166666666667,
+      "ratio_to_center": 0.5000115467350098
+    },
+    "other-bus-zero": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.004087594461602698,
+      "right_rms": 0.0041611985225886135,
+      "rms": 0.004124560681267686,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 3.353854166666667,
+      "ratio_to_center": 1.0
+    },
+    "ambience-zero": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "ambience-muted": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "master-zero": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "master-muted": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "missing-stream": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "missing-bus": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 1,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "captions-off": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.004087594461602698,
+      "right_rms": 0.0041611985225886135,
+      "rms": 0.004124560681267686,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 3.3511875,
+      "ratio_to_center": 1.0
+    },
+    "foreground-duck": {
+      "peak": 0.042694091796875,
+      "left_rms": 0.002893638252528332,
+      "right_rms": 0.0029457489804030398,
+      "rms": 0.0029198098732657893,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 3.353854166666667,
+      "ratio_to_center": 0.7079080898304021
+    },
+    "foreground-recovery": {
+      "peak": 0.051239013671875,
+      "left_rms": 0.003927852824804265,
+      "right_rms": 0.003991865750046119,
+      "rms": 0.003959988635066653,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 3.346020833333333,
+      "ratio_to_center": 0.9600994969116441
+    },
+    "enter-range-mid": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "leave-range-mid": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013738024797613874,
+      "right_rms": 0.0013645995771706756,
+      "rms": 0.0013692087604549067,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 0.8553541666666666
+    },
+    "pause": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013607708794641624,
+      "right_rms": 0.001348475754740568,
+      "rms": 0.0013546372664888587,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 0.8473541666666666
+    },
+    "focus-loss": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013607708794641624,
+      "right_rms": 0.001348475754740568,
+      "rms": 0.0013546372664888587,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 0.8500208333333333
+    },
+    "reading-overlay": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013607708794641624,
+      "right_rms": 0.001348475754740568,
+      "rms": 0.0013546372664888587,
+      "presentations": 1,
+      "first_signal_seconds": 0.3634375,
+      "last_signal_seconds": 0.8526875
+    },
+    "text-entry": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013738024797613874,
+      "right_rms": 0.0013645995771706756,
+      "rms": 0.0013692087604549067,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 0.8553541666666666
+    },
+    "load-success": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013607708794641624,
+      "right_rms": 0.001348475754740568,
+      "rms": 0.0013546372664888587,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 0.8473541666666666
+    },
+    "load-failure": {
+      "peak": 0.060333251953125,
+      "left_rms": 0.0040873448643508545,
+      "right_rms": 0.0041609320878820515,
+      "rms": 0.0041243026004466376,
+      "presentations": 1,
+      "first_signal_seconds": 0.3607708333333333,
+      "last_signal_seconds": 3.346020833333333,
+      "ratio_to_center": 0.9999374282884914
+    },
+    "teleport": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013607708794641624,
+      "right_rms": 0.001348475754740568,
+      "rms": 0.0013546372664888587,
+      "presentations": 1,
+      "first_signal_seconds": 0.3634375,
+      "last_signal_seconds": 0.8526875
+    },
+    "listener-stale": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "listener-replaced": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "listener-unsupported": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "source-hidden": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "source-moved": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "source-replaced": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "source-texture": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "map-disabled": {
+      "peak": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0,
+      "rms": 0.0,
+      "presentations": 0,
+      "first_signal_seconds": null,
+      "last_signal_seconds": null
+    },
+    "invalid-delta": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013738024797613874,
+      "right_rms": 0.0013645995771706756,
+      "rms": 0.0013692087604549067,
+      "presentations": 1,
+      "first_signal_seconds": 0.3554375,
+      "last_signal_seconds": 0.8553541666666666
+    },
+    "mute-unmute": {
+      "peak": 0.02056884765625,
+      "left_rms": 0.0013559519747405233,
+      "right_rms": 0.0013423759753629742,
+      "rms": 0.0013491810510517892,
+      "presentations": 1,
+      "first_signal_seconds": 0.35810416666666667,
+      "last_signal_seconds": 0.8366875
+    },
+    "retained-overlap": {
+      "peak": 0.1387939453125,
+      "left_rms": 0.004214979580591392,
+      "right_rms": 0.004957418935592307,
+      "rms": 0.004601198505159908,
+      "presentations": 1,
+      "first_signal_seconds": 0.3394375,
+      "last_signal_seconds": 4.999979166666667
+    }
+  },
+  "native_pcm_maximum_error_lsb": 1.0,
+  "native_alignment_samples": 17188,
+  "exact_matched_frames": 139200,
+  "final_fade_maximum_error_lsb": 22.0,
+  "final_fade_note": "Final 100 ms source fade includes native mixer release at the three-active-second deadline; full PCM equality checked in mounted archive.",
+  "wave_sha256": "d21257185a85c75ed4e5309734fa3102ca42e6fc142b5bd65e941e9f9775bd03",
+  "timeline_sha256": "dc9cd30ecf36f46d4eaf2d3c9b0a573ecb0a01a2f724cdf5f526b97029f4291a",
+  "native_master_loudness": {
+    "input_i": "-42.68",
+    "input_tp": "-17.11",
+    "input_lra": "12.60",
+    "input_thresh": "-53.20",
+    "output_i": "-22.01",
+    "output_tp": "-1.00",
+    "output_lra": "9.20",
+    "output_thresh": "-32.56",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.99"
+  },
+  "cancellation_allowance_seconds": 0.12,
+  "limits": [
+    "Controlled native fixture, with diagnostic support overrides for distance/pan only.",
+    "Ordinary supported listener/motion is separately exercised in Main.",
+    "No ordinary-play/device loudness compliance or executable release claim."
+  ]
+}

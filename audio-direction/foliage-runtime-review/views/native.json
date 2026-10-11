@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "checks": [
+    "Three actual twelve-second schedule starts; actual input/post-collision movement and complete save/transcript/protected truth parity.",
+    "Static planting hide/move/replacement/texture and nav drift rejected; source/listener room support; live injection; pause/focus/stall/overlay history preservation; failed/successful load; noncurrent listener.",
+    "Actual native focus loss cancels with history retained; native ten-caption bounds at both sizes; independent capacity/limiter; muted/captions-off selectable scrolling history; Tab/Shift-Tab/Escape/return focus."
+  ]
+}

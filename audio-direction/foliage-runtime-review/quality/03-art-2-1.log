@@ -1,0 +1,4 @@
+Direction A Godot import-proof validation passed
+assets: 113 exact source-hash matches
+sidecars: exact resource/cache paths and unique UIDs
+imports: lossless, no mipmaps, alpha-border fix except exact accepted connector and accepted path continuations, no premultiplied alpha

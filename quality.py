@@ -29,6 +29,7 @@ AUDIO_REVISIONS = (
     ('cask', '5495202faecb257148309ad028faa3e0d95bf51c', 'scripts/validate-cask-cover-runtime.py'),
 )
 HAND_TOOL_REVISION = '75c1aa04e4cfa840d75bee119de11afe7fb2484c'
+HEALER_REVISION = 'ae06c9abd939cc1c2df9bdc35654166f66c15c00'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -199,7 +200,8 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
         args = [sys.executable, validator] + (['--reviewed'] if name not in ('buses', 'material') else [])
         plan.append(('boundary-' + name, args, revision))
     plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
-             ('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], None),
+             ('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
+             ('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], None),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
@@ -207,7 +209,8 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
         index = len(plan) - 19 + 9
         plan[index:index] = [
             ('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
-            ('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], None)]
+            ('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
+            ('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], None)]
     rows = prior['stages']
     if len(rows) != len(plan) + 1:
         raise ValueError('Resume stage inventory changed')
@@ -279,13 +282,17 @@ def main(resume_smoke=False, finish_interior=False):
                     run.stage('boundary-' + name, args, tree, env, revision)
             with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
                 run.stage('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
-            run.stage('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
+            with snapshot(HEALER_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
+            run.stage('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
             with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
                 run.stage('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
-            run.stage('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
+            with snapshot(HEALER_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
+            run.stage('boundary-foliage-resume', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
@@ -378,8 +385,28 @@ def main(resume_smoke=False, finish_interior=False):
         run.report['generated_uid_cleanup'] = cleanup_generated_uids(ROOT, generated, existed, sources)
         with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
             run.stage('boundary-hand-tool-after-runtime', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
-        run.stage('healer-master-output', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--output-only'])
-        run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
+        with snapshot(HEALER_REVISION, editor=True) as (tree, env):
+            run.stage('healer-master-output', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--output-only'], tree, env, HEALER_REVISION)
+            run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
+        foliage_modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'foliage-disabled')
+        for mode in foliage_modes:
+            output = run.directory / f'foliage-{mode}.json'
+            run.stage('foliage-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
+                      env=dict(environment, ALLRPCS_FOLIAGE_MAIN_CHECK='1', ALLRPCS_FOLIAGE_MODE=mode,
+                               ALLRPCS_FOLIAGE_REPORT=str(output)), retry_native=True,
+                      completion='PASS: foliage Main:')
+        foliage_reports = [json.loads((run.directory / f'foliage-{mode}.json').read_text()) for mode in foliage_modes]
+        foliage_saves = [(run.directory / f'foliage-{mode}.json.save.json').read_bytes() for mode in foliage_modes]
+        if any(data != foliage_saves[0] for data in foliage_saves) or any(
+                row['motion'] != foliage_reports[0]['motion'] or row['transcript'] != foliage_reports[0]['transcript']
+                or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != foliage_reports[0]['truthBefore'] for row in foliage_reports):
+            raise ValueError('Foliage presentation changed complete motion/save/transcript/protected truth')
+        if any(row['starts'] != 3 or row['presentations'] != 3 for row in foliage_reports[:-1]) or any(
+                foliage_reports[-1][key] != 0 for key in ('starts', 'presentations')):
+            raise ValueError('Foliage consumed/admitted schedule changed')
+        run.report.update(foliage_modes=list(foliage_modes), foliage_save_sha256=sha(foliage_saves[0]))
+        run.stage('foliage-master-output', [sys.executable, 'scripts/validate-foliage-runtime.py', '--output-only'])
+        run.stage('boundary-foliage-after-runtime', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'])
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
