@@ -36,6 +36,15 @@ The complete approved cask scope and dependent review are closed; no further unc
 selection or approval is pending. Wider water/container/cloth/hand-tool actions, regional
 audio identity, full room acoustics and voice remain unfinished.
 
+The first hand-tool proposal is complete: **Tap practice block** at the existing
+Village Edge anchor, a newly declared communal wooden mallet/block, supported
+32-pixel reach and one exact A03 wood-hammer excerpt. No action, tool, inventory or
+PCM is installed. One new gameplay/material/access grant is pending; see the
+[proposal](audio-direction/hand-tool-owner-scope.md) and
+[contract](audio-direction/hand-tool-owner-scope.json). Planning is closed; await
+that decision before implementing. Reuse current passing product evidence for this
+document-only checkpoint.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. It does not authorize new gameplay/layout/physical scope
@@ -44,31 +53,35 @@ or a release.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-hand-tool-action-owner-scope — Define the first remaining hand-tool action owner and bounded audio proposal** (ready).
+**phase9-hand-tool-tap-runtime-integration — Implement the first hand-tool tap after the new scope grant** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: Accepted A03 hand-tool audio has no named authorized live
-action/material/access and extraction contract. A finite read-only owner proposal is missing.
+Missing deliverable: The finite Tap practice block site/material/access and exact A03-T01 proposal
+is complete; its single new owner implementation grant is pending. No action/tool/inventory/PCM has
+been installed.
 
-Inspect only the remaining hand-tool deliverable and prepare one concrete
-action/material/inventory/access, transient owner, exact accepted-source extraction,
-controls/caption/notices, finite verification and file list. Preserve all completed scopes. Request
-only the genuinely new implementation authority once the proposal is concrete.
+Await the one owner decision on audio-direction/hand-tool-owner-scope.md/.json; do not repeat a
+pending question or infer implementation authority from continuation/publication. After approval,
+bind that exact grant and implement the whole finite proposal, verify/review/document and publish
+within the same session. Preserve all closed scopes and accepted materials.
 
-Done when: One bounded hand-tool proposal and machine-readable contract are complete, reviewed and
-published under standing task authority; any genuinely new runtime/material/physical authority is
-identified.
+Done when: Exact proposed fixed environmental mallet/block site, supported reach, transient commit
+owner, contextual controls/status/eighth caption, A03-T01 PCM/notices and finite
+unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded
+grant; standing scoped publication done.
 
 Expected outputs:
 
-- `audio-direction/hand-tool-owner-scope.md`
-- `audio-direction/hand-tool-owner-scope.json`
+- `audio-direction/hand-tool-runtime-authority.json`
+- `audio-direction/hand-tool-runtime-verification.json`
+- `audio-direction/hand-tool-runtime-review/README.md`
 
-Boundary: Read-only proposal work only. No
-runtime/material/inventory/PCM/geometry/art/save/perception/provider changes. Closed
-water/cask/grinding/treatment and accepted evidence stay closed; no unchanged re-audit.
+Boundary: Pending genuinely new gameplay/material/environmental-access/audio grant. No
+implementation before it arrives; after grant only the exact published hand-tool proposal. No closed
+water/cask/grinding/treatment reopening, other tools/actions, inventory/durable
+state/geometry/art/perception/provider changes or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

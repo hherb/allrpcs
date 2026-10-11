@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-hand-tool-action-owner-scope",
+  "status": "planning_complete_new_implementation_authority_pending",
+  "baseline_commit": "5495202faecb257148309ad028faa3e0d95bf51c",
+  "proposal": {
+    "path": "audio-direction/hand-tool-owner-scope.md",
+    "sha256": "9cdede533e9ddc587ed96b4228009f756d5739c795b309a3d1c866fddbf0a579"
+  },
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "missing_deliverable": "A03 has accepted audio but no installed authorized manual-tool action; this is the first finite owner proposal.",
+  "authority": {
+    "planning": "Current owner: Read HANDOVER.md and follow the instructions; ledger names read-only hand-tool planning.",
+    "implementation": "Pending one genuinely new gameplay/material/environmental-access grant; no grant inferred from audition or continuation.",
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "pending_question": "Approve the exact Tap practice block implementation, communal wooden mallet/block declaration and supported environmental reach in this proposal?",
+    "accepted_audio_selection": "Closed; no repeat selection of A03.",
+    "no_action_installed": true
+  },
+  "action": {
+    "key": "tap-practice-block",
+    "label": "Tap practice block",
+    "actor": "Exact current human-controlled Seeker",
+    "site_key": "village-edge-practice-block",
+    "location": "village-edge",
+    "site_position": [
+      1700,
+      900
+    ],
+    "meaning": "One gentle wooden mallet contact on a wooden practice block; leave both at site.",
+    "material_declaration": "New proposed communal wooden mallet and wooden block, local to this one fixed environmental site.",
+    "inventory": "Neither currently exists in live inventory/world objects. New action-only immutable site supplies in-place use; no item, ownership, pickup/drop/give or general-use permission.",
+    "presentation_limit": "Contextual button/tooltip only; no depicted mallet/block, new prop, hand animation, art or geometry.",
+    "consequences": "No repair, harvest, recipe, durable truth, disease/time, event clock, discovery, sabotage or provider result."
+  },
+  "owner": {
+    "domain": [
+      "HandToolTapSite",
+      "HandToolTapRequest",
+      "HandToolTapState",
+      "HandToolTapCommit"
+    ],
+    "controller": "HandToolTapController",
+    "ordinary_producer": "OpeningRegionHandToolTapCoordinator",
+    "site_binding": "OpeningRegionHandToolTapSiteBinding",
+    "site_identity": "Exact immutable site retaining mallet/block declarations; never WorldObject or inventory/access snapshot.",
+    "request_identity": "Exact issuer-current request/state/actor/site; copies/value-equal replacements/stale state/duplicates/overflow rejected.",
+    "commit": "Replace accepted state and set cooldown before isolated observer notification; observer or audio failure does not reverse/repeat.",
+    "cooldown_seconds": 1,
+    "feedback_seconds": 0.75,
+    "delta_seconds_inclusive": [
+      0,
+      0.25
+    ],
+    "invalid_delta": "Cancel feedback; preserve cooldown.",
+    "pause_focus_loss": "Freeze cooldown; cancel feedback.",
+    "successful_load": "Invalidate old request/commit; clear cooldown; cancel without replay.",
+    "failed_load": "No state change.",
+    "cancellations": [
+      "Departure from valid access",
+      "Teleport over 96 pixels",
+      "Actor/site/source replacement",
+      "Hidden/disabled/moved anchor or source",
+      "Overlay",
+      "Pause/focus loss",
+      "Invalid delta",
+      "Successful load",
+      "Disablement/teardown"
+    ],
+    "persistent_save_fields_added": 0,
+    "no_emission_on": [
+      "Arrival/movement",
+      "Eligibility",
+      "Focus",
+      "Rejected activation",
+      "Repeated commit",
+      "Reset/load"
+    ]
+  },
+  "access": {
+    "marker_path": "OpeningRegionProjectionSource/village-edge",
+    "retained_sources": [
+      "Seeker",
+      "TemporarySeekerCharacterSource",
+      "OpeningRegionProjectionSource",
+      "OpeningRegionVillageTransitionSceneSource",
+      "GreyboxNavigation",
+      "CharacterTurnActivityController",
+      "AudioSettingsPanel",
+      "SaveSnapshotRestorationController"
+    ],
+    "reach_pixels_inclusive": 32,
+    "navigation_support_tolerance_pixels": 1,
+    "maximum_segment_sample_spacing_pixels": 4,
+    "endpoints_included": true,
+    "teleport_threshold_pixels": 96,
+    "guards": [
+      "Exact live active human actor/source/site/projection/anchor/layout binding",
+      "Visible unchanged anchor and source transforms/position; ready processing sources",
+      "Ready active unchanged map/region/polygon/vertices/transform",
+      "Finite supported actual endpoints and entire straight segment",
+      "Focused unpaused active play",
+      "No text entry/reading/customization overlay",
+      "No nonterminal/reserved shared turn",
+      "Fresh mouse/native Tab/Enter/Space; cooldown elapsed"
+    ],
+    "focus": "No discovery target/focus required or modified; contextual new site only.",
+    "hidden_truth": "No sabotage/contamination/knowledge/discovery/inventory reads.",
+    "physical": "Existing geometry remains unchanged and bound; new reach abstraction grants only this action.",
+    "source_example": {
+      "actor": [
+        1732,
+        900
+      ],
+      "target": [
+        1700,
+        900
+      ],
+      "distance_pixels": 32,
+      "sample_points": [
+        [
+          1732,
+          900
+        ],
+        [
+          1728,
+          900
+        ],
+        [
+          1724,
+          900
+        ],
+        [
+          1720,
+          900
+        ],
+        [
+          1716,
+          900
+        ],
+        [
+          1712,
+          900
+        ],
+        [
+          1708,
+          900
+        ],
+        [
+          1704,
+          900
+        ],
+        [
+          1700,
+          900
+        ]
+      ],
+      "cell_centres": [
+        [
+          1732,
+          900
+        ],
+        [
+          1732,
+          900
+        ],
+        [
+          1724,
+          900
+        ],
+        [
+          1724,
+          900
+        ],
+        [
+          1716,
+          900
+        ],
+        [
+          1716,
+          900
+        ],
+        [
+          1708,
+          900
+        ],
+        [
+          1708,
+          900
+        ],
+        [
+          1700,
+          900
+        ]
+      ],
+      "navigation_interior_bounds": [
+        1604,
+        724,
+        1796,
+        996
+      ],
+      "route": [
+        "village-edge",
+        "village-square"
+      ],
+      "status": "Static source calculation; live ordinary movement required only after grant."
+    }
+  },
+  "presentation": {
+    "button": "Tap practice block",
+    "tooltip": "Use the communal wooden mallet to tap the wooden practice block once; leave both here.",
+    "status": "You tap the practice block.",
+    "caption": "Wooden mallet contact",
+    "caption_line_count": 8,
+    "duration_seconds": 0.75,
+    "caption_owner": "Independent new line; cancel only itself, preserve seven retained owners/timers.",
+    "status_independent_of_captions": true,
+    "input": "Native mouse/Tab/Enter/Space; reject held/echo; no InputMap changes.",
+    "panel": "Place away from retained action controls/captions; verify both viewports.",
+    "bus": "Effects",
+    "gain_db": 0,
+    "player": "One local nonlooping AudioStreamPlayer",
+    "settings": "Retain Master/Effects/Range/mono; caption independent of output availability.",
+    "missing_stream_or_effects_bus": "Silence without Master fallback; commit/status/caption valid.",
+    "no_new": [
+      "Spatial emitter/listener",
+      "Cue history",
+      "Ducking lease",
+      "Music interruption",
+      "Hand/prop animation"
+    ]
+  },
+  "proposed_resources": [
+    {
+      "id": "A03-T01",
+      "output": "game/assets/audio/hand-tool/A03-T01.wav",
+      "source": {
+        "path": "audio-direction/material-audition/clips/A03.wav",
+        "sha256": "bae5aa7343bb41ce6b4bf35548dc551e28a43d18c1bdbeb994d5e64baefbfa26"
+      },
+      "frame_interval_half_open": [
+        192000,
+        228000
+      ],
+      "source_seconds_half_open": [
+        4,
+        4.75
+      ],
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "frames": 36000,
+      "seconds": 0.75,
+      "pcm_bytes": 216000,
+      "pcm_sha256": "215e78f3197e239156367ab55d680940c0bd7a659b983b8d3c96a9661db9b8ed",
+      "first_last_frames_zero": true,
+      "member": "wood_hammer_01.ogg",
+      "member_decoded_frames": 15032,
+      "separate_demo_excluded": "tools_02.ogg at excerpt second 1",
+      "edits": "Exact slice only; retain accepted gain/fade and silence. New WAV header/import only.",
+      "created_during_planning": false
+    }
+  ],
+  "rights": {
+    "basis": "Reuse accepted local recorded provenance; no new legal/catalogue review, acquisition or downloads.",
+    "source_id": "wood-tool",
+    "title": "100 CC0 metal and wood SFX",
+    "author": "rubberduck",
+    "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "local_catalogue": {
+      "path": "audio-direction/material-audition/rights/wood-tool-catalogue.html",
+      "sha256": "9aa7dc287e83e5694be6c51f5880284a7b7cd9ed79c06a6c9e41f63fa24d1c56"
+    },
+    "member": {
+      "path": "audio-direction/material-audition/members/wood-tool/wood_hammer_01.ogg",
+      "sha256": "7af2b82ed659153da6c3dd69024e15bdb3c3c5b101c4086ee2181c1f846fe28a"
+    },
+    "records": [
+      {
+        "path": "audio-direction/material-audition/provenance.json",
+        "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+      },
+      {
+        "path": "audio-direction/material-audition/candidates.json",
+        "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+      },
+      {
+        "path": "audio-direction/material-audition/CREDITS.txt",
+        "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+      },
+      {
+        "path": "audio-direction/material-audition/owner-acceptance.json",
+        "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+      },
+      {
+        "path": "game/assets/audio/material/CC0-1.0-deed.html",
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "new_downloads": 0,
+    "accepted_material_bindings_retained": 82
+  },
+  "implementation_files": {
+    "new": [
+      "src/Domain/Actions/HandToolTapSite.cs",
+      "src/Domain/Actions/HandToolTapRequest.cs",
+      "src/Domain/Actions/HandToolTapCommit.cs",
+      "src/Domain/Actions/HandToolTapState.cs",
+      "src/Application/Actions/HandToolTapAccessPolicy.cs",
+      "src/Application/Actions/HandToolTapController.cs",
+      "game/OpeningRegionHandToolTapSiteBinding.cs",
+      "game/OpeningRegionHandToolTapCoordinator.cs",
+      "game/HandToolTapPanel.cs",
+      "game/OpeningRegionHandToolTapAudioController.cs",
+      "game/HandToolTapRuntimeSmokeCheck.cs",
+      "game/HandToolTapAudioOutputCheck.cs",
+      "game/OpeningRegionHandToolTapSiteBinding.cs.uid",
+      "game/OpeningRegionHandToolTapCoordinator.cs.uid",
+      "game/HandToolTapPanel.cs.uid",
+      "game/OpeningRegionHandToolTapAudioController.cs.uid",
+      "game/HandToolTapRuntimeSmokeCheck.cs.uid",
+      "game/HandToolTapAudioOutputCheck.cs.uid",
+      "game/HandToolTapRuntimeSmokeCheck.tscn",
+      "game/HandToolTapAudioOutputCheck.tscn",
+      "scripts/prepare-hand-tool-audio.py",
+      "scripts/check-hand-tool-audio-output.py",
+      "scripts/validate-hand-tool-runtime.py",
+      "tests/Domain.Tests/Actions/HandToolTapSiteTests.cs",
+      "tests/Domain.Tests/Actions/HandToolTapRequestTests.cs",
+      "tests/Domain.Tests/Actions/HandToolTapCommitTests.cs",
+      "tests/Domain.Tests/Actions/HandToolTapStateTests.cs",
+      "tests/Application.Tests/Actions/HandToolTapAccessPolicyTests.cs",
+      "tests/Application.Tests/Actions/HandToolTapControllerTests.cs",
+      "game/assets/audio/hand-tool/A03-T01.wav",
+      "game/assets/audio/hand-tool/A03-T01.wav.import",
+      "game/assets/audio/hand-tool/CREDITS.txt",
+      "game/assets/audio/hand-tool/provenance.json",
+      "game/assets/audio/hand-tool/CC0-1.0-deed.html"
+    ],
+    "modify": [
+      "game/Main.tscn",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs",
+      "game/export_presets.cfg",
+      "quality.py"
+    ],
+    "records": [
+      "audio-direction/hand-tool-runtime-authority.json",
+      "audio-direction/hand-tool-runtime-verification.json",
+      "audio-direction/hand-tool-runtime-review/README.md",
+      "audio-direction/hand-tool-runtime-review/checks/",
+      "audio-direction/hand-tool-runtime-review/output/",
+      "audio-direction/hand-tool-runtime-review/parity/",
+      "audio-direction/hand-tool-runtime-review/views/",
+      "audio-direction/hand-tool-runtime-review/native/",
+      "audio-direction/hand-tool-runtime-review/packaging/",
+      "audio-direction/hand-tool-runtime-review/quality/",
+      "CONTINUATION.json",
+      "HANDOVER.md"
+    ],
+    "export_change": "Append hand-tool *.txt/*.json/*.html include patterns to all three retained presets only.",
+    "quality": "Pin unchanged cask validator and fixture sources to inspected predecessor snapshot with existing isolated-history runner; retain all current product/interior/water/cask stages; add hand-tool modes/output/current before-after boundary.",
+    "channel_order": "Retain Channel final child.",
+    "excluded": [
+      "game/project.godot",
+      ".DS_Store",
+      "Frozen validators/scripts/quality.sh",
+      "Accepted art/audio/evidence",
+      "Existing world/discovery objects and inventory/access",
+      "Existing water/cask/grinding/treatment owners",
+      "Existing navigation/collision/save/perception/provider source"
+    ]
+  },
+  "unchanged_inspected_inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a2bd62c147de2f2fe5984cd1f4062dda868ff98dd03b351a41d8b4ef8ed9b8c9"
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f150f8721bfd69641c7f96c6cf60f939a975dac961f30e98939e68b704b2b259"
+    },
+    {
+      "path": "scripts/check-continuation.py",
+      "sha256": "cedfd8ff820590463ff7e1ac64ed6b514bd77978a07e1c04f6d867ba0e6a7193"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "3c6cb997b3b0be93f71b7d2fb121631d2acd7f483f177311240e62d998b8edd8"
+    },
+    {
+      "path": "game/TemporarySeekerCharacterSource.cs",
+      "sha256": "75ae4d461630b88a47b76dc531fca7d03921c37bd595c1951e0694299c2d29c6"
+    },
+    {
+      "path": "game/TemporaryFocusedSearchContextSource.cs",
+      "sha256": "e7b817319eba38a40f584c617f617db143c9066cabc1f0895c58d53ac0d978d4"
+    },
+    {
+      "path": "game/TemporaryWorldObjectSource.cs",
+      "sha256": "612bd6e679c652cf8af6fa228e9af0b7fe07ac8d49475a5a1433fd9b50210045"
+    },
+    {
+      "path": "game/WorldObjectController.cs",
+      "sha256": "3ff0882ef08393002fef63bbd7b9392dc667f1683da201a053526b1a1f0abc59"
+    },
+    {
+      "path": "game/InteractionFocusController.cs",
+      "sha256": "6d552fd6b74a09d80414ef3733bbc85be0d834cdde83447be120ff19ce00380d"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/OpeningRegionVillageTransitionGeometry.cs",
+      "sha256": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f"
+    },
+    {
+      "path": "game/OpeningRegionVillageTransitionSceneSource.cs",
+      "sha256": "2af4b187f414ade23ec1fc8e49952fc59d67d3b0f6c9361f0a1aacb072eab72b"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryUsePolicy.cs",
+      "sha256": "f9b186178edf1c02ef91abca27317333d12a4d8705e76c1bef6664bbf8e0934f"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryOwnershipSnapshot.cs",
+      "sha256": "c29c8db93dbd1630033f34bd71da3de4b6cec722b7ccfb05ead3a7bec5349058"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryTakePolicy.cs",
+      "sha256": "e120e81f5a6f7a69d858bce630f07611b57f66b3baebb4fe95e7f0ff76ce4fb5"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryDropPolicy.cs",
+      "sha256": "301c5775a0842dd2ad4d110fc461f219ed1ce47e7ad61cb35b9e9e60903fc973"
+    },
+    {
+      "path": "src/Domain/Inventory/InventoryGivePolicy.cs",
+      "sha256": "dce4732a6da0fe1f9bdc4f3ac58bdebf756e0df701dd73172f45d1c404cbc5ad"
+    },
+    {
+      "path": "src/Domain/Characters/CharacterPhysicalAccessPolicy.cs",
+      "sha256": "917a27f5ea47e19ed133e81fbf9c77037c418bbf59cba4de3cbf3619432f842a"
+    },
+    {
+      "path": "src/Domain/Characters/CharacterPhysicalAccessSnapshot.cs",
+      "sha256": "37fa501946e6ab0d6c43405399cc489ebc5c5be75e63a6d08c89e31dfb63f50e"
+    },
+    {
+      "path": "game/CharacterTurnActivityController.cs",
+      "sha256": "00d07cbceb97e67236c03cfb098684e5cac36f54c269c399e2a2f326cb8454d2"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "253e3d4b7c6be9d4135e4a2156d19b3a0f982c8aa86fbca6ed227fb7b9917b40"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "24649d312ff8823ed543a5f1daca9373ab389021a3cee34689d87b74a8a8ad58"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "d71231d0f4ce6bb66f6646e943c97afbfc41e4c5034d62201f5d282d0430debb"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "626a674956a07545cc36da36e06d7178e1bf9106f587d0fe55e4722271f5db44"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "audio-direction/material-audition/prepare-excerpts.py",
+      "sha256": "b1c0aabd49fac2e5cff7d8f3d25e79f5628b8efd3e3f299b0a46b53fe100bae6"
+    }
+  ],
+  "protected_repository_snapshot": {
+    "baseline_commit": "5495202faecb257148309ad028faa3e0d95bf51c",
+    "tracked_file_count": 12035,
+    "algorithm": "Baseline git ls-tree -r --name-only; exclude listed paths; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF.",
+    "manifest_sha256": "65970b34abfae06b33d9828804a77d74c08667a449b637ab3611cc12c0befb8d",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_evidence": [
+    {
+      "path": "audio-direction/cask-cover-runtime-authority.json",
+      "sha256": "0b53c237c6d63f716db4d47d25a54adc2afd0f8b2d1b33886a050af4d9d040ef"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-verification.json",
+      "sha256": "0de66b532631c814ace4cc43fb26c88d9f17846ef9a3ac7ac7ff295b69afab68"
+    },
+    {
+      "path": "audio-direction/cask-cover-runtime-review/quality/summary.json",
+      "sha256": "93aae8e9090a0c43fda0c71e1c016a906cb8e56c0ce38b54797bf6cb027e29c1"
+    }
+  ],
+  "verification_required": {
+    "unit_contracts": "Exact site/material/actor/issuer/current state, human guard, sequence overflow, bounds/cooldown/reset/observer isolation; finite reach/segment/support/source replacement.",
+    "live": "Ordinary movement/native mouse/keyboard, held/echo, pause/focus/overlay/source hide/move/replace and load lifecycle; unchanged inventory/discovery/sabotage/time truth.",
+    "parity_modes": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream",
+      "no-action"
+    ],
+    "parity": "First five equal explicit commits/full durable saves/transcripts; no-action zero new commits and equal durable bytes. Retain all predecessor modes.",
+    "master_output_cases": [
+      "default",
+      "quiet",
+      "master-muted",
+      "effects-muted",
+      "missing-stream",
+      "master-half",
+      "effects-half",
+      "mono",
+      "captions-off",
+      "missing-effects-bus",
+      "arrival-without-activation",
+      "out-of-reach",
+      "unsupported-segment",
+      "duplicate-request",
+      "stale-or-replaced-site",
+      "overlay-rejection",
+      "focus-loss",
+      "restore-cancellation",
+      "hidden-moved-or-replaced-source",
+      "retained-caption-coexistence"
+    ],
+    "master_output_case_count": 20,
+    "viewports": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native": "Keyboard/mouse activation, eight captions/status/credits and native focus loss; no device loudness claim.",
+    "packaging": {
+      "expected_streams": 36,
+      "expected_individual_notices": 23,
+      "expected_notice_groups": 17,
+      "retained_streams": 35,
+      "retained_individual_notices": 20,
+      "retained_notice_groups": 16,
+      "native_archive_pcm": "Exact extracted-frame parity after documented PCM24-to-PCM16 arithmetic import conversion; unchanged predecessor entries.",
+      "is_executable_release": false
+    },
+    "rejection_probes": [
+      "Changed proposal/PCM",
+      "Forged commit",
+      "Changed access/site",
+      "Missing measured output",
+      "Mutated protected truth",
+      "Missing export notices"
+    ],
+    "quality_command": "./quality.sh with completion strings and final current boundary; frozen contracts pinned."
+  },
+  "planning_checks": {
+    "status": "passed",
+    "accepted_material_bindings": "82 hashes unchanged",
+    "source_pcm_range": "Raw frame hash and zero edges checked in memory; no derivative written.",
+    "static_reach": "Nine segment sample cells lie in unchanged supported source interior; no live movement claim.",
+    "continuation_self_test_probes": 11,
+    "product_evidence": "Retain approved predecessor 55-stage/5211-test quality; product/CI bytes unchanged; no full quality rerun for prose.",
+    "repository_boundary": "Only two proposal documents, ledger and handover; editor exception unchanged.",
+    "limits": "No installed action, new PCM, live movement, new acoustic/device or executable validation."
+  },
+  "completion_condition": "One hash-bound finite proposal and one pending new owner implementation decision; no installed action or PCM.",
+  "excluded": [
+    "Any other tools or carried inventory",
+    "Repair/harvest/recipe actions",
+    "New geometry/props/art/hand animation",
+    "Durable save/world-event/time changes",
+    "Perception/provider/hearing changes",
+    "Closed water/cask/grinding/treatment revision",
+    "Release"
+  ]
+}

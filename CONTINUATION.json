@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -514,6 +514,20 @@
           "sha256": "0de66b532631c814ace4cc43fb26c88d9f17846ef9a3ac7ac7ff295b69afab68"
         }
       ]
+    },
+    {
+      "id": "phase9-hand-tool-action-owner-scope",
+      "reason": "Finite read-only proposal completed on 2026-10-11: one human Tap practice block action at the existing Village Edge anchor; explicitly new communal wooden mallet/block and local environmental permission, inclusive 32-pixel supported reach, exact transient owner/one-second active cooldown, one byte-exact A03 wood-hammer slice, contextual controls/eighth caption/notices and finite checks/files. All 82 accepted bindings and 12035 protected tracked inputs retained; no runtime/inventory/material/PCM/geometry/save/perception change. One genuinely new gameplay/material/access implementation grant remains pending. Standing task publication applies; all prior completed scopes stay closed.",
+      "evidence": [
+        {
+          "path": "audio-direction/hand-tool-owner-scope.md",
+          "sha256": "9cdede533e9ddc587ed96b4228009f756d5739c795b309a3d1c866fddbf0a579"
+        },
+        {
+          "path": "audio-direction/hand-tool-owner-scope.json",
+          "sha256": "946750088fafd5315375758e2ad0fa6f2ce7037791c63a65df9a0d19acfd4196"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -649,19 +663,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-hand-tool-action-owner-scope",
-    "title": "Define the first remaining hand-tool action owner and bounded audio proposal",
+    "id": "phase9-hand-tool-tap-runtime-integration",
+    "title": "Implement the first hand-tool tap after the new scope grant",
     "status": "ready",
-    "workstream": "audio-hand-tool-owner-planning",
+    "workstream": "audio-hand-tool-tap-runtime",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "Accepted A03 hand-tool audio has no named authorized live action/material/access and extraction contract. A finite read-only owner proposal is missing.",
-    "instructions": "Inspect only the remaining hand-tool deliverable and prepare one concrete action/material/inventory/access, transient owner, exact accepted-source extraction, controls/caption/notices, finite verification and file list. Preserve all completed scopes. Request only the genuinely new implementation authority once the proposal is concrete.",
-    "completion_condition": "One bounded hand-tool proposal and machine-readable contract are complete, reviewed and published under standing task authority; any genuinely new runtime/material/physical authority is identified.",
+    "missing_deliverable": "The finite Tap practice block site/material/access and exact A03-T01 proposal is complete; its single new owner implementation grant is pending. No action/tool/inventory/PCM has been installed.",
+    "instructions": "Await the one owner decision on audio-direction/hand-tool-owner-scope.md/.json; do not repeat a pending question or infer implementation authority from continuation/publication. After approval, bind that exact grant and implement the whole finite proposal, verify/review/document and publish within the same session. Preserve all closed scopes and accepted materials.",
+    "completion_condition": "Exact proposed fixed environmental mallet/block site, supported reach, transient commit owner, contextual controls/status/eighth caption, A03-T01 PCM/notices and finite unit/live/output/parity/native/packaging/full-quality evidence are complete under the recorded grant; standing scoped publication done.",
     "outputs": [
-      "audio-direction/hand-tool-owner-scope.md",
-      "audio-direction/hand-tool-owner-scope.json"
+      "audio-direction/hand-tool-runtime-authority.json",
+      "audio-direction/hand-tool-runtime-verification.json",
+      "audio-direction/hand-tool-runtime-review/README.md"
     ],
-    "boundary": "Read-only proposal work only. No runtime/material/inventory/PCM/geometry/art/save/perception/provider changes. Closed water/cask/grinding/treatment and accepted evidence stay closed; no unchanged re-audit."
+    "boundary": "Pending genuinely new gameplay/material/environmental-access/audio grant. No implementation before it arrives; after grant only the exact published hand-tool proposal. No closed water/cask/grinding/treatment reopening, other tools/actions, inventory/durable state/geometry/art/perception/provider changes or release."
   },
   "deferred_slices": []
 }
