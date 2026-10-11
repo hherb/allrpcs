@@ -148,18 +148,25 @@ sixteen-excerpt audition are accepted. Default range and the accepted waveforms 
 unchanged, including M02 shakuhachi. Completed runtime slices cover B01–B04 regional beds,
 A04 grinding/A05 treatment, Seeker terrain footsteps, the named spatial B02/recorded-reply
 cue subset, restrained optional M01/M02 music and the bounded sickhouse/laundry interior
-model (W04/W01 contacts and listener enclosure gains). Detailed verification is retained in
+model (W04/W01 contacts and listener enclosure gains). Approved single-site water, cask-cover
+and wooden-mallet actions and exterior Healer positional footsteps are also complete.
+Detailed verification is retained in
 the ledger and [current interior review](audio-direction/interior-runtime-review/README.md).
 No repeat listening or unchanged-runtime acceptance gate remains.
 
 The material and positional items below remain partially complete. Full room acoustics,
-water/tool actions, wider positional emitters and off-screen cues need concrete new scopes
+additional water/tool actions, wider positional emitters and off-screen cues need concrete new scopes
 and actual authorized owners. Qualitative shelter ambience does not establish an interior
 model; the completed two-structure enclosure subset does not establish full room acoustics.
 Crossing water or tool eligibility does not establish an action event. Keep hearing,
 captions/history, ducking and gameplay authority intact. Provisional numerical mix targets,
 device listening and ordinary-play loudness compliance remain distinct from controlled
 output evidence; resource packaging does not establish an executable release.
+
+The [first fixed foliage proposal](audio-direction/foliage-owner-scope.md) defines one retained
+garden planting, its missing dedicated leaf-rustle source, spatial admission and independent
+anonymous captions/history. Planning is complete; acquisition and runtime installation need
+the new source/emitter grant identified there. It installs no PCM, artwork or runtime owner.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

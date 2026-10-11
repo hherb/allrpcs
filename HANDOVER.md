@@ -37,6 +37,15 @@ keyboard/focus, byte-identical resource entries and seven rejection groups pass.
 No repeated approval remains for the completed Healer owner. Wider emitters, dedicated
 foliage/wind sources, regional audio identity, full room acoustics and voice remain open.
 
+The approved read-only [first fixed foliage proposal](audio-direction/foliage-owner-scope.md)
+is complete, with [hash-bound scope](audio-direction/foliage-owner-scope.json): one unchanged
+garden broadleaf at `(2232,1328)`, a missing dedicated F01 leaf-rustle source, exclusive
+192-pixel Ambience playback and independent anonymous tenth caption/history. It installs
+no PCM or runtime. One new bounded source/emitter grant remains for the implementation
+boundary below; unchanged planning and accepted owners stay closed. Planning checks pass
+for 12,399 protected tracked inputs and all 82 accepted audio bindings; retained quality
+inputs match. No product or CI rerun was needed.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. It does not authorize new gameplay/layout/physical scope
@@ -45,33 +54,36 @@ or a release.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-positional-foliage-owner-scope — Define the first fixed foliage sound emitter and its missing source** (ready).
+**phase9-positional-foliage-runtime-integration — Acquire and implement the first bounded garden foliage source/emitter after its new grant** (in_progress).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: There is no separately owned fixed exterior foliage/wind emitter, dedicated
-source passage or anonymous spatial caption/history contract. Existing B03 composite ambience and
-all current emitters are closed; they do not supply a new dedicated-source or emitter grant.
+Missing deliverable: The completed proposal has no dedicated F01 source, source-specific rights
+evidence or installed fixed garden emitter with anonymous tenth caption and independent transient
+history.
 
-Prepare a read-only concrete proposal for one first fixed exterior foliage emitter: exact retained
-candidate location, missing dedicated source/rights requirements, listener/range/support and
-anonymous accessibility ownership, protected world/hearing authority, exact files and finite checks.
-Identify the genuinely new source/material/emitter grant. Inspect only what is needed to define this
-missing deliverable; do not acquire/generate/edit PCM, install runtime/geometry/art, re-audit
-unchanged accepted owners or ask for their approval again.
+The foliage proposal is complete and closed. One new
+source/acquisition/derivative/material/emitter/caption/history grant is pending for its exact
+contract; do not repeat the proposal or approval of closed owners. After that grant, record the
+exact owner statement and proposal hashes, acquire at most one qualifying free original, prepare
+F01, implement only the named garden owner, and complete its focused/native/parity/packaging/full-
+quality checks, dependent review and standing commit/push in the same session. If no qualifying
+source exists, report the source blocker without substituting old audio.
 
-Done when: A hash-bound read-only first foliage emitter/source proposal is complete and published,
-with its missing dedicated source and one genuinely new bounded implementation grant identified.
+Done when: The one granted garden F01 source/emitter subset and all named dependent checks/review
+are complete, hash-bound and published, with protected truth and prior owners unchanged.
 
 Expected outputs:
 
-- `audio-direction/foliage-owner-scope.md`
-- `audio-direction/foliage-owner-scope.json`
+- `audio-direction/foliage-runtime-authority.json`
+- `game/assets/audio/foliage/F01.wav`
+- `audio-direction/foliage-runtime-verification.json`
+- `audio-direction/foliage-runtime-review/README.md`
 
-Boundary: Read-only planning of one new fixed foliage source/emitter owner. No PCM acquisition or
-derivative, runtime/source-material permission, geometry/art/gait change, prior-owner reopening,
-gameplay hearing/perception/provider/save/time, room acoustics, voice or release authority is
-implied.
+Boundary: Pending one genuinely new bounded implementation grant from the completed foliage
+proposal. Planning approval does not imply PCM acquisition/derivative or runtime/source-material
+authority. No other emitter, gameplay hearing/perception/provider/save/time/weather,
+art/gait/geometry, full acoustics, voice or release scope.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

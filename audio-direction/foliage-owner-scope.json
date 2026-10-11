@@ -1,0 +1,559 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-foliage-owner-scope",
+  "status": "planning_complete_new_source_and_emitter_grant_pending",
+  "baseline_commit": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+  "proposal": {
+    "path": "audio-direction/foliage-owner-scope.md",
+    "sha256": "e5cb4a8db63024d4859a5f978be6f98e4a713d035eb06e9258000f8f21e17386"
+  },
+  "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+  "missing_deliverable": "One dedicated mild-wind leaf-rustle source and one independently owned fixed garden emitter with anonymous caption/history.",
+  "authority": {
+    "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+    "approved_scope": "Ledger-selected read-only first foliage source/emitter proposal; no previously concrete runtime/source grant exists.",
+    "implementation": "One new bounded acquisition/derivative/material/emitter/caption/history grant pending.",
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "new_scope_decision": "Authorize acquisition/preparation of one qualifying free CC0-1.0 or CC-BY-4.0 original and F01; implement this exact garden-only 192-pixel Ambience emitter, anonymous tenth caption and separate transient history; complete named checks/review and standing publication.",
+    "no_runtime_or_source_installed": true
+  },
+  "fixed_source": {
+    "node": "Main/OpeningRegionRemedyPreparationSceneSource/BroadleafFoliageTopLeft",
+    "parent_position": [
+      2300,
+      1300
+    ],
+    "sprite_local_position": [
+      -68,
+      28
+    ],
+    "world_position": [
+      2232,
+      1328
+    ],
+    "dimensions": [
+      72,
+      56
+    ],
+    "offset": [
+      -36,
+      -53
+    ],
+    "rotation": 0,
+    "scale": [
+      1,
+      1
+    ],
+    "centered": false,
+    "region_enabled": false,
+    "z_index": 0,
+    "show_behind_parent": false,
+    "child_count": 0,
+    "placement_authority": "Retain exact accepted non-authoritative sprite, sibling order before PreparationTable; no new sprite child.",
+    "support": "Emitter binds exact planted origin; stationary foliage does not need navigation support. Listener must be supported exterior.",
+    "hidden_world_dependencies": [],
+    "other_plantings": "No emitter"
+  },
+  "dedicated_source": {
+    "status": "missing_not_selected_or_acquired",
+    "originals_allowed": 1,
+    "allowed_container": "lossless WAV",
+    "allowed_licenses": [
+      "CC0-1.0",
+      "CC-BY-4.0"
+    ],
+    "fee_limit": 0,
+    "new_accounts": false,
+    "required_character": "Isolated mild-wind leaf movement, at least 3 usable seconds; no footsteps, voices, wildlife, rain impacts, bag/handling noise, machinery, clipping or abrupt edits.",
+    "required_rights": [
+      "Creator catalogue and source-specific licence capture",
+      "Exact title/author/original filename/source and download URLs/retrieval date",
+      "Exact original hash and decoder metadata",
+      "Captured deed and preserved author notices",
+      "Packaged source attribution and derivative change notice"
+    ],
+    "candidate_selected": null,
+    "original_sha256": null,
+    "source_window": null,
+    "allowed_derivative_edits": [
+      "Contiguous trim",
+      "Deterministic 48-kHz resampling",
+      "Mono to dual mono if needed",
+      "100-ms linear endpoint fades",
+      "One documented uniform gain"
+    ],
+    "derivative": {
+      "id": "F01",
+      "path": "game/assets/audio/foliage/F01.wav",
+      "sample_rate": 48000,
+      "frames": 144000,
+      "channels": 2,
+      "encoding": "PCM24",
+      "duration_seconds": 3,
+      "loop": false,
+      "sample_peak_ceiling_dbfs": -18
+    },
+    "review": "Listen to new passage and record decoded quality/rights before install; present only new source with dependent runtime review.",
+    "no_qualifying_source": "Report blocker; do not substitute old accepted audio, acquire a second source or manufacture another planning slice."
+  },
+  "spatial_contract": {
+    "listener": "Main/OpeningRegionPositionalAudioController/SeekerListener",
+    "listener_owner": "Existing owner retains MakeCurrent and placement; new owner never mutates it.",
+    "listener_requirements": [
+      "Exact current/live top-level listener",
+      "Unrotated/unit scale",
+      "Actual Seeker body origin within 1 pixel",
+      "Unchanged ready active navigation map and polygon",
+      "Finite closest supported point within 1 projection-local pixel"
+    ],
+    "world_bounds": [
+      0,
+      0,
+      3200,
+      1800
+    ],
+    "inclusive_room_exclusions": [
+      [
+        2480,
+        1310,
+        2800,
+        1502
+      ],
+      [
+        1420,
+        120,
+        1580,
+        360
+      ]
+    ],
+    "range_pixels_exclusive": 192,
+    "physics_priority": 110,
+    "player": {
+      "count": 1,
+      "bus": "Ambience",
+      "max_distance": 192,
+      "attenuation": 1,
+      "panning_strength": 0.6,
+      "pitch_scale": 1,
+      "max_polyphony": 1,
+      "area_mask": 0,
+      "volume_db": 0,
+      "loop": false
+    },
+    "expected_relative_distance_gain": "max(0, 1-d/192)",
+    "bus_ownership": "Existing Ambience/Master/Default/Quiet/mono/foreground ducking apply once; no leases, second attenuation, manual pan or enclosure gain.",
+    "missing_stream_or_bus": "Silent audio; admitted caption/history retained; no Master fallback.",
+    "ongoing_gate": "Recheck during passage; failure stops without approach/unmute/replacement replay."
+  },
+  "schedule": {
+    "first_wait_active_seconds": 12,
+    "start_interval_active_seconds": 12,
+    "passage_seconds": 3,
+    "minimum_gap_seconds": 9,
+    "valid_delta_seconds": "(0,0.1] finite",
+    "world_clock_or_random": false,
+    "skipped_starts": "Consume out-of-range/unsupported/muted/captions-off/missing-resource starts without queue or late playback.",
+    "stall": "Cancel and rebase to 12-second wait; no catch-up.",
+    "blockers": [
+      "Pause",
+      "Focus loss",
+      "Dialogue/reading/customization/map/journal/settings overlay",
+      "Text entry",
+      "Disabled/replaced/static-drift prerequisites",
+      "Listener teleport over 96 pixels"
+    ],
+    "blocked_behavior": "Cancel new passage/caption; freeze interval and history limiter; resume with fresh 12-second wait; retain old history.",
+    "mute_behavior": "Stop owned audio immediately; preserve eligible text/history; no mid-passage restart.",
+    "load": "Successful PresentationReset clears new transient state and waits 12 seconds; failed load changes nothing.",
+    "teardown": "Clear new state",
+    "live_injection": false
+  },
+  "caption_contract": {
+    "owned_line": 10,
+    "phrase": "Leaves rustling",
+    "lifetime_active_seconds": 3,
+    "format": "Retained eight screen bearings only outside inclusive viewport; canvas/global-canvas transforms and retained tie convention.",
+    "capture": "At admitted scheduled start until expiry/cancellation",
+    "muted_or_missing_audio": "Retain eligible text",
+    "captions_off": "Hide line only; retain eligible history",
+    "forbidden": [
+      "Name",
+      "Site label",
+      "Coordinates",
+      "Plant identity",
+      "Actor identity",
+      "Clue",
+      "Weather state",
+      "World time"
+    ]
+  },
+  "history_contract": {
+    "owner": "FoliageCueHistory",
+    "capacity": 16,
+    "interval_active_seconds": 12,
+    "first_entry": "Immediate admitted start",
+    "eviction": "Oldest first",
+    "entry_fields": [
+      "Local sequence",
+      "Generic caption"
+    ],
+    "detached_read_only": true,
+    "queue": false,
+    "section": "Nearby foliage cues",
+    "prior_owners": "Reply and footstep histories unchanged and independent",
+    "accessible_with_captions_off": true,
+    "keyboard": [
+      "Escape",
+      "Tab",
+      "Shift-Tab",
+      "Back to Audio",
+      "Return focus"
+    ],
+    "durable": false
+  },
+  "protected_authority": [
+    "Engine hearing/perception/passive noticing",
+    "Inventory/discovery/recipes/treatment",
+    "Save/transcript/provider context",
+    "Disease/world time/weather",
+    "Navigation/collision/movement",
+    "Accepted art/gait/placements",
+    "Prior emitters/sources/captions/history",
+    "Full room acoustics/voice/release"
+  ],
+  "implementation_files": {
+    "new_exact_paths": [
+      "src/Application/Audio/FoliageSpatialProjection.cs",
+      "src/Application/Audio/FoliagePresentationSchedule.cs",
+      "src/Application/Audio/FoliageCueHistory.cs",
+      "tests/Application.Tests/Audio/FoliageSpatialProjectionTests.cs",
+      "tests/Application.Tests/Audio/FoliagePresentationScheduleTests.cs",
+      "tests/Application.Tests/Audio/FoliageCueHistoryTests.cs",
+      "game/OpeningRegionFoliageAudioSource.cs",
+      "game/OpeningRegionFoliageAudioSource.cs.uid",
+      "game/OpeningRegionFoliageAudioController.cs",
+      "game/OpeningRegionFoliageAudioController.cs.uid",
+      "game/FoliageAudioRuntimeSmokeCheck.cs",
+      "game/FoliageAudioRuntimeSmokeCheck.cs.uid",
+      "game/FoliageAudioRuntimeProof.cs",
+      "game/FoliageAudioRuntimeProof.cs.uid",
+      "game/FoliageAudioRuntimeProof.tscn",
+      "scripts/prepare-foliage-passage.py",
+      "scripts/check-foliage-audio-output.py",
+      "scripts/validate-foliage-runtime.py",
+      "audio-direction/foliage-runtime-authority.json",
+      "audio-direction/foliage-runtime-verification.json",
+      "audio-direction/foliage-source/README.md",
+      "audio-direction/foliage-source/original.wav",
+      "audio-direction/foliage-source/provenance.json",
+      "audio-direction/foliage-source/rights/catalogue.html",
+      "audio-direction/foliage-source/rights/deed.html",
+      "game/assets/audio/foliage/F01.wav",
+      "game/assets/audio/foliage/F01.wav.import",
+      "game/assets/audio/foliage/CREDITS.txt",
+      "game/assets/audio/foliage/provenance.json",
+      "game/assets/audio/foliage/deed.html"
+    ],
+    "new_review_directory": "audio-direction/foliage-runtime-review/ (logs, source/output/parity/native-view/packaging evidence only)",
+    "narrow_existing_edits": {
+      "game/Main.tscn": "New sibling source/controller/smoke wiring and resources only; retain every prior node block and Channel last.",
+      "game/MaterialSoundCaptionPanel.cs": "Tenth independent line and own panel bound only.",
+      "game/PositionalSoundCueHistoryPanel.cs": "Separate foliage section and updated descriptive subtitle only.",
+      "game/MaterialAudioCreditsPanel.cs": "Include new foliage credits only.",
+      "game/export_presets.cfg": "Append foliage notice txt/json/html filters to each existing resource preset only.",
+      "quality.py": "Add new checks; pin unchanged Healer fixtures/validator to baseline with existing isolated runner.",
+      "CONTINUATION.json": "Record grant/completed scope and finite next missing deliverable.",
+      "HANDOVER.md": "Current evidence and ledger-rendered implementation boundary.",
+      "ROADMAP.md": "Partial completion state only."
+    },
+    "frozen_or_protected": "No other existing runtime, movement, geometry, art, audio, Domain, perception, provider, persistence or frozen-validator edits."
+  },
+  "verification_required": {
+    "source": [
+      "Source-specific rights capture and listening",
+      "Exact original/decoder/window/derivative/import hashes",
+      "PCM frame/channel/fade/peak/loudness checks",
+      "New-only source presentation"
+    ],
+    "focused": [
+      "Schedule and finite delta/stall/reset",
+      "Exclusive range/room/support/identity",
+      "Source/listener replacement and drift",
+      "Limiter/eviction",
+      "Cross-owner isolation"
+    ],
+    "live_modes": [
+      "Default",
+      "Quiet",
+      "Master-muted",
+      "Ambience-muted",
+      "Missing F01",
+      "Captions-off",
+      "Foliage-disabled baseline"
+    ],
+    "parity": "Identical actual commands/motion, complete durable save/transcript, serialized protected inventory/discovery/sabotage/time/hearing/perception truth; first six equal eligible scheduled starts; disabled no new presentation.",
+    "native_master_cases": [
+      "distance 0",
+      "distance 48",
+      "distance 96",
+      "distance 144",
+      "distance 191",
+      "distance 192",
+      "distance 193",
+      "left/right",
+      "mono",
+      "camera zoom/bearing",
+      "Default/Quiet",
+      "Independent bus/master gains/mutes",
+      "Foreground ducking/recovery",
+      "Missing stream/bus",
+      "Entering/leaving range mid-passage",
+      "Pause/focus/overlay",
+      "Load success/failure",
+      "Teleport",
+      "Replaced listener/source",
+      "Unsupported listener",
+      "Retained owner overlap"
+    ],
+    "output_thresholds": {
+      "distance_48_96_144_relative_gain_tolerance": 0.05,
+      "rejected_and_stopped": "Scoped silence",
+      "pan": "Correct side; mono channel parity",
+      "measurements": [
+        "Onset/tail/cancellation",
+        "Final sample peak/loudness",
+        "Each named independent subcase"
+      ]
+    },
+    "native_ui": [
+      "Ten captions at 1280x720 and 1920x1080",
+      "Independent history with captions-off/mute/missing audio",
+      "Limiter/capacity",
+      "Scroll/selection/keyboard/focus",
+      "Ordinary garden behavior; diagnostic injection stopped"
+    ],
+    "packaging": {
+      "old_streams_unchanged": 36,
+      "new_streams": 1,
+      "total_streams": 37,
+      "old_individual_notices_unchanged": 23,
+      "old_notice_groups_unchanged": 17,
+      "new_individual_notices": 1,
+      "new_notice_groups": 1,
+      "total_individual_notices": 24,
+      "total_notice_groups": 18,
+      "native_decode": "F01 exact recorded PCM24-to-PCM16 conversion; previous resource entries byte-identical",
+      "executable_release": false
+    },
+    "boundary_rejections": [
+      "Changed source/proposal bytes",
+      "Forged bindings",
+      "Range/schedule/bus drift",
+      "Protected truth drift",
+      "Missing output evidence",
+      "Prior caption/history mutation"
+    ],
+    "quality": [
+      "python3 quality.py --self-test",
+      "./quality.sh",
+      "Preserve all 72 current stages and explicit fixture completion"
+    ]
+  },
+  "unchanged_source_bindings": [
+    {
+      "path": "game/Main.tscn",
+      "sha256": "d7a616ea61df9cb7cba66789674f7bb6636298cab196c5a3b93cde186e2aeafd"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationSceneSource.cs",
+      "sha256": "69c2b8cfed9c72cdacf68ca89b1b0b6613d515e6e6c46a78c798606fd5aa3b5f"
+    },
+    {
+      "path": "game/RuntimeGardenFoliageSmokeCheck.cs",
+      "sha256": "e1da55fed99e581a4434503737b7340f3b5f6297b57956d339abaf11743469eb"
+    },
+    {
+      "path": "game/art/runtime/plants/foliage-broadleaf.png",
+      "sha256": "e4b607c4cbfaef13cd3949492e903883dab289f882addbb2c38511aabecd6277"
+    },
+    {
+      "path": "game/art/runtime/plants/foliage-broadleaf.png.import",
+      "sha256": "8669160200eb279fae73b21ce747bc3efb68d7aa22e32f4e556b37107e77d0c1"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "62e36c15aea10032a4df6709c056f2405388a47a653cd9de1dfb46e2682758cf"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepAudioController.cs",
+      "sha256": "1919abf4b07c49a967d2e1e93a88471e469f4f6e72506f786f2554047384c3c4"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepMaterialSource.cs",
+      "sha256": "ae3e3af113366d41e86c2943d9c2069ea1041d11a286eb02dfa39aa16a6d48a6"
+    },
+    {
+      "path": "game/OpeningRegionInteriorAudioSource.cs",
+      "sha256": "a911e744c723e382227890445a70a79ec6af205e4d37233e1c51c09cb16f22bd"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "dc99ecb8963d06de6cf3beecde37c4521e4521837ad3befab50e76e4c7f91ddb"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "5939108a631dad49c24113ca6d5750ebbf599dbe60e1018f9f9c376d1837860e"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "da730ba120a72f9a9085438d7219d85f7e609b3e9416ce158956e57b90f74450"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "a404fb18803fad40c46c07d27c452ff3ed0d759b72e6776133493f0c11453f8c"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionPositionalAudioProjection.cs",
+      "sha256": "30de6de2f598e5314d876e9ca5f47bd224f1b5eca9d0a60da324ee073bc7ab2b"
+    },
+    {
+      "path": "src/Application/Audio/HealerFootstepSpatialProjection.cs",
+      "sha256": "ebac86738649ac8b5d9183a56698d0fb613a692bf538c07d3e101650fe8f5cd0"
+    },
+    {
+      "path": "src/Application/Audio/HealerFootstepCueHistory.cs",
+      "sha256": "c3626aadb148f8be561cd57bafc3f0f09184d5584b8274bcac54fb8958c924d6"
+    },
+    {
+      "path": "audio-direction/material-audition/provenance.json",
+      "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+    },
+    {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav.import",
+      "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav.import",
+      "sha256": "bdd0c4470077e7083925374d76246b743e4570d6f531a7f18a96c308452a8852"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "bd6ba4b1ae698ce9bf5cfab1cd1bd654576e10dce85b8d6cf30dc94397031bb3"
+    },
+    {
+      "path": "scripts/validate-healer-footstep-runtime.py",
+      "sha256": "10a6275fe6d50d1f9dd877bd28842b008ac1dcbf79a7ebda2b6ab4e4a5504f8d"
+    },
+    {
+      "path": "scripts/check-healer-footstep-audio-output.py",
+      "sha256": "699b5b946223799deee6449b118c0ea746a093ef7547d640622f88d7d1f5292d"
+    }
+  ],
+  "accepted_audio_bindings": {
+    "count": 82,
+    "authority": {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    "bindings_sha256": "614562eb4d83f864d38a11447432b8b0d83d389f3b956b35faff9cd9f1e88a06",
+    "verified": "All 82 recorded local hashes match"
+  },
+  "protected_repository_snapshot": {
+    "baseline_commit": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+    "tracked_file_count": 12399,
+    "algorithm": "Baseline git ls-tree -rz; exclude listed paths; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF.",
+    "manifest_sha256": "3c3113aada1828c58f07fc25d4d845cdc0093cd43e103f7fc55e30f8268afe74",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_product_evidence": [
+    {
+      "path": "audio-direction/healer-footstep-runtime-verification.json",
+      "sha256": "c4e82e2c364ca6c1ed0556370f0e854cfc9a75c28bfc0310bb8e5470b1d5362e"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/README.md",
+      "sha256": "adf0f4a2ff63a92aeeb54e11b28415458d03c17794d3c7b641f7c555731725b5"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/summary.json",
+      "sha256": "2610ae9f7c901e4069b11e03042a4bce9fb167292032415afc5f861460aa7c5c"
+    }
+  ],
+  "planning_checks": {
+    "status": "passed",
+    "accepted_audio_bindings": 82,
+    "protected_tracked_inputs": 12399,
+    "all_baseline_git_blobs_match": true,
+    "quality_inputs": {
+      "quality.py": "bd6ba4b1ae698ce9bf5cfab1cd1bd654576e10dce85b8d6cf30dc94397031bb3",
+      "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+      "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+      "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+      "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    },
+    "retained_quality": {
+      "stages": 72,
+      "unit_tests": 5243,
+      "new_run": false,
+      "all_final_attempts_passed_and_complete": true
+    },
+    "continuation_self_test_probes": 11,
+    "repository_boundary": "Two new proposal documents plus ledger, handover and roadmap; exact unrelated editor bytes preserved.",
+    "limits": "No acquisition/PCM/code/CI/runtime/art/geometry or new acoustic/device/view proof."
+  },
+  "completion_condition": "Read-only hash-bound foliage proposal complete and published; dedicated-source gap and one genuinely new implementation grant identified."
+}
