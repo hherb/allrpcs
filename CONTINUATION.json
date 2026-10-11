@@ -542,6 +542,20 @@
           "sha256": "9e7f9949a7b875a42fd0b180be13288e4d80cf72f620d13271ffa5e9c394dcde"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-healer-footstep-owner-scope",
+      "reason": "Finite read-only Healer-only exterior footstep proposal completed on 2026-10-11: exact post-collision actor producer, separate unchanged 86.4-pixel cadence at 180 pixels/second, explicitly new exterior four-material permission with room exclusions, same-frame listener handoff/192-pixel range/native pan, anonymous ninth caption and separate 16-entry/one-second history, protected hearing/perception authority and finite 43-output-group/seven-mode checks/files. All 82 accepted audio bindings, 24 existing resource PCM/parent/import bindings and 12,246 protected tracked inputs retained; product/CI/editor unchanged. One genuinely new implementation/material/emitter/caption/history grant remains pending. Standing scoped publication applies; prior scopes stay closed.",
+      "evidence": [
+        {
+          "path": "audio-direction/healer-footstep-owner-scope.md",
+          "sha256": "0ab884e8f3ca30101c446ca2f51d9cea9a70df4261d04974e01e552b94907c8f"
+        },
+        {
+          "path": "audio-direction/healer-footstep-owner-scope.json",
+          "sha256": "f826536fa64c0e1680199108880dae6bca7f8d11c709f8d2c1226a1320f5d662"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -691,19 +705,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-healer-footstep-owner-scope",
-    "title": "Define the first Healer positional footstep owner and bounded proposal",
+    "id": "phase9-positional-healer-footstep-runtime-integration",
+    "title": "Implement the proposed Healer exterior positional footsteps after one owner grant",
     "status": "ready",
-    "workstream": "audio-positional-healer-footstep-planning",
+    "workstream": "audio-positional-healer-footstep-runtime",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "Only Seeker local terrain contacts and the named B02/recorded-reply spatial subset are installed. Healer movement has no authorized positional footstep contact/material/listener/caption or hearing-history contract. One finite read-only proposal for this new actor/emitter is missing.",
-    "instructions": "Inspect only the new Healer positional-footstep deliverable. Prepare one concrete exact actor/contact cadence/material/support/listener-distance-pan/caption/history contract using unchanged accepted source audio, with protected hearing/perception authority, finite checks and file list. Preserve completed Seeker/B02/reply/action/animation scopes; do not re-audit unchanged accepted areas. Request only genuinely new runtime/material/emitter authority once the proposal is concrete.",
-    "completion_condition": "One bounded Healer-only positional-footstep proposal and machine-readable contract are complete, reviewed and published under standing task authority; the single genuinely new implementation/material/emitter decision is identified.",
+    "missing_deliverable": "The completed Healer-only exterior contact/material/emitter/caption/history proposal has no implementation grant or installed owner. Its exact new runtime grant and finite implementation/verification are missing.",
+    "instructions": "Use audio-direction/healer-footstep-owner-scope.md and its hash-bound JSON. Request only the one pending exact Healer exterior runtime/material/emitter/caption/history grant; record it before runtime edits. Once granted, implement and finish dependent tests, seven-mode parity, 43 actual Master output groups, native views/controls/history, resource packaging, rejection probes and retained full quality in the same session, then publish under standing authority. Do not reopen the completed proposal or any unchanged accepted audio/action/animation scope.",
+    "completion_condition": "One matching explicit owner grant is recorded; the exact Healer exterior positional-footstep owner and all finite dependent checks/review are complete and published, with protected truth and every prior owner unchanged.",
     "outputs": [
-      "audio-direction/healer-footstep-owner-scope.md",
-      "audio-direction/healer-footstep-owner-scope.json"
+      "audio-direction/healer-footstep-runtime-authority.json",
+      "audio-direction/healer-footstep-runtime-verification.json",
+      "audio-direction/healer-footstep-runtime-review/README.md"
     ],
-    "boundary": "Read-only proposal work only. No runtime/material/cadence/PCM/inventory/geometry/art/save/perception/provider changes. No closed Seeker footsteps, B02/reply cues, hand-tool/water/cask/grinding/treatment or accepted gait reopening; no release."
+    "boundary": "Implementation is gated on the one genuinely new owner grant. Limit it to the published Healer-only exterior proposal and named files/checks. No Healer interior contacts/transmission, other actor/emitter, gameplay hearing/perception/provider/save/time, new PCM/art/geometry/gait promotion, closed-owner reopening, voice or release."
   },
   "deferred_slices": []
 }

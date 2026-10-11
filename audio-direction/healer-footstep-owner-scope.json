@@ -1,0 +1,1325 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-healer-footstep-owner-scope",
+  "status": "planning_complete_new_implementation_authority_pending",
+  "baseline_commit": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+  "proposal": {
+    "path": "audio-direction/healer-footstep-owner-scope.md",
+    "sha256": "0ab884e8f3ca30101c446ca2f51d9cea9a70df4261d04974e01e552b94907c8f"
+  },
+  "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+  "missing_deliverable": "One new Healer exterior contact/material/emitter owner with exact listener admission, anonymous captions and separate transient history.",
+  "authority": {
+    "planning": "Current owner: Read HANDOVER.md and follow the instructions; active ledger selects read-only Healer positional-footstep proposal.",
+    "implementation": "Pending one new Healer-only exterior contact/material/emitter/caption/history grant; no installed change.",
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "pending_question": "Approve the exact Healer exterior positional-footstep implementation, four-material permission, 192-pixel existing-listener range, anonymous ninth caption and separate transient history in this proposal?",
+    "accepted_source_selection": "Closed; 24 existing accepted derivatives reused without another selection.",
+    "no_runtime_installed": true
+  },
+  "actor": {
+    "body_path": "Main/Healer",
+    "character_source": "Main/TemporaryHealerCharacterSource",
+    "identity": "Exact source.Character reference and exact first TemporaryOrdinaryCharacterParticipantSource.Participants entry; no ID-only substitute.",
+    "initial_world_position": [
+      2000,
+      950
+    ],
+    "speed_pixels_per_second": 180,
+    "follow_stop_distance_pixels": 72,
+    "move_destination_stop_distance_pixels": 12,
+    "modes": [
+      "Follow",
+      "MoveToDestination"
+    ],
+    "stationary_modes": [
+      "Wait",
+      "Arrival",
+      "Blocked"
+    ],
+    "presentation_limit": "Unchanged polygon/satchel placeholder; no new Healer animation or anatomical contact claim."
+  },
+  "producer": {
+    "path": "game/Healer.cs",
+    "notice": "FootstepMotionSample",
+    "hook": "Exactly once immediately after every existing MoveAndSlide path, including StopMoving.",
+    "fields": [
+      "Tick",
+      "Start actual global body origin",
+      "End actual global body origin",
+      "Delta physics seconds",
+      "SpeedLimit actual setting"
+    ],
+    "observer_failure": "Each subscriber is exception-isolated; motion/commands complete unchanged.",
+    "tick_overflow": "Stop notifying until a fresh body lifetime; never wrap or deny movement.",
+    "sole_ordinary_subscriber": "OpeningRegionHealerFootstepAudioController",
+    "once_only": "Exact bound body callback consumes current sample/tick once; at most one private pending contact tagged with engine physics frame, drained only in same frame. No live arbitrary injection; no later-frame catch-up."
+  },
+  "cadence": {
+    "helper": "Unchanged FootstepContactCadence in a separate new instance",
+    "contact_distance_pixels": 86.4,
+    "full_cycle_distance_pixels": 172.8,
+    "default_contact_seconds": 0.48,
+    "default_full_cycle_seconds": 0.96,
+    "logical_leg_sequence": [
+      "Left",
+      "Right"
+    ],
+    "variant_sequence_per_material": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "baseline_sample_emits": false,
+    "stationary_tolerance_pixels": 0.01,
+    "delta_seconds": {
+      "minimum_exclusive": 0,
+      "maximum_inclusive": 0.1
+    },
+    "continuity_tolerance_pixels": 1,
+    "displacement_limit": "speed * delta + 1 pixel",
+    "maximum_world_displacement_pixels": 3672,
+    "segment_sample_spacing_pixels_maximum": 4,
+    "support_tolerance_projection_local_pixels": 1,
+    "minimum_interval_seconds": 0.18,
+    "maximum_contacts_per_physics_tick": 1,
+    "excess_crossings": "Consume leg/variant/distance; discard without queue",
+    "contact_position": "Interpolated threshold-crossing global position; material uses projection-local conversion.",
+    "distance_or_output_suppression": "Consume logical contacts without output/history; never replay on approach or unmute."
+  },
+  "material_contract": {
+    "new_permission": "Authorize unchanged exterior audio registry for exact Healer only; never physical terrain or gameplay knowledge.",
+    "source": "OpeningRegionHealerFootstepMaterialSource; call pure exterior selector, never Seeker-coupled source/interior override.",
+    "coordinate_space": "Projection-local [0,0,3200,1800]; actual global support transformed through exact retained projection.",
+    "support": "Active ready exact map/region/polygon/vertices/index data; finite closest point within 1 local pixel for each endpoint and all <=4-pixel motion samples.",
+    "ordered_rules": [
+      {
+        "priority": 100,
+        "material": null,
+        "inclusive_rectangles": [
+          [
+            2480,
+            1310,
+            2800,
+            1502
+          ],
+          [
+            1420,
+            120,
+            1580,
+            360
+          ]
+        ]
+      },
+      {
+        "priority": 80,
+        "material": "Timber",
+        "clip": "W04",
+        "inclusive_rectangle": [
+          1736,
+          452,
+          1864,
+          548
+        ]
+      },
+      {
+        "priority": 70,
+        "material": "Gravel",
+        "clip": "W02",
+        "inclusive_rectangle": [
+          2480,
+          1214,
+          2576,
+          1310
+        ]
+      },
+      {
+        "priority": 60,
+        "material": "Leaves",
+        "clip": "W03",
+        "capsule_radius_pixels_inclusive": 24,
+        "segments": [
+          [
+            [
+              1000,
+              350
+            ],
+            [
+              380,
+              300
+            ]
+          ],
+          [
+            [
+              1000,
+              350
+            ],
+            [
+              650,
+              150
+            ]
+          ]
+        ]
+      },
+      {
+        "priority": 10,
+        "material": "Earth",
+        "clip": "W01",
+        "remaining_supported_world": true
+      }
+    ],
+    "unknown_nonfinite_unsupported_foreign": "Silence; no nearest-material fallback",
+    "retained_bindings": [
+      "Healer",
+      "TemporaryHealerCharacterSource/Character",
+      "TemporaryOrdinaryCharacterParticipantSource/Participants[0]",
+      "Seeker",
+      "TemporarySeekerCharacterSource/Character",
+      "OpeningRegionProjectionSource/Projection/Topology",
+      "GreyboxNavigation/map/region/polygon/vertices/indices",
+      "OpeningRegionFirstPatientSceneSource/Layout",
+      "OpeningRegionStreamLaundrySceneSource/Layout",
+      "AudioSettingsController",
+      "AudioSettingsPanel",
+      "SaveSnapshotRestorationController",
+      "OpeningRegionPositionalAudioController/SeekerListener"
+    ],
+    "binding_checks": "Exact node/source/character/layout references, ancestry, static-source transforms, body parent/rotation/scale with measured translation allowed, active processing/visibility and approved geometry; no value-equal replacement."
+  },
+  "spatial_contract": {
+    "listener_path": "Main/OpeningRegionPositionalAudioController/SeekerListener",
+    "listener_owner": "Existing positional controller unchanged; never MakeCurrent or second listener",
+    "listener_checks": "Exact current live top-level unrotated unit-scale listener at actual Seeker global origin within 1 pixel. New controller physics priority 100 drains same-frame contact after retained priority-0 bodies/positional owner, with immediate playback recheck; never reorder existing bodies.",
+    "listener_stale": "Consume fresh contact silently; no delayed catch-up",
+    "admission": "Both positions supported exterior; finite world distance strictly less than 192 pixels, independent of viewport/zoom/output/captions.",
+    "range_pixels_exclusive": 192,
+    "relative_distance_factor": "max(0, 1 - world_distance / 192)",
+    "players": 2,
+    "bus": "Effects",
+    "max_distance": 192,
+    "attenuation": 1,
+    "panning_strength": 0.6,
+    "pitch_scale": 1,
+    "max_polyphony_each": 1,
+    "area_mask": 0,
+    "player_volume_linear": 1,
+    "loop": false,
+    "tail_seconds": 0.5,
+    "tail_position": "Fixed actual interpolated contact world origin; not later Healer position.",
+    "allocation": "Idle first, otherwise replace oldest; no stale queue.",
+    "revalidation": "During playback recheck source bindings, support, listener and each tail range; stop ineligible tail without restart.",
+    "native_scaling": "Retain native positional center scaling/pan and measure actual Master; no compensating gain or second falloff.",
+    "output_settings": "Existing Master/Effects/range/mono once; no ducking lease, music hold or interior gain.",
+    "mute_zero": "Stop tails immediately; caption/history survive eligible contacts; no replay after unmute.",
+    "missing_stream_or_effects_bus": "Silence with spatially eligible caption/history; no Master fallback.",
+    "acoustic_limit": "Exterior Euclidean approximation only; no wall occlusion, elevation, acoustic paths or propagation delay.",
+    "new_controller_physics_priority": 100
+  },
+  "caption_contract": {
+    "owner": "New independent ninth MaterialSoundCaptionPanel line",
+    "seconds": 0.75,
+    "material_phrases": [
+      "Footsteps on earth",
+      "Footsteps on gravel",
+      "Footsteps in leaves",
+      "Footsteps on timber"
+    ],
+    "screen_projection": "GlobalCanvasTransform * CanvasTransform * fixed contact world position",
+    "on_screen": "Inclusive actual viewport bounds; material phrase only",
+    "off_screen": "Unchanged pure positional caption eight screen bearings with clockwise half-sector ties",
+    "directions": [
+      "above",
+      "above/right",
+      "right",
+      "below/right",
+      "below",
+      "below/left",
+      "left",
+      "above/left"
+    ],
+    "snapshot": "Material/bearing retained at contact until renewed/cancelled; no continuous hidden locator",
+    "user_toggle": "Captions only controls visible new line; output mute/missing resource does not deny text.",
+    "prohibited_content": [
+      "Actor identity",
+      "World coordinates",
+      "Destination/intent",
+      "Hidden state",
+      "Gameplay heard/knowledge assertion"
+    ],
+    "retained_owners": "All eight previous owners/timers intact; cancellation clears only new line.",
+    "layout": "Extend only caption panel upper bound as needed; nine wrapped lines, independent controls at both viewports."
+  },
+  "history_contract": {
+    "owner": "HealerFootstepCueHistory separate from PositionalCueHistory",
+    "capacity": 16,
+    "entry": "Local sequence plus generic contact caption only; no timestamp, coordinates or actor ID.",
+    "rate_limit_seconds": 1,
+    "first_admitted_contact_records": true,
+    "clock": "Bounded active presentation time; finite delta [0,0.1].",
+    "limited_contact": "Discard entry without queue; audio/current caption unaffected even if wording changes.",
+    "ordering": "Insertion order; evict oldest; detached read-only copy",
+    "text_disabled_or_output_unavailable": "Eligible history retained",
+    "ui": "Separate Nearby footstep cues section in existing selectable scrollable Recent sound cues view; preserve reply section/data and keyboard/focus return.",
+    "out_of_range": "No entry; contacts consumed",
+    "pause_focus_overlay": "Retain old entries; freeze rate-limit clock; cancel new cue presentation",
+    "successful_load_teardown": "Clear own entries/sequence/limiter with no replay; other owners untouched"
+  },
+  "lifecycle": {
+    "watcher": "Always-process cancellation only; never drive movement or world time",
+    "cancel_cadence_tails_caption": [
+      "Stationary or invalid motion",
+      "Unsupported movement",
+      "Pause",
+      "Focus loss",
+      "Reading/customization/map/journal/dialogue/settings overlay or text entry",
+      "Actor/source disablement or replacement",
+      "Nonfinite spatial data",
+      "Actor discontinuity >1 pixel between ticks",
+      "Listener teleport >96 pixels",
+      "Teardown"
+    ],
+    "reset": "Discard baseline, distance, timing, variants and tails; fresh baseline and movement required.",
+    "successful_load": "Reset new presentation and clear only new history",
+    "failed_load": "No reset or history mutation",
+    "range_loss": "Stop only ineligible tails/current caption; physical cadence still consumes future valid samples."
+  },
+  "protected_authority": {
+    "domain_events_added": 0,
+    "save_fields_added": 0,
+    "hearing_perception_provider_changes": false,
+    "forbidden_connections": [
+      "DialogueEvent occurrence",
+      "Dialogue hearing/audience selector",
+      "Transcript append",
+      "Passive noticing",
+      "Perception/knowledge/belief updates",
+      "World-clock/time/disease",
+      "Inventory/discovery/sabotage truth",
+      "Provider/LLM input"
+    ],
+    "human_information_grant": "Anonymous nearby exterior contact/material and screen bearing in new transient UI only."
+  },
+  "resources": [
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-01.wav.import",
+        "sha256": "155473ed5acb93c4c45b5be3171fe9e3f2856395880ee145c351878a9f762ca9"
+      },
+      "pcm_sha256": "9d4a8fe2f8f392677e6f6f8bd9e0af59ad66e91f189e47df872ac4b6b33cdac1",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 1,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        48000,
+        72000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-02.wav.import",
+        "sha256": "9d3884914cb0fede1a4bdaa59ca587a1de75d4daad39170994f99319167c29a8"
+      },
+      "pcm_sha256": "684dfc8486059886966473bf363ebfd4866c49c220f5255da46202dbbc214ef5",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 2,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        110400,
+        134400
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-03.wav.import",
+        "sha256": "41bfed746f64e893c628088689b80cd55959d19fd9330c4649d735b3c1ba4287"
+      },
+      "pcm_sha256": "2ac8f009676c00b0be97692069cde8a080d1c75d63f687d74b7dc2aad8a601c5",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 3,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        172800,
+        196800
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-04.wav.import",
+        "sha256": "7a5b6fbdd6a03bef401fe0b6e9cd624059f83c900997207546e498819249afc3"
+      },
+      "pcm_sha256": "84b804be24a08567297038bc8fde6eae6b68dfc495e22afad5de07dc025a6995",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 4,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        235200,
+        259200
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-05.wav.import",
+        "sha256": "23d5bb66009483c7b22e03b348bad50ea04af386fe5705ed5f42d1dda6001e3d"
+      },
+      "pcm_sha256": "4e9b026d2e01861c5108ede3e848fe318560ed1d78db9384260d09c9854e64a1",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 5,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        297600,
+        321600
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90",
+      "import": {
+        "path": "game/assets/audio/footsteps/W01-06.wav.import",
+        "sha256": "b20d4fc8630086eeafc463f2032f6ffb50cee7b637a0082e6bfb53d1356d8b07"
+      },
+      "pcm_sha256": "352cf3555e09621f3387db660d81dba99068abdac917fce12b72e0a85f2da68e",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 6,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+      },
+      "parent_frame_range_end_exclusive": [
+        360000,
+        384000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav",
+      "sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-01.wav.import",
+        "sha256": "70dd332acab2196c129ee59155522dad0d9040a98751523600e6bdd1ec1d7732"
+      },
+      "pcm_sha256": "65e408c11a7830d9becf45a6f13798118c8be86426b2f67aecc7c39af7c26e30",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 1,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        48000,
+        72000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav",
+      "sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-02.wav.import",
+        "sha256": "02c2ed2b533be405aae1ed5bcfb2be65431993411585c27a9121174b4d3cbde2"
+      },
+      "pcm_sha256": "1d737651d8866aa8c2e0ea8d231b7bb1301e96be7e3d664498b93901c923fa72",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 2,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        110400,
+        134400
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav",
+      "sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-03.wav.import",
+        "sha256": "2d0a20f6db8cb4677119144183346c05b5d3a4293980fd85898031d1e8c071ce"
+      },
+      "pcm_sha256": "935da63ba6a306778d674178d0335e57416cc3046041e8f9de17a43d8a5c0c83",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 3,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        172800,
+        196800
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav",
+      "sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-04.wav.import",
+        "sha256": "b93a94502ac1d13672a40fc82ca07b12ebf0f9597e94b6e37017d770ddd8d758"
+      },
+      "pcm_sha256": "b7b2395cde89977277c16d156cedd6608ad8435d6a1b260566abac84ebba8a98",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 4,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        235200,
+        259200
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav",
+      "sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-05.wav.import",
+        "sha256": "2df0675a744c79b4f7a6b3ff64626d87f7dbe0d4c04994732cb7fe57350a415f"
+      },
+      "pcm_sha256": "c54faec6d8d68ec1aae7de553e44976f7f3eaff3a682828f318875c2d058801d",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 5,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        297600,
+        321600
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav",
+      "sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756",
+      "import": {
+        "path": "game/assets/audio/footsteps/W02-06.wav.import",
+        "sha256": "d46572a27ca194a4bf147be7888f683d11bd8a092d21821eb117011c681b010d"
+      },
+      "pcm_sha256": "6b18982cc79e41062e3f4ae91f125e8f91a96235ce1e3f44113a40505c359df3",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 6,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+      },
+      "parent_frame_range_end_exclusive": [
+        360000,
+        384000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-01.wav.import",
+        "sha256": "bdd0c4470077e7083925374d76246b743e4570d6f531a7f18a96c308452a8852"
+      },
+      "pcm_sha256": "91ee3888e1e7d56b23aef6d1cf2733ff657ceb7e81250eac8733f76e19270458",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 1,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        48000,
+        72000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav",
+      "sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-02.wav.import",
+        "sha256": "e87ce57279aff0c5c703478f19077ac319a04d64aac002ad057fc9e72143cc4d"
+      },
+      "pcm_sha256": "96a0a37954311df289b6cccb481622391a1ff165741440a10de98ac11d22f325",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 2,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        110400,
+        134400
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav",
+      "sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-03.wav.import",
+        "sha256": "d9ce60a15830eb1d011fba1c7a92e46aedbca11d6e80468b696c30cc4e34bcab"
+      },
+      "pcm_sha256": "9ca237df9ccef7e34673dab48c7638b3850695332570a0a557c86cc3d9509528",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 3,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        172800,
+        196800
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav",
+      "sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-04.wav.import",
+        "sha256": "304bcc5b81b56add75b024fc6436f0b562aad1053181b2765ac63e848ff17c5d"
+      },
+      "pcm_sha256": "372abe3ddbbe22a5af038c15163d57522b20ce9136ae0c78e52446d9e9c2b360",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 4,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        235200,
+        259200
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav",
+      "sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-05.wav.import",
+        "sha256": "b8647fe2f2f27992402cb2e4b440f00c0283a08e55ef62952bc44b44d9ab10ea"
+      },
+      "pcm_sha256": "ac656ca143ffae1e03262f0ceaf787c7186b29394d902513728247e9db248fe5",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 5,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        297600,
+        321600
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav",
+      "sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18",
+      "import": {
+        "path": "game/assets/audio/footsteps/W03-06.wav.import",
+        "sha256": "6e6120f8e9a6bd96899b5d89c6b37cb73582a695752158367243ccf2832e7272"
+      },
+      "pcm_sha256": "cbc18f597f99e8dd5abdd7589d5c918efe3fff6212c0670407becaa18ba6e0ee",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 6,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+      },
+      "parent_frame_range_end_exclusive": [
+        360000,
+        384000
+      ],
+      "lossy_original": false,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-01.wav.import",
+        "sha256": "154e81c03c6cb74d8d48e983ed13702d7d7c80347291b79e0900da73dc7291a1"
+      },
+      "pcm_sha256": "ba093f159a5b5c8c4e2984680c9c69151e1aeac9b74b143357556c5a5011f03c",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 1,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        48000,
+        72000
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-02.wav.import",
+        "sha256": "d339f0a4bf6b39817d8fb85b1ef5784e57d55a95cee35ba399ef5f9362d9627b"
+      },
+      "pcm_sha256": "f9af75ef2bc39b47a1b814e615f939fdd5301e200c115670bdd638e2f6446464",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 2,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        110400,
+        134400
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-03.wav.import",
+        "sha256": "a9608c1b31d9910d4afee9b77e4ce4be492663171cadd46a083cd1e225ebd6ba"
+      },
+      "pcm_sha256": "1ac675e5c933d9567ffaad00def021ea64924883683fc721a8cb697696c56091",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 3,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        172800,
+        196800
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-04.wav.import",
+        "sha256": "0a139e3f528ca452ffde28b60d300cc5852dcfeb54c65579eb104b3b9d1ef1b0"
+      },
+      "pcm_sha256": "f62723ab5bcd7f40339293fdfdf18aa191cbf875c5c1a0e4547db5b978f22201",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 4,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        235200,
+        259200
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-05.wav.import",
+        "sha256": "314a8669bbd6edfdf5fd82698865b91cd2651ccf6be1a27f7c47672b9ba85072"
+      },
+      "pcm_sha256": "73bd5854dda1d9e4ae5dea8de29811d4063d3a9144c36fff24c7f55726baed0e",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 5,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        297600,
+        321600
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560",
+      "import": {
+        "path": "game/assets/audio/footsteps/W04-06.wav.import",
+        "sha256": "f91bf3371f4331ab37eef6572d53b486fa1c94f43c26d4cf9ed3802f00ffb116"
+      },
+      "pcm_sha256": "546ddc034f44db384cf575d04aa883a6e7607636299da614892ea8843332dc24",
+      "frames": 24000,
+      "pcm_bytes": 144000,
+      "channels": 2,
+      "pcm_bits": 24,
+      "rate_hz": 48000,
+      "seconds": 0.5,
+      "variant": 6,
+      "accepted_parent": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+      },
+      "parent_frame_range_end_exclusive": [
+        360000,
+        384000
+      ],
+      "lossy_original": true,
+      "operation": "Reuse existing resource and import unchanged; no derivative"
+    }
+  ],
+  "rights": {
+    "operation": "Reuse local accepted provenance only; no acquisition/legal reassessment.",
+    "records": [
+      {
+        "path": "game/assets/audio/footsteps/provenance.json",
+        "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+      },
+      {
+        "path": "game/assets/audio/footsteps/CREDITS.txt",
+        "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+      },
+      {
+        "path": "game/assets/audio/footsteps/CC0-1.0-deed.html",
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "new_notices": 0,
+    "new_export_patterns": 0,
+    "credits": "Existing footstep source notices unchanged"
+  },
+  "implementation_files": {
+    "new": [
+      "src/Application/Audio/HealerFootstepSpatialProjection.cs",
+      "src/Application/Audio/HealerFootstepCueHistory.cs",
+      "tests/Application.Tests/Audio/HealerFootstepSpatialProjectionTests.cs",
+      "tests/Application.Tests/Audio/HealerFootstepCueHistoryTests.cs",
+      "game/OpeningRegionHealerFootstepMaterialSource.cs",
+      "game/OpeningRegionHealerFootstepAudioController.cs",
+      "game/HealerFootstepRuntimeSmokeCheck.cs",
+      "game/HealerFootstepAudioRuntimeProof.cs",
+      "game/HealerFootstepAudioRuntimeProof.tscn",
+      "scripts/check-healer-footstep-audio-output.py",
+      "scripts/validate-healer-footstep-runtime.py",
+      "audio-direction/healer-footstep-runtime-authority.json",
+      "audio-direction/healer-footstep-runtime-verification.json"
+    ],
+    "modified": [
+      "game/Healer.cs",
+      "game/Main.tscn",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/PositionalSoundCueHistoryPanel.cs",
+      "quality.py",
+      "CONTINUATION.json",
+      "HANDOVER.md"
+    ],
+    "generated_uid": "Godot .cs.uid sidecars only for new Game scripts",
+    "review_prefix": "audio-direction/healer-footstep-runtime-review/",
+    "retained_helpers": [
+      "FootstepContactCadence",
+      "OpeningRegionFootstepMaterialProjection",
+      "OpeningRegionPositionalAudioProjection.Caption"
+    ],
+    "scene_boundary": "Only new resources/nodes; Channel remains last; prior physical/presentation scene blocks unchanged.",
+    "historical_quality": "Pin unchanged current hand-tool validator and fixtures at baseline via existing isolated-history runner; retain all 62 current stages and add new checks. Frozen validators and scripts/quality.sh unchanged."
+  },
+  "verification_required": {
+    "units": [
+      "Foreign/replayed sample and exact actor/source/listener guards",
+      "Independent cadence/variants at 180 pixels/second",
+      "Interpolated material and full segment support",
+      "Finite input/range192 edge",
+      "Independent history rate/eviction/copy",
+      "Stop/pause/overlay/reset/observer isolation",
+      "No hearing/perception or cross-owner history/caption effect"
+    ],
+    "live_modes": [
+      "Default",
+      "Quiet",
+      "Master-muted",
+      "Effects-muted",
+      "Missing resources",
+      "Captions-off",
+      "Observer-disabled baseline"
+    ],
+    "parity": "All seven schedules identical actual body motion/commands, complete saves/transcripts and serialized protected truth; first six equal eligible physical contacts, baseline zero new presentation.",
+    "protected_truth": [
+      "inventory",
+      "objects/discovery",
+      "sabotage/contamination/placements/evidence",
+      "time/disease/world event count",
+      "hearing/audience",
+      "perception/knowledge/beliefs",
+      "provider request counts"
+    ],
+    "master_output_cases": [
+      "earth-six-variants",
+      "gravel-six-variants",
+      "leaves-six-variants",
+      "timber-six-variants",
+      "distance-zero",
+      "distance-72",
+      "distance-96",
+      "distance-191",
+      "distance-192",
+      "distance-193",
+      "left-bearing",
+      "right-bearing",
+      "mono",
+      "zoom-08",
+      "zoom-2",
+      "camera-offset",
+      "effects-half",
+      "master-half",
+      "effects-zero",
+      "effects-muted",
+      "master-zero",
+      "master-muted",
+      "quiet-range",
+      "other-bus-zero",
+      "missing-stream",
+      "missing-effects-bus",
+      "captions-off",
+      "stationary-wait-arrival",
+      "wall-pressure",
+      "unsupported-segment",
+      "interior-source",
+      "interior-listener",
+      "duplicate-foreign-motion",
+      "teleport-invalid-delta",
+      "listener-stale-replaced",
+      "source-hidden-moved-replaced",
+      "pause-focus-loss",
+      "reading-overlay",
+      "successful-load",
+      "failed-load",
+      "mute-unmute-no-replay",
+      "two-healer-tails",
+      "retained-seeker-action-reply-overlap"
+    ],
+    "output_thresholds": {
+      "silent_peak_maximum": 1e-06,
+      "admitted_peak_minimum": 1e-06,
+      "peak_maximum": 0.99,
+      "relative_distance_or_half_gain_ratio_absolute_tolerance": 0.035,
+      "dual_mono_channel_difference_maximum": 1e-06,
+      "pan": "Left/right dominant channel matches screen direction; retain and report native camera-dependent pan.",
+      "cancellation": "Measure native tail/latency; silence after cancellation plus finite recorded engine-block allowance, no restart or catch-up."
+    },
+    "views": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "native": "Follow/Wait/Move travel, zero arrival/wall pressure contact, off-screen cue, nine-line coexistence, history capacity/rate, mute/captions-off, Tab/Shift-Tab/Escape/Back focus and native focus loss.",
+    "resource_packaging": {
+      "streams": 36,
+      "individual_notices": 23,
+      "notice_groups": 17,
+      "new_audio_files": 0,
+      "check": "All prior archive entries byte-identical; mounted native decode matches existing exact PCM24 arithmetic PCM16 conversion for all 24 reused streams."
+    },
+    "rejection_groups": [
+      "Changed proposal/resource PCM or import",
+      "Foreign/replayed motion",
+      "Changed material/geometry",
+      "Wrong listener or range",
+      "Leaked hearing/protected truth",
+      "Missing measured case",
+      "Mutated retained caption/history owner"
+    ],
+    "root_quality": "Focused tests plus full root ./quality.sh with all retained stages, seven new modes, native output/current boundary and explicit fixture completion strings.",
+    "grouped_case_evidence": "43 top-level groups. Each of the four material groups captures/checks all six variants separately; every combined lifecycle/rejection name retains independently measured subcases, never one aggregate result hiding a failure."
+  },
+  "unchanged_source_bindings": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a2bd62c147de2f2fe5984cd1f4062dda868ff98dd03b351a41d8b4ef8ed9b8c9"
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "f150f8721bfd69641c7f96c6cf60f939a975dac961f30e98939e68b704b2b259"
+    },
+    {
+      "path": "scripts/check-continuation.py",
+      "sha256": "cedfd8ff820590463ff7e1ac64ed6b514bd77978a07e1c04f6d867ba0e6a7193"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "ff8f84636de70c48212fb065e63fad0ab37be928b7088496470a3724a15b85d7"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "76d79b96d13b6f581be88f8e4f906c6b39063e46b24839b429399a9b350d2aaf"
+    },
+    {
+      "path": "game/TemporaryHealerCharacterSource.cs",
+      "sha256": "999222afce061879313621a2cff5e3b09e3d34ac4d964a4adae6de5a663cc87e"
+    },
+    {
+      "path": "game/TemporaryOrdinaryCharacterParticipantSource.cs",
+      "sha256": "af4993bb2f0ff6cb4a8d4fddec3f8620cf55e6323503b6f5db0791582c54a64d"
+    },
+    {
+      "path": "game/TemporarySeekerCharacterSource.cs",
+      "sha256": "75ae4d461630b88a47b76dc531fca7d03921c37bd595c1951e0694299c2d29c6"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/FollowCamera.cs",
+      "sha256": "e7b6e776216410bbc8e9086397e02e98267e20e3d9270acb732372070118d01e"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/OpeningRegionFootstepMaterialSource.cs",
+      "sha256": "d2574297a2c2e56798c5aaeb347d2fa711a2335ee6d00f22bd8fb1ec2f73ad28"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs",
+      "sha256": "d917538a3c6c5ffc8a3d6b837313b1f58fc88a2a030891a5fd8e378a2d37d6ea"
+    },
+    {
+      "path": "game/OpeningRegionInteriorAudioSource.cs",
+      "sha256": "a911e744c723e382227890445a70a79ec6af205e4d37233e1c51c09cb16f22bd"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "62e36c15aea10032a4df6709c056f2405388a47a653cd9de1dfb46e2682758cf"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "ade3e74379ee197cf9bad212c820baaf7cf8f7b16b69279e53569ff1d1808f1b"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "3d3f7411eab57036c22c9fbc6fd6f582c675fdf7a87d951c255c20d8e2d4562b"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e835e2bf51d3976ca6104f96be3d04618c862c0ad0ff41ef2249b6cb2c2b6867"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnResponseSpeechRecorder.cs",
+      "sha256": "f150b324160e210f5a75d7e85b5839ba51738099ab8acbf6adfe5a3afcb6e7ac"
+    },
+    {
+      "path": "game/TemporarySeekerPerceptionSource.cs",
+      "sha256": "fbbad7db0a07f1d9f256f66e72a5162dfd6ad61128b4d7f380605f9d2d7bc26a"
+    },
+    {
+      "path": "src/Application/Audio/FootstepContactCadence.cs",
+      "sha256": "1ed70cfea163857db49fd7d6d0e7f49ece8ec845c933eb35ac4442eb87f19d56"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionFootstepMaterialProjection.cs",
+      "sha256": "94ab08a67e1ecec15935ea20e0f927c831799f837eaffa289e9a0ddc575b605d"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionPositionalAudioProjection.cs",
+      "sha256": "30de6de2f598e5314d876e9ca5f47bd224f1b5eca9d0a60da324ee073bc7ab2b"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionInteriorAudioProjection.cs",
+      "sha256": "8baf30b2da210ddb4448135f68cebf048dd9471ac8949dbddd84e51498cd89b0"
+    },
+    {
+      "path": "src/Application/Dialogue/DialogueHearingSelector.cs",
+      "sha256": "ef350f814910b9e8ec783874dd7145f331c50cd5415bd9f3b89468274e03ce2b"
+    },
+    {
+      "path": "src/Application/Dialogue/DialogueDeliveryHearingSelector.cs",
+      "sha256": "3c5c81ab38b5a8796ecc1244e67ad8cfdef85b3f16197732279ac06cfd25965e"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/FootstepContactCadenceTests.cs",
+      "sha256": "3e0d58b5dafbffff45fdc742b47efcbb9f711b882ec6c14c2cc676f956ccba24"
+    },
+    {
+      "path": "scripts/validate-hand-tool-runtime.py",
+      "sha256": "28064b4c1168c5255e988395fc6ae108ee6ad2d292fadf55e55c8a54d3bd874e"
+    },
+    {
+      "path": "scripts/check-positional-audio-output.py",
+      "sha256": "0c7641b8746a9ae32fb9f752a676a7bc8333d6077583d2a0071b08f79a99b1c0"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "e94ff2f2769ed3c8f0c1ff8c3f3fd1f1b5be6ce6eead42d963e73ac6761403f6"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "scripts/quality.sh",
+      "sha256": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "a404fb18803fad40c46c07d27c452ff3ed0d759b72e6776133493f0c11453f8c"
+    }
+  ],
+  "accepted_material_binding_inventory": {
+    "count": 82,
+    "authority": {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    "bindings_sha256": "87d4371536864e3221dd666d5498e1af93b954c12d67e02710447a45c8a793da",
+    "verified": "All recorded local file hashes match"
+  },
+  "protected_repository_snapshot": {
+    "baseline_commit": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+    "tracked_file_count": 12246,
+    "algorithm": "Baseline git ls-tree -r --name-only; exclude listed paths; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF. Each current file also checked against baseline Git blob.",
+    "manifest_sha256": "0645a47a836347e5830fabf89772c55b216f554aad780282cf688ffc10b9c51e",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_product_evidence": [
+    {
+      "path": "audio-direction/hand-tool-runtime-authority.json",
+      "sha256": "41dca7813673ea5b766b6a68f6fce28307c1b4967a85de85098573685edb60cc"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-verification.json",
+      "sha256": "9e7f9949a7b875a42fd0b180be13288e4d80cf72f620d13271ffa5e9c394dcde"
+    },
+    {
+      "path": "audio-direction/hand-tool-runtime-review/quality/summary.json",
+      "sha256": "58b3f59742907bc41ebea5640a32b8a2ee6eca76abfcb029a20ad8d5f4764651"
+    }
+  ],
+  "planning_checks": {
+    "status": "passed",
+    "accepted_audio_bindings": 82,
+    "reused_resources_exact_file_pcm_parent_import": 24,
+    "protected_tracked_inputs": 12246,
+    "product_ci_inputs": "All five retained quality input hashes match; 62 final stage attempts passed with completion.",
+    "retained_quality": {
+      "stages": 62,
+      "unit_tests": 5227,
+      "godot_smoke_launches": 293,
+      "new_run": false
+    },
+    "continuation_self_test_probes": 11,
+    "repository_boundary": "Only two proposal documents, ledger and handover; exact local editor exception preserved.",
+    "scope_limits": "No runtime/code/PCM/geometry/art/save/perception/provider edit or new movement/acoustic/device/view proof."
+  },
+  "completion_condition": "Concrete hash-bound read-only proposal published; one new exact runtime/material/emitter/caption/history grant identified.",
+  "excluded": [
+    "Healer interior sounds and transmission",
+    "Other actors or wider emitters",
+    "New movement/action/terrain/geometry",
+    "Gameplay hearing/perception/provider/save/time changes",
+    "New PCM or changed source/import",
+    "Accepted animation/gait promotion",
+    "Closed Seeker/B02/reply/interior/water/cask/hand-tool/grinding/treatment reopening",
+    "Full room/wall acoustics",
+    "Voice",
+    "Release"
+  ]
+}
