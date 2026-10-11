@@ -166,8 +166,13 @@ output evidence; resource packaging does not establish an executable release.
 The approved [fixed garden foliage runtime](audio-direction/foliage-runtime-review/README.md)
 is complete: one new CC0 leaf-rustle passage, the unchanged garden planting, bounded positional
 Ambience, an anonymous tenth caption and independent transient history. Its full-quality,
-native output/UI and resource packaging checks pass. Dedicated exterior wind and wider
-emitters remain unfinished; the audio items below remain partial.
+native output/UI and resource packaging checks pass. The first
+[exterior wind proposal](audio-direction/wind-owner-scope.md) is complete:
+a dedicated derivative from the retained CC0 original and one fixed southern-road emitter,
+with anonymous accessible cues and finite checks. The original's catalogue warns of bag
+noise; no passage is qualified or installed yet. Its new source-use/emitter implementation
+grant remains distinct from the approved planning scope. Dedicated exterior wind runtime
+and wider emitters remain unfinished; the audio items below remain partial.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -598,6 +598,20 @@
           "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-wind-owner-scope",
+      "reason": "The approved finite read-only first exterior wind proposal is complete: exact retained southern-road anchor, nominated untouched CC0 original with explicit bag-noise qualification condition, G01 derivative boundary, independent 256-pixel Ambience owner, 18-second/four-second schedule, eleventh anonymous caption and separate history, finite files/checks and one new implementation grant. No new source/PCM/runtime is installed. Do not reopen unchanged planning under a renamed audit.",
+      "evidence": [
+        {
+          "path": "audio-direction/wind-owner-scope.md",
+          "sha256": "2fa573fa74c8d1625da1e3e325f0dc9344cc7ee296fb06de01dbfc2a27c81dad"
+        },
+        {
+          "path": "audio-direction/wind-owner-scope.json",
+          "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -700,6 +714,20 @@
           "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
         }
       ]
+    },
+    {
+      "id": "audio-positional-wind-planning",
+      "reason": "The finite wind source/emitter planning deliverables are complete. New wind implementation requires the concrete grant in the proposal; another unchanged planning audit is not a successor.",
+      "evidence": [
+        {
+          "path": "audio-direction/wind-owner-scope.md",
+          "sha256": "2fa573fa74c8d1625da1e3e325f0dc9344cc7ee296fb06de01dbfc2a27c81dad"
+        },
+        {
+          "path": "audio-direction/wind-owner-scope.json",
+          "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -775,19 +803,21 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-wind-owner-scope",
-    "title": "Define the first bounded exterior wind source and emitter proposal",
+    "id": "phase9-positional-wind-runtime-integration",
+    "title": "Implement the first fixed southern-road wind source and emitter after its new grant",
     "status": "ready",
-    "workstream": "audio-positional-wind-planning",
+    "workstream": "audio-positional-southern-road-wind-runtime",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "No dedicated exterior wind source qualification, exact retained owner/emitter, presentation-only admission/lifecycle, accessible cue boundary or finite implementation/check list has been proposed.",
-    "instructions": "Prepare one finite read-only proposal for the first distinct exterior wind owner from the live repository. Identify the missing source and exact unchanged physical/emitter context, spatial admission, schedule, bus/ducking, captions/history, cancellation and permitted implementation files/checks. Carry all completed audio/art owners forward unchanged. Standing game sound search/download permission is recorded; this planning slice need not acquire a source and does not grant new runtime or physical scope. Complete dependent documentation/review and standing publication in the same session.",
-    "completion_condition": "One concrete source/emitter proposal and hash-bound scope record identify the new wind implementation boundary and finite checks without changing current product/audio/art inputs.",
+    "missing_deliverable": "The completed proposal has no new source-use/emitter implementation grant, qualified G01 passage, ordinary fixed road wind owner, eleventh caption/history or dependent runtime evidence.",
+    "instructions": "Use audio-direction/wind-owner-scope.md and its hash-bound JSON. Obtain the one missing new implementation grant for G01 from the nominated retained original, exact (1500,1400) road owner, exclusive 256-pixel Ambience playback, four-second passages every 18 active seconds, eleventh anonymous caption and separate transient history. The current approval covers the completed planning scope only. Once granted, qualify the passage (catalogue warns of bag noise), prepare and implement only the named files, complete all focused/native/parity/UI/packaging checks and root quality, review and standing publication in the same session. Report an unqualified-source blocker without substitution. Preserve all closed owners and frozen evidence.",
+    "completion_condition": "After the single new grant, qualified G01, ordinary exact road playback, accessible caption/history, finite verification/review and scoped publication are complete; record whole-slice closure without repeating an unchanged approval.",
     "outputs": [
-      "audio-direction/wind-owner-scope.md",
-      "audio-direction/wind-owner-scope.json"
+      "audio-direction/wind-runtime-authority.json",
+      "game/assets/audio/wind/G01.wav",
+      "audio-direction/wind-runtime-review/README.md",
+      "audio-direction/wind-runtime-verification.json"
     ],
-    "boundary": "Read-only planning for one distinct wind owner. No runtime, physical/layout/material, hearing/perception/provider/save/time/weather, art/gait, full acoustics, voice or release change. Closed garden foliage and all previous owners stay closed."
+    "boundary": "Pending one distinct source-use/emitter implementation grant. Only the proposed fixed road owner and dependent checks; no B04/F01/other owner change, new original acquisition, physical/layout/weather/hearing/gameplay/provider/save/time/art/gait/full acoustics/voice/release scope."
   },
   "deferred_slices": []
 }
