@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "scope_id": "phase9-positional-healer-footstep-runtime-integration",
+  "status": "approved_scope_implemented_and_verified",
+  "authority": {
+    "path": "audio-direction/healer-footstep-runtime-authority.json",
+    "sha256": "1a7f3b7692139627535c792a77fc62b7cd1f5505ded0862dfbb29f50f4065c36"
+  },
+  "baseline_commit": "6108c4d33922234df4c1a9e385e72084a694b209",
+  "runtime_bindings": [
+    {
+      "path": "audio-direction/healer-footstep-runtime-authority.json",
+      "sha256": "1a7f3b7692139627535c792a77fc62b7cd1f5505ded0862dfbb29f50f4065c36"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "ec6858a97cce13864deda80b7ad460edf92b420e717efb9a0c29affe5fbb7c05"
+    },
+    {
+      "path": "game/HealerFootstepAudioRuntimeProof.cs",
+      "sha256": "9035d17eedb86d33fc89daa2998359d61ee55e4373e7c9eb533828b3dc12dce2"
+    },
+    {
+      "path": "game/HealerFootstepAudioRuntimeProof.cs.uid",
+      "sha256": "2e7e4ce091710cb6e673b9ac9357131bb8a8c13d0baf86b8e7b04238aa0201c5"
+    },
+    {
+      "path": "game/HealerFootstepAudioRuntimeProof.tscn",
+      "sha256": "96c1fea5138101bf8fdd87f792d91ea9f20b0d7367fb369ba03def12c5a823d0"
+    },
+    {
+      "path": "game/HealerFootstepRuntimeSmokeCheck.cs",
+      "sha256": "f6c6b733789d235b7e48cccda92dded04eacea66f4d726de4169858fbd135ed8"
+    },
+    {
+      "path": "game/HealerFootstepRuntimeSmokeCheck.cs.uid",
+      "sha256": "6dff396bda26decdd4c99a6c6e019bf1ffb1f1c9e0622f9b8fdae7b18a3d075d"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "d7a616ea61df9cb7cba66789674f7bb6636298cab196c5a3b93cde186e2aeafd"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "dc99ecb8963d06de6cf3beecde37c4521e4521837ad3befab50e76e4c7f91ddb"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepAudioController.cs",
+      "sha256": "1919abf4b07c49a967d2e1e93a88471e469f4f6e72506f786f2554047384c3c4"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepAudioController.cs.uid",
+      "sha256": "f72993d682549dbca363e4766c72c72dd4319d874e6aa44d0c42d905aa872942"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepMaterialSource.cs",
+      "sha256": "ae3e3af113366d41e86c2943d9c2069ea1041d11a286eb02dfa39aa16a6d48a6"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepMaterialSource.cs.uid",
+      "sha256": "c387bbbd60865d00e9a97c2ecbb31852d006c2a93df035e64db98fec7588b6d6"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "5939108a631dad49c24113ca6d5750ebbf599dbe60e1018f9f9c376d1837860e"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "bd6ba4b1ae698ce9bf5cfab1cd1bd654576e10dce85b8d6cf30dc94397031bb3"
+    },
+    {
+      "path": "scripts/check-healer-footstep-audio-output.py",
+      "sha256": "699b5b946223799deee6449b118c0ea746a093ef7547d640622f88d7d1f5292d"
+    },
+    {
+      "path": "scripts/validate-healer-footstep-runtime.py",
+      "sha256": "10a6275fe6d50d1f9dd877bd28842b008ac1dcbf79a7ebda2b6ab4e4a5504f8d"
+    },
+    {
+      "path": "src/Application/Audio/HealerFootstepCueHistory.cs",
+      "sha256": "c3626aadb148f8be561cd57bafc3f0f09184d5584b8274bcac54fb8958c924d6"
+    },
+    {
+      "path": "src/Application/Audio/HealerFootstepSpatialProjection.cs",
+      "sha256": "ebac86738649ac8b5d9183a56698d0fb613a692bf538c07d3e101650fe8f5cd0"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/HealerFootstepCueHistoryTests.cs",
+      "sha256": "e3c75da09c56a72758d2936c1a6ad372b0e07d68f0f6c732322294ee3e46ef5d"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/HealerFootstepSpatialProjectionTests.cs",
+      "sha256": "ecdeb2b02091732a10b577711fceb05a5a3a1de5be536390f8513c807d4321f1"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/README.md",
+      "sha256": "adf0f4a2ff63a92aeeb54e11b28415458d03c17794d3c7b641f7c555731725b5"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/build.log",
+      "sha256": "81a9387b904ff258d46b5c85c6d9966c080d091a9a6b5f379d31efc63a0a1e24"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/captions-off.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/continuation.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/default-bindings.log",
+      "sha256": "54c1b98e4819b7639ad35ffebb82bdc20aab5e70f4850603de6cf67efbde134e"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/default-debug.log",
+      "sha256": "67b50778c8e4eaebff96a97bf44d2667f703b51cc8030047348c04564e4a8a31"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/default-truth.log",
+      "sha256": "5c3e4311cc8837b4a3440fb92e7b8d9af38dd90f8009e44495625c673b708064"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/default.log",
+      "sha256": "1ebf2a86424ddbe429c976514eb34ad0c66e8471e9ce024c29ef3c17d0df4319"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/effects-muted.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/export-pack.log",
+      "sha256": "2f62166691aa9161c0996cb2eda87d7e66017da682be9ea1529a60832196a5de"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/extract-master.log",
+      "sha256": "074506790005151cfc879fd570a645ec332aff1ea8663f49d4e7c105c5415634"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/extract-master.log.raw.gz",
+      "sha256": "57d94c6caf57fa08e401c6628f19327b386acaac7d68409c6aaa7f087db4129b"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/focused-tests.log",
+      "sha256": "30b340afc9ce2a51dd8b23bc8a9466418ca12ef7713d8bc61cd6837460ff215d"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/format-application.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/format-game-verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/format-game.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/full-quality.log",
+      "sha256": "e2872a65a91afa5adc5f195854a01f3fb26842c3c70cc3d367dfe765f9a425c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/master-analysis.log",
+      "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/master-capture-attempt1.log",
+      "sha256": "9055e86daa97f0267b428d2427f3a44424467547eb4d7311cc79b165c56fb649"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/master-capture.log",
+      "sha256": "f2591931d5dddf774823e97e4405a8e7b961bf96bfaded4717953e1f75dee774"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/master-muted.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/missing-resources.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/native-views.log",
+      "sha256": "82497aa99ddec74050b60cc8883bfa763fdfd358b64ac15079b5f418b3e79769"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/observer-disabled.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/packed-native.log",
+      "sha256": "7c8d99afe640d0337c50883ad7ed8353c7ff78c9d8353ec8a8d299341604af47"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/parity-run.log",
+      "sha256": "65b06bf2fa8afa15a84433c91c4a8d43c2a461e7638af2d733615a65899b1cf9"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/quality-self-test.log",
+      "sha256": "76a3eabfdf4b534ce88ee130a932cb4b1e052caba189b788aa5ddff55a6ccf78"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/quiet.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/run-parity.py",
+      "sha256": "16ece167a2ee2de2bc8a9fe5c425cd6be6f3187645a064b1afc3a87dc82cc3ba"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/stopped-output.log",
+      "sha256": "28676ec723c9c218aa265f344d482c052ff1f8afa56ff7b217690598ffd2c6e4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/verify-export.py",
+      "sha256": "5a9cbb07ac7644a0fcf91fd5bbf06e1fc3f07ee3433769afed800efaed531602"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/verify-packed.gd",
+      "sha256": "9cbaed2725d452af3ec6b80ea988d4114850dea85ab83f953e18a9361d3b4d57"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/captions-off.json",
+      "sha256": "0fc9fff03701c157abef15752a630d24d29cbbd542b3f825756f321594aa96a4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/captions-off.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/default.json",
+      "sha256": "c17ea9958131202948ee35715d75c38dbe5af5f1cf46ca08d80b889f16476900"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/default.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/effects-muted.json",
+      "sha256": "6560f9f60735047333931dfe16e576845e7361518c0d577f853812a2d6b72cc7"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/effects-muted.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/master-muted.json",
+      "sha256": "2260c89f43285b66393bde2fb6115b9b93bb76547bd922c7f8470e0b9d96bcd4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/master-muted.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/missing-resources.json",
+      "sha256": "046cd70781cd2edd4cd309a748b9b2909a5181772798d91691d935444133eecf"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/missing-resources.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/observer-disabled.json",
+      "sha256": "a9c41cefb0e9701d90aa959a2135b6d62820fb95f485f855d8ff1e90f05dba93"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/observer-disabled.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/parity.json",
+      "sha256": "5899f62416e543e3e357d69154217d534e95aabb22e826e9f872e7042f26337d"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/quiet.json",
+      "sha256": "124730aa40fc2f8b68ae89016798c2daddd264498d738a3f78afd214b396fbf8"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/live/quiet.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/output/master.wav.gz",
+      "sha256": "5b97dbe888be1087e541c4b2eb6a24bd07bc39d23f184f29f755eb5706be6c28"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/output/measurements.json",
+      "sha256": "6ddc7d50b8f682cea22c6b81d7a50f1b3fd38a2f9598d7fdfe052d1a4ccd296f"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/output/timeline.json",
+      "sha256": "260d39034bc3a29ad83ec787748666349023de9b5afbb48ecc3c33321b2ba9f7"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/packaging/audio-subset.zip",
+      "sha256": "209dfdd8d4d19701cdcbbaae37d4400ee10044ae95c0fff3267198e82a3a1d3c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/packaging/inventory.json",
+      "sha256": "20440def0646440f9ec1ae5bedd62fcf674672918ccc39aa2bff8cf6251ef4e3"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/packaging/native-decode.json",
+      "sha256": "fe076ba3c2654061ce04faf4ddc8744865f9cdbe6e31c31d73a7711f4a51538f"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "0dc73ae343afccf7b3f7249e612ca4b2440539b0744f8fdfe79c2042d3da1ec3"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/21-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/22-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/23-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/24-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/25-product-4-1.log.gz",
+      "sha256": "ec6523232b1e6647b5908d34fbd1046b65f48065ef0daa02ced0609a2f14bbee"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/26-product-5-1.log.gz",
+      "sha256": "a125163b27c7e8df4602f8a1061da4ecec96b35ccc2bbfeb0c1cf89ca80080ef"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/27-product-6-1.log.gz",
+      "sha256": "86dfdafb1758e63b25f1519333964a30172600a0f741f475236121b6e4e753d9"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/28-product-7-1.log.gz",
+      "sha256": "fce713a1f16f1c1231851924cef1167939faf014d339c3c487c101ae11dc5889"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/29-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/30-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/31-product-10-1.log.gz",
+      "sha256": "46224988361450cc81d5cfb19a9e8be256853707070a3421cbcbf79a05434b8c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/32-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/33-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/34-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/35-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/36-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/37-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/38-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/39-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/40-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/41-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/42-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/43-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/44-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/45-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/46-water-quiet-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/47-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/48-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/49-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/50-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/51-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/52-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/53-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/54-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/55-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/56-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/57-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/58-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/59-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/60-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/61-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/62-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/63-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/64-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/65-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/66-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/67-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/68-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/69-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/70-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/71-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/72-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/executed-runner.py",
+      "sha256": "bd6ba4b1ae698ce9bf5cfab1cd1bd654576e10dce85b8d6cf30dc94397031bb3"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/summary.json",
+      "sha256": "2610ae9f7c901e4069b11e03042a4bce9fb167292032415afc5f861460aa7c5c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/captions-1280.png",
+      "sha256": "5f9240507290b4755c02abee7cdb36807c111cf7fda1dd71f269c603a9f0e306"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/captions-1920.png",
+      "sha256": "174ca57f8ddeb07f50cea7b70880bc8fc880c48fc4b4de9c7d427ff2d140f447"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/history-1280.png",
+      "sha256": "ff44cb44066f6ebe641869ce02dcbb88e4e787d03ca2a3e0490772d51ad60919"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/history-1920.png",
+      "sha256": "25692e58241d4b1ca1cf0cd79812ea7b28fce7a072c5b1e8bdfb825302daa77c"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/native.json",
+      "sha256": "c59c970db06e88c09307993e9d46031801c57b3ca80703f393a28ffbf6c46157"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/native.json.save.json",
+      "sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/offscreen-1280.png",
+      "sha256": "90327641e66c70c767e2e9d2813819f65c01d80479488a6dd90659d12f786106"
+    },
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/views/visual-review.json",
+      "sha256": "0d0fb2fd72c111274b1ac496982a1fa168ad22067a58ea4413d20417c0751937"
+    }
+  ],
+  "rejection_probes": [
+    "Changed proposal/resource PCM or import",
+    "Foreign/replayed motion",
+    "Changed material/geometry",
+    "Wrong listener or range",
+    "Leaked hearing/protected truth",
+    "Missing measured case",
+    "Mutated retained caption/history owner"
+  ],
+  "limits": [
+    "Only approved exact Healer exterior anonymous presentation.",
+    "No new PCM/geometry/art, gameplay hearing/perception/provider/save/time, interior contacts/transmission, voice or executable release.",
+    "Controlled fixtures; source channel bias and supported-listener correction documented; no fresh device/ordinary-play loudness claim."
+  ],
+  "full_quality": {
+    "stages": 72,
+    "unit_tests": 5243,
+    "new_unit_tests": 16,
+    "summary": {
+      "path": "audio-direction/healer-footstep-runtime-review/quality/summary.json",
+      "sha256": "2610ae9f7c901e4069b11e03042a4bce9fb167292032415afc5f861460aa7c5c"
+    },
+    "status": "passed"
+  },
+  "readable_log_normalizations": [
+    {
+      "path": "audio-direction/healer-footstep-runtime-review/checks/extract-master.log",
+      "raw": {
+        "path": "audio-direction/healer-footstep-runtime-review/checks/extract-master.log.raw.gz",
+        "sha256": "57d94c6caf57fa08e401c6628f19327b386acaac7d68409c6aaa7f087db4129b"
+      },
+      "reason": "Readable ffmpeg progress trailing whitespace stripped; exact original output retained losslessly."
+    }
+  ]
+}

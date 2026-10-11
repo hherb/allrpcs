@@ -1,0 +1,8 @@
+PASS default
+PASS quiet
+PASS master-muted
+PASS effects-muted
+PASS missing-resources
+PASS captions-off
+PASS observer-disabled
+PASS all seven modes complete save/transcript/motion/truth parity

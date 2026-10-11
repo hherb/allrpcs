@@ -1,0 +1,4 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Healer motion observer: InvalidOperationException
+PASS: Healer footstep Main: actual motion, exact owner, complete parity and lifecycle.

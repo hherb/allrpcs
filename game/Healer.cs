@@ -1,3 +1,4 @@
+using Allrpcs.Application.Audio;
 using Allrpcs.Application.Movement;
 using Allrpcs.Application.Navigation;
 using Godot;
@@ -17,6 +18,12 @@ public partial class Healer : CharacterBody2D
     private const float NavigationSurfaceTolerancePixels = 1.0f;
     private static readonly NavigationWorldBounds WorldBounds =
         new(0.0f, 0.0f, 3200.0f, 1800.0f);
+
+    private long motionTick;
+    /// <summary>Exact most recent producer-issued motion, without world-state authority.</summary>
+    internal FootstepMotionSample? LastMotion { get; private set; }
+    /// <summary>Exception-isolated observation after collision-resolved motion, including stationary stops.</summary>
+    internal event Action<FootstepMotionSample>? MotionCompleted;
 
     private HealerCommandSelection activeCommand = HealerCommandSelector.SelectFollow();
     private NavigationAgent2D navigationAgent = null!;
@@ -105,11 +112,9 @@ public partial class Healer : CharacterBody2D
     /// <inheritdoc />
     public override void _PhysicsProcess(double delta)
     {
-        _ = delta;
-
         if (activeCommand.Mode == HealerCommandMode.Wait)
         {
-            StopMoving();
+            StopMoving(delta);
             return;
         }
 
@@ -142,7 +147,7 @@ public partial class Healer : CharacterBody2D
                 activeCommand = HealerCommandSelector.SelectWait();
             }
 
-            StopMoving();
+            StopMoving(delta);
             return;
         }
 
@@ -154,7 +159,7 @@ public partial class Healer : CharacterBody2D
         Vector2 pathOffset = nextPathPosition - GlobalPosition;
         if (pathOffset.LengthSquared() <= PathPointTolerancePixels * PathPointTolerancePixels)
         {
-            StopMoving();
+            StopMoving(delta);
             return;
         }
 
@@ -162,13 +167,28 @@ public partial class Healer : CharacterBody2D
             ToNumerics(pathOffset.Normalized()),
             selection.SpeedPixelsPerSecond);
         Velocity = ToGodot(velocity);
-        MoveAndSlide();
+        CompleteMovement(delta);
     }
 
-    private void StopMoving()
+    private void StopMoving(double delta)
     {
         Velocity = Vector2.Zero;
+        CompleteMovement(delta);
+    }
+
+    private void CompleteMovement(double delta)
+    {
+        Vector2 start = GlobalPosition;
         MoveAndSlide();
+        if (motionTick == long.MaxValue) { LastMotion = null; return; }
+        FootstepMotionSample sample = new(++motionTick, ToNumerics(start), ToNumerics(GlobalPosition),
+            delta, MovementSpeedPixelsPerSecond);
+        LastMotion = sample;
+        foreach (Delegate observer in MotionCompleted?.GetInvocationList() ?? [])
+        {
+            try { ((Action<FootstepMotionSample>)observer)(sample); }
+            catch (Exception error) { GD.PrintErr("Healer motion observer: " + error.GetType().Name); }
+        }
     }
 
     private static NumericsVector2 ToNumerics(Vector2 vector)

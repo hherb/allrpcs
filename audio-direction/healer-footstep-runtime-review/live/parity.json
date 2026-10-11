@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-resources",
+    "captions-off",
+    "observer-disabled"
+  ],
+  "contacts": 4,
+  "presentations": 4,
+  "complete_save_transcript_motion_truth_parity": true
+}

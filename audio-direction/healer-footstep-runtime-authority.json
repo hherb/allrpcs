@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-healer-footstep-runtime-integration",
+  "owner_statement": "approved",
+  "status": "exact_proposal_scope_authorized",
+  "context": "Direct owner response to the published exact Healer exterior footstep scope request in this conversation; whole implementation and dependent checks authorized.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/healer-footstep-owner-scope.md",
+      "sha256": "0ab884e8f3ca30101c446ca2f51d9cea9a70df4261d04974e01e552b94907c8f"
+    },
+    {
+      "path": "audio-direction/healer-footstep-owner-scope.json",
+      "sha256": "f826536fa64c0e1680199108880dae6bca7f8d11c709f8d2c1226a1320f5d662"
+    }
+  ],
+  "authorized": [
+    "Exact post-collision Healer observational producer and separate unchanged cadence",
+    "Four-material exterior Healer permission and existing Seeker listener/192-pixel native positional playback",
+    "Anonymous ninth caption and independent bounded transient history",
+    "Named finite implementation, tests, live parity, native output/views/controls, packaging and full quality"
+  ],
+  "not_authorized": [
+    "Healer interior sounds and transmission",
+    "Other actors or wider emitters",
+    "New movement/action/terrain/geometry",
+    "Gameplay hearing/perception/provider/save/time changes",
+    "New PCM or changed source/import",
+    "Accepted animation/gait promotion",
+    "Closed Seeker/B02/reply/interior/water/cask/hand-tool/grinding/treatment reopening",
+    "Full room/wall acoustics",
+    "Voice",
+    "Release"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "baseline_commit": "6108c4d33922234df4c1a9e385e72084a694b209"
+}

@@ -1,0 +1,3207 @@
+{
+  "mode": "views",
+  "checks": [
+    "Actual Move/arrival/wait/return/Follow motion; independent contacts and complete save/transcript/protected truth parity.",
+    "Exact producer reference, duplicate/forged motion and live diagnostic injection rejected.",
+    "Native actual offscreen contact; 1280/1920 nine-caption coexistence; separate bounded/rate-limited history with captions off; Tab/Shift-Tab/Escape/Back focus and actual native focus loss."
+  ],
+  "motion": [
+    {
+      "Tick": 30,
+      "start": [
+        1660,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 31,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1666,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 32,
+      "start": [
+        1666,
+        900
+      ],
+      "end": [
+        1669,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 33,
+      "start": [
+        1669,
+        900
+      ],
+      "end": [
+        1672,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 34,
+      "start": [
+        1672,
+        900
+      ],
+      "end": [
+        1675,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 35,
+      "start": [
+        1675,
+        900
+      ],
+      "end": [
+        1678,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 36,
+      "start": [
+        1678,
+        900
+      ],
+      "end": [
+        1681,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 37,
+      "start": [
+        1681,
+        900
+      ],
+      "end": [
+        1684,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 38,
+      "start": [
+        1684,
+        900
+      ],
+      "end": [
+        1687,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 39,
+      "start": [
+        1687,
+        900
+      ],
+      "end": [
+        1690,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 40,
+      "start": [
+        1690,
+        900
+      ],
+      "end": [
+        1693,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 41,
+      "start": [
+        1693,
+        900
+      ],
+      "end": [
+        1696,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 42,
+      "start": [
+        1696,
+        900
+      ],
+      "end": [
+        1699,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 43,
+      "start": [
+        1699,
+        900
+      ],
+      "end": [
+        1702,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 44,
+      "start": [
+        1702,
+        900
+      ],
+      "end": [
+        1705,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 45,
+      "start": [
+        1705,
+        900
+      ],
+      "end": [
+        1708,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 46,
+      "start": [
+        1708,
+        900
+      ],
+      "end": [
+        1711,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 47,
+      "start": [
+        1711,
+        900
+      ],
+      "end": [
+        1714,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 48,
+      "start": [
+        1714,
+        900
+      ],
+      "end": [
+        1717,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 49,
+      "start": [
+        1717,
+        900
+      ],
+      "end": [
+        1720,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 50,
+      "start": [
+        1720,
+        900
+      ],
+      "end": [
+        1723,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 51,
+      "start": [
+        1723,
+        900
+      ],
+      "end": [
+        1726,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 52,
+      "start": [
+        1726,
+        900
+      ],
+      "end": [
+        1729,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 53,
+      "start": [
+        1729,
+        900
+      ],
+      "end": [
+        1732,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 54,
+      "start": [
+        1732,
+        900
+      ],
+      "end": [
+        1735,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 55,
+      "start": [
+        1735,
+        900
+      ],
+      "end": [
+        1738,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 56,
+      "start": [
+        1738,
+        900
+      ],
+      "end": [
+        1741,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 57,
+      "start": [
+        1741,
+        900
+      ],
+      "end": [
+        1744,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 58,
+      "start": [
+        1744,
+        900
+      ],
+      "end": [
+        1747,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 59,
+      "start": [
+        1747,
+        900
+      ],
+      "end": [
+        1750,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 60,
+      "start": [
+        1750,
+        900
+      ],
+      "end": [
+        1753,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 61,
+      "start": [
+        1753,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 62,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 63,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 64,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 65,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 66,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 67,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 68,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 69,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 70,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 71,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 72,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 73,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 74,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 75,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 76,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 77,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 78,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 79,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 80,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 81,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 82,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 83,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 84,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 85,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 86,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 87,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 88,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 89,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 90,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 91,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 92,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 93,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 94,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1753,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 95,
+      "start": [
+        1753,
+        900
+      ],
+      "end": [
+        1750,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 96,
+      "start": [
+        1750,
+        900
+      ],
+      "end": [
+        1747,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 97,
+      "start": [
+        1747,
+        900
+      ],
+      "end": [
+        1744,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 98,
+      "start": [
+        1744,
+        900
+      ],
+      "end": [
+        1741,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 99,
+      "start": [
+        1741,
+        900
+      ],
+      "end": [
+        1738,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 100,
+      "start": [
+        1738,
+        900
+      ],
+      "end": [
+        1735,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 101,
+      "start": [
+        1735,
+        900
+      ],
+      "end": [
+        1732,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 102,
+      "start": [
+        1732,
+        900
+      ],
+      "end": [
+        1729,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 103,
+      "start": [
+        1729,
+        900
+      ],
+      "end": [
+        1726,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 104,
+      "start": [
+        1726,
+        900
+      ],
+      "end": [
+        1723,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 105,
+      "start": [
+        1723,
+        900
+      ],
+      "end": [
+        1720,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 106,
+      "start": [
+        1720,
+        900
+      ],
+      "end": [
+        1717,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 107,
+      "start": [
+        1717,
+        900
+      ],
+      "end": [
+        1714,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 108,
+      "start": [
+        1714,
+        900
+      ],
+      "end": [
+        1711,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 109,
+      "start": [
+        1711,
+        900
+      ],
+      "end": [
+        1708,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 110,
+      "start": [
+        1708,
+        900
+      ],
+      "end": [
+        1705,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 111,
+      "start": [
+        1705,
+        900
+      ],
+      "end": [
+        1702,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 112,
+      "start": [
+        1702,
+        900
+      ],
+      "end": [
+        1699,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 113,
+      "start": [
+        1699,
+        900
+      ],
+      "end": [
+        1696,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 114,
+      "start": [
+        1696,
+        900
+      ],
+      "end": [
+        1693,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 115,
+      "start": [
+        1693,
+        900
+      ],
+      "end": [
+        1690,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 116,
+      "start": [
+        1690,
+        900
+      ],
+      "end": [
+        1687,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 117,
+      "start": [
+        1687,
+        900
+      ],
+      "end": [
+        1684,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 118,
+      "start": [
+        1684,
+        900
+      ],
+      "end": [
+        1681,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 119,
+      "start": [
+        1681,
+        900
+      ],
+      "end": [
+        1678,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 120,
+      "start": [
+        1678,
+        900
+      ],
+      "end": [
+        1675,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 121,
+      "start": [
+        1675,
+        900
+      ],
+      "end": [
+        1672,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 122,
+      "start": [
+        1672,
+        900
+      ],
+      "end": [
+        1669,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 123,
+      "start": [
+        1669,
+        900
+      ],
+      "end": [
+        1666,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 124,
+      "start": [
+        1666,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 125,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 126,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 127,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 128,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 129,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 130,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 131,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 132,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 133,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 134,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 135,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 136,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 137,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 138,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 139,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 140,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 141,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 142,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 143,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 144,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 145,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 146,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1666,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 147,
+      "start": [
+        1666,
+        900
+      ],
+      "end": [
+        1669,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 148,
+      "start": [
+        1669,
+        900
+      ],
+      "end": [
+        1672,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 149,
+      "start": [
+        1672,
+        900
+      ],
+      "end": [
+        1675,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 150,
+      "start": [
+        1675,
+        900
+      ],
+      "end": [
+        1678,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 151,
+      "start": [
+        1678,
+        900
+      ],
+      "end": [
+        1681,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 152,
+      "start": [
+        1681,
+        900
+      ],
+      "end": [
+        1684,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 153,
+      "start": [
+        1684,
+        900
+      ],
+      "end": [
+        1687,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 154,
+      "start": [
+        1687,
+        900
+      ],
+      "end": [
+        1690,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 155,
+      "start": [
+        1690,
+        900
+      ],
+      "end": [
+        1693,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 156,
+      "start": [
+        1693,
+        900
+      ],
+      "end": [
+        1696,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 157,
+      "start": [
+        1696,
+        900
+      ],
+      "end": [
+        1699,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 158,
+      "start": [
+        1699,
+        900
+      ],
+      "end": [
+        1702,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 159,
+      "start": [
+        1702,
+        900
+      ],
+      "end": [
+        1705,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 160,
+      "start": [
+        1705,
+        900
+      ],
+      "end": [
+        1708,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 161,
+      "start": [
+        1708,
+        900
+      ],
+      "end": [
+        1711,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 162,
+      "start": [
+        1711,
+        900
+      ],
+      "end": [
+        1714,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 163,
+      "start": [
+        1714,
+        900
+      ],
+      "end": [
+        1717,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 164,
+      "start": [
+        1717,
+        900
+      ],
+      "end": [
+        1720,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 165,
+      "start": [
+        1720,
+        900
+      ],
+      "end": [
+        1723,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 166,
+      "start": [
+        1723,
+        900
+      ],
+      "end": [
+        1726,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 167,
+      "start": [
+        1726,
+        900
+      ],
+      "end": [
+        1729,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 168,
+      "start": [
+        1729,
+        900
+      ],
+      "end": [
+        1732,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 169,
+      "start": [
+        1732,
+        900
+      ],
+      "end": [
+        1735,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 170,
+      "start": [
+        1735,
+        900
+      ],
+      "end": [
+        1738,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 171,
+      "start": [
+        1738,
+        900
+      ],
+      "end": [
+        1741,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 172,
+      "start": [
+        1741,
+        900
+      ],
+      "end": [
+        1744,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 173,
+      "start": [
+        1744,
+        900
+      ],
+      "end": [
+        1747,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 174,
+      "start": [
+        1747,
+        900
+      ],
+      "end": [
+        1750,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 175,
+      "start": [
+        1750,
+        900
+      ],
+      "end": [
+        1753,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 176,
+      "start": [
+        1753,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 177,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1759,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 178,
+      "start": [
+        1759,
+        900
+      ],
+      "end": [
+        1762,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 179,
+      "start": [
+        1762,
+        900
+      ],
+      "end": [
+        1765,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 180,
+      "start": [
+        1765,
+        900
+      ],
+      "end": [
+        1768,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 181,
+      "start": [
+        1768,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 182,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 183,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 184,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 185,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 186,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 187,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 188,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 189,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 190,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 191,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 192,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 193,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 194,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 195,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 196,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 197,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 198,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 199,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 200,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Follow"
+    },
+    {
+      "Tick": 201,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 202,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1771,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 203,
+      "start": [
+        1771,
+        900
+      ],
+      "end": [
+        1768,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 204,
+      "start": [
+        1768,
+        900
+      ],
+      "end": [
+        1765,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 205,
+      "start": [
+        1765,
+        900
+      ],
+      "end": [
+        1762,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 206,
+      "start": [
+        1762,
+        900
+      ],
+      "end": [
+        1759,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 207,
+      "start": [
+        1759,
+        900
+      ],
+      "end": [
+        1756,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 208,
+      "start": [
+        1756,
+        900
+      ],
+      "end": [
+        1753,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 209,
+      "start": [
+        1753,
+        900
+      ],
+      "end": [
+        1750,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 210,
+      "start": [
+        1750,
+        900
+      ],
+      "end": [
+        1747,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 211,
+      "start": [
+        1747,
+        900
+      ],
+      "end": [
+        1744,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 212,
+      "start": [
+        1744,
+        900
+      ],
+      "end": [
+        1741,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 213,
+      "start": [
+        1741,
+        900
+      ],
+      "end": [
+        1738,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 214,
+      "start": [
+        1738,
+        900
+      ],
+      "end": [
+        1735,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 215,
+      "start": [
+        1735,
+        900
+      ],
+      "end": [
+        1732,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 216,
+      "start": [
+        1732,
+        900
+      ],
+      "end": [
+        1729,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 217,
+      "start": [
+        1729,
+        900
+      ],
+      "end": [
+        1726,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 218,
+      "start": [
+        1726,
+        900
+      ],
+      "end": [
+        1723,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 219,
+      "start": [
+        1723,
+        900
+      ],
+      "end": [
+        1720,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 220,
+      "start": [
+        1720,
+        900
+      ],
+      "end": [
+        1717,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 221,
+      "start": [
+        1717,
+        900
+      ],
+      "end": [
+        1714,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 222,
+      "start": [
+        1714,
+        900
+      ],
+      "end": [
+        1711,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 223,
+      "start": [
+        1711,
+        900
+      ],
+      "end": [
+        1708,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 224,
+      "start": [
+        1708,
+        900
+      ],
+      "end": [
+        1705,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 225,
+      "start": [
+        1705,
+        900
+      ],
+      "end": [
+        1702,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 226,
+      "start": [
+        1702,
+        900
+      ],
+      "end": [
+        1699,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 227,
+      "start": [
+        1699,
+        900
+      ],
+      "end": [
+        1696,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 228,
+      "start": [
+        1696,
+        900
+      ],
+      "end": [
+        1693,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 229,
+      "start": [
+        1693,
+        900
+      ],
+      "end": [
+        1690,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 230,
+      "start": [
+        1690,
+        900
+      ],
+      "end": [
+        1687,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 231,
+      "start": [
+        1687,
+        900
+      ],
+      "end": [
+        1684,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 232,
+      "start": [
+        1684,
+        900
+      ],
+      "end": [
+        1681,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 233,
+      "start": [
+        1681,
+        900
+      ],
+      "end": [
+        1678,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 234,
+      "start": [
+        1678,
+        900
+      ],
+      "end": [
+        1675,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 235,
+      "start": [
+        1675,
+        900
+      ],
+      "end": [
+        1672,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 236,
+      "start": [
+        1672,
+        900
+      ],
+      "end": [
+        1669,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 237,
+      "start": [
+        1669,
+        900
+      ],
+      "end": [
+        1666,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 238,
+      "start": [
+        1666,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "MoveToDestination"
+    },
+    {
+      "Tick": 239,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 240,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 241,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 242,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 243,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 244,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 245,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 246,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 247,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 248,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 249,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 250,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 251,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 252,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 253,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 254,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 255,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 256,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    },
+    {
+      "Tick": 257,
+      "start": [
+        1663,
+        900
+      ],
+      "end": [
+        1663,
+        900
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 180,
+      "command": "Wait"
+    }
+  ],
+  "contacts": 4,
+  "presentations": 4,
+  "truthBefore": "{\n  \u0022objects\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022herb-patch\u0022\n          },\n          \u0022DisplayName\u0022: \u0022HERB PATCH\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A cluster of narrow leaves gives off a sharp scent.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022stone-marker\u0022\n          },\n          \u0022DisplayName\u0022: \u0022STONE MARKER\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022Weathered carvings mark one face of the standing stone.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022village-water-cask\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Village water cask\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022wagon-clue\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Tool-gated clue\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A small clue on the abandoned wagon that needs close inspection.\u0022\n        }\n      }\n    ]\n  },\n  \u0022inventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022healerInventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022perception\u0022: {\n    \u0022CharacterId\u0022: {\n      \u0022Value\u0022: \u0022seeker\u0022\n    },\n    \u0022Entries\u0022: [\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022herb-patch\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022stone-marker\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022identified\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022village-water-cask\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022wagon-clue\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022unnoticed\u0022\n        }\n      }\n    ]\n  },\n  \u0022knowledge\u0022: {\n    \u0022KnowledgeReferences\u0022: [\n      {\n        \u0022Value\u0022: \u0022healer-herb-care\u0022\n      }\n    ]\n  },\n  \u0022beliefs\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022placements\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022WorldObject\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-water-cask\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village water cask\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n          }\n        },\n        \u0022Location\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-square\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village square\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022The cask stands beside the village well.\u0022\n          }\n        }\n      }\n    ]\n  },\n  \u0022moveEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022concealment\u0022: {\n    \u0022ConcealedObjectIds\u0022: []\n  },\n  \u0022substitutions\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022contamination\u0022: {\n    \u0022ContaminatedObjectIds\u0022: []\n  },\n  \u0022contaminationEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022transcript\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022events\u0022: null,\n  \u0022time\u0022: {\n    \u0022EventLog\u0022: {\n      \u0022Entries\u0022: [\n        {\n          \u0022Value\u0022: \u0022greybox-ready\u0022\n        }\n      ]\n    },\n    \u0022WorldTime\u0022: {\n      \u0022CurrentEventId\u0022: null\n    }\n  }\n}",
+  "truthAfter": "{\n  \u0022objects\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022herb-patch\u0022\n          },\n          \u0022DisplayName\u0022: \u0022HERB PATCH\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A cluster of narrow leaves gives off a sharp scent.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022stone-marker\u0022\n          },\n          \u0022DisplayName\u0022: \u0022STONE MARKER\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022Weathered carvings mark one face of the standing stone.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022village-water-cask\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Village water cask\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022wagon-clue\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Tool-gated clue\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A small clue on the abandoned wagon that needs close inspection.\u0022\n        }\n      }\n    ]\n  },\n  \u0022inventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022healerInventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022perception\u0022: {\n    \u0022CharacterId\u0022: {\n      \u0022Value\u0022: \u0022seeker\u0022\n    },\n    \u0022Entries\u0022: [\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022herb-patch\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022stone-marker\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022identified\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022village-water-cask\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022wagon-clue\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022unnoticed\u0022\n        }\n      }\n    ]\n  },\n  \u0022knowledge\u0022: {\n    \u0022KnowledgeReferences\u0022: [\n      {\n        \u0022Value\u0022: \u0022healer-herb-care\u0022\n      }\n    ]\n  },\n  \u0022beliefs\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022placements\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022WorldObject\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-water-cask\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village water cask\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n          }\n        },\n        \u0022Location\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-square\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village square\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022The cask stands beside the village well.\u0022\n          }\n        }\n      }\n    ]\n  },\n  \u0022moveEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022concealment\u0022: {\n    \u0022ConcealedObjectIds\u0022: []\n  },\n  \u0022substitutions\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022contamination\u0022: {\n    \u0022ContaminatedObjectIds\u0022: []\n  },\n  \u0022contaminationEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022transcript\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022events\u0022: null,\n  \u0022time\u0022: {\n    \u0022EventLog\u0022: {\n      \u0022Entries\u0022: [\n        {\n          \u0022Value\u0022: \u0022greybox-ready\u0022\n        }\n      ]\n    },\n    \u0022WorldTime\u0022: {\n      \u0022CurrentEventId\u0022: null\n    }\n  }\n}",
+  "transcript": []
+}

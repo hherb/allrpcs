@@ -28,6 +28,7 @@ AUDIO_REVISIONS = (
     ('water', '50f4a7516f7b5acb20119212985e2132a581c106', 'scripts/validate-water-contact-runtime.py'),
     ('cask', '5495202faecb257148309ad028faa3e0d95bf51c', 'scripts/validate-cask-cover-runtime.py'),
 )
+HAND_TOOL_REVISION = '75c1aa04e4cfa840d75bee119de11afe7fb2484c'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -197,13 +198,16 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
     for name, revision, validator in AUDIO_REVISIONS:
         args = [sys.executable, validator] + (['--reviewed'] if name not in ('buses', 'material') else [])
         plan.append(('boundary-' + name, args, revision))
-    plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], None),
+    plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
+             ('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], None),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
     if finish_interior and prior.get('resumed_from'):
-        plan.insert(len(plan) - 19 + 9, ('boundary-hand-tool-resume',
-                        [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], None))
+        index = len(plan) - 19 + 9
+        plan[index:index] = [
+            ('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
+            ('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], None)]
     rows = prior['stages']
     if len(rows) != len(plan) + 1:
         raise ValueError('Resume stage inventory changed')
@@ -273,11 +277,15 @@ def main(resume_smoke=False, finish_interior=False):
                     if name not in ('buses', 'material'):
                         args.append('--reviewed')
                     run.stage('boundary-' + name, args, tree, env, revision)
-            run.stage('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
+            with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
+            run.stage('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
-            run.stage('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
+            with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
+                run.stage('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
+            run.stage('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
@@ -347,13 +355,35 @@ def main(resume_smoke=False, finish_interior=False):
             raise ValueError('Hand-tool action schedule changed or no-action emitted feedback')
         run.report.update(tool_save_sha256=sha(tool_saves[0]), tool_transcript=tool_reports[0]['transcript'],
                           tool_modes=list(tool_modes))
+        healer_modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-resources', 'captions-off', 'observer-disabled')
+        for mode in healer_modes:
+            output = run.directory / f'healer-{mode}.json'
+            run.stage('healer-footstep-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                      env=dict(environment, ALLRPCS_HEALER_FOOTSTEP_CHECK='1', ALLRPCS_HEALER_FOOTSTEP_MODE=mode,
+                               ALLRPCS_HEALER_FOOTSTEP_REPORT=str(output)), retry_native=True,
+                      completion='PASS: Healer footstep Main:')
+        healer_reports = [json.loads((run.directory / f'healer-{mode}.json').read_text()) for mode in healer_modes]
+        healer_saves = [(run.directory / f'healer-{mode}.json.save.json').read_bytes() for mode in healer_modes]
+        if any(data != healer_saves[0] for data in healer_saves) or any(
+                row['motion'] != healer_reports[0]['motion'] or row['transcript'] != healer_reports[0]['transcript']
+                or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != healer_reports[0]['truthBefore'] for row in healer_reports):
+            raise ValueError('Healer presentation changed complete motion/save/transcript/protected truth')
+        if (len({row['contacts'] for row in healer_reports[:-1]}) != 1 or healer_reports[0]['contacts'] < 4
+                or len({row['presentations'] for row in healer_reports[:-1]}) != 1 or healer_reports[0]['presentations'] < 4) or any(
+                healer_reports[-1][key] != 0 for key in ('contacts', 'presentations')):
+            raise ValueError('Healer contact owner/mode schedule changed')
+        run.report.update(healer_save_sha256=sha(healer_saves[0]), healer_modes=list(healer_modes),
+                          healer_contacts=healer_reports[0]['contacts'], healer_presentations=healer_reports[0]['presentations'])
         generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
         run.report['generated_uid_cleanup'] = cleanup_generated_uids(ROOT, generated, existed, sources)
-        run.stage('boundary-hand-tool-after-runtime', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'])
+        with snapshot(HAND_TOOL_REVISION, editor=True) as (tree, env):
+            run.stage('boundary-hand-tool-after-runtime', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], tree, env, HAND_TOOL_REVISION)
+        run.stage('healer-master-output', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--output-only'])
+        run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'])
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
-        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes', flush=True)
+        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()

@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "review": "Inspected native captions-1280 and history-1920 pixels: all nine complete lines fit the owned panel; separately titled history scrolls within its panel with the focused Back button unobscured.",
+  "views": ["captions-1280.png", "history-1920.png"],
+  "limits": "Controlled fixture; art/world labels and prior debug HUD unchanged."
+}

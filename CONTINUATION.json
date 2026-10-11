@@ -556,6 +556,20 @@
           "sha256": "f826536fa64c0e1680199108880dae6bca7f8d11c709f8d2c1226a1320f5d662"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-healer-footstep-runtime-integration",
+      "reason": "Owner approved the exact published Healer exterior proposal on 2026-10-11. Its complete implementation and dependent review/verification are finished: post-collision observation without movement changes, separate unchanged cadence/four exterior materials, existing Seeker listener/exclusive 192-pixel native Effects playback, anonymous ninth caption and independent 16-entry/one-second history. Seven actual-motion modes preserve complete saves/transcripts/protected truth; 43 Master groups/71 independent subcases and all 24 native variant waveforms, retained-wall/observer/lifecycle checks, native views/keyboard/focus, 36-stream/23-notice/17-group byte-identical packaging, seven rejection groups and complete root quality pass. All prior owners, source/import PCM, geometry/art/gait, domain/provider/save/time inputs and recorded editor exception remain unchanged. Whole approved slice is closed without a repeated approval.",
+      "evidence": [
+        {
+          "path": "audio-direction/healer-footstep-runtime-authority.json",
+          "sha256": "1a7f3b7692139627535c792a77fc62b7cd1f5505ded0862dfbb29f50f4065c36"
+        },
+        {
+          "path": "audio-direction/healer-footstep-runtime-verification.json",
+          "sha256": "c4e82e2c364ca6c1ed0556370f0e854cfc9a75c28bfc0310bb8e5470b1d5362e"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -628,6 +642,20 @@
         {
           "path": "audio-direction/hand-tool-runtime-verification.json",
           "sha256": "9e7f9949a7b875a42fd0b180be13288e4d80cf72f620d13271ffa5e9c394dcde"
+        }
+      ]
+    },
+    {
+      "id": "audio-positional-healer-footstep-runtime",
+      "reason": "The approved exact Healer exterior presentation owner and every dependent check/review are complete. Unchanged accepted audio, movement, gait or UI owners must not be reopened under a renamed audit/proof. Other actors, emitters, rooms, actions and PCM require distinct owner authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/healer-footstep-runtime-authority.json",
+          "sha256": "1a7f3b7692139627535c792a77fc62b7cd1f5505ded0862dfbb29f50f4065c36"
+        },
+        {
+          "path": "audio-direction/healer-footstep-runtime-verification.json",
+          "sha256": "c4e82e2c364ca6c1ed0556370f0e854cfc9a75c28bfc0310bb8e5470b1d5362e"
         }
       ]
     }
@@ -705,20 +733,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-healer-footstep-runtime-integration",
-    "title": "Implement the proposed Healer exterior positional footsteps after one owner grant",
+    "id": "phase9-positional-foliage-owner-scope",
+    "title": "Define the first fixed foliage sound emitter and its missing source",
     "status": "ready",
-    "workstream": "audio-positional-healer-footstep-runtime",
+    "workstream": "audio-positional-foliage-owner-scope",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "The completed Healer-only exterior contact/material/emitter/caption/history proposal has no implementation grant or installed owner. Its exact new runtime grant and finite implementation/verification are missing.",
-    "instructions": "Use audio-direction/healer-footstep-owner-scope.md and its hash-bound JSON. Request only the one pending exact Healer exterior runtime/material/emitter/caption/history grant; record it before runtime edits. Once granted, implement and finish dependent tests, seven-mode parity, 43 actual Master output groups, native views/controls/history, resource packaging, rejection probes and retained full quality in the same session, then publish under standing authority. Do not reopen the completed proposal or any unchanged accepted audio/action/animation scope.",
-    "completion_condition": "One matching explicit owner grant is recorded; the exact Healer exterior positional-footstep owner and all finite dependent checks/review are complete and published, with protected truth and every prior owner unchanged.",
+    "missing_deliverable": "There is no separately owned fixed exterior foliage/wind emitter, dedicated source passage or anonymous spatial caption/history contract. Existing B03 composite ambience and all current emitters are closed; they do not supply a new dedicated-source or emitter grant.",
+    "instructions": "Prepare a read-only concrete proposal for one first fixed exterior foliage emitter: exact retained candidate location, missing dedicated source/rights requirements, listener/range/support and anonymous accessibility ownership, protected world/hearing authority, exact files and finite checks. Identify the genuinely new source/material/emitter grant. Inspect only what is needed to define this missing deliverable; do not acquire/generate/edit PCM, install runtime/geometry/art, re-audit unchanged accepted owners or ask for their approval again.",
+    "completion_condition": "A hash-bound read-only first foliage emitter/source proposal is complete and published, with its missing dedicated source and one genuinely new bounded implementation grant identified.",
     "outputs": [
-      "audio-direction/healer-footstep-runtime-authority.json",
-      "audio-direction/healer-footstep-runtime-verification.json",
-      "audio-direction/healer-footstep-runtime-review/README.md"
+      "audio-direction/foliage-owner-scope.md",
+      "audio-direction/foliage-owner-scope.json"
     ],
-    "boundary": "Implementation is gated on the one genuinely new owner grant. Limit it to the published Healer-only exterior proposal and named files/checks. No Healer interior contacts/transmission, other actor/emitter, gameplay hearing/perception/provider/save/time, new PCM/art/geometry/gait promotion, closed-owner reopening, voice or release."
+    "boundary": "Read-only planning of one new fixed foliage source/emitter owner. No PCM acquisition or derivative, runtime/source-material permission, geometry/art/gait change, prior-owner reopening, gameplay hearing/perception/provider/save/time, room acoustics, voice or release authority is implied."
   },
   "deferred_slices": []
 }

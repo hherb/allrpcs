@@ -1,0 +1,177 @@
+{
+  "status": "passed",
+  "streams": 24,
+  "conversion": "signed PCM24 arithmetic right shift by 8, little-endian PCM16; every decoded byte equal",
+  "rows": [
+    {
+      "clip": "W01-01",
+      "native_pcm16_sha256": "e0bd6001f0befd0b3e133dd10c71cefae7627a6f44f9d839ee480a640ffde33f",
+      "pcm24_sha256": "9d4a8fe2f8f392677e6f6f8bd9e0af59ad66e91f189e47df872ac4b6b33cdac1",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W01-02",
+      "native_pcm16_sha256": "f5ef4873fe4e8c39bd6e92396a683386803682cdf06fa6eab656e18e42244c62",
+      "pcm24_sha256": "684dfc8486059886966473bf363ebfd4866c49c220f5255da46202dbbc214ef5",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W01-03",
+      "native_pcm16_sha256": "8c07d4d0ab53dc5b97bc87684d83011994265fb922330fc32985473b8166f4fd",
+      "pcm24_sha256": "2ac8f009676c00b0be97692069cde8a080d1c75d63f687d74b7dc2aad8a601c5",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W01-04",
+      "native_pcm16_sha256": "9fe28e52dccb9badc540e558977ec81673f5401aabc06b08d9be5e1cd00b5b63",
+      "pcm24_sha256": "84b804be24a08567297038bc8fde6eae6b68dfc495e22afad5de07dc025a6995",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W01-05",
+      "native_pcm16_sha256": "7abafa473b76463e5f33c0973ff56c84d02442de334b57831650d579c83ab319",
+      "pcm24_sha256": "4e9b026d2e01861c5108ede3e848fe318560ed1d78db9384260d09c9854e64a1",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W01-06",
+      "native_pcm16_sha256": "52fd36923c9102ee7fd354ce8a5028a324bde616a11778a1ccc82715f077cba6",
+      "pcm24_sha256": "352cf3555e09621f3387db660d81dba99068abdac917fce12b72e0a85f2da68e",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-01",
+      "native_pcm16_sha256": "6e40cfb804c93301399130675e6abdf3bbd1b39e90fa367abcf9d1dc1efb988a",
+      "pcm24_sha256": "65e408c11a7830d9becf45a6f13798118c8be86426b2f67aecc7c39af7c26e30",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-02",
+      "native_pcm16_sha256": "87a8f224cc3e2baa3e9f2d5f1b1896cf082badd2f0ee4c3c21a91e5941c59746",
+      "pcm24_sha256": "1d737651d8866aa8c2e0ea8d231b7bb1301e96be7e3d664498b93901c923fa72",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-03",
+      "native_pcm16_sha256": "ba626bfc089c07fee5261b013442d7d4ddccbbfbec7921cded009be8fa075aaf",
+      "pcm24_sha256": "935da63ba6a306778d674178d0335e57416cc3046041e8f9de17a43d8a5c0c83",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-04",
+      "native_pcm16_sha256": "e5abc4c2573edd6d4a4bb6c3f65a8890d2837185e5831357893648b4de344331",
+      "pcm24_sha256": "b7b2395cde89977277c16d156cedd6608ad8435d6a1b260566abac84ebba8a98",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-05",
+      "native_pcm16_sha256": "f8223ab9c737f3612e68b65a0baa91be3075236c38f5bc1293eb8a057cfd197a",
+      "pcm24_sha256": "c54faec6d8d68ec1aae7de553e44976f7f3eaff3a682828f318875c2d058801d",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W02-06",
+      "native_pcm16_sha256": "216b135dc93aca5f335696d20fe6552c81cb585ab3782cedd709abb9aadb6ff1",
+      "pcm24_sha256": "6b18982cc79e41062e3f4ae91f125e8f91a96235ce1e3f44113a40505c359df3",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-01",
+      "native_pcm16_sha256": "b2f702fa141f08b0a8e64b26ff53ae57719a234c9ca129c50a75466971d87bd4",
+      "pcm24_sha256": "91ee3888e1e7d56b23aef6d1cf2733ff657ceb7e81250eac8733f76e19270458",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-02",
+      "native_pcm16_sha256": "09907476e83b730079c8bb83407d14e677083607e444812bab8f1bcf7bada525",
+      "pcm24_sha256": "96a0a37954311df289b6cccb481622391a1ff165741440a10de98ac11d22f325",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-03",
+      "native_pcm16_sha256": "bb5ffa04101165b02a8164ae317d092944fa67da9fdcbc6c7c8a258a6d8bfb2a",
+      "pcm24_sha256": "9ca237df9ccef7e34673dab48c7638b3850695332570a0a557c86cc3d9509528",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-04",
+      "native_pcm16_sha256": "c62a03a88eb2cd74c90bafe013233a6b7bba0c295b86f49217c2748101ecc462",
+      "pcm24_sha256": "372abe3ddbbe22a5af038c15163d57522b20ce9136ae0c78e52446d9e9c2b360",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-05",
+      "native_pcm16_sha256": "671116e79caee070bbf260a2505ac31bfbc0a0b13b825c2caaaffa2a32205d51",
+      "pcm24_sha256": "ac656ca143ffae1e03262f0ceaf787c7186b29394d902513728247e9db248fe5",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W03-06",
+      "native_pcm16_sha256": "86ed1683895f6ab5acb1c7c875fc1c7dd9d83e518c420ec190aec89e298e4c65",
+      "pcm24_sha256": "cbc18f597f99e8dd5abdd7589d5c918efe3fff6212c0670407becaa18ba6e0ee",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-01",
+      "native_pcm16_sha256": "0dc8fe7920514489e38ca6497e73eb84369855c8ee84915ef63ecc31ce4061fa",
+      "pcm24_sha256": "ba093f159a5b5c8c4e2984680c9c69151e1aeac9b74b143357556c5a5011f03c",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-02",
+      "native_pcm16_sha256": "29c0035b3ab197c52a3a3da883536020e4e7488f025e58e172aa93ad65d6ed9b",
+      "pcm24_sha256": "f9af75ef2bc39b47a1b814e615f939fdd5301e200c115670bdd638e2f6446464",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-03",
+      "native_pcm16_sha256": "1acf43fb7405e13b2eb952f10c63e5028ebc06b94058c3c66b5c8176ee3a08fe",
+      "pcm24_sha256": "1ac675e5c933d9567ffaad00def021ea64924883683fc721a8cb697696c56091",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-04",
+      "native_pcm16_sha256": "ce684b3b564e3c405e8601f40c95498b6f5991630d56e45e8223fc5ec9e43fcb",
+      "pcm24_sha256": "f62723ab5bcd7f40339293fdfdf18aa191cbf875c5c1a0e4547db5b978f22201",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-05",
+      "native_pcm16_sha256": "13b20eff147d17991491799b26ff7e758dab3485edb6ab58bbc931db9b81b080",
+      "pcm24_sha256": "73bd5854dda1d9e4ae5dea8de29811d4063d3a9144c36fff24c7f55726baed0e",
+      "samples": 48000,
+      "exact": true
+    },
+    {
+      "clip": "W04-06",
+      "native_pcm16_sha256": "ce3c9d8eb0dcc2da263db5b53105d5ef5f344653e81434546c2f7e3425eb6666",
+      "pcm24_sha256": "546ddc034f44db384cf575d04aa883a6e7607636299da614892ea8843332dc24",
+      "samples": 48000,
+      "exact": true
+    }
+  ],
+  "native_source_balance_note": "W01-01 original right/left RMS ratio 3.1125. Raw-channel directional test uses unchanged balanced W04-01; no PCM/channel correction or extra gain.",
+  "engine_source": "https://github.com/godotengine/godot/blob/4.6/scene/2d/audio_stream_player_2d.cpp#L139-L170"
+}

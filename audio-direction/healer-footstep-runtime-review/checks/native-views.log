@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+VIEW active=True bindings=True listener=True source=Earth listenerMaterial=Earth
+VIEW tick=0 active=True bindings=True listener=True source=Earth contacts=4 motion=FootstepMotionSample { Tick = 263, Start = <1660, 900>, End = <1663, 900>, Delta = 0.016666666666666666, SpeedLimit = 180 }
+VIEW tick=10 active=True bindings=True listener=True source=Earth contacts=4 motion=FootstepMotionSample { Tick = 273, Start = <1690, 900>, End = <1693, 900>, Delta = 0.016666666666666666, SpeedLimit = 180 }
+VIEW tick=20 active=True bindings=True listener=True source=Earth contacts=4 motion=FootstepMotionSample { Tick = 283, Start = <1720, 900>, End = <1723, 900>, Delta = 0.016666666666666666, SpeedLimit = 180 }
+PASS: Healer footstep Main: actual motion, exact owner, complete parity and lifecycle.

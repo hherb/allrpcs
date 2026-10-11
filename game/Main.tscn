@@ -1,4 +1,4 @@
-[gd_scene load_steps=419 format=3]
+[gd_scene load_steps=422 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -629,6 +629,10 @@
 [ext_resource type="Script" path="res://HandToolTapPanel.cs" id="tool_1"]
 [ext_resource type="Script" path="res://OpeningRegionHandToolTapAudioController.cs" id="tool_2"]
 [ext_resource type="Script" path="res://HandToolTapRuntimeSmokeCheck.cs" id="tool_3"]
+
+[ext_resource type="Script" path="res://OpeningRegionHealerFootstepMaterialSource.cs" id="healer_step_material"]
+[ext_resource type="Script" path="res://OpeningRegionHealerFootstepAudioController.cs" id="healer_step_audio"]
+[ext_resource type="Script" path="res://HealerFootstepRuntimeSmokeCheck.cs" id="healer_step_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4311,6 +4315,15 @@ Automatic = true
 
 [node name="HandToolTapRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("tool_3")
+
+[node name="OpeningRegionHealerFootstepMaterialSource" type="Node" parent="."]
+script = ExtResource("healer_step_material")
+
+[node name="OpeningRegionHealerFootstepAudioController" type="Node" parent="."]
+script = ExtResource("healer_step_audio")
+
+[node name="HealerFootstepRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("healer_step_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
