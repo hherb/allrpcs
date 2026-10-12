@@ -23,6 +23,16 @@ both-size native UI, seven-mode complete motion/save/transcript/protected-truth 
 and mounted 39-stream packaging pass. All 105 prior audio entries remain byte-identical;
 32 notice files occupy 20 groups. No repeat listening or runtime approval remains.
 
+The read-only [remedy-heating proposal](audio-direction/remedy-heating-owner-scope.md)
+is complete. It binds the exact existing second recipe step/station and successful
+1-to-2 commit to a proposed three-second H01 Effects cue, thirteenth generic caption
+and separate history. The nominated CC0 covered-pot file is supplied as Ogg, without
+a documented lossless original master. The implementation grant includes the supplied
+encoding even if lossy, with exact derivative qualification. The owner accepted the
+original with “sounds perfect”; preserve that acceptance without another source review.
+No source audio/PCM/runtime was installed. Unchanged product evidence is reused;
+planning/continuation checks pass.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. Ongoing sound search/download permission remains recorded
@@ -31,34 +41,39 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-heating-owner-scope — Define the first remedy-heating sound owner and source boundary** (ready).
+**phase9-remedy-heating-runtime-integration — Integrate the exact committed remedy-heating sound and accessible feedback** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: A finite source/rights and presentation proposal for the existing second
-(heating) step of cooling-moonwort-remedy at the retained healer-garden preparation station; current
-audio covers grinding and treatment only.
+Missing deliverable: One separately granted dedicated H01 derivative and exact successful heating-
+step notification with local Effects playback, independent thirteenth caption/history and dependent
+verification.
 
-Prepare a read-only proposal grounded in the exact existing recipe step, preparation
-controller/input commit and station. Identify source suitability/rights, committed-event admission,
-anonymous caption/history ownership, permitted files and finite checks. Distinguish existing process
-completion from any physical burner, fire, boiling or new gameplay state. Carry every closure
-forward; do not repeat accepted grinding/treatment or rain reviews.
+Obtain and record the one concrete new grant in audio-direction/remedy-heating-owner-scope.md/.json,
+including the source-format exception if its encoding is lossy. Carry forward the owner’s “sounds
+perfect” acceptance of the nominated original without another source review. Then qualify only
+TinyWorlds cooking_with_cover_01.ogg, prepare three-second H01 and add the exact existing 1-to-2
+heating commit notification at the unchanged healer-garden station. Complete named
+pure/live/native/UI/packaging/rejection/full-quality checks, new-passage listening, documentation
+and standing publication together. An unsuitable exact source/window blocks installation without
+substitution. Carry all prior closures forward.
 
-Done when: The two hash-bound proposal files identify one exact existing heating-step/station
-candidate, the missing source/event deliverables, source and runtime authority boundaries, finite
-verification/publication and one concrete new implementation grant. No PCM/runtime/world edits are
-made.
+Done when: Recorded exact new source/event/runtime grant, qualified reproducible H01, once-only
+committed local Effects feedback, independent Heating preparation caption/history and finite
+checks/review pass, then close and publish the whole slice.
 
 Expected outputs:
 
-- `audio-direction/remedy-heating-owner-scope.md`
-- `audio-direction/remedy-heating-owner-scope.json`
+- `audio-direction/remedy-heating-runtime-authority.json`
+- `audio-direction/remedy-heating-runtime-verification.json`
+- `game/assets/audio/remedy-heating/H01.wav`
+- `game/OpeningRegionRemedyHeatingAudioController.cs`
 
-Boundary: Read-only new remedy-heating proposal only. No source preparation/installation, new
-action, physical heater/fire, geometry, runtime, gameplay, artwork or release authority; accepted
-A04 grinding/A05 treatment and all fixed ambience owners stay closed.
+Boundary: Implementation requires the new named grant; this planning approval does not grant it. No
+burner/fire/boiling/temperature, physical layout/art, recipe/progression/save/hearing/perception
+changes, new action, spatial emitter, other steps, voice or release. Accepted A04/A05 and all
+earlier audio/world owners remain closed.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

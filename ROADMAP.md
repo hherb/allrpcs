@@ -186,9 +186,14 @@ one unchanged clearing owner, exclusive 256-pixel Ambience, four seconds every
 109 root-quality stages retain the previous 95; 5,383 unit tests, 48 focused cases,
 58 measured native cases, both-size accessible UI, seven-mode complete parity and
 mounted 39-stream packaging preserving all 105 prior entries pass. Wider emitters
-and the items below remain partial. The next read-only proposal concerns the
-existing remedy heating step; it does not reopen accepted grinding/treatment or
-granted ambience, and it confers no new physical heater/fire or runtime authority.
+and the items below remain partial. The first
+[remedy-heating proposal](audio-direction/remedy-heating-owner-scope.md) is complete:
+one exact existing second recipe-step commit at the retained (2300,1300) station,
+a nominated owner-listened CC0 covered-pot Ogg with a disclosed source-format exception,
+three-second local Effects feedback and independent caption/history, bounded by
+finite files/checks and one new implementation grant. No source audio, PCM or
+runtime is installed. It preserves grinding/treatment and all ambience owners;
+physical heater/fire/boiling/temperature and gameplay changes remain separate.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.
