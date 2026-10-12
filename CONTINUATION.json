@@ -640,6 +640,20 @@
           "sha256": "5df364be44a2662f98b957c9c9e6cbb45cd94509a324e45b06056619aaf71e55"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-woodland-rain-runtime-integration",
+      "reason": "The owner-approved exact R01 and one unchanged clearing rain owner, independent twelfth caption/history and all dependent source/motion/native/UI/packaging/rejection/full-quality checks are complete. Source listening was qualified with sounds perfect. All 109 root stages retain 95 prior stages and 5383 unit tests pass. No further approval remains for this whole slice; broader emitters/weather/physics/gameplay/release remain separate. Scoped publication uses the standing grant.",
+      "evidence": [
+        {
+          "path": "audio-direction/rain-runtime-authority.json",
+          "sha256": "99f8c04ad3750bd736a294c67d0bc889008c9b6504f385fd92e1e04d4b8111a5"
+        },
+        {
+          "path": "audio-direction/rain-runtime-verification.json",
+          "sha256": "6f9db31bbcf64dea102d5b920f3b4d41f34a50c08b5dd1ef17d5b147bc47df88"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -784,6 +798,20 @@
           "sha256": "5df364be44a2662f98b957c9c9e6cbb45cd94509a324e45b06056619aaf71e55"
         }
       ]
+    },
+    {
+      "id": "audio-positional-woodland-rain-runtime",
+      "reason": "The exact fixed clearing rain source/emitter and its dependent checks/review are complete. Do not reopen unchanged R01, clearing binding, caption/history or evidence under a renamed audit. Another source/emitter requires distinct authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/rain-runtime-authority.json",
+          "sha256": "99f8c04ad3750bd736a294c67d0bc889008c9b6504f385fd92e1e04d4b8111a5"
+        },
+        {
+          "path": "audio-direction/rain-runtime-verification.json",
+          "sha256": "6f9db31bbcf64dea102d5b920f3b4d41f34a50c08b5dd1ef17d5b147bc47df88"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -859,23 +887,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-woodland-rain-runtime-integration",
-    "title": "Implement the first fixed woodland rain passage and emitter",
+    "id": "phase9-remedy-heating-owner-scope",
+    "title": "Define the first remedy-heating sound owner and source boundary",
     "status": "ready",
-    "workstream": "audio-positional-woodland-rain-runtime",
-    "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "One qualified R01 passage from the retained CC0 FLAC and one fixed (1000,350) clearing emitter, with independent anonymous caption/history and finite implementation evidence.",
-    "instructions": "Obtain and record the single concrete new source-use/runtime grant in audio-direction/rain-owner-scope.md and .json before preparing R01 or changing runtime. Then qualify the exact retained original, implement only the named clearing owner and complete all named tests/native output/UI/parity/packaging/review/documentation/publication in the same session. If no window qualifies, report the blocker without substitution. Preserve all closed scopes and unchanged prior sources/owners; the completed planning approval does not grant this implementation.",
-    "completion_condition": "New grant recorded; qualified R01 and exact fixed clearing runtime installed; focused, measured native, both-size accessible UI, seven-mode complete motion/save/truth parity, 39-stream resource packaging and root quality pass; dependent review, ledger closure and standing Git publication complete.",
+    "workstream": "audio-remedy-heating-planning",
+    "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+    "missing_deliverable": "A finite source/rights and presentation proposal for the existing second (heating) step of cooling-moonwort-remedy at the retained healer-garden preparation station; current audio covers grinding and treatment only.",
+    "instructions": "Prepare a read-only proposal grounded in the exact existing recipe step, preparation controller/input commit and station. Identify source suitability/rights, committed-event admission, anonymous caption/history ownership, permitted files and finite checks. Distinguish existing process completion from any physical burner, fire, boiling or new gameplay state. Carry every closure forward; do not repeat accepted grinding/treatment or rain reviews.",
+    "completion_condition": "The two hash-bound proposal files identify one exact existing heating-step/station candidate, the missing source/event deliverables, source and runtime authority boundaries, finite verification/publication and one concrete new implementation grant. No PCM/runtime/world edits are made.",
     "outputs": [
-      "audio-direction/rain-runtime-authority.json",
-      "game/assets/audio/rain/R01.wav",
-      "game/OpeningRegionRainAudioSource.cs",
-      "game/OpeningRegionRainAudioController.cs",
-      "audio-direction/rain-runtime-verification.json",
-      "audio-direction/rain-runtime-review/README.md"
+      "audio-direction/remedy-heating-owner-scope.md",
+      "audio-direction/remedy-heating-owner-scope.json"
     ],
-    "boundary": "Grant pending. Only the hash-bound proposed dedicated source-use/clearing runtime/caption/history and named checks/files; no other emitters, weather, physics, gameplay, art/geometry, voice or release authority."
+    "boundary": "Read-only new remedy-heating proposal only. No source preparation/installation, new action, physical heater/fire, geometry, runtime, gameplay, artwork or release authority; accepted A04 grinding/A05 treatment and all fixed ambience owners stay closed."
   },
   "deferred_slices": []
 }

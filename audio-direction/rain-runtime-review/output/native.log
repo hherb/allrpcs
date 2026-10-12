@@ -1,0 +1,70 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+Movie Maker mode enabled, recording movie in 1280×720 @ 60 FPS...
+CASE distance-0: active=True bindings=True listener=True focus=True gui=
+CASE distance-64: active=True bindings=True listener=True focus=True gui=
+CASE distance-128: active=True bindings=True listener=True focus=True gui=
+CASE distance-192: active=True bindings=True listener=True focus=True gui=
+CASE distance-255: active=True bindings=True listener=True focus=True gui=
+CASE distance-256: active=True bindings=True listener=True focus=True gui=
+CASE distance-257: active=True bindings=True listener=True focus=True gui=
+CASE left: active=True bindings=True listener=True focus=True gui=
+CASE right: active=True bindings=True listener=True focus=True gui=
+CASE mono: active=True bindings=True listener=True focus=True gui=
+CASE zoom-08: active=True bindings=True listener=True focus=True gui=
+CASE zoom-2: active=True bindings=True listener=True focus=True gui=
+CASE camera-offset: active=True bindings=True listener=True focus=True gui=
+CASE quiet: active=True bindings=True listener=True focus=True gui=
+CASE ambience-half: active=True bindings=True listener=True focus=True gui=
+CASE master-half: active=True bindings=True listener=True focus=True gui=
+CASE other-bus-zero: active=True bindings=True listener=True focus=True gui=
+CASE ambience-zero: active=True bindings=True listener=True focus=True gui=
+CASE ambience-muted: active=True bindings=True listener=True focus=True gui=
+CASE master-zero: active=True bindings=True listener=True focus=True gui=
+CASE master-muted: active=True bindings=True listener=True focus=True gui=
+CASE missing-stream: active=True bindings=True listener=True focus=True gui=
+CASE missing-bus: active=True bindings=True listener=True focus=True gui=
+CASE captions-off: active=True bindings=True listener=True focus=True gui=
+CASE foreground-duck: active=True bindings=True listener=True focus=True gui=
+CASE foreground-recovery: active=True bindings=True listener=True focus=True gui=
+CASE enter-range-mid: active=True bindings=True listener=True focus=True gui=
+CASE leave-range-mid: active=True bindings=True listener=True focus=True gui=
+CASE pause: active=True bindings=True listener=True focus=True gui=
+CASE focus-loss: active=True bindings=True listener=True focus=True gui=
+CASE reading-overlay: active=True bindings=True listener=True focus=True gui=
+CASE text-entry: active=True bindings=True listener=True focus=True gui=
+CASE load-success: active=True bindings=True listener=True focus=True gui=
+CASE load-failure: active=True bindings=True listener=True focus=True gui=
+CASE teleport: active=True bindings=True listener=True focus=True gui=
+CASE listener-stale: active=True bindings=True listener=False focus=True gui=
+CASE listener-replaced: active=True bindings=True listener=False focus=True gui=
+CASE listener-unsupported: active=True bindings=True listener=True focus=True gui=
+CASE source-hidden: active=True bindings=False listener=True focus=True gui=
+CASE source-moved: active=True bindings=False listener=True focus=True gui=
+CASE source-replaced: active=True bindings=False listener=True focus=True gui=
+CASE clearing-area-drift: active=True bindings=False listener=True focus=True gui=
+CASE map-disabled: active=True bindings=False listener=True focus=True gui=
+CASE invalid-delta: active=True bindings=True listener=True focus=True gui=
+CASE mute-unmute: active=True bindings=True listener=True focus=True gui=
+CASE retained-overlap: active=True bindings=True listener=True focus=True gui=
+CASE source-unsupported: active=True bindings=True listener=True focus=True gui=
+CASE source-disabled: active=True bindings=False listener=True focus=True gui=
+CASE source-nonfinite: active=True bindings=False listener=True focus=True gui=
+CASE map-drift: active=True bindings=False listener=True focus=True gui=
+CASE journal-overlay: active=True bindings=True listener=True focus=True gui=
+CASE map-overlay: active=True bindings=True listener=True focus=True gui=
+CASE dialogue-overlay: active=True bindings=True listener=True focus=True gui=
+CASE customization-overlay: active=True bindings=True listener=True focus=True gui=
+CASE settings-overlay: active=True bindings=True listener=True focus=True gui=
+CASE missing-stream-repair: active=True bindings=True listener=True focus=True gui=
+CASE ambience-unmute: active=True bindings=True listener=True focus=True gui=
+CASE master-unmute: active=True bindings=True listener=True focus=True gui=
+PASS: rain native Master: 58 independent cases.
+--------------------------------------------------------------------------------
+Done recording movie at path: /private/tmp/rain-master.avi
+17413 frames at 60 FPS (movie length: 00:04:50:13), recorded in 00:05:20 (90% of real-time speed).
+CPU render time: 13.84 seconds (average: 0.79 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 113.30 seconds (average: 6.51 ms/frame)
+--------------------------------------------------------------------------------

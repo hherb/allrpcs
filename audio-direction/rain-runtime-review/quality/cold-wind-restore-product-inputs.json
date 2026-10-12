@@ -1,0 +1,146 @@
+[
+  {
+    "path": "CONTINUATION.json",
+    "sha256": "6aced6854a3c66f21dbfdcb90ed813a797f0159fc2d29b730d0b4770787363b8"
+  },
+  {
+    "path": "HANDOVER.md",
+    "sha256": "1fd146f243ba4f5ab2ec2cc5c71706b7cd1f63d285cad922445b28f09e733c8b"
+  },
+  {
+    "path": "ROADMAP.md",
+    "sha256": "616da72c3026b8933cca9dbf451e85c0fd199baddbd3b1c8c9594ea2904a54ff"
+  },
+  {
+    "path": "audio-direction/rain-runtime-authority.json",
+    "sha256": "99f8c04ad3750bd736a294c67d0bc889008c9b6504f385fd92e1e04d4b8111a5"
+  },
+  {
+    "path": "audio-direction/rain-source/README.md",
+    "sha256": "3b2e0a08838c82b8e8d34f147ba6564cacbb0fd822549213924495d3377cfb66"
+  },
+  {
+    "path": "audio-direction/rain-source/provenance.json",
+    "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+  },
+  {
+    "path": "audio-direction/rain-source/rights/catalogue.html",
+    "sha256": "dd284f072c13583338e121742d07c21239c2616e7cf68eab11922def59f509f1"
+  },
+  {
+    "path": "audio-direction/rain-source/rights/deed.html",
+    "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+  },
+  {
+    "path": "game/Main.tscn",
+    "sha256": "daa781e5e1c26aa4769866c2b14c2f8a1295f39420f3c47e08a8e926523339b9"
+  },
+  {
+    "path": "game/MaterialAudioCreditsPanel.cs",
+    "sha256": "2ec45a0e8db8668a3a719636bcf2a44e6fa785d1acc9b76fe0376398420c6f72"
+  },
+  {
+    "path": "game/MaterialSoundCaptionPanel.cs",
+    "sha256": "c98879e455f473189a489919a1114d57534e573bb43b56cd9914aefed53eb381"
+  },
+  {
+    "path": "game/OpeningRegionRainAudioController.cs",
+    "sha256": "0313ae03778711196241b925aa026a30ccfeac9d51254a6f2fcd91eab9afdaf6"
+  },
+  {
+    "path": "game/OpeningRegionRainAudioController.cs.uid",
+    "sha256": "46de64109dc230b716d0bc6ee004a3a9a42cd7c7aaf43069bad2dbf989a3ed77"
+  },
+  {
+    "path": "game/OpeningRegionRainAudioSource.cs",
+    "sha256": "8d6a240859d2e60f75f207d1b7b232b376ed0ce57d30bad3faea631888896836"
+  },
+  {
+    "path": "game/OpeningRegionRainAudioSource.cs.uid",
+    "sha256": "384eb555528ddc2cd6f32f7340056970c52d9a7572418634fb2a3eab4492e710"
+  },
+  {
+    "path": "game/PositionalSoundCueHistoryPanel.cs",
+    "sha256": "054deb7873bce7da4e03ab4652d36ff9f77efdaf6fe233c005428855a562af88"
+  },
+  {
+    "path": "game/RainAudioRuntimeProof.cs",
+    "sha256": "1057a48de24d7616c77ff98ff4763ee380d779d9754f0ee6d17666e7207d0584"
+  },
+  {
+    "path": "game/RainAudioRuntimeProof.cs.uid",
+    "sha256": "6e07abede9a58d9b9902b11c0f291bf31036291ab27ab92552681ec6918c80af"
+  },
+  {
+    "path": "game/RainAudioRuntimeProof.tscn",
+    "sha256": "a63a49eb148f0df353d09234465ccc5a3ddd736d22c1dca0542068fd3b15df6e"
+  },
+  {
+    "path": "game/RainAudioRuntimeSmokeCheck.cs",
+    "sha256": "66cb2d867355075702c11bada331fe9f7e2a1866a2e8580b07df5867aad2f9ca"
+  },
+  {
+    "path": "game/RainAudioRuntimeSmokeCheck.cs.uid",
+    "sha256": "1f9ffc5391dab4dd378a6b033436fafee8793a3fcea6b5ff87920bc75507b8b3"
+  },
+  {
+    "path": "game/assets/audio/rain/CREDITS.txt",
+    "sha256": "f8fb90d7c96a5868f48c178646b2c964985988d94579e828d3fb42f7db40d337"
+  },
+  {
+    "path": "game/assets/audio/rain/R01.wav",
+    "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+  },
+  {
+    "path": "game/assets/audio/rain/R01.wav.import",
+    "sha256": "efc959a299a52c02f4564f2e4cdb4bc30f8ed21131a6e0f99c898b10471e442d"
+  },
+  {
+    "path": "game/assets/audio/rain/deed.html",
+    "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+  },
+  {
+    "path": "game/assets/audio/rain/provenance.json",
+    "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+  },
+  {
+    "path": "game/export_presets.cfg",
+    "sha256": "5b4f99dafad7aed67950cebf06197293ce37d03251c79bcf304a28a4034aee6e"
+  },
+  {
+    "path": "scripts/check-rain-audio-output.py",
+    "sha256": "39a242782b3ad131847bb262f7e247193a1fe6b55a456a89ab7489d760333287"
+  },
+  {
+    "path": "scripts/prepare-rain-passage.py",
+    "sha256": "2d556b94e3d3dac00fd2877f15abde4deb8590d3d140c73c1daddf8a2ebfa153"
+  },
+  {
+    "path": "scripts/validate-rain-runtime.py",
+    "sha256": "ac573c2d2322fbf4e8e39a5b48861292f46a6e44694a1af2b064ce262f2b7446"
+  },
+  {
+    "path": "src/Application/Audio/RainCueHistory.cs",
+    "sha256": "c86032aa47da52fcfc3e6065b0beab1435762378221fce5e7759022f697617af"
+  },
+  {
+    "path": "src/Application/Audio/RainPresentationSchedule.cs",
+    "sha256": "85c1b5e585b71b5cf7a326bc975d0b8bc3b724eabd08e22364de636911189360"
+  },
+  {
+    "path": "src/Application/Audio/RainSpatialProjection.cs",
+    "sha256": "a78287db85b434f80798123548d5732cd2a637e22cdbba6220b8dc9b5f51d2e9"
+  },
+  {
+    "path": "tests/Application.Tests/Audio/RainCueHistoryTests.cs",
+    "sha256": "7385a40b65e6eab514efd58960deec63cbaa98b321b4f4ae445acd2b0e922d05"
+  },
+  {
+    "path": "tests/Application.Tests/Audio/RainPresentationScheduleTests.cs",
+    "sha256": "5579c44bec3e888c50c694debf00ccade88442893f71934778ea3e2d6e270342"
+  },
+  {
+    "path": "tests/Application.Tests/Audio/RainSpatialProjectionTests.cs",
+    "sha256": "219fe27527c78185ab751e147ccfb9a76741ab211adc1e26d269e1cb6b00c38b"
+  }
+]

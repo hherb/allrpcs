@@ -1,0 +1,46 @@
+{
+  "command": [
+    "godot",
+    "--path",
+    "game",
+    "--disable-vsync",
+    "--fixed-fps",
+    "60",
+    "--write-movie",
+    "/private/tmp/rain-master.avi",
+    "--quit-after",
+    "18000",
+    "res://RainAudioRuntimeProof.tscn"
+  ],
+  "mode": "Native Movie Maker Master; final source/stream/player bindings; 58 distinct cases; no release.",
+  "inputs": [
+    {
+      "path": "game/OpeningRegionRainAudioSource.cs",
+      "sha256": "8d6a240859d2e60f75f207d1b7b232b376ed0ce57d30bad3faea631888896836"
+    },
+    {
+      "path": "game/OpeningRegionRainAudioController.cs",
+      "sha256": "0313ae03778711196241b925aa026a30ccfeac9d51254a6f2fcd91eab9afdaf6"
+    },
+    {
+      "path": "game/RainAudioRuntimeProof.cs",
+      "sha256": "1057a48de24d7616c77ff98ff4763ee380d779d9754f0ee6d17666e7207d0584"
+    },
+    {
+      "path": "game/RainAudioRuntimeProof.tscn",
+      "sha256": "a63a49eb148f0df353d09234465ccc5a3ddd736d22c1dca0542068fd3b15df6e"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav",
+      "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav.import",
+      "sha256": "efc959a299a52c02f4564f2e4cdb4bc30f8ed21131a6e0f99c898b10471e442d"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "daa781e5e1c26aa4769866c2b14c2f8a1295f39420f3c47e08a8e926523339b9"
+    }
+  ]
+}

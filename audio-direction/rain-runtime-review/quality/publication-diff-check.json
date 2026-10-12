@@ -1,0 +1,33 @@
+{
+  "status": "passed_for_all_generated_and_authored_files",
+  "command": [
+    "git",
+    "diff",
+    "--cached",
+    "--check",
+    "--",
+    ".",
+    ":!audio-direction/rain-source/rights/catalogue.html"
+  ],
+  "raw_capture_exception": {
+    "path": "audio-direction/rain-source/rights/catalogue.html",
+    "sha256": "dd284f072c13583338e121742d07c21239c2616e7cf68eab11922def59f509f1",
+    "byte_identical_to": "audio-direction/material-audition/rights/rain-catalogue.html",
+    "whitespace_only_lines": [
+      63,
+      75,
+      101,
+      113,
+      159,
+      168,
+      193,
+      195,
+      199,
+      203,
+      206,
+      209,
+      214
+    ],
+    "reason": "Exact retained external catalogue bytes are part of the frozen source contract. Preserve original whitespace; no generated source/evidence whitespace exception."
+  }
+}

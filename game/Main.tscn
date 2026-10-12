@@ -1,4 +1,4 @@
-[gd_scene load_steps=428 format=3]
+[gd_scene load_steps=431 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -640,6 +640,9 @@
 [ext_resource type="Script" path="res://OpeningRegionWindAudioSource.cs" id="wind_source"]
 [ext_resource type="Script" path="res://OpeningRegionWindAudioController.cs" id="wind_audio"]
 [ext_resource type="Script" path="res://WindAudioRuntimeSmokeCheck.cs" id="wind_check"]
+[ext_resource type="Script" path="res://OpeningRegionRainAudioSource.cs" id="rain_source"]
+[ext_resource type="Script" path="res://OpeningRegionRainAudioController.cs" id="rain_audio"]
+[ext_resource type="Script" path="res://RainAudioRuntimeSmokeCheck.cs" id="rain_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4350,6 +4353,15 @@ script = ExtResource("wind_audio")
 
 [node name="WindAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("wind_check")
+
+[node name="OpeningRegionRainAudioSource" type="Node" parent="."]
+script = ExtResource("rain_source")
+
+[node name="OpeningRegionRainAudioController" type="Node" parent="."]
+script = ExtResource("rain_audio")
+
+[node name="RainAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("rain_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "context": "Direct response to the concrete R01 source preparation and single clearing emitter grant, including captions/history, verification and publication, after completion of the hash-bound rain proposal.",
+  "scope_id": "phase9-positional-woodland-rain-runtime-integration",
+  "approved_scope": "Authorize qualification/preparation of R01 from the exact retained FLAC, one clearing-only (1000,350) 256-pixel Ambience emitter, four-second passages every 20 active seconds, the twelfth Rain falling caption and separate capacity-16 transient history, plus named checks/review and standing publication.",
+  "proposal": [
+    {
+      "path": "audio-direction/rain-owner-scope.md",
+      "sha256": "2f95ff884df36caea2ccdd15404e522f24b878fd32377782cfb73dca6b22536e"
+    },
+    {
+      "path": "audio-direction/rain-owner-scope.json",
+      "sha256": "5df364be44a2662f98b957c9c9e6cbb45cd94509a324e45b06056619aaf71e55"
+    }
+  ],
+  "baseline_commit": "da2826ea8fb49a0464cf177c395de12b19db7998",
+  "source_condition": "Select one clean contiguous four-second recognizable exterior-rain window; reject voices, wildlife, traffic, thunder, footsteps, handling, clipping, abrupt edits or prominent roof/metal impacts inconsistent with the exposed clearing. If no window qualifies, report the blocker without substitution or runtime installation.",
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "protected_boundary": "All other runtime/controllers, original audio/art/gait, geometry/navigation/movement, Domain/hearing/perception/provider/persistence and frozen validators."
+}

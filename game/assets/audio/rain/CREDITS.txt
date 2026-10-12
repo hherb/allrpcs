@@ -1,0 +1,5 @@
+AMB Rain Loop 2 by Kresiek The Furry
+Source: https://opengameart.org/content/amb-rain-loop-2
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: original stereo 48000-Hz frames [5760000,5952000), 100-ms linear endpoint fades, one -14 dB gain, deterministic PCM24 storage; no resampling, filtering or layering.
+R01: four-second nonlooping woodland rain passage. Original author does not endorse this derivative.

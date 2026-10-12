@@ -1,0 +1,21 @@
+{
+  "removed": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ]
+}

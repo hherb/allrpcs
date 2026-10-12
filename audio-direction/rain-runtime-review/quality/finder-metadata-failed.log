@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/scripts/validate-rain-runtime.py", line 255, in <module>
+    main()
+  File "/Users/hherb/src/allrpcs/scripts/validate-rain-runtime.py", line 248, in main
+    evidence_bindings(verification['evidence_bindings'])
+  File "/Users/hherb/src/allrpcs/scripts/validate-rain-runtime.py", line 146, in evidence_bindings
+    require(sha((ROOT / row['path']).read_bytes()) == row['sha256'], 'Changed review/installed binding: ' + row['path'])
+  File "/Users/hherb/src/allrpcs/scripts/validate-rain-runtime.py", line 25, in require
+    raise ValueError(message)
+ValueError: Changed review/installed binding: audio-direction/rain-runtime-review/.DS_Store

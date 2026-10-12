@@ -1,0 +1,2653 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "scope_id": "phase9-positional-woodland-rain-runtime-integration",
+  "status": "verified_complete",
+  "scope_closure": true,
+  "owner_source_statement": "sounds perfect",
+  "source_qualified": true,
+  "runtime_installed": true,
+  "focused_tests": 48,
+  "runner_self_tests": 10,
+  "continuation_regression_probes": 11,
+  "protected_tracked_inputs": 12858,
+  "actual_motion_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "rain-disabled"
+  ],
+  "native_output_cases": 58,
+  "native_ui_windows": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "rejection_groups": 10,
+  "packaging": {
+    "streams": 39,
+    "individual_notices": 32,
+    "notice_groups": 20,
+    "retained_entries_byte_identical": 105,
+    "native_pcm16_sha256": "677ac63f2bf0b727bcff8116fdf5c82a1f1df1c593da365a413d33c7e06f465a"
+  },
+  "quality": {
+    "status": "passed",
+    "stages": 109,
+    "retained_stages": 95,
+    "unit_tests": 5383,
+    "runner_self_tests": 10,
+    "summary": "audio-direction/rain-runtime-review/quality/summary.json",
+    "runner_sha256": "c2e38ec6c9d633d2c4e35c2e126104a04b518e66ce2099b3a37ae91cdff35aeb",
+    "all_final_attempts_passed_and_complete": true,
+    "reused_verified_product_stages": 84,
+    "retry_reason": "NETSDK1004 in un-restored cold historical wind test project; all cold wind and current rain stages repeated after explicit restore."
+  },
+  "local_editor_exception": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "limits": [
+    "Owner listening acceptance qualifies the exact R01 candidate; measurements alone do not establish source suitability.",
+    "Resource archives only; retained C# export warns of missing game solution; no executable release verified.",
+    "Controlled native output does not establish fresh-device or ordinary-play loudness compliance; no new weather/gameplay/physics authority."
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/rain-runtime-authority.json",
+      "sha256": "99f8c04ad3750bd736a294c67d0bc889008c9b6504f385fd92e1e04d4b8111a5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/README.md",
+      "sha256": "bf0df89228e07e5dfceaff19bb0457114c9f9c3e2d4e95ee003db10fba94f860"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/ambience-muted.json",
+      "sha256": "50f17b68464f3d2d74a496e1b12f1b8ee0593b01e2d500df0501dad024ac7a0e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/ambience-muted.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/ambience-muted.log",
+      "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/captions-off.json",
+      "sha256": "faa426bb561739a9c24c4b7ebddcbce3edc001d3ffa9e956cef19c856cd1ad20"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/captions-off.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/captions-off.log",
+      "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/default.json",
+      "sha256": "79cd72a11023642663415b10edd9f9e0322119ee7eb36ad41bbb17bfe84e7bf6"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/default.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/default.log",
+      "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/master-muted.json",
+      "sha256": "58aff8e3272b84e4f96462104345cc2d2db3958b15bdf6e836a4a71acbe73dd1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/master-muted.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/master-muted.log",
+      "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/missing-stream.json",
+      "sha256": "4dc3d58cf916d152ceea78c4c7328faa95437824a1b927b48473730cd2153940"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/missing-stream.log",
+      "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/quiet.json",
+      "sha256": "1b62ccf836c5d5bccc1bb9492c22ccb29982dd6ef5f8aa575f49248ae9d70a61"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/quiet.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/quiet.log",
+      "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/rain-disabled.json",
+      "sha256": "215b53d7c53857632a09c5ba9c665b5a5cf1f2c12a00b7e44f9a2b92bdda968a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/rain-disabled.json.save.json",
+      "sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/live/rain-disabled.log",
+      "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/output/capture-inputs.json",
+      "sha256": "3f5c302bb9136499f70e94d925e28cfb398bce64fd6e80e56df7a6b9ab0e7b23"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/output/master.wav.gz",
+      "sha256": "eef0b62b89ba3e97ca3942f7b3b433e9dfe7373721cf57cbc9a3956da459ca33"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/output/measurements.json",
+      "sha256": "774d154e6751c3ceec8b149256196efecbde552b6ed8b68f45439b29fbc4e0b1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/output/native.log",
+      "sha256": "b71525ebbccc202224df2d8bccc5c6b57da2262ec9fba55ed85e44e5ddc0bb34"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/output/timeline.json",
+      "sha256": "271698522b1f0660f80ce187be741db913c3a2b71c6769831ffc0bc7b8aeb68f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/audio-subset.zip",
+      "sha256": "a2450944f690724104bee0f54f474a0a33cf93f6f13745366dc9b831c6625be7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/inventory.json",
+      "sha256": "6d6f7844a25c7c4a2e1f6d9e2b1ff5e3363df919157f8a51dd5ae8130a8a78d1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/linux-export.log",
+      "sha256": "001a45066d8855c931cb2d9615107e5b2cf75070917e5a0db78b32e77f8dab93"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/macos-export.log",
+      "sha256": "06872b689215eeca7438a13d2084f9b1924bfd439a03fc2c3fa2ec2d4315c21b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/native-decode.json",
+      "sha256": "422fa40641cb79a3db816e5ecf800c862f0a9b2fcde40fe63d799ca435b04f1f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/native-decode.log",
+      "sha256": "a409411c3a5306854cc66282f89c2db826729bd354500c9022e544598836698b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/packaging/windows-export.log",
+      "sha256": "638192924fb30370538b972d5d241afa123252063599e741d588d4e383066f58"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "23e1cdb293618fa554ab0b642895f7ada58642f28827297e515c8c843701fb35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/100-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/101-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/102-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/103-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/104-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/105-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/106-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/107-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/108-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/109-boundary-rain-reviewed-1.log.gz",
+      "sha256": "eec9cba6a5c968fc370838d8aa9169499b55072e24d9ad37959c13499ede22d0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/109-boundary-rain-reviewed-2.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/16-boundary-interior-current-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/17-boundary-water-contact-current-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/17-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/18-boundary-cask-cover-current-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/18-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/18-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/19-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/19-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/19-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/20-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/20-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/20-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/20-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/21-product-4-1.log.gz",
+      "sha256": "3770331aa1be6543ebf8ff2e5e893c9bfa7f71f0b28890f41075aaef51a0a45d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-product-4-1.log.gz",
+      "sha256": "a8e8bd7b29a7855aaaafbe3bbf4dafd5de15582f5a603eeb764570b53a91751d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/22-product-5-1.log.gz",
+      "sha256": "bb07932440d6538ec037637ca5411f68734a530be61cc0ceea3d38be77036005"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-4-1.log.gz",
+      "sha256": "5363c4791aa46f2efcf8a7c88432dc2d9c4955b618abc2d093bcd09d467a6ecf"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-5-1.log.gz",
+      "sha256": "17042b08e9c5a14d9fb0b414fc33356871b6130771db6866c12ee30e5df2559c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/23-product-6-1.log.gz",
+      "sha256": "afdcdf339983b86b9ed3063cd77fd755bcc6659351bff1c46d4f29df785e4d89"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-4-1.log.gz",
+      "sha256": "15f255d102146def61f007419e7d4b58a04def8903f93f1222d51c801bfd454f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-5-1.log.gz",
+      "sha256": "14885d52aa7533f64fa35c75917ba2171378df2bcdac65a6c2c7d5a465fd1810"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-6-1.log.gz",
+      "sha256": "80669a87459f923497559a16f55d7466a83387c48dd85199a8dabfd51b8e9199"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/24-product-7-1.log.gz",
+      "sha256": "1ae0c26bc1a786b696efb463aaf5287dd1b406ce0a6f8fd32fb08d4133b090d2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-4-1.log.gz",
+      "sha256": "ec6523232b1e6647b5908d34fbd1046b65f48065ef0daa02ced0609a2f14bbee"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-5-1.log.gz",
+      "sha256": "9fc8b8e4125e0f23f3f6bc51c7e51ec5d19af1fea6aea1aa9270c165d7c8f30e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-6-1.log.gz",
+      "sha256": "1e1644478ec33c9d523a638a51ea478a3ee57271c057bc8f09295f2fb1073f72"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-7-1.log.gz",
+      "sha256": "fc8e0a05501638f6380ad9e678a6de5a1656f88137a947e2f85d1a74ad90b29b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/25-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-4-1.log.gz",
+      "sha256": "e64a15ab4540e7fff958db753f9fec44c8f679f17856639a767bfeb9b6bbe432"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-5-1.log.gz",
+      "sha256": "a125163b27c7e8df4602f8a1061da4ecec96b35ccc2bbfeb0c1cf89ca80080ef"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-6-1.log.gz",
+      "sha256": "0d7f0a36eb308b53ba6c92a304447a2d82f63a6419f53a9b22350c6b863b42ba"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-7-1.log.gz",
+      "sha256": "bbb331a43594133902f3b46e2c78f210210fd121b0cfb06c35d5112a12d104d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/26-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-boundary-interior-resume-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-10-1.log.gz",
+      "sha256": "b5cc35352a6f36b2859f65c040db25b1b8c950b89c4a49ba9e58bb1b2d38330b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-5-1.log.gz",
+      "sha256": "609f14463521b9125288d6adef27dbc64bdab3097ea8d2e958e338006582d75d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-6-1.log.gz",
+      "sha256": "86dfdafb1758e63b25f1519333964a30172600a0f741f475236121b6e4e753d9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-7-1.log.gz",
+      "sha256": "106b29b0079cc9d6b12d2fc6df9d3f72d6c268918acd394e7157d515f69828bc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/27-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/28-product-10-1.log.gz",
+      "sha256": "7bf26570a8a70530ee799650080109357c282540e9485a89512580012056dd59"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/28-product-6-1.log.gz",
+      "sha256": "b9c368d6e58a90dd8b26282a00b9209113172b001c2c9aa19c666e6afb26dce0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/28-product-7-1.log.gz",
+      "sha256": "fce713a1f16f1c1231851924cef1167939faf014d339c3c487c101ae11dc5889"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/28-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/28-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/29-product-10-1.log.gz",
+      "sha256": "fa9a3cd0ae03227c5326e9b41fe8b9fb7cd3a69d33fcc6ea674844ab2e30b552"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/29-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/29-product-7-1.log.gz",
+      "sha256": "fddb9654fc6a86fcd0713598fb8dc35c75789479602c242811bc8a289311149b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/29-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/29-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/30-product-10-1.log.gz",
+      "sha256": "2c7095d55f94b188d2dc96972eb0e09f5df7b579a54dd02df1ef5b563e280c87"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/30-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/30-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/30-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/31-product-10-1.log.gz",
+      "sha256": "46224988361450cc81d5cfb19a9e8be256853707070a3421cbcbf79a05434b8c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/31-product-11-1.log.gz",
+      "sha256": "ff0632d5b5d26c8999b65906f2c2d712ab6c4a507339c6506bc616e230e7a4aa"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/31-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/31-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-product-10-1.log.gz",
+      "sha256": "67baefbe292073c4c5355ab0f9b635471a5301fb8cd5a3abe9d11328243736f0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-product-13-1.log.gz",
+      "sha256": "8735b16d36f3ed7ba788c21cf3ab59584415dd88fd75b5f62652d7c959cf7024"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/32-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/33-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-product-15-1.log.gz",
+      "sha256": "7a02405132c2fb0b5576105546bfe32986312b6cae0100cf358ec29538467b3c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/34-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-10-1.log.gz",
+      "sha256": "b11023013da7bf06d0ab63ad9a60f0ce42d44f8013fb56185b1778bcb2675208"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/35-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/36-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-17-1.log.gz",
+      "sha256": "c32419242af2a93dc2f6daeb6c9c8969a888865d726aaf198826a5eebccb84c9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/37-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-boundary-interior-resume-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/38-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/39-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/40-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-interior-muted-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-product-16-1.log.gz",
+      "sha256": "cfa3ad5c4075d34ccb514882b4ed8ee6efae35501f77094448039b4b6c709815"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/41-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-interior-normal-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/42-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-boundary-interior-after-runtime-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/43-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/44-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/45-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/46-water-quiet-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/47-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-boundary-water-contact-after-runtime-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-water-missing-stream-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/48-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/49-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/49-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/49-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/49-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/49-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/50-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/50-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/50-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/50-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/50-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/51-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/51-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/51-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/51-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/51-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/52-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/52-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/52-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/52-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/52-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/53-cask-effects-muted-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/53-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/53-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/53-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/53-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/54-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/54-cask-master-muted-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/54-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/54-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/55-boundary-cask-cover-after-runtime-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/55-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/55-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/55-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/55-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/56-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/56-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/56-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/56-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/57-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/57-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/57-hand-tool-quiet-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/58-hand-tool-default-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/58-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/58-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/59-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/59-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/59-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/60-cask-no-action-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/60-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/60-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/60-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/61-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/61-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/61-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/61-hand-tool-no-action-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/62-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/62-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/62-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/63-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/63-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/64-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/64-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/65-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/65-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/66-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/66-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/67-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/67-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/68-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/68-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/69-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/69-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/70-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/70-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/71-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/71-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/72-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/72-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/73-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/74-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/74-foliage-historical-build-1.log.gz",
+      "sha256": "1335d5dc0fec29d26bfd368cbea35b710df0e5fd54eeb9a10bb8a2ccedf23218"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/75-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/75-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/76-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/76-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/77-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+      "sha256": "73933e4054502a021c0dbc8f264278ade9cdd3e9ff40206f3a6e965cd1947dad"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/77-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/78-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/78-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/79-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/79-foliage-captions-off-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/80-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/80-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/80-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/81-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/81-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/82-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/82-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/83-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/84-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/85-wind-focused-1.log.gz",
+      "sha256": "419fb564d783c5d2372c8fe5cb5bb8e96698839a5b0adc7dc7067c6685665482"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/85-wind-historical-build-1.log.gz",
+      "sha256": "afddd809cef6a51bb16405050ace335ecf071edde7007b39df4b1b91f2d0aa22"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/85-wind-historical-restore-1.log.gz",
+      "sha256": "c3c267def547c710f51f510d5bbb70596ffb6b7415e5d9b76a1c495b9c7fb0b7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/86-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/86-wind-historical-build-1.log.gz",
+      "sha256": "5d74471e2276b42514bfbf6099390bcbd7f7be703a6a7f20597debfafc88e29f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/86-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/87-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/87-wind-focused-1.log.gz",
+      "sha256": "d7d3c13985c2f2b6e7510308514e37d073cfa065f3ba9571ac70ac93ebd49992"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/87-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/88-boundary-wind-source-1.log.gz",
+      "sha256": "9ae0f6924377f1d2e0068e96998a103fd24a4cfe038ff3b19ad127a5948b00a4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/88-wind-focused-1.log.gz",
+      "sha256": "e135a6ecfaa1301bfc6e082c5cc0fbdd090d97627e01dbabdd989e45d8f89a9b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/88-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/89-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/89-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/90-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/90-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/91-wind-missing-stream-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/91-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/92-wind-captions-off-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/92-wind-master-muted-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/93-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/93-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/94-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/94-wind-missing-stream-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/95-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/95-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/96-wind-wind-disabled-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/97-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/98-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/99-rain-focused-1.log.gz",
+      "sha256": "419fb564d783c5d2372c8fe5cb5bb8e96698839a5b0adc7dc7067c6685665482"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-default.json.gz",
+      "sha256": "7a47e77088288037db072d87640b98aa32c8b541c4e74d4bbada747cf983bdf4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-effects-muted.json.gz",
+      "sha256": "fe7a9024bc9e8404c3ebf558534df81a99427595b2a72ca8c3bae7255564ba8f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-master-muted.json.gz",
+      "sha256": "bfe3c649ee01fecf4630f2d56a77c458e193a031d90ea6350a3665510d773754"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-missing-stream.json.gz",
+      "sha256": "64b36838eb169d173d8090acd7234eddb7f1bad1fb941f7a467cba0c1a8878ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-no-action.json.gz",
+      "sha256": "d0ab04bb87992ef614d7e14c0791d10c5aedfd9de41fb443e105f90775a1823c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-quiet.json.gz",
+      "sha256": "d2c8ed567ce90dfaa5a894527e5fcb7e39747579703aa2027cf40520ac8287d6"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cask-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore-failed-summary.json",
+      "sha256": "42eaa1dcf2f199f79bf5797e27862386e2c8b707cdfa217edb7b88e42f6c6ee2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore-failed.log",
+      "sha256": "21d097ce725a74674cade47791272b673d89c1828ff9ee0022ea92181b04a300"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore-product-inputs.json",
+      "sha256": "eec3b49c0a746de8429aeb904f4ba8bf7ebdcb53a8aaa629c696c362b48a0db7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/02-art-1-1.log.gz",
+      "sha256": "23e1cdb293618fa554ab0b642895f7ada58642f28827297e515c8c843701fb35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/26-product-4-1.log.gz",
+      "sha256": "e64a15ab4540e7fff958db753f9fec44c8f679f17856639a767bfeb9b6bbe432"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/27-product-5-1.log.gz",
+      "sha256": "609f14463521b9125288d6adef27dbc64bdab3097ea8d2e958e338006582d75d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/28-product-6-1.log.gz",
+      "sha256": "b9c368d6e58a90dd8b26282a00b9209113172b001c2c9aa19c666e6afb26dce0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/29-product-7-1.log.gz",
+      "sha256": "fddb9654fc6a86fcd0713598fb8dc35c75789479602c242811bc8a289311149b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/32-product-10-1.log.gz",
+      "sha256": "67baefbe292073c4c5355ab0f9b635471a5301fb8cd5a3abe9d11328243736f0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/33-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/34-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/35-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/36-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/37-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/38-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/39-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/40-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/41-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/42-interior-normal-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/43-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/44-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/45-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/46-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/47-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/48-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/49-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/50-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/51-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/52-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/53-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/54-cask-master-muted-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/55-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/56-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/57-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/58-hand-tool-default-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/59-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/60-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/61-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/62-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/63-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/64-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/65-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/66-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/67-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/68-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/69-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/70-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/71-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/72-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/73-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/74-foliage-historical-build-1.log.gz",
+      "sha256": "1335d5dc0fec29d26bfd368cbea35b710df0e5fd54eeb9a10bb8a2ccedf23218"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/75-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/76-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/77-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/78-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/79-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/80-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/81-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/82-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/83-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/84-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/85-wind-historical-build-1.log.gz",
+      "sha256": "afddd809cef6a51bb16405050ace335ecf071edde7007b39df4b1b91f2d0aa22"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/86-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/87-wind-focused-1.log.gz",
+      "sha256": "d7d3c13985c2f2b6e7510308514e37d073cfa065f3ba9571ac70ac93ebd49992"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/cold-wind-restore/log-storage.json",
+      "sha256": "93665d4185182c1f3f416a418776ee0fa0b926de1563e14d8a6892c1d90d5033"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/finder-metadata-failed-summary.json",
+      "sha256": "5e4c619a25afb17c4e203a28be83fab45d01b9f12bb6fc1125928b577f4318dc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/finder-metadata-failed.log",
+      "sha256": "f6bd27ff3f13311351f8b74821d6d22e37d1862c0d617d03270a1ca8fdd21511"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/finish-root.log.gz",
+      "sha256": "5bdbffb30e611a4f4d3b2a78cb1782f1efc17167b4a30c82fd5cc705aa9d76be"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-ambience-muted.json.gz",
+      "sha256": "14d3e10a8113dd51b269deb216b8c3b5857db7898100b92b5c0cec4b20898692"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-ambience-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-captions-off.json.gz",
+      "sha256": "53d1802f57865c9307f823c29c82004d43b23bb2638a922040878e8e5f9a60c2"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-captions-off.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-default.json.gz",
+      "sha256": "2a5c222085113c69dc55eaab53de596d21b7a7ae94a3f900895d60741895f804"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-default.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-foliage-disabled.json.gz",
+      "sha256": "6e05bdfac48c7fe33400a501d2d80333946d2d7032854b7d5ebd14ba9bde75d6"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-foliage-disabled.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-master-muted.json.gz",
+      "sha256": "fb2d2667fc784d98fa5763ae19e40c70467828dc43285bfcaad05eed2c912c82"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-master-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-missing-stream.json.gz",
+      "sha256": "64284f80557c13f6c0a08541cd1cd5577c5b68122fb17173c3ae5ceab55b994b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-missing-stream.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-quiet.json.gz",
+      "sha256": "b5feafa38df85985c0518e3dbdff877ec06e88b44d62c3bd324acdad2f805704"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/foliage-quiet.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-captions-off.json.gz",
+      "sha256": "7948d878fd853e0f11b6402ffab5ad38c6dc20d34666f1f6c55cab0ce1a864c7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-captions-off.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-default.json.gz",
+      "sha256": "29c0521059b816bbc9e5b7f7368eef6aca1c27c46043b912ce3a22033c612a04"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-default.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-effects-muted.json.gz",
+      "sha256": "f61ec33c3d7b56d149c141fff31c8fee2ac0af5f92b67f0f6aa1b56bc5d43e18"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-effects-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-master-muted.json.gz",
+      "sha256": "a6404114ce9058457590c6c03352aa7121928f5be5ae893467bcf069d819febf"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-master-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-missing-resources.json.gz",
+      "sha256": "811bbc0306472beb633e569c9f94666b1553dd011c0f8bb42ec41211ea2c7fad"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-missing-resources.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-observer-disabled.json.gz",
+      "sha256": "a7e420cf89c83e197838945f68bf2c4bcbb3e459d5d7538e55024d42f8b6faa7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-observer-disabled.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-quiet.json.gz",
+      "sha256": "c7820e3bba6396593e9ae3084f57073c2c2c66665132aada2717dd3e5d4e9da4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/healer-quiet.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/initial-root.log.gz",
+      "sha256": "02ba1ab7b413fb6f5d1ba24197bec273549b68e4696b408d16f4d466b77216dd"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-mono-reduced.json.gz",
+      "sha256": "6d0e8b515de04897acb203c07d98fe33deceed539acd094dbd17a085df1f9533"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-mono-reduced.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-muted.json.gz",
+      "sha256": "574b75dae90e2e1d2a88588b1c4d3388a40c721ad801241ac79513e170226a3a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-muted.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-normal.json.gz",
+      "sha256": "4da2cb8354cb56f6b332420cdff05ba51c5937bc7d17161b443bf51a70fac626"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-normal.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-zero.json.gz",
+      "sha256": "f3c51c22b5198e508b286b3170d1688bf4eb629cfe5a1eb8239177383ab04d99"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/interior-zero.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/log-storage.json",
+      "sha256": "c4b0aedbfabf88f78f1cefc8925fb7fdd35d2082e882e48c850c2b059ee109a7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/publication-diff-check.json",
+      "sha256": "cbacd1246a4565794d1335aee4511842dc741f5f5a4f774b2686ad160a041c36"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-ambience-muted.json.gz",
+      "sha256": "85dbd84759eb75c6337b3f776fc154f254417c3c12c56609488fed2120d8980e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-ambience-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-captions-off.json.gz",
+      "sha256": "36a7e14822a564684d8d933fdf492970982488ea9bef8b45d37460d15098d8fc"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-captions-off.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-default.json.gz",
+      "sha256": "c2cb0881b9c33cef0dfac41ac885e52604ef2896ebf61dff21e862acc6ba94ac"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-default.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-master-muted.json.gz",
+      "sha256": "673f5a8dc0679bf9a3703e153b010327c8b5357ebdbb18e9415ba708c7420c17"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-master-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-missing-stream.json.gz",
+      "sha256": "2846f96a155e4562ef540d7b83bbc58b5315241819cf2348e2c388f661b56834"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-missing-stream.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-quiet.json.gz",
+      "sha256": "f37ed8e759c995e7a46977a7cb366ac07a05106ca44806bfe3a0df9f87c8ddf8"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-quiet.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-rain-disabled.json.gz",
+      "sha256": "af08a751624a4d0b437bdfd6a842bd2cf4626da69215349f3f3fe74a8d43c2e7"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/rain-rain-disabled.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/runner-before-wind-restore-repair.py",
+      "sha256": "a1c81e8e303d84948cec4e4d3f663e4f9fa062db9cf9d9b5056fa68b9194398d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/summary.json",
+      "sha256": "99f8ac5566f6685dd167b0e97861aaef184c2594f872ec1735ca056b93c1d3f8"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-default.json.gz",
+      "sha256": "be63d875866e3d7c51b2a74c26ac487baa6a742ce5b8dcd117d4c888ddf68168"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-effects-muted.json.gz",
+      "sha256": "4e5346e9b653a12fdce5ec8ffa97840e303a722359ec4dda27f6b8e5a5429fe5"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-master-muted.json.gz",
+      "sha256": "50397f5ad92125d8c333211ee5466f7f7de477c0c068768f47cced801090c56b"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-missing-stream.json.gz",
+      "sha256": "ec0416f288b3819f30bb13fb444d724b20dd9be2549f21de3e21540c2d85bf15"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-no-action.json.gz",
+      "sha256": "d3202d7d46042aaf9598688293c5f59293a75f043f01f89c8871757031c76938"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-quiet.json.gz",
+      "sha256": "d67b1db67bb5fed65fd9364f5d41fd1d10d30165f531315e43692498fbd54051"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/tool-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-default.json.gz",
+      "sha256": "668f535a1aacd9bfcf71386c0bf96f53e9fe5678028881c56d33a43f84a4ae8e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-effects-muted.json.gz",
+      "sha256": "a98612bb8a02f9ba0c18f23ef9053a8c63e5d072854b7afaf43cfccf597ae805"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-master-muted.json.gz",
+      "sha256": "b9692adb3523b8ac876d197dfcfb56e3e6f58933154cb788b056496215ba51e6"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-missing-stream.json.gz",
+      "sha256": "a47555fe3ff3ac41bb45b64b2a8ce646d6df0e8d27845624325f009a97f66a89"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-no-action.json.gz",
+      "sha256": "dec18d9b856c9a92603570f70b14ce99755f2966bd5626a0100f643eb5146077"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-quiet.json.gz",
+      "sha256": "d62dd623dc8c90fe3056a68f8fc5ab72adbba57ecbe5c981a7d8ba0cd4b07a62"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/water-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-ambience-muted.json.gz",
+      "sha256": "af57a7703b510281f31634696c79c180533f2cbad5593d73d921ffc669fda0d4"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-ambience-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-captions-off.json.gz",
+      "sha256": "a8a4ef85a84ffdbc59ed83ab4959b3b43732a261daeb0d243e3cc1c92313451e"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-captions-off.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-default.json.gz",
+      "sha256": "c127950b78dc4f18b033b377832f937c5c8b746bee5531275c3d6931ed291fd0"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-default.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-master-muted.json.gz",
+      "sha256": "296ae19f55d49ea5ed4f275e84d0531ea58bfaf1796fb6282cfc2d637cbae746"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-master-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-missing-stream.json.gz",
+      "sha256": "4fdde94438af348f577fb24b9e389c4d61950c1dc62c36f3f63fa201a762d331"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-missing-stream.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-quiet.json.gz",
+      "sha256": "4609578d47af318345b5b6938fa9900c3262b04f014ef04049b0147a031ec923"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-quiet.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-wind-disabled.json.gz",
+      "sha256": "6435fedc59da6ea25055512cf35ab83b3de1d7cb891fbd6c4dddba502259a489"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/quality/wind-wind-disabled.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/source/R01-candidate.wav",
+      "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/source/import-generated-uid-cleanup.json",
+      "sha256": "933d5114bfc34cf6b95a260589a05e785f8f83a73718b61ee2085ccb478b9f49"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/source/passage-measurements.json",
+      "sha256": "cefa0f0f730cd17be17127d94f89c01d476cbd70e6b238cc96ae3977de739ed3"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/history-muted-1280.png",
+      "sha256": "18284c88479795345628b102cf54d2493b27e476c6c656d3edfa258e464655b6"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/history-muted-1920.png",
+      "sha256": "e8f0d23f81a9c8ef8cb974fecb1525c2ca9d35285c0933641e19c8729abadeab"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/native.json",
+      "sha256": "b6708e514741af7e37ae8bfc695e76822e830720013d6ded5be54d0dcb9f1f6d"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/native.log",
+      "sha256": "2edb43ed950fb4ebe48a2c36f2bbdf81f57a854fdca0155f5b5aca386e972c60"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/ordinary-offscreen.png",
+      "sha256": "44caa52af8a98f67694af10f36b8c276304b4b9eb1386bc9ee72b9f891ff649a"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/twelve-captions-1280.png",
+      "sha256": "2e5804acc8e5cf8525eed597c861da26f8cd65defa645fcf2c029d11367df2b9"
+    },
+    {
+      "path": "audio-direction/rain-runtime-review/views/twelve-captions-1920.png",
+      "sha256": "395378abd71c30db53bf0f92d7d1b47b64ee6f5afa1140b47002e6d7d7fdd9d0"
+    },
+    {
+      "path": "audio-direction/rain-source/README.md",
+      "sha256": "3b2e0a08838c82b8e8d34f147ba6564cacbb0fd822549213924495d3377cfb66"
+    },
+    {
+      "path": "audio-direction/rain-source/provenance.json",
+      "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+    },
+    {
+      "path": "audio-direction/rain-source/rights/catalogue.html",
+      "sha256": "dd284f072c13583338e121742d07c21239c2616e7cf68eab11922def59f509f1"
+    },
+    {
+      "path": "audio-direction/rain-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "daa781e5e1c26aa4769866c2b14c2f8a1295f39420f3c47e08a8e926523339b9"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "2ec45a0e8db8668a3a719636bcf2a44e6fa785d1acc9b76fe0376398420c6f72"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "c98879e455f473189a489919a1114d57534e573bb43b56cd9914aefed53eb381"
+    },
+    {
+      "path": "game/OpeningRegionRainAudioController.cs",
+      "sha256": "0313ae03778711196241b925aa026a30ccfeac9d51254a6f2fcd91eab9afdaf6"
+    },
+    {
+      "path": "game/OpeningRegionRainAudioController.cs.uid",
+      "sha256": "46de64109dc230b716d0bc6ee004a3a9a42cd7c7aaf43069bad2dbf989a3ed77"
+    },
+    {
+      "path": "game/OpeningRegionRainAudioSource.cs",
+      "sha256": "8d6a240859d2e60f75f207d1b7b232b376ed0ce57d30bad3faea631888896836"
+    },
+    {
+      "path": "game/OpeningRegionRainAudioSource.cs.uid",
+      "sha256": "384eb555528ddc2cd6f32f7340056970c52d9a7572418634fb2a3eab4492e710"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "054deb7873bce7da4e03ab4652d36ff9f77efdaf6fe233c005428855a562af88"
+    },
+    {
+      "path": "game/RainAudioRuntimeProof.cs",
+      "sha256": "1057a48de24d7616c77ff98ff4763ee380d779d9754f0ee6d17666e7207d0584"
+    },
+    {
+      "path": "game/RainAudioRuntimeProof.cs.uid",
+      "sha256": "6e07abede9a58d9b9902b11c0f291bf31036291ab27ab92552681ec6918c80af"
+    },
+    {
+      "path": "game/RainAudioRuntimeProof.tscn",
+      "sha256": "a63a49eb148f0df353d09234465ccc5a3ddd736d22c1dca0542068fd3b15df6e"
+    },
+    {
+      "path": "game/RainAudioRuntimeSmokeCheck.cs",
+      "sha256": "66cb2d867355075702c11bada331fe9f7e2a1866a2e8580b07df5867aad2f9ca"
+    },
+    {
+      "path": "game/RainAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "1f9ffc5391dab4dd378a6b033436fafee8793a3fcea6b5ff87920bc75507b8b3"
+    },
+    {
+      "path": "game/assets/audio/rain/CREDITS.txt",
+      "sha256": "f8fb90d7c96a5868f48c178646b2c964985988d94579e828d3fb42f7db40d337"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav",
+      "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav.import",
+      "sha256": "efc959a299a52c02f4564f2e4cdb4bc30f8ed21131a6e0f99c898b10471e442d"
+    },
+    {
+      "path": "game/assets/audio/rain/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/rain/provenance.json",
+      "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "5b4f99dafad7aed67950cebf06197293ce37d03251c79bcf304a28a4034aee6e"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "c2e38ec6c9d633d2c4e35c2e126104a04b518e66ce2099b3a37ae91cdff35aeb"
+    },
+    {
+      "path": "scripts/check-rain-audio-output.py",
+      "sha256": "39a242782b3ad131847bb262f7e247193a1fe6b55a456a89ab7489d760333287"
+    },
+    {
+      "path": "scripts/prepare-rain-passage.py",
+      "sha256": "2d556b94e3d3dac00fd2877f15abde4deb8590d3d140c73c1daddf8a2ebfa153"
+    },
+    {
+      "path": "scripts/validate-rain-runtime.py",
+      "sha256": "ac573c2d2322fbf4e8e39a5b48861292f46a6e44694a1af2b064ce262f2b7446"
+    },
+    {
+      "path": "src/Application/Audio/RainCueHistory.cs",
+      "sha256": "c86032aa47da52fcfc3e6065b0beab1435762378221fce5e7759022f697617af"
+    },
+    {
+      "path": "src/Application/Audio/RainPresentationSchedule.cs",
+      "sha256": "85c1b5e585b71b5cf7a326bc975d0b8bc3b724eabd08e22364de636911189360"
+    },
+    {
+      "path": "src/Application/Audio/RainSpatialProjection.cs",
+      "sha256": "a78287db85b434f80798123548d5732cd2a637e22cdbba6220b8dc9b5f51d2e9"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RainCueHistoryTests.cs",
+      "sha256": "7385a40b65e6eab514efd58960deec63cbaa98b321b4f4ae445acd2b0e922d05"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RainPresentationScheduleTests.cs",
+      "sha256": "5579c44bec3e888c50c694debf00ccade88442893f71934778ea3e2d6e270342"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RainSpatialProjectionTests.cs",
+      "sha256": "219fe27527c78185ab751e147ccfb9a76741ab211adc1e26d269e1cb6b00c38b"
+    }
+  ],
+  "excluded_finder_metadata": [
+    {
+      "path": "audio-direction/rain-runtime-review/.DS_Store",
+      "sha256": "07b3047a36c44d10a35e8328c3c7421695c6de032d77d37885d8d57583b39b08"
+    }
+  ]
+}

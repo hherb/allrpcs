@@ -179,9 +179,16 @@ No new weather, physical wind or gameplay authority is claimed. The first
 [woodland rain proposal](audio-direction/rain-owner-scope.md) is complete: one
 separate passage from the retained CC0 lossless original and the unchanged
 (1000,350) clearing owner, with anonymous cues/history and finite checks.
-No R01 qualification/preparation or rain runtime is claimed. Its single concrete
-source-use/runtime grant is the next implementation boundary; wider emitters
-and the audio items below remain partial.
+The owner qualified the exact R01 candidate with “sounds perfect”, and the
+[fixed woodland rain runtime](audio-direction/rain-runtime-review/README.md) is complete:
+one unchanged clearing owner, exclusive 256-pixel Ambience, four seconds every
+20 active seconds, twelfth anonymous caption and separate transient history. All
+109 root-quality stages retain the previous 95; 5,383 unit tests, 48 focused cases,
+58 measured native cases, both-size accessible UI, seven-mode complete parity and
+mounted 39-stream packaging preserving all 105 prior entries pass. Wider emitters
+and the items below remain partial. The next read-only proposal concerns the
+existing remedy heating step; it does not reopen accepted grinding/treatment or
+granted ambience, and it confers no new physical heater/fire or runtime authority.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

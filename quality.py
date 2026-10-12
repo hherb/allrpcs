@@ -31,6 +31,7 @@ AUDIO_REVISIONS = (
 HAND_TOOL_REVISION = '75c1aa04e4cfa840d75bee119de11afe7fb2484c'
 HEALER_REVISION = 'ae06c9abd939cc1c2df9bdc35654166f66c15c00'
 FOLIAGE_REVISION = 'c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3'
+WIND_REVISION = 'da2826ea8fb49a0464cf177c395de12b19db7998'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -182,6 +183,13 @@ def frozen_evidence():
                 # The wind grant permits these exact additive successors; retain their frozen predecessors.
                 if sha(git('show', FOLIAGE_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen foliage predecessor evidence: ' + row['path'])
+                continue
+            if path.name == 'wind-runtime-verification.json' and row['path'] in (
+                    'quality.py', 'game/Main.tscn', 'game/MaterialAudioCreditsPanel.cs',
+                    'game/MaterialSoundCaptionPanel.cs', 'game/PositionalSoundCueHistoryPanel.cs', 'game/export_presets.cfg'):
+                # The rain grant permits these additive fields; validate frozen wind bytes at its own revision.
+                if sha(git('show', WIND_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen wind predecessor evidence: ' + row['path'])
                 continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
@@ -417,10 +425,11 @@ def main(resume_smoke=False, finish_interior=False):
             run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
         foliage_runtime(run, environment)
         wind_runtime(run, environment)
+        rain_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
-        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes', flush=True)
+        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes and seven rain modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()
@@ -464,15 +473,28 @@ def foliage_runtime(run, environment):
 
 
 def wind_runtime(run, environment):
+    """Keep every frozen wind stage in its own built/imported historical source tree."""
+    with snapshot(WIND_REVISION, editor=True) as (tree, env):
+        run.stage('wind-historical-restore', ['dotnet', 'restore', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj'], tree, env, WIND_REVISION)
+        run.stage('wind-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, WIND_REVISION)
+        run.stage('wind-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, WIND_REVISION, retry_native=True)
+        candidates = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '--', 'game'], cwd=tree, env=dict(os.environ, **env), text=True).splitlines()
+        scripts = subprocess.check_output(['git', 'ls-files', '--', 'game/*.gd'], cwd=tree, env=dict(os.environ, **env), text=True).splitlines()
+        run.report['historical_wind_uid_cleanup'] = cleanup_generated_uids(tree, candidates, set(), {name: sha((tree / name).read_bytes()) for name in scripts})
+        run.save()
+        wind_checks(run, environment, tree, env)
+
+
+def wind_checks(run, environment, tree, env):
     """Retain the seven new ordinary movement modes plus measured native and bounded review guards."""
     modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'wind-disabled')
     run.stage('wind-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj',
-                             '--no-restore', '--filter', 'FullyQualifiedName~Wind', '--logger', 'console;verbosity=minimal'])
-    run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'])
+                             '--no-restore', '--filter', 'FullyQualifiedName~Wind', '--logger', 'console;verbosity=minimal'], tree, env, WIND_REVISION)
+    run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'], tree, env, WIND_REVISION)
     for mode in modes:
         output = run.directory / f'wind-{mode}.json'
         run.stage('wind-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '7000'],
-                  env=dict(environment, ALLRPCS_WIND_MAIN_CHECK='1', ALLRPCS_WIND_MODE=mode, ALLRPCS_WIND_REPORT=str(output)),
+                  cwd=tree, revision=WIND_REVISION, env=dict(environment, **env, ALLRPCS_WIND_MAIN_CHECK='1', ALLRPCS_WIND_MODE=mode, ALLRPCS_WIND_REPORT=str(output)),
                   retry_native=True, completion='PASS: wind Main:')
     reports = [json.loads((run.directory / f'wind-{mode}.json').read_text()) for mode in modes]
     saves = [(run.directory / f'wind-{mode}.json.save.json').read_bytes() for mode in modes]
@@ -484,8 +506,33 @@ def wind_runtime(run, environment):
             reports[-1][key] != 0 for key in ('starts', 'presentations')):
         raise ValueError('Wind consumed/admitted schedule changed')
     run.report.update(wind_modes=list(modes), wind_save_sha256=sha(saves[0]))
-    run.stage('wind-master-output', [sys.executable, 'scripts/validate-wind-runtime.py', '--output-only'])
-    run.stage('boundary-wind-reviewed', [sys.executable, 'scripts/validate-wind-runtime.py', '--reviewed'])
+    run.stage('wind-master-output', [sys.executable, 'scripts/validate-wind-runtime.py', '--output-only'], tree, env, WIND_REVISION)
+    run.stage('boundary-wind-reviewed', [sys.executable, 'scripts/validate-wind-runtime.py', '--reviewed'], tree, env, WIND_REVISION)
+
+
+def rain_runtime(run, environment):
+    """Retain the seven new ordinary movement modes plus measured native and bounded review guards."""
+    modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'rain-disabled')
+    run.stage('rain-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj',
+                             '--no-restore', '--filter', 'FullyQualifiedName~Audio.Rain', '--logger', 'console;verbosity=minimal'])
+    run.stage('boundary-rain-source', [sys.executable, 'scripts/validate-rain-runtime.py', '--source-only'])
+    for mode in modes:
+        output = run.directory / f'rain-{mode}.json'
+        run.stage('rain-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '7600'],
+                  env=dict(environment, ALLRPCS_RAIN_MAIN_CHECK='1', ALLRPCS_RAIN_MODE=mode, ALLRPCS_RAIN_REPORT=str(output)),
+                  retry_native=True, completion='PASS: rain Main:')
+    reports = [json.loads((run.directory / f'rain-{mode}.json').read_text()) for mode in modes]
+    saves = [(run.directory / f'rain-{mode}.json.save.json').read_bytes() for mode in modes]
+    if any(data != saves[0] for data in saves) or any(
+            row['motion'] != reports[0]['motion'] or row['transcript'] != reports[0]['transcript']
+            or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != reports[0]['truthBefore'] for row in reports):
+        raise ValueError('Rain changed complete motion/save/transcript/protected truth')
+    if any(row['starts'] != 3 or row['presentations'] != 3 for row in reports[:-1]) or any(
+            reports[-1][key] != 0 for key in ('starts', 'presentations')):
+        raise ValueError('Rain consumed/admitted schedule changed')
+    run.report.update(rain_modes=list(modes), rain_save_sha256=sha(saves[0]))
+    run.stage('rain-master-output', [sys.executable, 'scripts/validate-rain-runtime.py', '--output-only'])
+    run.stage('boundary-rain-reviewed', [sys.executable, 'scripts/validate-rain-runtime.py', '--reviewed'])
 
 
 def resume_foliage_prefix(prior, directory):
@@ -567,6 +614,74 @@ def finish_foliage():
         run.report.update(status='failed', finished=now()); run.save(); raise
 
 
+def resume_rain_prefix(prior, directory):
+    """Reuse the verified unchanged product prefix only after the recorded missing historical test assets."""
+    review = ROOT / 'audio-direction/rain-runtime-review/quality'
+    if (prior.get('status') != 'failed' or prior.get('failed_stage') != 'wind-focused'
+            or prior['inputs']['quality.py'] != 'a1c81e8e303d84948cec4e4d3f663e4f9fa062db9cf9d9b5056fa68b9194398d'):
+        raise ValueError('Rain finish requires the recorded cold wind restore failure')
+    original = json.loads((review / 'cold-wind-restore-failed-summary.json').read_text())
+    if prior != original:
+        raise ValueError('Rain finish report changed')
+    expected = json.loads((ROOT / 'audio-direction/wind-runtime-review/quality/runtime/summary.json').read_text())['stages'][:-11]
+    rows = prior['stages']
+    if [r['name'] for r in rows] != [r['name'] for r in expected] + ['wind-historical-build', 'wind-historical-import', 'wind-focused']:
+        raise ValueError('Rain finish retained stage inventory changed')
+    for actual, planned in zip(rows, expected):
+        if any(actual[key] != planned[key] for key in ('name', 'arguments', 'revision')):
+            raise ValueError('Rain finish completed command changed: ' + actual['name'])
+    for row in rows:
+        for attempt in row['attempts']:
+            name = attempt['log']
+            if Path(name).name != name or sha((directory / name).read_bytes()) != attempt['sha256']:
+                raise ValueError('Rain finish log changed')
+        if row is not rows[-1] and (row['attempts'][-1]['exit_code'] != 0 or not row['attempts'][-1]['completion_seen']):
+            raise ValueError('Rain finish prefix incomplete')
+    failure = rows[-1]['attempts'][-1]
+    output = (directory / failure['log']).read_text()
+    if failure['exit_code'] != 1 or 'error NETSDK1004: Assets file' not in output or '/tests/Application.Tests/obj/project.assets.json' not in output:
+        raise ValueError('Rain finish requires the diagnosed missing historical test restore')
+    for row in json.loads((review / 'cold-wind-restore-product-inputs.json').read_text()):
+        if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
+            raise ValueError('Rain finish product input changed: ' + row['path'])
+    return rows[:len(expected)]
+
+
+def finish_rain():
+    """Complete root quality after restoring historical wind tests; preserve all unchanged product passes."""
+    directory = ROOT / 'artifacts/quality-current'
+    prior_bytes = (directory / 'summary.json').read_bytes(); prior = json.loads(prior_bytes)
+    reused = resume_rain_prefix(prior, directory)
+    if prior['product_revision'] != git('rev-parse', 'HEAD').decode().strip() or prior['python'] != sys.version:
+        raise ValueError('Rain finish revision or interpreter changed')
+    for name, digest in prior['inputs'].items():
+        if name != 'quality.py' and sha((ROOT / name).read_bytes()) != digest:
+            raise ValueError('Rain finish quality input changed: ' + name)
+    frozen_evidence()
+    run = Run(directory)
+    metadata = {key: value for key, value in prior.items() if key not in
+                ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
+    metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
+    run.report.update(metadata, stages=reused, resumed_from={'report_sha256': sha(prior_bytes),
+        'prior_source_inputs': prior['inputs'], 'verified_completed_stages': len(reused),
+        'reason': 'Preserve 84 unchanged completed product stages; rerun the entire isolated wind restore/build/import/tests/modes and all current rain stages.'})
+    run.save()
+    existed = set(git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines())
+    sources = {name: sha((ROOT / name).read_bytes()) for name in git('ls-files', '--', 'game/*.gd').decode().splitlines()}
+    try:
+        environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1', 'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
+        wind_runtime(run, environment)
+        rain_runtime(run, environment)
+        run.report.update(status='passed', finished=now()); run.save()
+        print('PASS: full current quality; verified unchanged product prefix, restored historical wind and all current rain stages', flush=True)
+    except Exception:
+        run.report.update(status='failed', finished=now()); run.save(); raise
+    finally:
+        generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
+        run.report.setdefault('generated_uid_cleanup', []).extend(cleanup_generated_uids(ROOT, generated, existed, sources))
+        run.save()
+
+
 class ContractTests(unittest.TestCase):
     """Reject omitted checks and failed stages, and constrain the exceptional native retry."""
 
@@ -609,6 +724,17 @@ class ContractTests(unittest.TestCase):
         changed = copy.deepcopy(record); changed['stages'].pop(0)
         with self.assertRaises(ValueError):
             resume_foliage_prefix(changed, ROOT / 'artifacts/quality-current')
+
+    def test_rain_finish_rejects_changed_failure_or_product(self):
+        """Resume refuses other failures, changed reports and changed product input bindings."""
+        import copy
+        record = json.loads((ROOT / 'audio-direction/rain-runtime-review/quality/cold-wind-restore-failed-summary.json').read_text())
+        for changed in (dict(record, status='passed'), dict(record, failed_stage='other')):
+            with self.assertRaises(ValueError):
+                resume_rain_prefix(changed, ROOT / 'artifacts/quality-current')
+        changed = copy.deepcopy(record); changed['stages'].pop(0)
+        with self.assertRaises(ValueError):
+            resume_rain_prefix(changed, ROOT / 'artifacts/quality-current')
 
     def test_failure_persists(self):
         """A nonzero command yields a failed report, not a success or retry."""
@@ -687,10 +813,13 @@ if __name__ == '__main__':
     parser.add_argument('--resume-smoke', action='store_true')
     parser.add_argument('--finish-interior', action='store_true')
     parser.add_argument('--finish-foliage', action='store_true')
+    parser.add_argument('--finish-rain', action='store_true')
     arguments = parser.parse_args()
     if arguments.self_test:
         unittest.main(argv=[sys.argv[0]])
     elif arguments.finish_foliage:
         finish_foliage()
+    elif arguments.finish_rain:
+        finish_rain()
     else:
         main(arguments.resume_smoke, arguments.finish_interior)
