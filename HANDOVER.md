@@ -36,6 +36,15 @@ parity and mounted packaging pass. The 38-stream audio archive preserves all 100
 prior entries and includes 29 notice files in 19 groups. The whole wind slice is
 closed; no repeat source, runtime, UI or listening approval remains.
 
+The **woodland rain proposal** is complete under the owner's 2026-10-12 planning
+approval. See [proposal](audio-direction/rain-owner-scope.md) and
+[hash-bound contract](audio-direction/rain-owner-scope.json): untouched CC0 FLAC,
+retained clearing anchor (1000,350), proposed four-second R01 every 20 active
+seconds within the exclusive 256-pixel range, twelfth anonymous caption and
+independent history. No new passage was decoded, prepared or heard; one concrete
+source-use/runtime grant remains. Planning verified unchanged product/CI inputs
+and all 105 current archive entries, reusing the 95-stage/5,335-test wind evidence.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. The owner also granted ongoing permission to search for
@@ -44,33 +53,37 @@ and download game sounds; see the foliage grant. Neither grants another runtime 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-positional-woodland-rain-owner-scope — Plan the first fixed woodland rain source and emitter** (ready).
+**phase9-positional-woodland-rain-runtime-integration — Implement the first fixed woodland rain passage and emitter** (ready).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: A concrete read-only dedicated rain source/rights proposal and one exact
-retained woodland-clearing emitter owner, with finite implementation checks and the one new source-
-use/runtime grant.
+Missing deliverable: One qualified R01 passage from the retained CC0 FLAC and one fixed (1000,350)
+clearing emitter, with independent anonymous caption/history and finite implementation evidence.
 
-Prepare a read-only proposal for one new dedicated rain passage and one exact existing
-Main/OpeningRegionWoodlandClearingSceneSource owner. Establish source lineage/rights, binding
-prerequisites, spatial schedule, anonymous caption/history, failure/reset behavior, finite checks
-and the missing implementation grant. Do not acquire or prepare PCM, install runtime, change
-weather/gameplay/art/geometry, or reopen B03/F01/G01 or prior accepted owners. The completed wind
-grant does not authorize this new runtime/source-use scope.
+Obtain and record the single concrete new source-use/runtime grant in audio-direction/rain-owner-
+scope.md and .json before preparing R01 or changing runtime. Then qualify the exact retained
+original, implement only the named clearing owner and complete all named tests/native
+output/UI/parity/packaging/review/documentation/publication in the same session. If no window
+qualifies, report the blocker without substitution. Preserve all closed scopes and unchanged prior
+sources/owners; the completed planning approval does not grant this implementation.
 
-Done when: One concrete hash-bound read-only rain source/emitter proposal identifies the missing
-dedicated deliverable, exact retained owner, permitted implementation files, finite verification and
-a single new implementation decision.
+Done when: New grant recorded; qualified R01 and exact fixed clearing runtime installed; focused,
+measured native, both-size accessible UI, seven-mode complete motion/save/truth parity, 39-stream
+resource packaging and root quality pass; dependent review, ledger closure and standing Git
+publication complete.
 
 Expected outputs:
 
-- `audio-direction/rain-owner-scope.md`
-- `audio-direction/rain-owner-scope.json`
+- `audio-direction/rain-runtime-authority.json`
+- `game/assets/audio/rain/R01.wav`
+- `game/OpeningRegionRainAudioSource.cs`
+- `game/OpeningRegionRainAudioController.cs`
+- `audio-direction/rain-runtime-verification.json`
+- `audio-direction/rain-runtime-review/README.md`
 
-Boundary: Read-only planning for a distinct remaining positional ambience deliverable. No new
-acquisition, derivative/runtime/physical/weather/gameplay/voice/release authority; preserve every
-closure.
+Boundary: Grant pending. Only the hash-bound proposed dedicated source-use/clearing
+runtime/caption/history and named checks/files; no other emitters, weather, physics, gameplay,
+art/geometry, voice or release authority.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

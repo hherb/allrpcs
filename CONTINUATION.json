@@ -626,6 +626,20 @@
           "sha256": "99d91257ab9b1f0d5279007bf6e0a86392e950ef3ed7ba8f19c45a956f7a901f"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-woodland-rain-owner-scope",
+      "reason": "Owner-approved finite read-only dedicated rain source/emitter proposal is complete. Exact retained original and clearing owner, source qualification, permitted files and finite checks are bound. No passage prepared/heard or runtime installed; one new source-use/runtime grant remains.",
+      "evidence": [
+        {
+          "path": "audio-direction/rain-owner-scope.md",
+          "sha256": "2f95ff884df36caea2ccdd15404e522f24b878fd32377782cfb73dca6b22536e"
+        },
+        {
+          "path": "audio-direction/rain-owner-scope.json",
+          "sha256": "5df364be44a2662f98b957c9c9e6cbb45cd94509a324e45b06056619aaf71e55"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -756,6 +770,20 @@
           "sha256": "99d91257ab9b1f0d5279007bf6e0a86392e950ef3ed7ba8f19c45a956f7a901f"
         }
       ]
+    },
+    {
+      "id": "audio-positional-woodland-rain-planning",
+      "reason": "Finite rain planning deliverables complete. Another unchanged proposal/audit is not a successor; implementation requires the concrete source-use/runtime grant.",
+      "evidence": [
+        {
+          "path": "audio-direction/rain-owner-scope.md",
+          "sha256": "2f95ff884df36caea2ccdd15404e522f24b878fd32377782cfb73dca6b22536e"
+        },
+        {
+          "path": "audio-direction/rain-owner-scope.json",
+          "sha256": "5df364be44a2662f98b957c9c9e6cbb45cd94509a324e45b06056619aaf71e55"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -831,19 +859,23 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-woodland-rain-owner-scope",
-    "title": "Plan the first fixed woodland rain source and emitter",
+    "id": "phase9-positional-woodland-rain-runtime-integration",
+    "title": "Implement the first fixed woodland rain passage and emitter",
     "status": "ready",
-    "workstream": "audio-positional-woodland-rain-planning",
+    "workstream": "audio-positional-woodland-rain-runtime",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "A concrete read-only dedicated rain source/rights proposal and one exact retained woodland-clearing emitter owner, with finite implementation checks and the one new source-use/runtime grant.",
-    "instructions": "Prepare a read-only proposal for one new dedicated rain passage and one exact existing Main/OpeningRegionWoodlandClearingSceneSource owner. Establish source lineage/rights, binding prerequisites, spatial schedule, anonymous caption/history, failure/reset behavior, finite checks and the missing implementation grant. Do not acquire or prepare PCM, install runtime, change weather/gameplay/art/geometry, or reopen B03/F01/G01 or prior accepted owners. The completed wind grant does not authorize this new runtime/source-use scope.",
-    "completion_condition": "One concrete hash-bound read-only rain source/emitter proposal identifies the missing dedicated deliverable, exact retained owner, permitted implementation files, finite verification and a single new implementation decision.",
+    "missing_deliverable": "One qualified R01 passage from the retained CC0 FLAC and one fixed (1000,350) clearing emitter, with independent anonymous caption/history and finite implementation evidence.",
+    "instructions": "Obtain and record the single concrete new source-use/runtime grant in audio-direction/rain-owner-scope.md and .json before preparing R01 or changing runtime. Then qualify the exact retained original, implement only the named clearing owner and complete all named tests/native output/UI/parity/packaging/review/documentation/publication in the same session. If no window qualifies, report the blocker without substitution. Preserve all closed scopes and unchanged prior sources/owners; the completed planning approval does not grant this implementation.",
+    "completion_condition": "New grant recorded; qualified R01 and exact fixed clearing runtime installed; focused, measured native, both-size accessible UI, seven-mode complete motion/save/truth parity, 39-stream resource packaging and root quality pass; dependent review, ledger closure and standing Git publication complete.",
     "outputs": [
-      "audio-direction/rain-owner-scope.md",
-      "audio-direction/rain-owner-scope.json"
+      "audio-direction/rain-runtime-authority.json",
+      "game/assets/audio/rain/R01.wav",
+      "game/OpeningRegionRainAudioSource.cs",
+      "game/OpeningRegionRainAudioController.cs",
+      "audio-direction/rain-runtime-verification.json",
+      "audio-direction/rain-runtime-review/README.md"
     ],
-    "boundary": "Read-only planning for a distinct remaining positional ambience deliverable. No new acquisition, derivative/runtime/physical/weather/gameplay/voice/release authority; preserve every closure."
+    "boundary": "Grant pending. Only the hash-bound proposed dedicated source-use/clearing runtime/caption/history and named checks/files; no other emitters, weather, physics, gameplay, art/geometry, voice or release authority."
   },
   "deferred_slices": []
 }

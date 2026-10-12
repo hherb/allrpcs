@@ -175,9 +175,13 @@ noise. The owner qualified the exact four-second G01 passage with “sounds righ
 one retained anchor, exclusive 256-pixel Ambience, 18-second starts, eleventh caption and
 independent history. Source/binding, seven-mode full parity, 58 native output cases,
 both-size accessible UI, mounted 38-stream packaging and all 95 root-quality stages pass.
-No new weather, physical wind or gameplay authority is claimed. The next finite planning
-boundary is one distinct woodland rain owner; its runtime/source-use needs a new grant.
-Wider emitters and the audio items below remain partial.
+No new weather, physical wind or gameplay authority is claimed. The first
+[woodland rain proposal](audio-direction/rain-owner-scope.md) is complete: one
+separate passage from the retained CC0 lossless original and the unchanged
+(1000,350) clearing owner, with anonymous cues/history and finite checks.
+No R01 qualification/preparation or rain runtime is claimed. Its single concrete
+source-use/runtime grant is the next implementation boundary; wider emitters
+and the audio items below remain partial.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.
