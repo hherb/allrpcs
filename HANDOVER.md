@@ -38,10 +38,12 @@ source/event/runtime grant on 2026-10-12,
 recorded in [cooling authority](audio-direction/remedy-cooling-runtime-authority.json).
 The exact [C01 candidate](audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav)
 and offline H01/S01 context preview have been presented inline. Technical source/PCM
-checks pass; the owner reported the candidate seems empty. An audition-only louder
-PCM16 reference with a short lead-in is available; game bytes stay unchanged and
-unqualified. Exact listening/audibility resolution is required before installation.
-Product/CI inputs remain unchanged; the active runtime slice stays in progress.
+checks pass; after reporting the original candidate seems empty, the owner approved
+the louder PCM16 reference with “Approved”. Its source character is accepted; do
+not request that decision again. A single game-level choice is pending because the
+reference is 18 dB above the proposed game level. Thirty isolated contract tests
+pass; drafts remain review text, with no game audio/runtime installed. Product/CI
+inputs remain unchanged; the active runtime slice stays in progress.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -61,19 +63,17 @@ independent fifteenth Cooling step committed caption and capacity-16 history, wi
 source/parity/native/UI/packaging/quality evidence.
 
 Owner source/event/runtime grant is recorded in audio-direction/remedy-cooling-runtime-
-authority.json. Exact 0.75-second C01 candidate (SHA256
-c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2) and offline H01/S01 context
-preview were presented inline. Owner reported C01-candidate.wav seems empty; inspection confirms a
-very short low-average-level transient. An audition-only +18 dB PCM16 reference with 0.5-second
-lead-in was presented, while the exact candidate remains unchanged/unqualified. Do not infer
-acceptance of the game level from this boosted reference. Await exact candidate listening resolution
-before installation; if the quieter candidate remains unsuitable, choose a fuller soft contact
-within the grant. Do not repeat a pending question or infer acceptance from silence. On acceptance,
-bind qualification to these exact bytes/window, then complete the granted existing fourth-step
-3-to-4 Effects confirmation, independent fifteenth line/history and all named
-parity/native/UI/packaging/quality/review/closure/publication checks. On rejection,
-select/prepare/present another source/window within the grant without relaxing its requirements.
-Preserve accepted owners and persistent closures.
+authority.json. After reporting the original -30.1 dBFS candidate seems empty, the owner accepted
+the audition-only +18 dB PCM16 reference with Approved. That reference/source approval is recorded;
+do not request it again. One explicit game-level choice is pending: retain original recording at
+unity (about -12.23 dBFS, 0.13 dB below approved reference) and replace the provisional -30 dBFS
+ceiling, or keep the original quiet game level. Do not infer the pending choice from silence. Thirty
+isolated scratch contract tests pass; reviewed drafts are retained as text under
+source/implementation-drafts, with no runtime/audio installed. When level is resolved, record its
+authority and exact derivative qualification, then complete existing fourth-step 3-to-4 Effects
+confirmation, independent fifteenth line/history and all named
+parity/native/UI/packaging/quality/review/closure/publication checks. Preserve accepted owners and
+persistent closures.
 
 Done when: One exact owner-qualified C01 and once-only existing cooling input confirmation with
 accessible equivalent, complete finite verification and publication; all accepted owners remain

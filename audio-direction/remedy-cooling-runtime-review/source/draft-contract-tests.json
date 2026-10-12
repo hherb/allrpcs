@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "tests": 30,
+  "failures": 0,
+  "skipped": 0,
+  "command": "dotnet test /private/tmp/allrpcs-cooling-implementation/draft-tests/Cooling.Drafts.Tests.csproj --logger console;verbosity=minimal",
+  "execution": "Isolated scratch test project referencing unchanged current Application/Domain projects; not installed in product.",
+  "sandbox_attempt": "Failed during NuGet CookieContainer/GetDomainName initialization; identical authorized-host retry passed.",
+  "draft_bindings": [
+    {
+      "draft_path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjection.cs.txt",
+      "eventual_product_path": "src/Application/Audio/RemedyCoolingPresentationProjection.cs",
+      "sha256": "e025864ccf4610147ed1069ce3a904c91a2638a4ca9f74df398157e41fcb4970"
+    },
+    {
+      "draft_path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistory.cs.txt",
+      "eventual_product_path": "src/Application/Audio/RemedyCoolingCueHistory.cs",
+      "sha256": "1e4a576dd78621c57fe46fa573a4f00688ee03222f29741972c413e53c3d2245"
+    },
+    {
+      "draft_path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjectionTests.cs.txt",
+      "eventual_product_path": "tests/Application.Tests/Audio/RemedyCoolingPresentationProjectionTests.cs",
+      "sha256": "717df06a0344dfaa65d261d7e65d19285bf76d407a39f599dc2a51feb4904377"
+    },
+    {
+      "draft_path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistoryTests.cs.txt",
+      "eventual_product_path": "tests/Application.Tests/Audio/RemedyCoolingCueHistoryTests.cs",
+      "sha256": "cdf21c05ef429200c64e3d2deb331d0a54583828c32f586191fc75cb275ab54b"
+    }
+  ],
+  "raw_log_retained": false,
+  "evidence_basis": "Observed completed tool output: Passed 30, Failed 0, Skipped 0. Not full product/native quality evidence."
+}

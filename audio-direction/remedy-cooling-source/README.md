@@ -70,3 +70,18 @@ playback-format problem. It is never runtime/export audio and cannot establish
 acceptance or audibility of the unchanged quieter game candidate. If that candidate
 remains unsuitable, choose a fuller soft contact within the approved source contract;
 do not raise its −30 dBFS ceiling or infer acceptance from this louder reference.
+
+## Audible reference accepted; game-level decision pending
+
+The owner approved the audible reference with “Approved” on 2026-10-12. This source
+character decision is recorded and must not be requested again. The reference is
+18 dB above the original candidate. One game-level choice has been presented:
+use the original recording at unity (approximately −12.23 dBFS, 0.13 dB below the
+approved reference), replacing the provisional −30 dBFS ceiling, or keep the quiet
+level. That choice is pending; neither silence nor the reference approval is recorded
+as an answer to it. No game audio/runtime has been installed.
+
+Thirty isolated scratch tests of the forthcoming commit/history helpers pass.
+[The draft test record](../remedy-cooling-runtime-review/source/draft-contract-tests.json)
+binds their exact reviewed text. This is preparation evidence, not full product or
+native/output evidence. The active runtime scope remains in progress.

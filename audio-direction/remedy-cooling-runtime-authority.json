@@ -5,7 +5,7 @@
   "scope_id": "phase9-remedy-cooling-runtime-integration",
   "owner_statement": "approved",
   "context": "Direct answer to the presented cooling implementation decision after completed proposal publication 2508cfa4; grants new source selection/preparation and the named runtime with exact owner listening before installation.",
-  "status": "awaiting_exact_candidate_listening",
+  "status": "awaiting_game_level_decision",
   "baseline_commit": "2508cfa49ff759399dd7e80c9a7c919a1ae493ae",
   "proposal_bindings": [
     {
@@ -537,7 +537,7 @@
   "source_review_bindings": [
     {
       "path": "audio-direction/remedy-cooling-source/README.md",
-      "sha256": "e75517542f79bb110dfd671034c9cb15ad77675cedeaefe50c776521097a1bfc"
+      "sha256": "b10edaa2d6f79d2f1d6628f508d0dbe0fdf6ad8ed80b7d1a0827a14d2c99983a"
     },
     {
       "path": "audio-direction/remedy-cooling-source/originals/0483.wav",
@@ -578,6 +578,26 @@
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/context-preview.json",
       "sha256": "dab8b8c6931eb7223a93f75a38dcf597a74a75a4557f05f827c291c37cb3b169"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/draft-contract-tests.json",
+      "sha256": "da4a79a0871ae1a18e5312b17a1fd8c909406327446468e3e84fd8394da03427"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistory.cs.txt",
+      "sha256": "1e4a576dd78621c57fe46fa573a4f00688ee03222f29741972c413e53c3d2245"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistoryTests.cs.txt",
+      "sha256": "cdf21c05ef429200c64e3d2deb331d0a54583828c32f586191fc75cb275ab54b"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjection.cs.txt",
+      "sha256": "e025864ccf4610147ed1069ce3a904c91a2638a4ca9f74df398157e41fcb4970"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjectionTests.cs.txt",
+      "sha256": "717df06a0344dfaa65d261d7e65d19285bf76d407a39f599dc2a51feb4904377"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/listening-reference.json",
@@ -1095,5 +1115,14 @@
       "sha256": "66965c1c2f8c4951409fa97adc0e9e0c0c5ecbacc7fea2cc7b4a6865a242cd5a"
     },
     "limits": "Audition-only boosted/padded PCM16 reference; unchanged game derivative remains unqualified."
+  },
+  "listening_reference_acceptance": {
+    "owner_statement": "Approved",
+    "date": "2026-10-12",
+    "reference_path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
+    "reference_sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92",
+    "scope": "Owner accepted the presented audible listening reference/source character. Exact game-level decision asked once because the approved reference is 18 dB above the unqualified game candidate.",
+    "game_level_decision": "pending",
+    "runtime_installed": false
   }
 }
