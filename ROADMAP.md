@@ -200,7 +200,12 @@ preparation/treatment modes, 35 measured native cases, both-size accessible UI,
 15 rejection probes and three mounted presets pass. The 110 prior audio entries
 remain byte-identical; totals are 40 streams and 35 notices in 21 groups. Steeping
 and other missing operations remain partial. Physical heater/fire/boiling/temperature
-and gameplay changes remain separate.
+and gameplay changes remain separate. The first
+[steeping proposal](audio-direction/remedy-steeping-owner-scope.md) is complete:
+one exact third-step 2-to-3 commit at the unchanged station, distinct lossless-source
+requirements, three-second Effects feedback, independent fourteenth caption/history
+and finite files/checks. Its concrete source/event/runtime grant remains separate;
+no steeping audio acquisition, PCM or runtime is claimed.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

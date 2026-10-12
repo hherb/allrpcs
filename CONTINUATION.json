@@ -682,6 +682,20 @@
           "sha256": "d81eaa9f89a9ca33eaed7c65c2cc3e299c3437aaaa29b198c035d700526bd962"
         }
       ]
+    },
+    {
+      "id": "phase9-remedy-steeping-owner-scope",
+      "reason": "Owner-approved finite read-only steeping owner/source proposal complete; exact source/event/runtime implementation decision is separately bounded. No acquisition or implementation claimed.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-steeping-owner-scope.md",
+          "sha256": "858b13e4ca2a3616cd157b92cbe3725cf849bac2c949e450d78c19def00c5e6f"
+        },
+        {
+          "path": "audio-direction/remedy-steeping-owner-scope.json",
+          "sha256": "90798f2447ee137ba62731508084b6e931c13dd85c7830e09274373a2f34d860"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -868,6 +882,20 @@
           "sha256": "d81eaa9f89a9ca33eaed7c65c2cc3e299c3437aaaa29b198c035d700526bd962"
         }
       ]
+    },
+    {
+      "id": "audio-remedy-steeping-planning",
+      "reason": "Finite steeping owner/source planning deliverables complete. No unchanged proposal/audit successor; new implementation requires the concrete source/event/runtime grant.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-steeping-owner-scope.md",
+          "sha256": "858b13e4ca2a3616cd157b92cbe3725cf849bac2c949e450d78c19def00c5e6f"
+        },
+        {
+          "path": "audio-direction/remedy-steeping-owner-scope.json",
+          "sha256": "90798f2447ee137ba62731508084b6e931c13dd85c7830e09274373a2f34d860"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -943,19 +971,21 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-remedy-steeping-owner-scope",
-    "title": "Define one missing remedy-steeping audio owner and finite implementation grant",
+    "id": "phase9-remedy-steeping-runtime-integration",
+    "title": "Implement committed third-step steeping feedback after the concrete source/runtime grant",
     "status": "ready",
-    "workstream": "audio-remedy-steeping-planning",
+    "workstream": "audio-remedy-steeping-runtime",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "A read-only proposal for the existing third recipe-step steeping commit, exact unchanged station, distinct source requirements and finite feedback/verification contract.",
-    "instructions": "Prepare one read-only owner/source proposal for the existing steeping operation at the unchanged healer-garden station. Bind exact successful progression and source/rights/format requirements, name permitted files and finite validation, and prepare one concrete separately scoped runtime decision. Carry all accepted art, grinding/treatment/heating and environmental audio forward unchanged. Do not acquire or prepare a new passage or implement runtime in this planning slice.",
-    "completion_condition": "Publish the finite exact steeping owner/source proposal and record its separate source/runtime grant boundary, then close planning without reopening accepted heating or other owners.",
+    "missing_deliverable": "One qualifying lossless S01 source/derivative, exact 2-to-3 committed steeping event, fourteenth caption and independent capacity-16 history with finite verification.",
+    "instructions": "First record the separate implementation grant in audio-direction/remedy-steeping-runtime-authority.json against the completed proposal. Then qualify one source, prepare/present S01, implement only the exact existing steeping commit and complete dependent review/checks/publication in the same session. Current scope approval completed read-only planning; it does not grant this new runtime. Carry accepted heating and all earlier owners forward unchanged.",
+    "completion_condition": "Granted exact S01 source/event/runtime and independent accessible feedback pass the proposal finite checks, retain all prior evidence and close with reviewed-path publication.",
     "outputs": [
-      "audio-direction/remedy-steeping-owner-scope.md",
-      "audio-direction/remedy-steeping-owner-scope.json"
+      "audio-direction/remedy-steeping-runtime-authority.json",
+      "game/assets/audio/remedy-steeping/S01.wav",
+      "game/OpeningRegionRemedySteepingAudioController.cs",
+      "audio-direction/remedy-steeping-runtime-verification.json"
     ],
-    "boundary": "Read-only new-operation planning only. No source acquisition/PCM/runtime, physical station/art/layout, recipe/progression/save/hearing/perception changes, voice or release. A new source/event/runtime implementation grant remains distinct."
+    "boundary": "A distinct source/event/runtime grant remains required before acquisition/preparation/implementation in this slice. No physical station/vessel/action, infusion duration, recipe/progression/save/hearing/perception, cooling, wider emitter, voice or release authority."
   },
   "deferred_slices": []
 }

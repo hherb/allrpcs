@@ -29,6 +29,13 @@ mounted packaging pass. All 110 prior audio entries remain byte-identical; total
 40 streams and 35 individual notices in 21 groups. The whole finite heating slice is
 closed. No repeat source, unchanged runtime or accepted-owner audit remains.
 
+The first [remedy-steeping proposal](audio-direction/remedy-steeping-owner-scope.md)
+is complete: exact existing third-step 2-to-3 commit at the same station, distinct
+lossless-source requirements, three-second Effects feedback, fourteenth caption
+and separate history, with finite files/checks and a concrete separate implementation
+grant. No steeping audio was acquired/prepared or runtime installed. Planning is closed;
+the ledger routes only the missing source/event/runtime deliverable.
+
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
 forward without asking again. Ongoing sound search/download permission remains recorded
@@ -37,32 +44,34 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-steeping-owner-scope — Define one missing remedy-steeping audio owner and finite implementation grant** (ready).
+**phase9-remedy-steeping-runtime-integration — Implement committed third-step steeping feedback after the concrete source/runtime grant** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: A read-only proposal for the existing third recipe-step steeping commit, exact
-unchanged station, distinct source requirements and finite feedback/verification contract.
+Missing deliverable: One qualifying lossless S01 source/derivative, exact 2-to-3 committed steeping
+event, fourteenth caption and independent capacity-16 history with finite verification.
 
-Prepare one read-only owner/source proposal for the existing steeping operation at the unchanged
-healer-garden station. Bind exact successful progression and source/rights/format requirements, name
-permitted files and finite validation, and prepare one concrete separately scoped runtime decision.
-Carry all accepted art, grinding/treatment/heating and environmental audio forward unchanged. Do not
-acquire or prepare a new passage or implement runtime in this planning slice.
+First record the separate implementation grant in audio-direction/remedy-steeping-runtime-
+authority.json against the completed proposal. Then qualify one source, prepare/present S01,
+implement only the exact existing steeping commit and complete dependent review/checks/publication
+in the same session. Current scope approval completed read-only planning; it does not grant this new
+runtime. Carry accepted heating and all earlier owners forward unchanged.
 
-Done when: Publish the finite exact steeping owner/source proposal and record its separate
-source/runtime grant boundary, then close planning without reopening accepted heating or other
-owners.
+Done when: Granted exact S01 source/event/runtime and independent accessible feedback pass the
+proposal finite checks, retain all prior evidence and close with reviewed-path publication.
 
 Expected outputs:
 
-- `audio-direction/remedy-steeping-owner-scope.md`
-- `audio-direction/remedy-steeping-owner-scope.json`
+- `audio-direction/remedy-steeping-runtime-authority.json`
+- `game/assets/audio/remedy-steeping/S01.wav`
+- `game/OpeningRegionRemedySteepingAudioController.cs`
+- `audio-direction/remedy-steeping-runtime-verification.json`
 
-Boundary: Read-only new-operation planning only. No source acquisition/PCM/runtime, physical
-station/art/layout, recipe/progression/save/hearing/perception changes, voice or release. A new
-source/event/runtime implementation grant remains distinct.
+Boundary: A distinct source/event/runtime grant remains required before
+acquisition/preparation/implementation in this slice. No physical station/vessel/action, infusion
+duration, recipe/progression/save/hearing/perception, cooling, wider emitter, voice or release
+authority.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

@@ -1,0 +1,945 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-remedy-steeping-owner-scope",
+  "status": "completed_read_only_proposal",
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "missing_deliverable": "Exact committed steeping-step presentation event, dedicated S01 source/rights/derivative, independent caption and transient history.",
+  "owner": {
+    "scene": "Main/OpeningRegionRemedyPreparationSceneSource",
+    "binding": "Main/OpeningRegionRemedyPreparationSceneSource.Binding",
+    "location_id": "healer-garden",
+    "station_world_position": [
+      2300,
+      1300
+    ],
+    "maximum_station_to_garden_pixels": 72,
+    "input_range_pixels_inclusive": 48,
+    "decorative_table_local_position": [
+      0,
+      18
+    ],
+    "decorative_table_redefines_station": false,
+    "recipe_id": "cooling-moonwort-remedy",
+    "step_index_zero_based": 2,
+    "step_kind": "IngredientPreparationKind.Steeping",
+    "ordered_steps": [
+      "grinding",
+      "heating",
+      "steeping",
+      "cooling"
+    ],
+    "input_requirements": [
+      {
+        "ingredient": "moonwort-leaf",
+        "amount": 250,
+        "unit": "mg"
+      },
+      {
+        "ingredient": "clean-water",
+        "amount": 100,
+        "unit": "ml"
+      }
+    ],
+    "output": {
+      "ingredient": "cooled-moonwort-preparation",
+      "amount": 100,
+      "unit": "ml"
+    },
+    "ordinary_input": "remedy_prepare (mapped P); fourth of seven presses from fresh preparation state",
+    "preserve": [
+      "Scene/source/binding/projection/garden-anchor/context/recipe reference identities",
+      "All table/planting/art/children/transforms/collision/navigation bytes",
+      "Existing progression, quantities, input checks, status, completion and batch installation"
+    ],
+    "no_new_world_facts": [
+      "vessel",
+      "added water",
+      "stirring",
+      "heat source",
+      "boiling",
+      "infusion duration",
+      "temperature",
+      "readiness"
+    ]
+  },
+  "commit_contract": {
+    "producer": "Main/OpeningRegionRemedyPreparationInputCoordinator.TryProgress successful TryAdvance branch",
+    "event": "SteepingCompleted",
+    "payload": "SteepingPreparationCommit (coordinator-owned immutable transient token)",
+    "before_index": 2,
+    "after_index": 3,
+    "exact_references": [
+      "coordinator",
+      "scene",
+      "binding",
+      "context",
+      "recipe",
+      "step",
+      "before activity",
+      "after activity",
+      "preparation controller",
+      "actual Seeker"
+    ],
+    "admission": "Exact current recipe/plan/step; new committed activity 2-to-3; actual finite body <=48 pixels and supplied position within one pixel; current token identity and current after activity at notification.",
+    "once_only": "Consume unique token before presentation availability/blocker checks; never queue or replay it.",
+    "reject": [
+      "null",
+      "copied/forged/rebuilt/stale token",
+      "foreign owner/context/recipe/step",
+      "failed transition",
+      "duplicate",
+      "polling index/status",
+      "save reconstruction",
+      "direct-controller advance without mapped coordinator event"
+    ],
+    "subscriber_failure": "Isolated after commit; preserve gameplay result, GrindingCompleted, HeatingCompleted and heating token lifecycle.",
+    "later_progress": "Normal cooling/finish/install does not cancel admitted S01. H01 may coexist after rapid heat-to-steep; neither owner cancels/retriggers the other.",
+    "persistence": false
+  },
+  "derivative": {
+    "id": "S01",
+    "path": "game/assets/audio/remedy-steeping/S01.wav",
+    "seconds": 3,
+    "rate_hz": 48000,
+    "channels": 2,
+    "format": "PCM24",
+    "frames": 144000,
+    "loop": false,
+    "fade_seconds_each_end": 0.1,
+    "fade_shape": "linear",
+    "provisional_sample_peak_ceiling_dbfs": -24,
+    "gain": "One uniform attenuation-only gain; never boost.",
+    "permitted_operations": [
+      "deterministic decode",
+      "contiguous trim",
+      "resample if needed",
+      "mono duplication if needed",
+      "endpoint fades",
+      "single uniform attenuation"
+    ],
+    "reject_channel_layouts_other_than_mono_or_stereo": true,
+    "prohibited_operations": [
+      "synthesis",
+      "layering",
+      "filtering",
+      "denoising",
+      "pitch/time change",
+      "widening"
+    ],
+    "import": "No loop/compression/normalization; verify mounted PCM16 against documented PCM24 conversion."
+  },
+  "playback": {
+    "count": 1,
+    "node": "AudioStreamPlayer",
+    "spatial": false,
+    "bus": "Effects",
+    "volume_linear": 1,
+    "pitch_scale": 1,
+    "max_polyphony": 1,
+    "loop": false,
+    "independent_controller": "Main/OpeningRegionRemedySteepingAudioController",
+    "once": "Start only on exact eligible commit; no queue, delay, overlap, periodic schedule or replay.",
+    "controls": "Existing Master/Effects, Default/Quiet and mono once; no lease, music hold, manual boost/pan or listener mutation.",
+    "missing_stream_or_bus": "Silence, preserve otherwise admitted caption/history, no Master fallback.",
+    "mute_or_zero": "Immediately stop steeping audio only; admitted caption may finish; unmute/resource repair never resumes.",
+    "active_delta_seconds": "(0,0.1]",
+    "teleport_threshold_pixels_exclusive": 96,
+    "cancellation": [
+      "pause",
+      "focus loss",
+      "dialogue",
+      "reading/customization/map/journal/settings",
+      "text entry",
+      "invalid delta",
+      "source replacement/disable/hide/transform drift",
+      "nonfinite positions",
+      "Seeker teleport"
+    ],
+    "blocked_at_commit": "Consume and discard all presentation without later replay.",
+    "successful_reset_or_teardown": "Clear only steeping player/caption/history/sequence/token; unsubscribe exact event.",
+    "failed_load": "Changes nothing.",
+    "gameplay_or_hearing_mutation": false
+  },
+  "caption_contract": {
+    "line_number": 14,
+    "phrase": "Steeping preparation",
+    "seconds": 3,
+    "bearing": false,
+    "anonymous": true,
+    "excluded_information": [
+      "actor",
+      "site",
+      "ingredient/remedy name",
+      "coordinates",
+      "world time",
+      "temperature",
+      "boiling",
+      "readiness",
+      "treatment success",
+      "infusion duration"
+    ],
+    "settings": "Captions hide only new line; mute/missing audio retain eligible text.",
+    "preserve": "All thirteen prior lines/timers/phrasing and authoritative status; only own panel bounds may expand; heating and steeping can coexist."
+  },
+  "history_contract": {
+    "owner": "RemedySteepingCueHistory",
+    "section": "Remedy steeping cues",
+    "capacity": 16,
+    "ordering": "oldest-first",
+    "snapshot": "detached read-only",
+    "fields": [
+      "local sequence",
+      "Steeping preparation"
+    ],
+    "time_limiter": null,
+    "admission": "One entry per unique eligible commit immediately; duplicate identity rejected before insertion.",
+    "no_ordinary_repeated_batch_claim": true,
+    "capacity_fixture": "Stopped diagnostics only.",
+    "preserve": "All prior sections/order/capacities/limiters, scrolling, keyboard, Escape, Back to Audio and return focus.",
+    "blockers": "Retain earlier entries; no entry at blocked commit.",
+    "mute_missing_audio_captions_off": "Eligible history accessible.",
+    "serialization_journal_or_transcript": false
+  },
+  "implementation_files": {
+    "new_exact_paths": [
+      "src/Application/Audio/RemedySteepingPresentationProjection.cs",
+      "tests/Application.Tests/Audio/RemedySteepingPresentationProjectionTests.cs",
+      "src/Application/Audio/RemedySteepingCueHistory.cs",
+      "tests/Application.Tests/Audio/RemedySteepingCueHistoryTests.cs",
+      "game/SteepingPreparationCommit.cs",
+      "game/OpeningRegionRemedySteepingAudioController.cs",
+      "game/RemedySteepingAudioRuntimeSmokeCheck.cs",
+      "game/RemedySteepingAudioRuntimeProof.cs",
+      "game/RemedySteepingAudioRuntimeProof.tscn",
+      "scripts/prepare-remedy-steeping-passage.py",
+      "scripts/check-remedy-steeping-audio-output.py",
+      "scripts/validate-remedy-steeping-runtime.py",
+      "audio-direction/remedy-steeping-runtime-authority.json",
+      "audio-direction/remedy-steeping-runtime-verification.json",
+      "audio-direction/remedy-steeping-source/README.md",
+      "audio-direction/remedy-steeping-source/provenance.json",
+      "audio-direction/remedy-steeping-source/rights/catalogue.html",
+      "audio-direction/remedy-steeping-source/rights/deed.html",
+      "game/assets/audio/remedy-steeping/S01.wav",
+      "game/assets/audio/remedy-steeping/S01.wav.import",
+      "game/assets/audio/remedy-steeping/CREDITS.txt",
+      "game/assets/audio/remedy-steeping/provenance.json",
+      "game/assets/audio/remedy-steeping/deed.html",
+      "game/SteepingPreparationCommit.cs.uid",
+      "game/OpeningRegionRemedySteepingAudioController.cs.uid",
+      "game/RemedySteepingAudioRuntimeSmokeCheck.cs.uid",
+      "game/RemedySteepingAudioRuntimeProof.cs.uid"
+    ],
+    "new_review_directory": "audio-direction/remedy-steeping-runtime-review/ (source/listening/output/parity/native UI/packaging/rejection/log evidence only)",
+    "narrow_existing_edits": {
+      "game/OpeningRegionRemedyPreparationInputCoordinator.cs": "Only SteepingCompleted/current token and reset lifecycle; preserve gameplay branches/checks/status/results and grinding/heating notification/token behavior.",
+      "game/Main.tscn": "New sibling steeping controller/smoke resources only; retain station/children/prior blocks and Channel last.",
+      "game/MaterialSoundCaptionPanel.cs": "Independent fourteenth steeping line and own panel bound only; retain all thirteen lines/timers.",
+      "game/PositionalSoundCueHistoryPanel.cs": "Append separate steeping history section and update descriptive subtitle only.",
+      "game/MaterialAudioCreditsPanel.cs": "Append steeping credits only.",
+      "game/export_presets.cfg": "Append steeping txt/json/html notice filters in each retained preset.",
+      "quality.py": "Add necessary steeping stages; pin unchanged heating at b7912dd46a91e4b101c44cf56701d00f45b9ffd8 through existing historical runner as needed; retain earlier pins and all 126 stages.",
+      "CONTINUATION.json": "Record exact grant, closure and one finite next missing deliverable.",
+      "HANDOVER.md": "Current checkpoint and ledger-rendered active boundary.",
+      "ROADMAP.md": "Partial completion state only."
+    },
+    "protected": "All other product inputs including Domain/preparation controller/recipe/station geometry and art/navigation/movement/persistence/providers/hearing/perception, prior audio and frozen validators.",
+    "new_source_original_directory": "audio-direction/remedy-steeping-source/originals/ (one qualifying original under its exact retained filename; record path/hash before derivative or runtime installation)"
+  },
+  "completion_condition": "Two hash-bound proposal files define exact existing steeping step/station/input commit, distinct lossless source requirements, independent feedback, finite files/checks and one separate implementation grant; no source audio/PCM/runtime/world edits.",
+  "baseline_commit": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+  "proposal": {
+    "path": "audio-direction/remedy-steeping-owner-scope.md",
+    "sha256": "858b13e4ca2a3616cd157b92cbe3725cf849bac2c949e450d78c19def00c5e6f"
+  },
+  "authority": {
+    "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+    "approved_scope": "Ledger-selected read-only remedy-steeping owner/source proposal.",
+    "new_implementation_grant": "Authorize selection/acquisition/qualification of one new free lossless CC0-1.0 or CC-BY-4.0 gentle-liquid source meeting this contract; prepare/present three-second S01; add exact third-step 2-to-3 committed steeping feedback at unchanged (2300,1300) on Effects, the fourteenth Steeping preparation caption and separate capacity-16 history; complete named files and finite source, parity, native/UI, packaging, quality and publication checks. No qualifying source/window means a recorded blocker before installation without relaxing the contract.",
+    "implementation_authorized": false,
+    "source_audio_acquired": false,
+    "agent_source_audio_decoded_or_heard": false,
+    "pcm_or_runtime_installed": false,
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "ongoing_search_permission": "Retained foliage grant permits sound search/download; this read-only slice did not acquire audio and grants no new runtime."
+  },
+  "source_requirements": {
+    "candidate": null,
+    "qualified": false,
+    "licences": [
+      "CC0-1.0",
+      "CC-BY-4.0"
+    ],
+    "deeds": [
+      {
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "checked": "2026-10-12"
+      },
+      {
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "checked": "2026-10-12"
+      }
+    ],
+    "original_format": "Actual lossless mono/stereo original; converted WAV or filename does not establish lossless encoding.",
+    "acoustic_contract": "Clean contiguous three-second gentle-liquid movement/settling illustration of committed operation; no physical action assertion.",
+    "reject": [
+      "prominent pouring/refilling",
+      "stirring/tool impacts",
+      "rolling boil",
+      "pressure/whistle",
+      "fire",
+      "appliance/metal noise",
+      "voices/music/wildlife",
+      "clipping/decoding faults/distracting room sound"
+    ],
+    "rights_evidence": [
+      "creator/title/attribution parties",
+      "catalogue and exact download URLs",
+      "retrieval metadata",
+      "original bytes/hash",
+      "catalogue licence and deed captures",
+      "supplied copyright/licence/disclaimer and prior change notices",
+      "derivative change notice"
+    ],
+    "source_exception": "No inherited heating lossy-source exception or listening acceptance.",
+    "listening": "Assess exact original/window; retain offsets; present S01 inline in implementation session.",
+    "no_qualifying_source": "Record blocker before installation without relaxing contract or substituting accepted audio.",
+    "paid_or_account_actions": false
+  },
+  "verification_required": [
+    "Source-specific rights/acquisition/window listening, reproducible S01 conversion/import metadata and peak/loudness; present exact S01 derivative.",
+    "Pure/live exact 2-to-3/reference/token admission/rejection; 48/49 pixels, forged positions, duplicate/stale/copied/foreign token, direct-controller progression, failure/subscriber isolation, blockers/mute/missing audio/cancellation/load/reset/no replay and later progress.",
+    "Seven identical mapped movement/preparation/treatment modes: Default, Quiet, Master-muted, Effects-muted, missing-S01, captions-off, steeping-disabled; complete saves/transcripts/movement and protected truth parity; preserve grinding/heating/treatment counts.",
+    "Native Master independent gain/zero/mute/bus/missing stream, Default/Quiet/mono, onset/tail, cancellation/drift/load/next input; factors within 5%, mono parity/silence; measured isolated/mixed peaks/loudness with rapid H01+S01 and A04/A05/beds; no lease/hold.",
+    "Native fourteen-caption/history at 1280x720 and 1920x1080; wrapping/coexistence/capacity/duplicates/scroll/keyboard/return focus/mute/captions-off/missing audio/isolated reset; stopped-only injection and genuine mapped commit evidence.",
+    "Three mounted presets preserve 115 exact prior entries; add stream/import plus three notices for 41 streams,38 notices,22 groups,120 entries; exact S01 PCM16 and exclusion of source/review audio.",
+    "Rejection probes for source/rights/proposal/PCM/event/bus/duration/phrase/truth/protected owners. Root quality retains all 126 stages; runner self-test after runner edits; closure sync/check and standing reviewed-path publication."
+  ],
+  "unchanged_source_bindings": [
+    {
+      "path": "src/Domain/Diseases/RepresentativeFirstPatientScenarioSource.cs",
+      "sha256": "19fdea430b431ec0bcb769c9fc9807d30fce058c49823e6abfbb0de4c3ca2287"
+    },
+    {
+      "path": "src/Domain/Diseases/FirstPatientScenarioStructuralPolicy.cs",
+      "sha256": "158db9d9eeae05ea8b124d8e7c8cd01381143be2e2bbec2825c47411cab97838"
+    },
+    {
+      "path": "src/Domain/Ingredients/IngredientPreparationKind.cs",
+      "sha256": "7eb28c94c7417f832b1fa448bac66cd88168108b166414a0810f9f53683d388a"
+    },
+    {
+      "path": "src/Domain/Ingredients/IngredientPreparationProgressionPolicy.cs",
+      "sha256": "bddcba571effe6b9080b4f6d45ac5f07af15ef16600351694ff81d2782266383"
+    },
+    {
+      "path": "src/Domain/Ingredients/IngredientPreparationProgressionTransition.cs",
+      "sha256": "28c10bfcb550fa8cce9c11944296da645fbe35d7155b3bcb90848f9f7579f59f"
+    },
+    {
+      "path": "src/Domain/Ingredients/IngredientPreparationActivityProgressionTransition.cs",
+      "sha256": "8be824f255c9b0b5a1100e6c581cd33d814e5d5b693476c3a0f4282bccda5aff"
+    },
+    {
+      "path": "src/Application/Navigation/OpeningRegionRemedyPreparationSceneBinding.cs",
+      "sha256": "6cb19a84e2eb833680ec6fdfec2bbf7982d1a145a9561b367ed7158e9398705e"
+    },
+    {
+      "path": "game/FirstPatientPreparationController.cs",
+      "sha256": "c14ffe86d742e214308f3c4b8fa888490c334dedc97d58353ccde81fdbc21988"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationSceneSource.cs",
+      "sha256": "69c2b8cfed9c72cdacf68ca89b1b0b6613d515e6e6c46a78c798606fd5aa3b5f"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "3a96fc72cdbda50c08138daf4314149f62aadd4c302c7f52595627b743932033"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputSmokeCheck.cs",
+      "sha256": "939bf6c794fcbab12318ed1b4573b8c2c2969ee0c41d9ae19d2e444cfc418285"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "f83c96d6b4b6f19ef2a626680c5fe81665e0532ce8a24d9f005fd1cebef0a75b"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "9c437a351a6e4e63767ca65f88affce2bc3842b2ab0040bbe312626c93196df8"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "37907edb752db71beceec575f6574e6d0231a95a194311c781d184a9b0efed8b"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "d1debff352381e083775fb3166d364369367997574cb5f35981b6e867f7bcbff"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "53eaec90a5ec07f81e9753fe651f78294d6e5afced239608f6cb87961824ffad"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "581869064c28ac13ba6a71ab2fb0834d2b5adbf3d0c56d6d6d4ce1f1ddcdffa7"
+    },
+    {
+      "path": "audio-direction/dynamic-range-policy.json",
+      "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingPresentationProjection.cs",
+      "sha256": "fee8c572f5ec65a28a9fb91d8a80286c5471c95120fd76ed003fb2fd727ed99b"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingCueHistory.cs",
+      "sha256": "5d36185f2d9f31842ac33c1e9720bd826a434dcac915366173320da912fa1e6f"
+    },
+    {
+      "path": "game/HeatingPreparationCommit.cs",
+      "sha256": "c5461b76e3c5f64bced2f51550ae50ec131811a3effe8fbb3f0139d23a220069"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    }
+  ],
+  "accepted_audio_bindings": [
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav",
+      "sha256": "267dafd443a0e815d4449e33c66c67bda6aa9d883a550a493b7ea956b7375871"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav.import",
+      "sha256": "5e5a08e9cd47f1cd25f48edef7cabe46e5cfaff9ce76570b454d6a72f58861be"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CREDITS.txt",
+      "sha256": "f2befa0e79efb0ecbfd0ab289684358384607827a5ac118ddc12b788a24de31e"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/provenance.json",
+      "sha256": "cb15a0f4fda955f8311c3ddcf4b88770887c942865a6af5efb66b15cdd1b24a8"
+    },
+    {
+      "path": "game/assets/audio/foliage/CREDITS.txt",
+      "sha256": "8a0377b2e494aa942c431bf5578c9976403ed05a066f498bfd1d4405e9c84782"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav",
+      "sha256": "895a58f291254915a26eb57819e7bbf20e85ad4aca71d32a1f8237bb71981505"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav.import",
+      "sha256": "ba6237b789af28d6f7ce3f4f20856ffc97349a9ca12e19906b5bd9f0c7a2c872"
+    },
+    {
+      "path": "game/assets/audio/foliage/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/foliage/provenance.json",
+      "sha256": "4d7525241aaf42c9e740e169db1707b6832d3e184c8df2802810122f0d070ff5"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CREDITS.txt",
+      "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav.import",
+      "sha256": "155473ed5acb93c4c45b5be3171fe9e3f2856395880ee145c351878a9f762ca9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav.import",
+      "sha256": "9d3884914cb0fede1a4bdaa59ca587a1de75d4daad39170994f99319167c29a8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav.import",
+      "sha256": "41bfed746f64e893c628088689b80cd55959d19fd9330c4649d735b3c1ba4287"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav.import",
+      "sha256": "7a5b6fbdd6a03bef401fe0b6e9cd624059f83c900997207546e498819249afc3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav.import",
+      "sha256": "23d5bb66009483c7b22e03b348bad50ea04af386fe5705ed5f42d1dda6001e3d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav.import",
+      "sha256": "b20d4fc8630086eeafc463f2032f6ffb50cee7b637a0082e6bfb53d1356d8b07"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav",
+      "sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav.import",
+      "sha256": "70dd332acab2196c129ee59155522dad0d9040a98751523600e6bdd1ec1d7732"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav",
+      "sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav.import",
+      "sha256": "02c2ed2b533be405aae1ed5bcfb2be65431993411585c27a9121174b4d3cbde2"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav",
+      "sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav.import",
+      "sha256": "2d0a20f6db8cb4677119144183346c05b5d3a4293980fd85898031d1e8c071ce"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav",
+      "sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav.import",
+      "sha256": "b93a94502ac1d13672a40fc82ca07b12ebf0f9597e94b6e37017d770ddd8d758"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav",
+      "sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav.import",
+      "sha256": "2df0675a744c79b4f7a6b3ff64626d87f7dbe0d4c04994732cb7fe57350a415f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav",
+      "sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav.import",
+      "sha256": "d46572a27ca194a4bf147be7888f683d11bd8a092d21821eb117011c681b010d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav.import",
+      "sha256": "bdd0c4470077e7083925374d76246b743e4570d6f531a7f18a96c308452a8852"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav",
+      "sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav.import",
+      "sha256": "e87ce57279aff0c5c703478f19077ac319a04d64aac002ad057fc9e72143cc4d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav",
+      "sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav.import",
+      "sha256": "d9ce60a15830eb1d011fba1c7a92e46aedbca11d6e80468b696c30cc4e34bcab"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav",
+      "sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav.import",
+      "sha256": "304bcc5b81b56add75b024fc6436f0b562aad1053181b2765ac63e848ff17c5d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav",
+      "sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav.import",
+      "sha256": "b8647fe2f2f27992402cb2e4b440f00c0283a08e55ef62952bc44b44d9ab10ea"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav",
+      "sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav.import",
+      "sha256": "6e6120f8e9a6bd96899b5d89c6b37cb73582a695752158367243ccf2832e7272"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav.import",
+      "sha256": "154e81c03c6cb74d8d48e983ed13702d7d7c80347291b79e0900da73dc7291a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav.import",
+      "sha256": "d339f0a4bf6b39817d8fb85b1ef5784e57d55a95cee35ba399ef5f9362d9627b"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav.import",
+      "sha256": "a9608c1b31d9910d4afee9b77e4ce4be492663171cadd46a083cd1e225ebd6ba"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav.import",
+      "sha256": "0a139e3f528ca452ffde28b60d300cc5852dcfeb54c65579eb104b3b9d1ef1b0"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav.import",
+      "sha256": "314a8669bbd6edfdf5fd82698865b91cd2651ccf6be1a27f7c47672b9ba85072"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav.import",
+      "sha256": "f91bf3371f4331ab37eef6572d53b486fa1c94f43c26d4cf9ed3802f00ffb116"
+    },
+    {
+      "path": "game/assets/audio/footsteps/provenance.json",
+      "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav",
+      "sha256": "877bb9f0c68de4de644d03edf7185bf9cae66a81d054823fb7785a87bb763c91"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav.import",
+      "sha256": "f6f9dc0e4625628bd5a1491884fc5035adcea9f22a216f42d614a893c8ff1bfa"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CREDITS.txt",
+      "sha256": "62830578d808051954c05f1357ab40683ea8768a21db1b6055c04448f2704239"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/provenance.json",
+      "sha256": "82cb5873689bf858d1c79e0bc35ef08c914cc10958ce0288fb3cac295fdf426f"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav.import",
+      "sha256": "5c921aedd77728c4e55cdc5e1a2fcbee7b0b89dddf8e9a2d81e0473f2b4b7e2c"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav.import",
+      "sha256": "898209286eaacdbc9141055c7dc53015dcd078099273099fb7100cbeaaa0c77a"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav.import",
+      "sha256": "e8734f661265e2b63d68a49e70dedcb7984bf41dd65fc8f8fa874a49ed228500"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav.import",
+      "sha256": "9e8b8969f5d3823a34b34067764483cae6bfbf62f8bec4c7b3f16e3a701c03ef"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav.import",
+      "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav.import",
+      "sha256": "36c998c366bceb554ee2f7788d7b6b61f66502aebb8da8c36136fa10c81de4ad"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "game/assets/audio/material/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "game/assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "game/assets/audio/music/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/music/CREDITS.txt",
+      "sha256": "dd64c63c222bb1bb879a6c033422c633e68b87ad62cd069aa0e73928dc58c84b"
+    },
+    {
+      "path": "game/assets/audio/music/M01.wav",
+      "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6"
+    },
+    {
+      "path": "game/assets/audio/music/M01.wav.import",
+      "sha256": "a9dbda209128246cf7671fedb2a5fd03ffffc7d014fb2db98f2a747518d12bd4"
+    },
+    {
+      "path": "game/assets/audio/music/M02.wav",
+      "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511"
+    },
+    {
+      "path": "game/assets/audio/music/M02.wav.import",
+      "sha256": "4988d15037edef51e88a19a011ac55a12da0c10110bcc8c7913432967e15dc4b"
+    },
+    {
+      "path": "game/assets/audio/music/provenance.json",
+      "sha256": "ae449ee4e81cc5fcbeb41588cdb9e81b909bfea23454f67b9f6d5bfedce73486"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav",
+      "sha256": "f366428acb43ff9f947c194523f056d5bbe8dbf77648d2dbec05c480f7bffab4"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav.import",
+      "sha256": "0e525d1a4520d11875a0c2aa51a384091e28387978375c1bd083acc6eb8e7d4b"
+    },
+    {
+      "path": "game/assets/audio/positional/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/positional/CREDITS.txt",
+      "sha256": "96d3b2e772bb725b686313ee4eff687f0e05fd5124074fdd66b3700794e9b8b9"
+    },
+    {
+      "path": "game/assets/audio/positional/provenance.json",
+      "sha256": "cf70804e9926d447801d5a5b44e518cf55d96a8bad8337e6a265f12672501c6c"
+    },
+    {
+      "path": "game/assets/audio/rain/CREDITS.txt",
+      "sha256": "f8fb90d7c96a5868f48c178646b2c964985988d94579e828d3fb42f7db40d337"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav",
+      "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav.import",
+      "sha256": "efc959a299a52c02f4564f2e4cdb4bc30f8ed21131a6e0f99c898b10471e442d"
+    },
+    {
+      "path": "game/assets/audio/rain/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/rain/provenance.json",
+      "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/CREDITS.txt",
+      "sha256": "e9f6df74b10c80da393ff34dbedd54c17ad6b81b7b5c18c23c1bd866489bf678"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav.import",
+      "sha256": "15c0497a2893d63b69f77f513a3b1d6c1390bee6af02169fbf994e362ea45965"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/provenance.json",
+      "sha256": "3cda95ef5ba266a7ef311596c9a87e6a14f80d11075567d4434d6b70100cc74a"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav",
+      "sha256": "d24f7e4473c49e19d62c024e5fee66d7ab944c2d73842314e841372ccac98ad4"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav.import",
+      "sha256": "8b8cf891e2af7b5429cb3aba0a169a51a2223a8ee073e9f2d193824932c0a73e"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CREDITS.txt",
+      "sha256": "4bfa8118ba5a629eec7fa926c9f67fc5817ea4ce7c581e3e21376e01c9df8656"
+    },
+    {
+      "path": "game/assets/audio/water-contact/provenance.json",
+      "sha256": "444aa206c5bbf8196d30f86521ed2b949abbb833e16e72c8a598e738e100b54e"
+    },
+    {
+      "path": "game/assets/audio/wind/CREDITS.txt",
+      "sha256": "0122400650a2bc49d0af0934041a1cd8bed03d8fb109e4a577c418ca73606be7"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav.import",
+      "sha256": "46310681a2dc964bfa6c7c172eb293c002894e5a3d17a7d741c41a7f1038284b"
+    },
+    {
+      "path": "game/assets/audio/wind/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/wind/provenance.json",
+      "sha256": "7a8a101d575639422a689a7c386fd9e0703310241521416a5ed1109cf09f04c8"
+    }
+  ],
+  "protected_repository_snapshot": {
+    "baseline_commit": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+    "tracked_file_count": 13786,
+    "algorithm": "Baseline git ls-tree -rz; exclude listed paths; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF.",
+    "manifest_sha256": "96ba9a7589bcb70a1c8643a9dd87adbf023671c1032cf5bafb393882a0c5a331",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_product_evidence": [
+    {
+      "path": "audio-direction/remedy-heating-runtime-authority.json",
+      "sha256": "0317d06092082888819c83c4fd1740b24ebea760a08c860d194a9e86f3f200c1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-verification.json",
+      "sha256": "d81eaa9f89a9ca33eaed7c65c2cc3e299c3437aaaa29b198c035d700526bd962"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/README.md",
+      "sha256": "90c780e59ddb93b26e5c40c48ed2a53cea85efd02df9bdd3527db42bc67b4e9a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/summary.json",
+      "sha256": "87cbbe22cc29c5367fec185c1a191956a5e4df1bb441ee9c31655ccd6d0cbbe8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/inventory.json",
+      "sha256": "5264094f143dc456a0f97dcc71865d32edbf84adbd4cc8e18f5d0148b3797909"
+    }
+  ],
+  "planning_checks": {
+    "status": "passed",
+    "all_baseline_git_blobs_match": true,
+    "protected_tracked_inputs": 13786,
+    "accepted_audio_bindings": 115,
+    "retained_archive_entries": 115,
+    "quality_inputs": {
+      "quality.py": "5ffc8b717e0a4258c8ac1ae66b2df9777a1fd2f44f23610c0856349c5122eb98",
+      "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+      "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+      "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+      "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    },
+    "retained_quality": {
+      "stages": 126,
+      "unit_tests": 5412,
+      "new_run": false,
+      "all_final_attempts_passed_and_complete": true,
+      "final_log_hashes_verified": true
+    },
+    "continuation_self_test_probes": 11,
+    "repository_boundary": "Two new proposal files plus ledger/handover/roadmap only; preserve editor bytes.",
+    "limits": "No source audio acquisition/decode/listening, PCM/runtime/product/CI edits or new native/device evidence."
+  }
+}
