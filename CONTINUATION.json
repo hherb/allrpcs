@@ -612,6 +612,20 @@
           "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-wind-runtime-integration",
+      "reason": "The owner-approved dedicated G01 and one exact southern-road wind owner, independent caption/history, all dependent source/motion/native/UI/packaging/rejection/full-quality checks and scoped publication preparation are complete. Source listening was qualified with sounds right. No further approval remains for this whole slice; broader emitters/weather/gameplay/release remain separate.",
+      "evidence": [
+        {
+          "path": "audio-direction/wind-runtime-authority.json",
+          "sha256": "696509286f3b0cb30e9c09878de0ad1c66aa45cb0c078d69b5ca776680d3df85"
+        },
+        {
+          "path": "audio-direction/wind-runtime-verification.json",
+          "sha256": "99d91257ab9b1f0d5279007bf6e0a86392e950ef3ed7ba8f19c45a956f7a901f"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -728,6 +742,20 @@
           "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
         }
       ]
+    },
+    {
+      "id": "audio-positional-southern-road-wind-runtime",
+      "reason": "The exact fixed road wind source/emitter and its dependent checks/review are complete. Do not reopen unchanged G01, road binding, captions/history or evidence under a renamed audit. Another source/emitter needs distinct authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/wind-runtime-authority.json",
+          "sha256": "696509286f3b0cb30e9c09878de0ad1c66aa45cb0c078d69b5ca776680d3df85"
+        },
+        {
+          "path": "audio-direction/wind-runtime-verification.json",
+          "sha256": "99d91257ab9b1f0d5279007bf6e0a86392e950ef3ed7ba8f19c45a956f7a901f"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -803,21 +831,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-wind-runtime-integration",
-    "title": "Implement the approved first fixed southern-road wind source and emitter",
-    "status": "in_progress",
-    "workstream": "audio-positional-southern-road-wind-runtime",
+    "id": "phase9-positional-woodland-rain-owner-scope",
+    "title": "Plan the first fixed woodland rain source and emitter",
+    "status": "ready",
+    "workstream": "audio-positional-woodland-rain-planning",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "Qualify the nominated original passage by listening, then prepare G01 and implement the granted fixed road wind owner, eleventh caption/history and dependent evidence.",
-    "instructions": "The owner approved this current implementation slice on 2026-10-12; see audio-direction/wind-runtime-authority.json. Follow the frozen wind-owner-scope proposal. Qualify the nominated retained original before runtime installation; signal measurements alone cannot satisfy its listening condition. Complete the exact emitter/caption/history and named dependent checks/review/publication after qualification; report an unqualified-source blocker without substitution. Preserve all closed owners and frozen evidence.",
-    "completion_condition": "Qualified G01, ordinary exact road playback, accessible caption/history, finite verification/review and scoped publication are complete under the recorded grant; record whole-slice closure without repeating scope approval.",
+    "missing_deliverable": "A concrete read-only dedicated rain source/rights proposal and one exact retained woodland-clearing emitter owner, with finite implementation checks and the one new source-use/runtime grant.",
+    "instructions": "Prepare a read-only proposal for one new dedicated rain passage and one exact existing Main/OpeningRegionWoodlandClearingSceneSource owner. Establish source lineage/rights, binding prerequisites, spatial schedule, anonymous caption/history, failure/reset behavior, finite checks and the missing implementation grant. Do not acquire or prepare PCM, install runtime, change weather/gameplay/art/geometry, or reopen B03/F01/G01 or prior accepted owners. The completed wind grant does not authorize this new runtime/source-use scope.",
+    "completion_condition": "One concrete hash-bound read-only rain source/emitter proposal identifies the missing dedicated deliverable, exact retained owner, permitted implementation files, finite verification and a single new implementation decision.",
     "outputs": [
-      "audio-direction/wind-runtime-authority.json",
-      "game/assets/audio/wind/G01.wav",
-      "audio-direction/wind-runtime-review/README.md",
-      "audio-direction/wind-runtime-verification.json"
+      "audio-direction/rain-owner-scope.md",
+      "audio-direction/rain-owner-scope.json"
     ],
-    "boundary": "Approved exact source-use/emitter implementation; source listening qualification remains a prerequisite. Only the named road owner and dependent checks; preserve every protected boundary in the grant."
+    "boundary": "Read-only planning for a distinct remaining positional ambience deliverable. No new acquisition, derivative/runtime/physical/weather/gameplay/voice/release authority; preserve every closure."
   },
   "deferred_slices": []
 }

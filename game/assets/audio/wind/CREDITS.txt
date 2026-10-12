@@ -1,0 +1,6 @@
+G01 — Wind blowing
+Mild Wind Background Noise by Bashar3A
+Supplied credit: Bashar from Skirmish.io
+https://opengameart.org/content/mild-wind-background-noise
+CC0-1.0 — https://creativecommons.org/publicdomain/zero/1.0/
+Retained original, qualified 12–16 second contiguous passage; -4 dB, resampled 48 kHz stereo PCM24, 100 ms fades, nonlooping.

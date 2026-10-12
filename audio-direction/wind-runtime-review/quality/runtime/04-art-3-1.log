@@ -1,0 +1,47 @@
+PASS: two exact Garden exports/copies, isolated masters and append-only manifest
+PASS: approved Garden sources, 91 assets/42 masters, imports and complete preserved predecessor tree
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "changed_pixels": 14850
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "changed_pixels": 14850
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "changed_pixels": 22215,
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "changed_pixels": 23058
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "changed_pixels": 92900,
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "changed_pixels": 92454
+  }
+]
+PASS: rejects paint
+PASS: rejects mask
+PASS: rejects phase
+PASS: rejects dropped soil
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects import processing
+PASS: rejects physical scope
+PASS: frozen Garden checks on approved 7942e7da578fc459345576e1d267a58f949382eb

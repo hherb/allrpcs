@@ -4,7 +4,9 @@
   "matching_fixture_qualification_passes": true,
   "exact_format_and_pcm_hash": true,
   "silent_endpoint_frames": true,
-  "runtime_derivative_not_installed": true,
+  "runtime_derivative_not_installed": false,
   "unqualified_runtime_cli_rejected": true,
-  "candidate_reproduced_byte_identically": true
+  "candidate_reproduced_byte_identically": true,
+  "qualified_runtime_installation": true,
+  "owner_statement": "sounds right"
 }

@@ -1,26 +1,27 @@
-# Retained wind source preparation
+# Qualified G01 wind passage
 
-The owner approved the active wind runtime implementation on 2026-10-12. See
-[grant](../wind-runtime-authority.json) and the unchanged
-[proposal](../wind-owner-scope.md). This source package preserves the nominated
-original by reference and exact SHA256; no new original was acquired or modified.
+The owner approved this runtime slice on 2026-10-12 and qualified the exact four-second
+review candidate with **“sounds right”**. The nominated original's catalogue warns of
+bag noise; qualification is the owner's listening assessment, not a signal-only claim.
+The exact accepted candidate is SHA256
+`01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788`.
 
-“Mild Wind Background Noise” by Bashar3A is listed as CC0-1.0 in the retained
-creator capture and was checked live on 2026-10-12. Preserve the supplied credit
-“Bashar from Skirmish.io”. Captured catalogue and deed are in `rights/`.
+[Mild Wind Background Noise](https://opengameart.org/content/mild-wind-background-noise)
+by Bashar3A is listed as CC0-1.0; preserve the supplied credit “Bashar from Skirmish.io”.
+[Provenance](provenance.json) binds the retained original, exact creator/deed captures,
+owner assessment and installed derivative. No new original was acquired and no prior
+B04/F01 excerpt or acceptance was changed.
 
-The catalogue warns of random bag sounds. The 12–16 second window is a review
-candidate selected by lower, steadier signal measurements. No listening pass is
-claimed. The owner's required assessment is pending; see
-[review](../wind-runtime-review/README.md) and `provenance.json`.
+G01 uses only original frames 529200–705600 (12–16 seconds at 44.1 kHz), deterministic
+48-kHz resampling, one -4 dB attenuation and 100 ms linear endpoint fades. It is
+192000 stereo PCM24 frames, four seconds, nonlooping. The sample peak is -24.343 dBFS,
+RMS -37.113 dBFS and integrated loudness -42.5 LUFS. No filtering, denoising, layering,
+pitch change or time stretching occurs. Native import is uncompressed stereo PCM16,
+without normalization, trimming or looping; the mounted archive verifies every converted byte.
 
-`python3 scripts/prepare-wind-passage.py --preview` reproduces the review-only
-four-second stereo 48 kHz PCM24 WAV: exact contiguous source frames 529200–705600
-at 44.1 kHz, deterministic resampling, one -4 dB attenuation and 100 ms linear
-endpoint fades. No filtering, denoising, layering or time/pitch changes occur.
-Measured sample peak is -24.3426 dBFS; integrated loudness is -42.5 LUFS. These
-measurements do not establish ordinary-play or device listening compliance.
-
-Without `--preview`, preparation refuses runtime installation until provenance
-contains a passed, matching, hash-bound owner listening assessment. Preview
-bytes, source originals and review measurements remain outside runtime exports.
+Reproduce with `python3 scripts/prepare-wind-passage.py`; installation requires the
+exact recorded owner-qualified candidate/window. `--preview` is for reproduction of
+that same source passage. The review retains decode, resample, PCM and import hashes.
+Original and review/decode audio are outside runtime resource exports; only G01 and
+its three source-specific notices are added. Controlled measurements do not establish
+ordinary-play or fresh-device loudness compliance.

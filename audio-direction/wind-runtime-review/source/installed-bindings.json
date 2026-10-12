@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "bindings": [
+    {
+      "path": "game/assets/audio/wind/G01.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav.import",
+      "sha256": "46310681a2dc964bfa6c7c172eb293c002894e5a3d17a7d741c41a7f1038284b"
+    },
+    {
+      "path": "game/.godot/imported/G01.wav-443492fdd44a3c5a83e03ddedd044d0a.sample",
+      "sha256": "b2a6641bc56ca12890c38b23fff7a2c818ade1b9331461818b5827186af68e54"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioSource.cs",
+      "sha256": "da6f2f25b237bc5345632fc39214046f140f2ddad3226c09a3fa9323de2e93c6"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioController.cs",
+      "sha256": "96f96d441f884a4f91989436d731d9f078b41a6755d9085bef97269c72067da6"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.cs",
+      "sha256": "a77abf6e2b20caf6c102dd1fdece408b528b4732ba37499a63ea2f22673a4a1a"
+    }
+  ]
+}

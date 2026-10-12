@@ -1,4 +1,4 @@
-[gd_scene load_steps=425 format=3]
+[gd_scene load_steps=428 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -637,6 +637,9 @@
 [ext_resource type="Script" path="res://OpeningRegionFoliageAudioSource.cs" id="foliage_source"]
 [ext_resource type="Script" path="res://OpeningRegionFoliageAudioController.cs" id="foliage_audio"]
 [ext_resource type="Script" path="res://FoliageAudioRuntimeSmokeCheck.cs" id="foliage_check"]
+[ext_resource type="Script" path="res://OpeningRegionWindAudioSource.cs" id="wind_source"]
+[ext_resource type="Script" path="res://OpeningRegionWindAudioController.cs" id="wind_audio"]
+[ext_resource type="Script" path="res://WindAudioRuntimeSmokeCheck.cs" id="wind_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4338,6 +4341,15 @@ script = ExtResource("foliage_audio")
 
 [node name="FoliageAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("foliage_check")
+
+[node name="OpeningRegionWindAudioSource" type="Node" parent="."]
+script = ExtResource("wind_source")
+
+[node name="OpeningRegionWindAudioController" type="Node" parent="."]
+script = ExtResource("wind_audio")
+
+[node name="WindAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("wind_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

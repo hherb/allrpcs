@@ -1,6 +1,6 @@
 {
-  "status": "review_candidate_not_qualified",
-  "path": "audio-direction/wind-runtime-review/source/G01-candidate.wav",
+  "status": "qualified_runtime_derivative",
+  "path": "game/assets/audio/wind/G01.wav",
   "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788",
   "decoder": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
   "python": "3.12.3",

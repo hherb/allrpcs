@@ -13,6 +13,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label interiorLabel = null!;
     private Label waterLabel = null!;
     private Label coverLabel = null!;
+    private Label windLabel = null!;
+    private string wind = string.Empty;
     private Label foliageLabel = null!;
     private string foliage = string.Empty;
     private Label healerFootstepLabel = null!;
@@ -36,7 +38,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -350; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -390; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -67,7 +69,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(healerFootstepLabel);
         foliageLabel = new() { Name = "Foliage", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(foliageLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel })
+        windLabel = new() { Name = "Wind", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(windLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel })
         { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
@@ -118,6 +122,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     /// <summary>Cancels only foliage without changing prior owners or timers.</summary>
     internal void ClearFoliage() { foliage = string.Empty; Refresh(); }
 
+    /// <summary>Shows only the independent generic road wind passage.</summary>
+    internal void SetWind(string text) { wind = text; Refresh(); }
+    /// <summary>Clears wind without changing any retained caption timer.</summary>
+    internal void ClearWind() { wind = string.Empty; Refresh(); }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -147,6 +156,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         handToolLabel.Text = enabled ? handTool : string.Empty;
         healerFootstepLabel.Text = enabled ? healerFootstep : string.Empty;
         foliageLabel.Text = enabled ? foliage : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0);
+        windLabel.Text = enabled ? wind : string.Empty;
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0);
     }
 }

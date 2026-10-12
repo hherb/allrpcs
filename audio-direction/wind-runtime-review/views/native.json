@@ -1,0 +1,394 @@
+{
+  "status": "passed",
+  "viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "bearings": [
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        -1
+      ],
+      "screen": [
+        -1,
+        -1
+      ],
+      "text": "Wind blowing above/left"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        640,
+        -1
+      ],
+      "screen": [
+        640,
+        -1
+      ],
+      "text": "Wind blowing above"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        -1
+      ],
+      "screen": [
+        1281,
+        -1
+      ],
+      "text": "Wind blowing above/right"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        360
+      ],
+      "screen": [
+        -1,
+        360
+      ],
+      "text": "Wind blowing left"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        360
+      ],
+      "screen": [
+        1281,
+        360
+      ],
+      "text": "Wind blowing right"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        721
+      ],
+      "screen": [
+        -1,
+        721
+      ],
+      "text": "Wind blowing below/left"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        640,
+        721
+      ],
+      "screen": [
+        640,
+        721
+      ],
+      "text": "Wind blowing below"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        721
+      ],
+      "screen": [
+        1281,
+        721
+      ],
+      "text": "Wind blowing below/right"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        0,
+        0
+      ],
+      "screen": [
+        0,
+        0
+      ],
+      "text": "Wind blowing"
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1280,
+        720
+      ],
+      "screen": [
+        1280,
+        720
+      ],
+      "text": "Wind blowing"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        -1
+      ],
+      "screen": [
+        -1,
+        -1
+      ],
+      "text": "Wind blowing above/left"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        640,
+        -1
+      ],
+      "screen": [
+        640,
+        -1
+      ],
+      "text": "Wind blowing above"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        -1
+      ],
+      "screen": [
+        1281,
+        -1
+      ],
+      "text": "Wind blowing above/right"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        360
+      ],
+      "screen": [
+        -1,
+        360
+      ],
+      "text": "Wind blowing left"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        360
+      ],
+      "screen": [
+        1281,
+        360
+      ],
+      "text": "Wind blowing right"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        -1,
+        721
+      ],
+      "screen": [
+        -1,
+        721
+      ],
+      "text": "Wind blowing below/left"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        640,
+        721
+      ],
+      "screen": [
+        640,
+        721
+      ],
+      "text": "Wind blowing below"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1281,
+        721
+      ],
+      "screen": [
+        1281,
+        721
+      ],
+      "text": "Wind blowing below/right"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        0,
+        0
+      ],
+      "screen": [
+        0,
+        0
+      ],
+      "text": "Wind blowing"
+    },
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "target": [
+        1280,
+        720
+      ],
+      "screen": [
+        1280,
+        720
+      ],
+      "text": "Wind blowing"
+    }
+  ],
+  "crossOwnerClear": true,
+  "missingAudioHistory": true,
+  "checks": [
+    "Actual native focus loss cancels with history retained; native eleven-caption bounds at both sizes; independent capacity/limiter; muted/captions-off selectable scrolling history; Tab/Shift-Tab/Escape/return focus."
+  ]
+}

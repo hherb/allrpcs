@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/scripts/check-wind-audio-output.py", line 122, in <module>
+    main()
+  File "/Users/hherb/src/allrpcs/scripts/check-wind-audio-output.py", line 117, in main
+    result = measure(args.wave, args.timeline); args.output.write_text(json.dumps(result, indent=2) + '\n')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hherb/src/allrpcs/scripts/check-wind-audio-output.py", line 49, in measure
+    require(peak < 1e-6 if name in SILENT else peak > 1e-6, 'Wrong native output admission: ' + name)
+  File "/Users/hherb/src/allrpcs/scripts/check-wind-audio-output.py", line 26, in require
+    raise ValueError(message)
+ValueError: Wrong native output admission: source-unsupported

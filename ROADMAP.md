@@ -170,10 +170,14 @@ native output/UI and resource packaging checks pass. The first
 [exterior wind proposal](audio-direction/wind-owner-scope.md) is complete:
 a dedicated derivative from the retained CC0 original and one fixed southern-road emitter,
 with anonymous accessible cues and finite checks. The original's catalogue warns of bag
-noise. Its source-use/emitter implementation is now approved; one four-second review
-candidate and pure range/schedule/history contracts are prepared. Listening qualification
-is pending, with no G01 runtime installation yet. Dedicated exterior wind runtime
-and wider emitters remain unfinished; the audio items below remain partial.
+noise. The owner qualified the exact four-second G01 passage with “sounds right”, and the
+[fixed southern-road wind runtime](audio-direction/wind-runtime-review/README.md) is complete:
+one retained anchor, exclusive 256-pixel Ambience, 18-second starts, eleventh caption and
+independent history. Source/binding, seven-mode full parity, 58 native output cases,
+both-size accessible UI, mounted 38-stream packaging and all 95 root-quality stages pass.
+No new weather, physical wind or gameplay authority is claimed. The next finite planning
+boundary is one distinct woodland rain owner; its runtime/source-use needs a new grant.
+Wider emitters and the audio items below remain partial.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

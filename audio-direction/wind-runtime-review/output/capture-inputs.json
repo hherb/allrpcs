@@ -1,0 +1,46 @@
+{
+  "command": [
+    "godot",
+    "--path",
+    "game",
+    "--disable-vsync",
+    "--fixed-fps",
+    "60",
+    "--write-movie",
+    "/private/tmp/wind-master.avi",
+    "--quit-after",
+    "18000",
+    "res://WindAudioRuntimeProof.tscn"
+  ],
+  "mode": "Native Movie Maker Master; final source/stream/player bindings; 58 distinct cases; no release.",
+  "inputs": [
+    {
+      "path": "game/OpeningRegionWindAudioSource.cs",
+      "sha256": "da6f2f25b237bc5345632fc39214046f140f2ddad3226c09a3fa9323de2e93c6"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioController.cs",
+      "sha256": "96f96d441f884a4f91989436d731d9f078b41a6755d9085bef97269c72067da6"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.cs",
+      "sha256": "a77abf6e2b20caf6c102dd1fdece408b528b4732ba37499a63ea2f22673a4a1a"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.tscn",
+      "sha256": "34808639e7575b9efa856d2daa0a902249f0fa1d5b329492b5d87d0de0c293c7"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav.import",
+      "sha256": "46310681a2dc964bfa6c7c172eb293c002894e5a3d17a7d741c41a7f1038284b"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "ab9e4e8e94342b095897f10e266f4561a22412c8f64d04d53164f3cfb43ebaf1"
+    }
+  ]
+}

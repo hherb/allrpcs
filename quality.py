@@ -176,10 +176,12 @@ def frozen_evidence():
         for row in record.get('evidence_bindings', []) + record.get('retained_evidence', []):
             if row in excluded:
                 continue
-            if path.name == 'foliage-runtime-verification.json' and row['path'] == 'quality.py':
-                # The wind grant explicitly permits the runner successor; retain its frozen predecessor.
-                if sha(git('show', FOLIAGE_REVISION + ':quality.py')) != row['sha256']:
-                    raise ValueError('Changed frozen foliage runner evidence')
+            if path.name == 'foliage-runtime-verification.json' and row['path'] in (
+                    'quality.py', 'game/Main.tscn', 'game/MaterialAudioCreditsPanel.cs',
+                    'game/MaterialSoundCaptionPanel.cs', 'game/PositionalSoundCueHistoryPanel.cs', 'game/export_presets.cfg'):
+                # The wind grant permits these exact additive successors; retain their frozen predecessors.
+                if sha(git('show', FOLIAGE_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen foliage predecessor evidence: ' + row['path'])
                 continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
@@ -414,11 +416,11 @@ def main(resume_smoke=False, finish_interior=False):
             run.stage('healer-master-output', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--output-only'], tree, env, HEALER_REVISION)
             run.stage('boundary-healer-after-runtime', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
         foliage_runtime(run, environment)
-        run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'])
+        wind_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
-        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes', flush=True)
+        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()
@@ -459,6 +461,31 @@ def foliage_runtime(run, environment):
         run.report.update(foliage_modes=list(foliage_modes), foliage_save_sha256=sha(foliage_saves[0]))
         run.stage('foliage-master-output', [sys.executable, 'scripts/validate-foliage-runtime.py', '--output-only'], tree, env, FOLIAGE_REVISION)
         run.stage('boundary-foliage-after-runtime', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], tree, env, FOLIAGE_REVISION)
+
+
+def wind_runtime(run, environment):
+    """Retain the seven new ordinary movement modes plus measured native and bounded review guards."""
+    modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'wind-disabled')
+    run.stage('wind-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj',
+                             '--no-restore', '--filter', 'FullyQualifiedName~Wind', '--logger', 'console;verbosity=minimal'])
+    run.stage('boundary-wind-source', [sys.executable, 'scripts/validate-wind-runtime.py', '--source-only'])
+    for mode in modes:
+        output = run.directory / f'wind-{mode}.json'
+        run.stage('wind-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '7000'],
+                  env=dict(environment, ALLRPCS_WIND_MAIN_CHECK='1', ALLRPCS_WIND_MODE=mode, ALLRPCS_WIND_REPORT=str(output)),
+                  retry_native=True, completion='PASS: wind Main:')
+    reports = [json.loads((run.directory / f'wind-{mode}.json').read_text()) for mode in modes]
+    saves = [(run.directory / f'wind-{mode}.json.save.json').read_bytes() for mode in modes]
+    if any(data != saves[0] for data in saves) or any(
+            row['motion'] != reports[0]['motion'] or row['transcript'] != reports[0]['transcript']
+            or row['truthBefore'] != row['truthAfter'] or row['truthBefore'] != reports[0]['truthBefore'] for row in reports):
+        raise ValueError('Wind changed complete motion/save/transcript/protected truth')
+    if any(row['starts'] != 3 or row['presentations'] != 3 for row in reports[:-1]) or any(
+            reports[-1][key] != 0 for key in ('starts', 'presentations')):
+        raise ValueError('Wind consumed/admitted schedule changed')
+    run.report.update(wind_modes=list(modes), wind_save_sha256=sha(saves[0]))
+    run.stage('wind-master-output', [sys.executable, 'scripts/validate-wind-runtime.py', '--output-only'])
+    run.stage('boundary-wind-reviewed', [sys.executable, 'scripts/validate-wind-runtime.py', '--reviewed'])
 
 
 def resume_foliage_prefix(prior, directory):

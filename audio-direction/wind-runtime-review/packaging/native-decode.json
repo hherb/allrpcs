@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "exact": true,
+  "streams": 1,
+  "sample_rate": 48000,
+  "frames": 192000,
+  "conversion": "signed PCM24 arithmetic right shift by 8; little-endian PCM16; every mounted byte equal",
+  "native_pcm16_sha256": "2513fec0888adfe8d6b81dd90fe3a1f8d72913f2a83258e80a14b9d648347e2b",
+  "credits_included": true
+}

@@ -1,93 +1,80 @@
-# Approved wind runtime: preparation checkpoint
+# Fixed southern-road wind runtime
 
-Prepared 2026-10-12 (Australia/Sydney). The current ledger-selected implementation
-scope is approved; [grant](../wind-runtime-authority.json) records the direct owner
-instruction and binds the unchanged [proposal](../wind-owner-scope.md).
-The whole runtime slice remains incomplete.
+The owner approved the exact implementation slice on 2026-10-12 and qualified the
+four-second candidate with **“sounds right”**. [Authority](../wind-runtime-authority.json)
+binds the unchanged [proposal](../wind-owner-scope.md). G01 uses the retained original's
+12–16 second window; [provenance](../wind-source/provenance.json) records the owner listening
+assessment, CC0 creator/deed captures and deterministic preparation. No prior accepted
+source, waveform, art, gait, physical owner or gameplay authority changes.
 
-## New wind passage for listening qualification
+The one independent player stays at the retained southern-road anchor (1500,1400),
+on Ambience with exclusive 256-pixel admission. Native attenuation and the existing
+mix/mono/ducking apply once. It plays four seconds after each 18 active seconds.
+Ineligible, muted or missing-stream starts are consumed; entry, unmute and resource
+repair never replay a passage. Blockers, stalls and teleport rebase the next wait.
+Successful load clears only the new transient owner; failed load preserves it.
 
-[Four-second review candidate](source/G01-candidate.wav)
+The source binds exact road/layout/anchor/projection/map references and polygon,
+road area, child order, boundaries, wagon outline and shape contents. The retained
+hidden RoadArea is data, not an audibility gate. Drift, replacement, hide/disable,
+unsupported listeners and stale listener ownership reject wind. No marker, scenery,
+map activation, physical wind, hearing event or saved fact is created.
 
-This candidate uses the retained original's 12–16 second passage. Exact original,
-decoded, trim, resampled and PCM/container hashes, decoder versions, gain and fade
-parameters are in [measurements](source/passage-measurements.json). It is four
-seconds, 192000 stereo PCM24 frames at 48 kHz, with 100 ms endpoint fades, one
--4 dB attenuation, -24.3426 dBFS sample peak, -37.1131 dBFS RMS and -42.5 LUFS
-integrated loudness. No samples clip.
+The eleventh caption is **Wind blowing**, optionally with the retained eight-way
+screen bearing. Its capacity-16 history owns an independent 18-second limiter and
+local sequence. The Audio history appends **Nearby wind cues** after the existing
+sections. Caption and history clearing preserve earlier owners and timers.
 
-The lower, steadier signal levels identify a candidate only. They cannot establish
-that audible bags, handling/buffeting, voices, wildlife, rain/leaf impacts,
-footsteps, machinery or abrupt edits are absent. The catalogue warns of bag
-sounds. The owner listening assessment requested in this chat remains pending;
-no assessment is fabricated and no source rejection is claimed.
+## Verification
 
-No runtime G01, ordinary wind player, eleventh caption or wind history UI section
-has been installed. Preparation refuses runtime installation without a matching
-passed listening record. If this original cannot supply a qualified passage,
-retain the same active slice and report the source blocker without substitution.
+- 48 focused spatial/schedule/history tests pass. Nine runner self-tests and eleven
+  continuation regression probes pass. The boundary validator protects 12,554
+  unchanged tracked inputs, reverses only the allowed Main/UI additions and executes
+  ten mutation rejection groups for source/proposal/PCM/binding/emitter/range/schedule/
+  bus/truth/evidence/prior-UI drift.
+- Seven [ordinary movement modes](live/) compare identical complete saves, transcripts,
+  3,324 motion samples and protected objects, inventory, perception, knowledge, beliefs,
+  sabotage/evidence and time. The first six admit three scheduled passages; the
+  wind-disabled baseline admits zero. Default also exercises exact binding failures,
+  live-injection refusal, pause/focus/stall/reading, failed/successful load and listener ownership.
+- [Native measurements](output/measurements.json) reanalyse actual Master bytes across
+  58 distinct cases: all seven distances, pan, mono, zoom/offset, quiet/gains/mutes,
+  missing stream/bus and repair/unmute, duck/recovery, range entry/exit, load/failure,
+  focus/pause/each overlay/text entry/teleport, source/listener/map failure and retained
+  B04/action/reply/footstep overlap. Each case retains onset, tail, peak, RMS and loudness;
+  cancellation tails must be silent after the 120 ms mixer allowance. Gains at
+  64/128/192 pixels are within five percent of 0.75/0.50/0.25. Source waveform matches
+  before its final fade; the final fade and full mounted conversion are checked separately.
+- [Native UI](views/native.json) verifies both 1280×720 and 1920×1080 windows, eleven
+  visible unclipped lines, all eight bearings and inclusive edges using the actual
+  logical viewport/canvas transforms, independent capacity/limiter, missing audio and
+  muted/captions-off history, selection/scrolling, Tab/Shift-Tab/Escape/Back and return
+  focus. Direct wind clearing preserves prior captions and three prior histories.
+  Captures were visually inspected. Ordinary motion establishes live admission;
+  injected presentations occur only after stopping the fixture.
+- [Packaging](packaging/inventory.json) contains 38 streams, 29 notice files in 19 groups,
+  all 100 prior audio entries byte-identical and the new wind credits/provenance/deed.
+  Every retained preset was exported and checked. [Mounted native decoding](packaging/native-decode.json)
+  matches every recorded PCM24-to-PCM16 byte. Originals, review audio and decode files
+  remain outside runtime resources.
 
-## Independent work and checks
+The final full root quality run passes **95 stages and 5,335 unit tests**; see
+[summary](quality/runtime/summary.json) and [log storage](quality/runtime/log-storage.json). All 82 retained stages remain in order;
+unchanged foliage checks run at c4f24ea1 with their frozen validators. The preparation
+checkpoint and earlier cold-import/sidecar/startup repair evidence remain under `quality/`.
 
-The pure Application contracts implement the fixed (1500,1400) position,
-exclusive 256-pixel admission, finite supported exterior bounds/room exclusions,
-eight-way anonymous “Wind blowing” bearings, deterministic 18-second schedule,
-four-second passage, stall/block/reset/no replay, and an independent capacity-16
-history with eighteen-second limiter and detached read-only snapshots.
-All 48 focused tests pass; see [test log](source/focused-tests.log).
+## Limits and fixture repairs
 
-[Preparation checks](source/preparation-checks.json) verify exact format/PCM/fades
-and five listening gate rejection cases. Reproduction is deterministic.
-`python3 scripts/validate-wind-runtime.py --source-only` protects all 12554
-unchanged baseline tracked inputs, grant/proposal/source/rights/preview hashes,
-pure range/schedule/history and the uninstalled runtime boundary. `--reviewed`
-refuses an incomplete runtime review. Nine runner self-tests and eleven
-continuation regression probes pass.
+The first native capture exposed 21 ms of B04 release crossing the next case prefix.
+The stopped overlap fixture now stops retained playback before that boundary; all
+58 cases were recaptured, with every silence guard retained. Native UI uses Godot's
+actual logical viewport at scaled window sizes; using physical window dimensions
+was corrected. The initial long native motion run lost a schedule interval; ordinary
+seven-mode parity runs independently from the focused native UI/focus fixture.
+Failure logs and repair records remain in the review.
 
-The runner pins unchanged foliage validators and native fixtures at `c4f24ea1`
-through isolated historical trees, retaining its original runner evidence and
-all 82 previous checks. Current source-only verification is an additional stage;
-full root quality now passes **88 stages and 5335 unit tests**, retaining every
-previous 82-stage check in order. [Summary](quality/summary.json) and
-[log storage](quality/log-storage.json) bind every complete final attempt.
-The exact current runner hash matches the final summary.
-
-The initial native smoke launch failed because the sandbox denied Godot's settings
-and `user://logs` files, causing `RotatedFileLogger` startup to crash. Explicit
-host resume validates the exact denied-log startup signature, rejects unrelated
-product errors, verifies prior command/log/input records, and reruns the failed
-command unchanged on the host. Automatic retry remains limited to diagnosed
-mutex shutdowns. See `quality/sandbox-native-startup.log` and the retained failed
-summary; the host resume log records the remaining stages.
-
-## Remaining completion boundary
-
-After the candidate's required listening qualification, install only the granted
-G01/source/controller, sibling Main wiring, independent eleventh caption/history
-section, credits and packaged notices. Complete all seven actual-motion parity
-modes, the proposal's measured native-output and UI subcases, 38-stream mounted
-resource packaging with 100 old entries byte-identical, 29 notice files/19 groups,
-rejection checks, and full root quality. Then close the whole named slice and
-publish under standing authority. Existing accepted owners and physical/gameplay
-truth remain protected.
-
-The cold historical editor import generated 17 UID sidecars of unchanged tracked
-Godot scripts. The unchanged frozen validator rejected these extra files after
-all seven modes and output reanalysis passed. The runner now applies its existing
-hash-checked generated-sidecar cleanup inside that isolated tree. An explicit
-`--finish-foliage` path verifies the exact predecessor runner/failure, every
-retained command, all 76 completed prefix stages and their log hashes, then reruns
-the entire affected cold build/import/modes/output/boundary and wind source check.
-Product errors, omitted checks or changed input/log records remain fatal. See
-`quality/cold-import-failed-summary.json`, `quality/cold-import-failed.log`, the
-archived predecessor runner and `quality/foliage-repair.log`.
-
-A second cold import exposed that the inherited 120-frame cutoff could stop the
-editor before importing resources. Its log explicitly reports an aborted scan;
-the next native launch rejected missing texture resources. The cold stage now
-uses installed Godot's `--import` command, which waits for imports before quitting.
-The resume guard accepts only this exact predecessor runner and diagnosed abort,
-verifies the unchanged 76-stage prefix and reruns every cold foliage stage. See
-`quality/import-wait-failed-summary.json`, import/runtime logs, archived runner
-and `quality/foliage-repair-final.log`. No missing product resources or errors are
-silently accepted, and the frozen validator remains unchanged.
+All three audio resource subsets pass despite Godot's C# export errors/warnings about
+missing game/Allrpcs.Game.sln. They establish audio packaging only; no executable or
+C# application release is produced or verified. Controlled native measurements do not
+establish fresh-device or ordinary-play loudness compliance. The source's bag-noise
+qualification is the owner's listening assessment.

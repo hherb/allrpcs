@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "license": "CC0-1.0",
+  "creator": "Bashar3A",
+  "title": "Mild Wind Background Noise",
+  "supplied_credit": "Bashar from Skirmish.io",
+  "catalogue_url": "https://opengameart.org/content/mild-wind-background-noise",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "original": {
+    "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+    "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80"
+  },
+  "originals_acquired": 0,
+  "retained_original_only": true,
+  "rights": [
+    {
+      "path": "audio-direction/wind-source/rights/catalogue.html",
+      "sha256": "5322a57fcc1877e4ff4c95e0eda6cabcada6b5b4de7b44de7f2f2562dc03a0a9"
+    },
+    {
+      "path": "audio-direction/wind-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    }
+  ],
+  "live_catalogue_check": {
+    "date": "2026-10-12",
+    "CC0_listing_confirmed": true,
+    "bag_noise_warning_confirmed": true
+  },
+  "listening": {
+    "status": "passed",
+    "start_frame": 529200,
+    "end_frame_exclusive": 705600,
+    "reason": "Owner listening acceptance qualifies the nominated 12-16 second passage under the frozen source contract.",
+    "required_assessment": "Listen/select one clean four-second contiguous window without bags/buffeting, voices, wildlife, rain/leaf impacts, footsteps, machinery, clipping or abrupt edits.",
+    "candidate_sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788",
+    "owner_statement": "sounds right",
+    "owner_date": "2026-10-12",
+    "assessment": "Owner qualified the exact four-second review candidate after listening in this conversation."
+  },
+  "derivative": {
+    "status": "qualified_runtime_derivative",
+    "path": "game/assets/audio/wind/G01.wav",
+    "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788",
+    "decoder": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "python": "3.12.3",
+    "resampling_filter": "aresample=48000:resampler=swr:filter_size=32:phase_shift=10:linear_interp=0:exact_rational=1:dither_method=none",
+    "original_sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80",
+    "decoded_original_frames": 1962874,
+    "decoded_original_float32_sha256": "a9727b33245987157ac6f8c16fef59ac7014d704dc0cc5e3594c7b8ff60ff7a5",
+    "trim_float32_sha256": "8a97fed25b587cc2ca0cc1e1b327dde934b1237300ed198223261973433fc567",
+    "resampled_float32_sha256": "b2892d022b163d15aaa61cf2ed5407be181c204deb39c33f0c136b552b33c54e",
+    "decoded_pcm24_sha256": "5264b29a88a45532548567421195a6b06629fa3ecdc290275128ddca463a5e1a",
+    "start_frame": 529200,
+    "end_frame_exclusive": 705600,
+    "input_sample_rate": 44100,
+    "frames": 192000,
+    "sample_rate": 48000,
+    "channels": 2,
+    "encoding": "PCM24",
+    "duration_seconds": 4,
+    "uniform_gain_db": -4.0,
+    "linear_fade_frames_each_end": 4800,
+    "loop": false,
+    "sample_peak_dbfs": -24.342565744964816,
+    "rms_dbfs": -37.11307978897544,
+    "integrated_loudness_lufs": -42.5,
+    "clipped_samples": 0,
+    "qualification_limit": "Measurements do not establish absence of bags, buffeting or other excluded audible sounds."
+  }
+}

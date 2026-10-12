@@ -1,0 +1,6 @@
+{
+  "initial_cases": 58,
+  "failure": "Previous retained B04 mixer tail crossed the source-unsupported case prefix before its trigger.",
+  "prefix_tail_seconds": 0.0206875,
+  "repair": "Stop retained overlap at case-local frame 270; preserve wind expiry and all silence guards; recapture every native case."
+}

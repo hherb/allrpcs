@@ -24,18 +24,17 @@ anonymous tenth caption and independent history. See [review](audio-direction/fo
 parity and 37-stream packaging. Preserve all 100 current audio archive entries
 and 26 notice files in 18 groups. No further approval remains for this owner.
 
-The **first exterior wind runtime** is approved in this chat on 2026-10-12; see
-[grant](audio-direction/wind-runtime-authority.json) and the unchanged
-[proposal](audio-direction/wind-owner-scope.md). Source preparation has produced
-one review-only four-second candidate from the retained original's 12–16 second
-window. Its listening qualification is pending; measurements alone cannot exclude
-the catalogue's bag-noise warning. See [candidate review](audio-direction/wind-runtime-review/README.md).
-The source/range/schedule/history pure contracts are implemented independently:
-48 focused tests pass. Root quality passes all 88 stages (all 82 retained stages),
-with 5,335 unit tests and nine runner self-tests. See
-[preparation verification](audio-direction/wind-runtime-verification.json).
-No G01 runtime resource, emitter or eleventh UI owner is installed yet. The active
-slice stays open for source qualification and all dependent runtime checks.
+The **fixed southern-road wind runtime** is complete under its 2026-10-12
+[grant](audio-direction/wind-runtime-authority.json). The owner qualified G01 with
+“sounds right”. One unchanged (1500,1400) owner plays four seconds every 18 active
+seconds within the exclusive 256-pixel range, with an anonymous eleventh caption and
+independent wind history. See [review](audio-direction/wind-runtime-review/README.md)
+and [verification](audio-direction/wind-runtime-verification.json). Full root quality
+passes 95 stages (all 82 retained stages) and 5,335 unit tests; 48 focused cases,
+58 native output cases, both-size native UI, seven-mode complete motion/save/truth
+parity and mounted packaging pass. The 38-stream audio archive preserves all 100
+prior entries and includes 29 notice files in 19 groups. The whole wind slice is
+closed; no repeat source, runtime, UI or listening approval remains.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -45,56 +44,52 @@ and download game sounds; see the foliage grant. Neither grants another runtime 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-positional-wind-runtime-integration — Implement the approved first fixed southern-road wind source and emitter** (in_progress).
+**phase9-positional-woodland-rain-owner-scope — Plan the first fixed woodland rain source and emitter** (ready).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: Qualify the nominated original passage by listening, then prepare G01 and
-implement the granted fixed road wind owner, eleventh caption/history and dependent evidence.
+Missing deliverable: A concrete read-only dedicated rain source/rights proposal and one exact
+retained woodland-clearing emitter owner, with finite implementation checks and the one new source-
+use/runtime grant.
 
-The owner approved this current implementation slice on 2026-10-12; see audio-direction/wind-
-runtime-authority.json. Follow the frozen wind-owner-scope proposal. Qualify the nominated retained
-original before runtime installation; signal measurements alone cannot satisfy its listening
-condition. Complete the exact emitter/caption/history and named dependent checks/review/publication
-after qualification; report an unqualified-source blocker without substitution. Preserve all closed
-owners and frozen evidence.
+Prepare a read-only proposal for one new dedicated rain passage and one exact existing
+Main/OpeningRegionWoodlandClearingSceneSource owner. Establish source lineage/rights, binding
+prerequisites, spatial schedule, anonymous caption/history, failure/reset behavior, finite checks
+and the missing implementation grant. Do not acquire or prepare PCM, install runtime, change
+weather/gameplay/art/geometry, or reopen B03/F01/G01 or prior accepted owners. The completed wind
+grant does not authorize this new runtime/source-use scope.
 
-Done when: Qualified G01, ordinary exact road playback, accessible caption/history, finite
-verification/review and scoped publication are complete under the recorded grant; record whole-slice
-closure without repeating scope approval.
+Done when: One concrete hash-bound read-only rain source/emitter proposal identifies the missing
+dedicated deliverable, exact retained owner, permitted implementation files, finite verification and
+a single new implementation decision.
 
 Expected outputs:
 
-- `audio-direction/wind-runtime-authority.json`
-- `game/assets/audio/wind/G01.wav`
-- `audio-direction/wind-runtime-review/README.md`
-- `audio-direction/wind-runtime-verification.json`
+- `audio-direction/rain-owner-scope.md`
+- `audio-direction/rain-owner-scope.json`
 
-Boundary: Approved exact source-use/emitter implementation; source listening qualification remains a
-prerequisite. Only the named road owner and dependent checks; preserve every protected boundary in
-the grant.
+Boundary: Read-only planning for a distinct remaining positional ambience deliverable. No new
+acquisition, derivative/runtime/physical/weather/gameplay/voice/release authority; preserve every
+closure.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Use `python3 scripts/check-continuation.py --self-test` for queue maintenance and
-`python3 scripts/check-continuation.py --sync` to render its handover. For the current wind preparation
-checkpoint, use `python3 scripts/validate-wind-runtime.py --source-only`; full wind
-`--reviewed` intentionally refuses incomplete runtime evidence. Foliage checks run
-in their isolated frozen source tree.
+`python3 scripts/check-continuation.py --sync` to render its handover. Wind checks are
+`python3 scripts/validate-wind-runtime.py --reviewed` and `--output-only`.
 Reuse passing product evidence for prose alone. Runtime changes require their granted
-focused checks and root `./quality.sh`; runner changes also require `python3 quality.py --self-test`.
+focused checks and root `./quality.sh`; runner changes require `python3 quality.py --self-test`.
 
-The runner preserves frozen validators and all retained schedules in isolated historical
-source trees. Hand-tool checks are pinned at `75c1aa04`, Healer at `ae06c9ab`; foliage is pinned at `c4f24ea1`; current wind preparation runs separately.
-Cold historical imports now wait for completion and clean only verified generated
-UID sidecars. Explicit repair/resume guards preserve logged passing checks; no
-product errors or incomplete fixture markers are accepted. See [quality maintenance](quality-review/README.md). Run Godot on the host;
-retry only diagnosed native mutex shutdowns with the identical command. Native focus
-checks require an uninterrupted foreground fixture; concurrent Godot launches steal focus.
+Frozen validators and fixtures run in isolated historical source trees: hand-tool at
+`75c1aa04`, Healer at `ae06c9ab`, foliage at `c4f24ea1`. Shared fields explicitly permitted
+by the wind grant retain their frozen predecessor evidence. Cold imports wait for
+completion and clean only verified generated UID sidecars. See the wind review for
+preparation/repair records. Run Godot on the host; retry only diagnosed native mutex
+shutdowns with the identical command. Native focus fixtures run serially in the foreground.
 
-Resource packaging is not an executable release. Controlled source/output measurements
-do not establish fresh-device or ordinary-play loudness compliance. The source listening
-assessment is the owner’s. Native source matching and mixer final-fade limits are explicit
-in the review. Preserve/exclude `game/project.godot` (recorded editor SHA
+Audio resource packaging is verified for all three presets. Godot reports the existing
+missing game solution during C# export; no executable release is verified. Controlled
+source/output measurements do not establish fresh-device or ordinary-play loudness
+compliance. Preserve/exclude `game/project.godot` (recorded editor SHA
 `36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`) and `.DS_Store`.

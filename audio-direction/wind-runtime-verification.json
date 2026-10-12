@@ -1,51 +1,57 @@
 {
   "schema_version": 1,
   "date": "2026-10-12",
-  "timezone": "Australia/Sydney",
   "scope_id": "phase9-positional-wind-runtime-integration",
-  "status": "preparation_verified_source_listening_pending_runtime_incomplete",
-  "baseline_commit": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
-  "authority": "audio-direction/wind-runtime-authority.json",
-  "source": "audio-direction/wind-source/provenance.json",
-  "review": "audio-direction/wind-runtime-review/README.md",
-  "owner_source_assessment": "pending; no listening pass fabricated",
-  "source_qualified": false,
-  "runtime_installed": false,
-  "focused_unit_tests": 48,
-  "qualification_gate_rejections": 5,
-  "unqualified_runtime_cli_refuses_installation": true,
-  "candidate_reproduced_byte_identically": true,
+  "status": "verified_complete",
+  "scope_closure": true,
+  "owner_source_statement": "sounds right",
+  "source_qualified": true,
+  "runtime_installed": true,
+  "focused_tests": 48,
+  "runner_self_tests": 9,
+  "continuation_regression_probes": 11,
   "protected_tracked_inputs": 12554,
+  "actual_motion_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "wind-disabled"
+  ],
+  "native_output_cases": 58,
+  "native_ui_windows": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "rejection_groups": 10,
+  "packaging": {
+    "streams": 38,
+    "individual_notices": 29,
+    "notice_groups": 19,
+    "retained_entries_byte_identical": 100,
+    "native_pcm16_sha256": "2513fec0888adfe8d6b81dd90fe3a1f8d72913f2a83258e80a14b9d648347e2b"
+  },
   "quality": {
     "status": "passed",
-    "required_command": "./quality.sh",
-    "host_resume_commands": [
-      "./quality.sh --resume-smoke",
-      "./quality.sh --finish-foliage"
-    ],
-    "stages": 88,
+    "stages": 95,
     "retained_stages": 82,
     "unit_tests": 5335,
     "runner_self_tests": 9,
-    "summary": "audio-direction/wind-runtime-review/quality/summary.json",
-    "all_final_attempts_passed_and_complete": true,
-    "current_runner_input_hash_exact": "ac985867bb191af972cd665b173f1a66c6318c7ecbe6e629d0ec0f0c8e22de81",
-    "historical_generated_sidecars_removed": 17
+    "summary": "audio-direction/wind-runtime-review/quality/runtime/summary.json",
+    "runner_sha256": "8f02009afcb69da6388f0e1e53770c50792558363b7d52caafbe519e4ce1a704",
+    "all_final_attempts_passed_and_complete": true
   },
-  "continuation_self_test_probes": 11,
-  "remaining": [
-    "Required candidate listening qualification",
-    "G01 runtime derivative/import/provenance/notices",
-    "Exact ordinary road source/controller and Main sibling wiring",
-    "Eleventh anonymous caption and independent history UI",
-    "Seven actual-motion wind parity modes",
-    "Measured native wind output and native UI cases",
-    "38-stream resource packaging; 100 prior entries byte-identical; 29 notices/19 groups",
-    "Complete wind rejection/quality/review and whole-slice closure/publication"
+  "local_editor_exception": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "limits": [
+    "Owner listening qualifies the nominated source passage; measurements alone do not exclude bag noise.",
+    "Audio resource archives only; C# export reports missing game solution, no executable release verified.",
+    "No fresh-device/ordinary-play loudness compliance or broader wind/weather/gameplay authority."
   ],
-  "scope_closure": false,
-  "publication_scope": "This verified preparation checkpoint only; whole wind runtime remains in the same active slice.",
-  "editor_exception_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
   "evidence_bindings": [
     {
       "path": "audio-direction/wind-runtime-authority.json",
@@ -53,7 +59,163 @@
     },
     {
       "path": "audio-direction/wind-runtime-review/README.md",
-      "sha256": "5d491fab55c6d9137f1725dec591afa2f8b97671493945413b8bae3cfb63458a"
+      "sha256": "3844393697aaeb45b3bb6d60df165715ee3ec24c025d6135e3ebc5b5c489c975"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/ambience-muted.json",
+      "sha256": "b32f838804735999d360ac8dc2119b851492db7a7f058b589cf475cb1146ec77"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/ambience-muted.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/ambience-muted.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/captions-off.json",
+      "sha256": "bcf8197afd1ea4083f3ff545296cf9002278a43fb136f932272a2da475f9e5a6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/captions-off.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/captions-off.log",
+      "sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/default.json",
+      "sha256": "748b19bba0f35ab72d96cf32cb693cdcffaaaa20f67651948d852c6ddd012ef0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/default.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/default.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/master-muted.json",
+      "sha256": "2e3a55e603d968654379c412d7963c8a92797200d7c86cb578cc64ec3edf6e3a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/master-muted.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/master-muted.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/missing-stream.json",
+      "sha256": "0175b5d0a3ef781ebb999ef4c1c9e4661c5b8100ee74f862ef7d2e2e6e2c166b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/missing-stream.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/quiet.json",
+      "sha256": "eb6d6bba3a09878510a1aed6d66f0d98a699221a52fc0453060e6496ed1711e0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/quiet.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/quiet.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/wind-disabled.json",
+      "sha256": "de24e456dad30b261b6201480513de9914cdfabef73f0566daeacb715c18a3ea"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/wind-disabled.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/live/wind-disabled.log",
+      "sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/capture-inputs.json",
+      "sha256": "a4d3af2952b3ef9b5953dec2d7512431c1111f66e6102f8d637a7b51a946a3e3"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/capture-repair.json",
+      "sha256": "5482cbd83d48a684cf6f900f6c7646099f5e5b795c8d07fdd5601d384cca66a8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/initial-capture.log",
+      "sha256": "36010171116de3a37e1fbd22449184a4f6b1c4f8ed9a4fd5a0f84300fa2813e0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/initial-measurement-failed.log",
+      "sha256": "e75be82e61ee3d342e3dcb5226d67c04afde16c8af8cd9b1b6e9ab4c2ee8edbe"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/master.wav.gz",
+      "sha256": "eca666c539a96bc6d751b11169c31e14d825a4c4d422d2c556b2d2b461549c19"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/measurements.json",
+      "sha256": "baf14d8ca80d7664e3de5efa423a9fcb03af58bf4067e0548e6d16ec591042ea"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/native.log",
+      "sha256": "7ab96840f652c4e69cb8ee45d91e8798f67df52ed92b12595be3ea2f658cbaf7"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/reanalysis.log",
+      "sha256": "0af38eb04adb714ee72fffc7d5668a6cdbf85d99ed35b0b4fde58a992d065ea7"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/output/timeline.json",
+      "sha256": "4dabcf370ab4c31f85915b49a08023899d952517e71b11902bb2a2efcf8577be"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/audio-subset.zip",
+      "sha256": "fe11878cc6524444366dbb2a21f00e1b31a639b9f31e27eb3cba9d8df2b2ff20"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/expected-pcm16.bin",
+      "sha256": "2513fec0888adfe8d6b81dd90fe3a1f8d72913f2a83258e80a14b9d648347e2b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/export-0.log",
+      "sha256": "f74931fbf02e3bcc2d6657d4705f5bdb68c12177fbda62970f2ec78492927c17"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/export-1.log",
+      "sha256": "de8e0fffeff3eebec916c3f058880e7c4f8c3e297384ee65e965c1713c809e23"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/export-2.log",
+      "sha256": "38bb9243a4386eee3c79c91f7b8cddae66f49a20f8bdc9778ac887a07da32f05"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/generated-sidecar-cleanup.json",
+      "sha256": "66fac30a36bf0fc080847f18104a65e4cac2af08a4735915fe14df6ca64628ba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/inventory.json",
+      "sha256": "ea8024798af9ffc5db0e8ca27e069fbdfdd72bc9846c03d80f0afb96c536b6dc"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/native-decode.json",
+      "sha256": "271fae6b84b015e324f96cb15b3c9f6112bd39db3a97ed2948843b37e7908dc9"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/packaging/native.log",
+      "sha256": "0dc07554cfd73a6d1fb4f5d6663abc5f1861c7566471554df8e777f73ad4d75d"
     },
     {
       "path": "audio-direction/wind-runtime-review/quality/01-continuation-1.log",
@@ -444,6 +606,14 @@
       "sha256": "57c3eb23cbb1bb4a6c9939e8236c63aeae5e439566b41392767c948f6d89bea5"
     },
     {
+      "path": "audio-direction/wind-runtime-review/quality/preparation-checkpoint.md",
+      "sha256": "5d491fab55c6d9137f1725dec591afa2f8b97671493945413b8bae3cfb63458a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/preparation-verification.json",
+      "sha256": "5a58b71ead609450d6cfefa6ed93fdbbf075a8639ca739b202acc24a8556e10f"
+    },
+    {
       "path": "audio-direction/wind-runtime-review/quality/root.log",
       "sha256": "118391a490b85bd0652fd0f08b06f0e4390eb73d34ec52ced6bd4d4c7955e810"
     },
@@ -454,6 +624,454 @@
     {
       "path": "audio-direction/wind-runtime-review/quality/runner-before-sidecar-repair.py",
       "sha256": "f736e3521fed3e81ea24f5bdeff2abe8e509efb68cf5409a06be3e2da49ef2fe"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/02-art-1-1.log",
+      "sha256": "087aece14dc07bd732980e88a23640202b7a60d1b6845cae9ff3e93ddfaa352d"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/25-product-3-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/26-product-4-1.log",
+      "sha256": "fae9447222564d5ed003592c9884db2f1622be5563431de44709e313d939a2e2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/27-product-5-1.log",
+      "sha256": "4f054468dedda07babfc2838ccffb385218c7294fa08dca54fc4607a9a84444b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/28-product-6-1.log",
+      "sha256": "7f500e965543cf6d3ff0c6ee7226bfdac71c87cd6a5b2bf20695ed314395c7a0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/29-product-7-1.log",
+      "sha256": "7b3ee9946e7dd5fc538c1925c20b117b57609ce7080818aef14cc5eb7c5dda8f"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/30-product-8-1.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/31-product-9-1.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/32-product-10-1.log",
+      "sha256": "f3f63bbf09116c7599ce0680406094a76b62a02bc7682908330b47d8b2893720"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/33-product-11-1.log",
+      "sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/34-product-12-1.log",
+      "sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/35-product-13-1.log",
+      "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/36-product-14-1.log",
+      "sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/37-product-15-1.log",
+      "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/38-product-16-1.log",
+      "sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/39-product-17-1.log",
+      "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/40-product-18-1.log",
+      "sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/41-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/42-interior-normal-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/43-interior-muted-1.log",
+      "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/44-interior-zero-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/45-interior-mono-reduced-1.log",
+      "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/46-water-default-1.log",
+      "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/47-water-quiet-1.log",
+      "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/48-water-master-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/49-water-effects-muted-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/50-water-missing-stream-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/51-water-no-action-1.log",
+      "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/52-cask-default-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/53-cask-quiet-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/54-cask-master-muted-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/55-cask-effects-muted-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/56-cask-missing-stream-1.log",
+      "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/57-cask-no-action-1.log",
+      "sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/58-hand-tool-default-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/59-hand-tool-quiet-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/60-hand-tool-master-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/61-hand-tool-effects-muted-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/62-hand-tool-missing-stream-1.log",
+      "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/63-hand-tool-no-action-1.log",
+      "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/64-healer-footstep-default-1.log",
+      "sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/65-healer-footstep-quiet-1.log",
+      "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/66-healer-footstep-master-muted-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/67-healer-footstep-effects-muted-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/68-healer-footstep-missing-resources-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/69-healer-footstep-captions-off-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/70-healer-footstep-observer-disabled-1.log",
+      "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/71-boundary-hand-tool-after-runtime-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/72-healer-master-output-1.log",
+      "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/73-boundary-healer-after-runtime-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/74-foliage-historical-build-1.log",
+      "sha256": "43729c3c5ffdadbd95f2076e36ffea64865681b7e5214be4fd06d4c86ff2c5ce"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/75-foliage-historical-import-1.log",
+      "sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/76-foliage-default-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/77-foliage-quiet-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/78-foliage-master-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/79-foliage-ambience-muted-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/80-foliage-missing-stream-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/81-foliage-captions-off-1.log",
+      "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/82-foliage-foliage-disabled-1.log",
+      "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/83-foliage-master-output-1.log",
+      "sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/84-boundary-foliage-after-runtime-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/85-wind-focused-1.log",
+      "sha256": "29f36b1f6549584470f41732bad18b965d04ab749900afe542405695e32b4298"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/86-boundary-wind-source-1.log",
+      "sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/87-wind-default-1.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/88-wind-quiet-1.log",
+      "sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/89-wind-master-muted-1.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/90-wind-ambience-muted-1.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/91-wind-missing-stream-1.log",
+      "sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/92-wind-captions-off-1.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/93-wind-wind-disabled-1.log",
+      "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/94-wind-master-output-1.log",
+      "sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/95-boundary-wind-reviewed-1.log",
+      "sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/log-storage.json",
+      "sha256": "843d54216b126ee7bc24e26f4c42ece34c44e4e2b3f0d646313864552185a51b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/root.log",
+      "sha256": "4e7776c26640f1d665e6fd3dbd434f92d4c66f5baeccc356726be8c6335f05ec"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/summary.json",
+      "sha256": "b6ff389c647e192f90a914400fad923912051c1c64724672b11add78232d572e"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-ambience-muted.json",
+      "sha256": "b32f838804735999d360ac8dc2119b851492db7a7f058b589cf475cb1146ec77"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-ambience-muted.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-captions-off.json",
+      "sha256": "bcf8197afd1ea4083f3ff545296cf9002278a43fb136f932272a2da475f9e5a6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-captions-off.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-default.json",
+      "sha256": "748b19bba0f35ab72d96cf32cb693cdcffaaaa20f67651948d852c6ddd012ef0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-default.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-master-muted.json",
+      "sha256": "2e3a55e603d968654379c412d7963c8a92797200d7c86cb578cc64ec3edf6e3a"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-master-muted.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-missing-stream.json",
+      "sha256": "0175b5d0a3ef781ebb999ef4c1c9e4661c5b8100ee74f862ef7d2e2e6e2c166b"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-missing-stream.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-quiet.json",
+      "sha256": "eb6d6bba3a09878510a1aed6d66f0d98a699221a52fc0453060e6496ed1711e0"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-quiet.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-wind-disabled.json",
+      "sha256": "de24e456dad30b261b6201480513de9914cdfabef73f0566daeacb715c18a3ea"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/quality/runtime/wind-wind-disabled.json.save.json",
+      "sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977"
     },
     {
       "path": "audio-direction/wind-runtime-review/quality/sandbox-failed-summary.json",
@@ -472,24 +1090,72 @@
       "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
     },
     {
+      "path": "audio-direction/wind-runtime-review/source/continuation-selftest.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
       "path": "audio-direction/wind-runtime-review/source/focused-tests.log",
       "sha256": "990f524347649ebff14a28007d2fe143070cc3d991c202fe86c0d601b72c24e1"
     },
     {
+      "path": "audio-direction/wind-runtime-review/source/focused.log",
+      "sha256": "919fe696014a81c7e8c9348bf01cf2710968be05c8f2ddcc52835f43bf5c2272"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/installed-bindings.json",
+      "sha256": "3469c09f0e07476de12591f3bac1e0da5f193b268d8a2f712775b1f95ce06518"
+    },
+    {
       "path": "audio-direction/wind-runtime-review/source/passage-measurements.json",
-      "sha256": "46055041cd2eac5c3dade820fb09186ca153c5057ee8bea22f7342e728fa461d"
+      "sha256": "2fa4ad60de2eb7f675953414c8603280eb2ce5192476e499217bd3e1494ec845"
     },
     {
       "path": "audio-direction/wind-runtime-review/source/preparation-checks.json",
-      "sha256": "22450eb814203292bc15417cf77ad4fbdcfb50d187c8a16660d3ef95e549f908"
+      "sha256": "7c90a9b8e7bf6b53d59167cd70c7053050d568f185b275f9053aaf1e12ce5160"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/source/runner-selftest.log",
+      "sha256": "23b088b0390b7beb227cf71063e1d743ee954d2c73786f7a654600c5cc992c98"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/eleven-captions-1280.png",
+      "sha256": "31658aa9f870df7bb6a853d829ef4e6780550025592052463318a6a489fc3014"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/eleven-captions-1920.png",
+      "sha256": "ba5db63be84c143d9712b99c2b9716b898d179a0c3f647bcbfcae6d713ee33b6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/history-muted-1280.png",
+      "sha256": "19f5235fb8c1c3ac43030e9e7f717f3d5170ddf4e91a61bed0317e5d69f1a008"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/history-muted-1920.png",
+      "sha256": "4d8a49d35dc06ca62bfcfc3f630b87a3941620b49c8aa2ca1025c199cb2fa4ad"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/initial-motion-failed.log",
+      "sha256": "a66a4c76aabb01ead43b6028fd7dab759c918fbf13531e509f422b608ac873f6"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/native.json",
+      "sha256": "d7bd211c21d4b3dd165e8e3b4be99480144779a2ac0d1bfe151b1755a2622827"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/native.log",
+      "sha256": "49662dd5f3572c95c45c6315a0daaa893072e183a6405962ca3aa64b0da86664"
+    },
+    {
+      "path": "audio-direction/wind-runtime-review/views/ordinary-offscreen.png",
+      "sha256": "b7ddcf12de730879827129f051d099ad738644d4c8293396c9bec4bdaad6b005"
     },
     {
       "path": "audio-direction/wind-source/README.md",
-      "sha256": "09ac4824070624e2842e083c5289e1222e70f84e20d32296032dd6e08254c87c"
+      "sha256": "ccf1e92687c947983db3bd9c274eaac2539fabb2be30a9470c3e24ff6bf470a8"
     },
     {
       "path": "audio-direction/wind-source/provenance.json",
-      "sha256": "9ee6d31d105b9fd61407e7799b314908558d3e837e174fe79bda8148a9ce7c86"
+      "sha256": "7a8a101d575639422a689a7c386fd9e0703310241521416a5ed1109cf09f04c8"
     },
     {
       "path": "audio-direction/wind-source/rights/catalogue.html",
@@ -500,8 +1166,88 @@
       "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
     },
     {
+      "path": "game/Main.tscn",
+      "sha256": "ab9e4e8e94342b095897f10e266f4561a22412c8f64d04d53164f3cfb43ebaf1"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "95f9f23de6feb3014b70b5aa4d9637c6f928d0c15e4a8ab472203790d235db10"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "9a7db8cc33ffab8b9503be668f10d6ffee4bc6d05041856ca71220f16465461e"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioController.cs",
+      "sha256": "96f96d441f884a4f91989436d731d9f078b41a6755d9085bef97269c72067da6"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioController.cs.uid",
+      "sha256": "d9b5a26bcc055fec8825e29c6b05ead195dacf79e3e5801cd3a204050e2c192f"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioSource.cs",
+      "sha256": "da6f2f25b237bc5345632fc39214046f140f2ddad3226c09a3fa9323de2e93c6"
+    },
+    {
+      "path": "game/OpeningRegionWindAudioSource.cs.uid",
+      "sha256": "cb796dafa92cf9bdb6fbcfd8024bf6ac7ad1958192d0019da85e721a9cc91c17"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "5422ee4d403e5c40eca8300e106ba7a5f9223e772d385d45d353161195d3f6ed"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.cs",
+      "sha256": "a77abf6e2b20caf6c102dd1fdece408b528b4732ba37499a63ea2f22673a4a1a"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.cs.uid",
+      "sha256": "fceeadd8acb69168f510651bba13ec3f845b301c8f9550321f695dea0470fe81"
+    },
+    {
+      "path": "game/WindAudioRuntimeProof.tscn",
+      "sha256": "34808639e7575b9efa856d2daa0a902249f0fa1d5b329492b5d87d0de0c293c7"
+    },
+    {
+      "path": "game/WindAudioRuntimeSmokeCheck.cs",
+      "sha256": "bf274a2825c04d4007bf32e33bcedb297ef0f3819f31352a691ba627a675ba28"
+    },
+    {
+      "path": "game/WindAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "851799c88389feb6433dab832a18395072d54e22a07fc703ad0e2d6653ef3800"
+    },
+    {
+      "path": "game/assets/audio/wind/CREDITS.txt",
+      "sha256": "0122400650a2bc49d0af0934041a1cd8bed03d8fb109e4a577c418ca73606be7"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav.import",
+      "sha256": "46310681a2dc964bfa6c7c172eb293c002894e5a3d17a7d741c41a7f1038284b"
+    },
+    {
+      "path": "game/assets/audio/wind/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/wind/provenance.json",
+      "sha256": "7a8a101d575639422a689a7c386fd9e0703310241521416a5ed1109cf09f04c8"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "35bedf78fbc74c715cefa40b677c0fcdf7acc035923de05f06229d4292ea9bf5"
+    },
+    {
       "path": "quality.py",
-      "sha256": "ac985867bb191af972cd665b173f1a66c6318c7ecbe6e629d0ec0f0c8e22de81"
+      "sha256": "8f02009afcb69da6388f0e1e53770c50792558363b7d52caafbe519e4ce1a704"
+    },
+    {
+      "path": "scripts/check-wind-audio-output.py",
+      "sha256": "16c131fa0fe621884ba110c0f33a7f57cad7e7d0042ad61473c4202232e6af0a"
     },
     {
       "path": "scripts/prepare-wind-passage.py",
@@ -509,7 +1255,7 @@
     },
     {
       "path": "scripts/validate-wind-runtime.py",
-      "sha256": "d4158bfd37ed50d99d38c8998fad345d65880a0c01e202fb52e109e62158821c"
+      "sha256": "9e42af8b4b394fc139333c43d643ef6e3ae15674ad8bafd1b9de7b3782222c11"
     },
     {
       "path": "src/Application/Audio/WindCueHistory.cs",
@@ -536,22 +1282,7 @@
       "sha256": "74afa62c3c460658f44fa6fd18452cd8655b7e0d337220e97f7ed6fc0a906115"
     }
   ],
-  "retained_evidence": [
-    {
-      "path": "audio-direction/foliage-runtime-verification.json",
-      "sha256": "1c7a064e5b5dc4fe1b09c5b7cde60661c1da8da8539fe4613518d1a4557763d1"
-    },
-    {
-      "path": "audio-direction/wind-owner-scope.md",
-      "sha256": "2fa573fa74c8d1625da1e3e325f0dc9344cc7ee296fb06de01dbfc2a27c81dad"
-    },
-    {
-      "path": "audio-direction/wind-owner-scope.json",
-      "sha256": "99ceba31574d0d71d982b3fefcfc0264317fc8713d9dd677d854224beef17477"
-    }
-  ],
-  "whitespace_check_exception": {
-    "path": "audio-direction/wind-source/rights/catalogue.html",
-    "reason": "Untouched source-specific catalogue capture preserves its original bytes, including existing trailing whitespace; check all other paths normally and disable only blank-at-eol for this capture."
-  }
+  "excluded_finder_metadata": [
+    "audio-direction/wind-runtime-review/.DS_Store"
+  ]
 }
