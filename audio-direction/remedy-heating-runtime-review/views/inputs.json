@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "native": true,
+  "wrapped_caption_owners": 13,
+  "inputs": [
+    {
+      "path": "game/RemedyHeatingAudioRuntimeSmokeCheck.cs",
+      "sha256": "770e389b6b5f6a1f9f12dc519836fafc0565e8e4ddce5c4d641be650a2715d01"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "37907edb752db71beceec575f6574e6d0231a95a194311c781d184a9b0efed8b"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "d1debff352381e083775fb3166d364369367997574cb5f35981b6e867f7bcbff"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e835e2bf51d3976ca6104f96be3d04618c862c0ad0ff41ef2249b6cb2c2b6867"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingCueHistory.cs",
+      "sha256": "5d36185f2d9f31842ac33c1e9720bd826a434dcac915366173320da912fa1e6f"
+    }
+  ]
+}

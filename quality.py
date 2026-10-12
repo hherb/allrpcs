@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 import tarfile
@@ -32,6 +33,7 @@ HAND_TOOL_REVISION = '75c1aa04e4cfa840d75bee119de11afe7fb2484c'
 HEALER_REVISION = 'ae06c9abd939cc1c2df9bdc35654166f66c15c00'
 FOLIAGE_REVISION = 'c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3'
 WIND_REVISION = 'da2826ea8fb49a0464cf177c395de12b19db7998'
+RAIN_REVISION = '9115a64199b4838390caaa7b8a56ba64e903544c'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -75,6 +77,46 @@ def native_shutdown(returncode, output):
     last_launch = output.rsplit('Godot Engine v', 1)[-1]
     return (returncode in (-6, 134) and 'mutex lock failed' in last_launch
             and not any(marker in last_launch for marker in ('ERROR:', 'AssertionError', 'Unhandled exception')))
+
+
+def native_launch(real, arguments, original_path):
+    """Retry only one identical native command on diagnosed shutdown; propagate every other failure."""
+    environment = dict(os.environ, PATH=original_path)
+    for attempt in range(1, 4):
+        result = subprocess.run([real, *arguments], env=environment, stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT)
+        sys.stdout.buffer.write(result.stdout)
+        sys.stdout.buffer.flush()
+        if result.returncode == 0:
+            return 0
+        if attempt < 3 and native_shutdown(result.returncode, result.stdout.decode(errors='replace')):
+            print('RETRY identical native launch after diagnosed shutdown:', arguments, flush=True)
+            continue
+        return result.returncode if result.returncode >= 0 else 128 - result.returncode
+    raise AssertionError('Unreachable native retry fallthrough')
+
+
+@contextmanager
+def native_retry_shim():
+    """Keep the frozen smoke script unchanged while retrying its individual real Godot launches."""
+    real = shutil.which('godot')
+    if real is None:
+        raise ValueError('Godot executable unavailable')
+    original_path = os.environ['PATH']
+    with tempfile.TemporaryDirectory(prefix='allrpcs-native-retry-') as directory:
+        wrapper = Path(directory) / 'godot'
+        code = ('#!/usr/bin/env python3\nimport runpy, sys\n'
+                + 'scope = runpy.run_path(' + repr(str(ROOT / 'quality.py')) + ')\n'
+                + 'raise SystemExit(scope["native_launch"](' + repr(real)
+                + ', sys.argv[1:], ' + repr(original_path) + '))\n')
+        wrapper.write_text(code)
+        wrapper.chmod(0o755)
+        os.environ['PATH'] = directory + os.pathsep + original_path
+        try:
+            yield {'real_godot': real, 'wrapper_sha256': sha(code.encode()), 'max_identical_attempts': 3,
+                   'reason': 'Individual frozen smoke launches retry only diagnosed native shutdown; real errors remain fatal.'}
+        finally:
+            os.environ['PATH'] = original_path
 
 
 def sandbox_log_startup(returncode, output):
@@ -190,6 +232,13 @@ def frozen_evidence():
                 # The rain grant permits these additive fields; validate frozen wind bytes at its own revision.
                 if sha(git('show', WIND_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen wind predecessor evidence: ' + row['path'])
+                continue
+            if path.name == 'rain-runtime-verification.json' and row['path'] in (
+                    'quality.py', 'game/Main.tscn', 'game/MaterialAudioCreditsPanel.cs',
+                    'game/MaterialSoundCaptionPanel.cs', 'game/PositionalSoundCueHistoryPanel.cs', 'game/export_presets.cfg'):
+                # The heating grant permits only additive owners; retain the exact rain predecessor.
+                if sha(git('show', RAIN_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen rain predecessor evidence: ' + row['path'])
                 continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
@@ -332,8 +381,13 @@ def main(resume_smoke=False, finish_interior=False):
                        'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         first = 19 if finish_interior else 9 if resume_smoke else 0
         for index, command in enumerate(product[first:], first + 1):
-            run.stage(f'product-{index}', ['sh', '-c', command],
-                      env=environment if 'godot' in command else None, retry_native='godot' in command)
+            if index == 10:
+                with native_retry_shim() as audit:
+                    run.report['native_launch_retry'] = audit
+                    run.stage(f'product-{index}', ['sh', '-c', command], env=environment, retry_native=True)
+            else:
+                run.stage(f'product-{index}', ['sh', '-c', command],
+                          env=environment if 'godot' in command else None, retry_native='godot' in command)
         for mode in ('normal', 'muted', 'zero', 'mono-reduced'):
             output = run.directory / f'interior-{mode}.json'
             run.stage('interior-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
@@ -426,6 +480,7 @@ def main(resume_smoke=False, finish_interior=False):
         foliage_runtime(run, environment)
         wind_runtime(run, environment)
         rain_runtime(run, environment)
+        heating_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -510,16 +565,47 @@ def wind_checks(run, environment, tree, env):
     run.stage('boundary-wind-reviewed', [sys.executable, 'scripts/validate-wind-runtime.py', '--reviewed'], tree, env, WIND_REVISION)
 
 
+def heating_runtime(run, environment):
+    """Check the live successor without replacing any retained stage."""
+    run.stage('heating-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedyHeating', '--logger', 'console;verbosity=minimal'])
+    run.stage('boundary-heating-source', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--source-only'])
+    modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'heating-disabled')
+    for mode in modes:
+        output = run.directory / f'heating-{mode}.json'
+        run.stage('heating-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                  env=dict(environment, ALLRPCS_HEATING_MAIN_CHECK='1', ALLRPCS_HEATING_MODE=mode, ALLRPCS_HEATING_REPORT=str(output)),
+                  retry_native=True, completion='PASS: heating Main:')
+    reports = [json.loads((run.directory / f'heating-{mode}.json').read_text()) for mode in modes]
+    saves = [(run.directory / f'heating-{mode}.json.save.json').read_bytes() for mode in modes]
+    if any(data != saves[0] for data in saves) or any(row['motion'] != reports[0]['motion'] or row['truthBefore'] != row['truthAfter']
+            or row['transcript'] != reports[0]['transcript'] for row in reports):
+        raise ValueError('Heating changed complete motion/save/transcript/protected truth')
+    if any(row['commits'] != 1 or row['presentations'] != 1 or row['grinding'] != 1 or row['treatment'] != 1 for row in reports[:-1]) or reports[-1]['presentations'] != 0:
+        raise ValueError('Heating exact commit/presentation contract changed')
+    run.report.update(heating_modes=list(modes), heating_save_sha256=sha(saves[0]))
+    run.stage('heating-master-output', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--output-only'])
+    run.stage('boundary-heating-reviewed', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--reviewed'])
+
+
 def rain_runtime(run, environment):
+    """Retain every rain stage in its unchanged baseline source tree."""
+    with snapshot(RAIN_REVISION, editor=True) as (tree, env):
+        run.stage('rain-historical-restore', ['dotnet', 'restore', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj'], tree, env, RAIN_REVISION)
+        run.stage('rain-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, RAIN_REVISION)
+        run.stage('rain-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, RAIN_REVISION, retry_native=True)
+        frozen_rain_runtime(run, dict(environment, **env), tree)
+
+
+def frozen_rain_runtime(run, environment, tree):
     """Retain the seven new ordinary movement modes plus measured native and bounded review guards."""
     modes = ('default', 'quiet', 'master-muted', 'ambience-muted', 'missing-stream', 'captions-off', 'rain-disabled')
     run.stage('rain-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj',
-                             '--no-restore', '--filter', 'FullyQualifiedName~Audio.Rain', '--logger', 'console;verbosity=minimal'])
-    run.stage('boundary-rain-source', [sys.executable, 'scripts/validate-rain-runtime.py', '--source-only'])
+                             '--no-restore', '--filter', 'FullyQualifiedName~Audio.Rain', '--logger', 'console;verbosity=minimal'], tree, environment, RAIN_REVISION)
+    run.stage('boundary-rain-source', [sys.executable, 'scripts/validate-rain-runtime.py', '--source-only'], tree, environment, RAIN_REVISION)
     for mode in modes:
         output = run.directory / f'rain-{mode}.json'
         run.stage('rain-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '7600'],
-                  env=dict(environment, ALLRPCS_RAIN_MAIN_CHECK='1', ALLRPCS_RAIN_MODE=mode, ALLRPCS_RAIN_REPORT=str(output)),
+                  cwd=tree, revision=RAIN_REVISION, env=dict(environment, ALLRPCS_RAIN_MAIN_CHECK='1', ALLRPCS_RAIN_MODE=mode, ALLRPCS_RAIN_REPORT=str(output)),
                   retry_native=True, completion='PASS: rain Main:')
     reports = [json.loads((run.directory / f'rain-{mode}.json').read_text()) for mode in modes]
     saves = [(run.directory / f'rain-{mode}.json.save.json').read_bytes() for mode in modes]
@@ -531,8 +617,8 @@ def rain_runtime(run, environment):
             reports[-1][key] != 0 for key in ('starts', 'presentations')):
         raise ValueError('Rain consumed/admitted schedule changed')
     run.report.update(rain_modes=list(modes), rain_save_sha256=sha(saves[0]))
-    run.stage('rain-master-output', [sys.executable, 'scripts/validate-rain-runtime.py', '--output-only'])
-    run.stage('boundary-rain-reviewed', [sys.executable, 'scripts/validate-rain-runtime.py', '--reviewed'])
+    run.stage('rain-master-output', [sys.executable, 'scripts/validate-rain-runtime.py', '--output-only'], tree, environment, RAIN_REVISION)
+    run.stage('boundary-rain-reviewed', [sys.executable, 'scripts/validate-rain-runtime.py', '--reviewed'], tree, environment, RAIN_REVISION)
 
 
 def resume_foliage_prefix(prior, directory):
@@ -701,6 +787,41 @@ class ContractTests(unittest.TestCase):
         prior_errors = 'ERROR: earlier successful launch cleanup\nGodot Engine v4.6.3\nsmoke passed\nmutex lock failed'
         self.assertTrue(native_shutdown(134, prior_errors))
         self.assertFalse(native_shutdown(134, prior_errors.replace('smoke passed', 'ERROR: current check failed')))
+
+    def test_individual_native_retry_is_identical_and_fail_closed(self):
+        """A frozen launch must really exit zero; test errors and exhausted shutdown retries remain fatal."""
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        shutdown = SimpleNamespace(returncode=-6, stdout=b'Godot Engine v4.6.3\nsmoke passed\nmutex lock failed')
+        passed = SimpleNamespace(returncode=0, stdout=b'smoke passed\n')
+        args = ['--headless', '--quit-after', '30']
+        with patch.object(subprocess, 'run', side_effect=[shutdown, passed]) as run:
+            self.assertEqual(native_launch('/actual/godot', args, '/original/path'), 0)
+            self.assertEqual(run.call_args_list[0], run.call_args_list[1])
+            self.assertEqual(run.call_args.kwargs['env']['PATH'], '/original/path')
+            self.assertEqual(run.call_args.args[0], ['/actual/godot', *args])
+        failed = SimpleNamespace(returncode=134, stdout=b'ERROR: fixture failed; mutex lock failed')
+        with patch.object(subprocess, 'run', return_value=failed) as run:
+            self.assertEqual(native_launch('/actual/godot', args, '/original/path'), 134)
+            self.assertEqual(run.call_count, 1)
+        with patch.object(subprocess, 'run', return_value=shutdown) as run:
+            self.assertEqual(native_launch('/actual/godot', args, '/original/path'), 134)
+            self.assertEqual(run.call_count, 3)
+
+    def test_native_shim_restores_environment_on_failure(self):
+        """The temporary launcher cannot change later stage resolution or survive an exception."""
+        from unittest.mock import patch
+        before = os.environ['PATH']
+        with patch.object(shutil, 'which', return_value='/actual/godot'):
+            with self.assertRaisesRegex(RuntimeError, 'probe'):
+                with native_retry_shim() as audit:
+                    wrapper = Path(os.environ['PATH'].split(os.pathsep)[0]) / 'godot'
+                    self.assertTrue(wrapper.is_file())
+                    self.assertEqual(audit['real_godot'], '/actual/godot')
+                    self.assertEqual(sha(wrapper.read_bytes()), audit['wrapper_sha256'])
+                    raise RuntimeError('probe')
+        self.assertEqual(os.environ['PATH'], before)
+        self.assertFalse(wrapper.exists())
 
     def test_sandbox_log_startup_resume_is_narrow(self):
         """A host retry may reuse prior passes only for the known settings/log-denial startup crash."""

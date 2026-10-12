@@ -1,4 +1,4 @@
-[gd_scene load_steps=431 format=3]
+[gd_scene load_steps=433 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -643,6 +643,9 @@
 [ext_resource type="Script" path="res://OpeningRegionRainAudioSource.cs" id="rain_source"]
 [ext_resource type="Script" path="res://OpeningRegionRainAudioController.cs" id="rain_audio"]
 [ext_resource type="Script" path="res://RainAudioRuntimeSmokeCheck.cs" id="rain_check"]
+
+[ext_resource type="Script" path="res://OpeningRegionRemedyHeatingAudioController.cs" id="heating_audio"]
+[ext_resource type="Script" path="res://RemedyHeatingAudioRuntimeSmokeCheck.cs" id="heating_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4362,6 +4365,12 @@ script = ExtResource("rain_audio")
 
 [node name="RainAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("rain_check")
+
+[node name="OpeningRegionRemedyHeatingAudioController" type="Node" parent="."]
+script = ExtResource("heating_audio")
+
+[node name="RemedyHeatingAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("heating_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

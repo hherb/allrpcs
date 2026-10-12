@@ -14,6 +14,16 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
     /// <summary>Presentation-only notification after an exact committed grinding step.</summary>
     public event Action<IngredientPreparationRecipe, IngredientPreparationStep, Vector2>? GrindingCompleted;
 
+    /// <summary>Independent presentation notification after the exact successful heating commit.</summary>
+    internal event Action<HeatingPreparationCommit>? HeatingCompleted;
+    private HeatingPreparationCommit? heatingCommit;
+
+    /// <summary>Admits only the exact currently owned committed token and current activity.</summary>
+    internal bool OwnsHeating(HeatingPreparationCommit? commit) => commit is not null
+        && ReferenceEquals(heatingCommit, commit) && ReferenceEquals(commit.Owner, this)
+        && ReferenceEquals(scene.Binding, commit.Binding) && ReferenceEquals(preparation.Activity, commit.After)
+        && ReferenceEquals(preparation.Recipe, commit.Binding.Recipe);
+
     internal const string ReadyStatusText = "Preparation: go to the station and press P.";
     internal const string MoveCloserStatusText = "Preparation: move closer to the station.";
     internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
@@ -42,6 +52,10 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         status.Text = ReadyStatusText;
+        var restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
+        void ResetHeating() => heatingCommit = null;
+        restoration.PresentationReset += ResetHeating;
+        TreeExiting += () => { restoration.PresentationReset -= ResetHeating; heatingCommit = null; };
     }
 
     /// <inheritdoc />
@@ -142,6 +156,16 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                             requestedRecipe, step, new Vector2(currentBinding.StationPosition.X, currentBinding.StationPosition.Y));
                     }
                     catch (Exception exception) { GD.PrintErr($"Grinding presentation failed: {exception.Message}"); }
+                }
+            }
+            if (advanced && RemedyHeatingPresentationProjection.IsCommit(requestedRecipe, step, activity, preparation.Activity)
+                && RemedyHeatingPresentationProjection.Local(ToNumerics(seeker.GlobalPosition), seekerPosition, currentBinding.StationPosition))
+            {
+                heatingCommit = new(this, currentBinding, activity, preparation.Activity!, step, seeker.GlobalPosition);
+                foreach (Delegate listener in HeatingCompleted?.GetInvocationList() ?? [])
+                {
+                    try { ((Action<HeatingPreparationCommit>)listener)(heatingCommit); }
+                    catch (Exception exception) { GD.PrintErr($"Heating presentation failed: {exception.Message}"); }
                 }
             }
             return advanced;

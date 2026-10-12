@@ -1,0 +1,532 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-remedy-heating-runtime-integration",
+  "owner_statement": "runtime approved",
+  "approved_scope": "Authorize acquisition/qualification of TinyWorlds' exact cooking_with_cover_01.ogg including the source-format exception if the encoding is lossy; prepare three-second H01 and present it once on Effects only after the exact heating-step 1-to-2 commit at the unchanged (2300,1300) station; add the thirteenth Heating preparation caption and independent capacity-16 history; complete the named files, source listening, finite checks and standing Git publication. An unsuitable source/window blocks installation without substitution.",
+  "proposal": {
+    "path": "audio-direction/remedy-heating-owner-scope.json",
+    "sha256": "f23f267e0932208199b211946a576cac1de614357bf52d77ffbeef51392bdf58"
+  },
+  "source_acceptance": {
+    "statement": "I just listened to it - sounds perfect!",
+    "date": "2026-10-12",
+    "scope": "Nominated TinyWorlds covered-pot original; preserve acceptance without another original review. No frame-exact H01 has yet been prepared."
+  },
+  "baseline_commit": "9115a64199b4838390caaa7b8a56ba64e903544c",
+  "implementation_files": {
+    "new_exact_paths": [
+      "src/Application/Audio/RemedyHeatingPresentationProjection.cs",
+      "tests/Application.Tests/Audio/RemedyHeatingPresentationProjectionTests.cs",
+      "src/Application/Audio/RemedyHeatingCueHistory.cs",
+      "tests/Application.Tests/Audio/RemedyHeatingCueHistoryTests.cs",
+      "game/HeatingPreparationCommit.cs",
+      "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "game/RemedyHeatingAudioRuntimeSmokeCheck.cs",
+      "game/RemedyHeatingAudioRuntimeProof.cs",
+      "game/RemedyHeatingAudioRuntimeProof.tscn",
+      "scripts/prepare-remedy-heating-passage.py",
+      "scripts/check-remedy-heating-audio-output.py",
+      "scripts/validate-remedy-heating-runtime.py",
+      "audio-direction/remedy-heating-runtime-authority.json",
+      "audio-direction/remedy-heating-runtime-verification.json",
+      "audio-direction/remedy-heating-source/README.md",
+      "audio-direction/remedy-heating-source/provenance.json",
+      "audio-direction/remedy-heating-source/originals/cooking_with_cover_01.ogg",
+      "audio-direction/remedy-heating-source/rights/catalogue.html",
+      "audio-direction/remedy-heating-source/rights/deed.html",
+      "game/assets/audio/remedy-heating/H01.wav",
+      "game/assets/audio/remedy-heating/H01.wav.import",
+      "game/assets/audio/remedy-heating/CREDITS.txt",
+      "game/assets/audio/remedy-heating/provenance.json",
+      "game/assets/audio/remedy-heating/deed.html",
+      "game/HeatingPreparationCommit.cs.uid",
+      "game/OpeningRegionRemedyHeatingAudioController.cs.uid",
+      "game/RemedyHeatingAudioRuntimeSmokeCheck.cs.uid",
+      "game/RemedyHeatingAudioRuntimeProof.cs.uid"
+    ],
+    "new_review_directory": "audio-direction/remedy-heating-runtime-review/ (source/listening/output/parity/native UI/packaging/rejection/log evidence only)",
+    "narrow_existing_edits": {
+      "game/OpeningRegionRemedyPreparationInputCoordinator.cs": "Only heating notification, exact transient token admission and lifecycle. Preserve all gameplay branches/checks/status/results and GrindingCompleted.",
+      "game/Main.tscn": "New sibling heating controller/smoke resources only; retain station/children/prior blocks and Channel last.",
+      "game/MaterialSoundCaptionPanel.cs": "Independent thirteenth heating line and own panel bound only.",
+      "game/PositionalSoundCueHistoryPanel.cs": "Append separate heating history section and update descriptive subtitle only.",
+      "game/MaterialAudioCreditsPanel.cs": "Append heating credits only.",
+      "game/export_presets.cfg": "Append heating txt/json/html notice filters in each retained preset.",
+      "quality.py": "Add focused/current heating stages; pin unchanged rain fixtures at baseline using existing historical runner; preserve older pins and all 109 stages.",
+      "CONTINUATION.json": "Record exact grant, closure and one finite next missing deliverable.",
+      "HANDOVER.md": "Current checkpoint and ledger-rendered active boundary.",
+      "ROADMAP.md": "Partial completion state only."
+    },
+    "protected": "All other product inputs including Domain/preparation controller/recipe/station geometry and art/navigation/movement/persistence/providers/hearing/perception, prior audio and frozen validators."
+  },
+  "accepted_audio_bindings": [
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav",
+      "sha256": "267dafd443a0e815d4449e33c66c67bda6aa9d883a550a493b7ea956b7375871"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/A02-C01.wav.import",
+      "sha256": "5e5a08e9cd47f1cd25f48edef7cabe46e5cfaff9ce76570b454d6a72f58861be"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/CREDITS.txt",
+      "sha256": "f2befa0e79efb0ecbfd0ab289684358384607827a5ac118ddc12b788a24de31e"
+    },
+    {
+      "path": "game/assets/audio/cask-cover/provenance.json",
+      "sha256": "cb15a0f4fda955f8311c3ddcf4b88770887c942865a6af5efb66b15cdd1b24a8"
+    },
+    {
+      "path": "game/assets/audio/foliage/CREDITS.txt",
+      "sha256": "8a0377b2e494aa942c431bf5578c9976403ed05a066f498bfd1d4405e9c84782"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav",
+      "sha256": "895a58f291254915a26eb57819e7bbf20e85ad4aca71d32a1f8237bb71981505"
+    },
+    {
+      "path": "game/assets/audio/foliage/F01.wav.import",
+      "sha256": "ba6237b789af28d6f7ce3f4f20856ffc97349a9ca12e19906b5bd9f0c7a2c872"
+    },
+    {
+      "path": "game/assets/audio/foliage/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/foliage/provenance.json",
+      "sha256": "4d7525241aaf42c9e740e169db1707b6832d3e184c8df2802810122f0d070ff5"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/footsteps/CREDITS.txt",
+      "sha256": "628ec5f92af16b6ee119bd63d27f041cf9347fab07f44236cb25eba1e22658d9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav.import",
+      "sha256": "155473ed5acb93c4c45b5be3171fe9e3f2856395880ee145c351878a9f762ca9"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav.import",
+      "sha256": "9d3884914cb0fede1a4bdaa59ca587a1de75d4daad39170994f99319167c29a8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav.import",
+      "sha256": "41bfed746f64e893c628088689b80cd55959d19fd9330c4649d735b3c1ba4287"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav.import",
+      "sha256": "7a5b6fbdd6a03bef401fe0b6e9cd624059f83c900997207546e498819249afc3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav.import",
+      "sha256": "23d5bb66009483c7b22e03b348bad50ea04af386fe5705ed5f42d1dda6001e3d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav.import",
+      "sha256": "b20d4fc8630086eeafc463f2032f6ffb50cee7b637a0082e6bfb53d1356d8b07"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav",
+      "sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav.import",
+      "sha256": "70dd332acab2196c129ee59155522dad0d9040a98751523600e6bdd1ec1d7732"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav",
+      "sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav.import",
+      "sha256": "02c2ed2b533be405aae1ed5bcfb2be65431993411585c27a9121174b4d3cbde2"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav",
+      "sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav.import",
+      "sha256": "2d0a20f6db8cb4677119144183346c05b5d3a4293980fd85898031d1e8c071ce"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav",
+      "sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav.import",
+      "sha256": "b93a94502ac1d13672a40fc82ca07b12ebf0f9597e94b6e37017d770ddd8d758"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav",
+      "sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav.import",
+      "sha256": "2df0675a744c79b4f7a6b3ff64626d87f7dbe0d4c04994732cb7fe57350a415f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav",
+      "sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav.import",
+      "sha256": "d46572a27ca194a4bf147be7888f683d11bd8a092d21821eb117011c681b010d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav.import",
+      "sha256": "bdd0c4470077e7083925374d76246b743e4570d6f531a7f18a96c308452a8852"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav",
+      "sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav.import",
+      "sha256": "e87ce57279aff0c5c703478f19077ac319a04d64aac002ad057fc9e72143cc4d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav",
+      "sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav.import",
+      "sha256": "d9ce60a15830eb1d011fba1c7a92e46aedbca11d6e80468b696c30cc4e34bcab"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav",
+      "sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav.import",
+      "sha256": "304bcc5b81b56add75b024fc6436f0b562aad1053181b2765ac63e848ff17c5d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav",
+      "sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav.import",
+      "sha256": "b8647fe2f2f27992402cb2e4b440f00c0283a08e55ef62952bc44b44d9ab10ea"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav",
+      "sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav.import",
+      "sha256": "6e6120f8e9a6bd96899b5d89c6b37cb73582a695752158367243ccf2832e7272"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav.import",
+      "sha256": "154e81c03c6cb74d8d48e983ed13702d7d7c80347291b79e0900da73dc7291a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav.import",
+      "sha256": "d339f0a4bf6b39817d8fb85b1ef5784e57d55a95cee35ba399ef5f9362d9627b"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav.import",
+      "sha256": "a9608c1b31d9910d4afee9b77e4ce4be492663171cadd46a083cd1e225ebd6ba"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav.import",
+      "sha256": "0a139e3f528ca452ffde28b60d300cc5852dcfeb54c65579eb104b3b9d1ef1b0"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav.import",
+      "sha256": "314a8669bbd6edfdf5fd82698865b91cd2651ccf6be1a27f7c47672b9ba85072"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav.import",
+      "sha256": "f91bf3371f4331ab37eef6572d53b486fa1c94f43c26d4cf9ed3802f00ffb116"
+    },
+    {
+      "path": "game/assets/audio/footsteps/provenance.json",
+      "sha256": "8a67b9bb64760222ae3956b73e326bf706eab3e50cb901d33e01d1197a8fc381"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav",
+      "sha256": "877bb9f0c68de4de644d03edf7185bf9cae66a81d054823fb7785a87bb763c91"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/A03-T01.wav.import",
+      "sha256": "f6f9dc0e4625628bd5a1491884fc5035adcea9f22a216f42d614a893c8ff1bfa"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/CREDITS.txt",
+      "sha256": "62830578d808051954c05f1357ab40683ea8768a21db1b6055c04448f2704239"
+    },
+    {
+      "path": "game/assets/audio/hand-tool/provenance.json",
+      "sha256": "82cb5873689bf858d1c79e0bc35ef08c914cc10958ce0288fb3cac295fdf426f"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav.import",
+      "sha256": "5c921aedd77728c4e55cdc5e1a2fcbee7b0b89dddf8e9a2d81e0473f2b4b7e2c"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav.import",
+      "sha256": "898209286eaacdbc9141055c7dc53015dcd078099273099fb7100cbeaaa0c77a"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav.import",
+      "sha256": "e8734f661265e2b63d68a49e70dedcb7984bf41dd65fc8f8fa874a49ed228500"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav.import",
+      "sha256": "9e8b8969f5d3823a34b34067764483cae6bfbf62f8bec4c7b3f16e3a701c03ef"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav.import",
+      "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav.import",
+      "sha256": "36c998c366bceb554ee2f7788d7b6b61f66502aebb8da8c36136fa10c81de4ad"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "game/assets/audio/material/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "game/assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "game/assets/audio/music/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/music/CREDITS.txt",
+      "sha256": "dd64c63c222bb1bb879a6c033422c633e68b87ad62cd069aa0e73928dc58c84b"
+    },
+    {
+      "path": "game/assets/audio/music/M01.wav",
+      "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6"
+    },
+    {
+      "path": "game/assets/audio/music/M01.wav.import",
+      "sha256": "a9dbda209128246cf7671fedb2a5fd03ffffc7d014fb2db98f2a747518d12bd4"
+    },
+    {
+      "path": "game/assets/audio/music/M02.wav",
+      "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511"
+    },
+    {
+      "path": "game/assets/audio/music/M02.wav.import",
+      "sha256": "4988d15037edef51e88a19a011ac55a12da0c10110bcc8c7913432967e15dc4b"
+    },
+    {
+      "path": "game/assets/audio/music/provenance.json",
+      "sha256": "ae449ee4e81cc5fcbeb41588cdb9e81b909bfea23454f67b9f6d5bfedce73486"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav",
+      "sha256": "f366428acb43ff9f947c194523f056d5bbe8dbf77648d2dbec05c480f7bffab4"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav.import",
+      "sha256": "0e525d1a4520d11875a0c2aa51a384091e28387978375c1bd083acc6eb8e7d4b"
+    },
+    {
+      "path": "game/assets/audio/positional/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/positional/CREDITS.txt",
+      "sha256": "96d3b2e772bb725b686313ee4eff687f0e05fd5124074fdd66b3700794e9b8b9"
+    },
+    {
+      "path": "game/assets/audio/positional/provenance.json",
+      "sha256": "cf70804e9926d447801d5a5b44e518cf55d96a8bad8337e6a265f12672501c6c"
+    },
+    {
+      "path": "game/assets/audio/rain/CREDITS.txt",
+      "sha256": "f8fb90d7c96a5868f48c178646b2c964985988d94579e828d3fb42f7db40d337"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav",
+      "sha256": "3dbf8115b3f10db342f231a3816c686144faf6a56eeb0bd75c8466cf9a8b8cd8"
+    },
+    {
+      "path": "game/assets/audio/rain/R01.wav.import",
+      "sha256": "efc959a299a52c02f4564f2e4cdb4bc30f8ed21131a6e0f99c898b10471e442d"
+    },
+    {
+      "path": "game/assets/audio/rain/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/rain/provenance.json",
+      "sha256": "5d4a48d5d9f3da337c9eb8cac22596125ffc8f3e038af747cb2f9a6929727119"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav",
+      "sha256": "d24f7e4473c49e19d62c024e5fee66d7ab944c2d73842314e841372ccac98ad4"
+    },
+    {
+      "path": "game/assets/audio/water-contact/A01-W01.wav.import",
+      "sha256": "8b8cf891e2af7b5429cb3aba0a169a51a2223a8ee073e9f2d193824932c0a73e"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/water-contact/CREDITS.txt",
+      "sha256": "4bfa8118ba5a629eec7fa926c9f67fc5817ea4ce7c581e3e21376e01c9df8656"
+    },
+    {
+      "path": "game/assets/audio/water-contact/provenance.json",
+      "sha256": "444aa206c5bbf8196d30f86521ed2b949abbb833e16e72c8a598e738e100b54e"
+    },
+    {
+      "path": "game/assets/audio/wind/CREDITS.txt",
+      "sha256": "0122400650a2bc49d0af0934041a1cd8bed03d8fb109e4a577c418ca73606be7"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav",
+      "sha256": "01805d78cd1b781cfcf0c7530c9e9b1193d8a3991360a0f36848dde9ebf04788"
+    },
+    {
+      "path": "game/assets/audio/wind/G01.wav.import",
+      "sha256": "46310681a2dc964bfa6c7c172eb293c002894e5a3d17a7d741c41a7f1038284b"
+    },
+    {
+      "path": "game/assets/audio/wind/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/wind/provenance.json",
+      "sha256": "7a8a101d575639422a689a7c386fd9e0703310241521416a5ed1109cf09f04c8"
+    }
+  ],
+  "protected_repository_snapshot": {
+    "baseline_commit": "7eaab7c002df5e7c2337ab30ab12d4106bef44eb",
+    "tracked_file_count": 13506,
+    "algorithm": "Baseline git ls-tree -rz; exclude listed paths; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + current-file-SHA256 + LF.",
+    "manifest_sha256": "349e0eecdab8dc3477afb2a534bb32620aac50f50a6c86a5a570bee44e9ec4df",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "publication": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "excluded": [
+    "game/project.godot",
+    ".DS_Store",
+    "unrelated changes",
+    "executable release"
+  ]
+}

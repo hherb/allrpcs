@@ -1,0 +1,6 @@
+H01 — Heating preparation
+TinyWorlds — boiling water loops (embedded artist: kddekadenz)
+https://opengameart.org/content/boiling-water-loops
+Original: https://opengameart.org/sites/default/files/cooking_with_cover_01.ogg
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Vorbis decode; contiguous 0.5–3.5s trim; 44.1→48kHz swr resampling; 100ms linear fades; one attenuation-only gain; stereo PCM24, no loop. Source is lossy; no added precision or creator endorsement is implied.

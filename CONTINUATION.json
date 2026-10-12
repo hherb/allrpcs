@@ -668,6 +668,20 @@
           "sha256": "f23f267e0932208199b211946a576cac1de614357bf52d77ffbeef51392bdf58"
         }
       ]
+    },
+    {
+      "id": "phase9-remedy-heating-runtime-integration",
+      "reason": "Owner-approved exact heating runtime, three-second H01, immutable 1-to-2 committed notification, independent thirteenth caption/history and all dependent checks are complete. All 126 root stages retain the prior 109 and 5412 unit tests pass; 35 native cases, seven preparation/treatment modes, both-size native UI, 15 rejection probes and exact mounted packaging pass. Original listening acceptance is carried forward and the final candidate was presented. No further approval remains for this finite slice; physical heating, other steps, wider audio/gameplay/art and release remain separate. Publish under the standing grant.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-heating-runtime-authority.json",
+          "sha256": "0317d06092082888819c83c4fd1740b24ebea760a08c860d194a9e86f3f200c1"
+        },
+        {
+          "path": "audio-direction/remedy-heating-runtime-verification.json",
+          "sha256": "d81eaa9f89a9ca33eaed7c65c2cc3e299c3437aaaa29b198c035d700526bd962"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -840,6 +854,20 @@
           "sha256": "f23f267e0932208199b211946a576cac1de614357bf52d77ffbeef51392bdf58"
         }
       ]
+    },
+    {
+      "id": "audio-remedy-heating-runtime",
+      "reason": "Exact second-step heating feedback and dependent verification are complete. Do not reopen this unchanged accepted source/station/event/caption/history under another audit name. Another operation or physical scope requires distinct authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-heating-runtime-authority.json",
+          "sha256": "0317d06092082888819c83c4fd1740b24ebea760a08c860d194a9e86f3f200c1"
+        },
+        {
+          "path": "audio-direction/remedy-heating-runtime-verification.json",
+          "sha256": "d81eaa9f89a9ca33eaed7c65c2cc3e299c3437aaaa29b198c035d700526bd962"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -915,21 +943,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-remedy-heating-runtime-integration",
-    "title": "Integrate the exact committed remedy-heating sound and accessible feedback",
+    "id": "phase9-remedy-steeping-owner-scope",
+    "title": "Define one missing remedy-steeping audio owner and finite implementation grant",
     "status": "ready",
-    "workstream": "audio-remedy-heating-runtime",
+    "workstream": "audio-remedy-steeping-planning",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "One separately granted dedicated H01 derivative and exact successful heating-step notification with local Effects playback, independent thirteenth caption/history and dependent verification.",
-    "instructions": "Obtain and record the one concrete new grant in audio-direction/remedy-heating-owner-scope.md/.json, including the source-format exception if its encoding is lossy. Carry forward the owner\u2019s \u201csounds perfect\u201d acceptance of the nominated original without another source review. Then qualify only TinyWorlds cooking_with_cover_01.ogg, prepare three-second H01 and add the exact existing 1-to-2 heating commit notification at the unchanged healer-garden station. Complete named pure/live/native/UI/packaging/rejection/full-quality checks, new-passage listening, documentation and standing publication together. An unsuitable exact source/window blocks installation without substitution. Carry all prior closures forward.",
-    "completion_condition": "Recorded exact new source/event/runtime grant, qualified reproducible H01, once-only committed local Effects feedback, independent Heating preparation caption/history and finite checks/review pass, then close and publish the whole slice.",
+    "missing_deliverable": "A read-only proposal for the existing third recipe-step steeping commit, exact unchanged station, distinct source requirements and finite feedback/verification contract.",
+    "instructions": "Prepare one read-only owner/source proposal for the existing steeping operation at the unchanged healer-garden station. Bind exact successful progression and source/rights/format requirements, name permitted files and finite validation, and prepare one concrete separately scoped runtime decision. Carry all accepted art, grinding/treatment/heating and environmental audio forward unchanged. Do not acquire or prepare a new passage or implement runtime in this planning slice.",
+    "completion_condition": "Publish the finite exact steeping owner/source proposal and record its separate source/runtime grant boundary, then close planning without reopening accepted heating or other owners.",
     "outputs": [
-      "audio-direction/remedy-heating-runtime-authority.json",
-      "audio-direction/remedy-heating-runtime-verification.json",
-      "game/assets/audio/remedy-heating/H01.wav",
-      "game/OpeningRegionRemedyHeatingAudioController.cs"
+      "audio-direction/remedy-steeping-owner-scope.md",
+      "audio-direction/remedy-steeping-owner-scope.json"
     ],
-    "boundary": "Implementation requires the new named grant; this planning approval does not grant it. No burner/fire/boiling/temperature, physical layout/art, recipe/progression/save/hearing/perception changes, new action, spatial emitter, other steps, voice or release. Accepted A04/A05 and all earlier audio/world owners remain closed."
+    "boundary": "Read-only new-operation planning only. No source acquisition/PCM/runtime, physical station/art/layout, recipe/progression/save/hearing/perception changes, voice or release. A new source/event/runtime implementation grant remains distinct."
   },
   "deferred_slices": []
 }

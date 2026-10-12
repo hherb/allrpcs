@@ -1,0 +1,59 @@
+[aist#0:0/pcm_s24le @ 0x7cb500c180] Guessed Channel Layout: stereo
+Input #0, wav, from '/Users/hherb/src/allrpcs/game/assets/audio/remedy-heating/H01.wav':
+  Duration: 00:00:03.00, bitrate: 2304 kb/s
+  Stream #0:0: Audio: pcm_s24le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s32 (24 bit), 2304 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s24le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.0999792  TARGET:-23 LUFS    M:-120.7 S:-120.7     I: -70.0 LUFS       LRA:   0.0 LU  FTPK: -36.1 -37.8 dBFS  TPK: -36.1 -37.8 dBFS
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf63.1.101
+  Stream #0:0: Audio: pcm_s16le, 48000 Hz, stereo, s16, 1536 kb/s
+    Metadata:
+      encoder         : Lavc63.1.101 pcm_s16le
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.199979   TARGET:-23 LUFS    M:-120.7 S:-120.7     I: -70.0 LUFS       LRA:   0.0 LU  FTPK: -26.7 -27.9 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.299979   TARGET:-23 LUFS    M:-120.7 S:-120.7     I: -70.0 LUFS       LRA:   0.0 LU  FTPK: -35.0 -34.6 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.399979   TARGET:-23 LUFS    M: -42.5 S:-120.7     I: -42.5 LUFS       LRA:   0.0 LU  FTPK: -32.1 -33.3 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.499979   TARGET:-23 LUFS    M: -42.0 S:-120.7     I: -42.2 LUFS       LRA:   0.0 LU  FTPK: -32.8 -33.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.599979   TARGET:-23 LUFS    M: -43.8 S:-120.7     I: -42.7 LUFS       LRA:   0.0 LU  FTPK: -35.1 -36.1 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.699979   TARGET:-23 LUFS    M: -44.1 S:-120.7     I: -43.0 LUFS       LRA:   0.0 LU  FTPK: -36.5 -37.8 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.799979   TARGET:-23 LUFS    M: -44.6 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -36.8 -37.5 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.899979   TARGET:-23 LUFS    M: -44.4 S:-120.7     I: -43.5 LUFS       LRA:   0.0 LU  FTPK: -33.0 -33.1 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 0.999979   TARGET:-23 LUFS    M: -44.1 S:-120.7     I: -43.5 LUFS       LRA:   0.0 LU  FTPK: -31.1 -31.9 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.099979   TARGET:-23 LUFS    M: -43.0 S:-120.7     I: -43.5 LUFS       LRA:   0.0 LU  FTPK: -31.5 -33.3 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.199979   TARGET:-23 LUFS    M: -42.4 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -31.7 -35.0 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.299979   TARGET:-23 LUFS    M: -42.8 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -35.2 -35.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.399979   TARGET:-23 LUFS    M: -42.9 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -34.1 -37.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.499979   TARGET:-23 LUFS    M: -43.4 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -32.5 -34.5 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.599979   TARGET:-23 LUFS    M: -43.4 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -31.5 -32.9 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.699979   TARGET:-23 LUFS    M: -43.3 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -33.0 -34.7 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.799979   TARGET:-23 LUFS    M: -42.9 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -31.2 -30.7 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.899979   TARGET:-23 LUFS    M: -42.9 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -35.1 -36.5 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 1.999979   TARGET:-23 LUFS    M: -43.3 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -34.8 -35.6 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.099979   TARGET:-23 LUFS    M: -42.7 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -30.7 -31.9 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.199979   TARGET:-23 LUFS    M: -43.2 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -36.2 -35.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.299979   TARGET:-23 LUFS    M: -43.5 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -34.2 -36.1 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.399979   TARGET:-23 LUFS    M: -43.6 S:-120.7     I: -43.2 LUFS       LRA:   0.0 LU  FTPK: -36.3 -35.8 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.499979   TARGET:-23 LUFS    M: -44.4 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -35.3 -36.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.599979   TARGET:-23 LUFS    M: -43.6 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -30.8 -32.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.699979   TARGET:-23 LUFS    M: -43.3 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -33.9 -35.1 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.799979   TARGET:-23 LUFS    M: -43.5 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -36.7 -37.6 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.899979   TARGET:-23 LUFS    M: -43.6 S:-120.7     I: -43.3 LUFS       LRA:   0.0 LU  FTPK: -35.9 -37.2 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] t: 2.999979   TARGET:-23 LUFS    M: -45.2 S: -43.4     I: -43.4 LUFS       LRA:  20.0 LU  FTPK: -35.6 -38.8 dBFS  TPK: -26.7 -27.9 dBFS
+[Parsed_ebur128_0 @ 0x7cb4c24a80] Summary:
+
+  Integrated loudness:
+    I:         -43.4 LUFS
+    Threshold: -53.4 LUFS
+
+  Loudness range:
+    LRA:        20.0 LU
+    Threshold: -63.4 LUFS
+    LRA low:   -63.4 LUFS
+    LRA high:  -43.4 LUFS
+
+  True peak:
+    Peak:      -26.7 dBFS
+[out#0/null @ 0x7cb4c24240] video:0KiB audio:562KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:00:03.00 bitrate=N/A speed= 209x elapsed=0:00:00.01    

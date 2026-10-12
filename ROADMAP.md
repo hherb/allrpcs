@@ -191,9 +191,16 @@ and the items below remain partial. The first
 one exact existing second recipe-step commit at the retained (2300,1300) station,
 a nominated owner-listened CC0 covered-pot Ogg with a disclosed source-format exception,
 three-second local Effects feedback and independent caption/history, bounded by
-finite files/checks and one new implementation grant. No source audio, PCM or
-runtime is installed. It preserves grinding/treatment and all ambience owners;
-physical heater/fire/boiling/temperature and gameplay changes remain separate.
+finite files/checks and a separately recorded implementation grant. The owner-approved
+[committed heating runtime](audio-direction/remedy-heating-runtime-review/README.md)
+is complete: one three-second H01 Effects cue after the exact 1-to-2 commit, an
+independent thirteenth caption and capacity-16 history. All 126 root-quality stages
+retain 109 prior stages; 5,412 unit tests, 29 focused cases, seven complete mapped
+preparation/treatment modes, 35 measured native cases, both-size accessible UI,
+15 rejection probes and three mounted presets pass. The 110 prior audio entries
+remain byte-identical; totals are 40 streams and 35 notices in 21 groups. Steeping
+and other missing operations remain partial. Physical heater/fire/boiling/temperature
+and gameplay changes remain separate.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

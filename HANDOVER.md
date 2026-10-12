@@ -8,30 +8,26 @@ instructions and terminal acceptance take precedence. Retain every persistent cl
 
 Accepted art, ground/channel presentation and the whole cloak correction stay closed.
 Future walking work uses the accepted [reference gait model](art-direction/reference-gait-model.md).
-Accepted material/footstep/positional/music/interior/action audio, Healer footsteps and
-the fixed garden foliage and southern-road wind owners remain complete in the ledger.
+Accepted material/footstep/positional/music/interior/action audio and Healer footsteps
+remain complete in the ledger.
 
-The owner-approved **fixed woodland rain runtime** is complete under its
-[grant](audio-direction/rain-runtime-authority.json). The exact R01 candidate was accepted
-with “sounds perfect” and installed unchanged. One existing (1000,350) clearing owner
-plays four seconds every 20 active seconds within the exclusive 256-pixel range on
-Ambience, with an anonymous twelfth caption and separate transient history. See
-[review](audio-direction/rain-runtime-review/README.md) and
-[verification](audio-direction/rain-runtime-verification.json): 109 root stages retain
-all 95 previous stages; 5,383 unit tests, 48 focused cases, 58 measured native cases,
-both-size native UI, seven-mode complete motion/save/transcript/protected-truth parity
-and mounted 39-stream packaging pass. All 105 prior audio entries remain byte-identical;
-32 notice files occupy 20 groups. No repeat listening or runtime approval remains.
+The fixed garden foliage, southern-road wind and woodland rain runtime packages stay
+closed. Their exact accepted sources, owners, captions/history and verification remain
+hash-bound in the persistent ledger.
 
-The read-only [remedy-heating proposal](audio-direction/remedy-heating-owner-scope.md)
-is complete. It binds the exact existing second recipe step/station and successful
-1-to-2 commit to a proposed three-second H01 Effects cue, thirteenth generic caption
-and separate history. The nominated CC0 covered-pot file is supplied as Ogg, without
-a documented lossless original master. The implementation grant includes the supplied
-encoding even if lossy, with exact derivative qualification. The owner accepted the
-original with “sounds perfect”; preserve that acceptance without another source review.
-No source audio/PCM/runtime was installed. Unchanged product evidence is reused;
-planning/continuation checks pass.
+The owner-approved **committed remedy-heating runtime** is complete under its
+[grant](audio-direction/remedy-heating-runtime-authority.json). One three-second H01
+Effects cue follows only the exact second-step 1-to-2 commit at the unchanged garden
+station, with an independent thirteenth caption and capacity-16 transient history.
+The owner’s “sounds perfect” original acceptance is carried forward; the final cue was
+presented inline. The lossy-source exception and exact derivative lineage are disclosed.
+See [review](audio-direction/remedy-heating-runtime-review/README.md) and
+[verification](audio-direction/remedy-heating-runtime-verification.json): 126 root stages
+retain all prior 109; 5,412 unit tests, 29 focused cases, seven mapped preparation/treatment
+modes, 35 measured native cases, both-size native UI, 15 rejection probes and exact
+mounted packaging pass. All 110 prior audio entries remain byte-identical; totals are
+40 streams and 35 individual notices in 21 groups. The whole finite heating slice is
+closed. No repeat source, unchanged runtime or accepted-owner audit remains.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -41,52 +37,46 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-heating-runtime-integration — Integrate the exact committed remedy-heating sound and accessible feedback** (ready).
+**phase9-remedy-steeping-owner-scope — Define one missing remedy-steeping audio owner and finite implementation grant** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: One separately granted dedicated H01 derivative and exact successful heating-
-step notification with local Effects playback, independent thirteenth caption/history and dependent
-verification.
+Missing deliverable: A read-only proposal for the existing third recipe-step steeping commit, exact
+unchanged station, distinct source requirements and finite feedback/verification contract.
 
-Obtain and record the one concrete new grant in audio-direction/remedy-heating-owner-scope.md/.json,
-including the source-format exception if its encoding is lossy. Carry forward the owner’s “sounds
-perfect” acceptance of the nominated original without another source review. Then qualify only
-TinyWorlds cooking_with_cover_01.ogg, prepare three-second H01 and add the exact existing 1-to-2
-heating commit notification at the unchanged healer-garden station. Complete named
-pure/live/native/UI/packaging/rejection/full-quality checks, new-passage listening, documentation
-and standing publication together. An unsuitable exact source/window blocks installation without
-substitution. Carry all prior closures forward.
+Prepare one read-only owner/source proposal for the existing steeping operation at the unchanged
+healer-garden station. Bind exact successful progression and source/rights/format requirements, name
+permitted files and finite validation, and prepare one concrete separately scoped runtime decision.
+Carry all accepted art, grinding/treatment/heating and environmental audio forward unchanged. Do not
+acquire or prepare a new passage or implement runtime in this planning slice.
 
-Done when: Recorded exact new source/event/runtime grant, qualified reproducible H01, once-only
-committed local Effects feedback, independent Heating preparation caption/history and finite
-checks/review pass, then close and publish the whole slice.
+Done when: Publish the finite exact steeping owner/source proposal and record its separate
+source/runtime grant boundary, then close planning without reopening accepted heating or other
+owners.
 
 Expected outputs:
 
-- `audio-direction/remedy-heating-runtime-authority.json`
-- `audio-direction/remedy-heating-runtime-verification.json`
-- `game/assets/audio/remedy-heating/H01.wav`
-- `game/OpeningRegionRemedyHeatingAudioController.cs`
+- `audio-direction/remedy-steeping-owner-scope.md`
+- `audio-direction/remedy-steeping-owner-scope.json`
 
-Boundary: Implementation requires the new named grant; this planning approval does not grant it. No
-burner/fire/boiling/temperature, physical layout/art, recipe/progression/save/hearing/perception
-changes, new action, spatial emitter, other steps, voice or release. Accepted A04/A05 and all
-earlier audio/world owners remain closed.
+Boundary: Read-only new-operation planning only. No source acquisition/PCM/runtime, physical
+station/art/layout, recipe/progression/save/hearing/perception changes, voice or release. A new
+source/event/runtime implementation grant remains distinct.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Run `python3 scripts/check-continuation.py --sync` after ledger maintenance, then its
-checker and `--self-test`. Current rain checks are
-`python3 scripts/validate-rain-runtime.py --reviewed` and `--output-only`.
+checker and `--self-test`. Current heating checks are
+`python3 scripts/validate-remedy-heating-runtime.py --reviewed`, `--output-only`
+and `--self-test`.
 Reuse passing product evidence for prose alone. Runtime changes require granted focused
 checks and root `./quality.sh`; runner changes require `python3 quality.py --self-test`.
 
 Frozen validators run in private historical source trees/indexes: hand-tool `75c1aa04`,
-Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`. Cold wind tests explicitly restore
-before build/import; the verified NETSDK1004 retry and all logs are retained in the rain
+Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`. Cold rain
+and wind tests explicitly restore before build/import; the verified NETSDK1004 retry and all logs are retained in the rain
 review. Import cleanup removes only newly generated valid UID sidecars whose tracked
 source bytes are unchanged. Run Godot on the host; retry only diagnosed mutex shutdowns
 with the identical command. Native focus fixtures run serially in the foreground.

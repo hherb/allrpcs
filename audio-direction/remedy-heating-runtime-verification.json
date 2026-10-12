@@ -1,0 +1,1156 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "scope_id": "phase9-remedy-heating-runtime-integration",
+  "status": "passed",
+  "owner_runtime_statement": "runtime approved",
+  "source_acceptance": "I just listened to it - sounds perfect!",
+  "source_format_exception": "Supplied stereo 44.1 kHz Vorbis original, explicitly covered by runtime grant. No lossless original or added information claimed.",
+  "source": "audio-direction/remedy-heating-source/provenance.json",
+  "protected_tracked_inputs": 13501,
+  "focused_tests": 29,
+  "native_master_cases": 35,
+  "ordinary_modes": 7,
+  "grinding_and_treatment_commits_per_mode": 1,
+  "caption_owners": 13,
+  "history_capacity": 16,
+  "packaging": {
+    "streams": 40,
+    "individual_notices": 35,
+    "notice_groups": 21,
+    "retained_byte_identical_entries": 110,
+    "entries": 115,
+    "mounted_presets": 3
+  },
+  "listening": "Owner accepted the original; final H01 candidate was presented inline. No independent agent acoustic review or device listening claimed.",
+  "quality": {
+    "status": "passed",
+    "root_stages": 126,
+    "retained_previous_stages": 109,
+    "added_heating_stages": 11,
+    "added_historical_rain_setup_stages": 3,
+    "added_resume_boundary_stages": 3,
+    "unit_tests": 5412,
+    "unit_suites": {
+      "product-5": 2849,
+      "product-6": 1283,
+      "product-7": 1272,
+      "product-8": 8
+    },
+    "runner_self_tests": 12,
+    "report": "audio-direction/remedy-heating-runtime-review/quality/summary.json",
+    "retained_stage_sequence_matches": true,
+    "native_launch_retry": {
+      "real_godot": "/Users/hherb/.local/bin/godot",
+      "wrapper_sha256": "1aa8128bcd40a7a3aa2b9e460a4c7fc5db63e9a35c2776c9dcadd8c418d19587",
+      "max_identical_attempts": 3,
+      "reason": "Individual frozen smoke launches retry only diagnosed native shutdown; real errors remain fatal."
+    },
+    "reused_verified_prefix": 31
+  },
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/remedy-heating-runtime-authority.json",
+      "sha256": "0317d06092082888819c83c4fd1740b24ebea760a08c860d194a9e86f3f200c1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/captions-off.json",
+      "sha256": "b6023d5fa24631c5f19eb16beb0f6fb382ca518d69e9237d52e2642a5dc35e4a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/captions-off.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/captions-off.log",
+      "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/default.json",
+      "sha256": "a508bce9bfc693f83159e254aa1f25bc84aabb87c34450304fd65dec6adb1fcb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/default.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/default.log",
+      "sha256": "a6cd12ae2ce8d5a2ef27b4f5b519e351cd3265e2ee317b0a2e2dcd00c4a6528b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/effects-muted.json",
+      "sha256": "4b8dfd9d7e42edbd2fd2f9d544f1661894a2790d7baebfb463602e761c5e0f83"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/effects-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/effects-muted.log",
+      "sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/heating-disabled.json",
+      "sha256": "03a231bf1cb6ffafe9276fdc45e0656e6304f104ecbe4a98fecf7288f4d1ae17"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/heating-disabled.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/heating-disabled.log",
+      "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/master-muted.json",
+      "sha256": "6988cf2311377b54e6407e5ad1815112676481d9cf70d6235533004c693199a0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/master-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/master-muted.log",
+      "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/missing-stream.json",
+      "sha256": "edecce4b3c2294af55d124e9128bba880d80bf98df968fc4e390d3743fa36629"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/missing-stream.log",
+      "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/quiet.json",
+      "sha256": "ff42c967518a0539198b1f1c8bf39c67d09b0b69934f27d3f8bb962798172fac"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/quiet.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/live/quiet.log",
+      "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/output/capture-inputs.json",
+      "sha256": "be10adeb9149179b0ea14d0e1e3564f4ad382be39fc8524b34b4f7e4976ea5a3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/output/master.wav.gz",
+      "sha256": "bd4035a6f4b985f3519701bed8ed3961ecb498c9596000f61f49290c966103f7"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/output/measurements.json",
+      "sha256": "2fef8de4773c1c01770ec9be8e39c99f83fe377864a41ace3c8c5d8d1ee64ce6"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/output/timeline.json",
+      "sha256": "5aa31cacabcb6380da447a0f7bd2701c1e30daa5928793226c05ddaaba3b1f2a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/0-export.log",
+      "sha256": "b7e1a8e02af1984348bd9a5b72307b9b910eeb8d48b181019f9f263ac058ecb0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/0-native.json",
+      "sha256": "8f03874642c1b0a982c02cd9fbe7ee926eec2dce97863ace99b4a9cc95f51997"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/0-native.log",
+      "sha256": "f8b586ea1104a9a349d429da10d52cc938b39a8444ccb511527599028e753eac"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/1-export.log",
+      "sha256": "0bfd5b1a74226f5b85db3fa5aaf31f93c9a2afc73d0784c5de046f1615f95892"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/1-native.json",
+      "sha256": "8f03874642c1b0a982c02cd9fbe7ee926eec2dce97863ace99b4a9cc95f51997"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/1-native.log",
+      "sha256": "9ed2442c3645744aeac3e9f089028ab1c7d7dc61807901763044f7e7d852f376"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/2-export.log",
+      "sha256": "c577d1b106534922a94fdaff6c32242c0751a4390e3cacddf296492e609eb046"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/2-native.json",
+      "sha256": "8f03874642c1b0a982c02cd9fbe7ee926eec2dce97863ace99b4a9cc95f51997"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/2-native.log",
+      "sha256": "f8b586ea1104a9a349d429da10d52cc938b39a8444ccb511527599028e753eac"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/audio-subset.zip",
+      "sha256": "3c808d4025621a3b2db6a86390b54718220f7614827e438a10117a4447f9c988"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/packaging/inventory.json",
+      "sha256": "5264094f143dc456a0f97dcc71865d32edbf84adbd4cc8e18f5d0148b3797909"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "abdc4687a7be0733f664156163cd87e7d7d905bcf143d742dbf07b5530ef9007"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/102-rain-historical-restore-1.log.gz",
+      "sha256": "f7eb2e046d1d1db0d9cd7f80ae9cb6e43f72a5371f42150e5865199241efd556"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/103-rain-historical-build-1.log.gz",
+      "sha256": "c02aec6a09a254b1c3d0613d449f5fea18b2d2838f2a02ed4d73e99ef16f130c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/105-rain-focused-1.log.gz",
+      "sha256": "4ea00c79052aa0fac8043a2757686efb6aed96437314a5d7f7d627bbb223f87c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/111-rain-missing-stream-1.log.gz",
+      "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/112-rain-captions-off-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/113-rain-rain-disabled-1.log.gz",
+      "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/116-heating-focused-1.log.gz",
+      "sha256": "df3d6fb8373d77317a5c68c643c182ceb29789b67cea40393a87a040a5b687d5"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/117-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/118-heating-default-1.log.gz",
+      "sha256": "75bbea2c6b4517605670fc26ec06cfd818dfd00388e7d3784304ab934765c1df"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/119-heating-quiet-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/120-heating-master-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/121-heating-effects-muted-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/122-heating-missing-stream-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/123-heating-captions-off-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/124-heating-heating-disabled-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/125-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/126-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/26-product-4-1.log.gz",
+      "sha256": "3416da5d2115a591c6b86d158427d00f49765d8c07eb280cb89355974a23d9a9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/27-product-5-1.log.gz",
+      "sha256": "20fb307b62b34b03aed0eef8fd7ea5283a9cc4a270bbc847354b6d30f9f13a2c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/28-product-6-1.log.gz",
+      "sha256": "96db1832baaf713da47eebf8baf3a079e081f6b133da29728850cd4cf9c1bf58"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/29-product-7-1.log.gz",
+      "sha256": "0e25c7ad589012bc103e5dfc54bee9cf551f598b828b56dd68b67e8db919fcf8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/35-product-10-1.log.gz",
+      "sha256": "16da29a792219016969871f02e1c54be2319b6b38d77067d3ae44dfb1dc5b5a2"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/37-product-12-1.log.gz",
+      "sha256": "fcef5503a03314f7335aef89c70a9407f70c06d2fbb62f85b6165701b490b62b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/39-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/41-product-16-1.log.gz",
+      "sha256": "cfa3ad5c4075d34ccb514882b4ed8ee6efae35501f77094448039b4b6c709815"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/43-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/46-interior-muted-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/49-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/50-water-quiet-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/51-water-master-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/52-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/53-water-missing-stream-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/55-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/56-cask-quiet-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/60-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/61-hand-tool-default-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+      "sha256": "4d30aba6365154a2e6674e850fe38b9d8f15401239260e495fe2002142175471"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+      "sha256": "a70ec58b3e48f895c6a859a1973f602437dfbd61d0ade3a44a40440497c3b1bb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/80-foliage-quiet-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/88-wind-historical-restore-1.log.gz",
+      "sha256": "7ef00ca21e3e06ccf156ff59c73815c86ea9bd09c0ec1e351a6eb1033b408bfb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/89-wind-historical-build-1.log.gz",
+      "sha256": "a4b521d7a3eb00964e81a60f301e4a8553f37fe60452f18ea7af377a4d4bdcf9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/91-wind-focused-1.log.gz",
+      "sha256": "9be1c84db3a8f7106eaad2ad1a4c9f1c6c3236044e09f2977597586630576e19"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/93-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/94-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/98-wind-captions-off-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/finder-metadata-failed-summary.json",
+      "sha256": "415f2abace1879b236b3af59fd4bea7e8446989e23bb5350988002086766d963"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/02-art-1-1.log.gz",
+      "sha256": "abdc4687a7be0733f664156163cd87e7d7d905bcf143d742dbf07b5530ef9007"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/26-product-4-1.log.gz",
+      "sha256": "3416da5d2115a591c6b86d158427d00f49765d8c07eb280cb89355974a23d9a9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/27-product-5-1.log.gz",
+      "sha256": "20fb307b62b34b03aed0eef8fd7ea5283a9cc4a270bbc847354b6d30f9f13a2c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/28-product-6-1.log.gz",
+      "sha256": "96db1832baaf713da47eebf8baf3a079e081f6b133da29728850cd4cf9c1bf58"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/29-product-7-1.log.gz",
+      "sha256": "0e25c7ad589012bc103e5dfc54bee9cf551f598b828b56dd68b67e8db919fcf8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/32-product-10-1.log.gz",
+      "sha256": "6b200a8705e6ba6f2e1e92fc4e620464f8056bb13a17d45259cbeef63ebc3741"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/32-product-10-2.log.gz",
+      "sha256": "9276e34962f2fb07f3a9bb502be344e95dd3cc9561be8a9dc7ef3bf5e5953ab8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/32-product-10-3.log.gz",
+      "sha256": "33a2ca34f7494537f95dcdea30037df37c6df1585d75ca43fa80de970d490b61"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown/summary.json",
+      "sha256": "f167a72619f0e7917e331981b66f27806b2f76dcd6075011d590818e3b939fb0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/02-art-1-1.log.gz",
+      "sha256": "abdc4687a7be0733f664156163cd87e7d7d905bcf143d742dbf07b5530ef9007"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/26-product-4-1.log.gz",
+      "sha256": "3416da5d2115a591c6b86d158427d00f49765d8c07eb280cb89355974a23d9a9"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/27-product-5-1.log.gz",
+      "sha256": "20fb307b62b34b03aed0eef8fd7ea5283a9cc4a270bbc847354b6d30f9f13a2c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/28-product-6-1.log.gz",
+      "sha256": "96db1832baaf713da47eebf8baf3a079e081f6b133da29728850cd4cf9c1bf58"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/29-product-7-1.log.gz",
+      "sha256": "0e25c7ad589012bc103e5dfc54bee9cf551f598b828b56dd68b67e8db919fcf8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/35-product-10-1.log.gz",
+      "sha256": "ce695c3f38c90dc324e6fe5bcb52f2399004e448f6a92478f1c3b73a91431f49"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/35-product-10-2.log.gz",
+      "sha256": "2eb2c58722fca2aad0b89b420d74a68c8848388ea2d6234800d8f532629f31c1"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/35-product-10-3.log.gz",
+      "sha256": "9058308ca585b59b991a2ee6322753a428b7d276eff75c872ae769e821b07f64"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/native-shutdown-resume/summary.json",
+      "sha256": "f7835eccd2452fd7c910d645cb89ae95760b8baa178e03e198d86f7a675505d3"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/quality/summary.json",
+      "sha256": "87cbbe22cc29c5367fec185c1a191956a5e4df1bb441ee9c31655ccd6d0cbbe8"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/rejection-probes.json",
+      "sha256": "fadd96d23fb0eb518b9b145732dcdb563f85bf94dc4c8adf5e77136c189b2bde"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/source/H01-candidate.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/source/loudness.log",
+      "sha256": "7f6a07cdb32fea5331727007408b7f53928b08b54b974ee29d712a6f9ade462f"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/source/passage-measurements.json",
+      "sha256": "3cda95ef5ba266a7ef311596c9a87e6a14f80d11075567d4434d6b70100cc74a"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/captions-1280.png",
+      "sha256": "19bc355ed4b223a742b5acf74f79be38b62d691952112f42d2ce76bdd9d61dca"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/captions-1920.png",
+      "sha256": "d0f7ff999c4d36996c72d5ab21f9aeb40074ef623b61cfef722bb2cfc5ded744"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/history-1280.png",
+      "sha256": "8f852fcd4f7c3a65554c8f2e4e6189033f8971bc78ddaaddd9beecc24a145c80"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/history-1920.png",
+      "sha256": "2b0f89d9e2533aa06b845f036ae8f32444ddc994a29f0c6e6139f6391490d543"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/inputs.json",
+      "sha256": "3657299f5fbc1693a3736700145b5292e93fb04916647b37684528de9d02dab0"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/live.json",
+      "sha256": "02f3b990d41f73d9a079fd80de6704d76d8861f0c2d3745db12eb204e4621809"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/live.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-heating-runtime-review/views/native.json",
+      "sha256": "a081f6b3f67641fd1be9e9241cd2ec303785b5dff56af64c89145b600b034895"
+    },
+    {
+      "path": "audio-direction/remedy-heating-source/provenance.json",
+      "sha256": "3cda95ef5ba266a7ef311596c9a87e6a14f80d11075567d4434d6b70100cc74a"
+    },
+    {
+      "path": "game/HeatingPreparationCommit.cs",
+      "sha256": "c5461b76e3c5f64bced2f51550ae50ec131811a3effe8fbb3f0139d23a220069"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "9c437a351a6e4e63767ca65f88affce2bc3842b2ab0040bbe312626c93196df8"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "53eaec90a5ec07f81e9753fe651f78294d6e5afced239608f6cb87961824ffad"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "37907edb752db71beceec575f6574e6d0231a95a194311c781d184a9b0efed8b"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "3a96fc72cdbda50c08138daf4314149f62aadd4c302c7f52595627b743932033"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "d1debff352381e083775fb3166d364369367997574cb5f35981b6e867f7bcbff"
+    },
+    {
+      "path": "game/RemedyHeatingAudioRuntimeProof.cs",
+      "sha256": "0098ec0342d3820f71dbda8b5dfa292e1e23b05679b7322ee5d2cddb050c8f04"
+    },
+    {
+      "path": "game/RemedyHeatingAudioRuntimeProof.tscn",
+      "sha256": "761cb8ed47ff7f7eb392099471e23bd4c91c3049158f7d3bc9efc9be0670c054"
+    },
+    {
+      "path": "game/RemedyHeatingAudioRuntimeSmokeCheck.cs",
+      "sha256": "770e389b6b5f6a1f9f12dc519836fafc0565e8e4ddce5c4d641be650a2715d01"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/CREDITS.txt",
+      "sha256": "e9f6df74b10c80da393ff34dbedd54c17ad6b81b7b5c18c23c1bd866489bf678"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav.import",
+      "sha256": "15c0497a2893d63b69f77f513a3b1d6c1390bee6af02169fbf994e362ea45965"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/provenance.json",
+      "sha256": "3cda95ef5ba266a7ef311596c9a87e6a14f80d11075567d4434d6b70100cc74a"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "581869064c28ac13ba6a71ab2fb0834d2b5adbf3d0c56d6d6d4ce1f1ddcdffa7"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "5ffc8b717e0a4258c8ac1ae66b2df9777a1fd2f44f23610c0856349c5122eb98"
+    },
+    {
+      "path": "scripts/check-remedy-heating-audio-output.py",
+      "sha256": "ea81861cafccdc84887d607810f12201e19b6393edda87dea2ea7ee34b5c49e0"
+    },
+    {
+      "path": "scripts/prepare-remedy-heating-passage.py",
+      "sha256": "6c1aeb62692b4b0c914725aa73de079086a372f883bc81174f80fefe75e69939"
+    },
+    {
+      "path": "scripts/validate-remedy-heating-runtime.py",
+      "sha256": "c0fc049d20c9b7db3dc1397c4ccf9dfd308705988a27f2aee048e165a3333a5f"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingCueHistory.cs",
+      "sha256": "5d36185f2d9f31842ac33c1e9720bd826a434dcac915366173320da912fa1e6f"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingPresentationProjection.cs",
+      "sha256": "fee8c572f5ec65a28a9fb91d8a80286c5471c95120fd76ed003fb2fd727ed99b"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedyHeatingCueHistoryTests.cs",
+      "sha256": "1d77d13228b5167e64bb08506e83f67217f4cd32ac40f0fafdf7b6cf7936822f"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedyHeatingPresentationProjectionTests.cs",
+      "sha256": "fa713a5be6abc7414cf5e5f3cf4d8ab53cee0c5412dd7606421beb68a187061d"
+    }
+  ],
+  "rejection_probes": 15,
+  "local_exceptions": "Preserve/exclude Finder .DS_Store and the recorded game/project.godot editor rewrite.",
+  "limits": "Controlled native output and mounted resource packs; no independent agent acoustic/device listening or executable release claim."
+}

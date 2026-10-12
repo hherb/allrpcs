@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "method": "Godot native Movie Maker, Compatibility renderer, 60fps; WAV extracted losslessly from AVI. Native proof/controller inputs unchanged throughout capture; disabled Main smoke source is not an executed fixture input.",
+  "command": "ALLRPCS_HEATING_OUTPUT_CHECK=1 ALLRPCS_HEATING_TIMELINE=/Users/hherb/src/allrpcs/audio-direction/remedy-heating-runtime-review/output/timeline.json godot --path game res://RemedyHeatingAudioRuntimeProof.tscn --write-movie /tmp/heating-output/reviewed.avi --fixed-fps 60 --quit-after 11000",
+  "completed_cases": 35,
+  "inputs": [
+    {
+      "path": "game/RemedyHeatingAudioRuntimeProof.cs",
+      "sha256": "0098ec0342d3820f71dbda8b5dfa292e1e23b05679b7322ee5d2cddb050c8f04"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "9c437a351a6e4e63767ca65f88affce2bc3842b2ab0040bbe312626c93196df8"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "37907edb752db71beceec575f6574e6d0231a95a194311c781d184a9b0efed8b"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingPresentationProjection.cs",
+      "sha256": "fee8c572f5ec65a28a9fb91d8a80286c5471c95120fd76ed003fb2fd727ed99b"
+    },
+    {
+      "path": "src/Application/Audio/RemedyHeatingCueHistory.cs",
+      "sha256": "5d36185f2d9f31842ac33c1e9720bd826a434dcac915366173320da912fa1e6f"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav.import",
+      "sha256": "15c0497a2893d63b69f77f513a3b1d6c1390bee6af02169fbf994e362ea45965"
+    }
+  ],
+  "movie_sha256": "7fd975dca2df8f6c5999917d3b8690abd0e120137ede1e491e15d8b75ef74fcc",
+  "movie_retention": "Losslessly extracted Master WAV retained as master.wav.gz; large image movie is disposable."
+}
