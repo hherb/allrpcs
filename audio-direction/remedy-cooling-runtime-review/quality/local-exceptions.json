@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "source_bytes_unchanged": true,
+  "generated_sidecars_removed": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "preserved_editor_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+}

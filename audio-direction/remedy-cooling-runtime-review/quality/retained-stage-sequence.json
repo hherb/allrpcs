@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "prior_stages": 140,
+  "current_stages": 154,
+  "prior_order_preserved": true,
+  "new_stages": [
+    "steeping-historical-restore",
+    "steeping-historical-build",
+    "steeping-historical-import",
+    "cooling-focused",
+    "boundary-cooling-source",
+    "cooling-default",
+    "cooling-quiet",
+    "cooling-master-muted",
+    "cooling-effects-muted",
+    "cooling-missing-stream",
+    "cooling-captions-off",
+    "cooling-cooling-disabled",
+    "cooling-master-output",
+    "boundary-cooling-reviewed"
+  ]
+}

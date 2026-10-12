@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "technical_checks_passed_listening_pending",
+  "status": "qualified",
   "creator": "Joseph SARDIN",
   "title": "Finger clashes",
   "licence": "CC0-1.0",
@@ -15,6 +15,7 @@
     0.85
   ],
   "selection_basis": "Catalogue describes light finger snaps; bytes prove lossless PCM16 mono 48 kHz. First measurable transient within this window; acoustic suitability remains pending exact owner listening.",
+  "path": "audio-direction/remedy-cooling-source/originals/0483.wav",
   "original_metadata": {
     "streams": [
       {
@@ -89,7 +90,7 @@
   "conversion": "No resampling required; original 48 kHz retained. Identical mono duplication.",
   "ffmpeg": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
   "python": "3.12.3",
-  "uniform_gain_db": -17.870155471269054,
+  "uniform_gain_db": 0.0,
   "onset_fade_frames": 480,
   "ending_fade_frames": 2400,
   "fade_shape": "linear",
@@ -98,17 +99,28 @@
   "channels": 2,
   "encoding": "PCM24",
   "loop": false,
-  "wav_sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2",
-  "pcm24_sha256": "f0533ddb4359fcfa9b7f0e7b9adc93305e4ebc7ac3b2d7a2875ce7c0a7544786",
-  "sample_peak_dbfs": -30.09998489203092,
-  "integrated_loudness_lufs": -57.0,
+  "wav_sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
+  "pcm24_sha256": "18dd7f06ab975cffa787e349bab68f6881e12bdb9ad4ae390e29f4f22206d9fc",
+  "sample_peak_dbfs": -12.229844528730949,
+  "integrated_loudness_lufs": -39.1,
   "loudness_log": {
     "path": "audio-direction/remedy-cooling-runtime-review/source/loudness.log.gz",
-    "raw_sha256": "3da961fd56ba68ef8783c128288ba5fc3c34a44360f3b2fac578b29835b920c3",
-    "stored_sha256": "326efdccfd5f65d9936a04ea5b09701d1690b31dfe00010702a51786a954bc56",
+    "raw_sha256": "af9eeae41e050ec65b95b6d8470e70adbba112745d116650d53ae873305ab64e",
+    "stored_sha256": "9a64d3f48836000239d77a59ad377c233f416b04753f784c86bf08837eacead2",
     "compression": "gzip, mtime 0; exact unmodified tool output"
   },
-  "source_qualification": null,
+  "source_qualification": {
+    "status": "qualified",
+    "candidate_sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
+    "window_seconds": [
+      0.1,
+      0.85
+    ],
+    "owner_statement": "Approved",
+    "level_owner_statement": "The louder version is more appropriate",
+    "qualification": "Approved audible reference character retained; owner selects louder game level, unity original trim/fades within 0.13 dB of approved reference.",
+    "reference_sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+  },
   "qualification_limit": "Technical checks only. Catalogue and measurements do not establish acoustic suitability; exact owner listening acceptance is required before installation.",
   "catalogue.html_sha256": "43fca26ca952060ce5544ed3310b475e3efbcbf73eb8e6287f5a80556356a099",
   "licence.html_sha256": "5e0cb6cfc6364958c6a02c3ec5fe104f2997616db4eaf20b13a566fa1d95c78a",

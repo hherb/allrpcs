@@ -1,0 +1,162 @@
+{
+  "mode": "default",
+  "motion": [
+    {
+      "Tick": 33,
+      "start": [
+        2300,
+        1300
+      ],
+      "end": [
+        2296,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 34,
+      "start": [
+        2296,
+        1300
+      ],
+      "end": [
+        2292,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 35,
+      "start": [
+        2292,
+        1300
+      ],
+      "end": [
+        2288,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 36,
+      "start": [
+        2288,
+        1300
+      ],
+      "end": [
+        2284,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 37,
+      "start": [
+        2284,
+        1300
+      ],
+      "end": [
+        2280,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 38,
+      "start": [
+        2280,
+        1300
+      ],
+      "end": [
+        2284,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 39,
+      "start": [
+        2284,
+        1300
+      ],
+      "end": [
+        2288,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 40,
+      "start": [
+        2288,
+        1300
+      ],
+      "end": [
+        2292,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 41,
+      "start": [
+        2292,
+        1300
+      ],
+      "end": [
+        2296,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 42,
+      "start": [
+        2296,
+        1300
+      ],
+      "end": [
+        2300,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    },
+    {
+      "Tick": 43,
+      "start": [
+        2300,
+        1300
+      ],
+      "end": [
+        2304,
+        1300
+      ],
+      "Delta": 0.016666666666666666,
+      "SpeedLimit": 240
+    }
+  ],
+  "checks": [
+    "Actual mapped seven-input preparation and movement plus existing mapped treatment; unique token/forged/null rejection; isolated subscriber; next-step independence; complete save/transcript/protected truth parity.",
+    "Live 48/49px boundaries, forged position, direct-controller advance, blocked/consumed notification, pause/focus, station/table drift, failed/successful load and live-injection rejection."
+  ],
+  "commits": 1,
+  "presentations": 1,
+  "grinding": 1,
+  "heating": 1,
+  "steeping": 1,
+  "treatment": 1,
+  "history": 1,
+  "truthBefore": "{\n  \u0022objects\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022herb-patch\u0022\n          },\n          \u0022DisplayName\u0022: \u0022HERB PATCH\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A cluster of narrow leaves gives off a sharp scent.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022stone-marker\u0022\n          },\n          \u0022DisplayName\u0022: \u0022STONE MARKER\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022Weathered carvings mark one face of the standing stone.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022village-water-cask\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Village water cask\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022wagon-clue\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Tool-gated clue\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A small clue on the abandoned wagon that needs close inspection.\u0022\n        }\n      }\n    ]\n  },\n  \u0022inventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022healerInventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022perception\u0022: {\n    \u0022CharacterId\u0022: {\n      \u0022Value\u0022: \u0022seeker\u0022\n    },\n    \u0022Entries\u0022: [\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022herb-patch\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022stone-marker\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022identified\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022village-water-cask\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022wagon-clue\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022unnoticed\u0022\n        }\n      }\n    ]\n  },\n  \u0022knowledge\u0022: {\n    \u0022KnowledgeReferences\u0022: [\n      {\n        \u0022Value\u0022: \u0022healer-herb-care\u0022\n      }\n    ]\n  },\n  \u0022beliefs\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022placements\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022WorldObject\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-water-cask\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village water cask\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n          }\n        },\n        \u0022Location\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-square\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village square\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022The cask stands beside the village well.\u0022\n          }\n        }\n      }\n    ]\n  },\n  \u0022moveEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022concealment\u0022: {\n    \u0022ConcealedObjectIds\u0022: []\n  },\n  \u0022substitutions\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022contamination\u0022: {\n    \u0022ContaminatedObjectIds\u0022: []\n  },\n  \u0022contaminationEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022transcript\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022events\u0022: null,\n  \u0022time\u0022: {\n    \u0022EventLog\u0022: {\n      \u0022Entries\u0022: [\n        {\n          \u0022Value\u0022: \u0022greybox-ready\u0022\n        },\n        {\n          \u0022Value\u0022: \u0022healer-administered-first-patient-remedy\u0022\n        }\n      ]\n    },\n    \u0022WorldTime\u0022: {\n      \u0022CurrentEventId\u0022: {\n        \u0022Value\u0022: \u0022healer-administered-first-patient-remedy\u0022\n      }\n    }\n  }\n}",
+  "truthAfter": "{\n  \u0022objects\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022herb-patch\u0022\n          },\n          \u0022DisplayName\u0022: \u0022HERB PATCH\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A cluster of narrow leaves gives off a sharp scent.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022stone-marker\u0022\n          },\n          \u0022DisplayName\u0022: \u0022STONE MARKER\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022Weathered carvings mark one face of the standing stone.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022village-water-cask\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Village water cask\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n        }\n      },\n      {\n        \u0022Identity\u0022: {\n          \u0022Id\u0022: {\n            \u0022Value\u0022: \u0022wagon-clue\u0022\n          },\n          \u0022DisplayName\u0022: \u0022Tool-gated clue\u0022\n        },\n        \u0022Description\u0022: {\n          \u0022Text\u0022: \u0022A small clue on the abandoned wagon that needs close inspection.\u0022\n        }\n      }\n    ]\n  },\n  \u0022inventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022healerInventory\u0022: {\n    \u0022ObjectReferences\u0022: []\n  },\n  \u0022perception\u0022: {\n    \u0022CharacterId\u0022: {\n      \u0022Value\u0022: \u0022seeker\u0022\n    },\n    \u0022Entries\u0022: [\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022herb-patch\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022stone-marker\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022identified\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022village-water-cask\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022noticed\u0022\n        }\n      },\n      {\n        \u0022ObjectId\u0022: {\n          \u0022Value\u0022: \u0022wagon-clue\u0022\n        },\n        \u0022VisibilityState\u0022: {\n          \u0022Value\u0022: \u0022unnoticed\u0022\n        }\n      }\n    ]\n  },\n  \u0022knowledge\u0022: {\n    \u0022KnowledgeReferences\u0022: [\n      {\n        \u0022Value\u0022: \u0022healer-herb-care\u0022\n      }\n    ]\n  },\n  \u0022beliefs\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022placements\u0022: {\n    \u0022Entries\u0022: [\n      {\n        \u0022WorldObject\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-water-cask\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village water cask\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022A covered cask beside the village well.\u0022\n          }\n        },\n        \u0022Location\u0022: {\n          \u0022Identity\u0022: {\n            \u0022Id\u0022: {\n              \u0022Value\u0022: \u0022village-square\u0022\n            },\n            \u0022DisplayName\u0022: \u0022Village square\u0022\n          },\n          \u0022Description\u0022: {\n            \u0022Text\u0022: \u0022The cask stands beside the village well.\u0022\n          }\n        }\n      }\n    ]\n  },\n  \u0022moveEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022concealment\u0022: {\n    \u0022ConcealedObjectIds\u0022: []\n  },\n  \u0022substitutions\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022contamination\u0022: {\n    \u0022ContaminatedObjectIds\u0022: []\n  },\n  \u0022contaminationEvidence\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022transcript\u0022: {\n    \u0022Entries\u0022: []\n  },\n  \u0022events\u0022: null,\n  \u0022time\u0022: {\n    \u0022EventLog\u0022: {\n      \u0022Entries\u0022: [\n        {\n          \u0022Value\u0022: \u0022greybox-ready\u0022\n        },\n        {\n          \u0022Value\u0022: \u0022healer-administered-first-patient-remedy\u0022\n        }\n      ]\n    },\n    \u0022WorldTime\u0022: {\n      \u0022CurrentEventId\u0022: {\n        \u0022Value\u0022: \u0022healer-administered-first-patient-remedy\u0022\n      }\n    }\n  }\n}",
+  "transcript": []
+}

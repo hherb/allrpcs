@@ -34,6 +34,16 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         && ReferenceEquals(scene.Binding, commit.Binding) && ReferenceEquals(preparation.Activity, commit.After)
         && ReferenceEquals(preparation.Recipe, commit.Binding.Recipe);
 
+    /// <summary>Independent presentation notification after the exact successful cooling commit.</summary>
+    internal event Action<CoolingPreparationCommit>? CoolingCompleted;
+    private CoolingPreparationCommit? coolingCommit;
+
+    /// <summary>Admits only the exact currently owned committed token and current activity.</summary>
+    internal bool OwnsCooling(CoolingPreparationCommit? commit) => commit is not null
+        && ReferenceEquals(coolingCommit, commit) && ReferenceEquals(commit.Owner, this)
+        && ReferenceEquals(scene.Binding, commit.Binding) && ReferenceEquals(preparation.Activity, commit.After)
+        && ReferenceEquals(preparation.Recipe, commit.Binding.Recipe);
+
     internal const string ReadyStatusText = "Preparation: go to the station and press P.";
     internal const string MoveCloserStatusText = "Preparation: move closer to the station.";
     internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
@@ -65,6 +75,9 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         var restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
         void ResetHeating() => heatingCommit = null;
         void ResetSteeping() => steepingCommit = null;
+        void ResetCooling() => coolingCommit = null;
+        restoration.PresentationReset += ResetCooling;
+        TreeExiting += () => { restoration.PresentationReset -= ResetCooling; coolingCommit = null; };
         restoration.PresentationReset += ResetSteeping;
         TreeExiting += () => { restoration.PresentationReset -= ResetSteeping; steepingCommit = null; };
         restoration.PresentationReset += ResetHeating;
@@ -189,6 +202,16 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                 {
                     try { ((Action<SteepingPreparationCommit>)listener)(steepingCommit); }
                     catch (Exception exception) { GD.PrintErr($"Steeping presentation failed: {exception.Message}"); }
+                }
+            }
+            if (advanced && RemedyCoolingPresentationProjection.IsCommit(requestedRecipe, step, activity, preparation.Activity)
+                && RemedyCoolingPresentationProjection.Local(ToNumerics(seeker.GlobalPosition), seekerPosition, currentBinding.StationPosition))
+            {
+                coolingCommit = new(this, currentBinding, activity, preparation.Activity!, step, seeker.GlobalPosition);
+                foreach (Delegate listener in CoolingCompleted?.GetInvocationList() ?? [])
+                {
+                    try { ((Action<CoolingPreparationCommit>)listener)(coolingCommit); }
+                    catch (Exception exception) { GD.PrintErr($"Cooling presentation failed: {exception.Message}"); }
                 }
             }
             return advanced;

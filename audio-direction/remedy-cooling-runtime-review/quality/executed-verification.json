@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-remedy-cooling-runtime-integration",
+  "status": "runtime_review_passed_full_quality_pending",
+  "source_qualification": {
+    "status": "qualified",
+    "candidate_sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
+    "window_seconds": [
+      0.1,
+      0.85
+    ],
+    "owner_statement": "Approved",
+    "level_owner_statement": "The louder version is more appropriate",
+    "qualification": "Approved audible reference character retained; owner selects louder game level, unity original trim/fades within 0.13 dB of approved reference.",
+    "reference_sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+  },
+  "final_peak_dbfs": -12.229844528730949,
+  "focused_tests": 30,
+  "live_modes": 7,
+  "native_master_cases": 37,
+  "caption_seconds": 2,
+  "native_viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "caption_owners": 15,
+  "history_capacity": 16,
+  "packaging": {
+    "streams": 42,
+    "individual_notices": 39,
+    "notice_groups": 23,
+    "entries": 125,
+    "retained_entries_byte_identical": 120
+  },
+  "limits": "No physical cooling/time/temperature/readiness or gameplay changes. Resource packs only; no executable release. Controlled native output, not fresh-device or ordinary-play loudness.",
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/remedy-cooling-runtime-authority.json",
+      "sha256": "6dea7c42a1b276128cc72a11db0248e051565b90edff264582195a75287d4b96"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/captions-off.json",
+      "sha256": "11df38b234c74ed219cc116128905361efaf47509e40d2457654f25a3c6cf014"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/captions-off.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/captions-off.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/cooling-disabled.json",
+      "sha256": "9d7d9cf6e0f51914aa4e9792902246be824511a31b023451ff46d316389ff528"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/cooling-disabled.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/cooling-disabled.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/default.json",
+      "sha256": "0f0b556c752a14ee029af0cdde3221a6ba36442a8db32e1a0b69ea0f65dedf8b"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/default.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/default.log.gz",
+      "sha256": "b33177845dbe7ab236fc6252106e5957386c25a53dbb3d1f6c2b00c0a76532d0"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/effects-muted.json",
+      "sha256": "51fb6d3f560a5caa7747de9393477f5ebe732ae296eb2298d1ec7001c34bdac4"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/effects-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/effects-muted.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/master-muted.json",
+      "sha256": "e022bcc6fabda31db5676cd722946387c904e8c9adaf893445c4acd5a470a3f5"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/master-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/master-muted.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/missing-stream.json",
+      "sha256": "5de85a1cdb9e0e95d9d7d9e8d51dad7e59a9b2b414d093c2d08356cf56a9c9d1"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/missing-stream.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/quiet.json",
+      "sha256": "3f429ba541be4cfc7507572743e2f605b749bf8cee471ed9b5dc5381ea51726b"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/quiet.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/quiet.log.gz",
+      "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/log-storage.json",
+      "sha256": "2f62c43630bced19921c994a50c255a371794c7090fd1dfd9798e0343ea2ac1f"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/capture-inputs.json",
+      "sha256": "18a31330c51295b45fb4a8e486996c650d9d0010509ebc5ab74cbdfd733666f7"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/master.wav.gz",
+      "sha256": "c8df903b326f2a77316c888576ddfa86206addc7d5423de734f125732e6f6c21"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/measurements.json",
+      "sha256": "c455a4d3ed86d1a05011c4936327746f243a23360a53e252d2eece45848bd1be"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/native.log.gz",
+      "sha256": "d9edbadf749d8ed87ac20a0692bbb68871ca71ef9d1330af86c1c0b5c79ea44c"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/timeline.json",
+      "sha256": "a151b84a5282e525d018e919f21c5aed7119736e545d1267f6f80eb4485e04a6"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/timeline.json.stops.json",
+      "sha256": "c696606ddd07a82541b90a88ab08c91b4ae34ff7c1612f500832e4cd2e1df29c"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/audio-subset.zip",
+      "sha256": "dc6e5731971d88f35352b91397f85d0ace94eb64719a1aaa698398dfd15d0b1a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-0.log.gz",
+      "sha256": "6845b8d3fc1de8c23741091d0b854603494426f808fc07a8003fead8bc391b5f"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-1.log.gz",
+      "sha256": "1647464eaadf7b802fcfeb39a843c4986a91172609dd0b38c355b867e22bbbe5"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-2.log.gz",
+      "sha256": "9dfa28cdbed8b99e4625fa1ff6125080f983c406153151c8a2b7b2508e772fb4"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/inventory.json",
+      "sha256": "006371a3a1036ceb0a28a54fbefc9a9a440df659452d0c5e1c2220050d816663"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-0.json",
+      "sha256": "8426cf2339b9b3aa6669a6c95412a7cba40e99e7002ffd6270fd47509dfb4c67"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-0.log.gz",
+      "sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-1.json",
+      "sha256": "8426cf2339b9b3aa6669a6c95412a7cba40e99e7002ffd6270fd47509dfb4c67"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-1.log.gz",
+      "sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-2.json",
+      "sha256": "8426cf2339b9b3aa6669a6c95412a7cba40e99e7002ffd6270fd47509dfb4c67"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-2.log.gz",
+      "sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/build.log.gz",
+      "sha256": "819afeaed786661e1520052d603e402db5ea74ae6a2eacaa4eac842d94153a11"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/format.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/headless-realtime-player-clock.log.gz",
+      "sha256": "b9e14a3f8eab8eb2739198ef444ba2b6bbc00579e355eded0eeae9d478bef87d"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/import.log.gz",
+      "sha256": "7922f9f6e9d55b093e9a58b2f86c4c26648d4ddb44778724b30d0876848fa5c4"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/runner-selftest.log.gz",
+      "sha256": "ca38dccf686e2b0bf3ee7cecac8abbfa21d366aadc309a5b74184411499c9c77"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/rejection-probes.json",
+      "sha256": "fadd96d23fb0eb518b9b145732dcdb563f85bf94dc4c8adf5e77136c189b2bde"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav",
+      "sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
+      "sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-rejected-quiet.wav",
+      "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/H01-S01-C01-context.wav",
+      "sha256": "68f3ba7fc7cf5f8686c026357d6ad91d39049a1c1138c7ace0e330933ed84d4c"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/context-preview.json",
+      "sha256": "dab8b8c6931eb7223a93f75a38dcf597a74a75a4557f05f827c291c37cb3b169"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/draft-contract-tests.json",
+      "sha256": "da4a79a0871ae1a18e5312b17a1fd8c909406327446468e3e84fd8394da03427"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistory.cs.txt",
+      "sha256": "1e4a576dd78621c57fe46fa573a4f00688ee03222f29741972c413e53c3d2245"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingCueHistoryTests.cs.txt",
+      "sha256": "cdf21c05ef429200c64e3d2deb331d0a54583828c32f586191fc75cb275ab54b"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjection.cs.txt",
+      "sha256": "e025864ccf4610147ed1069ce3a904c91a2638a4ca9f74df398157e41fcb4970"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/implementation-drafts/RemedyCoolingPresentationProjectionTests.cs.txt",
+      "sha256": "717df06a0344dfaa65d261d7e65d19285bf76d407a39f599dc2a51feb4904377"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/listening-reference.json",
+      "sha256": "66965c1c2f8c4951409fa97adc0e9e0c0c5ecbacc7fea2cc7b4a6865a242cd5a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/loudness.log.gz",
+      "sha256": "9a64d3f48836000239d77a59ad377c233f416b04753f784c86bf08837eacead2"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/passage-measurements.json",
+      "sha256": "85d8252109685ce981badc73fa374e6551eb7ad66cedaadb922f5c989960cc86"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/technical-checks.json",
+      "sha256": "f26bbb9587a99d9368fa2ece8672c6ef186ab34996e57fb0a5144da03d4bcd89"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/captions-1280.png",
+      "sha256": "5ddb32b654f1a61f607f968d2cb84f4b0975ac025a598dbd0db3366d717a7fcd"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/captions-1920.png",
+      "sha256": "55fb963d3baf0370dfea7f7abe63a3b565989ba4c13f9363a88827183f938625"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/history-1280.png",
+      "sha256": "209c574328bfe5afefc82c4608a78a2677680c1f0dc67bfe3cf88efcffebd772"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/history-1920.png",
+      "sha256": "1bdb80af7bc79c11ac0ab1b17bc97db44cc873754ddc8b73bd61532542cef0d7"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/mapped.json",
+      "sha256": "18fc2414f6d47e71b1cc87f77976de2428abac2a652e0d774a629ced1e424618"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/mapped.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/native.json",
+      "sha256": "b7e622728ba55d59a930ce35d03d19849823a216da903f97d17eb7180ca6041e"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/native.log.gz",
+      "sha256": "0e938d65e9b30e9f9158979928ce703df90b094a23ef5d5a437929bc4315adaf"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-source/provenance.json",
+      "sha256": "85d8252109685ce981badc73fa374e6551eb7ad66cedaadb922f5c989960cc86"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-source/rights/capture-storage.json",
+      "sha256": "5116ce98a6d6a1db66bc0fd559bf2aa4293ddf3aa66288a3240e595ad91e51e9"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-source/rights/catalogue.html.gz",
+      "sha256": "563a350d6b314d9075aa05637a3a0253ab6708eb6f5a1b0c2204996bb2a4735e"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-source/rights/licence.html.gz",
+      "sha256": "b7a66380a38967e30a87cca8d96a7873ac2aa134503c3f2a5ca691f31eb3aab7"
+    },
+    {
+      "path": "game/CoolingPreparationCommit.cs",
+      "sha256": "503f18bd28fb05cd41f34e3679adc9f13affd31fc1fc8bf1f0638f8c75797d86"
+    },
+    {
+      "path": "game/CoolingPreparationCommit.cs.uid",
+      "sha256": "23346a2141c56cc673a26d795cedaa6a8f39bb1ede336b2066339f95d41be131"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "97372ec3fd4269f494b7c8a336b73725924a29873493415bb0a37605899ef687"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "fd0c99fee3472b69a360ef89caa3a922ad34e07dec575e206a62530b0175b8d0"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "1c2c514e75ded142f9d9224358bb3bc86788835fa53376e2096ad2734e226cf2"
+    },
+    {
+      "path": "game/OpeningRegionRemedyCoolingAudioController.cs",
+      "sha256": "b16a043e6737a98bf1a0d08d3bcb318892a6ab59fd4e82a15aa56e2eb549da5a"
+    },
+    {
+      "path": "game/OpeningRegionRemedyCoolingAudioController.cs.uid",
+      "sha256": "f1551601ae6dd4296a4b7ee1883a7f48683c6bb087941b2345189a5c378f1290"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "a89a7ca3668833ee4c861776406c0e6cf1314c15abf1e46a71a4e694199995a1"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "febfc4ab79a98c367cae4174e526cde17330513108c0cc9bca675b36766a35f6"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.cs",
+      "sha256": "884ea0207fb41c3ddb7fc109ad55eecbdd57138e2a4ddb2d2601333b5c93b8f6"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.cs.uid",
+      "sha256": "bb04f14f6dd46951f02f3432f401cd06143bfe35288573b913baf7e908a4eabe"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.tscn",
+      "sha256": "33a33a5747c49d6c3680fe9fab80702cf14a0d54c0dbd93f4d299f2ec69df457"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeSmokeCheck.cs",
+      "sha256": "f1f2c8657541ac3a91ac09789db9a7e51eb8d1df47e937957af50b94f962a173"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "652b07c5a6bef0209ae4f61d285f50efa667009ee4af175dede812ccfdaa94ef"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/C01.wav",
+      "sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/C01.wav.import",
+      "sha256": "c752d24e8148cf23e236880948cd3257e508289cbb18d3634ae1c642cb6de83e"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/CREDITS.txt",
+      "sha256": "bde8da3f6ba5fd90e0d18529dc0a7720340e3e151cbbcc838939a3dbf3f92185"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/provenance.json",
+      "sha256": "85d8252109685ce981badc73fa374e6551eb7ad66cedaadb922f5c989960cc86"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "a2de46afab26d6bf293c7f8f31f231501677d6c78d49fbc1839b691c966d93e5"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "f95b3bcf96fe0e33ce2eaa20c250a73b831e7ffc63a3fc25602386c0f6071061"
+    },
+    {
+      "path": "scripts/check-remedy-cooling-audio-output.py",
+      "sha256": "7d4587f334c7e81d606021e128c4154401dcf0eb6912a5a48dbff8b87dbe6da1"
+    },
+    {
+      "path": "scripts/prepare-remedy-cooling-passage.py",
+      "sha256": "a08f66b7f0959a0a0a6e1d96653ce00800e7e802c78e833551ce3e8c7e9e8eec"
+    },
+    {
+      "path": "scripts/validate-remedy-cooling-runtime.py",
+      "sha256": "27e8ef9f110f6aff623274db7da4b970ad47ea1e2ab1ed8eaca857c7b4934265"
+    },
+    {
+      "path": "src/Application/Audio/RemedyCoolingCueHistory.cs",
+      "sha256": "1e4a576dd78621c57fe46fa573a4f00688ee03222f29741972c413e53c3d2245"
+    },
+    {
+      "path": "src/Application/Audio/RemedyCoolingPresentationProjection.cs",
+      "sha256": "e025864ccf4610147ed1069ce3a904c91a2638a4ca9f74df398157e41fcb4970"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedyCoolingCueHistoryTests.cs",
+      "sha256": "cdf21c05ef429200c64e3d2deb331d0a54583828c32f586191fc75cb275ab54b"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedyCoolingPresentationProjectionTests.cs",
+      "sha256": "717df06a0344dfaa65d261d7e65d19285bf76d407a39f599dc2a51feb4904377"
+    }
+  ]
+}

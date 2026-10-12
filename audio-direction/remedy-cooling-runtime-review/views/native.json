@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "captionOwners": 15,
+  "capacity": 16,
+  "returnFocus": true,
+  "keyboard": true,
+  "scrolling": true,
+  "mutedCaptionOffHistory": true
+}

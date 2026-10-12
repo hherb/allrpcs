@@ -18,7 +18,7 @@ SOURCE = ROOT / 'audio-direction/remedy-cooling-source'
 REVIEW = ROOT / 'audio-direction/remedy-cooling-runtime-review/source'
 RATE, FRAMES, START = 48000, 36000, 4800
 ONSET_FADE, END_FADE = 480, 2400
-PEAK_TARGET_DBFS = -30.1
+PEAK_TARGET_DBFS = -12.2
 
 
 def digest(data):
@@ -34,7 +34,7 @@ def capture_bytes(name):
 
 
 def prepare(install=False):
-    """Trim 0.10-0.85 seconds, fade/attenuate once and retain reproducible measurements."""
+    """Trim 0.10-0.85 seconds, fade at approved unity gain and retain reproducible measurements."""
     authority = json.loads((ROOT / 'audio-direction/remedy-cooling-runtime-authority.json').read_text())
     if authority['owner_statement'] != 'approved':
         raise ValueError('Recorded cooling source/runtime grant missing')
@@ -64,7 +64,10 @@ def prepare(install=False):
     peak = max(abs(value) for value in values)
     if not 0 < peak < 1:
         raise ValueError('Silent or clipped window')
-    gain = min(1, 10 ** (PEAK_TARGET_DBFS / 20) / peak)
+    level = authority.get('level_authority', {})
+    if level.get('owner_statement') != 'The louder version is more appropriate' or level.get('gain_db') != 0:
+        raise ValueError('Explicit louder unity-level authority required')
+    gain = 1.0
     pcm = bytearray()
     for frame, value in enumerate(values):
         fade = min(1, frame / ONSET_FADE, (FRAMES - 1 - frame) / END_FADE)
@@ -130,7 +133,7 @@ def prepare(install=False):
             'Source-specific licence: https://bigsoundbank.com/licenses.html\n'
             'CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/\n'
             'Changes: lossless PCM16 WAV decode; contiguous 0.10–0.85s trim; 48kHz retained; '
-            '10ms onset and 50ms ending linear fades; one attenuation-only gain; '
+            '10ms onset and 50ms ending linear fades; unity original gain; '
             'identical mono duplication to stereo PCM24; no loop. No creator endorsement implied.\n')
     print(json.dumps({key: record[key] for key in [
         'status', 'wav_sha256', 'frames', 'sample_peak_dbfs', 'integrated_loudness_lufs', 'uniform_gain_db']},

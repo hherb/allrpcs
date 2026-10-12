@@ -1,0 +1,286 @@
+using System.Security.Cryptography;
+using System.Text.Json;
+using Allrpcs.Application.Audio;
+using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Persistence;
+using Godot;
+
+namespace Allrpcs.Game;
+
+/// <summary>Stopped native Master fixture for the installed local cue, cancellation and mounted packaging.</summary>
+public partial class RemedyCoolingAudioRuntimeProof : Node2D
+{
+    private static readonly JsonSerializerOptions Options = new() { WriteIndented = true };
+    private static readonly string[] Cases = ["default",
+        "quiet",
+        "mono",
+        "effects-half",
+        "master-half",
+        "effects-zero",
+        "master-zero",
+        "effects-muted",
+        "master-muted",
+        "ambience-zero",
+        "captions-off",
+        "missing-stream",
+        "missing-bus",
+        "pause",
+        "focus-loss",
+        "reading-overlay",
+        "text-entry",
+        "journal-overlay",
+        "map-overlay",
+        "dialogue-overlay",
+        "settings-overlay",
+        "customization-overlay",
+        "teleport",
+        "invalid-delta",
+        "source-hidden",
+        "source-moved",
+        "source-disabled",
+        "source-replaced",
+        "table-drift",
+        "mute-unmute",
+        "missing-stream-repair",
+        "load-success",
+        "load-failure",
+        "foreground",
+        "retained-overlap",
+        "heating-overlap",
+        "next-step-input"];
+    private static readonly string[] OverlayNames = ["SeekerMapPanel", "JournalSectionPanel", "DialogueOverlay", "SettingsOverlay"];
+    private Node main = null!;
+    private OpeningRegionRemedyCoolingAudioController audio = null!;
+    private AudioSettingsController settings = null!;
+    private OpeningRegionRemedyPreparationSceneSource scene = null!;
+    private Seeker seeker = null!;
+    private SaveSnapshot initial = null!;
+    private readonly List<object> timeline = [];
+    private int frame, index = -1, started;
+    private long prior;
+    private bool automated;
+    private long duck;
+    private LineEdit? editor;
+    private Node2D? replacement;
+    private int sceneIndex;
+    private int firstStoppedFrame = -1;
+    private readonly List<object> stopStates = [];
+
+    /// <inheritdoc />
+    public override void _Ready()
+    {
+        ProcessMode = ProcessModeEnum.Always; main = GetNode<Node>("Main"); main.SetProcess(false);
+        if (OS.GetEnvironment("ALLRPCS_COOLING_PACK") is { Length: > 0 } pack) { CheckPackage(pack); return; }
+        main.GetNode<Node>("TemporaryCharacterTurnCompletionController").SetProcess(false);
+        audio = main.GetNode<OpeningRegionRemedyCoolingAudioController>("OpeningRegionRemedyCoolingAudioController"); audio.Automatic = false;
+        settings = main.GetNode<AudioSettingsController>("AudioSettingsController");
+        seeker = main.GetNode<Seeker>("Seeker"); seeker.SetPhysicsProcess(false); seeker.GlobalPosition = new(2300, 1300);
+        main.GetNode<Healer>("Healer").SetPhysicsProcess(false);
+        scene = main.GetNode<OpeningRegionRemedyPreparationSceneSource>("OpeningRegionRemedyPreparationSceneSource"); sceneIndex = scene.GetIndex();
+        main.GetNode<AudioSettingsPanel>("AudioSettingsPanel").Close(false);
+        main.GetNode<CanvasLayer>("DialogueOverlay").Visible = false; main.GetNode<CanvasLayer>("SettingsOverlay").Visible = false;
+        foreach (var node in main.GetChildren().Where(n => n.Name.ToString().EndsWith("AudioController", StringComparison.Ordinal) && !ReferenceEquals(n, audio)))
+        { node.SetProcess(false); node.SetPhysicsProcess(false); }
+        GetWindow().Size = new(320, 180); GetWindow().GrabFocus();
+        automated = OS.GetEnvironment("ALLRPCS_COOLING_OUTPUT_CHECK") == "1";
+        Require(!automated || OS.HasFeature("movie"), "Native Master requires Movie Maker.");
+    }
+    /// <inheritdoc />
+    public override void _Process(double delta)
+    {
+        if (!automated)
+        {
+            if (++frame == 15) { Require(audio.PresentationCount == 0 && !Playing(), "Stopped proof emitted audio."); GD.Print("PASS: cooling standalone starts stopped."); }
+            return;
+        }
+        try
+        {
+            if (frame < 15) { frame++; return; }
+            if (index < 0 || frame - started >= 300)
+            {
+                if (index >= 0) { FinishCase(); }
+                if (++index == Cases.Length)
+                {
+                    Restore(); File.WriteAllText(OS.GetEnvironment("ALLRPCS_COOLING_TIMELINE"), JsonSerializer.Serialize(timeline, Options));
+                    File.WriteAllText(OS.GetEnvironment("ALLRPCS_COOLING_TIMELINE") + ".stops.json", JsonSerializer.Serialize(stopStates, Options));
+                    GD.Print($"PASS: cooling native Master: {Cases.Length} measured cases."); GetTree().Quit(); return;
+                }
+                started = frame; firstStoppedFrame = -1; Configure();
+            }
+            int local = frame - started; string name = Cases[index];
+            if (local > 22 && local < 200 && firstStoppedFrame < 0 && !Playing())
+            {
+                firstStoppedFrame = local;
+                stopStates.Add(new
+                {
+                    name,
+                    local,
+                    delta,
+                    focused = GetWindow().HasFocus(),
+                    bindings = audio.Bindings(),
+                    paused = GetTree().Paused,
+                    active = typeof(OpeningRegionRemedyCoolingAudioController).GetMethod("Active", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.Invoke(audio, null)
+                });
+            }
+            if (local == 20)
+            {
+                prior = audio.PresentationCount; if (name is not "next-step-input" and not "heating-overlap") { audio.DiagnosticPlay(); }
+                if (name == "heating-overlap")
+                {
+                    var heat = main.GetNode<OpeningRegionRemedyHeatingAudioController>("OpeningRegionRemedyHeatingAudioController");
+                    var steep = main.GetNode<OpeningRegionRemedySteepingAudioController>("OpeningRegionRemedySteepingAudioController");
+                    heat.Automatic = true; steep.Automatic = true; audio.Automatic = true;
+                    var coordinator = main.GetNode<OpeningRegionRemedyPreparationInputCoordinator>("OpeningRegionRemedyPreparationInputCoordinator");
+                    for (int i = 0; i < 2; i++) { coordinator._UnhandledInput(new InputEventAction { Action = "remedy_prepare", Pressed = true }); }
+                    StopPlayers(main);
+                    for (int i = 0; i < 3; i++) { coordinator._UnhandledInput(new InputEventAction { Action = "remedy_prepare", Pressed = true }); }
+                    Require(audio.PresentationCount == prior + 1 && Playing() && heat.GetNode<AudioStreamPlayer>("Heating").Playing && steep.GetNode<AudioStreamPlayer>("Steeping").Playing, "Rapid mapped H01/S01/C01 coexistence failed.");
+                }
+                if (name == "next-step-input")
+                {
+                    var coordinator = main.GetNode<OpeningRegionRemedyPreparationInputCoordinator>("OpeningRegionRemedyPreparationInputCoordinator");
+                    for (int i = 0; i < 5; i++) { coordinator._UnhandledInput(new InputEventAction { Action = "remedy_prepare", Pressed = true }); }
+                    Require(main.GetNode<FirstPatientPreparationController>("FirstPatientPreparationController").Activity!.Progress.NextStepIndex == 4, "Mapped cooling stage unavailable.");
+                    StopPlayers(main); audio.DiagnosticPlay();
+                }
+                if (name == "retained-overlap")
+                {
+                    main.GetNode<OpeningRegionMaterialAudioController>("OpeningRegionMaterialAudioController").PlayCue("A04");
+                    var bed = main.GetNode<AudioStreamPlayer>("OpeningRegionMaterialAudioController/B04"); bed.VolumeLinear = 1; bed.Play();
+                }
+                if (name == "load-failure") { Require(!main.GetNode<SaveSnapshotRestorationController>("SaveSnapshotRestorationController").TryRestore(Rejected()), "Rejected load accepted."); }
+            }
+            if (local == 60 && name == "retained-overlap") { main.GetNode<OpeningRegionMaterialAudioController>("OpeningRegionMaterialAudioController").PlayCue("A05"); }
+            if (local == 50) { Transition(name); }
+            if (local == 70)
+            {
+                if (name == "pause") { GetTree().Paused = false; }
+                if (name == "focus-loss") { audio._Notification((int)NotificationApplicationFocusIn); }
+                if (name == "mute-unmute") { settings.RestoreDefaults(); }
+                if (name == "missing-stream-repair") { audio.DiagnosticResources(true); }
+            }
+            if (local == 230 && name == "retained-overlap") { StopPlayers(main); }
+            frame++;
+        }
+        catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+    private void Configure()
+    {
+        Restore();
+        if (initial is not null) { Require(main.GetNode<SaveSnapshotRestorationController>("SaveSnapshotRestorationController").TryRestore(initial), "Case restore failed."); }
+        audio.Automatic = false;
+        main.GetNode<OpeningRegionRemedyHeatingAudioController>("OpeningRegionRemedyHeatingAudioController").Automatic = false;
+        main.GetNode<OpeningRegionRemedySteepingAudioController>("OpeningRegionRemedySteepingAudioController").Automatic = false;
+        audio.ResetAfterLoad(); audio.DiagnosticResources(true); StopPlayers(main);
+        if (initial is null)
+        {
+            main.GetNode<HandToolTapRuntimeSmokeCheck>("HandToolTapRuntimeSmokeCheck").ArrangeSave();
+            seeker.GlobalPosition = new(2300, 1300); main.GetNode<OpeningRegionMapVisitVerificationCoordinator>("OpeningRegionMapVisitVerificationCoordinator").TryVerifyCurrentVisit();
+            initial = main.GetNode<SaveSnapshotCaptureController>("SaveSnapshotCaptureController").Capture()!;
+        }
+        string name = Cases[index]; settings.RestoreDefaults(); var p = settings.Preferences;
+        if (name == "quiet") { p = new(p.Channels, AudioMixPreset.ReducedRange); }
+        if (name == "mono") { p = new(p.Channels, p.Preset, true, true); }
+        if (name == "captions-off") { p = new(p.Channels, p.Preset, false, false); }
+        if (name == "effects-half") { p = p.WithChannel(AudioCategory.Effects, 0.5, false); }
+        if (name == "master-half") { p = p.WithChannel(AudioCategory.Master, 0.5, false); }
+        if (name == "effects-zero") { p = p.WithChannel(AudioCategory.Effects, 0, false); }
+        if (name == "master-zero") { p = p.WithChannel(AudioCategory.Master, 0, false); }
+        if (name == "effects-muted") { p = p.WithChannel(AudioCategory.Effects, 1, true); }
+        if (name == "master-muted") { p = p.WithChannel(AudioCategory.Master, 1, true); }
+        if (name == "ambience-zero") { p = p.WithChannel(AudioCategory.Ambience, 0, false); }
+        settings.SetPreferences(p);
+        if (name is "missing-stream" or "missing-stream-repair") { audio.DiagnosticResources(false); }
+        if (name == "missing-bus") { AudioServer.SetBusName(3, "AbsentEffects"); }
+        if (name == "source-hidden") { scene.Visible = false; }
+        if (name == "source-moved") { scene.Position += Vector2.One; }
+        if (name == "source-disabled") { scene.ProcessMode = ProcessModeEnum.Disabled; }
+        if (name == "table-drift") { scene.GetNode<Node2D>("PreparationTable").Position += Vector2.One; }
+        if (name == "source-replaced")
+        {
+            main.RemoveChild(scene); replacement = new() { Name = "OpeningRegionRemedyPreparationSceneSource", Position = new(2300, 1300) };
+            main.AddChild(replacement); main.MoveChild(replacement, sceneIndex);
+        }
+        if (name == "foreground") { duck = settings.Ducking.Begin(AudioForeground.ConsequentialCue); }
+        GetWindow().GrabFocus();
+    }
+    private void Transition(string name)
+    {
+        if (name == "next-step-input")
+        {
+            var coordinator = main.GetNode<OpeningRegionRemedyPreparationInputCoordinator>("OpeningRegionRemedyPreparationInputCoordinator");
+            coordinator._UnhandledInput(new InputEventAction { Action = "remedy_prepare", Pressed = true });
+            coordinator._UnhandledInput(new InputEventAction { Action = "remedy_prepare", Pressed = true });
+            Require(main.GetNode<FirstPatientPreparationController>("FirstPatientPreparationController").Outcome is not null && main.GetNode<FirstPatientStateController>("FirstPatientStateController").PreparedBatches!.Batches.Count == 1 && Playing(), "Finish/install cancelled admitted C01.");
+        }
+        if (name == "pause") { GetTree().Paused = true; }
+        if (name == "focus-loss") { audio._Notification((int)NotificationApplicationFocusOut); }
+        if (name == "reading-overlay") { main.GetNode<AudioSettingsPanel>("AudioSettingsPanel").Open(); }
+        if (name == "text-entry") { editor = new() { Name = "CoolingTextProbe" }; main.AddChild(editor); editor.GrabFocus(); }
+        string? overlay = name switch { "journal-overlay" => "JournalSectionPanel", "map-overlay" => "SeekerMapPanel", "dialogue-overlay" => "DialogueOverlay", "settings-overlay" => "SettingsOverlay", _ => null };
+        if (overlay is not null) { main.GetNode<CanvasLayer>(overlay).Visible = true; }
+        if (name == "customization-overlay") { main.GetNode<Control>("SeekerCustomizationOverlay/Panel").Visible = true; }
+        if (name == "teleport") { seeker.GlobalPosition += new Vector2(97, 0); }
+        if (name == "invalid-delta") { audio._Process(double.NaN); }
+        if (name == "mute-unmute") { settings.SetPreferences(settings.Preferences.WithChannel(AudioCategory.Effects, 1, true)); }
+        if (name == "load-success") { Require(main.GetNode<SaveSnapshotRestorationController>("SaveSnapshotRestorationController").TryRestore(initial), "Exact load rejected."); }
+        audio._Process(1.0 / 60);
+    }
+    private void FinishCase()
+    {
+        string name = Cases[index]; Require(!Playing(), "Tail did not expire: " + name);
+        timeline.Add(new
+        {
+            name,
+            startFrame = started,
+            admitFrame = started + 20,
+            endFrame = frame,
+            transitionFrame = started + 50,
+            presentations = audio.PresentationCount - prior,
+            history = audio.RecentCues.Count
+        });
+    }
+    private void Restore()
+    {
+        GetTree().Paused = false; AudioServer.SetBusName(3, "Effects");
+        if (replacement is not null) { main.RemoveChild(replacement); replacement.Free(); replacement = null; main.AddChild(scene); main.MoveChild(scene, sceneIndex); }
+        scene.Visible = true; scene.ProcessMode = ProcessModeEnum.Inherit; scene.Position = new(2300, 1300);
+        scene.GetNode<Node2D>("PreparationTable").Position = new(0, 18); seeker.GlobalPosition = new(2300, 1300);
+        foreach (string name in OverlayNames) { main.GetNode<CanvasLayer>(name).Visible = false; }
+        main.GetNode<Control>("SeekerCustomizationOverlay/Panel").Visible = false; main.GetNode<AudioSettingsPanel>("AudioSettingsPanel").Close(false);
+        if (editor is not null) { editor.ReleaseFocus(); editor.Free(); editor = null; }
+        if (duck != 0) { settings.Ducking.End(duck); duck = 0; }
+        audio._Notification((int)NotificationApplicationFocusIn);
+    }
+    private SaveSnapshot Rejected()
+    {
+        WorldEventId unknown = new("unknown-cooling-proof-event");
+        return new(initial.SchemaVersion, initial.Discovery, new(new([unknown]), new(unknown)), initial.CharacterMemory,
+            initial.FirstPatient, initial.Journal, initial.Map, initial.InvestigationRoutes, initial.FirstPatientRecovery);
+    }
+    private void CheckPackage(string pack)
+    {
+        try
+        {
+            Require(ProjectSettings.LoadResourcePack(pack, true), "Mount failed.");
+            var native = ResourceLoader.Load<AudioStreamWav>("res://assets/audio/remedy-cooling/C01.wav", "", ResourceLoader.CacheMode.Ignore);
+            byte[] expected = File.ReadAllBytes(OS.GetEnvironment("ALLRPCS_COOLING_EXPECTED_PCM"));
+            Require(native.MixRate == 48000 && native.Stereo && native.LoopMode == AudioStreamWav.LoopModeEnum.Disabled && native.Data.SequenceEqual(expected), "Mounted native PCM16 differs.");
+            Require(Godot.FileAccess.GetFileAsString("res://assets/audio/remedy-cooling/CREDITS.txt").Contains("Joseph SARDIN", StringComparison.Ordinal), "Mounted credits missing.");
+            File.WriteAllText(OS.GetEnvironment("ALLRPCS_COOLING_PACK_REPORT"), JsonSerializer.Serialize(new { status = "passed", exact = true, frames = native.Data.Length / 4, sample_rate = native.MixRate, sha256 = Convert.ToHexString(SHA256.HashData(native.Data)).ToLowerInvariant() }, Options));
+            GD.Print("PASS: cooling mounted pack: exact PCM16 and attribution."); GetTree().Quit();
+        }
+        catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+    private static void StopPlayers(Node root)
+    {
+        foreach (Node child in root.GetChildren())
+        {
+            if (child is AudioStreamPlayer player) { player.Stop(); }
+            if (child is AudioStreamPlayer2D spatial) { spatial.Stop(); }
+            StopPlayers(child);
+        }
+    }
+    private bool Playing() => audio.GetNode<AudioStreamPlayer>("Cooling").Playing;
+    private static void Require(bool value, string message) { if (!value) { throw new InvalidOperationException(message); } }
+}

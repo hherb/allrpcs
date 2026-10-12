@@ -218,12 +218,19 @@ The [cooling input-confirmation proposal](audio-direction/remedy-cooling-owner-s
 is complete: exact immediate fourth-step 3-to-4, separate from finish/batch
 installation; one quiet nonliteral Effects acknowledgement, fifteenth text line
 and independent history are proposed. The owner approved the distinct
-source/event/runtime grant on 2026-10-12. A new
-lossless CC0 C01 candidate is prepared and presented for exact listening;
-qualification remains pending before installation. Product/CI inputs are unchanged.
-Cooling and other missing
-operations remain partial; physical vessel/action, duration, temperature/readiness
-and gameplay changes remain separate.
+source/event/runtime grant on 2026-10-12, accepted the audible reference with “Approved”,
+then chose “The louder version is more appropriate”. The
+[committed cooling runtime](audio-direction/remedy-cooling-runtime-review/README.md)
+is complete: one qualified 0.75-second lossless-derived C01 at unity original gain
+(−12.23dBFS sample peak) follows only the existing fourth-step 3-to-4 commit. Its independent
+fifteenth **Cooling step committed** caption lasts two active seconds; separate history
+retains sixteen records. All 154 root stages and 5,472 unit tests pass, preserving the
+prior 140 stages in order; 30 focused cases, seven complete mapped parity modes,
+37 measured native cases, both-size accessible UI, 15 rejection probes and three mounted
+presets pass. All 120 prior audio entries remain byte-identical; totals are 42 streams,
+39 individual notices and 23 groups. The first recipe's four preparation operations now
+have bounded feedback. Wider sources and other missing operations remain partial;
+physical vessel/action, elapsed time, temperature/readiness and gameplay changes remain separate.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

@@ -724,6 +724,20 @@
           "sha256": "918bccd204141fc6c1a1cd54500138b5333769c5a3ef8ad9cc04fae026ad6dc9"
         }
       ]
+    },
+    {
+      "id": "phase9-remedy-cooling-runtime-integration",
+      "reason": "Owner-qualified louder C01, exact fourth-step commit, independent fifteenth caption/history and complete finite source/parity/native/UI/packaging/full-quality verification; source/level acceptance and runtime slice complete.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-cooling-runtime-authority.json",
+          "sha256": "102b9c75b3e3c42dfebb89bbd6b2b4d2856bbe5755f051752091c62f33df8c47"
+        },
+        {
+          "path": "audio-direction/remedy-cooling-runtime-verification.json",
+          "sha256": "a0a80ba7c127782a47a6fe2c9c7f7a0c7cc74d1fcc2036951102c256c00c5e8c"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -952,6 +966,20 @@
           "sha256": "918bccd204141fc6c1a1cd54500138b5333769c5a3ef8ad9cc04fae026ad6dc9"
         }
       ]
+    },
+    {
+      "id": "audio-remedy-cooling-runtime",
+      "reason": "Finite cooling runtime complete; no unchanged owner, level, source, audit or approval successor.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-cooling-runtime-authority.json",
+          "sha256": "102b9c75b3e3c42dfebb89bbd6b2b4d2856bbe5755f051752091c62f33df8c47"
+        },
+        {
+          "path": "audio-direction/remedy-cooling-runtime-verification.json",
+          "sha256": "a0a80ba7c127782a47a6fe2c9c7f7a0c7cc74d1fcc2036951102c256c00c5e8c"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1027,19 +1055,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-remedy-cooling-runtime-integration",
-    "title": "Add quiet confirmation of the existing fourth-step cooling input",
-    "status": "in_progress",
-    "workstream": "audio-remedy-cooling-runtime",
-    "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "One qualified C01 source, exact existing 3-to-4 commit notification, independent fifteenth Cooling step committed caption and capacity-16 history, with complete source/parity/native/UI/packaging/quality evidence.",
-    "instructions": "Owner source/event/runtime grant is recorded in audio-direction/remedy-cooling-runtime-authority.json. After reporting the original -30.1 dBFS candidate seems empty, the owner accepted the audition-only +18 dB PCM16 reference with Approved. That reference/source approval is recorded; do not request it again. One explicit game-level choice is pending: retain original recording at unity (about -12.23 dBFS, 0.13 dB below approved reference) and replace the provisional -30 dBFS ceiling, or keep the original quiet game level. Do not infer the pending choice from silence. Thirty isolated scratch contract tests pass; reviewed drafts are retained as text under source/implementation-drafts, with no runtime/audio installed. When level is resolved, record its authority and exact derivative qualification, then complete existing fourth-step 3-to-4 Effects confirmation, independent fifteenth line/history and all named parity/native/UI/packaging/quality/review/closure/publication checks. Preserve accepted owners and persistent closures.",
-    "completion_condition": "One exact owner-qualified C01 and once-only existing cooling input confirmation with accessible equivalent, complete finite verification and publication; all accepted owners remain unchanged.",
+    "id": "phase9-herb-collection-audio-owner-scope",
+    "title": "Prepare a committed herb-collection audio owner proposal",
+    "status": "ready",
+    "workstream": "audio-herb-collection-planning",
+    "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+    "missing_deliverable": "One concrete proposal for missing committed herb-collection feedback: exact accepted collection occurrence, actual actor/site eligibility, safe anonymous feedback, source requirements and finite implementation grant/checks.",
+    "instructions": "Read-only planning for a genuinely new collection-audio owner. Begin with CharacterTurnWorldEventOccurrenceController.TryOccurPostExaminationCollection and TemporaryCharacterExaminationFlowController; identify the exact installed occurrence and actual actor/site eligibility without treating narrative intent or geometry as physical-source authority. Prepare a concrete bounded proposal, including silence if no qualified physical event exists. Keep all accepted collection/examination gameplay, recipe operations and audio owners closed. No source/runtime implementation without the distinct owner grant.",
+    "completion_condition": "Two source-bound proposal documents identify the existing occurrence, missing audio/physical owner boundaries, safe feedback/source decision, bounded files and finite checks, with the distinct implementation authority made concrete.",
     "outputs": [
-      "audio-direction/remedy-cooling-runtime-authority.json",
-      "audio-direction/remedy-cooling-runtime-verification.json"
+      "audio-direction/herb-collection-owner-scope.md",
+      "audio-direction/herb-collection-owner-scope.json"
     ],
-    "boundary": "Approved exact cooling source/event/runtime contract only. Owner acceptance of exact derivative remains required before installation. No physical cooling mechanism/station/vessel/action, elapsed time/temperature/readiness, recipe/progression/save/hearing/perception, accepted audio/art, another operation/emitter, voice or executable release."
+    "boundary": "Planning only for new collection feedback. No accepted audio/art or collection/examination reopening, new occurrence/movement/physical action, hearing/perception/knowledge/truth/save change, source/runtime/emitter/caption/history implementation, voice or executable release."
   },
   "deferred_slices": []
 }

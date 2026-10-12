@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "cases": {
+    "default": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 1.0896666666666666
+    },
+    "quiet": {
+      "peak": 0.1790771484375,
+      "peak_dbfs": -14.939196595769458,
+      "rms": 0.001233263731449384,
+      "loudness": {
+        "input_i": "-42.15",
+        "input_tp": "-14.54",
+        "input_lra": "0.00",
+        "input_thresh": "-52.15",
+        "output_i": "-23.85",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.21",
+        "normalization_type": "dynamic",
+        "target_offset": "0.85"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 1.0923333333333334
+    },
+    "mono": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.73",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3454375,
+      "last_active_seconds": 1.095
+    },
+    "effects-half": {
+      "peak": 0.122344970703125,
+      "peak_dbfs": -18.248277574183927,
+      "rms": 0.0008705528021019301,
+      "loudness": {
+        "input_i": "-45.15",
+        "input_tp": "-18.11",
+        "input_lra": "0.00",
+        "input_thresh": "-55.15",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 1.0868333333333333,
+      "ratio": 0.4999685269724935
+    },
+    "master-half": {
+      "peak": 0.122344970703125,
+      "peak_dbfs": -18.248277574183927,
+      "rms": 0.0008705528021019301,
+      "loudness": {
+        "input_i": "-45.15",
+        "input_tp": "-18.11",
+        "input_lra": "0.00",
+        "input_thresh": "-55.15",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 1.0895,
+      "ratio": 0.4999685269724935
+    },
+    "effects-zero": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "master-zero": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "effects-muted": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "master-muted": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "ambience-zero": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 1.0923333333333334,
+      "ratio": 1.0
+    },
+    "captions-off": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.73",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3454375,
+      "last_active_seconds": 1.095,
+      "ratio": 1.0
+    },
+    "missing-stream": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "missing-bus": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "pause": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 0.85325
+    },
+    "focus-loss": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3454375,
+      "last_active_seconds": 0.8559166666666667
+    },
+    "reading-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 0.8479166666666667
+    },
+    "text-entry": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 0.8505833333333334
+    },
+    "journal-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 0.85325
+    },
+    "map-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3454375,
+      "last_active_seconds": 0.8559166666666667
+    },
+    "dialogue-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 0.8479166666666667
+    },
+    "settings-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 0.8505833333333334
+    },
+    "customization-overlay": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 0.85325
+    },
+    "teleport": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3454375,
+      "last_active_seconds": 0.8559166666666667
+    },
+    "invalid-delta": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 0.8479166666666667
+    },
+    "source-hidden": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 0,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "source-moved": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 0,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "source-disabled": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 0,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "source-replaced": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 0,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "table-drift": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 0,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "mute-unmute": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410669971533099,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 0.8426875
+    },
+    "missing-stream-repair": {
+      "peak": 0.0,
+      "peak_dbfs": null,
+      "rms": 0.0,
+      "loudness": {
+        "input_i": "-inf",
+        "input_tp": "-inf",
+        "input_lra": "0.00",
+        "input_thresh": "-70.00",
+        "output_i": "-inf",
+        "output_tp": "-inf",
+        "output_lra": "0.00",
+        "output_thresh": "-70.00",
+        "normalization_type": "dynamic",
+        "target_offset": "inf"
+      },
+      "presentations": 1,
+      "onset_seconds": null,
+      "last_active_seconds": null
+    },
+    "load-success": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.0017410687556849592,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-38.87",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 0.8479166666666667
+    },
+    "load-failure": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 1.0896666666666666,
+      "ratio": 1.0
+    },
+    "foreground": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34277083333333336,
+      "last_active_seconds": 1.0923333333333334,
+      "ratio": 1.0
+    },
+    "retained-overlap": {
+      "peak": 0.25836181640625,
+      "peak_dbfs": -11.755433416434528,
+      "rms": 0.021331372856471,
+      "loudness": {
+        "input_i": "-31.88",
+        "input_tp": "-11.48",
+        "input_lra": "1.70",
+        "input_thresh": "-41.88",
+        "output_i": "-22.74",
+        "output_tp": "-2.22",
+        "output_lra": "1.60",
+        "output_thresh": "-32.74",
+        "normalization_type": "dynamic",
+        "target_offset": "-0.26"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34541666666666665,
+      "last_active_seconds": 3.8533541666666666
+    },
+    "heating-overlap": {
+      "peak": 0.246917724609375,
+      "peak_dbfs": -12.148954675743287,
+      "rms": 0.004637324916462792,
+      "loudness": {
+        "input_i": "-41.86",
+        "input_tp": "-12.05",
+        "input_lra": "5.30",
+        "input_thresh": "-52.03",
+        "output_i": "-24.01",
+        "output_tp": "-1.00",
+        "output_lra": "3.80",
+        "output_thresh": "-34.14",
+        "normalization_type": "dynamic",
+        "target_offset": "1.01"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.3374375,
+      "last_active_seconds": 3.33725
+    },
+    "next-step-input": {
+      "peak": 0.244659423828125,
+      "peak_dbfs": -12.228761027246593,
+      "rms": 0.001741215206832059,
+      "loudness": {
+        "input_i": "-39.15",
+        "input_tp": "-12.09",
+        "input_lra": "0.00",
+        "input_thresh": "-50.12",
+        "output_i": "-25.37",
+        "output_tp": "-1.00",
+        "output_lra": "0.00",
+        "output_thresh": "-39.74",
+        "normalization_type": "dynamic",
+        "target_offset": "2.37"
+      },
+      "presentations": 1,
+      "onset_seconds": 0.34010416666666665,
+      "last_active_seconds": 1.0896666666666666,
+      "ratio": 1.0
+    }
+  },
+  "capture_sha256": "9b1217ca2bce1b0c29b41e4dc4f38fe7bf39fe43a7080585470dda63144d1cde",
+  "timeline_sha256": "a151b84a5282e525d018e919f21c5aed7119736e545d1267f6f80eb4485e04a6",
+  "limits": "Actual controlled native Master output; no fresh-device/ordinary-play loudness or executable release claim."
+}

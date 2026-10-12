@@ -1,0 +1,7 @@
+C01 — Cooling step committed (interface confirmation)
+Joseph SARDIN — Finger clashes (#0483)
+https://bigsoundbank.com/finger-clashes-s0483.html
+Original: https://bigsoundbank.com/UPLOAD/bwf-en/0483.wav
+Source-specific licence: https://bigsoundbank.com/licenses.html
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: lossless PCM16 WAV decode; contiguous 0.10–0.85s trim; 48kHz retained; 10ms onset and 50ms ending linear fades; unity original gain; identical mono duplication to stereo PCM24; no loop. No creator endorsement implied.

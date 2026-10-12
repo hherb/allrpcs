@@ -1,0 +1,335 @@
+[
+  {
+    "name": "default",
+    "startFrame": 15,
+    "admitFrame": 35,
+    "endFrame": 315,
+    "transitionFrame": 65,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "quiet",
+    "startFrame": 315,
+    "admitFrame": 335,
+    "endFrame": 615,
+    "transitionFrame": 365,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "mono",
+    "startFrame": 615,
+    "admitFrame": 635,
+    "endFrame": 915,
+    "transitionFrame": 665,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "effects-half",
+    "startFrame": 915,
+    "admitFrame": 935,
+    "endFrame": 1215,
+    "transitionFrame": 965,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "master-half",
+    "startFrame": 1215,
+    "admitFrame": 1235,
+    "endFrame": 1515,
+    "transitionFrame": 1265,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "effects-zero",
+    "startFrame": 1515,
+    "admitFrame": 1535,
+    "endFrame": 1815,
+    "transitionFrame": 1565,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "master-zero",
+    "startFrame": 1815,
+    "admitFrame": 1835,
+    "endFrame": 2115,
+    "transitionFrame": 1865,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "effects-muted",
+    "startFrame": 2115,
+    "admitFrame": 2135,
+    "endFrame": 2415,
+    "transitionFrame": 2165,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "master-muted",
+    "startFrame": 2415,
+    "admitFrame": 2435,
+    "endFrame": 2715,
+    "transitionFrame": 2465,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "ambience-zero",
+    "startFrame": 2715,
+    "admitFrame": 2735,
+    "endFrame": 3015,
+    "transitionFrame": 2765,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "captions-off",
+    "startFrame": 3015,
+    "admitFrame": 3035,
+    "endFrame": 3315,
+    "transitionFrame": 3065,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "missing-stream",
+    "startFrame": 3315,
+    "admitFrame": 3335,
+    "endFrame": 3615,
+    "transitionFrame": 3365,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "missing-bus",
+    "startFrame": 3615,
+    "admitFrame": 3635,
+    "endFrame": 3915,
+    "transitionFrame": 3665,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "pause",
+    "startFrame": 3915,
+    "admitFrame": 3935,
+    "endFrame": 4215,
+    "transitionFrame": 3965,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "focus-loss",
+    "startFrame": 4215,
+    "admitFrame": 4235,
+    "endFrame": 4515,
+    "transitionFrame": 4265,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "reading-overlay",
+    "startFrame": 4515,
+    "admitFrame": 4535,
+    "endFrame": 4815,
+    "transitionFrame": 4565,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "text-entry",
+    "startFrame": 4815,
+    "admitFrame": 4835,
+    "endFrame": 5115,
+    "transitionFrame": 4865,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "journal-overlay",
+    "startFrame": 5115,
+    "admitFrame": 5135,
+    "endFrame": 5415,
+    "transitionFrame": 5165,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "map-overlay",
+    "startFrame": 5415,
+    "admitFrame": 5435,
+    "endFrame": 5715,
+    "transitionFrame": 5465,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "dialogue-overlay",
+    "startFrame": 5715,
+    "admitFrame": 5735,
+    "endFrame": 6015,
+    "transitionFrame": 5765,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "settings-overlay",
+    "startFrame": 6015,
+    "admitFrame": 6035,
+    "endFrame": 6315,
+    "transitionFrame": 6065,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "customization-overlay",
+    "startFrame": 6315,
+    "admitFrame": 6335,
+    "endFrame": 6615,
+    "transitionFrame": 6365,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "teleport",
+    "startFrame": 6615,
+    "admitFrame": 6635,
+    "endFrame": 6915,
+    "transitionFrame": 6665,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "invalid-delta",
+    "startFrame": 6915,
+    "admitFrame": 6935,
+    "endFrame": 7215,
+    "transitionFrame": 6965,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "source-hidden",
+    "startFrame": 7215,
+    "admitFrame": 7235,
+    "endFrame": 7515,
+    "transitionFrame": 7265,
+    "presentations": 0,
+    "history": 0
+  },
+  {
+    "name": "source-moved",
+    "startFrame": 7515,
+    "admitFrame": 7535,
+    "endFrame": 7815,
+    "transitionFrame": 7565,
+    "presentations": 0,
+    "history": 0
+  },
+  {
+    "name": "source-disabled",
+    "startFrame": 7815,
+    "admitFrame": 7835,
+    "endFrame": 8115,
+    "transitionFrame": 7865,
+    "presentations": 0,
+    "history": 0
+  },
+  {
+    "name": "source-replaced",
+    "startFrame": 8115,
+    "admitFrame": 8135,
+    "endFrame": 8415,
+    "transitionFrame": 8165,
+    "presentations": 0,
+    "history": 0
+  },
+  {
+    "name": "table-drift",
+    "startFrame": 8415,
+    "admitFrame": 8435,
+    "endFrame": 8715,
+    "transitionFrame": 8465,
+    "presentations": 0,
+    "history": 0
+  },
+  {
+    "name": "mute-unmute",
+    "startFrame": 8715,
+    "admitFrame": 8735,
+    "endFrame": 9015,
+    "transitionFrame": 8765,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "missing-stream-repair",
+    "startFrame": 9015,
+    "admitFrame": 9035,
+    "endFrame": 9315,
+    "transitionFrame": 9065,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "load-success",
+    "startFrame": 9315,
+    "admitFrame": 9335,
+    "endFrame": 9615,
+    "transitionFrame": 9365,
+    "presentations": 1,
+    "history": 0
+  },
+  {
+    "name": "load-failure",
+    "startFrame": 9615,
+    "admitFrame": 9635,
+    "endFrame": 9915,
+    "transitionFrame": 9665,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "foreground",
+    "startFrame": 9915,
+    "admitFrame": 9935,
+    "endFrame": 10215,
+    "transitionFrame": 9965,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "retained-overlap",
+    "startFrame": 10215,
+    "admitFrame": 10235,
+    "endFrame": 10515,
+    "transitionFrame": 10265,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "heating-overlap",
+    "startFrame": 10515,
+    "admitFrame": 10535,
+    "endFrame": 10815,
+    "transitionFrame": 10565,
+    "presentations": 1,
+    "history": 1
+  },
+  {
+    "name": "next-step-input",
+    "startFrame": 10815,
+    "admitFrame": 10835,
+    "endFrame": 11115,
+    "transitionFrame": 10865,
+    "presentations": 1,
+    "history": 1
+  }
+]

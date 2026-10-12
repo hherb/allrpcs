@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "method": "Native Godot Movie Maker Master output, 60fps; WAV extracted losslessly. Actual rapid mapped H01/S01/C01 coexistence.",
+  "inputs": [
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.cs",
+      "sha256": "884ea0207fb41c3ddb7fc109ad55eecbdd57138e2a4ddb2d2601333b5c93b8f6"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.tscn",
+      "sha256": "33a33a5747c49d6c3680fe9fab80702cf14a0d54c0dbd93f4d299f2ec69df457"
+    },
+    {
+      "path": "game/OpeningRegionRemedyCoolingAudioController.cs",
+      "sha256": "b16a043e6737a98bf1a0d08d3bcb318892a6ab59fd4e82a15aa56e2eb549da5a"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "a89a7ca3668833ee4c861776406c0e6cf1314c15abf1e46a71a4e694199995a1"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "97372ec3fd4269f494b7c8a336b73725924a29873493415bb0a37605899ef687"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "1c2c514e75ded142f9d9224358bb3bc86788835fa53376e2096ad2734e226cf2"
+    },
+    {
+      "path": "src/Application/Audio/RemedyCoolingPresentationProjection.cs",
+      "sha256": "e025864ccf4610147ed1069ce3a904c91a2638a4ca9f74df398157e41fcb4970"
+    },
+    {
+      "path": "src/Application/Audio/RemedyCoolingCueHistory.cs",
+      "sha256": "1e4a576dd78621c57fe46fa573a4f00688ee03222f29741972c413e53c3d2245"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/C01.wav",
+      "sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121"
+    },
+    {
+      "path": "game/assets/audio/remedy-cooling/C01.wav.import",
+      "sha256": "c752d24e8148cf23e236880948cd3257e508289cbb18d3634ae1c642cb6de83e"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    },
+    {
+      "path": "game/OpeningRegionRemedySteepingAudioController.cs",
+      "sha256": "1dcc43c888e79cbc748ac8403873249ff7c295dcfe6233e115d7706683dc5d89"
+    }
+  ],
+  "completed_cases": 37,
+  "command": "ALLRPCS_COOLING_OUTPUT_CHECK=1 ALLRPCS_COOLING_TIMELINE=.../output/timeline.json godot --path game res://RemedyCoolingAudioRuntimeProof.tscn --write-movie /private/tmp/allrpcs-cooling-output/reviewed.avi --fixed-fps 60 --quit-after 12000",
+  "master_wav_sha256": "9b1217ca2bce1b0c29b41e4dc4f38fe7bf39fe43a7080585470dda63144d1cde",
+  "master_gzip_sha256": "c8df903b326f2a77316c888576ddfa86206addc7d5423de734f125732e6f6c21"
+}

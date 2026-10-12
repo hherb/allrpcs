@@ -1,0 +1,335 @@
+[
+  {
+    "name": "default",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "quiet",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "mono",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "effects-half",
+    "local": 65,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "master-half",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "effects-zero",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "master-zero",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "effects-muted",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "master-muted",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "ambience-zero",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "captions-off",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "missing-stream",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "missing-bus",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "pause",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": true,
+    "active": false
+  },
+  {
+    "name": "focus-loss",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "reading-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "text-entry",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "journal-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "map-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "dialogue-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "settings-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "customization-overlay",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": false
+  },
+  {
+    "name": "teleport",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "invalid-delta",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "source-hidden",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": false,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "source-moved",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": false,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "source-disabled",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": false,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "source-replaced",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": false,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "table-drift",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": false,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "mute-unmute",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "missing-stream-repair",
+    "local": 23,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "load-success",
+    "local": 51,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "load-failure",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "foreground",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "retained-overlap",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "heating-overlap",
+    "local": 65,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  },
+  {
+    "name": "next-step-input",
+    "local": 66,
+    "delta": 0.016666666666666666,
+    "focused": true,
+    "bindings": true,
+    "paused": false,
+    "active": true
+  }
+]

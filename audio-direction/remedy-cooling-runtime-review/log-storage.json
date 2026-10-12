@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "logs": [
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-1.log.gz",
+      "raw_sha256": "829ab47653bbbc522f2d14d6b344038f8940c4e16aeba87e8b74b24b3d5e9aee",
+      "stored_sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-2.log.gz",
+      "raw_sha256": "1f24ceec8ffee6bcb4f03905ab26d6022cb75f454d1bf67caa18f24feb4db839",
+      "stored_sha256": "9dfa28cdbed8b99e4625fa1ff6125080f983c406153151c8a2b7b2508e772fb4",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-0.log.gz",
+      "raw_sha256": "829ab47653bbbc522f2d14d6b344038f8940c4e16aeba87e8b74b24b3d5e9aee",
+      "stored_sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/mount-2.log.gz",
+      "raw_sha256": "829ab47653bbbc522f2d14d6b344038f8940c4e16aeba87e8b74b24b3d5e9aee",
+      "stored_sha256": "95e59b51293d415b6d4d57339b2d7e776a58c7f2137056dd1057df2720e70f90",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-1.log.gz",
+      "raw_sha256": "085b4b2a93a9f4540bde819d64b624858c9ad6d3d5df67b61cd28996df80bee2",
+      "stored_sha256": "1647464eaadf7b802fcfeb39a843c4986a91172609dd0b38c355b867e22bbbe5",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/export-0.log.gz",
+      "raw_sha256": "ecf4d42f08f0d77fd6bed6d9c445dc6b10bee2d618d739e2e2405032fd226335",
+      "stored_sha256": "6845b8d3fc1de8c23741091d0b854603494426f808fc07a8003fead8bc391b5f",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/format.log.gz",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored_sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/headless-realtime-player-clock.log.gz",
+      "raw_sha256": "84c45eb87e2deff0fa9c2cb21c7151109c55a2bf5ae45fa5c8e832b37359c7fa",
+      "stored_sha256": "b9e14a3f8eab8eb2739198ef444ba2b6bbc00579e355eded0eeae9d478bef87d",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/runner-selftest.log.gz",
+      "raw_sha256": "54ce8d15ceb7f630f3e627e06912b57cad408c9ac2cb97f675bb8c9120eec587",
+      "stored_sha256": "ca38dccf686e2b0bf3ee7cecac8abbfa21d366aadc309a5b74184411499c9c77",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/import.log.gz",
+      "raw_sha256": "7df427f6e0cb87077ed3b8e5cc0eeb9eba418eb8847d2b98dd7b701ae85e3076",
+      "stored_sha256": "7922f9f6e9d55b093e9a58b2f86c4c26648d4ddb44778724b30d0876848fa5c4",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/preparatory/build.log.gz",
+      "raw_sha256": "e89d6a9eedabc3d2441b1bd781d7194dbc09fd66cac860eeef07371f6d189086",
+      "stored_sha256": "819afeaed786661e1520052d603e402db5ea74ae6a2eacaa4eac842d94153a11",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/output/native.log.gz",
+      "raw_sha256": "4a623a2bf93ed16d4d8ef5032ab0843afcbe8a4cc97dc73cf06d69e99c10cd27",
+      "stored_sha256": "d9edbadf749d8ed87ac20a0692bbb68871ca71ef9d1330af86c1c0b5c79ea44c",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/captions-off.log.gz",
+      "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+      "stored_sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/default.log.gz",
+      "raw_sha256": "fb593f7607d66d9205c4031256c0ce6bbfa581fda0cb4feefb586f135f8ca454",
+      "stored_sha256": "b33177845dbe7ab236fc6252106e5957386c25a53dbb3d1f6c2b00c0a76532d0",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/effects-muted.log.gz",
+      "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+      "stored_sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/cooling-disabled.log.gz",
+      "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+      "stored_sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/quiet.log.gz",
+      "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+      "stored_sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/master-muted.log.gz",
+      "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+      "stored_sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/live/missing-stream.log.gz",
+      "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+      "stored_sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/views/native.log.gz",
+      "raw_sha256": "66c13986f31b6c67f1127c269b5a60aa04c18c950f3166c3b0575601edc3f18a",
+      "stored_sha256": "0e938d65e9b30e9f9158979928ce703df90b094a23ef5d5a437929bc4315adaf",
+      "compression": "gzip, mtime 0; exact raw tool output"
+    }
+  ]
+}

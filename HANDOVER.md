@@ -6,44 +6,25 @@ instructions and terminal acceptance take precedence. Retain every persistent cl
 
 ## Current checkpoint
 
-Accepted art, ground/channel presentation and the whole cloak correction stay closed.
-Future walking work uses the accepted [reference gait model](art-direction/reference-gait-model.md).
-Accepted material/footstep/positional/music/interior/action audio and Healer footsteps
-remain complete in the ledger.
+All accepted art, ground/channel presentation, whole cloak correction and earlier audio owners
+remain closed in the persistent ledger. Future walking work uses the accepted
+[reference gait model](art-direction/reference-gait-model.md). Heating and
+[steeping](audio-direction/remedy-steeping-runtime-review/README.md) retain their exact sources
+and complete accepted evidence; no unchanged-owner approval or audit remains.
 
-The fixed garden foliage, southern-road wind and woodland rain runtime packages stay
-closed. Their exact accepted sources, owners, captions/history and verification remain
-hash-bound in the persistent ledger.
-
-The owner-approved [committed heating runtime](audio-direction/remedy-heating-runtime-review/README.md)
-is closed: exact second-step 1-to-2 H01 commit, thirteenth caption and independent
-history, with its original listening acceptance and complete 126-stage evidence.
-
-The owner-approved [committed steeping runtime](audio-direction/remedy-steeping-runtime-review/README.md)
-is complete. After rejecting the first candidate for a wading/river-entry character,
-the owner accepted the exact lossless CC0 replacement with “Yes, this is suitable”.
-One three-second S01 Effects cue follows the exact existing third-step 2-to-3 commit
-at unchanged (2300,1300), with an independent fourteenth caption and capacity-16
-history. [Verification](audio-direction/remedy-steeping-runtime-verification.json)
-passes all 140 root stages, preserving the previous 126 in order: 5,442 unit tests,
-30 focused cases, seven complete mapped preparation/treatment modes, 37 measured
-native cases, both-size accessible UI, 15 rejection probes and three mounted presets.
-All 115 prior audio entries remain byte-identical. Totals are 41 streams and
-38 individual notices in 22 groups. The finite slice is closed; no repeat approval
-or unchanged-owner audit remains. The [cooling proposal](audio-direction/remedy-cooling-owner-scope.md) is complete:
-the exact fourth-step 3-to-4 input is immediate and separate from finish/batch
-installation. It recommends one quiet nonliteral input confirmation, without
-physical cooling or readiness claims. The owner approved the distinct
-source/event/runtime grant on 2026-10-12,
-recorded in [cooling authority](audio-direction/remedy-cooling-runtime-authority.json).
-The exact [C01 candidate](audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav)
-and offline H01/S01 context preview have been presented inline. Technical source/PCM
-checks pass; after reporting the original candidate seems empty, the owner approved
-the louder PCM16 reference with “Approved”. Its source character is accepted; do
-not request that decision again. A single game-level choice is pending because the
-reference is 18 dB above the proposed game level. Thirty isolated contract tests
-pass; drafts remain review text, with no game audio/runtime installed. Product/CI
-inputs remain unchanged; the active runtime slice stays in progress.
+The owner approved cooling source/event/runtime, accepted the audible reference with
+“Approved”, and selected “The louder version is more appropriate”. The qualified
+[C01](game/assets/audio/remedy-cooling/C01.wav) retains original unity gain, peaks at
+−12.23 dBFS and follows only the existing fourth-step 3-to-4 commit. Its independent
+fifteenth **Cooling step committed** caption lasts two active seconds; separate history
+retains sixteen records. Thirty focused tests, seven complete mapped parity modes,
+37 measured native Master cases, both-size accessible UI, 15 rejection probes and
+three mounted presets pass. All 120 prior audio entries remain byte-identical;
+totals are 42 streams, 39 notices and 23 groups. The complete root gate passes all
+154 stages and 5,472 unit tests, retaining all 140 prior stages in order. Cooling is
+complete; no repeat source/level/runtime approval remains. See
+[authority](audio-direction/remedy-cooling-runtime-authority.json)
+and [verification](audio-direction/remedy-cooling-runtime-verification.json).
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -53,58 +34,50 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-cooling-runtime-integration — Add quiet confirmation of the existing fourth-step cooling input** (in_progress).
+**phase9-herb-collection-audio-owner-scope — Prepare a committed herb-collection audio owner proposal** (ready).
 
-Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
-preparation.
+Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: One qualified C01 source, exact existing 3-to-4 commit notification,
-independent fifteenth Cooling step committed caption and capacity-16 history, with complete
-source/parity/native/UI/packaging/quality evidence.
+Missing deliverable: One concrete proposal for missing committed herb-collection feedback: exact
+accepted collection occurrence, actual actor/site eligibility, safe anonymous feedback, source
+requirements and finite implementation grant/checks.
 
-Owner source/event/runtime grant is recorded in audio-direction/remedy-cooling-runtime-
-authority.json. After reporting the original -30.1 dBFS candidate seems empty, the owner accepted
-the audition-only +18 dB PCM16 reference with Approved. That reference/source approval is recorded;
-do not request it again. One explicit game-level choice is pending: retain original recording at
-unity (about -12.23 dBFS, 0.13 dB below approved reference) and replace the provisional -30 dBFS
-ceiling, or keep the original quiet game level. Do not infer the pending choice from silence. Thirty
-isolated scratch contract tests pass; reviewed drafts are retained as text under
-source/implementation-drafts, with no runtime/audio installed. When level is resolved, record its
-authority and exact derivative qualification, then complete existing fourth-step 3-to-4 Effects
-confirmation, independent fifteenth line/history and all named
-parity/native/UI/packaging/quality/review/closure/publication checks. Preserve accepted owners and
-persistent closures.
+Read-only planning for a genuinely new collection-audio owner. Begin with
+CharacterTurnWorldEventOccurrenceController.TryOccurPostExaminationCollection and
+TemporaryCharacterExaminationFlowController; identify the exact installed occurrence and actual
+actor/site eligibility without treating narrative intent or geometry as physical-source authority.
+Prepare a concrete bounded proposal, including silence if no qualified physical event exists. Keep
+all accepted collection/examination gameplay, recipe operations and audio owners closed. No
+source/runtime implementation without the distinct owner grant.
 
-Done when: One exact owner-qualified C01 and once-only existing cooling input confirmation with
-accessible equivalent, complete finite verification and publication; all accepted owners remain
-unchanged.
+Done when: Two source-bound proposal documents identify the existing occurrence, missing
+audio/physical owner boundaries, safe feedback/source decision, bounded files and finite checks,
+with the distinct implementation authority made concrete.
 
 Expected outputs:
 
-- `audio-direction/remedy-cooling-runtime-authority.json`
-- `audio-direction/remedy-cooling-runtime-verification.json`
+- `audio-direction/herb-collection-owner-scope.md`
+- `audio-direction/herb-collection-owner-scope.json`
 
-Boundary: Approved exact cooling source/event/runtime contract only. Owner acceptance of exact
-derivative remains required before installation. No physical cooling
-mechanism/station/vessel/action, elapsed time/temperature/readiness,
-recipe/progression/save/hearing/perception, accepted audio/art, another operation/emitter, voice or
-executable release.
+Boundary: Planning only for new collection feedback. No accepted audio/art or collection/examination
+reopening, new occurrence/movement/physical action, hearing/perception/knowledge/truth/save change,
+source/runtime/emitter/caption/history implementation, voice or executable release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Run `python3 scripts/check-continuation.py --sync` after ledger maintenance, then its
-checker and `--self-test`. Current steeping checks are
-`python3 scripts/validate-remedy-steeping-runtime.py --reviewed`, `--output-only`
+checker and `--self-test`. Current cooling checks are
+`python3 scripts/validate-remedy-cooling-runtime.py --reviewed`, `--output-only`
 and `--self-test`.
 Reuse passing product evidence for prose alone. Runtime changes require granted focused
 checks and root `./quality.sh`; runner changes require `python3 quality.py --self-test`.
 
 Frozen validators run in private historical source trees/indexes: hand-tool `75c1aa04`,
 Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`, heating
-`b7912dd4`. Cold historical checks restore before build/import. Reports and exact
-compressed logs are retained in the linked reviews. Import cleanup removes only newly generated valid UID sidecars whose tracked
-source bytes are unchanged. Run Godot on the host; retry only diagnosed mutex shutdowns
+`b7912dd4` and steeping `78369110`. Cold historical checks restore before build/import. Reports and exact
+compressed logs are retained in the linked reviews. Import cleanup removes only newly generated valid UID sidecars whose
+tracked source bytes are unchanged. Run Godot on the host; retry only diagnosed mutex shutdowns
 with the identical command. Native focus fixtures run serially in the foreground.
 
 All three presets have verified audio resource packaging. The existing missing game

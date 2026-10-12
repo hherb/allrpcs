@@ -5,8 +5,8 @@
   "scope_id": "phase9-remedy-cooling-runtime-integration",
   "owner_statement": "approved",
   "context": "Direct answer to the presented cooling implementation decision after completed proposal publication 2508cfa4; grants new source selection/preparation and the named runtime with exact owner listening before installation.",
-  "status": "awaiting_game_level_decision",
-  "baseline_commit": "2508cfa49ff759399dd7e80c9a7c919a1ae493ae",
+  "status": "complete",
+  "baseline_commit": "d9a7d644c7b32c02f6717b9c93ca1327c8c2e2c7",
   "proposal_bindings": [
     {
       "path": "audio-direction/remedy-cooling-owner-scope.json",
@@ -63,7 +63,11 @@
       "quality.py": "Necessary cooling stages; retain 140 in order and earlier pins; historical steeping baseline 78369110 as needed.",
       "CONTINUATION.json": "Record exact grant and closure and next finite missing deliverable.",
       "HANDOVER.md": "Checkpoint and ledger-rendered boundary.",
-      "ROADMAP.md": "Partial sound-roadmap status only."
+      "ROADMAP.md": "Partial sound-roadmap status only.",
+      "audio-direction/remedy-cooling-runtime-authority.json": "Current cooling qualification/evidence only",
+      "audio-direction/remedy-cooling-source/README.md": "Current cooling qualification/evidence only",
+      "audio-direction/remedy-cooling-source/provenance.json": "Current cooling qualification/evidence only",
+      "scripts/prepare-remedy-cooling-passage.py": "Current cooling qualification/evidence only"
     },
     "protected": "All other product inputs; Domain/controller/recipe/station/art/navigation/movement/save/providers/hearing/perception, accepted audio and frozen validators; preserve game/project.godot."
   },
@@ -390,7 +394,18 @@
     ],
     "completion_condition": "One exact owner-qualified C01 and once-only existing cooling input confirmation with accessible equivalent, complete finite verification and publication; all accepted owners remain unchanged."
   },
-  "source_qualification": null,
+  "source_qualification": {
+    "status": "qualified",
+    "candidate_sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
+    "window_seconds": [
+      0.1,
+      0.85
+    ],
+    "owner_statement": "Approved",
+    "level_owner_statement": "The louder version is more appropriate",
+    "qualification": "Approved audible reference character retained; owner selects louder game level, unity original trim/fades within 0.13 dB of approved reference.",
+    "reference_sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+  },
   "publication": {
     "path": "audio-direction/footstep-runtime-review/publication/authority.json",
     "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
@@ -513,11 +528,12 @@
       0.1,
       0.85
     ],
-    "selection_basis": "Catalogue describes light finger snaps; bytes prove lossless PCM16 mono 48 kHz. First measurable transient within this window; acoustic suitability remains pending exact owner listening."
+    "selection_basis": "Lossless PCM16 original; exact source character approved via audible reference, followed by explicit louder game-level choice. Qualified unity trim and fades installed.",
+    "path": "audio-direction/remedy-cooling-source/originals/0483.wav"
   },
   "candidate": {
     "path": "audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav",
-    "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2",
+    "sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
     "window_seconds": [
       0.1,
       0.85
@@ -525,19 +541,24 @@
     "seconds": 0.75,
     "context_preview": {
       "path": "audio-direction/remedy-cooling-runtime-review/source/H01-S01-C01-context.wav",
-      "sha256": "68f3ba7fc7cf5f8686c026357d6ad91d39049a1c1138c7ace0e330933ed84d4c"
+      "sha256": "68f3ba7fc7cf5f8686c026357d6ad91d39049a1c1138c7ace0e330933ed84d4c",
+      "status": "Historical quiet offline context; final rapid overlap verified by native Master fixture."
     },
     "context_record": {
       "path": "audio-direction/remedy-cooling-runtime-review/source/context-preview.json",
       "sha256": "dab8b8c6931eb7223a93f75a38dcf597a74a75a4557f05f827c291c37cb3b169"
     },
-    "status": "technical_checks_passed_listening_pending",
-    "no_pcm_runtime_installation": true
+    "status": "qualified",
+    "no_pcm_runtime_installation": false,
+    "wav_sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121",
+    "frames": 36000,
+    "sample_peak_dbfs": -12.229844528730949,
+    "uniform_gain_db": 0.0
   },
   "source_review_bindings": [
     {
       "path": "audio-direction/remedy-cooling-source/README.md",
-      "sha256": "b10edaa2d6f79d2f1d6628f508d0dbe0fdf6ad8ed80b7d1a0827a14d2c99983a"
+      "sha256": "4ed00aa8070761bbe2c05ed020003a1b5aa2c48cbc6236ab628bf47e1bca397b"
     },
     {
       "path": "audio-direction/remedy-cooling-source/originals/0483.wav",
@@ -545,7 +566,7 @@
     },
     {
       "path": "audio-direction/remedy-cooling-source/provenance.json",
-      "sha256": "f8fdf721e12f473977fc2f2126db622c94aa27f9d2b7129e90bac4029fa7313e"
+      "sha256": "85d8252109685ce981badc73fa374e6551eb7ad66cedaadb922f5c989960cc86"
     },
     {
       "path": "audio-direction/remedy-cooling-source/rights/capture-storage.json",
@@ -565,7 +586,7 @@
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav",
-      "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2"
+      "sha256": "0eaca55cb79f4747694089fa5f84a4a34650e959debc0941c236d21d4aadb121"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
@@ -605,11 +626,11 @@
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/loudness.log.gz",
-      "sha256": "326efdccfd5f65d9936a04ea5b09701d1690b31dfe00010702a51786a954bc56"
+      "sha256": "9a64d3f48836000239d77a59ad377c233f416b04753f784c86bf08837eacead2"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/passage-measurements.json",
-      "sha256": "f8fdf721e12f473977fc2f2126db622c94aa27f9d2b7129e90bac4029fa7313e"
+      "sha256": "85d8252109685ce981badc73fa374e6551eb7ad66cedaadb922f5c989960cc86"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/technical-checks.json",
@@ -1100,7 +1121,7 @@
   ],
   "preparation_script": {
     "path": "scripts/prepare-remedy-cooling-passage.py",
-    "sha256": "87c8fc3e3b9e1e49bb7c70a3ba3d874a060c1cd6f3c5b55701b4ded95fde13e4"
+    "sha256": "a08f66b7f0959a0a0a6e1d96653ce00800e7e802c78e833551ce3e8c7e9e8eec"
   },
   "owner_source_feedback": {
     "statement": "C01-candidate.wav seems empty",
@@ -1122,7 +1143,30 @@
     "reference_path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
     "reference_sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92",
     "scope": "Owner accepted the presented audible listening reference/source character. Exact game-level decision asked once because the approved reference is 18 dB above the unqualified game candidate.",
-    "game_level_decision": "pending",
-    "runtime_installed": false
+    "game_level_decision": "The louder version is more appropriate",
+    "runtime_installed": true
+  },
+  "level_authority": {
+    "owner_statement": "The louder version is more appropriate",
+    "date": "2026-10-12",
+    "gain_db": 0,
+    "sample_peak_ceiling_dbfs": -12.2,
+    "replaces": "Provisional -30 dBFS ceiling only; unity original window peaks about -12.23 dBFS, 0.13 dB below approved audible reference. No amplification or normalization."
+  },
+  "protected_repository_snapshot": {
+    "baseline_commit": "7836911042760409e181df80b4bfdd9951a8e7b2",
+    "tracked_file_count": 14688,
+    "algorithm": "Baseline git ls-tree -rz; exclude named paths and .DS_Store; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + file SHA256 + LF.",
+    "manifest_sha256": "1e04be94b133ec3007276eb5cd2a198f656ac7c0f90e6c65ab180fc76059ded9",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
   }
 }
