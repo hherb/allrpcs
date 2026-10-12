@@ -30,7 +30,12 @@ passes all 140 root stages, preserving the previous 126 in order: 5,442 unit tes
 native cases, both-size accessible UI, 15 rejection probes and three mounted presets.
 All 115 prior audio entries remain byte-identical. Totals are 41 streams and
 38 individual notices in 22 groups. The finite slice is closed; no repeat approval
-or unchanged-owner audit remains. Cooling is a distinct missing operation.
+or unchanged-owner audit remains. The [cooling proposal](audio-direction/remedy-cooling-owner-scope.md) is complete:
+the exact fourth-step 3-to-4 input is immediate and separate from finish/batch
+installation. It recommends one quiet nonliteral input confirmation, without
+physical cooling or readiness claims. Source/event/runtime awaits the concrete
+distinct grant; current approval completed planning only. No product/CI input
+changed; the retained 140-stage quality evidence remains applicable.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -40,33 +45,36 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-cooling-owner-scope — Plan feedback for the existing fourth-step cooling commit** (ready).
+**phase9-remedy-cooling-runtime-integration — Add quiet confirmation of the existing fourth-step cooling input** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: First read-only owner/source proposal for the exact existing fourth cooling
-step (3-to-4), including whether quiet feedback is meaningful, without inventing physical actions or
-changing accepted owners.
+Missing deliverable: One qualified C01 source, exact existing 3-to-4 commit notification,
+independent fifteenth Cooling step committed caption and capacity-16 history, with complete
+source/parity/native/UI/packaging/quality evidence.
 
-Read the live recipe, preparation coordinator and accepted owner packages. Prepare one finite
-proposal for the exact existing fourth-step cooling commit at unchanged (2300,1300), with
-source/feedback constraints, named files/checks and a concrete distinct implementation decision.
-Preserve all accepted audio/art and persistent closures. Current S01 approval grants no cooling
-acquisition or runtime; do not begin this queued proposal as part of steeping closure.
+Obtain the distinct source/event/runtime grant in audio-direction/remedy-cooling-owner-scope.md
+before acquisition or implementation. Then select one new free lossless CC0-1.0 or CC-BY-4.0 soft
+dry unpitched source; prepare/present 0.75-second C01 and obtain exact owner listening acceptance
+before installation. Add only quiet Effects confirmation of the existing fourth-step input at
+unchanged (2300,1300), plus independent caption/history. Complete named checks, review, closure and
+standing publication together. Preserve accepted sources/owners and persistent closures; failure to
+qualify/accept source is a blocker without relaxing the contract.
 
-Done when: Two hash-bound planning files define the exact existing cooling step/station/input
-commit, meaningful feedback and source constraints, finite implementation files/checks and the
-distinct required source/runtime grant; no audio acquisition or product changes.
+Done when: One exact owner-qualified C01 and once-only existing cooling input confirmation with
+accessible equivalent, complete finite verification and publication; all accepted owners remain
+unchanged.
 
 Expected outputs:
 
-- `audio-direction/remedy-cooling-owner-scope.md`
-- `audio-direction/remedy-cooling-owner-scope.json`
+- `audio-direction/remedy-cooling-runtime-authority.json`
+- `audio-direction/remedy-cooling-runtime-verification.json`
 
-Boundary: Read-only planning only. No source acquisition/derivative, runtime, physical
-station/vessel/action, time/temperature/readiness, recipe/progression/save/hearing/perception, art,
-voice or executable release. New cooling source/runtime requires its own concrete owner grant.
+Boundary: Awaiting distinct source/event/runtime grant; current approval completed read-only cooling
+planning only. No physical cooling mechanism/station/vessel/action, elapsed
+time/temperature/readiness, recipe/progression/save/hearing/perception, accepted audio/art, other
+operation/emitter, voice or executable release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

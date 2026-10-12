@@ -214,8 +214,13 @@ retain the prior 126 in order; 5,442 unit tests, 30 focused cases, seven complet
 mapped preparation/treatment modes, 37 measured native cases, both-size native UI,
 15 rejection probes and three mounted presets pass. All 115 prior audio entries
 remain byte-identical; totals are 41 streams and 38 individual notices in 22 groups.
-Cooling and other missing operations remain partial; physical vessel/action,
-infusion duration and gameplay changes remain separate.
+The [cooling input-confirmation proposal](audio-direction/remedy-cooling-owner-scope.md)
+is complete: exact immediate fourth-step 3-to-4, separate from finish/batch
+installation; one quiet nonliteral Effects acknowledgement, fifteenth text line
+and independent history are proposed. No source was acquired or product changed;
+the distinct source/event/runtime grant remains missing. Cooling and other missing
+operations remain partial; physical vessel/action, duration, temperature/readiness
+and gameplay changes remain separate.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

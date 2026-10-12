@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-remedy-cooling-owner-scope",
+  "status": "completed_read_only_proposal",
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "missing_deliverable": "Once-only confirmation of the existing fourth-step cooling input commit, without inventing audible physical cooling.",
+  "authority": {
+    "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+    "approved_scope": "Ledger-selected read-only cooling owner/source proposal only.",
+    "new_implementation_grant": "Authorize one new free lossless CC0-1.0 or CC-BY-4.0 soft, dry, unpitched source under this contract; prepare/present 0.75-second C01 and obtain exact owner listening acceptance before installation; add only the existing fourth-step 3-to-4 cooling input confirmation at unchanged (2300,1300), on Effects, with the fifteenth Cooling step committed line and independent capacity-16 history; complete named source, runtime, parity, native/UI, packaging, quality, review and publication checks. No qualifying/accepted source means a recorded blocker before installation, without relaxing this contract.",
+    "implementation_authorized": false,
+    "source_audio_acquired": false,
+    "source_audio_decoded_or_heard": false,
+    "pcm_or_runtime_installed": false,
+    "publication": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "ongoing_search_permission": "Retained bounded game-sound search/download permission; no acquisition in this read-only proposal and no new runtime grant."
+  },
+  "owner": {
+    "scene": "Main/OpeningRegionRemedyPreparationSceneSource",
+    "binding": "Main/OpeningRegionRemedyPreparationSceneSource.Binding",
+    "location_id": "healer-garden",
+    "station_world_position": [
+      2300,
+      1300
+    ],
+    "rotation": 0,
+    "scale": [
+      1,
+      1
+    ],
+    "maximum_station_to_garden_pixels": 72,
+    "input_range_pixels_inclusive": 48,
+    "decorative_table_local_position": [
+      0,
+      18
+    ],
+    "decorative_table_offset": [
+      -48,
+      -92
+    ],
+    "decorative_table_redefines_station": false,
+    "recipe_id": "cooling-moonwort-remedy",
+    "step_index_zero_based": 3,
+    "step_kind": "IngredientPreparationKind.Cooling",
+    "ordered_steps": [
+      "grinding",
+      "heating",
+      "steeping",
+      "cooling"
+    ],
+    "input_requirements": [
+      {
+        "ingredient": "moonwort-leaf",
+        "amount": 250,
+        "unit": "Milligram"
+      },
+      {
+        "ingredient": "clean-water",
+        "amount": 100,
+        "unit": "Millilitre"
+      }
+    ],
+    "output": {
+      "ingredient": "cooled-moonwort-preparation",
+      "amount": 100,
+      "unit": "Millilitre"
+    },
+    "mapped_input": "P / remedy_prepare",
+    "seven_press_sequence": [
+      "start",
+      "grind",
+      "heat",
+      "steep",
+      "cool",
+      "finish",
+      "install batch"
+    ],
+    "current_status_after_cooling": "Preparation: step 4/4 complete. Press P to finish.",
+    "outcome_after_cooling": null,
+    "cooling_is_finish_install_or_treatment": false,
+    "physical_actions_added": [],
+    "time_temperature_readiness_added": false
+  },
+  "feedback_decision": {
+    "recommended": "Quiet optional nonliteral interface confirmation of the committed cooling input on Effects.",
+    "meaning": "The cooling step input committed, without a claim of physical heat loss, readiness or treatment success.",
+    "silence_assessed": "Passive cooling has no justified literal material sound; existing status already supplies visible confirmation. A brief optional acknowledgement adds redundant audible input confirmation.",
+    "policy_basis": "Accepted dynamic-range-policy.json routing.general_ui_feedback_bus=Effects and README cue hierarchy player-action confirmation.",
+    "literal_cooling_sound_justified": false,
+    "new_policy_owner": false
+  },
+  "source_requirements": {
+    "nominated_original": null,
+    "qualified_original": null,
+    "cost": 0,
+    "encodings": "Lossless original; WAV/FLAC/AIFF encoding verified from original bytes. Mono/stereo only.",
+    "allowed_licences": [
+      "CC0-1.0",
+      "CC-BY-4.0"
+    ],
+    "official_deeds_checked_date": "2026-10-12",
+    "official_deeds": [
+      "https://creativecommons.org/publicdomain/zero/1.0/",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "required_character": "One soft dry unpitched contact and natural decay in a clean contiguous 0.75-second window; neutral interface meaning.",
+    "reject": [
+      "pouring",
+      "splashing",
+      "stirring",
+      "boiling",
+      "steam",
+      "fire",
+      "ice",
+      "temperature-machine effect",
+      "vessel handling",
+      "metal handling",
+      "hard tool strike",
+      "keyboard or appliance click",
+      "sustained hiss",
+      "tonal or melodic success signal",
+      "voices",
+      "music",
+      "wildlife",
+      "clipping",
+      "decode faults",
+      "distracting room sound"
+    ],
+    "retain": [
+      "creator and attribution parties",
+      "title",
+      "exact catalogue and download URLs",
+      "retrieval metadata",
+      "original filename and bytes and hash",
+      "catalogue licence and deed captures",
+      "copyright and disclaimer notices",
+      "prior modifications",
+      "our derivative modifications",
+      "decode and window offsets and hashes",
+      "tools and versions"
+    ],
+    "listening_gate": "Present exact derivative inline, obtain owner acceptance of isolated cue and meaning beside H01/S01 before runtime installation; no independent agent listening claim.",
+    "on_failure": "Record source blocker before installation. Do not substitute accepted PCM or relax the contract.",
+    "source_specific_lossy_exception": false,
+    "reuse_accepted_audio": false,
+    "purchase_or_account_action": false
+  },
+  "derivative": {
+    "path": "game/assets/audio/remedy-cooling/C01.wav",
+    "seconds": 0.75,
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "encoding": "PCM24",
+    "frames": 36000,
+    "loop": false,
+    "provisional_sample_peak_ceiling_dbfs": -30,
+    "allowed_edits": [
+      "deterministic decode",
+      "contiguous trim",
+      "required resampling",
+      "mono duplication",
+      "10-ms linear onset fade",
+      "50-ms linear ending fade",
+      "one uniform attenuation-only gain"
+    ],
+    "forbidden_edits": [
+      "synthesis",
+      "layering",
+      "filtering",
+      "denoising",
+      "pitch change",
+      "time change",
+      "widening"
+    ],
+    "import": {
+      "compression": false,
+      "normalization": false,
+      "loop": false,
+      "mounted_comparison": "PCM16 with documented PCM24 conversion"
+    },
+    "measure": [
+      "original decode and window metadata",
+      "derivative and import hashes",
+      "sample peak",
+      "loudness",
+      "isolated and mixed native Master output"
+    ],
+    "measurement_limits": "Provisional quietness target; no fresh-device or ordinary-play compliance."
+  },
+  "commit_contract": {
+    "notification": "CoolingCompleted",
+    "token": "CoolingPreparationCommit",
+    "coordinator": "OpeningRegionRemedyPreparationInputCoordinator",
+    "before_index": 3,
+    "after_index": 4,
+    "activity_must_be_new": true,
+    "step_must_be_retained_index_3": true,
+    "exact_references": [
+      "recipe",
+      "before recipe",
+      "after recipe",
+      "before plan",
+      "after plan",
+      "binding",
+      "context",
+      "source",
+      "coordinator",
+      "preparation controller",
+      "Seeker",
+      "current owned token",
+      "current after activity at notification"
+    ],
+    "actual_seeker_distance_pixels_inclusive": 48,
+    "supplied_actual_distance_pixels_inclusive": 1,
+    "finite_positions_required": true,
+    "consume_identity_before_blocker_and_output_checks": true,
+    "reject_tokens": [
+      "null",
+      "copied",
+      "rebuilt",
+      "forged",
+      "foreign",
+      "stale",
+      "wrong step",
+      "duplicate"
+    ],
+    "not_event_sources": [
+      "polling index 4",
+      "status text",
+      "direct-controller advance",
+      "save reconstruction",
+      "approach",
+      "S01 tail",
+      "finish",
+      "install batch",
+      "treatment",
+      "diagnostic injection"
+    ],
+    "subscriber_exception": "Isolate after commit; never rollback, block next input or advance again.",
+    "existing_gameplay_and_notifications_unchanged": true
+  },
+  "playback": {
+    "controller": "OpeningRegionRemedyCoolingAudioController",
+    "player": "One nonspatial AudioStreamPlayer",
+    "bus": "Effects",
+    "gain": 1,
+    "pitch_scale": 1,
+    "max_polyphony": 1,
+    "seconds": 0.75,
+    "delay_queue_loop_replay_catchup": false,
+    "preferences": "Existing Master/Effects and Default/Quiet and mono applied once.",
+    "missing_stream_or_bus": "Silent with otherwise eligible text/history; no Master fallback.",
+    "mute_or_zero": "Stop C01 immediately; admitted text may finish; unmute/repair never resumes.",
+    "cancel": [
+      "pause",
+      "focus loss",
+      "dialogue",
+      "reading",
+      "customization",
+      "map",
+      "journal",
+      "settings overlay",
+      "text entry",
+      "nonfinite or <=0 or >0.1 delta",
+      "nonfinite position",
+      "Seeker displacement over 96 pixels",
+      "source replacement or disable or hide or transform or child drift"
+    ],
+    "watcher_process_mode": "Always",
+    "blocked_commits": "Consume and discard",
+    "successful_reset_or_teardown": "Clear only cooling player/caption/history/sequence/token; unsubscribe on teardown.",
+    "failed_load": "Change nothing",
+    "serialized": false,
+    "normal_finish_and_install_cancel_cue": false,
+    "other_owners_cancelled_or_retriggered": false,
+    "no_changes": [
+      "listener",
+      "bearing",
+      "hearing",
+      "perception",
+      "lease",
+      "ducking",
+      "music hold"
+    ]
+  },
+  "caption_contract": {
+    "ordinal": 15,
+    "phrase": "Cooling step committed",
+    "seconds_active": 2,
+    "caption_preference_hides_only_new_line": true,
+    "mute_missing_audio_retain_text": true,
+    "forbidden_information": [
+      "temperature",
+      "duration",
+      "readiness",
+      "treatment success",
+      "actor",
+      "site",
+      "ingredient",
+      "remedy",
+      "coordinates",
+      "bearing",
+      "timestamp"
+    ],
+    "existing_status_unchanged": true,
+    "preserve_prior_lines_and_timers": 14,
+    "permitted_ui_edit": "Only new independent line and own panel bounds for simultaneous wrapping/visibility."
+  },
+  "history_contract": {
+    "type": "RemedyCoolingCueHistory",
+    "section": "Remedy cooling cues",
+    "panel": "Audio / Recent sound cues",
+    "capacity": 16,
+    "order": "oldest-first",
+    "fields": [
+      "local sequence",
+      "exact phrase"
+    ],
+    "detached_read_only_snapshot": true,
+    "insert": "Immediately per unique eligible commit; no time limiter.",
+    "duplicate_before_insertion": true,
+    "reading_emits_nothing": true,
+    "cancellation_preserves_prior_entries": true,
+    "successful_reset_clears_cooling_only": true,
+    "preserve": "Prior section order/capacities/limiters/scrolling/keyboard/Escape/Back to Audio/origin focus.",
+    "capacity_injection": "Stopped diagnostics only, separate from genuine mapped input evidence."
+  },
+  "implementation_files": {
+    "new_exact_paths": [
+      "src/Application/Audio/RemedyCoolingPresentationProjection.cs",
+      "src/Application/Audio/RemedyCoolingCueHistory.cs",
+      "tests/Application.Tests/Audio/RemedyCoolingPresentationProjectionTests.cs",
+      "tests/Application.Tests/Audio/RemedyCoolingCueHistoryTests.cs",
+      "game/CoolingPreparationCommit.cs",
+      "game/OpeningRegionRemedyCoolingAudioController.cs",
+      "game/RemedyCoolingAudioRuntimeSmokeCheck.cs",
+      "game/RemedyCoolingAudioRuntimeProof.cs",
+      "game/RemedyCoolingAudioRuntimeProof.tscn",
+      "scripts/prepare-remedy-cooling-passage.py",
+      "scripts/check-remedy-cooling-audio-output.py",
+      "scripts/validate-remedy-cooling-runtime.py",
+      "audio-direction/remedy-cooling-runtime-authority.json",
+      "audio-direction/remedy-cooling-runtime-verification.json",
+      "audio-direction/remedy-cooling-source/README.md",
+      "audio-direction/remedy-cooling-source/provenance.json",
+      "audio-direction/remedy-cooling-source/rights/catalogue.html",
+      "audio-direction/remedy-cooling-source/rights/deed.html",
+      "game/assets/audio/remedy-cooling/C01.wav",
+      "game/assets/audio/remedy-cooling/C01.wav.import",
+      "game/assets/audio/remedy-cooling/CREDITS.txt",
+      "game/assets/audio/remedy-cooling/provenance.json",
+      "game/assets/audio/remedy-cooling/deed.html",
+      "game/CoolingPreparationCommit.cs.uid",
+      "game/OpeningRegionRemedyCoolingAudioController.cs.uid",
+      "game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid",
+      "game/RemedyCoolingAudioRuntimeProof.cs.uid"
+    ],
+    "new_source_original_directory": "audio-direction/remedy-cooling-source/originals/ (one qualifying original with retained exact filename and hash)",
+    "new_review_directory": "audio-direction/remedy-cooling-runtime-review/ (source/listening/parity/native output/UI/packaging/rejection/quality evidence)",
+    "narrow_existing_edits": {
+      "game/OpeningRegionRemedyPreparationInputCoordinator.cs": "Cooling notification/current token/reset lifecycle only; retain all gameplay and prior notifications.",
+      "game/Main.tscn": "Sibling cooling controller/smoke resources only; retain station/art/children/prior blocks and Channel last.",
+      "game/MaterialSoundCaptionPanel.cs": "Independent fifteenth line and panel bounds only.",
+      "game/PositionalSoundCueHistoryPanel.cs": "Append cooling section and descriptive subtitle only.",
+      "game/MaterialAudioCreditsPanel.cs": "Append source-specific C01 credits only.",
+      "game/export_presets.cfg": "Append cooling txt/json/html filters to each retained preset.",
+      "quality.py": "Necessary cooling stages; retain 140 in order and earlier pins; historical steeping baseline 78369110 as needed.",
+      "CONTINUATION.json": "Record exact grant and closure and next finite missing deliverable.",
+      "HANDOVER.md": "Checkpoint and ledger-rendered boundary.",
+      "ROADMAP.md": "Partial sound-roadmap status only."
+    },
+    "protected": "All other product inputs; Domain/controller/recipe/station/art/navigation/movement/save/providers/hearing/perception, accepted audio and frozen validators; preserve game/project.godot."
+  },
+  "verification_required": [
+    "Source-specific rights/lossless original, reproducible derivative/import measurement and owner exact listening acceptance before installation.",
+    "Pure/live exact 3-to-4 reference/token cases including 48/49 pixels, forged positions, duplicates, stale/copied/wrong tokens, direct calls, failed transitions and subscriber exception.",
+    "Blockers/expiry/mute/missing stream or bus/reset and successful or failed load; no replay, no finish/install cue or cancellation, earlier commit counts preserved.",
+    "Seven genuine identical movement and seven-P preparation plus treatment modes: Default, Quiet, Master-muted, Effects-muted, missing C01, captions-off and cooling-disabled. Compare complete gameplay/save/transcript/protected truth state.",
+    "Native measured Master unity/half/zero/mute and Effects gain/mute; Ambience independence; Default/Quiet/mono; onset/tail/cancellation silence; gain factors within 5%; mono parity; isolated and H01+S01+C01/A04/A05/bed mixes.",
+    "Native 1280x720 and 1920x1080 fifteen-caption/history coexistence/wrapping/accessibility; sequence/capacity/duplicates/scroll/keyboard/return focus/isolated reset.",
+    "Three mounted presets: retain 120 exact entries; 42 streams, 39 notices, 23 groups, 125 entries. Exact C01 PCM16 and no original/review audio.",
+    "Rejection probes, focused tests and full root quality retaining all 140 stages and prior pins; runner self-test if changed; continuation sync/check/self-test and scoped publication."
+  ],
+  "completion_condition": "One exact owner-qualified C01 and once-only existing cooling input confirmation with accessible equivalent, complete finite verification and publication; all accepted owners remain unchanged.",
+  "proposal": {
+    "path": "audio-direction/remedy-cooling-owner-scope.md",
+    "sha256": "dbcd9114fbe8f3e02375b53bf7f5c7c1e03e9b8b3a92073db25ed9faa831ed51"
+  },
+  "baseline_commit": "7836911042760409e181df80b4bfdd9951a8e7b2",
+  "protected_repository_snapshot": {
+    "baseline_commit": "7836911042760409e181df80b4bfdd9951a8e7b2",
+    "tracked_file_count": 14688,
+    "algorithm": "Baseline git ls-tree -rz; exclude named paths and .DS_Store; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + file SHA256 + LF.",
+    "manifest_sha256": "1e04be94b133ec3007276eb5cd2a198f656ac7c0f90e6c65ab180fc76059ded9",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "unchanged_source_and_evidence_bindings": [
+    {
+      "path": "src/Domain/Diseases/RepresentativeFirstPatientScenarioSource.cs",
+      "sha256": "19fdea430b431ec0bcb769c9fc9807d30fce058c49823e6abfbb0de4c3ca2287"
+    },
+    {
+      "path": "game/FirstPatientPreparationController.cs",
+      "sha256": "c14ffe86d742e214308f3c4b8fa888490c334dedc97d58353ccde81fdbc21988"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "2831b606f6f7915692d34471e12b1c4b822b20756f701a4b21cc6862c8de511f"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationSceneSource.cs",
+      "sha256": "69c2b8cfed9c72cdacf68ca89b1b0b6613d515e6e6c46a78c798606fd5aa3b5f"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "6e947b71bea08c349c6af615ab684500186faed0f284e08b4d952de141cfb408"
+    },
+    {
+      "path": "game/OpeningRegionRemedySteepingAudioController.cs",
+      "sha256": "1dcc43c888e79cbc748ac8403873249ff7c295dcfe6233e115d7706683dc5d89"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "80fe87d48d8c5d311b7a417b7c9d0dc93d17becee1ebeea1b94b7612656491bf"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "ab5c56dddfe3227e2e77c923e740ab28a8f4edb0557f7e0eb0d2ff5cb238dd69"
+    },
+    {
+      "path": "audio-direction/dynamic-range-policy.json",
+      "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-authority.json",
+      "sha256": "0438fa6115db9913ba083ab4a0c373f9b6686d496ae7c8fc7360808173214720"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-verification.json",
+      "sha256": "7ed29eae0e3702a57e0f81a62c138c79f7efce8719c6df191414a17af0c50bf3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/summary.json",
+      "sha256": "4dde481fcc99e45bd895c4462730a3f28f0daa14eb629d41cd13273f0692a141"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/log-storage.json",
+      "sha256": "15eeedaf66233435fc5fbc61772dcd923803d52e7268e02c1314be926d3f77f0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/inventory.json",
+      "sha256": "344a0fc8a568b2cffac831b7d0d6cac23ed1ce72fad31f6a95e6c97d14fea920"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "f94a71aa460551547a4041db0c0535e47fbd935596eba415a613e8bd19ac237a"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "requirements-quality.txt",
+      "sha256": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af"
+    },
+    {
+      "path": "scripts/quality.sh",
+      "sha256": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3"
+    },
+    {
+      "path": "scripts/smoke-godot.sh",
+      "sha256": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    }
+  ],
+  "planning_checks": {
+    "status": "passed",
+    "all_baseline_git_blobs_match": true,
+    "protected_tracked_inputs": 14688,
+    "retained_audio_packaging_entries": 120,
+    "prior_product_evidence": {
+      "root_stages": 140,
+      "unit_tests": 5442,
+      "new_run": false,
+      "final_attempts_passed_and_complete": true,
+      "final_log_hashes_and_required_completion_verified": 140
+    },
+    "continuation_self_test_probes": 11,
+    "repository_boundary": "Two new proposal files plus CONTINUATION.json, HANDOVER.md and ROADMAP.md only; preserve editor bytes.",
+    "limits": "No source audio acquisition/decode/listening, PCM/runtime/product/CI edits or new native/device evidence."
+  }
+}
