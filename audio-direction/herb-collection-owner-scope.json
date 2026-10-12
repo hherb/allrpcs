@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-herb-collection-audio-owner-scope",
+  "date": "2026-10-12",
+  "timezone": "Australia/Sydney",
+  "status": "planning-complete",
+  "owner_instruction": "Read HANDOVER.md and follow the instructions - scope is approved",
+  "authority": {
+    "planning": true,
+    "new_source_use_runtime": false,
+    "physical_action": false,
+    "scope": "Ledger-selected proposal only. Standing source search/download and Git publication remain separate.",
+    "required_new_grant": "Authorize the bounded herb-collection source/use/runtime successor described here: qualify one new lossless HC01 with my exact listening acceptance before installation; represent only the existing exact flow-committed collection as a nearby soft rustle when the retained Healer is within 32 pixels of the retained (920,350) patch and the Seeker is within exclusive 192 pixels; add the anonymous Soft rustle caption/history and finite files/checks. Remote or unqualified commits stay silent. Do not change collection/examination gameplay, actor movement, physical actions, perception/hearing/truth/save or any accepted audio owner."
+  },
+  "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+  "existing_occurrence": {
+    "flow": "TemporaryCharacterExaminationFlowController.ProcessCollection",
+    "commit_method": "CharacterTurnWorldEventOccurrenceController.TryOccurPostExaminationCollection",
+    "event_source": "TemporaryWorldEventSource.HerbPatchCollectedWorldEvent",
+    "event_id": "healer-collected-herb-patch",
+    "time_effect": "WorldEventTimeEffect.Advance",
+    "target_id": "herb-patch",
+    "action": "CollectObject",
+    "safe_result": "TemporaryCharacterExaminationResultSource/DeterministicExaminationResultSelector",
+    "requirements": [
+      "Exact retained recorded examination event",
+      "Examination transcript entry still last",
+      "Same actor-ID reference",
+      "Exact result target-ID reference",
+      "SafeToCollect",
+      "Eligible retained collection event"
+    ],
+    "installation_order": [
+      "event log/world time",
+      "collection transcript entry",
+      "occurrence controller LastOccurrence",
+      "return success",
+      "flow LastCollectionOccurrence"
+    ],
+    "position_body_hand_contact_navigation_checked": false,
+    "collection_inventory_or_plant_mutation": false,
+    "duplicate_recording": "Rejected while event ID remains in current log",
+    "independent_task": "Separate examination controller; not a collection occurrence or this flow producer."
+  },
+  "binding_proposal": {
+    "actor_source": "Main/TemporaryHealerCharacterSource.Character",
+    "actor_identity": "Exact retained Character.Identity.Id; shared retained turn-source ID/roster character",
+    "body": "Main/Healer",
+    "listener_body": "Main/Seeker",
+    "site": "Main/InteractionCandidates/HerbPatch",
+    "site_type": "GreyboxInteractionTarget",
+    "site_world_position": [
+      920,
+      350
+    ],
+    "site_rotation": 0,
+    "site_scale": [
+      1,
+      1
+    ],
+    "site_parent_transform": "Identity; retain whole ancestor transform and child topology",
+    "marker_link": "Canonical ID value equality only: marker independently parses herb-patch; Domain IDs require exact reference identity",
+    "initial_body_positions": {
+      "Healer": [
+        2000,
+        950
+      ],
+      "Seeker": [
+        2120,
+        950
+      ]
+    },
+    "actor_site_distance_pixels_inclusive": 32,
+    "listener_site_distance_pixels_exclusive": 192,
+    "listener": "Existing current Main/OpeningRegionPositionalAudioController/SeekerListener",
+    "listener_actual_position_tolerance_pixels_inclusive": 1,
+    "qualification": "Actual positions read synchronously on producer notification; exact active finite visible enabled retained nodes; supported exterior navigation and retained valid layouts.",
+    "interior_projection": "Reuse OpeningRegionInteriorAudioProjection read-only; invalid layout/support is silent, never treated as neutral exterior.",
+    "authority_limit": "Bounds admit audio only. Proximity or existing geometry does not supply physical/acoustic authority; proposed new grant supplies interpretation of exact existing committed action.",
+    "no_gameplay_gate_or_approach": true
+  },
+  "feedback_decision": {
+    "current": "Silence; no qualified physical acoustic owner or source exists.",
+    "recommended_after_grant": "One quiet conditional nearby soft rustle for the exact locally qualified flow commit.",
+    "remote_or_unqualified": "Consume without sound/caption/history; never move, defer, retry or synthesize an action.",
+    "meaning": "Only a nearby soft rustle; no collection, safety, actor, ingredient or outcome disclosure.",
+    "global_nonliteral_acknowledgement": "Not proposed: would announce an NPC event without local acoustic qualification.",
+    "no_new_physical_action": true
+  },
+  "source_requirements": {
+    "nominated_original": null,
+    "qualified_original": null,
+    "cost": 0,
+    "encoding": "Lossless original WAV/FLAC/AIFF verified from original bytes; mono/stereo.",
+    "allowed_licences": [
+      "CC0-1.0",
+      "CC-BY-4.0"
+    ],
+    "official_deeds_checked_date": "2026-10-12",
+    "official_deeds": [
+      "https://creativecommons.org/publicdomain/zero/1.0/",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "required_character": "One soft leaf/stem handling rustle and natural decay in one clean contiguous 1-second window.",
+    "reject": [
+      "wind bed",
+      "walking through bushes",
+      "footsteps",
+      "violent tearing/snapping",
+      "tools",
+      "bag/cloth handling",
+      "water",
+      "voices",
+      "music",
+      "wildlife",
+      "tonal success cue",
+      "clipping",
+      "decode fault",
+      "distracting background sound"
+    ],
+    "retain": [
+      "original exact filename/bytes/hash/encoding",
+      "catalogue/download URLs",
+      "creator/title/attribution parties",
+      "retrieval metadata",
+      "source-specific licence/deed captures",
+      "copyright/disclaimer notices",
+      "prior modifications",
+      "derivative edit lineage/window offsets/hashes",
+      "tools/versions",
+      "shipped applicable notices"
+    ],
+    "listening_gate": "Exact derivative inline and owner acceptance of isolated sound, nearby anonymous meaning and level before installation.",
+    "no_qualified_source_or_acceptance": "Record blocker and retain silence; do not relax contract or substitute accepted PCM.",
+    "lossy_exception": false,
+    "reuse_accepted_audio": false,
+    "purchase_or_account_action": false
+  },
+  "derivative": {
+    "path": "game/assets/audio/herb-collection/HC01.wav",
+    "seconds": 1,
+    "frames": 48000,
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "encoding": "PCM24",
+    "loop": false,
+    "provisional_sample_peak_ceiling_dbfs": -24,
+    "allowed_edits": [
+      "deterministic decode",
+      "contiguous trim",
+      "required resampling",
+      "mono duplication",
+      "10-ms linear onset fade",
+      "50-ms linear ending fade",
+      "one uniform attenuation-only gain"
+    ],
+    "forbidden_edits": [
+      "synthesis",
+      "layering",
+      "denoising",
+      "filtering",
+      "pitch change",
+      "time change",
+      "widening"
+    ],
+    "import": {
+      "compression": false,
+      "normalization": false,
+      "loop": false,
+      "mounted_comparison": "Documented PCM24-to-PCM16 conversion"
+    },
+    "measurement": "Original/decode/window/import metadata and hashes; sample peak/loudness; isolated/mixed native Master output. Provisional targets, no device/ordinary-play compliance."
+  },
+  "commit_contract": {
+    "producer": "TemporaryCharacterExaminationFlowController",
+    "notification": "CollectionCommitted",
+    "token": "HerbCollectionCommit",
+    "notification_point": "Immediately after existing successful LastCollectionOccurrence assignment",
+    "retained_token_references": [
+      "producer",
+      "result",
+      "installed occurrence",
+      "installed event log",
+      "installed world time",
+      "installed transcript"
+    ],
+    "current_exact_references": [
+      "producer current token",
+      "LastExaminationResult",
+      "LastCollectionOccurrence",
+      "occurrence controller LastOccurrence",
+      "retained event",
+      "retained actor ID",
+      "retained target ID",
+      "current installed event log/world time/transcript",
+      "last transcript entry"
+    ],
+    "consume_before_blockers_or_spatial_output_checks": true,
+    "reject_tokens": [
+      "null",
+      "copied",
+      "rebuilt",
+      "forged",
+      "foreign",
+      "stale",
+      "duplicate"
+    ],
+    "not_event_sources": [
+      "polling LastOccurrence or LastCollectionOccurrence",
+      "intention/speech",
+      "safe result alone",
+      "direct occurrence/controller call outside exact flow",
+      "task arrival",
+      "proximity",
+      "walking",
+      "save reconstruction",
+      "diagnostic injection"
+    ],
+    "subscriber_exception": "Isolate after committed assignment; never rollback, reoccur or affect turn completion.",
+    "gameplay_and_domain_changes": false
+  },
+  "playback": {
+    "controller": "OpeningRegionHerbCollectionAudioController",
+    "player": "One AudioStreamPlayer2D",
+    "position": "Retained patch position captured at qualified commit, fixed for tail",
+    "bus": "Effects",
+    "gain": 1,
+    "pitch_scale": 1,
+    "max_polyphony": 1,
+    "max_distance": 192,
+    "attenuation": 1,
+    "panning_strength": 0.6,
+    "area_mask": 0,
+    "seconds": 1,
+    "queue_delay_replay_loop_catchup": false,
+    "preferences": "Existing Master/Effects Default/Quiet and mono applied once",
+    "missing_stream_or_bus": "Silent, with otherwise admitted text/history; no Master fallback",
+    "mute_zero": "Stop HC01 immediately; admitted text may finish; unmute/repair never resumes",
+    "watcher_process_mode": "Always",
+    "cancel": [
+      "pause",
+      "focus loss",
+      "dialogue",
+      "reading",
+      "customization",
+      "map",
+      "journal",
+      "settings overlay",
+      "text entry",
+      "nonfinite or <=0 or >0.1 delta",
+      "nonfinite position",
+      "listener displacement >96 pixels",
+      "listener leaving exclusive 192-pixel range",
+      "actor leaving inclusive 32-pixel site reach",
+      "unsupported/interior position",
+      "binding replacement/rename/disable/hide/transform or topology drift"
+    ],
+    "cancellation_preserves_history": true,
+    "successful_presentation_reset_or_load": "Clear own tail/caption/history/sequence/generation; baseline current producer token as consumed to reject pre-reset replay. Do not clear gameplay flow.",
+    "failed_load": "Change nothing",
+    "late_subscription_or_reenable": "No catch-up",
+    "teardown": "Unsubscribe",
+    "serialized": false,
+    "no_changes": [
+      "listener",
+      "hearing",
+      "perception",
+      "knowledge",
+      "bearing model",
+      "lease",
+      "ducking",
+      "music hold",
+      "other audio owners"
+    ]
+  },
+  "caption_contract": {
+    "ordinal": 16,
+    "phrase": "Soft rustle",
+    "seconds_active": 2,
+    "admission": "Same exact locally qualified producer commit as playback",
+    "caption_preference_hides_only_new_line": true,
+    "mute_missing_audio_retains_admitted_text": true,
+    "forbidden_information": [
+      "collection",
+      "safety",
+      "actor",
+      "site",
+      "herb",
+      "ingredient",
+      "quantity",
+      "bearing",
+      "coordinates",
+      "timestamp",
+      "outcome"
+    ],
+    "preserve_prior_lines_and_timers": 15,
+    "ui_edit": "Independent new line and necessary own panel bounds only"
+  },
+  "history_contract": {
+    "type": "HerbCollectionCueHistory",
+    "section": "Nearby rustle cues",
+    "panel": "Audio / Recent sound cues",
+    "capacity": 16,
+    "order": "oldest-first",
+    "fields": [
+      "local sequence",
+      "exact phrase"
+    ],
+    "detached_read_only_snapshot": true,
+    "insert": "Once per unique eligible commit, no time limiter",
+    "remote_or_unqualified_insert": false,
+    "reading_emits_nothing": true,
+    "reset": "Clear own history only; preserve all prior sections/order/capacities/limiters/focus/scroll behaviour",
+    "capacity_injection": "Stopped diagnostics only, separate from genuine mapped-flow evidence"
+  },
+  "implementation_files": {
+    "new_exact_paths": [
+      "src/Application/Audio/HerbCollectionPresentationProjection.cs",
+      "src/Application/Audio/HerbCollectionCueHistory.cs",
+      "tests/Application.Tests/Audio/HerbCollectionPresentationProjectionTests.cs",
+      "tests/Application.Tests/Audio/HerbCollectionCueHistoryTests.cs",
+      "game/HerbCollectionCommit.cs",
+      "game/OpeningRegionHerbCollectionAudioSource.cs",
+      "game/OpeningRegionHerbCollectionAudioController.cs",
+      "game/HerbCollectionAudioRuntimeSmokeCheck.cs",
+      "game/HerbCollectionAudioRuntimeProof.cs",
+      "game/HerbCollectionAudioRuntimeProof.tscn",
+      "scripts/prepare-herb-collection-passage.py",
+      "scripts/check-herb-collection-audio-output.py",
+      "scripts/validate-herb-collection-runtime.py",
+      "audio-direction/herb-collection-runtime-authority.json",
+      "audio-direction/herb-collection-runtime-verification.json",
+      "audio-direction/herb-collection-source/README.md",
+      "audio-direction/herb-collection-source/provenance.json",
+      "audio-direction/herb-collection-source/rights/catalogue.html",
+      "audio-direction/herb-collection-source/rights/deed.html",
+      "game/assets/audio/herb-collection/HC01.wav",
+      "game/assets/audio/herb-collection/HC01.wav.import",
+      "game/assets/audio/herb-collection/CREDITS.txt",
+      "game/assets/audio/herb-collection/provenance.json",
+      "game/assets/audio/herb-collection/deed.html",
+      "game/HerbCollectionCommit.cs.uid",
+      "game/OpeningRegionHerbCollectionAudioSource.cs.uid",
+      "game/OpeningRegionHerbCollectionAudioController.cs.uid",
+      "game/HerbCollectionAudioRuntimeSmokeCheck.cs.uid",
+      "game/HerbCollectionAudioRuntimeProof.cs.uid"
+    ],
+    "new_source_original_directory": "audio-direction/herb-collection-source/originals/ (one qualifying original exact filename/hash)",
+    "new_review_directory": "audio-direction/herb-collection-runtime-review/ (source/listening/parity/output/UI/packaging/rejection/quality evidence)",
+    "narrow_existing_edits": {
+      "game/TemporaryCharacterExaminationFlowController.cs": "Post-success notification/current token with installed snapshot capture only; no operation/ordering/result/turn/physical change.",
+      "game/Main.tscn": "New sibling audio source/controller/smoke resources only; retain original sites/bodies/prior blocks and Channel last.",
+      "game/MaterialSoundCaptionPanel.cs": "Independent sixteenth caption and necessary own panel bounds only.",
+      "game/PositionalSoundCueHistoryPanel.cs": "Append anonymous rustle section and descriptive subtitle only.",
+      "game/MaterialAudioCreditsPanel.cs": "Append HC01 source-specific notices only.",
+      "game/export_presets.cfg": "Append herb-collection txt/json/html filters to retained three presets.",
+      "quality.py": "Necessary finite new stages; retain all 154 old stages/order and pins; pin cooling baseline e92e6e08 if needed.",
+      "CONTINUATION.json": "Exact grant and closure plus next finite missing deliverable.",
+      "HANDOVER.md": "Checkpoint and ledger-rendered boundary.",
+      "ROADMAP.md": "Partial sound-roadmap status only."
+    },
+    "protected": "Every other tracked product/evidence input; occurrence controller, Domain/gameplay/physical/perception/save, accepted audio/art and frozen validators. Preserve game/project.godot."
+  },
+  "verification_required": [
+    "Source-specific rights, lossless encoding, reproducible derivative/import metrics and exact owner listening before installation.",
+    "Exact producer/token/result/event/actor/target/installed snapshots; actor 32/33 and listener 191/192 pixels; remote/foreign/stale/copied/forged/duplicate/unsafe/failure/direct-call/independent-task/reset and throwing observer probes.",
+    "Seven genuine identical near and remote dialogue/examination/collection flows: Default, Quiet, Master-muted, Effects-muted, missing HC01, captions-off, audio-disabled. Compare complete save/event-log/world-time/transcript/inventory/recipe/task/party/perception/knowledge/truth/turn completion. Disclose fixture scaffolding, no ordinary approach/contact claim.",
+    "Blockers/expiry/range/interior/source drift/cancellation, mute/missing resources and successful/failed restore; consume/discard, no replay or change to prior owners.",
+    "Measured native Master and Effects gains/mutes, Ambience independence, Default/Quiet/mono, spatial left/right/centre/edge, onset/tail/cancellation silence and retained-owner mixes; gain ratios within 5%.",
+    "Native 1280x720 and 1920x1080 sixteen-caption coexistence/wrapping and anonymous capacity-16 history/duplicates/scroll/keyboard/Escape/return focus/isolated reset.",
+    "Three mounted presets: preserve 125 exact existing entries; after proposed stream/four notices, 43 streams, 42 individual notices, 24 groups, 130 entries. Exact PCM16 conversion and no originals/review audio.",
+    "Focused tests/rejection probes and full root quality retaining 154 stages/order/pins; runner self-test if changed; continuation sync/check/self-test, scoped commit/push and remote parity."
+  ],
+  "completion_condition": "One exact owner-qualified HC01 and once-only locally qualified flow-commit audio/text/history, complete dependent verification and publication; remote/unqualified commits stay silent and accepted gameplay/audio stays unchanged.",
+  "proposal": {
+    "path": "audio-direction/herb-collection-owner-scope.md",
+    "sha256": "b0cd37a5b37bd8622bfe6757c01ec7325cb80edeec30d93a81b2080d6e77d5ca"
+  },
+  "baseline_commit": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+  "protected_repository_snapshot": {
+    "baseline_commit": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+    "tracked_file_count": 15088,
+    "algorithm": "Baseline git ls-tree -rz; exclude named paths and .DS_Store; verify current Git blob hash; UTF-8 path sort; SHA256 of path + TAB + file SHA256 + LF.",
+    "manifest_sha256": "25c07d567fb2859ed8b1cc6ed52ae278de593b4b0018e04bc915d889af4ae487",
+    "excluded_paths": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md",
+      "game/project.godot"
+    ],
+    "local_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "unchanged_source_and_evidence_bindings": [
+    {
+      "path": "game/TemporaryCharacterExaminationFlowController.cs",
+      "sha256": "20bf7edabff66e7733922f89003bbd2f160aea76d7e82d406edce408976c2b0e"
+    },
+    {
+      "path": "game/CharacterTurnWorldEventOccurrenceController.cs",
+      "sha256": "f67ae5d01f0b590d12664b0b6aa4125663aa449cd649937365f79ddd6d55f0c2"
+    },
+    {
+      "path": "game/TemporaryCharacterExaminationResultSource.cs",
+      "sha256": "86b60fb466aac297d3030bda5ed84e3caac9bfce85a32e4704607ad76494ea77"
+    },
+    {
+      "path": "game/TemporaryWorldEventSource.cs",
+      "sha256": "9afe910d1b486a089769021f805242cbf31d43d50f963462621f71c67d15b61b"
+    },
+    {
+      "path": "game/TemporaryWorldObjectSource.cs",
+      "sha256": "612bd6e679c652cf8af6fa228e9af0b7fe07ac8d49475a5a1433fd9b50210045"
+    },
+    {
+      "path": "game/TemporaryHealerCharacterSource.cs",
+      "sha256": "999222afce061879313621a2cff5e3b09e3d34ac4d964a4adae6de5a663cc87e"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnSource.cs",
+      "sha256": "dfbc6027bf1469c8ea50587937a93019ee36792d9659cd491e7a31590a7e0cf3"
+    },
+    {
+      "path": "game/TemporaryOrdinaryCharacterParticipantSource.cs",
+      "sha256": "af4993bb2f0ff6cb4a8d4fddec3f8620cf55e6323503b6f5db0791582c54a64d"
+    },
+    {
+      "path": "game/TemporaryCharacterIndependentTaskTravelSource.cs",
+      "sha256": "6ae93f7f15ffd7370f2ff28995d80f83864af1f42e7f709d833cc062893ad7e9"
+    },
+    {
+      "path": "game/TemporaryCharacterIndependentTaskOccurrenceSource.cs",
+      "sha256": "72a12e15f6c86f35e14f651aeea4a29e8a867660e00756fac0874450bf151997"
+    },
+    {
+      "path": "game/CharacterIndependentTaskOccurrenceController.cs",
+      "sha256": "5d96f1defe5ed0cd02609036500bc55b7d07c801d112835ac8d7156e6e68ec69"
+    },
+    {
+      "path": "game/CharacterTurnTranscriptController.cs",
+      "sha256": "5101d0cf8b962d9d19caf4f5b1b1f6655c2003696861f2c5aacdd1a3e7ea58b9"
+    },
+    {
+      "path": "game/WorldEventController.cs",
+      "sha256": "401735fa5a5a8cf30ae58650aa806fe4c1c2ff80f6e1e05040ae4f8765eaa7ec"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "ec6858a97cce13864deda80b7ad460edf92b420e717efb9a0c29affe5fbb7c05"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/GreyboxInteractionTarget.cs",
+      "sha256": "c2c3d103093a6eb8a2cf39c74f3d75334e80b0adac9c4735aacdbd5673ac1f1b"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "97372ec3fd4269f494b7c8a336b73725924a29873493415bb0a37605899ef687"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/OpeningRegionInteriorAudioSource.cs",
+      "sha256": "a911e744c723e382227890445a70a79ec6af205e4d37233e1c51c09cb16f22bd"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/GreyboxNavigation.cs",
+      "sha256": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionInteriorAudioProjection.cs",
+      "sha256": "8baf30b2da210ddb4448135f68cebf048dd9471ac8949dbddd84e51498cd89b0"
+    },
+    {
+      "path": "src/Application/Dialogue/DeterministicExaminationResultSelector.cs",
+      "sha256": "19a1d95a343d7927aa2d8dd382745462d5097b10cc3b7fa53c2485ad1f7ddb9e"
+    },
+    {
+      "path": "src/Application/Dialogue/DeterministicPostExaminationIntentionSelector.cs",
+      "sha256": "7a3707f4222a543c2ab867a1fcdf6574803f59263838aa07ed46f95d53577c83"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterExaminationResult.cs",
+      "sha256": "45980e35a16f6287837fe06fd317b0bf35ba94049413fdc817d623545d6eb550"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterPostExaminationCollectionOccurrencePolicy.cs",
+      "sha256": "02907c1de7b4b1e49f8c4e3b83916b02d2841cb0aef5e5621c75a77ddb0ba7de"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterPostExaminationCollectionOccurrenceTransition.cs",
+      "sha256": "6e79f42960ed97cbb17e293434cdd62b5feec16b48df4544868d92fc9dc52878"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterTurnWorldEventOccurrenceTransition.cs",
+      "sha256": "093555dff2a7859844b8612b90d110ceb165274074dcf0a1d98d8ea5d1955a32"
+    },
+    {
+      "path": "src/Domain/WorldEvents/WorldEventOccurrencePolicy.cs",
+      "sha256": "3952fbabf57e31b9db5dbffbad61d8c057be29391ba0d727e8e1c52de8e2c23c"
+    },
+    {
+      "path": "src/Domain/WorldEvents/WorldEventRecordingPolicy.cs",
+      "sha256": "dbe7f719fea4fefd3d377396c976e31ad43b5b7ebcfe2e2e203eecd97ee6a858"
+    },
+    {
+      "path": "game/CharacterTurnWorldEventOccurrenceControllerSmokeCheck.cs",
+      "sha256": "5c995e74004859c58afe6ab588471ee86e3f4f1ee0ee053327ad2baeedc8acae"
+    },
+    {
+      "path": "game/CharacterTurnCompletionFlowSmokeCheck.cs",
+      "sha256": "363e8636be90e927dc9c000f874c8d0ce73aaa7ccc2358bc9d012664c3d5eb2a"
+    },
+    {
+      "path": "game/OpeningRegionHealerFootstepAudioController.cs",
+      "sha256": "1919abf4b07c49a967d2e1e93a88471e469f4f6e72506f786f2554047384c3c4"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "1c2c514e75ded142f9d9224358bb3bc86788835fa53376e2096ad2734e226cf2"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "febfc4ab79a98c367cae4174e526cde17330513108c0cc9bca675b36766a35f6"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "fd0c99fee3472b69a360ef89caa3a922ad34e07dec575e206a62530b0175b8d0"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "a2de46afab26d6bf293c7f8f31f231501677d6c78d49fbc1839b691c966d93e5"
+    },
+    {
+      "path": "audio-direction/dynamic-range-policy.json",
+      "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-authority.json",
+      "sha256": "102b9c75b3e3c42dfebb89bbd6b2b4d2856bbe5755f051752091c62f33df8c47"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-verification.json",
+      "sha256": "a0a80ba7c127782a47a6fe2c9c7f7a0c7cc74d1fcc2036951102c256c00c5e8c"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/quality/summary.json",
+      "sha256": "4ea55079752717d0b9b6635b99dbb875ddf4775b74a66d3b10f3a77b5a13de0a"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/quality/log-storage.json",
+      "sha256": "227724a5e8ba7588cafc6ff7fc064ce8edbe4d26ebdffff5ea8edd1c8386cce7"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/packaging/inventory.json",
+      "sha256": "006371a3a1036ceb0a28a54fbefc9a9a440df659452d0c5e1c2220050d816663"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "f95b3bcf96fe0e33ce2eaa20c250a73b831e7ffc63a3fc25602386c0f6071061"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9"
+    },
+    {
+      "path": "requirements-quality.txt",
+      "sha256": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af"
+    },
+    {
+      "path": "scripts/quality.sh",
+      "sha256": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3"
+    },
+    {
+      "path": "scripts/smoke-godot.sh",
+      "sha256": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    }
+  ],
+  "planning_checks": {
+    "status": "passed",
+    "all_baseline_git_blobs_match": true,
+    "protected_tracked_inputs": 15088,
+    "retained_audio_packaging_entries": 125,
+    "prior_product_evidence": {
+      "root_stages": 154,
+      "unit_tests": 5472,
+      "new_run": false,
+      "final_attempts_passed_and_complete": true,
+      "final_log_hashes_and_required_completion_verified": 154,
+      "retained_verification_evidence_hashes_verified": 405
+    },
+    "continuation_self_test_probes": 11,
+    "repository_boundary": "Two new proposal documents plus CONTINUATION.json, HANDOVER.md and ROADMAP.md only; preserved editor rewrite.",
+    "limits": "No source acquisition/decode/listening, PCM/runtime/product/CI change or new native/device evidence."
+  }
+}

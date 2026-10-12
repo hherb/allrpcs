@@ -232,6 +232,15 @@ presets pass. All 120 prior audio entries remain byte-identical; totals are 42 s
 have bounded feedback. Wider sources and other missing operations remain partial;
 physical vessel/action, elapsed time, temperature/readiness and gameplay changes remain separate.
 
+The [herb-collection feedback proposal](audio-direction/herb-collection-owner-scope.md)
+is complete: it binds the exact existing safe-result collection commit and identifies
+that body/site qualification is absent from gameplay. A distinct source/use/runtime
+grant is proposed for one new lossless HC01, only with the retained Healer within
+32 pixels of the unchanged (920,350) patch and the Seeker within exclusive 192 pixels,
+with an anonymous **Soft rustle** equivalent/history and finite checks. Remote or
+unqualified commits remain silent. No collection/examination, movement or physical
+action change is proposed; planning does not grant source/runtime implementation.
+
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.
 

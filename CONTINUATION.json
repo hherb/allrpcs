@@ -738,6 +738,20 @@
           "sha256": "a0a80ba7c127782a47a6fe2c9c7f7a0c7cc74d1fcc2036951102c256c00c5e8c"
         }
       ]
+    },
+    {
+      "id": "phase9-herb-collection-audio-owner-scope",
+      "reason": "Finite committed herb-collection audio planning deliverables complete. No unchanged proposal/audit successor; the concrete source/use/runtime grant remains distinct. Remote or unqualified commits stay silent.",
+      "evidence": [
+        {
+          "path": "audio-direction/herb-collection-owner-scope.md",
+          "sha256": "b0cd37a5b37bd8622bfe6757c01ec7325cb80edeec30d93a81b2080d6e77d5ca"
+        },
+        {
+          "path": "audio-direction/herb-collection-owner-scope.json",
+          "sha256": "118d5a2b6e4677382782a050bd3598c4919414e6b96fd71c96ea23e136f17673"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -980,6 +994,20 @@
           "sha256": "a0a80ba7c127782a47a6fe2c9c7f7a0c7cc74d1fcc2036951102c256c00c5e8c"
         }
       ]
+    },
+    {
+      "id": "audio-herb-collection-planning",
+      "reason": "Exact installed occurrence and missing actor/site acoustic authority are source-bound; bounded source/use/runtime successor now requires the concrete new grant, not another planning audit.",
+      "evidence": [
+        {
+          "path": "audio-direction/herb-collection-owner-scope.md",
+          "sha256": "b0cd37a5b37bd8622bfe6757c01ec7325cb80edeec30d93a81b2080d6e77d5ca"
+        },
+        {
+          "path": "audio-direction/herb-collection-owner-scope.json",
+          "sha256": "118d5a2b6e4677382782a050bd3598c4919414e6b96fd71c96ea23e136f17673"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1055,19 +1083,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-herb-collection-audio-owner-scope",
-    "title": "Prepare a committed herb-collection audio owner proposal",
+    "id": "phase9-herb-collection-audio-runtime-integration",
+    "title": "Qualify and integrate bounded nearby herb-collection feedback after the distinct grant",
     "status": "ready",
-    "workstream": "audio-herb-collection-planning",
+    "workstream": "audio-herb-collection-runtime",
+    "authority_status": "awaiting_distinct_source_use_runtime_grant",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "One concrete proposal for missing committed herb-collection feedback: exact accepted collection occurrence, actual actor/site eligibility, safe anonymous feedback, source requirements and finite implementation grant/checks.",
-    "instructions": "Read-only planning for a genuinely new collection-audio owner. Begin with CharacterTurnWorldEventOccurrenceController.TryOccurPostExaminationCollection and TemporaryCharacterExaminationFlowController; identify the exact installed occurrence and actual actor/site eligibility without treating narrative intent or geometry as physical-source authority. Prepare a concrete bounded proposal, including silence if no qualified physical event exists. Keep all accepted collection/examination gameplay, recipe operations and audio owners closed. No source/runtime implementation without the distinct owner grant.",
-    "completion_condition": "Two source-bound proposal documents identify the existing occurrence, missing audio/physical owner boundaries, safe feedback/source decision, bounded files and finite checks, with the distinct implementation authority made concrete.",
+    "missing_deliverable": "One owner-qualified HC01 and once-only anonymous feedback for the exact existing collection commit, only with the retained Healer within 32 pixels of the retained patch and the Seeker within exclusive 192 pixels; finite verification/publication.",
+    "instructions": "Read audio-direction/herb-collection-owner-scope.md and its source-bound JSON. Obtain and record the exact distinct source/use/runtime grant before new implementation; planning approval and standing sound-download/publication authority do not supply it. Under that grant, qualify one lossless HC01 and obtain exact listening acceptance before installation, then complete the bounded notification/controller/caption/history and all dependent checks/publication in this session. Read actual actor/site/listener positions at the exact existing flow commit. Remote or unqualified commits remain silent; do not add approach, delay, retry or a physical picking action. Preserve all accepted collection/examination gameplay, recipe operations and audio owners.",
+    "completion_condition": "One exact owner-qualified HC01, once-only locally qualified flow-commit sound and anonymous Soft rustle equivalent/history, finite source/native/parity/UI/packaging/rejection/root-quality evidence and scoped publication.",
     "outputs": [
-      "audio-direction/herb-collection-owner-scope.md",
-      "audio-direction/herb-collection-owner-scope.json"
+      "audio-direction/herb-collection-runtime-authority.json",
+      "audio-direction/herb-collection-runtime-verification.json"
     ],
-    "boundary": "Planning only for new collection feedback. No accepted audio/art or collection/examination reopening, new occurrence/movement/physical action, hearing/perception/knowledge/truth/save change, source/runtime/emitter/caption/history implementation, voice or executable release."
+    "boundary": "Distinct new source/use/runtime grant required. No collection/examination reopening, actor movement, new physical action, inventory/plant mutation, hearing/perception/knowledge/truth/world-time/transcript/save change, prior audio/art change, voice or executable release."
   },
   "deferred_slices": []
 }

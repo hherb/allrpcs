@@ -12,19 +12,19 @@ remain closed in the persistent ledger. Future walking work uses the accepted
 [steeping](audio-direction/remedy-steeping-runtime-review/README.md) retain their exact sources
 and complete accepted evidence; no unchanged-owner approval or audit remains.
 
-The owner approved cooling source/event/runtime, accepted the audible reference with
-“Approved”, and selected “The louder version is more appropriate”. The qualified
-[C01](game/assets/audio/remedy-cooling/C01.wav) retains original unity gain, peaks at
-−12.23 dBFS and follows only the existing fourth-step 3-to-4 commit. Its independent
-fifteenth **Cooling step committed** caption lasts two active seconds; separate history
-retains sixteen records. Thirty focused tests, seven complete mapped parity modes,
-37 measured native Master cases, both-size accessible UI, 15 rejection probes and
-three mounted presets pass. All 120 prior audio entries remain byte-identical;
-totals are 42 streams, 39 notices and 23 groups. The complete root gate passes all
-154 stages and 5,472 unit tests, retaining all 140 prior stages in order. Cooling is
-complete; no repeat source/level/runtime approval remains. See
-[authority](audio-direction/remedy-cooling-runtime-authority.json)
-and [verification](audio-direction/remedy-cooling-runtime-verification.json).
+The approved [cooling runtime](audio-direction/remedy-cooling-runtime-verification.json)
+is complete at the owner-selected louder level. Its exact C01, fifteenth caption
+and independent history retain 154 passing root stages, 5,472 unit tests, native
+output/UI and three mounted presets. No repeated source/level/runtime approval remains.
+
+The [herb-collection proposal](audio-direction/herb-collection-owner-scope.md) and
+[source-bound contract](audio-direction/herb-collection-owner-scope.json) complete the
+new planning slice. The existing flow can commit remotely; no body/reach/contact check
+qualifies a picking sound. The proposed new acoustic grant admits one soft rustle only
+at the exact flow commit with the retained Healer within 32 pixels of the unchanged
+(920,350) patch and the Seeker within exclusive 192 pixels. Remote or unqualified
+commits stay silent; actor movement and accepted gameplay remain unchanged. New
+source/use/runtime authority and exact source listening acceptance remain distinct.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -34,34 +34,35 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-herb-collection-audio-owner-scope — Prepare a committed herb-collection audio owner proposal** (ready).
+**phase9-herb-collection-audio-runtime-integration — Qualify and integrate bounded nearby herb-collection feedback after the distinct grant** (ready).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: One concrete proposal for missing committed herb-collection feedback: exact
-accepted collection occurrence, actual actor/site eligibility, safe anonymous feedback, source
-requirements and finite implementation grant/checks.
+Missing deliverable: One owner-qualified HC01 and once-only anonymous feedback for the exact
+existing collection commit, only with the retained Healer within 32 pixels of the retained patch and
+the Seeker within exclusive 192 pixels; finite verification/publication.
 
-Read-only planning for a genuinely new collection-audio owner. Begin with
-CharacterTurnWorldEventOccurrenceController.TryOccurPostExaminationCollection and
-TemporaryCharacterExaminationFlowController; identify the exact installed occurrence and actual
-actor/site eligibility without treating narrative intent or geometry as physical-source authority.
-Prepare a concrete bounded proposal, including silence if no qualified physical event exists. Keep
-all accepted collection/examination gameplay, recipe operations and audio owners closed. No
-source/runtime implementation without the distinct owner grant.
+Read audio-direction/herb-collection-owner-scope.md and its source-bound JSON. Obtain and record the
+exact distinct source/use/runtime grant before new implementation; planning approval and standing
+sound-download/publication authority do not supply it. Under that grant, qualify one lossless HC01
+and obtain exact listening acceptance before installation, then complete the bounded
+notification/controller/caption/history and all dependent checks/publication in this session. Read
+actual actor/site/listener positions at the exact existing flow commit. Remote or unqualified
+commits remain silent; do not add approach, delay, retry or a physical picking action. Preserve all
+accepted collection/examination gameplay, recipe operations and audio owners.
 
-Done when: Two source-bound proposal documents identify the existing occurrence, missing
-audio/physical owner boundaries, safe feedback/source decision, bounded files and finite checks,
-with the distinct implementation authority made concrete.
+Done when: One exact owner-qualified HC01, once-only locally qualified flow-commit sound and
+anonymous Soft rustle equivalent/history, finite source/native/parity/UI/packaging/rejection/root-
+quality evidence and scoped publication.
 
 Expected outputs:
 
-- `audio-direction/herb-collection-owner-scope.md`
-- `audio-direction/herb-collection-owner-scope.json`
+- `audio-direction/herb-collection-runtime-authority.json`
+- `audio-direction/herb-collection-runtime-verification.json`
 
-Boundary: Planning only for new collection feedback. No accepted audio/art or collection/examination
-reopening, new occurrence/movement/physical action, hearing/perception/knowledge/truth/save change,
-source/runtime/emitter/caption/history implementation, voice or executable release.
+Boundary: Distinct new source/use/runtime grant required. No collection/examination reopening, actor
+movement, new physical action, inventory/plant mutation, hearing/perception/knowledge/truth/world-
+time/transcript/save change, prior audio/art change, voice or executable release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
