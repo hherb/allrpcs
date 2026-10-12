@@ -1,0 +1,35 @@
+{
+  "logs": [
+    {
+      "original_path": "audio-direction/remedy-steeping-runtime-review/source/loudness.log",
+      "stored_path": "audio-direction/remedy-steeping-runtime-review/source/loudness.log.gz",
+      "raw_sha256": "07f4b9e4f6886cda2473ba45c715e1f109b2e670d17e1ddf6ad0782990c8f9d6",
+      "stored_sha256": "0177201b852a982b4e643af4944541ef12be01b487474edf58ede4982b63363f",
+      "compression": "gzip; decompressed original bytes unchanged"
+    },
+    {
+      "original_path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-loudness.log",
+      "stored_path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-loudness.log.gz",
+      "raw_sha256": "861331d0a5f3c3aeb373e8e51d6c1475275b6be9eed08913a844e98e0405790a",
+      "stored_sha256": "aa0bd144e852bb688d01056da3f64b362064ff024797a833cb0fec176dc88838",
+      "compression": "gzip; decompressed original bytes unchanged"
+    }
+  ],
+  "whitespace_check_exceptions": [
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-catalogue.html",
+      "sha256": "0a58b5d48f970267b99e741a04b99a27b5c4933fd210dc02f5b9e66b7f08d7be",
+      "reason": "Immutable captured source HTML; retain original bytes including whitespace."
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/rights/catalogue.html",
+      "sha256": "b1f9fb1ff8a22c152874e68a4961908bf94694aa3c243deeb71cf6a1b9e54052",
+      "reason": "Immutable captured source HTML; retain original bytes including whitespace."
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/rights/licence.html",
+      "sha256": "54e8c27e04b13bcaf6f9b29f6ab6f82fe57777abc2b35ad7d92b120aebc44fd7",
+      "reason": "Immutable captured source HTML; retain original bytes including whitespace."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "previous_report": "audio-direction/remedy-heating-runtime-review/quality/summary.json",
+  "previous_stages": 126,
+  "current_stages": 140,
+  "previous_sequence_preserved": true,
+  "added_stages": [
+    "heating-historical-restore",
+    "heating-historical-build",
+    "heating-historical-import",
+    "steeping-focused",
+    "boundary-steeping-source",
+    "steeping-default",
+    "steeping-quiet",
+    "steeping-master-muted",
+    "steeping-effects-muted",
+    "steeping-missing-stream",
+    "steeping-captions-off",
+    "steeping-steeping-disabled",
+    "steeping-master-output",
+    "boundary-steeping-reviewed"
+  ]
+}

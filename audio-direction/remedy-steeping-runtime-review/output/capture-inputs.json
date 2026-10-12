@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "method": "Godot native Movie Maker, Compatibility renderer, 60fps; Master WAV extracted losslessly with codec copy. Actual rapid mapped H01/S01 events coexist. No product behavior changed for re-capture.",
+  "command": "ALLRPCS_STEEPING_OUTPUT_CHECK=1 ALLRPCS_STEEPING_TIMELINE=/Users/hherb/src/allrpcs/audio-direction/remedy-steeping-runtime-review/output/timeline.json godot --path game res://RemedySteepingAudioRuntimeProof.tscn --write-movie /tmp/allrpcs-steeping-output/reviewed-2.avi --fixed-fps 60 --quit-after 12000",
+  "completed_cases": 37,
+  "inputs": [
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/executed-proof-before-formatting.cs.txt",
+      "sha256": "4ce8eea314ff41572a751f0629ad1a4605af685e0d88c1a958f11ce503e066ce",
+      "executed_path": "game/RemedySteepingAudioRuntimeProof.cs"
+    },
+    {
+      "path": "game/OpeningRegionRemedySteepingAudioController.cs",
+      "sha256": "1dcc43c888e79cbc748ac8403873249ff7c295dcfe6233e115d7706683dc5d89"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "6e947b71bea08c349c6af615ab684500186faed0f284e08b4d952de141cfb408"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "80fe87d48d8c5d311b7a417b7c9d0dc93d17becee1ebeea1b94b7612656491bf"
+    },
+    {
+      "path": "src/Application/Audio/RemedySteepingPresentationProjection.cs",
+      "sha256": "9d80881edcbdf953e8e4a0384468fe5e31c5828976dd7ce7f5c8fd6a94d5bee2"
+    },
+    {
+      "path": "src/Application/Audio/RemedySteepingCueHistory.cs",
+      "sha256": "4e40ad1c5186bc76e9f2eef9ffb7e08444df040cf8217dcc545b551f5709e904"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/S01.wav",
+      "sha256": "90576dd39afd078609ce5535cd6319edc79c99f30b197a54d4622288e9c73b9a"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/S01.wav.import",
+      "sha256": "537a518f4c11246bd6fc202496bc4417032bb155d820bd9e5d978159c0722693"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "2831b606f6f7915692d34471e12b1c4b822b20756f701a4b21cc6862c8de511f"
+    },
+    {
+      "path": "game/OpeningRegionRemedyHeatingAudioController.cs",
+      "sha256": "5692991bb6bd1d934362225aa6908ee8caeae823bca33b8282e0c1ee35522549"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327"
+    },
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav.import",
+      "sha256": "15c0497a2893d63b69f77f513a3b1d6c1390bee6af02169fbf994e362ea45965"
+    }
+  ],
+  "movie_sha256": "4b494cfbe9b61181b4ec4ad6bc70cd42f88a562e353103b5cfb1c3dc3da527db",
+  "movie_retention": "Losslessly extracted Master WAV retained as master.wav.gz; large image movie disposable.",
+  "initial_capture": "Initial quiet/mono passages ended early. Exact Master, timeline, log and failure retained under initial-*. Subsequent full capture with first-stop telemetry passed all 37 cases; initial cause was not reproduced or assigned. No initial-capture success claimed.",
+  "formatting_only_final_source": {
+    "path": "game/RemedySteepingAudioRuntimeProof.cs",
+    "sha256": "73c14f8c6001276e571a75cc1ca4c32764c4747d58b30a10189024805f608d11",
+    "executed_source_path": "audio-direction/remedy-steeping-runtime-review/output/executed-proof-before-formatting.cs.txt",
+    "non_whitespace_sha256": "97730b20b2ca657776c103d60254981969340c445adfd91b400b1505ca5be21e",
+    "verification": "Only whitespace around the new anonymous stop-telemetry initializer changed; non-whitespace source bytes are identical. Retain prior passing native capture without rerunning unchanged product behavior."
+  }
+}

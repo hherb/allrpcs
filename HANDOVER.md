@@ -15,26 +15,22 @@ The fixed garden foliage, southern-road wind and woodland rain runtime packages 
 closed. Their exact accepted sources, owners, captions/history and verification remain
 hash-bound in the persistent ledger.
 
-The owner-approved **committed remedy-heating runtime** is complete under its
-[grant](audio-direction/remedy-heating-runtime-authority.json). One three-second H01
-Effects cue follows only the exact second-step 1-to-2 commit at the unchanged garden
-station, with an independent thirteenth caption and capacity-16 transient history.
-The owner’s “sounds perfect” original acceptance is carried forward; the final cue was
-presented inline. The lossy-source exception and exact derivative lineage are disclosed.
-See [review](audio-direction/remedy-heating-runtime-review/README.md) and
-[verification](audio-direction/remedy-heating-runtime-verification.json): 126 root stages
-retain all prior 109; 5,412 unit tests, 29 focused cases, seven mapped preparation/treatment
-modes, 35 measured native cases, both-size native UI, 15 rejection probes and exact
-mounted packaging pass. All 110 prior audio entries remain byte-identical; totals are
-40 streams and 35 individual notices in 21 groups. The whole finite heating slice is
-closed. No repeat source, unchanged runtime or accepted-owner audit remains.
+The owner-approved [committed heating runtime](audio-direction/remedy-heating-runtime-review/README.md)
+is closed: exact second-step 1-to-2 H01 commit, thirteenth caption and independent
+history, with its original listening acceptance and complete 126-stage evidence.
 
-The first [remedy-steeping proposal](audio-direction/remedy-steeping-owner-scope.md)
-is complete: exact existing third-step 2-to-3 commit at the same station, distinct
-lossless-source requirements, three-second Effects feedback, fourteenth caption
-and separate history, with finite files/checks and a concrete separate implementation
-grant. No steeping audio was acquired/prepared or runtime installed. Planning is closed;
-the ledger routes only the missing source/event/runtime deliverable.
+The owner-approved [committed steeping runtime](audio-direction/remedy-steeping-runtime-review/README.md)
+is complete. After rejecting the first candidate for a wading/river-entry character,
+the owner accepted the exact lossless CC0 replacement with “Yes, this is suitable”.
+One three-second S01 Effects cue follows the exact existing third-step 2-to-3 commit
+at unchanged (2300,1300), with an independent fourteenth caption and capacity-16
+history. [Verification](audio-direction/remedy-steeping-runtime-verification.json)
+passes all 140 root stages, preserving the previous 126 in order: 5,442 unit tests,
+30 focused cases, seven complete mapped preparation/treatment modes, 37 measured
+native cases, both-size accessible UI, 15 rejection probes and three mounted presets.
+All 115 prior audio entries remain byte-identical. Totals are 41 streams and
+38 individual notices in 22 groups. The finite slice is closed; no repeat approval
+or unchanged-owner audit remains. Cooling is a distinct missing operation.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -44,49 +40,48 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-steeping-runtime-integration — Implement committed third-step steeping feedback after the concrete source/runtime grant** (ready).
+**phase9-remedy-cooling-owner-scope — Plan feedback for the existing fourth-step cooling commit** (ready).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
 
-Missing deliverable: One qualifying lossless S01 source/derivative, exact 2-to-3 committed steeping
-event, fourteenth caption and independent capacity-16 history with finite verification.
+Missing deliverable: First read-only owner/source proposal for the exact existing fourth cooling
+step (3-to-4), including whether quiet feedback is meaningful, without inventing physical actions or
+changing accepted owners.
 
-First record the separate implementation grant in audio-direction/remedy-steeping-runtime-
-authority.json against the completed proposal. Then qualify one source, prepare/present S01,
-implement only the exact existing steeping commit and complete dependent review/checks/publication
-in the same session. Current scope approval completed read-only planning; it does not grant this new
-runtime. Carry accepted heating and all earlier owners forward unchanged.
+Read the live recipe, preparation coordinator and accepted owner packages. Prepare one finite
+proposal for the exact existing fourth-step cooling commit at unchanged (2300,1300), with
+source/feedback constraints, named files/checks and a concrete distinct implementation decision.
+Preserve all accepted audio/art and persistent closures. Current S01 approval grants no cooling
+acquisition or runtime; do not begin this queued proposal as part of steeping closure.
 
-Done when: Granted exact S01 source/event/runtime and independent accessible feedback pass the
-proposal finite checks, retain all prior evidence and close with reviewed-path publication.
+Done when: Two hash-bound planning files define the exact existing cooling step/station/input
+commit, meaningful feedback and source constraints, finite implementation files/checks and the
+distinct required source/runtime grant; no audio acquisition or product changes.
 
 Expected outputs:
 
-- `audio-direction/remedy-steeping-runtime-authority.json`
-- `game/assets/audio/remedy-steeping/S01.wav`
-- `game/OpeningRegionRemedySteepingAudioController.cs`
-- `audio-direction/remedy-steeping-runtime-verification.json`
+- `audio-direction/remedy-cooling-owner-scope.md`
+- `audio-direction/remedy-cooling-owner-scope.json`
 
-Boundary: A distinct source/event/runtime grant remains required before
-acquisition/preparation/implementation in this slice. No physical station/vessel/action, infusion
-duration, recipe/progression/save/hearing/perception, cooling, wider emitter, voice or release
-authority.
+Boundary: Read-only planning only. No source acquisition/derivative, runtime, physical
+station/vessel/action, time/temperature/readiness, recipe/progression/save/hearing/perception, art,
+voice or executable release. New cooling source/runtime requires its own concrete owner grant.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 Run `python3 scripts/check-continuation.py --sync` after ledger maintenance, then its
-checker and `--self-test`. Current heating checks are
-`python3 scripts/validate-remedy-heating-runtime.py --reviewed`, `--output-only`
+checker and `--self-test`. Current steeping checks are
+`python3 scripts/validate-remedy-steeping-runtime.py --reviewed`, `--output-only`
 and `--self-test`.
 Reuse passing product evidence for prose alone. Runtime changes require granted focused
 checks and root `./quality.sh`; runner changes require `python3 quality.py --self-test`.
 
 Frozen validators run in private historical source trees/indexes: hand-tool `75c1aa04`,
-Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`. Cold rain
-and wind tests explicitly restore before build/import; the verified NETSDK1004 retry and all logs are retained in the rain
-review. Import cleanup removes only newly generated valid UID sidecars whose tracked
+Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`, heating
+`b7912dd4`. Cold historical checks restore before build/import. Reports and exact
+compressed logs are retained in the linked reviews. Import cleanup removes only newly generated valid UID sidecars whose tracked
 source bytes are unchanged. Run Godot on the host; retry only diagnosed mutex shutdowns
 with the identical command. Native focus fixtures run serially in the foreground.
 

@@ -696,6 +696,20 @@
           "sha256": "90798f2447ee137ba62731508084b6e931c13dd85c7830e09274373a2f34d860"
         }
       ]
+    },
+    {
+      "id": "phase9-remedy-steeping-runtime-integration",
+      "reason": "Owner-approved exact third-step steeping runtime is complete. The owner rejected the first candidate and accepted the exact lossless CC0 replacement with Yes, this is suitable. S01 follows only the immutable 2-to-3 commit at the unchanged station, with independent fourteenth caption and capacity-16 history. All 140 root stages retain the previous 126 in order; 5442 unit tests, 30 focused cases, seven full preparation/treatment parity modes, 37 measured native cases, both-size native UI, 15 rejection probes and three mounted presets pass. All 115 prior audio entries are byte-identical. No further approval remains for this finite slice; publish reviewed paths under standing authority. Physical vessel/actions, infusion duration, cooling and other source/runtime owners remain separate.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-steeping-runtime-authority.json",
+          "sha256": "0438fa6115db9913ba083ab4a0c373f9b6686d496ae7c8fc7360808173214720"
+        },
+        {
+          "path": "audio-direction/remedy-steeping-runtime-verification.json",
+          "sha256": "7ed29eae0e3702a57e0f81a62c138c79f7efce8719c6df191414a17af0c50bf3"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -896,6 +910,20 @@
           "sha256": "90798f2447ee137ba62731508084b6e931c13dd85c7830e09274373a2f34d860"
         }
       ]
+    },
+    {
+      "id": "audio-remedy-steeping-runtime",
+      "reason": "Exact existing third-step steeping feedback and its dependent source, accessible presentation, verification and publication are complete. Do not reopen this unchanged accepted source/station/event/caption/history under another audit name. Another operation or physical scope requires distinct authority.",
+      "evidence": [
+        {
+          "path": "audio-direction/remedy-steeping-runtime-authority.json",
+          "sha256": "0438fa6115db9913ba083ab4a0c373f9b6686d496ae7c8fc7360808173214720"
+        },
+        {
+          "path": "audio-direction/remedy-steeping-runtime-verification.json",
+          "sha256": "7ed29eae0e3702a57e0f81a62c138c79f7efce8719c6df191414a17af0c50bf3"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -971,21 +999,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-remedy-steeping-runtime-integration",
-    "title": "Implement committed third-step steeping feedback after the concrete source/runtime grant",
+    "id": "phase9-remedy-cooling-owner-scope",
+    "title": "Plan feedback for the existing fourth-step cooling commit",
     "status": "ready",
-    "workstream": "audio-remedy-steeping-runtime",
+    "workstream": "audio-remedy-cooling-planning",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "One qualifying lossless S01 source/derivative, exact 2-to-3 committed steeping event, fourteenth caption and independent capacity-16 history with finite verification.",
-    "instructions": "First record the separate implementation grant in audio-direction/remedy-steeping-runtime-authority.json against the completed proposal. Then qualify one source, prepare/present S01, implement only the exact existing steeping commit and complete dependent review/checks/publication in the same session. Current scope approval completed read-only planning; it does not grant this new runtime. Carry accepted heating and all earlier owners forward unchanged.",
-    "completion_condition": "Granted exact S01 source/event/runtime and independent accessible feedback pass the proposal finite checks, retain all prior evidence and close with reviewed-path publication.",
+    "missing_deliverable": "First read-only owner/source proposal for the exact existing fourth cooling step (3-to-4), including whether quiet feedback is meaningful, without inventing physical actions or changing accepted owners.",
+    "instructions": "Read the live recipe, preparation coordinator and accepted owner packages. Prepare one finite proposal for the exact existing fourth-step cooling commit at unchanged (2300,1300), with source/feedback constraints, named files/checks and a concrete distinct implementation decision. Preserve all accepted audio/art and persistent closures. Current S01 approval grants no cooling acquisition or runtime; do not begin this queued proposal as part of steeping closure.",
+    "completion_condition": "Two hash-bound planning files define the exact existing cooling step/station/input commit, meaningful feedback and source constraints, finite implementation files/checks and the distinct required source/runtime grant; no audio acquisition or product changes.",
     "outputs": [
-      "audio-direction/remedy-steeping-runtime-authority.json",
-      "game/assets/audio/remedy-steeping/S01.wav",
-      "game/OpeningRegionRemedySteepingAudioController.cs",
-      "audio-direction/remedy-steeping-runtime-verification.json"
+      "audio-direction/remedy-cooling-owner-scope.md",
+      "audio-direction/remedy-cooling-owner-scope.json"
     ],
-    "boundary": "A distinct source/event/runtime grant remains required before acquisition/preparation/implementation in this slice. No physical station/vessel/action, infusion duration, recipe/progression/save/hearing/perception, cooling, wider emitter, voice or release authority."
+    "boundary": "Read-only planning only. No source acquisition/derivative, runtime, physical station/vessel/action, time/temperature/readiness, recipe/progression/save/hearing/perception, art, voice or executable release. New cooling source/runtime requires its own concrete owner grant."
   },
   "deferred_slices": []
 }

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "command": [
+    "python3",
+    "scripts/prepare-remedy-steeping-passage.py",
+    "--install"
+  ],
+  "exit_code": 1,
+  "reason": "Acoustic source/window qualification required before installation",
+  "runtime_asset_absent": true
+}

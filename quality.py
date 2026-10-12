@@ -34,6 +34,7 @@ HEALER_REVISION = 'ae06c9abd939cc1c2df9bdc35654166f66c15c00'
 FOLIAGE_REVISION = 'c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3'
 WIND_REVISION = 'da2826ea8fb49a0464cf177c395de12b19db7998'
 RAIN_REVISION = '9115a64199b4838390caaa7b8a56ba64e903544c'
+HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -240,6 +241,14 @@ def frozen_evidence():
                 if sha(git('show', RAIN_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen rain predecessor evidence: ' + row['path'])
                 continue
+            if path.name == 'remedy-heating-runtime-verification.json' and row['path'] in (
+                    'quality.py', 'game/Main.tscn', 'game/MaterialAudioCreditsPanel.cs',
+                    'game/MaterialSoundCaptionPanel.cs', 'game/PositionalSoundCueHistoryPanel.cs',
+                    'game/OpeningRegionRemedyPreparationInputCoordinator.cs', 'game/export_presets.cfg'):
+                # The steeping grant permits only these additive successors; retain exact heating evidence.
+                if sha(git('show', HEATING_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen heating predecessor evidence: ' + row['path'])
+                continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
 
@@ -382,6 +391,14 @@ def main(resume_smoke=False, finish_interior=False):
         first = 19 if finish_interior else 9 if resume_smoke else 0
         for index, command in enumerate(product[first:], first + 1):
             if index == 10:
+                if not resume:
+                    # Retain the three accepted checkpoint boundaries in a complete fresh run too.
+                    for label, revision, script in (
+                            ('hand-tool', HAND_TOOL_REVISION, 'scripts/validate-hand-tool-runtime.py'),
+                            ('healer', HEALER_REVISION, 'scripts/validate-healer-footstep-runtime.py'),
+                            ('foliage', FOLIAGE_REVISION, 'scripts/validate-foliage-runtime.py')):
+                        with snapshot(revision, editor=True) as (tree, env):
+                            run.stage('boundary-' + label + '-resume', [sys.executable, script, '--reviewed'], tree, env, revision)
                 with native_retry_shim() as audit:
                     run.report['native_launch_retry'] = audit
                     run.stage(f'product-{index}', ['sh', '-c', command], env=environment, retry_native=True)
@@ -481,6 +498,7 @@ def main(resume_smoke=False, finish_interior=False):
         wind_runtime(run, environment)
         rain_runtime(run, environment)
         heating_runtime(run, environment)
+        steeping_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -566,14 +584,23 @@ def wind_checks(run, environment, tree, env):
 
 
 def heating_runtime(run, environment):
+    """Retain every heating check in its exact accepted private source tree."""
+    with snapshot(HEATING_REVISION, editor=True) as (tree, env):
+        run.stage('heating-historical-restore', ['dotnet', 'restore', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj'], tree, env, HEATING_REVISION)
+        run.stage('heating-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, HEATING_REVISION)
+        run.stage('heating-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, HEATING_REVISION, retry_native=True)
+        frozen_heating_runtime(run, dict(environment, **env), tree)
+
+
+def frozen_heating_runtime(run, environment, tree):
     """Check the live successor without replacing any retained stage."""
-    run.stage('heating-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedyHeating', '--logger', 'console;verbosity=minimal'])
-    run.stage('boundary-heating-source', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--source-only'])
+    run.stage('heating-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedyHeating', '--logger', 'console;verbosity=minimal'], tree, environment, HEATING_REVISION)
+    run.stage('boundary-heating-source', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--source-only'], tree, environment, HEATING_REVISION)
     modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'heating-disabled')
     for mode in modes:
         output = run.directory / f'heating-{mode}.json'
         run.stage('heating-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
-                  env=dict(environment, ALLRPCS_HEATING_MAIN_CHECK='1', ALLRPCS_HEATING_MODE=mode, ALLRPCS_HEATING_REPORT=str(output)),
+                  cwd=tree, revision=HEATING_REVISION, env=dict(environment, ALLRPCS_HEATING_MAIN_CHECK='1', ALLRPCS_HEATING_MODE=mode, ALLRPCS_HEATING_REPORT=str(output)),
                   retry_native=True, completion='PASS: heating Main:')
     reports = [json.loads((run.directory / f'heating-{mode}.json').read_text()) for mode in modes]
     saves = [(run.directory / f'heating-{mode}.json.save.json').read_bytes() for mode in modes]
@@ -583,8 +610,29 @@ def heating_runtime(run, environment):
     if any(row['commits'] != 1 or row['presentations'] != 1 or row['grinding'] != 1 or row['treatment'] != 1 for row in reports[:-1]) or reports[-1]['presentations'] != 0:
         raise ValueError('Heating exact commit/presentation contract changed')
     run.report.update(heating_modes=list(modes), heating_save_sha256=sha(saves[0]))
-    run.stage('heating-master-output', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--output-only'])
-    run.stage('boundary-heating-reviewed', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--reviewed'])
+    run.stage('heating-master-output', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--output-only'], tree, environment, HEATING_REVISION)
+    run.stage('boundary-heating-reviewed', [sys.executable, 'scripts/validate-remedy-heating-runtime.py', '--reviewed'], tree, environment, HEATING_REVISION)
+
+def steeping_runtime(run, environment):
+    """Check the live successor without replacing any retained stage."""
+    run.stage('steeping-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedySteeping', '--logger', 'console;verbosity=minimal'])
+    run.stage('boundary-steeping-source', [sys.executable, 'scripts/validate-remedy-steeping-runtime.py', '--source-only'])
+    modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'steeping-disabled')
+    for mode in modes:
+        output = run.directory / f'steeping-{mode}.json'
+        run.stage('steeping-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                  env=dict(environment, ALLRPCS_STEEPING_MAIN_CHECK='1', ALLRPCS_STEEPING_MODE=mode, ALLRPCS_STEEPING_REPORT=str(output)),
+                  retry_native=True, completion='PASS: steeping Main:')
+    reports = [json.loads((run.directory / f'steeping-{mode}.json').read_text()) for mode in modes]
+    saves = [(run.directory / f'steeping-{mode}.json.save.json').read_bytes() for mode in modes]
+    if any(data != saves[0] for data in saves) or any(row['motion'] != reports[0]['motion'] or row['truthBefore'] != row['truthAfter']
+            or row['transcript'] != reports[0]['transcript'] for row in reports):
+        raise ValueError('Steeping changed complete motion/save/transcript/protected truth')
+    if any(row['commits'] != 1 or row['presentations'] != 1 or row['grinding'] != 1 or row['treatment'] != 1 or row['heating'] != 1 for row in reports[:-1]) or reports[-1]['presentations'] != 0:
+        raise ValueError('Steeping exact commit/presentation contract changed')
+    run.report.update(steeping_modes=list(modes), steeping_save_sha256=sha(saves[0]))
+    run.stage('steeping-master-output', [sys.executable, 'scripts/validate-remedy-steeping-runtime.py', '--output-only'])
+    run.stage('boundary-steeping-reviewed', [sys.executable, 'scripts/validate-remedy-steeping-runtime.py', '--reviewed'])
 
 
 def rain_runtime(run, environment):

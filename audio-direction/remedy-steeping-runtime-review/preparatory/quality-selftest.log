@@ -1,0 +1,22 @@
+..RUN: fails
+..RUN: incomplete
+.Godot Engine v4.6.3
+smoke passed
+mutex lock failedRETRY identical native launch after diagnosed shutdown: ['--headless', '--quit-after', '30']
+smoke passed
+ERROR: fixture failed; mutex lock failedGodot Engine v4.6.3
+smoke passed
+mutex lock failedRETRY identical native launch after diagnosed shutdown: ['--headless', '--quit-after', '30']
+Godot Engine v4.6.3
+smoke passed
+mutex lock failedRETRY identical native launch after diagnosed shutdown: ['--headless', '--quit-after', '30']
+Godot Engine v4.6.3
+smoke passed
+mutex lock failed..RUN: native
+RETRY identical command after diagnosed native shutdown: native
+PASS: native
+.....
+----------------------------------------------------------------------
+Ran 12 tests in 0.310s
+
+OK

@@ -1,0 +1,3669 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-12",
+  "scope_id": "phase9-remedy-steeping-runtime-integration",
+  "status": "passed",
+  "owner_runtime_statement": "approved.",
+  "source_acceptance": "Yes, this is suitable",
+  "source": "audio-direction/remedy-steeping-source/provenance.json",
+  "protected_tracked_inputs": 13781,
+  "focused_tests": 30,
+  "native_master_cases": 37,
+  "ordinary_modes": 7,
+  "grinding_heating_and_treatment_commits_per_mode": 1,
+  "caption_owners": 14,
+  "history_capacity": 16,
+  "packaging": {
+    "streams": 41,
+    "individual_notices": 38,
+    "notice_groups": 22,
+    "retained_byte_identical_entries": 115,
+    "entries": 120,
+    "mounted_presets": 3
+  },
+  "listening": "Owner qualified exact candidate/window; no independent agent acoustic or fresh-device listening claim.",
+  "quality": {
+    "status": "passed",
+    "retained_previous_stages": 126,
+    "added_steeping_stages": 11,
+    "added_historical_heating_setup_stages": 3,
+    "runner_self_tests": 12,
+    "root_stages": 140,
+    "unit_tests": 5442,
+    "unit_suites": {
+      "Domain": 2849,
+      "Application": 1313,
+      "Infrastructure": 1272,
+      "Architecture": 8
+    },
+    "report": "audio-direction/remedy-steeping-runtime-review/quality/summary.json",
+    "log_storage": "audio-direction/remedy-steeping-runtime-review/quality/log-storage.json",
+    "retained_sequence": "audio-direction/remedy-steeping-runtime-review/quality/retained-stage-sequence.json"
+  },
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/remedy-steeping-runtime-authority.json",
+      "sha256": "0438fa6115db9913ba083ab4a0c373f9b6686d496ae7c8fc7360808173214720"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/README.md",
+      "sha256": "b56673767e0028f601f92fe51242480891d6263bfd31af2bb0c3616f1b9f031a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/captions-off.json",
+      "sha256": "971f8efa2c85b2ed1802a1e8b2462aec83826e0bde485410d3c8594a48fbfac3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/captions-off.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/captions-off.log",
+      "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/default.json",
+      "sha256": "7572737e5d2089b9776f793bbbb1835ee5570b0a5413410494eddfaa0c173d82"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/default.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/default.log",
+      "sha256": "f1d203132c162b95bcf527365d501255d88af973d6f64f0755db3f2d15d0c16f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/effects-muted.json",
+      "sha256": "948e285f91a1f3d94699fbc1ebdeeb096121e7432d70e45eb18d67c630295e42"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/effects-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/effects-muted.log",
+      "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/master-muted.json",
+      "sha256": "ae2c97165d6d00f8929accaf88a4ca75a46f62dd3538640414b75f7e85d306d7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/master-muted.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/master-muted.log",
+      "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/missing-stream.json",
+      "sha256": "1642b154f54aecabff18e0afe2bdcf0765dbbfdf842f3837743b204bc13a7cd9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/missing-stream.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/missing-stream.log",
+      "sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/native-views.json",
+      "sha256": "957cc1283ceac83bec5ef299a10948842619c4f7fe2974919165950b51103930"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/native-views.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/native-views.log",
+      "sha256": "87bfe5c1d403fb1b1ae4055ac02847172197751431c239d8f5ed8dcc4fa1dd5d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/quiet.json",
+      "sha256": "01839f3c1dae86457defca6cd976de3464477c3862abdad2bb4100324af6c013"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/quiet.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/quiet.log",
+      "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/steeping-disabled.json",
+      "sha256": "0fd6af0a2adbb323f9403fbc81709f892156b8716c3401d5a93e5b35e932c5db"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/steeping-disabled.json.save.json",
+      "sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/live/steeping-disabled.log",
+      "sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/capture-inputs.json",
+      "sha256": "7cf600cb2bf4d6604ddff2b949a61a6683bb8c24b0bb4a2cd9039bcf4d0f82c7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/executed-proof-before-formatting.cs.txt",
+      "sha256": "4ce8eea314ff41572a751f0629ad1a4605af685e0d88c1a958f11ce503e066ce"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/initial-failure.json",
+      "sha256": "bf0864f7036f4bd87e043b578d36964f4a52100778ebc4738d97ae47fd06ec40"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/initial-master.wav.gz",
+      "sha256": "c1506347dedc56cad33e00f22f3f41f868694e0d6721e32f5623b37a6bd0743f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/initial-native.log",
+      "sha256": "e1fd77fc1f996f9f37d46e64bd0b7f7cee119bf9d7db2aad136bf399d1629099"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/initial-timeline.json",
+      "sha256": "a151b84a5282e525d018e919f21c5aed7119736e545d1267f6f80eb4485e04a6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/master.wav.gz",
+      "sha256": "e5fb6bc739c449e3b4802459c2a7ad186f1a095b6f8d711020e42eec17ec1623"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/measurements.json",
+      "sha256": "0fded01bd3da7bb990856050b2d90bce1e9a37985044f4453c4cc6d24fb2ff6c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/native.log",
+      "sha256": "d15853f7db18985605463a3873712a79679b7fb416bab4b110d13f81c4fa4748"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/timeline.json",
+      "sha256": "a151b84a5282e525d018e919f21c5aed7119736e545d1267f6f80eb4485e04a6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/output/timeline.json.stops.json",
+      "sha256": "d0487936e42991031063c151eb21e4e1fcfa88182f5b99b5b601c5fbb3b27aae"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/0-export.log",
+      "sha256": "b3775e68e4b38344fd4eb3373802a5cb5d290e99182079c21d77fcdd732427a9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/0-native.json",
+      "sha256": "aa8e1d83437509ec7acdfd9a074e2fef85f4193231c1f1d75990c047fd68ae02"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/0-native.log",
+      "sha256": "0e45a19bda674167fb1eb42d8b14d955aa14156c15dca47678baea8b737a5efc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/1-export.log",
+      "sha256": "337f40380a82afbdd952100c0584d1b4676fe2b6149858a9bfbbbdd36b300cf7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/1-native.json",
+      "sha256": "aa8e1d83437509ec7acdfd9a074e2fef85f4193231c1f1d75990c047fd68ae02"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/1-native.log",
+      "sha256": "0e45a19bda674167fb1eb42d8b14d955aa14156c15dca47678baea8b737a5efc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/2-export.log",
+      "sha256": "8872370a469edacec2afd28e5c59c3513e103f137c83e9811d2b14f8f97f88ac"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/2-native.json",
+      "sha256": "aa8e1d83437509ec7acdfd9a074e2fef85f4193231c1f1d75990c047fd68ae02"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/2-native.log",
+      "sha256": "0e45a19bda674167fb1eb42d8b14d955aa14156c15dca47678baea8b737a5efc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/audio-subset.zip",
+      "sha256": "2d1060cc639b6457fb2d4034ed41d456b5eef1906dbd63cc7411121cdd1d75bd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/packaging/inventory.json",
+      "sha256": "344a0fc8a568b2cffac831b7d0d6cac23ed1ce72fad31f6a95e6c97d14fea920"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/preparatory/build.log",
+      "sha256": "6967dc31cce6ad94c33ed9ede5dea3e08f612cf885d1c67db7b9b97dffb8b4f0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/preparatory/focused-green.log",
+      "sha256": "d6ab84ea3cca849a7f16c1b66495a17ae23fa1c5ea5a22f630aeda622c767ee2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/preparatory/focused-red.log",
+      "sha256": "42f48e75a6e6222bd7c82050d4f44829f9571ba22f26ec8e1e563ad9677632c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/preparatory/install-guard.json",
+      "sha256": "f93fcffb6187d0f36eba47ee82b04f04d5a8a2bc96ef5f1b94c90bb15ef02030"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/preparatory/quality-selftest.log",
+      "sha256": "7fe6b2c13a8f6e4413a52fc95534063cbbc33d0ce94e31bd85d5a60183d7ea3a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "6877b28940fef2f3b6eec62f52cfc77acfaf38a275b7f6e29e78df9c447d9d42"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/102-rain-historical-restore-1.log.gz",
+      "sha256": "c96293252ce36cb2c95e154027952efc9f77bfa38cbb1a0da0a5b1f1a55bb1ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/103-rain-historical-build-1.log.gz",
+      "sha256": "0cc0cdfb92fbd71e899449a2708e45e26abe15854bd4bc7a5556bd57c5e5e53a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/105-rain-focused-1.log.gz",
+      "sha256": "fbfa5f251efcff8116aa627badf7591009e99b6bbee275815be2adefdfee5dbe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/111-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/112-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/113-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/116-heating-historical-restore-1.log.gz",
+      "sha256": "88ae785c868991e886e8603afae715be2680bac7c00c0225005aad2868fb66cb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/117-heating-historical-build-1.log.gz",
+      "sha256": "d99dcfc63684abaa45cade012b8e0e649201adbeb8e6c7dd2f1498991d0bb272"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/118-heating-historical-import-1.log.gz",
+      "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/119-heating-focused-1.log.gz",
+      "sha256": "66aae3e12fc9712944cc5cd39381071c283348b752a058c9f52475454c0c75e1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/120-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/121-heating-default-1.log.gz",
+      "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/122-heating-quiet-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/123-heating-master-muted-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/124-heating-effects-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/125-heating-missing-stream-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/126-heating-captions-off-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/127-heating-heating-disabled-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/128-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/129-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/130-steeping-focused-1.log.gz",
+      "sha256": "f442bdff1b52b34d2fb99b69ca72e3743e24e64fef2424e7d22617b63f6f86b7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/131-boundary-steeping-source-1.log.gz",
+      "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/132-steeping-default-1.log.gz",
+      "sha256": "5592c21280f516806db964d0876e01314172a55f22d3761553d51d5ea7ef7f1f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/133-steeping-quiet-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/134-steeping-master-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/135-steeping-effects-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/136-steeping-missing-stream-1.log.gz",
+      "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/137-steeping-captions-off-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/138-steeping-steeping-disabled-1.log.gz",
+      "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/139-steeping-master-output-1.log.gz",
+      "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/140-boundary-steeping-reviewed-1.log.gz",
+      "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/26-product-4-1.log.gz",
+      "sha256": "f59d0d093fe7dbac09ecf729ea992316039c6525458b9cae79921f9c9262b730"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/27-product-5-1.log.gz",
+      "sha256": "5057e747a8992eae08cb068ce7f883e84becf2a053568805c8b9f234532809e0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/28-product-6-1.log.gz",
+      "sha256": "8303a9fb174824d3884f2ed74bd28dbbcd3d5cf8e417eb08c80304dde049e498"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/29-product-7-1.log.gz",
+      "sha256": "1ecb034991a85a56084c8a497389e3794911f03c60bf4ea199249759bcec6027"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/35-product-10-1.log.gz",
+      "sha256": "99a3676331e929ba37633a35b6cc7be5da9ea8e8efc05baf2b0e4f6224ceedde"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/37-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/39-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/41-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/43-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/46-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/49-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/50-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/51-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/52-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/53-water-missing-stream-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/55-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/56-cask-quiet-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/60-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/61-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+      "sha256": "84c7040842d395dcee7bca2bf171c443611fb84fd339baa73d72c437edfc8d78"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/80-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/88-wind-historical-restore-1.log.gz",
+      "sha256": "23257b80ca867b43d870644c1eccf48dd80a381d936db64f609599e9345d0a6f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/89-wind-historical-build-1.log.gz",
+      "sha256": "7aa761353158b5fbe7d321435a6cada88937e3947e5c00a97e58df72cd53f14c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/91-wind-focused-1.log.gz",
+      "sha256": "7311c120180a001be1b720e0314532d282725fabfb5ae969a866d2343e3f38b5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/93-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/94-wind-quiet-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/98-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/artifact-storage.json",
+      "sha256": "5234465c1da7c8d51a797f0a6d6fbb9dc294891bc2ac1343c23a3d606bf2c1f9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-default.json.gz",
+      "sha256": "7a47e77088288037db072d87640b98aa32c8b541c4e74d4bbada747cf983bdf4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-effects-muted.json.gz",
+      "sha256": "fe7a9024bc9e8404c3ebf558534df81a99427595b2a72ca8c3bae7255564ba8f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-master-muted.json.gz",
+      "sha256": "bfe3c649ee01fecf4630f2d56a77c458e193a031d90ea6350a3665510d773754"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-missing-stream.json.gz",
+      "sha256": "64b36838eb169d173d8090acd7234eddb7f1bad1fb941f7a467cba0c1a8878ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-no-action.json.gz",
+      "sha256": "d0ab04bb87992ef614d7e14c0791d10c5aedfd9de41fb443e105f90775a1823c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-quiet.json.gz",
+      "sha256": "d2c8ed567ce90dfaa5a894527e5fcb7e39747579703aa2027cf40520ac8287d6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/cask-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-ambience-muted.json.gz",
+      "sha256": "14d3e10a8113dd51b269deb216b8c3b5857db7898100b92b5c0cec4b20898692"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-ambience-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-captions-off.json.gz",
+      "sha256": "53d1802f57865c9307f823c29c82004d43b23bb2638a922040878e8e5f9a60c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-captions-off.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-default.json.gz",
+      "sha256": "2a5c222085113c69dc55eaab53de596d21b7a7ae94a3f900895d60741895f804"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-default.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-foliage-disabled.json.gz",
+      "sha256": "6e05bdfac48c7fe33400a501d2d80333946d2d7032854b7d5ebd14ba9bde75d6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-foliage-disabled.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-master-muted.json.gz",
+      "sha256": "fb2d2667fc784d98fa5763ae19e40c70467828dc43285bfcaad05eed2c912c82"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-master-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-missing-stream.json.gz",
+      "sha256": "64284f80557c13f6c0a08541cd1cd5577c5b68122fb17173c3ae5ceab55b994b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-missing-stream.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-quiet.json.gz",
+      "sha256": "b5feafa38df85985c0518e3dbdff877ec06e88b44d62c3bd324acdad2f805704"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/foliage-quiet.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-captions-off.json.gz",
+      "sha256": "7948d878fd853e0f11b6402ffab5ad38c6dc20d34666f1f6c55cab0ce1a864c7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-captions-off.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-default.json.gz",
+      "sha256": "29c0521059b816bbc9e5b7f7368eef6aca1c27c46043b912ce3a22033c612a04"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-default.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-effects-muted.json.gz",
+      "sha256": "f61ec33c3d7b56d149c141fff31c8fee2ac0af5f92b67f0f6aa1b56bc5d43e18"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-effects-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-master-muted.json.gz",
+      "sha256": "a6404114ce9058457590c6c03352aa7121928f5be5ae893467bcf069d819febf"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-master-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-missing-resources.json.gz",
+      "sha256": "811bbc0306472beb633e569c9f94666b1553dd011c0f8bb42ec41211ea2c7fad"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-missing-resources.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-observer-disabled.json.gz",
+      "sha256": "a7e420cf89c83e197838945f68bf2c4bcbb3e459d5d7538e55024d42f8b6faa7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-observer-disabled.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-quiet.json.gz",
+      "sha256": "c7820e3bba6396593e9ae3084f57073c2c2c66665132aada2717dd3e5d4e9da4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/healer-quiet.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-captions-off.json.gz",
+      "sha256": "3a13ff529478d7e66b5d4aa9a36f840d078831524416722211396c9e4ebb0b2a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-captions-off.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-default.json.gz",
+      "sha256": "f03a8e4b9967f29f9ad587e51e502305368e37f2eaf8c59fe7154bc869f7abe6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-default.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-effects-muted.json.gz",
+      "sha256": "49e8b6554ef3d3e351c7f861c1839596f500f7136485dc6b2103f5bfb0fcbfad"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-effects-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-heating-disabled.json.gz",
+      "sha256": "4b4d3ebf2a8a04483bb72fbb9de270fbaf10d69587b5b1a876b5e0cd1db65075"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-heating-disabled.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-master-muted.json.gz",
+      "sha256": "bb4137e56210d61cfa806e37e5d04170362b816e94428699a5bb2a1749b58d34"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-master-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-missing-stream.json.gz",
+      "sha256": "bf8e20a22d4d3170db0683b5cfb9c8e655a0e755e6f29bb1f0f770cacc845518"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-missing-stream.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-quiet.json.gz",
+      "sha256": "4ed5e3f89d7c7d3a3d1e01d24535ef5050189ab20e623d0b27a4ea195349dff2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/heating-quiet.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/02-art-1-1.log.gz",
+      "sha256": "aaf6ab5fabb40f4e3be106609bb9a3c53030fd7c66742da7a1fd62c1cb00112c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/100-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/101-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/102-rain-historical-restore-1.log.gz",
+      "sha256": "f7eb2e046d1d1db0d9cd7f80ae9cb6e43f72a5371f42150e5865199241efd556"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/102-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/103-rain-historical-build-1.log.gz",
+      "sha256": "c02aec6a09a254b1c3d0613d449f5fea18b2d2838f2a02ed4d73e99ef16f130c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/103-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/104-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/105-rain-focused-1.log.gz",
+      "sha256": "4ea00c79052aa0fac8043a2757686efb6aed96437314a5d7f7d627bbb223f87c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/105-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/106-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/107-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/108-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/109-boundary-rain-reviewed-1.log.gz",
+      "sha256": "eec9cba6a5c968fc370838d8aa9169499b55072e24d9ad37959c13499ede22d0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/109-boundary-rain-reviewed-2.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/111-rain-missing-stream-1.log.gz",
+      "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/112-rain-captions-off-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/113-rain-rain-disabled-1.log.gz",
+      "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/116-heating-focused-1.log.gz",
+      "sha256": "df3d6fb8373d77317a5c68c643c182ceb29789b67cea40393a87a040a5b687d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/117-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/118-heating-default-1.log.gz",
+      "sha256": "75bbea2c6b4517605670fc26ec06cfd818dfd00388e7d3784304ab934765c1df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/119-heating-quiet-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/120-heating-master-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/121-heating-effects-muted-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/122-heating-missing-stream-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/123-heating-captions-off-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/124-heating-heating-disabled-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/125-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/126-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/16-boundary-interior-current-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/17-boundary-water-contact-current-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/17-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/18-boundary-cask-cover-current-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/18-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/18-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/19-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/19-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/19-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/20-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/20-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/20-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/20-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/21-product-4-1.log.gz",
+      "sha256": "3770331aa1be6543ebf8ff2e5e893c9bfa7f71f0b28890f41075aaef51a0a45d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-product-4-1.log.gz",
+      "sha256": "a8e8bd7b29a7855aaaafbe3bbf4dafd5de15582f5a603eeb764570b53a91751d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/22-product-5-1.log.gz",
+      "sha256": "bb07932440d6538ec037637ca5411f68734a530be61cc0ceea3d38be77036005"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-4-1.log.gz",
+      "sha256": "5363c4791aa46f2efcf8a7c88432dc2d9c4955b618abc2d093bcd09d467a6ecf"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-5-1.log.gz",
+      "sha256": "17042b08e9c5a14d9fb0b414fc33356871b6130771db6866c12ee30e5df2559c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/23-product-6-1.log.gz",
+      "sha256": "afdcdf339983b86b9ed3063cd77fd755bcc6659351bff1c46d4f29df785e4d89"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-4-1.log.gz",
+      "sha256": "15f255d102146def61f007419e7d4b58a04def8903f93f1222d51c801bfd454f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-5-1.log.gz",
+      "sha256": "14885d52aa7533f64fa35c75917ba2171378df2bcdac65a6c2c7d5a465fd1810"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-6-1.log.gz",
+      "sha256": "80669a87459f923497559a16f55d7466a83387c48dd85199a8dabfd51b8e9199"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/24-product-7-1.log.gz",
+      "sha256": "1ae0c26bc1a786b696efb463aaf5287dd1b406ce0a6f8fd32fb08d4133b090d2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-3-1.log.gz",
+      "sha256": "48cf9d60adb358fd16ccb423a87b703830feda9a66cd96ca54b0cf98dfc62d80"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-4-1.log.gz",
+      "sha256": "ec6523232b1e6647b5908d34fbd1046b65f48065ef0daa02ced0609a2f14bbee"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-5-1.log.gz",
+      "sha256": "9fc8b8e4125e0f23f3f6bc51c7e51ec5d19af1fea6aea1aa9270c165d7c8f30e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-6-1.log.gz",
+      "sha256": "1e1644478ec33c9d523a638a51ea478a3ee57271c057bc8f09295f2fb1073f72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-7-1.log.gz",
+      "sha256": "fc8e0a05501638f6380ad9e678a6de5a1656f88137a947e2f85d1a74ad90b29b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/25-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-4-1.log.gz",
+      "sha256": "3416da5d2115a591c6b86d158427d00f49765d8c07eb280cb89355974a23d9a9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-5-1.log.gz",
+      "sha256": "a125163b27c7e8df4602f8a1061da4ecec96b35ccc2bbfeb0c1cf89ca80080ef"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-6-1.log.gz",
+      "sha256": "0d7f0a36eb308b53ba6c92a304447a2d82f63a6419f53a9b22350c6b863b42ba"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-7-1.log.gz",
+      "sha256": "bbb331a43594133902f3b46e2c78f210210fd121b0cfb06c35d5112a12d104d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/26-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-boundary-interior-resume-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-10-1.log.gz",
+      "sha256": "b5cc35352a6f36b2859f65c040db25b1b8c950b89c4a49ba9e58bb1b2d38330b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-5-1.log.gz",
+      "sha256": "20fb307b62b34b03aed0eef8fd7ea5283a9cc4a270bbc847354b6d30f9f13a2c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-6-1.log.gz",
+      "sha256": "86dfdafb1758e63b25f1519333964a30172600a0f741f475236121b6e4e753d9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-7-1.log.gz",
+      "sha256": "106b29b0079cc9d6b12d2fc6df9d3f72d6c268918acd394e7157d515f69828bc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/27-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/28-product-10-1.log.gz",
+      "sha256": "7bf26570a8a70530ee799650080109357c282540e9485a89512580012056dd59"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/28-product-6-1.log.gz",
+      "sha256": "96db1832baaf713da47eebf8baf3a079e081f6b133da29728850cd4cf9c1bf58"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/28-product-7-1.log.gz",
+      "sha256": "fce713a1f16f1c1231851924cef1167939faf014d339c3c487c101ae11dc5889"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/28-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/28-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/29-product-10-1.log.gz",
+      "sha256": "fa9a3cd0ae03227c5326e9b41fe8b9fb7cd3a69d33fcc6ea674844ab2e30b552"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/29-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/29-product-7-1.log.gz",
+      "sha256": "0e25c7ad589012bc103e5dfc54bee9cf551f598b828b56dd68b67e8db919fcf8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/29-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/29-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/30-product-10-1.log.gz",
+      "sha256": "2c7095d55f94b188d2dc96972eb0e09f5df7b579a54dd02df1ef5b563e280c87"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/30-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/30-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/30-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/31-product-10-1.log.gz",
+      "sha256": "46224988361450cc81d5cfb19a9e8be256853707070a3421cbcbf79a05434b8c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/31-product-11-1.log.gz",
+      "sha256": "ff0632d5b5d26c8999b65906f2c2d712ab6c4a507339c6506bc616e230e7a4aa"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/31-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/31-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-10-1.log.gz",
+      "sha256": "6b200a8705e6ba6f2e1e92fc4e620464f8056bb13a17d45259cbeef63ebc3741"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-10-2.log.gz",
+      "sha256": "9276e34962f2fb07f3a9bb502be344e95dd3cc9561be8a9dc7ef3bf5e5953ab8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-10-3.log.gz",
+      "sha256": "33a2ca34f7494537f95dcdea30037df37c6df1585d75ca43fa80de970d490b61"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-13-1.log.gz",
+      "sha256": "8735b16d36f3ed7ba788c21cf3ab59584415dd88fd75b5f62652d7c959cf7024"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/32-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/33-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-product-15-1.log.gz",
+      "sha256": "7a02405132c2fb0b5576105546bfe32986312b6cae0100cf358ec29538467b3c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/34-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-10-1.log.gz",
+      "sha256": "16da29a792219016969871f02e1c54be2319b6b38d77067d3ae44dfb1dc5b5a2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-10-2.log.gz",
+      "sha256": "2eb2c58722fca2aad0b89b420d74a68c8848388ea2d6234800d8f532629f31c1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-10-3.log.gz",
+      "sha256": "9058308ca585b59b991a2ee6322753a428b7d276eff75c872ae769e821b07f64"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/35-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/36-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-12-1.log.gz",
+      "sha256": "fcef5503a03314f7335aef89c70a9407f70c06d2fbb62f85b6165701b490b62b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-17-1.log.gz",
+      "sha256": "c32419242af2a93dc2f6daeb6c9c8969a888865d726aaf198826a5eebccb84c9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/37-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-boundary-interior-resume-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/38-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/39-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/40-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-interior-muted-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-product-16-1.log.gz",
+      "sha256": "cfa3ad5c4075d34ccb514882b4ed8ee6efae35501f77094448039b4b6c709815"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/41-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-interior-normal-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/42-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-boundary-interior-after-runtime-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/43-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-interior-zero-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/44-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/45-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-interior-muted-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/46-water-quiet-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/47-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-boundary-water-contact-after-runtime-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-interior-mono-reduced-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-water-missing-stream-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/48-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/49-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/49-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/49-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/49-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/49-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/50-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/50-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/50-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/50-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/50-water-quiet-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/51-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/51-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/51-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/51-water-master-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/51-water-no-action-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/52-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/52-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/52-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/52-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/52-water-effects-muted-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/53-cask-effects-muted-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/53-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/53-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/53-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/53-water-missing-stream-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/54-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/54-cask-master-muted-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/54-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/54-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/55-boundary-cask-cover-after-runtime-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/55-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/55-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/55-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/55-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/56-cask-missing-stream-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/56-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/56-cask-quiet-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/56-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/57-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/57-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/57-hand-tool-quiet-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/58-hand-tool-default-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/58-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/58-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/59-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/59-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/59-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/60-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/60-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/60-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/60-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/61-hand-tool-default-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/61-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/61-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/61-hand-tool-no-action-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/62-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/62-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/62-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/63-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/63-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/64-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/64-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/65-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/65-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/66-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/66-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/66-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/67-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/67-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/67-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/68-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/68-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/69-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/69-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/70-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/70-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/71-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/71-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/72-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/72-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/73-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/74-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/74-foliage-historical-build-1.log.gz",
+      "sha256": "1335d5dc0fec29d26bfd368cbea35b710df0e5fd54eeb9a10bb8a2ccedf23218"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/75-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/75-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/76-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/76-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/77-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/77-foliage-historical-build-1.log.gz",
+      "sha256": "4d30aba6365154a2e6674e850fe38b9d8f15401239260e495fe2002142175471"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/77-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/78-foliage-historical-import-1.log.gz",
+      "sha256": "a70ec58b3e48f895c6a859a1973f602437dfbd61d0ade3a44a40440497c3b1bb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/78-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/78-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/79-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/79-foliage-captions-off-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/80-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/80-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/80-foliage-quiet-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/81-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/81-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/82-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/82-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/83-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/84-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/84-foliage-captions-off-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/85-wind-focused-1.log.gz",
+      "sha256": "419fb564d783c5d2372c8fe5cb5bb8e96698839a5b0adc7dc7067c6685665482"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/85-wind-historical-build-1.log.gz",
+      "sha256": "afddd809cef6a51bb16405050ace335ecf071edde7007b39df4b1b91f2d0aa22"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/85-wind-historical-restore-1.log.gz",
+      "sha256": "c3c267def547c710f51f510d5bbb70596ffb6b7415e5d9b76a1c495b9c7fb0b7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/86-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/86-wind-historical-build-1.log.gz",
+      "sha256": "5d74471e2276b42514bfbf6099390bcbd7f7be703a6a7f20597debfafc88e29f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/86-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/87-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/87-wind-focused-1.log.gz",
+      "sha256": "d7d3c13985c2f2b6e7510308514e37d073cfa065f3ba9571ac70ac93ebd49992"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/87-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/88-boundary-wind-source-1.log.gz",
+      "sha256": "9ae0f6924377f1d2e0068e96998a103fd24a4cfe038ff3b19ad127a5948b00a4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/88-wind-focused-1.log.gz",
+      "sha256": "e135a6ecfaa1301bfc6e082c5cc0fbdd090d97627e01dbabdd989e45d8f89a9b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/88-wind-historical-restore-1.log.gz",
+      "sha256": "7ef00ca21e3e06ccf156ff59c73815c86ea9bd09c0ec1e351a6eb1033b408bfb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/88-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/89-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/89-wind-historical-build-1.log.gz",
+      "sha256": "a4b521d7a3eb00964e81a60f301e4a8553f37fe60452f18ea7af377a4d4bdcf9"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/89-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/90-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/90-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/91-wind-focused-1.log.gz",
+      "sha256": "9be1c84db3a8f7106eaad2ad1a4c9f1c6c3236044e09f2977597586630576e19"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/91-wind-missing-stream-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/91-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/92-wind-captions-off-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/92-wind-master-muted-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/93-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/93-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/93-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/94-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/94-wind-missing-stream-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/94-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/95-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/95-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/96-wind-wind-disabled-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/97-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/98-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/98-wind-captions-off-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/99-rain-focused-1.log.gz",
+      "sha256": "419fb564d783c5d2372c8fe5cb5bb8e96698839a5b0adc7dc7067c6685665482"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-default.json.gz",
+      "sha256": "7a47e77088288037db072d87640b98aa32c8b541c4e74d4bbada747cf983bdf4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-effects-muted.json.gz",
+      "sha256": "fe7a9024bc9e8404c3ebf558534df81a99427595b2a72ca8c3bae7255564ba8f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-master-muted.json.gz",
+      "sha256": "bfe3c649ee01fecf4630f2d56a77c458e193a031d90ea6350a3665510d773754"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-missing-stream.json.gz",
+      "sha256": "64b36838eb169d173d8090acd7234eddb7f1bad1fb941f7a467cba0c1a8878ed"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-no-action.json.gz",
+      "sha256": "d0ab04bb87992ef614d7e14c0791d10c5aedfd9de41fb443e105f90775a1823c"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-quiet.json.gz",
+      "sha256": "d2c8ed567ce90dfaa5a894527e5fcb7e39747579703aa2027cf40520ac8287d6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/cask-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-ambience-muted.json.gz",
+      "sha256": "14d3e10a8113dd51b269deb216b8c3b5857db7898100b92b5c0cec4b20898692"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-ambience-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-captions-off.json.gz",
+      "sha256": "53d1802f57865c9307f823c29c82004d43b23bb2638a922040878e8e5f9a60c2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-captions-off.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-default.json.gz",
+      "sha256": "2a5c222085113c69dc55eaab53de596d21b7a7ae94a3f900895d60741895f804"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-default.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-foliage-disabled.json.gz",
+      "sha256": "6e05bdfac48c7fe33400a501d2d80333946d2d7032854b7d5ebd14ba9bde75d6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-foliage-disabled.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-master-muted.json.gz",
+      "sha256": "fb2d2667fc784d98fa5763ae19e40c70467828dc43285bfcaad05eed2c912c82"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-master-muted.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-missing-stream.json.gz",
+      "sha256": "64284f80557c13f6c0a08541cd1cd5577c5b68122fb17173c3ae5ceab55b994b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-missing-stream.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-quiet.json.gz",
+      "sha256": "b5feafa38df85985c0518e3dbdff877ec06e88b44d62c3bd324acdad2f805704"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/foliage-quiet.json.save.json.gz",
+      "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-captions-off.json.gz",
+      "sha256": "7948d878fd853e0f11b6402ffab5ad38c6dc20d34666f1f6c55cab0ce1a864c7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-captions-off.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-default.json.gz",
+      "sha256": "29c0521059b816bbc9e5b7f7368eef6aca1c27c46043b912ce3a22033c612a04"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-default.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-effects-muted.json.gz",
+      "sha256": "f61ec33c3d7b56d149c141fff31c8fee2ac0af5f92b67f0f6aa1b56bc5d43e18"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-effects-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-master-muted.json.gz",
+      "sha256": "a6404114ce9058457590c6c03352aa7121928f5be5ae893467bcf069d819febf"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-master-muted.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-missing-resources.json.gz",
+      "sha256": "811bbc0306472beb633e569c9f94666b1553dd011c0f8bb42ec41211ea2c7fad"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-missing-resources.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-observer-disabled.json.gz",
+      "sha256": "a7e420cf89c83e197838945f68bf2c4bcbb3e459d5d7538e55024d42f8b6faa7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-observer-disabled.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-quiet.json.gz",
+      "sha256": "c7820e3bba6396593e9ae3084f57073c2c2c66665132aada2717dd3e5d4e9da4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/healer-quiet.json.save.json.gz",
+      "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-captions-off.json.gz",
+      "sha256": "3a13ff529478d7e66b5d4aa9a36f840d078831524416722211396c9e4ebb0b2a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-captions-off.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-default.json.gz",
+      "sha256": "f03a8e4b9967f29f9ad587e51e502305368e37f2eaf8c59fe7154bc869f7abe6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-default.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-effects-muted.json.gz",
+      "sha256": "49e8b6554ef3d3e351c7f861c1839596f500f7136485dc6b2103f5bfb0fcbfad"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-effects-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-heating-disabled.json.gz",
+      "sha256": "4b4d3ebf2a8a04483bb72fbb9de270fbaf10d69587b5b1a876b5e0cd1db65075"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-heating-disabled.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-master-muted.json.gz",
+      "sha256": "bb4137e56210d61cfa806e37e5d04170362b816e94428699a5bb2a1749b58d34"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-master-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-missing-stream.json.gz",
+      "sha256": "bf8e20a22d4d3170db0683b5cfb9c8e655a0e755e6f29bb1f0f770cacc845518"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-missing-stream.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-quiet.json.gz",
+      "sha256": "4ed5e3f89d7c7d3a3d1e01d24535ef5050189ab20e623d0b27a4ea195349dff2"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/heating-quiet.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-mono-reduced.json.gz",
+      "sha256": "6d0e8b515de04897acb203c07d98fe33deceed539acd094dbd17a085df1f9533"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-mono-reduced.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-muted.json.gz",
+      "sha256": "574b75dae90e2e1d2a88588b1c4d3388a40c721ad801241ac79513e170226a3a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-muted.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-normal.json.gz",
+      "sha256": "4da2cb8354cb56f6b332420cdff05ba51c5937bc7d17161b443bf51a70fac626"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-normal.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-zero.json.gz",
+      "sha256": "f3c51c22b5198e508b286b3170d1688bf4eb629cfe5a1eb8239177383ab04d99"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/interior-zero.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-ambience-muted.json.gz",
+      "sha256": "85dbd84759eb75c6337b3f776fc154f254417c3c12c56609488fed2120d8980e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-ambience-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-captions-off.json.gz",
+      "sha256": "36a7e14822a564684d8d933fdf492970982488ea9bef8b45d37460d15098d8fc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-captions-off.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-default.json.gz",
+      "sha256": "c2cb0881b9c33cef0dfac41ac885e52604ef2896ebf61dff21e862acc6ba94ac"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-default.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-master-muted.json.gz",
+      "sha256": "673f5a8dc0679bf9a3703e153b010327c8b5357ebdbb18e9415ba708c7420c17"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-master-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-missing-stream.json.gz",
+      "sha256": "2846f96a155e4562ef540d7b83bbc58b5315241819cf2348e2c388f661b56834"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-missing-stream.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-quiet.json.gz",
+      "sha256": "f37ed8e759c995e7a46977a7cb366ac07a05106ca44806bfe3a0df9f87c8ddf8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-quiet.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-rain-disabled.json.gz",
+      "sha256": "af08a751624a4d0b437bdfd6a842bd2cf4626da69215349f3f3fe74a8d43c2e7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/rain-rain-disabled.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/summary.json",
+      "sha256": "048ea701714cacf847bffb76acf007bcee7373bdb8d14467ce61ca75513e7fcb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-default.json.gz",
+      "sha256": "be63d875866e3d7c51b2a74c26ac487baa6a742ce5b8dcd117d4c888ddf68168"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-effects-muted.json.gz",
+      "sha256": "4e5346e9b653a12fdce5ec8ffa97840e303a722359ec4dda27f6b8e5a5429fe5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-master-muted.json.gz",
+      "sha256": "50397f5ad92125d8c333211ee5466f7f7de477c0c068768f47cced801090c56b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-missing-stream.json.gz",
+      "sha256": "ec0416f288b3819f30bb13fb444d724b20dd9be2549f21de3e21540c2d85bf15"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-no-action.json.gz",
+      "sha256": "d3202d7d46042aaf9598688293c5f59293a75f043f01f89c8871757031c76938"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-quiet.json.gz",
+      "sha256": "d67b1db67bb5fed65fd9364f5d41fd1d10d30165f531315e43692498fbd54051"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/tool-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-default.json.gz",
+      "sha256": "668f535a1aacd9bfcf71386c0bf96f53e9fe5678028881c56d33a43f84a4ae8e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-effects-muted.json.gz",
+      "sha256": "a98612bb8a02f9ba0c18f23ef9053a8c63e5d072854b7afaf43cfccf597ae805"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-master-muted.json.gz",
+      "sha256": "b9692adb3523b8ac876d197dfcfb56e3e6f58933154cb788b056496215ba51e6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-missing-stream.json.gz",
+      "sha256": "a47555fe3ff3ac41bb45b64b2a8ce646d6df0e8d27845624325f009a97f66a89"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-no-action.json.gz",
+      "sha256": "dec18d9b856c9a92603570f70b14ce99755f2966bd5626a0100f643eb5146077"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-quiet.json.gz",
+      "sha256": "d62dd623dc8c90fe3056a68f8fc5ab72adbba57ecbe5c981a7d8ba0cd4b07a62"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/water-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-ambience-muted.json.gz",
+      "sha256": "af57a7703b510281f31634696c79c180533f2cbad5593d73d921ffc669fda0d4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-ambience-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-captions-off.json.gz",
+      "sha256": "a8a4ef85a84ffdbc59ed83ab4959b3b43732a261daeb0d243e3cc1c92313451e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-captions-off.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-default.json.gz",
+      "sha256": "c127950b78dc4f18b033b377832f937c5c8b746bee5531275c3d6931ed291fd0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-default.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-master-muted.json.gz",
+      "sha256": "296ae19f55d49ea5ed4f275e84d0531ea58bfaf1796fb6282cfc2d637cbae746"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-master-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-missing-stream.json.gz",
+      "sha256": "4fdde94438af348f577fb24b9e389c4d61950c1dc62c36f3f63fa201a762d331"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-missing-stream.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-quiet.json.gz",
+      "sha256": "4609578d47af318345b5b6938fa9900c3262b04f014ef04049b0147a031ec923"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-quiet.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-wind-disabled.json.gz",
+      "sha256": "6435fedc59da6ea25055512cf35ab83b3de1d7cb891fbd6c4dddba502259a489"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/initial-format-failure/wind-wind-disabled.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-mono-reduced.json.gz",
+      "sha256": "6d0e8b515de04897acb203c07d98fe33deceed539acd094dbd17a085df1f9533"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-mono-reduced.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-muted.json.gz",
+      "sha256": "574b75dae90e2e1d2a88588b1c4d3388a40c721ad801241ac79513e170226a3a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-muted.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-normal.json.gz",
+      "sha256": "4da2cb8354cb56f6b332420cdff05ba51c5937bc7d17161b443bf51a70fac626"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-normal.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-zero.json.gz",
+      "sha256": "f3c51c22b5198e508b286b3170d1688bf4eb629cfe5a1eb8239177383ab04d99"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/interior-zero.json.save.json.gz",
+      "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/log-storage.json",
+      "sha256": "15eeedaf66233435fc5fbc61772dcd923803d52e7268e02c1314be926d3f77f0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-ambience-muted.json.gz",
+      "sha256": "85dbd84759eb75c6337b3f776fc154f254417c3c12c56609488fed2120d8980e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-ambience-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-captions-off.json.gz",
+      "sha256": "36a7e14822a564684d8d933fdf492970982488ea9bef8b45d37460d15098d8fc"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-captions-off.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-default.json.gz",
+      "sha256": "c2cb0881b9c33cef0dfac41ac885e52604ef2896ebf61dff21e862acc6ba94ac"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-default.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-master-muted.json.gz",
+      "sha256": "673f5a8dc0679bf9a3703e153b010327c8b5357ebdbb18e9415ba708c7420c17"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-master-muted.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-missing-stream.json.gz",
+      "sha256": "2846f96a155e4562ef540d7b83bbc58b5315241819cf2348e2c388f661b56834"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-missing-stream.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-quiet.json.gz",
+      "sha256": "f37ed8e759c995e7a46977a7cb366ac07a05106ca44806bfe3a0df9f87c8ddf8"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-quiet.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-rain-disabled.json.gz",
+      "sha256": "af08a751624a4d0b437bdfd6a842bd2cf4626da69215349f3f3fe74a8d43c2e7"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/rain-rain-disabled.json.save.json.gz",
+      "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/retained-stage-sequence.json",
+      "sha256": "b8681aa4bd0f1182de12a619cde6ffc6770a7d1b3c7f4c0b203f151b3bc9ea37"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/root-stdout.log.gz",
+      "sha256": "0a84c7fc61ceb30e0403f7f921f73ebc55d63a12e49efe3572003d2a3c9899b3"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-captions-off.json.gz",
+      "sha256": "698e602fa2074d58640ca9c42a6fca52a1cfa23b2e591c87ba75853db7cf1a72"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-captions-off.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-default.json.gz",
+      "sha256": "f79b43e44e7c1db43b1bb4405191269d182d5ba0ac81951a3526288b6227046d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-default.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-effects-muted.json.gz",
+      "sha256": "81e23ad3066f23c5754d886b815aa839d1e6c955db7aa8e2f737fa87f4b97103"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-effects-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-master-muted.json.gz",
+      "sha256": "ac3131c73d452aa4a62b03b2563940ad16ddb5cc7a091b9bf98c2e17a69b2b20"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-master-muted.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-missing-stream.json.gz",
+      "sha256": "0c4f15fb5f4015e8859fbb51fb248e5722b4a3d598fd088e66f061a2a663a3a0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-missing-stream.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-quiet.json.gz",
+      "sha256": "e4f1bce92b61898402213f6ee55d061f882cc4d8dab4b50165bdb9ba86ebbe7a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-quiet.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-steeping-disabled.json.gz",
+      "sha256": "c3727f348ffef642f2c48dd0617ba342bb489fb95aafdfedcf4edec3af627f07"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/steeping-steeping-disabled.json.save.json.gz",
+      "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/summary.json",
+      "sha256": "4dde481fcc99e45bd895c4462730a3f28f0daa14eb629d41cd13273f0692a141"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-default.json.gz",
+      "sha256": "be63d875866e3d7c51b2a74c26ac487baa6a742ce5b8dcd117d4c888ddf68168"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-effects-muted.json.gz",
+      "sha256": "4e5346e9b653a12fdce5ec8ffa97840e303a722359ec4dda27f6b8e5a5429fe5"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-master-muted.json.gz",
+      "sha256": "50397f5ad92125d8c333211ee5466f7f7de477c0c068768f47cced801090c56b"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-missing-stream.json.gz",
+      "sha256": "ec0416f288b3819f30bb13fb444d724b20dd9be2549f21de3e21540c2d85bf15"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-no-action.json.gz",
+      "sha256": "d3202d7d46042aaf9598688293c5f59293a75f043f01f89c8871757031c76938"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-quiet.json.gz",
+      "sha256": "d67b1db67bb5fed65fd9364f5d41fd1d10d30165f531315e43692498fbd54051"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/tool-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-default.json.gz",
+      "sha256": "668f535a1aacd9bfcf71386c0bf96f53e9fe5678028881c56d33a43f84a4ae8e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-default.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-effects-muted.json.gz",
+      "sha256": "a98612bb8a02f9ba0c18f23ef9053a8c63e5d072854b7afaf43cfccf597ae805"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-effects-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-master-muted.json.gz",
+      "sha256": "b9692adb3523b8ac876d197dfcfb56e3e6f58933154cb788b056496215ba51e6"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-master-muted.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-missing-stream.json.gz",
+      "sha256": "a47555fe3ff3ac41bb45b64b2a8ce646d6df0e8d27845624325f009a97f66a89"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-missing-stream.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-no-action.json.gz",
+      "sha256": "dec18d9b856c9a92603570f70b14ce99755f2966bd5626a0100f643eb5146077"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-no-action.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-quiet.json.gz",
+      "sha256": "d62dd623dc8c90fe3056a68f8fc5ab72adbba57ecbe5c981a7d8ba0cd4b07a62"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/water-quiet.json.save.json.gz",
+      "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-ambience-muted.json.gz",
+      "sha256": "af57a7703b510281f31634696c79c180533f2cbad5593d73d921ffc669fda0d4"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-ambience-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-captions-off.json.gz",
+      "sha256": "a8a4ef85a84ffdbc59ed83ab4959b3b43732a261daeb0d243e3cc1c92313451e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-captions-off.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-default.json.gz",
+      "sha256": "c127950b78dc4f18b033b377832f937c5c8b746bee5531275c3d6931ed291fd0"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-default.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-master-muted.json.gz",
+      "sha256": "296ae19f55d49ea5ed4f275e84d0531ea58bfaf1796fb6282cfc2d637cbae746"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-master-muted.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-missing-stream.json.gz",
+      "sha256": "4fdde94438af348f577fb24b9e389c4d61950c1dc62c36f3f63fa201a762d331"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-missing-stream.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-quiet.json.gz",
+      "sha256": "4609578d47af318345b5b6938fa9900c3262b04f014ef04049b0147a031ec923"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-quiet.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-wind-disabled.json.gz",
+      "sha256": "6435fedc59da6ea25055512cf35ab83b3de1d7cb891fbd6c4dddba502259a489"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/quality/wind-wind-disabled.json.save.json.gz",
+      "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/rejection-probes.json",
+      "sha256": "fadd96d23fb0eb518b9b145732dcdb563f85bf94dc4c8adf5e77136c189b2bde"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/S01-candidate.wav",
+      "sha256": "90576dd39afd078609ce5535cd6319edc79c99f30b197a54d4622288e9c73b9a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/loudness.log.gz",
+      "sha256": "0177201b852a982b4e643af4944541ef12be01b487474edf58ede4982b63363f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/passage-measurements.json",
+      "sha256": "71fad5f5f004db65cfe8af1516ebeb5e4ec4ab3dfe3a43dcbc32769f4cc0c837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/raw-capture-storage.json",
+      "sha256": "3c4a8b5af98cd16ee61dd0dcf3fad1bfa8c1ad30471cc0a3182cd4a888860f12"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-candidate.wav",
+      "sha256": "418a37fc29cef4046ad1624e026bbdde1108f648e76a502367829d6379f9060e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-catalogue.html",
+      "sha256": "0a58b5d48f970267b99e741a04b99a27b5c4933fd210dc02f5b9e66b7f08d7be"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-loudness.log.gz",
+      "sha256": "aa0bd144e852bb688d01056da3f64b362064ff024797a833cb0fec176dc88838"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-measurements.json",
+      "sha256": "de099df13e01d814feca1b934e3c7689f2d43c51316f9ac2b6f03e400693c49d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-original.flac",
+      "sha256": "afa112a66c4cafe06ef76d5e2d4d00a701d4520c58eef63b862afa771991d77a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/source/rejected-wave02-provenance.json",
+      "sha256": "de099df13e01d814feca1b934e3c7689f2d43c51316f9ac2b6f03e400693c49d"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/captions-1280.png",
+      "sha256": "b2fd386104e835cf87c965a052b5973dc8b698481199855bd3c99cd3ea38653a"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/captions-1920.png",
+      "sha256": "eb93d796ddc6ef7a6b5b0dc354b6558a664baae318a08dbaffa1671682206fbb"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/history-1280.png",
+      "sha256": "341309b85edd14189cc21a88891317a4c66c152bdc9a0dc2ef1d8c91d3f433fa"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/history-1920.png",
+      "sha256": "eecdfb8f667b6f9ad3da4dbe765ea691a449a46e7d9f3d3a1b0172a0e3e3ca1e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/native.json",
+      "sha256": "78b4a7b44ea24ab09ed9f299cee145a4e9dad2251d39b297910aaa75f52e8145"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-runtime-review/views/visual-review.json",
+      "sha256": "7e389096b22f8bbf14a3335b1316b31bedf87707bea005fd9d12e712982e8b6e"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/README.md",
+      "sha256": "837b8e3ffe2ce114cfa885447eeacd82e66d9e59dd683a21a841f3257632a25f"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/originals/0150-water-bubbles.wav",
+      "sha256": "339d8870803ceb8d83dbd4f2ad3e673c6dceb8614db412b56b89b5367b069d81"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/provenance.json",
+      "sha256": "71fad5f5f004db65cfe8af1516ebeb5e4ec4ab3dfe3a43dcbc32769f4cc0c837"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/rights/catalogue.html",
+      "sha256": "b1f9fb1ff8a22c152874e68a4961908bf94694aa3c243deeb71cf6a1b9e54052"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/remedy-steeping-source/rights/licence.html",
+      "sha256": "54e8c27e04b13bcaf6f9b29f6ab6f82fe57777abc2b35ad7d92b120aebc44fd7"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "6e947b71bea08c349c6af615ab684500186faed0f284e08b4d952de141cfb408"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "3f0fd265d757c83ba0f22ee1a545bdd622680bd42e9cace84b165f6f385ebc66"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "80fe87d48d8c5d311b7a417b7c9d0dc93d17becee1ebeea1b94b7612656491bf"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "2831b606f6f7915692d34471e12b1c4b822b20756f701a4b21cc6862c8de511f"
+    },
+    {
+      "path": "game/OpeningRegionRemedySteepingAudioController.cs",
+      "sha256": "1dcc43c888e79cbc748ac8403873249ff7c295dcfe6233e115d7706683dc5d89"
+    },
+    {
+      "path": "game/OpeningRegionRemedySteepingAudioController.cs.uid",
+      "sha256": "18a22a2263430acacd6c0158f8ef369ad26368a8c21bf615b2630d8f491eedde"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "ab5c56dddfe3227e2e77c923e740ab28a8f4edb0557f7e0eb0d2ff5cb238dd69"
+    },
+    {
+      "path": "game/RemedySteepingAudioRuntimeProof.cs",
+      "sha256": "73c14f8c6001276e571a75cc1ca4c32764c4747d58b30a10189024805f608d11"
+    },
+    {
+      "path": "game/RemedySteepingAudioRuntimeProof.cs.uid",
+      "sha256": "c6c0c842fa1e38b41923a09dc015a67db35ecd2437ffbdf56dddf3f368203988"
+    },
+    {
+      "path": "game/RemedySteepingAudioRuntimeProof.tscn",
+      "sha256": "9abe4832e7dc02ba69b162435363ead1628eac17112328bd4fadf0c3e515a4a4"
+    },
+    {
+      "path": "game/RemedySteepingAudioRuntimeSmokeCheck.cs",
+      "sha256": "53f01668daf74a069dbe5a9b7f9022ec462837c4926cb54033401d5d14c687fa"
+    },
+    {
+      "path": "game/RemedySteepingAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "164f3019a327693894d8ab21f548996872b6457362d707c5942f20b92ae0d028"
+    },
+    {
+      "path": "game/SteepingPreparationCommit.cs",
+      "sha256": "943fb0004de4d662e920025a48b0d127c7a6de162af3944b90f2ed80258d7aae"
+    },
+    {
+      "path": "game/SteepingPreparationCommit.cs.uid",
+      "sha256": "d18e2474cb5a89d38e71aae3a6ed8793f3c535d2e70a2932112bb6889fe0f219"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/CREDITS.txt",
+      "sha256": "072b050731094e768e0a71cd3a7565a0b35a74d6be629ef974e1028dff66e25a"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/S01.wav",
+      "sha256": "90576dd39afd078609ce5535cd6319edc79c99f30b197a54d4622288e9c73b9a"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/S01.wav.import",
+      "sha256": "537a518f4c11246bd6fc202496bc4417032bb155d820bd9e5d978159c0722693"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/provenance.json",
+      "sha256": "71fad5f5f004db65cfe8af1516ebeb5e4ec4ab3dfe3a43dcbc32769f4cc0c837"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "3f62a3abbe64cb007c27633e9a97b8850c4d8d45640242ef22b864dc2aeff606"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "f94a71aa460551547a4041db0c0535e47fbd935596eba415a613e8bd19ac237a"
+    },
+    {
+      "path": "scripts/check-remedy-steeping-audio-output.py",
+      "sha256": "a9b171c60c3f10da310b092966154d383140e2cfc16290d30397da8384cf0c73"
+    },
+    {
+      "path": "scripts/prepare-remedy-steeping-passage.py",
+      "sha256": "865799488b222a5b29564771e8e9189c39dfbc55a8521422e506b490fe4c5b80"
+    },
+    {
+      "path": "scripts/validate-remedy-steeping-runtime.py",
+      "sha256": "0dcf0ee7ba190b1d046411180f71b145d477675ac2b3d949676aba4e7b413ea7"
+    },
+    {
+      "path": "src/Application/Audio/RemedySteepingCueHistory.cs",
+      "sha256": "4e40ad1c5186bc76e9f2eef9ffb7e08444df040cf8217dcc545b551f5709e904"
+    },
+    {
+      "path": "src/Application/Audio/RemedySteepingPresentationProjection.cs",
+      "sha256": "9d80881edcbdf953e8e4a0384468fe5e31c5828976dd7ce7f5c8fd6a94d5bee2"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedySteepingCueHistoryTests.cs",
+      "sha256": "02bad606851cdc24ffe5add08c24d04195fd1a579c696556b395e531d0ab6fe9"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/RemedySteepingPresentationProjectionTests.cs",
+      "sha256": "6679ec44f4327273adeedfb3ba743c2a6665564624de049f5ebd69a267ec312f"
+    }
+  ]
+}

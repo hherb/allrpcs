@@ -198,14 +198,24 @@ independent thirteenth caption and capacity-16 history. All 126 root-quality sta
 retain 109 prior stages; 5,412 unit tests, 29 focused cases, seven complete mapped
 preparation/treatment modes, 35 measured native cases, both-size accessible UI,
 15 rejection probes and three mounted presets pass. The 110 prior audio entries
-remain byte-identical; totals are 40 streams and 35 notices in 21 groups. Steeping
-and other missing operations remain partial. Physical heater/fire/boiling/temperature
+remain byte-identical; totals are 40 streams and 35 notices in 21 groups. Other
+missing operations remain partial. Physical heater/fire/boiling/temperature
 and gameplay changes remain separate. The first
 [steeping proposal](audio-direction/remedy-steeping-owner-scope.md) is complete:
 one exact third-step 2-to-3 commit at the unchanged station, distinct lossless-source
 requirements, three-second Effects feedback, independent fourteenth caption/history
-and finite files/checks. Its concrete source/event/runtime grant remains separate;
-no steeping audio acquisition, PCM or runtime is claimed.
+and finite files/checks. Under the separate recorded owner grant, the
+[committed steeping runtime](audio-direction/remedy-steeping-runtime-review/README.md)
+is complete: the owner accepted the exact replacement S01 with “Yes, this is
+suitable” after rejecting the first candidate's wading/river-entry character.
+One three-second lossless-derived Effects cue follows only the exact 2-to-3 commit,
+with an independent fourteenth caption and capacity-16 history. All 140 root stages
+retain the prior 126 in order; 5,442 unit tests, 30 focused cases, seven complete
+mapped preparation/treatment modes, 37 measured native cases, both-size native UI,
+15 rejection probes and three mounted presets pass. All 115 prior audio entries
+remain byte-identical; totals are 41 streams and 38 individual notices in 22 groups.
+Cooling and other missing operations remain partial; physical vessel/action,
+infusion duration and gameplay changes remain separate.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

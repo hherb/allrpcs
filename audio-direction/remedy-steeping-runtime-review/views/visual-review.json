@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "method": "Agent inspected all four actual native PNG captures after fixture completion.",
+  "viewports": [
+    1280,
+    1920
+  ],
+  "findings": "Fourteen caption lines are visible and enclosed by the panel at both sizes. Wrapped region text fits. History is scrollable, readable and has a visible focused Back to Audio control.",
+  "captures": [
+    "captions-1280.png",
+    "captions-1920.png",
+    "history-1280.png",
+    "history-1920.png"
+  ]
+}

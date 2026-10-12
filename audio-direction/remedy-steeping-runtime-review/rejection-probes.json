@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "probes": [
+    "commit identity",
+    "bus",
+    "duration",
+    "phrase",
+    "lease",
+    "retained controls",
+    "proposal",
+    "source",
+    "derivative",
+    "truth",
+    "transcript",
+    "movement",
+    "treatment",
+    "complete save",
+    "missing measurements"
+  ]
+}

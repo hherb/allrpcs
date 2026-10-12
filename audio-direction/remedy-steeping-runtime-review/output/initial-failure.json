@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "measurement": "Quiet tail 1.8126s and mono tail 1.496s instead of the full three-second passage; admission/history each remained one. Investigate first stop state before accepting output.",
+  "capture_sha256": "77c98953c190af32f2fc3bc0383cea895240a022abed11689549c484275e431a"
+}

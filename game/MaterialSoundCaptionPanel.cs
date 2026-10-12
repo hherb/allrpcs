@@ -13,6 +13,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label interiorLabel = null!;
     private Label waterLabel = null!;
     private Label coverLabel = null!;
+    private Label steepingLabel = null!;
+    private string steeping = string.Empty;
     private Label heatingLabel = null!;
     private string heating = string.Empty;
     private Label rainLabel = null!;
@@ -42,7 +44,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -464; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -498; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -79,7 +81,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(rainLabel);
         heatingLabel = new() { Name = "RemedyHeating", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(heatingLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel })
+        steepingLabel = new() { Name = "RemedySteeping", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(steepingLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel, steepingLabel })
         { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
@@ -145,6 +149,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     /// <summary>Cancels heating without changing prior caption owners.</summary>
     internal void ClearRemedyHeating() { heating = string.Empty; Refresh(); }
 
+    /// <summary>Shows only the independent anonymous steeping operation.</summary>
+    internal void SetRemedySteeping(string text) { steeping = text; Refresh(); }
+    /// <summary>Cancels steeping without changing prior caption owners.</summary>
+    internal void ClearRemedySteeping() { steeping = string.Empty; Refresh(); }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -176,7 +185,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         foliageLabel.Text = enabled ? foliage : string.Empty;
         windLabel.Text = enabled ? wind : string.Empty;
         heatingLabel.Text = enabled ? heating : string.Empty;
+        steepingLabel.Text = enabled ? steeping : string.Empty;
         rainLabel.Text = enabled ? rain : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0 || rain.Length > 0 || heating.Length > 0);
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0 || rain.Length > 0 || heating.Length > 0 || steeping.Length > 0);
     }
 }
