@@ -217,8 +217,11 @@ remain byte-identical; totals are 41 streams and 38 individual notices in 22 gro
 The [cooling input-confirmation proposal](audio-direction/remedy-cooling-owner-scope.md)
 is complete: exact immediate fourth-step 3-to-4, separate from finish/batch
 installation; one quiet nonliteral Effects acknowledgement, fifteenth text line
-and independent history are proposed. No source was acquired or product changed;
-the distinct source/event/runtime grant remains missing. Cooling and other missing
+and independent history are proposed. The owner approved the distinct
+source/event/runtime grant on 2026-10-12. A new
+lossless CC0 C01 candidate is prepared and presented for exact listening;
+qualification remains pending before installation. Product/CI inputs are unchanged.
+Cooling and other missing
 operations remain partial; physical vessel/action, duration, temperature/readiness
 and gameplay changes remain separate.
 

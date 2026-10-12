@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "offline_listening_illustration",
+  "inputs": [
+    {
+      "path": "game/assets/audio/remedy-heating/H01.wav",
+      "sha256": "55928018939d77698b96b710339313daffbae03ec592ccba9a269eb4f2f9a327",
+      "onset_seconds": 0,
+      "gain": 1,
+      "pitch": 1
+    },
+    {
+      "path": "game/assets/audio/remedy-steeping/S01.wav",
+      "sha256": "90576dd39afd078609ce5535cd6319edc79c99f30b197a54d4622288e9c73b9a",
+      "onset_seconds": 0.6,
+      "gain": 1,
+      "pitch": 1
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav",
+      "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2",
+      "onset_seconds": 1.2,
+      "gain": 1,
+      "pitch": 1
+    }
+  ],
+  "output_path": "audio-direction/remedy-cooling-runtime-review/source/H01-S01-C01-context.wav",
+  "output_sha256": "68f3ba7fc7cf5f8686c026357d6ad91d39049a1c1138c7ace0e330933ed84d4c",
+  "seconds": 6,
+  "rate_hz": 48000,
+  "channels": 2,
+  "encoding": "PCM24",
+  "sample_peak_dbfs": -25.19190735698798,
+  "meaning": "Illustrates rapid heat, steep, cool input cues at offsets 0, 0.6 and 1.2 seconds. C01 remains a separate byte-exact source derivative, never layered.",
+  "limits": "Offline unity mix of unchanged accepted H01/S01 and candidate C01; no playback/scene installation, native output or ordinary-play loudness evidence."
+}

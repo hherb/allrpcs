@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "reason": "Retain exact downloaded HTML bytes, including trailing whitespace, in deterministic gzip storage.",
+  "captures": [
+    {
+      "capture": "catalogue.html",
+      "stored_path": "audio-direction/remedy-cooling-source/rights/catalogue.html.gz",
+      "raw_sha256": "43fca26ca952060ce5544ed3310b475e3efbcbf73eb8e6287f5a80556356a099",
+      "stored_sha256": "563a350d6b314d9075aa05637a3a0253ab6708eb6f5a1b0c2204996bb2a4735e",
+      "compression": "gzip, mtime 0; exact unmodified capture bytes"
+    },
+    {
+      "capture": "licence.html",
+      "stored_path": "audio-direction/remedy-cooling-source/rights/licence.html.gz",
+      "raw_sha256": "5e0cb6cfc6364958c6a02c3ec5fe104f2997616db4eaf20b13a566fa1d95c78a",
+      "stored_sha256": "b7a66380a38967e30a87cca8d96a7873ac2aa134503c3f2a5ca691f31eb3aab7",
+      "compression": "gzip, mtime 0; exact unmodified capture bytes"
+    }
+  ]
+}

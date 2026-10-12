@@ -33,9 +33,13 @@ All 115 prior audio entries remain byte-identical. Totals are 41 streams and
 or unchanged-owner audit remains. The [cooling proposal](audio-direction/remedy-cooling-owner-scope.md) is complete:
 the exact fourth-step 3-to-4 input is immediate and separate from finish/batch
 installation. It recommends one quiet nonliteral input confirmation, without
-physical cooling or readiness claims. Source/event/runtime awaits the concrete
-distinct grant; current approval completed planning only. No product/CI input
-changed; the retained 140-stage quality evidence remains applicable.
+physical cooling or readiness claims. The owner approved the distinct
+source/event/runtime grant on 2026-10-12,
+recorded in [cooling authority](audio-direction/remedy-cooling-runtime-authority.json).
+The exact [C01 candidate](audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav)
+and offline H01/S01 context preview have been presented inline. Technical source/PCM
+checks pass; exact owner listening acceptance is pending before installation.
+Product/CI inputs remain unchanged; the active runtime slice stays in progress.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
@@ -45,7 +49,7 @@ in the foliage grant; it does not grant another runtime scope or executable rele
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-remedy-cooling-runtime-integration — Add quiet confirmation of the existing fourth-step cooling input** (ready).
+**phase9-remedy-cooling-runtime-integration — Add quiet confirmation of the existing fourth-step cooling input** (in_progress).
 
 Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
 preparation.
@@ -54,13 +58,16 @@ Missing deliverable: One qualified C01 source, exact existing 3-to-4 commit noti
 independent fifteenth Cooling step committed caption and capacity-16 history, with complete
 source/parity/native/UI/packaging/quality evidence.
 
-Obtain the distinct source/event/runtime grant in audio-direction/remedy-cooling-owner-scope.md
-before acquisition or implementation. Then select one new free lossless CC0-1.0 or CC-BY-4.0 soft
-dry unpitched source; prepare/present 0.75-second C01 and obtain exact owner listening acceptance
-before installation. Add only quiet Effects confirmation of the existing fourth-step input at
-unchanged (2300,1300), plus independent caption/history. Complete named checks, review, closure and
-standing publication together. Preserve accepted sources/owners and persistent closures; failure to
-qualify/accept source is a blocker without relaxing the contract.
+Owner source/event/runtime grant is recorded in audio-direction/remedy-cooling-runtime-
+authority.json. Exact 0.75-second C01 candidate (SHA256
+c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2) and offline H01/S01 context
+preview were presented inline. Await the pending exact owner listening response before installation;
+do not repeat the question or infer acceptance from silence. On acceptance, bind qualification to
+these exact bytes/window, then complete the granted existing fourth-step 3-to-4 Effects
+confirmation, independent fifteenth line/history and all named
+parity/native/UI/packaging/quality/review/closure/publication checks. On rejection,
+select/prepare/present another source/window within the grant without relaxing its requirements.
+Preserve accepted owners and persistent closures.
 
 Done when: One exact owner-qualified C01 and once-only existing cooling input confirmation with
 accessible equivalent, complete finite verification and publication; all accepted owners remain
@@ -71,10 +78,11 @@ Expected outputs:
 - `audio-direction/remedy-cooling-runtime-authority.json`
 - `audio-direction/remedy-cooling-runtime-verification.json`
 
-Boundary: Awaiting distinct source/event/runtime grant; current approval completed read-only cooling
-planning only. No physical cooling mechanism/station/vessel/action, elapsed
-time/temperature/readiness, recipe/progression/save/hearing/perception, accepted audio/art, other
-operation/emitter, voice or executable release.
+Boundary: Approved exact cooling source/event/runtime contract only. Owner acceptance of exact
+derivative remains required before installation. No physical cooling
+mechanism/station/vessel/action, elapsed time/temperature/readiness,
+recipe/progression/save/hearing/perception, accepted audio/art, another operation/emitter, voice or
+executable release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

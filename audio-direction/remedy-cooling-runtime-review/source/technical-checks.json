@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "candidate_sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2",
+  "reproducible_bytes": true,
+  "frames": 36000,
+  "rate_hz": 48000,
+  "channels": 2,
+  "encoding": "PCM24",
+  "identical_mono_channels": true,
+  "zero_endpoints": true,
+  "sample_peak_below_minus_30_dbfs": true,
+  "unqualified_install_rejected": true,
+  "product_audio_directory_absent": true,
+  "listening_status": "pending",
+  "native_quality_run": false
+}
