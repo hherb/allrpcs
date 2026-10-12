@@ -38,7 +38,9 @@ source/event/runtime grant on 2026-10-12,
 recorded in [cooling authority](audio-direction/remedy-cooling-runtime-authority.json).
 The exact [C01 candidate](audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav)
 and offline H01/S01 context preview have been presented inline. Technical source/PCM
-checks pass; exact owner listening acceptance is pending before installation.
+checks pass; the owner reported the candidate seems empty. An audition-only louder
+PCM16 reference with a short lead-in is available; game bytes stay unchanged and
+unqualified. Exact listening/audibility resolution is required before installation.
 Product/CI inputs remain unchanged; the active runtime slice stays in progress.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
@@ -61,10 +63,14 @@ source/parity/native/UI/packaging/quality evidence.
 Owner source/event/runtime grant is recorded in audio-direction/remedy-cooling-runtime-
 authority.json. Exact 0.75-second C01 candidate (SHA256
 c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2) and offline H01/S01 context
-preview were presented inline. Await the pending exact owner listening response before installation;
-do not repeat the question or infer acceptance from silence. On acceptance, bind qualification to
-these exact bytes/window, then complete the granted existing fourth-step 3-to-4 Effects
-confirmation, independent fifteenth line/history and all named
+preview were presented inline. Owner reported C01-candidate.wav seems empty; inspection confirms a
+very short low-average-level transient. An audition-only +18 dB PCM16 reference with 0.5-second
+lead-in was presented, while the exact candidate remains unchanged/unqualified. Do not infer
+acceptance of the game level from this boosted reference. Await exact candidate listening resolution
+before installation; if the quieter candidate remains unsuitable, choose a fuller soft contact
+within the grant. Do not repeat a pending question or infer acceptance from silence. On acceptance,
+bind qualification to these exact bytes/window, then complete the granted existing fourth-step
+3-to-4 Effects confirmation, independent fifteenth line/history and all named
 parity/native/UI/packaging/quality/review/closure/publication checks. On rejection,
 select/prepare/present another source/window within the grant without relaxing its requirements.
 Preserve accepted owners and persistent closures.

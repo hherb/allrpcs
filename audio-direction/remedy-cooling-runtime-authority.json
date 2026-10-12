@@ -537,7 +537,7 @@
   "source_review_bindings": [
     {
       "path": "audio-direction/remedy-cooling-source/README.md",
-      "sha256": "1ec4cd281d5d2380ad1f18c0a05b55841d7ff01cdc962039e855a975aa7a92ba"
+      "sha256": "e75517542f79bb110dfd671034c9cb15ad77675cedeaefe50c776521097a1bfc"
     },
     {
       "path": "audio-direction/remedy-cooling-source/originals/0483.wav",
@@ -568,12 +568,20 @@
       "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2"
     },
     {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
+      "sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+    },
+    {
       "path": "audio-direction/remedy-cooling-runtime-review/source/H01-S01-C01-context.wav",
       "sha256": "68f3ba7fc7cf5f8686c026357d6ad91d39049a1c1138c7ace0e330933ed84d4c"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/context-preview.json",
       "sha256": "dab8b8c6931eb7223a93f75a38dcf597a74a75a4557f05f827c291c37cb3b169"
+    },
+    {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/listening-reference.json",
+      "sha256": "66965c1c2f8c4951409fa97adc0e9e0c0c5ecbacc7fea2cc7b4a6865a242cd5a"
     },
     {
       "path": "audio-direction/remedy-cooling-runtime-review/source/loudness.log.gz",
@@ -1073,5 +1081,19 @@
   "preparation_script": {
     "path": "scripts/prepare-remedy-cooling-passage.py",
     "sha256": "87c8fc3e3b9e1e49bb7c70a3ba3d874a060c1cd6f3c5b55701b4ded95fde13e4"
+  },
+  "owner_source_feedback": {
+    "statement": "C01-candidate.wav seems empty",
+    "date": "2026-10-12",
+    "status": "reported_inaudible_not_accepted",
+    "listening_reference": {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
+      "sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92"
+    },
+    "diagnostic": {
+      "path": "audio-direction/remedy-cooling-runtime-review/source/listening-reference.json",
+      "sha256": "66965c1c2f8c4951409fa97adc0e9e0c0c5ecbacc7fea2cc7b4a6865a242cd5a"
+    },
+    "limits": "Audition-only boosted/padded PCM16 reference; unchanged game derivative remains unqualified."
   }
 }

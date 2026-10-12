@@ -53,3 +53,20 @@ The existing recipe, station, art, accepted audio, product/CI inputs and local
 window bytes or record qualification from silence; wait for the owner's exact
 candidate response. A rejection requires another source/window within the grant,
 not relaxation of its contract. Full runtime quality remains a dependent step.
+
+## Audibility report and listening reference
+
+The owner reported “C01-candidate.wav seems empty”. Inspection found a very short
+nonzero transient: peak −30.099985 dBFS, whole-file RMS −64.815501 dBFS, and only
+6.75 ms of samples above −60 dBFS. This report is not listening acceptance.
+The exact C01 derivative remains unchanged and unqualified.
+
+A separate [PCM16 listening reference](../remedy-cooling-runtime-review/source/C01-listening-reference.wav)
+amplifies the exact candidate by 18 dB, adds a 0.5-second silent lead-in and pads
+to two seconds. Peak is approximately −12.10 dBFS. The [diagnostic record](../remedy-cooling-runtime-review/source/listening-reference.json)
+binds input/output hashes and edits. It was presented inline to help assess source
+character and distinguish a very quiet short transient from an empty file or
+playback-format problem. It is never runtime/export audio and cannot establish
+acceptance or audibility of the unchanged quieter game candidate. If that candidate
+remains unsuitable, choose a fuller soft contact within the approved source contract;
+do not raise its −30 dBFS ceiling or infer acceptance from this louder reference.

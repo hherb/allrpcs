@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "purpose": "Audition-only audibility/format diagnostic after owner reported C01-candidate.wav seems empty.",
+  "owner_statement": "C01-candidate.wav seems empty",
+  "input": {
+    "path": "audio-direction/remedy-cooling-runtime-review/source/C01-candidate.wav",
+    "sha256": "c093a84266a14a5ae6c0ed14bc3a9bf608f62c9b2e33477de1e20d7c4f0840f2"
+  },
+  "output": {
+    "path": "audio-direction/remedy-cooling-runtime-review/source/C01-listening-reference.wav",
+    "sha256": "bf1bee85896b9861dbcdcf79e9ea9afbd80696690cd743a64ae7bde81a477e92",
+    "encoding": "PCM16",
+    "rate_hz": 48000,
+    "channels": 2,
+    "seconds": 2,
+    "sample_peak_dbfs": -12.099712379282085
+  },
+  "changes": [
+    "18 dB audition-only amplification",
+    "0.5-second silent lead-in",
+    "silence padding to 2 seconds",
+    "PCM24-to-PCM16 conversion"
+  ],
+  "game_candidate_modified": false,
+  "source_qualified": false,
+  "limits": "Listening reference only, never runtime/export audio. This boosted padded copy does not establish acceptance or audibility of the unchanged -30.1 dBFS game candidate."
+}
