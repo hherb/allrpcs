@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "The language was clearly understandable to me with either model and language. It is Whisper that seems to have problems. I would lean towards PockeTTS presently. The German voice in Qwen has an English accent",
+  "intelligibility": {
+    "Pocket TTS": { "English": "clearly_understandable", "German": "clearly_understandable" },
+    "Qwen3-TTS": { "English": "clearly_understandable", "German": "clearly_understandable" }
+  },
+  "recognizer_assessment": "Owner attributes the diagnostic transcript mismatches to Whisper; they are not established synthesis pronunciation failures.",
+  "qwen3_german_accent": "Owner heard an English accent in the auditioned Ryan preset.",
+  "preferred_candidate": "Pocket TTS",
+  "preference_status": "provisional_owner_preference",
+  "scope": "Owner listening assessment of intelligibility and accent; no per-clip verbatim audit or acting-quality acceptance is inferred.",
+  "m1_16gb_verified": false,
+  "game_backend_selected": false
+}

@@ -9,6 +9,13 @@
       "preserve_original_audition": true
     }
   ],
-  "next_experiment": "offline-tts-spike/owner-request.json",
+  "latest_experiment": "offline-tts-spike/owner-request.json",
+  "preferred_tts_candidate": {
+    "model": "Pocket TTS",
+    "status": "provisional_owner_preference",
+    "evidence": "offline-tts-spike/owner-listening-assessment.json",
+    "reason": "Owner found both models understandable in English and German, preferred Pocket and heard an English accent in Qwen3's German Ryan voice.",
+    "next_hardware_evaluation": "Pocket TTS on M1 16 GB with Godot and the local dialogue model; not yet performed."
+  },
   "selected_game_backend": null
 }

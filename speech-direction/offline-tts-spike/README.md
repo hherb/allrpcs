@@ -4,6 +4,12 @@ Qwen2.5-Omni is discarded by the owner. Its original audition is preserved uncha
 [the model decisions](../model-decisions.json). The [new owner request](owner-request.json) authorizes
 this isolated Phase 10 TTS experiment. No game backend is selected or integrated.
 
+The owner's [listening assessment](owner-listening-assessment.json) found both models clearly
+understandable in English and German, attributed the transcript problems to Whisper, and
+preferred **Pocket TTS** provisionally. The auditioned Qwen3 German voice has an English accent.
+Pocket is the preferred candidate for the later M1 evaluation. The diagnostic ASR mismatches
+below are retained as measurements, not established synthesis pronunciation failures.
+
 Pocket TTS 3.3.0 was the original CPU recommendation. Because expressive acting is important,
 the spike also auditions Qwen3-TTS 1.7B CustomVoice with a dedicated instruction field.
 The actual machine is an Apple M3 Max with 128 GB unified RAM. M1 16 GB and other platforms are untested.
@@ -51,6 +57,7 @@ Qwen3 uses Ryan in both languages. Calm, urgent and whisper use identical words,
 seed, changing only the separate delivery instruction. Ryan is an English-native preset;
 these clips do not establish a native German character voice. Timing/waveform differences
 establish a response to the request, not convincing acting or stable character identity.
+The owner confirmed the English accent in this German preset during listening review.
 
 | Backend / clip | Audio | Generation | First PCM | Word check |
 | --- | ---: | ---: | ---: | --- |
@@ -81,8 +88,10 @@ longer lines, Qwen3 English calm and Qwen3 German longer dialogue had ASR mismat
 
 Whisper base was run separately with the language specified, temperature zero and no
 expected-text prompt. It can make errors, especially on names, compounds and whispers.
-The mismatches require listening review; neither these transcripts nor matching text
-prove the exact audible words. There is no owner listening acceptance recorded.
+The owner found the speech clearly understandable and attributes these mismatches to Whisper.
+Neither these transcripts nor matching text prove the exact audible words. The recorded
+listening assessment accepts intelligibility, without claiming a per-clip verbatim audit
+or acceptance of acting quality.
 
 ## Reproduce
 

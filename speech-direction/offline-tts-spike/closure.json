@@ -10,7 +10,7 @@
     "pocket": 4,
     "qwen3": 6
   },
-  "listening_acceptance_recorded": false,
+  "listening_acceptance_recorded": true,
   "selected_game_backend": null,
   "m1_16gb_verified": false,
   "cross_platform_verified": false,
@@ -26,7 +26,7 @@
   "artifacts": [
     {
       "path": "README.md",
-      "sha256": "d41a8aa4f15c148af36a2e0aca2630317ddf0f5ad8c94c50bc8e204867d70316"
+      "sha256": "489a2f495cde29782761fc18eb869c45fa421d2c27d4f7cb84c24e96cef7b3ae"
     },
     {
       "path": "benchmark.py",
@@ -117,6 +117,10 @@
       "sha256": "ae5c4b9a01683b541478d6e4fea4993deac5ceacfec883b87b45ed2018a9ead1"
     },
     {
+      "path": "owner-listening-assessment.json",
+      "sha256": "a23edca7713dddcf6ae077a451fb544d917bff504dba53b47e999bc22e798151"
+    },
+    {
       "path": "owner-request.json",
       "sha256": "0cde32071c49a18612352950aca1d1d47a386e098ccf4ef22ba3ec4bb822bab0"
     },
@@ -160,5 +164,10 @@
   "local_config_hashes": {
     "english": "f4480a727faaf18efe5f0b46ff98059d710d2eb82d21362edf2b0027b6b3ecb0",
     "german": "8b2a291300bf072d01d1ddae2320d6f62bdaeaf65528d45feaaf6fefd5d39478"
-  }
+  },
+  "listening_acceptance_scope": "Owner found both models understandable in English and German; no per-clip verbatim audit or acting-quality acceptance is inferred.",
+  "owner_listening_assessment": "owner-listening-assessment.json",
+  "preferred_tts_candidate": "Pocket TTS",
+  "preference_status": "provisional_owner_preference",
+  "auxiliary_transcripts_interpretation": "Retained diagnostic recognizer outputs; owner attributes mismatches to Whisper. No synthesis pronunciation failure is established."
 }
