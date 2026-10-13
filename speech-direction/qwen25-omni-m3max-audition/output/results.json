@@ -1,0 +1,162 @@
+{
+  "model": "Qwen/Qwen2.5-Omni-7B",
+  "revision": "ae9e1690543ffd5c0221dc27f79834d0294cba00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "recorded_at_utc": "2026-10-13T01:18:04.969024+00:00",
+  "total_memory_bytes": 137438953472,
+  "logical_cpu_count": 16,
+  "machine": "Apple M3 Max, 16 CPU cores, 128 GB unified memory",
+  "torch": "2.7.0",
+  "transformers": "4.52.3",
+  "device": "mps",
+  "thinker_talker_dtype": "bfloat16",
+  "token2wav_dtype": "float32",
+  "attention": "sdpa",
+  "seed": 20261013,
+  "system_prompt": "You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, as well as generating text and speech.",
+  "local_files_only": true,
+  "mps_fallback_enabled": true,
+  "measurement": "Buffered full pipeline; first clip cold, subsequent clips warm. No streaming TTFA.",
+  "system_available_memory_before_bytes": 85633630208,
+  "system_load_average_before": [
+    16.43701171875,
+    15.34716796875,
+    20.50244140625
+  ],
+  "cases": [
+    {
+      "id": "en-chelsie-calm",
+      "language": "English",
+      "speaker": "Chelsie",
+      "delivery": "Speak gently and reassuringly, like a healer comforting a frightened companion.",
+      "text": "Stay close. There is still hope for the village.",
+      "index": 0,
+      "warm": false,
+      "prompt": "Perform this short game dialogue in English. Speak gently and reassuringly, like a healer comforting a frightened companion. Reply with exactly the following words, without introductions, quotation marks, stage directions or extra words: Stay close. There is still hope for the village.",
+      "status": "generated",
+      "generated_text": "Stay close. There is still hope for the village.",
+      "exact_text_match": true,
+      "seconds": 47.551568957977,
+      "stage_seconds": {
+        "thinker": 8.894993499969132,
+        "talker": 24.68617079197429,
+        "token2wav": 13.938361791078933
+      },
+      "audio_seconds": 3.92,
+      "real_time_factor": 12.130502285198213,
+      "peak_sample": 0.4311736524105072,
+      "clipped_sample_count": 0,
+      "memory_peaks": {
+        "rss_bytes": 3108388864,
+        "mps_allocated_bytes": 22769826816,
+        "mps_driver_bytes": 24160206848
+      },
+      "output": "en-chelsie-calm.wav",
+      "sha256": "9be59c280985ff8462563c563624e07a28b92ef775554cbe015790247d88fa91"
+    },
+    {
+      "id": "en-chelsie-urgent",
+      "language": "English",
+      "speaker": "Chelsie",
+      "delivery": "Speak urgently, with fear and determination, like a healer warning a companion of immediate danger.",
+      "text": "Stay close. There is still hope for the village.",
+      "index": 1,
+      "warm": true,
+      "prompt": "Perform this short game dialogue in English. Speak urgently, with fear and determination, like a healer warning a companion of immediate danger. Reply with exactly the following words, without introductions, quotation marks, stage directions or extra words: Stay close. There is still hope for the village.",
+      "status": "generated",
+      "generated_text": "Stay close. There is still hope for the village.",
+      "exact_text_match": true,
+      "seconds": 15.040784209035337,
+      "stage_seconds": {
+        "thinker": 1.4176798749249429,
+        "talker": 9.362071249983273,
+        "token2wav": 4.246259707957506
+      },
+      "audio_seconds": 3.22,
+      "real_time_factor": 4.671050996594825,
+      "peak_sample": 0.5666542649269104,
+      "clipped_sample_count": 0,
+      "memory_peaks": {
+        "rss_bytes": 3342696448,
+        "mps_allocated_bytes": 22681969920,
+        "mps_driver_bytes": 24201641984
+      },
+      "output": "en-chelsie-urgent.wav",
+      "sha256": "aae9dd1502f436af1061c477853b2202561887e0df449ba987f6bd467db1edf4"
+    },
+    {
+      "id": "de-ethan-calm",
+      "language": "German",
+      "speaker": "Ethan",
+      "delivery": "Sprich sanft und beruhigend, wie ein Heiler, der einem verängstigten Begleiter Mut macht.",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "index": 2,
+      "warm": true,
+      "prompt": "Perform this short game dialogue in German. Sprich sanft und beruhigend, wie ein Heiler, der einem verängstigten Begleiter Mut macht. Reply with exactly the following words, without introductions, quotation marks, stage directions or extra words: Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "status": "generated",
+      "generated_text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "exact_text_match": true,
+      "seconds": 57.75230283301789,
+      "stage_seconds": {
+        "thinker": 2.366571458056569,
+        "talker": 45.82650566706434,
+        "token2wav": 9.536306958063506
+      },
+      "audio_seconds": 8.28,
+      "real_time_factor": 6.974915801089118,
+      "peak_sample": 0.5085225105285645,
+      "clipped_sample_count": 0,
+      "memory_peaks": {
+        "rss_bytes": 5884002304,
+        "mps_allocated_bytes": 23097295104,
+        "mps_driver_bytes": 24459558912
+      },
+      "output": "de-ethan-calm.wav",
+      "sha256": "009bbd44679d35a7e4a8fe18a80e9e79040d8ed7ec9757a61f3fcaf356f7f825"
+    },
+    {
+      "id": "de-ethan-urgent",
+      "language": "German",
+      "speaker": "Ethan",
+      "delivery": "Sprich dringend, mit Angst und Entschlossenheit, wie ein Heiler, der vor unmittelbarer Gefahr warnt.",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "index": 3,
+      "warm": true,
+      "prompt": "Perform this short game dialogue in German. Sprich dringend, mit Angst und Entschlossenheit, wie ein Heiler, der vor unmittelbarer Gefahr warnt. Reply with exactly the following words, without introductions, quotation marks, stage directions or extra words: Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "status": "generated",
+      "generated_text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "exact_text_match": true,
+      "seconds": 21.133624291978776,
+      "stage_seconds": {
+        "thinker": 2.0866014590719715,
+        "talker": 13.21472500008531,
+        "token2wav": 5.81070216698572
+      },
+      "audio_seconds": 4.72,
+      "real_time_factor": 4.477462773724318,
+      "peak_sample": 0.6319761872291565,
+      "clipped_sample_count": 0,
+      "memory_peaks": {
+        "rss_bytes": 6124224512,
+        "mps_allocated_bytes": 22884966144,
+        "mps_driver_bytes": 24501927936
+      },
+      "output": "de-ethan-urgent.wav",
+      "sha256": "6014104983f6bb9f9c93a27fbdaaf796282559ff880cffa650729db3e8b8caae"
+    }
+  ],
+  "load_seconds": 4.9034978749696165,
+  "load_memory_peaks": {
+    "rss_bytes": 652017664,
+    "mps_allocated_bytes": 22370328064,
+    "mps_driver_bytes": 23496458240
+  },
+  "parameter_bytes": 22362553344,
+  "process_max_rss_bytes": 6124486656,
+  "system_available_memory_after_bytes": 57530056704,
+  "system_load_average_after": [
+    13.3466796875,
+    14.685546875,
+    19.43896484375
+  ]
+}

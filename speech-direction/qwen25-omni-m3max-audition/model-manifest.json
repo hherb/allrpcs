@@ -1,0 +1,106 @@
+{
+  "model": "Qwen/Qwen2.5-Omni-7B",
+  "revision": "ae9e1690543ffd5c0221dc27f79834d0294cba00",
+  "files": [
+    {
+      "name": ".gitattributes",
+      "bytes": 1570,
+      "sha256": null
+    },
+    {
+      "name": "LICENSE",
+      "bytes": 11343,
+      "sha256": null
+    },
+    {
+      "name": "README.md",
+      "bytes": 36838,
+      "sha256": null
+    },
+    {
+      "name": "added_tokens.json",
+      "bytes": 579,
+      "sha256": null
+    },
+    {
+      "name": "chat_template.json",
+      "bytes": 1313,
+      "sha256": null
+    },
+    {
+      "name": "config.json",
+      "bytes": 13186,
+      "sha256": null
+    },
+    {
+      "name": "generation_config.json",
+      "bytes": 74,
+      "sha256": null
+    },
+    {
+      "name": "merges.txt",
+      "bytes": 1671853,
+      "sha256": null
+    },
+    {
+      "name": "model-00001-of-00005.safetensors",
+      "bytes": 4985055504,
+      "sha256": "5edb02fd7c98803239468375cc9dc1bff492865c2aa086b78f348597021d6cbc"
+    },
+    {
+      "name": "model-00002-of-00005.safetensors",
+      "bytes": 4991496800,
+      "sha256": "7c99b55c6e5bc63fd4b19d4dc23cdc3ddac4b0101bb3c0958cc2b5d05c2bbafe"
+    },
+    {
+      "name": "model-00003-of-00005.safetensors",
+      "bytes": 4991496904,
+      "sha256": "ad00c3ac296300db905934ed213c4077ff49b85d30c0099270c814e2c77ec812"
+    },
+    {
+      "name": "model-00004-of-00005.safetensors",
+      "bytes": 4969489824,
+      "sha256": "152bc7d81441eaba22547d8d96c03d32dd592ce0e0e1d0e449347a4b23a532d3"
+    },
+    {
+      "name": "model-00005-of-00005.safetensors",
+      "bytes": 2425322160,
+      "sha256": "b8b18276481ba8cdf4fe2c98ac4c7a2da6e0d1c8a51850d162a391760cb2b81e"
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "bytes": 233160,
+      "sha256": null
+    },
+    {
+      "name": "preprocessor_config.json",
+      "bytes": 667,
+      "sha256": null
+    },
+    {
+      "name": "special_tokens_map.json",
+      "bytes": 832,
+      "sha256": null
+    },
+    {
+      "name": "spk_dict.pt",
+      "bytes": 259544,
+      "sha256": "6a05609b28f5d42b7b748f0f07592545c8f1f6885b9ae8fff64baf56e86b2a18"
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 11421870,
+      "sha256": "8441917e39ae0244e06d704b95b3124795cec478e297f9afac39ba670d7e9d99"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 6469,
+      "sha256": null
+    },
+    {
+      "name": "vocab.json",
+      "bytes": 2776833,
+      "sha256": null
+    }
+  ]
+}

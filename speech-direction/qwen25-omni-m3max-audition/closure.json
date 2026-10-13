@@ -1,0 +1,52 @@
+{
+  "status": "completed_local_audition",
+  "completed_at_utc": "2026-10-13T01:22:33.004427+00:00",
+  "completion_condition_met": "Four actual offline speech clips, measured generation stages and memory, pinned model hash verification, raw logs and independent cached-ASR checks retained.",
+  "model_selection": "not_selected",
+  "owner_listening_review": "not_recorded",
+  "generation_succeeded": true,
+  "exact_generated_text_matches": 4,
+  "auxiliary_audio_word_matches": {
+    "en": 2,
+    "de": 0
+  },
+  "limits": [
+    "M3 Max original weights only; M1 and cross-platform execution unverified.",
+    "Full BF16/FP32 configuration exceeds 16 GB.",
+    "Buffered single trials under uncontrolled background load; no streaming latency claim.",
+    "German pronunciation and expressive acting require listening review.",
+    "Standalone evidence; Phase 10 backend and game integration remain incomplete."
+  ],
+  "verification": [
+    "All five weight SHA-256 hashes match the pinned official manifest.",
+    "All four WAV hashes, finite mono samples, 24 kHz rate, exact durations and zero clipping checked.",
+    "Both Python helpers compile.",
+    "Continuation checker run without changing the existing ledger."
+  ],
+  "bindings": [
+    {
+      "path": "benchmark.py",
+      "sha256": "73f23675dd126afe2f8cee2c2f0f06389bc3ef2f90cec0b1aff293cb7ad4a513"
+    },
+    {
+      "path": "cases.json",
+      "sha256": "7e0164617708b47e362f6fc10ac2292cb581ec4126542d15f8c681e6831e0ffc"
+    },
+    {
+      "path": "check_transcripts.py",
+      "sha256": "e94344fb49f798680966979319a8b9aac304bbcc432df38783b532a16e91e522"
+    },
+    {
+      "path": "model-verification.json",
+      "sha256": "d00beca441d688763ae31f0427176193bad1cf3decc270854b7ca60a7c8c8367"
+    },
+    {
+      "path": "output/results.json",
+      "sha256": "00b96d8d432b33eb7099c22ef738bf881a5a4d0e36879936827463ea4fdeacbd"
+    },
+    {
+      "path": "output/transcript-check.json",
+      "sha256": "90c703a67413514d06c2dda0721cef98e83f797fe11fdb6de85dc097574aa721"
+    }
+  ]
+}

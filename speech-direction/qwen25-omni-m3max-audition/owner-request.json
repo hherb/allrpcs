@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "expressive acting is important. We should also consider Qwen2.5-Omni-7B - lets try a brief benchmark with the latter. I will boot up an older M1 later where we can try it for real, but for now lets try it on the current M3Max machine just to see how good it would sound",
+  "scope": "One isolated local Qwen2.5-Omni-7B speech audition on the current M3 Max, with short English/German acting prompts, audio files and reproducible timing/memory evidence.",
+  "roadmap_item": "Phase 10: Add one ASR implementation and one TTS implementation.",
+  "missing_deliverable": "Initial measured speech-output evidence for the owner-named model, before backend selection.",
+  "completion_condition": "Attempt the actual local audio-output pipeline; retain generated clips or concrete failure evidence, exact configuration, timings and limits for later M1 comparison.",
+  "boundary": "Standalone benchmark only. No game integration or model acceptance. Preserve the separate in-progress herb-collection implementation and its continuation ledger. M1 and cross-platform suitability remain unverified.",
+  "host_execution_authority": {
+    "owner_statement": "I approve host execution",
+    "date": "2026-10-13",
+    "context": "Direct response to the automatic-review timeout question for finishing the model download and running the Metal speech audition."
+  }
+}

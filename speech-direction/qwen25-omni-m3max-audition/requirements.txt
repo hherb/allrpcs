@@ -1,0 +1,10 @@
+torch==2.7.0
+torchvision==0.22.0
+transformers==4.52.3
+accelerate==1.7.0
+numpy==1.26.4
+soundfile==0.14.0
+librosa==0.10.0
+scipy==1.14.0
+psutil==7.2.2
+huggingface-hub==0.36.2

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "en-chelsie-calm",
+    "language": "English",
+    "speaker": "Chelsie",
+    "delivery": "Speak gently and reassuringly, like a healer comforting a frightened companion.",
+    "text": "Stay close. There is still hope for the village."
+  },
+  {
+    "id": "en-chelsie-urgent",
+    "language": "English",
+    "speaker": "Chelsie",
+    "delivery": "Speak urgently, with fear and determination, like a healer warning a companion of immediate danger.",
+    "text": "Stay close. There is still hope for the village."
+  },
+  {
+    "id": "de-ethan-calm",
+    "language": "German",
+    "speaker": "Ethan",
+    "delivery": "Sprich sanft und beruhigend, wie ein Heiler, der einem verängstigten Begleiter Mut macht.",
+    "text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf."
+  },
+  {
+    "id": "de-ethan-urgent",
+    "language": "German",
+    "speaker": "Ethan",
+    "delivery": "Sprich dringend, mit Angst und Entschlossenheit, wie ein Heiler, der vor unmittelbarer Gefahr warnt.",
+    "text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf."
+  }
+]
