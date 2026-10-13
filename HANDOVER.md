@@ -13,8 +13,10 @@ qualified contextual action routing and three mounted resource presets. Physical
 controller-only opening scenario, broad screen-reader certification and executable release remain
 unclaimed. The finite implementation stays closed; the Phase 11 device-support checkbox stays open.
 
-Continue after publication with the ledger-selected read-only dialogue accessibility proposal for
-the separate keyboard-only/screen-reader roadmap item. Its exact new runtime/UI grant is missing.
+The next-slice request completed the [dialogue accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
+and [source/file/evidence contract](input-direction/dialogue-accessibility-owner-scope.json) for the
+separate keyboard-only/screen-reader roadmap item. Planning is closed; its exact new runtime/UI
+grant is missing. No dialogue behavior was changed by this proposal.
 All earlier art/audio/domain scopes remain closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md).
 
@@ -24,33 +26,33 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase11-dialogue-accessibility-owner-scope — Plan one dialogue-panel keyboard navigation and accessibility semantics boundary** (ready).
+**phase11-dialogue-accessibility-runtime-integration — Implement the proposed dialogue keyboard and accessibility presentation after its exact grant** (ready).
 
 Roadmap item: - [ ] Complete keyboard-only navigation and screen-reader evaluation for text-heavy
 UI.
 
-Missing deliverable: A finite source-grounded proposal for dialogue input focus/navigation and
-assistive metadata, with exact presentation owners/files, preserved dialogue semantics and native
-keyboard/screen-reader evidence limits.
+Missing deliverable: The one-panel entry/close/focus/assistive-semantics system proposed in input-
+direction/dialogue-accessibility-owner-scope.md/.json, with exact current submission owners
+preserved and truthful native reader outcomes.
 
-After controls publication, continue the owner-authorized next slice with read-only preparation of
-one new dialogue UI accessibility proposal. Preserve all closed input/audio/art/domain owners. A new
-UI/layout/accessibility implementation requires its exact grant; no device or screen-reader
-certification is inferred.
+Planning is complete and controls implementation stays closed. Await the exact new dialogue
+presentation grant; then implement all named dependent steps, verify, close, commit and push under
+standing authority. Do not infer broader text-heavy UI or screen-reader certification.
 
-Done when: One concrete proposal and companion source/hash/file/evidence contract for the existing
-DialogueOverlay panel, truthful named-screen-reader evaluation limits, and one explicit
-implementation boundary. Close planning and publish under standing authority; do not implement
-before the exact new grant.
+Done when: Approved entry/close/focus/metadata implemented at both native sizes; current
+accepted/rejected/whisper/speaker delivery semantics exact; finite evidence validator and full root
+quality pass; actual named-reader result or not-performed limitation retained, then close and
+publish.
 
 Expected outputs:
 
-- `input-direction/dialogue-accessibility-owner-scope.md`
-- `input-direction/dialogue-accessibility-owner-scope.json`
+- `input-direction/dialogue-accessibility-runtime-authority.json`
+- `input-direction/dialogue-accessibility-runtime-verification.json`
+- `input-direction/dialogue-accessibility-runtime-review/README.md`
 
-Boundary: Read-only planning of the existing dialogue presentation only; no
-runtime/layout/provider/domain/save/audio/art changes, repeated controls audit, OS screen-reader
-toggle or broad UI certification.
+Boundary: Only the linked existing DialogueOverlay and four settings entry navigation/metadata
+changes after a new exact grant; no controls/preferences/provider/domain/save/audio/art changes, OS
+screen-reader setting or broad UI certification.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

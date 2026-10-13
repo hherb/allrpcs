@@ -310,9 +310,9 @@ is implemented and verified by 188 root quality stages, 5,576 unit tests, genuin
 input routing, native 1280×720/1920×1080 UI and three mounted resource presets. The finite
 implementation is closed. This checkbox remains open until ordinary physical keyboard, mouse and
 named controller evidence establishes the supported-device claim. Controller-only opening-scenario,
-broad screen-reader and executable-release certification remain unclaimed. The next read-only slice
-prepares one dialogue-panel keyboard/accessibility implementation boundary for the separate remaining
-text-heavy UI item; it does not reopen controls remapping.
+broad screen-reader and executable-release certification remain unclaimed. The [dialogue-panel keyboard/accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
+now completes the finite next planning slice for the separate remaining text-heavy UI item. Its
+exact new presentation grant is missing; no dialogue UI change or broad reader claim is made.
 
 Acceptance:
 

@@ -808,6 +808,20 @@
           "sha256": "043f02affadf401c7e29303908b614e7cf58b7607bd73dfed0b352a30ed577f3"
         }
       ]
+    },
+    {
+      "id": "phase11-dialogue-accessibility-owner-scope",
+      "reason": "Finite dialogue keyboard/accessibility presentation proposal delivered. No new UI behavior implemented; the sole next decision is the exact linked presentation grant.",
+      "evidence": [
+        {
+          "path": "input-direction/dialogue-accessibility-owner-scope.md",
+          "sha256": "8ad389bf36a0c80452e6785ba79bb1a86aef11c761a14e42385f58f0e66b8289"
+        },
+        {
+          "path": "input-direction/dialogue-accessibility-owner-scope.json",
+          "sha256": "8469a8ca07ffa1788137e2b5a2ec6c8cebd28928acfa6b925bbe340effd209d8"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1106,6 +1120,20 @@
           "sha256": "043f02affadf401c7e29303908b614e7cf58b7607bd73dfed0b352a30ed577f3"
         }
       ]
+    },
+    {
+      "id": "dialogue-accessibility-planning",
+      "reason": "Concrete source-bound proposal complete; do not repeat the unchanged planning inventory.",
+      "evidence": [
+        {
+          "path": "input-direction/dialogue-accessibility-owner-scope.md",
+          "sha256": "8ad389bf36a0c80452e6785ba79bb1a86aef11c761a14e42385f58f0e66b8289"
+        },
+        {
+          "path": "input-direction/dialogue-accessibility-owner-scope.json",
+          "sha256": "8469a8ca07ffa1788137e2b5a2ec6c8cebd28928acfa6b925bbe340effd209d8"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1181,20 +1209,21 @@
     }
   ],
   "active_slice": {
-    "id": "phase11-dialogue-accessibility-owner-scope",
-    "title": "Plan one dialogue-panel keyboard navigation and accessibility semantics boundary",
+    "id": "phase11-dialogue-accessibility-runtime-integration",
+    "title": "Implement the proposed dialogue keyboard and accessibility presentation after its exact grant",
     "status": "ready",
-    "workstream": "dialogue-accessibility-planning",
-    "authority_status": "read_only_planning_only_runtime_ui_authority_missing",
+    "workstream": "dialogue-accessibility-runtime",
+    "authority_status": "awaiting_exact_owner_runtime_ui_grant",
     "roadmap_item": "- [ ] Complete keyboard-only navigation and screen-reader evaluation for text-heavy UI.",
-    "missing_deliverable": "A finite source-grounded proposal for dialogue input focus/navigation and assistive metadata, with exact presentation owners/files, preserved dialogue semantics and native keyboard/screen-reader evidence limits.",
-    "instructions": "After controls publication, continue the owner-authorized next slice with read-only preparation of one new dialogue UI accessibility proposal. Preserve all closed input/audio/art/domain owners. A new UI/layout/accessibility implementation requires its exact grant; no device or screen-reader certification is inferred.",
-    "completion_condition": "One concrete proposal and companion source/hash/file/evidence contract for the existing DialogueOverlay panel, truthful named-screen-reader evaluation limits, and one explicit implementation boundary. Close planning and publish under standing authority; do not implement before the exact new grant.",
+    "missing_deliverable": "The one-panel entry/close/focus/assistive-semantics system proposed in input-direction/dialogue-accessibility-owner-scope.md/.json, with exact current submission owners preserved and truthful native reader outcomes.",
+    "instructions": "Planning is complete and controls implementation stays closed. Await the exact new dialogue presentation grant; then implement all named dependent steps, verify, close, commit and push under standing authority. Do not infer broader text-heavy UI or screen-reader certification.",
+    "completion_condition": "Approved entry/close/focus/metadata implemented at both native sizes; current accepted/rejected/whisper/speaker delivery semantics exact; finite evidence validator and full root quality pass; actual named-reader result or not-performed limitation retained, then close and publish.",
     "outputs": [
-      "input-direction/dialogue-accessibility-owner-scope.md",
-      "input-direction/dialogue-accessibility-owner-scope.json"
+      "input-direction/dialogue-accessibility-runtime-authority.json",
+      "input-direction/dialogue-accessibility-runtime-verification.json",
+      "input-direction/dialogue-accessibility-runtime-review/README.md"
     ],
-    "boundary": "Read-only planning of the existing dialogue presentation only; no runtime/layout/provider/domain/save/audio/art changes, repeated controls audit, OS screen-reader toggle or broad UI certification."
+    "boundary": "Only the linked existing DialogueOverlay and four settings entry navigation/metadata changes after a new exact grant; no controls/preferences/provider/domain/save/audio/art changes, OS screen-reader setting or broad UI certification."
   },
   "deferred_slices": []
 }
