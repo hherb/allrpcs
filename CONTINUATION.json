@@ -766,6 +766,20 @@
           "sha256": "1eff2422263fc619bb43a55b226fc9eabd45d8037d99b75edd9bfdb0f9841577"
         }
       ]
+    },
+    {
+      "id": "phase11-control-remapping-owner-scope",
+      "reason": "Completed the owner-requested next read-only planning slice on 2026-10-13: exact 21 project actions and eight observed engine UI defaults, three key-only contextual consumers, finite 29-action remapping/persistence/capture/focus/defaults/prompt contract and named implementation files/checks. Source and editor bindings preserved; product/CI unchanged and retained 177-stage/5490-test predecessor evidence reused. Controls runtime/UI/device authority remains missing; planning is closed and must not become another unchanged-owner audit.",
+      "evidence": [
+        {
+          "path": "input-direction/remapping-owner-scope.md",
+          "sha256": "668310652fb1b188deef6f5760eb0d25a8e14ad48486459f09ead0f2aedf2abd"
+        },
+        {
+          "path": "input-direction/remapping-owner-scope.json",
+          "sha256": "3adbc85057c2f102f6e0f2bbb381ce465210967d1e1205cdfb50646617e64fcb"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1036,6 +1050,20 @@
           "sha256": "1eff2422263fc619bb43a55b226fc9eabd45d8037d99b75edd9bfdb0f9841577"
         }
       ]
+    },
+    {
+      "id": "controls-remapping-planning",
+      "reason": "Finite source-grounded controls contract delivered and published under standing authority. No repeat inventory or audit of the unchanged plan; proceed only with the named runtime grant or an explicit new owner request.",
+      "evidence": [
+        {
+          "path": "input-direction/remapping-owner-scope.md",
+          "sha256": "668310652fb1b188deef6f5760eb0d25a8e14ad48486459f09ead0f2aedf2abd"
+        },
+        {
+          "path": "input-direction/remapping-owner-scope.json",
+          "sha256": "3adbc85057c2f102f6e0f2bbb381ce465210967d1e1205cdfb50646617e64fcb"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1111,20 +1139,21 @@
     }
   ],
   "active_slice": {
-    "id": "phase11-control-remapping-owner-scope",
-    "title": "Prepare a finite control-remapping implementation contract",
+    "id": "phase11-control-remapping-runtime-integration",
+    "title": "Implement the finite 29-action controls-remapping contract after the exact owner grant",
     "status": "ready",
-    "workstream": "controls-remapping-planning",
-    "authority_status": "read_only_planning_only",
+    "workstream": "controls-remapping-runtime",
+    "authority_status": "awaiting_exact_owner_runtime_ui_persistence_grant",
     "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
-    "missing_deliverable": "A finite source-grounded contract for the remaining control-remapping roadmap item: existing action/input owners, supported device boundaries, accessible remap/reset/persistence behavior, exact proposed implementation files and completion checks.",
-    "instructions": "Read the remaining Phase 11 controls item and current input/settings owners. Prepare one concrete read-only implementation proposal identifying actual missing deliverables and tests. Do not change InputMap, runtime controls, settings/persistence, UI or physical/device behavior in this planning slice. Preserve every closed audio, art, collection and gameplay scope. The next implementation grant must name the concrete proposed scope; current herb approval does not extend to controls.",
-    "completion_condition": "One finite Markdown/JSON implementation proposal for the named remaining controls item, with exact current owner/input bindings, bounded runtime proposal and checks, plus ledger/documentation/publication maintenance.",
+    "missing_deliverable": "The concrete 29-action remapping system proposed in input-direction/remapping-owner-scope.md/.json: typed controls preferences, strict isolated storage, transactional Godot adapter, accessible Controls panel, device capture/reset/conflict handling, input context gates and live binding prompts, with bounded verification. The exact owner runtime/UI/persistence grant is not yet recorded.",
+    "instructions": "Present the completed linked proposal once and obtain only the missing exact controls runtime/UI/persistence authority. After approval record the owner statement and proposal hashes, then complete the named implementation, focused/native/packaging/root-quality checks, closure, commit and push in the same session. Until that grant do not change input/runtime/UI/settings/device behavior or start another planning audit. Preserve the editor rewrite, concurrent speech work and every closed art/audio/gameplay owner. Keep the controls roadmap checkbox open absent actual named physical-device support evidence.",
+    "completion_condition": "Validated 29-action document and transactional adapter, usable Controls panel at both sizes with all three event classes, safe capture/reset/persistence/error behavior, unchanged existing transition qualification, focused unit/Godot/native/mounted-resource evidence and full root quality; retain physical-device limitations and close only this remapping slice.",
     "outputs": [
-      "input-direction/remapping-owner-scope.md",
-      "input-direction/remapping-owner-scope.json"
+      "input-direction/remapping-runtime-authority.json",
+      "input-direction/remapping-runtime-verification.json",
+      "input-direction/remapping-runtime-review/README.md"
     ],
-    "boundary": "Read-only planning for a new remaining roadmap item; no input/runtime/UI/save/device implementation and no closed-owner audit."
+    "boundary": "Only the exact proposed 21 project/eight UI actions and Controls preferences/UI/input-consumer changes after owner grant; no new domain transitions, camera/touch/chord/virtual-keyboard controls, audio/art changes, provider/save changes, broad accessibility certification or executable release."
   },
   "deferred_slices": []
 }

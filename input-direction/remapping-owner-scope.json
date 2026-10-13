@@ -1,0 +1,757 @@
+{
+  "schema_version": 1,
+  "id": "phase11-control-remapping-owner-scope",
+  "prepared": "2026-10-13",
+  "status": "planning_complete_runtime_authority_missing",
+  "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
+  "owner_instruction": "OK, when you have committed and pushed everything, continue with the next slice",
+  "authorization": "Continue the ledger-selected read-only planning slice; standing publication authority retained. No controls runtime grant inferred.",
+  "baseline_commit": "f6e5babfa21debe997fd9a6d35679b4ff71baf27",
+  "proposal_document": "input-direction/remapping-owner-scope.md",
+  "current_project_actions": [
+    {
+      "id": "move_left",
+      "label": "Move left",
+      "context": "gameplay",
+      "current_keyboard": "A",
+      "physical_keycode": 65,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Seeker.cs",
+      "behavior": "continuous movement"
+    },
+    {
+      "id": "move_right",
+      "label": "Move right",
+      "context": "gameplay",
+      "current_keyboard": "D",
+      "physical_keycode": 68,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Seeker.cs",
+      "behavior": "continuous movement"
+    },
+    {
+      "id": "move_up",
+      "label": "Move up",
+      "context": "gameplay",
+      "current_keyboard": "W",
+      "physical_keycode": 87,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Seeker.cs",
+      "behavior": "continuous movement"
+    },
+    {
+      "id": "move_down",
+      "label": "Move down",
+      "context": "gameplay",
+      "current_keyboard": "S",
+      "physical_keycode": 83,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Seeker.cs",
+      "behavior": "continuous movement"
+    },
+    {
+      "id": "open_seeker_customization",
+      "label": "Customize Seeker",
+      "context": "gameplay",
+      "current_keyboard": "U",
+      "physical_keycode": 85,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/SeekerCustomizationMenuController.cs",
+      "behavior": "one-shot profile selection"
+    },
+    {
+      "id": "journal_toggle",
+      "label": "Open/close journal",
+      "context": "gameplay",
+      "current_keyboard": "J",
+      "physical_keycode": 74,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/JournalOpenCloseInputController.cs",
+      "behavior": "journal reading"
+    },
+    {
+      "id": "map_toggle",
+      "label": "Open/close map",
+      "context": "gameplay",
+      "current_keyboard": "M",
+      "physical_keycode": 77,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/SeekerMapOpenCloseInputController.cs",
+      "behavior": "map reading"
+    },
+    {
+      "id": "optional_overlays_toggle",
+      "label": "Show/hide settings and dialogue",
+      "context": "gameplay",
+      "current_keyboard": "Tab",
+      "physical_keycode": 4194306,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/OptionalOverlayVisibilityController.cs",
+      "behavior": "optional overlays; also consumed by AudioSettingsPanel"
+    },
+    {
+      "id": "save_current",
+      "label": "Save current game",
+      "context": "gameplay",
+      "current_keyboard": "Q",
+      "physical_keycode": 81,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/SaveLoadInputController.cs",
+      "behavior": "explicit save with existing initialization prerequisites"
+    },
+    {
+      "id": "load_current",
+      "label": "Load current game",
+      "context": "gameplay",
+      "current_keyboard": "L",
+      "physical_keycode": 76,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/SaveLoadInputController.cs",
+      "behavior": "explicit load"
+    },
+    {
+      "id": "healer_toggle_follow_wait",
+      "label": "Healer follow/wait",
+      "context": "gameplay",
+      "current_keyboard": "X",
+      "physical_keycode": 88,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing companion command"
+    },
+    {
+      "id": "healer_move",
+      "label": "Move Healer to marker",
+      "context": "gameplay",
+      "current_keyboard": "H",
+      "physical_keycode": 72,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing authored marker command"
+    },
+    {
+      "id": "focused_search_start",
+      "label": "Start focused search",
+      "context": "gameplay",
+      "current_keyboard": "F",
+      "physical_keycode": 70,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing focus-qualified request"
+    },
+    {
+      "id": "focused_search_cancel",
+      "label": "Cancel focused search",
+      "context": "gameplay",
+      "current_keyboard": "C",
+      "physical_keycode": 67,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing active-request cancellation"
+    },
+    {
+      "id": "focused_search_complete",
+      "label": "Complete focused search",
+      "context": "gameplay",
+      "current_keyboard": "E",
+      "physical_keycode": 69,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing outcome completion"
+    },
+    {
+      "id": "focused_search_resolve",
+      "label": "Resolve focused search",
+      "context": "gameplay",
+      "current_keyboard": "R",
+      "physical_keycode": 82,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing retained-outcome resolution"
+    },
+    {
+      "id": "layered_inscription_discover",
+      "label": "Discover shrine inscription",
+      "context": "gameplay",
+      "current_keyboard": "I",
+      "physical_keycode": 73,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing shrine-qualified request"
+    },
+    {
+      "id": "remedy_prepare",
+      "label": "Advance remedy preparation",
+      "context": "gameplay",
+      "current_keyboard": "P",
+      "physical_keycode": 80,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "behavior": "existing station-qualified preparation"
+    },
+    {
+      "id": "remedy_administer",
+      "label": "Administer remedy",
+      "context": "gameplay",
+      "current_keyboard": "T",
+      "physical_keycode": 84,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "behavior": "existing patient-qualified treatment"
+    },
+    {
+      "id": "sage_consult",
+      "label": "Consult Sage",
+      "context": "gameplay",
+      "current_keyboard": "K",
+      "physical_keycode": 75,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "behavior": "existing testimony/range-qualified consultation"
+    },
+    {
+      "id": "character_turn_cancel",
+      "label": "Cancel character turn",
+      "context": "gameplay",
+      "current_keyboard": "V",
+      "physical_keycode": 86,
+      "deadzone": 0.5,
+      "current_mouse": [],
+      "current_controller": [],
+      "owner": "game/Main.cs",
+      "behavior": "existing generation/participation interruption"
+    }
+  ],
+  "current_ui_defaults": {
+    "actions": [
+      {
+        "action": "ui_accept",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194309,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Enter"
+          },
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194310,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Kp Enter"
+          },
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 32,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Space"
+          }
+        ]
+      },
+      {
+        "action": "ui_cancel",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194305,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Escape"
+          }
+        ]
+      },
+      {
+        "action": "ui_left",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194319,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Left"
+          },
+          {
+            "button_index": 13,
+            "class": "InputEventJoypadButton",
+            "device": -1,
+            "text": "Joypad Button 13 (D-pad Left)"
+          },
+          {
+            "axis": 0,
+            "axis_value": -1.0,
+            "class": "InputEventJoypadMotion",
+            "device": -1,
+            "text": "Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value -1.00"
+          }
+        ]
+      },
+      {
+        "action": "ui_right",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194321,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Right"
+          },
+          {
+            "button_index": 14,
+            "class": "InputEventJoypadButton",
+            "device": -1,
+            "text": "Joypad Button 14 (D-pad Right)"
+          },
+          {
+            "axis": 0,
+            "axis_value": 1.0,
+            "class": "InputEventJoypadMotion",
+            "device": -1,
+            "text": "Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value 1.00"
+          }
+        ]
+      },
+      {
+        "action": "ui_up",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194320,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Up"
+          },
+          {
+            "button_index": 11,
+            "class": "InputEventJoypadButton",
+            "device": -1,
+            "text": "Joypad Button 11 (D-pad Up)"
+          },
+          {
+            "axis": 1,
+            "axis_value": -1.0,
+            "class": "InputEventJoypadMotion",
+            "device": -1,
+            "text": "Joypad Motion on Axis 1 (Left Stick Y-Axis, Joystick 0 Y-Axis) with Value -1.00"
+          }
+        ]
+      },
+      {
+        "action": "ui_down",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194322,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Down"
+          },
+          {
+            "button_index": 12,
+            "class": "InputEventJoypadButton",
+            "device": -1,
+            "text": "Joypad Button 12 (D-pad Down)"
+          },
+          {
+            "axis": 1,
+            "axis_value": 1.0,
+            "class": "InputEventJoypadMotion",
+            "device": -1,
+            "text": "Joypad Motion on Axis 1 (Left Stick Y-Axis, Joystick 0 Y-Axis) with Value 1.00"
+          }
+        ]
+      },
+      {
+        "action": "ui_focus_next",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194306,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": false,
+            "text": "Tab"
+          }
+        ]
+      },
+      {
+        "action": "ui_focus_prev",
+        "deadzone": 0.5,
+        "events": [
+          {
+            "alt": false,
+            "class": "InputEventKey",
+            "ctrl": false,
+            "device": 0,
+            "keycode": 4194306,
+            "meta": false,
+            "physical_keycode": 0,
+            "shift": true,
+            "text": "Shift+Tab"
+          }
+        ]
+      }
+    ],
+    "engine": {
+      "build": "official",
+      "hash": "7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3",
+      "hex": 263683,
+      "major": 4,
+      "minor": 6,
+      "patch": 3,
+      "status": "stable",
+      "string": "4.6.3-stable (official)",
+      "timestamp": 0
+    }
+  },
+  "ui_observation": {
+    "method": "Private temporary project with the exact committed input section; headless GDScript only enumerates InputMap, prints engine/defaults, quits.",
+    "command": "godot --headless --path /tmp/remapping-input-observe --script inspect.gd",
+    "exit_code": 0,
+    "source_project_input_section_sha256": "8089b24704132b26cffade01e355a1715c9f513bc7dea40cd7130e450512b36c",
+    "log_sha256": "de171ab1162f11fee8924b88941de76ab079e87620bfcbc6d5486f865daf0760",
+    "limits": "No product scene, input changes, hardware events, or device-support claim. Initial sandbox log-directory crash; identical host retry completed.",
+    "inspector_source": "extends SceneTree\nfunc _initialize():\n    var rows = []\n    for action in [\"ui_accept\", \"ui_cancel\", \"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\", \"ui_focus_next\", \"ui_focus_prev\"]:\n        var events = []\n        for event in InputMap.action_get_events(action):\n            var row = {\"class\": event.get_class(), \"device\": event.device, \"text\": event.as_text()}\n            if event is InputEventKey:\n                row.merge({\"keycode\": event.keycode, \"physical_keycode\": event.physical_keycode, \"shift\": event.shift_pressed, \"ctrl\": event.ctrl_pressed, \"alt\": event.alt_pressed, \"meta\": event.meta_pressed})\n            if event is InputEventJoypadButton:\n                row[\"button_index\"] = event.button_index\n            if event is InputEventJoypadMotion:\n                row[\"axis\"] = event.axis\n                row[\"axis_value\"] = event.axis_value\n            events.append(row)\n        rows.append({\"action\": action, \"deadzone\": InputMap.action_get_deadzone(action), \"events\": events})\n    print(\"REMAP_UI_DEFAULTS=\" + JSON.stringify({\"engine\": Engine.get_version_info(), \"actions\": rows}))\n    quit()\n",
+    "successful_log": "Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\nREMAP_UI_DEFAULTS={\"actions\":[{\"action\":\"ui_accept\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194309,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Enter\"},{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194310,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Kp Enter\"},{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":32,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Space\"}]},{\"action\":\"ui_cancel\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194305,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Escape\"}]},{\"action\":\"ui_left\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194319,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Left\"},{\"button_index\":13,\"class\":\"InputEventJoypadButton\",\"device\":-1,\"text\":\"Joypad Button 13 (D-pad Left)\"},{\"axis\":0,\"axis_value\":-1.0,\"class\":\"InputEventJoypadMotion\",\"device\":-1,\"text\":\"Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value -1.00\"}]},{\"action\":\"ui_right\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194321,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Right\"},{\"button_index\":14,\"class\":\"InputEventJoypadButton\",\"device\":-1,\"text\":\"Joypad Button 14 (D-pad Right)\"},{\"axis\":0,\"axis_value\":1.0,\"class\":\"InputEventJoypadMotion\",\"device\":-1,\"text\":\"Joypad Motion on Axis 0 (Left Stick X-Axis, Joystick 0 X-Axis) with Value 1.00\"}]},{\"action\":\"ui_up\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194320,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Up\"},{\"button_index\":11,\"class\":\"InputEventJoypadButton\",\"device\":-1,\"text\":\"Joypad Button 11 (D-pad Up)\"},{\"axis\":1,\"axis_value\":-1.0,\"class\":\"InputEventJoypadMotion\",\"device\":-1,\"text\":\"Joypad Motion on Axis 1 (Left Stick Y-Axis, Joystick 0 Y-Axis) with Value -1.00\"}]},{\"action\":\"ui_down\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194322,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Down\"},{\"button_index\":12,\"class\":\"InputEventJoypadButton\",\"device\":-1,\"text\":\"Joypad Button 12 (D-pad Down)\"},{\"axis\":1,\"axis_value\":1.0,\"class\":\"InputEventJoypadMotion\",\"device\":-1,\"text\":\"Joypad Motion on Axis 1 (Left Stick Y-Axis, Joystick 0 Y-Axis) with Value 1.00\"}]},{\"action\":\"ui_focus_next\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194306,\"meta\":false,\"physical_keycode\":0,\"shift\":false,\"text\":\"Tab\"}]},{\"action\":\"ui_focus_prev\",\"deadzone\":0.5,\"events\":[{\"alt\":false,\"class\":\"InputEventKey\",\"ctrl\":false,\"device\":0,\"keycode\":4194306,\"meta\":false,\"physical_keycode\":0,\"shift\":true,\"text\":\"Shift+Tab\"}]}],\"engine\":{\"build\":\"official\",\"hash\":\"7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3\",\"hex\":263683,\"major\":4,\"minor\":6,\"patch\":3,\"status\":\"stable\",\"string\":\"4.6.3-stable (official)\",\"timestamp\":0}}\n"
+  },
+  "source_bindings": [
+    {
+      "path": "README.md",
+      "sha256": "e906046a6e6631c01c49970743d03226074629c373ff2c713cafe65619081eb4",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/Allrpcs.Game.csproj",
+      "sha256": "8e59a2cd356af1d6f5d36b16a0009d8ae8734a22a5c8a7ddece1b9f4e065e37e",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e835e2bf51d3976ca6104f96be3d04618c862c0ad0ff41ef2249b6cb2c2b6867",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/AudioSettingsStorageController.cs",
+      "sha256": "e4250c020dbf986e0f440a1d017d658059eefbc24cd6aae4947f174d6b8441b8",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/CaskCoverHandlingPanel.cs",
+      "sha256": "699252e4b16ee348423757e93e857f42bd5d7c139ab4bb7c8d0f7dc6c4134044",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/HandToolTapPanel.cs",
+      "sha256": "55d0bb2044e58f65f6e60fb62d2f34b9efeec7ee4bb45456eebf80d241ab9979",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/JournalOpenCloseInputController.cs",
+      "sha256": "8d0d53044c62696a7acbd275a9311d7167bb261e7bf2435289d16520b51a3ebb",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "64ac467312a2a18aa29ba45ff803a0cec38a3957ca1c40bf72e44807933471de",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4129963285b8f16eaab0b2745da233ad7ed7d1c534ac985ebb423f17298f4bbf",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "81b90e1d463f659eafdbc385eca9ba986b802fdfdefdb715a4cb8692b3844939",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "a89a7ca3668833ee4c861776406c0e6cf1314c15abf1e46a71a4e694199995a1",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "sha256": "513c8b1f227fd59c7643b894b33d3f02f125bacfe2abe7660bcd5886897b3f90",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilityController.cs",
+      "sha256": "346ac40d2debb13bb4a7e6f4373614599757261d3f64b3b0bad88e2eed937321",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/SaveLoadInputController.cs",
+      "sha256": "cc26c24d223c3b03d1ceb2edc6702815dd1294df0a6297c2f389e9b0b74f39a5",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/SeekerCustomizationMenuController.cs",
+      "sha256": "b0b01c2750c1dd68a39641cfd69fb28bb41262bd0063d16c07dad9f458b8a6aa",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/SeekerMapOpenCloseInputController.cs",
+      "sha256": "0d71cfdb30926bcbc2335d0e4ca21afde21ecf4051e09dbf3eee7638acff20da",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/StreamWaterContactPanel.cs",
+      "sha256": "892ba4a805db2b0ce22f4e7061b765fb5066b23428249ab2157cf3a81cf2e753",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "fae0bfdf6e9c2909b88fc4b2825d653c86b4f315e4fadfd5ee1149b593d804b8",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "quality.sh",
+      "sha256": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "scripts/check-continuation.py",
+      "sha256": "cedfd8ff820590463ff7e1ac64ed6b514bd77978a07e1c04f6d867ba0e6a7193",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "src/Infrastructure/Audio/AudioPreferencesJson.cs",
+      "sha256": "886cf41faa86944fc9e17bf8428e43a5ec96968f2535fe686503d7337a3ed28d",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "src/Infrastructure/Audio/FileAudioPreferencesStore.cs",
+      "sha256": "d93a66c46d7013cbebc370db8ea5a629b1f50b38cd82ce7a512187f0bbe0d56a",
+      "basis": "committed_and_worktree_identical"
+    },
+    {
+      "path": "game/project.godot",
+      "sha256": "0ce582324fb3bde4781052556f934f5c9bf7d3dc8ff58ad6b070ccf3db459c77",
+      "basis": "committed_blob",
+      "worktree_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+      "input_section_sha256": "8089b24704132b26cffade01e355a1715c9f513bc7dea40cd7130e450512b36c",
+      "worktree_input_section_identical": true
+    }
+  ],
+  "runtime_proposal": {
+    "slice_id": "phase11-control-remapping-runtime-integration",
+    "authority_status": "awaiting_exact_owner_grant",
+    "scope": "Remap the existing 21 project actions and eight named UI actions; add one accessible Controls panel and isolated version-1 preference document; support physical/logical keys with modifiers, mouse buttons, standardized joypad buttons and signed axes; gate capture/modal/text focus and update live binding prompts. Existing domain transitions and audio/art owners remain unchanged.",
+    "ui_actions": [
+      "ui_accept",
+      "ui_cancel",
+      "ui_left",
+      "ui_right",
+      "ui_up",
+      "ui_down",
+      "ui_focus_next",
+      "ui_focus_prev"
+    ],
+    "action_count": 29,
+    "new_gameplay_action_ids": [],
+    "defaults": {
+      "keyboard": "Retain all exact 21 committed physical-key bindings; retain observed logical UI keys and Shift+Tab.",
+      "mouse": "No gameplay mouse assignments by default; pointer hit testing/left-click Button.Pressed stays native.",
+      "controller": "Add left-stick axes 0/1 and D-pad 13/14/11/12 to movement; Start (6) to optional overlays. UI directions retain observed stick/D-pad bindings; add A (0) accept, B (1) cancel, right shoulder (10) next, left shoulder (9) previous. Other 16 project commands begin unassigned on controller and remain remappable.",
+      "deadzone": 0.5
+    },
+    "limits": {
+      "max_bindings_per_action": 8,
+      "max_bindings_per_device_class": 4,
+      "max_document_bytes": 65536,
+      "capture_seconds": 10,
+      "axis_capture_threshold": 0.75,
+      "axis_neutral_threshold": 0.2,
+      "deadzone_min": 0.1,
+      "deadzone_max": 0.9
+    },
+    "persistence_path": "user://controls-settings-v1.json",
+    "new_files": [
+      "src/Application/Input/ControlActionCatalog.cs",
+      "src/Application/Input/ControlBinding.cs",
+      "src/Application/Input/ControlPreferences.cs",
+      "src/Application/Input/ControlBindingEdit.cs",
+      "src/Application/Input/ControlBindingCapture.cs",
+      "src/Application/Input/IControlPreferencesStore.cs",
+      "src/Application/Input/ControlPreferencesLoadResult.cs",
+      "src/Infrastructure/Input/ControlPreferencesJson.cs",
+      "src/Infrastructure/Input/FileControlPreferencesStore.cs",
+      "game/ControlSettingsController.cs",
+      "game/ControlSettingsStorageController.cs",
+      "game/ControlInputMapAdapter.cs",
+      "game/ControlInputMatcher.cs",
+      "game/ControlInputContext.cs",
+      "game/ControlSettingsPanel.cs",
+      "game/ControlSettingsPanel.tscn",
+      "game/ControlSettingsMainSmokeCheck.cs",
+      "game/ControlSettingsMainSmokeCheck.tscn",
+      "tests/Application.Tests/Input/ControlPreferencesTests.cs",
+      "tests/Application.Tests/Input/ControlBindingEditTests.cs",
+      "tests/Application.Tests/Input/ControlBindingCaptureTests.cs",
+      "tests/Infrastructure.Tests/Input/ControlPreferencesJsonTests.cs",
+      "tests/Infrastructure.Tests/Input/FileControlPreferencesStoreTests.cs",
+      "scripts/validate-control-remapping-runtime.py"
+    ],
+    "new_uid_sidecars": "Only Godot-generated .cs.uid/.gd.uid for the explicitly listed new scripts, if generated; include/hash exact sidecars.",
+    "modified_files": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "README.md",
+      "ROADMAP.md",
+      "game/AudioSettingsPanel.cs",
+      "game/CaskCoverHandlingPanel.cs",
+      "game/HandToolTapPanel.cs",
+      "game/JournalOpenCloseInputController.cs",
+      "game/Main.cs",
+      "game/Main.tscn",
+      "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "game/OptionalOverlayVisibilityController.cs",
+      "game/SaveLoadInputController.cs",
+      "game/Seeker.cs",
+      "game/SeekerCustomizationMenuController.cs",
+      "game/SeekerMapOpenCloseInputController.cs",
+      "game/StreamWaterContactPanel.cs",
+      "quality.py"
+    ],
+    "evidence_outputs": [
+      "input-direction/remapping-runtime-authority.json",
+      "input-direction/remapping-runtime-verification.json",
+      "input-direction/remapping-runtime-review/README.md"
+    ],
+    "excluded": [
+      "game/project.godot (preserve recorded editor rewrite)",
+      "new command/interaction/domain transitions",
+      "world/save/provider schema changes",
+      "art/audio sources, levels, admission or history owners",
+      "camera zoom/pan mappings",
+      "touch/gesture input",
+      "controller chords/macros/virtual keyboard/rumble/device calibration",
+      "OS shortcut interception",
+      "engine text-edit shortcut remapping",
+      "all-dialogue screen-reader certification",
+      "controller-only opening-scenario certification",
+      "executable release"
+    ],
+    "completion_condition": "Validated 29-action document and transactional adapter, usable Controls panel at both sizes with all three event classes, safe capture/reset/persistence/error behavior, unchanged existing transition qualification, focused unit/Godot/native/mounted-resource evidence and full root quality; retain physical-device limitations and close only this remapping slice.",
+    "roadmap_completion_rule": "Keep the Phase 11 controls checkbox unchecked until ordinary physical keyboard, mouse and named controller evidence establishes the supported device claim. This proposal and synthetic events cannot close that claim."
+  },
+  "verification": {
+    "planning_checks": [
+      "Exact 21 action/default/owner inventory against committed source; exact worktree input-section equality.",
+      "Observed eight engine UI defaults in an isolated read-only fixture; no product scene launched.",
+      "Bound source hashes; only proposal/ledger/handover/roadmap changed; recorded editor hash unchanged.",
+      "Continuation checker and all eleven self-tests; persistent closures unchanged."
+    ],
+    "reused_product_evidence": [
+      {
+        "path": "audio-direction/herb-collection-runtime-review/quality/summary.json",
+        "sha256": "4d0b5f635b934118a23024581b1190484eab0ac82eac6baa74466274338c2f12"
+      },
+      {
+        "path": "audio-direction/herb-collection-runtime-review/quality/completion.json",
+        "sha256": "d9bb990155f5efa55277d31dfd71400892d95453ddeef0ec66efe1a763c4f1ff"
+      }
+    ],
+    "reused_product_stages": 177,
+    "reused_unit_tests": 5490,
+    "reuse_reason": "Only offline speech audition paths differ from the already verified herb commit; product and CI inputs unchanged. Prose-only planning adds no product/CI inputs.",
+    "planning_status": "passed",
+    "closure_self_tests": 11
+  }
+}

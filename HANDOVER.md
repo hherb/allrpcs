@@ -1,29 +1,29 @@
 # Allrpcs Handover
 
-Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the named
-remaining roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner
-instructions and terminal acceptance take precedence. Keep every persistent closure.
+Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the named remaining
+roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner instructions and
+terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-The approved [herb-collection runtime](audio-direction/herb-collection-runtime-verification.json)
-is complete. The exact one-second HC01 sound/window/level accepted as **suitable** is installed.
-The exact existing flow commit admits anonymous **Soft rustle** only with the actual retained
-Healer within inclusive 32 pixels of the unchanged patch and the Seeker within exclusive
-192 pixels. Remote/unqualified commits stay silent. Gameplay and prior audio owners are unchanged.
-The sixteenth independent caption and separate sixteen-entry history are accessible at both sizes.
+The next-slice request completed the finite [controls-remapping proposal](input-direction/remapping-owner-scope.md)
+and [source/default/file contract](input-direction/remapping-owner-scope.json). Planning is closed.
+It identifies 21 keyboard project actions, eight observed Godot UI actions, three contextual panels
+that reject non-key input, absent controller UI accept/cancel bindings and hard-coded prompts.
+The concrete successor needs the exact new controls runtime/UI/persistence grant. No controls
+behavior was implemented by this planning slice; the Phase 11 checkbox remains unchecked.
 
-[Retained evidence](audio-direction/herb-collection-runtime-review/README.md) includes
-177 passing root stages, 5,490 unit tests, fourteen genuine near/remote modes with complete
-save/gameplay parity, eight live admission probes, forty-five native Master cases and three
-mounted presets. All 125 prior audio entries remain exact; totals are 130 entries, 43 streams,
-42 individual notices and 24 groups. Controlled fixtures do not establish ordinary approach,
-physical picking, fresh-device loudness or executable release.
+The accepted [herb runtime](audio-direction/herb-collection-runtime-verification.json) is complete,
+with the exact suitable HC01 sound/window/level and anonymous Soft rustle feedback. Its
+[retained review](audio-direction/herb-collection-runtime-review/README.md) contains 177 passing root
+stages, 5,490 unit tests, 14 parity modes, 8 live admission probes, 45 native Master cases, accessible
+sixteenth caption/history and three mounted presets. No product/CI changes followed that verified
+commit; intervening publication adds the separate offline speech-audition package. Reuse this
+product evidence for prose alone; it does not verify the unimplemented remapping system.
 
 All earlier art/audio/gameplay scopes remain closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md). No repeated herb source/level,
-collection/examination or unchanged-owner audit remains. The next finite boundary is read-only
-planning for the remaining Phase 11 remappable-controls item.
+collection/examination or unchanged-owner audit remains.
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json).
@@ -32,50 +32,57 @@ It does not authorize controls implementation or executable release.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase11-control-remapping-owner-scope — Prepare a finite control-remapping implementation contract** (ready).
+**phase11-control-remapping-runtime-integration — Implement the finite 29-action controls-remapping contract after the exact owner grant** (ready).
 
 Roadmap item: - [ ] Complete remappable keyboard, mouse, and controller controls.
 
-Missing deliverable: A finite source-grounded contract for the remaining control-remapping roadmap
-item: existing action/input owners, supported device boundaries, accessible remap/reset/persistence
-behavior, exact proposed implementation files and completion checks.
+Missing deliverable: The concrete 29-action remapping system proposed in input-direction/remapping-
+owner-scope.md/.json: typed controls preferences, strict isolated storage, transactional Godot
+adapter, accessible Controls panel, device capture/reset/conflict handling, input context gates and
+live binding prompts, with bounded verification. The exact owner runtime/UI/persistence grant is not
+yet recorded.
 
-Read the remaining Phase 11 controls item and current input/settings owners. Prepare one concrete
-read-only implementation proposal identifying actual missing deliverables and tests. Do not change
-InputMap, runtime controls, settings/persistence, UI or physical/device behavior in this planning
-slice. Preserve every closed audio, art, collection and gameplay scope. The next implementation
-grant must name the concrete proposed scope; current herb approval does not extend to controls.
+Present the completed linked proposal once and obtain only the missing exact controls
+runtime/UI/persistence authority. After approval record the owner statement and proposal hashes,
+then complete the named implementation, focused/native/packaging/root-quality checks, closure,
+commit and push in the same session. Until that grant do not change input/runtime/UI/settings/device
+behavior or start another planning audit. Preserve the editor rewrite, concurrent speech work and
+every closed art/audio/gameplay owner. Keep the controls roadmap checkbox open absent actual named
+physical-device support evidence.
 
-Done when: One finite Markdown/JSON implementation proposal for the named remaining controls item,
-with exact current owner/input bindings, bounded runtime proposal and checks, plus
-ledger/documentation/publication maintenance.
+Done when: Validated 29-action document and transactional adapter, usable Controls panel at both
+sizes with all three event classes, safe capture/reset/persistence/error behavior, unchanged
+existing transition qualification, focused unit/Godot/native/mounted-resource evidence and full root
+quality; retain physical-device limitations and close only this remapping slice.
 
 Expected outputs:
 
-- `input-direction/remapping-owner-scope.md`
-- `input-direction/remapping-owner-scope.json`
+- `input-direction/remapping-runtime-authority.json`
+- `input-direction/remapping-runtime-verification.json`
+- `input-direction/remapping-runtime-review/README.md`
 
-Boundary: Read-only planning for a new remaining roadmap item; no input/runtime/UI/save/device
-implementation and no closed-owner audit.
+Boundary: Only the exact proposed 21 project/eight UI actions and Controls preferences/UI/input-
+consumer changes after owner grant; no new domain transitions, camera/touch/chord/virtual-keyboard
+controls, audio/art changes, provider/save changes, broad accessibility certification or executable
+release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 After ledger maintenance run `python3 scripts/check-continuation.py --sync`, then its checker
-and `--self-test`. Herb checks: `python3 scripts/validate-herb-collection-runtime.py --reviewed`,
-`--output-only` and `--self-test`; source checks: `python3 scripts/prepare-herb-collection-passage.py --self-test`.
-Reuse passing product evidence for prose alone. Runtime changes need granted focused checks and
-root `./quality.sh`; runner changes need `python3 quality.py --self-test`.
+and `--self-test`. Planning binds 25 source inputs and the isolated read-only engine UI inspection.
+Runtime verification is specified in the proposal: focused unit/Godot/native checks, mounted resource
+presets and root `./quality.sh`. Runner changes need `python3 quality.py --self-test`.
 
 Frozen validators run in private historical source trees/indexes: hand-tool `75c1aa04`,
 Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`, heating `b7912dd4`,
-steeping `78369110` and cooling `e92e6e08`. Cold checks restore before build/import; cooling seeds its four exact accepted C# UID sidecars,
-which were omitted from its original commit.
-Run Godot on the host, serialize native focus fixtures, and retry only diagnosed native mutex
-shutdowns with the identical command. Detailed exact logs are in the linked review.
+steeping `78369110`, cooling `e92e6e08` and accepted herb `db298c8f` when successor input changes
+invalidate frozen current-tree hashes. Cold checks restore before build/import; cooling seeds
+its four exact accepted C# UID sidecars omitted from the original commit. Never rewrite frozen
+validators/evidence to accommodate a successor. Run Godot on the host, serialize native focus
+fixtures, and retry only diagnosed native mutex shutdowns with the identical command.
 
 Preserve/exclude unrelated `game/project.godot` editor SHA
 `36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`, `.DS_Store` and concurrent
-`speech-direction/qwen25-omni-m3max-audition/`. Generated GD UID cleanup removes only sidecars
-whose tracked source bytes remain exact. Resource packs pass in all three presets; the existing
-C# executable-export limitation remains, with no executable release verified.
+`speech-direction/` work. Generated GD UID cleanup removes only sidecars whose tracked source bytes
+remain exact. The existing C# executable-export limitation remains; no executable release is verified.

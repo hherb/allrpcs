@@ -298,6 +298,14 @@ Acceptance:
 - [ ] Prepare release notes, privacy information, model-provider disclosures, and known
   limitations.
 
+Controls planning checkpoint (2026-10-13): the finite [29-action remapping proposal](input-direction/remapping-owner-scope.md)
+and [hash-bound source/default/file contract](input-direction/remapping-owner-scope.json) are complete.
+The next implementation grant covers the existing 21 project actions, eight UI actions, one Controls
+panel, isolated preferences, capture/reset/conflicts, input context and live prompts. No runtime input
+or UI change has been made. The controls checkbox remains open pending implementation and actual
+named physical-device support evidence; controller-only opening-scenario and broad screen-reader
+certification are not claimed by this proposal.
+
 Acceptance:
 
 - [ ] Signed or explicitly documented unsigned release candidates install, launch, save, load,
