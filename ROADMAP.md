@@ -309,7 +309,8 @@ Controls runtime checkpoint (2026-10-13): the exact approved [29-action remappin
 is implemented and verified by 188 root quality stages, 5,576 unit tests, genuine Main synthetic
 input routing, native 1280×720/1920×1080 UI and three mounted resource presets. The finite
 implementation is closed. This checkbox remains open until ordinary physical keyboard, mouse and
-named controller evidence establishes the supported-device claim. Controller-only opening-scenario,
+named controller evidence establishes the supported-device claim. The [physical-device evaluation proposal](input-direction/physical-controls-owner-scope.md)
+is complete; its PC-MAC-01 hardware/session grant and actual outcomes remain missing. Controller-only opening-scenario,
 broad screen-reader and executable-release certification remain unclaimed. The [dialogue-panel keyboard/accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
 has now been implemented under the exact owner grant. The [finite dialogue review](input-direction/dialogue-accessibility-runtime-review/README.md)
 retains actual Main keyboard routing at 1280×720/1920×1080, default/remapped focus and cancel,

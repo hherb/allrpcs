@@ -15,8 +15,11 @@ speaker/delivery/text and final-response owners remain exact. VoiceOver evaluati
 
 The accepted [29-action controls implementation](input-direction/remapping-runtime-review/README.md)
 stays closed and its unmodified validator runs in published baseline `1b0cab40`. Its physical-device
-support claim remains missing. The next boundary prepares that distinct hardware/session evaluation
-proposal; it does not reopen synthetic controls or the accepted dialogue presentation.
+support claim remains missing. The [physical-device proposal](input-direction/physical-controls-owner-scope.md) is complete and
+source-bound. PC-MAC-01 names a proposed USB Xbox model 1914 and current macOS/arm64 host,
+with mandatory actual keyboard/mouse/device intake, 12 finite cases and a controller-only opening
+recovery/discovery route. No physical evaluation was performed. Execution needs one new session
+grant, confirmed inventory and a local human operator; preserve accepted controls/dialogue.
 All earlier art/audio/domain scopes remain closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md).
 
@@ -26,30 +29,34 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase11-physical-controls-evaluation-planning — Prepare a named physical-device evaluation boundary for the remaining controls support claim** (ready).
+**phase11-physical-controls-evaluation-execution — Evaluate the named physical controls session against the closed proposal** (ready).
 
 Roadmap item: - [ ] Complete remappable keyboard, mouse, and controller controls.
 
-Missing deliverable: A concrete evaluation plan for ordinary physical keyboard/mouse and one named
-controller, including a controller-only opening-scenario route, exact device/OS provenance and
-finite failure/pass criteria. Existing evidence is synthetic only.
+Missing deliverable: Actual PC-MAC-01 physical keyboard/mouse and named-controller evidence,
+including the controller-only opening recovery/discovery route, exact device/OS/runtime provenance
+and finite case results. No physical evaluation has yet been performed.
 
-Prepare the finite physical-device evaluation proposal before requesting a new hardware/session
-grant. Preserve the closed controls implementation and dialogue presentation. Do not repeat
-synthetic audits, change input/runtime code or claim physical support from prior captures.
+Use the closed physical-controls-owner-scope proposal. Obtain the one concrete session grant and
+confirmed hardware/operator/isolation before execution; then complete its ordinary native cases and
+evidence in the same session. Do not replace physical events with synthetic input, reopen accepted
+controls/dialogue, or silently implement fixes.
 
-Done when: One source-grounded named device/session evaluation proposal and companion evidence/file
-contract, with one explicit new evaluation grant boundary; close planning and publish under standing
-authority. Actual device execution is a separate authorized successor.
+Done when: All 12 named cases accounted for with honest pass/fail/not-performed results, PC09
+timeline, physical-input media, complete preference documents and hash-bound finite review;
+qualification requires all passes. Publish bounded evidence under standing authority.
 
 Expected outputs:
 
-- `input-direction/physical-controls-owner-scope.md`
-- `input-direction/physical-controls-owner-scope.json`
+- `input-direction/physical-controls-review/authority.json`
+- `input-direction/physical-controls-review/session.json`
+- `input-direction/physical-controls-review/results.json`
+- `input-direction/physical-controls-review/manifest.json`
+- `input-direction/physical-controls-review/README.md`
 
-Boundary: Read-only planning of the missing physical-device qualification only; no
-runtime/preferences/controller mapping/source changes, hardware or OS setup, accepted owner audits,
-broad accessibility or executable release claim.
+Boundary: Execution only after the named new physical session grant, confirmed device/host
+identities and local human operator; no runtime/controller mapping/OS setup, accepted-owner audits,
+other hardware/platform, broad accessibility or executable release scope.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

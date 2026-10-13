@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "prepared": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "status": "planning_complete_physical_session_not_authorized",
+  "baseline_commit": "e7b17575479be3f9061979c3269168f956782566",
+  "owner_instruction": "Read HANDOVER.md and follow the instructions - scope is approved",
+  "approved_slice": "phase11-physical-controls-evaluation-planning",
+  "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
+  "proposal": {
+    "path": "input-direction/physical-controls-owner-scope.md",
+    "sha256": "daedae999492063a3a1900ce72c1fefa1ae963fc30a2deab07c4e4af68ef3273"
+  },
+  "source_inputs": [
+    {
+      "path": "src/Application/Input/ControlActionCatalog.cs",
+      "sha256": "6eaf01ae9f324253e93f7857edee3eb2a05ce2e6e646df5781c99a2a0b0188e3"
+    },
+    {
+      "path": "src/Application/Input/ControlBindingCapture.cs",
+      "sha256": "78f0c20841a51e5456373392ec35b838a461c7459d963ff639194b16d07a3db0"
+    },
+    {
+      "path": "src/Application/Input/ControlBindingEdit.cs",
+      "sha256": "48aed08b133fa05aaad6ac33a0c9e2e5e6c61bd8ca080500fd422ab89bb8e78b"
+    },
+    {
+      "path": "src/Application/Input/ControlPreferences.cs",
+      "sha256": "30d6eff08c2be4cccc80efdfe4cd465aef24f702ffb33ac21d90dd3c5d74972b"
+    },
+    {
+      "path": "game/ControlSettingsPanel.cs",
+      "sha256": "b72a14e2d76ca2ff992130434009dc637a3df8bc695b18342f30144ce770b148"
+    },
+    {
+      "path": "game/ControlSettingsController.cs",
+      "sha256": "acda594c4731c4df8a1ef4292a4974a38afc8f977a3ec6786ab20daf560e8318"
+    },
+    {
+      "path": "game/ControlSettingsStorageController.cs",
+      "sha256": "950e275259c3f967ff647a60f9a584ced7194dd7d2c8c5ecfce9b60371ad366c"
+    },
+    {
+      "path": "game/ControlInputContext.cs",
+      "sha256": "ce480e3a5242aad228519589a0f6c0c8400a2bdb6e363d15db790250525a0892"
+    },
+    {
+      "path": "game/ControlInputMapAdapter.cs",
+      "sha256": "11dd53783c61e51dd3aacf593cd0737fe0b1dcc8df3ef0f78f20f8efdd3002a1"
+    },
+    {
+      "path": "game/ControlInputMatcher.cs",
+      "sha256": "34458b5173df6f41e327a13bf650ddd688f607d6067d4980787b6a6ccf9033b5"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilityController.cs",
+      "sha256": "2e028e6531b4cac87687e508292eedd2d13b4e124ca59977410bfca77954ddbb"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "05138c74107c2a405553a9a7c7a72e1ab30e3be821962f54228f564d17833774"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "7d8ea6aa313996573cc2927dba65f66de464be03b3736eb7abd776844ddf2e9b"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionWagonClueFocusedSearchRouteSmokeCheck.cs",
+      "sha256": "823301c6172dcf0eb4175e7b18d2e9f431e2147f492fba908bf0282667bc5317"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationSceneSource.cs",
+      "sha256": "69c2b8cfed9c72cdacf68ca89b1b0b6613d515e6e6c46a78c798606fd5aa3b5f"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "d5688f3f71cc58c2363723bb12bc887503f125c7a051f3b006049d2537e789ba"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "9d5625f66e2a27c9bd0173756c758f9dfc0b671548293f0c5ec467d151cde99a"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientStabilizationTestimonyCoordinator.cs",
+      "sha256": "c070a213a039cf73913e1d8215f76e62154d18a8822b3cb87a3b88d386c8fb9a"
+    },
+    {
+      "path": "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "sha256": "0759f72476feeb08f75c8768171163be558bce434bbfc93304f3190205844352"
+    },
+    {
+      "path": "game/SaveLoadInputController.cs",
+      "sha256": "9ec1f36541d67f00332666c545a7ab39560f20378414668a26c40382e35516f4"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "b8993c443007fbc8444dfdbd6b0fb83696f0e78f7e39e123bab0fe2d21dd82f3"
+    },
+    {
+      "path": "input-direction/remapping-runtime-authority.json",
+      "sha256": "dead1eedd5caff7ed51f23dc7b6dc9a2d138516e7c0874209e7ecd8aa9552b0d"
+    },
+    {
+      "path": "input-direction/remapping-runtime-verification.json",
+      "sha256": "043f02affadf401c7e29303908b614e7cf58b7607bd73dfed0b352a30ed577f3"
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-verification.json",
+      "sha256": "08eeacfe50c9f396cba7190946e1ad60bc22472cb664a3cab4cf1566ea76609b"
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/quality/summary.json",
+      "sha256": "2b965927a9473296ac61c1f673b8c3b4a89927f59b9395bf63c8d515e2fd7e47"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    }
+  ],
+  "physical_evaluation_performed": false,
+  "session": {
+    "id": "PC-MAC-01",
+    "device_inventory_status": "owner_confirmation_pending",
+    "keyboard": {
+      "handle": "KB01",
+      "manufacturer_model_layout_connection": null,
+      "required_before_execution": true
+    },
+    "mouse": {
+      "handle": "M01",
+      "manufacturer_model_buttons_connection": null,
+      "required_before_execution": true
+    },
+    "controller": {
+      "proposed_manufacturer": "Microsoft",
+      "proposed_model": "Xbox Wireless Controller model 1914",
+      "proposed_connection": "USB",
+      "present_or_compatible_verified": false
+    },
+    "host_observation": {
+      "source": "read-only sw_vers and uname -m",
+      "os": "macOS",
+      "version": "27.0.1",
+      "build": "26A434",
+      "architecture": "arm64",
+      "computer_model_chip": null,
+      "execution_provenance_required": true
+    },
+    "windows": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "maximum_minutes": 120,
+    "maximum_route_minutes": 45,
+    "maximum_case_repeats": 1,
+    "launch": "ordinary native Main.tscn; all synthetic/check flags unset; isolated user data; no input injection",
+    "input_operator": "owner or authorized local human; physical events required"
+  },
+  "profiles": {
+    "discovery": {
+      "focused_search_start": 2,
+      "focused_search_complete": 3,
+      "focused_search_resolve": 0,
+      "focused_search_cancel": 1,
+      "map_toggle": 4,
+      "journal_toggle": 7,
+      "healer_toggle_follow_wait": 8,
+      "save_current": 9,
+      "load_current": 10
+    },
+    "recovery": {
+      "map_toggle": 4,
+      "journal_toggle": 7,
+      "healer_toggle_follow_wait": 8,
+      "save_current": 9,
+      "load_current": 10,
+      "remedy_prepare": 2,
+      "remedy_administer": 3,
+      "sage_consult": 0,
+      "layered_inscription_discover": 1
+    },
+    "retain_keyboard_and_ui_defaults": true,
+    "change_method": "controller-driven Controls UI; remove four search buttons before adding recovery buttons; Save explicitly; never preseed"
+  },
+  "cases": [
+    {
+      "id": "PC01",
+      "name": "Device and runtime intake",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC02",
+      "name": "Physical keyboard movement/navigation",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC03",
+      "name": "Physical keyboard capture/cancel/timeout",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC04",
+      "name": "Physical mouse capture/pointer routing",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC05",
+      "name": "Conflict/draft/apply/save/restart/defaults",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC06",
+      "name": "Controller focus/layout at two sizes",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC07",
+      "name": "Controller signed capture/deadzones/release fence",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC08",
+      "name": "USB reconnect and native focus lifecycle",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC09",
+      "name": "Fresh controller-only opening recovery/discovery route",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC10",
+      "name": "Remapped controller UI cancel/recovery",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC11",
+      "name": "Physical modal gates and held release",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    },
+    {
+      "id": "PC12",
+      "name": "Evidence completion and preservation",
+      "status": "not_performed",
+      "criteria_source": "proposal table and PC09 route"
+    }
+  ],
+  "route": {
+    "id": "PC09",
+    "steps": [
+      "fresh launch/controller-driven discovery profile",
+      "map/journal initialization",
+      "herb identification and cancellation",
+      "wagon tool-gated clue",
+      "controller-driven recovery profile",
+      "shrine inscription",
+      "garden preparation/batch",
+      "patient treatment/testimony",
+      "Sage consultation",
+      "save/process restart/load/persisted profile/movement"
+    ],
+    "ranges_pixels": {
+      "station": 48,
+      "patient": 64,
+      "sage": 64
+    },
+    "no_assistance_inside_gameplay_or_settings_segments": true,
+    "seeded_progress_allowed": false,
+    "teleport_or_direct_controller_calls_allowed": false,
+    "full_opening_dialogue_playability_claimed": false
+  },
+  "evidence_contract": {
+    "root": "input-direction/physical-controls-review",
+    "files": {
+      "authority.json": [
+        "owner_statement",
+        "date",
+        "session_id",
+        "confirmed_devices",
+        "confirmed_host",
+        "allowed_operations",
+        "operator"
+      ],
+      "session.json": [
+        "commit",
+        "product_clean",
+        "executable_sha256",
+        "godot_version",
+        "dotnet_version",
+        "os_version",
+        "os_build",
+        "architecture",
+        "computer_model_chip",
+        "keyboard_model_layout_connection",
+        "mouse_model_buttons_connection",
+        "controller_model_firmware_connection",
+        "godot_controller_name_guid_mapping",
+        "user_data_isolation",
+        "launch_command",
+        "check_flags_unset",
+        "viewport_display_scale",
+        "started_at",
+        "ended_at"
+      ],
+      "results.json": [
+        "case_id",
+        "status",
+        "expected",
+        "observed",
+        "input_source",
+        "devices",
+        "timestamp",
+        "media",
+        "assistance",
+        "failure_first_attempt",
+        "repeat_outcome"
+      ],
+      "route.json": [
+        "step",
+        "profile",
+        "status",
+        "timestamp",
+        "media",
+        "physical_input",
+        "assistance",
+        "ordinary_state_observed",
+        "restart_boundary"
+      ],
+      "profiles/discovery.json": [
+        "complete_actual_29_action_saved_document"
+      ],
+      "profiles/recovery.json": [
+        "complete_actual_29_action_saved_document"
+      ],
+      "captures/": [
+        "synchronized_screen_and_controller_hands_media",
+        "settings_at_both_window_sizes",
+        "route_outcomes",
+        "capture_and_disconnect_outcomes"
+      ],
+      "launch.log": [
+        "ordinary_native_launch",
+        "no_injected_check_events"
+      ],
+      "preservation.json": [
+        "owner_data_untouched",
+        "editor_sha256_before_after",
+        "closed_owners_unchanged",
+        "disposable_data_cleanup"
+      ],
+      "README.md": [
+        "results_and_exact_limits",
+        "failures_and_unperformed_cases",
+        "support_claim_boundary"
+      ],
+      "manifest.json": [
+        "relative_path",
+        "size_bytes",
+        "sha256",
+        "decompressed_sha256_if_compressed"
+      ],
+      "device-intake.gd": [
+        "retained_read_only_probe_source",
+        "no_injected_input_or_product_mutation"
+      ],
+      "device-intake.json": [
+        "physical_device_name_guid_recognition",
+        "labeled_button_axis_observations",
+        "connection_events",
+        "operator_timestamps"
+      ]
+    },
+    "allowed_statuses": [
+      "pass",
+      "fail",
+      "not_performed"
+    ],
+    "route_provenance": "synchronized physical hands/controller and native screen; assistance explicitly recorded",
+    "raw_evidence_immutable": true,
+    "exclude": [
+      "credentials",
+      "typed_dialogue",
+      "serial_numbers",
+      "account_names",
+      "unrelated_desktop_content"
+    ]
+  },
+  "completion": {
+    "evaluation": "all 12 cases accounted for, including honest failures/unperformed, immutable manifest and finite review",
+    "qualification": "all cases and every PC09 step pass; exact provenance and physical input media complete",
+    "roadmap_checkbox": "remains open absent owner-approved supported-device/platform matrix"
+  },
+  "next_grant": {
+    "slice_id": "phase11-physical-controls-evaluation-execution",
+    "status": "missing",
+    "required_confirmation": [
+      "actual KB01/M01 models and connections",
+      "controller model/USB connection",
+      "exact host OS/build and computer",
+      "local human operator and isolated data method"
+    ],
+    "allowed_operations": [
+      "ordinary native runs",
+      "explicit UI preference/save writes to disposable data",
+      "USB disconnect/reconnect",
+      "focus away/back",
+      "screen/device captures",
+      "bounded evidence documentation and standing publication",
+      "disposable read-only Godot device-intake probe and retained source/report; no Main or injected input"
+    ],
+    "excluded": [
+      "runtime/source changes",
+      "controller mappings/driver installation",
+      "OS or firmware setup",
+      "Bluetooth pairing",
+      "closed-owner audits",
+      "reader or dialogue certification",
+      "executable release/install claim",
+      "other hardware/platform expansion"
+    ]
+  },
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "reused_product_evidence": "unchanged accepted dialogue/controls verification; no full quality rerun for this prose-only planning slice"
+}
