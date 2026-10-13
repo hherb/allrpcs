@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "I will try and procure some controller / joystick. For now, all I have is this macbook pro with trackpad and keyboard.  We can take on a different slice from the roadmap in the meantime",
+  "decision": "defer_physical_controls_execution_and_select_other_roadmap_work",
+  "available_inventory": {
+    "computer": "MacBook Pro",
+    "input_devices": [
+      "built-in keyboard",
+      "built-in trackpad"
+    ],
+    "controller_or_joystick": "not currently available",
+    "ordinary_mouse": "not reported available"
+  },
+  "physical_evaluation_performed": false,
+  "resumption": "owner confirms suitable controller/session inventory and authorizes actual physical evaluation; trackpad is not recorded as ordinary mouse qualification",
+  "closed_proposal": {
+    "path": "input-direction/physical-controls-owner-scope.json",
+    "sha256": "a0e305e78b36910ec355298050cd0c30bebd7264441f092a4eab6fd9ba048c74"
+  }
+}

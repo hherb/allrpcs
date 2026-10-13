@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "status": "documentation_complete_source_verified",
+  "slice_id": "phase11-privacy-provider-disclosures-documentation",
+  "baseline_commit": "fa27ae26289289d7f7449c5295610a5595adecf9",
+  "owner_direction": {
+    "path": "input-direction/physical-controls-deferral.json",
+    "sha256": "263b60a54b73cba559df183eb1d90ad6fd9aa3d4c2a41eced0c87f116e3063f9"
+  },
+  "roadmap_item": "- [ ] Prepare release notes, privacy information, model-provider disclosures, and known\n  limitations.",
+  "boundary": "Current-source privacy/provider documentation only; no provider traffic, credentials/player-data reads, speech or runtime changes, legal compliance or release certification.",
+  "documents": [
+    {
+      "path": "release-direction/privacy.md",
+      "sha256": "0df640676191cdf57fec9476368d9179ab8841d6b822797c9d718d293baacfef"
+    },
+    {
+      "path": "release-direction/model-providers.md",
+      "sha256": "70819f01da998d5cd671abf8dbff695d61bffe95b1eca94fffb8da50f2e9902b"
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "game/AudioSettingsStorageController.cs",
+      "sha256": "e4250c020dbf986e0f440a1d017d658059eefbc24cd6aae4947f174d6b8441b8"
+    },
+    {
+      "path": "game/CharacterModelSettingsController.cs",
+      "sha256": "81dd8d502ee53dc054ddd28eb63f515f2fe06b2815f37f3e121f0f90d403faef"
+    },
+    {
+      "path": "game/CharacterModelSettingsStorageController.cs",
+      "sha256": "1f56b9f1af918d0a49f78614dce9763fae1c2f79549b755ce9a73660dc24fdd4"
+    },
+    {
+      "path": "game/ControlSettingsStorageController.cs",
+      "sha256": "950e275259c3f967ff647a60f9a584ced7194dd7d2c8c5ecfce9b60371ad366c"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "07f86cf7a4696a84d1fc37a9455e5b99791330057da71a5eed2b542014ac48b4"
+    },
+    {
+      "path": "game/OpenAiCredentialController.cs",
+      "sha256": "19c1d3e7986a6276bde4f1610985942980fd71623bef3a4a0da418829082922d"
+    },
+    {
+      "path": "game/SaveDocumentStorageController.cs",
+      "sha256": "351e8c8adadba7294fa3fe33340229e0f3ff02e378d2977657aa3237fc59789e"
+    },
+    {
+      "path": "game/TemporaryCharacterModelCompositionController.cs",
+      "sha256": "9d9605105c7a4c1b5c4e68935323778db46c4297bdc730fa14d873539430f874"
+    },
+    {
+      "path": "game/TemporaryCharacterModelSettingsPanel.cs",
+      "sha256": "fa109c4d0f658fc494eafc32dc5bd2995756ee7133459408005347a7c71225ff"
+    },
+    {
+      "path": "game/TemporaryCharacterModelSource.cs",
+      "sha256": "6274a3ec45c99bd147c3f783060d12eb07921b963d8bb196456c3e68de3d0c62"
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-verification.json",
+      "sha256": "08eeacfe50c9f396cba7190946e1ad60bc22472cb664a3cab4cf1566ea76609b"
+    },
+    {
+      "path": "input-direction/physical-controls-deferral.json",
+      "sha256": "263b60a54b73cba559df183eb1d90ad6fd9aa3d4c2a41eced0c87f116e3063f9"
+    },
+    {
+      "path": "input-direction/remapping-runtime-verification.json",
+      "sha256": "043f02affadf401c7e29303908b614e7cf58b7607bd73dfed0b352a30ed577f3"
+    },
+    {
+      "path": "scripts/pocket-speech-worker.py",
+      "sha256": "37fbfcb47833783d84a0984cd0f123f237eceaaa3285038f70ee24c9ac3f40d9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/README.md",
+      "sha256": "59414540610e91f08cd106aca844952c94fa7b1a710c3f58942839df8a3bdb9e"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelGenerationController.cs",
+      "sha256": "347d1c18567f13f7bd31dad1c290855d1e48aabe091ec48d43a423c1bb8775d7"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelGenerationControllerDiagnostics.cs",
+      "sha256": "97e0cc5c91d2cc7ddc44d67c055151c45b9d451fde75a75baffd9f23d320be38"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelGenerationDiagnostic.cs",
+      "sha256": "a4ebc2c39b290752228becd848db52d67517a9b0bacc2170a151c5ee8ba7513b"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageConcealmentRequestContent.cs",
+      "sha256": "3be817a1748577828fa45cafb792b722b8cc659500d6ea2af053632d8b4156e5"
+    },
+    {
+      "path": "src/Infrastructure/Characters/OpenAiCharacterObjectSabotageConcealmentRequestSerializer.cs",
+      "sha256": "278dd1f55fde70e0fba28a08830786d098a218340c4c3c7b6b76d63b87735fab"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/AnthropicCharacterModel.cs",
+      "sha256": "b87f66f44fa86fb4c9f1ad1ad26a220d0cbdea77d33dc2579c412b814a4e2e5d"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/AnthropicCharacterModelConnectionTester.cs",
+      "sha256": "75ec603c232b3547436ddd7d483a0f83b24d17b362d06a583354e2756da28780"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/AnthropicCharacterModelRequestSerializer.cs",
+      "sha256": "0b547c372dad9ddeaad7c1bc00bf392a2bde5619a244f692ad54bf56791156d0"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/CharacterModelRequestContent.cs",
+      "sha256": "0b8138b764a672fdb6e0c526e9ef514cb62c56eced6631cf006b057a898d978d"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/CharacterModelSettingsJsonSerializer.cs",
+      "sha256": "643bcec5cb5503106bf43683429595a5369427a73584785366dd2e6f8a4efba2"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/CharacterTurnParticipationRequestContent.cs",
+      "sha256": "6a509774554d88e9564719a8e930fd8592d8a0a9fcc7598561026b26b339e189"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/LinuxSecretServiceOpenAiCredentialStore.cs",
+      "sha256": "d3096c9e647d4fbb596b679da517de14793e49df6fd7b4990de2fd4663bd5032"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/MacOsOpenAiCredentialStore.cs",
+      "sha256": "ee5175e2ea64b8741ae2fc5ba1c55074e9a28c39a52b3b556e2cde1bd8eb4943"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterModelConnectionTester.cs",
+      "sha256": "6925b7b12348631f294585631a57b58feb710257d5d2875b933a12bed3a7274f"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs",
+      "sha256": "225ad64e46ac448e4e92298f8c398161000123b2bb9122f9d6859dea3f981666"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaEndpoint.cs",
+      "sha256": "0e74e75dfa81813aa9d2ad16b14732dccaf607b35da1e062c47bad522ddfb79c"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiCharacterModel.cs",
+      "sha256": "fa09cc5d6f8925dfef29c990dab1bcdc5d107da63ccedc276fbc00a7004d633f"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiCharacterModelConnectionTester.cs",
+      "sha256": "98b3a2d45f99599bc727a99ac78119e1068e9deca4c94e00aa54087757bc3d02"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiCharacterModelRequestSerializer.cs",
+      "sha256": "1936ba04dd86e7e3525037fde70cc8808ee1d9a24d5f4a321d0ba69182bae3eb"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiCharacterTurnParticipationRequestSerializer.cs",
+      "sha256": "489036abfdef1dbba239c9befb05c5e7688bd7196edf09c09dc1ccd96629dfba"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiEndpoint.cs",
+      "sha256": "a9aff2809cfed0554131c05c0a3e2705215532df1a39ccbc0aaf6cdb9ac68a19"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/WindowsOpenAiCredentialStore.cs",
+      "sha256": "34b5874ef143be3c3067dd287a3782efc6baf2baf1faa1fd97a29a8e773b9fae"
+    },
+    {
+      "path": "src/Infrastructure/Persistence/CharacterMemoryJsonWriter.cs",
+      "sha256": "32f46af4c5de01140de95e32128c89a111feae12ff4f68027d602e7a41e756b9"
+    },
+    {
+      "path": "src/Infrastructure/Persistence/FileSaveDocumentStore.cs",
+      "sha256": "65ec72a41f8172244eb48962572af15ce632f7131af7c77602d67dff793669a1"
+    },
+    {
+      "path": "src/Infrastructure/Persistence/SaveSnapshotJsonSerializer.cs",
+      "sha256": "435a7c7b723d4a4197af445a7ddfa54427ce78bb5b25982f3ece65b5049e4d37"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechWorkerProcessFactory.cs",
+      "sha256": "d96bbec68f696aa0164531d74b8cbd9a06c0c3e194fd741b58bab2446e039527"
+    }
+  ],
+  "claims": [
+    {
+      "id": "D01",
+      "topic": "local_data",
+      "statement": "Explicit local JSON save/preferences contain recorded game/conversation/memory data and provider/model settings; save/settings file implementation performs no application encryption.",
+      "source_paths": [
+        "game/SaveDocumentStorageController.cs",
+        "src/Infrastructure/Persistence/SaveSnapshotJsonSerializer.cs",
+        "src/Infrastructure/Persistence/CharacterMemoryJsonWriter.cs",
+        "src/Infrastructure/Persistence/FileSaveDocumentStore.cs",
+        "game/CharacterModelSettingsStorageController.cs",
+        "src/Infrastructure/Dialogue/CharacterModelSettingsJsonSerializer.cs",
+        "game/AudioSettingsStorageController.cs",
+        "game/ControlSettingsStorageController.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D02",
+      "topic": "composition",
+      "statement": "Ordinary reply composition handles OpenAI and loopback Ollama; Anthropic yields no ordinary binding. The unavailable fallback returns failure with no generated response.",
+      "source_paths": [
+        "game/TemporaryCharacterModelCompositionController.cs",
+        "game/TemporaryCharacterModelSource.cs",
+        "game/CharacterModelSettingsController.cs",
+        "game/TemporaryCharacterModelSettingsPanel.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D03",
+      "topic": "dialogue_requests",
+      "statement": "Ordinary dialogue request serializes current utterance, character context/model and structured instructions; OpenAI Responses uses store=false and authentication headers; local Ollama endpoint is numeric loopback.",
+      "source_paths": [
+        "src/Infrastructure/Dialogue/CharacterModelRequestContent.cs",
+        "src/Infrastructure/Dialogue/OpenAiCharacterModelRequestSerializer.cs",
+        "src/Infrastructure/Dialogue/OpenAiCharacterModel.cs",
+        "src/Infrastructure/Dialogue/OpenAiEndpoint.cs",
+        "src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs",
+        "src/Infrastructure/Dialogue/OllamaEndpoint.cs",
+        "src/Infrastructure/Dialogue/AnthropicCharacterModelRequestSerializer.cs",
+        "src/Infrastructure/Dialogue/AnthropicCharacterModel.cs",
+        "src/Application/Dialogue/CharacterModelGenerationController.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D04",
+      "topic": "role_requests",
+      "statement": "Additional OpenAI participation/role requests can send heard dialogue and fictional character backgrounds/goals and eligible action/object/evidence context.",
+      "source_paths": [
+        "src/Infrastructure/Dialogue/OpenAiCharacterTurnParticipationRequestSerializer.cs",
+        "src/Infrastructure/Dialogue/CharacterTurnParticipationRequestContent.cs",
+        "src/Infrastructure/Characters/OpenAiCharacterObjectSabotageConcealmentRequestSerializer.cs",
+        "src/Infrastructure/Characters/CharacterObjectSabotageConcealmentRequestContent.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D05",
+      "topic": "credentials",
+      "statement": "Explicit UI save/delete use OS-specific OpenAI credential stores; input cleared after submission, no process-memory-erasure or key-revocation guarantee.",
+      "source_paths": [
+        "game/OpenAiCredentialController.cs",
+        "src/Infrastructure/Dialogue/MacOsOpenAiCredentialStore.cs",
+        "src/Infrastructure/Dialogue/LinuxSecretServiceOpenAiCredentialStore.cs",
+        "src/Infrastructure/Dialogue/WindowsOpenAiCredentialStore.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D06",
+      "topic": "connection_tests",
+      "statement": "Adapter model-access tests send authentication/model identifier, not player utterance or a generation request; ordinary Anthropic composition remains absent.",
+      "source_paths": [
+        "src/Infrastructure/Dialogue/OpenAiCharacterModelConnectionTester.cs",
+        "src/Infrastructure/Dialogue/OllamaCharacterModelConnectionTester.cs",
+        "src/Infrastructure/Dialogue/AnthropicCharacterModelConnectionTester.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D07",
+      "topic": "diagnostics",
+      "statement": "Generation diagnostic value has provider/status/failure/timing/token fields; optional caller-owned recording. Inspected ordinary composition installs no diagnostic telemetry sink. Explicit credit links open a browser.",
+      "source_paths": [
+        "src/Application/Dialogue/CharacterModelGenerationDiagnostic.cs",
+        "src/Application/Dialogue/CharacterModelGenerationControllerDiagnostics.cs",
+        "game/TemporaryCharacterModelCompositionController.cs",
+        "game/MaterialAudioCreditsPanel.cs"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D08",
+      "topic": "speech",
+      "statement": "Separate Pocket text-to-PCM worker uses local assets/offline flags, without ordinary game playback or microphone recognition; no OS-level network isolation has been proved.",
+      "source_paths": [
+        "src/Infrastructure/Speech/PocketSpeechWorkerProcessFactory.cs",
+        "scripts/pocket-speech-worker.py",
+        "speech-direction/pocket-tts-service/README.md"
+      ],
+      "evidence_kind": "source_inspection"
+    },
+    {
+      "id": "D09",
+      "topic": "limits",
+      "statement": "Owner deferred controller evaluation with keyboard/trackpad-only MacBook Pro inventory; native reader/physical-device and executable release claims remain unperformed or limited.",
+      "source_paths": [
+        "input-direction/physical-controls-deferral.json",
+        "input-direction/dialogue-accessibility-runtime-verification.json",
+        "input-direction/remapping-runtime-verification.json"
+      ],
+      "evidence_kind": "source_inspection"
+    }
+  ],
+  "committed_project_config": {
+    "git_ref": "fa27ae26289289d7f7449c5295610a5595adecf9:game/project.godot",
+    "sha256": "0ce582324fb3bde4781052556f934f5c9bf7d3dc8ff58ad6b070ccf3db459c77",
+    "project_name": "Allrpcs",
+    "custom_user_directory": false
+  },
+  "user_data_directory_reference": {
+    "kind": "installed_GodotSharp_XML_API",
+    "method": "Godot.OS.GetUserDataDir",
+    "path": "/Applications/Godot_mono.app/Contents/Resources/GodotSharp/Api/Debug/GodotSharp.xml",
+    "sha256": "0f6aa2a7dbef0e1267a22ef84789df3f60bf760136cb4d4da0c4948e662529bf",
+    "scope": "default macOS project user-data path only; not a packaged installation test"
+  },
+  "privacy_limits": {
+    "provider_policy_retention_training_location_pricing": "not evaluated or promised",
+    "network_traffic_capture_performed": false,
+    "legal_compliance_certified": false,
+    "data_deletion_performed": false,
+    "key_zeroization_certified": false,
+    "OS_backup_and_crash_reporting_controlled": false
+  },
+  "no_uploader_finding": {
+    "kind": "source_inspection_inference",
+    "scope": "inspected game/source composition; no traffic capture or third-party-library/OS guarantee",
+    "search": "source search for analytics/telemetry/crash upload plus inspection of provider and diagnostic composition"
+  },
+  "validation": {
+    "source_document_hashes": "passed",
+    "claim_sources_exist_and_bound": "passed",
+    "relative_document_links": "passed",
+    "continuation_checker_and_11_regression_probes": "passed",
+    "git_diff_check": "passed",
+    "product_source_or_CI_changed": false,
+    "live_provider_requests": "none",
+    "runtime_tests": "not rerun for documentation-only change"
+  },
+  "reused_quality_evidence": {
+    "path": "input-direction/dialogue-accessibility-runtime-review/quality/summary.json",
+    "sha256": "2b965927a9473296ac61c1f673b8c3b4a89927f59b9395bf63c8d515e2fd7e47"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "preserved_editor": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "roadmap_completion": "Privacy/provider subdeliverables complete; release-specific notes/known limitations and actual release prerequisites remain open."
+}

@@ -310,7 +310,9 @@ is implemented and verified by 188 root quality stages, 5,576 unit tests, genuin
 input routing, native 1280×720/1920×1080 UI and three mounted resource presets. The finite
 implementation is closed. This checkbox remains open until ordinary physical keyboard, mouse and
 named controller evidence establishes the supported-device claim. The [physical-device evaluation proposal](input-direction/physical-controls-owner-scope.md)
-is complete; its PC-MAC-01 hardware/session grant and actual outcomes remain missing. Controller-only opening-scenario,
+is complete. The owner [deferred its execution](input-direction/physical-controls-deferral.json) while procuring a controller;
+only a MacBook Pro keyboard/trackpad is currently available. Its hardware/session grant and actual outcomes
+remain missing. Controller-only opening-scenario,
 broad screen-reader and executable-release certification remain unclaimed. The [dialogue-panel keyboard/accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
 has now been implemented under the exact owner grant. The [finite dialogue review](input-direction/dialogue-accessibility-runtime-review/README.md)
 retains actual Main keyboard routing at 1280×720/1920×1080, default/remapped focus and cancel,
@@ -322,6 +324,14 @@ Acceptance:
 
 - [ ] Signed or explicitly documented unsigned release candidates install, launch, save, load,
   configure supported providers, and complete the opening scenario on every claimed platform.
+
+Privacy/provider disclosure checkpoint (2026-10-13): current-source [privacy information](release-direction/privacy.md)
+and [model-provider disclosures](release-direction/model-providers.md) now document local data, credential
+controls, outbound dialogue/role context, diagnostics and deletion. Their [source record](release-direction/privacy-provider-disclosures.json)
+retains the ordinary OpenAI/Ollama composition and uninstalled Anthropic/offline-conversation limits.
+This is documentation evidence, not legal compliance, provider policy, live service or release certification.
+The release-information checkbox remains open for development/release notes, known limitations and
+actual release-specific inputs; physical controller execution stays deferred.
 
 ## Phase 12 — Deferred expansions
 

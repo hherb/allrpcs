@@ -850,6 +850,24 @@
           "sha256": "a0e305e78b36910ec355298050cd0c30bebd7264441f092a4eab6fd9ba048c74"
         }
       ]
+    },
+    {
+      "id": "phase11-privacy-provider-disclosures-documentation",
+      "reason": "Missing source-bound privacy/provider documentation delivered. Do not repeat the unchanged disclosure inventory; refresh only for changed inputs or explicit owner request. Release notes/known limitations remain distinct deliverables.",
+      "evidence": [
+        {
+          "path": "release-direction/privacy.md",
+          "sha256": "0df640676191cdf57fec9476368d9179ab8841d6b822797c9d718d293baacfef"
+        },
+        {
+          "path": "release-direction/model-providers.md",
+          "sha256": "70819f01da998d5cd671abf8dbff695d61bffe95b1eca94fffb8da50f2e9902b"
+        },
+        {
+          "path": "release-direction/privacy-provider-disclosures.json",
+          "sha256": "cfab35bed12d5d9f0ea2d47cc7e47f1ce41b53ba9d984170930effe965723f31"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1190,6 +1208,24 @@
           "sha256": "a0e305e78b36910ec355298050cd0c30bebd7264441f092a4eab6fd9ba048c74"
         }
       ]
+    },
+    {
+      "id": "privacy-provider-disclosures-documentation",
+      "reason": "Missing source-bound privacy/provider documentation delivered. Do not repeat the unchanged disclosure inventory; refresh only for changed inputs or explicit owner request. Release notes/known limitations remain distinct deliverables.",
+      "evidence": [
+        {
+          "path": "release-direction/privacy.md",
+          "sha256": "0df640676191cdf57fec9476368d9179ab8841d6b822797c9d718d293baacfef"
+        },
+        {
+          "path": "release-direction/model-providers.md",
+          "sha256": "70819f01da998d5cd671abf8dbff695d61bffe95b1eca94fffb8da50f2e9902b"
+        },
+        {
+          "path": "release-direction/privacy-provider-disclosures.json",
+          "sha256": "cfab35bed12d5d9f0ea2d47cc7e47f1ce41b53ba9d984170930effe965723f31"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1265,23 +1301,46 @@
     }
   ],
   "active_slice": {
-    "id": "phase11-physical-controls-evaluation-execution",
-    "title": "Evaluate the named physical controls session against the closed proposal",
+    "id": "phase11-development-release-notes-limitations-documentation",
+    "title": "Prepare development checkpoint release notes and known limitations",
     "status": "ready",
-    "workstream": "physical-controls-evaluation-execution",
-    "authority_status": "new_physical_session_grant_and_confirmed_device_inventory_required",
-    "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
-    "missing_deliverable": "Actual PC-MAC-01 physical keyboard/mouse and named-controller evidence, including the controller-only opening recovery/discovery route, exact device/OS/runtime provenance and finite case results. No physical evaluation has yet been performed.",
-    "instructions": "Use the closed physical-controls-owner-scope proposal. Obtain the one concrete session grant and confirmed hardware/operator/isolation before execution; then complete its ordinary native cases and evidence in the same session. Do not replace physical events with synthetic input, reopen accepted controls/dialogue, or silently implement fixes.",
-    "completion_condition": "All 12 named cases accounted for with honest pass/fail/not-performed results, PC09 timeline, physical-input media, complete preference documents and hash-bound finite review; qualification requires all passes. Publish bounded evidence under standing authority.",
+    "workstream": "development-release-notes-limitations-documentation",
+    "authority_status": "documentation_only_under_owner_roadmap_continuation",
+    "roadmap_item": "- [ ] Prepare release notes, privacy information, model-provider disclosures, and known\n  limitations.",
+    "missing_deliverable": "A concise development-checkpoint change summary and separate known-limitations document, with current evidence/support boundaries and explicit unfinished release prerequisites. Privacy/provider disclosures are already complete.",
+    "instructions": "Prepare the two remaining release-information documents from current recorded checkpoints and source, linking the completed privacy/provider information unchanged. Do not re-audit accepted owners or imply a signed, installed, distributed or certified release. Keep hardware/controller execution deferred and speech work separately owned.",
+    "completion_condition": "Development checkpoint notes and known limitations with a concise source/evidence record are complete, internally verified, linked, closed and published. Actual versioned release notes and release certification await release inputs.",
     "outputs": [
-      "input-direction/physical-controls-review/authority.json",
-      "input-direction/physical-controls-review/session.json",
-      "input-direction/physical-controls-review/results.json",
-      "input-direction/physical-controls-review/manifest.json",
-      "input-direction/physical-controls-review/README.md"
+      "release-direction/development-notes.md",
+      "release-direction/known-limitations.md",
+      "release-direction/development-release-information.json"
     ],
-    "boundary": "Execution only after the named new physical session grant, confirmed device/host identities and local human operator; no runtime/controller mapping/OS setup, accepted-owner audits, other hardware/platform, broad accessibility or executable release scope."
+    "boundary": "Documentation only; no release/version/tag/package/deployment, runtime changes, provider/hardware/reader execution, frozen evidence edits or concurrent speech implementation."
   },
-  "deferred_slices": []
+  "deferred_slices": [
+    {
+      "id": "phase11-physical-controls-evaluation-execution",
+      "title": "Evaluate the named physical controls session against the closed proposal",
+      "status": "deferred",
+      "workstream": "physical-controls-evaluation-execution",
+      "authority_status": "new_physical_session_grant_and_confirmed_device_inventory_required",
+      "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
+      "missing_deliverable": "Actual PC-MAC-01 physical keyboard/mouse and named-controller evidence, including the controller-only opening recovery/discovery route, exact device/OS/runtime provenance and finite case results. No physical evaluation has yet been performed.",
+      "instructions": "Use the closed physical-controls-owner-scope proposal. Obtain the one concrete session grant and confirmed hardware/operator/isolation before execution; then complete its ordinary native cases and evidence in the same session. Do not replace physical events with synthetic input, reopen accepted controls/dialogue, or silently implement fixes.",
+      "completion_condition": "All 12 named cases accounted for with honest pass/fail/not-performed results, PC09 timeline, physical-input media, complete preference documents and hash-bound finite review; qualification requires all passes. Publish bounded evidence under standing authority.",
+      "outputs": [
+        "input-direction/physical-controls-review/authority.json",
+        "input-direction/physical-controls-review/session.json",
+        "input-direction/physical-controls-review/results.json",
+        "input-direction/physical-controls-review/manifest.json",
+        "input-direction/physical-controls-review/README.md"
+      ],
+      "boundary": "Execution only after the named new physical session grant, confirmed device/host identities and local human operator; no runtime/controller mapping/OS setup, accepted-owner audits, other hardware/platform, broad accessibility or executable release scope.",
+      "deferral_reason": "Owner has MacBook Pro keyboard/trackpad only; controller procurement pending. Owner requested a different roadmap slice.",
+      "owner_deferral": {
+        "path": "input-direction/physical-controls-deferral.json",
+        "sha256": "263b60a54b73cba559df183eb1d90ad6fd9aa3d4c2a41eced0c87f116e3063f9"
+      }
+    }
+  ]
 }

@@ -18,8 +18,15 @@ stays closed and its unmodified validator runs in published baseline `1b0cab40`.
 support claim remains missing. The [physical-device proposal](input-direction/physical-controls-owner-scope.md) is complete and
 source-bound. PC-MAC-01 names a proposed USB Xbox model 1914 and current macOS/arm64 host,
 with mandatory actual keyboard/mouse/device intake, 12 finite cases and a controller-only opening
-recovery/discovery route. No physical evaluation was performed. Execution needs one new session
-grant, confirmed inventory and a local human operator; preserve accepted controls/dialogue.
+recovery/discovery route. No physical evaluation was performed. The owner deferred execution while procuring a controller;
+only the MacBook Pro built-in keyboard and trackpad are available. Retain the
+[deferral/inventory record](input-direction/physical-controls-deferral.json). Resume only with
+confirmed hardware and a physical-session grant. The [privacy information](release-direction/privacy.md) and
+[provider disclosures](release-direction/model-providers.md) are now complete with a
+[source-bound record](release-direction/privacy-provider-disclosures.json). Ordinary composition
+supports OpenAI/local Ollama; Anthropic and a functioning offline conversational fallback remain
+uninstalled. The next documentation boundary prepares development notes/known limitations.
+Preserve accepted controls/dialogue and separately owned speech work.
 All earlier art/audio/domain scopes remain closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md).
 
@@ -29,34 +36,32 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase11-physical-controls-evaluation-execution — Evaluate the named physical controls session against the closed proposal** (ready).
+**phase11-development-release-notes-limitations-documentation — Prepare development checkpoint release notes and known limitations** (ready).
 
-Roadmap item: - [ ] Complete remappable keyboard, mouse, and controller controls.
+Roadmap item: - [ ] Prepare release notes, privacy information, model-provider disclosures, and
+known   limitations.
 
-Missing deliverable: Actual PC-MAC-01 physical keyboard/mouse and named-controller evidence,
-including the controller-only opening recovery/discovery route, exact device/OS/runtime provenance
-and finite case results. No physical evaluation has yet been performed.
+Missing deliverable: A concise development-checkpoint change summary and separate known-limitations
+document, with current evidence/support boundaries and explicit unfinished release prerequisites.
+Privacy/provider disclosures are already complete.
 
-Use the closed physical-controls-owner-scope proposal. Obtain the one concrete session grant and
-confirmed hardware/operator/isolation before execution; then complete its ordinary native cases and
-evidence in the same session. Do not replace physical events with synthetic input, reopen accepted
-controls/dialogue, or silently implement fixes.
+Prepare the two remaining release-information documents from current recorded checkpoints and
+source, linking the completed privacy/provider information unchanged. Do not re-audit accepted
+owners or imply a signed, installed, distributed or certified release. Keep hardware/controller
+execution deferred and speech work separately owned.
 
-Done when: All 12 named cases accounted for with honest pass/fail/not-performed results, PC09
-timeline, physical-input media, complete preference documents and hash-bound finite review;
-qualification requires all passes. Publish bounded evidence under standing authority.
+Done when: Development checkpoint notes and known limitations with a concise source/evidence record
+are complete, internally verified, linked, closed and published. Actual versioned release notes and
+release certification await release inputs.
 
 Expected outputs:
 
-- `input-direction/physical-controls-review/authority.json`
-- `input-direction/physical-controls-review/session.json`
-- `input-direction/physical-controls-review/results.json`
-- `input-direction/physical-controls-review/manifest.json`
-- `input-direction/physical-controls-review/README.md`
+- `release-direction/development-notes.md`
+- `release-direction/known-limitations.md`
+- `release-direction/development-release-information.json`
 
-Boundary: Execution only after the named new physical session grant, confirmed device/host
-identities and local human operator; no runtime/controller mapping/OS setup, accepted-owner audits,
-other hardware/platform, broad accessibility or executable release scope.
+Boundary: Documentation only; no release/version/tag/package/deployment, runtime changes,
+provider/hardware/reader execution, frozen evidence edits or concurrent speech implementation.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
