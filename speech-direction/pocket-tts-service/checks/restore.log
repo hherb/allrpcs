@@ -1,0 +1,6 @@
+  Determining projects to restore...
+  Restored /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj (in 97 ms).
+  Restored /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj (in 220 ms).
+  Restored /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/tests/Domain.Tests/Allrpcs.Domain.Tests.csproj (in 5 ms).
+  Restored /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/game/Allrpcs.Game.csproj (in 2 ms).
+  5 of 9 projects are up-to-date for restore.

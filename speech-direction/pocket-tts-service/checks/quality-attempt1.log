@@ -1,0 +1,33 @@
+RUN: continuation
+PASS: continuation
+RUN: art-1
+PASS: art-1
+RUN: art-2
+PASS: art-2
+RUN: art-3
+PASS: art-3
+RUN: art-4
+PASS: art-4
+RUN: art-5
+PASS: art-5
+RUN: art-6
+PASS: art-6
+RUN: art-7
+PASS: art-7
+RUN: art-8
+PASS: art-8
+RUN: art-9
+PASS: art-9
+RUN: boundary-buses
+PASS: boundary-buses
+Traceback (most recent call last):
+  File "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/quality.py", line 1206, in <module>
+    main(arguments.resume_smoke, arguments.finish_interior)
+  File "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/quality.py", line 386, in main
+    with snapshot(revision, editor=name != 'buses') as (tree, env):
+  File "/Users/hherb/.pyenv/versions/3.12.3/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/quality.py", line 206, in snapshot
+    raise ValueError('Recorded editor exception changed')
+ValueError: Recorded editor exception changed

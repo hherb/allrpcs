@@ -255,7 +255,7 @@ Acceptance:
 ## Phase 10 — Voice-ready interaction and optional ASR/TTS
 
 - [ ] Define `ISpeechRecognizer` independently of any provider.
-- [ ] Define `ISpeechSynthesizer` independently of any provider.
+- [x] Define `ISpeechSynthesizer` independently of any provider.
 - [ ] Implement microphone permission and capture behind a platform-neutral boundary.
 - [ ] Implement push-to-talk first.
 - [ ] Add partial and final transcript events.
@@ -269,6 +269,13 @@ Acceptance:
 - [ ] Add provider alternatives only after the common path is verified.
 - [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy
   input.
+
+Pocket TTS service checkpoint (2026-10-13): the [first local TTS component](speech-direction/pocket-tts-service/README.md)
+provides a provider-neutral PCM stream contract, a persistent offline English/German CPU worker,
+request cancellation/recovery and a runnable C# service probe on M3 Max. The combined ASR/TTS
+checkbox remains open because ASR is not implemented. Game playback, character casting,
+expressive acting qualification, microphone input, packaged deployment and actual M1/other-platform
+verification remain. This checkpoint does not change the concurrent controls continuation queue.
 
 Acceptance:
 

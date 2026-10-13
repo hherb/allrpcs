@@ -1,0 +1,1922 @@
+{
+  "date": "2026-10-13",
+  "status": "completed_first_tts_service_component",
+  "owner_request": "owner-request.json",
+  "owner_acceptance_of_new_acting_or_casting_inferred": false,
+  "base_product_revision": "58af0371c1ac777cf0829ad2b7fd47915b9a5c27",
+  "scope": "Provider-neutral synthesis contract and persistent offline Pocket CPU worker, verified on current M3 Max; no game-scene integration.",
+  "verified": {
+    "focused_speech_tests": 21,
+    "solution_unit_tests": 5511,
+    "required_quality_stage_names": 177,
+    "quality_status": "all_required_checks_completed_with_recorded_recovery",
+    "actual_bilingual_streaming": true,
+    "cancel_reuse_and_early_exit": true,
+    "worker_error_recovery": true,
+    "all_workers_exited": true,
+    "wav_hashes_and_format": true,
+    "missing_assets_and_runtime": true,
+    "python_compile": true
+  },
+  "unverified": [
+    "Main-scene speech playback and fallback UI",
+    "Expressive acting and bilingual character casting",
+    "Microphone/ASR",
+    "Packaged deployment",
+    "Game and local LLM coexistence budget",
+    "Physical M1 16 GB",
+    "Windows/Linux execution"
+  ],
+  "concurrent_controls_queue_preserved": true,
+  "retained_ignored_quality_directory": "artifacts/pocket-tts-service-quality-20261013",
+  "evidence_bindings": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "464dc684e76583f3fd4d724b878a42c2639d6ce9bba60eea1a2f847c1eb4f2c3"
+    },
+    {
+      "path": "scripts/pocket-speech-worker.py",
+      "sha256": "37fbfcb47833783d84a0984cd0f123f237eceaaa3285038f70ee24c9ac3f40d9"
+    },
+    {
+      "path": "speech-direction/model-decisions.json",
+      "sha256": "3db53704a5b123d82a47195e73ecc64a04f448d8c4d784bc6690a08a0254020f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/README.md",
+      "sha256": "59414540610e91f08cd106aca844952c94fa7b1a710c3f58942839df8a3bdb9e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/application-speech.log",
+      "sha256": "e46cb94f1422f301338569d809f5cd4c3b834cd7988169e3222cb9b6907d954a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/cold-import.log",
+      "sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/finish_herb_quality.py",
+      "sha256": "fc9278700fb0c3c428f6b97120b07b9e570394e4676a6dbd9885a5338a28a623"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/finish_quality.py",
+      "sha256": "5d25dc564f7bae5ac4116756575e4999c4932c1a29951edf75a4232515f1c3de"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/infrastructure-speech.log",
+      "sha256": "5817c52134cd6ae335e174b5941ed5ff0a5cce7badd94b8171592d65e784048d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/missing-assets.json",
+      "sha256": "9b523b6f7759a5bee9aa566b8e6264e9769831567119539d1ad69166e8844597"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/native-import-diagnosis.json",
+      "sha256": "e1be218150627d0b59b5779ee3b6af0c04b26587dd69f0f446d8865623467e70"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/prior-attempt-log-bindings.json",
+      "sha256": "4cf9785af0b4278fe33ac96e360390e93b2b58a04e258332acba3f5118bfd0c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/probe-build.log",
+      "sha256": "f17a8e16ee3c4d1c370edc2a8407ec2a73f2ab15b2df41e947548995f590900b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/probe-format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/01-herb-historical-restore-1.log.gz",
+      "sha256": "7211e8a1ccefbca60a0b76b400ea2b60522483f5d36ab00e260186e5372ff983"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/02-herb-historical-build-1.log.gz",
+      "sha256": "e8dc6401536ab616471ec8ffd666f09ded478d7dcb816dd92abd5b54ef9e1ea1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/03-herb-historical-import-1.log.gz",
+      "sha256": "aacc6bc312ef965f57f6bb9855099392a29194d42da524bbc00d38dc491b1a3c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/04-herb-focused-1.log.gz",
+      "sha256": "7c107b13cf23ef46933606b2b2a331d41fdbe0e5ab5f55ccdbdfaffdc5a40d73"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/05-boundary-herb-source-1.log.gz",
+      "sha256": "7d6fac96643d2576abfed70d153ff1dd933eccfe853e7fbd68aec232f9161848"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/06-herb-source-rejections-1.log.gz",
+      "sha256": "3b5f8a187c8390beade731425c701fbf0b1a2170c65bff67700e28e041a9d269"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/07-herb-validator-rejections-1.log.gz",
+      "sha256": "e6984c57ca1e659b6cce03f00a9622594d00651d175b656658a24b15302a7044"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/08-herb-near-default-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/09-herb-near-quiet-1.log.gz",
+      "sha256": "e061771e79b6268d3a72bdfdde3202d4194d0858b3704f321dfa05e904a56d5a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/10-herb-near-master-muted-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/11-herb-near-effects-muted-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/12-herb-near-missing-stream-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/13-herb-near-captions-off-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/14-herb-near-audio-disabled-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/15-herb-remote-default-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/16-herb-remote-quiet-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/17-herb-remote-master-muted-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/18-herb-remote-effects-muted-1.log.gz",
+      "sha256": "e061771e79b6268d3a72bdfdde3202d4194d0858b3704f321dfa05e904a56d5a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/19-herb-remote-missing-stream-1.log.gz",
+      "sha256": "1d54315c32053e9d4d6043ca3846162560928f681ae25883af13eb7dc1d5b00f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/20-herb-remote-captions-off-1.log.gz",
+      "sha256": "e061771e79b6268d3a72bdfdde3202d4194d0858b3704f321dfa05e904a56d5a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/21-herb-remote-audio-disabled-1.log.gz",
+      "sha256": "e061771e79b6268d3a72bdfdde3202d4194d0858b3704f321dfa05e904a56d5a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/22-herb-master-output-1.log.gz",
+      "sha256": "d06a4b22da74f4319c546bd69acd293279a619de26374f75c9bbdd959c097619"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/23-boundary-herb-reviewed-1.log.gz",
+      "sha256": "49d80018077545abb22b2aa5cc7fc54c12303f8632db9de294f3444c599f86c4"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-audio-disabled.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-audio-disabled.json.gz",
+      "sha256": "aede59b8c98093eed66b81606ecc84bbb7b59dfa3977324f9bbd1f0e57513d5d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-audio-disabled.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-captions-off.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-captions-off.json.gz",
+      "sha256": "c1db2c5640e4a4d9f50496906ffc35fb6673b4218e75887e2da6d31d24f30651"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-captions-off.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-default.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-default.json.gz",
+      "sha256": "a364d5f5e73882d9be0d6ac8cb61288799a92860b99df0804c6e85e89a4d789d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-default.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-effects-muted.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-effects-muted.json.gz",
+      "sha256": "fe0d82ac20bad0dabd72753b54705ff6e1bf344c0ef4c58c673b3873e14e617d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-effects-muted.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-master-muted.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-master-muted.json.gz",
+      "sha256": "a8f9bcb6282d33010f01cebbb7598682ab98130fb1ca150fe76a58866224190b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-master-muted.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-missing-stream.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-missing-stream.json.gz",
+      "sha256": "0f181607cf1d8acfcf2553755a760b649320b390c029c915c9866978500a7b22"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-missing-stream.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-quiet.json.gameplay.json.gz",
+      "sha256": "2c6a6a8156f01e9b3a0e4569a6f8af2a6916b872f5217f0ad94955f0a6b86b71"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-quiet.json.gz",
+      "sha256": "0e930c49d51f58217d0f6e63f58b3823ceee2b6f387144a25b746534fb42f9fa"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-near-quiet.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-audio-disabled.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-audio-disabled.json.gz",
+      "sha256": "915c0a3b7cf60f8ddddc61d63a72eff01d8110b01e5a44b963b9f2b60d4aa71b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-audio-disabled.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-captions-off.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-captions-off.json.gz",
+      "sha256": "db0ebc7ee9c75409a2d5ebbbeded0da64cb03f23e88a031cf86e8c9cd137a649"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-captions-off.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-default.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-default.json.gz",
+      "sha256": "85d9ade78ce2bcf6b613a06cb644ed2061aa43ab1754f32f5e9956442d7fe16d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-default.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-effects-muted.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-effects-muted.json.gz",
+      "sha256": "3512a645eb4c8ef1ce51088bfebdd32487e8de3dcaba12e33d5b8c9f8533ff6a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-effects-muted.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-master-muted.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-master-muted.json.gz",
+      "sha256": "a141196aa385853c8776da71e2f52cf76ecc7553ab16fdd485c865c21c76ce49"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-master-muted.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-missing-stream.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-missing-stream.json.gz",
+      "sha256": "3dab05b7b9dc21184a57eb29aae5dadde1b36753e4e8d03c53196cf8f3e6cfba"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-missing-stream.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-quiet.json.gameplay.json.gz",
+      "sha256": "f753fdef2b2635e2c9d6a7cddfa4b9b7970274d33b60c0e3e1046aac6d745feb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-quiet.json.gz",
+      "sha256": "f200f15da21fd7429bdf0c7258aac354ec86871699ef97cfa17ab067fce9cac1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/herb-remote-quiet.json.save.json.gz",
+      "sha256": "8540c8157999406f48475de538b2dec4d36b81135b79d911398a74547bfe6391"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/runner.log",
+      "sha256": "45c8bd506b15a23e8bdedebae4b197e9bcb6373707876e617d043f5c44cd289d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/herb/summary.json",
+      "sha256": "436d553cd4ae4ceeadafc612c378ae63a00d2be8b6b08539e5f8dc686a07f03d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/01-heating-historical-restore-1.log.gz",
+      "sha256": "6a4a508e99571cb67d4ce2eac825d6ec2d297d3285b808aecbb354a619e73bf6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/02-heating-historical-build-1.log.gz",
+      "sha256": "fb5932aefaf275435b8f110177c565f3856a30ef485617046dd07578cefe929b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/03-heating-historical-import-1.log.gz",
+      "sha256": "5d203bd9871e7890997e5e590052fe4bd7330c2789ce14caa412918c28ceb9f0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/04-heating-focused-1.log.gz",
+      "sha256": "ec9594580ce3a124d65dccc3ec649a91ec9830a5b3d5e5088ccdfc11b9a12154"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/05-boundary-heating-source-1.log.gz",
+      "sha256": "36081dc51f19fb60995fb446a58298286d4d103ab2531e2a746b31e96d7457b6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/06-heating-default-1.log.gz",
+      "sha256": "d9cd8b6bc4cbc9d2b2b17aadfd307dc0260a777c74dd4ff468990fbeb772ff8f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/07-heating-quiet-1.log.gz",
+      "sha256": "e722ba6bb58f8cd3de8d682bfc1e6ab6a26befe72b0c339590cf0ba69e54eec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/08-heating-master-muted-1.log.gz",
+      "sha256": "e722ba6bb58f8cd3de8d682bfc1e6ab6a26befe72b0c339590cf0ba69e54eec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/09-heating-effects-muted-1.log.gz",
+      "sha256": "e722ba6bb58f8cd3de8d682bfc1e6ab6a26befe72b0c339590cf0ba69e54eec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/10-heating-missing-stream-1.log.gz",
+      "sha256": "885c468448e4d842944b4ba38dfe177d7c1321c3d891af45b9e397289a49a2e6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/11-heating-captions-off-1.log.gz",
+      "sha256": "885c468448e4d842944b4ba38dfe177d7c1321c3d891af45b9e397289a49a2e6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/12-heating-heating-disabled-1.log.gz",
+      "sha256": "e722ba6bb58f8cd3de8d682bfc1e6ab6a26befe72b0c339590cf0ba69e54eec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/13-heating-master-output-1.log.gz",
+      "sha256": "d5f76fc2f8d80cf24a5f549b85268d93b7ff909a478bb9afafd7d3edaa0e9551"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/14-boundary-heating-reviewed-1.log.gz",
+      "sha256": "6749620fb504ba5258c9d783e6993ccf47d07ac46c8fb0866d15a80a0a2485a6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/15-steeping-historical-restore-1.log.gz",
+      "sha256": "25f929cc3ffd7d7563f255e08796f63bb9aa2502db3d89876420934c7ba5f18b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/16-steeping-historical-build-1.log.gz",
+      "sha256": "f8202d5556c20533e30ff091da26e2832d2ca2d84d8e41b6b4a28bbd0f4979c8"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/17-steeping-historical-import-1.log.gz",
+      "sha256": "1941d518885dc0df772ca0a49ab48ddea426cf198eb332e79630a0f9231d836f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/18-steeping-focused-1.log.gz",
+      "sha256": "bf90f49e0fe9dba15cd90414d7d00e1735d6ff07ff6d2ca31bcf086bb0b799c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/19-boundary-steeping-source-1.log.gz",
+      "sha256": "5ee2f6b5660d97a3a46ded323cf63bebe336d58474342f40cd7052fa8650df6d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/20-steeping-default-1.log.gz",
+      "sha256": "36326e3043508dac5d7bab482539f9ca360a3fe4c805beea5ed8993f77a1e24c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/21-steeping-quiet-1.log.gz",
+      "sha256": "e6b570aa99cf84c39cf5a19c06d9408f35dfbf26037e3d1a4973c3d4fcc15e5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/22-steeping-master-muted-1.log.gz",
+      "sha256": "e6b570aa99cf84c39cf5a19c06d9408f35dfbf26037e3d1a4973c3d4fcc15e5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/23-steeping-effects-muted-1.log.gz",
+      "sha256": "e6b570aa99cf84c39cf5a19c06d9408f35dfbf26037e3d1a4973c3d4fcc15e5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/24-steeping-missing-stream-1.log.gz",
+      "sha256": "e6b570aa99cf84c39cf5a19c06d9408f35dfbf26037e3d1a4973c3d4fcc15e5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/25-steeping-captions-off-1.log.gz",
+      "sha256": "e6b570aa99cf84c39cf5a19c06d9408f35dfbf26037e3d1a4973c3d4fcc15e5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/26-steeping-steeping-disabled-1.log.gz",
+      "sha256": "d5769d0f2842f2c8a498ec2f9e938b291d0cbfd4dbcd9f72029a07d8b4fe3061"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/27-steeping-master-output-1.log.gz",
+      "sha256": "e2f2d6e36e6c98852036091aa08f27e966b6183c94a4a08fbf5698d2c2efb2fc"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/28-boundary-steeping-reviewed-1.log.gz",
+      "sha256": "f12fd24ce7828c5de592fc2fa008fed1959475c636e649797f056cf4921758a9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/29-cooling-historical-restore-1.log.gz",
+      "sha256": "78a09a805fbaab9ddd1938fb5256cf8ef302a960444038cf362015adeb87a66b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/30-cooling-historical-build-1.log.gz",
+      "sha256": "00c3aee0f0c2906969387c9283c3e9cfc1a15b5d75e478c73db6bf6966eac9bf"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/31-cooling-historical-import-1.log.gz",
+      "sha256": "c01ae25879a88d50ed5eb7e482f87d73e684643dd67cfef4d165f9d950175bcd"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/32-cooling-focused-1.log.gz",
+      "sha256": "e4e992663337c8ee1dc7f1ade88cd281032589451dc8c5797350cd27d0655cde"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/33-boundary-cooling-source-1.log.gz",
+      "sha256": "24006c619d405074946e3970d7d25ea7a72cd52cbcbb71174dbb6f82ff048dbd"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/34-cooling-default-1.log.gz",
+      "sha256": "b2b64ab549fb2342aed51a6b142150e48ea2140e28af74de4377cc28a09b370d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/35-cooling-quiet-1.log.gz",
+      "sha256": "ed343b8deebc3758a55ecc7c5f7b90dc7d6dbadfbd2ed113b4b3ef3679efd0ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/36-cooling-master-muted-1.log.gz",
+      "sha256": "ed343b8deebc3758a55ecc7c5f7b90dc7d6dbadfbd2ed113b4b3ef3679efd0ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/37-cooling-effects-muted-1.log.gz",
+      "sha256": "281e2d6c39811a5ae15596703b8ffe0e27b5f922d41a0657dc2f9b28c1d5cf13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/38-cooling-missing-stream-1.log.gz",
+      "sha256": "ed343b8deebc3758a55ecc7c5f7b90dc7d6dbadfbd2ed113b4b3ef3679efd0ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/39-cooling-captions-off-1.log.gz",
+      "sha256": "ed343b8deebc3758a55ecc7c5f7b90dc7d6dbadfbd2ed113b4b3ef3679efd0ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/40-cooling-cooling-disabled-1.log.gz",
+      "sha256": "ed343b8deebc3758a55ecc7c5f7b90dc7d6dbadfbd2ed113b4b3ef3679efd0ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/41-cooling-master-output-1.log.gz",
+      "sha256": "fc8d35bc48e75dd814f6e0566c71b1af3bef8fe1962789481f2bdf23b772711c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/42-boundary-cooling-reviewed-1.log.gz",
+      "sha256": "f24a2bdef85bdb13d954e660efbd09ef1f4564cf009d36c0f3121dd938aba4ee"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/43-herb-focused-1.log.gz",
+      "sha256": "69dc269b4780cd6bd98affc1892741930727772ec9159f672e73dd4d77f20307"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/44-boundary-herb-source-1.log.gz",
+      "sha256": "ce9b12309e97d9c036ab1a78b02f2599225ce9faea07d48cf6a43454e24691fb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-captions-off.json.gz",
+      "sha256": "97cda1c11b7c964325b17b29dbac2294641c155da549c932492cd07db53ecc04"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-captions-off.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-cooling-disabled.json.gz",
+      "sha256": "810da9603180233f25b98d6d44836c619d98d658ab41fa852e2bf724f470de25"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-cooling-disabled.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-default.json.gz",
+      "sha256": "9c910b2a4f8c33e0ec476c32f05f1f36351925c6165a6f52ca173261a243a23e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-default.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-effects-muted.json.gz",
+      "sha256": "ed91f202349d3a3b2c242ee0e9a9b2c3ad99dd67b06a35b154cbbcce7443644a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-effects-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-master-muted.json.gz",
+      "sha256": "b346d1f902f291cd2a5afc47a2bdbf41884b6355fb5ebbd61e0310149e1a3025"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-master-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-missing-stream.json.gz",
+      "sha256": "0b21283b1e8a153035d7d9ef9bf855933e2702695789fb3e69183be5137dc9fa"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-missing-stream.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-quiet.json.gz",
+      "sha256": "a67a5f2c57ee60315bf4e1ba9952300273c3a7fd59b2f4866cf2e9cb4bd5929b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/cooling-quiet.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-captions-off.json.gz",
+      "sha256": "b1b380af99cbcd774ba83270a815e9c6e236183f3c1e55d5dda42e25dc3cd3a9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-captions-off.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-default.json.gz",
+      "sha256": "fefcbedb647a15ab4efe9fafce9a5e26e1b667b507c43ba7ba8228df0bb36683"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-default.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-effects-muted.json.gz",
+      "sha256": "918004e341c536f1565a08c2c798e445f819a6c6fd34d6d1715e7296acd6ce73"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-effects-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-heating-disabled.json.gz",
+      "sha256": "8c7f77dfb62d16cb26370196c0ab89e36d5797812888e31b7c21959f683b2691"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-heating-disabled.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-master-muted.json.gz",
+      "sha256": "27c3562d4a26b762d56ea283780b276581e83cef69d813ed19114634696c3c05"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-master-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-missing-stream.json.gz",
+      "sha256": "d73a6093b40aedb167fccc62c8ae19f6a560c4a385395b4ad92769a949b45a5b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-missing-stream.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-quiet.json.gz",
+      "sha256": "31ddcc6526601fcfd8acded00dd73abfc62e34b79db6c812180e671ee13a7f9f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/heating-quiet.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/runner.log",
+      "sha256": "5c96ea9398ee81bc1bae7b6aad14405d4f3c3db8a4dec9b5b6810c561749b277"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-captions-off.json.gz",
+      "sha256": "1ff938dc5a4ee6137c850bb422222109087637eba133032f2058474c1c3cb9b1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-captions-off.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-default.json.gz",
+      "sha256": "6b63f50c1a5e7ff5ab6ca0969efbb407d2d8f476bf892d31ed7672131137c7b4"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-default.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-effects-muted.json.gz",
+      "sha256": "c6f48cdd637a69c5d7e04f0c9bcd5c428f5652a7992f3ea5167301482dc7db81"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-effects-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-master-muted.json.gz",
+      "sha256": "07e3c4ae767374ffd98f64f71995773cec070ab5961ce31df55c164e06f52cc2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-master-muted.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-missing-stream.json.gz",
+      "sha256": "60df7152f89467baea0f7643616059fe5949ff80538372ff4cae3184c11b3a63"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-missing-stream.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-quiet.json.gz",
+      "sha256": "f6471f42549b5779550a4bbaa1cee4f561499ed42aeb09ee2172cef9ec6631e2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-quiet.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-steeping-disabled.json.gz",
+      "sha256": "fe605bfe99bc904abf49b48258f931a79a8e543c4b95928bff13b5128fabb2d1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/steeping-steeping-disabled.json.save.json.gz",
+      "sha256": "43c8b2a6fa11f1d7d0737438dfdc9660cb15125c117b6bf3679f136bad87324c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/recovery/summary.json",
+      "sha256": "a8ac8c618894ca868d8aa7d29fa516b4e1ce3f8ace3ea23a8e82a0a9d18871cb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/01-continuation-1.log.gz",
+      "sha256": "2b74f6e85cb2f3e715ba34229d9008b7cae04926b471096e32ce6233fca652f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/02-art-1-1.log.gz",
+      "sha256": "903b1ac5a9eade662a86c1995a0dfc33cd028aaaf7915d09760427f6a02d63c6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/03-art-2-1.log.gz",
+      "sha256": "57fbffa0f24d32e2a9043f533d54bbf65fa72c10739d608291157319bb9911ac"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/04-art-3-1.log.gz",
+      "sha256": "602afef614cc4bacccdb0792ce805209b10dd5643f245c78d7190122dd5d0bdc"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/05-art-4-1.log.gz",
+      "sha256": "591f42ddfd0ddc6aae607dbc0d7182d29c420e7975754e45bc93ff0b4d1ed0f9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/06-art-5-1.log.gz",
+      "sha256": "5fd74ee49d178895053f2074f91130537b85bc7c04b7092e50f7d696e5a8c15d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/07-art-6-1.log.gz",
+      "sha256": "39999b3cb8f445581c37c2ee12fe214fa2f197ea5134daa26e845eb5b07af9f1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/08-art-7-1.log.gz",
+      "sha256": "ce17ebccd3f8f099fc5e991e0c1838fd3a1f620912ab4f68b732b6cdb1420039"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/09-art-8-1.log.gz",
+      "sha256": "30d60543a39366a4b45ba034052e5b659cd8ab5e4d028930dd47cd481c25e986"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/10-art-9-1.log.gz",
+      "sha256": "2ba766adb996f06231985bd8b9698989bd28890f2a3285cec8fe10829c3e9cc2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/100-wind-master-output-1.log.gz",
+      "sha256": "bc7af35bd2f099624c761cf6e8107365ec02b89dfef785b8a1e2eea93159ae0d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "9ed70ffb159dcf0b222f832f32c2b4563694d0aea041a3408d5ea5b020d6ff5b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/102-rain-historical-restore-1.log.gz",
+      "sha256": "105cda6d06e2d7c973c79f9010cded10e532eeb84e4e97003bdec181df803a79"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/103-rain-historical-build-1.log.gz",
+      "sha256": "5eef727f6ca7d53021809bc55d6f6dd5695a4e11b3b4085791be07b3e0d0e332"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/104-rain-historical-import-1.log.gz",
+      "sha256": "572b1fdc17c1226d91384cceca1a5d83efdcf03a40fb1ae7154ab4b25df1e95c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/105-rain-focused-1.log.gz",
+      "sha256": "7d21d0884c1eeca652acf268ec18dd541aea483d4445171f75f3ecb2ef840b54"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/106-boundary-rain-source-1.log.gz",
+      "sha256": "3237073ddf87ac0755c01ea02848d510f8da1d25938c0ab9f429678d939fd6fc"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/107-rain-default-1.log.gz",
+      "sha256": "d0d5673af4446331e38f0019fe3a2cd191ae6e64521a84f0f20b4542d36f2c7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/108-rain-quiet-1.log.gz",
+      "sha256": "bc93e8aa7fbaae86431bb2a3f99323c583ac7430bc1b7f78302a620ba8bfaf53"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/109-rain-master-muted-1.log.gz",
+      "sha256": "d0d5673af4446331e38f0019fe3a2cd191ae6e64521a84f0f20b4542d36f2c7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/11-boundary-buses-1.log.gz",
+      "sha256": "bd5c5a4f876670521bdc3f4ae49fe2c33c11f50db6c2820ce2871e6db344ca8d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/110-rain-ambience-muted-1.log.gz",
+      "sha256": "d0d5673af4446331e38f0019fe3a2cd191ae6e64521a84f0f20b4542d36f2c7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/111-rain-missing-stream-1.log.gz",
+      "sha256": "d0d5673af4446331e38f0019fe3a2cd191ae6e64521a84f0f20b4542d36f2c7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/112-rain-captions-off-1.log.gz",
+      "sha256": "bc93e8aa7fbaae86431bb2a3f99323c583ac7430bc1b7f78302a620ba8bfaf53"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/113-rain-rain-disabled-1.log.gz",
+      "sha256": "d0d5673af4446331e38f0019fe3a2cd191ae6e64521a84f0f20b4542d36f2c7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/114-rain-master-output-1.log.gz",
+      "sha256": "ea26cba0036c8842409c1b4ff61683595bca8dd3a181c87e0a17aa9c628d1f6e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "a83bb5d9e5d209c477daaa3316d4fa1b635fbdf509111c4eb60de6ee541bdf3c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/116-heating-historical-restore-1.log.gz",
+      "sha256": "d8f98e0f2193f78eb7f7f9f832b597d1fea363c716aff6504868a61798684598"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/117-heating-historical-build-1.log.gz",
+      "sha256": "bdd16f888b6014025a950c4c998446d7979af366d29cb44d0f8547dad956ac9f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/118-heating-historical-import-1.log.gz",
+      "sha256": "677f53a97b123331e0238ebef848c7d0c9ff169b462c902a068e37a61cfa0589"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/12-boundary-material-1.log.gz",
+      "sha256": "b3e134ca50510e45bd28aa2947351a26acdc6f7847b457e49f03917f8957f378"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/13-boundary-footstep-1.log.gz",
+      "sha256": "f170b95ffb9ad0ecb045ea3d405a7e75134a576d8da4309ca17ca49ebbb69b63"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/14-boundary-positional-1.log.gz",
+      "sha256": "15236c87efb4de35f83bbcdbedcee96d4bd67927f93376f71bee674560a3c63d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/15-boundary-music-1.log.gz",
+      "sha256": "93465ec349ec5a42940083ba629f76a13f44d9668278f0f9696cf3a4a6a850c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/16-boundary-interior-1.log.gz",
+      "sha256": "4802f2122c61d8ee14261f8c6213ba89de0b496b6bc4ec6668b59b775b3a4d50"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/17-boundary-water-1.log.gz",
+      "sha256": "d0ed91d50750aca484718d7de6500e512520e8d2b9141f3e33aa426099eaffec"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/18-boundary-cask-1.log.gz",
+      "sha256": "4babe405324fc645af59f393ca7a41ab748989b2bfe746c57f8f664d2e90cb30"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "3da59bc3cded4c7d0d4882a482f285af7e07ce4ce645ae4905b948badb06dccb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/20-boundary-healer-current-1.log.gz",
+      "sha256": "3079e261c84bef7356abc57227c167a5888981cd8f35be8d7d925670cd0b5c38"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/21-boundary-foliage-current-1.log.gz",
+      "sha256": "fd2d51da63ac2fec1600205cecd8cf0811181e6ac6c8f2aa5047834cc100675f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/22-current-art-imports-1.log.gz",
+      "sha256": "57fbffa0f24d32e2a9043f533d54bbf65fa72c10739d608291157319bb9911ac"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/23-product-1-1.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/24-product-2-1.log.gz",
+      "sha256": "40dc25cfb946316ff51f58c679507f3ab0f93f8d756efa4f26b5941f5fcc6ff1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/25-product-3-1.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/26-product-4-1.log.gz",
+      "sha256": "f8fd61f580156aaa44145b633427cbed3727fe9006c74c6f969d1996d71ac54d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/27-product-5-1.log.gz",
+      "sha256": "5c70b0d9b9b2693f91d8b19e58c98cbbf538f0b5f6a47c13b52dc4dc6c61171b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/28-product-6-1.log.gz",
+      "sha256": "9b80658db808f92a08cfdd5376a892569315396d6fb8be800b13ff6f0dd48b7a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/29-product-7-1.log.gz",
+      "sha256": "d1d58f1e8152ac4b621ec513fc46c9afbc9263c9c4bd5bff7ca723b5c895c3aa"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/30-product-8-1.log.gz",
+      "sha256": "c645f970b2fd7b14cf0b6c7874b3782d30ddce9323a2b43d3408b598aa840ec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/31-product-9-1.log.gz",
+      "sha256": "019fc3ac9bdff5547b0a627ed4c5875c15cf3a0198ae9e1946aeba437cba3ff4"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "3da59bc3cded4c7d0d4882a482f285af7e07ce4ce645ae4905b948badb06dccb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/33-boundary-healer-resume-1.log.gz",
+      "sha256": "3079e261c84bef7356abc57227c167a5888981cd8f35be8d7d925670cd0b5c38"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "fd2d51da63ac2fec1600205cecd8cf0811181e6ac6c8f2aa5047834cc100675f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/35-product-10-1.log.gz",
+      "sha256": "8c8dd0c6cca74f3de6c919975a75257d0e3f2301f442fee7e2ec4ec121c30a51"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/36-product-11-1.log.gz",
+      "sha256": "91fb7361c3f05213c3251bfc2cb43ed694c51878ce6834f3d7c395588ce013c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/37-product-12-1.log.gz",
+      "sha256": "4b3bf5479c4242b6ee156736c06036b242bb25b0b08aaf2b14a8f0f11e11aaf1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/38-product-13-1.log.gz",
+      "sha256": "973436470a908da4370bf93fca316e1626cb609fb8a86146975d587e870eb255"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/39-product-14-1.log.gz",
+      "sha256": "373b0007aee37fe47aeb2069b00a1f36d39e20a6aa7b4de875507184285aec92"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/40-product-15-1.log.gz",
+      "sha256": "35bf7dba5c8747b02dc348c4fda478ed38aa3fda75254efbe250dea70ea7992c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/41-product-16-1.log.gz",
+      "sha256": "1363726b6ec8f3fece5787e74b43654e84030247dd98426c5d5adeb993c108a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/42-product-17-1.log.gz",
+      "sha256": "c5b05e638144ae0ac5ed67f51d6d6c1fb42f3670925539389f5f2a66c00ab502"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/43-product-18-1.log.gz",
+      "sha256": "b8e829cb71ec47457832990832ec54594c80c37ee5552165ba5ea59249ce81a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/44-product-19-1.log.gz",
+      "sha256": "42406070c4bfc3f0bfcb0a8b6fe5363a5bc506494b02c13b795abed592036ad9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/45-interior-normal-1.log.gz",
+      "sha256": "57640a0834e13e35e273184fa31de5b0da671c5360eb2aae16032c6abe702d5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/46-interior-muted-1.log.gz",
+      "sha256": "57640a0834e13e35e273184fa31de5b0da671c5360eb2aae16032c6abe702d5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/47-interior-zero-1.log.gz",
+      "sha256": "8091090ca30bec21a6adcf839caa677681e7a8ef81e63f7558bd45f5b52c4b6e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/48-interior-mono-reduced-1.log.gz",
+      "sha256": "57640a0834e13e35e273184fa31de5b0da671c5360eb2aae16032c6abe702d5e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/49-water-default-1.log.gz",
+      "sha256": "f8893cbd0e8453ec6581fdcfa14c6cafd34636d8f20e5aa1dbc9a876a0d356c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/50-water-quiet-1.log.gz",
+      "sha256": "f8893cbd0e8453ec6581fdcfa14c6cafd34636d8f20e5aa1dbc9a876a0d356c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/51-water-master-muted-1.log.gz",
+      "sha256": "f8893cbd0e8453ec6581fdcfa14c6cafd34636d8f20e5aa1dbc9a876a0d356c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/52-water-effects-muted-1.log.gz",
+      "sha256": "f8893cbd0e8453ec6581fdcfa14c6cafd34636d8f20e5aa1dbc9a876a0d356c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/53-water-missing-stream-1.log.gz",
+      "sha256": "f8893cbd0e8453ec6581fdcfa14c6cafd34636d8f20e5aa1dbc9a876a0d356c1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/54-water-no-action-1.log.gz",
+      "sha256": "26f5ca6555239382f86001ac70caa8d9feaf3951e0267af28e0e042a6510dde9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/55-cask-default-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/56-cask-quiet-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/57-cask-master-muted-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/58-cask-effects-muted-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/59-cask-missing-stream-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/60-cask-no-action-1.log.gz",
+      "sha256": "4addba8fda70121382a4f194dbd17341ec8caa94b080517cd897897bc7b775c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/61-hand-tool-default-1.log.gz",
+      "sha256": "3dc6ad220cfd123eaf99493f23dbc2270a30846a04ba80b022bcd4b38ebc7f42"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/62-hand-tool-quiet-1.log.gz",
+      "sha256": "0328b89999c7161ee475b3b7cfab3f94460ae2d1bb284bfab0ff4b1c4ddff856"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "0328b89999c7161ee475b3b7cfab3f94460ae2d1bb284bfab0ff4b1c4ddff856"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "3dc6ad220cfd123eaf99493f23dbc2270a30846a04ba80b022bcd4b38ebc7f42"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "3dc6ad220cfd123eaf99493f23dbc2270a30846a04ba80b022bcd4b38ebc7f42"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/66-hand-tool-no-action-1.log.gz",
+      "sha256": "3dc6ad220cfd123eaf99493f23dbc2270a30846a04ba80b022bcd4b38ebc7f42"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/67-healer-footstep-default-1.log.gz",
+      "sha256": "b5238655252bdfc97037d5784fb7a91a404a267925cbc6b358e8b32e2fa2fa97"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "7c89fdc49f99ef0f52df0e4efedca06cfe82dffcf482eaadb9bb631976c24b7d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "7c89fdc49f99ef0f52df0e4efedca06cfe82dffcf482eaadb9bb631976c24b7d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "2e0b081f76ca5f2370d56c4cc38b6b7d7b5d09d68ddffff0247bbe722214cca8"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "2e0b081f76ca5f2370d56c4cc38b6b7d7b5d09d68ddffff0247bbe722214cca8"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "7c89fdc49f99ef0f52df0e4efedca06cfe82dffcf482eaadb9bb631976c24b7d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "2e0b081f76ca5f2370d56c4cc38b6b7d7b5d09d68ddffff0247bbe722214cca8"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "3da59bc3cded4c7d0d4882a482f285af7e07ce4ce645ae4905b948badb06dccb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/75-healer-master-output-1.log.gz",
+      "sha256": "6e747c7f8cb1626c4038a36c950b50ab202f4da42ba0823d6cd9b62de11354d0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "3079e261c84bef7356abc57227c167a5888981cd8f35be8d7d925670cd0b5c38"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/77-foliage-historical-build-1.log.gz",
+      "sha256": "4606fdf54a21bf7890457adb6db230da4fc3ae8e57ac08ca6d1ec067f45d0a7a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/78-foliage-historical-import-1.log.gz",
+      "sha256": "36fda9aebc4adf99cea66c86014cc84c3ddeca0fc9dd354d9a83d0ad2ff044fe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/79-foliage-default-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/80-foliage-quiet-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/81-foliage-master-muted-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/83-foliage-missing-stream-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/84-foliage-captions-off-1.log.gz",
+      "sha256": "f7ef81bcb29e9f49c6aae75ffa86c05aaf7c8cd231652e2dab7aede79ca3244a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "68e757d68079a4a715fd37bd0fcbee32a7611af2223f42520c42b32d44ed97a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/86-foliage-master-output-1.log.gz",
+      "sha256": "0fff0d4d90e081c77aabd4542dac6c7021f03832dd620c0517535e91e7db8e27"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "fd2d51da63ac2fec1600205cecd8cf0811181e6ac6c8f2aa5047834cc100675f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/88-wind-historical-restore-1.log.gz",
+      "sha256": "833b008073127e17a86bb5d96cba7922119bffe223e8d7c82a49b7fcf50daeb6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/89-wind-historical-build-1.log.gz",
+      "sha256": "688d4eaad6ea97a98ac275bced329a82d50c3a1339f832bbe18b155e82f8a878"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/90-wind-historical-import-1.log.gz",
+      "sha256": "86eb3d7feff0321064c00db49a0e9a2c6c25cbc27723551fd68f508bd1c82ad8"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/91-wind-focused-1.log.gz",
+      "sha256": "941428c71a0797dbb946a9720141b314c942755688bf8b74d1aac683f47ed72a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/92-boundary-wind-source-1.log.gz",
+      "sha256": "9b6bb88994599104af9d3123cf6262a2b1a0f38034acb4a17f305bf7da004fb0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/93-wind-default-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/94-wind-quiet-1.log.gz",
+      "sha256": "419bc77f27b43a2af6ccef58d9c3e05a76a148137d837f57fdcf20f59cda4f43"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/95-wind-master-muted-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/96-wind-ambience-muted-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/97-wind-missing-stream-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/98-wind-captions-off-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/99-wind-wind-disabled-1.log.gz",
+      "sha256": "9868e84c7570ee34a8706cf11141e993717c2fc2325055bcd2970445c3dc2c13"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-default.json.gz",
+      "sha256": "c1006bed8c2489da4811ebd3d82fd718b67b59404f1da4b9b2c73408eef7df93"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-default.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-effects-muted.json.gz",
+      "sha256": "58b36c4592e88ea7317c339f3a553a2cdc0ac0d86244f4b9daea62d2d3cd4cc7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-effects-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-master-muted.json.gz",
+      "sha256": "745b4d1c2f81d575c57731855c884ead330bd4fbcb02751b45d77ba69d75548c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-master-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-missing-stream.json.gz",
+      "sha256": "3de0a2513bd4bf632e52197417f195027e03f3711c7a392b3d333c03be507637"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-missing-stream.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-no-action.json.gz",
+      "sha256": "ed02a540548128a001ecd4fdc9cec41f751d46518bdfdca8e2a4c4e1ee076eec"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-no-action.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-quiet.json.gz",
+      "sha256": "4287ac617218efaeedccc12a5ab76a055617e970f7f0d69560be4d6024c1b326"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/cask-quiet.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-ambience-muted.json.gz",
+      "sha256": "7f8a1d6e6e93af8a88dd09ed674e0b787960d756ade6a2fc8fde7db835a12161"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-ambience-muted.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-captions-off.json.gz",
+      "sha256": "e7b7d2ab223ba68b4a1db40ae4152db4148694261d7ec1967e312811d918b202"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-captions-off.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-default.json.gz",
+      "sha256": "38792bc0b158038f5ced4befc5d6189a213cc326feee420795d1faa280296f1a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-default.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-foliage-disabled.json.gz",
+      "sha256": "75d7da902782311e851a2c2246fc113b054fe343abcce90aa10231afbbdd678e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-foliage-disabled.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-master-muted.json.gz",
+      "sha256": "7b57d0f7330cf851c5bb4e958463cbfab46a89359f9064548031c6c951f4f758"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-master-muted.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-missing-stream.json.gz",
+      "sha256": "8030385e14e23cd55ea9f0c3f93a1fd3bb8c1f2f3f9c3c01afdb3502b309a111"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-missing-stream.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-quiet.json.gz",
+      "sha256": "1e746f4d8eb04ff54ffb656ccc470796305f7882a7389a084e97fe3a578bde40"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/foliage-quiet.json.save.json.gz",
+      "sha256": "3f97f25caca622bdbdbe2b9b1b9b1174e4f81a52157b819804f63221d6b2398c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-captions-off.json.gz",
+      "sha256": "62b2bdc3fba45359ab52549d837e157e8971c1888da1d3ef7b89f88ab973dced"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-captions-off.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-default.json.gz",
+      "sha256": "a85ba5b70e2853c766f3def0bce8af10500dbd5bb311657aebc18607b7f7cb9b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-default.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-effects-muted.json.gz",
+      "sha256": "b71686ee6b46e0e16f64fce474f09f90c3a59ff207d9f666e8890bd001e9e9d9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-effects-muted.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-master-muted.json.gz",
+      "sha256": "dce07748ee3f88d1745fda1caf39eb01330a53b42b6354af76854fc0f46fc6aa"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-master-muted.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-missing-resources.json.gz",
+      "sha256": "90edd818c04b501818df4dcdc6085c47d0c3ae38608cdd34d8a918b50acb22d0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-missing-resources.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-observer-disabled.json.gz",
+      "sha256": "6e69aac447b6ec9ae33038f269e9cea8d91a387cfd147d62907fc73f59fa5b18"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-observer-disabled.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-quiet.json.gz",
+      "sha256": "78124ce53f2cf0509eaa7e664a0cd6b1fb5a73771d01f1ea740a17bfdb9ec745"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/healer-quiet.json.save.json.gz",
+      "sha256": "49f697e22e95ed3b76a50752617c2c6b4d04180e8933f208ed8b5c5cff9d99a5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-mono-reduced.json.gz",
+      "sha256": "0ad4803f875aa767d9c3bb1ff0744b93a0f3ef182cff1772d921df106199ac84"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-mono-reduced.json.save.json.gz",
+      "sha256": "2dbd542205b4d597ed9b9e55521173a70602cd0a1ae8d7a1885b866dc9695008"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-muted.json.gz",
+      "sha256": "93b81e2e93c5084355cb3c8ee80d64b28e765d0208dd432924ed8284843c8e56"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-muted.json.save.json.gz",
+      "sha256": "2dbd542205b4d597ed9b9e55521173a70602cd0a1ae8d7a1885b866dc9695008"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-normal.json.gz",
+      "sha256": "f5610b4590b38de00d76dd1c430d35fdbe6b778bf97d91d6a84e83ad3951d98a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-normal.json.save.json.gz",
+      "sha256": "2dbd542205b4d597ed9b9e55521173a70602cd0a1ae8d7a1885b866dc9695008"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-zero.json.gz",
+      "sha256": "d739d2eed731b9653300eb90e853a9e5db03773e67f258976f9adcdaf2f5ef7c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/interior-zero.json.save.json.gz",
+      "sha256": "2dbd542205b4d597ed9b9e55521173a70602cd0a1ae8d7a1885b866dc9695008"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-ambience-muted.json.gz",
+      "sha256": "a6c8b0f9ea06b902fc48b16dd7626981466d4705f1245d91d13d95bf4f33060a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-ambience-muted.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-captions-off.json.gz",
+      "sha256": "982c3164f0fe01a08a66c7b3ab1f7a85990f25e7719a5612de33b37de575b106"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-captions-off.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-default.json.gz",
+      "sha256": "1e69c5faf0d20ff60fcb46d02db92a9b17a51ca76444ade281f33ea1f485a105"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-default.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-master-muted.json.gz",
+      "sha256": "e5f3496f440573f28ff07145c5a80e047f89e41be4b6b50a6223dc1f5dc1b8b6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-master-muted.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-missing-stream.json.gz",
+      "sha256": "3aff3027f12ff2c127f5c70f48090818f97d39ea3b13fd29cc58788204624333"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-missing-stream.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-quiet.json.gz",
+      "sha256": "273d99ba4b2c0913362b21b0fdbf6bab2df6ce1c37738d035eb360251d42931b"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-quiet.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-rain-disabled.json.gz",
+      "sha256": "93e8ba644d81f1a0049f89d52b6d38c8ff353ea82f49088051e7a2129bc93552"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/rain-rain-disabled.json.save.json.gz",
+      "sha256": "c80e929fe8b460a9ba19ad40995674872f3bee87b1a4a27769dd16a7245a28f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/runner.log",
+      "sha256": "bb6c7e857f2665e0730763fae6fae7e1576a56d8a1d1ff4fa619bf36412e7a74"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/summary.json",
+      "sha256": "ef58cadbbbde9f56dbc33ee4c3ec71389071995829cfbfa549081802a4e5d8f0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-default.json.gz",
+      "sha256": "4874d7170caf2036332fa7e9b94faf98fdd18eaee163678c78db9e63db38f50d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-default.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-effects-muted.json.gz",
+      "sha256": "77492ce2c3d71ef8f2fc8fca9e22add891b930f294a263a827aae0a2f41f5768"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-effects-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-master-muted.json.gz",
+      "sha256": "18cf9a2e7c1ee97747292681ad1fb50bd9843f1bbb5212cbba39cb096e404a4c"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-master-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-missing-stream.json.gz",
+      "sha256": "03b066a229f73dcb36e09fec359e970c5d6bb91d3aa794050baf95ce086bdbfb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-missing-stream.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-no-action.json.gz",
+      "sha256": "0cc3b15244f3782ca3d2729a742b1f264f27706b97e0f4a4f7fc04bbd26e112f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-no-action.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-quiet.json.gz",
+      "sha256": "7c17f6dd32af02572a24dc3809360d920f4ece9f7d0b3af39bcadbc57a3eb893"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/tool-quiet.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-default.json.gz",
+      "sha256": "5b2b46688bf8e5e22a67a30aecb9b01cd42eb331dba583f7412ed1f7fe8aab00"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-default.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-effects-muted.json.gz",
+      "sha256": "99b07fb244181904b7e5501db1696be0ded836ec62ea670103546dc98eb120e7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-effects-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-master-muted.json.gz",
+      "sha256": "522955160f40ea408f04e096a911c3536db4653d4dc6426525ec80e821f015a2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-master-muted.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-missing-stream.json.gz",
+      "sha256": "b856fd52d91d3bf3b87f90d6205b350a916dad14efce4c8ec4bd395063a60bf1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-missing-stream.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-no-action.json.gz",
+      "sha256": "737bb2ea7d8c67dc62cefbeba8111100b4d2f3c7b6a4aa01a1cf6dc7a312379f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-no-action.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-quiet.json.gz",
+      "sha256": "f17a6d1a21796271bd932280cb2b76ce8fcc1920b9a9225642ea7b70dd9a4a7f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/water-quiet.json.save.json.gz",
+      "sha256": "5a1ae695efa285b98069e6711af7cf7e27bc88e18645004bd137474874620dbe"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-ambience-muted.json.gz",
+      "sha256": "5720093e0cbe944681f2573b10a0d66c5cdc7d4ae4d3316b83aac72f5a5ad8c0"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-ambience-muted.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-captions-off.json.gz",
+      "sha256": "e669b50f518f0dfea39268f1949ca424f99cfcf6d71052cbdf86c9fe1ea51515"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-captions-off.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-default.json.gz",
+      "sha256": "59076b22ec98c371cc4747aed7f8b3dbfa55f2d09afcb8c077a5de30c74ec231"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-default.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-master-muted.json.gz",
+      "sha256": "2dbcfef9ed67fc7f35dab8d21326deccd3bfa98cfd538fb5feb92d682397a567"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-master-muted.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-missing-stream.json.gz",
+      "sha256": "c8fc24b7f1c22c8ed1c007d16132403be27f208209df47171dc8d90f9a57766a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-missing-stream.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-quiet.json.gz",
+      "sha256": "1b0777f3121fd8e4a2f04ccef8dc27b60e6ebdda2cce9d2f606b07d652a9eb7d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-quiet.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-wind-disabled.json.gz",
+      "sha256": "ab1a2d09155ef7b38f7e896c030714564d212f5dd48e1e2fc44abf99c957670a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality/root/wind-wind-disabled.json.save.json.gz",
+      "sha256": "d3754a84fc16108dff624e913ec85bf9d90381f35cfb69ebb04309f6e3e4851e"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/01-continuation-1.log.gz",
+      "sha256": "2b74f6e85cb2f3e715ba34229d9008b7cae04926b471096e32ce6233fca652f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/02-art-1-1.log.gz",
+      "sha256": "e2322e520586d2772c2662b1c78ab295f53bfc2f2601a462aa007723f5236016"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/03-art-2-1.log.gz",
+      "sha256": "57fbffa0f24d32e2a9043f533d54bbf65fa72c10739d608291157319bb9911ac"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/04-art-3-1.log.gz",
+      "sha256": "602afef614cc4bacccdb0792ce805209b10dd5643f245c78d7190122dd5d0bdc"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/05-art-4-1.log.gz",
+      "sha256": "591f42ddfd0ddc6aae607dbc0d7182d29c420e7975754e45bc93ff0b4d1ed0f9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/06-art-5-1.log.gz",
+      "sha256": "5fd74ee49d178895053f2074f91130537b85bc7c04b7092e50f7d696e5a8c15d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/07-art-6-1.log.gz",
+      "sha256": "39999b3cb8f445581c37c2ee12fe214fa2f197ea5134daa26e845eb5b07af9f1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/08-art-7-1.log.gz",
+      "sha256": "ce17ebccd3f8f099fc5e991e0c1838fd3a1f620912ab4f68b732b6cdb1420039"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/09-art-8-1.log.gz",
+      "sha256": "30d60543a39366a4b45ba034052e5b659cd8ab5e4d028930dd47cd481c25e986"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/10-art-9-1.log.gz",
+      "sha256": "2ba766adb996f06231985bd8b9698989bd28890f2a3285cec8fe10829c3e9cc2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-logs/11-boundary-buses-1.log.gz",
+      "sha256": "bd5c5a4f876670521bdc3f4ae49fe2c33c11f50db6c2820ce2871e6db344ca8d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1-summary.json",
+      "sha256": "c4dcb95a134f48603873374290060393bac58cf14588f66027a3dc4fcbee47d7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt1.log",
+      "sha256": "fc32eab66b1484a2d90938a3d8172a680d3aa47514aa85019b80beaaad9ba6cb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/01-continuation-1.log.gz",
+      "sha256": "2b74f6e85cb2f3e715ba34229d9008b7cae04926b471096e32ce6233fca652f6"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/02-art-1-1.log.gz",
+      "sha256": "a21be0554f92e05c08819aaa933940d101b126fa612a78b2880eeebbce630cc3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/03-art-2-1.log.gz",
+      "sha256": "57fbffa0f24d32e2a9043f533d54bbf65fa72c10739d608291157319bb9911ac"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/04-art-3-1.log.gz",
+      "sha256": "602afef614cc4bacccdb0792ce805209b10dd5643f245c78d7190122dd5d0bdc"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/05-art-4-1.log.gz",
+      "sha256": "591f42ddfd0ddc6aae607dbc0d7182d29c420e7975754e45bc93ff0b4d1ed0f9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/06-art-5-1.log.gz",
+      "sha256": "5fd74ee49d178895053f2074f91130537b85bc7c04b7092e50f7d696e5a8c15d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/07-art-6-1.log.gz",
+      "sha256": "39999b3cb8f445581c37c2ee12fe214fa2f197ea5134daa26e845eb5b07af9f1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/08-art-7-1.log.gz",
+      "sha256": "ce17ebccd3f8f099fc5e991e0c1838fd3a1f620912ab4f68b732b6cdb1420039"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/09-art-8-1.log.gz",
+      "sha256": "30d60543a39366a4b45ba034052e5b659cd8ab5e4d028930dd47cd481c25e986"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/10-art-9-1.log.gz",
+      "sha256": "2ba766adb996f06231985bd8b9698989bd28890f2a3285cec8fe10829c3e9cc2"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/11-boundary-buses-1.log.gz",
+      "sha256": "bd5c5a4f876670521bdc3f4ae49fe2c33c11f50db6c2820ce2871e6db344ca8d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/12-boundary-material-1.log.gz",
+      "sha256": "b3e134ca50510e45bd28aa2947351a26acdc6f7847b457e49f03917f8957f378"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/13-boundary-footstep-1.log.gz",
+      "sha256": "f170b95ffb9ad0ecb045ea3d405a7e75134a576d8da4309ca17ca49ebbb69b63"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/14-boundary-positional-1.log.gz",
+      "sha256": "15236c87efb4de35f83bbcdbedcee96d4bd67927f93376f71bee674560a3c63d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/15-boundary-music-1.log.gz",
+      "sha256": "93465ec349ec5a42940083ba629f76a13f44d9668278f0f9696cf3a4a6a850c3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/16-boundary-interior-1.log.gz",
+      "sha256": "4802f2122c61d8ee14261f8c6213ba89de0b496b6bc4ec6668b59b775b3a4d50"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/17-boundary-water-1.log.gz",
+      "sha256": "d0ed91d50750aca484718d7de6500e512520e8d2b9141f3e33aa426099eaffec"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/18-boundary-cask-1.log.gz",
+      "sha256": "4babe405324fc645af59f393ca7a41ab748989b2bfe746c57f8f664d2e90cb30"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "3da59bc3cded4c7d0d4882a482f285af7e07ce4ce645ae4905b948badb06dccb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/20-boundary-healer-current-1.log.gz",
+      "sha256": "3079e261c84bef7356abc57227c167a5888981cd8f35be8d7d925670cd0b5c38"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/21-boundary-foliage-current-1.log.gz",
+      "sha256": "fd2d51da63ac2fec1600205cecd8cf0811181e6ac6c8f2aa5047834cc100675f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/22-current-art-imports-1.log.gz",
+      "sha256": "57fbffa0f24d32e2a9043f533d54bbf65fa72c10739d608291157319bb9911ac"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/23-product-1-1.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/24-product-2-1.log.gz",
+      "sha256": "40dc25cfb946316ff51f58c679507f3ab0f93f8d756efa4f26b5941f5fcc6ff1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/25-product-3-1.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/26-product-4-1.log.gz",
+      "sha256": "b25e06af1be1757348b221779e395b34a9674eedbfe3bada59582d015dd34ac1"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/27-product-5-1.log.gz",
+      "sha256": "9dd86905d2ab4c4ef4f992a534e76a7543283e59df25397c69e425794bcfb19d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/28-product-6-1.log.gz",
+      "sha256": "6dc01837e58e1d8c7f1a59224d29761c593a0ad62502d20711d1918ad76a322d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/29-product-7-1.log.gz",
+      "sha256": "d1d58f1e8152ac4b621ec513fc46c9afbc9263c9c4bd5bff7ca723b5c895c3aa"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/30-product-8-1.log.gz",
+      "sha256": "c645f970b2fd7b14cf0b6c7874b3782d30ddce9323a2b43d3408b598aa840ec7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/31-product-9-1.log.gz",
+      "sha256": "019fc3ac9bdff5547b0a627ed4c5875c15cf3a0198ae9e1946aeba437cba3ff4"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "3da59bc3cded4c7d0d4882a482f285af7e07ce4ce645ae4905b948badb06dccb"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/33-boundary-healer-resume-1.log.gz",
+      "sha256": "3079e261c84bef7356abc57227c167a5888981cd8f35be8d7d925670cd0b5c38"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "fd2d51da63ac2fec1600205cecd8cf0811181e6ac6c8f2aa5047834cc100675f"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-logs/35-product-10-1.log.gz",
+      "sha256": "79c9285f0ff998c0e37cf188484c1af3e42237e2a5e4bd50422f554c3c092db3"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2-summary.json",
+      "sha256": "37f4abd64931f96e2db7124ab980fd9bf1503b37f25ac8e578a8bcb5d2c2e77a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-attempt2.log",
+      "sha256": "7504616d1dd6a288afba2b81e1d74ef61f2ce756ed0505a498c7bae180c85233"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-json-bindings.json",
+      "sha256": "a43ff08d87401048480f9b8f87b09c624e3f8e3053584e03c947a7ba573ba7c5"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/quality-log-bindings.json",
+      "sha256": "aae607855024d78f8229d7028fdd8b0895f9fddeb44697b93dae29d4b5f51c22"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/restore.log",
+      "sha256": "a21a458ba19a52b15a2d438f7f25776abe22bdfe59159047bb980612cc919757"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/runtime.json",
+      "sha256": "e36d1a44f23f53824236281bd1b744850577eb7d7e74d9cd5e800873382b9c9d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/verification-summary.json",
+      "sha256": "943459d0edbe5b52cc24e751f76b660e1174e2636a8bf028c06fc2673820d265"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/checks/wav-verification.json",
+      "sha256": "e5a9e1649eedc3b803299787876f0a208e0629583fb2466097aafe6598277d58"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/after-cancel-English.wav",
+      "sha256": "127c1930625fe5b9d63df61f60ed5e45b1fe638c21e1cb9a5d211a650f51877d"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/after-cancel-German.wav",
+      "sha256": "0e5849c095d0fbf37286aecac554ff281686754d9cd53b8927834ec6d802e5c9"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/after-early-disposal.wav",
+      "sha256": "dffb88a7d77cd446ff65833a89d99a776518a9d62ef06c7396682f0945b1e8ea"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/after-worker-error.wav",
+      "sha256": "fe1bf5afd7248a9b7b82b4caaf141f603a69d9087428c701bef5b9f0f25d3424"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/english-cold.wav",
+      "sha256": "6a215439fa180af40ccbb699497b5d5637bca1f77b75af88b7decef4c50009ca"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/german-warm.wav",
+      "sha256": "c45b16712ac3605dd076dfc3d9364388420fc517182ea30abed1b7f48ba9b692"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/output/service-probe.json",
+      "sha256": "79b01d328cf89c53c1d1dbf87124d3e39373aeab53d6a586e7c1f291cd40740a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/owner-request.json",
+      "sha256": "6234d36d42d9a73a998eb3c5bf450dae48ff2c96bd26c2d064268ac19471e7d7"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/service-probe.log",
+      "sha256": "a7e32a35f67f1c7b0f2a580c0f366b0dd60e51912bc095edd6eaab9498e6033a"
+    },
+    {
+      "path": "speech-direction/pocket-tts-service/voice-profiles.json",
+      "sha256": "43a6027e2564ae63d704107b4ae3675e99a7544ea892f8e957bb58eb42d6134e"
+    },
+    {
+      "path": "src/Application/Speech/ISpeechSynthesizer.cs",
+      "sha256": "e36b67108415227777a02ac07478e226e7ce76e5a7691180e70003b8b689dd09"
+    },
+    {
+      "path": "src/Application/Speech/SpeechAudioChunk.cs",
+      "sha256": "50eb7e00e3127c5a02aa8db857df3eb7ce96a7cfa7333e9951411b050efaccea"
+    },
+    {
+      "path": "src/Application/Speech/SpeechLanguage.cs",
+      "sha256": "9cd4c06a7faf345037d8964b74343c923663f821316bd266c582b32d63fd7a58"
+    },
+    {
+      "path": "src/Application/Speech/SpeechSynthesisException.cs",
+      "sha256": "ea19ca1be645a06e1d5d10021c50aadaa1e41e874195d2f4760253df6fddeed6"
+    },
+    {
+      "path": "src/Application/Speech/SpeechSynthesisRequest.cs",
+      "sha256": "17f7598e9fb7953634dc6aa82bd41c1f3775d38ddbdaf889517cde1326eae9cb"
+    },
+    {
+      "path": "src/Infrastructure/Speech/IPocketSpeechWorker.cs",
+      "sha256": "c394d8a3b7cb0a665a9a55541177f5ec03c96f077d6e40a3453c39a1aa4991e6"
+    },
+    {
+      "path": "src/Infrastructure/Speech/IPocketSpeechWorkerFactory.cs",
+      "sha256": "67158198852c490b6bf9504d07519710e766ee861c9fd0845ba284a475252960"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechProtocol.cs",
+      "sha256": "3d5d51936818d2b70e19749bc9d992adf61bea5a12bd30eb919eeb5e331b128a"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechSynthesizer.cs",
+      "sha256": "3ac648abf55bb1002c7696f114ce7ecd0f6f7c53b97559934584de4816285bd4"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechWorkerOptions.cs",
+      "sha256": "3aeb4a74e17210819d9732266b4ef8994e7bcb34b7d61e5fc56b744ec1dc3c9d"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechWorkerProcess.cs",
+      "sha256": "e50983dd5bde7b75c9ed6d1fb4fba898987b57dccbc06ecd755665eda1d8ed67"
+    },
+    {
+      "path": "src/Infrastructure/Speech/PocketSpeechWorkerProcessFactory.cs",
+      "sha256": "d96bbec68f696aa0164531d74b8cbd9a06c0c3e194fd741b58bab2446e039527"
+    },
+    {
+      "path": "tests/Application.Tests/Speech/SpeechContractTests.cs",
+      "sha256": "a019bb95e77a7232a8c78d8c9aeff62f08c31f85a78f3220116040414fb531ea"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Speech/PocketSpeechSynthesizerTests.cs",
+      "sha256": "3ac1c3f6bfef14780480857fcc5319e15d7d4f3b1170d7ec6925096611694126"
+    },
+    {
+      "path": "tools/SpeechServiceProbe/Allrpcs.SpeechServiceProbe.csproj",
+      "sha256": "8a008ff013bc9d91d918fa54a4d85083db88c6d356a3cf4f5909e54b564be940"
+    },
+    {
+      "path": "tools/SpeechServiceProbe/Program.cs",
+      "sha256": "68ffad0edbd5ca71ca124037359743f379bf30892bd132c904740ddd22270303"
+    }
+  ]
+}

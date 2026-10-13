@@ -1,0 +1,690 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "started": "2026-10-13T04:25:14.186365+00:00",
+  "stages": [
+    {
+      "name": "herb-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "01-herb-historical-restore-1.log",
+          "sha256": "af8a8437f52b2fed5cad858ec60fc808a7721ed8c6bbe53832ce6d9bd6269153",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "02-herb-historical-build-1.log",
+          "sha256": "6e0406dc18d2f656aa8d66406890c2a3106b21dc5efca1e0c0d3305c436d6bb1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "03-herb-historical-import-1.log",
+          "sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~HerbCollection",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "04-herb-focused-1.log",
+          "sha256": "97db38b0c9926f6b19ce8ecde5f2706e2c2eccc9901baa19639fc7915ee97e7d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-herb-source",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--source-only"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "05-boundary-herb-source-1.log",
+          "sha256": "b04d404e0c9eb2c99dabcbb7a4303e9bfd2e271d99349d7b78289392b87aea34",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-source-rejections",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/prepare-herb-collection-passage.py",
+        "--self-test"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "06-herb-source-rejections-1.log",
+          "sha256": "bd8a323e6f124a48c411a5eda4ea01b9eafd8690362f25efb7b91c9c2bcd6eaa",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-validator-rejections",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--self-test"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "07-herb-validator-rejections-1.log",
+          "sha256": "cd3521956496c83bc1e853d0e80a297bff1f350fa453d87e46f234f76ada8d47",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "default",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "08-herb-near-default-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "quiet",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "09-herb-near-quiet-1.log",
+          "sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "master-muted",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "10-herb-near-master-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "effects-muted",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "11-herb-near-effects-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "missing-stream",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "12-herb-near-missing-stream-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "captions-off",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "13-herb-near-captions-off-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-audio-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "audio-disabled",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-near-audio-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "14-herb-near-audio-disabled-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "default",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "15-herb-remote-default-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "quiet",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "16-herb-remote-quiet-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "master-muted",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "17-herb-remote-master-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "effects-muted",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "18-herb-remote-effects-muted-1.log",
+          "sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "missing-stream",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "19-herb-remote-missing-stream-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "captions-off",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "20-herb-remote-captions-off-1.log",
+          "sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-audio-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "audio-disabled",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/pocket-service-herb-quality/herb-remote-audio-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "21-herb-remote-audio-disabled-1.log",
+          "sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-master-output",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--output-only"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "22-herb-master-output-1.log",
+          "sha256": "a5448aa3db7371ebfade7dbaeb93ca6c2afc2714c67b61d453e9f9e2a39b5d6d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-herb-reviewed",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-qnf4rt8y/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "23-boundary-herb-reviewed-1.log",
+          "sha256": "693e9b5924dd325029a1aec2fa8b49e02dd10e2a9b482513777ef74f3bdc97bf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    }
+  ],
+  "original_runner_sha256": "fae0bfdf6e9c2909b88fc4b2825d653c86b4f315e4fadfd5ee1149b593d804b8",
+  "executed_finish_runner_sha256": "fc9278700fb0c3c428f6b97120b07b9e570394e4676a6dbd9885a5338a28a623",
+  "verified_prefix_report_sha256": "a8ac8c618894ca868d8aa7d29fa516b4e1ce3f8ace3ea23a8e82a0a9d18871cb",
+  "verified_prefix_completed_stages": 43,
+  "herb_revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+  "reason": "The frozen herb validator rejects newly added speech evidence paths; run its exact accepted source instead of weakening the validator.",
+  "herb_near_save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+  "herb_remote_save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+  "herb_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "captions-off",
+    "audio-disabled"
+  ],
+  "finished": "2026-10-13T04:26:53.135228+00:00"
+}

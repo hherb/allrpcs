@@ -1,0 +1,6 @@
+{
+  "default": {
+    "en": "english/voice.safetensors",
+    "de": "german/voice.safetensors"
+  }
+}

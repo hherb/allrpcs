@@ -9,13 +9,15 @@
       "preserve_original_audition": true
     }
   ],
-  "latest_experiment": "offline-tts-spike/owner-request.json",
+  "latest_experiment": "pocket-tts-service/owner-request.json",
   "preferred_tts_candidate": {
     "model": "Pocket TTS",
-    "status": "provisional_owner_preference",
+    "status": "selected_for_first_tts_service_component",
     "evidence": "offline-tts-spike/owner-listening-assessment.json",
     "reason": "Owner found both models understandable in English and German, preferred Pocket and heard an English accent in Qwen3's German Ryan voice.",
-    "next_hardware_evaluation": "Pocket TTS on M1 16 GB with Godot and the local dialogue model; not yet performed."
+    "service_component": "pocket-tts-service/README.md",
+    "continuation": "Owner approved continuing on the current M3 Max while the M1 is unavailable. English/German streaming, cancellation and process reuse are implemented at the service boundary.",
+    "next_hardware_evaluation": "Pocket TTS with Godot and the local dialogue model on current M3, followed by actual M1 16 GB when available; neither combined-budget measurement has been performed."
   },
   "selected_game_backend": null
 }

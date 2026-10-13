@@ -1,0 +1,9 @@
+{
+  "exit_code": 1,
+  "stdout": {
+    "type": "unavailable",
+    "protocol": 1,
+    "code": "runtime_or_assets_unavailable"
+  },
+  "diagnostic_excludes_paths_and_text": true
+}

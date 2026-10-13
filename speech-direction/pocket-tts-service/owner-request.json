@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Very good. Cannpot find the M1 presently, lets continue with the current machine. By extrapolation, it should work well anyway",
+  "interpretation": "Continue the preferred Pocket TTS path on the current M3 Max, without waiting for the missing M1.",
+  "roadmap_item": "Define ISpeechSynthesizer independently of any provider; add one TTS implementation.",
+  "missing_deliverable": "A provider-neutral C# PCM stream interface and reusable local Pocket worker with bounded requests, cancellation, voice mapping and recovery.",
+  "completion_condition": "Verify contracts, process lifecycle and actual English/German streaming/cancellation/reuse on M3, retain a runnable service probe, document the integration boundary and publish.",
+  "boundary": "First TTS service component, isolated from the concurrent controls implementation. Main-scene dialogue playback, character-to-voice casting, microphone/ASR, packaged Python/models and physical M1/Windows/Linux validation remain subsequent work.",
+  "m1_suitability": "Owner accepts continuing from extrapolation; measured M1 performance remains unverified.",
+  "host_execution_authority": "I approve host execution"
+}

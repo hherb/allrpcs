@@ -1,0 +1,3109 @@
+{
+  "schema_version": 1,
+  "status": "failed",
+  "started": "2026-10-13T03:40:39.724051+00:00",
+  "stages": [
+    {
+      "name": "continuation",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/check-continuation.py",
+        "--self-test"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "01-continuation-1.log",
+          "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-1",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-garden-ground-runtime.py",
+        "--historical-quality"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "02-art-1-1.log",
+          "sha256": "ec2a7d4951d72a8ab7a071433d22cb737894fd2b69605496cadc8194ce6d4b7a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-2",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "03-art-2-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-3",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-square-ground-runtime.py",
+        "--historical-garden"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "04-art-3-1.log",
+          "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-4",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-sickhouse-ground-runtime.py",
+        "--historical-square"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "05-art-4-1.log",
+          "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-5",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wagon-ground-runtime.py",
+        "--historical-sickhouse"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "06-art-5-1.log",
+          "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-6",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-shrine-ground-runtime.py",
+        "--historical-wagon"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "07-art-6-1.log",
+          "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-7",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-laundry-ground-runtime.py",
+        "--historical-shrine"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "08-art-7-1.log",
+          "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-8",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--historical-village-edge"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "09-art-8-1.log",
+          "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-9",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--check-rejections"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sge2bz58/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "10-art-9-1.log",
+          "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-buses",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-audio-publication.py"
+      ],
+      "revision": "1b21d223d8329ead39973cfb81a290188780e84e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-g2rx6ez1/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "11-boundary-buses-1.log",
+          "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-material",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "audio-direction/material-runtime-review/publication/validate-publication.py"
+      ],
+      "revision": "240f18000a6825e6a46fea27135af2072b82f911",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cjld3y64/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "12-boundary-material-1.log",
+          "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-footstep",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-footstep-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "f5ae96894ba33cecddd8b7d8c4166a02c088aba5",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nembu3hx/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "13-boundary-footstep-1.log",
+          "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-positional",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-positional-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "b9b36889c35cb3c7773d8ac3cee7ee650d85af25",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-3d4wmhxq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "14-boundary-positional-1.log",
+          "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-music",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-music-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c472c0a31548e076bfee0252e4e4970714c8c019",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-w2u7h1c6/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "15-boundary-music-1.log",
+          "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-interior",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-interior-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "7b8dd659d409974126790b8a417533bded9c2e5e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-uo2g77xq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "16-boundary-interior-1.log",
+          "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-water",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-water-contact-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "50f4a7516f7b5acb20119212985e2132a581c106",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-m7co1vyr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "17-boundary-water-1.log",
+          "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-cask",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-cask-cover-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "5495202faecb257148309ad028faa3e0d95bf51c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzk12mqi/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "18-boundary-cask-1.log",
+          "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-current",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ynlw7wpo/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "19-boundary-hand-tool-current-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-current",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-du114rwr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "20-boundary-healer-current-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-current",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-uccqmqnr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "21-boundary-foliage-current-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "current-art-imports",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "22-current-art-imports-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-1",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/validate-workflows.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "23-product-1-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-2",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "24-product-2-1.log",
+          "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-3",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet format Allrpcs.sln --no-restore --verify-no-changes"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "25-product-3-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-4",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet build Allrpcs.sln --no-restore -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "26-product-4-1.log",
+          "sha256": "985cd563b3b45a513f8de8397bd60d566b0921fbf70d20a34f8e44860b96c32d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-5",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "27-product-5-1.log",
+          "sha256": "920f8867f2ab57034e9cbe200a1477edb0b93373b16bc9fbc5ed27029d2f8fbf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-6",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "28-product-6-1.log",
+          "sha256": "2751481d2f1d1aa034e4ddf0356cbbd7c11a36eb4c000928ba0ed6f7d5ae2c81",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-7",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "29-product-7-1.log",
+          "sha256": "6d4c936fafe06159d92808ecb0574367e66ca60e996f7288f30a3177df76a2ba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-8",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "30-product-8-1.log",
+          "sha256": "00255346b634765bd64d9b07e58ae1f0a154eb90b6a10a8c7d4ac904cfa38ef2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-9",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "31-product-9-1.log",
+          "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-resume",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-xtt45m2b/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "32-boundary-hand-tool-resume-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-resume",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-djn6s4e1/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "33-boundary-healer-resume-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-resume",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nan7jf38/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "34-boundary-foliage-resume-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-10",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/smoke-godot.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "35-product-10-1.log",
+          "sha256": "151598e2f140b816e73b40ad890c365c8773bc6de488b621a1650eaf73b2c6e7",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-11",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "36-product-11-1.log",
+          "sha256": "c9af51f4973919490926b929ae4b3671f1e87dcaac71e2ae9659b8225e5fd227",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-12",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SQUARE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "37-product-12-1.log",
+          "sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-13",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "38-product-13-1.log",
+          "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-14",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WAGON_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "39-product-14-1.log",
+          "sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-15",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SHRINE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "40-product-15-1.log",
+          "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-16",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_LAUNDRY_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "41-product-16-1.log",
+          "sha256": "1d0c6390251592202b06737a5ba3d92e15e98e3f64aff5e13d0503fc62156b87",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-17",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "42-product-17-1.log",
+          "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-18",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WOODLAND_CLEARING_DRESSING_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "43-product-18-1.log",
+          "sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-19",
+      "arguments": [
+        "sh",
+        "-c",
+        "godot --path game --quit-after 60"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "44-product-19-1.log",
+          "sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-normal",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "normal",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/interior-normal.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "45-interior-normal-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "muted",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/interior-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "46-interior-muted-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-zero",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "zero",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/interior-zero.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "47-interior-zero-1.log",
+          "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-mono-reduced",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "mono-reduced",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/interior-mono-reduced.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "48-interior-mono-reduced-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "default",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "49-water-default-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "quiet",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "50-water-quiet-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "master-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "51-water-master-muted-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "effects-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "52-water-effects-muted-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "missing-stream",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "53-water-missing-stream-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "no-action",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/water-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "54-water-no-action-1.log",
+          "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "default",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "55-cask-default-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "quiet",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "56-cask-quiet-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "master-muted",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "57-cask-master-muted-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "effects-muted",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "58-cask-effects-muted-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "missing-stream",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "59-cask-missing-stream-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "no-action",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/cask-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "60-cask-no-action-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "default",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "61-hand-tool-default-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "quiet",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "62-hand-tool-quiet-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "master-muted",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "63-hand-tool-master-muted-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "effects-muted",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "64-hand-tool-effects-muted-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "missing-stream",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "65-hand-tool-missing-stream-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "no-action",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/tool-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "66-hand-tool-no-action-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "default",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "67-healer-footstep-default-1.log",
+          "sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "quiet",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "68-healer-footstep-quiet-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "master-muted",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "69-healer-footstep-master-muted-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "effects-muted",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "70-healer-footstep-effects-muted-1.log",
+          "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-missing-resources",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "missing-resources",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-missing-resources.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "71-healer-footstep-missing-resources-1.log",
+          "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "captions-off",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "72-healer-footstep-captions-off-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-observer-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "observer-disabled",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/healer-observer-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "73-healer-footstep-observer-disabled-1.log",
+          "sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-after-runtime",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-aveslgho/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "74-boundary-hand-tool-after-runtime-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-master-output",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--output-only"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-80tt1k_f/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "75-healer-master-output-1.log",
+          "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-after-runtime",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-80tt1k_f/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "76-boundary-healer-after-runtime-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "77-foliage-historical-build-1.log",
+          "sha256": "995eef55bdbc6e0db2a1effdcd1b7903b6fc0fa571b8c98a4c398f09845eefd5",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "78-foliage-historical-import-1.log",
+          "sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "default",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "79-foliage-default-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "quiet",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "80-foliage-quiet-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "master-muted",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "81-foliage-master-muted-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "ambience-muted",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "82-foliage-ambience-muted-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "missing-stream",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "83-foliage-missing-stream-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "captions-off",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "84-foliage-captions-off-1.log",
+          "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-foliage-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "foliage-disabled",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/foliage-foliage-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "85-foliage-foliage-disabled-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-master-output",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--output-only"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "86-foliage-master-output-1.log",
+          "sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-after-runtime",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cezgzrhm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "87-boundary-foliage-after-runtime-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "88-wind-historical-restore-1.log",
+          "sha256": "52ffc050707feaae52b2b4c0a738353c2634dec0296124b96955fc5d3ce5d0c2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "89-wind-historical-build-1.log",
+          "sha256": "2724615194fb952ab968cab5c6e9428acc2b7fc3872d9c8fae4f709199170faa",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "90-wind-historical-import-1.log",
+          "sha256": "1ab1bdac20d0ee62732289f464e36ae3cd7ca556befa5dbd6ac5b341c55d82c8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Wind",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "91-wind-focused-1.log",
+          "sha256": "1b5d041e955fe368ccea84130f87890deffe67c87a2ab25c7cdbf8077a03bcc9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-wind-source",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--source-only"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "92-boundary-wind-source-1.log",
+          "sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "default",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "93-wind-default-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "quiet",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "94-wind-quiet-1.log",
+          "sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "master-muted",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "95-wind-master-muted-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "ambience-muted",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "96-wind-ambience-muted-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "missing-stream",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "97-wind-missing-stream-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "captions-off",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "98-wind-captions-off-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-wind-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "wind-disabled",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/wind-wind-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "99-wind-wind-disabled-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-master-output",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--output-only"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "100-wind-master-output-1.log",
+          "sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-wind-reviewed",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vky3_g_a/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "101-boundary-wind-reviewed-1.log",
+          "sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "102-rain-historical-restore-1.log",
+          "sha256": "874eafb3c1ec8eafbaf7a5793c56637fbfdbfc7eae361032c3d02a713fc3debf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "103-rain-historical-build-1.log",
+          "sha256": "14297f0d897fdecf2f7d4e3fff47df2f2577420fbda1fb59d6acac219e9ed378",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "104-rain-historical-import-1.log",
+          "sha256": "86637223f6102704b46e49e6ed148c05838474d9f8e21d58d286dd83a4060583",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Audio.Rain",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "105-rain-focused-1.log",
+          "sha256": "23b89c393170648ca1784bff6311a06dc88b5ee7adff7f5aa97ccf5484ab6c3f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-rain-source",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--source-only"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "106-boundary-rain-source-1.log",
+          "sha256": "8bf9e28bb25cdc74ca082b562ccc5944c091e001cf90642a8f9e18984ca1b997",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "default",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "107-rain-default-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "quiet",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "108-rain-quiet-1.log",
+          "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "master-muted",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "109-rain-master-muted-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "ambience-muted",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "110-rain-ambience-muted-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "missing-stream",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "111-rain-missing-stream-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "captions-off",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "112-rain-captions-off-1.log",
+          "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-rain-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "rain-disabled",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-current/rain-rain-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "113-rain-rain-disabled-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-master-output",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--output-only"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "114-rain-master-output-1.log",
+          "sha256": "61e415280e9bfa63af7220ab1d3c9dee81d1223dc195575404a283f32b2a40ce",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-rain-reviewed",
+      "arguments": [
+        "/Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gzi6o8fq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "115-boundary-rain-reviewed-1.log",
+          "sha256": "311e66b904f9a71a080ff8bdd07ffab52a70b9d137f46da0980dba3bb0734ea8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-b2z9tpbk/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "116-heating-historical-restore-1.log",
+          "sha256": "7a64fdf4e6a9f64327b6e9173975908fbefc6ef344e1a060070065ca6e759f22",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-b2z9tpbk/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "117-heating-historical-build-1.log",
+          "sha256": "035ac6f6491e6c958c7cd2707a06b944b9f3166800e5d13c48cbe61c3cd9440c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-b2z9tpbk/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": -11,
+          "log": "118-heating-historical-import-1.log",
+          "sha256": "aee3fd27ac00ff8b8e47c581f6179ea2f5e23b5bc5476773e61700fc88acd43e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    }
+  ],
+  "product_revision": "58af0371c1ac777cf0829ad2b7fd47915b9a5c27",
+  "python": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "pillow": "12.3.0",
+  "numpy": "2.5.3",
+  "zlib": "1.2.12",
+  "inputs": {
+    "quality.py": "fae0bfdf6e9c2909b88fc4b2825d653c86b4f315e4fadfd5ee1149b593d804b8",
+    "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+    "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+    "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+    "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+  },
+  "native_launch_retry": {
+    "real_godot": "/Users/hherb/.local/bin/godot",
+    "wrapper_sha256": "94054d0c6ba9660730425643d22ff8b661d2a8e260b7a720353a6c1cf300ca0a",
+    "max_identical_attempts": 3,
+    "reason": "Individual frozen smoke launches retry only diagnosed native shutdown; real errors remain fatal."
+  },
+  "water_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "water_transcript": [],
+  "water_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "cask_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "cask_transcript": [],
+  "cask_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "tool_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "tool_transcript": [],
+  "tool_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "healer_save_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+  "healer_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-resources",
+    "captions-off",
+    "observer-disabled"
+  ],
+  "healer_contacts": 4,
+  "healer_presentations": 4,
+  "generated_uid_cleanup": [],
+  "historical_foliage_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "foliage_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "foliage-disabled"
+  ],
+  "foliage_save_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+  "historical_wind_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "wind_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "wind-disabled"
+  ],
+  "wind_save_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+  "rain_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "rain-disabled"
+  ],
+  "rain_save_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+  "finished": "2026-10-13T04:17:01.124626+00:00",
+  "failed_stage": "heating-historical-import"
+}

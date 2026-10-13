@@ -1,0 +1,94 @@
+{
+  "source_report": "Godot-2026-10-13-151701.ips",
+  "source_report_sha256": "4c2d0e1256d49983eadd5e05e28700e6ed50f17e4a006254b7956ac0909a4ec1",
+  "capture_time": "2026-10-13 15:17:00.1851 +1100",
+  "exception": {
+    "codes": "0x0000000000000001, 0x0000000000000010",
+    "rawCodes": [
+      1,
+      16
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGSEGV",
+    "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000010"
+  },
+  "thread_name": "WorkerThread 0",
+  "frames": [
+    {
+      "image": "Godot",
+      "symbol": null,
+      "image_offset": 8973732
+    },
+    {
+      "image": "Godot",
+      "symbol": "ClassDB::class_get_default_property_value(StringName const&, StringName const&, bool*)",
+      "image_offset": 80663256
+    },
+    {
+      "image": "Godot",
+      "symbol": "ClassDB::class_get_default_property_value(StringName const&, StringName const&, bool*)",
+      "image_offset": 80663256
+    },
+    {
+      "image": "Godot",
+      "symbol": "PropertyUtils::get_property_default_value(Object const*, StringName const&, bool*, Vector<SceneState::PackState> const*, bool, Node const*, bool*)",
+      "image_offset": 47013188
+    },
+    {
+      "image": "Godot",
+      "symbol": "ResourceFormatSaverBinaryInstance::save(String const&, Ref<Resource> const&, unsigned int)",
+      "image_offset": 76840856
+    },
+    {
+      "image": "Godot",
+      "symbol": "ResourceFormatSaverBinary::save(Ref<Resource> const&, String const&, unsigned int)",
+      "image_offset": 76850972
+    },
+    {
+      "image": "Godot",
+      "symbol": "ResourceSaver::save(RequiredParam<Resource>, String const&, unsigned int)",
+      "image_offset": 76972312
+    },
+    {
+      "image": "Godot",
+      "symbol": "ResourceImporterWAV::import(long long, String const&, String const&, HashMap<StringName, Variant, HashMapHasherDefault, HashMapComparatorDefault<StringName, void>, DefaultTypedAllocator<HashMapElement<StringName, Variant>>> const&, List<String, DefaultAllocator>*, List<String, DefaultAllocator>*, Variant*)",
+      "image_offset": 38135312
+    },
+    {
+      "image": "Godot",
+      "symbol": "EditorFileSystem::_reimport_file(String const&, HashMap<StringName, Variant, HashMapHasherDefault, HashMapComparatorDefault<StringName, void>, DefaultTypedAllocator<HashMapElement<StringName, Variant>>> const&, String const&, Variant*, bool)",
+      "image_offset": 36212488
+    },
+    {
+      "image": "Godot",
+      "symbol": "EditorFileSystem::_reimport_thread(unsigned int, EditorFileSystem::ImportThreadData*)",
+      "image_offset": 36229880
+    },
+    {
+      "image": "Godot",
+      "symbol": "WorkerThreadPool::_process_task(WorkerThreadPool::Task*)",
+      "image_offset": 81032432
+    },
+    {
+      "image": "Godot",
+      "symbol": "WorkerThreadPool::_thread_function(void*)",
+      "image_offset": 103425188
+    },
+    {
+      "image": "Godot",
+      "symbol": "Thread::thread_callback(void*)",
+      "image_offset": 26644660
+    },
+    {
+      "image": "libsystem_pthread.dylib",
+      "symbol": "_pthread_start",
+      "image_offset": 27904
+    },
+    {
+      "image": "libsystem_pthread.dylib",
+      "symbol": "thread_start",
+      "image_offset": 7404
+    }
+  ],
+  "interpretation": "Native Godot WAV importer failure during cold import of the unchanged heating predecessor; no speech code exists in that snapshot. No game or validator source is modified for recovery."
+}

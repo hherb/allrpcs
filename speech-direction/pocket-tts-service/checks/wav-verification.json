@@ -1,0 +1,62 @@
+[
+  {
+    "file": "english-cold.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 71040,
+    "peak": 0.61492919921875,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "6a215439fa180af40ccbb699497b5d5637bca1f77b75af88b7decef4c50009ca"
+  },
+  {
+    "file": "german-warm.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 88320,
+    "peak": 0.319122314453125,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "c45b16712ac3605dd076dfc3d9364388420fc517182ea30abed1b7f48ba9b692"
+  },
+  {
+    "file": "after-cancel-English.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 67200,
+    "peak": 0.745574951171875,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "127c1930625fe5b9d63df61f60ed5e45b1fe638c21e1cb9a5d211a650f51877d"
+  },
+  {
+    "file": "after-cancel-German.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 107520,
+    "peak": 0.33837890625,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "0e5849c095d0fbf37286aecac554ff281686754d9cd53b8927834ec6d802e5c9"
+  },
+  {
+    "file": "after-early-disposal.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 99840,
+    "peak": 0.3580322265625,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "dffb88a7d77cd446ff65833a89d99a776518a9d62ef06c7396682f0945b1e8ea"
+  },
+  {
+    "file": "after-worker-error.wav",
+    "sample_rate": 24000,
+    "channels": 1,
+    "samples": 72960,
+    "peak": 0.608306884765625,
+    "finite": true,
+    "clipped_samples": 0,
+    "sha256": "fe1bf5afd7248a9b7b82b4caaf141f603a69d9087428c701bef5b9f0f25d3424"
+  }
+]

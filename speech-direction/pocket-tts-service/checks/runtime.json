@@ -1,0 +1,84 @@
+{
+  "machine": "Apple M3 Max",
+  "physical_ram_bytes": 137438953472,
+  "logical_processors": 16,
+  "python": "3.12.3",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "dotnet_sdk": "8.0.130",
+  "dependencies": {
+    "pocket-tts": "3.3.0",
+    "torch": "2.7.0",
+    "numpy": "2.2.6",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.3",
+    "sentencepiece": "0.2.2",
+    "pyyaml": "6.0.3"
+  },
+  "local_assets": [
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "e7205b6ee50e654a5ea19f0e9df2b0813b05e921",
+      "file": "languages/english/model.safetensors",
+      "size": 219029196,
+      "sha256": "916ccd2686e9311cb40054893a3c4284393d658825ffc714a276f3e9b152344f",
+      "published_sha256": "916ccd2686e9311cb40054893a3c4284393d658825ffc714a276f3e9b152344f",
+      "local_relative_path": "english/model.safetensors"
+    },
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "00eac05ed3d16bdc3f6b5d598874019c34a89214",
+      "file": "languages/english/tokenizer.json",
+      "size": 245020,
+      "sha256": "f498428e1eafee50492f7be13dc9bfafcfc12e508cd0eb1b01c92ecd5d8c6687",
+      "published_sha256": null,
+      "local_relative_path": "english/tokenizer.json"
+    },
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+      "file": "languages/english/embeddings/alba.safetensors",
+      "size": 6195000,
+      "sha256": "d291428b416d6c36a1de7835e51dbe1e334b75e5af512bb18dd23a1047fe8f3b",
+      "published_sha256": "d291428b416d6c36a1de7835e51dbe1e334b75e5af512bb18dd23a1047fe8f3b",
+      "local_relative_path": "english/voice.safetensors"
+    },
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+      "file": "languages/german/model.safetensors",
+      "size": 219029196,
+      "sha256": "d2fabbc2c383d30ee29fcd374f8281406cc501b1d963fe687691f8573de3252b",
+      "published_sha256": "d2fabbc2c383d30ee29fcd374f8281406cc501b1d963fe687691f8573de3252b",
+      "local_relative_path": "german/model.safetensors"
+    },
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+      "file": "languages/german/tokenizer.json",
+      "size": 245966,
+      "sha256": "2d77849811e3d1b6ae80e5b11b203f57e1847901104d8a0573b34f46f8dddb53",
+      "published_sha256": null,
+      "local_relative_path": "german/tokenizer.json"
+    },
+    {
+      "repository": "kyutai/pocket-tts-without-voice-cloning",
+      "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+      "file": "languages/german/embeddings/juergen.safetensors",
+      "size": 6244152,
+      "sha256": "0846249f121a8fb9466519080544549409f27f52b64bd381d41ef2b2c0410a50",
+      "published_sha256": "0846249f121a8fb9466519080544549409f27f52b64bd381d41ef2b2c0410a50",
+      "local_relative_path": "german/voice.safetensors"
+    },
+    {
+      "local_relative_path": "english/config.yaml",
+      "size": 1169,
+      "sha256": "f4480a727faaf18efe5f0b46ff98059d710d2eb82d21362edf2b0027b6b3ecb0"
+    },
+    {
+      "local_relative_path": "german/config.yaml",
+      "size": 1337,
+      "sha256": "8b2a291300bf072d01d1ddae2320d6f62bdaeaf65528d45feaaf6fefd5d39478"
+    }
+  ],
+  "inference": "CPU, float32; both languages resident; intra-op/inter-op threads each 1; offline library flags and validated local files; no OS network blocking"
+}

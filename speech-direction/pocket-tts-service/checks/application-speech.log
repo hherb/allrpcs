@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Allrpcs.Domain -> /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/src/Domain/bin/Debug/net8.0/Allrpcs.Domain.dll
+  Allrpcs.Application -> /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/src/Application/bin/Debug/net8.0/Allrpcs.Application.dll
+  Allrpcs.Application.Tests -> /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/tests/Application.Tests/bin/Debug/net8.0/Allrpcs.Application.Tests.dll
+Test run for /Users/hherb/.codex/worktrees/pocket-tts-service/allrpcs/tests/Application.Tests/bin/Debug/net8.0/Allrpcs.Application.Tests.dll (.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.8.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     6, Skipped:     0, Total:     6, Duration: 2 ms - Allrpcs.Application.Tests.dll (net8.0)
