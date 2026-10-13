@@ -780,6 +780,20 @@
           "sha256": "3adbc85057c2f102f6e0f2bbb381ce465210967d1e1205cdfb50646617e64fcb"
         }
       ]
+    },
+    {
+      "id": "phase10-pocket-tts-service-component",
+      "reason": "Completed the owner-requested provider-neutral synthesizer and first offline Pocket worker component on M3: bilingual streaming, cancellation/reuse, failure recovery and runnable probe. Main-scene playback, expressive acting/casting, ASR, packaging and actual M1/other-platform execution remain separate deliverables.",
+      "evidence": [
+        {
+          "path": "speech-direction/pocket-tts-service/owner-request.json",
+          "sha256": "6234d36d42d9a73a998eb3c5bf450dae48ff2c96bd26c2d064268ac19471e7d7"
+        },
+        {
+          "path": "speech-direction/pocket-tts-service/closure.json",
+          "sha256": "c455294f0f3ddaf7be214713f3f2e807b7726ced21a52674fa2d02cbd283ce35"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
