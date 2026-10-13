@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "complete",
+  "scope_id": "phase10-streaming-player-asr-integration",
+  "workstream": "streaming-player-asr-integration",
+  "delivered": [
+    "Selected local English/German Moonshine adapter and provider-neutral capture/recognition",
+    "Explicit hold-to-talk/optional listening, editable partial/final drafts and unchanged Submit/Whisper",
+    "Bounded lifecycle cancellation, text fallback and reply PCM interruption",
+    "Synthetic native Main and actual local backend qualification, full quality, privacy/continuation maintenance"
+  ],
+  "evidence": [
+    {
+      "path": "speech-direction/player-asr-integration/authority.json",
+      "sha256": "5da318a72db725b45caa6240a7e49fe683f33f5b3a047d70fd090eb7b11f3f64",
+      "size_bytes": 977
+    },
+    {
+      "path": "speech-direction/player-asr-integration/README.md",
+      "sha256": "0ec94083d5aa6814b3d518bd3513299888c31a09b89defc64985b8132a9e36ab",
+      "size_bytes": 11380
+    },
+    {
+      "path": "speech-direction/player-asr-integration/models.json",
+      "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588",
+      "size_bytes": 2453
+    },
+    {
+      "path": "speech-direction/player-asr-integration/verification.json",
+      "sha256": "5e10f9f50fbe1f787c8a450f0d2005e5f113fa3cb2d8589aa90f565be78bb6e2",
+      "size_bytes": 18634
+    }
+  ],
+  "next_missing_deliverable": "An explicitly enabled human microphone/permission/device and echo session with named hardware/operator and honest acoustic results. This is distinct from repeating the closed implementation or model comparison.",
+  "publication": "Standing commit/push authorization; unrelated project.godot editor state excluded."
+}

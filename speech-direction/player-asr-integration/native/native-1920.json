@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "mode": "native-1920",
+  "checks": [
+    "default-off-typed-dialogue-parity",
+    "hold-to-talk-reply-buffer-interruption",
+    "partial-draft-no-automatic-dialogue",
+    "manual-correction-fences-late-partials",
+    "release-finalizes-without-overwriting-correction",
+    "explicit-submit-exact-words-existing-whisper-owner",
+    "capture-activity-interruption-no-domain-action",
+    "stop-mic-preserves-draft-rejects-retired-events",
+    "injected-permission-device-failure-text-fallback",
+    "language-switch-retires-generation",
+    "injected-focus-loss-retires-generation",
+    "combined-ten-control-focus-and-world-gate",
+    "scene-exit-awaits-capture-and-recognizer-retirement"
+  ],
+  "realMoonshine": false,
+  "recognized": "",
+  "captureOpens": 6,
+  "size": [
+    1920,
+    1080
+  ],
+  "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+}

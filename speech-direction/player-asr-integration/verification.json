@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "passed",
+  "authority": {
+    "path": "speech-direction/player-asr-integration/authority.json",
+    "sha256": "5da318a72db725b45caa6240a7e49fe683f33f5b3a047d70fd090eb7b11f3f64",
+    "size_bytes": 977
+  },
+  "models": {
+    "path": "speech-direction/player-asr-integration/models.json",
+    "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588",
+    "size_bytes": 2453
+  },
+  "product_sources": [
+    {
+      "path": "src/Application/Speech/ISpeechRecognizer.cs",
+      "sha256": "eff82362603b4218a28f8861559d2073ca4b836ab0b73792646470154a83df75",
+      "size_bytes": 2156
+    },
+    {
+      "path": "src/Application/Speech/EditableSpeechDraft.cs",
+      "sha256": "f7d8761fcf5deff1d13b24dbcf86a1dc5960646e445d5a6aaf75d74b609b9fad",
+      "size_bytes": 2151
+    },
+    {
+      "path": "src/Application/Speech/PlayerSpeechSession.cs",
+      "sha256": "1c82b10dfa89cd9768d6a3c92b04fcb1b88ed1f4b1df26b55f76f6d4a2b6a67c",
+      "size_bytes": 6722
+    },
+    {
+      "path": "src/Infrastructure/Speech/PlayerSpeechWorker.cs",
+      "sha256": "0be05752bbca34b06f00b7a3f2f209bd317dcdd787e107f550f95ad034487a32",
+      "size_bytes": 6133
+    },
+    {
+      "path": "src/Infrastructure/Speech/MoonshineSpeechRecognizer.cs",
+      "sha256": "d753eba19cb01b3ddf5d4f52fd1b3cd18ab790ef891f21934cdc10371991018a",
+      "size_bytes": 6968
+    },
+    {
+      "path": "game/PlayerSpeechController.cs",
+      "sha256": "57ba091c5114f9e0ab125db8f4cd537ed349ce4a7c19aa4a63019d3b682551bb",
+      "size_bytes": 11087
+    },
+    {
+      "path": "game/PlayerSpeechMainSmokeCheck.cs",
+      "sha256": "6f9de6d51365d9ff5dd940bcd1ce06e508fdea4d4e1c28da709aad1d27990424",
+      "size_bytes": 21334
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "2c4c858152f3bff02bfe3b1d9840fadfbaffa1d0fe70cbeaea4245c8f61c03ea",
+      "size_bytes": 243688
+    },
+    {
+      "path": "scripts/player-speech-worker.py",
+      "sha256": "f55e254c73d5900b45685429f46e868f90b79079021d44af97dd6b0f3fe98608",
+      "size_bytes": 7724
+    },
+    {
+      "path": "scripts/test-player-speech-worker.py",
+      "sha256": "1a7402941cf50cc6ba0a4b5ea00266ed8d5c39b552738a3d2d7e0f9754eaee8b",
+      "size_bytes": 3357
+    },
+    {
+      "path": "tests/Application.Tests/Speech/PlayerSpeechTests.cs",
+      "sha256": "0ee0593f58abf56d6a18e434404c442ab6fdcebecd157f21cbbf4552d3974a35",
+      "size_bytes": 6707
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Speech/MoonshineSpeechTests.cs",
+      "sha256": "d847c7e49aa3b5d974b942145ba1b2aea03d5ba5fc673cb1d0205d47b590c52a",
+      "size_bytes": 6914
+    },
+    {
+      "path": "quality.py",
+      "sha256": "88a687120cf57151ef5bc48d3efa13a82c54995fae37c59af3bfacf76edb62e9",
+      "size_bytes": 97711
+    }
+  ],
+  "source_provenance": {
+    "tested_base_revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+    "working_tree_sources": "Exact hashes identify the uncommitted tested implementation; base revision alone does not contain these additions."
+  },
+  "root_quality": {
+    "summary": {
+      "path": "speech-direction/player-asr-integration/quality/summary.json",
+      "sha256": "32a4cfd04560d7bb8e22413902347200070c1f76742c836708a8a3aa36ccbd08",
+      "size_bytes": 185663
+    },
+    "logs": {
+      "path": "speech-direction/player-asr-integration/quality/logs.json",
+      "sha256": "fb09afbe4db93cdf78c0a5666ce1145aa53fc79ea1a10f039e39ae714b97cc43",
+      "size_bytes": 72668
+    },
+    "passed_stages": 206
+  },
+  "unit_tests": {
+    "projects": [
+      {
+        "stage": "product-5",
+        "passed": 2849,
+        "skipped": 0,
+        "total": 2849
+      },
+      {
+        "stage": "product-6",
+        "passed": 1416,
+        "skipped": 0,
+        "total": 1416
+      },
+      {
+        "stage": "product-7",
+        "passed": 1321,
+        "skipped": 0,
+        "total": 1321
+      },
+      {
+        "stage": "product-8",
+        "passed": 8,
+        "skipped": 0,
+        "total": 8
+      }
+    ],
+    "passed": 5594,
+    "skipped": 0
+  },
+  "focused_speech_tests": {
+    "application": 17,
+    "infrastructure": 22
+  },
+  "synthetic_python_capture_tests": 5,
+  "quality_runner_self_tests": 14,
+  "continuation_regression_probes": 11,
+  "native_modes": [
+    {
+      "path": "speech-direction/player-asr-integration/native/headless.json",
+      "sha256": "c60399ac7705df4107f8be403996adbea9b612c968587c26045591cde0ed5de2",
+      "size_bytes": 994,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "hold-to-talk-reply-buffer-interruption",
+        "partial-draft-no-automatic-dialogue",
+        "manual-correction-fences-late-partials",
+        "release-finalizes-without-overwriting-correction",
+        "explicit-submit-exact-words-existing-whisper-owner",
+        "capture-activity-interruption-no-domain-action",
+        "stop-mic-preserves-draft-rejects-retired-events",
+        "injected-permission-device-failure-text-fallback",
+        "language-switch-retires-generation",
+        "injected-focus-loss-retires-generation",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": false,
+      "recognized": "",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-english-1280.json",
+      "sha256": "e5128c01ab853c3906e2ea8732ed93907b66fccbb53465a4866593d30fd084c1",
+      "size_bytes": 877,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "hold-to-talk-reply-buffer-interruption",
+        "partial-draft-no-automatic-dialogue",
+        "real-moonshine-partial-final-local-model",
+        "explicit-submit-exact-words-existing-whisper-owner",
+        "capture-activity-interruption-no-domain-action",
+        "stop-mic-preserves-draft-rejects-retired-events",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": true,
+      "recognized": "Do not take the moonwork yet. Ring two clean bandages to the healer.",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-german-1280.json",
+      "sha256": "ee8f74cf4074eedf465d0f4fcfbd689979854b9383750e755fcfb23c7ff2b431",
+      "size_bytes": 891,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "hold-to-talk-reply-buffer-interruption",
+        "partial-draft-no-automatic-dialogue",
+        "real-moonshine-partial-final-local-model",
+        "explicit-submit-exact-words-existing-whisper-owner",
+        "capture-activity-interruption-no-domain-action",
+        "stop-mic-preserves-draft-rejects-retired-events",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": true,
+      "recognized": "Nimm den Mondrautenfahn noch nicht. Bringt zwei saubere Verb\u00e4nde zur Heilerin.",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1280.json",
+      "sha256": "a154cce09b1a9c01632459588eead445a8ed7aca0952fbedc6a995c3fd0b893b",
+      "size_bytes": 997,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "hold-to-talk-reply-buffer-interruption",
+        "partial-draft-no-automatic-dialogue",
+        "manual-correction-fences-late-partials",
+        "release-finalizes-without-overwriting-correction",
+        "explicit-submit-exact-words-existing-whisper-owner",
+        "capture-activity-interruption-no-domain-action",
+        "stop-mic-preserves-draft-rejects-retired-events",
+        "injected-permission-device-failure-text-fallback",
+        "language-switch-retires-generation",
+        "injected-focus-loss-retires-generation",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": false,
+      "recognized": "",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1920.json",
+      "sha256": "d6efb797a8cbb0436bd12f79d922fe6d58cd8a96c42d2f71dc75635c2857d517",
+      "size_bytes": 998,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "hold-to-talk-reply-buffer-interruption",
+        "partial-draft-no-automatic-dialogue",
+        "manual-correction-fences-late-partials",
+        "release-finalizes-without-overwriting-correction",
+        "explicit-submit-exact-words-existing-whisper-owner",
+        "capture-activity-interruption-no-domain-action",
+        "stop-mic-preserves-draft-rejects-retired-events",
+        "injected-permission-device-failure-text-fallback",
+        "language-switch-retires-generation",
+        "injected-focus-loss-retires-generation",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": false,
+      "recognized": "",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/unavailable.json",
+      "sha256": "8ac63cb76c67f319881fc110429404b164866c98adba8ca229672580c287dbb5",
+      "size_bytes": 532,
+      "checks": [
+        "default-off-typed-dialogue-parity",
+        "missing-runtime-text-fallback",
+        "combined-ten-control-focus-and-world-gate",
+        "scene-exit-awaits-capture-and-recognizer-retirement"
+      ],
+      "real_moonshine": false,
+      "recognized": "",
+      "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+    }
+  ],
+  "media": [
+    {
+      "path": "speech-direction/player-asr-integration/native/headless.json",
+      "sha256": "c60399ac7705df4107f8be403996adbea9b612c968587c26045591cde0ed5de2",
+      "size_bytes": 994
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/headless.log.gz",
+      "sha256": "10ce77dc16d8ca8c262263446e18e76b19c8fbb3d93fd4ed29cd7db232a8aeff",
+      "size_bytes": 377,
+      "raw_sha256": "2ffc5e769d84339f090df0709d09ca4a9197bfe35c75d877b0dc9eb57707c1bf"
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-english-1280.json",
+      "sha256": "e5128c01ab853c3906e2ea8732ed93907b66fccbb53465a4866593d30fd084c1",
+      "size_bytes": 877
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-english-1280.log.gz",
+      "sha256": "5b5a4c833e3479c7a319ecdc2bc714545bb971b862b510c78a76922aabe3360c",
+      "size_bytes": 467,
+      "raw_sha256": "4641c3ad836e6b9ddd6ac18b4b6421b9e36bee95dfcf77a29eb2f0b3852a566c"
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-english-1280.png",
+      "sha256": "bac7c8cbb4c3830b8da506991bc0df18b058f2e5ec89fd3c9ad9dea61d01b97c",
+      "size_bytes": 906200
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-german-1280.json",
+      "sha256": "ee8f74cf4074eedf465d0f4fcfbd689979854b9383750e755fcfb23c7ff2b431",
+      "size_bytes": 891
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-german-1280.log.gz",
+      "sha256": "2acfa776ae18450863b45288b84ea20cfd3f2a0635a3a6ca294edff3e34e3dc1",
+      "size_bytes": 467,
+      "raw_sha256": "96a56951573fbc1089339fb462a7785acc4aa99b32d673116393c4355e8f2fa4"
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/moonshine-german-1280.png",
+      "sha256": "b693ae1d00e56d1283b251f3a6e5bc66d4771594707abda76803a3ecd2950689",
+      "size_bytes": 931470
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1280.json",
+      "sha256": "a154cce09b1a9c01632459588eead445a8ed7aca0952fbedc6a995c3fd0b893b",
+      "size_bytes": 997
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1280.log.gz",
+      "sha256": "0f916f0a4411eec4991cc8064f004c39b4743dae7b13387bb9e7e0c544b5fa06",
+      "size_bytes": 424,
+      "raw_sha256": "efbcccc4f1718985d2969639b46d4e8bf6855ea584e9c28777be9d3e3c2ec547"
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1280.png",
+      "sha256": "67c576666844f0d16c9c815b35241393288ce5f915f3500a24719c5b69b2e338",
+      "size_bytes": 919040
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1920.json",
+      "sha256": "d6efb797a8cbb0436bd12f79d922fe6d58cd8a96c42d2f71dc75635c2857d517",
+      "size_bytes": 998
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1920.log.gz",
+      "sha256": "3701c060dd5c8f4c0723a1fce43c5d126a2550a14e11d00917765ef2114496c3",
+      "size_bytes": 418,
+      "raw_sha256": "02dbbd65951404d1fcf0cf41e7f0b3ee116d384d986609e80b6bcf02323e558e"
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/native-1920.png",
+      "sha256": "177cff9ef62daaf115276695740d02225d260af4d268c518bf84eb290b1b30a2",
+      "size_bytes": 1714874
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/unavailable.json",
+      "sha256": "8ac63cb76c67f319881fc110429404b164866c98adba8ca229672580c287dbb5",
+      "size_bytes": 532
+    },
+    {
+      "path": "speech-direction/player-asr-integration/native/unavailable.log.gz",
+      "sha256": "1619a11b34b3f8f6f33aca33fd2b128eeb7e2b30bc750edb1ce2b41381907b8c",
+      "size_bytes": 348,
+      "raw_sha256": "49d937d72614eebdd904b9726376f1ecdb2f7dcd14a8185dd1a2c75fec51cb58"
+    }
+  ],
+  "visual_review": {
+    "sizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "finding": "Readable additive microphone row, contained ten-control focus, typed field and existing speech/delivery controls preserved."
+  },
+  "unchanged_pocket_sources": [
+    {
+      "path": "src/Application/Speech/SpeechPlaybackSession.cs",
+      "sha256": "fde8c36c2934d9e008d5c291e40f15626b60b355aceb49b04374df8b73ebfd5f",
+      "size_bytes": 5565
+    },
+    {
+      "path": "tests/Application.Tests/Speech/SpeechPlaybackSessionTests.cs",
+      "sha256": "7b65d386101b5e3effb56174e2a70081c98e80fafb648c6d6fe08dd7471ca72f",
+      "size_bytes": 4421
+    },
+    {
+      "path": "game/DialogueSpeechController.cs",
+      "sha256": "d3da1e7a466613a728b637495f3d87c0402a7e0c2546579ceb92fd5167ca0fb5",
+      "size_bytes": 13024
+    },
+    {
+      "path": "game/DialogueSpeechMainSmokeCheck.cs",
+      "sha256": "66f3ceb0e509e54c70e84184b06fadc724170344b6b34d3a450d2672be354826",
+      "size_bytes": 16058
+    },
+    {
+      "path": "game/TemporaryDialogueInputPanel.cs",
+      "sha256": "5432bc3aaf3ce52806444e8722f8cf7e47b885a781d6829db3ea809344328d50",
+      "size_bytes": 5254
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e3011b193ddf226977d104f7ac43844deda8f902b68f495dc16261295776e9a8",
+      "size_bytes": 11058
+    }
+  ],
+  "frozen_dialogue_speech_revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+  "qualification_inputs": [
+    {
+      "path": "speech-direction/player-asr-integration/inputs/en-game-clean.wav",
+      "sha256": "99bf8daeec5129c5b5505675cb9f59df8dde6e818a108b88bd5b0fcb57ea6293",
+      "size_bytes": 210604,
+      "language": "en",
+      "actual_fixture_source": "artifacts/asr-evaluation/inputs/en-game-clean.wav",
+      "synthetic": true
+    },
+    {
+      "path": "speech-direction/player-asr-integration/inputs/de-game-clean.wav",
+      "sha256": "b3680c8dc89cdc8395f624629087b9dcb51f7265a84d8432cf279845b34d4a8b",
+      "size_bytes": 243884,
+      "language": "de",
+      "actual_fixture_source": "artifacts/asr-evaluation/inputs/de-game-clean.wav",
+      "synthetic": true
+    }
+  ],
+  "fixture_invocation": {
+    "arguments": [
+      "godot",
+      "--path",
+      "game",
+      "--quit-after",
+      "3600"
+    ],
+    "headless_modes_add": "--headless",
+    "renderer_frame_cap": 60,
+    "composition_disabled": true,
+    "shared_participation_supplier": 0,
+    "physical_microphone_opened": false,
+    "configured_runtime": "artifacts/player-speech-runtime.json",
+    "runtime_file_distributed": false
+  },
+  "runtime_environment": {
+    "path": "speech-direction/player-asr-integration/runtime-environment.json",
+    "sha256": "e8ec122097c1a6085be2031631dd5ec7e1feb22ac247f5befaf79cf63a912e3f",
+    "size_bytes": 207
+  },
+  "runtime": {
+    "moonshine_voice": "0.1.5",
+    "sounddevice": "0.5.6",
+    "numpy": "2.5.4",
+    "model_architecture": 4,
+    "english_model": "quantized_26_08_21",
+    "german_model": "quantized_26_08_24",
+    "model_bytes_distributed": false
+  },
+  "privacy_update": {
+    "path": "release-direction/player-asr-privacy-update.md",
+    "sha256": "ce5d288cfc9d81d212acb78587261e154852cfc659156f12435e4f6d3d769368",
+    "size_bytes": 1885
+  },
+  "readme": {
+    "path": "speech-direction/player-asr-integration/README.md",
+    "sha256": "0ec94083d5aa6814b3d518bd3513299888c31a09b89defc64985b8132a9e36ab",
+    "size_bytes": 11380
+  },
+  "scope_limits": [
+    "Capture begins after recognizer readiness; no cold-start pre-roll or startup latency qualification",
+    "No physical microphone opened or personal audio recorded by qualification",
+    "OS permission and default-device handling qualified with simulated devices only",
+    "No echo cancellation or human speaker/accent/noise qualification",
+    "Synthetic reply PCM and supplied dialogue models; no live credential-bearing conversational-provider trial",
+    "No M1/16GB, other-platform, combined local-LLM/speech budget or packaged binary/model certification"
+  ],
+  "preserved_editor": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+    "size_bytes": 8308,
+    "excluded_from_publication": true
+  }
+}

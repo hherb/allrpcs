@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -886,6 +886,24 @@
           "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4"
         }
       ]
+    },
+    {
+      "id": "phase10-streaming-player-asr-integration",
+      "reason": "Selected Moonshine capture/draft/interruption implementation and dependent synthetic/native/current quality complete. No unchanged model comparison, API audit or playback successor; physical microphone/echo qualification is a distinct missing deliverable.",
+      "evidence": [
+        {
+          "path": "speech-direction/player-asr-integration/closure.json",
+          "sha256": "73333a4c75ca4db7e41a7a8f7c6b2c5b9a5a6b536176fce868e8aa600d58a486"
+        },
+        {
+          "path": "speech-direction/player-asr-integration/verification.json",
+          "sha256": "5e10f9f50fbe1f787c8a450f0d2005e5f113fa3cb2d8589aa90f565be78bb6e2"
+        },
+        {
+          "path": "speech-direction/player-asr-integration/models.json",
+          "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1262,6 +1280,24 @@
           "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4"
         }
       ]
+    },
+    {
+      "id": "streaming-player-asr-integration",
+      "reason": "Opt-in selected recognizer integration complete. Preserve accepted component/evaluation/runtime evidence; continue only distinct human acoustic/device qualification under an explicit session grant.",
+      "evidence": [
+        {
+          "path": "speech-direction/player-asr-integration/closure.json",
+          "sha256": "73333a4c75ca4db7e41a7a8f7c6b2c5b9a5a6b536176fce868e8aa600d58a486"
+        },
+        {
+          "path": "speech-direction/player-asr-integration/verification.json",
+          "sha256": "5e10f9f50fbe1f787c8a450f0d2005e5f113fa3cb2d8589aa90f565be78bb6e2"
+        },
+        {
+          "path": "speech-direction/player-asr-integration/models.json",
+          "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1337,22 +1373,22 @@
     }
   ],
   "active_slice": {
-    "id": "phase10-streaming-player-asr-integration",
-    "title": "Integrate chosen streaming player recognizer and editable microphone drafts",
+    "id": "phase10-player-microphone-qualification",
+    "title": "Qualify a named human microphone and echo session",
     "status": "ready",
-    "workstream": "streaming-player-asr-integration",
-    "authority_status": "owner_authorized_integration_backend_choice_pending",
-    "roadmap_item": "- [ ] Add one ASR implementation and one TTS implementation.",
-    "missing_deliverable": "Actual provider-neutral speech recognition/capture boundary, one selected English/German local ASR adapter and opt-in editable microphone drafts in Main, with hold-to-talk fallback and voice-start cancellation of Pocket reply audio.",
-    "instructions": "Use the completed ASR comparison. Moonshine Small Streaming is recommended; an owner backend-choice question is pending. The original integration grant remains sufficient: request only unresolved backend preference, not generic runtime approval. Keep recognition separate from explicit Submit, preserve manual corrections and reject retired-generation results. Listening defaults off. VAD alone cannot reject game loudspeakers; qualify voice activation with headphones or a real echo-control session before hands-free claims.",
-    "completion_condition": "Selected ASR and capture compose in Main with bounded partial/final drafts, explicit listening/hold-to-talk, safe text fallback, reply interruption, lifecycle/device failure handling and ordinary dialogue parity. Retain focused/native/current quality and honest physical-microphone/echo limits, then close and publish the finite implementation; human acoustic qualification remains a distinct evidence requirement.",
+    "workstream": "player-microphone-qualification",
+    "authority_status": "explicit_physical_session_grant_confirmed_hardware_and_human_operator_required",
+    "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
+    "missing_deliverable": "Actual human English/German microphone, permission/host identity, input-device and headphone/speaker-feedback evidence for the new selected integration; existing qualification used only synthetic PCM and simulated devices.",
+    "instructions": "Use the closed integration README and staged configuration. Confirm the actual device/headphone inventory, human operator and one bounded session grant before opening live capture or changing OS privacy/device settings. Start with hold-to-talk/headphones; evaluate speaker feedback separately. Preserve explicit corrected-text Submit and record not-performed cases honestly. No model audition restart, unchanged API/runtime audit or unrelated hardware test.",
+    "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
     "outputs": [
-      "speech-direction/player-asr-integration/authority.json",
-      "speech-direction/player-asr-integration/README.md",
-      "speech-direction/player-asr-integration/verification.json",
-      "speech-direction/player-asr-integration/closure.json"
+      "speech-direction/player-microphone-qualification/authority.json",
+      "speech-direction/player-microphone-qualification/session.json",
+      "speech-direction/player-microphone-qualification/results.json",
+      "speech-direction/player-microphone-qualification/README.md"
     ],
-    "boundary": "Original dialogue integration authority only. No automatic transcript execution, new voice-command domain vocabulary, actor/model audition restart, packaged model distribution, physical controller qualification or unmeasured microphone/echo/platform claims."
+    "boundary": "Physical session only after the named grant/operator/intake. No live capture or personal-audio persistence without explicit enablement, OS privacy/device changes beyond the grant, automatic transcript execution, model/service requalification, runtime fixes, controller/reader/platform certification or packaged release."
   },
   "deferred_slices": [
     {

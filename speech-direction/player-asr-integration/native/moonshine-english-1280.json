@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "mode": "moonshine-english-1280",
+  "checks": [
+    "default-off-typed-dialogue-parity",
+    "hold-to-talk-reply-buffer-interruption",
+    "partial-draft-no-automatic-dialogue",
+    "real-moonshine-partial-final-local-model",
+    "explicit-submit-exact-words-existing-whisper-owner",
+    "capture-activity-interruption-no-domain-action",
+    "stop-mic-preserves-draft-rejects-retired-events",
+    "combined-ten-control-focus-and-world-gate",
+    "scene-exit-awaits-capture-and-recognizer-retirement"
+  ],
+  "realMoonshine": true,
+  "recognized": "Do not take the moonwork yet. Ring two clean bandages to the healer.",
+  "captureOpens": 3,
+  "size": [
+    1280,
+    720
+  ],
+  "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+}

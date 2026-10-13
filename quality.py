@@ -40,6 +40,7 @@ COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
 CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
+DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -543,6 +544,7 @@ def main(resume_smoke=False, finish_interior=False):
         controls_runtime(run, environment)
         dialogue_accessibility_runtime(run, environment)
         dialogue_speech_runtime(run, environment)
+        player_asr_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -893,15 +895,43 @@ def dialogue_accessibility_checks(run, environment, tree, revision):
 
 
 def dialogue_speech_runtime(run, environment):
-    """Exercise current typed/reply PCM routing without provider credentials or a physical microphone."""
+    """Keep the closed seven-control reply-playback fixture in its accepted source snapshot."""
+    if (ROOT / 'speech-direction/player-asr-integration/authority.json').exists():
+        with snapshot(DIALOGUE_SPEECH_REVISION, editor=True) as (tree, env):
+            run.stage('dialogue-speech-historical-restore', ['dotnet', 'restore', 'Allrpcs.sln'], tree, env, DIALOGUE_SPEECH_REVISION)
+            run.stage('dialogue-speech-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '--no-restore'], tree, env, DIALOGUE_SPEECH_REVISION)
+            run.stage('dialogue-speech-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'],
+                      tree, env, DIALOGUE_SPEECH_REVISION, retry_native=True)
+            dialogue_speech_checks(run, dict(environment, **env), tree, DIALOGUE_SPEECH_REVISION)
+    else:
+        dialogue_speech_checks(run, environment)
+
+
+def dialogue_speech_checks(run, environment, tree=ROOT, revision=None):
+    """Retain the exact completed reply/fallback modes and their completion criteria."""
     if not (ROOT / 'speech-direction/dialogue-integration/authority.json').exists():
         return
     for mode in ('headless', 'unavailable'):
         report = run.directory / ('dialogue-speech-' + mode + '.json')
         run.stage('dialogue-speech-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
-                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_DIALOGUE_SPEECH_CHECK='1', ALLRPCS_DIALOGUE_SPEECH_MODE=mode,
+                  cwd=tree, revision=revision, env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_DIALOGUE_SPEECH_CHECK='1', ALLRPCS_DIALOGUE_SPEECH_MODE=mode,
                            ALLRPCS_DIALOGUE_SPEECH_REPORT=str(report), ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-not-configured.json'),
                   retry_native=True, completion='PASS: dialogue speech Main: ' + mode)
+
+
+def player_asr_runtime(run, environment):
+    """Qualify current optional input/draft/interruption without opening a physical microphone."""
+    if not (ROOT / 'speech-direction/player-asr-integration/authority.json').exists():
+        return
+    run.stage('player-asr-capture-boundary', [sys.executable, 'scripts/test-player-speech-worker.py'])
+    for mode in ('headless', 'unavailable'):
+        report = run.directory / ('player-asr-' + mode + '.json')
+        run.stage('player-asr-' + mode, ['godot', '--headless', '--path', 'game', '--quit-after', '3600'],
+                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_PLAYER_ASR_CHECK='1',
+                           ALLRPCS_PLAYER_ASR_MODE=mode, ALLRPCS_PLAYER_ASR_REPORT=str(report),
+                           ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                           ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+                  retry_native=True, completion='PASS: player ASR Main: ' + mode)
 
 
 def rain_runtime(run, environment):

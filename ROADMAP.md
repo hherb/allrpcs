@@ -254,36 +254,44 @@ Acceptance:
 
 ## Phase 10 — Voice-ready interaction and optional ASR/TTS
 
-- [ ] Define `ISpeechRecognizer` independently of any provider.
+- [x] Define `ISpeechRecognizer` independently of any provider.
 - [x] Define `ISpeechSynthesizer` independently of any provider.
 - [ ] Implement microphone permission and capture behind a platform-neutral boundary.
-- [ ] Implement push-to-talk first.
-- [ ] Add partial and final transcript events.
-- [ ] Allow correction or confirmation before consequential actions when recognition is
+- [x] Implement push-to-talk first.
+- [x] Add partial and final transcript events.
+- [x] Allow correction or confirmation before consequential actions when recognition is
   uncertain.
 - [x] Implement streamed or buffered character speech playback.
 - [ ] Implement per-character voice profiles without putting voice IDs in domain rules.
-- [ ] Implement player interruption and speech cancellation.
+- [x] Implement player interruption and speech cancellation.
 - [ ] Keep subtitles and full text interaction available at all times.
-- [ ] Add one ASR implementation and one TTS implementation.
+- [x] Add one ASR implementation and one TTS implementation.
 - [ ] Add provider alternatives only after the common path is verified.
 - [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy
   input.
 
 Pocket TTS service checkpoint (2026-10-13): the [first local TTS component](speech-direction/pocket-tts-service/README.md)
 provides a provider-neutral PCM stream contract, a persistent offline English/German CPU worker,
-request cancellation/recovery and a runnable C# service probe on M3 Max. The combined ASR/TTS
-checkbox remains open because ASR is not implemented. This service checkpoint is closed;
+request cancellation/recovery and a runnable C# service probe on M3 Max. ASR was not implemented at
+that service checkpoint; its later integration is recorded below. This service checkpoint is closed;
 its historical continuation text does not select new work. Character casting, expressive acting,
 microphone input, packaged deployment and actual M1/other-platform verification remain.
 
 Dialogue playback checkpoint (2026-10-13): [optional Pocket reply playback](speech-direction/dialogue-integration/README.md)
 is composed in Main for English/German committed replies, with bounded PCM, explicit stop, replacement
 interruption and text fallback. Current native UI/audio and full-quality evidence are bound in its
-verification. The wider player-interruption item remains open for actual voice-start/barge-in.
+verification. That checkpoint did not include player voice-start/barge-in; the later integration
+checkpoint below adds it.
 The [streaming ASR comparison](speech-direction/asr-evaluation/README.md) recommends Moonshine Small
 Streaming, with Whisper small + Silero VAD as the measured alternative. Synthetic English/German
 recognition, VAD and retirement checks do not qualify physical microphone input or echo control.
+
+Player speech checkpoint (2026-10-14): [selected Moonshine integration](speech-direction/player-asr-integration/README.md)
+adds provider-neutral capture/recognition, opt-in Hold to talk and Listen (headphones), bounded editable
+partial/final drafts, unchanged explicit Submit/Whisper, reply interruption and lifecycle fallback.
+Actual local English/German inference runs through Main on retained synthetic PCM; native UI and full
+quality are bound in its verification. Real OS permission, physical microphone/device/echo and accent/noise
+qualification remain missing, so the broad capture/permission and device-test items remain open.
 
 Acceptance:
 

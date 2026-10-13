@@ -1,4 +1,4 @@
-[gd_scene load_steps=449 format=3]
+[gd_scene load_steps=451 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -667,6 +667,10 @@
 
 [ext_resource type="Script" path="res://DialogueSpeechController.cs" id="dialogue_speech"]
 [ext_resource type="Script" path="res://DialogueSpeechMainSmokeCheck.cs" id="dialogue_speech_check"]
+
+[ext_resource type="Script" path="res://PlayerSpeechController.cs" id="player_speech"]
+
+[ext_resource type="Script" path="res://PlayerSpeechMainSmokeCheck.cs" id="player_speech_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4467,6 +4471,12 @@ script = ExtResource("dialogue_speech")
 
 [node name="DialogueSpeechMainSmokeCheck" type="Node" parent="."]
 script = ExtResource("dialogue_speech_check")
+
+[node name="PlayerSpeechController" type="Node" parent="."]
+script = ExtResource("player_speech")
+
+[node name="PlayerSpeechMainSmokeCheck" type="Node" parent="."]
+script = ExtResource("player_speech_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

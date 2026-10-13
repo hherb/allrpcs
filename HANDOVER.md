@@ -10,9 +10,11 @@ terminal acceptance take precedence. Keep every persistent closure.
 Main: Settings → Dialogue → Speak replies, English/German and Stop speech. It speaks exact committed
 reply text on the Speech bus, with bounded PCM, interruption and text fallback. Local developer
 configuration is documented in that package; no packaged interpreter/model installer is provided.
-The [ASR comparison](speech-direction/asr-evaluation/README.md) recommends Moonshine Small Streaming;
-Whisper small + Silero VAD is the measured alternative. No microphone or game recognizer is connected.
-Real microphone/echo trials are required before claiming hands-free voice interruption.
+The owner selected Moonshine Small Streaming. [Player speech integration](speech-direction/player-asr-integration/README.md)
+adds opt-in Hold to talk, Listen (headphones), Stop mic and editable English/German drafts. Submit and
+Whisper still use the existing dialogue owner. Native/synthetic Main and full quality pass; linked
+verification binds the final evidence.
+No physical microphone was opened in qualification. Real permission/device/echo trials remain required.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
 [controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
@@ -21,7 +23,8 @@ and physical-controller qualification remain unperformed. Only built-in keyboard
 retain the [hardware deferral](input-direction/physical-controls-deferral.json) while the owner procures a controller.
 
 [Privacy](release-direction/privacy.md) and [provider disclosures](release-direction/model-providers.md)
-are complete; [changed voice behavior](release-direction/voice-privacy-update.md) supplements them.
+are complete; [reply playback](release-direction/voice-privacy-update.md) and
+[microphone input](release-direction/player-asr-privacy-update.md) supplement them.
 OpenAI/local Ollama composition exists; Anthropic and an offline conversational fallback remain
 uninstalled. Development release documentation is deferred under the owner's speech priority.
 Future walking work uses the accepted [reference gait model](art-direction/reference-gait-model.md).
@@ -32,43 +35,45 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase10-streaming-player-asr-integration — Integrate chosen streaming player recognizer and editable microphone drafts** (ready).
+**phase10-player-microphone-qualification — Qualify a named human microphone and echo session** (ready).
 
-Roadmap item: - [ ] Add one ASR implementation and one TTS implementation.
+Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
+and noisy   input.
 
-Missing deliverable: Actual provider-neutral speech recognition/capture boundary, one selected
-English/German local ASR adapter and opt-in editable microphone drafts in Main, with hold-to-talk
-fallback and voice-start cancellation of Pocket reply audio.
+Missing deliverable: Actual human English/German microphone, permission/host identity, input-device
+and headphone/speaker-feedback evidence for the new selected integration; existing qualification
+used only synthetic PCM and simulated devices.
 
-Use the completed ASR comparison. Moonshine Small Streaming is recommended; an owner backend-choice
-question is pending. The original integration grant remains sufficient: request only unresolved
-backend preference, not generic runtime approval. Keep recognition separate from explicit Submit,
-preserve manual corrections and reject retired-generation results. Listening defaults off. VAD alone
-cannot reject game loudspeakers; qualify voice activation with headphones or a real echo-control
-session before hands-free claims.
+Use the closed integration README and staged configuration. Confirm the actual device/headphone
+inventory, human operator and one bounded session grant before opening live capture or changing OS
+privacy/device settings. Start with hold-to-talk/headphones; evaluate speaker feedback separately.
+Preserve explicit corrected-text Submit and record not-performed cases honestly. No model audition
+restart, unchanged API/runtime audit or unrelated hardware test.
 
-Done when: Selected ASR and capture compose in Main with bounded partial/final drafts, explicit
-listening/hold-to-talk, safe text fallback, reply interruption, lifecycle/device failure handling
-and ordinary dialogue parity. Retain focused/native/current quality and honest physical-
-microphone/echo limits, then close and publish the finite implementation; human acoustic
-qualification remains a distinct evidence requirement.
+Done when: Named finite session records permission/device intake, natural English/German
+partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
+loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-
+performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion,
+then close and publish; hands-free speaker qualification requires actual echo-safe results.
 
 Expected outputs:
 
-- `speech-direction/player-asr-integration/authority.json`
-- `speech-direction/player-asr-integration/README.md`
-- `speech-direction/player-asr-integration/verification.json`
-- `speech-direction/player-asr-integration/closure.json`
+- `speech-direction/player-microphone-qualification/authority.json`
+- `speech-direction/player-microphone-qualification/session.json`
+- `speech-direction/player-microphone-qualification/results.json`
+- `speech-direction/player-microphone-qualification/README.md`
 
-Boundary: Original dialogue integration authority only. No automatic transcript execution, new
-voice-command domain vocabulary, actor/model audition restart, packaged model distribution, physical
-controller qualification or unmeasured microphone/echo/platform claims.
+Boundary: Physical session only after the named grant/operator/intake. No live capture or personal-
+audio persistence without explicit enablement, OS privacy/device changes beyond the grant, automatic
+transcript execution, model/service requalification, runtime fixes, controller/reader/platform
+certification or packaged release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 After ledger maintenance run `python3 scripts/check-continuation.py --sync`, its checker and
-`--self-test`. Speech evidence and reproduction: [verification](speech-direction/dialogue-integration/verification.json).
+`--self-test`. Speech evidence and reproduction: [reply playback](speech-direction/dialogue-integration/verification.json) and
+[player recognition](speech-direction/player-asr-integration/verification.json).
 Runner checks: `python3 quality.py --self-test`. Root `./quality.sh` is required for product/CI
 changes; reuse completed product evidence for subsequent prose-only planning.
 

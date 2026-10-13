@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "owner_statement": "OK, lets start with Moonshine Small Streaming as backend.",
+  "selected_backend": "Moonshine Small Streaming architecture 4, English/German",
+  "integration_authority": {
+    "path": "speech-direction/dialogue-integration/authority.json",
+    "sha256": "cb7eb83b614047bfb26313362ff371a92510e798fc4a54c30f2fc2268252f60b"
+  },
+  "evaluation": {
+    "path": "speech-direction/asr-evaluation/verification.json",
+    "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "scope": "Opt-in local microphone/capture boundary, editable partial/final drafts, explicit Submit and reply cancellation. Synthetic qualification does not open the physical microphone or certify echo control."
+}
