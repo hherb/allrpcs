@@ -1,0 +1,6 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://HerbCollectionAudioRuntimeProof.cs" id="proof"]
+[ext_resource type="PackedScene" path="res://Main.tscn" id="main"]
+[node name="HerbCollectionAudioRuntimeProof" type="Node2D"]
+script = ExtResource("proof")
+[node name="Main" parent="." instance=ExtResource("main")]

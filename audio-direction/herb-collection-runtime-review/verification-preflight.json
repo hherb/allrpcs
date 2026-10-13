@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "parity": {
+    "near": {
+      "mode_count": 7,
+      "save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+      "gameplay_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    "remote": {
+      "mode_count": 7,
+      "save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+      "gameplay_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    }
+  },
+  "live_admission_cases": 8,
+  "focused_tests": 18,
+  "preparation_rejections": 11,
+  "validator_rejections": 18,
+  "runner_self_tests": 14,
+  "continuation_rejections": 11,
+  "formatter": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passes"
+}

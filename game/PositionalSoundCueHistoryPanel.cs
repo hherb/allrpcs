@@ -8,6 +8,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
     private RichTextLabel entries = null!;
     private Button close = null!;
     private Control? origin;
+    private OpeningRegionHerbCollectionAudioController? herb;
     private OpeningRegionRemedyHeatingAudioController? heating;
     private OpeningRegionRemedySteepingAudioController? steeping;
     private OpeningRegionRemedyCoolingAudioController? cooling;
@@ -22,6 +23,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Ready()
     {
+        herb = GetNodeOrNull<OpeningRegionHerbCollectionAudioController>("../../OpeningRegionHerbCollectionAudioController");
         steeping = GetNodeOrNull<OpeningRegionRemedySteepingAudioController>("../../OpeningRegionRemedySteepingAudioController");
         cooling = GetNodeOrNull<OpeningRegionRemedyCoolingAudioController>("../../OpeningRegionRemedyCoolingAudioController");
         heating = GetNodeOrNull<OpeningRegionRemedyHeatingAudioController>("../../OpeningRegionRemedyHeatingAudioController");
@@ -45,7 +47,7 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
         });
         VBoxContainer content = new(); panel.AddChild(content);
         content.AddChild(new Label { Text = "Recent sound cues", ThemeTypeVariation = "HeaderLarge" });
-        content.AddChild(new Label { Text = "Reply, footstep, foliage, wind, rain, heating, steeping and cooling cues · cleared when loading a save" });
+        content.AddChild(new Label { Text = "Reply, footstep, foliage, wind, rain, preparation and rustle cues · cleared when loading a save" });
         entries = new()
         {
             Name = "Entries",
@@ -90,6 +92,8 @@ public partial class PositionalSoundCueHistoryPanel : CanvasLayer
         string infusion = steep.Count == 0 ? "No recent remedy steeping cues." : string.Join('\n', steep);
         IReadOnlyList<string> cool = cooling?.RecentCues ?? [];
         string confirmation = cool.Count == 0 ? "No recent remedy cooling cues." : string.Join('\n', cool);
-        entries.Text = "Heard reply cues\n" + replies + "\n\nNearby footstep cues\n" + steps + "\n\nNearby foliage cues\n" + rustling + "\n\nNearby wind cues\n" + blowing + "\n\nNearby rain cues\n" + falling + "\n\nRemedy heating cues\n" + warming + "\n\nRemedy steeping cues\n" + infusion + "\n\nRemedy cooling cues\n" + confirmation;
+        IReadOnlyList<string> soft = herb?.RecentCues ?? [];
+        string rustles = soft.Count == 0 ? "No recent nearby rustle cues." : string.Join('\n', soft);
+        entries.Text = "Heard reply cues\n" + replies + "\n\nNearby footstep cues\n" + steps + "\n\nNearby foliage cues\n" + rustling + "\n\nNearby wind cues\n" + blowing + "\n\nNearby rain cues\n" + falling + "\n\nRemedy heating cues\n" + warming + "\n\nRemedy steeping cues\n" + infusion + "\n\nRemedy cooling cues\n" + confirmation + "\n\nNearby rustle cues\n" + rustles;
     }
 }

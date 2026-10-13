@@ -232,14 +232,17 @@ presets pass. All 120 prior audio entries remain byte-identical; totals are 42 s
 have bounded feedback. Wider sources and other missing operations remain partial;
 physical vessel/action, elapsed time, temperature/readiness and gameplay changes remain separate.
 
-The [herb-collection feedback proposal](audio-direction/herb-collection-owner-scope.md)
-is complete: it binds the exact existing safe-result collection commit and identifies
-that body/site qualification is absent from gameplay. A distinct source/use/runtime
-grant is proposed for one new lossless HC01, only with the retained Healer within
-32 pixels of the unchanged (920,350) patch and the Seeker within exclusive 192 pixels,
-with an anonymous **Soft rustle** equivalent/history and finite checks. Remote or
-unqualified commits remain silent. No collection/examination, movement or physical
-action change is proposed; planning does not grant source/runtime implementation.
+The approved [herb-collection runtime](audio-direction/herb-collection-runtime-verification.json)
+is complete with the exact HC01 sound/window/level accepted as **suitable**. At the existing
+flow commit, only the real retained Healer within inclusive 32 pixels of the unchanged
+(920,350) patch and the Seeker within exclusive 192 pixels admit **Soft rustle**. The
+sixteenth independent caption and capped anonymous history convey no collection outcome.
+Remote or unqualified commits remain silent, with no gameplay, movement or picking action change.
+All 177 root stages and 5,490 unit tests pass; fourteen genuine near/remote modes preserve
+complete save/gameplay roots, eight admission probes and forty-five native Master cases pass,
+and captions/history pass at both screen sizes. Three mounted presets retain all 125 previous
+audio entries byte-for-byte, with 130 entries, 43 streams, 42 individual notices and 24 groups.
+Wider sound coverage remains unfinished; no executable or fresh-device loudness claim.
 
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "inputs": [
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "e10c14cfde8ed35b7ae80293c4fecd32309d2f4ddb8cdb74621faacad31d27ba"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.cs",
+      "sha256": "a16ecf8a9dce6cf1d681acad1d3f78251ae2596e064b253b0c78bee0705ecd50"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.tscn",
+      "sha256": "184874ae2abf03bc62792178e935b1d4072d9ebfd13ed27b594d01cca7e8074f"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav",
+      "sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav.import",
+      "sha256": "58643a27f20c6c6256425abeeac0d7e9fae1c63ac8ca6ff0fc4bf68bcb7d9a84"
+    }
+  ]
+}

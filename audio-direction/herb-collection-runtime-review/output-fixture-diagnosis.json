@@ -1,0 +1,5 @@
+{
+  "status": "diagnosed_fixture_failure",
+  "reason": "Stopped proof disabled the retained positional controller physics update, leaving its actual SeekerListener at the initial world position. Rustle correctly rejected the mismatched listener. Three-case native retry with the retained physics update passes all overlap player assertions. Full final capture required; no product guard loosened.",
+  "short_retry_log_sha256": "827cad0dba2a3c0eeb64a01351f42695a7f1578c2630096b6590f25be28d5d4d"
+}

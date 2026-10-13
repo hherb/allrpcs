@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-12",
+  "updated": "2026-10-13",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -752,6 +752,20 @@
           "sha256": "118d5a2b6e4677382782a050bd3598c4919414e6b96fd71c96ea23e136f17673"
         }
       ]
+    },
+    {
+      "id": "phase9-herb-collection-audio-runtime-integration",
+      "reason": "Owner approved the exact source/use/runtime grant and accepted unchanged HC01 sound/window/level with suitable on 2026-10-13. Completed once-only identity-bound flow-commit feedback, inclusive 32-pixel actual retained Healer/site and exclusive 192-pixel actual Seeker/listener admission, anonymous Soft rustle caption/history, unchanged gameplay and prior owners. Verified by 18 focused tests, 14 genuine near/remote modes with complete save/gameplay parity, 8 live admission/direct-call/task probes, 45 native Master cases, sixteen caption owners and accessible history at both sizes, three mounted presets with all 125 prior audio entries exact and 130 total, and 177 full root stages with 5,490 unit tests. Whole bounded slice is closed; no ordinary approach/picking, gameplay, wider audio, fresh-device loudness or executable release claim.",
+      "evidence": [
+        {
+          "path": "audio-direction/herb-collection-runtime-authority.json",
+          "sha256": "1e49b768634d14260a228fca3f2f76ba199e41a9e0e915d15d01e09c110b006d"
+        },
+        {
+          "path": "audio-direction/herb-collection-runtime-verification.json",
+          "sha256": "1eff2422263fc619bb43a55b226fc9eabd45d8037d99b75edd9bfdb0f9841577"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1008,6 +1022,20 @@
           "sha256": "118d5a2b6e4677382782a050bd3598c4919414e6b96fd71c96ea23e136f17673"
         }
       ]
+    },
+    {
+      "id": "audio-herb-collection-runtime",
+      "reason": "Completed exact approved herb-collection acoustic owner; do not reopen unchanged source, placement, caption/history or verification under another audit.",
+      "evidence": [
+        {
+          "path": "audio-direction/herb-collection-runtime-authority.json",
+          "sha256": "1e49b768634d14260a228fca3f2f76ba199e41a9e0e915d15d01e09c110b006d"
+        },
+        {
+          "path": "audio-direction/herb-collection-runtime-verification.json",
+          "sha256": "1eff2422263fc619bb43a55b226fc9eabd45d8037d99b75edd9bfdb0f9841577"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1083,20 +1111,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-herb-collection-audio-runtime-integration",
-    "title": "Qualify and integrate bounded nearby herb-collection feedback after the distinct grant",
+    "id": "phase11-control-remapping-owner-scope",
+    "title": "Prepare a finite control-remapping implementation contract",
     "status": "ready",
-    "workstream": "audio-herb-collection-runtime",
-    "authority_status": "awaiting_distinct_source_use_runtime_grant",
-    "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "One owner-qualified HC01 and once-only anonymous feedback for the exact existing collection commit, only with the retained Healer within 32 pixels of the retained patch and the Seeker within exclusive 192 pixels; finite verification/publication.",
-    "instructions": "Read audio-direction/herb-collection-owner-scope.md and its source-bound JSON. Obtain and record the exact distinct source/use/runtime grant before new implementation; planning approval and standing sound-download/publication authority do not supply it. Under that grant, qualify one lossless HC01 and obtain exact listening acceptance before installation, then complete the bounded notification/controller/caption/history and all dependent checks/publication in this session. Read actual actor/site/listener positions at the exact existing flow commit. Remote or unqualified commits remain silent; do not add approach, delay, retry or a physical picking action. Preserve all accepted collection/examination gameplay, recipe operations and audio owners.",
-    "completion_condition": "One exact owner-qualified HC01, once-only locally qualified flow-commit sound and anonymous Soft rustle equivalent/history, finite source/native/parity/UI/packaging/rejection/root-quality evidence and scoped publication.",
+    "workstream": "controls-remapping-planning",
+    "authority_status": "read_only_planning_only",
+    "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
+    "missing_deliverable": "A finite source-grounded contract for the remaining control-remapping roadmap item: existing action/input owners, supported device boundaries, accessible remap/reset/persistence behavior, exact proposed implementation files and completion checks.",
+    "instructions": "Read the remaining Phase 11 controls item and current input/settings owners. Prepare one concrete read-only implementation proposal identifying actual missing deliverables and tests. Do not change InputMap, runtime controls, settings/persistence, UI or physical/device behavior in this planning slice. Preserve every closed audio, art, collection and gameplay scope. The next implementation grant must name the concrete proposed scope; current herb approval does not extend to controls.",
+    "completion_condition": "One finite Markdown/JSON implementation proposal for the named remaining controls item, with exact current owner/input bindings, bounded runtime proposal and checks, plus ledger/documentation/publication maintenance.",
     "outputs": [
-      "audio-direction/herb-collection-runtime-authority.json",
-      "audio-direction/herb-collection-runtime-verification.json"
+      "input-direction/remapping-owner-scope.md",
+      "input-direction/remapping-owner-scope.json"
     ],
-    "boundary": "Distinct new source/use/runtime grant required. No collection/examination reopening, actor movement, new physical action, inventory/plant mutation, hearing/perception/knowledge/truth/world-time/transcript/save change, prior audio/art change, voice or executable release."
+    "boundary": "Read-only planning for a new remaining roadmap item; no input/runtime/UI/save/device implementation and no closed-owner audit."
   },
   "deferred_slices": []
 }

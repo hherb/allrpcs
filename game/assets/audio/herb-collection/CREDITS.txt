@@ -1,0 +1,6 @@
+HC01 — Soft rustle (nearby collection acoustic feedback)
+qubodup — 20 Rustles of dry leaves; rustle/rustle14.flac
+https://opengameart.org/content/20-rustles-dry-leaves
+Original archive: https://opengameart.org/sites/default/files/qubodup-rustle.7z
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+Changes: contiguous 0.10–1.10s window, required 96-to-48kHz resampling, retained stereo, 10ms onset/50ms ending linear fades, uniform attenuation to −24dBFS sample peak, stereo PCM24. No loop. No creator endorsement implied.

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-herb-collection-audio-runtime-integration",
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "approval_context": "Direct reply to the question authorizing one new lossless HC01, owner listening before installation, locally qualified Soft rustle feedback only, unchanged gameplay/movement.",
+  "granted_contract": "Authorize the bounded herb-collection source/use/runtime successor described here: qualify one new lossless HC01 with my exact listening acceptance before installation; represent only the existing exact flow-committed collection as a nearby soft rustle when the retained Healer is within 32 pixels of the retained (920,350) patch and the Seeker is within exclusive 192 pixels; add the anonymous Soft rustle caption/history and finite files/checks. Remote or unqualified commits stay silent. Do not change collection/examination gameplay, actor movement, physical actions, perception/hearing/truth/save or any accepted audio owner.",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/herb-collection-owner-scope.md",
+      "sha256": "b0cd37a5b37bd8622bfe6757c01ec7325cb80edeec30d93a81b2080d6e77d5ca"
+    },
+    {
+      "path": "audio-direction/herb-collection-owner-scope.json",
+      "sha256": "118d5a2b6e4677382782a050bd3598c4919414e6b96fd71c96ea23e136f17673"
+    }
+  ],
+  "baseline_commit": "d18d442dc2781c355e95ffa61636b175963e078c",
+  "source_use_runtime_authorized": true,
+  "new_physical_action_authorized": false,
+  "selected_source": {
+    "creator": "qubodup",
+    "title": "20 Rustles of dry leaves",
+    "licence": "CC0-1.0",
+    "catalogue_url": "https://opengameart.org/content/20-rustles-dry-leaves",
+    "original_url": "https://opengameart.org/sites/default/files/qubodup-rustle.7z",
+    "original_path": "audio-direction/herb-collection-source/originals/qubodup-rustle.7z",
+    "original_sha256": "c5d7458085e9b208009388b832184bddc0045482f6fa67a1eb6ea09335bb7a43",
+    "original_archive_member": "rustle/rustle14.flac",
+    "lossless_member_sha256": "b1765f73c57a48ef9b127c6771fdac5ec8c539855f6519d8c67a27efd157501f",
+    "window_seconds": [
+      0.1,
+      1.1
+    ],
+    "gain_target_sample_peak_dbfs": -24,
+    "original_retrieval": {
+      "url": "https://opengameart.org/sites/default/files/qubodup-rustle.7z",
+      "final_url": "https://opengameart.org/sites/default/files/qubodup-rustle.7z",
+      "retrieved_utc": "2026-10-12T22:53:05.393648+00:00",
+      "status": 200,
+      "content_type": "application/x-7z-compressed",
+      "bytes": 10565232,
+      "sha256": "c5d7458085e9b208009388b832184bddc0045482f6fa67a1eb6ea09335bb7a43"
+    },
+    "rights_retrieval": [
+      {
+        "url": "https://opengameart.org/content/20-rustles-dry-leaves",
+        "final_url": "https://opengameart.org/content/20-rustles-dry-leaves",
+        "retrieved_utc": "2026-10-12T22:52:35.229945+00:00",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 28695,
+        "sha256": "39606b7dfb090ac2672e6e18dd73138f46c9c0280c8322fa2312edb7735cb1a2",
+        "stored_path": "audio-direction/herb-collection-source/rights/catalogue.html.gz",
+        "stored_sha256": "c24d40720e94db88cbfa01f10a6e04b83b5bb9c8a3a9e038aa277dd8de81c815",
+        "storage": "gzip, mtime 0; exact captured HTML with no whitespace editing"
+      },
+      {
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "final_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "retrieved_utc": "2026-10-12T22:52:35.347358+00:00",
+        "status": 200,
+        "content_type": "text/html",
+        "bytes": 30248,
+        "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+      }
+    ],
+    "source_specific_rights": "Creator upload names qubodup and links CC0 1.0 for the downloadable 20-sound FLAC pack.",
+    "source_description_limit": "Catalogue says dry leaves recorded in kitchen; description is not acoustic qualification.",
+    "retention": "Retain exact source download archive. Select one unchanged lossless member; no other member prepared or installed.",
+    "known_prior_modifications": "Catalogue discloses no processing details; original FLAC numerical peaks suggest level adjustment but no processing history is inferred as established fact."
+  },
+  "source_qualification": {
+    "status": "qualified",
+    "candidate_path": "audio-direction/herb-collection-runtime-review/source/HC01-candidate.wav",
+    "candidate_sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528",
+    "window_seconds": [
+      0.1,
+      1.1
+    ],
+    "sample_peak_dbfs": -24.000006281265822,
+    "owner_statement": "suitable",
+    "limit": "Exact sound/window/level accepted with suitable; unchanged accepted PCM installed. No further listening decision remains.",
+    "date": "2026-10-13",
+    "qualification": "Direct reply to exact one-second candidate/sound/level question; unchanged bytes and 0.10\u20131.10s window accepted."
+  },
+  "installation_gate": "No runtime asset installation before exact owner listening acceptance; preparation/technical qualification and authorized independent work may proceed.",
+  "boundary": "Every other tracked product/evidence input; occurrence controller, Domain/gameplay/physical/perception/save, accepted audio/art and frozen validators. Preserve game/project.godot.",
+  "local_exception": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "unrelated_untracked_directories": [
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/",
+      "reason": "Unrelated concurrent audition work appeared during native verification. Preserve and exclude from this audio slice and staging; no ownership or voice-runtime authority is inferred."
+    }
+  ],
+  "retained_predecessor_sidecars": {
+    "reason": "Four exact accepted cooling C# UID bytes were hash-bound but omitted from the predecessor Git commit. Retain them unchanged in publication and seed the private cold historical snapshot before import. This fixes evidence availability without changing any accepted bytes, runtime or frozen validator.",
+    "bindings": [
+      {
+        "path": "game/CoolingPreparationCommit.cs.uid",
+        "sha256": "23346a2141c56cc673a26d795cedaa6a8f39bb1ede336b2066339f95d41be131"
+      },
+      {
+        "path": "game/OpeningRegionRemedyCoolingAudioController.cs.uid",
+        "sha256": "f1551601ae6dd4296a4b7ee1883a7f48683c6bb087941b2345189a5c378f1290"
+      },
+      {
+        "path": "game/RemedyCoolingAudioRuntimeProof.cs.uid",
+        "sha256": "bb04f14f6dd46951f02f3432f401cd06143bfe35288573b913baf7e908a4eabe"
+      },
+      {
+        "path": "game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid",
+        "sha256": "652b07c5a6bef0209ae4f61d285f50efa667009ee4af175dede812ccfdaa94ef"
+      }
+    ]
+  }
+}

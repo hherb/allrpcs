@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-herb-collection-audio-runtime-integration",
+  "status": "technical_source_checks_passed_listening_pending",
+  "date": "2026-10-13",
+  "candidate_sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528",
+  "source_archive_sha256": "c5d7458085e9b208009388b832184bddc0045482f6fa67a1eb6ea09335bb7a43",
+  "original_lossless_member_sha256": "b1765f73c57a48ef9b127c6771fdac5ec8c539855f6519d8c67a27efd157501f",
+  "protected_baseline": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+  "protected_tracked_inputs": 15088,
+  "protected_manifest_sha256": "25c07d567fb2859ed8b1cc6ed52ae278de593b4b0018e04bc915d889af4ae487",
+  "frozen_proposals_and_50_source_evidence_bindings_match": true,
+  "candidate_byte_reproduction": true,
+  "original_encoding": "FLAC PCM24 96000Hz stereo",
+  "candidate_encoding": "WAV PCM24 48000Hz stereo 48000frames",
+  "fade_endpoint_samples_zero": true,
+  "source_preparation_rejection_probes": 11,
+  "pending_install_rejected": true,
+  "no_runtime_asset_or_source_installed": true,
+  "editor_bytes_preserved": true,
+  "prior_product_evidence_reused": {
+    "root_stages": 154,
+    "unit_tests": 5472,
+    "new_run": false,
+    "product_and_ci_inputs_unchanged": true
+  },
+  "limits": "Source rights/metadata/derivative checks only; exact listening acceptance and all live/native/parity/UI/packaging/root-quality implementation checks remain pending."
+}

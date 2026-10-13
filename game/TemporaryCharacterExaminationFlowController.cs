@@ -22,6 +22,42 @@ public partial class TemporaryCharacterExaminationFlowController : Node
     /// <summary>Gets the exact collection occurrence accepted after that result.</summary>
     public CharacterTurnWorldEventOccurrence? LastCollectionOccurrence { get; private set; }
 
+    // BEGIN herb collection presentation ownership
+    /// <summary>Notifies observers only after the unchanged collection transaction is installed.</summary>
+    public event Action<HerbCollectionCommit>? CollectionCommitted;
+    /// <summary>The latest producer-owned token; it is never replayed to late subscribers.</summary>
+    internal HerbCollectionCommit? LastCollectionCommit { get; private set; }
+    internal bool OwnsCollection(HerbCollectionCommit? token) => token is not null
+        && ReferenceEquals(token, LastCollectionCommit) && ReferenceEquals(token.Owner, this)
+        && ReferenceEquals(token.Result, LastExaminationResult)
+        && ReferenceEquals(token.Occurrence, LastCollectionOccurrence)
+        && ReferenceEquals(token.Occurrence, occurrenceController.LastOccurrence)
+        && ReferenceEquals(token.EventLog, GetNode<WorldEventController>("../WorldEventController").EventLog)
+        && ReferenceEquals(token.WorldTime, GetNode<WorldEventController>("../WorldEventController").WorldTime)
+        && ReferenceEquals(token.Transcript, transcriptController.Transcript)
+        && token.Transcript.Entries.Count >= 2
+        && ReferenceEquals(token.Transcript.Entries[^1], token.Occurrence.TranscriptEntry)
+        && ReferenceEquals(token.Transcript.Entries[^2], token.Result.Occurrence.TranscriptEntry)
+        && token.EventLog.Entries.Count > 0
+        && ReferenceEquals(token.EventLog.Entries[^1], token.Occurrence.WorldEvent.EventId)
+        && ReferenceEquals(token.WorldTime.CurrentEventId, token.Occurrence.WorldEvent.EventId);
+
+    private void NotifyCollection(CharacterExaminationResult result)
+    {
+        var world = GetNode<WorldEventController>("../WorldEventController");
+        if (LastCollectionOccurrence is null || world.EventLog is null || world.WorldTime is null
+            || transcriptController.Transcript is null) { return; }
+        var token = new HerbCollectionCommit(this, result, LastCollectionOccurrence,
+            world.EventLog, world.WorldTime, transcriptController.Transcript);
+        LastCollectionCommit = token;
+        foreach (Action<HerbCollectionCommit> observer in CollectionCommitted?.GetInvocationList() ?? [])
+        {
+            try { observer(token); }
+            catch (Exception error) { GD.PrintErr("Herb collection presentation observer failed: " + error.Message); }
+        }
+    }
+    // END herb collection presentation ownership
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -104,6 +140,7 @@ public partial class TemporaryCharacterExaminationFlowController : Node
                 worldEventSource.HerbPatchCollectedWorldEvent))
         {
             LastCollectionOccurrence = occurrenceController.LastOccurrence;
+            NotifyCollection(result);
         }
     }
 }

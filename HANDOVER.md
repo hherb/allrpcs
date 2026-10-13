@@ -2,87 +2,80 @@
 
 Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the named
 remaining roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner
-instructions and terminal acceptance take precedence. Retain every persistent closure.
+instructions and terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-All accepted art, ground/channel presentation, whole cloak correction and earlier audio owners
-remain closed in the persistent ledger. Future walking work uses the accepted
-[reference gait model](art-direction/reference-gait-model.md). Heating and
-[steeping](audio-direction/remedy-steeping-runtime-review/README.md) retain their exact sources
-and complete accepted evidence; no unchanged-owner approval or audit remains.
+The approved [herb-collection runtime](audio-direction/herb-collection-runtime-verification.json)
+is complete. The exact one-second HC01 sound/window/level accepted as **suitable** is installed.
+The exact existing flow commit admits anonymous **Soft rustle** only with the actual retained
+Healer within inclusive 32 pixels of the unchanged patch and the Seeker within exclusive
+192 pixels. Remote/unqualified commits stay silent. Gameplay and prior audio owners are unchanged.
+The sixteenth independent caption and separate sixteen-entry history are accessible at both sizes.
 
-The approved [cooling runtime](audio-direction/remedy-cooling-runtime-verification.json)
-is complete at the owner-selected louder level. Its exact C01, fifteenth caption
-and independent history retain 154 passing root stages, 5,472 unit tests, native
-output/UI and three mounted presets. No repeated source/level/runtime approval remains.
+[Retained evidence](audio-direction/herb-collection-runtime-review/README.md) includes
+177 passing root stages, 5,490 unit tests, fourteen genuine near/remote modes with complete
+save/gameplay parity, eight live admission probes, forty-five native Master cases and three
+mounted presets. All 125 prior audio entries remain exact; totals are 130 entries, 43 streams,
+42 individual notices and 24 groups. Controlled fixtures do not establish ordinary approach,
+physical picking, fresh-device loudness or executable release.
 
-The [herb-collection proposal](audio-direction/herb-collection-owner-scope.md) and
-[source-bound contract](audio-direction/herb-collection-owner-scope.json) complete the
-new planning slice. The existing flow can commit remotely; no body/reach/contact check
-qualifies a picking sound. The proposed new acoustic grant admits one soft rustle only
-at the exact flow commit with the retained Healer within 32 pixels of the unchanged
-(920,350) patch and the Seeker within exclusive 192 pixels. Remote or unqualified
-commits stay silent; actor movement and accepted gameplay remain unchanged. New
-source/use/runtime authority and exact source listening acceptance remain distinct.
+All earlier art/audio/gameplay scopes remain closed. Future walking work uses the accepted
+[reference gait model](art-direction/reference-gait-model.md). No repeated herb source/level,
+collection/examination or unchanged-owner audit remains. The next finite boundary is read-only
+planning for the remaining Phase 11 remappable-controls item.
 
-Standing publication authority: “ALWAYS commit and push when you finish a task.” Carry
-[the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json)
-forward without asking again. Ongoing sound search/download permission remains recorded
-in the foliage grant; it does not grant another runtime scope or executable release.
+Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
+[the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json).
+It does not authorize controls implementation or executable release.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-herb-collection-audio-runtime-integration — Qualify and integrate bounded nearby herb-collection feedback after the distinct grant** (ready).
+**phase11-control-remapping-owner-scope — Prepare a finite control-remapping implementation contract** (ready).
 
-Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
+Roadmap item: - [ ] Complete remappable keyboard, mouse, and controller controls.
 
-Missing deliverable: One owner-qualified HC01 and once-only anonymous feedback for the exact
-existing collection commit, only with the retained Healer within 32 pixels of the retained patch and
-the Seeker within exclusive 192 pixels; finite verification/publication.
+Missing deliverable: A finite source-grounded contract for the remaining control-remapping roadmap
+item: existing action/input owners, supported device boundaries, accessible remap/reset/persistence
+behavior, exact proposed implementation files and completion checks.
 
-Read audio-direction/herb-collection-owner-scope.md and its source-bound JSON. Obtain and record the
-exact distinct source/use/runtime grant before new implementation; planning approval and standing
-sound-download/publication authority do not supply it. Under that grant, qualify one lossless HC01
-and obtain exact listening acceptance before installation, then complete the bounded
-notification/controller/caption/history and all dependent checks/publication in this session. Read
-actual actor/site/listener positions at the exact existing flow commit. Remote or unqualified
-commits remain silent; do not add approach, delay, retry or a physical picking action. Preserve all
-accepted collection/examination gameplay, recipe operations and audio owners.
+Read the remaining Phase 11 controls item and current input/settings owners. Prepare one concrete
+read-only implementation proposal identifying actual missing deliverables and tests. Do not change
+InputMap, runtime controls, settings/persistence, UI or physical/device behavior in this planning
+slice. Preserve every closed audio, art, collection and gameplay scope. The next implementation
+grant must name the concrete proposed scope; current herb approval does not extend to controls.
 
-Done when: One exact owner-qualified HC01, once-only locally qualified flow-commit sound and
-anonymous Soft rustle equivalent/history, finite source/native/parity/UI/packaging/rejection/root-
-quality evidence and scoped publication.
+Done when: One finite Markdown/JSON implementation proposal for the named remaining controls item,
+with exact current owner/input bindings, bounded runtime proposal and checks, plus
+ledger/documentation/publication maintenance.
 
 Expected outputs:
 
-- `audio-direction/herb-collection-runtime-authority.json`
-- `audio-direction/herb-collection-runtime-verification.json`
+- `input-direction/remapping-owner-scope.md`
+- `input-direction/remapping-owner-scope.json`
 
-Boundary: Distinct new source/use/runtime grant required. No collection/examination reopening, actor
-movement, new physical action, inventory/plant mutation, hearing/perception/knowledge/truth/world-
-time/transcript/save change, prior audio/art change, voice or executable release.
+Boundary: Read-only planning for a new remaining roadmap item; no input/runtime/UI/save/device
+implementation and no closed-owner audit.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
-Run `python3 scripts/check-continuation.py --sync` after ledger maintenance, then its
-checker and `--self-test`. Current cooling checks are
-`python3 scripts/validate-remedy-cooling-runtime.py --reviewed`, `--output-only`
-and `--self-test`.
-Reuse passing product evidence for prose alone. Runtime changes require granted focused
-checks and root `./quality.sh`; runner changes require `python3 quality.py --self-test`.
+After ledger maintenance run `python3 scripts/check-continuation.py --sync`, then its checker
+and `--self-test`. Herb checks: `python3 scripts/validate-herb-collection-runtime.py --reviewed`,
+`--output-only` and `--self-test`; source checks: `python3 scripts/prepare-herb-collection-passage.py --self-test`.
+Reuse passing product evidence for prose alone. Runtime changes need granted focused checks and
+root `./quality.sh`; runner changes need `python3 quality.py --self-test`.
 
 Frozen validators run in private historical source trees/indexes: hand-tool `75c1aa04`,
-Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`, heating
-`b7912dd4` and steeping `78369110`. Cold historical checks restore before build/import. Reports and exact
-compressed logs are retained in the linked reviews. Import cleanup removes only newly generated valid UID sidecars whose
-tracked source bytes are unchanged. Run Godot on the host; retry only diagnosed mutex shutdowns
-with the identical command. Native focus fixtures run serially in the foreground.
+Healer `ae06c9ab`, foliage `c4f24ea1`, wind `da2826ea`, rain `9115a641`, heating `b7912dd4`,
+steeping `78369110` and cooling `e92e6e08`. Cold checks restore before build/import; cooling seeds its four exact accepted C# UID sidecars,
+which were omitted from its original commit.
+Run Godot on the host, serialize native focus fixtures, and retry only diagnosed native mutex
+shutdowns with the identical command. Detailed exact logs are in the linked review.
 
-All three presets have verified audio resource packaging. The existing missing game
-solution during C# export remains; no executable release is verified. Controlled output
-does not establish fresh-device or ordinary-play loudness compliance. Preserve/exclude
-`game/project.godot` (editor SHA
-`36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`) and `.DS_Store`.
+Preserve/exclude unrelated `game/project.godot` editor SHA
+`36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`, `.DS_Store` and concurrent
+`speech-direction/qwen25-omni-m3max-audition/`. Generated GD UID cleanup removes only sidecars
+whose tracked source bytes remain exact. Resource packs pass in all three presets; the existing
+C# executable-export limitation remains, with no executable release verified.

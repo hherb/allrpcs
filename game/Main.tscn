@@ -1,4 +1,4 @@
-[gd_scene load_steps=437 format=3]
+[gd_scene load_steps=440 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -651,6 +651,10 @@
 [ext_resource type="Script" path="res://RemedySteepingAudioRuntimeSmokeCheck.cs" id="steeping_check"]
 [ext_resource type="Script" path="res://OpeningRegionRemedyCoolingAudioController.cs" id="cooling_audio"]
 [ext_resource type="Script" path="res://RemedyCoolingAudioRuntimeSmokeCheck.cs" id="cooling_check"]
+
+[ext_resource type="Script" path="res://OpeningRegionHerbCollectionAudioSource.cs" id="herb_source"]
+[ext_resource type="Script" path="res://OpeningRegionHerbCollectionAudioController.cs" id="herb_audio"]
+[ext_resource type="Script" path="res://HerbCollectionAudioRuntimeSmokeCheck.cs" id="herb_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4388,6 +4392,15 @@ script = ExtResource("cooling_audio")
 
 [node name="RemedyCoolingAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("cooling_check")
+
+[node name="OpeningRegionHerbCollectionAudioSource" type="Node" parent="."]
+script = ExtResource("herb_source")
+
+[node name="OpeningRegionHerbCollectionAudioController" type="Node" parent="."]
+script = ExtResource("herb_audio")
+
+[node name="HerbCollectionAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("herb_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

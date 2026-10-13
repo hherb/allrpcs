@@ -1,0 +1,5 @@
+{
+  "status": "passed",
+  "probe": "Actual rendered spatial-left/right PCM segments exchanged while timeline and other forty-three cases remain exact. The production measurement rejects reversed relative panning before writing a report.",
+  "rejection": "Left pan failed to shift the accepted stereo balance"
+}

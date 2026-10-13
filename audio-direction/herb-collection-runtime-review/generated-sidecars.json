@@ -1,0 +1,91 @@
+{
+  "status": "verified",
+  "action": "Remove these generated sidecars only after root quality; their tracked GD source bytes equal the approved baseline. Preserve every other concurrent input.",
+  "entries": [
+    {
+      "path": "game/CharacterAnimationImportProof.gd.uid",
+      "sha256": "dacdaf0875201499b4120aef6755dd22588012caaed4091a32c404c3c384c02a",
+      "source_sha256": "4a565a7d76d5d7173c1960d27f3e9d94864a3ec4d794f09e70b9756dbeb7f236"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofCheck.gd.uid",
+      "sha256": "2fbe0487849de529d6c8235b1a6f06497ba428cfdc85d66c2ba2532704b213b0",
+      "source_sha256": "a60b4148c4cb2fc685aa4c76af100552a0bbdbb054fad80530f4c75da62a5aa9"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+      "sha256": "9e54eaa0fa52711df2c30ca7cdfb8e1073bc247ee4b995622cd062d99b7c807d",
+      "source_sha256": "7eb0e839784644006cbb88eed42d0c8a5bf9ed62f959ff7a5a264f44f1ccb021"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+      "sha256": "ac2c86547bf6d87fdd2a9d006dbe95c14dd9ac3426d41cb1a57b4c20f30020a6",
+      "source_sha256": "9d00ca115cab85322f42f927dc2b2b12dfb18e7375c843b0a329f1e9827d5895"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+      "sha256": "65610477f4169cc07b39983c2014ed9cef1396daa51b9c8a05cbb61704c95063",
+      "source_sha256": "cabae95b48a9ae3cfb998df00dfd83da2934b32999f983e7e68051e40803e577"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+      "sha256": "b5ccee3f4ec4540990aa9ebb4d1117495d62e0106423b1302601267e482f2341",
+      "source_sha256": "c2dda1dbffee2c4d54e744fbc618127f5b9c89820b7e46d18b4140313e8ec061"
+    },
+    {
+      "path": "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+      "sha256": "e037e11a987e929a6ff4368169cbe9fd64151b5e38492cbc588a8d2d4b94348a",
+      "source_sha256": "da6c47f6dc0bbe9323a79fc8b9c67f4d05cc833d49c63303ca4e2cfdce2f1e4d"
+    },
+    {
+      "path": "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+      "sha256": "76774da3b86315091c5d365be35c994b100644154fa7149bd2093d4ec87bb8e4",
+      "source_sha256": "6598b1c279faf4806f1c9be24fafb57296634ea5a379edf27aea11acf441d844"
+    },
+    {
+      "path": "game/SeekerCloakGaitCorrectionProof.gd.uid",
+      "sha256": "92111e41777339cd676e57973b05bebf1ac5ddb1d3f7310616674682a210bea8",
+      "source_sha256": "5d64f7def6a7c1a4c427214b92e33a11cae9572f160e32503b3ee1194c77c0eb"
+    },
+    {
+      "path": "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+      "sha256": "f0d0518598a828b3f3fb47f70da6734c8104d5c202ee4d46a7f005c671844174",
+      "source_sha256": "3e47dce7d09d928592a46c5734399e700e3ae3292131d4aaf85e3dd422a78ea1"
+    },
+    {
+      "path": "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+      "sha256": "df17e82b5fa7855353f1e6e955c670bd6295d6004921623649fb0f1a28b62784",
+      "source_sha256": "fb254dcfbfe0fbf991146e821abb07e0b232ea189aa2b4bd890d25558dfcc420"
+    },
+    {
+      "path": "game/SeekerCloakLeadExchangeCheck.gd.uid",
+      "sha256": "3427fe23300e08e451ead5e127634bd12919c5674308d228b44190973ccc56ef",
+      "source_sha256": "b4a56d5f7494b4380adf3a58c9fb097ffebe2495d23bad54914022c5ec85ff11"
+    },
+    {
+      "path": "game/SeekerCloakLeadExchangeProof.gd.uid",
+      "sha256": "dc546efe144637878dad9af4358de68e0bb99403b76e3325001ae32c822c3961",
+      "source_sha256": "e926331f7611bc0c69112bd048dfa4194b0971809a47f10d78918194800ad434"
+    },
+    {
+      "path": "game/SeekerCloakPelvisHingeCheck.gd.uid",
+      "sha256": "deab1e7d67654e28b6487ddc5d30de88cb0b5abd04efef1bd1990e8e7cd0c10f",
+      "source_sha256": "5c476cc21c6bea4602b560f3f9cb6d3c9aff4a0635030a5c58189942cfdb2020"
+    },
+    {
+      "path": "game/SeekerCloakPelvisHingeProof.gd.uid",
+      "sha256": "669bf3678ac0c7055cf3edda48ae2f18f5f481b1519f8eecf7e75299101856b8",
+      "source_sha256": "6bc29907918cc29c3c98a30492a312e4679047c4e984b9d6352fb94859132cdb"
+    },
+    {
+      "path": "game/SeekerCloakReferenceGaitCheck.gd.uid",
+      "sha256": "840b4c7bbbd189120926bcdfd1a9a0ddc258972f963ef1afdcd4fb4763f92dcf",
+      "source_sha256": "2065568d4c0ab7710ac7bc521920955e34a259571a3ed55078b8620d11d180a5"
+    },
+    {
+      "path": "game/SeekerCloakReferenceGaitProof.gd.uid",
+      "sha256": "fa241f90d9c9bfc72ee97f8e477a9b3a672f1641a752f127004bae5e80c87589",
+      "source_sha256": "0f9d40534235cbed1e3e75f7571b7aff5fddf664dbfa6448b0d211691b076687"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "path": "quality.py",
+    "previous_sha256": "0953533faa45031239cb751208288182b625e468fcd57c3dac6c583e1d865ce0",
+    "sha256": "2ce9552e3b377c184f8a1495c19d1a04f5ab737b4f175e91105640878dafe1e9"
+  },
+  {
+    "path": "scripts/validate-herb-collection-runtime.py",
+    "previous_sha256": "ced5aaf8c9948e1ca6a071c8100302ee2d0585df3bec1b437bf8da3bcf35a0f0",
+    "sha256": "fd8964c8c312c511945b803336a9c104fccaefcedfcdea76d339eae57a7d0d94"
+  }
+]

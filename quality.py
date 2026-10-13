@@ -36,6 +36,7 @@ WIND_REVISION = 'da2826ea8fb49a0464cf177c395de12b19db7998'
 RAIN_REVISION = '9115a64199b4838390caaa7b8a56ba64e903544c'
 HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
+COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -257,6 +258,13 @@ def frozen_evidence():
                 # The cooling grant permits only these additive successors; retain exact heating evidence.
                 if sha(git('show', STEEPING_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen steeping predecessor evidence: ' + row['path'])
+                continue
+            if path.name == 'remedy-cooling-runtime-verification.json' and row['path'] in (
+                    'quality.py', 'game/Main.tscn', 'game/MaterialAudioCreditsPanel.cs',
+                    'game/MaterialSoundCaptionPanel.cs', 'game/PositionalSoundCueHistoryPanel.cs', 'game/export_presets.cfg'):
+                # The herb grant permits only these additive successors; preserve exact cooling evidence.
+                if sha(git('show', COOLING_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen cooling predecessor evidence: ' + row['path'])
                 continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
@@ -509,6 +517,7 @@ def main(resume_smoke=False, finish_interior=False):
         heating_runtime(run, environment)
         steeping_runtime(run, environment)
         cooling_runtime(run, environment)
+        herb_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -655,14 +664,105 @@ def frozen_steeping_runtime(run, environment, tree):
 
 
 def cooling_runtime(run, environment):
+    """Preserve all cooling predecessor stages at their accepted revision."""
+    with snapshot(COOLING_REVISION, editor=True) as (tree, env):
+        run.report['historical_cooling_retained_uids'] = seed_cooling_uids(tree)
+        run.stage('cooling-historical-restore', ['dotnet', 'restore', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj'], tree, env, COOLING_REVISION)
+        run.stage('cooling-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, COOLING_REVISION)
+        run.stage('cooling-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, COOLING_REVISION, retry_native=True)
+        frozen_cooling_runtime(run, dict(environment, **env), tree)
+
+
+def seed_cooling_uids(tree, root=ROOT):
+    """Supply only exact accepted sidecars missing from the cooling commit before cold import."""
+    verification = json.loads((root / 'audio-direction/remedy-cooling-runtime-verification.json').read_text())
+    rows = [row for row in verification['evidence_bindings'] if row['path'].endswith('.cs.uid')]
+    if len(rows) != 4 or any(not row['path'].startswith('game/') for row in rows):
+        raise ValueError('Unexpected retained cooling sidecar inventory')
+    for row in rows:
+        data = (root / row['path']).read_bytes()
+        if sha(data) != row['sha256'] or not re.fullmatch(rb'uid://[a-z0-9]+\s*', data):
+            raise ValueError('Accepted cooling sidecar changed: ' + row['path'])
+        source = row['path'][:-4]
+        if (tree / source).read_bytes() != (root / source).read_bytes():
+            raise ValueError('Cooling UID source changed: ' + source)
+    for row in rows:
+        (tree / row['path']).write_bytes((root / row['path']).read_bytes())
+    return rows
+
+
+def resume_cooling_uid_prefix(prior, directory):
+    """Reuse exact completed product stages only for the recorded missing-sidecar snapshot failure."""
+    review = ROOT / 'audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure'
+    original = json.loads((review / 'summary.json').read_text())
+    if prior != original or prior.get('status') != 'failed' or prior.get('failed_stage') != 'boundary-cooling-reviewed':
+        raise ValueError('Cooling UID resume requires the exact retained failure report')
+    rows = prior['stages']
+    expected = json.loads((ROOT / 'audio-direction/remedy-cooling-runtime-review/quality/summary.json').read_text())['stages']
+    expected_names = [row['name'] for row in expected]
+    slot = expected_names.index('cooling-focused')
+    expected_names[slot:slot] = ['cooling-historical-restore', 'cooling-historical-build', 'cooling-historical-import']
+    if [row['name'] for row in rows] != expected_names or len(rows) != 157:
+        raise ValueError('Cooling UID resume stage inventory changed')
+    for row in rows:
+        for attempt in row['attempts']:
+            if Path(attempt['log']).name != attempt['log'] or sha((directory / attempt['log']).read_bytes()) != attempt['sha256']:
+                raise ValueError('Cooling UID resume log changed')
+        if row is not rows[-1] and (row['attempts'][-1]['exit_code'] != 0 or not row['attempts'][-1]['completion_seen']):
+            raise ValueError('Cooling UID resume prefix incomplete')
+    failure = rows[-1]['attempts'][-1]
+    if failure['exit_code'] != 1 or 'ValueError: Binding drift: game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid' not in (directory / failure['log']).read_text():
+        raise ValueError('Cooling UID resume failure differs')
+    qa = {row['path']: row for row in json.loads((review / 'qa-repair-inputs.json').read_text())}
+    if prior['inputs']['quality.py'] != qa['quality.py']['previous_sha256'] or sha((ROOT / 'quality.py').read_bytes()) != qa['quality.py']['sha256']:
+        raise ValueError('Cooling UID resume runner repair changed')
+    for row in json.loads((review / 'product-inputs.json').read_text()):
+        repair = qa.get(row['path'])
+        expected_sha = repair['sha256'] if repair and repair['previous_sha256'] == row['sha256'] else row['sha256']
+        if sha((ROOT / row['path']).read_bytes()) != expected_sha:
+            raise ValueError('Cooling UID resume product changed: ' + row['path'])
+    return rows[:143]
+
+
+def finish_cooling_uids():
+    """Rerun the affected cold cooling suite and new herb stages, retaining unchanged product passes."""
+    directory = ROOT / 'artifacts/quality-current'
+    prior_bytes = (directory / 'summary.json').read_bytes(); prior = json.loads(prior_bytes)
+    reused = resume_cooling_uid_prefix(prior, directory)
+    if prior['product_revision'] != git('rev-parse', 'HEAD').decode().strip() or prior['python'] != sys.version:
+        raise ValueError('Cooling UID resume revision or interpreter changed')
+    for name, digest in prior['inputs'].items():
+        if name != 'quality.py' and sha((ROOT / name).read_bytes()) != digest:
+            raise ValueError('Cooling UID resume quality input changed: ' + name)
+    frozen_evidence()
+    run = Run(directory)
+    metadata = {key: value for key, value in prior.items() if key not in
+                ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
+    metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
+    run.report.update(metadata, stages=reused, resumed_from={'report_sha256': sha(prior_bytes),
+        'prior_source_inputs': prior['inputs'], 'verified_completed_stages': len(reused),
+        'reason': 'Exact unchanged product prefix retained after cooling snapshot generated missing accepted UID sidecars. Seed exact accepted bytes before import and rerun every cold cooling stage plus all herb stages.'})
+    run.save()
+    print(f'REUSE: {len(reused)} completed stages with exact source/log bindings; repeat cold cooling and finish herb', flush=True)
+    try:
+        environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1', 'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
+        cooling_runtime(run, environment)
+        herb_runtime(run, environment)
+        run.report.update(status='passed', finished=now()); run.save()
+        print('PASS: full current quality; verified unchanged product prefix, exact retained cooling UIDs and all herb stages', flush=True)
+    except Exception:
+        run.report.update(status='failed', finished=now()); run.save(); raise
+
+
+def frozen_cooling_runtime(run, environment, tree):
     """Check the live successor without replacing any retained stage."""
-    run.stage('cooling-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedyCooling', '--logger', 'console;verbosity=minimal'])
-    run.stage('boundary-cooling-source', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--source-only'])
+    run.stage('cooling-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~RemedyCooling', '--logger', 'console;verbosity=minimal'], tree, environment, COOLING_REVISION)
+    run.stage('boundary-cooling-source', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--source-only'], tree, environment, COOLING_REVISION)
     modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'cooling-disabled')
     for mode in modes:
         output = run.directory / f'cooling-{mode}.json'
         run.stage('cooling-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
-                  env=dict(environment, ALLRPCS_COOLING_MAIN_CHECK='1', ALLRPCS_COOLING_MODE=mode, ALLRPCS_COOLING_REPORT=str(output)),
+                  cwd=tree, revision=COOLING_REVISION, env=dict(environment, ALLRPCS_COOLING_MAIN_CHECK='1', ALLRPCS_COOLING_MODE=mode, ALLRPCS_COOLING_REPORT=str(output)),
                   retry_native=True, completion='PASS: cooling Main:')
     reports = [json.loads((run.directory / f'cooling-{mode}.json').read_text()) for mode in modes]
     saves = [(run.directory / f'cooling-{mode}.json.save.json').read_bytes() for mode in modes]
@@ -672,8 +772,35 @@ def cooling_runtime(run, environment):
     if any(row['commits'] != 1 or row['presentations'] != 1 or row['grinding'] != 1 or row['treatment'] != 1 or row['heating'] != 1 or row['steeping'] != 1 for row in reports[:-1]) or reports[-1]['presentations'] != 0:
         raise ValueError('Cooling exact commit/presentation contract changed')
     run.report.update(cooling_modes=list(modes), cooling_save_sha256=sha(saves[0]))
-    run.stage('cooling-master-output', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--output-only'])
-    run.stage('boundary-cooling-reviewed', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--reviewed'])
+    run.stage('cooling-master-output', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--output-only'], tree, environment, COOLING_REVISION)
+    run.stage('boundary-cooling-reviewed', [sys.executable, 'scripts/validate-remedy-cooling-runtime.py', '--reviewed'], tree, environment, COOLING_REVISION)
+
+
+def herb_runtime(run, environment):
+    """Add bounded genuine near/remote collection parity without replacing old stages."""
+    run.stage('herb-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~HerbCollection', '--logger', 'console;verbosity=minimal'])
+    run.stage('boundary-herb-source', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--source-only'])
+    run.stage('herb-source-rejections', [sys.executable, 'scripts/prepare-herb-collection-passage.py', '--self-test'])
+    run.stage('herb-validator-rejections', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--self-test'])
+    modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'audio-disabled')
+    from importlib.util import module_from_spec, spec_from_file_location
+    spec = spec_from_file_location('herb_validator', ROOT / 'scripts/validate-herb-collection-runtime.py')
+    validator = module_from_spec(spec); spec.loader.exec_module(validator)
+    for placement in ('near', 'remote'):
+        for mode in modes:
+            output = run.directory / f'herb-{placement}-{mode}.json'
+            run.stage(f'herb-{placement}-{mode}', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
+                      env=dict(environment, ALLRPCS_HERB_MAIN_CHECK='1', ALLRPCS_HERB_MODE=mode,
+                               ALLRPCS_HERB_PLACEMENT=placement, ALLRPCS_HERB_REPORT=str(output)),
+                      retry_native=True, completion='PASS: herb Main:')
+        rows = [json.loads((run.directory / f'herb-{placement}-{mode}.json').read_text()) for mode in modes]
+        saves = [(run.directory / f'herb-{placement}-{mode}.json.save.json').read_bytes() for mode in modes]
+        gameplay = [(run.directory / f'herb-{placement}-{mode}.json.gameplay.json').read_bytes() for mode in modes]
+        validator.parity(rows, saves, gameplay, placement)
+        run.report['herb_' + placement + '_save_sha256'] = sha(saves[0])
+    run.report['herb_modes'] = list(modes)
+    run.stage('herb-master-output', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--output-only'])
+    run.stage('boundary-herb-reviewed', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--reviewed'])
 
 
 def rain_runtime(run, environment):
@@ -946,6 +1073,47 @@ class ContractTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             resume_rain_prefix(changed, ROOT / 'artifacts/quality-current')
 
+    def test_cooling_uid_seed_preserves_exact_bytes(self):
+        """Cold import receives all accepted IDs; tampered input fails before any snapshot write."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / 'source'; tree = Path(directory) / 'tree'
+            (root / 'game').mkdir(parents=True); (tree / 'game').mkdir(parents=True)
+            (root / 'audio-direction').mkdir()
+            rows = []
+            for i in range(4):
+                name = f'game/Cooling{i}.cs'
+                (root / name).write_text('source'); (tree / name).write_text('source')
+                data = f'uid://accepted{i}\n'.encode()
+                (root / (name + '.uid')).write_bytes(data)
+                rows.append({'path': name + '.uid', 'sha256': sha(data)})
+            (root / 'audio-direction/remedy-cooling-runtime-verification.json').write_text(json.dumps({'evidence_bindings': rows}))
+            self.assertEqual(seed_cooling_uids(tree, root), rows)
+            self.assertTrue(all((tree / row['path']).read_bytes() == (root / row['path']).read_bytes() for row in rows))
+            (root / rows[2]['path']).write_text('uid://changed\n')
+            for row in rows: (tree / row['path']).unlink()
+            with self.assertRaises(ValueError): seed_cooling_uids(tree, root)
+            self.assertTrue(all(not (tree / row['path']).exists() for row in rows))
+
+    def test_cooling_uid_resume_refuses_other_failures(self):
+        """Only the retained failed report and unchanged runtime inputs can resume the product prefix."""
+        from unittest.mock import patch
+        record = json.loads((ROOT / 'audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/summary.json').read_text())
+        for changed in (dict(record, status='passed'), dict(record, failed_stage='other')):
+            with self.assertRaises(ValueError): resume_cooling_uid_prefix(changed, ROOT / 'artifacts/quality-current')
+        read = Path.read_bytes
+        source = ROOT / 'game/OpeningRegionHerbCollectionAudioController.cs'
+        review = ROOT / 'audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure'
+        # Materialize immutable retained logs in a private fixture; fresh clones have no local artifacts.
+        import gzip
+        with tempfile.TemporaryDirectory() as directory:
+            fixture = Path(directory)
+            for row in record['stages']:
+                for attempt in row['attempts']:
+                    (fixture / attempt['log']).write_bytes(gzip.decompress((review / (attempt['log'] + '.gz')).read_bytes()))
+            with patch.object(Path, 'read_bytes', lambda path: read(path) + b'changed' if path == source else read(path)):
+                with self.assertRaisesRegex(ValueError, 'product changed'):
+                    resume_cooling_uid_prefix(record, fixture)
+
     def test_failure_persists(self):
         """A nonzero command yields a failed report, not a success or retry."""
         with tempfile.TemporaryDirectory() as directory:
@@ -1024,11 +1192,14 @@ if __name__ == '__main__':
     parser.add_argument('--finish-interior', action='store_true')
     parser.add_argument('--finish-foliage', action='store_true')
     parser.add_argument('--finish-rain', action='store_true')
+    parser.add_argument('--finish-cooling-uids', action='store_true')
     arguments = parser.parse_args()
     if arguments.self_test:
         unittest.main(argv=[sys.argv[0]])
     elif arguments.finish_foliage:
         finish_foliage()
+    elif arguments.finish_cooling_uids:
+        finish_cooling_uids()
     elif arguments.finish_rain:
         finish_rain()
     else:

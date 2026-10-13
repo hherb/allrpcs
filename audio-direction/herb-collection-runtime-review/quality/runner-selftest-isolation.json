@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "change": "Only the ContractTests resume-rejection fixture now materializes immutable archived logs in a temporary directory, so --self-test is portable without artifacts/quality-current. All operational runner functions, commands and guards have identical AST; no product or native capture input changed.",
+  "executed_runner_sha256": "2ce9552e3b377c184f8a1495c19d1a04f5ab737b4f175e91105640878dafe1e9",
+  "current_runner_sha256": "fae0bfdf6e9c2909b88fc4b2825d653c86b4f315e4fadfd5ee1149b593d804b8",
+  "operational_ast_sha256": "e99a60c0b48c6c8514423a74518da68ac0f6f14784a2aed73e2cf037750b1497",
+  "root_stages_reused": 177,
+  "verification": "Fourteen self-tests rerun after the fixture-only correction."
+}

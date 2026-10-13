@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "probe": "direct-call",
+  "detail": "Existing direct commit and rejected unsafe/failure are preserved; neither a direct call nor rebuilt installed snapshots notify the flow-owned presentation.",
+  "presentations": 0,
+  "history": 0
+}

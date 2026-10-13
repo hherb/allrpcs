@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "method": "Native Godot Movie Maker Master output at 60fps; lossless WAV extraction. Stopped output fixtures use the actual retained body/listener/navigation, explicitly make Healer visible, and isolate prior players. Recipe mix uses installed prior PCM in fixture players and claims output coexistence only. Genuine commits are separately proved in parity.",
+  "inputs": [
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.cs",
+      "sha256": "a16ecf8a9dce6cf1d681acad1d3f78251ae2596e064b253b0c78bee0705ecd50"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.tscn",
+      "sha256": "184874ae2abf03bc62792178e935b1d4072d9ebfd13ed27b594d01cca7e8074f"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioController.cs",
+      "sha256": "c8678b67a572d9111b804f62085e81d8bc0f41191c1a28752110f4c79ead75da"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioSource.cs",
+      "sha256": "c79014084a7383a224746cf51fc0f677ec34d9765675a93986640c94454bb68e"
+    },
+    {
+      "path": "game/HerbCollectionCommit.cs",
+      "sha256": "0f0fc736dfc306651e064c75bf54e1434c5632b8272c964e40b2f722f1623b7c"
+    },
+    {
+      "path": "game/TemporaryCharacterExaminationFlowController.cs",
+      "sha256": "8c127196f22c3e471d12bfa6417355ecd47eae956954253ee324d3e78eeb18bf"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4129963285b8f16eaab0b2745da233ad7ed7d1c534ac985ebb423f17298f4bbf"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "ecb75370bfa75d398cf408afde6a52799325418e0af89d96ef967a951e8d1b45"
+    },
+    {
+      "path": "src/Application/Audio/HerbCollectionPresentationProjection.cs",
+      "sha256": "9e7ce60e3a67098919f64fef58fc0e800927da492a24d4d7e81fd116ff2c8db7"
+    },
+    {
+      "path": "src/Application/Audio/HerbCollectionCueHistory.cs",
+      "sha256": "6320081caddb576d45f2b2f84217143aec4a86f0bc5f3f14ca92d4df55a3cd88"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav",
+      "sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav.import",
+      "sha256": "58643a27f20c6c6256425abeeac0d7e9fae1c63ac8ca6ff0fc4bf68bcb7d9a84"
+    }
+  ],
+  "command": [
+    "godot",
+    "--path",
+    "game",
+    "res://HerbCollectionAudioRuntimeProof.tscn",
+    "--write-movie",
+    "/tmp/allrpcs-herb-output/reviewed.avi",
+    "--fixed-fps",
+    "60",
+    "--quit-after",
+    "16000"
+  ],
+  "completed_cases": 45,
+  "master_wav_sha256": "70eac1646852be338a2ce8e680db9fbf4f60c9ef328b61a6a20905b9417fbef7",
+  "master_gzip_sha256": "f18129d74f4a7110f37aa0005e94dac828c9f52194919267aae536039d10dcd2",
+  "native_log_raw_sha256": "08140f61a754bf1290f46372381f1dbc2d1d6faa0e6828affc498637ea271ef0",
+  "measurement_inputs": [
+    {
+      "path": "scripts/check-herb-collection-audio-output.py",
+      "sha256": "f13a4be0e50c48fbae3f63f74fa8cfe195aea80889fd4bd7bb623a7a3176d4b4"
+    }
+  ],
+  "measurement_correction": {
+    "original_checker_sha256": "07e3fb6711fed2c41f0a1731c78806d7b5a78b1ab26cb118bcd9532aef18e0b3",
+    "reason": "Accepted stereo is naturally unequal (baseline left/right RMS 0.698496). Normalize each spatial case to that unchanged baseline instead of requiring absolute channel dominance; rendered runtime/source inputs and raw Master bytes are unchanged.",
+    "quiet": "Existing master compressor -30 dB threshold: native HC01 peak is about -30 dBFS, so this low-level signal stays approximately unity in Quiet (within 2% quantization/compressor tolerance). No artificial attenuation is claimed."
+  }
+}

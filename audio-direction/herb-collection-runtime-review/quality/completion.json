@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "stages": 177,
+  "all_154_predecessor_stages_retained_in_order": true,
+  "old_historical_pins_unchanged": true,
+  "cooling_exact_revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+  "extra_stages": {
+    "cold_cooling_restore_build_import": 3,
+    "herb": 20
+  },
+  "unit_test_counts": [
+    2849,
+    1361,
+    1272,
+    8
+  ],
+  "unit_tests": 5490,
+  "complete_final_attempts": 177,
+  "exact_log_bindings": 177
+}

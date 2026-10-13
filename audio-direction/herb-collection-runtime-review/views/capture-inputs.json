@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "method": "Native genuine collection followed by stopped fixture for sixteen caption owners and capped independent history. Four final screenshots visually inspected: all caption lines readable, HUD separate, history and return control contained; history is scrolled to its newest entry.",
+  "inputs": [
+    {
+      "path": "game/HerbCollectionAudioRuntimeSmokeCheck.cs",
+      "sha256": "919994f9790c909e7721ec29d256ecc8b902e7a029d2a7213a7d9e35de157aa8"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4129963285b8f16eaab0b2745da233ad7ed7d1c534ac985ebb423f17298f4bbf"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "ecb75370bfa75d398cf408afde6a52799325418e0af89d96ef967a951e8d1b45"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "357850b79d0c63404b48a1e2706f2b40ea5af7ca7c07e8efb4615cd5ce73527a"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioController.cs",
+      "sha256": "c8678b67a572d9111b804f62085e81d8bc0f41191c1a28752110f4c79ead75da"
+    }
+  ]
+}

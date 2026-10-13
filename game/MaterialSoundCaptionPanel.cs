@@ -13,6 +13,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label interiorLabel = null!;
     private Label waterLabel = null!;
     private Label coverLabel = null!;
+    private Label herbLabel = null!;
+    private string herb = string.Empty;
     private Label coolingLabel = null!;
     private string cooling = string.Empty;
     private Label steepingLabel = null!;
@@ -87,7 +89,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(steepingLabel);
         coolingLabel = new() { Name = "RemedyCooling", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(coolingLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel, steepingLabel, coolingLabel })
+        herbLabel = new() { Name = "HerbCollection", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(herbLabel);
+        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel, steepingLabel, coolingLabel, herbLabel })
         { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
@@ -163,6 +167,11 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     /// <summary>Cancels cooling without changing prior caption owners.</summary>
     internal void ClearRemedyCooling() { cooling = string.Empty; Refresh(); }
 
+    /// <summary>Sets only the independent anonymous rustle line.</summary>
+    internal void SetHerbCollection(string text) { herb = text; Refresh(); }
+    /// <summary>Clears rustle while retaining all prior timers and lines.</summary>
+    internal void ClearHerbCollection() { herb = string.Empty; Refresh(); }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -196,7 +205,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         heatingLabel.Text = enabled ? heating : string.Empty;
         steepingLabel.Text = enabled ? steeping : string.Empty;
         coolingLabel.Text = enabled ? cooling : string.Empty;
+        herbLabel.Text = enabled ? herb : string.Empty;
         rainLabel.Text = enabled ? rain : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0 || rain.Length > 0 || heating.Length > 0 || steeping.Length > 0 || cooling.Length > 0);
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0 || rain.Length > 0 || heating.Length > 0 || steeping.Length > 0 || cooling.Length > 0 || herb.Length > 0);
     }
 }

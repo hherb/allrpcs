@@ -1,0 +1,2134 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-herb-collection-audio-runtime-integration",
+  "status": "passed",
+  "source_qualification": {
+    "status": "qualified",
+    "candidate_path": "audio-direction/herb-collection-runtime-review/source/HC01-candidate.wav",
+    "candidate_sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528",
+    "window_seconds": [
+      0.1,
+      1.1
+    ],
+    "sample_peak_dbfs": -24.000006281265822,
+    "owner_statement": "suitable",
+    "limit": "Exact sound/window/level accepted with suitable; unchanged accepted PCM installed. No further listening decision remains.",
+    "date": "2026-10-13",
+    "qualification": "Direct reply to exact one-second candidate/sound/level question; unchanged bytes and 0.10\u20131.10s window accepted."
+  },
+  "focused_tests": 18,
+  "genuine_flow_modes": 14,
+  "genuine_live_admission_cases": 8,
+  "native_master_cases": 45,
+  "actor_inclusive_pixels": 32,
+  "listener_exclusive_pixels": 192,
+  "passage_seconds": 1,
+  "caption_seconds": 2,
+  "phrase": "Soft rustle",
+  "caption_owners": 16,
+  "history_capacity": 16,
+  "parity": {
+    "near": {
+      "mode_count": 7,
+      "save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+      "gameplay_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    "remote": {
+      "mode_count": 7,
+      "save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+      "gameplay_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    }
+  },
+  "native_viewports": [
+    "1280x720",
+    "1920x1080"
+  ],
+  "packaging": {
+    "streams": 43,
+    "individual_notices": 42,
+    "notice_groups": 24,
+    "resource_entries": 130,
+    "retained_entries_byte_identical": 125
+  },
+  "preparation_rejection_probes": 11,
+  "validator_rejection_probes": 18,
+  "runner_self_tests": 14,
+  "continuation_self_tests": 11,
+  "limits": "No collection/examination/gameplay, approach, physical picking, perception/hearing/knowledge, inventory/plant, save/time or prior audio changes. Genuine ordinary input uses deterministic reply scaffolding and explicitly arranged real body positions/visibility; native stopped fixtures measure acoustic output, with existing listener physics retained. Recipe overlap tests installed PCM coexistence, not a second recipe commit. Three mounted resource packs only, no executable release or fresh-device/ordinary-play loudness claim.",
+  "quality": {
+    "status": "passed",
+    "stages": 177,
+    "all_154_predecessor_stages_retained_in_order": true,
+    "old_historical_pins_unchanged": true,
+    "cooling_exact_revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+    "extra_stages": {
+      "cold_cooling_restore_build_import": 3,
+      "herb": 20
+    },
+    "unit_test_counts": [
+      2849,
+      1361,
+      1272,
+      8
+    ],
+    "unit_tests": 5490,
+    "complete_final_attempts": 177,
+    "exact_log_bindings": 177,
+    "runner_self_tests": 14,
+    "fixture_only_runner_update": "quality/runner-selftest-isolation.json binds the exact executed runner and proves identical operational AST after making the fourteen-test rejection fixture portable. Product evidence is reused unchanged."
+  },
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/herb-collection-runtime-authority.json",
+      "sha256": "1e49b768634d14260a228fca3f2f76ba199e41a9e0e915d15d01e09c110b006d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-32.json",
+      "sha256": "110c3387aec38c7a7d6c1ad0f1752d1b92323cd092c4d949550df340e96cc827"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-32.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-32.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-32.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-33.json",
+      "sha256": "7817bb59b110fc9a9eb98b8ae757975d70033ab0df139acf370e80dc82cd4651"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-33.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-33.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/actor-33.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/blocked.json",
+      "sha256": "a7c762afcedf3f90d71d48ad171b20a2742ba0be4ef0052f638375d27f396275"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/blocked.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/blocked.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/blocked.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/direct-call.json",
+      "sha256": "05ed933dc7953e788344cbd04b06b1e0be078426041dc28ce856e8ead308e1b3"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/direct-call.log.gz",
+      "sha256": "164082ff56c19a840bf00b960a4f92f0b5abe51e8368ef96c293302e3cd47863"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/hidden.json",
+      "sha256": "c937feccb886f61e2ebc9e3d45e315703c4a2bfa9a99d50e2dfcb333e50e373e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/hidden.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/hidden.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/hidden.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-191.json",
+      "sha256": "b8381a64281dc1e4a0b507333952bb0471536894183d38dd018082c02ef398b2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-191.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-191.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-191.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-192.json",
+      "sha256": "3b30e0b5c63a6849c68a25bf9878d6eae4d0f65eb0cd02016591f3c9260d22c7"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-192.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-192.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/listener-192.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/summary.json",
+      "sha256": "eb8e55bac53d3437a713191e716f412f5acf6808611258b73beed79f36e2279e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/task-arrival.json",
+      "sha256": "1fda8209b398507a12a4ef676f7137efa903da74c52d4f38f250996ff3ef3b6e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/admission/task-arrival.log.gz",
+      "sha256": "6209f498ad854591684311c9e54b939bc15b61110c6c2f83da287e149bb697ee"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/build.log.gz",
+      "sha256": "636d3241ab934c39e835f3540b12140e6dc6b560c66698d4080de0c383980eaa"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/concurrent-work.json",
+      "sha256": "5dd85d99236a2014340e305c7e820534e032b5418957b51cdbcbc124e020d32b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/focused.log.gz",
+      "sha256": "5b77378cef5aea9ddeb76e9913d022e6414d61a1262fdd8af44dc19ce9fda981"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/format-verify.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/generated-sidecars.json",
+      "sha256": "d9c984a2053aefdb6acc544e209fdda7810b7e671ec889219ae6b75d7f32cca9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/capture-inputs.json",
+      "sha256": "8f4d187da72aa4489d3850f7e12a923264526d6e08d3aba3d8cf596503b202b0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/master.wav.gz",
+      "sha256": "f18129d74f4a7110f37aa0005e94dac828c9f52194919267aae536039d10dcd2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/measurements.json",
+      "sha256": "f0fdb8fc57623ea5ffc2c99c0855e00ef13f96229c7f62ae8bcf373dec7d5cb6"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/native.log.gz",
+      "sha256": "2bcc56a374fc2c8ff9d0297ba58b72c8cae5522ad5e575b149714296dae9ae9a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/pan-rejection.json",
+      "sha256": "d4726e2f236ac15724ac5890f5141d1d1a175f382dd70df463fb618109980b9b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/timeline.json",
+      "sha256": "05d6885c56826be2c30b3401ffc3fb400e3edcd7b632fb6e77402c8abbe2ba4d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output/timeline.json.stops.json",
+      "sha256": "4497f79f2316f938b2e2682309827e4a83b6f1d81cf3cc9afa3b2e9dd86f100c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output-fixture-diagnosis.json",
+      "sha256": "225d5c8f4e2e8be2485f13c35f693be1ca005bbbb1efe4df9ded8f941e938fb8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output-fixture-failed.log.gz",
+      "sha256": "a29359f1a006eff771d835aee53841017b9c541782da7b45430b840ec5f58663"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/output-fixture-retry.log.gz",
+      "sha256": "b171d5915abfb1583e29bbc3e71e9443b6adbac9351a7035feb6e4181b6231ca"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/audio-subset.zip",
+      "sha256": "2e00145c9d6e367f81169154109159c712190bded150b2800884d93ae13a7608"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/capture-inputs.json",
+      "sha256": "b1e803d02587ff762211e52123df969d67f323ef1aeb32ad9f61ac21ce7ae6bf"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/export-0.log.gz",
+      "sha256": "95552b15affb509aa1bb773bcac7c9970e705f11111f2d7dca907925d7b0c45e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/export-1.log.gz",
+      "sha256": "243e51eb9bec65a6069118e63664b3c0fc42a523356e65888402b5a82ba997b6"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/export-2.log.gz",
+      "sha256": "0ff87e8935bb7091c1e3ee73eb6abbe6fdfb840f3780eb09e0afac8d98def49e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/inventory.json",
+      "sha256": "c2cf42b01c6a6917f5fdb8e39a09baa6fca9fc654ea53e87981cc6b7673748de"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-0.json",
+      "sha256": "14b4f4c65325e47b08a2435852fe9c383638c76a79a83dd541f838b3fecf6238"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-0.log.gz",
+      "sha256": "fa76fbc271b8fe9c86b0a41ed08e5b72d89851764eeb64bd6fbfff6b2f734a21"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-1.json",
+      "sha256": "14b4f4c65325e47b08a2435852fe9c383638c76a79a83dd541f838b3fecf6238"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-1.log.gz",
+      "sha256": "fa76fbc271b8fe9c86b0a41ed08e5b72d89851764eeb64bd6fbfff6b2f734a21"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-2.json",
+      "sha256": "14b4f4c65325e47b08a2435852fe9c383638c76a79a83dd541f838b3fecf6238"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/packaging/mount-2.log.gz",
+      "sha256": "fa76fbc271b8fe9c86b0a41ed08e5b72d89851764eeb64bd6fbfff6b2f734a21"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-audio-disabled.json",
+      "sha256": "4d6cdb8bc2eaed84d5a5a38d5486f8c339662899092df384eba22900b3710229"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-audio-disabled.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-audio-disabled.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-audio-disabled.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-captions-off.json",
+      "sha256": "41ea54a18c32a69e5df48add0a26bd6a51696371d167038947aa0cc2228313a4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-captions-off.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-captions-off.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-captions-off.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-default.json",
+      "sha256": "d20d030d1cf4a4fc162e05778d553b23e173fe51a8acbe8e924b2adde2c6f441"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-default.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-default.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-default.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-effects-muted.json",
+      "sha256": "86e9b76ec43b0198f5400a5292ee91066be07be3e7db3876ea7c320a59c447cd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-effects-muted.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-effects-muted.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-effects-muted.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-master-muted.json",
+      "sha256": "91cb97e2c4226f92a710a7785cf5b3637b1e4dfc23cf68f3e9cd944e75b46e2e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-master-muted.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-master-muted.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-master-muted.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-missing-stream.json",
+      "sha256": "a45118fe372d56e0bc46a9829cdfd11e9f5197c4a0bcfb4df067d81fb8a03acb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-missing-stream.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-missing-stream.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-missing-stream.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-quiet.json",
+      "sha256": "0bb937b5bb14680737340eb956fcf622de9b29d03c38f6c4120ed9e1afe70cc9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-quiet.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-quiet.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/near-quiet.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-audio-disabled.json",
+      "sha256": "d512c111da9bd47032fd614da0e46c4aea264273269045f489b2b54c7d5a4f93"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-audio-disabled.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-audio-disabled.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-audio-disabled.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-captions-off.json",
+      "sha256": "b7955d3d1d0caef0c27331e1bcb0187624d98d5de03a606548e620d1adf664c2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-captions-off.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-captions-off.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-captions-off.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-default.json",
+      "sha256": "3f58c63bb47f3aa0637b0500dca8e8b4be11aa11dae7ff15b5a3e56afe4c3dd8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-default.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-default.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-default.log.gz",
+      "sha256": "bafce24a30e1db5c284f9be84e13e28a4affbf7cd6c0fe544a69e3d3e70e237e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-effects-muted.json",
+      "sha256": "28e5643dddb45167fa8f1557023fc6edf4e7c6c9149cd4cc730f3cb29415cc4b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-effects-muted.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-effects-muted.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-effects-muted.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-master-muted.json",
+      "sha256": "0829a90b98e0ba7624216e8f4b195ec0c8a02c7d06435cab9a8f3b157bacce93"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-master-muted.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-master-muted.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-master-muted.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-missing-stream.json",
+      "sha256": "dd4cb4a8fa7ae521a504c0396b079da446562a14bc992e28605605536d4f8f6d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-missing-stream.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-missing-stream.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-missing-stream.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-quiet.json",
+      "sha256": "e27e7f1b31f2db8e6c9adb468c74c7c92fd4d05b3247d8797d1f0236d63124a2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-quiet.json.gameplay.json",
+      "sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-quiet.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/parity/remote-quiet.log.gz",
+      "sha256": "e4ae09d05de6939291e1840a3e2f984a9508ad4cbda06bbea4020355bb33fcfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality-selftest.log.gz",
+      "sha256": "0af27637a4975f720f9587c89d6e0c9fc02847fdf96e1db667fd542adacd9e88"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/rejection-probes.json",
+      "sha256": "7706884b6c7609b3a9c4fe34141c8c8e3ecb7ef4512fd5e96adcfbf536ee5488"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/source/HC01-candidate.wav",
+      "sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/source/loudness.log.gz",
+      "sha256": "fa1de5fbb73f1238d1e10104eecf0094b1ed7deec4610c47bbd32364effa70f6"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/source/passage-measurements.json",
+      "sha256": "53d06870dab51fd8c6024b09364db2a93c0f9acc09784f7c75623354e2f3232f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/source/source-checks.json",
+      "sha256": "57355ffa4818dc44221d87b40f25d25a4fabfb43bbf1f3e1dbe2ea108f723773"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/verification-preflight.json",
+      "sha256": "e88245095c285d3a0ae0bc1c26ee486028dfdbdcc5d8b5101b5a71f83d8cf9a0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/captions-1280.png",
+      "sha256": "4ad815c1c6aa55345a9fce7dc51566b1a7ecc0041e4e2cefb3dc91d4aff37d07"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/captions-1920.png",
+      "sha256": "3a84d14d7ff8ae6891b19a0fe9466fa63aebd0454f1c5a394536b0dff558a130"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/capture-inputs.json",
+      "sha256": "5fe72c862eb7106d2c8137fd6c3fbad4ce47b6db345fe58236244dfb072251bf"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/flow.json",
+      "sha256": "d20d030d1cf4a4fc162e05778d553b23e173fe51a8acbe8e924b2adde2c6f441"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/flow.json.gameplay.json",
+      "sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/flow.json.save.json",
+      "sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/history-1280.png",
+      "sha256": "cc90290b58c9854f998cb45d2718c88470f8f8a34a5e5befb0a996f987544135"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/history-1920.png",
+      "sha256": "910b2ced61d527f5f9bc4d32e892fc5d2eade0f6a691df6984f94aa43f6bd96e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/native.json",
+      "sha256": "aff8d36275322f5f012b7139854d228fdff0a719c34632fb6b704eaa57d5004b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/views/native.log.gz",
+      "sha256": "f663085566c68e47db56a0e3653f28324f148c04bdf71304fe8856a591120578"
+    },
+    {
+      "path": "audio-direction/herb-collection-source/README.md",
+      "sha256": "ba6d6560b1d0e0ee7364ef123c9bcaf59c4cb78d56cffdc5e14dcac75a7c7033"
+    },
+    {
+      "path": "audio-direction/herb-collection-source/originals/qubodup-rustle.7z",
+      "sha256": "c5d7458085e9b208009388b832184bddc0045482f6fa67a1eb6ea09335bb7a43"
+    },
+    {
+      "path": "audio-direction/herb-collection-source/provenance.json",
+      "sha256": "53d06870dab51fd8c6024b09364db2a93c0f9acc09784f7c75623354e2f3232f"
+    },
+    {
+      "path": "audio-direction/herb-collection-source/rights/catalogue.html.gz",
+      "sha256": "c24d40720e94db88cbfa01f10a6e04b83b5bb9c8a3a9e038aa277dd8de81c815"
+    },
+    {
+      "path": "audio-direction/herb-collection-source/rights/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/CoolingPreparationCommit.cs.uid",
+      "sha256": "23346a2141c56cc673a26d795cedaa6a8f39bb1ede336b2066339f95d41be131"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.cs",
+      "sha256": "a16ecf8a9dce6cf1d681acad1d3f78251ae2596e064b253b0c78bee0705ecd50"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.cs.uid",
+      "sha256": "a5cd451c197708c1472664ef444363d6cbb9fa7595411937f64e3cca7998a52c"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeProof.tscn",
+      "sha256": "184874ae2abf03bc62792178e935b1d4072d9ebfd13ed27b594d01cca7e8074f"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeSmokeCheck.cs",
+      "sha256": "919994f9790c909e7721ec29d256ecc8b902e7a029d2a7213a7d9e35de157aa8"
+    },
+    {
+      "path": "game/HerbCollectionAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "dfa8812fdeeefce490fcdd093706998b168702b5645943c12c63e1c6f50d5540"
+    },
+    {
+      "path": "game/HerbCollectionCommit.cs",
+      "sha256": "0f0fc736dfc306651e064c75bf54e1434c5632b8272c964e40b2f722f1623b7c"
+    },
+    {
+      "path": "game/HerbCollectionCommit.cs.uid",
+      "sha256": "cd57acdbd86ca023786e15bc430bcb9b2cae66c141ab444b46287559eb94ffa6"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4129963285b8f16eaab0b2745da233ad7ed7d1c534ac985ebb423f17298f4bbf"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "07f86cf7a4696a84d1fc37a9455e5b99791330057da71a5eed2b542014ac48b4"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "ecb75370bfa75d398cf408afde6a52799325418e0af89d96ef967a951e8d1b45"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioController.cs",
+      "sha256": "c8678b67a572d9111b804f62085e81d8bc0f41191c1a28752110f4c79ead75da"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioController.cs.uid",
+      "sha256": "6e9f038cb6dcd9b369864a8fc4894619125399c6d620f353786e87e62642f7ec"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioSource.cs",
+      "sha256": "c79014084a7383a224746cf51fc0f677ec34d9765675a93986640c94454bb68e"
+    },
+    {
+      "path": "game/OpeningRegionHerbCollectionAudioSource.cs.uid",
+      "sha256": "d2b6c05a1f012d8a6cc8958a90a3a8e65678c4b82d433675493e095e7ec9ebf2"
+    },
+    {
+      "path": "game/OpeningRegionRemedyCoolingAudioController.cs.uid",
+      "sha256": "f1551601ae6dd4296a4b7ee1883a7f48683c6bb087941b2345189a5c378f1290"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "357850b79d0c63404b48a1e2706f2b40ea5af7ca7c07e8efb4615cd5ce73527a"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.cs.uid",
+      "sha256": "bb04f14f6dd46951f02f3432f401cd06143bfe35288573b913baf7e908a4eabe"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "652b07c5a6bef0209ae4f61d285f50efa667009ee4af175dede812ccfdaa94ef"
+    },
+    {
+      "path": "game/TemporaryCharacterExaminationFlowController.cs",
+      "sha256": "8c127196f22c3e471d12bfa6417355ecd47eae956954253ee324d3e78eeb18bf"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/CREDITS.txt",
+      "sha256": "12a5b35140f991092baf0b7fb9e7419e6d6d519aad113162beba106f970874a6"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav",
+      "sha256": "cab3292c8907a7ae69b5a09a15ce8d0384298e4cfd2346126312eb322d6c4528"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/HC01.wav.import",
+      "sha256": "58643a27f20c6c6256425abeeac0d7e9fae1c63ac8ca6ff0fc4bf68bcb7d9a84"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/herb-collection/provenance.json",
+      "sha256": "53d06870dab51fd8c6024b09364db2a93c0f9acc09784f7c75623354e2f3232f"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "e10c14cfde8ed35b7ae80293c4fecd32309d2f4ddb8cdb74621faacad31d27ba"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "fae0bfdf6e9c2909b88fc4b2825d653c86b4f315e4fadfd5ee1149b593d804b8"
+    },
+    {
+      "path": "scripts/check-herb-collection-audio-output.py",
+      "sha256": "f13a4be0e50c48fbae3f63f74fa8cfe195aea80889fd4bd7bb623a7a3176d4b4"
+    },
+    {
+      "path": "scripts/prepare-herb-collection-passage.py",
+      "sha256": "52c0d0942a12ba8b9071e20b52d1e1cd79d0d5605698d4bae61bf36277b9cf40"
+    },
+    {
+      "path": "scripts/validate-herb-collection-runtime.py",
+      "sha256": "fd8964c8c312c511945b803336a9c104fccaefcedfcdea76d339eae57a7d0d94"
+    },
+    {
+      "path": "src/Application/Audio/HerbCollectionCueHistory.cs",
+      "sha256": "6320081caddb576d45f2b2f84217143aec4a86f0bc5f3f14ca92d4df55a3cd88"
+    },
+    {
+      "path": "src/Application/Audio/HerbCollectionPresentationProjection.cs",
+      "sha256": "9e7ce60e3a67098919f64fef58fc0e800927da492a24d4d7e81fd116ff2c8db7"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/HerbCollectionCueHistoryTests.cs",
+      "sha256": "3c8eb71926b6ba6ad0ca63af4c2ad4e0ee3d787146f3649604a69cc357e25dfe"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/HerbCollectionPresentationProjectionTests.cs",
+      "sha256": "07a5dc92a98b234e924fa21e53754aca936a9c07b2df002f007c0e7bd9a5775f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/02-art-1-1.log.gz",
+      "sha256": "91bb1f43a79e5df92fadf48fff409059a775f776642a8c1e4de49da06a836c33"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/102-rain-historical-restore-1.log.gz",
+      "sha256": "85da5b28021861a7729d4dd248148def05d84c9183958f668e13ca955bef9690"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/103-rain-historical-build-1.log.gz",
+      "sha256": "325bd53a34d12993fb12d1d5c61eccdb84cd52457aa7d87625f18f9a8d8c7eeb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/105-rain-focused-1.log.gz",
+      "sha256": "86a6feb211e719b1d0992f6145b631723c0ef1ba84715807e21c885b515724a6"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/111-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/112-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/113-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/116-heating-historical-restore-1.log.gz",
+      "sha256": "1646331c2d3447af8d09c15236c1ac073bee88e18ce1a2ad474b4991848bc065"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/117-heating-historical-build-1.log.gz",
+      "sha256": "f3fe1e2c05fb4157b995c50e390324aacdf3fa171a262de2c6365c78c5211d99"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/118-heating-historical-import-1.log.gz",
+      "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/119-heating-focused-1.log.gz",
+      "sha256": "2c789cf9b6c50e42be152013547a356d651dea3a7743407a40211c515b1b84e2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/120-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/121-heating-default-1.log.gz",
+      "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/122-heating-quiet-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/123-heating-master-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/124-heating-effects-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/125-heating-missing-stream-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/126-heating-captions-off-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/127-heating-heating-disabled-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/128-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/129-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/130-steeping-historical-restore-1.log.gz",
+      "sha256": "d9186ab37811a04128f452c6c1f8492c48bdf70e71be67fd6f65f70f5ee9ef52"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/131-steeping-historical-build-1.log.gz",
+      "sha256": "66d03ff7f8639c5c23a26d4571160a8acb9821aa01a048180197762bf1a40f46"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/132-steeping-historical-import-1.log.gz",
+      "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/133-steeping-focused-1.log.gz",
+      "sha256": "3be47ccb41d752b3ec5c37d5514783646f51c200132660e3650bda38f75c7627"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/134-boundary-steeping-source-1.log.gz",
+      "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/135-steeping-default-1.log.gz",
+      "sha256": "8927ae2039379f2127f70aabdfeec6a101aa7d27b5d76cd2fbddf10a1fc59300"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/136-steeping-quiet-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/137-steeping-master-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/138-steeping-effects-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/139-steeping-missing-stream-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/140-steeping-captions-off-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/141-steeping-steeping-disabled-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/142-steeping-master-output-1.log.gz",
+      "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/143-boundary-steeping-reviewed-1.log.gz",
+      "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/144-cooling-historical-restore-1.log.gz",
+      "sha256": "760135fc438fba9ab93d2b1fe8163363a9da63149f1ba3c204c86710880f4bbd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/145-cooling-historical-build-1.log.gz",
+      "sha256": "59de2af4018856b4c4e2dbfec82836b4a7aab531f723c140ce073ee6bab45869"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/146-cooling-historical-import-1.log.gz",
+      "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/147-cooling-focused-1.log.gz",
+      "sha256": "fdbbb6e8eee403fde6c6b3f2ab4cfa0960be88ddbaf349c31f80a7cb97a840e8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/148-boundary-cooling-source-1.log.gz",
+      "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/149-cooling-default-1.log.gz",
+      "sha256": "b33177845dbe7ab236fc6252106e5957386c25a53dbb3d1f6c2b00c0a76532d0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/150-cooling-quiet-1.log.gz",
+      "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/151-cooling-master-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/152-cooling-effects-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/153-cooling-missing-stream-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/154-cooling-captions-off-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/155-cooling-cooling-disabled-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/156-cooling-master-output-1.log.gz",
+      "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/157-boundary-cooling-reviewed-1.log.gz",
+      "sha256": "4ffff89afca2a920e3eff66583c16931fb57d9ec8d1bc9db7b13780cd3c760d8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/26-product-4-1.log.gz",
+      "sha256": "a5c297ce25399e5da7c6bc421e95a192d4b53b5ca5a3effbe1b682dfcd4de42f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/27-product-5-1.log.gz",
+      "sha256": "e6c83bdff781c2a772638b2e1614f0fb5d961410bb2869e4a6d49ba6f4c876de"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/28-product-6-1.log.gz",
+      "sha256": "8c3621469bf4dba2b45603660848be1c0d9f6ce3fbe83d30bd9031580006c994"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/29-product-7-1.log.gz",
+      "sha256": "cacba548d284f41e4aa0b82eddb429508c029870785ad413ea51628487330a36"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/35-product-10-1.log.gz",
+      "sha256": "491b55263891ace85db4f28ca8764583817e89a9300f221f1992b4579b52a304"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/37-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/39-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/41-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/43-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/46-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/48-interior-mono-reduced-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/49-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/50-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/51-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/52-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/53-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/55-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/56-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/60-cask-no-action-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/61-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/66-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/67-healer-footstep-default-1.log.gz",
+      "sha256": "dede21add86c8a8218eb6bae7fb5ceb5c4dfb7826b62e4471c8877ceac502dfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/77-foliage-historical-build-1.log.gz",
+      "sha256": "2992535fa20f7131c4d9d6144300dca23ff3cd28158fbe296ea84894311b9056"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/78-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/80-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/84-foliage-captions-off-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/88-wind-historical-restore-1.log.gz",
+      "sha256": "e4482048d8d5e18b616a652e7de79a8101fa344ec0848ca2e0f669d089799193"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/89-wind-historical-build-1.log.gz",
+      "sha256": "f8b9ba7a7f5436bba807f1831850bd3d6737dd9dd513f4434256a5b70df6c902"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/91-wind-focused-1.log.gz",
+      "sha256": "69b4c125b0c707006c4ffdef77515fdbc9d3d6b06992eae0277fe6467a4ac3a4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/93-wind-default-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/94-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/98-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/log-storage.json",
+      "sha256": "77d91ba306477425220a3adbe560d6af5b5c488fe45bf4e2a159a793d78e9d23"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/product-inputs.json",
+      "sha256": "5d786109fadda6e1e6ce1f619ee34d2066681003b0b6b8905e10d60b3cbbca62"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/qa-repair-inputs.json",
+      "sha256": "7684ed3fd9a45a645b67e502ecf9df3c335266552e2f12c67307e1c2c6639075"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/summary.json",
+      "sha256": "dc875571d86eeab1bf65ec11eb7fcb2b65ee69dab625aa471347f5d8a435871f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/executed-runner.py.gz",
+      "sha256": "bba2b9fa998a5751e392a2ed48580a884eceb2811b52616de70dc6a8e1784ab1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/runner-selftest-isolation.json",
+      "sha256": "de076c51f2f535ef77cbe56371b81ed567206e1289a5b0e6b79023ecc1886714"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/cold-cooling-uid-failure/qa-repair-inputs-executed.json",
+      "sha256": "007a2af9220af6eda802f7fb12a3ca1df0b76cc48c30f7d255d255a4ca461f7d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/summary.json",
+      "sha256": "4d0b5f635b934118a23024581b1190484eab0ac82eac6baa74466274338c2f12"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/log-storage.json",
+      "sha256": "77937e52322ede527a8d028e31277f0e3cd6e17574672a6ac259044d790d94b9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/completion.json",
+      "sha256": "d9bb990155f5efa55277d31dfd71400892d95453ddeef0ec66efe1a763c4f1ff"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/02-art-1-1.log.gz",
+      "sha256": "91bb1f43a79e5df92fadf48fff409059a775f776642a8c1e4de49da06a836c33"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/26-product-4-1.log.gz",
+      "sha256": "a5c297ce25399e5da7c6bc421e95a192d4b53b5ca5a3effbe1b682dfcd4de42f"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/27-product-5-1.log.gz",
+      "sha256": "e6c83bdff781c2a772638b2e1614f0fb5d961410bb2869e4a6d49ba6f4c876de"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/28-product-6-1.log.gz",
+      "sha256": "8c3621469bf4dba2b45603660848be1c0d9f6ce3fbe83d30bd9031580006c994"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/29-product-7-1.log.gz",
+      "sha256": "cacba548d284f41e4aa0b82eddb429508c029870785ad413ea51628487330a36"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/35-product-10-1.log.gz",
+      "sha256": "491b55263891ace85db4f28ca8764583817e89a9300f221f1992b4579b52a304"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/37-product-12-1.log.gz",
+      "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/39-product-14-1.log.gz",
+      "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/40-product-15-1.log.gz",
+      "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/41-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/43-product-18-1.log.gz",
+      "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/45-interior-normal-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/46-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/49-water-default-1.log.gz",
+      "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/50-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/51-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/52-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/53-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/55-cask-default-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/56-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/60-cask-no-action-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/61-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+      "sha256": "dede21add86c8a8218eb6bae7fb5ceb5c4dfb7826b62e4471c8877ceac502dfe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+      "sha256": "2992535fa20f7131c4d9d6144300dca23ff3cd28158fbe296ea84894311b9056"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/80-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/88-wind-historical-restore-1.log.gz",
+      "sha256": "e4482048d8d5e18b616a652e7de79a8101fa344ec0848ca2e0f669d089799193"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/89-wind-historical-build-1.log.gz",
+      "sha256": "f8b9ba7a7f5436bba807f1831850bd3d6737dd9dd513f4434256a5b70df6c902"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/91-wind-focused-1.log.gz",
+      "sha256": "69b4c125b0c707006c4ffdef77515fdbc9d3d6b06992eae0277fe6467a4ac3a4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/93-wind-default-1.log.gz",
+      "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/94-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/98-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/102-rain-historical-restore-1.log.gz",
+      "sha256": "85da5b28021861a7729d4dd248148def05d84c9183958f668e13ca955bef9690"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/103-rain-historical-build-1.log.gz",
+      "sha256": "325bd53a34d12993fb12d1d5c61eccdb84cd52457aa7d87625f18f9a8d8c7eeb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/105-rain-focused-1.log.gz",
+      "sha256": "86a6feb211e719b1d0992f6145b631723c0ef1ba84715807e21c885b515724a6"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/111-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/112-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/113-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/116-heating-historical-restore-1.log.gz",
+      "sha256": "1646331c2d3447af8d09c15236c1ac073bee88e18ce1a2ad474b4991848bc065"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/117-heating-historical-build-1.log.gz",
+      "sha256": "f3fe1e2c05fb4157b995c50e390324aacdf3fa171a262de2c6365c78c5211d99"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/118-heating-historical-import-1.log.gz",
+      "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/119-heating-focused-1.log.gz",
+      "sha256": "2c789cf9b6c50e42be152013547a356d651dea3a7743407a40211c515b1b84e2"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/120-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/121-heating-default-1.log.gz",
+      "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/122-heating-quiet-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/123-heating-master-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/124-heating-effects-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/125-heating-missing-stream-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/126-heating-captions-off-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/127-heating-heating-disabled-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/128-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/129-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/130-steeping-historical-restore-1.log.gz",
+      "sha256": "d9186ab37811a04128f452c6c1f8492c48bdf70e71be67fd6f65f70f5ee9ef52"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/131-steeping-historical-build-1.log.gz",
+      "sha256": "66d03ff7f8639c5c23a26d4571160a8acb9821aa01a048180197762bf1a40f46"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/132-steeping-historical-import-1.log.gz",
+      "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/133-steeping-focused-1.log.gz",
+      "sha256": "3be47ccb41d752b3ec5c37d5514783646f51c200132660e3650bda38f75c7627"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/134-boundary-steeping-source-1.log.gz",
+      "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/135-steeping-default-1.log.gz",
+      "sha256": "8927ae2039379f2127f70aabdfeec6a101aa7d27b5d76cd2fbddf10a1fc59300"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/136-steeping-quiet-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/137-steeping-master-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/138-steeping-effects-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/139-steeping-missing-stream-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/140-steeping-captions-off-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/141-steeping-steeping-disabled-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/142-steeping-master-output-1.log.gz",
+      "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/143-boundary-steeping-reviewed-1.log.gz",
+      "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/144-cooling-historical-restore-1.log.gz",
+      "sha256": "6e93967d3262c80bec94088b6e5f0411d4b8a32857c1e9d2d98470def309c9e4"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/145-cooling-historical-build-1.log.gz",
+      "sha256": "4a475325b3d4fd0feaa2690beda07c8e42694d9ba7771a585f4fd3d0b1269650"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/146-cooling-historical-import-1.log.gz",
+      "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/147-cooling-focused-1.log.gz",
+      "sha256": "6f0e6e7be74ffa7ae75d812e5c1e9bbd1bbb6a9fc1a2e90a0c4d3d72f4fa7559"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/148-boundary-cooling-source-1.log.gz",
+      "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/149-cooling-default-1.log.gz",
+      "sha256": "b33177845dbe7ab236fc6252106e5957386c25a53dbb3d1f6c2b00c0a76532d0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/150-cooling-quiet-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/151-cooling-master-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/152-cooling-effects-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/153-cooling-missing-stream-1.log.gz",
+      "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/154-cooling-captions-off-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/155-cooling-cooling-disabled-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/156-cooling-master-output-1.log.gz",
+      "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/157-boundary-cooling-reviewed-1.log.gz",
+      "sha256": "228d9d651623dafbec75bb007cc4761b6b61150d94f09239ca6414a3c6165b28"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/158-herb-focused-1.log.gz",
+      "sha256": "587c9c37526e2ed03e2f73a8dac2776149a924a2f55c953df24724eba5d536c0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/159-boundary-herb-source-1.log.gz",
+      "sha256": "b3a635d873d0de443653a390e6e12393e50eb271b53c4b7ff882017024bfe621"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/160-herb-source-rejections-1.log.gz",
+      "sha256": "a56a564f63d0a018886cbd339aab15d9f43066e39b4be0ff7123284302a18682"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/161-herb-validator-rejections-1.log.gz",
+      "sha256": "9b2f8a73e4ebf3e898c5e3918eefbcb80252b68a445c9883bc6a5b8a48669947"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/162-herb-near-default-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/163-herb-near-quiet-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/164-herb-near-master-muted-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/165-herb-near-effects-muted-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/166-herb-near-missing-stream-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/167-herb-near-captions-off-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/168-herb-near-audio-disabled-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/169-herb-remote-default-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/170-herb-remote-quiet-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/171-herb-remote-master-muted-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/172-herb-remote-effects-muted-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/173-herb-remote-missing-stream-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/174-herb-remote-captions-off-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/175-herb-remote-audio-disabled-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/176-herb-master-output-1.log.gz",
+      "sha256": "dc4a4ee964920c78eb9c0e5b635d686be7768855c5243e7bda224ee1c92a30d7"
+    },
+    {
+      "path": "audio-direction/herb-collection-runtime-review/quality/177-boundary-herb-reviewed-1.log.gz",
+      "sha256": "48f5f30d38e91c8217147b52873402f8c58648a1f9997278411344d597c71134"
+    }
+  ]
+}

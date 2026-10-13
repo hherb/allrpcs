@@ -1,0 +1,35 @@
+{
+  "status": "preserved_unstaged",
+  "directory": "speech-direction/qwen25-omni-m3max-audition",
+  "observed_files": [
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/README.md",
+      "sha256": "990457cd911a357b14f657abd5187fb079421ae481f53a01b072a754923a2bb8"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/__pycache__/benchmark.cpython-312.pyc",
+      "sha256": "690beb5b838e12b741688172d808b4d7c4628852a85046f75fd050eeb525e20d"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/benchmark.py",
+      "sha256": "3fcf687027faeaf014223e1e4a76b5a0c8e111d6a250337b414b2742da3b7344"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/cases.json",
+      "sha256": "7e0164617708b47e362f6fc10ac2292cb581ec4126542d15f8c681e6831e0ffc"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/model-manifest.json",
+      "sha256": "cda3f82b94df3749a459b1a2e1fb4eae55e4a3898d5a9c35f7531fd14dbb1440"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/owner-request.json",
+      "sha256": "7234dc4962a15d91822994cb1a998fcdde3f3a7629e6894a006f2c325af1f7ae"
+    },
+    {
+      "path": "speech-direction/qwen25-omni-m3max-audition/requirements.txt",
+      "sha256": "b6590a4f38c733f16f6d755813d426e3437de80ef318c19d96fa0b1d5ddba5c5"
+    }
+  ],
+  "limit": "Point-in-time observation of unrelated concurrent untracked work, which may continue changing independently; never a task deliverable."
+}

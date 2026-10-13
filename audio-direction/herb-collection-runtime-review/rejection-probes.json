@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "probes": [
+    "ReferenceEquals(token, LastCollectionCommit)",
+    "ActorPixels = 32",
+    "< ListenerPixels * ListenerPixels",
+    "Soft rustle",
+    "Bus = \"Effects\"",
+    "consumed = coordinator.LastCollectionCommit",
+    "supported && OpeningRegionInteriorAudioProjection.Select",
+    "panel.OffsetLeft = 16",
+    "near unchangedAfter",
+    "near presentations",
+    "near commits",
+    "near complete save",
+    "near complete gameplay",
+    "remote unchangedAfter",
+    "remote presentations",
+    "remote commits",
+    "remote complete save",
+    "remote complete gameplay"
+  ]
+}
