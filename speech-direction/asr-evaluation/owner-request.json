@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Yes, lets evaluate ASR options. Ideally streaming, voice activated, and interruptable",
+  "scope": "Finite actual local English/German ASR comparison using retained synthetic speech, seeded noise/silence, partial/final timing, VAD outcomes, stream stop/close and resident memory. No physical microphone session, actor audition reopen or actual recognizer installation into game yet.",
+  "completion_condition": "Retain pinned models/runtime, reproducible evaluator, exact outputs, source-based feature comparison and recommendation; publish alongside the authorized Pocket Main integration.",
+  "requested_priorities": [
+    "streaming partial and final text",
+    "opt-in voice activation",
+    "interruptible streams and stale-result discard"
+  ],
+  "voice_activation_limit": "Models can recognize game TTS itself; speakers require actual echo-control qualification or a headphones/explicit-PTT boundary before claiming hands-free barge-in."
+}

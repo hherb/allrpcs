@@ -1,0 +1,129 @@
+{
+  "engine": "whisper.cpp-small-silero-vad",
+  "language": "en",
+  "runtime_version": "v1.9.5",
+  "vad_enabled": true,
+  "vad_model_sha256": "2aa269b785eeb53a82983a20501ddf7c1d9c48e33ab63a41391ac6c9f7fb6987",
+  "source_commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+  "model_sha256": "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b",
+  "cases": [
+    {
+      "id": "en-normal-clean",
+      "expected": "Stay close. There is still hope for the village.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-normal-clean.wav",
+      "sha256": "afaad047943b5e226bc0e7ea25ab43b256806d5e0111b83b8ba7f25ed1dc640a",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-normal.wav",
+      "original_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+      "speech_end_seconds": 3.38,
+      "hypothesis": "stay close. There is still hope for the village.",
+      "word_errors": 0,
+      "reference_words": 9,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "recognition_seconds": 0.9478011659812182,
+      "audio_seconds": 5.38
+    },
+    {
+      "id": "en-normal-noise15db",
+      "expected": "Stay close. There is still hope for the village.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-normal-noise15db.wav",
+      "sha256": "a9f920fbe86c32fbba634276e24ace7b6986498548eabab9e781aba2164cd84a",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-normal.wav",
+      "original_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+      "speech_end_seconds": 3.38,
+      "hypothesis": "stay close. There is still hope for the village.",
+      "word_errors": 0,
+      "reference_words": 9,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "recognition_seconds": 0.11409845796879381,
+      "audio_seconds": 5.38
+    },
+    {
+      "id": "en-game-clean",
+      "expected": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-game-clean.wav",
+      "sha256": "99bf8daeec5129c5b5505675cb9f59df8dde6e818a108b88bd5b0fcb57ea6293",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-game.wav",
+      "original_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+      "speech_end_seconds": 4.58,
+      "hypothesis": "Do not take the moonwort yet.\n Bring two clean bandages to the healer.",
+      "word_errors": 0,
+      "reference_words": 13,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "recognition_seconds": 0.14226070791482925,
+      "audio_seconds": 6.58
+    },
+    {
+      "id": "en-game-noise15db",
+      "expected": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-game-noise15db.wav",
+      "sha256": "978200855a6021e0be43cc08190187709cf51fb20eea16b750c215a359ee9ec6",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-game.wav",
+      "original_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+      "speech_end_seconds": 4.58,
+      "hypothesis": "Do not take the moonwort yet.\n Bring two clean bandages to the healer.",
+      "word_errors": 0,
+      "reference_words": 13,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "recognition_seconds": 0.14448641706258059,
+      "audio_seconds": 6.58
+    },
+    {
+      "id": "en-silence",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-silence.wav",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "recognition_seconds": 0.01426941598765552,
+      "audio_seconds": 4.0
+    },
+    {
+      "id": "en-noise-only",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-noise-only.wav",
+      "sha256": "54620ca72af894f8564cf683bf2b5bf40509fd5da7e74f51376b5b46e191a28f",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "recognition_seconds": 0.012106249923817813,
+      "audio_seconds": 4.0
+    }
+  ],
+  "rolling_prefix_probe": [
+    {
+      "available_audio_seconds": 2,
+      "hypothesis": "Do not take the moonwort yet.",
+      "recognition_seconds": 0.08906791708432138
+    },
+    {
+      "available_audio_seconds": 4,
+      "hypothesis": "Do not take the moonwort yet.\n Bring two clean bandages to the healer.",
+      "recognition_seconds": 0.12942708295304328
+    },
+    {
+      "available_audio_seconds": 6,
+      "hypothesis": "Do not take the moonwort yet.\n Bring two clean bandages to the healer.",
+      "recognition_seconds": 0.13403358298819512
+    }
+  ],
+  "streaming_kind": "rolling full re-decode; partials are unstable and need an external VAD/commit policy",
+  "host_architecture": "arm64",
+  "provenance": "retained Pocket synthetic speech; seeded noise and silence; no microphone or accent test",
+  "python_version": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "load_average": [
+    16.2529296875,
+    15.46533203125,
+    13.5
+  ]
+}

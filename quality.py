@@ -39,6 +39,7 @@ STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
 COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
 CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
+DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -541,6 +542,7 @@ def main(resume_smoke=False, finish_interior=False):
         herb_runtime(run, environment)
         controls_runtime(run, environment)
         dialogue_accessibility_runtime(run, environment)
+        dialogue_speech_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -864,17 +866,42 @@ def controls_runtime_checks(run, environment, tree, revision):
 
 
 def dialogue_accessibility_runtime(run, environment):
-    """Verify current additive dialogue presentation and honest native reader limitations."""
+    """Preserve accepted dialogue presentation checks in their unmodified published baseline."""
     if not (ROOT / 'input-direction/dialogue-accessibility-runtime-authority.json').exists():
         return
+    if (ROOT / 'speech-direction/dialogue-integration/authority.json').exists():
+        with snapshot(DIALOGUE_REVISION, editor=True) as (tree, env):
+            run.stage('dialogue-accessibility-historical-restore', ['dotnet', 'restore', 'Allrpcs.sln'], tree, env, DIALOGUE_REVISION)
+            run.stage('dialogue-accessibility-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '--no-restore'], tree, env, DIALOGUE_REVISION)
+            run.stage('dialogue-accessibility-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'],
+                      tree, env, DIALOGUE_REVISION, retry_native=True)
+            dialogue_accessibility_checks(run, dict(environment, **env), tree, DIALOGUE_REVISION)
+    else:
+        dialogue_accessibility_checks(run, environment, ROOT, None)
+
+
+def dialogue_accessibility_checks(run, environment, tree, revision):
+    """Retain all accepted command names, validator bytes and completion criteria."""
     for name, flag in (('source', '--source-only'), ('validator-rejections', '--self-test')):
-        run.stage('dialogue-accessibility-' + name, [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', flag])
+        run.stage('dialogue-accessibility-' + name, [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', flag], tree, environment, revision)
     report = run.directory / 'dialogue-accessibility-main.json'
     run.stage('dialogue-accessibility-main', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1800'],
-              env=dict(environment, ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK='1', ALLRPCS_DIALOGUE_ACCESSIBILITY_MODE='headless',
+              cwd=tree, revision=revision, env=dict(environment, ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK='1', ALLRPCS_DIALOGUE_ACCESSIBILITY_MODE='headless',
                        ALLRPCS_DIALOGUE_ACCESSIBILITY_REPORT=str(report)), retry_native=True,
               completion='PASS: dialogue accessibility Main: headless')
-    run.stage('dialogue-accessibility-reviewed', [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', '--reviewed'])
+    run.stage('dialogue-accessibility-reviewed', [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', '--reviewed'], tree, environment, revision)
+
+
+def dialogue_speech_runtime(run, environment):
+    """Exercise current typed/reply PCM routing without provider credentials or a physical microphone."""
+    if not (ROOT / 'speech-direction/dialogue-integration/authority.json').exists():
+        return
+    for mode in ('headless', 'unavailable'):
+        report = run.directory / ('dialogue-speech-' + mode + '.json')
+        run.stage('dialogue-speech-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
+                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_DIALOGUE_SPEECH_CHECK='1', ALLRPCS_DIALOGUE_SPEECH_MODE=mode,
+                           ALLRPCS_DIALOGUE_SPEECH_REPORT=str(report), ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-not-configured.json'),
+                  retry_native=True, completion='PASS: dialogue speech Main: ' + mode)
 
 
 def rain_runtime(run, environment):

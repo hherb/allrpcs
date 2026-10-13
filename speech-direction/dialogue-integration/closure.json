@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "status": "complete",
+  "scope_id": "phase10-player-dialogue-speech-integration",
+  "workstream": "player-dialogue-speech-integration",
+  "roadmap_item": "Implement streamed or buffered character speech playback.",
+  "delivered": [
+    "Optional English/German committed-reply Pocket playback in Main",
+    "Bounded PCM, interruption, stale-result discard and text fallback",
+    "Finite English/German streaming/VAD/interruption ASR comparison and recommendation"
+  ],
+  "evidence": [
+    {
+      "path": "speech-direction/dialogue-integration/README.md",
+      "sha256": "eedceeba9a0128d9fa161b26c98ae5114fbdc9a70922a37eabe91e6b1421370f",
+      "size_bytes": 8486
+    },
+    {
+      "path": "speech-direction/dialogue-integration/verification.json",
+      "sha256": "73f1c2c2a0c9e2adeb008f3919ed31deba467253590b9083f727f7be7d32a8c4",
+      "size_bytes": 16449
+    },
+    {
+      "path": "speech-direction/asr-evaluation/README.md",
+      "sha256": "9d30f7b9cb8da1d5deb29564a07bd3051c5e673751dbe3195550c228e942773b",
+      "size_bytes": 10592
+    },
+    {
+      "path": "speech-direction/asr-evaluation/verification.json",
+      "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4",
+      "size_bytes": 9745
+    }
+  ],
+  "next_missing_deliverable": "Actual opt-in microphone capture and chosen streaming recognizer with editable confirmation, voice-start reply interruption and honest echo/device qualification.",
+  "next_authority": "Original dialogue integration grant retained; recognizer choice pending owner preference, not a new generic scope approval.",
+  "publication": "Standing commit/push authorization; intended source/docs/evidence only, unrelated editor excluded."
+}

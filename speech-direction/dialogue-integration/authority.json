@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Lets focus on the player dialogues (ASR/STT/TTS). We already have done some work in chosing our pipeline, now lets integrate it",
+  "interpretation": "Owner selects Phase 10 dialogue speech integration in place of development release documentation. Implement selected Pocket TTS at committed-reply presentation; add editable spoken-input integration after resolving the unselected ASR backend. Keep accepted dialogue events and typed submission authoritative.",
+  "runtime_authority": "new dialogue speech integration authorized by direct owner request",
+  "pipeline_checkpoint": {
+    "path": "HANDOVER_phase10.md",
+    "sha256": "da48672fb52ca186b14f66c6f3ad96f45ae20269802830e8903ff345b47e30d3"
+  },
+  "service_checkpoint": {
+    "path": "speech-direction/pocket-tts-service/closure.json",
+    "sha256": "c455294f0f3ddaf7be214713f3f2e807b7726ced21a52674fa2d02cbd283ce35"
+  },
+  "selected_tts": "Pocket TTS",
+  "asr_selection": "Evaluate streaming English/German options with VAD and interruption before selecting the integration backend.",
+  "preserve": [
+    "all existing closure evidence",
+    "service implementation and accepted listening decisions",
+    "game/project.godot editor rewrite",
+    "authoritative dialogue/hearing/delivery/save behavior"
+  ],
+  "allowed": [
+    "optional English/German reply synthesis and Godot PCM playback",
+    "voice settings and explicit interruption",
+    "text fallback",
+    "provider-neutral recognition/capture boundary and corrected-text submission",
+    "selected ASR adapter once selection resolved",
+    "focused/native/current full quality",
+    "closure and standing commit/push"
+  ],
+  "excluded": [
+    "repeating model auditions or changing accepted service semantics",
+    "automatic submission of unconfirmed transcripts",
+    "microphone recording without explicit player action",
+    "voice cloning/final acting or bilingual cast qualification",
+    "packaged model distribution and unmeasured hardware certification"
+  ],
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "owner_asr_statement": "Yes, lets evaluate ASR options. Ideally streaming, voice activated, and interruptable"
+}

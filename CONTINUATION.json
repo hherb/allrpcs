@@ -868,6 +868,24 @@
           "sha256": "cfab35bed12d5d9f0ea2d47cc7e47f1ce41b53ba9d984170930effe965723f31"
         }
       ]
+    },
+    {
+      "id": "phase10-player-dialogue-speech-integration",
+      "reason": "Finite Pocket Main playback and measured ASR comparison complete. Preserve the closed service and playback/evaluation evidence; actual microphone/recognizer composition is a distinct missing deliverable, not another audit or audition.",
+      "evidence": [
+        {
+          "path": "speech-direction/dialogue-integration/closure.json",
+          "sha256": "5617b7e1e45132b8fd458ce03732a82780cd3ead464e3e667e22bd88af017165"
+        },
+        {
+          "path": "speech-direction/dialogue-integration/verification.json",
+          "sha256": "73f1c2c2a0c9e2adeb008f3919ed31deba467253590b9083f727f7be7d32a8c4"
+        },
+        {
+          "path": "speech-direction/asr-evaluation/verification.json",
+          "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1226,6 +1244,24 @@
           "sha256": "cfab35bed12d5d9f0ea2d47cc7e47f1ce41b53ba9d984170930effe965723f31"
         }
       ]
+    },
+    {
+      "id": "player-dialogue-speech-integration",
+      "reason": "Optional committed-reply playback and finite ASR comparison delivered with current full quality. Do not reopen unchanged playback, accepted voice audition or comparison; continue the distinct microphone/recognizer composition under the original integration request.",
+      "evidence": [
+        {
+          "path": "speech-direction/dialogue-integration/closure.json",
+          "sha256": "5617b7e1e45132b8fd458ce03732a82780cd3ead464e3e667e22bd88af017165"
+        },
+        {
+          "path": "speech-direction/dialogue-integration/verification.json",
+          "sha256": "73f1c2c2a0c9e2adeb008f3919ed31deba467253590b9083f727f7be7d32a8c4"
+        },
+        {
+          "path": "speech-direction/asr-evaluation/verification.json",
+          "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1301,21 +1337,22 @@
     }
   ],
   "active_slice": {
-    "id": "phase11-development-release-notes-limitations-documentation",
-    "title": "Prepare development checkpoint release notes and known limitations",
+    "id": "phase10-streaming-player-asr-integration",
+    "title": "Integrate chosen streaming player recognizer and editable microphone drafts",
     "status": "ready",
-    "workstream": "development-release-notes-limitations-documentation",
-    "authority_status": "documentation_only_under_owner_roadmap_continuation",
-    "roadmap_item": "- [ ] Prepare release notes, privacy information, model-provider disclosures, and known\n  limitations.",
-    "missing_deliverable": "A concise development-checkpoint change summary and separate known-limitations document, with current evidence/support boundaries and explicit unfinished release prerequisites. Privacy/provider disclosures are already complete.",
-    "instructions": "Prepare the two remaining release-information documents from current recorded checkpoints and source, linking the completed privacy/provider information unchanged. Do not re-audit accepted owners or imply a signed, installed, distributed or certified release. Keep hardware/controller execution deferred and speech work separately owned.",
-    "completion_condition": "Development checkpoint notes and known limitations with a concise source/evidence record are complete, internally verified, linked, closed and published. Actual versioned release notes and release certification await release inputs.",
+    "workstream": "streaming-player-asr-integration",
+    "authority_status": "owner_authorized_integration_backend_choice_pending",
+    "roadmap_item": "- [ ] Add one ASR implementation and one TTS implementation.",
+    "missing_deliverable": "Actual provider-neutral speech recognition/capture boundary, one selected English/German local ASR adapter and opt-in editable microphone drafts in Main, with hold-to-talk fallback and voice-start cancellation of Pocket reply audio.",
+    "instructions": "Use the completed ASR comparison. Moonshine Small Streaming is recommended; an owner backend-choice question is pending. The original integration grant remains sufficient: request only unresolved backend preference, not generic runtime approval. Keep recognition separate from explicit Submit, preserve manual corrections and reject retired-generation results. Listening defaults off. VAD alone cannot reject game loudspeakers; qualify voice activation with headphones or a real echo-control session before hands-free claims.",
+    "completion_condition": "Selected ASR and capture compose in Main with bounded partial/final drafts, explicit listening/hold-to-talk, safe text fallback, reply interruption, lifecycle/device failure handling and ordinary dialogue parity. Retain focused/native/current quality and honest physical-microphone/echo limits, then close and publish the finite implementation; human acoustic qualification remains a distinct evidence requirement.",
     "outputs": [
-      "release-direction/development-notes.md",
-      "release-direction/known-limitations.md",
-      "release-direction/development-release-information.json"
+      "speech-direction/player-asr-integration/authority.json",
+      "speech-direction/player-asr-integration/README.md",
+      "speech-direction/player-asr-integration/verification.json",
+      "speech-direction/player-asr-integration/closure.json"
     ],
-    "boundary": "Documentation only; no release/version/tag/package/deployment, runtime changes, provider/hardware/reader execution, frozen evidence edits or concurrent speech implementation."
+    "boundary": "Original dialogue integration authority only. No automatic transcript execution, new voice-command domain vocabulary, actor/model audition restart, packaged model distribution, physical controller qualification or unmeasured microphone/echo/platform claims."
   },
   "deferred_slices": [
     {
@@ -1340,6 +1377,28 @@
       "owner_deferral": {
         "path": "input-direction/physical-controls-deferral.json",
         "sha256": "263b60a54b73cba559df183eb1d90ad6fd9aa3d4c2a41eced0c87f116e3063f9"
+      }
+    },
+    {
+      "id": "phase11-development-release-notes-limitations-documentation",
+      "title": "Prepare development checkpoint release notes and known limitations",
+      "status": "deferred",
+      "workstream": "development-release-notes-limitations-documentation",
+      "authority_status": "documentation_only_under_owner_roadmap_continuation",
+      "roadmap_item": "- [ ] Prepare release notes, privacy information, model-provider disclosures, and known\n  limitations.",
+      "missing_deliverable": "A concise development-checkpoint change summary and separate known-limitations document, with current evidence/support boundaries and explicit unfinished release prerequisites. Privacy/provider disclosures are already complete.",
+      "instructions": "Prepare the two remaining release-information documents from current recorded checkpoints and source, linking the completed privacy/provider information unchanged. Do not re-audit accepted owners or imply a signed, installed, distributed or certified release. Keep hardware/controller execution deferred and speech work separately owned.",
+      "completion_condition": "Development checkpoint notes and known limitations with a concise source/evidence record are complete, internally verified, linked, closed and published. Actual versioned release notes and release certification await release inputs.",
+      "outputs": [
+        "release-direction/development-notes.md",
+        "release-direction/known-limitations.md",
+        "release-direction/development-release-information.json"
+      ],
+      "boundary": "Documentation only; no release/version/tag/package/deployment, runtime changes, provider/hardware/reader execution, frozen evidence edits or concurrent speech implementation.",
+      "deferral_reason": "Owner explicitly prioritizes Phase 10 dialogue speech integration.",
+      "owner_deferral": {
+        "path": "speech-direction/dialogue-integration/authority.json",
+        "sha256": "1fc079679c66f5e9b0c5fc6f2418bbc2a0afb4270e6113c77c289054d0e204ee"
       }
     }
   ]

@@ -52,6 +52,17 @@ public partial class TemporaryDialogueInputPanel : Control
         }
     }
 
+    /// <summary>Adds optional speech controls while retaining the exact typed submit/delivery owner.</summary>
+    internal void RegisterSpeechControls(Control[] controls)
+    {
+        cycle = [input, whispering, .. controls, submit, close];
+        for (int index = 0; index < cycle.Length; index++)
+        {
+            cycle[index].FocusNext = cycle[index].GetPathTo(cycle[(index + 1) % cycle.Length]);
+            cycle[index].FocusPrevious = cycle[index].GetPathTo(cycle[(index + cycle.Length - 1) % cycle.Length]);
+        }
+    }
+
     internal void FocusInput() => input.GrabFocus();
 
     /// <inheritdoc />

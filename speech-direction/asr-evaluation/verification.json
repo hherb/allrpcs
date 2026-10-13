@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "status": "finite_evaluation_complete_backend_selection_pending",
+  "owner_request": {
+    "path": "speech-direction/asr-evaluation/owner-request.json",
+    "sha256": "3df891f4ca2807715ab7acf19945b7b1c2759d7cfebdee55ba8bea30468916d4",
+    "size_bytes": 1051
+  },
+  "tools": [
+    {
+      "path": "speech-direction/asr-evaluation/evaluate.py",
+      "sha256": "f9c012d7117b2e74e5e25f03f04ed075ffffbe1ccf34b42d1714f79101ab80fe",
+      "size_bytes": 12779
+    },
+    {
+      "path": "speech-direction/asr-evaluation/interrupt-whisper.py",
+      "sha256": "d75a7fa63a39cc165b6ed575fbaf041703171d261a32f20cc6564c52f6240b77",
+      "size_bytes": 2398
+    },
+    {
+      "path": "speech-direction/asr-evaluation/evaluate-baseline.py",
+      "sha256": "1a34fb630f1b6e1cfe14b45b5a3f5a523b441b709110a42e74827d4591a19ed9",
+      "size_bytes": 12469,
+      "purpose": "Exact original 500 ms evaluator source for the baseline results."
+    }
+  ],
+  "results": [
+    {
+      "path": "speech-direction/asr-evaluation/results/moonshine-de.json",
+      "sha256": "831b6cfe7918e1f03cb715e4363a53ac8b97d46a092e57b920b6d5895e03fcde",
+      "size_bytes": 25447
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/moonshine-en.json",
+      "sha256": "2b985a96d6603ea4f954782fd9a5aa47f41c0aca9293eb6516692d0e9d414022",
+      "size_bytes": 25929
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/whisper-de.json",
+      "sha256": "0b4f880d7f3d0ece2cb94cb65a1be767de481a01a1bbaac3759a452120682f34",
+      "size_bytes": 5522
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/whisper-en.json",
+      "sha256": "e8275942d111374355390488fc80c1dadf7dface5234329b30ebbf9c54b17306",
+      "size_bytes": 5437
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/whisper-interruption.json",
+      "sha256": "ac6c7d6b763098f68363a100cb7d7c86cf6a0f4e85bad9b34b98bc9d9883d155",
+      "size_bytes": 554
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/whisper-no-vad-de.json",
+      "sha256": "8646a00903bed156fe6413c1cfd2e068a82b07c85fcc5cdcf5a0324ec8018b69",
+      "size_bytes": 5423
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/whisper-no-vad-en.json",
+      "sha256": "27711ce421b6ea1c2cd460582ba78ae7c789c439b4b0b6de224d4c282ca6459f",
+      "size_bytes": 5344
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/moonshine-en-100ms.json",
+      "sha256": "f73ee4f961b2493bf34e0c958fdd90d1f1394f9e114f5bfd58f5de02131f7740",
+      "size_bytes": 25854
+    },
+    {
+      "path": "speech-direction/asr-evaluation/results/moonshine-de-100ms.json",
+      "sha256": "f8c5f8e7bd373877a55ee6785f02ed3a0fb08748cbaf4c0e49db43c527cc93f5",
+      "size_bytes": 25433
+    }
+  ],
+  "logs": [
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-en.log.gz",
+      "sha256": "8c242f0d8cc470c9de5dae9993158e2e38ece0bdf1e6c63a29e7b5654bc6b63c",
+      "size_bytes": 223,
+      "raw_sha256": "1b53f23ce13d960006fb7c6523f638ff950c545b567c206071db57fcd8d0cf80"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-de.log.gz",
+      "sha256": "e4e5826bde3d92d67e91782ae0614cbf4324c673e53489a2a5739b1659797077",
+      "size_bytes": 439,
+      "raw_sha256": "00bee92dc2f07179726729a985b6bfa2d811d65bd5f71f47363bbc5caeaaed08"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/whisper-vad-en-retry.log.gz",
+      "sha256": "ab783d2c1b6930b146470ab82884b85351ebe030bf6e84b12d375d02133beeaa",
+      "size_bytes": 218,
+      "raw_sha256": "3f34071009a43746bf428970f4d20453bf8c24dd50af36dba9efcb5d86708f64"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/whisper-vad-de-retry.log.gz",
+      "sha256": "edb6e538f9fd39f440ef0d6666885e8b3921a8109116c50ef07ff17aeb337a38",
+      "size_bytes": 253,
+      "raw_sha256": "55591d1d956e8da6d4ab7cd1e32aec4b346d98b2afff63dc1896d1a851d76a36"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/whisper-interruption.log.gz",
+      "sha256": "400b914009ebef8c6c8b99f73a66212d4b07ac4f4fe0f470d26f7c5442191287",
+      "size_bytes": 358,
+      "raw_sha256": "ac6c7d6b763098f68363a100cb7d7c86cf6a0f4e85bad9b34b98bc9d9883d155"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-install.log.gz",
+      "sha256": "87d3cc3be522a72dea95396c453875427ebaa715d1bb471508452d218482bdc8",
+      "size_bytes": 337,
+      "raw_sha256": "dde3fd9b60b6a365ac9fcaa62a4d0924a4ba2ed9ece8412a1a7d834d80c84c42"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-download.log.gz",
+      "sha256": "f48c318d730691b4f739d190986ef7722330b8795e64bb6bff786ac5adfb5816",
+      "size_bytes": 3387,
+      "raw_sha256": "400a92ff0a40e7d93cc59b59308e3c406aaa433de6532db2f432034a17c32836"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/whisper-vad-server.log.gz",
+      "sha256": "46e08b7014f23d29b1aff48c312dd7968c13907629a3b904fbe1d335517a8136",
+      "size_bytes": 4419,
+      "raw_sha256": "d49ad250a4eb4d4e5cdb26a86cda30e780344a851ea8d38b93299a4492a97841"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-en-100ms.log.gz",
+      "sha256": "68a1299dbd585c7d160081c139bbaa2b455782f03ce6b80ded77a0b5afcf629a",
+      "size_bytes": 211,
+      "raw_sha256": "be6a33a7b49dfd2e77ec65e4a67de9715cc1598cec06b1590a9bd276e5126fc1"
+    },
+    {
+      "path": "speech-direction/asr-evaluation/logs/moonshine-de-100ms.log.gz",
+      "sha256": "4253989c7b2282e28a7f98e0af73470ec3c51e9f494b72154db220d3f586c255",
+      "size_bytes": 429,
+      "raw_sha256": "ad686f7be3c4048150a478bd8529f03ba05e1ac670b631a9bffa4ab86be151b6"
+    }
+  ],
+  "recommended_candidate": "Moonshine Small Streaming English/German",
+  "selected_game_recognizer": null,
+  "packages": {
+    "moonshine-voice": "0.1.5",
+    "numpy": "2.5.4",
+    "scipy": "1.16.2"
+  },
+  "whisper": {
+    "version": "v1.9.5",
+    "commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+    "binary": {
+      "path": "artifacts/asr-evaluation/whisper.cpp/build/bin/whisper-server",
+      "sha256": "83f4eb43b31f297dda879700b1ee65a0bd0b420140d0c3a12138a0deb7eddabf",
+      "size_bytes": 1233584
+    },
+    "model": {
+      "path": "artifacts/asr-evaluation/models/ggml-small.bin",
+      "sha256": "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b",
+      "size_bytes": 487601967
+    },
+    "vad_model": {
+      "path": "artifacts/asr-evaluation/models/ggml-silero-v6.2.0.bin",
+      "sha256": "2aa269b785eeb53a82983a20501ddf7c1d9c48e33ab63a41391ac6c9f7fb6987",
+      "size_bytes": 885098
+    },
+    "sampled_server_rss_bytes": 783056896,
+    "abort_source": {
+      "path": "examples/server/server.cpp",
+      "sha256": "903bf6a6904301a698e0db79c0a72f25bca5bc7c3953b493eb09a68683e53356",
+      "mechanism": "native abort_callback checks request connection closed"
+    }
+  },
+  "scope": {
+    "physical_microphone_opened": false,
+    "player_dialogue_submitted": false,
+    "game_asr_composed": false,
+    "natural_speech_or_accents_evaluated": false,
+    "true_physical_barge_in_evaluated": false,
+    "echo_cancellation_qualified": false,
+    "m1_or_other_platform_run": false,
+    "os_network_block_exercised": false,
+    "combined_game_llm_speech_memory_measured": false
+  },
+  "measurement_limits": [
+    "four distinct Pocket-generated phrases, clean and correlated seeded-noise variants",
+    "source text is not independently human-annotated acoustic ground truth",
+    "uncontrolled background load; first Whisper request includes initial inference setup",
+    "Moonshine RSS is Python/native harness resident size; process peaks include model hashing and resampling",
+    "Whisper abort/recovery is not a direct compute kernel stop timestamp"
+  ],
+  "sources": [
+    "https://moonshine-voice.readthedocs.io/en/latest/models/available-models/",
+    "https://moonshine-voice.readthedocs.io/en/latest/using/downloading-models/",
+    "https://github.com/moonshine-ai/moonshine/blob/main/language-bindings/python/README.md",
+    "https://github.com/ggml-org/whisper.cpp/releases/tag/v1.9.5",
+    "https://github.com/ggml-org/whisper.cpp/blob/v1.9.5/examples/server/server.cpp"
+  ],
+  "readme": {
+    "path": "speech-direction/asr-evaluation/README.md",
+    "sha256": "9d30f7b9cb8da1d5deb29564a07bd3051c5e673751dbe3195550c228e942773b",
+    "size_bytes": 10592
+  },
+  "voice_start_latency": {
+    "event": "LineStarted",
+    "wall_seconds_from_stream_start_min": 1.0433147919829935,
+    "wall_seconds_from_stream_start_max": 1.5649716660846025,
+    "added_leading_silence_seconds": 0.5,
+    "update_interval_seconds": 0.5,
+    "limit": "Not independently measured acoustic onset or human barge-in; stop/close timing starts after cancellation is requested."
+  },
+  "supplementary_100ms_update_trial": {
+    "same_corpus_and_models": true,
+    "english_word_errors": 3,
+    "english_reference_words": 44,
+    "german_word_errors": 5,
+    "german_reference_words": 42,
+    "voice_start_range_seconds_from_stream_start": [
+      1.0439966669073328,
+      1.5544065000722185
+    ],
+    "first_partial_range_seconds_from_stream_start": [
+      1.061865583062172,
+      1.6310705830110237
+    ],
+    "final_after_clip_end_range_seconds": [
+      0.18366520801093422,
+      0.26728049999102943
+    ],
+    "silence_and_noise_controls_empty": true,
+    "stop_and_close_range_seconds": [
+      0.0018659590277820826,
+      0.0021037079859524965
+    ],
+    "finding": "Lowering the configured update interval did not demonstrate a materially earlier voice-start callback in this small uncontrolled comparison. Capture-level voice-start latency must be independently qualified."
+  }
+}

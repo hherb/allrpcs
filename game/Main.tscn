@@ -1,4 +1,4 @@
-[gd_scene load_steps=447 format=3]
+[gd_scene load_steps=449 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -664,6 +664,9 @@
 [ext_resource type="PackedScene" path="res://ControlSettingsMainSmokeCheck.tscn" id="controls_check"]
 
 [ext_resource type="PackedScene" path="res://DialogueAccessibilityMainSmokeCheck.tscn" id="dialogue_accessibility_check"]
+
+[ext_resource type="Script" path="res://DialogueSpeechController.cs" id="dialogue_speech"]
+[ext_resource type="Script" path="res://DialogueSpeechMainSmokeCheck.cs" id="dialogue_speech_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4458,6 +4461,12 @@ offset_bottom = 392.0
 text = "Close settings"
 
 [node name="DialogueAccessibilityMainSmokeCheck" parent="." instance=ExtResource("dialogue_accessibility_check")]
+
+[node name="DialogueSpeechController" type="Node" parent="."]
+script = ExtResource("dialogue_speech")
+
+[node name="DialogueSpeechMainSmokeCheck" type="Node" parent="."]
+script = ExtResource("dialogue_speech_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

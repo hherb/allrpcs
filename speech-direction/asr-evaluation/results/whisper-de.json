@@ -1,0 +1,129 @@
+{
+  "engine": "whisper.cpp-small-silero-vad",
+  "language": "de",
+  "runtime_version": "v1.9.5",
+  "vad_enabled": true,
+  "vad_model_sha256": "2aa269b785eeb53a82983a20501ddf7c1d9c48e33ab63a41391ac6c9f7fb6987",
+  "source_commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+  "model_sha256": "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b",
+  "cases": [
+    {
+      "id": "de-normal-clean",
+      "expected": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-normal-clean.wav",
+      "sha256": "5b81945b64ccee3af35993e123a5eab0228a54ec0435c1fd3594e8940bef54ab",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-normal.wav",
+      "original_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+      "speech_end_seconds": 5.06,
+      "hypothesis": "Bleibt bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "word_errors": 1,
+      "reference_words": 10,
+      "wer": 0.1,
+      "silence_false_words": null,
+      "recognition_seconds": 0.1303637920645997,
+      "audio_seconds": 7.06
+    },
+    {
+      "id": "de-normal-noise15db",
+      "expected": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-normal-noise15db.wav",
+      "sha256": "2f422eb1609d51482571807ae89d53623fe1258213faad311d313b267807ec63",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-normal.wav",
+      "original_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+      "speech_end_seconds": 5.06,
+      "hypothesis": "bleibt bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "word_errors": 1,
+      "reference_words": 10,
+      "wer": 0.1,
+      "silence_false_words": null,
+      "recognition_seconds": 0.12024333397857845,
+      "audio_seconds": 7.06
+    },
+    {
+      "id": "de-game-clean",
+      "expected": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verbände zur Heilerin.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-game-clean.wav",
+      "sha256": "b3680c8dc89cdc8395f624629087b9dcb51f7265a84d8432cf279845b34d4a8b",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-game.wav",
+      "original_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+      "speech_end_seconds": 5.62,
+      "hypothesis": "Nimm den Mondrautenfahren noch nicht, bring zwei saubere Verbände zur Heilerin.",
+      "word_errors": 1,
+      "reference_words": 11,
+      "wer": 0.09090909090909091,
+      "silence_false_words": null,
+      "recognition_seconds": 0.14773695799522102,
+      "audio_seconds": 7.62
+    },
+    {
+      "id": "de-game-noise15db",
+      "expected": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verbände zur Heilerin.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-game-noise15db.wav",
+      "sha256": "b4ef330b271d8bfad89ba66b70e87f683bc797bb42096abdbc335a49c666e719",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-game.wav",
+      "original_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+      "speech_end_seconds": 5.62,
+      "hypothesis": "Nimm den Mondautenfahr noch nicht.\n Bring zwei saubere Verbände zur Heigerin.",
+      "word_errors": 2,
+      "reference_words": 11,
+      "wer": 0.18181818181818182,
+      "silence_false_words": null,
+      "recognition_seconds": 0.15394250000827014,
+      "audio_seconds": 7.62
+    },
+    {
+      "id": "de-silence",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-silence.wav",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "recognition_seconds": 0.015083416015841067,
+      "audio_seconds": 4.0
+    },
+    {
+      "id": "de-noise-only",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-noise-only.wav",
+      "sha256": "54620ca72af894f8564cf683bf2b5bf40509fd5da7e74f51376b5b46e191a28f",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "recognition_seconds": 0.01418308389838785,
+      "audio_seconds": 4.0
+    }
+  ],
+  "rolling_prefix_probe": [
+    {
+      "available_audio_seconds": 2,
+      "hypothesis": "Nimm den Mondrautenfahren noch nicht.",
+      "recognition_seconds": 0.09467979206237942
+    },
+    {
+      "available_audio_seconds": 4,
+      "hypothesis": "Nimm den Mondrautenfahren noch nicht.\n Bring 2 sauberen.",
+      "recognition_seconds": 0.12504908395931125
+    },
+    {
+      "available_audio_seconds": 6,
+      "hypothesis": "Nimm den Mondrautenfahren noch nicht, bring zwei saubere Verbände zur Heilerin.",
+      "recognition_seconds": 0.1453157908981666
+    }
+  ],
+  "streaming_kind": "rolling full re-decode; partials are unstable and need an external VAD/commit policy",
+  "host_architecture": "arm64",
+  "provenance": "retained Pocket synthetic speech; seeded noise and silence; no microphone or accent test",
+  "python_version": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "load_average": [
+    16.2529296875,
+    15.46533203125,
+    13.5
+  ]
+}

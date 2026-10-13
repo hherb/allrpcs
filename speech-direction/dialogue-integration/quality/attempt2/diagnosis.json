@@ -1,0 +1,8 @@
+{
+  "status": "retained_failed_attempt",
+  "failed_stage": "dialogue-speech-headless",
+  "passed_prefix_stages": 198,
+  "cause": "Inherited ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1 supplied a one-shot model before this fixture supplied its own.",
+  "repair": "Override that shared supplier flag to 0 for the two new dialogue-speech modes only. No product sources or completed prefix commands/environments change.",
+  "reuse": "Verify exact retained report, logs, product hashes and the single-field runner diff; rerun both speech modes."
+}

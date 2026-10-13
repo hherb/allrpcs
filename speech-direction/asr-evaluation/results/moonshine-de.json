@@ -1,0 +1,720 @@
+{
+  "engine": "moonshine-small-streaming",
+  "language": "de",
+  "package_version": "0.1.5",
+  "load_seconds": 0.3166589590255171,
+  "rss_loaded_bytes": 519766016,
+  "model_files": [
+    {
+      "name": "adapter.ort",
+      "size": 2869296,
+      "sha256": "be438a3eb12ba3697a9e474d20f899e52d8e27b43a6fc4c4c809d2a099646744"
+    },
+    {
+      "name": "cross_kv.ort",
+      "size": 5358752,
+      "sha256": "0c329cbf001bebbb9e34835e95676b9eb29e010405da46f65af511b8da16620e"
+    },
+    {
+      "name": "decoder_kv.ort",
+      "size": 61314512,
+      "sha256": "7da8ac9a1da2a486158ccde88c756fd876bf7f11ef1c2ba14b80e8edcd30028c"
+    },
+    {
+      "name": "encoder.ort",
+      "size": 44358376,
+      "sha256": "f31ef482f940e23af87906aeec986bf2e0a4862cad577bbc745264caab5a1858"
+    },
+    {
+      "name": "frontend.model.ort",
+      "size": 26776,
+      "sha256": "a93453223d93aa41d21691568cde3a01125fe00710a5f7004a825e1a322d3025"
+    },
+    {
+      "name": "frontend.weights.ort",
+      "size": 7769280,
+      "sha256": "8b417e2e0ee762e34d7163d24383823bb8bd1d037fb6966c32b3f86a3de4961f"
+    },
+    {
+      "name": "streaming_config.json",
+      "size": 512,
+      "sha256": "12d16c7f5ea6734d197b79baf47914ea7e996d6fca8d303a19aca10d0617cecc"
+    },
+    {
+      "name": "tokenizer.bin",
+      "size": 103319,
+      "sha256": "5725ad3771a1339802f8cebeda0fa8f7723f5282b1ee726c2544774d7399b9a7"
+    }
+  ],
+  "cases": [
+    {
+      "id": "de-normal-clean",
+      "expected": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-normal-clean.wav",
+      "sha256": "5b81945b64ccee3af35993e123a5eab0228a54ec0435c1fd3594e8940bef54ab",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-normal.wav",
+      "original_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+      "speech_end_seconds": 5.06,
+      "hypothesis": "Bleib bei mir. Es gibt nur Hoffnung für das Dorf.",
+      "word_errors": 1,
+      "reference_words": 10,
+      "wer": 0.1,
+      "silence_false_words": null,
+      "audio_seconds": 7.06,
+      "compute_seconds": 0.4699437563540414,
+      "stop_seconds": 0.013172707986086607,
+      "first_partial_wall_seconds": 1.5649767910363153,
+      "final_after_speech_seconds": 0.3203545000264425,
+      "rss_bytes": 598671360,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.5649716660846025,
+          "text": "Bleib.",
+          "line_id": 10905562040040435033,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 0.800000011920929,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.5649767910363153,
+          "text": "Bleib.",
+          "line_id": 10905562040040435033,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 0.800000011920929,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.0604932910064235,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435033,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.060496750054881,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435033,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.5367239580955356,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435033,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.3440001010894775,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 3.541690416052006,
+          "text": "",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 0.7040002346038818,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.541693583014421,
+          "text": "",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 0.7040002346038818,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.164045708021149,
+          "text": "Es gibt noch...",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.164049333077855,
+          "text": "Es gibt noch...",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.779522166005336,
+          "text": "Es gibt noch Hoffnung für das Thema.",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.9200003147125244,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.779564291005954,
+          "text": "Es gibt noch Hoffnung für das Thema.",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.9200003147125244,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 5.380348625010811,
+          "text": "Es gibt nur Hoffnung für das Dorf.",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 2.2079999446868896,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 5.380354500026442,
+          "text": "Es gibt nur Hoffnung für das Dorf.",
+          "line_id": 10905562040040435034,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 2.2079999446868896,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "de-normal-noise15db",
+      "expected": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-normal-noise15db.wav",
+      "sha256": "2f422eb1609d51482571807ae89d53623fe1258213faad311d313b267807ec63",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-normal.wav",
+      "original_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+      "speech_end_seconds": 5.06,
+      "hypothesis": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "word_errors": 0,
+      "reference_words": 10,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "audio_seconds": 7.06,
+      "compute_seconds": 0.42082204681355506,
+      "stop_seconds": 0.012898749904707074,
+      "first_partial_wall_seconds": 1.554198291967623,
+      "final_after_speech_seconds": 0.3006413749512289,
+      "rss_bytes": 598933504,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.5541928749298677,
+          "text": "Bleib.",
+          "line_id": 10905562040040435035,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 0.800000011920929,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.554198291967623,
+          "text": "Bleib.",
+          "line_id": 10905562040040435035,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 0.800000011920929,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.056398291955702,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435035,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.05640116694849,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435035,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.5395009169587865,
+          "text": "Bleib bei mir.",
+          "line_id": 10905562040040435035,
+          "audio_start": 0.800000011920929,
+          "audio_duration": 1.376000165939331,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 3.5410914999665692,
+          "text": "",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 0.7040002346038818,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.5410947499331087,
+          "text": "",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 0.7040002346038818,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.157621041988023,
+          "text": "Es gibt noch noch.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.1576239169808105,
+          "text": "Es gibt noch noch.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.769318167003803,
+          "text": "Es gibt noch Hoffnung für das Thema.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.9200003147125244,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.769320832914673,
+          "text": "Es gibt noch Hoffnung für das Thema.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 1.9200003147125244,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 5.3606377500109375,
+          "text": "Es gibt noch Hoffnung für das Dorf.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 2.144000291824341,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 5.3606413749512285,
+          "text": "Es gibt noch Hoffnung für das Dorf.",
+          "line_id": 10905562040040435036,
+          "audio_start": 2.879999876022339,
+          "audio_duration": 2.144000291824341,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "de-game-clean",
+      "expected": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verbände zur Heilerin.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-game-clean.wav",
+      "sha256": "b3680c8dc89cdc8395f624629087b9dcb51f7265a84d8432cf279845b34d4a8b",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-game.wav",
+      "original_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+      "speech_end_seconds": 5.62,
+      "hypothesis": "Nimm den Mondrautenfahn noch nicht. Bringt zwei saubere Verbände zur Heilerin.",
+      "word_errors": 2,
+      "reference_words": 11,
+      "wer": 0.18181818181818182,
+      "silence_false_words": null,
+      "audio_seconds": 7.62,
+      "compute_seconds": 0.6225240433122963,
+      "stop_seconds": 0.015987000078894198,
+      "first_partial_wall_seconds": 1.0514845841098577,
+      "final_after_speech_seconds": 0.38284008402377356,
+      "rss_bytes": 552288256,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.051479084067978,
+          "text": "Nimm es.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 0.8000000715255737,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.0514845841098577,
+          "text": "Nimm es.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 0.8000000715255737,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.5712725420016795,
+          "text": "Nimm den Mond.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.571276459028013,
+          "text": "Nimm den Mond.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 1.312000036239624,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.0616962501080707,
+          "text": "Nimm den Mondrautenfeuer.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 1.7919999361038208,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.061699334066361,
+          "text": "Nimm den Mondrautenfeuer.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 1.7919999361038208,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.5705673340708017,
+          "text": "Nimm den Mondrautenfahn noch nicht.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 2.2400002479553223,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.570574292098172,
+          "text": "Nimm den Mondrautenfahn noch nicht.",
+          "line_id": 10905562040040435037,
+          "audio_start": 0.2879999876022339,
+          "audio_duration": 2.2400002479553223,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 4.164738709107041,
+          "text": "Bringt's.",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.164741667103954,
+          "text": "Bringt's.",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.779568667057902,
+          "text": "Bringt zwei saubere, saubere",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.696000337600708,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.779571834020317,
+          "text": "Bringt zwei saubere, saubere",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.696000337600708,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 5.366786584025249,
+          "text": "Bringt zwei saubere Verbände zur",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.2720000743865967,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 5.366789750056341,
+          "text": "Bringt zwei saubere Verbände zur",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.2720000743865967,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 6.0028366250917315,
+          "text": "Bringt zwei saubere Verbände zur Heilerin.",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.6560003757476807,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 6.002840084023774,
+          "text": "Bringt zwei saubere Verbände zur Heilerin.",
+          "line_id": 10905562040040435038,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.6560003757476807,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "de-game-noise15db",
+      "expected": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verbände zur Heilerin.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-game-noise15db.wav",
+      "sha256": "b4ef330b271d8bfad89ba66b70e87f683bc797bb42096abdbc335a49c666e719",
+      "original": "speech-direction/offline-tts-spike/output/pocket/de-game.wav",
+      "original_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+      "speech_end_seconds": 5.62,
+      "hypothesis": "Nimm den Mondrautenfahn noch nicht. Bringt zwei saubere Verbände zur Heilerin.",
+      "word_errors": 2,
+      "reference_words": 11,
+      "wer": 0.18181818181818182,
+      "silence_false_words": null,
+      "audio_seconds": 7.62,
+      "compute_seconds": 0.6576992525951937,
+      "stop_seconds": 0.015752125065773726,
+      "first_partial_wall_seconds": 1.5689112090039998,
+      "final_after_speech_seconds": 0.3421607919689267,
+      "rss_bytes": 507658240,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.0433147919829935,
+          "text": "",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 0.768000066280365,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.043322791927494,
+          "text": "",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 0.768000066280365,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.5689083749894053,
+          "text": "Nimm den Mond in den Mund.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.5689112090039998,
+          "text": "Nimm den Mond in den Mund.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.068112334003672,
+          "text": "Nimm den Mond aus und fahr.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.7599999904632568,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.068115083966404,
+          "text": "Nimm den Mond aus und fahr.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.7599999904632568,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.580691249924712,
+          "text": "Nimm den Mondrautenfahn noch nicht.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 2.1440000534057617,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.580695083946921,
+          "text": "Nimm den Mondrautenfahn noch nicht.",
+          "line_id": 10905562040040435039,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 2.1440000534057617,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 4.190540249925107,
+          "text": "Bringt's.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.190544083947316,
+          "text": "Bringt's.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.808010709006339,
+          "text": "Bringt zwei saubere, saubere.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.696000337600708,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.808013874921016,
+          "text": "Bringt zwei saubere, saubere.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 1.696000337600708,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 5.383977624936961,
+          "text": "Bringt zwei saubere Verbände zur",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.2720000743865967,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 5.383981499937363,
+          "text": "Bringt zwei saubere Verbände zur",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.2720000743865967,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 5.962157291942276,
+          "text": "Bringt zwei saubere Verbände zur Heilerin.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.687999963760376,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 5.962160791968927,
+          "text": "Bringt zwei saubere Verbände zur Heilerin.",
+          "line_id": 10905562040040435040,
+          "audio_start": 3.1039998531341553,
+          "audio_duration": 2.687999963760376,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "de-silence",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-silence.wav",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "audio_seconds": 4.0,
+      "compute_seconds": 0.04759583005215973,
+      "stop_seconds": 0.0037224580300971866,
+      "first_partial_wall_seconds": null,
+      "final_after_speech_seconds": null,
+      "rss_bytes": 507658240,
+      "events": [],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "de-noise-only",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/de-noise-only.wav",
+      "sha256": "54620ca72af894f8564cf683bf2b5bf40509fd5da7e74f51376b5b46e191a28f",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "audio_seconds": 4.0,
+      "compute_seconds": 0.045383835793472826,
+      "stop_seconds": 0.0020715410355478525,
+      "first_partial_wall_seconds": null,
+      "final_after_speech_seconds": null,
+      "rss_bytes": 507658240,
+      "events": [],
+      "callbacks_after_close": 0
+    }
+  ],
+  "interruption": {
+    "stop_and_close_seconds": 0.0020216669654473662,
+    "late_callbacks_after_close": 0,
+    "stop_may_finalize_text": true,
+    "application_must_discard_retired_generation": true
+  },
+  "process_peak_rss_bytes": 600047616,
+  "host_architecture": "arm64",
+  "provenance": "retained Pocket synthetic speech; seeded noise and silence; no microphone or accent test",
+  "python_version": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "load_average": [
+    12.6884765625,
+    12.8798828125,
+    11.9169921875
+  ]
+}

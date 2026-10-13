@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "audio_seconds": 52.64,
+  "connection_closed_after_seconds": 0.10690941603388637,
+  "socket_close_seconds": 2.195802517235279e-05,
+  "subsequent_request_seconds_including_prior_cleanup": 0.2972347500035539,
+  "subsequent_hypothesis": "Do not take the moonwort yet.\n Bring two clean bandages to the healer.",
+  "abort_mechanism": "whisper-server v1.9.5 request socket close -> native abort_callback req.is_connection_closed()",
+  "scope": "connection close/recovery, not a physical barge-in or a direct kernel-stop timestamp"
+}

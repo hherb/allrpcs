@@ -1,0 +1,1608 @@
+[
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/01-continuation-1.log.gz",
+    "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a",
+    "size_bytes": 121,
+    "raw_sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485",
+    "stage": "continuation",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/02-art-1-1.log.gz",
+    "sha256": "f46e3468d7ce2d8acf8665da951c00cd16375800270e52b5ad0c1ae0832cbde3",
+    "size_bytes": 5674,
+    "raw_sha256": "f93d8b5c567d9499485ea97dc68265cc56b8b9f94e8310e36914c9fa65df7511",
+    "stage": "art-1",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/03-art-2-1.log.gz",
+    "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+    "size_bytes": 201,
+    "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+    "stage": "art-2",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/04-art-3-1.log.gz",
+    "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919",
+    "size_bytes": 399,
+    "raw_sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2",
+    "stage": "art-3",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/05-art-4-1.log.gz",
+    "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b",
+    "size_bytes": 414,
+    "raw_sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab",
+    "stage": "art-4",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/06-art-5-1.log.gz",
+    "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb",
+    "size_bytes": 420,
+    "raw_sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc",
+    "stage": "art-5",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/07-art-6-1.log.gz",
+    "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870",
+    "size_bytes": 416,
+    "raw_sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e",
+    "stage": "art-6",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/08-art-7-1.log.gz",
+    "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9",
+    "size_bytes": 519,
+    "raw_sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8",
+    "stage": "art-7",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/09-art-8-1.log.gz",
+    "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3",
+    "size_bytes": 766,
+    "raw_sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1",
+    "stage": "art-8",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/10-art-9-1.log.gz",
+    "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045",
+    "size_bytes": 286,
+    "raw_sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+    "stage": "art-9",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/11-boundary-buses-1.log.gz",
+    "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9",
+    "size_bytes": 154,
+    "raw_sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf",
+    "stage": "boundary-buses",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/12-boundary-material-1.log.gz",
+    "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547",
+    "size_bytes": 247,
+    "raw_sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166",
+    "stage": "boundary-material",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/13-boundary-footstep-1.log.gz",
+    "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428",
+    "size_bytes": 186,
+    "raw_sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2",
+    "stage": "boundary-footstep",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/14-boundary-positional-1.log.gz",
+    "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4",
+    "size_bytes": 193,
+    "raw_sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e",
+    "stage": "boundary-positional",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/15-boundary-music-1.log.gz",
+    "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3",
+    "size_bytes": 207,
+    "raw_sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76",
+    "stage": "boundary-music",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/16-boundary-interior-1.log.gz",
+    "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715",
+    "size_bytes": 172,
+    "raw_sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563",
+    "stage": "boundary-interior",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/17-boundary-water-1.log.gz",
+    "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f",
+    "size_bytes": 149,
+    "raw_sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+    "stage": "boundary-water",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/18-boundary-cask-1.log.gz",
+    "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260",
+    "size_bytes": 153,
+    "raw_sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1",
+    "stage": "boundary-cask",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/19-boundary-hand-tool-current-1.log.gz",
+    "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+    "size_bytes": 157,
+    "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+    "stage": "boundary-hand-tool-current",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/20-boundary-healer-current-1.log.gz",
+    "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+    "size_bytes": 156,
+    "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+    "stage": "boundary-healer-current",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/21-boundary-foliage-current-1.log.gz",
+    "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+    "size_bytes": 135,
+    "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+    "stage": "boundary-foliage-current",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/22-current-art-imports-1.log.gz",
+    "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+    "size_bytes": 201,
+    "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+    "stage": "current-art-imports",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/23-product-1-1.log.gz",
+    "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+    "size_bytes": 20,
+    "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stage": "product-1",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/24-product-2-1.log.gz",
+    "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d",
+    "size_bytes": 83,
+    "raw_sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce",
+    "stage": "product-2",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/25-product-3-1.log.gz",
+    "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+    "size_bytes": 20,
+    "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stage": "product-3",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/26-product-4-1.log.gz",
+    "sha256": "27ef0935041bfb374f69f60246509777a1e5f17aab9489481ba20b321455ca41",
+    "size_bytes": 335,
+    "raw_sha256": "00bc5207cde5690c6cd08a7c9615fabd750c43f5b776d1d5fb2df198bc24606e",
+    "stage": "product-4",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/27-product-5-1.log.gz",
+    "sha256": "e91d23a81b961c13e9a0629075737dc9f4927e833daed1634f7abae6f910d856",
+    "size_bytes": 315,
+    "raw_sha256": "eff1d1a60d1f6f60351f7cb5587b630a1ad4ff218cc3c855b008db30f8c94082",
+    "stage": "product-5",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/28-product-6-1.log.gz",
+    "sha256": "192c4ec73edd41b2e4e5436bb442cf243fb4ecf9d96a7f14b1f3948403473850",
+    "size_bytes": 316,
+    "raw_sha256": "4a6905bff7406d56efe73db83026d0a0588c137587f628b2a01cc0a4847d7ef8",
+    "stage": "product-6",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/29-product-7-1.log.gz",
+    "sha256": "314560606ebba66ebf25c1454e23d55be42024205ce7877921813ad49dbddd3d",
+    "size_bytes": 320,
+    "raw_sha256": "152a96924dc0448c475c81bad02276bfa90b1cdeb3bc97c573d3dc5094bc7620",
+    "stage": "product-7",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/30-product-8-1.log.gz",
+    "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe",
+    "size_bytes": 315,
+    "raw_sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b",
+    "stage": "product-8",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/31-product-9-1.log.gz",
+    "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156",
+    "size_bytes": 82,
+    "raw_sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475",
+    "stage": "product-9",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/32-boundary-hand-tool-resume-1.log.gz",
+    "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+    "size_bytes": 157,
+    "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+    "stage": "boundary-hand-tool-resume",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/33-boundary-healer-resume-1.log.gz",
+    "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+    "size_bytes": 156,
+    "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+    "stage": "boundary-healer-resume",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/34-boundary-foliage-resume-1.log.gz",
+    "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+    "size_bytes": 135,
+    "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+    "stage": "boundary-foliage-resume",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/35-product-10-1.log.gz",
+    "sha256": "16e62bbe22ff9b744ed0bf5b3a24f076eeeb6b143f129c25984fda7e7934e748",
+    "size_bytes": 18027,
+    "raw_sha256": "31736f902ebc70c6fa17c2129c76f37e9a12ccd6d14a35d5b481677ce452ee8b",
+    "stage": "product-10",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/36-product-11-1.log.gz",
+    "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e",
+    "size_bytes": 239,
+    "raw_sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07",
+    "stage": "product-11",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/37-product-12-1.log.gz",
+    "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39",
+    "size_bytes": 240,
+    "raw_sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c",
+    "stage": "product-12",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/38-product-13-1.log.gz",
+    "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454",
+    "size_bytes": 242,
+    "raw_sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48",
+    "stage": "product-13",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/39-product-14-1.log.gz",
+    "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047",
+    "size_bytes": 238,
+    "raw_sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28",
+    "stage": "product-14",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/40-product-15-1.log.gz",
+    "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042",
+    "size_bytes": 239,
+    "raw_sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8",
+    "stage": "product-15",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/41-product-16-1.log.gz",
+    "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb",
+    "size_bytes": 241,
+    "raw_sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff",
+    "stage": "product-16",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/42-product-17-1.log.gz",
+    "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7",
+    "size_bytes": 243,
+    "raw_sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3",
+    "stage": "product-17",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/43-product-18-1.log.gz",
+    "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd",
+    "size_bytes": 240,
+    "raw_sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075",
+    "stage": "product-18",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/44-product-19-1.log.gz",
+    "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc",
+    "size_bytes": 155,
+    "raw_sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+    "stage": "product-19",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/45-interior-normal-1.log.gz",
+    "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+    "size_bytes": 256,
+    "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+    "stage": "interior-normal",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/46-interior-muted-1.log.gz",
+    "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+    "size_bytes": 256,
+    "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+    "stage": "interior-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/47-interior-zero-1.log.gz",
+    "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5",
+    "size_bytes": 170,
+    "raw_sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6",
+    "stage": "interior-zero",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/48-interior-mono-reduced-1.log.gz",
+    "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+    "size_bytes": 256,
+    "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+    "stage": "interior-mono-reduced",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/49-water-default-1.log.gz",
+    "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+    "size_bytes": 159,
+    "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+    "stage": "water-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/50-water-quiet-1.log.gz",
+    "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+    "size_bytes": 241,
+    "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+    "stage": "water-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/51-water-master-muted-1.log.gz",
+    "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+    "size_bytes": 159,
+    "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+    "stage": "water-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/52-water-effects-muted-1.log.gz",
+    "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+    "size_bytes": 159,
+    "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+    "stage": "water-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/53-water-missing-stream-1.log.gz",
+    "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+    "size_bytes": 241,
+    "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+    "stage": "water-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/54-water-no-action-1.log.gz",
+    "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+    "size_bytes": 241,
+    "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+    "stage": "water-no-action",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/55-cask-default-1.log.gz",
+    "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+    "size_bytes": 241,
+    "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+    "stage": "cask-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/56-cask-quiet-1.log.gz",
+    "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+    "size_bytes": 158,
+    "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+    "stage": "cask-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/57-cask-master-muted-1.log.gz",
+    "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+    "size_bytes": 158,
+    "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+    "stage": "cask-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/58-cask-effects-muted-1.log.gz",
+    "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+    "size_bytes": 158,
+    "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+    "stage": "cask-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/59-cask-missing-stream-1.log.gz",
+    "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+    "size_bytes": 158,
+    "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+    "stage": "cask-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/60-cask-no-action-1.log.gz",
+    "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+    "size_bytes": 241,
+    "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+    "stage": "cask-no-action",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/61-hand-tool-default-1.log.gz",
+    "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+    "size_bytes": 244,
+    "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+    "stage": "hand-tool-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/62-hand-tool-quiet-1.log.gz",
+    "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+    "size_bytes": 244,
+    "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+    "stage": "hand-tool-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/63-hand-tool-master-muted-1.log.gz",
+    "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+    "size_bytes": 244,
+    "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+    "stage": "hand-tool-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/64-hand-tool-effects-muted-1.log.gz",
+    "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+    "size_bytes": 244,
+    "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+    "stage": "hand-tool-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/65-hand-tool-missing-stream-1.log.gz",
+    "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c",
+    "size_bytes": 160,
+    "raw_sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+    "stage": "hand-tool-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/66-hand-tool-no-action-1.log.gz",
+    "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+    "size_bytes": 244,
+    "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+    "stage": "hand-tool-no-action",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/67-healer-footstep-default-1.log.gz",
+    "sha256": "dede21add86c8a8218eb6bae7fb5ceb5c4dfb7826b62e4471c8877ceac502dfe",
+    "size_bytes": 186,
+    "raw_sha256": "1ebf2a86424ddbe429c976514eb34ad0c66e8471e9ce024c29ef3c17d0df4319",
+    "stage": "healer-footstep-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/68-healer-footstep-quiet-1.log.gz",
+    "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+    "size_bytes": 159,
+    "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+    "stage": "healer-footstep-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/69-healer-footstep-master-muted-1.log.gz",
+    "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+    "size_bytes": 159,
+    "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+    "stage": "healer-footstep-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/70-healer-footstep-effects-muted-1.log.gz",
+    "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+    "size_bytes": 159,
+    "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+    "stage": "healer-footstep-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/71-healer-footstep-missing-resources-1.log.gz",
+    "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+    "size_bytes": 241,
+    "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+    "stage": "healer-footstep-missing-resources",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/72-healer-footstep-captions-off-1.log.gz",
+    "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+    "size_bytes": 241,
+    "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+    "stage": "healer-footstep-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/73-healer-footstep-observer-disabled-1.log.gz",
+    "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+    "size_bytes": 241,
+    "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+    "stage": "healer-footstep-observer-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/74-boundary-hand-tool-after-runtime-1.log.gz",
+    "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+    "size_bytes": 157,
+    "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+    "stage": "boundary-hand-tool-after-runtime",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/75-healer-master-output-1.log.gz",
+    "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd",
+    "size_bytes": 120,
+    "raw_sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f",
+    "stage": "healer-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/76-boundary-healer-after-runtime-1.log.gz",
+    "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+    "size_bytes": 156,
+    "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+    "stage": "boundary-healer-after-runtime",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/77-foliage-historical-build-1.log.gz",
+    "sha256": "0534c555288e5a51092df71d2fe81c0511d4a8beede1f13b2b0e2283e92ccf05",
+    "size_bytes": 381,
+    "raw_sha256": "ec8699a83a5581573aca8e1c55d2b8d2e56fc0795bcbdc5ac326f0b567663765",
+    "stage": "foliage-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/78-foliage-historical-import-1.log.gz",
+    "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4",
+    "size_bytes": 8737,
+    "raw_sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a",
+    "stage": "foliage-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/79-foliage-default-1.log.gz",
+    "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+    "size_bytes": 276,
+    "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+    "stage": "foliage-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/80-foliage-quiet-1.log.gz",
+    "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b",
+    "size_bytes": 191,
+    "raw_sha256": "5668f01ec66cc74432f52a4bef15058ffac525b2aa3bf715108b523639dcb646",
+    "stage": "foliage-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/81-foliage-master-muted-1.log.gz",
+    "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+    "size_bytes": 276,
+    "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+    "stage": "foliage-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/82-foliage-ambience-muted-1.log.gz",
+    "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+    "size_bytes": 276,
+    "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+    "stage": "foliage-ambience-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/83-foliage-missing-stream-1.log.gz",
+    "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+    "size_bytes": 276,
+    "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+    "stage": "foliage-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/84-foliage-captions-off-1.log.gz",
+    "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35",
+    "size_bytes": 312,
+    "raw_sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46",
+    "stage": "foliage-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/85-foliage-foliage-disabled-1.log.gz",
+    "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+    "size_bytes": 276,
+    "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+    "stage": "foliage-foliage-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/86-foliage-master-output-1.log.gz",
+    "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1",
+    "size_bytes": 59,
+    "raw_sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa",
+    "stage": "foliage-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/87-boundary-foliage-after-runtime-1.log.gz",
+    "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+    "size_bytes": 135,
+    "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+    "stage": "boundary-foliage-after-runtime",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/88-wind-historical-restore-1.log.gz",
+    "sha256": "f7d5834c3784842476639b5d98d0df6b07434e80b04b812f2bae37f3ccb323c7",
+    "size_bytes": 210,
+    "raw_sha256": "ee1035d5ebfcf646713c444ee80b31f1efc9fcf1efe1438c5426e63d596745c3",
+    "stage": "wind-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/89-wind-historical-build-1.log.gz",
+    "sha256": "5ee645623b5c6b81f01d64abfe6e47d4f05bcedabbacddf03f5a00dcdcea1fa4",
+    "size_bytes": 385,
+    "raw_sha256": "c411b060776e144017aa6c0cd927e86586d190b7fc9c3007da8621e580826cd8",
+    "stage": "wind-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/90-wind-historical-import-1.log.gz",
+    "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed",
+    "size_bytes": 8766,
+    "raw_sha256": "1ab1bdac20d0ee62732289f464e36ae3cd7ca556befa5dbd6ac5b341c55d82c8",
+    "stage": "wind-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/91-wind-focused-1.log.gz",
+    "sha256": "1026e19cb1ea61e451339378e8c661381fb35ddcec0eacf03e6427e72f6fb23e",
+    "size_bytes": 413,
+    "raw_sha256": "8610d2fef9665b1acf7711b7444773a5094d669d7afce36aa6f1c369fd39b39f",
+    "stage": "wind-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/92-boundary-wind-source-1.log.gz",
+    "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5",
+    "size_bytes": 101,
+    "raw_sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a",
+    "stage": "boundary-wind-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/93-wind-default-1.log.gz",
+    "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+    "size_bytes": 271,
+    "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+    "stage": "wind-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/94-wind-quiet-1.log.gz",
+    "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb",
+    "size_bytes": 308,
+    "raw_sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+    "stage": "wind-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/95-wind-master-muted-1.log.gz",
+    "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+    "size_bytes": 271,
+    "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+    "stage": "wind-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/96-wind-ambience-muted-1.log.gz",
+    "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+    "size_bytes": 271,
+    "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+    "stage": "wind-ambience-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/97-wind-missing-stream-1.log.gz",
+    "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+    "size_bytes": 271,
+    "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+    "stage": "wind-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/98-wind-captions-off-1.log.gz",
+    "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542",
+    "size_bytes": 189,
+    "raw_sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92",
+    "stage": "wind-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/99-wind-wind-disabled-1.log.gz",
+    "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+    "size_bytes": 271,
+    "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+    "stage": "wind-wind-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/100-wind-master-output-1.log.gz",
+    "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e",
+    "size_bytes": 56,
+    "raw_sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb",
+    "stage": "wind-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/101-boundary-wind-reviewed-1.log.gz",
+    "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a",
+    "size_bytes": 133,
+    "raw_sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3",
+    "stage": "boundary-wind-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/102-rain-historical-restore-1.log.gz",
+    "sha256": "3c9db9f077609441003d95076f18454ebcbd83a16fe358c02ea492b61cb047f2",
+    "size_bytes": 209,
+    "raw_sha256": "93fde53da79c35012c4527805fd98ff98b31dabe8a54834a4d7394c10a8e8a4a",
+    "stage": "rain-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/103-rain-historical-build-1.log.gz",
+    "sha256": "64d39b23b065d42faeb7d306ca719491bb37dea398772d542b08b127feaf65be",
+    "size_bytes": 383,
+    "raw_sha256": "8ec777eeeca348e6031a4a8c099784e41de8d6da53425f9eed4006468312c242",
+    "stage": "rain-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/104-rain-historical-import-1.log.gz",
+    "sha256": "126c0a86da996cc82e4dd0dffe6ec367e10faa30777b0c44883c33f0fec5e556",
+    "size_bytes": 8904,
+    "raw_sha256": "f74628cf7d190bf401836660a41ad60336991d921cde0714068e6ef13059f9ca",
+    "stage": "rain-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/105-rain-focused-1.log.gz",
+    "sha256": "8c6a9c7b535c21f7daa2532486a5e4922a04ad0c068f2cc13d3aff6fa1c0f357",
+    "size_bytes": 412,
+    "raw_sha256": "fe766d0c484f0f85c0d21ca6f0cc004b38f062a0216c72b6d6357575c6e90ccf",
+    "stage": "rain-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/106-boundary-rain-source-1.log.gz",
+    "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe",
+    "size_bytes": 100,
+    "raw_sha256": "8bf9e28bb25cdc74ca082b562ccc5944c091e001cf90642a8f9e18984ca1b997",
+    "stage": "boundary-rain-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/107-rain-default-1.log.gz",
+    "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+    "size_bytes": 270,
+    "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+    "stage": "rain-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/108-rain-quiet-1.log.gz",
+    "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd",
+    "size_bytes": 307,
+    "raw_sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+    "stage": "rain-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/109-rain-master-muted-1.log.gz",
+    "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+    "size_bytes": 270,
+    "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+    "stage": "rain-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/110-rain-ambience-muted-1.log.gz",
+    "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+    "size_bytes": 270,
+    "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+    "stage": "rain-ambience-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/111-rain-missing-stream-1.log.gz",
+    "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+    "size_bytes": 270,
+    "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+    "stage": "rain-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/112-rain-captions-off-1.log.gz",
+    "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c",
+    "size_bytes": 188,
+    "raw_sha256": "0e3df713eeb811984be776aae8023e8cad5ea6032283df776ac3d139b5fc600c",
+    "stage": "rain-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/113-rain-rain-disabled-1.log.gz",
+    "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+    "size_bytes": 270,
+    "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+    "stage": "rain-rain-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/114-rain-master-output-1.log.gz",
+    "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0",
+    "size_bytes": 56,
+    "raw_sha256": "61e415280e9bfa63af7220ab1d3c9dee81d1223dc195575404a283f32b2a40ce",
+    "stage": "rain-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/115-boundary-rain-reviewed-1.log.gz",
+    "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b",
+    "size_bytes": 133,
+    "raw_sha256": "311e66b904f9a71a080ff8bdd07ffab52a70b9d137f46da0980dba3bb0734ea8",
+    "stage": "boundary-rain-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/116-heating-historical-restore-1.log.gz",
+    "sha256": "55fa2d33121903e79e6cf49c457d203f7044faee23c06986b116872691475029",
+    "size_bytes": 208,
+    "raw_sha256": "318b8bfb2fb3916c9a90ebc513b84140ec8b0f9e6a0756c30e82bc26e8fbbf91",
+    "stage": "heating-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/117-heating-historical-build-1.log.gz",
+    "sha256": "7096be49c51a4d7fac253dd5903c212bd31cc7866bd189080c7812c540f53867",
+    "size_bytes": 387,
+    "raw_sha256": "d60a5f3dbe6ffed58c10512489d8c75d984bbf2c7c80b6e9e4876fac56d814a1",
+    "stage": "heating-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/118-heating-historical-import-1.log.gz",
+    "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d",
+    "size_bytes": 8783,
+    "raw_sha256": "016553fda7818570fa495933403615fae050277bc7c86f7bf9902590955524e0",
+    "stage": "heating-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/119-heating-focused-1.log.gz",
+    "sha256": "cdaf2d732a258d9e6bf624cf43c837e91be111441c22ded7890fb5a9222e9d60",
+    "size_bytes": 413,
+    "raw_sha256": "dd1851b3821ee5c22ccf80029bffe0d6f669ce31531ddf0ef938deb5b3ed5ed6",
+    "stage": "heating-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/120-boundary-heating-source-1.log.gz",
+    "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58",
+    "size_bytes": 113,
+    "raw_sha256": "a29f3982784b9723ada46491749d4363921434a52b67be4a2292044ab938b36d",
+    "stage": "boundary-heating-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/121-heating-default-1.log.gz",
+    "sha256": "75bbea2c6b4517605670fc26ec06cfd818dfd00388e7d3784304ab934765c1df",
+    "size_bytes": 333,
+    "raw_sha256": "a6cd12ae2ce8d5a2ef27b4f5b519e351cd3265e2ee317b0a2e2dcd00c4a6528b",
+    "stage": "heating-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/122-heating-quiet-1.log.gz",
+    "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+    "size_bytes": 254,
+    "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+    "stage": "heating-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/123-heating-master-muted-1.log.gz",
+    "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+    "size_bytes": 254,
+    "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+    "stage": "heating-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/124-heating-effects-muted-1.log.gz",
+    "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+    "size_bytes": 254,
+    "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+    "stage": "heating-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/125-heating-missing-stream-1.log.gz",
+    "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72",
+    "size_bytes": 170,
+    "raw_sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1",
+    "stage": "heating-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/126-heating-captions-off-1.log.gz",
+    "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+    "size_bytes": 254,
+    "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+    "stage": "heating-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/127-heating-heating-disabled-1.log.gz",
+    "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+    "size_bytes": 254,
+    "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+    "stage": "heating-heating-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/128-heating-master-output-1.log.gz",
+    "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a",
+    "size_bytes": 80,
+    "raw_sha256": "d3b846bcd1815c06fbd5627c0410cc04e8fcd32a2a134d4acf10c234b78c331b",
+    "stage": "heating-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/129-boundary-heating-reviewed-1.log.gz",
+    "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437",
+    "size_bytes": 167,
+    "raw_sha256": "da381824ea9994b67ec8fd6051db39e2e6dc06f21d0c51596bc26e89b5a38fac",
+    "stage": "boundary-heating-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/130-steeping-historical-restore-1.log.gz",
+    "sha256": "9ede1a742d0333934194365b5010b51b2ba93b17ac8366925f9d95b6e7e5a9cc",
+    "size_bytes": 209,
+    "raw_sha256": "1ac6b236c4d2cd66b278251b9d5a4cc734eeb2ec204f9ad4d10c16eaa152f826",
+    "stage": "steeping-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/131-steeping-historical-build-1.log.gz",
+    "sha256": "45e08b6df6fdf0c7cce049afca929d3f760efa31ef61d5851aa65c7ac7f1fd3c",
+    "size_bytes": 384,
+    "raw_sha256": "347dc592f91a5517bc2cd3c598409144a802b222880c51dc7c1c5fd6b4e16765",
+    "stage": "steeping-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/132-steeping-historical-import-1.log.gz",
+    "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756",
+    "size_bytes": 8814,
+    "raw_sha256": "5179e3f5e1ed711cc00db97e8468dedbc2596a6dc92376ade11b8d92fa448c45",
+    "stage": "steeping-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/133-steeping-focused-1.log.gz",
+    "sha256": "dd2bd1001d9fe69690c73c95d90ba0ff68cc7585604f97bbf737d92ff882a712",
+    "size_bytes": 412,
+    "raw_sha256": "0a6c6845d6129f5dc71a71272d86c4976c4c499f39d9326ce7493e08028fe33d",
+    "stage": "steeping-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/134-boundary-steeping-source-1.log.gz",
+    "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab",
+    "size_bytes": 114,
+    "raw_sha256": "5df1e514505fe14b03ab066d9135e21fe3f3a19f5ce0b1f25e0f7a8e8ecac7db",
+    "stage": "boundary-steeping-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/135-steeping-default-1.log.gz",
+    "sha256": "8927ae2039379f2127f70aabdfeec6a101aa7d27b5d76cd2fbddf10a1fc59300",
+    "size_bytes": 297,
+    "raw_sha256": "13c086563e0573604cbff58fb61fcea232c8cfc7935f56076973f4d1361dfe2f",
+    "stage": "steeping-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/136-steeping-quiet-1.log.gz",
+    "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+    "size_bytes": 255,
+    "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+    "stage": "steeping-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/137-steeping-master-muted-1.log.gz",
+    "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+    "size_bytes": 255,
+    "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+    "stage": "steeping-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/138-steeping-effects-muted-1.log.gz",
+    "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+    "size_bytes": 255,
+    "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+    "stage": "steeping-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/139-steeping-missing-stream-1.log.gz",
+    "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+    "size_bytes": 255,
+    "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+    "stage": "steeping-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/140-steeping-captions-off-1.log.gz",
+    "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8",
+    "size_bytes": 171,
+    "raw_sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f",
+    "stage": "steeping-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/141-steeping-steeping-disabled-1.log.gz",
+    "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+    "size_bytes": 255,
+    "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+    "stage": "steeping-steeping-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/142-steeping-master-output-1.log.gz",
+    "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc",
+    "size_bytes": 81,
+    "raw_sha256": "ad4e9d4a6916c361fe2cd9f6c6e8532b21fd71aef50c922d429d1d0727bd96b3",
+    "stage": "steeping-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/143-boundary-steeping-reviewed-1.log.gz",
+    "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e",
+    "size_bytes": 169,
+    "raw_sha256": "c12684fd6234cc4787ce5eff092a7f3aeda84e28e373c1790e64bd041f330fdb",
+    "stage": "boundary-steeping-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/144-cooling-historical-restore-1.log.gz",
+    "sha256": "b73168644ab8b747e0614c02bcc6b04c4b0cf9c3a62ab85d51f34866f93dbbc9",
+    "size_bytes": 208,
+    "raw_sha256": "0c5a858cc0018e8983c329b379badb8f75b1600479664f0f93c62b1b83e8800d",
+    "stage": "cooling-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/145-cooling-historical-build-1.log.gz",
+    "sha256": "b292c1cd813702c710a8619242d8aad99596b118bcdc76179b4130c3a6cc9a11",
+    "size_bytes": 384,
+    "raw_sha256": "4334c228aca687a152324dedb22d195bc0f137007aabbb4c5ebed59d69710442",
+    "stage": "cooling-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/146-cooling-historical-import-1.log.gz",
+    "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c",
+    "size_bytes": 8817,
+    "raw_sha256": "2935d91b494d282b4497378fda62d5bcb224c4f783fdee044b596cf3ba10559c",
+    "stage": "cooling-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/147-cooling-focused-1.log.gz",
+    "sha256": "d1eb9be9f8d071a56c1a9fb6d96c6503056824396fef3108698492df808b7d9d",
+    "size_bytes": 412,
+    "raw_sha256": "4ece7bd56ee57384600793df1a2d4724391778aac740a2fc9debc2014d3da515",
+    "stage": "cooling-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/148-boundary-cooling-source-1.log.gz",
+    "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95",
+    "size_bytes": 113,
+    "raw_sha256": "b7b1a1bb8da7f9fdeb523b96973724dd92aded0345c9e8e6699bf4bfd30a5c15",
+    "stage": "boundary-cooling-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/149-cooling-default-1.log.gz",
+    "sha256": "854cbd1c07a699e07413ee1dc3ad45975461fed6e40219319f6446da54f74bd3",
+    "size_bytes": 332,
+    "raw_sha256": "8c3e564b39a1b2c5d29a4c3417f93ab2c49e76d04a2113140e57af02988bb305",
+    "stage": "cooling-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/150-cooling-quiet-1.log.gz",
+    "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+    "size_bytes": 169,
+    "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+    "stage": "cooling-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/151-cooling-master-muted-1.log.gz",
+    "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+    "size_bytes": 169,
+    "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+    "stage": "cooling-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/152-cooling-effects-muted-1.log.gz",
+    "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+    "size_bytes": 251,
+    "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+    "stage": "cooling-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/153-cooling-missing-stream-1.log.gz",
+    "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+    "size_bytes": 251,
+    "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+    "stage": "cooling-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/154-cooling-captions-off-1.log.gz",
+    "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+    "size_bytes": 251,
+    "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+    "stage": "cooling-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/155-cooling-cooling-disabled-1.log.gz",
+    "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+    "size_bytes": 169,
+    "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+    "stage": "cooling-cooling-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/156-cooling-master-output-1.log.gz",
+    "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8",
+    "size_bytes": 81,
+    "raw_sha256": "362f5d48fc94df59838c1a38b8da679ac141bb7d284bc5b60b1fff7724555b26",
+    "stage": "cooling-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/157-boundary-cooling-reviewed-1.log.gz",
+    "sha256": "228d9d651623dafbec75bb007cc4761b6b61150d94f09239ca6414a3c6165b28",
+    "size_bytes": 169,
+    "raw_sha256": "6cb1aa2c31bfd0091b7f844696082a7a66f82ba542113e5898ba27abb9a919d6",
+    "stage": "boundary-cooling-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/158-herb-historical-restore-1.log.gz",
+    "sha256": "bc5ad8a8bf29307f2d31a119f7db8acad238f3dac62c0813091321449ccaaf7e",
+    "size_bytes": 207,
+    "raw_sha256": "4ddb30c7a25a001d443e773e0ed0e6e658e984a87a55ee60b6b4648ecb7d4020",
+    "stage": "herb-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/159-herb-historical-build-1.log.gz",
+    "sha256": "b4856ec874103c3e1fdcdb6fd90e519211dc18ef276cd677d9f007db780ee171",
+    "size_bytes": 387,
+    "raw_sha256": "e40aebe6dcee20e6da0a296ab9a4488d086622f363dca48f33d1e8645ea59742",
+    "stage": "herb-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/160-herb-historical-import-1.log.gz",
+    "sha256": "51b4eeab41d1dcf2806cd1415578f292b14a309deed6b946ef8e4d4bcb5b4b65",
+    "size_bytes": 8834,
+    "raw_sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7",
+    "stage": "herb-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/161-herb-focused-1.log.gz",
+    "sha256": "f794ec43b2af929f4076606f5e91336281d26d430657905790a514750bc1f4d3",
+    "size_bytes": 412,
+    "raw_sha256": "3d7fa9540189093159a299b2ff30caba34e71675dd7b361e8775cecae006194b",
+    "stage": "herb-focused",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/162-boundary-herb-source-1.log.gz",
+    "sha256": "b3a635d873d0de443653a390e6e12393e50eb271b53c4b7ff882017024bfe621",
+    "size_bytes": 95,
+    "raw_sha256": "b04d404e0c9eb2c99dabcbb7a4303e9bfd2e271d99349d7b78289392b87aea34",
+    "stage": "boundary-herb-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/163-herb-source-rejections-1.log.gz",
+    "sha256": "a56a564f63d0a018886cbd339aab15d9f43066e39b4be0ff7123284302a18682",
+    "size_bytes": 64,
+    "raw_sha256": "bd8a323e6f124a48c411a5eda4ea01b9eafd8690362f25efb7b91c9c2bcd6eaa",
+    "stage": "herb-source-rejections",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/164-herb-validator-rejections-1.log.gz",
+    "sha256": "9b2f8a73e4ebf3e898c5e3918eefbcb80252b68a445c9883bc6a5b8a48669947",
+    "size_bytes": 62,
+    "raw_sha256": "cd3521956496c83bc1e853d0e80a297bff1f350fa453d87e46f234f76ada8d47",
+    "stage": "herb-validator-rejections",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/165-herb-near-default-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/166-herb-near-quiet-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/167-herb-near-master-muted-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/168-herb-near-effects-muted-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/169-herb-near-missing-stream-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/170-herb-near-captions-off-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/171-herb-near-audio-disabled-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-near-audio-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/172-herb-remote-default-1.log.gz",
+    "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+    "size_bytes": 219,
+    "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+    "stage": "herb-remote-default",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/173-herb-remote-quiet-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-remote-quiet",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/174-herb-remote-master-muted-1.log.gz",
+    "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+    "size_bytes": 219,
+    "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+    "stage": "herb-remote-master-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/175-herb-remote-effects-muted-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-remote-effects-muted",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/176-herb-remote-missing-stream-1.log.gz",
+    "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+    "size_bytes": 299,
+    "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+    "stage": "herb-remote-missing-stream",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/177-herb-remote-captions-off-1.log.gz",
+    "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+    "size_bytes": 219,
+    "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+    "stage": "herb-remote-captions-off",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/178-herb-remote-audio-disabled-1.log.gz",
+    "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+    "size_bytes": 219,
+    "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+    "stage": "herb-remote-audio-disabled",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/179-herb-master-output-1.log.gz",
+    "sha256": "dc4a4ee964920c78eb9c0e5b635d686be7768855c5243e7bda224ee1c92a30d7",
+    "size_bytes": 78,
+    "raw_sha256": "a5448aa3db7371ebfade7dbaeb93ca6c2afc2714c67b61d453e9f9e2a39b5d6d",
+    "stage": "herb-master-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/180-boundary-herb-reviewed-1.log.gz",
+    "sha256": "48f5f30d38e91c8217147b52873402f8c58648a1f9997278411344d597c71134",
+    "size_bytes": 154,
+    "raw_sha256": "693e9b5924dd325029a1aec2fa8b49e02dd10e2a9b482513777ef74f3bdc97bf",
+    "stage": "boundary-herb-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/181-controls-historical-restore-1.log.gz",
+    "sha256": "f3a6fa13ec674290a683929326031283f2c68184fbaddc66980a3ef299a19689",
+    "size_bytes": 296,
+    "raw_sha256": "54c8cb86848f0f4bb524781f1639b63a656d845010bf5e6bd9767353bc446754",
+    "stage": "controls-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/182-controls-historical-build-1.log.gz",
+    "sha256": "c7fce933c89e6728885c3d07ea3238eb41e16f1307a3b8baa6922fe56093c1fa",
+    "size_bytes": 300,
+    "raw_sha256": "aae3679531f8246e6f8a9b77f5d5a91100c9074a4c760e39e3f1f528bd1efbff",
+    "stage": "controls-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/183-controls-historical-import-1.log.gz",
+    "sha256": "6c6578cc45de1adcf12dd34304115ce270a6ac3d85e6926349990599524b8aec",
+    "size_bytes": 8841,
+    "raw_sha256": "b04f8f7941bf469ec92e89159d61ba1d7093f4afe8773dfefcdf9ea9d42b6595",
+    "stage": "controls-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/184-controls-application-1.log.gz",
+    "sha256": "ebed86022aac805d3ad04b27f2cd7e52e286ec396f9516c8e26b6dfcafe8b32b",
+    "size_bytes": 413,
+    "raw_sha256": "fe5e3462c4c2f6218f75bb150106411de9bb48ced7ccbc1c1bcd4d996c9135d5",
+    "stage": "controls-application",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/185-controls-infrastructure-1.log.gz",
+    "sha256": "94a7e21b23b5e370ca23110be4555f93368054c052091f5caf339a1c7e0ebd57",
+    "size_bytes": 438,
+    "raw_sha256": "dbe8f2dcdce796ce24d1ef976cb4f79c0660e455553a1d6c42162d960a197a74",
+    "stage": "controls-infrastructure",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/186-controls-source-1.log.gz",
+    "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+    "size_bytes": 90,
+    "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+    "stage": "controls-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/187-controls-validator-rejections-1.log.gz",
+    "sha256": "f35bec3b7ea7ce9d55af37ed3950fbf9735922482a1aea55e5895b83c2fa9df4",
+    "size_bytes": 208,
+    "raw_sha256": "fa38370fa796854d16667d628cc62d7851bd6cfe951ec08dbe8c90ba95a3a395",
+    "stage": "controls-validator-rejections",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/188-controls-main-1.log.gz",
+    "sha256": "4b353f492bbeebacb410b8af401a749b27ce346e47e2838947441bc241a3f333",
+    "size_bytes": 235,
+    "raw_sha256": "2d4d880192f2ea2163a97239dcd4335a282ae42006757e27da45052cc28c63f5",
+    "stage": "controls-main",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/189-controls-native-output-1.log.gz",
+    "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+    "size_bytes": 90,
+    "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+    "stage": "controls-native-output",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/190-controls-mounted-resources-1.log.gz",
+    "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+    "size_bytes": 90,
+    "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+    "stage": "controls-mounted-resources",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/191-controls-reviewed-1.log.gz",
+    "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+    "size_bytes": 90,
+    "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+    "stage": "controls-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/192-dialogue-accessibility-historical-restore-1.log.gz",
+    "sha256": "54df5da1c10c47d7e1a0c0e85b8df750a31f121f509e0723dbdfad40c96b0fe2",
+    "size_bytes": 295,
+    "raw_sha256": "f2992873e2eb5b9eb312b08e8ba032c4caaecbc3bc391285861cceae4fe0f99e",
+    "stage": "dialogue-accessibility-historical-restore",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/193-dialogue-accessibility-historical-build-1.log.gz",
+    "sha256": "961e54fd48d016ca3a5c12e8f21fc7e7370f65f31686afadda64d7f8debe6245",
+    "size_bytes": 298,
+    "raw_sha256": "f148f56c2146f9fee516267e0c16b91dab978162fa9520649e35720d3f916683",
+    "stage": "dialogue-accessibility-historical-build",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/194-dialogue-accessibility-historical-import-1.log.gz",
+    "sha256": "a667a83c69137c438d0fdf6eaa27491b17ff509f9a8116db7b0e06e8e68829f6",
+    "size_bytes": 8841,
+    "raw_sha256": "a42fdb4469bdacf7e30ff1282ae798347590778f2ea4599bb699ca7b1302ccb2",
+    "stage": "dialogue-accessibility-historical-import",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/195-dialogue-accessibility-source-1.log.gz",
+    "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a",
+    "size_bytes": 112,
+    "raw_sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e",
+    "stage": "dialogue-accessibility-source",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/196-dialogue-accessibility-validator-rejections-1.log.gz",
+    "sha256": "76f9606c5ccbc1eae607079577584e7dce41d900b1dc81ad44185bfe511e99c3",
+    "size_bytes": 222,
+    "raw_sha256": "660cf4099e316b60d306b85b36fc68daf166b029a158bbe4eff9180291328259",
+    "stage": "dialogue-accessibility-validator-rejections",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/197-dialogue-accessibility-main-1.log.gz",
+    "sha256": "7242101e6c129c2695ebd186310b7d2d879b4c878af4960cb825ea624a5531aa",
+    "size_bytes": 214,
+    "raw_sha256": "e27f461e8b2ca61f5f45c3b92694257ce8cca31521c7ad27f04aebb2d9d30985",
+    "stage": "dialogue-accessibility-main",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/198-dialogue-accessibility-reviewed-1.log.gz",
+    "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a",
+    "size_bytes": 112,
+    "raw_sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e",
+    "stage": "dialogue-accessibility-reviewed",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/199-dialogue-speech-headless-1.log.gz",
+    "sha256": "c7fb0897355f366f79956d124c6e7445e5df59aede04dc150be93bfe932648d8",
+    "size_bytes": 208,
+    "raw_sha256": "773eae60ef76eb2858a58637e2ce3f1188a992e7704f659b7b067fdd445ddb02",
+    "stage": "dialogue-speech-headless",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/200-dialogue-speech-unavailable-1.log.gz",
+    "sha256": "6e4097622b5fd43b8214ced1269f42bd345e8dfb5e4be838e9443adbd7f27dac",
+    "size_bytes": 210,
+    "raw_sha256": "8966f6633b988a7b070640f6b229ed86a042f65efe1500d35e4308a149eac102",
+    "stage": "dialogue-speech-unavailable",
+    "exit_code": 0
+  },
+  {
+    "path": "speech-direction/dialogue-integration/quality/final/console.log.gz",
+    "sha256": "c90b86a92d71bbe6d95dee1fcbc021b9aec4c4f9cae32619656080a3d8024fbd",
+    "size_bytes": 159,
+    "raw_sha256": "6408d2d4086a356c722e091f8b985580af24e96079dac88d7fd7993453a49aed"
+  }
+]

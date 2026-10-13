@@ -127,7 +127,7 @@ public partial class AudioSettingsPanel : CanvasLayer
         content.AddChild(grid);
         foreach (AudioCategory category in Enum.GetValues<AudioCategory>())
         {
-            grid.AddChild(new Label { Text = category == AudioCategory.Speech ? "Speech (future)" : category.ToString() });
+            grid.AddChild(new Label { Text = category.ToString() });
             HSlider slider = new()
             {
                 Name = category + "Gain",

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "mode": "unavailable",
+  "checks": [
+    "disabled-typed-dialogue-unchanged",
+    "missing-runtime-text-fallback",
+    "keyboard-speech-and-typed-focus-gate",
+    "scene-exit-provider-retirement"
+  ],
+  "size": [
+    1280,
+    720
+  ],
+  "realPocket": false,
+  "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+}

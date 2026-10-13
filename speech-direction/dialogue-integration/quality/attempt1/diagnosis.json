@@ -1,0 +1,7 @@
+{
+  "status": "retained_failed_attempt",
+  "failed_stage": "product-10",
+  "cause": "New speech nodes appended after accepted final WholeChannelPresentation owner; unchanged checker correctly rejected root child order.",
+  "fix": "Move only the two new speech nodes immediately before WholeChannelPresentation. All accepted channel source/children/geometry and validator remain unchanged.",
+  "new_full_quality_required": true
+}

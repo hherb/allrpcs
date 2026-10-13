@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "status": "passed",
+  "authority": {
+    "path": "speech-direction/dialogue-integration/authority.json",
+    "sha256": "cb7eb83b614047bfb26313362ff371a92510e798fc4a54c30f2fc2268252f60b",
+    "size_bytes": 2403
+  },
+  "product_sources": [
+    {
+      "path": "src/Application/Speech/SpeechPlaybackSession.cs",
+      "sha256": "fde8c36c2934d9e008d5c291e40f15626b60b355aceb49b04374df8b73ebfd5f",
+      "size_bytes": 5565
+    },
+    {
+      "path": "tests/Application.Tests/Speech/SpeechPlaybackSessionTests.cs",
+      "sha256": "7b65d386101b5e3effb56174e2a70081c98e80fafb648c6d6fe08dd7471ca72f",
+      "size_bytes": 4421
+    },
+    {
+      "path": "game/DialogueSpeechController.cs",
+      "sha256": "d3da1e7a466613a728b637495f3d87c0402a7e0c2546579ceb92fd5167ca0fb5",
+      "size_bytes": 13024
+    },
+    {
+      "path": "game/DialogueSpeechMainSmokeCheck.cs",
+      "sha256": "66f3ceb0e509e54c70e84184b06fadc724170344b6b34d3a450d2672be354826",
+      "size_bytes": 16058
+    },
+    {
+      "path": "game/TemporaryDialogueInputPanel.cs",
+      "sha256": "5432bc3aaf3ce52806444e8722f8cf7e47b885a781d6829db3ea809344328d50",
+      "size_bytes": 5254
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e3011b193ddf226977d104f7ac43844deda8f902b68f495dc16261295776e9a8",
+      "size_bytes": 11058
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "66c3c06bf9bb4f0b246441d78ec8fc0ffc5749f9df3c525187f4d41e66dd7f46",
+      "size_bytes": 243294
+    },
+    {
+      "path": "quality.py",
+      "sha256": "decbfdbd5cff0ea8defa54f7b5eb69e10115769a60a991cb77e6dbdfae99015c",
+      "size_bytes": 95545
+    }
+  ],
+  "source_provenance": {
+    "tested_base_revision": "a1f6834ae7105b737a681df4d4598d367207cb25",
+    "working_tree_sources": "Exact hashes above identify the uncommitted implementation tested before publication. The base revision alone does not identify those changes."
+  },
+  "root_quality": {
+    "summary": {
+      "path": "speech-direction/dialogue-integration/quality/final/summary.json",
+      "sha256": "d3340ba129a3f022f3446b78655e2de3cad1e93efdb1876244c8596746921828",
+      "size_bytes": 181450
+    },
+    "logs": {
+      "path": "speech-direction/dialogue-integration/quality/final/logs.json",
+      "sha256": "571b66cfdda46ccb421ddf57ec61e6d4c49d424c27426694579ee0a2720ef2b1",
+      "size_bytes": 71259
+    },
+    "stages_passed": 200,
+    "execution": "198 exact unchanged passes plus 2 repaired speech modes",
+    "resumed_from": {
+      "report_sha256": "4b16ae5acfd3f430564343334ecda83ac685cca94db4b28b0f38849460a7b4ee",
+      "prior_source_inputs": {
+        "quality.py": "8456cba965e65a0bfacf71c078851a27c36187094d38544f5b46ad000f0abd46",
+        "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+        "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+        "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+        "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+      },
+      "verified_completed_stages": 198,
+      "reason": "Exact completed prefix retained after shared participation supplier collision. Product hashes/logs unchanged; the sole runner diff disables that supplier for the two new speech modes."
+    },
+    "all_required_completions_seen": true
+  },
+  "unit_tests": {
+    "projects": [
+      {
+        "stage": "product-5",
+        "passed": 2849,
+        "skipped": 0,
+        "total": 2849
+      },
+      {
+        "stage": "product-6",
+        "passed": 1410,
+        "skipped": 0,
+        "total": 1410
+      },
+      {
+        "stage": "product-7",
+        "passed": 1314,
+        "skipped": 0,
+        "total": 1314
+      },
+      {
+        "stage": "product-8",
+        "passed": 8,
+        "skipped": 0,
+        "total": 8
+      }
+    ],
+    "passed": 5581,
+    "skipped": 0
+  },
+  "runner_self_tests_passed": 14,
+  "main_modes": [
+    {
+      "path": "speech-direction/dialogue-integration/native/headless.json",
+      "sha256": "68a78948dc44a9e77aaf30ad581f6d2ab8d964b665cd48e2dd5ebab40d6ed707",
+      "size_bytes": 648,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "committed-reply-pcm-speech-bus",
+        "exact-text-and-once-per-commit",
+        "stop-clears-buffer-preserves-transcript",
+        "new-player-submission-interrupts",
+        "master-mute-retires-pcm-without-gameplay-change",
+        "language-choice-disable-and-text-fallback",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "headless",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1280.json",
+      "sha256": "e488fe67fb08c90e88c0746d803a3ca9f489a387c00908808735166e321c0191",
+      "size_bytes": 721,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "native-pointer-speech-toggle",
+        "committed-reply-pcm-speech-bus",
+        "exact-text-and-once-per-commit",
+        "native-pointer-speech-stop",
+        "stop-clears-buffer-preserves-transcript",
+        "new-player-submission-interrupts",
+        "master-mute-retires-pcm-without-gameplay-change",
+        "language-choice-disable-and-text-fallback",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "native-1280",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1920.json",
+      "sha256": "031644bd00e8e9d3a21340d0e8b3fe57326772761bbc5291ebb82a298cf32f32",
+      "size_bytes": 722,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "native-pointer-speech-toggle",
+        "committed-reply-pcm-speech-bus",
+        "exact-text-and-once-per-commit",
+        "native-pointer-speech-stop",
+        "stop-clears-buffer-preserves-transcript",
+        "new-player-submission-interrupts",
+        "master-mute-retires-pcm-without-gameplay-change",
+        "language-choice-disable-and-text-fallback",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "native-1920",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-english-1280.json",
+      "sha256": "71946b042d0739efdb7b61ea4b97e17f24e93c1de67b953fbff6594cef9fa76e",
+      "size_bytes": 569,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "native-pointer-speech-toggle",
+        "committed-reply-pcm-speech-bus",
+        "real-pocket-complete-and-drain",
+        "native-pointer-speech-stop",
+        "real-pocket-interruption",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "pocket-english-1280",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-german-1280.json",
+      "sha256": "acee3c8c4aa215786bce2532b234d11fa59f1fe5fc9fc9431f4c6d3b41b3aed4",
+      "size_bytes": 568,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "native-pointer-speech-toggle",
+        "committed-reply-pcm-speech-bus",
+        "real-pocket-complete-and-drain",
+        "native-pointer-speech-stop",
+        "real-pocket-interruption",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "pocket-german-1280",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/unavailable.json",
+      "sha256": "2f140df98562c424c61b28316ead141c64862e1bf4c3536e643b79d5074748cf",
+      "size_bytes": 421,
+      "checks": [
+        "disabled-typed-dialogue-unchanged",
+        "missing-runtime-text-fallback",
+        "keyboard-speech-and-typed-focus-gate",
+        "scene-exit-provider-retirement"
+      ],
+      "mode": "unavailable",
+      "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+    }
+  ],
+  "native_master_audio": [
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-english-1280.wav",
+      "sha256": "90fa248bfe2c43b16f862098819d6675901319872423d29baff7e972d805713d",
+      "size_bytes": 2254892,
+      "sample_rate": 48000,
+      "channels": 2,
+      "sample_width_bytes": 2,
+      "duration_seconds": 11.744,
+      "peak": 0.677978515625,
+      "rms": 0.07162339777242706,
+      "source": "actual native Master AudioEffectRecord PCM; synthetic Main turn/reply models"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-german-1280.wav",
+      "sha256": "d20a63ae381b651e72f779657a9c709c92f0900fd1e8afa13d3a8043cb02caba",
+      "size_bytes": 1933356,
+      "sample_rate": 48000,
+      "channels": 2,
+      "sample_width_bytes": 2,
+      "duration_seconds": 10.069333333333333,
+      "peak": 0.3404541015625,
+      "rms": 0.026094449368126656,
+      "source": "actual native Master AudioEffectRecord PCM; synthetic Main turn/reply models"
+    }
+  ],
+  "native_media_and_logs": [
+    {
+      "path": "speech-direction/dialogue-integration/native/headless.log.gz",
+      "sha256": "c7fb0897355f366f79956d124c6e7445e5df59aede04dc150be93bfe932648d8",
+      "size_bytes": 208,
+      "raw_sha256": "773eae60ef76eb2858a58637e2ce3f1188a992e7704f659b7b067fdd445ddb02"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1280.log.gz",
+      "sha256": "e8dc9ed6fc418368e4250afbec38bdf1f515c0338a3a64a85d1261ab47ace2e8",
+      "size_bytes": 182,
+      "raw_sha256": "49c084ee2e760aaac9ee672b9671ad76ec147fff42fc72a83c336e7367f50205"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1280.png",
+      "sha256": "5c90086b4f82e405f900de351e31b1db59a25943b94eada6538db7df3d636f3f",
+      "size_bytes": 930842
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1920.log.gz",
+      "sha256": "7933061679f5a59671eed73fe5206a003a57a30f22dd1d578874425d3db787d9",
+      "size_bytes": 181,
+      "raw_sha256": "2b359db94110c3310174d5bb4187f18d777f90dbbf3b9a23ac7d75f14c5de066"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/native-1920.png",
+      "sha256": "3519af703e9be12792813ad05ab528dc8d824f56dcebebd89c1bbc01cb6943ba",
+      "size_bytes": 1731627
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-english-1280.log.gz",
+      "sha256": "59e0a7cf50e18b2d92bd21d827e14b6b55e7c17bae620096eede78290c9c7819",
+      "size_bytes": 187,
+      "raw_sha256": "27ffcf54997e918b3c6cd5a3816536387259e11066eca37b56a84d77d0f31d75"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-english-1280.png",
+      "sha256": "ef7212b89f1e76ae98d1042e8c1be51e1accf78797adfa390f6d4c01ba06a983",
+      "size_bytes": 961613
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-german-1280.log.gz",
+      "sha256": "5c44016a1cd7b35e7624c18c4cb10f52ed2e2e05ac24316aac66e857e3820494",
+      "size_bytes": 189,
+      "raw_sha256": "b197770065b8a2fda4a0c0df7d47cc1671bdf82b129c07dd61b7a7e866bdd60d"
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/pocket-german-1280.png",
+      "sha256": "b823741591b8c97bef362694d195925998cf6208e75f8eab7af9082cb452a293",
+      "size_bytes": 964081
+    },
+    {
+      "path": "speech-direction/dialogue-integration/native/unavailable.log.gz",
+      "sha256": "6e4097622b5fd43b8214ced1269f42bd345e8dfb5e4be838e9443adbd7f27dac",
+      "size_bytes": 210,
+      "raw_sha256": "8966f6633b988a7b070640f6b229ed86a042f65efe1500d35e4308a149eac102"
+    }
+  ],
+  "visual_review": {
+    "reviewed": true,
+    "sizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "finding": "Speech controls readable and focus contained at both sizes; fixed prototype UI and existing response owner retained. Long-text/global-subtitle redesign not qualified."
+  },
+  "frozen_dialogue_baseline": "e7b17575479be3f9061979c3269168f956782566",
+  "channel_order_direct_check": {
+    "path": "speech-direction/dialogue-integration/quality/channel-order.log.gz",
+    "sha256": "79afd2236785d43a66fedd174cca94e5c56aa6e04d4955d7b3d19bf977c3e140",
+    "size_bytes": 276,
+    "raw_sha256": "37fbe98871aed1893af342314ecdefdb01858342af576a3b704e1699c5c1805f"
+  },
+  "retained_failed_attempt": {
+    "summary": {
+      "path": "speech-direction/dialogue-integration/quality/attempt1/summary.json",
+      "sha256": "5603186edf71d171736b32b13e6a29e50611c188d5c682aa47c9b61fb5491d1c",
+      "size_bytes": 24035
+    },
+    "diagnosis": {
+      "path": "speech-direction/dialogue-integration/quality/attempt1/diagnosis.json",
+      "sha256": "e9a40c29bfcfc27d79b905179d7932b888870c4f1dcb31405b4506fcfc293763",
+      "size_bytes": 429
+    },
+    "logs": {
+      "path": "speech-direction/dialogue-integration/quality/attempt1/logs.json",
+      "sha256": "6828f3b2894804c7dc561911a649f0c6a6f0fa34b7a852859fd08e43cf20563d",
+      "size_bytes": 9503
+    }
+  },
+  "retained_second_attempt": {
+    "summary": {
+      "path": "speech-direction/dialogue-integration/quality/attempt2/summary.json",
+      "sha256": "4b16ae5acfd3f430564343334ecda83ac685cca94db4b28b0f38849460a7b4ee",
+      "size_bytes": 179423
+    },
+    "diagnosis": {
+      "path": "speech-direction/dialogue-integration/quality/attempt2/diagnosis.json",
+      "sha256": "9f7d060e5848726363390bd8f47a3648cb238fcd503cc842ba814c0f10d258c3",
+      "size_bytes": 544
+    },
+    "logs": {
+      "path": "speech-direction/dialogue-integration/quality/attempt2/logs.json",
+      "sha256": "909b9ac62ced844cb71186d7731c220f6d88f9f3ae8d52fb2e398c6dbe492ba6",
+      "size_bytes": 55718
+    },
+    "product_inputs": {
+      "path": "speech-direction/dialogue-integration/quality/attempt2/product-inputs.json",
+      "sha256": "57c37b7cc60b9a00dbcdee5d270681bebdfb6d81879ea7b5fcc604c3ba0c15a9",
+      "size_bytes": 886735
+    },
+    "baseline_runner": {
+      "path": "speech-direction/dialogue-integration/quality/attempt2/quality.py",
+      "sha256": "8456cba965e65a0bfacf71c078851a27c36187094d38544f5b46ad000f0abd46",
+      "size_bytes": 95497
+    }
+  },
+  "quality_tail_finish": {
+    "tool": {
+      "path": "speech-direction/dialogue-integration/finish-quality.py",
+      "sha256": "7bf21e915d21075108b7be22df0197a0a6b94803b9114c7f0d4553a0d508bb48",
+      "size_bytes": 8095
+    },
+    "self_test_passed": true,
+    "guard_cases": "accept exact prefix; reject changed runner, incomplete prefix, changed product, changed log and unrelated report"
+  },
+  "asr_evaluation": {
+    "path": "speech-direction/asr-evaluation/verification.json",
+    "sha256": "0c4c0ccd018843246e006554cd69f5d241bed21178b621232df9653e31f3fae4",
+    "size_bytes": 9745
+  },
+  "readme": {
+    "path": "speech-direction/dialogue-integration/README.md",
+    "sha256": "eedceeba9a0128d9fa161b26c98ae5114fbdc9a70922a37eabe91e6b1421370f",
+    "size_bytes": 8486
+  },
+  "voice_privacy_update": {
+    "path": "release-direction/voice-privacy-update.md",
+    "sha256": "f79bfbba752c81249148b586eaf323ef24665193a5fc14be478e0a52a94647c0",
+    "size_bytes": 1789
+  },
+  "preserved_local_editor": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+    "size_bytes": 8308,
+    "excluded_from_publication": true
+  },
+  "scope_limits": [
+    "No microphone opened or physical player/controller input qualification",
+    "No game ASR backend selected or installed",
+    "No live credential-bearing LLM conversation qualification",
+    "No OS network-block trial, M1/16 GB or other-platform execution",
+    "No final character acting/casting, packaged Python/models or released executable"
+  ]
+}

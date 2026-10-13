@@ -1,0 +1,739 @@
+{
+  "engine": "moonshine-small-streaming",
+  "language": "en",
+  "update_interval_seconds": 0.1,
+  "package_version": "0.1.5",
+  "load_seconds": 0.506331832963042,
+  "rss_loaded_bytes": 588398592,
+  "model_files": [
+    {
+      "name": "adapter.ort",
+      "size": 2870368,
+      "sha256": "c665f742364febad597cc9ac1e0b341ffbee0e24a1466e2f3bde95e6e4771762"
+    },
+    {
+      "name": "cross_kv.ort",
+      "size": 5356536,
+      "sha256": "e2d3417144e9514055ebfefe8dcc4c0a55a55adcb8530435844c75c53e352bf6"
+    },
+    {
+      "name": "decoder_kv.ort",
+      "size": 81878600,
+      "sha256": "1a05465b1dd955858dfcbee039c0020fb5dd982b0f5094c34e61735d518d771b"
+    },
+    {
+      "name": "encoder.ort",
+      "size": 44148576,
+      "sha256": "2d4d973e91e8aca08c51e7e7efa28a46ab265b63d809d5294d18b86bcd85b993"
+    },
+    {
+      "name": "frontend.model.ort",
+      "size": 26944,
+      "sha256": "09b1210ae30dc5f0f3e45f0ebab914c254741323114f53fbbe5ae62cca35058f"
+    },
+    {
+      "name": "frontend.weights.ort",
+      "size": 7769464,
+      "sha256": "7ef97521bd4bad3928f5bb6808586f4fcc6e92bd5990394112eed7d4052ec338"
+    },
+    {
+      "name": "streaming_config.json",
+      "size": 512,
+      "sha256": "26f02b6afb22d60871a5efd85c3d38e569cc0ddb6c5eb6e93d3260152ae8a47a"
+    },
+    {
+      "name": "tokenizer.bin",
+      "size": 249974,
+      "sha256": "6884b35fd6377d4c4d32336a0bc152f36b64d1e45b6503683cdc238250a8472d"
+    }
+  ],
+  "cases": [
+    {
+      "id": "en-normal-clean",
+      "expected": "Stay close. There is still hope for the village.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-normal-clean.wav",
+      "sha256": "afaad047943b5e226bc0e7ea25ab43b256806d5e0111b83b8ba7f25ed1dc640a",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-normal.wav",
+      "original_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+      "speech_end_seconds": 3.38,
+      "hypothesis": "Stay close. There is still hope for the village.",
+      "word_errors": 0,
+      "reference_words": 9,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "audio_seconds": 5.38,
+      "compute_seconds": 1.073586504207924,
+      "stop_seconds": 0.005913957953453064,
+      "first_partial_wall_seconds": 1.6310705830110237,
+      "final_after_speech_seconds": 0.24650916597340267,
+      "rss_bytes": 714899456,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.1010992910014465,
+          "text": "",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 0.7040000557899475,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.1011077500879765,
+          "text": "",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 0.7040000557899475,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.6310673750704154,
+          "text": "Stay close",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 1.2160000801086426,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.6310705830110237,
+          "text": "Stay close",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 1.2160000801086426,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.231428166036494,
+          "text": "Stay close.",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 1.3440001010894775,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.231433541048318,
+          "text": "Stay close.",
+          "line_id": 2313972154188604965,
+          "audio_start": 0.3840000033378601,
+          "audio_duration": 1.3440001010894775,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 2.2314356659771875,
+          "text": "you",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 0.5439999103546143,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.2314380410825834,
+          "text": "you",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 0.5439999103546143,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.625603666063398,
+          "text": "There is still no",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.055999994277954,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.6256069160299376,
+          "text": "There is still no",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.055999994277954,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 3.284946499974467,
+          "text": "There is still hope for the best.",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.5360000133514404,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.2849494580877945,
+          "text": "There is still hope for the best.",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.5360000133514404,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.6265048750210553,
+          "text": "There is still hope for the village.",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.8880000114440918,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 3.6265091659734026,
+          "text": "There is still hope for the village.",
+          "line_id": 2313972154188604966,
+          "audio_start": 1.5360000133514404,
+          "audio_duration": 1.8880000114440918,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "en-normal-noise15db",
+      "expected": "Stay close. There is still hope for the village.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-normal-noise15db.wav",
+      "sha256": "a9f920fbe86c32fbba634276e24ace7b6986498548eabab9e781aba2164cd84a",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-normal.wav",
+      "original_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+      "speech_end_seconds": 3.38,
+      "hypothesis": "Stay close. There is still hope for the village.",
+      "word_errors": 0,
+      "reference_words": 9,
+      "wer": 0.0,
+      "silence_false_words": null,
+      "audio_seconds": 5.38,
+      "compute_seconds": 0.9575042499927804,
+      "stop_seconds": 0.004258083063177764,
+      "first_partial_wall_seconds": 1.1290226250421256,
+      "final_after_speech_seconds": 0.2350503749959172,
+      "rss_bytes": 577683456,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.1290150000713766,
+          "text": "﻿",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 0.768000066280365,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.1290226250421256,
+          "text": "﻿",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 0.768000066280365,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.6294415410375223,
+          "text": "Stay close",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.6294442910002545,
+          "text": "Stay close",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.2799999713897705,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.2660253749927506,
+          "text": "Stay close.",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.375999927520752,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.2660287079634145,
+          "text": "Stay close.",
+          "line_id": 2313972154188604967,
+          "audio_start": 0.3199999928474426,
+          "audio_duration": 1.375999927520752,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 2.266030583065003,
+          "text": "Yeah.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 0.5759999752044678,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.266031750012189,
+          "text": "Yeah.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 0.5759999752044678,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.615257375058718,
+          "text": "There is still",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.6152610409772024,
+          "text": "There is still",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.0880000591278076,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 3.1451844159746543,
+          "text": "There is still hope for the day.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.568000078201294,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.145187458023429,
+          "text": "There is still hope for the day.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.568000078201294,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.6150475000031292,
+          "text": "There is still hope for the village.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.9200000762939453,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 3.615050374995917,
+          "text": "There is still hope for the village.",
+          "line_id": 2313972154188604968,
+          "audio_start": 1.503999948501587,
+          "audio_duration": 1.9200000762939453,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "en-game-clean",
+      "expected": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-game-clean.wav",
+      "sha256": "99bf8daeec5129c5b5505675cb9f59df8dde6e818a108b88bd5b0fcb57ea6293",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-game.wav",
+      "original_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+      "speech_end_seconds": 4.58,
+      "hypothesis": "Do not take the moonwork yet. Ring two clean bandages to the healer.",
+      "word_errors": 2,
+      "reference_words": 13,
+      "wer": 0.15384615384615385,
+      "silence_false_words": null,
+      "audio_seconds": 6.58,
+      "compute_seconds": 1.2016566649544984,
+      "stop_seconds": 0.005569041008129716,
+      "first_partial_wall_seconds": 1.1420419169589877,
+      "final_after_speech_seconds": 0.18366520801093422,
+      "rss_bytes": 510509056,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.142033917014487,
+          "text": "Do you know?",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 0.7360000610351562,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.1420419169589877,
+          "text": "Do you know?",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 0.7360000610351562,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.6366416669916362,
+          "text": "Do not take the",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.2480000257492065,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.6366445829626173,
+          "text": "Do not take the",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.2480000257492065,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.1279187080217525,
+          "text": "Do not take the moonwork.",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.7279999256134033,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.127922125044279,
+          "text": "Do not take the moonwork.",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.7279999256134033,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.644610874936916,
+          "text": "Do not take the moonwork yet.",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.9519999027252197,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.6446148329414427,
+          "text": "Do not take the moonwork yet.",
+          "line_id": 2313972154188604969,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.9519999027252197,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 3.1087695829337463,
+          "text": "Ring two.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 0.9280002117156982,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.108772833016701,
+          "text": "Ring two.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 0.9280002117156982,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 3.639061874942854,
+          "text": "Ring two clean batter.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.440000295639038,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.639064957969822,
+          "text": "Ring two clean batter.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.440000295639038,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.129393541952595,
+          "text": "Ring two clean bandages",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.952000379562378,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.129396458039992,
+          "text": "Ring two clean bandages",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.952000379562378,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.763661541976035,
+          "text": "Ring two clean bandages to the healer.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 2.4320003986358643,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 4.763665208010934,
+          "text": "Ring two clean bandages to the healer.",
+          "line_id": 2313972154188604970,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 2.4320003986358643,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "en-game-noise15db",
+      "expected": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-game-noise15db.wav",
+      "sha256": "978200855a6021e0be43cc08190187709cf51fb20eea16b750c215a359ee9ec6",
+      "original": "speech-direction/offline-tts-spike/output/pocket/en-game.wav",
+      "original_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+      "speech_end_seconds": 4.58,
+      "hypothesis": "Do not take the moonwork yet. Bring two clean bandages to the healer.",
+      "word_errors": 1,
+      "reference_words": 13,
+      "wer": 0.07692307692307693,
+      "silence_false_words": null,
+      "audio_seconds": 6.58,
+      "compute_seconds": 1.0976993709336966,
+      "stop_seconds": 0.008857666980475187,
+      "first_partial_wall_seconds": 1.0759014589712024,
+      "final_after_speech_seconds": 0.26728049999102943,
+      "rss_bytes": 519995392,
+      "events": [
+        {
+          "event": "LineStarted",
+          "wall_seconds": 1.0758940839441493,
+          "text": "You",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 0.7360000610351562,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.0759014589712024,
+          "text": "You",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 0.7360000610351562,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 1.6331206249305978,
+          "text": "Do not take the",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.2480000257492065,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 1.6331234999233857,
+          "text": "Do not take the",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.2480000257492065,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 2.104692624998279,
+          "text": "Do not take the moonwork there",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.7279999256134033,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.104695542016998,
+          "text": "Do not take the moonwork there",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.7279999256134033,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 2.6110976670170203,
+          "text": "Do not take the moonwork yet.",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.8880000114440918,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 2.611100542009808,
+          "text": "Do not take the moonwork yet.",
+          "line_id": 2313972154188604971,
+          "audio_start": 0.35199999809265137,
+          "audio_duration": 1.8880000114440918,
+          "complete": true
+        },
+        {
+          "event": "LineStarted",
+          "wall_seconds": 3.1069504589540884,
+          "text": "Ring two.",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 0.9280002117156982,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.106953708920628,
+          "text": "Ring two.",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 0.9280002117156982,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 3.6268373749917373,
+          "text": "Ring 2 queen back",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.440000295639038,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 3.626840499928221,
+          "text": "Ring 2 queen back",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.440000295639038,
+          "complete": false
+        },
+        {
+          "event": "LineUpdated",
+          "wall_seconds": 4.093465375015512,
+          "text": "Ring 2 queen bandages",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.952000379562378,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.093468708917499,
+          "text": "Ring 2 queen bandages",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 1.952000379562378,
+          "complete": false
+        },
+        {
+          "event": "LineTextChanged",
+          "wall_seconds": 4.84727591695264,
+          "text": "Bring two clean bandages to the healer.",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 2.4639999866485596,
+          "complete": true
+        },
+        {
+          "event": "LineCompleted",
+          "wall_seconds": 4.8472804999910295,
+          "text": "Bring two clean bandages to the healer.",
+          "line_id": 2313972154188604972,
+          "audio_start": 2.1439998149871826,
+          "audio_duration": 2.4639999866485596,
+          "complete": true
+        }
+      ],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "en-silence",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-silence.wav",
+      "sha256": "f751fd7094be088dc785125e4a1a0222a17c2bd20469aa31728ca5e515ed5809",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "audio_seconds": 4.0,
+      "compute_seconds": 0.03172524960245937,
+      "stop_seconds": 0.002484166994690895,
+      "first_partial_wall_seconds": null,
+      "final_after_speech_seconds": null,
+      "rss_bytes": 520060928,
+      "events": [],
+      "callbacks_after_close": 0
+    },
+    {
+      "id": "en-noise-only",
+      "expected": "",
+      "file": "/Users/hherb/src/allrpcs/artifacts/asr-evaluation/inputs/en-noise-only.wav",
+      "sha256": "54620ca72af894f8564cf683bf2b5bf40509fd5da7e74f51376b5b46e191a28f",
+      "speech_end_seconds": null,
+      "hypothesis": "",
+      "word_errors": 0,
+      "reference_words": 0,
+      "wer": null,
+      "silence_false_words": 0,
+      "audio_seconds": 4.0,
+      "compute_seconds": 0.02769258210901171,
+      "stop_seconds": 0.0023691250244155526,
+      "first_partial_wall_seconds": null,
+      "final_after_speech_seconds": null,
+      "rss_bytes": 520060928,
+      "events": [],
+      "callbacks_after_close": 0
+    }
+  ],
+  "interruption": {
+    "stop_and_close_seconds": 0.0021037079859524965,
+    "late_callbacks_after_close": 0,
+    "stop_may_finalize_text": true,
+    "application_must_discard_retired_generation": true
+  },
+  "process_peak_rss_bytes": 824328192,
+  "host_architecture": "arm64",
+  "provenance": "retained Pocket synthetic speech; seeded noise and silence; no microphone or accent test",
+  "python_version": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "load_average": [
+    23.568359375,
+    15.7236328125,
+    12.98291015625
+  ]
+}

@@ -261,7 +261,7 @@ Acceptance:
 - [ ] Add partial and final transcript events.
 - [ ] Allow correction or confirmation before consequential actions when recognition is
   uncertain.
-- [ ] Implement streamed or buffered character speech playback.
+- [x] Implement streamed or buffered character speech playback.
 - [ ] Implement per-character voice profiles without putting voice IDs in domain rules.
 - [ ] Implement player interruption and speech cancellation.
 - [ ] Keep subtitles and full text interaction available at all times.
@@ -273,9 +273,17 @@ Acceptance:
 Pocket TTS service checkpoint (2026-10-13): the [first local TTS component](speech-direction/pocket-tts-service/README.md)
 provides a provider-neutral PCM stream contract, a persistent offline English/German CPU worker,
 request cancellation/recovery and a runnable C# service probe on M3 Max. The combined ASR/TTS
-checkbox remains open because ASR is not implemented. Game playback, character casting,
-expressive acting qualification, microphone input, packaged deployment and actual M1/other-platform
-verification remain. This checkpoint does not change the concurrent controls continuation queue.
+checkbox remains open because ASR is not implemented. This service checkpoint is closed;
+its historical continuation text does not select new work. Character casting, expressive acting,
+microphone input, packaged deployment and actual M1/other-platform verification remain.
+
+Dialogue playback checkpoint (2026-10-13): [optional Pocket reply playback](speech-direction/dialogue-integration/README.md)
+is composed in Main for English/German committed replies, with bounded PCM, explicit stop, replacement
+interruption and text fallback. Current native UI/audio and full-quality evidence are bound in its
+verification. The wider player-interruption item remains open for actual voice-start/barge-in.
+The [streaming ASR comparison](speech-direction/asr-evaluation/README.md) recommends Moonshine Small
+Streaming, with Whisper small + Silero VAD as the measured alternative. Synthetic English/German
+recognition, VAD and retirement checks do not qualify physical microphone input or echo control.
 
 Acceptance:
 

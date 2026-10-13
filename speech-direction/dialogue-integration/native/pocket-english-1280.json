@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "mode": "pocket-english-1280",
+  "checks": [
+    "disabled-typed-dialogue-unchanged",
+    "native-pointer-speech-toggle",
+    "committed-reply-pcm-speech-bus",
+    "real-pocket-complete-and-drain",
+    "native-pointer-speech-stop",
+    "real-pocket-interruption",
+    "keyboard-speech-and-typed-focus-gate",
+    "scene-exit-provider-retirement"
+  ],
+  "size": [
+    1280,
+    720
+  ],
+  "realPocket": true,
+  "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+}
