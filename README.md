@@ -762,7 +762,12 @@ healer stops without overlapping the Seeker and can traverse every open connecti
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, last
 explicit focused-search attempt, and current opening-region recovery guidance. The much larger
 temporary provider-settings and dialogue panels start hidden so they do not obscure the playfield;
-press Tab to show both and Tab again to hide both and release their keyboard focus. Press U to open
+press the settings toggle (Tab by default) to open settings with Controls initially focused.
+Tab/Shift+Tab traverse Controls → Audio → Dialogue → Close settings. Choose Dialogue to open the
+existing form with Input focused. Its contained cycle is Input → Whisper → Submit → Close;
+Shift+Tab reverses it. Enter submits text and keeps the editor active. Close or UI cancel (Escape
+by default) returns to Dialogue; Close settings or UI cancel returns to the world. A toggle binding
+that is not also a focus-navigation key still closes settings. Press U to open
 the one-shot Seeker customization menu. The menu
 suspends Seeker movement while open, requires a name, all five pronoun forms, and exact authored
 appearance/background choices, atomically installs the customized live character, then resumes
@@ -782,6 +787,14 @@ healer mutually ignore body collision so a following healer cannot pin the Seeke
 walls; the validated 72-pixel follow stop still keeps their ordinary movement visually separated.
 These keys, the
 ring, and the status panel are temporary behavior-test controls, not final command or dialogue UX.
+
+The [finite dialogue accessibility review](input-direction/dialogue-accessibility-runtime-review/README.md)
+records keyboard routing and assistive names/descriptions, Input label/status relationships and a
+polite submission-status region using [Godot Control metadata](https://docs.godotengine.org/en/4.6/classes/class_control.html).
+Existing speaker/delivery/text acceptance and final-response owners remain exact. Native focus and
+layout evidence covers 1280×720 and 1920×1080 with providers disabled and canned input.
+VoiceOver evaluation was not performed because no assistive session was available; its named
+protocol and limitations are retained. The wider Phase 11 keyboard/screen-reader item stays open.
 
 Press the current settings/dialogue toggle (Tab by default), then choose **Controls settings**.
 The Controls panel edits a draft of the existing 21 project actions and eight UI actions. Select an

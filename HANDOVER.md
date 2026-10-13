@@ -6,17 +6,17 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-The exact approved [29-action controls runtime](input-direction/remapping-runtime-review/README.md)
-is complete. [Hash-bound verification](input-direction/remapping-runtime-verification.json) retains
-188 passing root stages, 5,576 unit tests, both native window sizes, all three input event classes,
-qualified contextual action routing and three mounted resource presets. Physical-device support,
-controller-only opening scenario, broad screen-reader certification and executable release remain
-unclaimed. The finite implementation stays closed; the Phase 11 device-support checkbox stays open.
+The exact approved [dialogue keyboard/accessibility presentation](input-direction/dialogue-accessibility-runtime-review/README.md)
+is complete. [Hash-bound verification](input-direction/dialogue-accessibility-runtime-verification.json)
+retains 195 passing root stages, 5,576 unit tests, 14 checks in each genuine Main mode, both native
+window sizes, default/remapped UI focus/cancel and pointer Submit/Close preservation. Existing
+speaker/delivery/text and final-response owners remain exact. VoiceOver evaluation is explicitly
+**not performed** because no assistive session was available; the wider Phase 11 reader item stays open.
 
-The next-slice request completed the [dialogue accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
-and [source/file/evidence contract](input-direction/dialogue-accessibility-owner-scope.json) for the
-separate keyboard-only/screen-reader roadmap item. Planning is closed; its exact new runtime/UI
-grant is missing. No dialogue behavior was changed by this proposal.
+The accepted [29-action controls implementation](input-direction/remapping-runtime-review/README.md)
+stays closed and its unmodified validator runs in published baseline `1b0cab40`. Its physical-device
+support claim remains missing. The next boundary prepares that distinct hardware/session evaluation
+proposal; it does not reopen synthetic controls or the accepted dialogue presentation.
 All earlier art/audio/domain scopes remain closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md).
 
@@ -26,46 +26,43 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase11-dialogue-accessibility-runtime-integration — Implement the proposed dialogue keyboard and accessibility presentation after its exact grant** (ready).
+**phase11-physical-controls-evaluation-planning — Prepare a named physical-device evaluation boundary for the remaining controls support claim** (ready).
 
-Roadmap item: - [ ] Complete keyboard-only navigation and screen-reader evaluation for text-heavy
-UI.
+Roadmap item: - [ ] Complete remappable keyboard, mouse, and controller controls.
 
-Missing deliverable: The one-panel entry/close/focus/assistive-semantics system proposed in input-
-direction/dialogue-accessibility-owner-scope.md/.json, with exact current submission owners
-preserved and truthful native reader outcomes.
+Missing deliverable: A concrete evaluation plan for ordinary physical keyboard/mouse and one named
+controller, including a controller-only opening-scenario route, exact device/OS provenance and
+finite failure/pass criteria. Existing evidence is synthetic only.
 
-Planning is complete and controls implementation stays closed. Await the exact new dialogue
-presentation grant; then implement all named dependent steps, verify, close, commit and push under
-standing authority. Do not infer broader text-heavy UI or screen-reader certification.
+Prepare the finite physical-device evaluation proposal before requesting a new hardware/session
+grant. Preserve the closed controls implementation and dialogue presentation. Do not repeat
+synthetic audits, change input/runtime code or claim physical support from prior captures.
 
-Done when: Approved entry/close/focus/metadata implemented at both native sizes; current
-accepted/rejected/whisper/speaker delivery semantics exact; finite evidence validator and full root
-quality pass; actual named-reader result or not-performed limitation retained, then close and
-publish.
+Done when: One source-grounded named device/session evaluation proposal and companion evidence/file
+contract, with one explicit new evaluation grant boundary; close planning and publish under standing
+authority. Actual device execution is a separate authorized successor.
 
 Expected outputs:
 
-- `input-direction/dialogue-accessibility-runtime-authority.json`
-- `input-direction/dialogue-accessibility-runtime-verification.json`
-- `input-direction/dialogue-accessibility-runtime-review/README.md`
+- `input-direction/physical-controls-owner-scope.md`
+- `input-direction/physical-controls-owner-scope.json`
 
-Boundary: Only the linked existing DialogueOverlay and four settings entry navigation/metadata
-changes after a new exact grant; no controls/preferences/provider/domain/save/audio/art changes, OS
-screen-reader setting or broad UI certification.
+Boundary: Read-only planning of the missing physical-device qualification only; no
+runtime/preferences/controller mapping/source changes, hardware or OS setup, accepted owner audits,
+broad accessibility or executable release claim.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
 
 After ledger maintenance run `python3 scripts/check-continuation.py --sync`, its checker and
-`--self-test`. Controls evidence: `python3 scripts/validate-control-remapping-runtime.py --complete`.
+`--self-test`. Dialogue evidence: `python3 scripts/validate-dialogue-accessibility-runtime.py --complete`.
 Runner checks: `python3 quality.py --self-test`. Root `./quality.sh` is required for product/CI
-changes; reuse the completed evidence for subsequent prose-only planning.
+changes; reuse completed product evidence for subsequent prose-only planning.
 
-Frozen validators run in private historical source trees/indexes, including accepted herb
-`db298c8f`; no frozen validator/evidence changes accommodate successors. Cold checks restore
-before build/import, and cooling seeds its four exact accepted UID sidecars. Run Godot on the
-host, serialize native focus fixtures, and retry only diagnosed native mutex shutdowns identically.
+Frozen validators remain unchanged in private historical source trees/indexes, including accepted
+controls `1b0cab40` and herb `db298c8f`. Cold checks restore before build/import; cooling seeds its
+four accepted UID sidecars. Run Godot on the host, serialize native focus fixtures, and retry only
+diagnosed native mutex shutdowns identically. No OS reader setting or broad reader claim is authorized.
 
 Preserve/exclude unrelated `game/project.godot` editor SHA
 `36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`, `.DS_Store` and concurrent

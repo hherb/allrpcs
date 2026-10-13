@@ -822,6 +822,20 @@
           "sha256": "8469a8ca07ffa1788137e2b5a2ec6c8cebd28928acfa6b925bbe340effd209d8"
         }
       ]
+    },
+    {
+      "id": "phase11-dialogue-accessibility-runtime-integration",
+      "reason": "Exact owner-approved finite dialogue presentation is implemented and verified: settings/dialogue keyboard cycles, entry/close/return, polite assistive metadata, exact submission owners, both native sizes, and primary-pointer preservation. Full root quality passes 195 stages and 5,576 unit tests. VoiceOver was not running and evaluation is explicitly not performed; broader accessibility remains open. Do not reopen this unchanged implementation as another audit.",
+      "evidence": [
+        {
+          "path": "input-direction/dialogue-accessibility-runtime-authority.json",
+          "sha256": "c50cf1fb8a77585045ed8a1dd2618c4255f83deec0e03b475d47623db45568f7"
+        },
+        {
+          "path": "input-direction/dialogue-accessibility-runtime-verification.json",
+          "sha256": "08eeacfe50c9f396cba7190946e1ad60bc22472cb664a3cab4cf1566ea76609b"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1134,6 +1148,20 @@
           "sha256": "8469a8ca07ffa1788137e2b5a2ec6c8cebd28928acfa6b925bbe340effd209d8"
         }
       ]
+    },
+    {
+      "id": "dialogue-accessibility-runtime",
+      "reason": "Finite owner-approved dialogue runtime and its dependent verification complete. A genuinely new native-reader session or other UI owner needs distinct scope; another unchanged metadata/focus audit does not reopen this implementation.",
+      "evidence": [
+        {
+          "path": "input-direction/dialogue-accessibility-runtime-authority.json",
+          "sha256": "c50cf1fb8a77585045ed8a1dd2618c4255f83deec0e03b475d47623db45568f7"
+        },
+        {
+          "path": "input-direction/dialogue-accessibility-runtime-verification.json",
+          "sha256": "08eeacfe50c9f396cba7190946e1ad60bc22472cb664a3cab4cf1566ea76609b"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1209,21 +1237,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase11-dialogue-accessibility-runtime-integration",
-    "title": "Implement the proposed dialogue keyboard and accessibility presentation after its exact grant",
+    "id": "phase11-physical-controls-evaluation-planning",
+    "title": "Prepare a named physical-device evaluation boundary for the remaining controls support claim",
     "status": "ready",
-    "workstream": "dialogue-accessibility-runtime",
-    "authority_status": "awaiting_exact_owner_runtime_ui_grant",
-    "roadmap_item": "- [ ] Complete keyboard-only navigation and screen-reader evaluation for text-heavy UI.",
-    "missing_deliverable": "The one-panel entry/close/focus/assistive-semantics system proposed in input-direction/dialogue-accessibility-owner-scope.md/.json, with exact current submission owners preserved and truthful native reader outcomes.",
-    "instructions": "Planning is complete and controls implementation stays closed. Await the exact new dialogue presentation grant; then implement all named dependent steps, verify, close, commit and push under standing authority. Do not infer broader text-heavy UI or screen-reader certification.",
-    "completion_condition": "Approved entry/close/focus/metadata implemented at both native sizes; current accepted/rejected/whisper/speaker delivery semantics exact; finite evidence validator and full root quality pass; actual named-reader result or not-performed limitation retained, then close and publish.",
+    "workstream": "physical-controls-evaluation-planning",
+    "authority_status": "new_physical_evaluation_authority_not_granted",
+    "roadmap_item": "- [ ] Complete remappable keyboard, mouse, and controller controls.",
+    "missing_deliverable": "A concrete evaluation plan for ordinary physical keyboard/mouse and one named controller, including a controller-only opening-scenario route, exact device/OS provenance and finite failure/pass criteria. Existing evidence is synthetic only.",
+    "instructions": "Prepare the finite physical-device evaluation proposal before requesting a new hardware/session grant. Preserve the closed controls implementation and dialogue presentation. Do not repeat synthetic audits, change input/runtime code or claim physical support from prior captures.",
+    "completion_condition": "One source-grounded named device/session evaluation proposal and companion evidence/file contract, with one explicit new evaluation grant boundary; close planning and publish under standing authority. Actual device execution is a separate authorized successor.",
     "outputs": [
-      "input-direction/dialogue-accessibility-runtime-authority.json",
-      "input-direction/dialogue-accessibility-runtime-verification.json",
-      "input-direction/dialogue-accessibility-runtime-review/README.md"
+      "input-direction/physical-controls-owner-scope.md",
+      "input-direction/physical-controls-owner-scope.json"
     ],
-    "boundary": "Only the linked existing DialogueOverlay and four settings entry navigation/metadata changes after a new exact grant; no controls/preferences/provider/domain/save/audio/art changes, OS screen-reader setting or broad UI certification."
+    "boundary": "Read-only planning of the missing physical-device qualification only; no runtime/preferences/controller mapping/source changes, hardware or OS setup, accepted owner audits, broad accessibility or executable release claim."
   },
   "deferred_slices": []
 }

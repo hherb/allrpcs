@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "stage": "product-3",
+  "reason": "Whitespace errors in the newly added fixture and entry style initializers; fixed with formatter limited to the authorized files. This attempt is diagnostic only and is not completion evidence.",
+  "raw_log_sha256": "26fabca89d332100541f30ab22f64885ceb837bc92ab0f326452f7ca4956a940",
+  "summary_sha256": "79fb50424615364ec7027a23dbe7eaaa9aa90a6921e373f9fba1326ba4038f3c",
+  "current_product_tests_completed": false
+}

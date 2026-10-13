@@ -1,0 +1,1351 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "recorded": "2026-10-13",
+  "slice_id": "phase11-dialogue-accessibility-runtime-integration",
+  "tested_inputs": [
+    {
+      "path": "game/DialogueAccessibilityMainSmokeCheck.cs",
+      "sha256": "a47d047542e6153f3acead900023067cacf58ecc18a8c96334fb45c6beac13f0"
+    },
+    {
+      "path": "game/DialogueAccessibilityMainSmokeCheck.cs.uid",
+      "sha256": "cdab180caf931ce26c1b373a10bcec860425bfbf7cab7eb03b40bc7d15bd71d2"
+    },
+    {
+      "path": "game/DialogueAccessibilityMainSmokeCheck.tscn",
+      "sha256": "7bcf5a83b57bd7f1ccee87ac291db6e98b5e462dcc27287be076b898609b305f"
+    },
+    {
+      "path": "game/DialogueInputSmokeCheck.cs",
+      "sha256": "3a41eb22e111027266cd9a7910560eaaf01198d1750b05a099ca5067425fd633"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "7d8ea6aa313996573cc2927dba65f66de464be03b3736eb7abd776844ddf2e9b"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilityController.cs",
+      "sha256": "2e028e6531b4cac87687e508292eedd2d13b4e124ca59977410bfca77954ddbb"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilitySmokeCheck.cs",
+      "sha256": "4059f837354272e0d388d19cf9951f419611946a44f94bdbd9c8ea216edcfdf2"
+    },
+    {
+      "path": "game/TemporaryDialogueInputPanel.cs",
+      "sha256": "8440d9f48274320cf395c8ee86e4e68177fd380f3bda2fd4f3c0c9cddd50a72d"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "ae7ef4997a5960cf263ce06dcfb9da4ab448d875c3c0e28e1932aafd6975ee6a"
+    },
+    {
+      "path": "scripts/validate-dialogue-accessibility-runtime.py",
+      "sha256": "0d6c609ec9ce5d0a527a1dfea1bb302f856bb259152636c039244a97109703cf"
+    }
+  ],
+  "protected_baseline": {
+    "path": "input-direction/dialogue-accessibility-runtime-review/protected-baseline.json.gz",
+    "sha256": "d800d0f2be97437f5a78d0d25e558f65db5bf8b2576e0424d570574df450f689"
+  },
+  "main_reports": [
+    {
+      "mode": "headless",
+      "report": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/headless.json",
+        "sha256": "772a55f4fadd887e3017a0fc91fbae34541d99235e0711b112a6e4139e19399b"
+      },
+      "log": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/headless.log.gz",
+        "sha256": "7242101e6c129c2695ebd186310b7d2d879b4c878af4960cb825ea624a5531aa"
+      },
+      "raw_log_sha256": "e27f461e8b2ca61f5f45c3b92694257ce8cca31521c7ad27f04aebb2d9d30985"
+    },
+    {
+      "mode": "native-1280",
+      "report": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1280.json",
+        "sha256": "9731417cc4715e9c930617892e8a3d39251d34d956a636819d6b9563b4c33863"
+      },
+      "log": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1280.log.gz",
+        "sha256": "2b94f5bf714a0bc996ad9d8aeca6494cc24ff734095f442fda57d70084d2ee5c"
+      },
+      "raw_log_sha256": "61d1ff01dd913202f3c416019f94f099577496bb4707dde13ea544220eb26deb"
+    },
+    {
+      "mode": "native-1920",
+      "report": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1920.json",
+        "sha256": "dcf7e9e47347991cb6fe275cc480f7dbb8e3ea73da968a45fd562919f7e2cfb7"
+      },
+      "log": {
+        "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1920.log.gz",
+        "sha256": "746ace90c7a45abe9072177c9429cfef1fb2a55c6882a7467e9a431b722ebf46"
+      },
+      "raw_log_sha256": "03beb9028332ec9d91f89c00df05c6713df677d9585e8d94e3d987fbd0951488"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1280-settings.png",
+      "sha256": "8817ad5164b95258f4272a9bb169ee1b76126392f7012bdd1b3974fbf2a5e133",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "settings",
+      "visually_reviewed": true
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1280-dialogue-input.png",
+      "sha256": "9c7413b33017f0b43e6c47f6daffda851738b4e7d17f01059e1539966198073a",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "dialogue-input",
+      "visually_reviewed": true
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1280-dialogue-close.png",
+      "sha256": "68d15c24c0cb5549607f5db094fb3484a1442044d590abc3f76d70e1686ab5e8",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "dialogue-close",
+      "visually_reviewed": true
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1920-settings.png",
+      "sha256": "9431bdb170aec632a209b160bcf7741905d761f2123ef469586f573e9c03ea2c",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "settings",
+      "visually_reviewed": true
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1920-dialogue-input.png",
+      "sha256": "385f21eaa9de087cb506f2c526e25dcaf6452d842837ba7cda67f517b802c2d5",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "dialogue-input",
+      "visually_reviewed": true
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-runtime-review/native/native-1920-dialogue-close.png",
+      "sha256": "bbcd70d7ca3a54e9f1770b01d3d0fbe552d7eb2c6e44fa1b14e6e6d97be48a52",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "dialogue-close",
+      "visually_reviewed": true
+    }
+  ],
+  "reader_protocol": {
+    "path": "input-direction/dialogue-accessibility-runtime-review/reader-protocol.md",
+    "sha256": "beed73e67186929dbf2b81ce6d403af6a4d35ba1c5e6eda01df5e9368cdd065a"
+  },
+  "reader_evaluation": {
+    "path": "input-direction/dialogue-accessibility-runtime-review/reader-evaluation.json",
+    "sha256": "76e79ea6d9bf13e45912d3ed748bf2688b82fa81201109836ae7da5f6e9e4177"
+  },
+  "screen_reader_certified": false,
+  "broad_ui_certified": false,
+  "quality": {
+    "summary": {
+      "path": "input-direction/dialogue-accessibility-runtime-review/quality/summary.json",
+      "sha256": "2b965927a9473296ac61c1f673b8c3b4a89927f59b9395bf63c8d515e2fd7e47"
+    },
+    "logs": [
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/01-continuation-1.log.gz",
+        "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a",
+        "original_name": "01-continuation-1.log",
+        "raw_sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/02-art-1-1.log.gz",
+        "sha256": "40e705dbe26c5c498f5d4adc0191bb8508ab0fb0f34418cb0823c756adbd6eb8",
+        "original_name": "02-art-1-1.log",
+        "raw_sha256": "eb37d8464001952e06ba80da9fb081bc5e5eaf38ce01f77da07e36e8d497c321"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/03-art-2-1.log.gz",
+        "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+        "original_name": "03-art-2-1.log",
+        "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/04-art-3-1.log.gz",
+        "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919",
+        "original_name": "04-art-3-1.log",
+        "raw_sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/05-art-4-1.log.gz",
+        "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b",
+        "original_name": "05-art-4-1.log",
+        "raw_sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/06-art-5-1.log.gz",
+        "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb",
+        "original_name": "06-art-5-1.log",
+        "raw_sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/07-art-6-1.log.gz",
+        "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870",
+        "original_name": "07-art-6-1.log",
+        "raw_sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/08-art-7-1.log.gz",
+        "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9",
+        "original_name": "08-art-7-1.log",
+        "raw_sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/09-art-8-1.log.gz",
+        "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3",
+        "original_name": "09-art-8-1.log",
+        "raw_sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/10-art-9-1.log.gz",
+        "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045",
+        "original_name": "10-art-9-1.log",
+        "raw_sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/11-boundary-buses-1.log.gz",
+        "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9",
+        "original_name": "11-boundary-buses-1.log",
+        "raw_sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/12-boundary-material-1.log.gz",
+        "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547",
+        "original_name": "12-boundary-material-1.log",
+        "raw_sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/13-boundary-footstep-1.log.gz",
+        "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428",
+        "original_name": "13-boundary-footstep-1.log",
+        "raw_sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/14-boundary-positional-1.log.gz",
+        "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4",
+        "original_name": "14-boundary-positional-1.log",
+        "raw_sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/15-boundary-music-1.log.gz",
+        "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3",
+        "original_name": "15-boundary-music-1.log",
+        "raw_sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/16-boundary-interior-1.log.gz",
+        "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715",
+        "original_name": "16-boundary-interior-1.log",
+        "raw_sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/17-boundary-water-1.log.gz",
+        "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f",
+        "original_name": "17-boundary-water-1.log",
+        "raw_sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/18-boundary-cask-1.log.gz",
+        "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260",
+        "original_name": "18-boundary-cask-1.log",
+        "raw_sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "original_name": "19-boundary-hand-tool-current-1.log",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "original_name": "20-boundary-healer-current-1.log",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "original_name": "21-boundary-foliage-current-1.log",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/22-current-art-imports-1.log.gz",
+        "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+        "original_name": "22-current-art-imports-1.log",
+        "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/23-product-1-1.log.gz",
+        "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+        "original_name": "23-product-1-1.log",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/24-product-2-1.log.gz",
+        "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d",
+        "original_name": "24-product-2-1.log",
+        "raw_sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/25-product-3-1.log.gz",
+        "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+        "original_name": "25-product-3-1.log",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/26-product-4-1.log.gz",
+        "sha256": "9810be8e7ee65b0419e3f47600e43d7493738fe14eae2ae2e01e3f8ef18d06cf",
+        "original_name": "26-product-4-1.log",
+        "raw_sha256": "080128b4486102b584e3cd2b5cbb0df2221bba101d697385e77acca08705331b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/27-product-5-1.log.gz",
+        "sha256": "6a890d070fe2f833184917913c66eaf0c09f6d7d1b095af8d22f09308c7dedc8",
+        "original_name": "27-product-5-1.log",
+        "raw_sha256": "9e318f2263de62adf59e380650e689990e359c3178f80b72c683f1eaefe0ae68"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/28-product-6-1.log.gz",
+        "sha256": "57f9e6cede29c730ad8e3e81d12a5fe04964bb73f1d48af2fb844a852b7fe463",
+        "original_name": "28-product-6-1.log",
+        "raw_sha256": "27521db3df4886b1f3cf27e31aa30e9ca507bae52530bfd32238283b837ae90f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/29-product-7-1.log.gz",
+        "sha256": "314560606ebba66ebf25c1454e23d55be42024205ce7877921813ad49dbddd3d",
+        "original_name": "29-product-7-1.log",
+        "raw_sha256": "152a96924dc0448c475c81bad02276bfa90b1cdeb3bc97c573d3dc5094bc7620"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/30-product-8-1.log.gz",
+        "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe",
+        "original_name": "30-product-8-1.log",
+        "raw_sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/31-product-9-1.log.gz",
+        "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156",
+        "original_name": "31-product-9-1.log",
+        "raw_sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "original_name": "32-boundary-hand-tool-resume-1.log",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "original_name": "33-boundary-healer-resume-1.log",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "original_name": "34-boundary-foliage-resume-1.log",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/35-product-10-1.log.gz",
+        "sha256": "8759748fe796b064c11b27e2b9cf5582db3b7e578d1f5e285fe28f52b60782cb",
+        "original_name": "35-product-10-1.log",
+        "raw_sha256": "9dee8e3dda29c4eaa36fa2fbe3c5cff26049cf4ad976485029ff087ed5c125b8"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/36-product-11-1.log.gz",
+        "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e",
+        "original_name": "36-product-11-1.log",
+        "raw_sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/37-product-12-1.log.gz",
+        "sha256": "fcef5503a03314f7335aef89c70a9407f70c06d2fbb62f85b6165701b490b62b",
+        "original_name": "37-product-12-1.log",
+        "raw_sha256": "3fd35e37e7e118398972aef2b561519b6b091cedb7ab82ed97599a088711f871"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/38-product-13-1.log.gz",
+        "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454",
+        "original_name": "38-product-13-1.log",
+        "raw_sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/39-product-14-1.log.gz",
+        "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047",
+        "original_name": "39-product-14-1.log",
+        "raw_sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/40-product-15-1.log.gz",
+        "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042",
+        "original_name": "40-product-15-1.log",
+        "raw_sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/41-product-16-1.log.gz",
+        "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb",
+        "original_name": "41-product-16-1.log",
+        "raw_sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/42-product-17-1.log.gz",
+        "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7",
+        "original_name": "42-product-17-1.log",
+        "raw_sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/43-product-18-1.log.gz",
+        "sha256": "04eaf270ce58f9ea927eacfb780555cbb4aac3d812bd468a6b4c71b919b3b1dd",
+        "original_name": "43-product-18-1.log",
+        "raw_sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/44-product-19-1.log.gz",
+        "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc",
+        "original_name": "44-product-19-1.log",
+        "raw_sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/45-interior-normal-1.log.gz",
+        "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5",
+        "original_name": "45-interior-normal-1.log",
+        "raw_sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/46-interior-muted-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "original_name": "46-interior-muted-1.log",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/47-interior-zero-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "original_name": "47-interior-zero-1.log",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "original_name": "48-interior-mono-reduced-1.log",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/49-water-default-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "original_name": "49-water-default-1.log",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/50-water-quiet-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "original_name": "50-water-quiet-1.log",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/51-water-master-muted-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "original_name": "51-water-master-muted-1.log",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/52-water-effects-muted-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "original_name": "52-water-effects-muted-1.log",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/53-water-missing-stream-1.log.gz",
+        "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+        "original_name": "53-water-missing-stream-1.log",
+        "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/54-water-no-action-1.log.gz",
+        "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+        "original_name": "54-water-no-action-1.log",
+        "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/55-cask-default-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "55-cask-default-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/56-cask-quiet-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "56-cask-quiet-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/57-cask-master-muted-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "57-cask-master-muted-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "58-cask-effects-muted-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "59-cask-missing-stream-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/60-cask-no-action-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "original_name": "60-cask-no-action-1.log",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/61-hand-tool-default-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "61-hand-tool-default-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "62-hand-tool-quiet-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "63-hand-tool-master-muted-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "64-hand-tool-effects-muted-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "65-hand-tool-missing-stream-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "original_name": "66-hand-tool-no-action-1.log",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+        "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783",
+        "original_name": "67-healer-footstep-default-1.log",
+        "raw_sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "original_name": "68-healer-footstep-quiet-1.log",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "original_name": "69-healer-footstep-master-muted-1.log",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+        "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+        "original_name": "70-healer-footstep-effects-muted-1.log",
+        "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "original_name": "71-healer-footstep-missing-resources-1.log",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "original_name": "72-healer-footstep-captions-off-1.log",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+        "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+        "original_name": "73-healer-footstep-observer-disabled-1.log",
+        "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "original_name": "74-boundary-hand-tool-after-runtime-1.log",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/75-healer-master-output-1.log.gz",
+        "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd",
+        "original_name": "75-healer-master-output-1.log",
+        "raw_sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "original_name": "76-boundary-healer-after-runtime-1.log",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+        "sha256": "77e904ea306e22282c8c827730aa748726ddd726455872b444ce4d268fe17acf",
+        "original_name": "77-foliage-historical-build-1.log",
+        "raw_sha256": "3b747549b796c851cfd35065e3a890620bb09414768f19d94dec3db121b21a3f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+        "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4",
+        "original_name": "78-foliage-historical-import-1.log",
+        "raw_sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/79-foliage-default-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "original_name": "79-foliage-default-1.log",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/80-foliage-quiet-1.log.gz",
+        "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35",
+        "original_name": "80-foliage-quiet-1.log",
+        "raw_sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "original_name": "81-foliage-master-muted-1.log",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "original_name": "82-foliage-ambience-muted-1.log",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "original_name": "83-foliage-missing-stream-1.log",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+        "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35",
+        "original_name": "84-foliage-captions-off-1.log",
+        "raw_sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "original_name": "85-foliage-foliage-disabled-1.log",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/86-foliage-master-output-1.log.gz",
+        "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1",
+        "original_name": "86-foliage-master-output-1.log",
+        "raw_sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "original_name": "87-boundary-foliage-after-runtime-1.log",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/88-wind-historical-restore-1.log.gz",
+        "sha256": "865b9238d38043bab5d16ed7106df93abced541155f1952f2a72d5389d96d8b8",
+        "original_name": "88-wind-historical-restore-1.log",
+        "raw_sha256": "ca611adeaf4f380d542477501f12a7d4baa877abee27d567814f277b618f40be"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/89-wind-historical-build-1.log.gz",
+        "sha256": "c146f6e84205456f0ac2121bed0d841d309eb13b29e62ed6d2bf6493a18436e0",
+        "original_name": "89-wind-historical-build-1.log",
+        "raw_sha256": "000d34dc9e9f55312fa3ff66b85764d893be887c018e32a9b8bafc20fa97165d"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/90-wind-historical-import-1.log.gz",
+        "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed",
+        "original_name": "90-wind-historical-import-1.log",
+        "raw_sha256": "1ab1bdac20d0ee62732289f464e36ae3cd7ca556befa5dbd6ac5b341c55d82c8"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/91-wind-focused-1.log.gz",
+        "sha256": "307800a048fe4444f75150f5881dbf4fb4322ab4072207fba30b6d3124da5440",
+        "original_name": "91-wind-focused-1.log",
+        "raw_sha256": "341a40ab831ddafca652f6d7756a7df45b03b42db4b884c3b4277d1f54beda88"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/92-boundary-wind-source-1.log.gz",
+        "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5",
+        "original_name": "92-boundary-wind-source-1.log",
+        "raw_sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/93-wind-default-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "original_name": "93-wind-default-1.log",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/94-wind-quiet-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "original_name": "94-wind-quiet-1.log",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/95-wind-master-muted-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "original_name": "95-wind-master-muted-1.log",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/96-wind-ambience-muted-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "original_name": "96-wind-ambience-muted-1.log",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/97-wind-missing-stream-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "original_name": "97-wind-missing-stream-1.log",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/98-wind-captions-off-1.log.gz",
+        "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb",
+        "original_name": "98-wind-captions-off-1.log",
+        "raw_sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/99-wind-wind-disabled-1.log.gz",
+        "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542",
+        "original_name": "99-wind-wind-disabled-1.log",
+        "raw_sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/100-wind-master-output-1.log.gz",
+        "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e",
+        "original_name": "100-wind-master-output-1.log",
+        "raw_sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/101-boundary-wind-reviewed-1.log.gz",
+        "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a",
+        "original_name": "101-boundary-wind-reviewed-1.log",
+        "raw_sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/102-rain-historical-restore-1.log.gz",
+        "sha256": "609d99fa84670bac2c828b112e7326232c33373c300abfcb6bb26487cf0a9668",
+        "original_name": "102-rain-historical-restore-1.log",
+        "raw_sha256": "0b9cf04eefa1a1fd914bb63b8237789096f58fe3ab2700eaf4cdb6cfdac031da"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/103-rain-historical-build-1.log.gz",
+        "sha256": "6f553089a2dce482f4a25a53732d78d16c9d61998f1dc9ab0306403779d6ac2b",
+        "original_name": "103-rain-historical-build-1.log",
+        "raw_sha256": "504b6fb8b38cbf8650c49bdb0e998e4b48e969746c5b8a32969bc13b503041c0"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/104-rain-historical-import-1.log.gz",
+        "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567",
+        "original_name": "104-rain-historical-import-1.log",
+        "raw_sha256": "86637223f6102704b46e49e6ed148c05838474d9f8e21d58d286dd83a4060583"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/105-rain-focused-1.log.gz",
+        "sha256": "6a63f93cd803861474696b0a688cb83381afeed75a2d070cccf9c4d7fb4ab8d9",
+        "original_name": "105-rain-focused-1.log",
+        "raw_sha256": "a6e9e63deaadc89abccf07e0d1138debf5a3feb90ebbb51b2b513d0508dcce49"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/106-boundary-rain-source-1.log.gz",
+        "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe",
+        "original_name": "106-boundary-rain-source-1.log",
+        "raw_sha256": "8bf9e28bb25cdc74ca082b562ccc5944c091e001cf90642a8f9e18984ca1b997"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/107-rain-default-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "original_name": "107-rain-default-1.log",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/108-rain-quiet-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "original_name": "108-rain-quiet-1.log",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/109-rain-master-muted-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "original_name": "109-rain-master-muted-1.log",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/110-rain-ambience-muted-1.log.gz",
+        "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c",
+        "original_name": "110-rain-ambience-muted-1.log",
+        "raw_sha256": "0e3df713eeb811984be776aae8023e8cad5ea6032283df776ac3d139b5fc600c"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/111-rain-missing-stream-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "original_name": "111-rain-missing-stream-1.log",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/112-rain-captions-off-1.log.gz",
+        "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd",
+        "original_name": "112-rain-captions-off-1.log",
+        "raw_sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/113-rain-rain-disabled-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "original_name": "113-rain-rain-disabled-1.log",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/114-rain-master-output-1.log.gz",
+        "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0",
+        "original_name": "114-rain-master-output-1.log",
+        "raw_sha256": "61e415280e9bfa63af7220ab1d3c9dee81d1223dc195575404a283f32b2a40ce"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/115-boundary-rain-reviewed-1.log.gz",
+        "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b",
+        "original_name": "115-boundary-rain-reviewed-1.log",
+        "raw_sha256": "311e66b904f9a71a080ff8bdd07ffab52a70b9d137f46da0980dba3bb0734ea8"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/116-heating-historical-restore-1.log.gz",
+        "sha256": "1e3a5b45ae1652a72a6b048d8a0a4b3f4b22ef753e0af57901624f15d5d3ff2d",
+        "original_name": "116-heating-historical-restore-1.log",
+        "raw_sha256": "fdf6fb792d3f034d7e9d50e2e6d16b8d267dd541b088e9ad54e327879fbbea18"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/117-heating-historical-build-1.log.gz",
+        "sha256": "2fde8c92ec3b553ea3539480de8e0f95437cd966a6e5bb8c0e9f7013b8b3e8d4",
+        "original_name": "117-heating-historical-build-1.log",
+        "raw_sha256": "946001cf340ab23cba66a0ccfe56cbcce1fabba836a3720d338f6a569a7c2b91"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/118-heating-historical-import-1.log.gz",
+        "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d",
+        "original_name": "118-heating-historical-import-1.log",
+        "raw_sha256": "016553fda7818570fa495933403615fae050277bc7c86f7bf9902590955524e0"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/119-heating-focused-1.log.gz",
+        "sha256": "32bdf67a522c912e476bbb4f452e77c3dca9336a6d035e95c03b709906c5e4e8",
+        "original_name": "119-heating-focused-1.log",
+        "raw_sha256": "6b004e9bdb99412c53d4f0a201d031efeb09a85e473323416c2be69359cb9a6f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/120-boundary-heating-source-1.log.gz",
+        "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58",
+        "original_name": "120-boundary-heating-source-1.log",
+        "raw_sha256": "a29f3982784b9723ada46491749d4363921434a52b67be4a2292044ab938b36d"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/121-heating-default-1.log.gz",
+        "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4",
+        "original_name": "121-heating-default-1.log",
+        "raw_sha256": "195c34a9e0e51afb03ac97989bc43d729a4484203471fa159c605d1677b5acf6"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/122-heating-quiet-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "original_name": "122-heating-quiet-1.log",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/123-heating-master-muted-1.log.gz",
+        "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72",
+        "original_name": "123-heating-master-muted-1.log",
+        "raw_sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/124-heating-effects-muted-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "original_name": "124-heating-effects-muted-1.log",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/125-heating-missing-stream-1.log.gz",
+        "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72",
+        "original_name": "125-heating-missing-stream-1.log",
+        "raw_sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/126-heating-captions-off-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "original_name": "126-heating-captions-off-1.log",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/127-heating-heating-disabled-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "original_name": "127-heating-heating-disabled-1.log",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/128-heating-master-output-1.log.gz",
+        "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a",
+        "original_name": "128-heating-master-output-1.log",
+        "raw_sha256": "d3b846bcd1815c06fbd5627c0410cc04e8fcd32a2a134d4acf10c234b78c331b"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/129-boundary-heating-reviewed-1.log.gz",
+        "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437",
+        "original_name": "129-boundary-heating-reviewed-1.log",
+        "raw_sha256": "da381824ea9994b67ec8fd6051db39e2e6dc06f21d0c51596bc26e89b5a38fac"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/130-steeping-historical-restore-1.log.gz",
+        "sha256": "6cdbccec2f18371ebb5d1f15f4c73016c6d5fa8b1678e5ceecc3fbcf00c73bb0",
+        "original_name": "130-steeping-historical-restore-1.log",
+        "raw_sha256": "de2c1a13b4bff15f032ef227e12342b17196a2071b7b4694265ba956251e4ed2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/131-steeping-historical-build-1.log.gz",
+        "sha256": "28eda72b3976316bf71fc7800804bd787af1c9229ffe1ed80e5a1928a4c584cb",
+        "original_name": "131-steeping-historical-build-1.log",
+        "raw_sha256": "24de0bbfd3d70dfb9779a69e375898b0f25171084e464f489fb8af4ceb9e5edc"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/132-steeping-historical-import-1.log.gz",
+        "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756",
+        "original_name": "132-steeping-historical-import-1.log",
+        "raw_sha256": "5179e3f5e1ed711cc00db97e8468dedbc2596a6dc92376ade11b8d92fa448c45"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/133-steeping-focused-1.log.gz",
+        "sha256": "8e305a0db0c77a79db1d84d67efbc43dee4d9e1500060495f2ae73b98e10e712",
+        "original_name": "133-steeping-focused-1.log",
+        "raw_sha256": "5f547076999473593e684dcc626c953646a8cef6ff7a2cb65d5f2a920c9ac420"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/134-boundary-steeping-source-1.log.gz",
+        "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab",
+        "original_name": "134-boundary-steeping-source-1.log",
+        "raw_sha256": "5df1e514505fe14b03ab066d9135e21fe3f3a19f5ce0b1f25e0f7a8e8ecac7db"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/135-steeping-default-1.log.gz",
+        "sha256": "8927ae2039379f2127f70aabdfeec6a101aa7d27b5d76cd2fbddf10a1fc59300",
+        "original_name": "135-steeping-default-1.log",
+        "raw_sha256": "13c086563e0573604cbff58fb61fcea232c8cfc7935f56076973f4d1361dfe2f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/136-steeping-quiet-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "original_name": "136-steeping-quiet-1.log",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/137-steeping-master-muted-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "original_name": "137-steeping-master-muted-1.log",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/138-steeping-effects-muted-1.log.gz",
+        "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8",
+        "original_name": "138-steeping-effects-muted-1.log",
+        "raw_sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/139-steeping-missing-stream-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "original_name": "139-steeping-missing-stream-1.log",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/140-steeping-captions-off-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "original_name": "140-steeping-captions-off-1.log",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/141-steeping-steeping-disabled-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "original_name": "141-steeping-steeping-disabled-1.log",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/142-steeping-master-output-1.log.gz",
+        "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc",
+        "original_name": "142-steeping-master-output-1.log",
+        "raw_sha256": "ad4e9d4a6916c361fe2cd9f6c6e8532b21fd71aef50c922d429d1d0727bd96b3"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/143-boundary-steeping-reviewed-1.log.gz",
+        "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e",
+        "original_name": "143-boundary-steeping-reviewed-1.log",
+        "raw_sha256": "c12684fd6234cc4787ce5eff092a7f3aeda84e28e373c1790e64bd041f330fdb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/144-cooling-historical-restore-1.log.gz",
+        "sha256": "68ce658d19732c0e44212ed714328d9482b085f27f0370a2964c8dd5c4831f06",
+        "original_name": "144-cooling-historical-restore-1.log",
+        "raw_sha256": "5b43cbec2ca3e82f9ad3d13591be2093e56481a24095b7d84780f66cb1142617"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/145-cooling-historical-build-1.log.gz",
+        "sha256": "5b38c3cba838a36cd7bf99e6ed651c903ca6c4c150be2cdde32a20e18f30a695",
+        "original_name": "145-cooling-historical-build-1.log",
+        "raw_sha256": "b9027bcdf542fb3852b159479241f2640aa2135241116e3410d3d103d5f5a89d"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/146-cooling-historical-import-1.log.gz",
+        "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c",
+        "original_name": "146-cooling-historical-import-1.log",
+        "raw_sha256": "2935d91b494d282b4497378fda62d5bcb224c4f783fdee044b596cf3ba10559c"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/147-cooling-focused-1.log.gz",
+        "sha256": "b7b3fc20247aebd86fade5402bcd250f10d32a31014bf75967e28f68f8bc4292",
+        "original_name": "147-cooling-focused-1.log",
+        "raw_sha256": "2cde5cf3e0f50d3995d8a1b3dce4b31e14949193b5e3c0123fdc6806f41e5ca7"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/148-boundary-cooling-source-1.log.gz",
+        "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95",
+        "original_name": "148-boundary-cooling-source-1.log",
+        "raw_sha256": "b7b1a1bb8da7f9fdeb523b96973724dd92aded0345c9e8e6699bf4bfd30a5c15"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/149-cooling-default-1.log.gz",
+        "sha256": "854cbd1c07a699e07413ee1dc3ad45975461fed6e40219319f6446da54f74bd3",
+        "original_name": "149-cooling-default-1.log",
+        "raw_sha256": "8c3e564b39a1b2c5d29a4c3417f93ab2c49e76d04a2113140e57af02988bb305"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/150-cooling-quiet-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "original_name": "150-cooling-quiet-1.log",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/151-cooling-master-muted-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "original_name": "151-cooling-master-muted-1.log",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/152-cooling-effects-muted-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "original_name": "152-cooling-effects-muted-1.log",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/153-cooling-missing-stream-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "original_name": "153-cooling-missing-stream-1.log",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/154-cooling-captions-off-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "original_name": "154-cooling-captions-off-1.log",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/155-cooling-cooling-disabled-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "original_name": "155-cooling-cooling-disabled-1.log",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/156-cooling-master-output-1.log.gz",
+        "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8",
+        "original_name": "156-cooling-master-output-1.log",
+        "raw_sha256": "362f5d48fc94df59838c1a38b8da679ac141bb7d284bc5b60b1fff7724555b26"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/157-boundary-cooling-reviewed-1.log.gz",
+        "sha256": "228d9d651623dafbec75bb007cc4761b6b61150d94f09239ca6414a3c6165b28",
+        "original_name": "157-boundary-cooling-reviewed-1.log",
+        "raw_sha256": "6cb1aa2c31bfd0091b7f844696082a7a66f82ba542113e5898ba27abb9a919d6"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/158-herb-historical-restore-1.log.gz",
+        "sha256": "702e19b241feefa84eca7572c842c8c392860bd86397c4a83fd8a1cc1f694518",
+        "original_name": "158-herb-historical-restore-1.log",
+        "raw_sha256": "df30ff496bf248068ae7e0b4fbf52f8891431bcf74c5ad25f141b8f89fee911d"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/159-herb-historical-build-1.log.gz",
+        "sha256": "e9428466e91d58cf5f3c4277671243c57bf5dbb8c99b5b2f3c1aa15e09b4273a",
+        "original_name": "159-herb-historical-build-1.log",
+        "raw_sha256": "a70bffda2581f7fc6161b95c7f3ab8e8a00341627f18b3334a94ab8135a1e7fa"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/160-herb-historical-import-1.log.gz",
+        "sha256": "51b4eeab41d1dcf2806cd1415578f292b14a309deed6b946ef8e4d4bcb5b4b65",
+        "original_name": "160-herb-historical-import-1.log",
+        "raw_sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/161-herb-focused-1.log.gz",
+        "sha256": "e73b7c6ea894685020e613acb352c7cb57ac7ef34651d6825b433804c7866358",
+        "original_name": "161-herb-focused-1.log",
+        "raw_sha256": "26cd5123ef3b2b5a763fc6a927ca66fe7e4c7d886bed32289d06fd8ba1676204"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/162-boundary-herb-source-1.log.gz",
+        "sha256": "b3a635d873d0de443653a390e6e12393e50eb271b53c4b7ff882017024bfe621",
+        "original_name": "162-boundary-herb-source-1.log",
+        "raw_sha256": "b04d404e0c9eb2c99dabcbb7a4303e9bfd2e271d99349d7b78289392b87aea34"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/163-herb-source-rejections-1.log.gz",
+        "sha256": "a56a564f63d0a018886cbd339aab15d9f43066e39b4be0ff7123284302a18682",
+        "original_name": "163-herb-source-rejections-1.log",
+        "raw_sha256": "bd8a323e6f124a48c411a5eda4ea01b9eafd8690362f25efb7b91c9c2bcd6eaa"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/164-herb-validator-rejections-1.log.gz",
+        "sha256": "9b2f8a73e4ebf3e898c5e3918eefbcb80252b68a445c9883bc6a5b8a48669947",
+        "original_name": "164-herb-validator-rejections-1.log",
+        "raw_sha256": "cd3521956496c83bc1e853d0e80a297bff1f350fa453d87e46f234f76ada8d47"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/165-herb-near-default-1.log.gz",
+        "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+        "original_name": "165-herb-near-default-1.log",
+        "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/166-herb-near-quiet-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "166-herb-near-quiet-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/167-herb-near-master-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "167-herb-near-master-muted-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/168-herb-near-effects-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "168-herb-near-effects-muted-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/169-herb-near-missing-stream-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "169-herb-near-missing-stream-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/170-herb-near-captions-off-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "170-herb-near-captions-off-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/171-herb-near-audio-disabled-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "171-herb-near-audio-disabled-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/172-herb-remote-default-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "172-herb-remote-default-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/173-herb-remote-quiet-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "173-herb-remote-quiet-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/174-herb-remote-master-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "174-herb-remote-master-muted-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/175-herb-remote-effects-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "175-herb-remote-effects-muted-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/176-herb-remote-missing-stream-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "176-herb-remote-missing-stream-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/177-herb-remote-captions-off-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "177-herb-remote-captions-off-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/178-herb-remote-audio-disabled-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "original_name": "178-herb-remote-audio-disabled-1.log",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/179-herb-master-output-1.log.gz",
+        "sha256": "dc4a4ee964920c78eb9c0e5b635d686be7768855c5243e7bda224ee1c92a30d7",
+        "original_name": "179-herb-master-output-1.log",
+        "raw_sha256": "a5448aa3db7371ebfade7dbaeb93ca6c2afc2714c67b61d453e9f9e2a39b5d6d"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/180-boundary-herb-reviewed-1.log.gz",
+        "sha256": "48f5f30d38e91c8217147b52873402f8c58648a1f9997278411344d597c71134",
+        "original_name": "180-boundary-herb-reviewed-1.log",
+        "raw_sha256": "693e9b5924dd325029a1aec2fa8b49e02dd10e2a9b482513777ef74f3bdc97bf"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/181-controls-historical-restore-1.log.gz",
+        "sha256": "76ff65b3cbc2bbee63a3715bb9085932038ffdb48fad6906b3756ff1be295fcd",
+        "original_name": "181-controls-historical-restore-1.log",
+        "raw_sha256": "e9add618ef734ae7e1ec4eb662ef737765e985000b7b4d5853d111b0f7b62db4"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/182-controls-historical-build-1.log.gz",
+        "sha256": "b3aee8f5aecc8e10841aa6746b741515a3d2fc1af005976959068f5f49622cb8",
+        "original_name": "182-controls-historical-build-1.log",
+        "raw_sha256": "622a08cc8c60509b73de96d9f4747346a13845840a6158e2825ff0aa190d36ab"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/183-controls-historical-import-1.log.gz",
+        "sha256": "6c6578cc45de1adcf12dd34304115ce270a6ac3d85e6926349990599524b8aec",
+        "original_name": "183-controls-historical-import-1.log",
+        "raw_sha256": "b04f8f7941bf469ec92e89159d61ba1d7093f4afe8773dfefcdf9ea9d42b6595"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/184-controls-application-1.log.gz",
+        "sha256": "20861512c8fde11e91e87ccd83abe928513ee849adeb6a28a76e307b9b480861",
+        "original_name": "184-controls-application-1.log",
+        "raw_sha256": "9bc7f22530d6c388670045b981531b3005f6b6d496db540258d142a45795c2d2"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/185-controls-infrastructure-1.log.gz",
+        "sha256": "43b4abca6a460923044ad089a90c66e7c89b5d95e8c48d1e53b825a380a8a88c",
+        "original_name": "185-controls-infrastructure-1.log",
+        "raw_sha256": "ecbdb7d5c3ce4548c0b8c4758f5091544ef178859d422fa13c108c133228e3c7"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/186-controls-source-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "original_name": "186-controls-source-1.log",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/187-controls-validator-rejections-1.log.gz",
+        "sha256": "f35bec3b7ea7ce9d55af37ed3950fbf9735922482a1aea55e5895b83c2fa9df4",
+        "original_name": "187-controls-validator-rejections-1.log",
+        "raw_sha256": "fa38370fa796854d16667d628cc62d7851bd6cfe951ec08dbe8c90ba95a3a395"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/188-controls-main-1.log.gz",
+        "sha256": "4b353f492bbeebacb410b8af401a749b27ce346e47e2838947441bc241a3f333",
+        "original_name": "188-controls-main-1.log",
+        "raw_sha256": "2d4d880192f2ea2163a97239dcd4335a282ae42006757e27da45052cc28c63f5"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/189-controls-native-output-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "original_name": "189-controls-native-output-1.log",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/190-controls-mounted-resources-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "original_name": "190-controls-mounted-resources-1.log",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/191-controls-reviewed-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "original_name": "191-controls-reviewed-1.log",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/192-dialogue-accessibility-source-1.log.gz",
+        "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a",
+        "original_name": "192-dialogue-accessibility-source-1.log",
+        "raw_sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/193-dialogue-accessibility-validator-rejections-1.log.gz",
+        "sha256": "76f9606c5ccbc1eae607079577584e7dce41d900b1dc81ad44185bfe511e99c3",
+        "original_name": "193-dialogue-accessibility-validator-rejections-1.log",
+        "raw_sha256": "660cf4099e316b60d306b85b36fc68daf166b029a158bbe4eff9180291328259"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/194-dialogue-accessibility-main-1.log.gz",
+        "sha256": "85576c23439cfb9b24d3a14b87ad31fca27ea6fa94bba08c666159ebe2c2f2a4",
+        "original_name": "194-dialogue-accessibility-main-1.log",
+        "raw_sha256": "705090595daffb3a2082cee7ba625bac54aac8469f52bbab7bfb3a27279be111"
+      },
+      {
+        "path": "input-direction/dialogue-accessibility-runtime-review/quality/195-dialogue-accessibility-reviewed-1.log.gz",
+        "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a",
+        "original_name": "195-dialogue-accessibility-reviewed-1.log",
+        "raw_sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e"
+      }
+    ],
+    "main_report": {
+      "path": "input-direction/dialogue-accessibility-runtime-review/quality/main.json",
+      "sha256": "772a55f4fadd887e3017a0fc91fbae34541d99235e0711b112a6e4139e19399b"
+    },
+    "unit_tests": 5576,
+    "stages": 195,
+    "root_log": {
+      "path": "input-direction/dialogue-accessibility-runtime-review/quality/root.log.gz",
+      "sha256": "56d4dba7c791760f82a6ef6cf14e36f778912d90bfd18d50642e2b039b1bcaa2",
+      "raw_sha256": "f7ad949ab9c2ef3223d650eae0a59a7b8a10f7d449f05f6ddeb3a42ee584d98d"
+    }
+  }
+}

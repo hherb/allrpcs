@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "recorded": "2026-10-13",
+  "reader": "VoiceOver",
+  "reader_version": "not observed",
+  "os": "27.0.1",
+  "engine": "Godot 4.6.3.stable.mono.official.7d41c59c4",
+  "protocol": "input-direction/dialogue-accessibility-runtime-review/reader-protocol.md",
+  "status": "not_performed",
+  "reason": "Host pgrep -x VoiceOver returned 1 with no matching process; no active assistive session or native reader observation tool is available. The grant excludes enabling or changing OS screen-reader settings. Synthetic focus and metadata inspection do not establish reader output.",
+  "assistive_session_available": false,
+  "os_settings_changed": false,
+  "results": {
+    "name_role_mode": "not_performed",
+    "focus_order": "not_performed",
+    "accepted_status": "not_performed",
+    "rejected_status": "not_performed",
+    "final_response": "not_performed",
+    "focus_return": "not_performed",
+    "hidden_siblings": "not_performed"
+  }
+}

@@ -38,6 +38,7 @@ HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
 COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
+CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -539,6 +540,7 @@ def main(resume_smoke=False, finish_interior=False):
         cooling_runtime(run, environment)
         herb_runtime(run, environment)
         controls_runtime(run, environment)
+        dialogue_accessibility_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -834,19 +836,45 @@ def frozen_herb_runtime(run, environment, tree):
 
 
 def controls_runtime(run, environment):
-    """Add current remapping checks without replacing any predecessor stage."""
+    """Preserve the accepted controls validator and all eight stages in its published baseline."""
+    if (ROOT / 'input-direction/dialogue-accessibility-runtime-authority.json').exists():
+        with snapshot(CONTROLS_REVISION, editor=True) as (tree, env):
+            run.stage('controls-historical-restore', ['dotnet', 'restore', 'Allrpcs.sln'], tree, env, CONTROLS_REVISION)
+            run.stage('controls-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '--no-restore'], tree, env, CONTROLS_REVISION)
+            run.stage('controls-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'],
+                      tree, env, CONTROLS_REVISION, retry_native=True)
+            controls_runtime_checks(run, dict(environment, **env), tree, CONTROLS_REVISION)
+    else:
+        controls_runtime_checks(run, environment, ROOT, None)
+
+
+def controls_runtime_checks(run, environment, tree, revision):
+    """Keep the accepted stage names, commands, inputs and completion markers unchanged."""
     for label, project in (('application', 'Application'), ('infrastructure', 'Infrastructure')):
         run.stage('controls-' + label, ['dotnet', 'test', f'tests/{project}.Tests/Allrpcs.{project}.Tests.csproj',
-                  '--no-restore', '--filter', 'FullyQualifiedName~Tests.Input', '--logger', 'console;verbosity=minimal'])
-    run.stage('controls-source', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--source-only'])
-    run.stage('controls-validator-rejections', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--self-test'])
+                  '--no-restore', '--filter', 'FullyQualifiedName~Tests.Input', '--logger', 'console;verbosity=minimal'], tree, environment, revision)
+    for name, flag in (('source', '--source-only'), ('validator-rejections', '--self-test')):
+        run.stage('controls-' + name, [sys.executable, 'scripts/validate-control-remapping-runtime.py', flag], tree, environment, revision)
     report = run.directory / 'controls-main.json'
     run.stage('controls-main', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1800'],
-              env=dict(environment, ALLRPCS_CONTROLS_MAIN_CHECK='1', ALLRPCS_CONTROLS_MODE='headless', ALLRPCS_CONTROLS_REPORT=str(report)),
-              retry_native=True, completion='PASS: controls Main: headless')
-    run.stage('controls-native-output', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--output-only'])
-    run.stage('controls-mounted-resources', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--package-only'])
-    run.stage('controls-reviewed', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--reviewed'])
+              tree, dict(environment, ALLRPCS_CONTROLS_MAIN_CHECK='1', ALLRPCS_CONTROLS_MODE='headless', ALLRPCS_CONTROLS_REPORT=str(report)),
+              revision, retry_native=True, completion='PASS: controls Main: headless')
+    for name, flag in (('native-output', '--output-only'), ('mounted-resources', '--package-only'), ('reviewed', '--reviewed')):
+        run.stage('controls-' + name, [sys.executable, 'scripts/validate-control-remapping-runtime.py', flag], tree, environment, revision)
+
+
+def dialogue_accessibility_runtime(run, environment):
+    """Verify current additive dialogue presentation and honest native reader limitations."""
+    if not (ROOT / 'input-direction/dialogue-accessibility-runtime-authority.json').exists():
+        return
+    for name, flag in (('source', '--source-only'), ('validator-rejections', '--self-test')):
+        run.stage('dialogue-accessibility-' + name, [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', flag])
+    report = run.directory / 'dialogue-accessibility-main.json'
+    run.stage('dialogue-accessibility-main', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1800'],
+              env=dict(environment, ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK='1', ALLRPCS_DIALOGUE_ACCESSIBILITY_MODE='headless',
+                       ALLRPCS_DIALOGUE_ACCESSIBILITY_REPORT=str(report)), retry_native=True,
+              completion='PASS: dialogue accessibility Main: headless')
+    run.stage('dialogue-accessibility-reviewed', [sys.executable, 'scripts/validate-dialogue-accessibility-runtime.py', '--reviewed'])
 
 
 def rain_runtime(run, environment):

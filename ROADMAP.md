@@ -311,8 +311,11 @@ input routing, native 1280×720/1920×1080 UI and three mounted resource presets
 implementation is closed. This checkbox remains open until ordinary physical keyboard, mouse and
 named controller evidence establishes the supported-device claim. Controller-only opening-scenario,
 broad screen-reader and executable-release certification remain unclaimed. The [dialogue-panel keyboard/accessibility proposal](input-direction/dialogue-accessibility-owner-scope.md)
-now completes the finite next planning slice for the separate remaining text-heavy UI item. Its
-exact new presentation grant is missing; no dialogue UI change or broad reader claim is made.
+has now been implemented under the exact owner grant. The [finite dialogue review](input-direction/dialogue-accessibility-runtime-review/README.md)
+retains actual Main keyboard routing at 1280×720/1920×1080, default/remapped focus and cancel,
+exact existing submission semantics and explicit assistive metadata. VoiceOver was not running;
+reader evaluation is recorded not performed. This item remains open for actual named-reader
+outcomes and other text-heavy UI; no broad reader certification is claimed.
 
 Acceptance:
 

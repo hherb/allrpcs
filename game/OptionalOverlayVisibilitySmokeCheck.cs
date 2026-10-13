@@ -24,7 +24,6 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
         CanvasLayer commandOverlay = GetNode<CanvasLayer>("../CommandOverlay");
         CanvasLayer dialogueOverlay = GetNode<CanvasLayer>("../DialogueOverlay");
         CanvasLayer settingsOverlay = GetNode<CanvasLayer>("../SettingsOverlay");
-        LineEdit dialogueInput = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
 
         if (dialogueOverlay.Visible || settingsOverlay.Visible || !commandOverlay.Visible)
         {
@@ -63,13 +62,13 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
         }
 
         controller._UnhandledInput(Action(ToggleAction, pressed: true));
-        dialogueInput.GrabFocus();
-        if (!dialogueOverlay.Visible
+        GetNode<Button>("../SettingsOverlay/ControlsEntry").GrabFocus();
+        if (dialogueOverlay.Visible
             || !settingsOverlay.Visible
             || !commandOverlay.Visible
-            || !dialogueInput.HasFocus())
+            || !GetNode<Button>("../SettingsOverlay/ControlsEntry").HasFocus())
         {
-            Fail("Physical Tab did not reveal both optional overlays above the retained HUD.");
+            Fail("Toggle did not reveal settings with Controls entry focus above the retained HUD.");
             return;
         }
 
@@ -85,7 +84,7 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
 
         GD.Print(
             "Optional overlay visibility smoke passed: settings and dialogue started hidden, "
-            + "the retained toggle action toggled both, the compact HUD remained visible, hidden UI "
+            + "the retained toggle action toggled settings, the compact HUD remained visible, hidden UI "
             + "released focus, and the controller surface stayed closed.");
         GetTree().Quit();
     }

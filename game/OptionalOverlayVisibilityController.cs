@@ -14,6 +14,10 @@ public partial class OptionalOverlayVisibilityController : Node
     private AudioSettingsPanel audioPanel = null!;
     private Button audioEntry = null!;
     private bool closingAll;
+    private TemporaryDialogueInputPanel dialoguePanel = null!;
+    private Button dialogueEntry = null!;
+    private Button settingsClose = null!;
+    private Control[] entryCycle = [];
     private ControlSettingsPanel? controlsPanel;
     private Button? controlsEntry;
     private ControlSettingsController? controlsController;
@@ -33,6 +37,42 @@ public partial class OptionalOverlayVisibilityController : Node
         if (controlsPanel is not null && controlsEntry is not null)
         { controlsEntry.Pressed += OnControlsPressed; controlsPanel.Closed += OnControlsClosed; }
         if (controlsController is not null) { controlsController.Changed += RefreshControlsEntry; }
+        dialoguePanel = GetNode<TemporaryDialogueInputPanel>("../DialogueOverlay/Panel");
+        dialogueEntry = GetNode<Button>("../SettingsOverlay/DialogueEntry");
+        settingsClose = GetNode<Button>("../SettingsOverlay/SettingsClose");
+        dialogueEntry.Pressed += OnDialoguePressed;
+        settingsClose.Pressed += OnSettingsClosePressed;
+        dialoguePanel.Closed += OnDialogueClosed;
+        entryCycle = controlsEntry is null ? [audioEntry, dialogueEntry, settingsClose]
+            : [controlsEntry, audioEntry, dialogueEntry, settingsClose];
+        foreach (Control entry in entryCycle)
+        {
+            // Entry surfaces remain readable over the independent caption layer.
+            foreach (string state in new[] { "normal", "hover", "pressed" })
+            {
+                entry.AddThemeStyleboxOverride(state, new StyleBoxFlat
+                {
+                    BgColor = state == "hover" ? new Color(0.09f, 0.11f, 0.14f) : new Color(0.055f, 0.067f, 0.082f),
+                    ContentMarginLeft = 12,
+                    ContentMarginRight = 12,
+                    ContentMarginTop = 6,
+                    ContentMarginBottom = 6,
+                    CornerRadiusTopLeft = 3,
+                    CornerRadiusTopRight = 3,
+                    CornerRadiusBottomLeft = 3,
+                    CornerRadiusBottomRight = 3
+                });
+            }
+        }
+        for (int i = 0; i < entryCycle.Length; i++)
+        {
+            entryCycle[i].FocusNext = entryCycle[i].GetPathTo(entryCycle[(i + 1) % entryCycle.Length]);
+            entryCycle[i].FocusPrevious = entryCycle[i].GetPathTo(entryCycle[(i + entryCycle.Length - 1) % entryCycle.Length]);
+        }
+        dialogueEntry.AccessibilityName = "Dialogue";
+        dialogueEntry.AccessibilityDescription = "Open dialogue as Seeker.";
+        settingsClose.AccessibilityName = "Close settings";
+        settingsClose.AccessibilityDescription = "Return to the world.";
         RefreshControlsEntry();
         SetVisible(visible: false);
     }
@@ -43,6 +83,24 @@ public partial class OptionalOverlayVisibilityController : Node
         // A remapped primary button never steals native GUI pointer activation.
         if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Left }
             && GetViewport().GuiGetHoveredControl() is Control hovered && hovered.IsVisibleInTree()) { return; }
+        Control? focus = GetViewport().GuiGetFocusOwner();
+        if (settingsOverlay.Visible && focus is not null && entryCycle.Contains(focus))
+        {
+            if (ControlInputMatcher.Pressed(@event, "ui_cancel"))
+            { SetVisible(false); GetViewport().SetInputAsHandled(); return; }
+            bool next = ControlInputMatcher.Pressed(@event, "ui_focus_next");
+            bool previous = ControlInputMatcher.Pressed(@event, "ui_focus_prev");
+            if (next || previous)
+            {
+                int index = Array.IndexOf(entryCycle, focus);
+                entryCycle[(index + (previous ? entryCycle.Length - 1 : 1)) % entryCycle.Length].GrabFocus();
+                GetViewport().SetInputAsHandled(); return;
+            }
+        }
+        // Contained focus traversal takes priority over a coincident overlay toggle binding.
+        if ((settingsOverlay.Visible || dialogueOverlay.Visible) && focus is not null
+            && (ControlInputMatcher.Pressed(@event, "ui_focus_next")
+                || ControlInputMatcher.Pressed(@event, "ui_focus_prev"))) { return; }
         if (ControlInputContext.TogglesAllowed(this) && ControlInputMatcher.Pressed(@event, ToggleAction))
         { _UnhandledInput(@event); }
     }
@@ -57,7 +115,7 @@ public partial class OptionalOverlayVisibilityController : Node
             return;
         }
 
-        SetVisible(!(dialogueOverlay.Visible || audioPanel.Visible || controlsPanel?.Visible == true));
+        SetVisible(!(settingsOverlay.Visible || dialogueOverlay.Visible || audioPanel.Visible || controlsPanel?.Visible == true));
         GetViewport().SetInputAsHandled();
     }
 
@@ -77,7 +135,7 @@ public partial class OptionalOverlayVisibilityController : Node
             focusOwner.ReleaseFocus();
         }
 
-        dialogueOverlay.Visible = visible;
+        dialogueOverlay.Visible = false;
         settingsOverlay.Visible = visible;
         if (visible && controlsEntry is not null) { controlsEntry.GrabFocus(); }
     }
@@ -93,7 +151,7 @@ public partial class OptionalOverlayVisibilityController : Node
     {
         if (!closingAll)
         {
-            dialogueOverlay.Visible = restoreFocus;
+            dialogueOverlay.Visible = false;
             settingsOverlay.Visible = restoreFocus;
         }
     }
@@ -104,9 +162,22 @@ public partial class OptionalOverlayVisibilityController : Node
     }
     private void OnControlsClosed(bool restoreFocus)
     {
-        if (!closingAll) { dialogueOverlay.Visible = restoreFocus; settingsOverlay.Visible = restoreFocus; }
+        if (!closingAll) { dialogueOverlay.Visible = false; settingsOverlay.Visible = restoreFocus; }
         RefreshControlsEntry();
     }
+    private void OnDialoguePressed()
+    {
+        settingsOverlay.Visible = false;
+        dialogueOverlay.Visible = true;
+        dialoguePanel.FocusInput();
+    }
+    private void OnDialogueClosed()
+    {
+        dialogueOverlay.Visible = false;
+        settingsOverlay.Visible = true;
+        dialogueEntry.GrabFocus();
+    }
+    private void OnSettingsClosePressed() => SetVisible(false);
     private void RefreshControlsEntry()
     {
         if (controlsEntry is null) { return; }
@@ -117,6 +188,11 @@ public partial class OptionalOverlayVisibilityController : Node
     /// <inheritdoc />
     public override void _ExitTree()
     {
+        dialogueEntry.Pressed -= OnDialoguePressed;
+        settingsClose.Pressed -= OnSettingsClosePressed;
+        dialoguePanel.Closed -= OnDialogueClosed;
+        audioEntry.Pressed -= OnAudioPressed;
+        audioPanel.Closed -= OnAudioClosed;
         if (controlsController is not null) { controlsController.Changed -= RefreshControlsEntry; }
         if (controlsPanel is not null) { controlsPanel.Closed -= OnControlsClosed; }
         if (controlsEntry is not null) { controlsEntry.Pressed -= OnControlsPressed; }

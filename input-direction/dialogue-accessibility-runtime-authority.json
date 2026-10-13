@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "recorded": "2026-10-13",
+  "owner_statement": "Read HANDOVER.md and follow the instructions - scope is approved",
+  "slice_id": "phase11-dialogue-accessibility-runtime-integration",
+  "baseline_commit": "c6f98051e309f87a0e1d4f3ce31b34be942ca641",
+  "controls_revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+  "proposal_bindings": [
+    {
+      "path": "input-direction/dialogue-accessibility-owner-scope.md",
+      "sha256": "8ad389bf36a0c80452e6785ba79bb1a86aef11c761a14e42385f58f0e66b8289"
+    },
+    {
+      "path": "input-direction/dialogue-accessibility-owner-scope.json",
+      "sha256": "8469a8ca07ffa1788137e2b5a2ec6c8cebd28928acfa6b925bbe340effd209d8"
+    }
+  ],
+  "scope": {
+    "slice_id": "phase11-dialogue-accessibility-runtime-integration",
+    "authority_status": "awaiting_exact_owner_grant",
+    "scope": "One existing dialogue presentation, four settings entry buttons, contained dialogue keyboard focus and explicit assistive names/relationships/polite submission status; preserve current input/remapping/domain/provider/response owners.",
+    "modified_files": [
+      "game/Main.tscn",
+      "game/TemporaryDialogueInputPanel.cs",
+      "game/OptionalOverlayVisibilityController.cs",
+      "README.md",
+      "ROADMAP.md",
+      "HANDOVER.md",
+      "CONTINUATION.json",
+      "quality.py"
+    ],
+    "new_files": [
+      "game/DialogueAccessibilityMainSmokeCheck.cs",
+      "game/DialogueAccessibilityMainSmokeCheck.tscn",
+      "scripts/validate-dialogue-accessibility-runtime.py"
+    ],
+    "new_uid_sidecars": [
+      "game/DialogueAccessibilityMainSmokeCheck.cs.uid"
+    ],
+    "verification_only_adjustments": [
+      {
+        "path": "game/DialogueInputSmokeCheck.cs",
+        "sha256": "3a41eb22e111027266cd9a7910560eaaf01198d1750b05a099ca5067425fd633",
+        "reason": "Current unfrozen presentation assertions may change only for the approved entry/focus/close/metadata behavior; retain submission and input defaults semantics."
+      },
+      {
+        "path": "game/OptionalOverlayVisibilitySmokeCheck.cs",
+        "sha256": "c7ef49f833043bf6d9f6f68d438d3851be33588d5f80ed9edc3cbb12ebe5959f",
+        "reason": "Current unfrozen presentation assertions may change only for the approved entry/focus/close/metadata behavior; retain submission and input defaults semantics."
+      }
+    ],
+    "settings_focus_cycle": [
+      "ControlsEntry",
+      "AudioEntry",
+      "DialogueEntry",
+      "SettingsClose"
+    ],
+    "dialogue_focus_cycle": [
+      "Input",
+      "Whispering",
+      "Submit",
+      "Close"
+    ],
+    "preserved_node_paths": [
+      "DialogueOverlay/Panel/Prompt",
+      "DialogueOverlay/Panel/Input",
+      "DialogueOverlay/Panel/Submit",
+      "DialogueOverlay/Panel/Whispering",
+      "DialogueOverlay/Panel/Status",
+      "DialogueOverlay/Panel/ResponsePrompt",
+      "DialogueOverlay/Panel/Response",
+      "DialogueOverlay/Panel/ModelStatus",
+      "DialogueOverlay/Panel/ModelStreamText"
+    ],
+    "protected_sources": [
+      {
+        "path": "game/DialogueInputController.cs",
+        "sha256": "12c2f5699cef34fce8c51f876fe8af594a9e3bc1136848f1c668982c46c5847d"
+      },
+      {
+        "path": "game/TemporaryCharacterTurnResponseLabel.cs",
+        "sha256": "7fd7dc95691ce0f94ac37e72fb4484c653562578acd6198d2c641923276b4a92"
+      },
+      {
+        "path": "game/TemporaryCharacterModelGenerationStatusLabel.cs",
+        "sha256": "ed4069a9d78839f6c519de948d2e13ab0331efc004a25d86be4026b7472e2165"
+      },
+      {
+        "path": "game/TemporaryCharacterModelStreamTextLabel.cs",
+        "sha256": "fc0ee0cf5719902e62b310b8f7f174ad949f8a50b44b3c385ae7dfd531ad4337"
+      },
+      {
+        "path": "game/ControlSettingsPanel.cs",
+        "sha256": "b72a14e2d76ca2ff992130434009dc637a3df8bc695b18342f30144ce770b148"
+      },
+      {
+        "path": "game/ControlSettingsController.cs",
+        "sha256": "acda594c4731c4df8a1ef4292a4974a38afc8f977a3ec6786ab20daf560e8318"
+      },
+      {
+        "path": "game/ControlSettingsStorageController.cs",
+        "sha256": "950e275259c3f967ff647a60f9a584ced7194dd7d2c8c5ecfce9b60371ad366c"
+      },
+      {
+        "path": "game/ControlInputMapAdapter.cs",
+        "sha256": "11dd53783c61e51dd3aacf593cd0737fe0b1dcc8df3ef0f78f20f8efdd3002a1"
+      },
+      {
+        "path": "game/ControlInputMatcher.cs",
+        "sha256": "34458b5173df6f41e327a13bf650ddd688f607d6067d4980787b6a6ccf9033b5"
+      },
+      {
+        "path": "game/ControlInputContext.cs",
+        "sha256": "ce480e3a5242aad228519589a0f6c0c8400a2bdb6e363d15db790250525a0892"
+      },
+      {
+        "path": "game/AudioSettingsPanel.cs",
+        "sha256": "9d35b8d77a904b2c4183ec63902b495ea8f4bfd857f9b9688934bf36f64dc9ee"
+      },
+      {
+        "path": "scripts/validate-control-remapping-runtime.py",
+        "sha256": "8e49b1da7bb86d3a97d8508591a5d5532d19c9d5598c1ebdbed6da95799b9584"
+      },
+      {
+        "path": "input-direction/remapping-runtime-verification.json",
+        "sha256": "043f02affadf401c7e29303908b614e7cf58b7607bd73dfed0b352a30ed577f3"
+      }
+    ],
+    "preserved_editor_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+    "verification": [
+      "Ordinary and one remapped UI focus/cancel configuration through actual Main keyboard routing",
+      "Exact existing speaker/delivery/text accepted-cleared and rejected-retained submission semantics with providers disabled",
+      "Actual native 1280x720 and 1920x1080 focus/metadata reports and inspected captures",
+      "Truthful named screen-reader protocol and observed/failed/not-performed outcomes; no OS setting changes",
+      "Finite stale/missing-evidence rejection checks and complete root quality with accepted controls checks in the immutable published baseline"
+    ],
+    "evidence_outputs": [
+      "input-direction/dialogue-accessibility-runtime-authority.json",
+      "input-direction/dialogue-accessibility-runtime-verification.json",
+      "input-direction/dialogue-accessibility-runtime-review/README.md"
+    ],
+    "excluded": [
+      "Controls preferences/catalog/editor/capture/schema changes",
+      "Provider form or credential UI changes",
+      "Domain/application transitions, dialogue generation or transcript persistence",
+      "Response/model source changes or hidden/partial provider content in metadata",
+      "World/save/audio/art/geometry/admission changes",
+      "OS screen-reader setting changes",
+      "Broad text-heavy UI, physical-controller or executable-release certification"
+    ],
+    "layout": {
+      "Input": {
+        "right": 718,
+        "top": 5,
+        "bottom": 36
+      },
+      "Submit": {
+        "left": 726,
+        "right": 816,
+        "top": 5,
+        "bottom": 36
+      },
+      "DialogueClose": {
+        "left": 824,
+        "right": 924,
+        "top": 5,
+        "bottom": 36
+      },
+      "DialogueEntry": {
+        "left": 12,
+        "right": 180,
+        "top": 298,
+        "bottom": 338
+      },
+      "SettingsClose": {
+        "left": 12,
+        "right": 180,
+        "top": 352,
+        "bottom": 392
+      }
+    }
+  },
+  "verification_only_adjustments": [
+    {
+      "path": "game/DialogueInputSmokeCheck.cs",
+      "sha256": "3a41eb22e111027266cd9a7910560eaaf01198d1750b05a099ca5067425fd633",
+      "reason": "Current unfrozen presentation assertions may change only for the approved entry/focus/close/metadata behavior; retain submission and input defaults semantics."
+    },
+    {
+      "path": "game/OptionalOverlayVisibilitySmokeCheck.cs",
+      "sha256": "c7ef49f833043bf6d9f6f68d438d3851be33588d5f80ed9edc3cbb12ebe5959f",
+      "reason": "Current unfrozen presentation assertions may change only for the approved entry/focus/close/metadata behavior; retain submission and input defaults semantics."
+    }
+  ],
+  "preserved_editor_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

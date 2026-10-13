@@ -1,4 +1,4 @@
-[gd_scene load_steps=446 format=3]
+[gd_scene load_steps=447 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -662,6 +662,8 @@
 [ext_resource type="Script" path="res://ControlInputContext.cs" id="controls_context"]
 [ext_resource type="PackedScene" path="res://ControlSettingsPanel.tscn" id="controls_panel"]
 [ext_resource type="PackedScene" path="res://ControlSettingsMainSmokeCheck.tscn" id="controls_check"]
+
+[ext_resource type="PackedScene" path="res://DialogueAccessibilityMainSmokeCheck.tscn" id="dialogue_accessibility_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3839,6 +3841,7 @@ horizontal_alignment = 1
 
 [node name="SettingsOverlay" type="CanvasLayer" parent="."]
 visible = false
+layer = 6
 
 [node name="AudioEntry" type="Button" parent="SettingsOverlay"]
 offset_left = 12.0
@@ -3969,6 +3972,7 @@ text = "Connection: NOT TESTED"
 
 [node name="DialogueOverlay" type="CanvasLayer" parent="."]
 visible = false
+layer = 6
 
 [node name="Panel" type="ColorRect" parent="DialogueOverlay"]
 offset_left = 12.0
@@ -3988,16 +3992,23 @@ text = "SAY AS SEEKER"
 [node name="Input" type="LineEdit" parent="DialogueOverlay/Panel"]
 offset_left = 124.0
 offset_top = 5.0
-offset_right = 826.0
+offset_right = 718.0
 offset_bottom = 36.0
 placeholder_text = "Enter unrestricted in-world dialogue"
 
 [node name="Submit" type="Button" parent="DialogueOverlay/Panel"]
-offset_left = 834.0
+offset_left = 726.0
+offset_top = 5.0
+offset_right = 816.0
+offset_bottom = 36.0
+text = "SUBMIT"
+
+[node name="Close" type="Button" parent="DialogueOverlay/Panel"]
+offset_left = 824.0
 offset_top = 5.0
 offset_right = 924.0
 offset_bottom = 36.0
-text = "SUBMIT"
+text = "CLOSE"
 
 [node name="Whispering" type="CheckButton" parent="DialogueOverlay/Panel"]
 offset_left = 12.0
@@ -4431,6 +4442,22 @@ offset_top = 190.0
 offset_right = 460.0
 offset_bottom = 230.0
 text = "Controls settings"
+
+[node name="DialogueEntry" type="Button" parent="SettingsOverlay"]
+offset_left = 12.0
+offset_top = 298.0
+offset_right = 180.0
+offset_bottom = 338.0
+text = "Dialogue"
+
+[node name="SettingsClose" type="Button" parent="SettingsOverlay"]
+offset_left = 12.0
+offset_top = 352.0
+offset_right = 180.0
+offset_bottom = 392.0
+text = "Close settings"
+
+[node name="DialogueAccessibilityMainSmokeCheck" parent="." instance=ExtResource("dialogue_accessibility_check")]
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
