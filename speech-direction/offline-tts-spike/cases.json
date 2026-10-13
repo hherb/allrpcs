@@ -1,0 +1,104 @@
+{
+  "pocket": [
+    {
+      "id": "en-normal",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "normal",
+      "instruction": null
+    },
+    {
+      "id": "en-punctuation",
+      "language": "English",
+      "text": "Stay close! There is still hope for the village!",
+      "style": "punctuation",
+      "instruction": null
+    },
+    {
+      "id": "en-game",
+      "language": "English",
+      "text": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "style": "normal",
+      "instruction": null
+    },
+    {
+      "id": "de-normal",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "normal",
+      "instruction": null
+    },
+    {
+      "id": "de-punctuation",
+      "language": "German",
+      "text": "Bleib bei mir! Es gibt noch Hoffnung f\u00fcr das Dorf!",
+      "style": "punctuation",
+      "instruction": null
+    },
+    {
+      "id": "de-game",
+      "language": "German",
+      "text": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verb\u00e4nde zur Heilerin.",
+      "style": "normal",
+      "instruction": null
+    }
+  ],
+  "qwen3": [
+    {
+      "id": "en-calm",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "calm",
+      "instruction": "Speak gently and reassuringly, as a healer comforting a frightened companion."
+    },
+    {
+      "id": "en-urgent",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "urgent",
+      "instruction": "Speak urgently with fear and determination, warning a companion of immediate danger."
+    },
+    {
+      "id": "en-whisper",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "whisper",
+      "instruction": "Whisper quietly and cautiously, trying not to alert someone nearby. Keep the words intelligible."
+    },
+    {
+      "id": "en-game",
+      "language": "English",
+      "text": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "style": "normal",
+      "instruction": null
+    },
+    {
+      "id": "de-calm",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "calm",
+      "instruction": "Speak gently and reassuringly, as a healer comforting a frightened companion."
+    },
+    {
+      "id": "de-urgent",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "urgent",
+      "instruction": "Speak urgently with fear and determination, warning a companion of immediate danger."
+    },
+    {
+      "id": "de-whisper",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "whisper",
+      "instruction": "Whisper quietly and cautiously, trying not to alert someone nearby. Keep the words intelligible."
+    },
+    {
+      "id": "de-game",
+      "language": "German",
+      "text": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verb\u00e4nde zur Heilerin.",
+      "style": "normal",
+      "instruction": null
+    }
+  ]
+}

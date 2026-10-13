@@ -1,0 +1,14 @@
+{
+  "updated": "2026-10-13",
+  "decisions": [
+    {
+      "model": "Qwen2.5-Omni-7B",
+      "status": "discarded_by_owner",
+      "owner_statement": "I think we can discard qwen2.5-omni as an option. Lets spike your recommendation",
+      "evidence": "qwen25-omni-m3max-audition/README.md",
+      "preserve_original_audition": true
+    }
+  ],
+  "next_experiment": "offline-tts-spike/owner-request.json",
+  "selected_game_backend": null
+}

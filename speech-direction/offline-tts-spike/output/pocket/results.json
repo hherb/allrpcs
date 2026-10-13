@@ -1,0 +1,1381 @@
+{
+  "backend": "pocket",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "physical_ram_bytes": 137438953472,
+  "load_average_before": [
+    14.93359375,
+    16.330078125,
+    16.68701171875
+  ],
+  "seed": 20261013,
+  "sampled_rss_peak_bytes": 966787072,
+  "cases": [
+    {
+      "id": "en-normal",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "alba",
+      "status": "generated",
+      "output": "en-normal.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 2.88,
+      "generation_seconds": 0.3802125829970464,
+      "first_pcm_chunk_seconds": 0.09122366702649742,
+      "chunks": [
+        {
+          "seconds": 0.09122366702649742,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09930475009605289,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10665666707791388,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.11410170805174857,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1211506670806557,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.128079375019297,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1352358750300482,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.14316625008359551,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.15139695804100484,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.16006483300589025,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.16871558304410428,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17717587505467236,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18585920799523592,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.19477770803496242,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2039662500610575,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21318491699639708,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.22107816708739847,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2302705420879647,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23871533304918557,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.24703645799309015,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.25487137504387647,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.26271283300593495,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2706648330204189,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2782523330533877,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.28704612504225224,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.295022250036709,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3036803330760449,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3113373750820756,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.319435500074178,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3281348750460893,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.33699120802339166,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.34519304207060486,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3531790419947356,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.361507875029929,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.36968358303420246,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.37895908299833536,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.13201825798508557,
+      "raw_peak": 0.6269839406013489,
+      "clipped_samples": 0,
+      "sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e"
+    },
+    {
+      "id": "en-punctuation",
+      "language": "English",
+      "text": "Stay close! There is still hope for the village!",
+      "style": "punctuation",
+      "instruction": null,
+      "voice": "alba",
+      "status": "generated",
+      "output": "en-punctuation.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 3.12,
+      "generation_seconds": 0.3489860000554472,
+      "first_pcm_chunk_seconds": 0.032819541986100376,
+      "chunks": [
+        {
+          "seconds": 0.032819541986100376,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04076500004157424,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04920654196757823,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.05777654203120619,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.0657462920062244,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.07403024996165186,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08182604203466326,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09046375006437302,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09904862497933209,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10674258403014392,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1147865840466693,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.12271949998103082,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.13110925001092255,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1396857090294361,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.14828325004782528,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1563856250140816,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1647952919593081,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17347604199312627,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18136695900466293,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.19024504197295755,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.19925212499219924,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2071509170345962,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21579162497073412,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2238746250513941,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23240087507292628,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.24036258400883526,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2478217090247199,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2565930839627981,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.26513670897111297,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2734882920049131,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2820562500273809,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2898355000652373,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.29843829199671745,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.30725908395834267,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.31529504200443625,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.32338504202198237,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.33165345899760723,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3398563750088215,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.34805508400313556,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.11185448719725873,
+      "raw_peak": 0.631243109703064,
+      "clipped_samples": 0,
+      "sha256": "ff27c6e53b408e928ae45d9d391121b61abda0897e58b8ad6f59cb191cc5e776"
+    },
+    {
+      "id": "en-game",
+      "language": "English",
+      "text": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "alba",
+      "status": "generated",
+      "output": "en-game.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.08,
+      "generation_seconds": 0.4569702500011772,
+      "first_pcm_chunk_seconds": 0.0337072080001235,
+      "chunks": [
+        {
+          "seconds": 0.0337072080001235,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04192712507210672,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.051037166034802794,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.05892133305314928,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.06679862504824996,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.07527704106178135,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08337216603104025,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09124550002161413,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09938383300323039,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10732370801270008,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.11551237502135336,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1230803329963237,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.13125199999194592,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.13938091602176428,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.14754283300135285,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.155172000057064,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.16315320797730237,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17145787505432963,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17923762497957796,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18752650008536875,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1956221250584349,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2039975409861654,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21213545801583678,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.22097470797598362,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.22906691604293883,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23789525008760393,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.24656091607175767,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2554106659954414,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.26332025008741766,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2728255409747362,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.28161129099316895,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.29060495807789266,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.29941300000064075,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3081775000318885,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3165875830454752,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.32561045803595334,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.33495070808567107,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3437024160521105,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.35213562508579344,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3610590830212459,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.36969579104334116,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.37871229101438075,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.387547375052236,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3962383749894798,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4046072500059381,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4133006250485778,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4223605829756707,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4310150829842314,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.43933412502519786,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4474957910133526,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.45637558307498693,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.11200251225519049,
+      "raw_peak": 0.6371193528175354,
+      "clipped_samples": 0,
+      "sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974"
+    },
+    {
+      "id": "de-normal",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "juergen",
+      "status": "generated",
+      "output": "de-normal.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.56,
+      "generation_seconds": 0.5010479589691386,
+      "first_pcm_chunk_seconds": 0.03506699996069074,
+      "chunks": [
+        {
+          "seconds": 0.03506699996069074,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04454216698650271,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.0532100839773193,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.06159904203377664,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.07030958402901888,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.07875833392608911,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08666375000029802,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09438116697128862,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10336479195393622,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.11260283400770277,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1214470419799909,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1313803750090301,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.14010795892681926,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.14900516695342958,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.15769224998075515,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1662140419939533,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17496466694865376,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18312304199207574,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1911154999397695,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.19925291696563363,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.20763829199131578,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2156318339984864,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.22373299999162555,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23175433394499123,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23961266700644046,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.24825862504076213,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.25585391698405147,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2645058339694515,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2722077090293169,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.28090408397838473,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2894230419769883,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2976725419284776,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3059235840337351,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.31364145898260176,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3212035000324249,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.32957850000821054,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3370223749661818,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3457547089783475,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3536824999609962,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.36179408396128565,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.37032329197973013,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.378613792010583,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.38691825000569224,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.39506216696463525,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.40339333401061594,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.41197716700844467,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4202920839888975,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.42757183394860476,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.43578904203604907,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.44355033396277577,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4519538340391591,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.46013549994677305,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4680622919695452,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.47601849993225187,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.48384937492664903,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.49185783392749727,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.500180916977115,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.10987893837042513,
+      "raw_peak": 0.31446725130081177,
+      "clipped_samples": 0,
+      "sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813"
+    },
+    {
+      "id": "de-punctuation",
+      "language": "German",
+      "text": "Bleib bei mir! Es gibt noch Hoffnung f\u00fcr das Dorf!",
+      "style": "punctuation",
+      "instruction": null,
+      "voice": "juergen",
+      "status": "generated",
+      "output": "de-punctuation.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.56,
+      "generation_seconds": 0.4915655000368133,
+      "first_pcm_chunk_seconds": 0.03147662500850856,
+      "chunks": [
+        {
+          "seconds": 0.03147662500850856,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.03989262506365776,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04843295901082456,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.056294834008440375,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.06434345908928663,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.07281475001946092,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08071083400864154,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08900054206606,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09773216710891575,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10485333402175456,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.11286116705741733,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.12116270908154547,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.12930675002280623,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.137986334040761,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1463129590265453,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1538427920313552,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.16218958410900086,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17006504209712148,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17811116704251617,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18599775002803653,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.19488229206763208,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.203129917033948,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21094791707582772,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21894795901607722,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2269581250147894,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2352259170729667,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2436463750200346,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2517565420130268,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.25962120899930596,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.26834566704928875,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2767191670136526,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.28489158407319337,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.29351741704158485,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3018712500343099,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.30973254202399403,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3178150000749156,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.32610091706737876,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.33407716709189117,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.34204929205588996,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3502435419941321,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3586814170703292,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3668098340276629,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.37522925005760044,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3836447501089424,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3917065840214491,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.399826709064655,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4086347920820117,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.415948084089905,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4242829590803012,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4321934590116143,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4408293340820819,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4487146669998765,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.45682825008407235,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4658066250849515,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4739141670288518,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4821626250632107,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4907590840011835,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.10779945176245907,
+      "raw_peak": 0.3145369291305542,
+      "clipped_samples": 0,
+      "sha256": "e84520a6045936037cb9165f31f411c86cd5068bd9277186bf63a11cb5d3b444"
+    },
+    {
+      "id": "de-game",
+      "language": "German",
+      "text": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verb\u00e4nde zur Heilerin.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "juergen",
+      "status": "generated",
+      "output": "de-game.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 5.12,
+      "generation_seconds": 0.5533628329867497,
+      "first_pcm_chunk_seconds": 0.033026040997356176,
+      "chunks": [
+        {
+          "seconds": 0.033026040997356176,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04150995798408985,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.04988458298612386,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.05838579102419317,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.06706083309836686,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.0754703750135377,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.08369758306071162,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.09206325002014637,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1000725410412997,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.10791837505530566,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.11586029105819762,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.12398366606794298,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.13174233306199312,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1397772500058636,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1491360830841586,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.15709533309563994,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.16530912509188056,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.17347058304585516,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18132125004194677,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.18975145800504833,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.1984239580342546,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2057203750591725,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.21358695800881833,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.22215058305300772,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23017358302604407,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.23829020804259926,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2464459160109982,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2546819580020383,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.26329312508460134,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2710674999980256,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.27945287502370775,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2868539580376819,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.2956940410658717,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.30333854106720537,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.31158866605255753,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.31935329106636345,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.32778050005435944,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3362587500596419,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3439088750164956,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3523166250670329,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3611947080353275,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.36878033308312297,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3773873749887571,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3853146249894053,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.3938982910476625,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.40224308299366385,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.410003750002943,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.41833775001578033,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.426316041033715,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4341269580181688,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.443882541032508,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.45194516598712653,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4600994579959661,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.46901091607287526,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4766021250979975,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.4851260830182582,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.49346304102800786,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5013328330824152,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5102872910210863,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5180654160212725,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5273947500390932,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5352311660535634,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5439464580267668,
+          "samples": 1920
+        },
+        {
+          "seconds": 0.5525397910969332,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.10807867831772455,
+      "raw_peak": 0.5827571749687195,
+      "clipped_samples": 0,
+      "sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492"
+    }
+  ],
+  "loads": [
+    {
+      "language": "english",
+      "model_seconds": 0.3044158749980852,
+      "voice_seconds": 0.0018868750194087625
+    },
+    {
+      "language": "german",
+      "model_seconds": 0.2899567090207711,
+      "voice_seconds": 0.00042562501039355993
+    }
+  ],
+  "protocol": "One process/backend, one trial/case, local assets, no playback device. First case is cold.",
+  "limits": "Background load uncontrolled; no M1/game coexistence/non-macOS test; first PCM chunk is not speaker playback.",
+  "precision": "CPU float32, no quantization; one torch intra-op thread",
+  "versions": {
+    "numpy": "2.2.6",
+    "soundfile": "0.14.0",
+    "psutil": "7.2.2",
+    "pocket-tts": "3.3.0",
+    "torch": "2.7.0",
+    "tokenizers": "0.23.3",
+    "huggingface-hub": "2.2.0"
+  },
+  "process_lifetime_maxrss_bytes": 1123762176,
+  "load_average_after": [
+    13.61376953125,
+    16.0048828125,
+    16.5673828125
+  ]
+}

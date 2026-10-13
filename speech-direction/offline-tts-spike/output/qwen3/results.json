@@ -1,0 +1,754 @@
+{
+  "backend": "qwen3",
+  "machine": "arm64",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "physical_ram_bytes": 137438953472,
+  "load_average_before": [
+    14.9384765625,
+    16.0302734375,
+    16.55078125
+  ],
+  "seed": 20261013,
+  "sampled_rss_peak_bytes": 2887827456,
+  "cases": [
+    {
+      "id": "en-calm",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "calm",
+      "instruction": "Speak gently and reassuringly, as a healer comforting a frightened companion.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "en-calm.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.16,
+      "generation_seconds": 4.7050995419267565,
+      "first_pcm_chunk_seconds": 3.6305514170089737,
+      "chunks": [
+        {
+          "seconds": 3.6305514170089737,
+          "samples": 7680
+        },
+        {
+          "seconds": 3.744845416978933,
+          "samples": 7680
+        },
+        {
+          "seconds": 3.851589999976568,
+          "samples": 7680
+        },
+        {
+          "seconds": 3.947640207945369,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.03873254195787,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.121082832920365,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.196842417004518,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.272667124983855,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.34959679201711,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.449990832945332,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.527492666966282,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.6041474170051515,
+          "samples": 7680
+        },
+        {
+          "seconds": 4.681027499958873,
+          "samples": 7680
+        }
+      ],
+      "real_time_factor": 1.1310335437323933,
+      "raw_peak": 0.16952769458293915,
+      "clipped_samples": 0,
+      "sha256": "963b1f51c312f602c642ae093f547d8ca481f870896a0bff40e145dabf26c96f",
+      "speech_tokens": 52,
+      "token_budget_reached": false
+    },
+    {
+      "id": "en-urgent",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "urgent",
+      "instruction": "Speak urgently with fear and determination, warning a companion of immediate danger.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "en-urgent.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.96,
+      "generation_seconds": 1.336269999970682,
+      "first_pcm_chunk_seconds": 0.10156558302696794,
+      "chunks": [
+        {
+          "seconds": 0.10156558302696794,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.17844287503976375,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.2857024170225486,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.36804533295799047,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.4446285420563072,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5232555000111461,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6001579170115292,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6933419579872862,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7735677079763263,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8508968750247732,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9312250419752672,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0079779999796301,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0868608329910785,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.164993374957703,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2685385829536244,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.3289459169609472,
+          "samples": 3840
+        }
+      ],
+      "real_time_factor": 0.2694092741876375,
+      "raw_peak": 0.2633598744869232,
+      "clipped_samples": 0,
+      "sha256": "6524d3893b0b16442d320ec3dcbc863f2e762ec577a1e77925b0fee926a8cdbd",
+      "speech_tokens": 62,
+      "token_budget_reached": false
+    },
+    {
+      "id": "en-whisper",
+      "language": "English",
+      "text": "Stay close. There is still hope for the village.",
+      "style": "whisper",
+      "instruction": "Whisper quietly and cautiously, trying not to alert someone nearby. Keep the words intelligible.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "en-whisper.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 5.84,
+      "generation_seconds": 1.6560745420865715,
+      "first_pcm_chunk_seconds": 0.12318104202859104,
+      "chunks": [
+        {
+          "seconds": 0.12318104202859104,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.20198595803231,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.28094895801041275,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.40167291706893593,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.48181237501557916,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5631583750946447,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6416659170063213,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7231175830820575,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.800201875041239,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8758338330080733,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9519431670196354,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0439475000603124,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.124446792062372,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2241662919986993,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.3040536250919104,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.3905667919898406,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.4692768329987302,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.551586333080195,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.6493206670274958,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.2835744078915362,
+      "raw_peak": 0.5539292097091675,
+      "clipped_samples": 0,
+      "sha256": "e5fe6220756fa69ada5c071fdb34233dad84ebfd75627273cf340a5839033fe9",
+      "speech_tokens": 73,
+      "token_budget_reached": false
+    },
+    {
+      "id": "en-game",
+      "language": "English",
+      "text": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "en-game.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.96,
+      "generation_seconds": 1.2688101249514148,
+      "first_pcm_chunk_seconds": 0.10855562495999038,
+      "chunks": [
+        {
+          "seconds": 0.10855562495999038,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.18967404193244874,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.2654807500075549,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.34089979191776365,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.42476904194336385,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.4993295829044655,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.574637166922912,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6562570419628173,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7339341249316931,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.821095791994594,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8968594169709831,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9713070829166099,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0475769579643384,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.1223013330018148,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2071804580045864,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2646356669720262,
+          "samples": 3840
+        }
+      ],
+      "real_time_factor": 0.25580849293375296,
+      "raw_peak": 0.3059966266155243,
+      "clipped_samples": 0,
+      "sha256": "fbefad7269b4d17c23c55d2d26f11d8d2a42cb5686fca737ac026947a6ad2c37",
+      "speech_tokens": 62,
+      "token_budget_reached": false
+    },
+    {
+      "id": "de-calm",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "calm",
+      "instruction": "Speak gently and reassuringly, as a healer comforting a frightened companion.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "de-calm.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 4.4,
+      "generation_seconds": 1.0979592920048162,
+      "first_pcm_chunk_seconds": 0.09563508396968246,
+      "chunks": [
+        {
+          "seconds": 0.09563508396968246,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.16900841693859547,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.24257649993523955,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.3166052090236917,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.39232116693165153,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.46674099995289,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5412974590435624,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.615500958985649,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6944881669478491,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7741848749574274,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8517670419532806,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.92947358393576,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0096478749765083,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0924039999954402,
+          "samples": 5760
+        }
+      ],
+      "real_time_factor": 0.2495362027283673,
+      "raw_peak": 0.4299249053001404,
+      "clipped_samples": 0,
+      "sha256": "33c084dbf3af488740da21f3b1b48507b7d89cfeb83f9361dce1adad2d9133fe",
+      "speech_tokens": 55,
+      "token_budget_reached": false
+    },
+    {
+      "id": "de-urgent",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "urgent",
+      "instruction": "Speak urgently with fear and determination, warning a companion of immediate danger.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "de-urgent.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 5.68,
+      "generation_seconds": 1.5079693750012666,
+      "first_pcm_chunk_seconds": 0.10374145791865885,
+      "chunks": [
+        {
+          "seconds": 0.10374145791865885,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.18185770802665502,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.2584064999828115,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.33339787495788187,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.4425912909209728,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5256697909208015,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6090418749954551,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.689450207981281,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7736375000094995,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8536186249693856,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9296090409625322,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.004233791027218,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.096311082947068,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.185880666016601,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2631539999274537,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.3388118329457939,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.4151077079586685,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.4995903329690918,
+          "samples": 5760
+        }
+      ],
+      "real_time_factor": 0.26548756602134976,
+      "raw_peak": 0.6301108002662659,
+      "clipped_samples": 0,
+      "sha256": "4008816eebb083d3b9a409b23d574642445023e3a620fb8d4ccf5b833cf5d008",
+      "speech_tokens": 71,
+      "token_budget_reached": false
+    },
+    {
+      "id": "de-whisper",
+      "language": "German",
+      "text": "Bleib bei mir. Es gibt noch Hoffnung f\u00fcr das Dorf.",
+      "style": "whisper",
+      "instruction": "Whisper quietly and cautiously, trying not to alert someone nearby. Keep the words intelligible.",
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "de-whisper.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 6.16,
+      "generation_seconds": 1.57159170799423,
+      "first_pcm_chunk_seconds": 0.11562029097694904,
+      "chunks": [
+        {
+          "seconds": 0.11562029097694904,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.19174070795997977,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.2796609579818323,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.3559692910639569,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.43062295799609274,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5049873749958351,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5804218329722062,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.6689792500110343,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7484803330153227,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8252917079953477,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8993221250129864,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9860047909896821,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.071439207997173,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.1488496660022065,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2266717080492526,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.3007550410693511,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.374522375059314,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.449009875068441,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.5257025830214843,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.5660252909874544,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.25512852402503733,
+      "raw_peak": 0.36296653747558594,
+      "clipped_samples": 0,
+      "sha256": "4aeeadd127fd4bb4ebe21602809454daadf40fa469238715850e8b361e006fb4",
+      "speech_tokens": 77,
+      "token_budget_reached": false
+    },
+    {
+      "id": "de-game",
+      "language": "German",
+      "text": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verb\u00e4nde zur Heilerin.",
+      "style": "normal",
+      "instruction": null,
+      "voice": "Ryan",
+      "status": "generated",
+      "output": "de-game.wav",
+      "sample_rate": 24000,
+      "audio_seconds": 5.2,
+      "generation_seconds": 1.2845560000278056,
+      "first_pcm_chunk_seconds": 0.09670254203956574,
+      "chunks": [
+        {
+          "seconds": 0.09670254203956574,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.1738832499831915,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.25463574996683747,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.33242574997711927,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.41032583301421255,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.4863308749627322,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.5610233750194311,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.635528999962844,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.7107493750518188,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.784396041999571,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.8585853329859674,
+          "samples": 7680
+        },
+        {
+          "seconds": 0.9324873749865219,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0062283329898492,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.0802554580150172,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.1628054169705138,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.237977167009376,
+          "samples": 7680
+        },
+        {
+          "seconds": 1.2802003329852596,
+          "samples": 1920
+        }
+      ],
+      "real_time_factor": 0.24703000000534722,
+      "raw_peak": 0.47449973225593567,
+      "clipped_samples": 0,
+      "sha256": "71c1e41636dd9476a32bf5e3b02982c1057dcaa036081b4028752218c35cfe9d",
+      "speech_tokens": 65,
+      "token_budget_reached": false
+    }
+  ],
+  "loads": [
+    {
+      "language": "shared",
+      "model_seconds": 34.98195275000762
+    }
+  ],
+  "protocol": "One process/backend, one trial/case, local assets, no playback device. First case is cold.",
+  "limits": "Background load uncontrolled; no M1/game coexistence/non-macOS test; first PCM chunk is not speaker playback.",
+  "precision": "MLX 4-bit converted Talker checkpoint, bundled speech tokenizer",
+  "generation_settings": {
+    "max_tokens": 256,
+    "temperature": 0.9,
+    "stream": true,
+    "streaming_interval": 0.32
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "soundfile": "0.14.0",
+    "psutil": "7.2.2",
+    "mlx": "0.32.3",
+    "mlx-audio": "0.5.8",
+    "transformers": "5.19.0",
+    "huggingface-hub": "2.2.0"
+  },
+  "mlx_peak_memory_bytes": 2905719957,
+  "process_lifetime_maxrss_bytes": 2887843840,
+  "load_average_after": [
+    23.82275390625,
+    18.40478515625,
+    17.404296875
+  ]
+}

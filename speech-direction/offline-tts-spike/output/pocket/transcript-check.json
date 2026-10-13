@@ -1,0 +1,58 @@
+{
+  "model": "mlx-community/whisper-base-mlx",
+  "snapshot": "a8f14b616d37f94a159016b04f80a7f7003a1b8f",
+  "mlx_audio_version": "0.2.8",
+  "mlx_version": "0.30.1",
+  "protocol": "Local WAVs; temperature 0; specified language; no initial prompt or prior text.",
+  "limits": "Auxiliary ASR can make errors. It does not establish pronunciation or acting quality.",
+  "cases": [
+    {
+      "id": "en-normal",
+      "wav_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+      "requested_text": "Stay close. There is still hope for the village.",
+      "transcript": "Stay close. There is still hope for the village.",
+      "language": "en",
+      "word_match_ignoring_case_punctuation": true
+    },
+    {
+      "id": "en-punctuation",
+      "wav_sha256": "ff27c6e53b408e928ae45d9d391121b61abda0897e58b8ad6f59cb191cc5e776",
+      "requested_text": "Stay close! There is still hope for the village!",
+      "transcript": "Stay close. There is still hope for the village.",
+      "language": "en",
+      "word_match_ignoring_case_punctuation": true
+    },
+    {
+      "id": "en-game",
+      "wav_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+      "requested_text": "Do not take the moonwort yet. Bring two clean bandages to the healer.",
+      "transcript": "Do not take the moonwirt yet. Ring two clean bandages to the healer.",
+      "language": "en",
+      "word_match_ignoring_case_punctuation": false
+    },
+    {
+      "id": "de-normal",
+      "wav_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+      "requested_text": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "transcript": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "language": "de",
+      "word_match_ignoring_case_punctuation": true
+    },
+    {
+      "id": "de-punctuation",
+      "wav_sha256": "e84520a6045936037cb9165f31f411c86cd5068bd9277186bf63a11cb5d3b444",
+      "requested_text": "Bleib bei mir! Es gibt noch Hoffnung für das Dorf!",
+      "transcript": "Bleib bei mir. Es gibt noch Hoffnung für das Dorf.",
+      "language": "de",
+      "word_match_ignoring_case_punctuation": true
+    },
+    {
+      "id": "de-game",
+      "wav_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+      "requested_text": "Nimm den Mondrautenfarn noch nicht. Bring zwei saubere Verbände zur Heilerin.",
+      "transcript": "Nimm den Montrautenfahren noch nicht. Bringt zwei saubere Verbände zur Heilerin.",
+      "language": "de",
+      "word_match_ignoring_case_punctuation": false
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-13",
+  "status": "completed_local_tts_spike",
+  "owner_rejected_model": "Qwen2.5-Omni-7B",
+  "generated_cases": {
+    "pocket": 6,
+    "qwen3": 8
+  },
+  "auxiliary_exact_word_matches": {
+    "pocket": 4,
+    "qwen3": 6
+  },
+  "listening_acceptance_recorded": false,
+  "selected_game_backend": null,
+  "m1_16gb_verified": false,
+  "cross_platform_verified": false,
+  "game_integration_complete": false,
+  "verified": {
+    "all_wav_hashes": true,
+    "finite_mono_24khz_pcm16": true,
+    "clipped_samples": 0,
+    "qwen_token_limit_exhaustions": 0,
+    "python_compile": true,
+    "continuation_checker": true
+  },
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "d41a8aa4f15c148af36a2e0aca2630317ddf0f5ad8c94c50bc8e204867d70316"
+    },
+    {
+      "path": "benchmark.py",
+      "sha256": "175bea50b5367a9633a7d182dcf024e24aa33ea8c76883b8dfe073fee8b78713"
+    },
+    {
+      "path": "cases.json",
+      "sha256": "0de6b2857344703b542266d25e1bb237223101a878a0a6507aab6a27ef5c9f73"
+    },
+    {
+      "path": "check_transcripts.py",
+      "sha256": "e94344fb49f798680966979319a8b9aac304bbcc432df38783b532a16e91e522"
+    },
+    {
+      "path": "model-verification.json",
+      "sha256": "f38334e834748e5288a45f14dcd57910a7c945f11a77606773f86b42eabb3509"
+    },
+    {
+      "path": "output/pocket/de-game.wav",
+      "sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492"
+    },
+    {
+      "path": "output/pocket/de-normal.wav",
+      "sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813"
+    },
+    {
+      "path": "output/pocket/de-punctuation.wav",
+      "sha256": "e84520a6045936037cb9165f31f411c86cd5068bd9277186bf63a11cb5d3b444"
+    },
+    {
+      "path": "output/pocket/en-game.wav",
+      "sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974"
+    },
+    {
+      "path": "output/pocket/en-normal.wav",
+      "sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e"
+    },
+    {
+      "path": "output/pocket/en-punctuation.wav",
+      "sha256": "ff27c6e53b408e928ae45d9d391121b61abda0897e58b8ad6f59cb191cc5e776"
+    },
+    {
+      "path": "output/pocket/results.json",
+      "sha256": "99eb637fe3abe0e7443a5f40838ee3ec37fc0c7678b60f8179d60416e746dfec"
+    },
+    {
+      "path": "output/pocket/transcript-check.json",
+      "sha256": "a6652344ac1d401757e499e1611aae1604cf5751134b2b5eebe64ed0a84644ed"
+    },
+    {
+      "path": "output/qwen3/de-calm.wav",
+      "sha256": "33c084dbf3af488740da21f3b1b48507b7d89cfeb83f9361dce1adad2d9133fe"
+    },
+    {
+      "path": "output/qwen3/de-game.wav",
+      "sha256": "71c1e41636dd9476a32bf5e3b02982c1057dcaa036081b4028752218c35cfe9d"
+    },
+    {
+      "path": "output/qwen3/de-urgent.wav",
+      "sha256": "4008816eebb083d3b9a409b23d574642445023e3a620fb8d4ccf5b833cf5d008"
+    },
+    {
+      "path": "output/qwen3/de-whisper.wav",
+      "sha256": "4aeeadd127fd4bb4ebe21602809454daadf40fa469238715850e8b361e006fb4"
+    },
+    {
+      "path": "output/qwen3/en-calm.wav",
+      "sha256": "963b1f51c312f602c642ae093f547d8ca481f870896a0bff40e145dabf26c96f"
+    },
+    {
+      "path": "output/qwen3/en-game.wav",
+      "sha256": "fbefad7269b4d17c23c55d2d26f11d8d2a42cb5686fca737ac026947a6ad2c37"
+    },
+    {
+      "path": "output/qwen3/en-urgent.wav",
+      "sha256": "6524d3893b0b16442d320ec3dcbc863f2e762ec577a1e77925b0fee926a8cdbd"
+    },
+    {
+      "path": "output/qwen3/en-whisper.wav",
+      "sha256": "e5fe6220756fa69ada5c071fdb34233dad84ebfd75627273cf340a5839033fe9"
+    },
+    {
+      "path": "output/qwen3/results.json",
+      "sha256": "f763478880860dd64908246df015f75e64049d7581ada194ab304a2dc6afa642"
+    },
+    {
+      "path": "output/qwen3/transcript-check.json",
+      "sha256": "ae5c4b9a01683b541478d6e4fea4993deac5ceacfec883b87b45ed2018a9ead1"
+    },
+    {
+      "path": "owner-request.json",
+      "sha256": "0cde32071c49a18612352950aca1d1d47a386e098ccf4ef22ba3ec4bb822bab0"
+    },
+    {
+      "path": "pocket-benchmark.log",
+      "sha256": "7ce32b0e0caf86275edac75c79636c2fddd865b0b8aae4a340bf17215832c157"
+    },
+    {
+      "path": "pocket-transcript-check.log",
+      "sha256": "79d77f771857dd9792a1a731f5d9d882071057d1186c88f1c40e5549143eb90b"
+    },
+    {
+      "path": "prepare_models.py",
+      "sha256": "2771c5a50141c0b35b23a4a51ddbfd2ce75d7aba15c5f66691d5681b06acf111"
+    },
+    {
+      "path": "qwen3-benchmark.log",
+      "sha256": "0e9ff9fb284518e5b012edee589eb2799d310f6e7222a49bddf9de550e5a9716"
+    },
+    {
+      "path": "qwen3-transcript-check.log",
+      "sha256": "bd28255921ec9bea6e92fd17ed00ae518c417519be74c605f4cf4d8686521764"
+    },
+    {
+      "path": "requirements-pocket.txt",
+      "sha256": "6b3ec63c3b0547009e326c748465ff3695ae381a9f642d447c1ea9ddf81f9e53"
+    },
+    {
+      "path": "requirements-qwen3.txt",
+      "sha256": "4651bfa5c6ac3c0b3be988c9e6981d8a6bb7e67f44c08fee6f9fa935f3ef2373"
+    },
+    {
+      "path": "setup.log",
+      "sha256": "f0b0b69beb64ae87ad19e5f0478a3f947765ba901f0bf90c43576ab76627ae90"
+    },
+    {
+      "path": "wav-verification.json",
+      "sha256": "19efab7b102c137b0dbc31b3b4709bc9570ccb1b9a318969d0aa9c759db68cee"
+    }
+  ],
+  "local_config_hashes": {
+    "english": "f4480a727faaf18efe5f0b46ff98059d710d2eb82d21362edf2b0027b6b3ecb0",
+    "german": "8b2a291300bf072d01d1ddae2320d6f62bdaeaf65528d45feaaf6fefd5d39478"
+  }
+}

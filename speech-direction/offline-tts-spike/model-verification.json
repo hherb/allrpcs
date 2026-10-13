@@ -1,0 +1,182 @@
+[
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/english/model.safetensors",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "e7205b6ee50e654a5ea19f0e9df2b0813b05e921",
+    "file": "languages/english/model.safetensors",
+    "size": 219029196,
+    "sha256": "916ccd2686e9311cb40054893a3c4284393d658825ffc714a276f3e9b152344f",
+    "published_sha256": "916ccd2686e9311cb40054893a3c4284393d658825ffc714a276f3e9b152344f"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/english/tokenizer.json",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "00eac05ed3d16bdc3f6b5d598874019c34a89214",
+    "file": "languages/english/tokenizer.json",
+    "size": 245020,
+    "sha256": "f498428e1eafee50492f7be13dc9bfafcfc12e508cd0eb1b01c92ecd5d8c6687",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/english/voice.safetensors",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "file": "languages/english/embeddings/alba.safetensors",
+    "size": 6195000,
+    "sha256": "d291428b416d6c36a1de7835e51dbe1e334b75e5af512bb18dd23a1047fe8f3b",
+    "published_sha256": "d291428b416d6c36a1de7835e51dbe1e334b75e5af512bb18dd23a1047fe8f3b"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/german/model.safetensors",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "file": "languages/german/model.safetensors",
+    "size": 219029196,
+    "sha256": "d2fabbc2c383d30ee29fcd374f8281406cc501b1d963fe687691f8573de3252b",
+    "published_sha256": "d2fabbc2c383d30ee29fcd374f8281406cc501b1d963fe687691f8573de3252b"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/german/tokenizer.json",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "file": "languages/german/tokenizer.json",
+    "size": 245966,
+    "sha256": "2d77849811e3d1b6ae80e5b11b203f57e1847901104d8a0573b34f46f8dddb53",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/pocket-tts-3.3.0/german/voice.safetensors",
+    "repository": "kyutai/pocket-tts-without-voice-cloning",
+    "revision": "4e1e0a3e611c51c0b4ed8174fc10f32a54644303",
+    "file": "languages/german/embeddings/juergen.safetensors",
+    "size": 6244152,
+    "sha256": "0846249f121a8fb9466519080544549409f27f52b64bd381d41ef2b2c0410a50",
+    "published_sha256": "0846249f121a8fb9466519080544549409f27f52b64bd381d41ef2b2c0410a50"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/.gitattributes",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": ".gitattributes",
+    "size": 1519,
+    "sha256": "11ad7efa24975ee4b0c3c3a38ed18737f0658a5f75a0a96787b576a78a023361",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/README.md",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "README.md",
+    "size": 1068,
+    "sha256": "481e4e53d6adf50558eb60eb15eae7eea67a3ca467dbe8e4eef9159f8d17d1f8",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "config.json",
+    "size": 6058,
+    "sha256": "5a1dd8d7c9f4d04d5bdac309e9e748f16a96b0724d9c4de4974982dd84078715",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/generation_config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "generation_config.json",
+    "size": 245,
+    "sha256": "f1b90b4513f3b34c62851049e2492d7b4c5940daf1276f89c82b8ef04127f3aa",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/merges.txt",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "merges.txt",
+    "size": 1671839,
+    "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/model.safetensors",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "model.safetensors",
+    "size": 1625226859,
+    "sha256": "45a5b5ccd3cc473b9d3890ea922937036b56b948e8bd8c678e725329abdd1d00",
+    "published_sha256": "45a5b5ccd3cc473b9d3890ea922937036b56b948e8bd8c678e725329abdd1d00"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/model.safetensors.index.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "model.safetensors.index.json",
+    "size": 71786,
+    "sha256": "8ea3f7115ca2b729e5af4e83b2580d1be97dd54d80e8ef7aa27257c04d84d325",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/preprocessor_config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "preprocessor_config.json",
+    "size": 127,
+    "sha256": "efdde1022ea9d76928bf7a9cd53139138f5ba2e466e837f08f6105ab1af1c119",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/speech_tokenizer/config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "speech_tokenizer/config.json",
+    "size": 2336,
+    "sha256": "ee65bb901c876664ab8707c487157aa1a6ee57c65969b28fb5ec9dc211e68167",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/speech_tokenizer/configuration.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "speech_tokenizer/configuration.json",
+    "size": 76,
+    "sha256": "6bc26d64eb5024b4d1dab5a52371958b429256d6c9d59787f1f5294a54e0cebd",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/speech_tokenizer/model.safetensors",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "speech_tokenizer/model.safetensors",
+    "size": 682293092,
+    "sha256": "836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258",
+    "published_sha256": "836b7b357f5ea43e889936a3709af68dfe3751881acefe4ecf0dbd30ba571258"
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/speech_tokenizer/preprocessor_config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "speech_tokenizer/preprocessor_config.json",
+    "size": 234,
+    "sha256": "fcb3805e597e786d4067706e602f6688524640f8d3396790e2e09b5942fcbdfb",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/tokenizer_config.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "tokenizer_config.json",
+    "size": 7344,
+    "sha256": "dc3c31c3bdaedd5016382bb3cbe07323026775ad51f5a4fb564505992ae4a670",
+    "published_sha256": null
+  },
+  {
+    "path": "/Users/hherb/src/allrpcs/artifacts/speech-models/Qwen3-TTS-1.7B-CustomVoice-4bit-f35faf19b0cc/vocab.json",
+    "repository": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "file": "vocab.json",
+    "size": 2776833,
+    "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "published_sha256": null
+  }
+]

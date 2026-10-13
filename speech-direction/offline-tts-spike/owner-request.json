@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "I think we can discard qwen2.5-omni as an option. Lets spike your recommendation",
+  "host_execution_authority": "I approve host execution",
+  "roadmap_item": "Add one ASR implementation and one TTS implementation.",
+  "missing_deliverable": "A local bilingual TTS audition with latency, memory and expressive-delivery evidence after rejecting Qwen2.5-Omni.",
+  "scope": "Pocket TTS CPU baseline and Qwen3-TTS 1.7B CustomVoice acting challenger, isolated from the game.",
+  "completion_condition": "Generate short English/German samples, retain reproducible measurements and word checks, publish the finite spike and present audio for listening.",
+  "boundary": "No game integration, backend selection, microphone capture, ASR backend implementation or changes to the concurrent controls queue. M1 and non-macOS execution remain unverified."
+}

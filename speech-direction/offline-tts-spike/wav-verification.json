@@ -1,0 +1,114 @@
+[
+  {
+    "backend": "pocket",
+    "id": "en-normal",
+    "wav_sha256": "edc687b7d1cc80d82e7585b7eac0ca63830cb7feefaee94416c81f3c9236268e",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.06479166666666666,
+    "first_chunk_above_minus40dBFS_seconds": 0.09122366702649742
+  },
+  {
+    "backend": "pocket",
+    "id": "en-punctuation",
+    "wav_sha256": "ff27c6e53b408e928ae45d9d391121b61abda0897e58b8ad6f59cb191cc5e776",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.067125,
+    "first_chunk_above_minus40dBFS_seconds": 0.032819541986100376
+  },
+  {
+    "backend": "pocket",
+    "id": "en-game",
+    "wav_sha256": "62863c5c559baf1fdd855d83f33802ea840220808864a33ecbf3091a74d44974",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.09958333333333333,
+    "first_chunk_above_minus40dBFS_seconds": 0.04192712507210672
+  },
+  {
+    "backend": "pocket",
+    "id": "de-normal",
+    "wav_sha256": "24cfb57a515dcbfbdab4df5c3cd755d5ff94014fb96a8e0938eaba024a65d813",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.5287083333333333,
+    "first_chunk_above_minus40dBFS_seconds": 0.08666375000029802
+  },
+  {
+    "backend": "pocket",
+    "id": "de-punctuation",
+    "wav_sha256": "e84520a6045936037cb9165f31f411c86cd5068bd9277186bf63a11cb5d3b444",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.5384166666666667,
+    "first_chunk_above_minus40dBFS_seconds": 0.08071083400864154
+  },
+  {
+    "backend": "pocket",
+    "id": "de-game",
+    "wav_sha256": "7a8d09aa5ecdcd5db0444254b6765fd7620c7c38d11c734353051e34e047d492",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 8.333333333333333e-05,
+    "first_chunk_above_minus40dBFS_seconds": 0.033026040997356176
+  },
+  {
+    "backend": "qwen3",
+    "id": "en-calm",
+    "wav_sha256": "963b1f51c312f602c642ae093f547d8ca481f870896a0bff40e145dabf26c96f",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.08658333333333333,
+    "first_chunk_above_minus40dBFS_seconds": 3.6305514170089737
+  },
+  {
+    "backend": "qwen3",
+    "id": "en-urgent",
+    "wav_sha256": "6524d3893b0b16442d320ec3dcbc863f2e762ec577a1e77925b0fee926a8cdbd",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.08133333333333333,
+    "first_chunk_above_minus40dBFS_seconds": 0.10156558302696794
+  },
+  {
+    "backend": "qwen3",
+    "id": "en-whisper",
+    "wav_sha256": "e5fe6220756fa69ada5c071fdb34233dad84ebfd75627273cf340a5839033fe9",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.08820833333333333,
+    "first_chunk_above_minus40dBFS_seconds": 0.12318104202859104
+  },
+  {
+    "backend": "qwen3",
+    "id": "en-game",
+    "wav_sha256": "fbefad7269b4d17c23c55d2d26f11d8d2a42cb5686fca737ac026947a6ad2c37",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.10208333333333333,
+    "first_chunk_above_minus40dBFS_seconds": 0.10855562495999038
+  },
+  {
+    "backend": "qwen3",
+    "id": "de-calm",
+    "wav_sha256": "33c084dbf3af488740da21f3b1b48507b7d89cfeb83f9361dce1adad2d9133fe",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.085,
+    "first_chunk_above_minus40dBFS_seconds": 0.09563508396968246
+  },
+  {
+    "backend": "qwen3",
+    "id": "de-urgent",
+    "wav_sha256": "4008816eebb083d3b9a409b23d574642445023e3a620fb8d4ccf5b833cf5d008",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.08154166666666667,
+    "first_chunk_above_minus40dBFS_seconds": 0.10374145791865885
+  },
+  {
+    "backend": "qwen3",
+    "id": "de-whisper",
+    "wav_sha256": "4aeeadd127fd4bb4ebe21602809454daadf40fa469238715850e8b361e006fb4",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.09395833333333334,
+    "first_chunk_above_minus40dBFS_seconds": 0.11562029097694904
+  },
+  {
+    "backend": "qwen3",
+    "id": "de-game",
+    "wav_sha256": "71c1e41636dd9476a32bf5e3b02982c1057dcaa036081b4028752218c35cfe9d",
+    "format_verified": true,
+    "leading_below_minus40dBFS_seconds": 0.08229166666666667,
+    "first_chunk_above_minus40dBFS_seconds": 0.09670254203956574
+  }
+]
