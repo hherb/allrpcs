@@ -305,13 +305,14 @@ Acceptance:
 - [ ] Prepare release notes, privacy information, model-provider disclosures, and known
   limitations.
 
-Controls planning checkpoint (2026-10-13): the finite [29-action remapping proposal](input-direction/remapping-owner-scope.md)
-and [hash-bound source/default/file contract](input-direction/remapping-owner-scope.json) are complete.
-The next implementation grant covers the existing 21 project actions, eight UI actions, one Controls
-panel, isolated preferences, capture/reset/conflicts, input context and live prompts. No runtime input
-or UI change has been made. The controls checkbox remains open pending implementation and actual
-named physical-device support evidence; controller-only opening-scenario and broad screen-reader
-certification are not claimed by this proposal.
+Controls runtime checkpoint (2026-10-13): the exact approved [29-action remapping system](input-direction/remapping-runtime-review/README.md)
+is implemented and verified by 188 root quality stages, 5,576 unit tests, genuine Main synthetic
+input routing, native 1280×720/1920×1080 UI and three mounted resource presets. The finite
+implementation is closed. This checkbox remains open until ordinary physical keyboard, mouse and
+named controller evidence establishes the supported-device claim. Controller-only opening-scenario,
+broad screen-reader and executable-release certification remain unclaimed. The next read-only slice
+prepares one dialogue-panel keyboard/accessibility implementation boundary for the separate remaining
+text-heavy UI item; it does not reopen controls remapping.
 
 Acceptance:
 

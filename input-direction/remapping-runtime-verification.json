@@ -1,0 +1,2655 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "actions": 29,
+  "limits": "Synthetic events only; physical controller support and executable installation unverified.",
+  "physical_controller_verified": false,
+  "executable_installation_verified": false,
+  "tested_inputs": [
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "9d35b8d77a904b2c4183ec63902b495ea8f4bfd857f9b9688934bf36f64dc9ee"
+    },
+    {
+      "path": "game/CaskCoverHandlingPanel.cs",
+      "sha256": "bf9bf7b8105c5f1dc42e715628e3c182848add327f9b2c52756a9340f3418eee"
+    },
+    {
+      "path": "game/ControlInputContext.cs",
+      "sha256": "ce480e3a5242aad228519589a0f6c0c8400a2bdb6e363d15db790250525a0892"
+    },
+    {
+      "path": "game/ControlInputContext.cs.uid",
+      "sha256": "fd08f6720c6b513441eb533e37f8aaf1e5036108530d80f79e4cb035d2523500"
+    },
+    {
+      "path": "game/ControlInputMapAdapter.cs",
+      "sha256": "11dd53783c61e51dd3aacf593cd0737fe0b1dcc8df3ef0f78f20f8efdd3002a1"
+    },
+    {
+      "path": "game/ControlInputMapAdapter.cs.uid",
+      "sha256": "68c0e10e8a8b60fe2d9cadd72c63d1d4717886092b8f525973e1da826a1e00b1"
+    },
+    {
+      "path": "game/ControlInputMatcher.cs",
+      "sha256": "34458b5173df6f41e327a13bf650ddd688f607d6067d4980787b6a6ccf9033b5"
+    },
+    {
+      "path": "game/ControlInputMatcher.cs.uid",
+      "sha256": "df834963ec6eac38980bb32412328882a8bd3b530501a238b09ae6371ab394b3"
+    },
+    {
+      "path": "game/ControlSettingsController.cs",
+      "sha256": "acda594c4731c4df8a1ef4292a4974a38afc8f977a3ec6786ab20daf560e8318"
+    },
+    {
+      "path": "game/ControlSettingsController.cs.uid",
+      "sha256": "63719b112848bce31082581e63e69a48dce27946785e8876e0438e4e9b618e3c"
+    },
+    {
+      "path": "game/ControlSettingsMainSmokeCheck.cs",
+      "sha256": "6be077850662fc8febe046d6e85305630ab0274b3563d88a080732f65244cb7c"
+    },
+    {
+      "path": "game/ControlSettingsMainSmokeCheck.cs.uid",
+      "sha256": "340e9119a33cd3c21c6be651d1f5400135b339e84c120cba6c534c166ea457ab"
+    },
+    {
+      "path": "game/ControlSettingsMainSmokeCheck.tscn",
+      "sha256": "7347a147fad0cebabdd30c1157ee0138e0f9faccbaa58c9d10ba76226305fcb0"
+    },
+    {
+      "path": "game/ControlSettingsPanel.cs",
+      "sha256": "b72a14e2d76ca2ff992130434009dc637a3df8bc695b18342f30144ce770b148"
+    },
+    {
+      "path": "game/ControlSettingsPanel.cs.uid",
+      "sha256": "c089d2c3b11ee96ca6ad75ff6e421f2f613edcd73994494298efefaeb2ade02d"
+    },
+    {
+      "path": "game/ControlSettingsPanel.tscn",
+      "sha256": "ea0066aaccc7fae4b9bf6052d3ac44c5a909f851a7b2b883fcc7811ccf5c9848"
+    },
+    {
+      "path": "game/ControlSettingsStorageController.cs",
+      "sha256": "950e275259c3f967ff647a60f9a584ced7194dd7d2c8c5ecfce9b60371ad366c"
+    },
+    {
+      "path": "game/ControlSettingsStorageController.cs.uid",
+      "sha256": "a6ac255c4e3421abcd3e80f7621270f29111feedc2852729f92527d1bc6708a3"
+    },
+    {
+      "path": "game/HandToolTapPanel.cs",
+      "sha256": "fd9f464fd251fd1f7ca785192ac6e40d118e895a9b146667482e5230f646648a"
+    },
+    {
+      "path": "game/JournalOpenCloseInputController.cs",
+      "sha256": "98c531d44092837dde0e29e924a6dc7e41ee27d0f447281df2561d4256f0fd0e"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "05138c74107c2a405553a9a7c7a72e1ab30e3be821962f54228f564d17833774"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "64deb394cae3078e869d889fd41d6cb961ab05795e8b62982e89ca3826844dea"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "9d5625f66e2a27c9bd0173756c758f9dfc0b671548293f0c5ec467d151cde99a"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "d5688f3f71cc58c2363723bb12bc887503f125c7a051f3b006049d2537e789ba"
+    },
+    {
+      "path": "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "sha256": "0759f72476feeb08f75c8768171163be558bce434bbfc93304f3190205844352"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilityController.cs",
+      "sha256": "b370533fce61e2574cf7e4a4fbcde348a1464eb12044467b90fa51bf3af27294"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilitySmokeCheck.cs",
+      "sha256": "c7ef49f833043bf6d9f6f68d438d3851be33588d5f80ed9edc3cbb12ebe5959f"
+    },
+    {
+      "path": "game/SaveLoadInputController.cs",
+      "sha256": "9ec1f36541d67f00332666c545a7ab39560f20378414668a26c40382e35516f4"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "b8993c443007fbc8444dfdbd6b0fb83696f0e78f7e39e123bab0fe2d21dd82f3"
+    },
+    {
+      "path": "game/SeekerCustomizationMenuController.cs",
+      "sha256": "eb3cec9ef28a9f172ec51f0ead11ecc8f0d7539bdccf3f90e08089972f83ce50"
+    },
+    {
+      "path": "game/SeekerMapOpenCloseInputController.cs",
+      "sha256": "e935f8cda7993aac028becf5f741ae832b9c1344f13f9098be315f79ef990ca7"
+    },
+    {
+      "path": "game/StreamWaterContactPanel.cs",
+      "sha256": "72eb7c08384241eb37f823ef16e9561df476871d535908906e8d10ca68e231e0"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "260003d8fd1e920f300f3b774dcbb5602297d2c129c28f57b8293290fee45097"
+    },
+    {
+      "path": "scripts/validate-control-remapping-runtime.py",
+      "sha256": "8e49b1da7bb86d3a97d8508591a5d5532d19c9d5598c1ebdbed6da95799b9584"
+    },
+    {
+      "path": "src/Application/Input/ControlActionCatalog.cs",
+      "sha256": "6eaf01ae9f324253e93f7857edee3eb2a05ce2e6e646df5781c99a2a0b0188e3"
+    },
+    {
+      "path": "src/Application/Input/ControlBinding.cs",
+      "sha256": "0bc85206f325232a355208eaccd0989e85d72773e8687509b2e0628c027be9bd"
+    },
+    {
+      "path": "src/Application/Input/ControlBindingCapture.cs",
+      "sha256": "78f0c20841a51e5456373392ec35b838a461c7459d963ff639194b16d07a3db0"
+    },
+    {
+      "path": "src/Application/Input/ControlBindingEdit.cs",
+      "sha256": "48aed08b133fa05aaad6ac33a0c9e2e5e6c61bd8ca080500fd422ab89bb8e78b"
+    },
+    {
+      "path": "src/Application/Input/ControlPreferences.cs",
+      "sha256": "30d6eff08c2be4cccc80efdfe4cd465aef24f702ffb33ac21d90dd3c5d74972b"
+    },
+    {
+      "path": "src/Application/Input/ControlPreferencesLoadResult.cs",
+      "sha256": "ff5181776bc817b296033376ac291b0dd2395fa8467fc22ef6c0b3362a04a991"
+    },
+    {
+      "path": "src/Application/Input/IControlPreferencesStore.cs",
+      "sha256": "0dbe28d8f72c8f3e5d6f9068ff5ca9a7536c174954e6fed16d586e7503bd5fda"
+    },
+    {
+      "path": "src/Infrastructure/Input/ControlPreferencesJson.cs",
+      "sha256": "3579b7cac3cd590357a99f03ee84fc350cf955bbbdb805ec14335c9d11c30fba"
+    },
+    {
+      "path": "src/Infrastructure/Input/FileControlPreferencesStore.cs",
+      "sha256": "0896c54cc65cd5a6d7ea690c3d916e7af25cf1c580dbd7f3ee0bc894f56dd552"
+    },
+    {
+      "path": "tests/Application.Tests/Input/ControlBindingCaptureTests.cs",
+      "sha256": "104b35be3da12a8529de0e143bc35680d0b1eb0e3e87952938de5536b2e37192"
+    },
+    {
+      "path": "tests/Application.Tests/Input/ControlBindingEditTests.cs",
+      "sha256": "cb8205d39f27ae81a7b22beb8022bc4289b824d61442230893baec98255d4fdd"
+    },
+    {
+      "path": "tests/Application.Tests/Input/ControlPreferencesTests.cs",
+      "sha256": "c3b740a9548c61f30b08ed94ead3db93160a2144db7278ea4e5e48f91cb9446a"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Input/ControlPreferencesJsonTests.cs",
+      "sha256": "74d0898b4db624eb79d02599b4bda427869eb24cf1ab36c10b5dfed3d4bf6136"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Input/FileControlPreferencesStoreTests.cs",
+      "sha256": "4914defb15f70d4e3b5e19b053333560dffed5e27a8eecdeee67864527c39e77"
+    }
+  ],
+  "protected_baseline": {
+    "path": "input-direction/remapping-runtime-review/protected-baseline.json.gz",
+    "sha256": "034ece75cdd401d194e7fa835db342f1169c02926c33afc30cc19a5a0db4612c"
+  },
+  "protected_policy": "Every tracked pre-slice byte remains exact except approved modifications, the named verification assertion and separately owned concurrent speech-direction work.",
+  "main_reports": [
+    {
+      "mode": "headless",
+      "report": {
+        "path": "input-direction/remapping-runtime-review/main/headless.json",
+        "sha256": "6fa10acbbe2b53c5f00005d4fbdc778c706bf7b7c2f52a0a1c5e886c4a5daa2b"
+      },
+      "log": {
+        "path": "input-direction/remapping-runtime-review/main/headless.log.gz",
+        "sha256": "4b353f492bbeebacb410b8af401a749b27ce346e47e2838947441bc241a3f333"
+      },
+      "raw_log_sha256": "2d4d880192f2ea2163a97239dcd4335a282ae42006757e27da45052cc28c63f5"
+    },
+    {
+      "mode": "native-1280",
+      "report": {
+        "path": "input-direction/remapping-runtime-review/main/native-1280.json",
+        "sha256": "e726c6f95d83915db01d64e742e80eae5fc6d9ad18dc298aa167cbd2cc7f2893"
+      },
+      "log": {
+        "path": "input-direction/remapping-runtime-review/main/native-1280.log.gz",
+        "sha256": "9af72ff8fdc5e47f2e7b382d150037d92e54dca24c95235bdb8d405d04fd4cbd"
+      },
+      "raw_log_sha256": "47bf1d1a199db4f30efe4df3f5b284bef49263ed6e52b84350f0e98592799e0e"
+    },
+    {
+      "mode": "native-1920",
+      "report": {
+        "path": "input-direction/remapping-runtime-review/main/native-1920.json",
+        "sha256": "16763a89f37907282bbe3cd961404c06a1fea2dd3948183df9d5832d26fb4f9d"
+      },
+      "log": {
+        "path": "input-direction/remapping-runtime-review/main/native-1920.log.gz",
+        "sha256": "46c8edf9ec7660d81a5e01461b20cef290c8c7e8088d8e6631938585a9f2d5a0"
+      },
+      "raw_log_sha256": "179482cd1cba165d42c68049a9f10098541a5455c9de1580f6b08f5fca46e4b8"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1280.png",
+      "sha256": "edc21a146a2e4503068961a746e20fc1f9c7061bfd42737676ffb28c2cf57368",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "mixed-bindings",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    },
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1280-last-row.png",
+      "sha256": "ae9c2cabb5b08deee615c9a0659c09750bec6024d80b853f22382fd023bd993c",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "last-row",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    },
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1280-capture.png",
+      "sha256": "9ba434a877b2eace4bae4638f95b970434666b263796458da01d7a7725bb3b5b",
+      "size": [
+        1280,
+        720
+      ],
+      "state": "capture",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    },
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1920.png",
+      "sha256": "10d98d02e981598867c82faee28c66ca88b80df0b063891695068da48318cf6d",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "mixed-bindings",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    },
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1920-last-row.png",
+      "sha256": "4617768901de6c0a1ff33b02387aa7e2a040e5593b8eba406ed965d930c28062",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "last-row",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    },
+    {
+      "path": "input-direction/remapping-runtime-review/ui/1920-capture.png",
+      "sha256": "4f97e588f31f985515bd3d9b0ca4ab1371d59832e5de8ab95508659d0e2832a3",
+      "size": [
+        1920,
+        1080
+      ],
+      "state": "capture",
+      "visually_reviewed": true,
+      "review": "Inspected actual native PNG: complete readable panel, binding details/status/footer fit; last row and capture cancel visible."
+    }
+  ],
+  "packages": [
+    {
+      "preset": "Linux Development",
+      "export_exit": 0,
+      "pack_sha256": "7cfd3ade4da40833c97911e7f9b6f2fdc5e4bc6de4a12183ea517397b289a928",
+      "pack_bytes": 70247636,
+      "report": {
+        "path": "input-direction/remapping-runtime-review/packaging/0.json",
+        "sha256": "d48866d6b5956793ec5b2d39e05a78dd8b5c4e0eaf9bc0fd8e4fa842e4f47838"
+      },
+      "mount_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/0-mount.log.gz",
+        "sha256": "a9bd9e53e0079012e16a0cb3481d2e97b2c239ef5427b48c2255abae1439200b"
+      },
+      "raw_mount_log_sha256": "d30bf2b813e8ea1cade6a32808f727de2d318fb769e159d0a3df49ba2dda8cf7",
+      "export_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/0-export.log.gz",
+        "sha256": "f34b13868e8478d5035d9dc93136f8418ae7e8ab5e05a4693d66fe7ac51e8144"
+      }
+    },
+    {
+      "preset": "macOS Development",
+      "export_exit": 0,
+      "pack_sha256": "7cfd3ade4da40833c97911e7f9b6f2fdc5e4bc6de4a12183ea517397b289a928",
+      "pack_bytes": 70247636,
+      "report": {
+        "path": "input-direction/remapping-runtime-review/packaging/1.json",
+        "sha256": "d48866d6b5956793ec5b2d39e05a78dd8b5c4e0eaf9bc0fd8e4fa842e4f47838"
+      },
+      "mount_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/1-mount.log.gz",
+        "sha256": "a9bd9e53e0079012e16a0cb3481d2e97b2c239ef5427b48c2255abae1439200b"
+      },
+      "raw_mount_log_sha256": "d30bf2b813e8ea1cade6a32808f727de2d318fb769e159d0a3df49ba2dda8cf7",
+      "export_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/1-export.log.gz",
+        "sha256": "306924f68f5f7d71c56ffad4ca1b67c30651ec437bc4a14aabce49292cfec860"
+      }
+    },
+    {
+      "preset": "Windows Development",
+      "export_exit": 0,
+      "pack_sha256": "7cfd3ade4da40833c97911e7f9b6f2fdc5e4bc6de4a12183ea517397b289a928",
+      "pack_bytes": 70247636,
+      "report": {
+        "path": "input-direction/remapping-runtime-review/packaging/2.json",
+        "sha256": "d48866d6b5956793ec5b2d39e05a78dd8b5c4e0eaf9bc0fd8e4fa842e4f47838"
+      },
+      "mount_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/2-mount.log.gz",
+        "sha256": "a9bd9e53e0079012e16a0cb3481d2e97b2c239ef5427b48c2255abae1439200b"
+      },
+      "raw_mount_log_sha256": "d30bf2b813e8ea1cade6a32808f727de2d318fb769e159d0a3df49ba2dda8cf7",
+      "export_log": {
+        "path": "input-direction/remapping-runtime-review/packaging/2-export.log.gz",
+        "sha256": "acb34e5a5d57133727cc4b5b6e6bfbab5007054fc059e0a707429234b0025bb3"
+      }
+    }
+  ],
+  "focused_tests": [
+    {
+      "area": "application",
+      "passed": 38,
+      "log": {
+        "path": "input-direction/remapping-runtime-review/tests/application.log.gz",
+        "sha256": "b5da8e016cbd0d30518a6a2ff042b95c3842492c8d9b279be6a52eee0594a62b"
+      }
+    },
+    {
+      "area": "infrastructure",
+      "passed": 27,
+      "log": {
+        "path": "input-direction/remapping-runtime-review/tests/infrastructure.log.gz",
+        "sha256": "3f5ecaef47bcf11c5ee9ab19941b5c1aeb51000b61581c596c1e31c5a108f977"
+      }
+    }
+  ],
+  "package_manifest": {
+    "path": "input-direction/remapping-runtime-review/packaging/manifest.json",
+    "sha256": "b5997db572d8bf082f92e5d68a71603b23c5040a3fc87ce7b2adebbb340c0e43"
+  },
+  "mounted_subset": {
+    "path": "input-direction/remapping-runtime-review/packaging/mounted-subset.zip",
+    "sha256": "6de86201ad958ce8125a0c6214c01142fe4f5acaa407d0c1cba35657fc226876"
+  },
+  "inspection_script": {
+    "path": "input-direction/remapping-runtime-review/packaging/inspect.gd",
+    "sha256": "65df308eefe01a4a4f2552a31c20171f7fc43639a2a90743ccd638f7f7b36a5d"
+  },
+  "quality": {
+    "product_base_commit": "f7cb365cc850e7335cc824c2d62c22259f4ab90e",
+    "summary": {
+      "path": "input-direction/remapping-runtime-review/quality/summary.json",
+      "sha256": "6e4bc64bc4a2b72d98ec2a3a9695006a590629f7b3ea7b434f6df31bf7fedf2a"
+    },
+    "logs": [
+      {
+        "path": "input-direction/remapping-runtime-review/quality/01-continuation-1.log.gz",
+        "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a",
+        "raw_sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485",
+        "original_name": "01-continuation-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/02-art-1-1.log.gz",
+        "sha256": "c0c5cba568fe0107e6ab115b63affa48b4fe9c9fe608e33cede772ac92382386",
+        "raw_sha256": "10ca970bc252a8c0d28ed5b3088ab59f8442b9ae7b878e432f6265134a3fd3c1",
+        "original_name": "02-art-1-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/03-art-2-1.log.gz",
+        "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+        "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+        "original_name": "03-art-2-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/04-art-3-1.log.gz",
+        "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919",
+        "raw_sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2",
+        "original_name": "04-art-3-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/05-art-4-1.log.gz",
+        "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b",
+        "raw_sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab",
+        "original_name": "05-art-4-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/06-art-5-1.log.gz",
+        "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb",
+        "raw_sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc",
+        "original_name": "06-art-5-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/07-art-6-1.log.gz",
+        "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870",
+        "raw_sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e",
+        "original_name": "07-art-6-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/08-art-7-1.log.gz",
+        "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9",
+        "raw_sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8",
+        "original_name": "08-art-7-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/09-art-8-1.log.gz",
+        "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3",
+        "raw_sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1",
+        "original_name": "09-art-8-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/10-art-9-1.log.gz",
+        "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045",
+        "raw_sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+        "original_name": "10-art-9-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/100-wind-master-output-1.log.gz",
+        "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e",
+        "raw_sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb",
+        "original_name": "100-wind-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/101-boundary-wind-reviewed-1.log.gz",
+        "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a",
+        "raw_sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3",
+        "original_name": "101-boundary-wind-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/102-rain-historical-restore-1.log.gz",
+        "sha256": "f07cb08f58f814e91ce7bb82e6a4f650a2de4036a26a107c22f93eb8fb5127b6",
+        "raw_sha256": "2c4ffed861a0686be095bee7a870fbdf7154ac346d13b8904ab8770be82bb674",
+        "original_name": "102-rain-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/103-rain-historical-build-1.log.gz",
+        "sha256": "392dcb7f70be781e0c87f6a78d39d7580ce3b4d4b3a0c1687cb81dea23163ec1",
+        "raw_sha256": "0870582ffc5b0f0a2dc3a86445780188029d015977621423f56bc40813e4889e",
+        "original_name": "103-rain-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/104-rain-historical-import-1.log.gz",
+        "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567",
+        "raw_sha256": "86637223f6102704b46e49e6ed148c05838474d9f8e21d58d286dd83a4060583",
+        "original_name": "104-rain-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/105-rain-focused-1.log.gz",
+        "sha256": "0d907a8b7a839a8151846f718b199174bebae045c2e0b757b59996216277cc15",
+        "raw_sha256": "995e33aec01b3b190ceccb141b1c4fdec3fd6ccc4ed087a9a0e374f5d9fbf41a",
+        "original_name": "105-rain-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/106-boundary-rain-source-1.log.gz",
+        "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe",
+        "raw_sha256": "8bf9e28bb25cdc74ca082b562ccc5944c091e001cf90642a8f9e18984ca1b997",
+        "original_name": "106-boundary-rain-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/107-rain-default-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+        "original_name": "107-rain-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/108-rain-quiet-1.log.gz",
+        "sha256": "130bcb6866b5fa050028144efa29456942b3f8965d2ac76023dff19d9442f29c",
+        "raw_sha256": "0e3df713eeb811984be776aae8023e8cad5ea6032283df776ac3d139b5fc600c",
+        "original_name": "108-rain-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/109-rain-master-muted-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+        "original_name": "109-rain-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/11-boundary-buses-1.log.gz",
+        "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9",
+        "raw_sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf",
+        "original_name": "11-boundary-buses-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/110-rain-ambience-muted-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+        "original_name": "110-rain-ambience-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/111-rain-missing-stream-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+        "original_name": "111-rain-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/112-rain-captions-off-1.log.gz",
+        "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd",
+        "raw_sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+        "original_name": "112-rain-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/113-rain-rain-disabled-1.log.gz",
+        "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9",
+        "raw_sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+        "original_name": "113-rain-rain-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/114-rain-master-output-1.log.gz",
+        "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0",
+        "raw_sha256": "61e415280e9bfa63af7220ab1d3c9dee81d1223dc195575404a283f32b2a40ce",
+        "original_name": "114-rain-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/115-boundary-rain-reviewed-1.log.gz",
+        "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b",
+        "raw_sha256": "311e66b904f9a71a080ff8bdd07ffab52a70b9d137f46da0980dba3bb0734ea8",
+        "original_name": "115-boundary-rain-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/116-heating-historical-restore-1.log.gz",
+        "sha256": "cd3fa6e03a9bfeeab834b1f44892bf2d613df8674985074a1ca355c390d91ddf",
+        "raw_sha256": "09753ff1a2878844e4e9a77ee58197ab45d4317d251c7e869b51e6d6b563988e",
+        "original_name": "116-heating-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/117-heating-historical-build-1.log.gz",
+        "sha256": "d467b31eeda65c1f04cb9e2c479c8e9146fa25b50cba2bc2e4af689b6763a30b",
+        "raw_sha256": "baa1cba8e840a9b4945a1447034898ee51ab81d1a6d474ca6050afeb0c62f113",
+        "original_name": "117-heating-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/118-heating-historical-import-1.log.gz",
+        "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d",
+        "raw_sha256": "016553fda7818570fa495933403615fae050277bc7c86f7bf9902590955524e0",
+        "original_name": "118-heating-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/119-heating-focused-1.log.gz",
+        "sha256": "c5696a68039130e87e398386826d3eeb9e3964e8b8fe3978f837f34bd4f5da76",
+        "raw_sha256": "754d86162499f6968585b87cf9121afcfc2cd556e02bd76a0336b3c3d32973d7",
+        "original_name": "119-heating-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/12-boundary-material-1.log.gz",
+        "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547",
+        "raw_sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166",
+        "original_name": "12-boundary-material-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/120-boundary-heating-source-1.log.gz",
+        "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58",
+        "raw_sha256": "a29f3982784b9723ada46491749d4363921434a52b67be4a2292044ab938b36d",
+        "original_name": "120-boundary-heating-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/121-heating-default-1.log.gz",
+        "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4",
+        "raw_sha256": "195c34a9e0e51afb03ac97989bc43d729a4484203471fa159c605d1677b5acf6",
+        "original_name": "121-heating-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/122-heating-quiet-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+        "original_name": "122-heating-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/123-heating-master-muted-1.log.gz",
+        "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72",
+        "raw_sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1",
+        "original_name": "123-heating-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/124-heating-effects-muted-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+        "original_name": "124-heating-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/125-heating-missing-stream-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+        "original_name": "125-heating-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/126-heating-captions-off-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+        "original_name": "126-heating-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/127-heating-heating-disabled-1.log.gz",
+        "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900",
+        "raw_sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+        "original_name": "127-heating-heating-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/128-heating-master-output-1.log.gz",
+        "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a",
+        "raw_sha256": "d3b846bcd1815c06fbd5627c0410cc04e8fcd32a2a134d4acf10c234b78c331b",
+        "original_name": "128-heating-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/129-boundary-heating-reviewed-1.log.gz",
+        "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437",
+        "raw_sha256": "da381824ea9994b67ec8fd6051db39e2e6dc06f21d0c51596bc26e89b5a38fac",
+        "original_name": "129-boundary-heating-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/13-boundary-footstep-1.log.gz",
+        "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428",
+        "raw_sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2",
+        "original_name": "13-boundary-footstep-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/130-steeping-historical-restore-1.log.gz",
+        "sha256": "427c77a6b2f8d74ad2e941249ee39f48e2fbbf04cc1a39c0ff85d2d70c90e2bc",
+        "raw_sha256": "26d3d62ab52d735b499f64566e279a35072d7665c0aa3cca70bb79faf8219d63",
+        "original_name": "130-steeping-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/131-steeping-historical-build-1.log.gz",
+        "sha256": "850a92efae8b67341efb7b3cfb00c05276d7d43b0c2dddf6ae3d1295dd8a49b5",
+        "raw_sha256": "b8975304847d88cef7272bb2821ae3e86dc91b6f10ee5f3aea79ec973407cce3",
+        "original_name": "131-steeping-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/132-steeping-historical-import-1.log.gz",
+        "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756",
+        "raw_sha256": "5179e3f5e1ed711cc00db97e8468dedbc2596a6dc92376ade11b8d92fa448c45",
+        "original_name": "132-steeping-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/133-steeping-focused-1.log.gz",
+        "sha256": "0d1c90614b8b45751132a505bb186f0f5809d4122df917ba236902cca8f3d688",
+        "raw_sha256": "43e0bd63394ea5797fefc0fbdd465b1c08f118e6661c68be1823b8c47b574159",
+        "original_name": "133-steeping-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/134-boundary-steeping-source-1.log.gz",
+        "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab",
+        "raw_sha256": "5df1e514505fe14b03ab066d9135e21fe3f3a19f5ce0b1f25e0f7a8e8ecac7db",
+        "original_name": "134-boundary-steeping-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/135-steeping-default-1.log.gz",
+        "sha256": "4d450a5f71c09197053ad8abeda21aab54d7206a3a51c5da7147e20e8204ece0",
+        "raw_sha256": "f1d203132c162b95bcf527365d501255d88af973d6f64f0755db3f2d15d0c16f",
+        "original_name": "135-steeping-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/136-steeping-quiet-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "136-steeping-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/137-steeping-master-muted-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "137-steeping-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/138-steeping-effects-muted-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "138-steeping-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/139-steeping-missing-stream-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "139-steeping-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/14-boundary-positional-1.log.gz",
+        "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4",
+        "raw_sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e",
+        "original_name": "14-boundary-positional-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/140-steeping-captions-off-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "140-steeping-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/141-steeping-steeping-disabled-1.log.gz",
+        "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb",
+        "raw_sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+        "original_name": "141-steeping-steeping-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/142-steeping-master-output-1.log.gz",
+        "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc",
+        "raw_sha256": "ad4e9d4a6916c361fe2cd9f6c6e8532b21fd71aef50c922d429d1d0727bd96b3",
+        "original_name": "142-steeping-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/143-boundary-steeping-reviewed-1.log.gz",
+        "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e",
+        "raw_sha256": "c12684fd6234cc4787ce5eff092a7f3aeda84e28e373c1790e64bd041f330fdb",
+        "original_name": "143-boundary-steeping-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/144-cooling-historical-restore-1.log.gz",
+        "sha256": "0d854491a6334aa083bd45efa53c42d7fbf418c6990a7112ff7bf08933f9a999",
+        "raw_sha256": "6101833cc84ccde99f91779ffb2a4286d2c87e47d43a5a27a21fe7069fdc210d",
+        "original_name": "144-cooling-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/145-cooling-historical-build-1.log.gz",
+        "sha256": "50473e86184034792ecf283264f8dd2d15c4b8fba549cdfb43688f73e0d54afb",
+        "raw_sha256": "62f74cb710ff67cbf7f13440df43f5ecf77dbfcb7803894cd3e45478b246c176",
+        "original_name": "145-cooling-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/146-cooling-historical-import-1.log.gz",
+        "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c",
+        "raw_sha256": "2935d91b494d282b4497378fda62d5bcb224c4f783fdee044b596cf3ba10559c",
+        "original_name": "146-cooling-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/147-cooling-focused-1.log.gz",
+        "sha256": "bb67beb2fb422078f580c460ced79987c7f0178564c761ceb780bc0ade0e81d9",
+        "raw_sha256": "af616addf32a532e236010bd9e74c4e0b964b42284dcb5bc224881b7d6bb4130",
+        "original_name": "147-cooling-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/148-boundary-cooling-source-1.log.gz",
+        "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95",
+        "raw_sha256": "b7b1a1bb8da7f9fdeb523b96973724dd92aded0345c9e8e6699bf4bfd30a5c15",
+        "original_name": "148-boundary-cooling-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/149-cooling-default-1.log.gz",
+        "sha256": "743ca34741937a9d236ba606a3ba587529e3a8781f6b74b2f4014cb20cb17db3",
+        "raw_sha256": "982b0392b85cd457d16197e121ec9e7a08248bdbb6acca38a4701bc7f551aabf",
+        "original_name": "149-cooling-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/15-boundary-music-1.log.gz",
+        "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3",
+        "raw_sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76",
+        "original_name": "15-boundary-music-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/150-cooling-quiet-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+        "original_name": "150-cooling-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/151-cooling-master-muted-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+        "original_name": "151-cooling-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/152-cooling-effects-muted-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+        "original_name": "152-cooling-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/153-cooling-missing-stream-1.log.gz",
+        "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a",
+        "raw_sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+        "original_name": "153-cooling-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/154-cooling-captions-off-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+        "original_name": "154-cooling-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/155-cooling-cooling-disabled-1.log.gz",
+        "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a",
+        "raw_sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+        "original_name": "155-cooling-cooling-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/156-cooling-master-output-1.log.gz",
+        "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8",
+        "raw_sha256": "362f5d48fc94df59838c1a38b8da679ac141bb7d284bc5b60b1fff7724555b26",
+        "original_name": "156-cooling-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/157-boundary-cooling-reviewed-1.log.gz",
+        "sha256": "228d9d651623dafbec75bb007cc4761b6b61150d94f09239ca6414a3c6165b28",
+        "raw_sha256": "6cb1aa2c31bfd0091b7f844696082a7a66f82ba542113e5898ba27abb9a919d6",
+        "original_name": "157-boundary-cooling-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/158-herb-historical-restore-1.log.gz",
+        "sha256": "cb98b9429b5f70804de321e75725bb57aff952913fe37457965d21cfef0b3b94",
+        "raw_sha256": "94010919e6f9c46f17c030c8f01c4a5df96ff4885927c06500cc0a5a5f1f282c",
+        "original_name": "158-herb-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/159-herb-historical-build-1.log.gz",
+        "sha256": "1536d86eeafd1dc3faa9230d0b85ce96fc96413d0534079e7fe244d0c23705ed",
+        "raw_sha256": "959404a8c44a21ea4b02796f8c82f8280d84b37f58370b87f13e16fcd937f786",
+        "original_name": "159-herb-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/16-boundary-interior-1.log.gz",
+        "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715",
+        "raw_sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563",
+        "original_name": "16-boundary-interior-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/160-herb-historical-import-1.log.gz",
+        "sha256": "51b4eeab41d1dcf2806cd1415578f292b14a309deed6b946ef8e4d4bcb5b4b65",
+        "raw_sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7",
+        "original_name": "160-herb-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/161-herb-focused-1.log.gz",
+        "sha256": "8600e77696f13ba1e4070a97db962333feffda83f0711eae0e0ef37d7c3d8a9f",
+        "raw_sha256": "6e094f07e7fa05973ff0218d7b28b21f369ad0db0450201b150390a33a1982b9",
+        "original_name": "161-herb-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/162-boundary-herb-source-1.log.gz",
+        "sha256": "b3a635d873d0de443653a390e6e12393e50eb271b53c4b7ff882017024bfe621",
+        "raw_sha256": "b04d404e0c9eb2c99dabcbb7a4303e9bfd2e271d99349d7b78289392b87aea34",
+        "original_name": "162-boundary-herb-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/163-herb-source-rejections-1.log.gz",
+        "sha256": "a56a564f63d0a018886cbd339aab15d9f43066e39b4be0ff7123284302a18682",
+        "raw_sha256": "bd8a323e6f124a48c411a5eda4ea01b9eafd8690362f25efb7b91c9c2bcd6eaa",
+        "original_name": "163-herb-source-rejections-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/164-herb-validator-rejections-1.log.gz",
+        "sha256": "9b2f8a73e4ebf3e898c5e3918eefbcb80252b68a445c9883bc6a5b8a48669947",
+        "raw_sha256": "cd3521956496c83bc1e853d0e80a297bff1f350fa453d87e46f234f76ada8d47",
+        "original_name": "164-herb-validator-rejections-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/165-herb-near-default-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "165-herb-near-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/166-herb-near-quiet-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "166-herb-near-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/167-herb-near-master-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "167-herb-near-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/168-herb-near-effects-muted-1.log.gz",
+        "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+        "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+        "original_name": "168-herb-near-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/169-herb-near-missing-stream-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "169-herb-near-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/17-boundary-water-1.log.gz",
+        "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f",
+        "raw_sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+        "original_name": "17-boundary-water-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/170-herb-near-captions-off-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "170-herb-near-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/171-herb-near-audio-disabled-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "171-herb-near-audio-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/172-herb-remote-default-1.log.gz",
+        "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+        "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+        "original_name": "172-herb-remote-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/173-herb-remote-quiet-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "173-herb-remote-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/174-herb-remote-master-muted-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "174-herb-remote-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/175-herb-remote-effects-muted-1.log.gz",
+        "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9",
+        "raw_sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+        "original_name": "175-herb-remote-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/176-herb-remote-missing-stream-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "176-herb-remote-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/177-herb-remote-captions-off-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "177-herb-remote-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/178-herb-remote-audio-disabled-1.log.gz",
+        "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0",
+        "raw_sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+        "original_name": "178-herb-remote-audio-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/179-herb-master-output-1.log.gz",
+        "sha256": "dc4a4ee964920c78eb9c0e5b635d686be7768855c5243e7bda224ee1c92a30d7",
+        "raw_sha256": "a5448aa3db7371ebfade7dbaeb93ca6c2afc2714c67b61d453e9f9e2a39b5d6d",
+        "original_name": "179-herb-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/18-boundary-cask-1.log.gz",
+        "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260",
+        "raw_sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1",
+        "original_name": "18-boundary-cask-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/180-boundary-herb-reviewed-1.log.gz",
+        "sha256": "48f5f30d38e91c8217147b52873402f8c58648a1f9997278411344d597c71134",
+        "raw_sha256": "693e9b5924dd325029a1aec2fa8b49e02dd10e2a9b482513777ef74f3bdc97bf",
+        "original_name": "180-boundary-herb-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/181-controls-application-1.log.gz",
+        "sha256": "04309983a1f01cd11a34c22fb9c562903aa2097b23f3e2470d438affb798e43d",
+        "raw_sha256": "811d82db690f5737c4f6d5286e561d121ba3f1eb84df119a9fe4653c1a71af8e",
+        "original_name": "181-controls-application-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/182-controls-infrastructure-1.log.gz",
+        "sha256": "fa1c3a2a1e69696b76296b260d058df25283c0c30875f51ffcea43dab3bc26d8",
+        "raw_sha256": "9c469289004bf9b5026818b6d2b78c1708c15f3001797cd4976168ef4a82d8dd",
+        "original_name": "182-controls-infrastructure-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/183-controls-source-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+        "original_name": "183-controls-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/184-controls-validator-rejections-1.log.gz",
+        "sha256": "f35bec3b7ea7ce9d55af37ed3950fbf9735922482a1aea55e5895b83c2fa9df4",
+        "raw_sha256": "fa38370fa796854d16667d628cc62d7851bd6cfe951ec08dbe8c90ba95a3a395",
+        "original_name": "184-controls-validator-rejections-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/185-controls-main-1.log.gz",
+        "sha256": "4b353f492bbeebacb410b8af401a749b27ce346e47e2838947441bc241a3f333",
+        "raw_sha256": "2d4d880192f2ea2163a97239dcd4335a282ae42006757e27da45052cc28c63f5",
+        "original_name": "185-controls-main-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/186-controls-native-output-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+        "original_name": "186-controls-native-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/187-controls-mounted-resources-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+        "original_name": "187-controls-mounted-resources-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/188-controls-reviewed-1.log.gz",
+        "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423",
+        "raw_sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+        "original_name": "188-controls-reviewed-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/19-boundary-hand-tool-current-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+        "original_name": "19-boundary-hand-tool-current-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/20-boundary-healer-current-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+        "original_name": "20-boundary-healer-current-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/21-boundary-foliage-current-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+        "original_name": "21-boundary-foliage-current-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/22-current-art-imports-1.log.gz",
+        "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437",
+        "raw_sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+        "original_name": "22-current-art-imports-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/23-product-1-1.log.gz",
+        "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_name": "23-product-1-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/24-product-2-1.log.gz",
+        "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d",
+        "raw_sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce",
+        "original_name": "24-product-2-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/25-product-3-1.log.gz",
+        "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_name": "25-product-3-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/26-product-4-1.log.gz",
+        "sha256": "cb6e8067090b4beac538d07b95a05d01f5162eeda1b4c367fd0a25aeed4f7880",
+        "raw_sha256": "746fdc4eb1e6a1fb278e831b901a6c740522e305e20925b18064ef3f1e801c74",
+        "original_name": "26-product-4-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/27-product-5-1.log.gz",
+        "sha256": "9fc8b8e4125e0f23f3f6bc51c7e51ec5d19af1fea6aea1aa9270c165d7c8f30e",
+        "raw_sha256": "9479332c2ae6fffd5b6fe176231c8fbcf80ecc15497aefa4e27c505660641f1b",
+        "original_name": "27-product-5-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/28-product-6-1.log.gz",
+        "sha256": "339f72ece47910d0875f4f7e3cc4aad9efd625770c8443a6bd5542891aad5162",
+        "raw_sha256": "e2c407f78f2e139e95d968651a8b70d21cf73f073232f435a6a0e8b65f59ab0b",
+        "original_name": "28-product-6-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/29-product-7-1.log.gz",
+        "sha256": "314560606ebba66ebf25c1454e23d55be42024205ce7877921813ad49dbddd3d",
+        "raw_sha256": "152a96924dc0448c475c81bad02276bfa90b1cdeb3bc97c573d3dc5094bc7620",
+        "original_name": "29-product-7-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/30-product-8-1.log.gz",
+        "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe",
+        "raw_sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b",
+        "original_name": "30-product-8-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/31-product-9-1.log.gz",
+        "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156",
+        "raw_sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475",
+        "original_name": "31-product-9-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/32-boundary-hand-tool-resume-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+        "original_name": "32-boundary-hand-tool-resume-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/33-boundary-healer-resume-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+        "original_name": "33-boundary-healer-resume-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/34-boundary-foliage-resume-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+        "original_name": "34-boundary-foliage-resume-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/35-product-10-1.log.gz",
+        "sha256": "746efedd895a37f2424833a637dfbf689388951436fd91cc5ec29fff9c1955cd",
+        "raw_sha256": "878173325099596d4bda6a135a8a01bae7967ea310b3090a7fb21e3195580a43",
+        "original_name": "35-product-10-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/36-product-11-1.log.gz",
+        "sha256": "ff0632d5b5d26c8999b65906f2c2d712ab6c4a507339c6506bc616e230e7a4aa",
+        "raw_sha256": "c9af51f4973919490926b929ae4b3671f1e87dcaac71e2ae9659b8225e5fd227",
+        "original_name": "36-product-11-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/37-product-12-1.log.gz",
+        "sha256": "77106458e5a138b6e76dcd19fd8a3f1b321c09dada14c410a2f07b19443e5d39",
+        "raw_sha256": "41318d855f54f4b6de6b75df0a3a98779d75210a789c37ca126ea59e6a6ad28c",
+        "original_name": "37-product-12-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/38-product-13-1.log.gz",
+        "sha256": "8735b16d36f3ed7ba788c21cf3ab59584415dd88fd75b5f62652d7c959cf7024",
+        "raw_sha256": "9de47cb01ce835d31e82743ce6c56e5cfa79efef28122eafb1c3dfc7414ef1f8",
+        "original_name": "38-product-13-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/39-product-14-1.log.gz",
+        "sha256": "c90d367f008380b6f9c5cb3db149c94244a39fec84481260b7645277cd811047",
+        "raw_sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28",
+        "original_name": "39-product-14-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/40-product-15-1.log.gz",
+        "sha256": "65207dff06ecffd406292012105b249a9bf99ff587256e36b869fb38129d0042",
+        "raw_sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8",
+        "original_name": "40-product-15-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/41-product-16-1.log.gz",
+        "sha256": "cfa3ad5c4075d34ccb514882b4ed8ee6efae35501f77094448039b4b6c709815",
+        "raw_sha256": "1d0c6390251592202b06737a5ba3d92e15e98e3f64aff5e13d0503fc62156b87",
+        "original_name": "41-product-16-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/42-product-17-1.log.gz",
+        "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7",
+        "raw_sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3",
+        "original_name": "42-product-17-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/43-product-18-1.log.gz",
+        "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2",
+        "raw_sha256": "29bd7368f754e9f18e69a39f811e5ab26db43872f9eb3db83136a5a1189adaf3",
+        "original_name": "43-product-18-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/44-product-19-1.log.gz",
+        "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc",
+        "raw_sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+        "original_name": "44-product-19-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/45-interior-normal-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+        "original_name": "45-interior-normal-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/46-interior-muted-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+        "original_name": "46-interior-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/47-interior-zero-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+        "original_name": "47-interior-zero-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/48-interior-mono-reduced-1.log.gz",
+        "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4",
+        "raw_sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+        "original_name": "48-interior-mono-reduced-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/49-water-default-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+        "original_name": "49-water-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/50-water-quiet-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+        "original_name": "50-water-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/51-water-master-muted-1.log.gz",
+        "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+        "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+        "original_name": "51-water-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/52-water-effects-muted-1.log.gz",
+        "sha256": "39202c98c985119d2b856256727fa7f0285d9a165a716dc1a6267d0da171441a",
+        "raw_sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+        "original_name": "52-water-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/53-water-missing-stream-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+        "original_name": "53-water-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/54-water-no-action-1.log.gz",
+        "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374",
+        "raw_sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+        "original_name": "54-water-no-action-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/55-cask-default-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+        "original_name": "55-cask-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/56-cask-quiet-1.log.gz",
+        "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+        "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+        "original_name": "56-cask-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/57-cask-master-muted-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+        "original_name": "57-cask-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/58-cask-effects-muted-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+        "original_name": "58-cask-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/59-cask-missing-stream-1.log.gz",
+        "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca",
+        "raw_sha256": "e3f38e8fdae6d006941847b11fa96875ff89a79d90c7f1f25e0e09387befd101",
+        "original_name": "59-cask-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/60-cask-no-action-1.log.gz",
+        "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1",
+        "raw_sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+        "original_name": "60-cask-no-action-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/61-hand-tool-default-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+        "original_name": "61-hand-tool-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/62-hand-tool-quiet-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+        "original_name": "62-hand-tool-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/63-hand-tool-master-muted-1.log.gz",
+        "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c",
+        "raw_sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+        "original_name": "63-hand-tool-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/64-hand-tool-effects-muted-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+        "original_name": "64-hand-tool-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/65-hand-tool-missing-stream-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+        "original_name": "65-hand-tool-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/66-hand-tool-no-action-1.log.gz",
+        "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0",
+        "raw_sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+        "original_name": "66-hand-tool-no-action-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/67-healer-footstep-default-1.log.gz",
+        "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783",
+        "raw_sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a",
+        "original_name": "67-healer-footstep-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/68-healer-footstep-quiet-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+        "original_name": "68-healer-footstep-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/69-healer-footstep-master-muted-1.log.gz",
+        "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+        "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+        "original_name": "69-healer-footstep-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/70-healer-footstep-effects-muted-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+        "original_name": "70-healer-footstep-effects-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/71-healer-footstep-missing-resources-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+        "original_name": "71-healer-footstep-missing-resources-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/72-healer-footstep-captions-off-1.log.gz",
+        "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7",
+        "raw_sha256": "370468c214dce91540a25f026b1ff1b972eb9a1998a6e263d4f6d17cd93caf4b",
+        "original_name": "72-healer-footstep-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/73-healer-footstep-observer-disabled-1.log.gz",
+        "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df",
+        "raw_sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+        "original_name": "73-healer-footstep-observer-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/74-boundary-hand-tool-after-runtime-1.log.gz",
+        "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c",
+        "raw_sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+        "original_name": "74-boundary-hand-tool-after-runtime-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/75-healer-master-output-1.log.gz",
+        "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd",
+        "raw_sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f",
+        "original_name": "75-healer-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/76-boundary-healer-after-runtime-1.log.gz",
+        "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274",
+        "raw_sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+        "original_name": "76-boundary-healer-after-runtime-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/77-foliage-historical-build-1.log.gz",
+        "sha256": "a368705b3e9e4b1f6f5002c07ae16c5514cd3bf2776d8db39d6fc5b66432059a",
+        "raw_sha256": "bdbae14493511c735d3fc6a57ccb6dbe1cbb7fcb3333550fe39e8f67981974fa",
+        "original_name": "77-foliage-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/78-foliage-historical-import-1.log.gz",
+        "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4",
+        "raw_sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a",
+        "original_name": "78-foliage-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/79-foliage-default-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "79-foliage-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/80-foliage-quiet-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "80-foliage-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/81-foliage-master-muted-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "81-foliage-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/82-foliage-ambience-muted-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "82-foliage-ambience-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/83-foliage-missing-stream-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "83-foliage-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/84-foliage-captions-off-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "84-foliage-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/85-foliage-foliage-disabled-1.log.gz",
+        "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed",
+        "raw_sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+        "original_name": "85-foliage-foliage-disabled-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/86-foliage-master-output-1.log.gz",
+        "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1",
+        "raw_sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa",
+        "original_name": "86-foliage-master-output-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/87-boundary-foliage-after-runtime-1.log.gz",
+        "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356",
+        "raw_sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+        "original_name": "87-boundary-foliage-after-runtime-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/88-wind-historical-restore-1.log.gz",
+        "sha256": "736e596f2e7c31f60e97fe1d14c3a61f7b1235e9abcc4e89d25e792bf90a3cee",
+        "raw_sha256": "541a96602fe4e6a6526bfe65cb9d1606fab8f8b6c21026e79fc59076c788e170",
+        "original_name": "88-wind-historical-restore-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/89-wind-historical-build-1.log.gz",
+        "sha256": "e736881fa08841ff4d02c177e445f43123be9797936384975d4abec1fd875756",
+        "raw_sha256": "787305ab37d84253aa59aa38575e6c07ca857cf87a333d8a5a2e8f8df0fd5b07",
+        "original_name": "89-wind-historical-build-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/90-wind-historical-import-1.log.gz",
+        "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed",
+        "raw_sha256": "1ab1bdac20d0ee62732289f464e36ae3cd7ca556befa5dbd6ac5b341c55d82c8",
+        "original_name": "90-wind-historical-import-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/91-wind-focused-1.log.gz",
+        "sha256": "bda46b5541f356f42ab4de7c4e15c3732f838fbb87dc41ae0f75d437ef6e4373",
+        "raw_sha256": "80a94b62b7a95028c055c324a552db1049fdc5523a7c8cc0db6571b18e129d66",
+        "original_name": "91-wind-focused-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/92-boundary-wind-source-1.log.gz",
+        "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5",
+        "raw_sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a",
+        "original_name": "92-boundary-wind-source-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/93-wind-default-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+        "original_name": "93-wind-default-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/94-wind-quiet-1.log.gz",
+        "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb",
+        "raw_sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+        "original_name": "94-wind-quiet-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/95-wind-master-muted-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+        "original_name": "95-wind-master-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/96-wind-ambience-muted-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+        "original_name": "96-wind-ambience-muted-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/97-wind-missing-stream-1.log.gz",
+        "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414",
+        "raw_sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+        "original_name": "97-wind-missing-stream-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/98-wind-captions-off-1.log.gz",
+        "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb",
+        "raw_sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+        "original_name": "98-wind-captions-off-1.log"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/99-wind-wind-disabled-1.log.gz",
+        "sha256": "7b40fc0e7e8cb03656b397ebd38c9cd8d2e615c6f02615866f340c0f27ef8542",
+        "raw_sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92",
+        "original_name": "99-wind-wind-disabled-1.log"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-default.json.gz",
+        "sha256": "7a47e77088288037db072d87640b98aa32c8b541c4e74d4bbada747cf983bdf4",
+        "raw_sha256": "45208e1e47bbc849eb804e6ba6927b5b893de9e77bd26e6732c52051bea8588b",
+        "original_name": "cask-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-default.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-effects-muted.json.gz",
+        "sha256": "fe7a9024bc9e8404c3ebf558534df81a99427595b2a72ca8c3bae7255564ba8f",
+        "raw_sha256": "aef00c3a1f9b729c7df99007e62c2593e413dd66a5d29d3ffaaeb4c840bdaaef",
+        "original_name": "cask-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-effects-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-master-muted.json.gz",
+        "sha256": "bfe3c649ee01fecf4630f2d56a77c458e193a031d90ea6350a3665510d773754",
+        "raw_sha256": "d664ebf09d188edede3601bf331676a87451c0483b510859c11df4e3c1484576",
+        "original_name": "cask-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-master-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-missing-stream.json.gz",
+        "sha256": "64b36838eb169d173d8090acd7234eddb7f1bad1fb941f7a467cba0c1a8878ed",
+        "raw_sha256": "dcc0bc3ae7725ad30493ec11ac6bedcbd3c58f6af45f403858e61824541aaad9",
+        "original_name": "cask-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-missing-stream.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-no-action.json.gz",
+        "sha256": "d0ab04bb87992ef614d7e14c0791d10c5aedfd9de41fb443e105f90775a1823c",
+        "raw_sha256": "c8264db0debddf0e6fe34f47f40e87cc6c1e85ce04268063e4279d36b9235ff9",
+        "original_name": "cask-no-action.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-no-action.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-no-action.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-quiet.json.gz",
+        "sha256": "d2c8ed567ce90dfaa5a894527e5fcb7e39747579703aa2027cf40520ac8287d6",
+        "raw_sha256": "c2e04351f5b3f34a368e1d43d03a28e6d7ad8ae1feeae74c92b8a4df5eb60df4",
+        "original_name": "cask-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cask-quiet.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "cask-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/controls-main.json.gz",
+        "sha256": "c2c4ff754ea57b33aed69e531272734bfe74568f0d9a37513a1827b3cd2df5ac",
+        "raw_sha256": "6fa10acbbe2b53c5f00005d4fbdc778c706bf7b7c2f52a0a1c5e886c4a5daa2b",
+        "original_name": "controls-main.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-captions-off.json.gz",
+        "sha256": "8e35847fd8acae85dd8e9d4777374cef932277af43f4057430c66bc83a3f5a04",
+        "raw_sha256": "11df38b234c74ed219cc116128905361efaf47509e40d2457654f25a3c6cf014",
+        "original_name": "cooling-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-captions-off.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-cooling-disabled.json.gz",
+        "sha256": "9117e633463a2a400467c07436cd7f0d5e527acee8cb5ee6a15b8a7329fbd3db",
+        "raw_sha256": "9d7d9cf6e0f51914aa4e9792902246be824511a31b023451ff46d316389ff528",
+        "original_name": "cooling-cooling-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-cooling-disabled.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-cooling-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-default.json.gz",
+        "sha256": "c6e10afd845298544d1705f738c98b5b217dc74715c0bdfc30a2abbd3cad4296",
+        "raw_sha256": "0f0b556c752a14ee029af0cdde3221a6ba36442a8db32e1a0b69ea0f65dedf8b",
+        "original_name": "cooling-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-default.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-effects-muted.json.gz",
+        "sha256": "9a3170dcbd3863cc5360554d739c1d7b5292bbd6c2abb27477c4b362f60c74ba",
+        "raw_sha256": "51fb6d3f560a5caa7747de9393477f5ebe732ae296eb2298d1ec7001c34bdac4",
+        "original_name": "cooling-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-effects-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-master-muted.json.gz",
+        "sha256": "7f8758d9917a4f84b50a072de2963a208cdaf299d354adc6902020b01b6c16f1",
+        "raw_sha256": "e022bcc6fabda31db5676cd722946387c904e8c9adaf893445c4acd5a470a3f5",
+        "original_name": "cooling-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-master-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-missing-stream.json.gz",
+        "sha256": "6ae148e90a4270df0d8bdd9dfafc6a4307c8d838caf6f23d03440289b8a2a51e",
+        "raw_sha256": "5de85a1cdb9e0e95d9d7d9e8d51dad7e59a9b2b414d093c2d08356cf56a9c9d1",
+        "original_name": "cooling-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-missing-stream.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-quiet.json.gz",
+        "sha256": "94c4175e10f3129f61d7c61d0e702a5fd4d609c9ac867e6660ad6959bfc286d1",
+        "raw_sha256": "3f429ba541be4cfc7507572743e2f605b749bf8cee471ed9b5dc5381ea51726b",
+        "original_name": "cooling-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/cooling-quiet.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "cooling-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-ambience-muted.json.gz",
+        "sha256": "14d3e10a8113dd51b269deb216b8c3b5857db7898100b92b5c0cec4b20898692",
+        "raw_sha256": "648ff0e075f26e2cc37e983381696b1343273e67ec5b07f6fb60bcb397f0eea5",
+        "original_name": "foliage-ambience-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-ambience-muted.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-ambience-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-captions-off.json.gz",
+        "sha256": "53d1802f57865c9307f823c29c82004d43b23bb2638a922040878e8e5f9a60c2",
+        "raw_sha256": "45972164af6a5545e92c4ba3bbd67d8af0d15950aff9abbab202d25c306fc729",
+        "original_name": "foliage-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-captions-off.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-default.json.gz",
+        "sha256": "2a5c222085113c69dc55eaab53de596d21b7a7ae94a3f900895d60741895f804",
+        "raw_sha256": "280f75bba7f1dccd90703d098ebc31cfa1e6295adedba8681e52b54dfbbbf1f9",
+        "original_name": "foliage-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-default.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-foliage-disabled.json.gz",
+        "sha256": "6e05bdfac48c7fe33400a501d2d80333946d2d7032854b7d5ebd14ba9bde75d6",
+        "raw_sha256": "ebee0fc5b2bf85d488d50ffe61b586c13c4ac7a28bb2aefd74a94b28a18c6cc3",
+        "original_name": "foliage-foliage-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-foliage-disabled.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-foliage-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-master-muted.json.gz",
+        "sha256": "fb2d2667fc784d98fa5763ae19e40c70467828dc43285bfcaad05eed2c912c82",
+        "raw_sha256": "95b4a0308418c7248fcd03d3bb2892e4ef50d0c7e0a81f67a8752117589043f1",
+        "original_name": "foliage-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-master-muted.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-missing-stream.json.gz",
+        "sha256": "64284f80557c13f6c0a08541cd1cd5577c5b68122fb17173c3ae5ceab55b994b",
+        "raw_sha256": "9a24bf46b7697b313b8b064f9cad45e787ee3ec2c856f72b5de2c920092e9da2",
+        "original_name": "foliage-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-missing-stream.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-quiet.json.gz",
+        "sha256": "b5feafa38df85985c0518e3dbdff877ec06e88b44d62c3bd324acdad2f805704",
+        "raw_sha256": "4cb94438cb5aeb7477f8aee2363dc1a87e231acedc6fca70fa116a29b477bc50",
+        "original_name": "foliage-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/foliage-quiet.json.save.json.gz",
+        "sha256": "bceb9fdb231a84b0d7856ac7ec7fdd633d51f4830f5256d9e27acb1377590eff",
+        "raw_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+        "original_name": "foliage-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-captions-off.json.gz",
+        "sha256": "7948d878fd853e0f11b6402ffab5ad38c6dc20d34666f1f6c55cab0ce1a864c7",
+        "raw_sha256": "0fc9fff03701c157abef15752a630d24d29cbbd542b3f825756f321594aa96a4",
+        "original_name": "healer-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-captions-off.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-default.json.gz",
+        "sha256": "29c0521059b816bbc9e5b7f7368eef6aca1c27c46043b912ce3a22033c612a04",
+        "raw_sha256": "c17ea9958131202948ee35715d75c38dbe5af5f1cf46ca08d80b889f16476900",
+        "original_name": "healer-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-default.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-effects-muted.json.gz",
+        "sha256": "f61ec33c3d7b56d149c141fff31c8fee2ac0af5f92b67f0f6aa1b56bc5d43e18",
+        "raw_sha256": "6560f9f60735047333931dfe16e576845e7361518c0d577f853812a2d6b72cc7",
+        "original_name": "healer-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-effects-muted.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-master-muted.json.gz",
+        "sha256": "a6404114ce9058457590c6c03352aa7121928f5be5ae893467bcf069d819febf",
+        "raw_sha256": "2260c89f43285b66393bde2fb6115b9b93bb76547bd922c7f8470e0b9d96bcd4",
+        "original_name": "healer-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-master-muted.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-missing-resources.json.gz",
+        "sha256": "811bbc0306472beb633e569c9f94666b1553dd011c0f8bb42ec41211ea2c7fad",
+        "raw_sha256": "046cd70781cd2edd4cd309a748b9b2909a5181772798d91691d935444133eecf",
+        "original_name": "healer-missing-resources.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-missing-resources.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-missing-resources.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-observer-disabled.json.gz",
+        "sha256": "a7e420cf89c83e197838945f68bf2c4bcbb3e459d5d7538e55024d42f8b6faa7",
+        "raw_sha256": "a9c41cefb0e9701d90aa959a2135b6d62820fb95f485f855d8ff1e90f05dba93",
+        "original_name": "healer-observer-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-observer-disabled.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-observer-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-quiet.json.gz",
+        "sha256": "c7820e3bba6396593e9ae3084f57073c2c2c66665132aada2717dd3e5d4e9da4",
+        "raw_sha256": "124730aa40fc2f8b68ae89016798c2daddd264498d738a3f78afd214b396fbf8",
+        "original_name": "healer-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/healer-quiet.json.save.json.gz",
+        "sha256": "4b2bddc90bfe0a8a091ce449a360b222f41d20004834d10f858ee11c0a847819",
+        "raw_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+        "original_name": "healer-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-captions-off.json.gz",
+        "sha256": "3a13ff529478d7e66b5d4aa9a36f840d078831524416722211396c9e4ebb0b2a",
+        "raw_sha256": "b6023d5fa24631c5f19eb16beb0f6fb382ca518d69e9237d52e2642a5dc35e4a",
+        "original_name": "heating-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-captions-off.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-default.json.gz",
+        "sha256": "f03a8e4b9967f29f9ad587e51e502305368e37f2eaf8c59fe7154bc869f7abe6",
+        "raw_sha256": "a508bce9bfc693f83159e254aa1f25bc84aabb87c34450304fd65dec6adb1fcb",
+        "original_name": "heating-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-default.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-effects-muted.json.gz",
+        "sha256": "49e8b6554ef3d3e351c7f861c1839596f500f7136485dc6b2103f5bfb0fcbfad",
+        "raw_sha256": "4b8dfd9d7e42edbd2fd2f9d544f1661894a2790d7baebfb463602e761c5e0f83",
+        "original_name": "heating-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-effects-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-heating-disabled.json.gz",
+        "sha256": "4b4d3ebf2a8a04483bb72fbb9de270fbaf10d69587b5b1a876b5e0cd1db65075",
+        "raw_sha256": "03a231bf1cb6ffafe9276fdc45e0656e6304f104ecbe4a98fecf7288f4d1ae17",
+        "original_name": "heating-heating-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-heating-disabled.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-heating-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-master-muted.json.gz",
+        "sha256": "bb4137e56210d61cfa806e37e5d04170362b816e94428699a5bb2a1749b58d34",
+        "raw_sha256": "6988cf2311377b54e6407e5ad1815112676481d9cf70d6235533004c693199a0",
+        "original_name": "heating-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-master-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-missing-stream.json.gz",
+        "sha256": "bf8e20a22d4d3170db0683b5cfb9c8e655a0e755e6f29bb1f0f770cacc845518",
+        "raw_sha256": "edecce4b3c2294af55d124e9128bba880d80bf98df968fc4e390d3743fa36629",
+        "original_name": "heating-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-missing-stream.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-quiet.json.gz",
+        "sha256": "4ed5e3f89d7c7d3a3d1e01d24535ef5050189ab20e623d0b27a4ea195349dff2",
+        "raw_sha256": "ff42c967518a0539198b1f1c8bf39c67d09b0b69934f27d3f8bb962798172fac",
+        "original_name": "heating-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/heating-quiet.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "heating-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-audio-disabled.json.gz",
+        "sha256": "00bf5971f1535e3c27104e6ad74e13178b87643326ece355117e42415e36dea3",
+        "raw_sha256": "4d6cdb8bc2eaed84d5a5a38d5486f8c339662899092df384eba22900b3710229",
+        "original_name": "herb-near-audio-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-audio-disabled.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-audio-disabled.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-audio-disabled.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-audio-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-captions-off.json.gz",
+        "sha256": "f6c8a0282f41f375046c87f74132c0a3ebb7e43c64534c2cb5e8624ba8ffa92a",
+        "raw_sha256": "41ea54a18c32a69e5df48add0a26bd6a51696371d167038947aa0cc2228313a4",
+        "original_name": "herb-near-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-captions-off.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-captions-off.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-captions-off.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-default.json.gz",
+        "sha256": "cab641f6d30344305440ca7f9dd651f26bb863e2f10afa5a06bbae5da47c9384",
+        "raw_sha256": "d20d030d1cf4a4fc162e05778d553b23e173fe51a8acbe8e924b2adde2c6f441",
+        "original_name": "herb-near-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-default.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-default.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-default.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-effects-muted.json.gz",
+        "sha256": "b77386e3a7e6a0e4cd7a3edfab8b14aa05b52c03bd1e849aafe7842efdc43a45",
+        "raw_sha256": "86e9b76ec43b0198f5400a5292ee91066be07be3e7db3876ea7c320a59c447cd",
+        "original_name": "herb-near-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-effects-muted.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-effects-muted.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-effects-muted.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-master-muted.json.gz",
+        "sha256": "8d2ad6100410718423299f57859af3103f78e30ca7dd4df5ebd7f463df9dcb23",
+        "raw_sha256": "91cb97e2c4226f92a710a7785cf5b3637b1e4dfc23cf68f3e9cd944e75b46e2e",
+        "original_name": "herb-near-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-master-muted.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-master-muted.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-master-muted.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-missing-stream.json.gz",
+        "sha256": "d6a6b4164347c58ea1b6d74122d3ececa8cae18c26f66380bcc8a8a65f590b80",
+        "raw_sha256": "a45118fe372d56e0bc46a9829cdfd11e9f5197c4a0bcfb4df067d81fb8a03acb",
+        "original_name": "herb-near-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-missing-stream.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-missing-stream.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-missing-stream.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-quiet.json.gz",
+        "sha256": "865d3c22e3b3f864ef816c425ebd3d0bed5aa60034ad1636fb1fbb2b80f05142",
+        "raw_sha256": "0bb937b5bb14680737340eb956fcf622de9b29d03c38f6c4120ed9e1afe70cc9",
+        "original_name": "herb-near-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-quiet.json.gameplay.json.gz",
+        "sha256": "b5595922d0637864abbc475d9e253c8e4f1c665fd852c561b57a845bf1fdbace",
+        "raw_sha256": "51838efd19249bbfca6948131acf7efd83ea09b85ce2a816d506cdb87008250e",
+        "original_name": "herb-near-quiet.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-near-quiet.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-near-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-audio-disabled.json.gz",
+        "sha256": "be5a51e60ffacb19ebbb77bdf7c2301f10587637bc21603a0ce2aab269794aa9",
+        "raw_sha256": "d512c111da9bd47032fd614da0e46c4aea264273269045f489b2b54c7d5a4f93",
+        "original_name": "herb-remote-audio-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-audio-disabled.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-audio-disabled.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-audio-disabled.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-audio-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-captions-off.json.gz",
+        "sha256": "eec988da05ef8dbcc8017e01230a0f314bd4543a904797873077c5664a0fba7b",
+        "raw_sha256": "b7955d3d1d0caef0c27331e1bcb0187624d98d5de03a606548e620d1adf664c2",
+        "original_name": "herb-remote-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-captions-off.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-captions-off.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-captions-off.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-default.json.gz",
+        "sha256": "467eeae966bffcf4ff123566a9c11e68165b3c75ff9bc21885106358355dd4e5",
+        "raw_sha256": "3f58c63bb47f3aa0637b0500dca8e8b4be11aa11dae7ff15b5a3e56afe4c3dd8",
+        "original_name": "herb-remote-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-default.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-default.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-default.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-effects-muted.json.gz",
+        "sha256": "8b16cbecaef13d34769413fd913557a36f004cfcb13eb67d8dcc5d6de1e54ac1",
+        "raw_sha256": "28e5643dddb45167fa8f1557023fc6edf4e7c6c9149cd4cc730f3cb29415cc4b",
+        "original_name": "herb-remote-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-effects-muted.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-effects-muted.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-effects-muted.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-master-muted.json.gz",
+        "sha256": "8c5d8ce728cff9656afaf39a8361e47885f3e3623e382f5f045acef871220fd2",
+        "raw_sha256": "0829a90b98e0ba7624216e8f4b195ec0c8a02c7d06435cab9a8f3b157bacce93",
+        "original_name": "herb-remote-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-master-muted.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-master-muted.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-master-muted.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-missing-stream.json.gz",
+        "sha256": "c11a4424078e5219ad33a0d886ea8958915df920d6e9c57f4e92731f26774846",
+        "raw_sha256": "dd4cb4a8fa7ae521a504c0396b079da446562a14bc992e28605605536d4f8f6d",
+        "original_name": "herb-remote-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-missing-stream.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-missing-stream.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-missing-stream.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-quiet.json.gz",
+        "sha256": "3a0e108a3b109f13550150712fbceae2047636ab2689b075f599c7dc276f2d49",
+        "raw_sha256": "e27e7f1b31f2db8e6c9adb468c74c7c92fd4d05b3247d8797d1f0236d63124a2",
+        "original_name": "herb-remote-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-quiet.json.gameplay.json.gz",
+        "sha256": "e16e6b95344ab17e541ddde6b615cce65dceaf335264e9f5363878c5509834ee",
+        "raw_sha256": "88efdff4077c31f3012e192dd6dc3d243f2aff869ab49b7f5a33121c506ad598",
+        "original_name": "herb-remote-quiet.json.gameplay.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/herb-remote-quiet.json.save.json.gz",
+        "sha256": "a7f96bfc11dc94791a3d57edc2dddd626f1e3748b9974ff6657d90e5f26cbf22",
+        "raw_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+        "original_name": "herb-remote-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-mono-reduced.json.gz",
+        "sha256": "6d0e8b515de04897acb203c07d98fe33deceed539acd094dbd17a085df1f9533",
+        "raw_sha256": "69e206d7d377b0fa1ac34b38fad4fd17ebf576b845044d1998aec33de2822b4c",
+        "original_name": "interior-mono-reduced.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-mono-reduced.json.save.json.gz",
+        "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec",
+        "raw_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+        "original_name": "interior-mono-reduced.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-muted.json.gz",
+        "sha256": "574b75dae90e2e1d2a88588b1c4d3388a40c721ad801241ac79513e170226a3a",
+        "raw_sha256": "91ec0ea2bc640084d88e704b5455b950e330253a220ffd838680931ef43df9c6",
+        "original_name": "interior-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-muted.json.save.json.gz",
+        "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec",
+        "raw_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+        "original_name": "interior-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-normal.json.gz",
+        "sha256": "4da2cb8354cb56f6b332420cdff05ba51c5937bc7d17161b443bf51a70fac626",
+        "raw_sha256": "fc1208db158742481c0979666385e40a22ac76f95c56b986b35de9d6cd927480",
+        "original_name": "interior-normal.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-normal.json.save.json.gz",
+        "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec",
+        "raw_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+        "original_name": "interior-normal.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-zero.json.gz",
+        "sha256": "f3c51c22b5198e508b286b3170d1688bf4eb629cfe5a1eb8239177383ab04d99",
+        "raw_sha256": "20d7f4c54a48b859e2ce8d512dc9f64d4f6722270177147548098c47229dbeef",
+        "original_name": "interior-zero.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/interior-zero.json.save.json.gz",
+        "sha256": "22e621bbf765252d8097f1a52462a5d645869109882bdc9d68178ca32cb7e9ec",
+        "raw_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+        "original_name": "interior-zero.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-ambience-muted.json.gz",
+        "sha256": "85dbd84759eb75c6337b3f776fc154f254417c3c12c56609488fed2120d8980e",
+        "raw_sha256": "50f17b68464f3d2d74a496e1b12f1b8ee0593b01e2d500df0501dad024ac7a0e",
+        "original_name": "rain-ambience-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-ambience-muted.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-ambience-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-captions-off.json.gz",
+        "sha256": "36a7e14822a564684d8d933fdf492970982488ea9bef8b45d37460d15098d8fc",
+        "raw_sha256": "faa426bb561739a9c24c4b7ebddcbce3edc001d3ffa9e956cef19c856cd1ad20",
+        "original_name": "rain-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-captions-off.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-default.json.gz",
+        "sha256": "c2cb0881b9c33cef0dfac41ac885e52604ef2896ebf61dff21e862acc6ba94ac",
+        "raw_sha256": "79cd72a11023642663415b10edd9f9e0322119ee7eb36ad41bbb17bfe84e7bf6",
+        "original_name": "rain-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-default.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-master-muted.json.gz",
+        "sha256": "673f5a8dc0679bf9a3703e153b010327c8b5357ebdbb18e9415ba708c7420c17",
+        "raw_sha256": "58aff8e3272b84e4f96462104345cc2d2db3958b15bdf6e836a4a71acbe73dd1",
+        "original_name": "rain-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-master-muted.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-missing-stream.json.gz",
+        "sha256": "2846f96a155e4562ef540d7b83bbc58b5315241819cf2348e2c388f661b56834",
+        "raw_sha256": "4dc3d58cf916d152ceea78c4c7328faa95437824a1b927b48473730cd2153940",
+        "original_name": "rain-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-missing-stream.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-quiet.json.gz",
+        "sha256": "f37ed8e759c995e7a46977a7cb366ac07a05106ca44806bfe3a0df9f87c8ddf8",
+        "raw_sha256": "1b62ccf836c5d5bccc1bb9492c22ccb29982dd6ef5f8aa575f49248ae9d70a61",
+        "original_name": "rain-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-quiet.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-rain-disabled.json.gz",
+        "sha256": "af08a751624a4d0b437bdfd6a842bd2cf4626da69215349f3f3fe74a8d43c2e7",
+        "raw_sha256": "215b53d7c53857632a09c5ba9c665b5a5cf1f2c12a00b7e44f9a2b92bdda968a",
+        "original_name": "rain-rain-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/rain-rain-disabled.json.save.json.gz",
+        "sha256": "f99b2e57b3aed1fddb642f137abc87c32992d93bb97b6dcd44853b0fa8b1210d",
+        "raw_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+        "original_name": "rain-rain-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-captions-off.json.gz",
+        "sha256": "698e602fa2074d58640ca9c42a6fca52a1cfa23b2e591c87ba75853db7cf1a72",
+        "raw_sha256": "971f8efa2c85b2ed1802a1e8b2462aec83826e0bde485410d3c8594a48fbfac3",
+        "original_name": "steeping-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-captions-off.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-default.json.gz",
+        "sha256": "f79b43e44e7c1db43b1bb4405191269d182d5ba0ac81951a3526288b6227046d",
+        "raw_sha256": "7572737e5d2089b9776f793bbbb1835ee5570b0a5413410494eddfaa0c173d82",
+        "original_name": "steeping-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-default.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-effects-muted.json.gz",
+        "sha256": "81e23ad3066f23c5754d886b815aa839d1e6c955db7aa8e2f737fa87f4b97103",
+        "raw_sha256": "948e285f91a1f3d94699fbc1ebdeeb096121e7432d70e45eb18d67c630295e42",
+        "original_name": "steeping-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-effects-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-master-muted.json.gz",
+        "sha256": "ac3131c73d452aa4a62b03b2563940ad16ddb5cc7a091b9bf98c2e17a69b2b20",
+        "raw_sha256": "ae2c97165d6d00f8929accaf88a4ca75a46f62dd3538640414b75f7e85d306d7",
+        "original_name": "steeping-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-master-muted.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-missing-stream.json.gz",
+        "sha256": "0c4f15fb5f4015e8859fbb51fb248e5722b4a3d598fd088e66f061a2a663a3a0",
+        "raw_sha256": "1642b154f54aecabff18e0afe2bdcf0765dbbfdf842f3837743b204bc13a7cd9",
+        "original_name": "steeping-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-missing-stream.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-quiet.json.gz",
+        "sha256": "e4f1bce92b61898402213f6ee55d061f882cc4d8dab4b50165bdb9ba86ebbe7a",
+        "raw_sha256": "01839f3c1dae86457defca6cd976de3464477c3862abdad2bb4100324af6c013",
+        "original_name": "steeping-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-quiet.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-steeping-disabled.json.gz",
+        "sha256": "c3727f348ffef642f2c48dd0617ba342bb489fb95aafdfedcf4edec3af627f07",
+        "raw_sha256": "0fd6af0a2adbb323f9403fbc81709f892156b8716c3401d5a93e5b35e932c5db",
+        "original_name": "steeping-steeping-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/steeping-steeping-disabled.json.save.json.gz",
+        "sha256": "e6116217e177765fd1d84736f02130a5a96c154e3c0c824cfde23df4382ece1e",
+        "raw_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+        "original_name": "steeping-steeping-disabled.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-default.json.gz",
+        "sha256": "be63d875866e3d7c51b2a74c26ac487baa6a742ce5b8dcd117d4c888ddf68168",
+        "raw_sha256": "6848bad01a29f51be022568e3e2b62e71f504a325911488d443c0f9210ef0139",
+        "original_name": "tool-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-default.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-effects-muted.json.gz",
+        "sha256": "4e5346e9b653a12fdce5ec8ffa97840e303a722359ec4dda27f6b8e5a5429fe5",
+        "raw_sha256": "fc88ac81dd40fbf0c840ef0519f36cd56021ee73af2f6f99a402120cf7a5ca4d",
+        "original_name": "tool-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-effects-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-master-muted.json.gz",
+        "sha256": "50397f5ad92125d8c333211ee5466f7f7de477c0c068768f47cced801090c56b",
+        "raw_sha256": "05e60aa9cccc5a6f0e78b9274c4955488884be5d8ddb38a77b79a82957ec23e5",
+        "original_name": "tool-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-master-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-missing-stream.json.gz",
+        "sha256": "ec0416f288b3819f30bb13fb444d724b20dd9be2549f21de3e21540c2d85bf15",
+        "raw_sha256": "dbdf9b0b123f17213865286fd4c57b10eaa50a74ff886a592425d4eb9645f797",
+        "original_name": "tool-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-missing-stream.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-no-action.json.gz",
+        "sha256": "d3202d7d46042aaf9598688293c5f59293a75f043f01f89c8871757031c76938",
+        "raw_sha256": "3e42a0b6f4b3272cef2eaac50f6acd53e53b2569b5ace97233dacdde03522e37",
+        "original_name": "tool-no-action.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-no-action.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-no-action.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-quiet.json.gz",
+        "sha256": "d67b1db67bb5fed65fd9364f5d41fd1d10d30165f531315e43692498fbd54051",
+        "raw_sha256": "4bca23f225cba122af4388bd2292d0db24c9d924b14cee0e89473696ccefb7ac",
+        "original_name": "tool-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/tool-quiet.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "tool-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-default.json.gz",
+        "sha256": "668f535a1aacd9bfcf71386c0bf96f53e9fe5678028881c56d33a43f84a4ae8e",
+        "raw_sha256": "4e019844b293048864a9676f0d39dd34c7d37e62c57727c1a29cacdc168d6f1b",
+        "original_name": "water-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-default.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-effects-muted.json.gz",
+        "sha256": "a98612bb8a02f9ba0c18f23ef9053a8c63e5d072854b7afaf43cfccf597ae805",
+        "raw_sha256": "65761c93889cf8309e7b389f6b938bf87cc9d27354dafd9953c2788e71b5964b",
+        "original_name": "water-effects-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-effects-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-effects-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-master-muted.json.gz",
+        "sha256": "b9692adb3523b8ac876d197dfcfb56e3e6f58933154cb788b056496215ba51e6",
+        "raw_sha256": "9d1de9f0fa3d1496f928b5e7d207de0280af1a6f17ad7f563f61766e135cf9af",
+        "original_name": "water-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-master-muted.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-missing-stream.json.gz",
+        "sha256": "a47555fe3ff3ac41bb45b64b2a8ce646d6df0e8d27845624325f009a97f66a89",
+        "raw_sha256": "6b849421fc6f4e72ad9166e50e22ba8ef8f03dbc015ba11fc93acf78e897d497",
+        "original_name": "water-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-missing-stream.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-no-action.json.gz",
+        "sha256": "dec18d9b856c9a92603570f70b14ce99755f2966bd5626a0100f643eb5146077",
+        "raw_sha256": "9aaa0e2c5ccf07097dfab90092d9c180fd2fe0c12ea799ce5013d9f4d3f9cac3",
+        "original_name": "water-no-action.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-no-action.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-no-action.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-quiet.json.gz",
+        "sha256": "d62dd623dc8c90fe3056a68f8fc5ab72adbba57ecbe5c981a7d8ba0cd4b07a62",
+        "raw_sha256": "9e20cb7df80b3b000db1819d797b5d173d0368c3802edc44cf7e11e2496ffeea",
+        "original_name": "water-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/water-quiet.json.save.json.gz",
+        "sha256": "5e842995716b8e63c263127e1f876e96629f71652f3449ac8de56aa604977092",
+        "raw_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+        "original_name": "water-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-ambience-muted.json.gz",
+        "sha256": "af57a7703b510281f31634696c79c180533f2cbad5593d73d921ffc669fda0d4",
+        "raw_sha256": "b32f838804735999d360ac8dc2119b851492db7a7f058b589cf475cb1146ec77",
+        "original_name": "wind-ambience-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-ambience-muted.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-ambience-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-captions-off.json.gz",
+        "sha256": "a8a4ef85a84ffdbc59ed83ab4959b3b43732a261daeb0d243e3cc1c92313451e",
+        "raw_sha256": "bcf8197afd1ea4083f3ff545296cf9002278a43fb136f932272a2da475f9e5a6",
+        "original_name": "wind-captions-off.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-captions-off.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-captions-off.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-default.json.gz",
+        "sha256": "c127950b78dc4f18b033b377832f937c5c8b746bee5531275c3d6931ed291fd0",
+        "raw_sha256": "748b19bba0f35ab72d96cf32cb693cdcffaaaa20f67651948d852c6ddd012ef0",
+        "original_name": "wind-default.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-default.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-default.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-master-muted.json.gz",
+        "sha256": "296ae19f55d49ea5ed4f275e84d0531ea58bfaf1796fb6282cfc2d637cbae746",
+        "raw_sha256": "2e3a55e603d968654379c412d7963c8a92797200d7c86cb578cc64ec3edf6e3a",
+        "original_name": "wind-master-muted.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-master-muted.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-master-muted.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-missing-stream.json.gz",
+        "sha256": "4fdde94438af348f577fb24b9e389c4d61950c1dc62c36f3f63fa201a762d331",
+        "raw_sha256": "0175b5d0a3ef781ebb999ef4c1c9e4661c5b8100ee74f862ef7d2e2e6e2c166b",
+        "original_name": "wind-missing-stream.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-missing-stream.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-missing-stream.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-quiet.json.gz",
+        "sha256": "4609578d47af318345b5b6938fa9900c3262b04f014ef04049b0147a031ec923",
+        "raw_sha256": "eb6d6bba3a09878510a1aed6d66f0d98a699221a52fc0453060e6496ed1711e0",
+        "original_name": "wind-quiet.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-quiet.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-quiet.json.save.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-wind-disabled.json.gz",
+        "sha256": "6435fedc59da6ea25055512cf35ab83b3de1d7cb891fbd6c4dddba502259a489",
+        "raw_sha256": "de24e456dad30b261b6201480513de9914cdfabef73f0566daeacb715c18a3ea",
+        "original_name": "wind-wind-disabled.json"
+      },
+      {
+        "path": "input-direction/remapping-runtime-review/quality/wind-wind-disabled.json.save.json.gz",
+        "sha256": "ca2f1cba0f45a9a74b66ff3ed4235f407464a54d7134e131aa4838fea7b07b28",
+        "raw_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+        "original_name": "wind-wind-disabled.json.save.json"
+      }
+    ],
+    "unit_tests": 5576,
+    "completion": true,
+    "stages": 188
+  },
+  "completion": "Full finite approved remapping contract implemented and verified; wider physical-device support and screen-reader/release claims remain open."
+}

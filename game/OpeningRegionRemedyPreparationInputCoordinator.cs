@@ -71,7 +71,7 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         seeker = GetNode<CharacterBody2D>("../Seeker");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
-        status.Text = ReadyStatusText;
+        ControlSettingsController.SetGuidance(status, ReadyStatusText);
         var restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
         void ResetHeating() => heatingCommit = null;
         void ResetSteeping() => steepingCommit = null;
@@ -87,9 +87,10 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!ControlInputContext.WorldAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (!@event.IsActionPressed(PreparationAction))
+        if (!ControlInputMatcher.Pressed(@event, PreparationAction))
         {
             return;
         }
@@ -113,17 +114,17 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                 firstPatientState,
                 seekerPosition))
         {
-            status.Text = CurrentStatusText(recipe);
+            ControlSettingsController.SetGuidance(status, CurrentStatusText(recipe));
         }
         else if (binding is not null
             && NumericsVector2.Distance(seekerPosition, binding.StationPosition)
                 > MaximumInteractionDistancePixels)
         {
-            status.Text = MoveCloserStatusText;
+            ControlSettingsController.SetGuidance(status, MoveCloserStatusText);
         }
         else if (recipe is not null)
         {
-            status.Text = CurrentStatusText(recipe);
+            ControlSettingsController.SetGuidance(status, CurrentStatusText(recipe));
         }
 
         GetViewport().SetInputAsHandled();

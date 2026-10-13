@@ -1,4 +1,4 @@
-[gd_scene load_steps=440 format=3]
+[gd_scene load_steps=446 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -656,6 +656,13 @@
 [ext_resource type="Script" path="res://OpeningRegionHerbCollectionAudioController.cs" id="herb_audio"]
 [ext_resource type="Script" path="res://HerbCollectionAudioRuntimeSmokeCheck.cs" id="herb_check"]
 
+[ext_resource type="Script" path="res://ControlSettingsStorageController.cs" id="controls_storage"]
+[ext_resource type="Script" path="res://ControlInputMapAdapter.cs" id="controls_adapter"]
+[ext_resource type="Script" path="res://ControlSettingsController.cs" id="controls_controller"]
+[ext_resource type="Script" path="res://ControlInputContext.cs" id="controls_context"]
+[ext_resource type="PackedScene" path="res://ControlSettingsPanel.tscn" id="controls_panel"]
+[ext_resource type="PackedScene" path="res://ControlSettingsMainSmokeCheck.tscn" id="controls_check"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
 
@@ -741,6 +748,18 @@ size = Vector2(144, 8)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
+
+[node name="ControlSettingsStorageController" type="Node" parent="."]
+script = ExtResource("controls_storage")
+
+[node name="ControlInputMapAdapter" type="Node" parent="."]
+script = ExtResource("controls_adapter")
+
+[node name="ControlSettingsController" type="Node" parent="."]
+script = ExtResource("controls_controller")
+
+[node name="ControlInputContext" type="Node" parent="."]
+script = ExtResource("controls_context")
 
 [node name="AdaptiveDisplay" type="Node" parent="."]
 script = ExtResource("314_adaptive_display")
@@ -4401,6 +4420,17 @@ script = ExtResource("herb_audio")
 
 [node name="HerbCollectionAudioRuntimeSmokeCheck" type="Node" parent="."]
 script = ExtResource("herb_check")
+
+[node name="ControlSettingsPanel" parent="." instance=ExtResource("controls_panel")]
+
+[node name="ControlSettingsMainSmokeCheck" parent="." instance=ExtResource("controls_check")]
+
+[node name="ControlsEntry" type="Button" parent="SettingsOverlay"]
+offset_left = 172.0
+offset_top = 190.0
+offset_right = 460.0
+offset_bottom = 230.0
+text = "Controls settings"
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

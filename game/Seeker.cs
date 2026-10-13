@@ -36,11 +36,11 @@ public partial class Seeker : CharacterBody2D
     /// <inheritdoc />
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 input = Input.GetVector(
+        Vector2 input = ControlInputContext.WorldAllowed(this) ? Input.GetVector(
             MoveLeftAction,
             MoveRightAction,
             MoveUpAction,
-            MoveDownAction);
+            MoveDownAction) : Vector2.Zero;
         NumericsVector2 velocity = MovementCalculator.CalculateVelocity(
             new NumericsVector2(input.X, input.Y),
             MovementSpeedPixelsPerSecond);

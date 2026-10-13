@@ -45,7 +45,8 @@ public partial class JournalOpenCloseInputController : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (!@event.IsActionPressed(ToggleAction))
+        if (!ControlInputContext.TogglesAllowed(this)) { return; }
+        if (!ControlInputMatcher.Pressed(@event, ToggleAction))
         {
             return;
         }

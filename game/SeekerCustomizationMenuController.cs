@@ -61,7 +61,8 @@ public partial class SeekerCustomizationMenuController : Control
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (!@event.IsActionPressed(OpenAction)
+        if (!ControlInputContext.TogglesAllowed(this)) { return; }
+        if (!ControlInputMatcher.Pressed(@event, OpenAction)
             || Visible
             || source.CurrentState.SelectedProfile is not null)
         {

@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase11-control-remapping-runtime-integration",
+  "owner_statement": "approved",
+  "approved": "2026-10-13",
+  "context": "Approval directly answers the published 29-action controls runtime, UI and persistence proposal at b3be02ae.",
+  "proposal_bindings": [
+    {
+      "path": "input-direction/remapping-owner-scope.md",
+      "sha256": "668310652fb1b188deef6f5760eb0d25a8e14ad48486459f09ead0f2aedf2abd"
+    },
+    {
+      "path": "input-direction/remapping-owner-scope.json",
+      "sha256": "3adbc85057c2f102f6e0f2bbb381ce465210967d1e1205cdfb50646617e64fcb"
+    }
+  ],
+  "scope": {
+    "slice_id": "phase11-control-remapping-runtime-integration",
+    "authority_status": "awaiting_exact_owner_grant",
+    "scope": "Remap the existing 21 project actions and eight named UI actions; add one accessible Controls panel and isolated version-1 preference document; support physical/logical keys with modifiers, mouse buttons, standardized joypad buttons and signed axes; gate capture/modal/text focus and update live binding prompts. Existing domain transitions and audio/art owners remain unchanged.",
+    "ui_actions": [
+      "ui_accept",
+      "ui_cancel",
+      "ui_left",
+      "ui_right",
+      "ui_up",
+      "ui_down",
+      "ui_focus_next",
+      "ui_focus_prev"
+    ],
+    "action_count": 29,
+    "new_gameplay_action_ids": [],
+    "defaults": {
+      "keyboard": "Retain all exact 21 committed physical-key bindings; retain observed logical UI keys and Shift+Tab.",
+      "mouse": "No gameplay mouse assignments by default; pointer hit testing/left-click Button.Pressed stays native.",
+      "controller": "Add left-stick axes 0/1 and D-pad 13/14/11/12 to movement; Start (6) to optional overlays. UI directions retain observed stick/D-pad bindings; add A (0) accept, B (1) cancel, right shoulder (10) next, left shoulder (9) previous. Other 16 project commands begin unassigned on controller and remain remappable.",
+      "deadzone": 0.5
+    },
+    "limits": {
+      "max_bindings_per_action": 8,
+      "max_bindings_per_device_class": 4,
+      "max_document_bytes": 65536,
+      "capture_seconds": 10,
+      "axis_capture_threshold": 0.75,
+      "axis_neutral_threshold": 0.2,
+      "deadzone_min": 0.1,
+      "deadzone_max": 0.9
+    },
+    "persistence_path": "user://controls-settings-v1.json",
+    "new_files": [
+      "src/Application/Input/ControlActionCatalog.cs",
+      "src/Application/Input/ControlBinding.cs",
+      "src/Application/Input/ControlPreferences.cs",
+      "src/Application/Input/ControlBindingEdit.cs",
+      "src/Application/Input/ControlBindingCapture.cs",
+      "src/Application/Input/IControlPreferencesStore.cs",
+      "src/Application/Input/ControlPreferencesLoadResult.cs",
+      "src/Infrastructure/Input/ControlPreferencesJson.cs",
+      "src/Infrastructure/Input/FileControlPreferencesStore.cs",
+      "game/ControlSettingsController.cs",
+      "game/ControlSettingsStorageController.cs",
+      "game/ControlInputMapAdapter.cs",
+      "game/ControlInputMatcher.cs",
+      "game/ControlInputContext.cs",
+      "game/ControlSettingsPanel.cs",
+      "game/ControlSettingsPanel.tscn",
+      "game/ControlSettingsMainSmokeCheck.cs",
+      "game/ControlSettingsMainSmokeCheck.tscn",
+      "tests/Application.Tests/Input/ControlPreferencesTests.cs",
+      "tests/Application.Tests/Input/ControlBindingEditTests.cs",
+      "tests/Application.Tests/Input/ControlBindingCaptureTests.cs",
+      "tests/Infrastructure.Tests/Input/ControlPreferencesJsonTests.cs",
+      "tests/Infrastructure.Tests/Input/FileControlPreferencesStoreTests.cs",
+      "scripts/validate-control-remapping-runtime.py"
+    ],
+    "new_uid_sidecars": "Only Godot-generated .cs.uid/.gd.uid for the explicitly listed new scripts, if generated; include/hash exact sidecars.",
+    "modified_files": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "README.md",
+      "ROADMAP.md",
+      "game/AudioSettingsPanel.cs",
+      "game/CaskCoverHandlingPanel.cs",
+      "game/HandToolTapPanel.cs",
+      "game/JournalOpenCloseInputController.cs",
+      "game/Main.cs",
+      "game/Main.tscn",
+      "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "game/OptionalOverlayVisibilityController.cs",
+      "game/SaveLoadInputController.cs",
+      "game/Seeker.cs",
+      "game/SeekerCustomizationMenuController.cs",
+      "game/SeekerMapOpenCloseInputController.cs",
+      "game/StreamWaterContactPanel.cs",
+      "quality.py"
+    ],
+    "evidence_outputs": [
+      "input-direction/remapping-runtime-authority.json",
+      "input-direction/remapping-runtime-verification.json",
+      "input-direction/remapping-runtime-review/README.md"
+    ],
+    "excluded": [
+      "game/project.godot (preserve recorded editor rewrite)",
+      "new command/interaction/domain transitions",
+      "world/save/provider schema changes",
+      "art/audio sources, levels, admission or history owners",
+      "camera zoom/pan mappings",
+      "touch/gesture input",
+      "controller chords/macros/virtual keyboard/rumble/device calibration",
+      "OS shortcut interception",
+      "engine text-edit shortcut remapping",
+      "all-dialogue screen-reader certification",
+      "controller-only opening-scenario certification",
+      "executable release"
+    ],
+    "completion_condition": "Validated 29-action document and transactional adapter, usable Controls panel at both sizes with all three event classes, safe capture/reset/persistence/error behavior, unchanged existing transition qualification, focused unit/Godot/native/mounted-resource evidence and full root quality; retain physical-device limitations and close only this remapping slice.",
+    "roadmap_completion_rule": "Keep the Phase 11 controls checkbox unchecked until ordinary physical keyboard, mouse and named controller evidence establishes the supported device claim. This proposal and synthetic events cannot close that claim."
+  },
+  "baseline_commit": "b3be02aee6e97266d7c3f47472621727c65d6496",
+  "preserved_editor_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+  "publication_authority": "ALWAYS commit and push when you finish a task",
+  "verification_only_adjustments": [
+    {
+      "path": "game/OptionalOverlayVisibilitySmokeCheck.cs",
+      "baseline_sha256": "f97c1abbc7cfa0404294ca7c88d2733b6458be9e49b70b9acb03d49e54551ffc",
+      "reason": "The unfrozen current input smoke assertion requires only Tab and two original callbacks. Approved defaults add controller Start; input handling and event unsubscription add Godot _Input/_ExitTree overrides. Require exact Tab plus Start, the four exact lifecycle callbacks and no public properties. No new public command/domain API, frozen validator/evidence or product scope expansion."
+    }
+  ]
+}

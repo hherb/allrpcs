@@ -37,6 +37,7 @@ RAIN_REVISION = '9115a64199b4838390caaa7b8a56ba64e903544c'
 HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
 COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
+HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -217,6 +218,20 @@ def frozen_evidence():
     excluded = json.loads(authority_bytes)['excluded_evidence_bindings']
     if any(Path(row['path']).name != '.DS_Store' for row in excluded):
         raise ValueError('Only the already-authorized Finder metadata exception is permitted')
+    controls_grant = ROOT / 'input-direction/remapping-runtime-authority.json'
+    controls_paths, controls_baseline = set(), None
+    if controls_grant.exists():
+        grant = json.loads(controls_grant.read_text())
+        if grant['owner_statement'] != 'approved' or grant['slice_id'] != 'phase11-control-remapping-runtime-integration':
+            raise ValueError('Controls successor lacks the exact recorded owner grant')
+        for binding in grant['proposal_bindings']:
+            if sha((ROOT / binding['path']).read_bytes()) != binding['sha256']:
+                raise ValueError('Approved controls proposal changed')
+        proposal = json.loads((ROOT / 'input-direction/remapping-owner-scope.json').read_text())
+        if grant['scope'] != proposal['runtime_proposal']:
+            raise ValueError('Controls grant differs from the approved finite proposal')
+        controls_paths = set(grant['scope']['modified_files'])
+        controls_baseline = grant['baseline_commit']
     for path in sorted((ROOT / 'audio-direction').glob('*-verification.json')):
         record = json.loads(path.read_text())
         for row in record.get('evidence_bindings', []) + record.get('retained_evidence', []):
@@ -265,6 +280,11 @@ def frozen_evidence():
                 # The herb grant permits only these additive successors; preserve exact cooling evidence.
                 if sha(git('show', COOLING_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen cooling predecessor evidence: ' + row['path'])
+                continue
+            if row['path'] in controls_paths:
+                # Input-only successor changes are granted; retained predecessor evidence stays exact.
+                if sha(git('show', controls_baseline + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed controls predecessor evidence: ' + row['path'])
                 continue
             if sha((ROOT / row['path']).read_bytes()) != row['sha256']:
                 raise ValueError('Changed retained evidence: ' + row['path'])
@@ -518,6 +538,7 @@ def main(resume_smoke=False, finish_interior=False):
         steeping_runtime(run, environment)
         cooling_runtime(run, environment)
         herb_runtime(run, environment)
+        controls_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -777,20 +798,29 @@ def frozen_cooling_runtime(run, environment, tree):
 
 
 def herb_runtime(run, environment):
-    """Add bounded genuine near/remote collection parity without replacing old stages."""
-    run.stage('herb-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~HerbCollection', '--logger', 'console;verbosity=minimal'])
-    run.stage('boundary-herb-source', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--source-only'])
-    run.stage('herb-source-rejections', [sys.executable, 'scripts/prepare-herb-collection-passage.py', '--self-test'])
-    run.stage('herb-validator-rejections', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--self-test'])
+    """Retain every herb check in its exact accepted private source tree after input-only succession."""
+    with snapshot(HERB_REVISION, editor=True) as (tree, env):
+        run.stage('herb-historical-restore', ['dotnet', 'restore', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj'], tree, env, HERB_REVISION)
+        run.stage('herb-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '-m:1', '/nr:false'], tree, env, HERB_REVISION)
+        run.stage('herb-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, HERB_REVISION, retry_native=True)
+        frozen_herb_runtime(run, dict(environment, **env), tree)
+
+
+def frozen_herb_runtime(run, environment, tree):
+    """Preserve the accepted source, mode schedule and native evidence without relaxing its validator."""
+    run.stage('herb-focused', ['dotnet', 'test', 'tests/Application.Tests/Allrpcs.Application.Tests.csproj', '--no-restore', '--filter', 'FullyQualifiedName~HerbCollection', '--logger', 'console;verbosity=minimal'], tree, environment, HERB_REVISION)
+    run.stage('boundary-herb-source', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--source-only'], tree, environment, HERB_REVISION)
+    run.stage('herb-source-rejections', [sys.executable, 'scripts/prepare-herb-collection-passage.py', '--self-test'], tree, environment, HERB_REVISION)
+    run.stage('herb-validator-rejections', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--self-test'], tree, environment, HERB_REVISION)
     modes = ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'captions-off', 'audio-disabled')
     from importlib.util import module_from_spec, spec_from_file_location
-    spec = spec_from_file_location('herb_validator', ROOT / 'scripts/validate-herb-collection-runtime.py')
+    spec = spec_from_file_location('herb_validator', tree / 'scripts/validate-herb-collection-runtime.py')
     validator = module_from_spec(spec); spec.loader.exec_module(validator)
     for placement in ('near', 'remote'):
         for mode in modes:
             output = run.directory / f'herb-{placement}-{mode}.json'
             run.stage(f'herb-{placement}-{mode}', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1200'],
-                      env=dict(environment, ALLRPCS_HERB_MAIN_CHECK='1', ALLRPCS_HERB_MODE=mode,
+                      cwd=tree, revision=HERB_REVISION, env=dict(environment, ALLRPCS_HERB_MAIN_CHECK='1', ALLRPCS_HERB_MODE=mode,
                                ALLRPCS_HERB_PLACEMENT=placement, ALLRPCS_HERB_REPORT=str(output)),
                       retry_native=True, completion='PASS: herb Main:')
         rows = [json.loads((run.directory / f'herb-{placement}-{mode}.json').read_text()) for mode in modes]
@@ -799,8 +829,24 @@ def herb_runtime(run, environment):
         validator.parity(rows, saves, gameplay, placement)
         run.report['herb_' + placement + '_save_sha256'] = sha(saves[0])
     run.report['herb_modes'] = list(modes)
-    run.stage('herb-master-output', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--output-only'])
-    run.stage('boundary-herb-reviewed', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--reviewed'])
+    run.stage('herb-master-output', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--output-only'], tree, environment, HERB_REVISION)
+    run.stage('boundary-herb-reviewed', [sys.executable, 'scripts/validate-herb-collection-runtime.py', '--reviewed'], tree, environment, HERB_REVISION)
+
+
+def controls_runtime(run, environment):
+    """Add current remapping checks without replacing any predecessor stage."""
+    for label, project in (('application', 'Application'), ('infrastructure', 'Infrastructure')):
+        run.stage('controls-' + label, ['dotnet', 'test', f'tests/{project}.Tests/Allrpcs.{project}.Tests.csproj',
+                  '--no-restore', '--filter', 'FullyQualifiedName~Tests.Input', '--logger', 'console;verbosity=minimal'])
+    run.stage('controls-source', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--source-only'])
+    run.stage('controls-validator-rejections', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--self-test'])
+    report = run.directory / 'controls-main.json'
+    run.stage('controls-main', ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '1800'],
+              env=dict(environment, ALLRPCS_CONTROLS_MAIN_CHECK='1', ALLRPCS_CONTROLS_MODE='headless', ALLRPCS_CONTROLS_REPORT=str(report)),
+              retry_native=True, completion='PASS: controls Main: headless')
+    run.stage('controls-native-output', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--output-only'])
+    run.stage('controls-mounted-resources', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--package-only'])
+    run.stage('controls-reviewed', [sys.executable, 'scripts/validate-control-remapping-runtime.py', '--reviewed'])
 
 
 def rain_runtime(run, environment):
@@ -1110,7 +1156,11 @@ class ContractTests(unittest.TestCase):
             for row in record['stages']:
                 for attempt in row['attempts']:
                     (fixture / attempt['log']).write_bytes(gzip.decompress((review / (attempt['log'] + '.gz')).read_bytes()))
-            with patch.object(Path, 'read_bytes', lambda path: read(path) + b'changed' if path == source else read(path)):
+            # This regression targets product drift; use the immutable accepted runner bytes,
+            # since the authorized controls successor now changes the live runner itself.
+            accepted_runner = git('show', HERB_REVISION + ':quality.py')
+            with patch.object(Path, 'read_bytes', lambda path: accepted_runner if path == ROOT / 'quality.py'
+                              else read(path) + b'changed' if path == source else read(path)):
                 with self.assertRaisesRegex(ValueError, 'product changed'):
                     resume_cooling_uid_prefix(record, fixture)
 

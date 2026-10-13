@@ -58,9 +58,10 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!ControlInputContext.WorldAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (!@event.IsActionPressed(ConsultationAction))
+        if (!ControlInputMatcher.Pressed(@event, ConsultationAction))
         {
             return;
         }
@@ -69,7 +70,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
             || firstPatientState.DiseaseTruth is not { } diseaseTruth
             || firstPatientState.AdministrationExperiments is not { } administrationExperiments)
         {
-            status.Text = TestimonyRequiredStatusText;
+            ControlSettingsController.SetGuidance(status, TestimonyRequiredStatusText);
             GetViewport().SetInputAsHandled();
             return;
         }
@@ -79,7 +80,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
         FirstPatientTreatmentContext? context = patientScene.Binding?.TreatmentContext;
         if (context is null)
         {
-            status.Text = TestimonyRequiredStatusText;
+            ControlSettingsController.SetGuidance(status, TestimonyRequiredStatusText);
             GetViewport().SetInputAsHandled();
             return;
         }
@@ -89,7 +90,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
         if (NumericsVector2.Distance(seekerPosition, currentSagePosition)
             > ConsultationRangePixels)
         {
-            status.Text = MoveCloserStatusText;
+            ControlSettingsController.SetGuidance(status, MoveCloserStatusText);
         }
         else if (TryConsult(
                 sage,
@@ -101,7 +102,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
                 seekerPosition,
                 currentSagePosition))
         {
-            status.Text = ConsultedStatusText;
+            ControlSettingsController.SetGuidance(status, ConsultedStatusText);
         }
 
         GetViewport().SetInputAsHandled();
@@ -210,7 +211,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
         Consultation = consultation;
         if (consultation is not null)
         {
-            status.Text = ConsultedStatusText;
+            ControlSettingsController.SetGuidance(status, ConsultedStatusText);
         }
     }
 }

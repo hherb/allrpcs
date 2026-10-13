@@ -35,7 +35,7 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
             return;
         }
 
-        if (!HasOnlyPhysicalKey(ToggleAction, Key.Tab))
+        if (!HasExactKeyboardControllerDefaults(ToggleAction, Key.Tab))
         {
             Godot.Collections.Array<InputEvent> events =
                 InputMap.ActionGetEvents(new StringName(ToggleAction));
@@ -43,7 +43,7 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
                 ? key.PhysicalKeycode
                 : Key.None;
             Fail(
-                "Optional overlays did not use only physical Tab. "
+                "Optional overlays did not use the exact physical Tab/controller Start defaults. "
                 + $"Expected={(long)Key.Tab}; actual={(long)actualKey}.");
             return;
         }
@@ -85,7 +85,7 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
 
         GD.Print(
             "Optional overlay visibility smoke passed: settings and dialogue started hidden, "
-            + "physical Tab alone toggled both, the compact HUD remained visible, hidden UI "
+            + "the retained toggle action toggled both, the compact HUD remained visible, hidden UI "
             + "released focus, and the controller surface stayed closed.");
         GetTree().Quit();
     }
@@ -101,7 +101,7 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
-        return methods.SequenceEqual(["_Ready", "_UnhandledInput"])
+        return methods.SequenceEqual(["_ExitTree", "_Input", "_Ready", "_UnhandledInput"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
@@ -114,14 +114,14 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
         Pressed = pressed,
     };
 
-    private static bool HasOnlyPhysicalKey(string actionName, Key expectedKey)
+    private static bool HasExactKeyboardControllerDefaults(string actionName, Key expectedKey)
     {
         StringName action = new(actionName);
         Godot.Collections.Array<InputEvent> events = InputMap.ActionGetEvents(action);
         return InputMap.HasAction(action)
-            && events.Count == 1
-            && events[0] is InputEventKey keyEvent
-            && keyEvent.PhysicalKeycode == expectedKey;
+            && events.Count == 2
+            && events.OfType<InputEventKey>().Count(key => key.PhysicalKeycode == expectedKey) == 1
+            && events.OfType<InputEventJoypadButton>().Count(button => button.ButtonIndex == JoyButton.Start) == 1;
     }
 
     private void Fail(string message)

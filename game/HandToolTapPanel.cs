@@ -48,7 +48,7 @@ public partial class HandToolTapPanel : CanvasLayer
     public override void _Process(double delta)
     {
         bool offer = coordinator.CanOffer;
-        if (!offer && button.HasFocus()) { button.ReleaseFocus(); }
+        if (!offer) { acceptHeld = false; if (button.HasFocus()) { button.ReleaseFocus(); } }
         Visible = offer; button.Disabled = coordinator.Cooldown > 0;
         if (double.IsFinite(delta) && delta >= 0 && delta <= 0.25) { remaining = Math.Max(0, remaining - delta); }
         if (remaining == 0) { status.Text = string.Empty; }
@@ -56,17 +56,24 @@ public partial class HandToolTapPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
-        if (@event is not InputEventKey key) { return; }
-        if (Visible && key.Pressed && !key.Echo && key.IsAction("ui_focus_next") && !button.HasFocus())
+        if (ControlInputMatcher.Released(@event, "ui_accept")) { acceptHeld = false; }
+        if (!ControlInputContext.TogglesAllowed(this)) { return; }
+        // Primary pointer clicks retain native hit testing, even if mapped to UI accept.
+        if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Left }) { return; }
+        if (Visible && ControlInputMatcher.Pressed(@event, "ui_focus_next") && !button.HasFocus())
         {
             button.GrabFocus(); GetViewport().SetInputAsHandled(); return;
         }
-        if (!key.IsAction("ui_accept")) { return; }
-        if (!key.Pressed) { acceptHeld = false; }
+        if (!ControlInputMatcher.Matches(@event, "ui_accept")) { return; }
         if (!Visible || !button.HasFocus()) { return; }
-        if (key.Pressed && !key.Echo && !acceptHeld) { acceptHeld = true; coordinator.TryTap(); }
+        if (ControlInputMatcher.Pressed(@event, "ui_accept") && !acceptHeld)
+        { acceptHeld = true; coordinator.TryTap(); }
         GetViewport().SetInputAsHandled();
     }
+    /// <inheritdoc />
+    public override void _Notification(int what)
+    { if (what is (int)NotificationApplicationFocusOut or (int)NotificationWMWindowFocusOut) { acceptHeld = false; } }
+
     private void Receive(HandToolTapCommit commit)
     { _ = commit; status.Text = StatusText; remaining = 0.75; }
     private void Clear() { status.Text = string.Empty; remaining = 0; }

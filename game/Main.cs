@@ -836,21 +836,22 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed(CharacterTurnCancelAction))
+        if (!ControlInputContext.WorldAllowed(this)) { return; }
+        if (ControlInputMatcher.Pressed(@event, CharacterTurnCancelAction))
         {
             _ = modelFlowController.TryCancel();
             _ = participationRoundController.TryCancel();
             _ = characterTurnController.TryCancel();
             _ = autonomousConversationBudgetController.TryInterrupt();
         }
-        else if (@event.IsActionPressed(FocusedSearchCancelAction))
+        else if (ControlInputMatcher.Pressed(@event, FocusedSearchCancelAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
             bool changed = activeRequest is not null
                 && focusedSearchController.TryCancelSearch(activeRequest);
             PresentFocusedSearchResult("CANCEL", changed);
         }
-        else if (@event.IsActionPressed(FocusedSearchCompleteAction))
+        else if (ControlInputMatcher.Pressed(@event, FocusedSearchCompleteAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
             FocusedSearchOutcome? outcome = activeRequest is null
@@ -862,7 +863,7 @@ public partial class Main : Node
                 && focusedSearchController.TryCompleteSearchWithOutcome(outcome);
             PresentFocusedSearchResult("COMPLETE", changed);
         }
-        else if (@event.IsActionPressed(FocusedSearchResolveAction))
+        else if (ControlInputMatcher.Pressed(@event, FocusedSearchResolveAction))
         {
             FocusedSearchOutcome? outcome = GetFirstRetainedFocusedSearchOutcome();
             bool changed = outcome is not null
@@ -878,7 +879,7 @@ public partial class Main : Node
 
             PresentFocusedSearchResult("RESOLVE", changed);
         }
-        else if (@event.IsActionPressed(FocusedSearchStartAction))
+        else if (ControlInputMatcher.Pressed(@event, FocusedSearchStartAction))
         {
             bool changed = interactionFocusController.FocusedTargetObjectId
                     is { } focusedTargetObjectId
@@ -891,7 +892,7 @@ public partial class Main : Node
                     focusedSearchContextSource.Inventory);
             PresentFocusedSearchResult("START", changed);
         }
-        else if (@event.IsActionPressed(LayeredInscriptionDiscoverAction))
+        else if (ControlInputMatcher.Pressed(@event, LayeredInscriptionDiscoverAction))
         {
             if (layeredInscriptionDiscoveryCoordinator.TryDiscover(
                     layeredInscriptionDiscoveryCoordinator.SceneSource.KnowledgeableSeeker))
@@ -908,7 +909,7 @@ public partial class Main : Node
                     variation.RevealedSoundState);
             }
         }
-        else if (@event.IsActionPressed(HealerToggleAction))
+        else if (ControlInputMatcher.Pressed(@event, HealerToggleAction))
         {
             if (healer.CommandMode == HealerCommandMode.Follow)
             {
@@ -919,7 +920,7 @@ public partial class Main : Node
                 healer.CommandFollow();
             }
         }
-        else if (@event.IsActionPressed(HealerMoveAction))
+        else if (ControlInputMatcher.Pressed(@event, HealerMoveAction))
         {
             _ = healer.TryCommandMoveToDestination(healerCommandDestination.GlobalPosition);
         }

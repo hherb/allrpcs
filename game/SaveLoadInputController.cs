@@ -49,19 +49,20 @@ public partial class SaveLoadInputController : Node
 
         save.Pressed += Save;
         load.Pressed += Load;
-        status.Text = ReadyStatusText;
+        ControlSettingsController.SetGuidance(status, ReadyStatusText);
     }
 
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!ControlInputContext.WorldAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (@event.IsActionPressed(SaveAction))
+        if (ControlInputMatcher.Pressed(@event, SaveAction))
         {
             Save();
         }
-        else if (@event.IsActionPressed(LoadAction))
+        else if (ControlInputMatcher.Pressed(@event, LoadAction))
         {
             Load();
         }
@@ -80,30 +81,30 @@ public partial class SaveLoadInputController : Node
             || map.Notes is null
             || routes.Progress is null)
         {
-            status.Text = MapRequiredStatusText;
-            recoveryStatus.Text = MapRequiredRecoveryText;
+            ControlSettingsController.SetGuidance(status, MapRequiredStatusText);
+            ControlSettingsController.SetGuidance(recoveryStatus, MapRequiredRecoveryText);
             return;
         }
 
         if (journal.Journal is null && !journalComposition.TryComposeAndInitialize())
         {
-            status.Text = SaveFailedStatusText;
-            recoveryStatus.Text = SaveFailedRecoveryText;
+            ControlSettingsController.SetGuidance(status, SaveFailedStatusText);
+            ControlSettingsController.SetGuidance(recoveryStatus, SaveFailedRecoveryText);
             return;
         }
 
         bool saved = storage.SaveCurrent() == SaveDocumentWriteResult.Saved;
-        status.Text = saved ? SavedStatusText : SaveFailedStatusText;
-        recoveryStatus.Text = saved ? SavedRecoveryText : SaveFailedRecoveryText;
+        ControlSettingsController.SetGuidance(status, saved ? SavedStatusText : SaveFailedStatusText);
+        ControlSettingsController.SetGuidance(recoveryStatus, saved ? SavedRecoveryText : SaveFailedRecoveryText);
     }
 
     private void Load()
     {
-        status.Text = storage.LoadCurrent() switch
+        ControlSettingsController.SetGuidance(status, storage.LoadCurrent() switch
         {
             SaveDocumentReadStatus.Loaded => LoadedStatusText,
             SaveDocumentReadStatus.Missing => MissingStatusText,
             _ => LoadFailedStatusText,
-        };
+        });
     }
 }

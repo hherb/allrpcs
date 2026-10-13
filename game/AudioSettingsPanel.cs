@@ -62,26 +62,26 @@ public partial class AudioSettingsPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
-        if (historyPanel.Visible && (@event.IsActionPressed("ui_cancel") || @event.IsActionPressed("optional_overlays_toggle")))
+        if (historyPanel.Visible && (ControlInputMatcher.Pressed(@event, "ui_cancel") || ControlInputMatcher.Pressed(@event, "optional_overlays_toggle")))
         {
-            if (@event.IsActionPressed("optional_overlays_toggle")) { Close(false); } else { historyPanel.Close(); }
+            if (ControlInputMatcher.Pressed(@event, "optional_overlays_toggle")) { Close(false); } else { historyPanel.Close(); }
             GetViewport().SetInputAsHandled(); return;
         }
-        if (creditsPanel.Visible && @event.IsActionPressed("ui_cancel"))
+        if (creditsPanel.Visible && ControlInputMatcher.Pressed(@event, "ui_cancel"))
         {
             creditsPanel.Close();
             GetViewport().SetInputAsHandled();
             return;
         }
-        if (creditsPanel.Visible && @event.IsActionPressed("optional_overlays_toggle"))
+        if (creditsPanel.Visible && ControlInputMatcher.Pressed(@event, "optional_overlays_toggle"))
         {
             Close(false);
             GetViewport().SetInputAsHandled();
             return;
         }
-        if (Visible && (@event.IsActionPressed("ui_cancel") || @event.IsActionPressed("optional_overlays_toggle")))
+        if (Visible && (ControlInputMatcher.Pressed(@event, "ui_cancel") || ControlInputMatcher.Pressed(@event, "optional_overlays_toggle")))
         {
-            Close(!@event.IsActionPressed("optional_overlays_toggle"));
+            Close(!ControlInputMatcher.Pressed(@event, "optional_overlays_toggle"));
             GetViewport().SetInputAsHandled();
         }
     }

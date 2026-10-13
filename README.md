@@ -774,7 +774,7 @@ to complete it, or R to resolve the first retained Seeker outcome; these tempora
 are detailed below. At the old shrine, press I while inside the shrine and within the fixed
 112-pixel inscription radius to reveal the layered-inscription marker once through its exact
 discovery coordinator. Press X to
-toggle between follow and wait. Press M to move the
+toggle between follow and wait. Press H to move the
 healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
 validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
 obstacle-excluded destinations are rejected without changing the active command. The Seeker and
@@ -782,6 +782,35 @@ healer mutually ignore body collision so a following healer cannot pin the Seeke
 walls; the validated 72-pixel follow stop still keeps their ordinary movement visually separated.
 These keys, the
 ring, and the status panel are temporary behavior-test controls, not final command or dialogue UX.
+
+Press the current settings/dialogue toggle (Tab by default), then choose **Controls settings**.
+The Controls panel edits a draft of the existing 21 project actions and eight UI actions. Select an
+action and device class, then Add or Replace an input; Remove keeps at least one assignment. Keyboard
+bindings use physical key positions with exact modifiers; mouse bindings support ordinary buttons;
+controller bindings use standardized button/axis indices. Conflicts are rejected without changing
+other assignments. Direction deadzones range from 0.1 to 0.9 and default to 0.5.
+
+Apply installs the complete draft now. Save also keeps it across restarts in the separate local
+`controls-settings-v1.json` document. Row defaults resets one action; Restore defaults resets the
+complete draft, with Apply/Save still explicit. Closing unapplied edits offers Discard or Keep editing.
+Applied unsaved controls stay active until restart; the settings entry marks them unsaved. Capture
+waits for the initiating control to be released, times out after ten seconds and cancels on Escape,
+window focus loss or controller disconnection. Axis capture requires neutral before a deliberate
+crossing. Escape remains an emergency cancel/return path within Controls even after remapping UI cancel.
+
+Controller defaults add left stick and D-pad movement, Start for settings/dialogue, A/B for UI
+accept/cancel and right/left shoulders for next/previous focus. Sixteen other project commands begin
+unassigned on controller and can be mapped; keyboard assignments remain available. Mouse gameplay
+assignments begin unassigned; native pointer selection and Button clicks remain available. The panel
+shows all current assignments and live recovery/button guidance follows the active map. World movement
+and commands are suppressed during controls capture, GUI focus and modal reading; world time and AI
+continue. Held inputs require release before returning to gameplay.
+
+The retained controls review verifies synthetic keyboard/mouse/controller events in actual Main and
+native rendered UI at 1280×720 and 1920×1080. It does not qualify physical controller compatibility,
+controller-only opening-scenario completion, all-dialogue screen-reader navigation or executable
+installation. Camera zoom/pan, touch gestures, controller chords/macros, virtual keyboards and rumble
+remain outside this controls scope.
 
 Three temporary authored objects exercise interaction focus: the two nearby discovery markers and
 the village water cask. A bright yellow **FOCUS** ring and the top-left status identify only the

@@ -55,9 +55,10 @@ public partial class SeekerMapOpenCloseInputController : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!ControlInputContext.TogglesAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (!@event.IsActionPressed(ToggleAction))
+        if (!ControlInputMatcher.Pressed(@event, ToggleAction))
         {
             return;
         }

@@ -58,9 +58,10 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!ControlInputContext.WorldAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (!@event.IsActionPressed(AdministrationAction))
+        if (!ControlInputMatcher.Pressed(@event, AdministrationAction))
         {
             return;
         }
@@ -71,15 +72,15 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         NumericsVector2 seekerPosition = ToNumerics(seeker.GlobalPosition);
         if (batch is null)
         {
-            status.Text = state.AdministrationExperiments?.Records.Count > 0
+            ControlSettingsController.SetGuidance(status, state.AdministrationExperiments?.Records.Count > 0
                 ? AdministeredStatusText
-                : BatchRequiredStatusText;
+                : BatchRequiredStatusText);
         }
         else if (binding is not null
             && NumericsVector2.Distance(seekerPosition, binding.PatientPosition)
                 > MaximumInteractionDistancePixels)
         {
-            status.Text = MoveCloserStatusText;
+            ControlSettingsController.SetGuidance(status, MoveCloserStatusText);
         }
         else if (binding is not null
             && TryAdminister(
@@ -89,7 +90,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
                 worldEventSource.FirstPatientRemedyAdministeredWorldEvent,
                 seekerPosition))
         {
-            status.Text = AdministeredStatusText;
+            ControlSettingsController.SetGuidance(status, AdministeredStatusText);
         }
 
         GetViewport().SetInputAsHandled();
