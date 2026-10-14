@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "mode": "native-1920",
+  "checks": [
+    "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+    "tap-native-button-semantics-without-brief-talk-capture",
+    "hold-from-six-focuses-no-repeat-space-button-action-or-auto-submit",
+    "world-hold-opens-draft-without-voice-mode",
+    "hold-from-other-reading-view-brings-draft-forward",
+    "held-space-from-open-language-popup",
+    "stop-before-threshold-fences-key-until-release",
+    "stop-close-and-application-focus-loss-fence-held-key",
+    "injected-successful-load-reset-notification-fences-held-key",
+    "corrected-explicit-submit-existing-whisper-owner",
+    "scene-teardown-awaits-synthetic-capture-and-recognition"
+  ],
+  "thresholdMilliseconds": 300,
+  "captureOpens": 14,
+  "recognized": "World prefix Speech finalized Speech finalized Speech finalized",
+  "realMoonshine": false,
+  "provenance": "Native engine key events and synthetic PCM in Main. No physical microphone opened; no human/echo qualification."
+}

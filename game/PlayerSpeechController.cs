@@ -31,6 +31,7 @@ public partial class PlayerSpeechController : Node
     internal string Status => indicator.Text;
     internal string StopReason { get; private set; } = "none";
     internal int VoiceStarts { get; private set; }
+    internal ulong StopVersion { get; private set; }
     internal new bool Ready => session is not null;
 
     /// <inheritdoc />
@@ -123,6 +124,9 @@ public partial class PlayerSpeechController : Node
     }
     private void OnTalkDown() { SetListening(false); Start(true); held = Listening; }
     private void OnTalkUp() { if (held && Listening) { finishing = true; session!.Finish(); SetStatus("Finalizing draft…"); } held = false; }
+    internal void BeginSpaceHold() { SetListening(false); Start(true); }
+    internal void FinishSpaceHold()
+    { if (Listening) { finishing = true; session!.Finish(); SetStatus("Finalizing draft…"); } }
     private void OnListen(bool value)
     {
         if (updating) { return; }
@@ -137,6 +141,8 @@ public partial class PlayerSpeechController : Node
     private void OnLanguage(long _) => StopCapture("language");
     internal void StopCapture(string reason = "stop")
     {
+        StopVersion++;
+        lastDelivery = delivery.LastSubmittedDelivery;
         StopReason = reason;
         session?.Stop(); draft = null; finishing = false; held = false; SetListening(false);
         SetStatus(session?.Retiring == true ? "Stopping microphone…" : "Microphone off · draft kept");
@@ -175,7 +181,14 @@ public partial class PlayerSpeechController : Node
     /// <inheritdoc />
     public override void _Notification(int what)
     {
-        if (indicator is not null && what is (int)NotificationApplicationFocusOut or (int)NotificationWMWindowFocusOut)
+        if (indicator is not null && what == (int)NotificationApplicationFocusOut)
+        { StopCapture("focus"); }
+        if (indicator is not null && what == (int)NotificationWMWindowFocusOut)
+        { Callable.From(CheckWindowFocus).CallDeferred(); }
+    }
+    private void CheckWindowFocus()
+    {
+        if (IsInsideTree() && GetNodeOrNull<SpaceHoldSpeechController>("../SpaceHoldSpeechController")?.AnyGameWindowFocused() != true)
         { StopCapture("focus"); }
     }
     /// <inheritdoc />

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "complete",
+  "scope_id": "phase10-space-hold-to-talk",
+  "delivered": [
+    "300ms Space tap/hold arbitration and ordered native tap replay",
+    "Focus-independent voice across game and popup viewports, editable release, explicit Submit",
+    "Repeat suppression, current-generation stop/reset/focus fencing and retirement",
+    "Focused/native/current quality, preserved historical fixtures and scoped publication"
+  ],
+  "evidence": [
+    {
+      "path": "speech-direction/space-hold-to-talk/authority.json",
+      "sha256": "3c8c09bac742faeed45ce66945c7e6265258263e3c4bab5b2720019d0f7a53be",
+      "size_bytes": 1145
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/README.md",
+      "sha256": "7a3be759fb79b2e0610d4fd4d99509af9608c709f26dba173d0d95a35782013c",
+      "size_bytes": 6010
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/verification.json",
+      "sha256": "c5da5066c56536d8cad2e60918abdb852f7e3da26044ed97c15514ebd7795cbf",
+      "size_bytes": 14385
+    }
+  ],
+  "remaining": "Actual human tap/hold timing, microphone/device and echo cases remain in the distinct microphone-qualification slice.",
+  "publication": "Standing commit/push authority; unrelated editor rewrite excluded."
+}

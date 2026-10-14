@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "mode": "moonshine-german-1280",
+  "checks": [
+    "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+    "tap-native-button-semantics-without-brief-talk-capture",
+    "actual-local-moonshine-space-hold-partial-final-no-auto-submit",
+    "corrected-explicit-submit-existing-whisper-owner",
+    "scene-teardown-awaits-synthetic-capture-and-recognition"
+  ],
+  "thresholdMilliseconds": 300,
+  "captureOpens": 2,
+  "recognized": "Nimm den Mondrautenfahn noch nicht.",
+  "realMoonshine": true,
+  "provenance": "Native engine key events and synthetic PCM in Main. No physical microphone opened; no human/echo qualification."
+}

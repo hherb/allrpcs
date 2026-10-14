@@ -41,6 +41,7 @@ HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
 CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
+PLAYER_ASR_REVISION = 'ad10fcd34eab0520492591bef78c1fea1ea62572'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -545,6 +546,7 @@ def main(resume_smoke=False, finish_interior=False):
         dialogue_accessibility_runtime(run, environment)
         dialogue_speech_runtime(run, environment)
         player_asr_runtime(run, environment)
+        space_hold_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -924,14 +926,40 @@ def player_asr_runtime(run, environment):
     if not (ROOT / 'speech-direction/player-asr-integration/authority.json').exists():
         return
     run.stage('player-asr-capture-boundary', [sys.executable, 'scripts/test-player-speech-worker.py'])
+    if (ROOT / 'speech-direction/space-hold-to-talk/authority.json').exists():
+        with snapshot(PLAYER_ASR_REVISION, editor=True) as (tree, env):
+            run.stage('player-asr-historical-restore', ['dotnet', 'restore', 'Allrpcs.sln'], tree, env, PLAYER_ASR_REVISION)
+            run.stage('player-asr-historical-build', ['dotnet', 'build', 'game/Allrpcs.Game.csproj', '--no-restore'], tree, env, PLAYER_ASR_REVISION)
+            run.stage('player-asr-historical-import', ['godot', '--headless', '--editor', '--path', 'game', '--import'], tree, env, PLAYER_ASR_REVISION, retry_native=True)
+            player_asr_checks(run, dict(environment, **env), tree, PLAYER_ASR_REVISION)
+    else:
+        player_asr_checks(run, environment)
+
+
+def player_asr_checks(run, environment, tree=ROOT, revision=None):
+    """Preserve the accepted button-focused Space fixture in its original source tree."""
     for mode in ('headless', 'unavailable'):
         report = run.directory / ('player-asr-' + mode + '.json')
         run.stage('player-asr-' + mode, ['godot', '--headless', '--path', 'game', '--quit-after', '3600'],
-                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_PLAYER_ASR_CHECK='1',
+                  cwd=tree, revision=revision, env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_PLAYER_ASR_CHECK='1',
                            ALLRPCS_PLAYER_ASR_MODE=mode, ALLRPCS_PLAYER_ASR_REPORT=str(report),
                            ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
                            ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
                   retry_native=True, completion='PASS: player ASR Main: ' + mode)
+
+
+def space_hold_runtime(run, environment):
+    """Qualify the new tap/hold owner without opening physical microphone input."""
+    if not (ROOT / 'speech-direction/space-hold-to-talk/authority.json').exists():
+        return
+    for mode in ('headless', 'unavailable'):
+        report = run.directory / ('space-hold-' + mode + '.json')
+        run.stage('space-hold-' + mode, ['godot', '--headless', '--path', 'game', '--quit-after', '7200'],
+                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_SPACE_HOLD_CHECK='1',
+                           ALLRPCS_SPACE_HOLD_MODE=mode, ALLRPCS_SPACE_HOLD_REPORT=str(report),
+                           ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                           ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+                  retry_native=True, completion='PASS: Space hold Main: ' + mode)
 
 
 def rain_runtime(run, environment):

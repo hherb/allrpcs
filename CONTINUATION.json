@@ -904,6 +904,20 @@
           "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588"
         }
       ]
+    },
+    {
+      "id": "phase10-space-hold-to-talk",
+      "reason": "The explicit owner-requested keyboard successor is complete: native tap input, 300ms focus-independent hold across game/popup viewports, editable release and lifecycle fencing. Preserve original integration/model/art/audio receipts. Further human microphone/echo cases remain separate.",
+      "evidence": [
+        {
+          "path": "speech-direction/space-hold-to-talk/closure.json",
+          "sha256": "1d216e8e5db0bc8931479a23b48cffa553bc193c73c5c8be4196e247583c34fc"
+        },
+        {
+          "path": "speech-direction/space-hold-to-talk/verification.json",
+          "sha256": "c5da5066c56536d8cad2e60918abdb852f7e3da26044ed97c15514ebd7795cbf"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1370,6 +1384,22 @@
           "sha256": "2ac08aa7a0dfe42df59a635835194ec604447e840eb8e9b280add1837cac4ced"
         }
       ]
+    },
+    {
+      "id": "owner-space-hold-2026-10-14",
+      "owner_statement": "Axctually, in that case the space key would still be more practical - when held down continuously, -> voice",
+      "scope_ids": [
+        "phase10-streaming-player-asr-integration"
+      ],
+      "workstream_ids": [
+        "streaming-player-asr-integration"
+      ],
+      "evidence": [
+        {
+          "path": "speech-direction/space-hold-to-talk/authority.json",
+          "sha256": "3c8c09bac742faeed45ce66945c7e6265258263e3c4bab5b2720019d0f7a53be"
+        }
+      ]
     }
   ],
   "active_slice": {
@@ -1377,10 +1407,10 @@
     "title": "Qualify a named human microphone and echo session",
     "status": "ready",
     "workstream": "player-microphone-qualification",
-    "authority_status": "explicit_physical_session_grant_confirmed_hardware_and_human_operator_required",
+    "authority_status": "owner_enabled_live_trial_full_intake_and_remaining_cases_required",
     "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
     "missing_deliverable": "Actual human English/German microphone, permission/host identity, input-device and headphone/speaker-feedback evidence for the new selected integration; existing qualification used only synthetic PCM and simulated devices.",
-    "instructions": "Use the closed integration README and staged configuration. Confirm the actual device/headphone inventory, human operator and one bounded session grant before opening live capture or changing OS privacy/device settings. Start with hold-to-talk/headphones; evaluate speaker feedback separately. Preserve explicit corrected-text Submit and record not-performed cases honestly. No model audition restart, unchanged API/runtime audit or unrelated hardware test.",
+    "instructions": "The owner enabled a live microphone trial and reported good recognition. The Space successor now supplies tap typing and focus-independent hold-to-talk. Use its published guide and staged configuration. Establish named language/device/headphone conditions and the finite remaining human cases before claiming qualification; the earlier report was qualitative and did not record natural speech. Existing live opt-in remains authorized, while OS privacy/device changes or personal-audio persistence require their own explicit enablement. Preserve corrected-text Submit; do not restart model auditions or unchanged runtime audits.",
     "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
     "outputs": [
       "speech-direction/player-microphone-qualification/authority.json",

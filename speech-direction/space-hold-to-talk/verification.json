@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "passed",
+  "authority": {
+    "path": "speech-direction/space-hold-to-talk/authority.json",
+    "sha256": "3c8c09bac742faeed45ce66945c7e6265258263e3c4bab5b2720019d0f7a53be",
+    "size_bytes": 1145
+  },
+  "readme": {
+    "path": "speech-direction/space-hold-to-talk/README.md",
+    "sha256": "7a3be759fb79b2e0610d4fd4d99509af9608c709f26dba173d0d95a35782013c",
+    "size_bytes": 6010
+  },
+  "product_sources": [
+    {
+      "path": "src/Application/Input/TapHoldGesture.cs",
+      "sha256": "3577a88a99042b5ec2865c66cc23488264d453401c3dcccd7ae33637a15ec957",
+      "size_bytes": 2755
+    },
+    {
+      "path": "tests/Application.Tests/Input/TapHoldGestureTests.cs",
+      "sha256": "eef583cf97da2168603a5012879ed9b2f07621f9d88c6b8c081366470d221900",
+      "size_bytes": 2194
+    },
+    {
+      "path": "game/SpaceHoldSpeechController.cs",
+      "sha256": "eeee428e2aeec11932ae79294990770244d1a6ab17c8447d006bd2502c486068",
+      "size_bytes": 9236
+    },
+    {
+      "path": "game/SpaceHoldInputRouter.cs",
+      "sha256": "f14070a7fbc6070fa91ff9b4b225698db88e416f2dbeaea41ba4a432d90b6621",
+      "size_bytes": 448
+    },
+    {
+      "path": "game/SpaceHoldSpeechSmokeCheck.cs",
+      "sha256": "184f5deaa796a230bcb86362bb752445052e74b69755a41a0ff211e39ebd5815",
+      "size_bytes": 20204
+    },
+    {
+      "path": "game/PlayerSpeechController.cs",
+      "sha256": "384229e322c0e2517d08733b72af874568ce2396c243a44cd4cce8fa84212730",
+      "size_bytes": 11746
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "cff51048da36cf85bba7eb023cc0d85ddc1afc1086c45fc65bea9e692db0cf64",
+      "size_bytes": 244088
+    },
+    {
+      "path": "quality.py",
+      "sha256": "7f08d2ea5d28f99c4409c94643b75b1fad16807067eb976aedcffca54d801075",
+      "size_bytes": 99680
+    }
+  ],
+  "source_provenance": {
+    "tested_base_revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+    "working_tree_sources": "Exact source hashes identify the tested uncommitted additions; the base revision alone does not contain them."
+  },
+  "root_quality": {
+    "summary": {
+      "path": "speech-direction/space-hold-to-talk/quality/summary.json",
+      "sha256": "b89469cde6dd05f21c9a918f69a869e2ffdd2156202979e4de863cf0221af7a5",
+      "size_bytes": 190148
+    },
+    "logs": {
+      "path": "speech-direction/space-hold-to-talk/quality/logs.json",
+      "sha256": "d68cada56169546c0206e873e21bcd515f2d42dc81cbaeeeda8a1e12d11f6191",
+      "size_bytes": 73636
+    },
+    "passed_stages": 211
+  },
+  "unit_tests": {
+    "projects": [
+      {
+        "stage": "product-5",
+        "passed": 2849,
+        "skipped": 0
+      },
+      {
+        "stage": "product-6",
+        "passed": 1424,
+        "skipped": 0
+      },
+      {
+        "stage": "product-7",
+        "passed": 1321,
+        "skipped": 0
+      },
+      {
+        "stage": "product-8",
+        "passed": 8,
+        "skipped": 0
+      }
+    ],
+    "passed": 5602,
+    "skipped": 0
+  },
+  "gesture_tests": 8,
+  "quality_runner_self_tests": 14,
+  "continuation_regression_probes": 11,
+  "native_modes": [
+    {
+      "path": "speech-direction/space-hold-to-talk/native/headless.json",
+      "sha256": "479d0f92495d8146e1ee0187345fc6054566e110e373d0c50f405ee93137daea",
+      "size_bytes": 1009,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "hold-from-six-focuses-no-repeat-space-button-action-or-auto-submit",
+        "world-hold-opens-draft-without-voice-mode",
+        "hold-from-other-reading-view-brings-draft-forward",
+        "held-space-from-open-language-popup",
+        "stop-before-threshold-fences-key-until-release",
+        "stop-close-and-application-focus-loss-fence-held-key",
+        "injected-successful-load-reset-notification-fences-held-key",
+        "corrected-explicit-submit-existing-whisper-owner",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "World prefix Speech finalized Speech finalized Speech finalized",
+      "real_moonshine": false
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/unavailable.json",
+      "sha256": "65819e376d7da575892eddaf56c5d0179dcfdd72e898dd03e8c3dfa37d3c7754",
+      "size_bytes": 541,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "held-space-missing-runtime-retains-typed-text",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "",
+      "real_moonshine": false
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1280.json",
+      "sha256": "da5a5529d0eccd960dd1e641860cf8f84bc5e538e9eb4f26eebcee2f75393bb9",
+      "size_bytes": 1012,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "hold-from-six-focuses-no-repeat-space-button-action-or-auto-submit",
+        "world-hold-opens-draft-without-voice-mode",
+        "hold-from-other-reading-view-brings-draft-forward",
+        "held-space-from-open-language-popup",
+        "stop-before-threshold-fences-key-until-release",
+        "stop-close-and-application-focus-loss-fence-held-key",
+        "injected-successful-load-reset-notification-fences-held-key",
+        "corrected-explicit-submit-existing-whisper-owner",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "World prefix Speech finalized Speech finalized Speech finalized",
+      "real_moonshine": false
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1920.json",
+      "sha256": "00cfa50ef8cefc00115ab20f30d899cd5167f695fccee11f090e67069d26b339",
+      "size_bytes": 1012,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "hold-from-six-focuses-no-repeat-space-button-action-or-auto-submit",
+        "world-hold-opens-draft-without-voice-mode",
+        "hold-from-other-reading-view-brings-draft-forward",
+        "held-space-from-open-language-popup",
+        "stop-before-threshold-fences-key-until-release",
+        "stop-close-and-application-focus-loss-fence-held-key",
+        "injected-successful-load-reset-notification-fences-held-key",
+        "corrected-explicit-submit-existing-whisper-owner",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "World prefix Speech finalized Speech finalized Speech finalized",
+      "real_moonshine": false
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-english-1280.json",
+      "sha256": "1ce4e8df0738ef512e03f9a045fd8d7adbf70bc03b9f588ddff2e03e9965f8d0",
+      "size_bytes": 651,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "actual-local-moonshine-space-hold-partial-final-no-auto-submit",
+        "corrected-explicit-submit-existing-whisper-owner",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "Do not take the moon wound.",
+      "real_moonshine": true
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-german-1280.json",
+      "sha256": "9829c23215514ddfe7fff2b9cef92eb0abfb71f6ba3da9d4068bf3c5a90cb57a",
+      "size_bytes": 658,
+      "checks": [
+        "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+        "tap-native-button-semantics-without-brief-talk-capture",
+        "actual-local-moonshine-space-hold-partial-final-no-auto-submit",
+        "corrected-explicit-submit-existing-whisper-owner",
+        "scene-teardown-awaits-synthetic-capture-and-recognition"
+      ],
+      "recognized": "Nimm den Mondrautenfahn noch nicht.",
+      "real_moonshine": true
+    }
+  ],
+  "media": [
+    {
+      "path": "speech-direction/space-hold-to-talk/native/headless.log.gz",
+      "sha256": "654c73f35b86e4f410924ec51b500ba03deef4467357e19fb0fd268a85dd035c",
+      "size_bytes": 229,
+      "raw_sha256": "5f8ad2aaa42616b23a526ae1a37607cde6e4004c0f662e4ec11378e4e4339d99"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/unavailable.log.gz",
+      "sha256": "3f8ef1dfb19d5df950b1f9d7b4340e780d2186953f9bee6a67443f635616269c",
+      "size_bytes": 123,
+      "raw_sha256": "aa5c3af3b62c6f81f5f771a91bcf41a48c807d56420126b9eb0673f9e2fc8d7c"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1280.log.gz",
+      "sha256": "48c9f1ada767714a3150e000da977613ca352677e0916d8750122715888df6fb",
+      "size_bytes": 287,
+      "raw_sha256": "ea3bd999749265ed307d24a515613ae4144409ce63497dcb09b1d0d526a25eae"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1280.png",
+      "sha256": "f535b3b4b4ac2e360ce1502afaf25e43dd12ac528e043c6c7672ada9ba765fba",
+      "size_bytes": 919077
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1920.log.gz",
+      "sha256": "1fa9491f2a30800474f2c6bd7ad2b69ca146b6cbc437dfa7cd6a69b266ceeed4",
+      "size_bytes": 286,
+      "raw_sha256": "e44c03990d246673f956169d328ab8584cf0c1af99d7ea4310cd7153d7d240ba"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/native-1920.png",
+      "sha256": "679c2dccfecd94313dafae3374ac5706df5cf9f519b2139c90853f14eddb5ff4",
+      "size_bytes": 1708385
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-english-1280.log.gz",
+      "sha256": "13e84d5ac854389dea37592bf9aa1ea8b1262ee6cca0c3421480c9f9b3bcec7c",
+      "size_bytes": 204,
+      "raw_sha256": "28319e3c945e0c83767223a87f31a47cbc222843d342f1effd036e23c8146b1c"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-english-1280.png",
+      "sha256": "b963cb4082bb43c328bd26354de080471efa96044ef2c4a99b0ac8b2ee5a0373",
+      "size_bytes": 915403
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-german-1280.log.gz",
+      "sha256": "6e4eb1b70c3bf7a078ebad01fadb0c1a097bfc7198726bd752bbc91dd8c5d962",
+      "size_bytes": 204,
+      "raw_sha256": "2f2fc4631353af8fb1e2df7725f573d0a7741f358c7be587690e7882fcc4cb15"
+    },
+    {
+      "path": "speech-direction/space-hold-to-talk/native/moonshine-german-1280.png",
+      "sha256": "9a53f8a49c03cced7270a599e0f4bd3ac40b9b4e88ed24a8dc94fef977b8071b",
+      "size_bytes": 930466
+    }
+  ],
+  "unchanged_asr_sources": [
+    {
+      "path": "src/Application/Speech/ISpeechRecognizer.cs",
+      "sha256": "eff82362603b4218a28f8861559d2073ca4b836ab0b73792646470154a83df75",
+      "size_bytes": 2156
+    },
+    {
+      "path": "src/Application/Speech/EditableSpeechDraft.cs",
+      "sha256": "f7d8761fcf5deff1d13b24dbcf86a1dc5960646e445d5a6aaf75d74b609b9fad",
+      "size_bytes": 2151
+    },
+    {
+      "path": "src/Application/Speech/PlayerSpeechSession.cs",
+      "sha256": "1c82b10dfa89cd9768d6a3c92b04fcb1b88ed1f4b1df26b55f76f6d4a2b6a67c",
+      "size_bytes": 6722
+    },
+    {
+      "path": "src/Infrastructure/Speech/PlayerSpeechWorker.cs",
+      "sha256": "0be05752bbca34b06f00b7a3f2f209bd317dcdd787e107f550f95ad034487a32",
+      "size_bytes": 6133
+    },
+    {
+      "path": "src/Infrastructure/Speech/MoonshineSpeechRecognizer.cs",
+      "sha256": "d753eba19cb01b3ddf5d4f52fd1b3cd18ab790ef891f21934cdc10371991018a",
+      "size_bytes": 6968
+    },
+    {
+      "path": "game/PlayerSpeechMainSmokeCheck.cs",
+      "sha256": "6f9de6d51365d9ff5dd940bcd1ce06e508fdea4d4e1c28da709aad1d27990424",
+      "size_bytes": 21334
+    },
+    {
+      "path": "scripts/player-speech-worker.py",
+      "sha256": "f55e254c73d5900b45685429f46e868f90b79079021d44af97dd6b0f3fe98608",
+      "size_bytes": 7724
+    },
+    {
+      "path": "scripts/test-player-speech-worker.py",
+      "sha256": "1a7402941cf50cc6ba0a4b5ea00266ed8d5c39b552738a3d2d7e0f9754eaee8b",
+      "size_bytes": 3357
+    },
+    {
+      "path": "tests/Application.Tests/Speech/PlayerSpeechTests.cs",
+      "sha256": "0ee0593f58abf56d6a18e434404c442ab6fdcebecd157f21cbbf4552d3974a35",
+      "size_bytes": 6707
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Speech/MoonshineSpeechTests.cs",
+      "sha256": "d847c7e49aa3b5d974b942145ba1b2aea03d5ba5fc673cb1d0205d47b590c52a",
+      "size_bytes": 6914
+    }
+  ],
+  "frozen_asr_revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+  "models": {
+    "path": "speech-direction/player-asr-integration/models.json",
+    "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588",
+    "size_bytes": 2453
+  },
+  "runtime": {
+    "path": "speech-direction/player-asr-integration/runtime-environment.json",
+    "sha256": "e8ec122097c1a6085be2031631dd5ec7e1feb22ac247f5befaf79cf63a912e3f",
+    "size_bytes": 207
+  },
+  "qualification_inputs": [
+    {
+      "path": "speech-direction/player-asr-integration/inputs/en-game-clean.wav",
+      "sha256": "99bf8daeec5129c5b5505675cb9f59df8dde6e818a108b88bd5b0fcb57ea6293",
+      "size_bytes": 210604
+    },
+    {
+      "path": "speech-direction/player-asr-integration/inputs/de-game-clean.wav",
+      "sha256": "b3680c8dc89cdc8395f624629087b9dcb51f7265a84d8432cf279845b34d4a8b",
+      "size_bytes": 243884
+    }
+  ],
+  "limits": [
+    "No physical microphone opened or personal speech retained by qualification",
+    "Keyboard load fence uses the exact successful-load reset notification seam; supplied dialogue fixture cannot capture a complete recovery root. Full gate qualifies real restore paths separately.",
+    "No new natural-speaker, accent/noise, echo, OS-permission or other-platform qualification",
+    "Existing recognizer cold-start latency remains; wait for Listening before speaking"
+  ],
+  "visual_review": {
+    "sizes": [
+      [
+        1280,
+        720
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "finding": "Keyboard hint, mic state, draft field and existing submit/delivery controls remain readable."
+  },
+  "preserved_editor": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+    "size_bytes": 8308,
+    "excluded_from_publication": true
+  }
+}

@@ -14,7 +14,10 @@ The owner selected Moonshine Small Streaming. [Player speech integration](speech
 adds opt-in Hold to talk, Listen (headphones), Stop mic and editable English/German drafts. Submit and
 Whisper still use the existing dialogue owner. Native/synthetic Main and full quality pass; linked
 verification binds the final evidence.
-No physical microphone was opened in qualification. Real permission/device/echo trials remain required.
+The [Space successor](speech-direction/space-hold-to-talk/README.md) keeps native taps and starts voice
+after a 300ms hold regardless of game control or popup focus, without a voice mode. Release finalizes
+the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
+no personal speech was retained and full permission/device/echo qualification remains incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
 [controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
@@ -44,11 +47,13 @@ Missing deliverable: Actual human English/German microphone, permission/host ide
 and headphone/speaker-feedback evidence for the new selected integration; existing qualification
 used only synthetic PCM and simulated devices.
 
-Use the closed integration README and staged configuration. Confirm the actual device/headphone
-inventory, human operator and one bounded session grant before opening live capture or changing OS
-privacy/device settings. Start with hold-to-talk/headphones; evaluate speaker feedback separately.
-Preserve explicit corrected-text Submit and record not-performed cases honestly. No model audition
-restart, unchanged API/runtime audit or unrelated hardware test.
+The owner enabled a live microphone trial and reported good recognition. The Space successor now
+supplies tap typing and focus-independent hold-to-talk. Use its published guide and staged
+configuration. Establish named language/device/headphone conditions and the finite remaining human
+cases before claiming qualification; the earlier report was qualitative and did not record natural
+speech. Existing live opt-in remains authorized, while OS privacy/device changes or personal-audio
+persistence require their own explicit enablement. Preserve corrected-text Submit; do not restart
+model auditions or unchanged runtime audits.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
@@ -73,7 +78,8 @@ certification or packaged release.
 
 After ledger maintenance run `python3 scripts/check-continuation.py --sync`, its checker and
 `--self-test`. Speech evidence and reproduction: [reply playback](speech-direction/dialogue-integration/verification.json) and
-[player recognition](speech-direction/player-asr-integration/verification.json).
+[player recognition](speech-direction/player-asr-integration/verification.json) and
+[Space gesture](speech-direction/space-hold-to-talk/verification.json).
 Runner checks: `python3 quality.py --self-test`. Root `./quality.sh` is required for product/CI
 changes; reuse completed product evidence for subsequent prose-only planning.
 

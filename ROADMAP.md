@@ -258,6 +258,7 @@ Acceptance:
 - [x] Define `ISpeechSynthesizer` independently of any provider.
 - [ ] Implement microphone permission and capture behind a platform-neutral boundary.
 - [x] Implement push-to-talk first.
+- [x] Add focus-independent tap/hold Space for player speech while preserving text entry.
 - [x] Add partial and final transcript events.
 - [x] Allow correction or confirmation before consequential actions when recognition is
   uncertain.
@@ -292,6 +293,14 @@ partial/final drafts, unchanged explicit Submit/Whisper, reply interruption and 
 Actual local English/German inference runs through Main on retained synthetic PCM; native UI and full
 quality are bound in its verification. Real OS permission, physical microphone/device/echo and accent/noise
 qualification remain missing, so the broad capture/permission and device-test items remain open.
+
+Space keyboard checkpoint (2026-10-14): [tap/hold Space](speech-direction/space-hold-to-talk/README.md)
+keeps native short taps and starts voice after a 300ms hold across game and popup viewports, without
+requiring a voice mode or button focus. Release finalizes an editable draft; explicit Submit/Whisper
+remain the dialogue owner. Current native, selected-backend and full-quality evidence is retained.
+Load fencing is exercised through the reset notification seam, alongside separate full-gate restore
+coverage; a held-key end-to-end save/load trial remains unqualified. The owner's live recognition
+report is positive but does not close the remaining human device/noise/echo qualification.
 
 Acceptance:
 

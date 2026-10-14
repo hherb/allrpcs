@@ -1,0 +1,5700 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "started": "2026-10-14T09:44:20.672700+00:00",
+  "stages": [
+    {
+      "name": "continuation",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/check-continuation.py",
+        "--self-test"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "01-continuation-1.log",
+          "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-1",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-garden-ground-runtime.py",
+        "--historical-quality"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "02-art-1-1.log",
+          "sha256": "9e83c5a53da2c0511a9e373d556b455f5ddadc5280f4326de06abc2efa24890d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-2",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "03-art-2-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-3",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-square-ground-runtime.py",
+        "--historical-garden"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "04-art-3-1.log",
+          "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-4",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-sickhouse-ground-runtime.py",
+        "--historical-square"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "05-art-4-1.log",
+          "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-5",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wagon-ground-runtime.py",
+        "--historical-sickhouse"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "06-art-5-1.log",
+          "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-6",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-shrine-ground-runtime.py",
+        "--historical-wagon"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "07-art-6-1.log",
+          "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-7",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-laundry-ground-runtime.py",
+        "--historical-shrine"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "08-art-7-1.log",
+          "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-8",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--historical-village-edge"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "09-art-8-1.log",
+          "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "art-9",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-woodland-clearing-dressing-runtime.py",
+        "--check-rejections"
+      ],
+      "revision": "ea63fcc46834e84ffab98aabd76530e60f760955",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ymk9bayt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "10-art-9-1.log",
+          "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-buses",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-audio-publication.py"
+      ],
+      "revision": "1b21d223d8329ead39973cfb81a290188780e84e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jnxdyqot/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "11-boundary-buses-1.log",
+          "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-material",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "audio-direction/material-runtime-review/publication/validate-publication.py"
+      ],
+      "revision": "240f18000a6825e6a46fea27135af2072b82f911",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-_4pq0bg6/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "12-boundary-material-1.log",
+          "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-footstep",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-footstep-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "f5ae96894ba33cecddd8b7d8c4166a02c088aba5",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-6nltm4r7/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "13-boundary-footstep-1.log",
+          "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-positional",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-positional-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "b9b36889c35cb3c7773d8ac3cee7ee650d85af25",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-z559mvnn/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "14-boundary-positional-1.log",
+          "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-music",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-music-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c472c0a31548e076bfee0252e4e4970714c8c019",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-fs9e77si/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "15-boundary-music-1.log",
+          "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-interior",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-interior-audio-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "7b8dd659d409974126790b8a417533bded9c2e5e",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-uig_aji1/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "16-boundary-interior-1.log",
+          "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-water",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-water-contact-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "50f4a7516f7b5acb20119212985e2132a581c106",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-vhtrr3r4/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "17-boundary-water-1.log",
+          "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-cask",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-cask-cover-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "5495202faecb257148309ad028faa3e0d95bf51c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ww2earfq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "18-boundary-cask-1.log",
+          "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-current",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-1ta21pkt/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "19-boundary-hand-tool-current-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-current",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-h6g34ozq/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "20-boundary-healer-current-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-current",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-po2n7wq_/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "21-boundary-foliage-current-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "current-art-imports",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-direction-a-import-proof.py"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "22-current-art-imports-1.log",
+          "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-1",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/validate-workflows.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "23-product-1-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-2",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "24-product-2-1.log",
+          "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-3",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet format Allrpcs.sln --no-restore --verify-no-changes"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "25-product-3-1.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-4",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet build Allrpcs.sln --no-restore -m:1 /nr:false"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "26-product-4-1.log",
+          "sha256": "a52ee77a519279092514cf9a62c2ec491920e4681c9f89ab1b6b9146f5c4f5f4",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-5",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "27-product-5-1.log",
+          "sha256": "10d0c6fd8641bd275f27e185e721686c557f0e4fb2c07a269e4342f6938fe94c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-6",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "28-product-6-1.log",
+          "sha256": "6f526f9bb515de83b313cb87bb3aed97e9ed27d224ada3a36da1f4554aca876b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-7",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "29-product-7-1.log",
+          "sha256": "a30b8df6eef295aaaaa1a4cecc5404b971a6d90e6f52e23a62756549d8b9b5ff",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-8",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "30-product-8-1.log",
+          "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-9",
+      "arguments": [
+        "sh",
+        "-c",
+        "dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "31-product-9-1.log",
+          "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-resume",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-h2rudyjl/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "32-boundary-hand-tool-resume-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-resume",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jaxlykwl/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "33-boundary-healer-resume-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-resume",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-yznkh5gd/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "34-boundary-foliage-resume-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-10",
+      "arguments": [
+        "sh",
+        "-c",
+        "./scripts/smoke-godot.sh"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "35-product-10-1.log",
+          "sha256": "2ae3f349d653635ee001a0cfc520c0d35b4db955711acda406b7b4f834213b95",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-11",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "36-product-11-1.log",
+          "sha256": "29132822a8eeab03cb64cf5a0d81a6dc689dad50e9f0297fdf7ddfb3ea13be07",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-12",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SQUARE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "37-product-12-1.log",
+          "sha256": "3fd35e37e7e118398972aef2b561519b6b091cedb7ab82ed97599a088711f871",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-13",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "38-product-13-1.log",
+          "sha256": "0c8f6fd5ffb752d6bcde706ce33ae4e25b310259ee8433257778acce01ac9f48",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-14",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WAGON_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "39-product-14-1.log",
+          "sha256": "feb75fa015cfbcaf88bcf3ad4685dba6292b4449f7b015b44103e3d2c5fa0f28",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-15",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_SHRINE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "40-product-15-1.log",
+          "sha256": "2925804c0e23817daf52c772c36f22f80aefd758a6c1f13b548d84b8a5c8f2b8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-16",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_LAUNDRY_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "41-product-16-1.log",
+          "sha256": "62a105041c9652b7dccf8888dfe69a7a801cbfa9e84f801ad15435a4acf377ff",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-17",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "42-product-17-1.log",
+          "sha256": "4fe0d3e01e819e48766a531834c5f0aa9671ff7aff75810b90ad96e3908393a3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-18",
+      "arguments": [
+        "sh",
+        "-c",
+        "ALLRPCS_RUNTIME_WOODLAND_CLEARING_DRESSING_CHECK=1 godot --headless --path game --quit-after 30"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "43-product-18-1.log",
+          "sha256": "5cffbc4eb21f68bae84e59c42ba5fa250ec6c7850984fd3202ea950e2dd91075",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "product-19",
+      "arguments": [
+        "sh",
+        "-c",
+        "godot --path game --quit-after 60"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "44-product-19-1.log",
+          "sha256": "1def8fb97ff4be1dabf93af6c48c4c0d31f8a3611ac3b650a8c013b8886e9232",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-normal",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "normal",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-normal.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "45-interior-normal-1.log",
+          "sha256": "bb1312222b159c57648ce9b8ec5321415b66da0597ea713298a682ed418c11a6",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "muted",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "46-interior-muted-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-zero",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "zero",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-zero.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "47-interior-zero-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "interior-mono-reduced",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_INTERIOR_MAIN_CHECK": "1",
+        "ALLRPCS_INTERIOR_MODE": "mono-reduced",
+        "ALLRPCS_INTERIOR_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/interior-mono-reduced.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "48-interior-mono-reduced-1.log",
+          "sha256": "28ba739c1f2f6b9801895af08c0f2542f0cd1294efaeafaeddf8ecf787a5b663",
+          "required_completion": "PASS: interior Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "default",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "49-water-default-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "quiet",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "50-water-quiet-1.log",
+          "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "master-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "51-water-master-muted-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "effects-muted",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "52-water-effects-muted-1.log",
+          "sha256": "ed4d2095c60f28a853e2d47334db2f4b7035cb2b2e989a41e2bbc0cc8e5caf67",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "missing-stream",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "53-water-missing-stream-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "water-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_WATER_MAIN_CHECK": "1",
+        "ALLRPCS_WATER_MODE": "no-action",
+        "ALLRPCS_WATER_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/water-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "54-water-no-action-1.log",
+          "sha256": "cf8e0a178d518d49d9234bd6de99ac5fcf44a5ec4115867e28d1f5a091e0a60e",
+          "required_completion": "PASS: water Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "default",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "55-cask-default-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "quiet",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "56-cask-quiet-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "master-muted",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "57-cask-master-muted-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "effects-muted",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "58-cask-effects-muted-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "missing-stream",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "59-cask-missing-stream-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cask-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_CASK_MAIN_CHECK": "1",
+        "ALLRPCS_CASK_MODE": "no-action",
+        "ALLRPCS_CASK_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cask-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "60-cask-no-action-1.log",
+          "sha256": "107703c6f37d5726775395d6bc911b5154d0761fb78c98238456faf5e88b7477",
+          "required_completion": "PASS: cask Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "default",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "61-hand-tool-default-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "quiet",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "62-hand-tool-quiet-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "master-muted",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "63-hand-tool-master-muted-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "effects-muted",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "64-hand-tool-effects-muted-1.log",
+          "sha256": "153f65c7ee69615992114a4f3b2422b3445d40ade4e6af6d71002e2687b20475",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "missing-stream",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "65-hand-tool-missing-stream-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "hand-tool-no-action",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_TOOL_MAIN_CHECK": "1",
+        "ALLRPCS_TOOL_MODE": "no-action",
+        "ALLRPCS_TOOL_CHECK_OUTPUT": "/Users/hherb/src/allrpcs/artifacts/quality-current/tool-no-action.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "66-hand-tool-no-action-1.log",
+          "sha256": "4407e313c1ea8de42155d8138b5cc4d85da03f26b7f14e1746788bfcf89277b2",
+          "required_completion": "PASS: hand-tool Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "default",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "67-healer-footstep-default-1.log",
+          "sha256": "703075e5abb8dd0cc970730ec4b78bbc0ae6822c177f5a3858a2c051afb8cc3a",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "quiet",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "68-healer-footstep-quiet-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "master-muted",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "69-healer-footstep-master-muted-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "effects-muted",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "70-healer-footstep-effects-muted-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-missing-resources",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "missing-resources",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-missing-resources.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "71-healer-footstep-missing-resources-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "captions-off",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "72-healer-footstep-captions-off-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-footstep-observer-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_CHECK": "1",
+        "ALLRPCS_HEALER_FOOTSTEP_MODE": "observer-disabled",
+        "ALLRPCS_HEALER_FOOTSTEP_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/healer-observer-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "73-healer-footstep-observer-disabled-1.log",
+          "sha256": "f98f87896574cfa487c6c2c9acea588012149362e8e23156fd44bd98c8343543",
+          "required_completion": "PASS: Healer footstep Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-hand-tool-after-runtime",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-hand-tool-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "75c1aa04e4cfa840d75bee119de11afe7fb2484c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ffh3zgk5/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "74-boundary-hand-tool-after-runtime-1.log",
+          "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "healer-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--output-only"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-zbtrp8dy/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "75-healer-master-output-1.log",
+          "sha256": "02cd64c72a7f807eac2749feed633a59f727ee1479966773813333004f47059f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-healer-after-runtime",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-healer-footstep-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "ae06c9abd939cc1c2df9bdc35654166f66c15c00",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-zbtrp8dy/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "76-boundary-healer-after-runtime-1.log",
+          "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "77-foliage-historical-build-1.log",
+          "sha256": "910c0379f4c3e6108db1c2ea48d81065566633cf45fd18d598de5320a2294da3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "78-foliage-historical-import-1.log",
+          "sha256": "1ae568ec85f7bbdd5fae10d8b66253d215f5bc8403f80e35f0a2ef124265e62a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "default",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "79-foliage-default-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "quiet",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "80-foliage-quiet-1.log",
+          "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "master-muted",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "81-foliage-master-muted-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "ambience-muted",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "82-foliage-ambience-muted-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "missing-stream",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "83-foliage-missing-stream-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "captions-off",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "84-foliage-captions-off-1.log",
+          "sha256": "6121c91504333c8928885e2bb50022eda9c1cdbf68afebf1ccc1d12207c4cb46",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-foliage-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index",
+        "ALLRPCS_FOLIAGE_MAIN_CHECK": "1",
+        "ALLRPCS_FOLIAGE_MODE": "foliage-disabled",
+        "ALLRPCS_FOLIAGE_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/foliage-foliage-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "85-foliage-foliage-disabled-1.log",
+          "sha256": "20d7621918a3ed85a670118d28c59665ae73f33d94b18b9cf3098ca5751d69ff",
+          "required_completion": "PASS: foliage Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "foliage-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--output-only"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "86-foliage-master-output-1.log",
+          "sha256": "d90b26091b482882580cb4225a0fe5435dd782bfde1b646c8c1d9016ac61ccfa",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-foliage-after-runtime",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-foliage-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "c4f24ea1ae20e2f06b7f5eae951d506ca4ecb2c3",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-cdl5towr/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "87-boundary-foliage-after-runtime-1.log",
+          "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "88-wind-historical-restore-1.log",
+          "sha256": "060c4070cb9cf6194faaa886f3772408ed5010f992bd4fab8c941b4bc8e5f3e2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "89-wind-historical-build-1.log",
+          "sha256": "f3c524c1e82bb35365c85e172e771190496b0dd5cf9be118389de4d92ae6daf0",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "90-wind-historical-import-1.log",
+          "sha256": "1ab1bdac20d0ee62732289f464e36ae3cd7ca556befa5dbd6ac5b341c55d82c8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Wind",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "91-wind-focused-1.log",
+          "sha256": "ca0e9390f02bcabfb610b51f24c99308385c90bc85e0657d1d06fc662a7cffc3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-wind-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--source-only"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "92-boundary-wind-source-1.log",
+          "sha256": "c09f30e88ab30a13e8dde6655b5bb92bb1f36d3f5f772bf0b8db07f27d2ece1a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "default",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "93-wind-default-1.log",
+          "sha256": "967cc370469fb0cf74a6582bdc994868929e0aa1e273ac756683d92b7f2b0d92",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "quiet",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "94-wind-quiet-1.log",
+          "sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "master-muted",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "95-wind-master-muted-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "ambience-muted",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "96-wind-ambience-muted-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "missing-stream",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "97-wind-missing-stream-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "captions-off",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "98-wind-captions-off-1.log",
+          "sha256": "ce40f780575a5a77ac2e11161e6551274dfb98af299454c98b477f9ff395d3cb",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-wind-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7000"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index",
+        "ALLRPCS_WIND_MAIN_CHECK": "1",
+        "ALLRPCS_WIND_MODE": "wind-disabled",
+        "ALLRPCS_WIND_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/wind-wind-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "99-wind-wind-disabled-1.log",
+          "sha256": "a62202f4e484b16cc1abe46ef442194e26951b857fa63fce52759ba0011a2294",
+          "required_completion": "PASS: wind Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "wind-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--output-only"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "100-wind-master-output-1.log",
+          "sha256": "77368436e72ce0f2597763066974a239b91405b203b068d6022b7252d97310cb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-wind-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-wind-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "da2826ea8fb49a0464cf177c395de12b19db7998",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-ua00jprg/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "101-boundary-wind-reviewed-1.log",
+          "sha256": "51504bdc4bc5b732ff889ddc0ea0a82c9e6c763846345b26d52910715d329ab3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "102-rain-historical-restore-1.log",
+          "sha256": "988a21d0e1a84a369715e3d7a8749c76da772bf7c401f91ec7b20dcfab35a67d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "103-rain-historical-build-1.log",
+          "sha256": "5c4ea0bc52f9a4605ba821dceca06149975710b134c9fcfe1e156cc4319724eb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "104-rain-historical-import-1.log",
+          "sha256": "86637223f6102704b46e49e6ed148c05838474d9f8e21d58d286dd83a4060583",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Audio.Rain",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "105-rain-focused-1.log",
+          "sha256": "8a664bd8dc6d16a5a10f58b72d7b20e534d5efe32104aa8c2f16f47df43020c6",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-rain-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--source-only"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "106-boundary-rain-source-1.log",
+          "sha256": "8bf9e28bb25cdc74ca082b562ccc5944c091e001cf90642a8f9e18984ca1b997",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "default",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "107-rain-default-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "quiet",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "108-rain-quiet-1.log",
+          "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "master-muted",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "109-rain-master-muted-1.log",
+          "sha256": "0e3df713eeb811984be776aae8023e8cad5ea6032283df776ac3d139b5fc600c",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-ambience-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "ambience-muted",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-ambience-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "110-rain-ambience-muted-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "missing-stream",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "111-rain-missing-stream-1.log",
+          "sha256": "4c8c16ec9aafebd3099c1e9d8d0e277fce047a97a6cd719d9152ab04eb3b07f5",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "captions-off",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "112-rain-captions-off-1.log",
+          "sha256": "ac8e084928136a0a452032e68840d2f9095c7f91e99b0d0a08eccab1d4c6f13f",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-rain-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "7600"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index",
+        "ALLRPCS_RAIN_MAIN_CHECK": "1",
+        "ALLRPCS_RAIN_MODE": "rain-disabled",
+        "ALLRPCS_RAIN_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/rain-rain-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "113-rain-rain-disabled-1.log",
+          "sha256": "0e3df713eeb811984be776aae8023e8cad5ea6032283df776ac3d139b5fc600c",
+          "required_completion": "PASS: rain Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "rain-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--output-only"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "114-rain-master-output-1.log",
+          "sha256": "61e415280e9bfa63af7220ab1d3c9dee81d1223dc195575404a283f32b2a40ce",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-rain-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-rain-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "9115a64199b4838390caaa7b8a56ba64e903544c",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-2mraurt0/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "115-boundary-rain-reviewed-1.log",
+          "sha256": "311e66b904f9a71a080ff8bdd07ffab52a70b9d137f46da0980dba3bb0734ea8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "116-heating-historical-restore-1.log",
+          "sha256": "65c4e3a7807d714548f70fcd4f44dedaa7358a1a068115feed85f89f19a35ef8",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "117-heating-historical-build-1.log",
+          "sha256": "5cb00d22530d9a371d0f1fa86f3f38f1e3671915a5ee8405ee60dd153bdcf19b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "118-heating-historical-import-1.log",
+          "sha256": "016553fda7818570fa495933403615fae050277bc7c86f7bf9902590955524e0",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~RemedyHeating",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "119-heating-focused-1.log",
+          "sha256": "63dfeb5a2633d13a467135553023a8e0db1aadddcb2337951f431fd75f50e57e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-heating-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-heating-runtime.py",
+        "--source-only"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "120-boundary-heating-source-1.log",
+          "sha256": "a29f3982784b9723ada46491749d4363921434a52b67be4a2292044ab938b36d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "default",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "121-heating-default-1.log",
+          "sha256": "195c34a9e0e51afb03ac97989bc43d729a4484203471fa159c605d1677b5acf6",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "quiet",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "122-heating-quiet-1.log",
+          "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "master-muted",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "123-heating-master-muted-1.log",
+          "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "effects-muted",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "124-heating-effects-muted-1.log",
+          "sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "missing-stream",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "125-heating-missing-stream-1.log",
+          "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "captions-off",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "126-heating-captions-off-1.log",
+          "sha256": "85b650fd2cc7491ff91ba94cb3a063196037bd403530314dc426b6643e3569e1",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-heating-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index",
+        "ALLRPCS_HEATING_MAIN_CHECK": "1",
+        "ALLRPCS_HEATING_MODE": "heating-disabled",
+        "ALLRPCS_HEATING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/heating-heating-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "127-heating-heating-disabled-1.log",
+          "sha256": "7525e4658e314a35c3b688e61d44bdceec08ab39c712353e43d2e6624d683a57",
+          "required_completion": "PASS: heating Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "heating-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-heating-runtime.py",
+        "--output-only"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "128-heating-master-output-1.log",
+          "sha256": "d3b846bcd1815c06fbd5627c0410cc04e8fcd32a2a134d4acf10c234b78c331b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-heating-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-heating-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "b7912dd46a91e4b101c44cf56701d00f45b9ffd8",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-nh54grpm/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "129-boundary-heating-reviewed-1.log",
+          "sha256": "da381824ea9994b67ec8fd6051db39e2e6dc06f21d0c51596bc26e89b5a38fac",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "130-steeping-historical-restore-1.log",
+          "sha256": "ce52a91eb7aa7a7c0f844871e69ba07b16ad0b18dfab1803cb4132a2e5b7864f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "131-steeping-historical-build-1.log",
+          "sha256": "6b9d380a34e2be200d31143f2b461e5917ff9dd809216b69ddc40ec9d42c42fb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "132-steeping-historical-import-1.log",
+          "sha256": "5179e3f5e1ed711cc00db97e8468dedbc2596a6dc92376ade11b8d92fa448c45",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~RemedySteeping",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "133-steeping-focused-1.log",
+          "sha256": "e0042e1ee0a6aa6660d67b21dafb830908c1e4f65887eeaaecc7c6069c05f52f",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-steeping-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-steeping-runtime.py",
+        "--source-only"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "134-boundary-steeping-source-1.log",
+          "sha256": "5df1e514505fe14b03ab066d9135e21fe3f3a19f5ce0b1f25e0f7a8e8ecac7db",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "default",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "135-steeping-default-1.log",
+          "sha256": "068158c502fe86f83d69a182f93c33931bcb8f7d983d54cd3d4c7afa8043e0c1",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "quiet",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "136-steeping-quiet-1.log",
+          "sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "master-muted",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "137-steeping-master-muted-1.log",
+          "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "effects-muted",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "138-steeping-effects-muted-1.log",
+          "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "missing-stream",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "139-steeping-missing-stream-1.log",
+          "sha256": "826353685b226cc59a10479fbae39c5f8b9f5dd7308e093f8f5532012dd9621f",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "captions-off",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "140-steeping-captions-off-1.log",
+          "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-steeping-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index",
+        "ALLRPCS_STEEPING_MAIN_CHECK": "1",
+        "ALLRPCS_STEEPING_MODE": "steeping-disabled",
+        "ALLRPCS_STEEPING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/steeping-steeping-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "141-steeping-steeping-disabled-1.log",
+          "sha256": "85264dab23fec9b00a686611b04094d70c007bd428e8b73a0faf8a085141e231",
+          "required_completion": "PASS: steeping Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "steeping-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-steeping-runtime.py",
+        "--output-only"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "142-steeping-master-output-1.log",
+          "sha256": "ad4e9d4a6916c361fe2cd9f6c6e8532b21fd71aef50c922d429d1d0727bd96b3",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-steeping-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-steeping-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "7836911042760409e181df80b4bfdd9951a8e7b2",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-303wu3e3/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "143-boundary-steeping-reviewed-1.log",
+          "sha256": "c12684fd6234cc4787ce5eff092a7f3aeda84e28e373c1790e64bd041f330fdb",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "144-cooling-historical-restore-1.log",
+          "sha256": "b1e22b31142fef04664454985209e1bb63ffb9fd531c4f8f4ead7fb141f2eb1b",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "145-cooling-historical-build-1.log",
+          "sha256": "0a73a3e3dc315c523a37d300dc5b22d2f6a25180ea614a7aad2ed97858587b36",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "146-cooling-historical-import-1.log",
+          "sha256": "2935d91b494d282b4497378fda62d5bcb224c4f783fdee044b596cf3ba10559c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~RemedyCooling",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "147-cooling-focused-1.log",
+          "sha256": "7c139111a3289a9453a740c4c26d11fb9f14cb4ee38c5fc1a8e4303217bcc207",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-cooling-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-cooling-runtime.py",
+        "--source-only"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "148-boundary-cooling-source-1.log",
+          "sha256": "b7b1a1bb8da7f9fdeb523b96973724dd92aded0345c9e8e6699bf4bfd30a5c15",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "default",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "149-cooling-default-1.log",
+          "sha256": "8c3e564b39a1b2c5d29a4c3417f93ab2c49e76d04a2113140e57af02988bb305",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "quiet",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "150-cooling-quiet-1.log",
+          "sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "master-muted",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "151-cooling-master-muted-1.log",
+          "sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "effects-muted",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "152-cooling-effects-muted-1.log",
+          "sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "missing-stream",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "153-cooling-missing-stream-1.log",
+          "sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "captions-off",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "154-cooling-captions-off-1.log",
+          "sha256": "0230ec8e15bc8651da8720a4b5277db6e821b023a1338f920fd1e3d8f1eaab89",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-cooling-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index",
+        "ALLRPCS_COOLING_MAIN_CHECK": "1",
+        "ALLRPCS_COOLING_MODE": "cooling-disabled",
+        "ALLRPCS_COOLING_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/cooling-cooling-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "155-cooling-cooling-disabled-1.log",
+          "sha256": "d0e55bb6b6cd3a9b3c982be66eefb6086bd2decebd2e626d92df7a9b881bd6cb",
+          "required_completion": "PASS: cooling Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "cooling-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-cooling-runtime.py",
+        "--output-only"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "156-cooling-master-output-1.log",
+          "sha256": "362f5d48fc94df59838c1a38b8da679ac141bb7d284bc5b60b1fff7724555b26",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-cooling-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-remedy-cooling-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "e92e6e085e4d498e1339e8babc49a6623a9b7613",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-0jllkz8s/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "157-boundary-cooling-reviewed-1.log",
+          "sha256": "6cb1aa2c31bfd0091b7f844696082a7a66f82ba542113e5898ba27abb9a919d6",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "158-herb-historical-restore-1.log",
+          "sha256": "c7128b19c4aca41a1901098a4bf0b1d4f7622b22daab8b37a96284113b8d033a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "-m:1",
+        "/nr:false"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "159-herb-historical-build-1.log",
+          "sha256": "4ee2037708771a055fdee057d864338b529080600e84fd4d94428f18e7c3977a",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "160-herb-historical-import-1.log",
+          "sha256": "17b742366611255aa9ddacc55ee27bc4d0901a26cf077eb2a67e1b060a31f6c7",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-focused",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~HerbCollection",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "161-herb-focused-1.log",
+          "sha256": "144c58d607785910632dd3539d7db787d6979fd4f7a139c63f38508fa04af34e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-herb-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--source-only"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "162-boundary-herb-source-1.log",
+          "sha256": "b04d404e0c9eb2c99dabcbb7a4303e9bfd2e271d99349d7b78289392b87aea34",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-source-rejections",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/prepare-herb-collection-passage.py",
+        "--self-test"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "163-herb-source-rejections-1.log",
+          "sha256": "bd8a323e6f124a48c411a5eda4ea01b9eafd8690362f25efb7b91c9c2bcd6eaa",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-validator-rejections",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--self-test"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "164-herb-validator-rejections-1.log",
+          "sha256": "cd3521956496c83bc1e853d0e80a297bff1f350fa453d87e46f234f76ada8d47",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "default",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "165-herb-near-default-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "quiet",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "166-herb-near-quiet-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "master-muted",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "167-herb-near-master-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "effects-muted",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "168-herb-near-effects-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "missing-stream",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "169-herb-near-missing-stream-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "captions-off",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "170-herb-near-captions-off-1.log",
+          "sha256": "aad891e2a730934d5ddf35058162f737e26d9a6d5e8b73fb45d5511a21891e4f",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-near-audio-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "audio-disabled",
+        "ALLRPCS_HERB_PLACEMENT": "near",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-near-audio-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "171-herb-near-audio-disabled-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-default",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "default",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-default.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "172-herb-remote-default-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-quiet",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "quiet",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-quiet.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "173-herb-remote-quiet-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-master-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "master-muted",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-master-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "174-herb-remote-master-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-effects-muted",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "effects-muted",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-effects-muted.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "175-herb-remote-effects-muted-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-missing-stream",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "missing-stream",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-missing-stream.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "176-herb-remote-missing-stream-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-captions-off",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "captions-off",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-captions-off.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "177-herb-remote-captions-off-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-remote-audio-disabled",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1200"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index",
+        "ALLRPCS_HERB_MAIN_CHECK": "1",
+        "ALLRPCS_HERB_MODE": "audio-disabled",
+        "ALLRPCS_HERB_PLACEMENT": "remote",
+        "ALLRPCS_HERB_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/herb-remote-audio-disabled.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "178-herb-remote-audio-disabled-1.log",
+          "sha256": "afdb4a5029d714d99bdccbbeb3ea412be9320724540b5558b93450c20f04980e",
+          "required_completion": "PASS: herb Main:",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "herb-master-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--output-only"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "179-herb-master-output-1.log",
+          "sha256": "a5448aa3db7371ebfade7dbaeb93ca6c2afc2714c67b61d453e9f9e2a39b5d6d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "boundary-herb-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-herb-collection-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "db298c8fa5dfe220467c4cc113d0998e1c1aec01",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-svq49o47/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "180-boundary-herb-reviewed-1.log",
+          "sha256": "693e9b5924dd325029a1aec2fa8b49e02dd10e2a9b482513777ef74f3bdc97bf",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "Allrpcs.sln"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "181-controls-historical-restore-1.log",
+          "sha256": "19993f81f1d46c8ffa9467745b97ac9127d91c9438a47034b9ed44e7ae8fab16",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "--no-restore"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "182-controls-historical-build-1.log",
+          "sha256": "1592998cdaf01c7119e55162cbcd787134811a436be8772748374de7b5c0a9d9",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "183-controls-historical-import-1.log",
+          "sha256": "b04f8f7941bf469ec92e89159d61ba1d7093f4afe8773dfefcdf9ea9d42b6595",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-application",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Tests.Input",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "184-controls-application-1.log",
+          "sha256": "c1029cddf32bb4226c62c8deb2a0f14f8702de8cb6128a2fb315d8bd021d51f5",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-infrastructure",
+      "arguments": [
+        "dotnet",
+        "test",
+        "tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName~Tests.Input",
+        "--logger",
+        "console;verbosity=minimal"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "185-controls-infrastructure-1.log",
+          "sha256": "1808b19e4b792fe31351dfe39a00406e92fd900fb3f2e7af584d398f6ee81aa5",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-control-remapping-runtime.py",
+        "--source-only"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "186-controls-source-1.log",
+          "sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-validator-rejections",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-control-remapping-runtime.py",
+        "--self-test"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "187-controls-validator-rejections-1.log",
+          "sha256": "fa38370fa796854d16667d628cc62d7851bd6cfe951ec08dbe8c90ba95a3a395",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-main",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1800"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index",
+        "ALLRPCS_CONTROLS_MAIN_CHECK": "1",
+        "ALLRPCS_CONTROLS_MODE": "headless",
+        "ALLRPCS_CONTROLS_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/controls-main.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "188-controls-main-1.log",
+          "sha256": "2d4d880192f2ea2163a97239dcd4335a282ae42006757e27da45052cc28c63f5",
+          "required_completion": "PASS: controls Main: headless",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-native-output",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-control-remapping-runtime.py",
+        "--output-only"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "189-controls-native-output-1.log",
+          "sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-mounted-resources",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-control-remapping-runtime.py",
+        "--package-only"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "190-controls-mounted-resources-1.log",
+          "sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "controls-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-control-remapping-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "1b0cab4060dd1eaca9c780cf85c38be1662d8513",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-c0z7rtfw/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "191-controls-reviewed-1.log",
+          "sha256": "01a27b2c30de63701c6eed1c0d5fd8999ad443a73c81f880813728e246912345",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "Allrpcs.sln"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "192-dialogue-accessibility-historical-restore-1.log",
+          "sha256": "666b540719e3b34189021525e76324182aa4383b84f1976fc63c7349eb7c6e57",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "--no-restore"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "193-dialogue-accessibility-historical-build-1.log",
+          "sha256": "8e2fedf37d0d805a5ca071ca110bc10d307af8d650597864b0c812a3c80401e2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "194-dialogue-accessibility-historical-import-1.log",
+          "sha256": "a42fdb4469bdacf7e30ff1282ae798347590778f2ea4599bb699ca7b1302ccb2",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-source",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-dialogue-accessibility-runtime.py",
+        "--source-only"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "195-dialogue-accessibility-source-1.log",
+          "sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-validator-rejections",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-dialogue-accessibility-runtime.py",
+        "--self-test"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "196-dialogue-accessibility-validator-rejections-1.log",
+          "sha256": "660cf4099e316b60d306b85b36fc68daf166b029a158bbe4eff9180291328259",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-main",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "1800"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index",
+        "ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK": "1",
+        "ALLRPCS_DIALOGUE_ACCESSIBILITY_MODE": "headless",
+        "ALLRPCS_DIALOGUE_ACCESSIBILITY_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/dialogue-accessibility-main.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "197-dialogue-accessibility-main-1.log",
+          "sha256": "e27f461e8b2ca61f5f45c3b92694257ce8cca31521c7ad27f04aebb2d9d30985",
+          "required_completion": "PASS: dialogue accessibility Main: headless",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-accessibility-reviewed",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/validate-dialogue-accessibility-runtime.py",
+        "--reviewed"
+      ],
+      "revision": "e7b17575479be3f9061979c3269168f956782566",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "1",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-gr2vj5oz/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "198-dialogue-accessibility-reviewed-1.log",
+          "sha256": "0e4e2b75a3dbcf72863f9e6b6962e03e907be796a3e2abc74838ebd7efcde70e",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-speech-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "Allrpcs.sln"
+      ],
+      "revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jx4rs1yy/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "199-dialogue-speech-historical-restore-1.log",
+          "sha256": "eeaf5c971fcb143a6c83f6d9134ce575b667c275c7e40ac7bd49ec3ed413da74",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-speech-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "--no-restore"
+      ],
+      "revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jx4rs1yy/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "200-dialogue-speech-historical-build-1.log",
+          "sha256": "ec85aeca86a6699ef70d194e5a43e97455118256c8c78e656254f4f3d97f245d",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-speech-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jx4rs1yy/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "201-dialogue-speech-historical-import-1.log",
+          "sha256": "161c513cfd52a1e1b1e273664f8c93bda8fb641e0c94b73b300e91a70d924283",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-speech-headless",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jx4rs1yy/git/index",
+        "ALLRPCS_DIALOGUE_SPEECH_CHECK": "1",
+        "ALLRPCS_DIALOGUE_SPEECH_MODE": "headless",
+        "ALLRPCS_DIALOGUE_SPEECH_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/dialogue-speech-headless.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-not-configured.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "202-dialogue-speech-headless-1.log",
+          "sha256": "773eae60ef76eb2858a58637e2ce3f1188a992e7704f659b7b067fdd445ddb02",
+          "required_completion": "PASS: dialogue speech Main: headless",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "dialogue-speech-unavailable",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "07bd7a487fa52af992f47481e6b8a3eccad84bb4",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-jx4rs1yy/git/index",
+        "ALLRPCS_DIALOGUE_SPEECH_CHECK": "1",
+        "ALLRPCS_DIALOGUE_SPEECH_MODE": "unavailable",
+        "ALLRPCS_DIALOGUE_SPEECH_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/dialogue-speech-unavailable.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-not-configured.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "203-dialogue-speech-unavailable-1.log",
+          "sha256": "9908d37730c29d7ca5d3fb3c88ac9c6da1faf19a0616e625e103e401cee64e9b",
+          "required_completion": "PASS: dialogue speech Main: unavailable",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-capture-boundary",
+      "arguments": [
+        "/Users/hherb/src/allrpcs/artifacts/quality-python/bin/python",
+        "scripts/test-player-speech-worker.py"
+      ],
+      "revision": null,
+      "environment_overrides": {},
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "204-player-asr-capture-boundary-1.log",
+          "sha256": "1683faffcdfbe110d76dbff5223ec6c50e28683becee8feb448717707418bee4",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-historical-restore",
+      "arguments": [
+        "dotnet",
+        "restore",
+        "Allrpcs.sln"
+      ],
+      "revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sm2wgllh/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "205-player-asr-historical-restore-1.log",
+          "sha256": "afef60eb5fdbe036bead7f2c1dd85e102c0b043b97ad1d3e5ec751c10c05442c",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-historical-build",
+      "arguments": [
+        "dotnet",
+        "build",
+        "game/Allrpcs.Game.csproj",
+        "--no-restore"
+      ],
+      "revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sm2wgllh/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "206-player-asr-historical-build-1.log",
+          "sha256": "6bb9dc7fc27b1186ff6e9f47353753e735449d9a91db583356c90deb1b4f76a5",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-historical-import",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--editor",
+        "--path",
+        "game",
+        "--import"
+      ],
+      "revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+      "environment_overrides": {
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sm2wgllh/git/index"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "207-player-asr-historical-import-1.log",
+          "sha256": "5262328560650bc804b5943bfe1797a2a991d3a36aed74d928663ae58bfc9fac",
+          "required_completion": null,
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-headless",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sm2wgllh/git/index",
+        "ALLRPCS_PLAYER_ASR_CHECK": "1",
+        "ALLRPCS_PLAYER_ASR_MODE": "headless",
+        "ALLRPCS_PLAYER_ASR_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/player-asr-headless.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-missing.json",
+        "ALLRPCS_PLAYER_SPEECH_CONFIG": "/private/tmp/allrpcs-asr-missing.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "208-player-asr-headless-1.log",
+          "sha256": "7cbeb4a05a7db152f63eeda89220ba235a68f8249784dce5885f2aec87efbc3d",
+          "required_completion": "PASS: player ASR Main: headless",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "player-asr-unavailable",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "game",
+        "--quit-after",
+        "3600"
+      ],
+      "revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "GIT_INDEX_FILE": "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sm2wgllh/git/index",
+        "ALLRPCS_PLAYER_ASR_CHECK": "1",
+        "ALLRPCS_PLAYER_ASR_MODE": "unavailable",
+        "ALLRPCS_PLAYER_ASR_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/player-asr-unavailable.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-missing.json",
+        "ALLRPCS_PLAYER_SPEECH_CONFIG": "/private/tmp/allrpcs-asr-missing.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "209-player-asr-unavailable-1.log",
+          "sha256": "a3fce5f46bd17dc19449e06c543b871447e8cfe907ede96818814ff3eb83f54c",
+          "required_completion": "PASS: player ASR Main: unavailable",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "space-hold-headless",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "game",
+        "--quit-after",
+        "7200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "ALLRPCS_SPACE_HOLD_CHECK": "1",
+        "ALLRPCS_SPACE_HOLD_MODE": "headless",
+        "ALLRPCS_SPACE_HOLD_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/space-hold-headless.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-missing.json",
+        "ALLRPCS_PLAYER_SPEECH_CONFIG": "/private/tmp/allrpcs-asr-missing.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "210-space-hold-headless-1.log",
+          "sha256": "5f8ad2aaa42616b23a526ae1a37607cde6e4004c0f662e4ec11378e4e4339d99",
+          "required_completion": "PASS: Space hold Main: headless",
+          "completion_seen": true
+        }
+      ]
+    },
+    {
+      "name": "space-hold-unavailable",
+      "arguments": [
+        "godot",
+        "--headless",
+        "--path",
+        "game",
+        "--quit-after",
+        "7200"
+      ],
+      "revision": null,
+      "environment_overrides": {
+        "ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED": "1",
+        "ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL": "0",
+        "ALLRPCS_SPACE_HOLD_CHECK": "1",
+        "ALLRPCS_SPACE_HOLD_MODE": "unavailable",
+        "ALLRPCS_SPACE_HOLD_REPORT": "/Users/hherb/src/allrpcs/artifacts/quality-current/space-hold-unavailable.json",
+        "ALLRPCS_SPEECH_CONFIG": "/private/tmp/allrpcs-speech-missing.json",
+        "ALLRPCS_PLAYER_SPEECH_CONFIG": "/private/tmp/allrpcs-asr-missing.json"
+      },
+      "attempts": [
+        {
+          "exit_code": 0,
+          "log": "211-space-hold-unavailable-1.log",
+          "sha256": "aa5c3af3b62c6f81f5f771a91bcf41a48c807d56420126b9eb0673f9e2fc8d7c",
+          "required_completion": "PASS: Space hold Main: unavailable",
+          "completion_seen": true
+        }
+      ]
+    }
+  ],
+  "product_revision": "ad10fcd34eab0520492591bef78c1fea1ea62572",
+  "python": "3.12.3 (main, Mar  8 2026, 22:25:47) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "pillow": "12.3.0",
+  "numpy": "2.5.3",
+  "zlib": "1.2.12",
+  "inputs": {
+    "quality.py": "7f08d2ea5d28f99c4409c94643b75b1fad16807067eb976aedcffca54d801075",
+    "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+    "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+    "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+    "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+  },
+  "native_launch_retry": {
+    "real_godot": "/Users/hherb/.local/bin/godot",
+    "wrapper_sha256": "1aa8128bcd40a7a3aa2b9e460a4c7fc5db63e9a35c2776c9dcadd8c418d19587",
+    "max_identical_attempts": 3,
+    "reason": "Individual frozen smoke launches retry only diagnosed native shutdown; real errors remain fatal."
+  },
+  "water_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "water_transcript": [],
+  "water_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "cask_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "cask_transcript": [],
+  "cask_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "tool_save_sha256": "e8951187152b0417093951677212f65a41134e4be12c2b511bae7f924d856333",
+  "tool_transcript": [],
+  "tool_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "no-action"
+  ],
+  "healer_save_sha256": "1cfd445f4eb82b1f1c54c01f51b4d1320ce9c58bb8ba97780f68571e2fe08275",
+  "healer_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-resources",
+    "captions-off",
+    "observer-disabled"
+  ],
+  "healer_contacts": 4,
+  "healer_presentations": 4,
+  "generated_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "historical_foliage_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "foliage_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "foliage-disabled"
+  ],
+  "foliage_save_sha256": "850875440e26497f0c61f4ae9610d2f106aa4da5e316589a191bf19ea426e576",
+  "historical_wind_uid_cleanup": [
+    "game/CharacterAnimationImportProof.gd.uid",
+    "game/CharacterAnimationImportProofCheck.gd.uid",
+    "game/CharacterAnimationImportProofCorrectedCloak.gd.uid",
+    "game/CharacterAnimationImportProofLeadExchangeCloak.gd.uid",
+    "game/CharacterAnimationImportProofPelvisCloak.gd.uid",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.gd.uid",
+    "game/CharacterAnimationImportProofRevisedCloak.gd.uid",
+    "game/SeekerCloakGaitCorrectionCheck.gd.uid",
+    "game/SeekerCloakGaitCorrectionProof.gd.uid",
+    "game/SeekerCloakGaitSideRevisionCheck.gd.uid",
+    "game/SeekerCloakGaitSideRevisionProof.gd.uid",
+    "game/SeekerCloakLeadExchangeCheck.gd.uid",
+    "game/SeekerCloakLeadExchangeProof.gd.uid",
+    "game/SeekerCloakPelvisHingeCheck.gd.uid",
+    "game/SeekerCloakPelvisHingeProof.gd.uid",
+    "game/SeekerCloakReferenceGaitCheck.gd.uid",
+    "game/SeekerCloakReferenceGaitProof.gd.uid"
+  ],
+  "wind_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "wind-disabled"
+  ],
+  "wind_save_sha256": "367dadb65c4c63e6b64530b2186d94d4bf4063537828d1c40a17299c6419b977",
+  "rain_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "ambience-muted",
+    "missing-stream",
+    "captions-off",
+    "rain-disabled"
+  ],
+  "rain_save_sha256": "b26e09b02bf97025e7304a5e3cb8c16f063ddc761d38d3544a1f4fbbd783cf0c",
+  "heating_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "captions-off",
+    "heating-disabled"
+  ],
+  "heating_save_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+  "steeping_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "captions-off",
+    "steeping-disabled"
+  ],
+  "steeping_save_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+  "historical_cooling_retained_uids": [
+    {
+      "path": "game/CoolingPreparationCommit.cs.uid",
+      "sha256": "23346a2141c56cc673a26d795cedaa6a8f39bb1ede336b2066339f95d41be131"
+    },
+    {
+      "path": "game/OpeningRegionRemedyCoolingAudioController.cs.uid",
+      "sha256": "f1551601ae6dd4296a4b7ee1883a7f48683c6bb087941b2345189a5c378f1290"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeProof.cs.uid",
+      "sha256": "bb04f14f6dd46951f02f3432f401cd06143bfe35288573b913baf7e908a4eabe"
+    },
+    {
+      "path": "game/RemedyCoolingAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "652b07c5a6bef0209ae4f61d285f50efa667009ee4af175dede812ccfdaa94ef"
+    }
+  ],
+  "cooling_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "captions-off",
+    "cooling-disabled"
+  ],
+  "cooling_save_sha256": "f072487480b6dbdae8437b96ec894509c4a21f890ca2c7b3e51456fcf640ae23",
+  "herb_near_save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+  "herb_remote_save_sha256": "a76c5cf147218812870df57333027b444646443b3d03bcbf6b807d4823d5017b",
+  "herb_modes": [
+    "default",
+    "quiet",
+    "master-muted",
+    "effects-muted",
+    "missing-stream",
+    "captions-off",
+    "audio-disabled"
+  ],
+  "finished": "2026-10-14T10:25:28.320940+00:00",
+  "interior_save_sha256": "37bc768c19bbfaa21d680068bf08ed6136789a933bcd0f1eb17d632ba0be67e3",
+  "transcript": [
+    "Interior fixture reply."
+  ]
+}

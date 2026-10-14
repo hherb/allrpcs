@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "mode": "unavailable",
+  "checks": [
+    "native-tap-spacing-selection-and-overlapping-typing-no-mic",
+    "tap-native-button-semantics-without-brief-talk-capture",
+    "held-space-missing-runtime-retains-typed-text",
+    "scene-teardown-awaits-synthetic-capture-and-recognition"
+  ],
+  "thresholdMilliseconds": 300,
+  "captureOpens": 0,
+  "recognized": "",
+  "realMoonshine": false,
+  "provenance": "Native engine key events and synthetic PCM in Main. No physical microphone opened; no human/echo qualification."
+}

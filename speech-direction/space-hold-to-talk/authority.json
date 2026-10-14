@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "owner_statements": [
+    "That was not the intention - we need a key that will invariably work as \"hold to talk\" regardless of keyboard focus or activating voice mode.",
+    "Axctually, in that case the space key would still be more practical - when held down continuously, -> voice"
+  ],
+  "selected_behavior": "Tap Space retains ordinary native input; hold unmodified Space for 300ms invokes focus-independent player speech and release finalizes an editable draft without automatic Submit.",
+  "scope": "Bounded Space gesture, Main input/UI integration, lifecycle fencing and necessary tests. No recognizer/model audition, OS-global hotkey, physical audio persistence, or accepted art/audio/validator changes.",
+  "prior_integration": {
+    "path": "speech-direction/player-asr-integration/closure.json",
+    "sha256": "73333a4c75ca4db7e41a7a8f7c6b2c5b9a5a6b536176fce868e8aa600d58a486"
+  },
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}
