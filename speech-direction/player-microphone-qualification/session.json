@@ -34,6 +34,11 @@
       "id": "bilingual-live-update-report",
       "text": "I see the text of what I spoke updating live, bioth in German as well as in English",
       "source": "Owner message on 2026-10-15 during the resumed human microphone trial; confirms live draft updates in both languages, without separate release/finalization or Whisper outcomes."
+    },
+    {
+      "id": "space-release-report",
+      "text": "yes.",
+      "source": "Owner response on 2026-10-15 to: \"Next, when you release Space, does listening stop while the text remains editable and unsent?\" Confirms all three behaviors; no language-specific final transcript comparison or brief-tap result inferred."
     }
   ],
   "intake": {

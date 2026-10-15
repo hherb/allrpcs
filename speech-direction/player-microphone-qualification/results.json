@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Selector/permission details, finalization/release, Whisper and remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Selector/permission details, language-specific final text, brief Space taps, Whisper and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -73,10 +73,16 @@
     {
       "id": "MIC06",
       "name": "Tap typing, release and no automatic submission",
-      "status": "not_performed",
-      "evidence_kind": "pending_operator",
-      "report_id": null,
-      "notes": "Separately confirm short taps type spaces and release stops capture without sending."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "space-release-report",
+      "notes": "Owner confirms releasing Space stops listening and leaves the draft editable and unsent. Brief taps typing spaces remain unreported.",
+      "subchecks": {
+        "release_stops_listening": "pass",
+        "draft_remains_editable": "pass",
+        "no_automatic_submission_on_release": "pass",
+        "brief_taps_type_spaces": "not_performed"
+      }
     },
     {
       "id": "MIC07",
