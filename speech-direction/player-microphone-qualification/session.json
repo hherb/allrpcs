@@ -49,6 +49,11 @@
       "id": "whisper-submit-no-response-report",
       "text": "HArd to say because there is no response. When hitting submit, the text disappears",
       "source": "Owner response on 2026-10-15 to the German draft with Whisper selected and explicit Submit check. Records draft clearing and no observed response; delivery mode, exact status label, listener distance and reply/provider outcome remain unconfirmed."
+    },
+    {
+      "id": "dialogue-model-choice-report",
+      "text": "gemma4:e4b",
+      "source": "Owner response on 2026-10-16 to the choice of installed Ollama dialogue model after discovery that saved gemma3 is missing. Authorizes this dialogue model selection; does not change accepted Moonshine recognition models or establish a reply result."
     }
   ],
   "intake": {
@@ -97,5 +102,25 @@
     }
   },
   "retained_media": [],
-  "retained_recognition_transcripts": []
+  "retained_recognition_transcripts": [],
+  "followup_environment_observed": {
+    "date": "2026-10-16",
+    "method": "Initial read-only game-process inspection, secret-free saved provider/model fields and local Ollama model inventory; subsequent owner-selected dialogue-model configuration update, local model-availability POST /api/show and trial-game restart. No direct inference probe, credentials, speech-content persistence, model download or product-source changes.",
+    "game_process_present": true,
+    "saved_dialogue_provider": "ollama",
+    "saved_dialogue_model": "gemma3",
+    "ollama_metadata_endpoint_reachable": true,
+    "saved_model_or_default_latest_tag_installed": false,
+    "running_game_selected_model": "Restarted after saving gemma4:e4b; no in-process snapshot or actual reply observed.",
+    "model_choice": "Owner selected gemma4:e4b. Saved Ollama model updated atomically from gemma3 to gemma4:e4b with other settings preserved; the exact previously launched trial game was stopped and restarted.",
+    "after_selection": {
+      "saved_dialogue_model": "gemma4:e4b",
+      "local_model_availability_http_status": 200,
+      "method": "POST /api/show with the chosen model, matching the existing OllamaCharacterModelConnectionTester availability check; does not generate content.",
+      "game_restarted": true,
+      "engine": "Godot 4.6.3 stable mono, Apple M3 Max",
+      "actual_reply_result": "not_observed",
+      "report_id": "dialogue-model-choice-report"
+    }
+  }
 }

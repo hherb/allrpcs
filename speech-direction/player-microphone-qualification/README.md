@@ -29,12 +29,16 @@ has been retained in this package.
    are also confirmed. Brief taps insert normal spaces without opening capture. Language-specific
    final text observations remain unreported. The language used for the successful correction/Submit
    check was not specified.
-3. The Whisper/Submit attempt clears the draft but produces no observed response. Record the visible
-   submission and response status before calling this a pass or failure. Source inspection shows
-   clearing follows local acceptance; Main admits Whisper listeners within 48 pixels, so hearing and
-   reply/provider outcomes are separate. Listener position and provider status are not yet known.
-   Both languages are already recognized; the selector chooses separate models, without automatic
-   language detection.
+3. The Whisper/Submit attempt remains inconclusive. Read-only follow-up on 2026-10-16 found saved
+   provider Ollama/model `gemma3`, while the reachable local Ollama model inventory contains neither
+   `gemma3` nor `gemma3:latest`. The owner chose installed `gemma4:e4b`. Saved settings were updated
+   atomically with other provider settings preserved, the local model-availability check returned
+   HTTP 200, and the owner-trial game restarted. This matches the existing connection tester's
+   `/api/show` check; it establishes model availability, without generating a reply.
+   Main's authored initial Seeker/Healer positions are 120 pixels apart, outside the 48-pixel Whisper
+   range. Current positions are unknown. In the restarted session, move beside the Healer and record
+   submission/response statuses for the Whisper check. Clearing follows local acceptance;
+   hearing and reply/provider outcomes remain separate. No previous result is promoted to a pass.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.

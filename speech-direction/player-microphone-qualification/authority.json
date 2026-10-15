@@ -34,6 +34,11 @@
     {
       "quote": "Read HANDOVER.md and follow the instructions - scope is approved",
       "context": "Owner approves continuation of the active human microphone qualification slice; existing capture opt-in and evidence limits remain."
+    },
+    {
+      "quote": "gemma4:e4b",
+      "recorded_date": "2026-10-16",
+      "context": "Owner chose this already-installed Ollama dialogue model to replace missing saved gemma3 for the ongoing trial. Apply the saved selection and restart the trial game; no recognition-model change, model audition/requalification or product-source fix is granted."
     }
   ],
   "authorized": "Existing owner-operated live trial, qualitative result documentation and finite follow-up checks using the selected runtime.",
@@ -42,5 +47,10 @@
   "publication_authority": {
     "path": "audio-direction/footstep-runtime-review/publication/authority.json",
     "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "developer_configuration_followup": {
+    "recorded_date": "2026-10-16",
+    "authorized": "Replace saved Ollama dialogue model gemma3 with the owner-selected installed gemma4:e4b and restart the owner-trial game.",
+    "limit": "Routine local configuration only; microphone evidence limits and closed speech/model/runtime owners remain unchanged."
   }
 }

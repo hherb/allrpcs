@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Follow-up on 2026-10-16 found the saved dialogue model gemma3 absent from reachable local Ollama; the authored initial Healer distance also exceeds Whisper range. The owner selected gemma4:e4b; saved settings were updated, its local availability check passed and the game restarted. Live listener position and a corrected-setup reply outcome remain unconfirmed. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -77,13 +77,29 @@
         "source_inspection": "TemporaryDialogueInputPanel.SubmitInput clears the input only after DialogueInputController.TrySubmit returns true. Local acceptance does not establish audience or reply success.",
         "hearing_condition": "Main uses a 48-pixel Whisper hearing range and schedules only heard participants. Current operator/listener positions are unknown.",
         "runtime_console": "No new output returned from the owner-trial game process during this check; absence of console errors does not establish a working provider or reply.",
-        "next_observation": "Visible Dialogue submission status and Character response status; no new submission is needed just to read these labels.",
+        "next_observation": "Observe submission/response statuses beside the Healer with Whisper selected in the restarted gemma4:e4b session. Connection availability is confirmed; the previous Whisper result remains inconclusive.",
         "source_paths": [
           "game/TemporaryDialogueInputPanel.cs",
           "game/DialogueInputController.cs",
           "game/Main.cs",
-          "game/TemporaryCharacterTurnResponseLabel.cs"
-        ]
+          "game/TemporaryCharacterTurnResponseLabel.cs",
+          "game/Main.tscn",
+          "src/Infrastructure/Dialogue/OllamaCharacterModelConnectionTester.cs"
+        ],
+        "followup_date": "2026-10-16",
+        "initial_scene_positions": {
+          "seeker": [
+            2120,
+            950
+          ],
+          "healer": [
+            2000,
+            950
+          ],
+          "distance_pixels": 120,
+          "qualification_limit": "Authored initial positions, not the positions during the reported submission; the Healer can move."
+        },
+        "saved_provider_condition": "Saved settings select local Ollama gemma3. The local Ollama metadata endpoint is reachable but lists neither gemma3 nor gemma3:latest. If the live selection matches the saved settings, model availability prevents replies. This does not prove what happened during the earlier submission. The owner then selected installed gemma4:e4b. Its local model-availability check returned HTTP 200; saved settings were updated and the trial game restarted. An actual reply remains unobserved."
       }
     },
     {

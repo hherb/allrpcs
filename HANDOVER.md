@@ -22,7 +22,10 @@ also records correction before Submit and Stop mic during a hold as working. The
 built-in microphone/speakers and both languages in a slightly noisy room, and now confirms live draft
 updates in English and German. Release stops listening with an editable, unsent draft. Brief taps
 insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft
-but produces no observed response; end-to-end delivery remains inconclusive.
+but produces no observed response; end-to-end delivery remains inconclusive. Read-only follow-up on
+2026-10-16 found the saved Ollama model `gemma3` missing from local inventory. The owner selected
+`gemma4:e4b`; saved settings were updated, local model availability passed and the game restarted.
+A nearby-Healer Whisper submission/reply result remains pending.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -60,8 +63,11 @@ The owner confirms English/German Space recognition using the built-in microphon
 speakers in a slightly noisy room, live draft updates in both languages, editing a recognized word
 before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the
 draft editable and unsent. Brief taps insert normal spaces without starting the microphone. The
-Whisper/Submit attempt clears the draft but produces no observed response; record visible
-submission/response status and listener/provider conditions before classifying delivery. Do not
+Whisper/Submit attempt clears the draft but produces no observed response; read-only follow-up found
+saved Ollama model gemma3 absent and authored initial Healer distance outside Whisper range. The
+owner chose gemma4:e4b; saved settings were updated, local model availability passed and the game
+restarted. Observe visible submission/response status beside the Healer before classifying delivery.
+Connection availability and authored initial positions are not a successful live reply. Do not
 repeat those successful checks. The partial package records three complete qualitative passes, five
 partially completed cases and seven unperformed cases. Remaining work is selector/permission-host
 intake, language-specific final text and Whisper outcome, other cancellation/lifecycle cases,
