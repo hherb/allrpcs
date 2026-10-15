@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ASR fixture submit 1 count=0 mic=Microphone off
+ASR fixture state calls=1 entries=2 round=Idle activity=speaking distance=11.999878
+ASR fixture submit 2 count=2 mic=Microphone off · draft kept
+ASR fixture state calls=1 entries=4 round=Idle activity=speaking distance=11.999878
+ASR stage focus cycle
+ASR stage retiring scene Microphone unavailable · type instead
+PASS: player ASR Main: unavailable
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

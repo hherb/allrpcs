@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-16",
+  "classification": "Intermittent unchanged supplied-model fixture assertion; exact failed conjunct was not captured.",
+  "root_source_unchanged_from": "794a7941",
+  "source": "game/OrdinarySageInterjectionFlowSmokeCheck.cs",
+  "isolated_current_same_command": "passed without source changes",
+  "disposable_baseline_runs": 20,
+  "baseline_diagnostic_patch": "Failure-only diagnostics; no successful path change; all 20 passed.",
+  "new_ollama_adapter_used_in_failed_fixture": false,
+  "recovery": "Retain failure and all prior logs; rerun the complete failed smoke stage with unchanged assertions and run every remaining gate stage. No assertion is weakened and no failed check is reused."
+}

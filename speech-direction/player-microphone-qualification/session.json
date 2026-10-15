@@ -128,5 +128,20 @@
       "actual_reply_result": "not_observed",
       "report_id": "dialogue-model-choice-report"
     }
+  },
+  "runtime_repair": {
+    "authority": "speech-direction/ollama-participation-repair/authority.json",
+    "source_inputs": "speech-direction/ollama-participation-repair/source-inputs.json",
+    "live_report": "speech-direction/ollama-participation-repair/live-main.json",
+    "status": "complete; recovered full quality passed 217 recorded stages and 5629 unit tests",
+    "actual_model_outcome": "Selected local gemma4:e4b returned respond, completed one reply request and committed one reply through ordinary Main with fictional input. No microphone opened; no new human pass inferred.",
+    "verification": {
+      "path": "speech-direction/ollama-participation-repair/verification.json",
+      "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
+    },
+    "closure": {
+      "path": "speech-direction/ollama-participation-repair/closure.json",
+      "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
+    }
   }
 }

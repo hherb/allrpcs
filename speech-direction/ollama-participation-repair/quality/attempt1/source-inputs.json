@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-16",
+  "inputs": [
+    {
+      "path": "game/TemporaryCharacterModelCompositionController.cs",
+      "sha256": "cb477fc202b230527ea6b0df68e73d0fa1cadb79392788bc491c59c238fdf516"
+    },
+    {
+      "path": "game/TemporaryCharacterModelCompositionControllerSmokeCheck.cs",
+      "sha256": "42bdee5fb7154da65ae4684f85e98e6b07b7048d88c8f0deb1d57b117ccb6544"
+    },
+    {
+      "path": "game/OllamaParticipationMainCheck.cs",
+      "sha256": "cdad8b916b860d3e53a407b45abc0a2ceb46d7b6b3d24fcd31ff9379aca1de48"
+    },
+    {
+      "path": "game/OllamaParticipationMainCheck.tscn",
+      "sha256": "ac7717a19d4174ebb3ebcb8d04c481af10c365ba374be646fb9f2d898f2fbeb8"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterModelStreamAccumulator.cs",
+      "sha256": "e868a818c644864f0f3ce1bf8b854edf213b9531972a322068ddeb68e406f854"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterTurnParticipationModel.cs",
+      "sha256": "af42244fcf1a4423ccebf70e311f0e4f476615d055255d57cb11c53d3aab25d5"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterTurnParticipationModelBindingFactory.cs",
+      "sha256": "243cfbee0d6c2f1426afd0c0146450cbcc543514cfd5eb56d5e6591323faa5dd"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterTurnParticipationRequestSerializer.cs",
+      "sha256": "0d50c86f9ad3e7a250eeabdbd0a245b7034fc55c6289b7b4ff71dbae5897c13a"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterTurnParticipationStreamAccumulator.cs",
+      "sha256": "8f81f9e2332edb38cb1022b373182dd64da2489cc37d5067359b4950653d906a"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Dialogue/OllamaCharacterTurnParticipationTests.cs",
+      "sha256": "43a3fef4a4c98803b28cbdc272a1b9a03062f1c3a7eec065cb379579ee2af3c8"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Dialogue/OllamaCachedPromptMetadataTests.cs",
+      "sha256": "6f730962d723a45fc471e8d655289435ec0015deddb1eefb4bb0bed32e65e1d6"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "a5da1b0c60aef3b7f71e5d2dc1d21f71d27350a00fe4fcb8f5d3c9bc1e02940b"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "c227647d02acec7afb9be82dbab8360f2f0d0acc0072a7bc426022f9ba871ec5"
+    },
+    {
+      "path": "global.json",
+      "sha256": "d291bc11491844cf5c4c64f930134e7143545d997b2074b22b7a23cee9e85eee"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "cff51048da36cf85bba7eb023cc0d85ddc1afc1086c45fc65bea9e692db0cf64"
+    },
+    {
+      "path": "src/Domain/Dialogue/CharacterTurnParticipationConsiderationPolicy.cs",
+      "sha256": "03cf4f67748298df038d64c71e85323e878067dcc733531530b4f664d772dc27"
+    },
+    {
+      "path": "scripts/quality.sh",
+      "sha256": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3"
+    },
+    {
+      "path": "scripts/smoke-godot.sh",
+      "sha256": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+    }
+  ]
+}

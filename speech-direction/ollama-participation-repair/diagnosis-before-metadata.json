@@ -1,0 +1,40 @@
+{
+  "mode": "live",
+  "checks": [
+    "Supported fixture mode",
+    "Transport setup",
+    "Isolated settings initialization",
+    "Fresh Ollama composition",
+    "Fresh participation adapter",
+    "Replacement composition",
+    "Participation binding replaced",
+    "Observed composed adapter",
+    "Late transport replacement rejected",
+    "Accepted draft cleared",
+    "Explicit Submit accepted",
+    "Whisper mode preserved",
+    "One explicit player submission",
+    "Dialogue event occurred",
+    "Ordinary participation HTTP reached"
+  ],
+  "status": "failed",
+  "elapsedMilliseconds": 4013,
+  "roundStates": [
+    "Running",
+    "Idle"
+  ],
+  "sawRound": true,
+  "replies": 0,
+  "participationCalls": 1,
+  "replyCalls": 0,
+  "liveOutcome": "no reply committed",
+  "participationOutcome": null,
+  "participationFailure": "InvalidDataException: The Ollama participation response failed: InvalidResponse.",
+  "httpStatus": 200,
+  "providerError": null,
+  "nativeMessageFields": [
+    "content",
+    "role"
+  ],
+  "personalAudioCaptured": false
+}

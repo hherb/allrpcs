@@ -25,10 +25,11 @@ insert normal spaces without starting the microphone. The Whisper/Submit attempt
 but produces no observed response; end-to-end delivery remains inconclusive. Read-only follow-up on
 2026-10-16 found the saved Ollama model `gemma3` missing from local inventory. The owner selected
 `gemma4:e4b`; saved settings were updated, local model availability passed and the game restarted.
-The owner screenshot confirms Whisper enabled and submission ACCEPTED with response NONE. Ordinary
-Ollama conversation lacks a participation binding before reply generation. The [bounded runtime
-repair proposal](speech-direction/player-microphone-qualification/ollama-participation-fix-proposal.md)
-awaits owner authorization; reply/echo trials await this prerequisite.
+The screenshot confirms local acceptance without a reply. The owner approved the [Ollama
+participation repair](speech-direction/ollama-participation-repair/README.md): its missing binding
+and cached-usage metadata support are implemented. A fictional-input `gemma4:e4b` Main diagnostic
+commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair
+is closed. Human Whisper/echo outcomes remain unconfirmed.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -55,31 +56,21 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
 
-Missing deliverable: Owner decision on the concrete Ollama participation repair prerequisite, then
-the remaining microphone trial outcomes. Screenshot confirms Whisper enabled and submission ACCEPTED
-with response NONE; ordinary Ollama conversation lacks a participation binding. Remaining physical
-intake/lifecycle/device/noise/echo conditions stay open.
+Missing deliverable: Remaining human selector/permission-host intake, final text and Whisper/reply
+observation with the repaired runtime, cancellation/load/device/noise/accent/headphone/speaker cases
+and a reviewable finite conclusion. The Ollama prerequisite is closed.
 
-The owner confirms English/German Space recognition using the built-in microphone and built-in
-speakers in a slightly noisy room, live draft updates in both languages, editing a recognized word
-before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the
-draft editable and unsent. Brief taps insert normal spaces without starting the microphone. The
-Whisper/Submit attempt clears the draft but produces no observed response; read-only follow-up found
-saved Ollama model gemma3 absent and authored initial Healer distance outside Whisper range. The
-owner chose gemma4:e4b; saved settings were updated, local model availability passed and the game
-restarted. The owner screenshot confirms Whisper enabled, submission ACCEPTED and response NONE,
-with English selected. Source inspection found ordinary participation bound only for OpenAI; Ollama
-uses an unavailable fallback before reply generation. The concrete speech-direction/player-
-microphone-qualification/ollama-participation-fix-proposal.md awaits explicit runtime repair
-authority. Do not implement the repair under the physical-only grant or keep requesting reply/echo
-trials while this prerequisite is missing. Connection availability and authored initial positions
-are not a successful live reply. Do not repeat those successful checks. The partial package records
-three complete qualitative passes, five partially completed cases and seven unperformed cases.
-Remaining work is selector/permission-host intake, language-specific final text and Whisper outcome,
-other cancellation/lifecycle cases, interruption and remaining device/noise/echo conditions in the
-guide. Keep this slice open until remaining cases and the conclusion are reviewable. Existing live
-opt-in remains authorized; OS privacy/device changes or personal-audio persistence require explicit
-enablement. Preserve corrected-text Submit and closed model/runtime work.
+The owner-approved Ollama participation prerequisite is complete and closed in speech-
+direction/ollama-participation-repair/closure.json. Selected gemma4:e4b commits an ordinary Main
+reply on fictional input; the recovered full gate passed 217 recorded stages and 5629 unit tests. Do
+not reopen this repair or convert synthetic/local-model checks into physical passes. Resume only
+remaining operator checks in the human trial guide. Preserve the three complete qualitative passes,
+five partially completed cases and seven unperformed cases; do not repeat confirmed bilingual
+recognition/live updates, corrected Submit, Stop mic or Space tap/release checks. The previous
+accepted/no-response screenshot is historical; a new nearby-listener Whisper/reply outcome remains
+required. Keep this human slice open until remaining cases and its conclusion are reviewable.
+Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio persistence
+need explicit enablement.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
@@ -94,9 +85,9 @@ Expected outputs:
 - `speech-direction/player-microphone-qualification/results.json`
 - `speech-direction/player-microphone-qualification/README.md`
 
-Boundary: Physical session only after the named grant/operator/intake. No live capture or personal-
-audio persistence without explicit enablement, OS privacy/device changes beyond the grant, automatic
-transcript execution, model/service requalification, runtime fixes, controller/reader/platform
+Boundary: Existing named owner-operated physical trial only; preserve the closed Ollama repair. No
+new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device
+changes beyond the grant, model comparison/requalification, broad platform/reader/controller
 certification or packaged release.
 <!-- active-slice:end -->
 

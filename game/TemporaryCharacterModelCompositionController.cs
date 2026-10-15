@@ -30,6 +30,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterSabotageActionModelSource sabotageActionModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
+    private OllamaEndpoint ollamaEndpoint = OllamaEndpoint.Default;
     private bool isInitialized;
     private CharacterObjectSabotageConcealmentModelBinding? concealmentBinding;
     private CharacterObjectSabotageMoveModelBinding? moveBinding;
@@ -79,7 +80,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             "../TemporaryCharacterSabotageActionModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
-        client = new NetHttpClient
+        client ??= new NetHttpClient
         {
             Timeout = Timeout.InfiniteTimeSpan,
         };
@@ -93,6 +94,17 @@ public partial class TemporaryCharacterModelCompositionController : Node
         {
             TryLoadCurrent();
         }
+    }
+
+    /// <summary>Supplies scene-owned local transport before scene initialization.</summary>
+    internal bool TryInitializeTransport(NetHttpClient transport, OllamaEndpoint endpoint)
+    {
+        ArgumentNullException.ThrowIfNull(transport);
+        ArgumentNullException.ThrowIfNull(endpoint);
+        if (client is not null || isInitialized) { return false; }
+        client = transport;
+        ollamaEndpoint = endpoint;
+        return true;
     }
 
     /// <summary>Loads and composes the current supported selected provider once.</summary>
@@ -237,7 +249,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             return OllamaCharacterModelBindingFactory.Create(
                 settings,
                 client,
-                OllamaEndpoint.Default);
+                ollamaEndpoint);
         }
 
         if (!ReferenceEquals(settings.Provider, CharacterModelProvider.OpenAi))
@@ -265,33 +277,27 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        CharacterTurnParticipationModelBinding binding;
+        if (ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.Ollama))
         {
-            if (!participationBindingsInitialized)
-            {
-                return true;
-            }
-
+            binding = OllamaCharacterTurnParticipationModelBindingFactory.Create(
+                selectedSettings, client, ollamaEndpoint);
+        }
+        else if (ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+            if (credentialSource is null) { return false; }
+            binding = OpenAiCharacterTurnParticipationModelBindingFactory.Create(
+                selectedSettings, client, credentialSource);
+        }
+        else
+        {
+            if (!participationBindingsInitialized) { return true; }
             bool cleared = participationModelSource.TryClearBindings();
-            if (cleared)
-            {
-                participationBindingsInitialized = false;
-            }
-
+            if (cleared) { participationBindingsInitialized = false; }
             return cleared;
         }
 
-        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
-        if (credentialSource is null)
-        {
-            return false;
-        }
-
-        CharacterTurnParticipationModelBinding binding =
-            OpenAiCharacterTurnParticipationModelBindingFactory.Create(
-                selectedSettings,
-                client,
-                credentialSource);
         CharacterTurnParticipationModelBindingSnapshot bindings = new([binding]);
         bool applied = participationBindingsInitialized
             ? participationModelSource.TryReplaceBindings(selection, bindings)

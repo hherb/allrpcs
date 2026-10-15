@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Follow-up on 2026-10-16 found the saved dialogue model gemma3 absent from reachable local Ollama; the authored initial Healer distance also exceeds Whisper range. The owner selected gemma4:e4b; saved settings were updated, its local availability check passed and the game restarted. Live listener position and a corrected-setup reply outcome remain unconfirmed. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open. The owner screenshot confirms local acceptance with Whisper enabled and response NONE. Source inspection identifies an additional missing Ollama participation binding before reply generation; a bounded runtime repair proposal awaits owner authorization.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Follow-up on 2026-10-16 found the saved dialogue model gemma3 absent from reachable local Ollama; the authored initial Healer distance also exceeds Whisper range. The owner selected gemma4:e4b; saved settings were updated, its local availability check passed and the game restarted. Live listener position and a corrected-setup reply outcome remain unconfirmed. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open. The owner screenshot confirms local acceptance with Whisper enabled and response NONE. Source inspection identifies an additional missing Ollama participation binding before reply generation; the owner-approved repair is implemented and its local-model diagnostic commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair is closed and human qualification remains partial.",
   "cases": [
     {
       "id": "MIC01",
@@ -61,7 +61,7 @@
       "name": "German partial/final observation, correction and explicit Whisper",
       "status": "partial",
       "evidence_kind": "owner_report",
-      "notes": "Owner confirms live draft updates in German. The Whisper/Submit attempt clears the draft without an observed response. A subsequent screenshot confirms Whisper enabled, submission ACCEPTED and response NONE, with English selected. Local acceptance is confirmed; end-to-end Whisper delivery remains inconclusive. Listener conditions, German final text after release and German-specific correction remain unconfirmed. Source inspection identifies a missing Ollama participation binding before reply generation; a bounded repair proposal awaits owner authorization.",
+      "notes": "Owner confirms live draft updates in German. The Whisper/Submit attempt clears the draft without an observed response. A subsequent screenshot confirms Whisper enabled, submission ACCEPTED and response NONE, with English selected. Local acceptance is confirmed; end-to-end Whisper delivery remains inconclusive. Listener conditions, German final text after release and German-specific correction remain unconfirmed. Source inspection identifies a missing Ollama participation binding before reply generation; the owner-approved repair now completes the ordinary path with fictional local-model input. A new human Whisper outcome is still required.",
       "subchecks": {
         "german_live_partial_updates": "pass",
         "german_final_on_release": "not_performed",
@@ -79,7 +79,7 @@
         "source_inspection": "TemporaryDialogueInputPanel.SubmitInput clears the input only after DialogueInputController.TrySubmit returns true. Local acceptance does not establish audience or reply success.",
         "hearing_condition": "Main uses a 48-pixel Whisper hearing range and schedules only heard participants. Current operator/listener positions are unknown.",
         "runtime_console": "No new output returned from the owner-trial game process during this check; absence of console errors does not establish a working provider or reply.",
-        "next_observation": "Owner authorization of the concrete Ollama participation runtime repair proposal is required before implementation. Preserve the current inconclusive human Whisper result; resume beside the intended listener after the missing provider step is repaired and verified.",
+        "next_observation": "Resume the owner-operated human Whisper check beside the intended listener. Original local acceptance/no-response evidence remains historical; selected-model synthetic proof is not a physical Whisper/echo pass.",
         "source_paths": [
           "game/TemporaryDialogueInputPanel.cs",
           "game/DialogueInputController.cs",
@@ -106,8 +106,14 @@
         },
         "saved_provider_condition": "Saved settings select local Ollama gemma3. The local Ollama metadata endpoint is reachable but lists neither gemma3 nor gemma3:latest. If the live selection matches the saved settings, model availability prevents replies. This does not prove what happened during the earlier submission. The owner then selected installed gemma4:e4b. Its local model-availability check returned HTTP 200; saved settings were updated and the trial game restarted. An actual reply remains unobserved.",
         "screenshot_observation": "Whisper enabled, local submission ACCEPTED, Character response NONE, English selected. Live listener position and participation-task state are not visible.",
-        "source_confirmed_blocker": "TryApplyParticipationBindings binds only OpenAI; Ollama leaves the participation source unbound. TakeModel consequently uses UnavailableParticipationModel, which throws. The coordinator starts a reply only on a successful completed participation round. Thus an ordinary Ollama reply cannot proceed through this unbound path, regardless of model availability. No exception from the exact owner submission was captured.",
-        "repair_proposal": "speech-direction/player-microphone-qualification/ollama-participation-fix-proposal.md"
+        "source_confirmed_blocker": "Before repair: TryApplyParticipationBindings binds only OpenAI; Ollama leaves the participation source unbound. TakeModel consequently uses UnavailableParticipationModel, which throws. The coordinator starts a reply only on a successful completed participation round. Thus an ordinary Ollama reply cannot proceed through this unbound path, regardless of model availability. No exception from the exact owner submission was captured.",
+        "repair_proposal": "speech-direction/player-microphone-qualification/ollama-participation-fix-proposal.md",
+        "repair_status": "Complete under the 2026-10-16 owner grant. Ollama participation and bounded cached-prompt usage metadata are verified; selected gemma4:e4b commits a reply with fictional input. The recovered full gate passed 217 recorded stages and 5629 unit tests. No new human pass is inferred.",
+        "repair_evidence": "speech-direction/ollama-participation-repair/live-main.json",
+        "repair_closure": {
+          "path": "speech-direction/ollama-participation-repair/closure.json",
+          "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
+        }
       }
     },
     {

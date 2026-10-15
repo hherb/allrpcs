@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase10-ollama-participation-repair",
+  "date": "2026-10-16",
+  "status": "passed",
+  "authority": {
+    "path": "speech-direction/ollama-participation-repair/authority.json",
+    "sha256": "b7e4414c9898f5ea195859f4ad26799a242e20bec0295d24d15def3a37c674fe"
+  },
+  "sources": {
+    "path": "speech-direction/ollama-participation-repair/source-inputs.json",
+    "sha256": "eb91eea6cff1dafe9648478fdc7e0e1ad0d27d45f1d6b33bbfaa23813d4fe3d3"
+  },
+  "local_runtime": {
+    "path": "speech-direction/ollama-participation-repair/local-runtime.json",
+    "sha256": "34ae7cd30112658cb4b5f011d0e2c6e1e42b3d999fe17e1bc854b03dc278eb47"
+  },
+  "quality": {
+    "summary": {
+      "path": "speech-direction/ollama-participation-repair/quality/final/summary.json",
+      "sha256": "3ad55f5c410c696c83adeca78025ce46068517e79e034ec93f65708bdce0cb03"
+    },
+    "recorded_stages": 217,
+    "unit_tests": 5629,
+    "unit_test_stages": {
+      "product-5": 2849,
+      "product-6": 1424,
+      "product-7": 1348,
+      "product-8": 8
+    },
+    "retained_stage_logs": "quality/final/",
+    "recovery": {
+      "report_sha256": "492760fd2ef00af2cd6e7ea1626613b16c824f0e3c6845d36ec79c6643702c43",
+      "prior_source_inputs": {
+        "quality.py": "a5da1b0c60aef3b7f71e5d2dc1d21f71d27350a00fe4fcb8f5d3c9bc1e02940b",
+        "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+        "requirements-quality.txt": "e00a45a2a98b19426850cada2cdad22ca484d7619d900ce17d9db4b729a802af",
+        "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+        "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f"
+      },
+      "verified_completed_stages": 34,
+      "reason": "Unchanged supplied-model sage assertion failed once; isolated identical run and 20 diagnostic-only baseline runs passed. Preserve the failure; reuse 34 hash-verified completed stages and rerun the entire failed smoke script plus every remaining normal gate stage without changing assertions.",
+      "prior_recovery": {
+        "report_sha256": "d6aaeada09aea9a347346e1c6a5bfae93a39e0bf69062fd0ba6f22e7c4599126",
+        "verified_completed_stages": 23,
+        "reason": "Fixture-only whitespace correction with identical C# tokens. Reuse 23 verified unchanged boundary/restore passes; rerun continuation, formatting and every remaining product/runtime stage."
+      }
+    },
+    "limits": "Recovered full gate, not an uninterrupted first pass. Both failures and guarded reuse evidence remain in attempt1/attempt2."
+  },
+  "main_checks": {
+    "respond": {
+      "path": "speech-direction/ollama-participation-repair/respond-main.json",
+      "sha256": "8588616a1a30e6ec0e92b56d0197629bf8e5f8034c4afcb364004236ae33408c"
+    },
+    "silence": {
+      "path": "speech-direction/ollama-participation-repair/silence-main.json",
+      "sha256": "d737154d152d9ceb5e96fbb028d307da3473f13fc079bebae3359879e6313449"
+    },
+    "failure": {
+      "path": "speech-direction/ollama-participation-repair/failure-main.json",
+      "sha256": "75e1ad28b85c19c46c23a7e1b449ac4f369f7f3c8beea602b7cb47d2eb84b7c9"
+    }
+  },
+  "selected_model_check": {
+    "path": "speech-direction/ollama-participation-repair/live-main.json",
+    "sha256": "fbe02a07a370754a85665f9dfa9270a3df100c4c32f24cf0b2764b42cde31848"
+  },
+  "protocol_failure_before_fix": {
+    "path": "speech-direction/ollama-participation-repair/diagnosis-before-metadata.json",
+    "sha256": "a22495e5288cd050240fefe965c3a5440487af1e109f7607d6f79f5188254304"
+  },
+  "recovery_guards": [
+    {
+      "path": "speech-direction/ollama-participation-repair/finish-quality.py",
+      "sha256": "0a9c5c106529e75ae3d5e8f9de6d4fd89dde8b347d081d5cf9e82bb834b451ab"
+    },
+    {
+      "path": "speech-direction/ollama-participation-repair/resume-smoke.py",
+      "sha256": "eac47463c0c7c0d16143903f75b170b55e4363436dbdb3fc5a2d6b408a7ce549"
+    }
+  ],
+  "limits": [
+    "Live local inference used only fictional fixture text, not physical speech.",
+    "Human microphone trial remains partial; no new device/Whisper/echo pass is inferred.",
+    "Legacy sage smoke assertion was intermittent; exact failed conjunct was not captured, no legacy assertion or product rule was weakened.",
+    "No executable release or other platform qualification."
+  ]
+}

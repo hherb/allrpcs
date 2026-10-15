@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase10-ollama-participation-repair",
+  "date": "2026-10-16",
+  "status": "complete",
+  "authority": {
+    "path": "speech-direction/ollama-participation-repair/authority.json",
+    "sha256": "b7e4414c9898f5ea195859f4ad26799a242e20bec0295d24d15def3a37c674fe"
+  },
+  "verification": {
+    "path": "speech-direction/ollama-participation-repair/verification.json",
+    "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
+  },
+  "conclusion": "Ollama ordinary participation and bounded cached-usage metadata support verified. Selected gemma4:e4b commits a reply through ordinary Main. The full gate passed with retained guarded recoveries; resume the separately owned human trial.",
+  "remaining": "Human trial, physical echo/device/platform and release qualification remain incomplete."
+}

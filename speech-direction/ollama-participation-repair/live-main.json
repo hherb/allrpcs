@@ -1,0 +1,42 @@
+{
+  "mode": "live",
+  "checks": [
+    "Supported fixture mode",
+    "Transport setup",
+    "Isolated settings initialization",
+    "Fresh Ollama composition",
+    "Fresh participation adapter",
+    "Replacement composition",
+    "Participation binding replaced",
+    "Observed composed adapter",
+    "Late transport replacement rejected",
+    "Accepted draft cleared",
+    "Explicit Submit accepted",
+    "Whisper mode preserved",
+    "One explicit player submission",
+    "Dialogue event occurred",
+    "Ordinary participation HTTP reached"
+  ],
+  "status": "passed",
+  "elapsedMilliseconds": 2509,
+  "roundStates": [
+    "Running",
+    "Idle"
+  ],
+  "sawRound": true,
+  "replies": 1,
+  "participationCalls": 1,
+  "replyCalls": 1,
+  "liveOutcome": "reply committed",
+  "replyTermination": "Completed",
+  "replyFailure": null,
+  "participationOutcome": "respond",
+  "participationFailure": null,
+  "httpStatus": 200,
+  "providerError": null,
+  "nativeMessageFields": [
+    "content",
+    "role"
+  ],
+  "personalAudioCaptured": false
+}

@@ -305,6 +305,12 @@ The [human trial record](speech-direction/player-microphone-qualification/README
 owner feedback on English/German recognition through held Space; device/route intake and remaining physical cases
 are still open. Draft correction before Submit and Stop mic during a hold are also owner-confirmed.
 
+Ollama reply prerequisite (2026-10-16): the owner-approved [participation repair](speech-direction/ollama-participation-repair/README.md)
+adds the missing ordinary local participation binding and bounded cached-usage metadata support.
+Selected `gemma4:e4b` commits a reply through Main on fictional input. The recovered full gate passed
+217 recorded stages and 5,629 unit tests; the bounded repair is closed.
+This is local model integration evidence, not a new physical microphone/Whisper/echo pass.
+
 Acceptance:
 
 - [ ] Typed and spoken input produce the same dialogue events and intention flow, and the game

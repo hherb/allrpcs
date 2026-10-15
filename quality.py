@@ -547,6 +547,7 @@ def main(resume_smoke=False, finish_interior=False):
         dialogue_speech_runtime(run, environment)
         player_asr_runtime(run, environment)
         space_hold_runtime(run, environment)
+        ollama_participation_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
         run.save()
@@ -946,6 +947,21 @@ def player_asr_checks(run, environment, tree=ROOT, revision=None):
                            ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
                            ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
                   retry_native=True, completion='PASS: player ASR Main: ' + mode)
+
+
+def ollama_participation_runtime(run, environment):
+    """Verify ordinary Ollama dialogue with isolated settings and synthetic HTTP, never a microphone."""
+    for mode in ('respond', 'silence', 'failure'):
+        report = run.directory / ('ollama-participation-' + mode + '.json')
+        run.stage('ollama-participation-' + mode,
+                  ['godot', '--headless', '--path', 'game', 'res://OllamaParticipationMainCheck.tscn'],
+                  env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0',
+                           ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE='1',
+                           ALLRPCS_OLLAMA_PARTICIPATION_MODE=mode,
+                           ALLRPCS_OLLAMA_PARTICIPATION_REPORT=str(report),
+                           ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                           ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+                  retry_native=True, completion='PASS: Ollama participation Main: ' + mode)
 
 
 def space_hold_runtime(run, environment):

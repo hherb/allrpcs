@@ -1,0 +1,7 @@
+{
+  "revision": "794a7941",
+  "source": "game/OrdinarySageInterjectionFlowSmokeCheck.cs",
+  "insertion_before": "Fail(\"The ordinary scene did not complete the exact bounded sage interjection.\");",
+  "inserted": "            GD.Print(\"DIAG \" + System.Text.Json.JsonSerializer.Serialize(new {\n                seekerShifted, requests = participationModel.Requests.Count,\n                generationPresent = generation is not null,\n                requestSame = generation is not null && ReferenceEquals(generation.TurnRequest, activity.Request),\n                speechExpected = activity.Response?.Speech?.Text == SageText,\n                speechEventSame = speechEvent is not null && ReferenceEquals(speechEvent.Utterance, activity.Response?.Speech),\n                listenerCount = speechEvent?.Audience.ListenerCharacterIds.Count,\n                transcriptCount = transcript?.Entries.Count,\n                budgetCount = budgetController.Budget?.CompletedTurnCount,\n                worldSame = ReferenceEquals(GetNode<WorldObjectController>(\"../WorldObjectController\").WorldObjects, initialWorldObjects),\n                perceptionSame = ReferenceEquals(GetNode<FocusedSearchActivityController>(\"../Seeker/FocusedSearchActivityController\").Perception, initialPerception)\n            }));\n",
+  "method": "Only disposable baseline failure diagnostics; root source unchanged."
+}

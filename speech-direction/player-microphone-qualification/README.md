@@ -42,8 +42,11 @@ has been retained in this package.
    enabled, local submission ACCEPTED and response NONE, with English selected. Source inspection
    identifies a separate blocker: participation is bound only for OpenAI, so ordinary Ollama
    conversation falls back to an unavailable participation model before reply generation.
-   The [bounded repair proposal](ollama-participation-fix-proposal.md) awaits runtime authorization.
-   No previous result is promoted to a pass; further reply/echo trials await this prerequisite.
+   The owner-approved [repair](../ollama-participation-repair/README.md) now supplies that binding
+   and accepts bounded cached-prompt usage metadata. Actual `gemma4:e4b` completes ordinary
+   participation and reply commit with fictional input. The recovered full gate passed 217 recorded
+   stages and 5,629 unit tests; the repair is closed. Resume the nearby-listener human trial.
+   No earlier result is promoted to a human pass.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.

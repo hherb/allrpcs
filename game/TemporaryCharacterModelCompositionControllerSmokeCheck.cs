@@ -149,7 +149,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         ICharacterModel second = modelSource.TakeModel();
         if (first is not OllamaCharacterModel
             || !ReferenceEquals(first, second)
-            || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
+            || participationModelSource.TakeModel() is not OllamaCharacterTurnParticipationModel
             || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
             || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
@@ -350,7 +350,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !settingsController.TryApply(activatedSettings)
             || !controller.TryReplaceCurrentBindings()
             || modelSource.TakeModel() is not OllamaCharacterModel
-            || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
+            || participationModelSource.TakeModel() is not OllamaCharacterTurnParticipationModel
             || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
             || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)

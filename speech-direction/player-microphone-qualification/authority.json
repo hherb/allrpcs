@@ -39,6 +39,11 @@
       "quote": "gemma4:e4b",
       "recorded_date": "2026-10-16",
       "context": "Owner chose this already-installed Ollama dialogue model to replace missing saved gemma3 for the ongoing trial. Apply the saved selection and restart the trial game; no recognition-model change, model audition/requalification or product-source fix is granted."
+    },
+    {
+      "quote": "yes, approved",
+      "recorded_date": "2026-10-16",
+      "context": "Direct approval of the concrete Ollama participation prerequisite repair and its dependent verification/documentation/publication."
     }
   ],
   "authorized": "Existing owner-operated live trial, qualitative result documentation and finite follow-up checks using the selected runtime.",
@@ -52,5 +57,10 @@
     "recorded_date": "2026-10-16",
     "authorized": "Replace saved Ollama dialogue model gemma3 with the owner-selected installed gemma4:e4b and restart the owner-trial game.",
     "limit": "Routine local configuration only; microphone evidence limits and closed speech/model/runtime owners remain unchanged."
+  },
+  "runtime_repair_followup": {
+    "path": "speech-direction/ollama-participation-repair/authority.json",
+    "sha256": "b7e4414c9898f5ea195859f4ad26799a242e20bec0295d24d15def3a37c674fe",
+    "limit": "The separate bounded repair grant supersedes the physical-only exclusion solely for its named prerequisite; remaining human-session evidence and privacy limits persist."
   }
 }

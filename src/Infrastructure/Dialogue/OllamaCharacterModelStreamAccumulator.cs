@@ -156,15 +156,17 @@ public sealed class OllamaCharacterModelStreamAccumulator
         totalTokens = null;
         bool hasInput = root.TryGetProperty("prompt_eval_count", out JsonElement inputElement);
         bool hasOutput = root.TryGetProperty("eval_count", out JsonElement outputElement);
+        bool hasCached = root.TryGetProperty("prompt_eval_cached_count", out JsonElement cachedElement);
         if (!hasInput && !hasOutput)
         {
-            return true;
+            return !hasCached;
         }
 
         if (!hasInput
             || !hasOutput
             || !TryReadTokenCount(inputElement, out int boundedInput)
             || !TryReadTokenCount(outputElement, out int boundedOutput)
+            || (hasCached && !TryReadTokenCount(cachedElement, out _))
             || (long)boundedInput + boundedOutput
                 > CharacterModelGenerationDiagnostic.MaximumTokenCount)
         {
@@ -218,6 +220,7 @@ public sealed class OllamaCharacterModelStreamAccumulator
         root.TryGetProperty("done_reason", out _)
         || root.TryGetProperty("prompt_eval_count", out _)
         || root.TryGetProperty("eval_count", out _)
+        || root.TryGetProperty("prompt_eval_cached_count", out _)
         || root.TryGetProperty("total_duration", out _)
         || root.TryGetProperty("load_duration", out _)
         || root.TryGetProperty("prompt_eval_duration", out _)
@@ -247,6 +250,7 @@ public sealed class OllamaCharacterModelStreamAccumulator
         "total_duration" or
         "load_duration" or
         "prompt_eval_count" or
+        "prompt_eval_cached_count" or
         "prompt_eval_duration" or
         "eval_count" or
         "eval_duration";

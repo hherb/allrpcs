@@ -918,6 +918,20 @@
           "sha256": "c5da5066c56536d8cad2e60918abdb852f7e3da26044ed97c15514ebd7795cbf"
         }
       ]
+    },
+    {
+      "id": "phase10-ollama-participation-repair",
+      "reason": "Owner-approved missing Ollama participation binding and optional cached-usage metadata compatibility complete. Controlled ordinary Main response/silence/failure checks and selected gemma4:e4b reply commit verified; recovered full gate passed 217 recorded stages and 5629 unit tests. Preserve exact evidence and domain/speech contracts; human physical trial remains separately open.",
+      "evidence": [
+        {
+          "path": "speech-direction/ollama-participation-repair/closure.json",
+          "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
+        },
+        {
+          "path": "speech-direction/ollama-participation-repair/verification.json",
+          "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1312,6 +1326,20 @@
           "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588"
         }
       ]
+    },
+    {
+      "id": "ollama-participation-repair",
+      "reason": "The exact approved ordinary Ollama reply prerequisite is complete; no further model/runtime repair follows without a new concrete owner request. Resume the separately active human microphone qualification.",
+      "evidence": [
+        {
+          "path": "speech-direction/ollama-participation-repair/closure.json",
+          "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
+        },
+        {
+          "path": "speech-direction/ollama-participation-repair/verification.json",
+          "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1407,10 +1435,10 @@
     "title": "Qualify a named human microphone and echo session",
     "status": "in_progress",
     "workstream": "player-microphone-qualification",
-    "authority_status": "owner_approved_live_trial_partial_intake_and_remaining_cases_required",
+    "authority_status": "owner_approved_live_trial_ollama_prerequisite_complete",
     "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
-    "missing_deliverable": "Owner decision on the concrete Ollama participation repair prerequisite, then the remaining microphone trial outcomes. Screenshot confirms Whisper enabled and submission ACCEPTED with response NONE; ordinary Ollama conversation lacks a participation binding. Remaining physical intake/lifecycle/device/noise/echo conditions stay open.",
-    "instructions": "The owner confirms English/German Space recognition using the built-in microphone and built-in speakers in a slightly noisy room, live draft updates in both languages, editing a recognized word before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; read-only follow-up found saved Ollama model gemma3 absent and authored initial Healer distance outside Whisper range. The owner chose gemma4:e4b; saved settings were updated, local model availability passed and the game restarted. The owner screenshot confirms Whisper enabled, submission ACCEPTED and response NONE, with English selected. Source inspection found ordinary participation bound only for OpenAI; Ollama uses an unavailable fallback before reply generation. The concrete speech-direction/player-microphone-qualification/ollama-participation-fix-proposal.md awaits explicit runtime repair authority. Do not implement the repair under the physical-only grant or keep requesting reply/echo trials while this prerequisite is missing. Connection availability and authored initial positions are not a successful live reply. Do not repeat those successful checks. The partial package records three complete qualitative passes, five partially completed cases and seven unperformed cases. Remaining work is selector/permission-host intake, language-specific final text and Whisper outcome, other cancellation/lifecycle cases, interruption and remaining device/noise/echo conditions in the guide. Keep this slice open until remaining cases and the conclusion are reviewable. Existing live opt-in remains authorized; OS privacy/device changes or personal-audio persistence require explicit enablement. Preserve corrected-text Submit and closed model/runtime work.",
+    "missing_deliverable": "Remaining human selector/permission-host intake, final text and Whisper/reply observation with the repaired runtime, cancellation/load/device/noise/accent/headphone/speaker cases and a reviewable finite conclusion. The Ollama prerequisite is closed.",
+    "instructions": "The owner-approved Ollama participation prerequisite is complete and closed in speech-direction/ollama-participation-repair/closure.json. Selected gemma4:e4b commits an ordinary Main reply on fictional input; the recovered full gate passed 217 recorded stages and 5629 unit tests. Do not reopen this repair or convert synthetic/local-model checks into physical passes. Resume only remaining operator checks in the human trial guide. Preserve the three complete qualitative passes, five partially completed cases and seven unperformed cases; do not repeat confirmed bilingual recognition/live updates, corrected Submit, Stop mic or Space tap/release checks. The previous accepted/no-response screenshot is historical; a new nearby-listener Whisper/reply outcome remains required. Keep this human slice open until remaining cases and its conclusion are reviewable. Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio persistence need explicit enablement.",
     "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
     "outputs": [
       "speech-direction/player-microphone-qualification/authority.json",
@@ -1418,7 +1446,7 @@
       "speech-direction/player-microphone-qualification/results.json",
       "speech-direction/player-microphone-qualification/README.md"
     ],
-    "boundary": "Physical session only after the named grant/operator/intake. No live capture or personal-audio persistence without explicit enablement, OS privacy/device changes beyond the grant, automatic transcript execution, model/service requalification, runtime fixes, controller/reader/platform certification or packaged release."
+    "boundary": "Existing named owner-operated physical trial only; preserve the closed Ollama repair. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad platform/reader/controller certification or packaged release."
   },
   "deferred_slices": [
     {

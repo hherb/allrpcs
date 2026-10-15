@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Space stage: initial-reply
+Space stage: hold-focus-Input
+Space stage: hold-focus-Whispering
+Space stage: hold-focus-SpeechLanguage
+Space stage: hold-focus-Submit
+Space stage: hold-focus-Close
+Space stage: hold-focus-HoldToTalk
+Space stage: world-hold
+Space stage: reading-hold
+Space stage: popup-hold
+Space stage: pending-cancel
+Space stage: active-cancel
+PASS: Space hold Main: headless
