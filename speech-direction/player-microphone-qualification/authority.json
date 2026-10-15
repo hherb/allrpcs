@@ -30,6 +30,10 @@
     {
       "quote": "Already did. Worked",
       "context": "Owner confirms draft correction before Submit and Stop mic during a hold."
+    },
+    {
+      "quote": "Read HANDOVER.md and follow the instructions - scope is approved",
+      "context": "Owner approves continuation of the active human microphone qualification slice; existing capture opt-in and evidence limits remain."
     }
   ],
   "authorized": "Existing owner-operated live trial, qualitative result documentation and finite follow-up checks using the selected runtime.",

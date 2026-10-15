@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition, draft correction before explicit Submit and Stop mic during a hold. Remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, draft correction before explicit Submit and Stop mic during a hold. Selector/permission details and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -10,11 +10,12 @@
       "status": "pass",
       "evidence_kind": "owner_report",
       "report_id": "bilingual-space-report",
-      "notes": "Owner reports recognition working in both languages through Space hold-to-talk. Accuracy, selector usage and audio route are unmeasured.",
+      "notes": "Owner reports recognition working in English and German through Space hold-to-talk; subsequent intake confirms the built-in microphone/speakers in a slightly noisy room. Accuracy is unmeasured and selector usage remains unspecified.",
       "languages_reported_working": [
         "en",
         "de"
-      ]
+      ],
+      "condition_report_id": "builtin-device-noise-report"
     },
     {
       "id": "MIC02",
@@ -27,10 +28,16 @@
     {
       "id": "MIC03",
       "name": "Permission and device/route intake",
-      "status": "not_performed",
-      "evidence_kind": "pending_intake",
-      "report_id": null,
-      "notes": "Success does not identify the OS permission host or input/output device."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "builtin-device-noise-report",
+      "notes": "Owner identifies the MacBook Pro built-in microphone and built-in speakers. Selector usage and the OS microphone permission host identity remain unreported.",
+      "subchecks": {
+        "input_device_identified": "pass",
+        "output_route_identified": "pass",
+        "language_selector_usage": "not_performed",
+        "permission_host_identity": "not_performed"
+      }
     },
     {
       "id": "MIC04",
@@ -109,10 +116,15 @@
     {
       "id": "MIC12",
       "name": "Quiet/noisy speech and accent conditions",
-      "status": "not_performed",
-      "evidence_kind": "pending_operator",
-      "report_id": null,
-      "notes": "Record selected language and self-described conditions; one operator cannot qualify accents broadly."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "builtin-device-noise-report",
+      "notes": "Successful English/German recognition was reported in a slightly noisy room using the built-in microphone and speakers. Noise level and recognition accuracy were not measured. Separate quiet-room and accent conditions remain unreported.",
+      "subchecks": {
+        "slightly_noisy_bilingual_recognition": "pass",
+        "quiet_room_comparison": "not_performed",
+        "accent_conditions": "not_performed"
+      }
     },
     {
       "id": "MIC13",
@@ -128,7 +140,7 @@
       "status": "not_performed",
       "evidence_kind": "pending_operator",
       "report_id": null,
-      "notes": "Separate speaker-on trial required. Energy/VAD cancellation is not echo cancellation."
+      "notes": "Owner confirms built-in speaker output during the recognition trial. Overlapping reply playback, feedback and echo behavior were not reported; a separate case remains required. Energy/VAD cancellation is not echo cancellation."
     },
     {
       "id": "MIC15",

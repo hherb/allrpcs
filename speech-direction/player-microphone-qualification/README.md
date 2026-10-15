@@ -3,18 +3,21 @@
 The owner reports good recognition and a working held-Space interaction, then explicitly confirms
 that both English and German are understood through Space hold-to-talk. These are qualitative
 owner results. The owner also confirms editing a recognized word before explicit Submit and
-Stop mic during a hold. Device identity, permission prompts, remaining lifecycle cases, noise
-tolerance and echo safety still need their own outcomes.
+Stop mic during a hold. The owner identifies the MacBook Pro built-in microphone and built-in
+speakers, with both languages tried in a slightly noisy room. OS permission identity, remaining
+lifecycle cases, quiet/accent comparisons and echo safety still need their own outcomes.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
-runtime provenance and the reported languages and pending selector/microphone/output intake. [Results](results.json)
-accounts for 15 finite cases: two complete qualitative passes, two partially completed cases
-(with correction, Submit and Stop subchecks passed), and 11 not performed. This slice stays
-open. No personal audio or recognized speech has been retained in this package.
+runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
+and OS permission host intake remain incomplete. [Results](results.json)
+accounts for 15 finite cases: two complete qualitative passes, four partially completed cases
+(device/route, correction/Submit, Stop and slightly noisy recognition subchecks), and nine not
+performed. This slice stays open. No personal audio or recognized speech has been retained in this package.
 
 ## Next operator checks
 
-1. Record selector usage, microphone and headphones/speakers for the successful bilingual trial.
+1. Record selector usage and the OS microphone permission host, if known. Built-in microphone,
+   built-in speakers and slightly noisy room conditions are already confirmed.
 2. Correction before Submit and Stop mic during a hold are confirmed; do not repeat those checks.
    Separate partial/final updates, brief Space taps and release without automatic submission remain
    unreported. The language used for the successful correction/Submit check was not specified.
@@ -23,7 +26,8 @@ open. No personal audio or recognized speech has been retained in this package.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
-   Optional Listen requires its own headphone test. Speaker feedback is a separate unperformed case.
+   Optional Listen requires its own headphone test. Speaker feedback is a separate unperformed case:
+   using speakers during recognition does not establish behavior during overlapping reply audio.
 
 Report outcomes and conditions; there is no need to send audio or exact recognized sentences.
 Save/load needs a disposable save context. Input-loss, permission-denial and network-setting trials

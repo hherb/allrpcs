@@ -24,19 +24,25 @@
       "id": "correction-submit-stop-report",
       "text": "Already did. Worked",
       "source": "Owner response to editing a recognized word before Submit and using Stop mic during held Space; confirms both checks."
+    },
+    {
+      "id": "builtin-device-noise-report",
+      "text": "built-in + built-in speakers. Slightly noisy room. Both english as well ad German were tried",
+      "source": "Owner message on 2026-10-15 confirming the successful trial input/output route, room conditions and both languages; selector usage and OS permission host were not specified."
     }
   ],
   "intake": {
     "selected_language": null,
-    "input_device": null,
-    "output_route": null,
-    "room_noise": null,
+    "input_device": "MacBook Pro built-in microphone (owner report)",
+    "output_route": "MacBook Pro built-in speakers (owner report)",
+    "room_noise": "Slightly noisy room (owner description; not measured)",
     "permission_host_identity": null,
-    "pending": "English and German recognition through held Space are owner-confirmed. Selector usage, input device, output route, room noise and OS permission host identity remain unrecorded.",
+    "pending": "Input/output route, room conditions and English/German recognition are owner-confirmed. Selector usage, OS permission host identity and separate echo/feedback outcomes remain unreported.",
     "languages_reported_working": [
       "en",
       "de"
-    ]
+    ],
+    "report_id": "builtin-device-noise-report"
   },
   "local_environment_observed": {
     "date": "2026-10-15",
