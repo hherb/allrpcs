@@ -17,7 +17,7 @@ verification binds the final evidence.
 The [Space successor](speech-direction/space-hold-to-talk/README.md) keeps native taps and starts voice
 after a 300ms hold regardless of game control or popup focus, without a voice mode. Release finalizes
 the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
-the owner also reports the held-Space flow works well. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
+the owner confirms English and German recognition through held Space. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
 retains qualitative results only; full permission/device/echo qualification remains incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -48,13 +48,14 @@ Missing deliverable: Actual human English/German microphone, permission/host ide
 and headphone/speaker-feedback evidence for the new selected integration; existing qualification
 used only synthetic PCM and simulated devices.
 
-The owner reports good recognition and, after restart, says the Space hold-to-talk flow works well.
-The partial player-microphone-qualification package records those two qualitative passes and 13
-unperformed cases. Confirm selected language, microphone and headphones/speakers, then collect the
-finite operator results from its guide. Keep this slice open until the remaining cases are accounted
-for and the conclusion is reviewable. Existing live opt-in remains authorized; OS privacy/device
-changes or personal-audio persistence require explicit enablement. Preserve corrected-text Submit
-and closed model/runtime work.
+The owner confirms English and German recognition through Space hold-to-talk. The partial player-
+microphone-qualification package records basic bilingual recognition and gesture acceptance as two
+qualitative passes, with 13 remaining cases unperformed. Record selector usage, microphone and
+headphones/speakers, then collect correction/Submit/Whisper, cancellation, interruption and
+remaining finite operator results from its guide. Keep this slice open until remaining cases and the
+conclusion are reviewable. Existing live opt-in remains authorized; OS privacy/device changes or
+personal-audio persistence require explicit enablement. Preserve corrected-text Submit and closed
+model/runtime work.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

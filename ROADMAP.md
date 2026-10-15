@@ -302,7 +302,7 @@ Load fencing is exercised through the reset notification seam, alongside separat
 coverage; a held-key end-to-end save/load trial remains unqualified. The owner's live recognition
 report is positive but does not close the remaining human device/noise/echo qualification.
 The [human trial record](speech-direction/player-microphone-qualification/README.md) now records positive
-owner feedback on recognition and held Space; language/device intake and the remaining physical cases
+owner feedback on English/German recognition through held Space; device/route intake and remaining physical cases
 are still open.
 
 Acceptance:

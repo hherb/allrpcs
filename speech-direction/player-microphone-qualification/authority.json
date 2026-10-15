@@ -22,6 +22,10 @@
     {
       "quote": "continue",
       "context": "Continue the current speech work after successful basic interaction."
+    },
+    {
+      "quote": "works - seems to understand both ENglish as well as German in \"hold to spek\" mode via space key",
+      "context": "Owner confirms English and German recognition through Space hold-to-talk; no broader cases inferred."
     }
   ],
   "authorized": "Existing owner-operated live trial, qualitative result documentation and finite follow-up checks using the selected runtime.",

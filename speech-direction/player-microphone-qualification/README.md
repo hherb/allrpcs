@@ -1,21 +1,22 @@
 # Human microphone trial — in progress
 
-The owner reports that recognition worked well and, after restarting the published Space build,
-that the held-Space interaction “works well”. These are two qualitative owner reports. They do not
-establish both languages, device identity, permission prompts, noise tolerance or echo safety.
+The owner reports good recognition and a working held-Space interaction, then explicitly confirms
+that both English and German are understood through Space hold-to-talk. These are qualitative
+owner results. Device identity, permission prompts, correction/submission, noise tolerance and
+echo safety still need their own outcomes.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
-runtime provenance and the pending language/microphone/output intake. [Results](results.json)
+runtime provenance and the reported languages and pending selector/microphone/output intake. [Results](results.json)
 accounts for 15 finite cases: two basic owner-reported passes and 13 not performed. This slice stays
 open. No personal audio or recognized speech has been retained in this package.
 
 ## Next operator checks
 
-1. Confirm the selected language, microphone and headphones/speakers for the successful trial.
-2. In English, hold Space, wait for Listening and say an ordinary sentence. Observe draft updates,
+1. Record selector usage, microphone and headphones/speakers for the successful bilingual trial.
+2. English recognition is confirmed. Next observe draft updates during a hold,
    release, edit a word and explicitly Submit. Confirm release alone sends nothing. Brief Space taps
    in the text field should still type spaces.
-3. Select German and repeat with a German sentence; correct the draft and explicitly Submit with
+3. German recognition is confirmed. Next correct a German draft and explicitly Submit with
    Whisper enabled. Switching the selector chooses a separate model; it does not detect language.
 4. During separate holds, try Stop mic, Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
@@ -36,5 +37,6 @@ published model manifest and Space verification without re-auditioning or changi
 
 The existing Space gate passed 211 stages and 5,602 unit tests, with synthetic/native Main coverage.
 Its held-key load check used the reset notification seam; actual held-key save/load remains open.
-No product/CI input changed for this record, so full quality is reused. JSON parsing, local evidence bindings, case totals, continuation sync/check and all 11 continuation
-regression probes passed for this documentation update. The editor exception hash is unchanged.
+No product/CI input changed for this record, so full quality is reused. JSON parsing, local evidence
+bindings, case totals, continuation sync/check and all 11 continuation regression probes passed for
+this documentation update. The editor exception hash is unchanged.

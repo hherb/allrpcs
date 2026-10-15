@@ -14,6 +14,11 @@
       "id": "space-report",
       "text": "works well",
       "source": "Owner message following restart and Space trial instructions; exact trial timestamp unrecorded"
+    },
+    {
+      "id": "bilingual-space-report",
+      "text": "works - seems to understand both ENglish as well as German in \"hold to spek\" mode via space key",
+      "source": "Owner follow-up in this conversation after English/German trial instructions; exact trial timestamp unrecorded"
     }
   ],
   "intake": {
@@ -22,7 +27,11 @@
     "output_route": null,
     "room_noise": null,
     "permission_host_identity": null,
-    "pending": "Owner asked which selected language, microphone and headphones/speakers were used. No route is inferred from successful capture."
+    "pending": "English and German recognition through held Space are owner-confirmed. Selector usage, input device, output route, room noise and OS permission host identity remain unrecorded.",
+    "languages_reported_working": [
+      "en",
+      "de"
+    ]
   },
   "local_environment_observed": {
     "date": "2026-10-15",

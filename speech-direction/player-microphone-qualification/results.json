@@ -2,15 +2,19 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner reports basic recognition and held-Space flow working. Full microphone/device/echo qualification remains open.",
+  "conclusion": "Owner reports English and German recognition working through Space hold-to-talk. Full correction/submission, microphone/device and echo qualification remains open.",
   "cases": [
     {
       "id": "MIC01",
-      "name": "Basic live recognition",
+      "name": "Basic live English and German recognition through held Space",
       "status": "pass",
       "evidence_kind": "owner_report",
-      "report_id": "recognition-report",
-      "notes": "Owner reports good recognition; language, accuracy and audio route remain unmeasured."
+      "report_id": "bilingual-space-report",
+      "notes": "Owner reports recognition working in both languages through Space hold-to-talk. Accuracy, selector usage and audio route are unmeasured.",
+      "languages_reported_working": [
+        "en",
+        "de"
+      ]
     },
     {
       "id": "MIC02",
@@ -30,19 +34,19 @@
     },
     {
       "id": "MIC04",
-      "name": "Natural English partial/final, correction and explicit Submit",
+      "name": "English partial/final observation, correction and explicit Submit",
       "status": "not_performed",
       "evidence_kind": "pending_operator",
       "report_id": null,
-      "notes": "Observe draft updates, edit words and explicitly submit; no personal transcript retention needed."
+      "notes": "Basic English recognition is owner-confirmed in MIC01. Separate partial/final observation, manual correction and explicit Submit outcomes have not been reported."
     },
     {
       "id": "MIC05",
-      "name": "Natural German partial/final, correction and explicit Whisper",
+      "name": "German partial/final observation, correction and explicit Whisper",
       "status": "not_performed",
       "evidence_kind": "pending_operator",
       "report_id": null,
-      "notes": "Select German explicitly; observe draft, correct and submit with Whisper enabled."
+      "notes": "Basic German recognition is owner-confirmed in MIC01. Separate partial/final observation, manual correction and explicit Whisper outcomes have not been reported."
     },
     {
       "id": "MIC06",
