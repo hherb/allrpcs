@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Selector/permission details, language-specific final text, brief Space taps, Whisper and remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. Selector/permission details, language-specific final text, Whisper and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -73,16 +73,20 @@
     {
       "id": "MIC06",
       "name": "Tap typing, release and no automatic submission",
-      "status": "partial",
+      "status": "pass",
       "evidence_kind": "owner_report",
-      "report_id": "space-release-report",
-      "notes": "Owner confirms releasing Space stops listening and leaves the draft editable and unsent. Brief taps typing spaces remain unreported.",
+      "notes": "Owner confirms releasing Space stops listening and leaves the draft editable and unsent. A separate owner report confirms brief taps insert normal spaces without starting the microphone. All MIC06 subchecks are confirmed qualitatively.",
       "subchecks": {
         "release_stops_listening": "pass",
         "draft_remains_editable": "pass",
         "no_automatic_submission_on_release": "pass",
-        "brief_taps_type_spaces": "not_performed"
-      }
+        "brief_taps_type_spaces": "pass",
+        "brief_taps_do_not_start_microphone": "pass"
+      },
+      "report_ids": [
+        "space-release-report",
+        "space-tap-report"
+      ]
     },
     {
       "id": "MIC07",

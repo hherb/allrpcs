@@ -39,6 +39,11 @@
       "id": "space-release-report",
       "text": "yes.",
       "source": "Owner response on 2026-10-15 to: \"Next, when you release Space, does listening stop while the text remains editable and unsent?\" Confirms all three behaviors; no language-specific final transcript comparison or brief-tap result inferred."
+    },
+    {
+      "id": "space-tap-report",
+      "text": "yes it does",
+      "source": "Owner response on 2026-10-15 to: \"Next, briefly tap Space while typing. Does it insert a normal space without starting the microphone?\" Confirms both ordinary space insertion and no capture start."
     }
   ],
   "intake": {
