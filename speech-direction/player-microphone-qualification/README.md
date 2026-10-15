@@ -8,7 +8,8 @@ speakers, with both languages tried in a slightly noisy room. The resumed trial 
 updates in both English and German. The owner confirms release stops listening and leaves the draft
 editable and unsent. Brief Space taps insert normal spaces without starting the microphone.
 OS permission identity, remaining lifecycle cases, quiet/accent comparisons and echo safety still
-need their own outcomes.
+need their own outcomes. The attempted Whisper/Submit check clears the draft but produces no
+observed response; end-to-end Whisper delivery remains inconclusive.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
@@ -28,8 +29,12 @@ has been retained in this package.
    are also confirmed. Brief taps insert normal spaces without opening capture. Language-specific
    final text observations remain unreported. The language used for the successful correction/Submit
    check was not specified.
-3. Whisper-specific submission remains unreported. Both languages are already recognized; the
-   selector chooses a separate model and does not detect language automatically.
+3. The Whisper/Submit attempt clears the draft but produces no observed response. Record the visible
+   submission and response status before calling this a pass or failure. Source inspection shows
+   clearing follows local acceptance; Main admits Whisper listeners within 48 pixels, so hearing and
+   reply/provider outcomes are separate. Listener position and provider status are not yet known.
+   Both languages are already recognized; the selector chooses separate models, without automatic
+   language detection.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. Selector/permission details, language-specific final text, Whisper and remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -61,13 +61,29 @@
       "name": "German partial/final observation, correction and explicit Whisper",
       "status": "partial",
       "evidence_kind": "owner_report",
-      "report_id": "bilingual-live-update-report",
-      "notes": "Owner confirms live draft updates in German. Final text after release, German-specific correction and explicit Whisper submission remain unreported.",
+      "notes": "Owner confirms live draft updates in German. Following the German Whisper/Submit instructions, the owner reports the draft disappears on Submit but no response is observed. This does not establish Whisper delivery, hearing or a reply. Exact UI status and listener/provider conditions await confirmation. Final text after release and German-specific correction remain unreported.",
       "subchecks": {
         "german_live_partial_updates": "pass",
         "german_final_on_release": "not_performed",
         "german_manual_correction": "not_performed",
-        "explicit_whisper": "not_performed"
+        "explicit_whisper": "inconclusive",
+        "submit_clears_draft": "pass"
+      },
+      "report_ids": [
+        "bilingual-live-update-report",
+        "whisper-submit-no-response-report"
+      ],
+      "submit_observation_triage": {
+        "source_inspection": "TemporaryDialogueInputPanel.SubmitInput clears the input only after DialogueInputController.TrySubmit returns true. Local acceptance does not establish audience or reply success.",
+        "hearing_condition": "Main uses a 48-pixel Whisper hearing range and schedules only heard participants. Current operator/listener positions are unknown.",
+        "runtime_console": "No new output returned from the owner-trial game process during this check; absence of console errors does not establish a working provider or reply.",
+        "next_observation": "Visible Dialogue submission status and Character response status; no new submission is needed just to read these labels.",
+        "source_paths": [
+          "game/TemporaryDialogueInputPanel.cs",
+          "game/DialogueInputController.cs",
+          "game/Main.cs",
+          "game/TemporaryCharacterTurnResponseLabel.cs"
+        ]
       }
     },
     {

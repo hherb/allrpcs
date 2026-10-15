@@ -44,6 +44,11 @@
       "id": "space-tap-report",
       "text": "yes it does",
       "source": "Owner response on 2026-10-15 to: \"Next, briefly tap Space while typing. Does it insert a normal space without starting the microphone?\" Confirms both ordinary space insertion and no capture start."
+    },
+    {
+      "id": "whisper-submit-no-response-report",
+      "text": "HArd to say because there is no response. When hitting submit, the text disappears",
+      "source": "Owner response on 2026-10-15 to the German draft with Whisper selected and explicit Submit check. Records draft clearing and no observed response; delivery mode, exact status label, listener distance and reply/provider outcome remain unconfirmed."
     }
   ],
   "intake": {
