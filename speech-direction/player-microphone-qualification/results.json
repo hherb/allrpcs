@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "session_id": "macbook-space-trial-2026-10-15",
+  "status": "partial",
+  "conclusion": "Owner reports basic recognition and held-Space flow working. Full microphone/device/echo qualification remains open.",
+  "cases": [
+    {
+      "id": "MIC01",
+      "name": "Basic live recognition",
+      "status": "pass",
+      "evidence_kind": "owner_report",
+      "report_id": "recognition-report",
+      "notes": "Owner reports good recognition; language, accuracy and audio route remain unmeasured."
+    },
+    {
+      "id": "MIC02",
+      "name": "Basic held-Space interaction",
+      "status": "pass",
+      "evidence_kind": "owner_report",
+      "report_id": "space-report",
+      "notes": "Qualitative acceptance of the instructed interaction; individual focus/lifecycle cases are not inferred."
+    },
+    {
+      "id": "MIC03",
+      "name": "Permission and device/route intake",
+      "status": "not_performed",
+      "evidence_kind": "pending_intake",
+      "report_id": null,
+      "notes": "Success does not identify the OS permission host or input/output device."
+    },
+    {
+      "id": "MIC04",
+      "name": "Natural English partial/final, correction and explicit Submit",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Observe draft updates, edit words and explicitly submit; no personal transcript retention needed."
+    },
+    {
+      "id": "MIC05",
+      "name": "Natural German partial/final, correction and explicit Whisper",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Select German explicitly; observe draft, correct and submit with Whisper enabled."
+    },
+    {
+      "id": "MIC06",
+      "name": "Tap typing, release and no automatic submission",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Separately confirm short taps type spaces and release stops capture without sending."
+    },
+    {
+      "id": "MIC07",
+      "name": "Stop, close and language-switch cancellation",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Check each transition during capture; retired sessions must not change a later draft."
+    },
+    {
+      "id": "MIC08",
+      "name": "External app focus loss and recovery",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Switch to another app while holding; return, release and start a fresh hold."
+    },
+    {
+      "id": "MIC09",
+      "name": "Successful save/load while key held",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Requires a disposable save context; existing reset-seam automation is not this physical test."
+    },
+    {
+      "id": "MIC10",
+      "name": "Input loss and recovery",
+      "status": "not_performed",
+      "evidence_kind": "pending_device_conditions",
+      "report_id": null,
+      "notes": "Requires an appropriate removable input and owner-enabled device change; no such action performed."
+    },
+    {
+      "id": "MIC11",
+      "name": "Permission denial and recovery",
+      "status": "not_performed",
+      "evidence_kind": "pending_explicit_os_enablement",
+      "report_id": null,
+      "notes": "No OS permission revocation/change performed or assumed authorized."
+    },
+    {
+      "id": "MIC12",
+      "name": "Quiet/noisy speech and accent conditions",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Record selected language and self-described conditions; one operator cannot qualify accents broadly."
+    },
+    {
+      "id": "MIC13",
+      "name": "Headphone reply interruption",
+      "status": "not_performed",
+      "evidence_kind": "pending_headphones",
+      "report_id": null,
+      "notes": "With Speak replies on, hold Space during a reply; separately test Listen only with headphones."
+    },
+    {
+      "id": "MIC14",
+      "name": "Speaker feedback/echo",
+      "status": "not_performed",
+      "evidence_kind": "pending_operator",
+      "report_id": null,
+      "notes": "Separate speaker-on trial required. Energy/VAD cancellation is not echo cancellation."
+    },
+    {
+      "id": "MIC15",
+      "name": "Offline operation/network failure",
+      "status": "not_performed",
+      "evidence_kind": "pending_conditions",
+      "report_id": null,
+      "notes": "No physical network setting change performed; local architecture alone is not an offline test."
+    }
+  ],
+  "prior_automated_evidence": "Reuse published Space verification for synthetic/native checks. These are not physical session passes."
+}

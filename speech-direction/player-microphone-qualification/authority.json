@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-15",
+  "scope_id": "phase10-player-microphone-qualification",
+  "owner_statements": [
+    {
+      "quote": "OK, start the game, I'll try the microphone",
+      "context": "Owner enabled an interactive microphone trial."
+    },
+    {
+      "quote": "It recognised my words quite well",
+      "context": "Earlier qualitative recognition feedback; language and audio route were not recorded."
+    },
+    {
+      "quote": "continue - we were disrupted prior to trying it out, and the app has since stopped",
+      "context": "Owner requested restart for the published Space gesture trial."
+    },
+    {
+      "quote": "works well",
+      "context": "Owner feedback after restart and instructions to hold Space, wait for Listening and release."
+    },
+    {
+      "quote": "continue",
+      "context": "Continue the current speech work after successful basic interaction."
+    }
+  ],
+  "authorized": "Existing owner-operated live trial, qualitative result documentation and finite follow-up checks using the selected runtime.",
+  "evidence_policy": "Retain qualitative reports and runtime provenance only. No new personal audio or verbatim recognized speech is recorded by this package.",
+  "limits": "No OS privacy/device configuration changes, automated physical capture, new runtime changes, model audition or broad echo/platform qualification.",
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  }
+}

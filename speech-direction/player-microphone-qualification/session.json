@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "macbook-space-trial-2026-10-15",
+  "recorded_date": "2026-10-15",
+  "status": "in_progress",
+  "operator": "Project owner, operating their MacBook Pro keyboard/trackpad",
+  "reports": [
+    {
+      "id": "recognition-report",
+      "text": "It recognised my words quite well",
+      "source": "Owner message in this conversation; earlier trial, exact trial date unrecorded"
+    },
+    {
+      "id": "space-report",
+      "text": "works well",
+      "source": "Owner message following restart and Space trial instructions; exact trial timestamp unrecorded"
+    }
+  ],
+  "intake": {
+    "selected_language": null,
+    "input_device": null,
+    "output_route": null,
+    "room_noise": null,
+    "permission_host_identity": null,
+    "pending": "Owner asked which selected language, microphone and headphones/speakers were used. No route is inferred from successful capture."
+  },
+  "local_environment_observed": {
+    "date": "2026-10-15",
+    "os": "macOS 27.0.1",
+    "architecture": "arm64",
+    "python": "3.12.3",
+    "packages": {
+      "moonshine-voice": "0.1.5",
+      "sounddevice": "0.5.6",
+      "numpy": "2.5.4"
+    },
+    "configured_paths_exist": true,
+    "method": "Read platform/version and installed package metadata; checked configured paths. No capture stream opened.",
+    "qualification_limit": "Current host/environment metadata is not proof of the device, OS permission identity or audio route used in the earlier trial."
+  },
+  "runtime": {
+    "source_revision": "f460d4cc137780218ba094c03c9c7705002cb14f",
+    "backend": "Moonshine Small Streaming, streaming architecture 4",
+    "language_selection": "Explicit English/German selector; no automatic language detection",
+    "gesture": "Plain Space held 300 ms; release finalizes editable draft; explicit Submit/Whisper",
+    "model_manifest": {
+      "path": "speech-direction/player-asr-integration/models.json",
+      "sha256": "70fd85feb48184561febbeb59b0554bc8b47eb7cf46aad56902c7ffd62322588"
+    },
+    "prior_verification": {
+      "path": "speech-direction/space-hold-to-talk/verification.json",
+      "sha256": "c5da5066c56536d8cad2e60918abdb852f7e3da26044ed97c15514ebd7795cbf"
+    },
+    "local_editor_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    }
+  },
+  "retained_media": [],
+  "retained_recognition_transcripts": []
+}

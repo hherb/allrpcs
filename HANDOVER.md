@@ -17,7 +17,8 @@ verification binds the final evidence.
 The [Space successor](speech-direction/space-hold-to-talk/README.md) keeps native taps and starts voice
 after a 300ms hold regardless of game control or popup focus, without a voice mode. Release finalizes
 the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
-no personal speech was retained and full permission/device/echo qualification remains incomplete.
+the owner also reports the held-Space flow works well. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
+retains qualitative results only; full permission/device/echo qualification remains incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
 [controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
@@ -38,7 +39,7 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase10-player-microphone-qualification — Qualify a named human microphone and echo session** (ready).
+**phase10-player-microphone-qualification — Qualify a named human microphone and echo session** (in_progress).
 
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
@@ -47,13 +48,13 @@ Missing deliverable: Actual human English/German microphone, permission/host ide
 and headphone/speaker-feedback evidence for the new selected integration; existing qualification
 used only synthetic PCM and simulated devices.
 
-The owner enabled a live microphone trial and reported good recognition. The Space successor now
-supplies tap typing and focus-independent hold-to-talk. Use its published guide and staged
-configuration. Establish named language/device/headphone conditions and the finite remaining human
-cases before claiming qualification; the earlier report was qualitative and did not record natural
-speech. Existing live opt-in remains authorized, while OS privacy/device changes or personal-audio
-persistence require their own explicit enablement. Preserve corrected-text Submit; do not restart
-model auditions or unchanged runtime audits.
+The owner reports good recognition and, after restart, says the Space hold-to-talk flow works well.
+The partial player-microphone-qualification package records those two qualitative passes and 13
+unperformed cases. Confirm selected language, microphone and headphones/speakers, then collect the
+finite operator results from its guide. Keep this slice open until the remaining cases are accounted
+for and the conclusion is reviewable. Existing live opt-in remains authorized; OS privacy/device
+changes or personal-audio persistence require explicit enablement. Preserve corrected-text Submit
+and closed model/runtime work.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
