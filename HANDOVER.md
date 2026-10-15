@@ -25,7 +25,10 @@ insert normal spaces without starting the microphone. The Whisper/Submit attempt
 but produces no observed response; end-to-end delivery remains inconclusive. Read-only follow-up on
 2026-10-16 found the saved Ollama model `gemma3` missing from local inventory. The owner selected
 `gemma4:e4b`; saved settings were updated, local model availability passed and the game restarted.
-A nearby-Healer Whisper submission/reply result remains pending.
+The owner screenshot confirms Whisper enabled and submission ACCEPTED with response NONE. Ordinary
+Ollama conversation lacks a participation binding before reply generation. The [bounded runtime
+repair proposal](speech-direction/player-microphone-qualification/ollama-participation-fix-proposal.md)
+awaits owner authorization; reply/echo trials await this prerequisite.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -52,12 +55,10 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
 
-Missing deliverable: Remaining permission/host and selector intake, language-specific final text and
-lifecycle observations, resolution of the inconclusive Whisper/Submit attempt (draft clears, no
-response observed), input-loss conditions and actual reply-interruption/headphone/speaker-feedback
-evidence. Built-in microphone/speakers, slightly noisy English/German recognition, bilingual live
-draft updates and release stopping listening with an editable unsent draft are owner-confirmed.
-Brief taps type spaces without starting capture.
+Missing deliverable: Owner decision on the concrete Ollama participation repair prerequisite, then
+the remaining microphone trial outcomes. Screenshot confirms Whisper enabled and submission ACCEPTED
+with response NONE; ordinary Ollama conversation lacks a participation binding. Remaining physical
+intake/lifecycle/device/noise/echo conditions stay open.
 
 The owner confirms English/German Space recognition using the built-in microphone and built-in
 speakers in a slightly noisy room, live draft updates in both languages, editing a recognized word
@@ -66,15 +67,19 @@ draft editable and unsent. Brief taps insert normal spaces without starting the 
 Whisper/Submit attempt clears the draft but produces no observed response; read-only follow-up found
 saved Ollama model gemma3 absent and authored initial Healer distance outside Whisper range. The
 owner chose gemma4:e4b; saved settings were updated, local model availability passed and the game
-restarted. Observe visible submission/response status beside the Healer before classifying delivery.
-Connection availability and authored initial positions are not a successful live reply. Do not
-repeat those successful checks. The partial package records three complete qualitative passes, five
-partially completed cases and seven unperformed cases. Remaining work is selector/permission-host
-intake, language-specific final text and Whisper outcome, other cancellation/lifecycle cases,
-interruption and remaining device/noise/echo conditions in the guide. Keep this slice open until
-remaining cases and the conclusion are reviewable. Existing live opt-in remains authorized; OS
-privacy/device changes or personal-audio persistence require explicit enablement. Preserve
-corrected-text Submit and closed model/runtime work.
+restarted. The owner screenshot confirms Whisper enabled, submission ACCEPTED and response NONE,
+with English selected. Source inspection found ordinary participation bound only for OpenAI; Ollama
+uses an unavailable fallback before reply generation. The concrete speech-direction/player-
+microphone-qualification/ollama-participation-fix-proposal.md awaits explicit runtime repair
+authority. Do not implement the repair under the physical-only grant or keep requesting reply/echo
+trials while this prerequisite is missing. Connection availability and authored initial positions
+are not a successful live reply. Do not repeat those successful checks. The partial package records
+three complete qualitative passes, five partially completed cases and seven unperformed cases.
+Remaining work is selector/permission-host intake, language-specific final text and Whisper outcome,
+other cancellation/lifecycle cases, interruption and remaining device/noise/echo conditions in the
+guide. Keep this slice open until remaining cases and the conclusion are reviewable. Existing live
+opt-in remains authorized; OS privacy/device changes or personal-audio persistence require explicit
+enablement. Preserve corrected-text Submit and closed model/runtime work.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

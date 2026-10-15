@@ -54,6 +54,12 @@
       "id": "dialogue-model-choice-report",
       "text": "gemma4:e4b",
       "source": "Owner response on 2026-10-16 to the choice of installed Ollama dialogue model after discovery that saved gemma3 is missing. Authorizes this dialogue model selection; does not change accepted Moonshine recognition models or establish a reply result."
+    },
+    {
+      "id": "accepted-no-response-screenshot",
+      "text": "Owner screenshot shows Whisper enabled, Dialogue submission: ACCEPTED, Character response: NONE, English selected, microphone off with draft kept, and reply speech ready.",
+      "source": "Owner-provided codex-clipboard-21ffcf32-dcfd-4754-8e3e-2327eddc5be4.png on 2026-10-16, inspected in conversation. Image and personal recognition content are not persisted in this package.",
+      "evidence_kind": "owner_screenshot"
     }
   ],
   "intake": {

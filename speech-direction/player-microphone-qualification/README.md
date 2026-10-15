@@ -38,7 +38,12 @@ has been retained in this package.
    Main's authored initial Seeker/Healer positions are 120 pixels apart, outside the 48-pixel Whisper
    range. Current positions are unknown. In the restarted session, move beside the Healer and record
    submission/response statuses for the Whisper check. Clearing follows local acceptance;
-   hearing and reply/provider outcomes remain separate. No previous result is promoted to a pass.
+   hearing and reply/provider outcomes remain separate. The owner screenshot now confirms Whisper
+   enabled, local submission ACCEPTED and response NONE, with English selected. Source inspection
+   identifies a separate blocker: participation is bound only for OpenAI, so ordinary Ollama
+   conversation falls back to an unavailable participation model before reply generation.
+   The [bounded repair proposal](ollama-participation-fix-proposal.md) awaits runtime authorization.
+   No previous result is promoted to a pass; further reply/echo trials await this prerequisite.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
