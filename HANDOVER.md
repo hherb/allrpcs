@@ -18,7 +18,8 @@ The [Space successor](speech-direction/space-hold-to-talk/README.md) keeps nativ
 after a 300ms hold regardless of game control or popup focus, without a voice mode. Release finalizes
 the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
 the owner confirms English and German recognition through held Space. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
-retains qualitative results only; full permission/device/echo qualification remains incomplete.
+also records correction before Submit and Stop mic during a hold as working. Full permission/device/echo
+qualification remains incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
 [controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
@@ -48,14 +49,14 @@ Missing deliverable: Actual human English/German microphone, permission/host ide
 and headphone/speaker-feedback evidence for the new selected integration; existing qualification
 used only synthetic PCM and simulated devices.
 
-The owner confirms English and German recognition through Space hold-to-talk. The partial player-
-microphone-qualification package records basic bilingual recognition and gesture acceptance as two
-qualitative passes, with 13 remaining cases unperformed. Record selector usage, microphone and
-headphones/speakers, then collect correction/Submit/Whisper, cancellation, interruption and
-remaining finite operator results from its guide. Keep this slice open until remaining cases and the
-conclusion are reviewable. Existing live opt-in remains authorized; OS privacy/device changes or
-personal-audio persistence require explicit enablement. Preserve corrected-text Submit and closed
-model/runtime work.
+The owner confirms English/German Space recognition, editing a recognized word before explicit
+Submit and Stop mic during a hold. Do not repeat those successful checks. The partial package
+records two complete qualitative passes, two partially completed cases and 11 unperformed cases.
+Remaining work is selector/device/route intake, partial/final and Whisper details, other
+cancellation/lifecycle cases, interruption and device/noise/echo conditions in the guide. Keep this
+slice open until remaining cases and the conclusion are reviewable. Existing live opt-in remains
+authorized; OS privacy/device changes or personal-audio persistence require explicit enablement.
+Preserve corrected-text Submit and closed model/runtime work.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

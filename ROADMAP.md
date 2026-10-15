@@ -303,7 +303,7 @@ coverage; a held-key end-to-end save/load trial remains unqualified. The owner's
 report is positive but does not close the remaining human device/noise/echo qualification.
 The [human trial record](speech-direction/player-microphone-qualification/README.md) now records positive
 owner feedback on English/German recognition through held Space; device/route intake and remaining physical cases
-are still open.
+are still open. Draft correction before Submit and Stop mic during a hold are also owner-confirmed.
 
 Acceptance:
 

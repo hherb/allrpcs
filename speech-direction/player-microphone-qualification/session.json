@@ -19,6 +19,11 @@
       "id": "bilingual-space-report",
       "text": "works - seems to understand both ENglish as well as German in \"hold to spek\" mode via space key",
       "source": "Owner follow-up in this conversation after English/German trial instructions; exact trial timestamp unrecorded"
+    },
+    {
+      "id": "correction-submit-stop-report",
+      "text": "Already did. Worked",
+      "source": "Owner response to editing a recognized word before Submit and using Stop mic during held Space; confirms both checks."
     }
   ],
   "intake": {

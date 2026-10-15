@@ -2,23 +2,25 @@
 
 The owner reports good recognition and a working held-Space interaction, then explicitly confirms
 that both English and German are understood through Space hold-to-talk. These are qualitative
-owner results. Device identity, permission prompts, correction/submission, noise tolerance and
-echo safety still need their own outcomes.
+owner results. The owner also confirms editing a recognized word before explicit Submit and
+Stop mic during a hold. Device identity, permission prompts, remaining lifecycle cases, noise
+tolerance and echo safety still need their own outcomes.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance and the reported languages and pending selector/microphone/output intake. [Results](results.json)
-accounts for 15 finite cases: two basic owner-reported passes and 13 not performed. This slice stays
+accounts for 15 finite cases: two complete qualitative passes, two partially completed cases
+(with correction, Submit and Stop subchecks passed), and 11 not performed. This slice stays
 open. No personal audio or recognized speech has been retained in this package.
 
 ## Next operator checks
 
 1. Record selector usage, microphone and headphones/speakers for the successful bilingual trial.
-2. English recognition is confirmed. Next observe draft updates during a hold,
-   release, edit a word and explicitly Submit. Confirm release alone sends nothing. Brief Space taps
-   in the text field should still type spaces.
-3. German recognition is confirmed. Next correct a German draft and explicitly Submit with
-   Whisper enabled. Switching the selector chooses a separate model; it does not detect language.
-4. During separate holds, try Stop mic, Close, language switch and switching to another app. Return,
+2. Correction before Submit and Stop mic during a hold are confirmed; do not repeat those checks.
+   Separate partial/final updates, brief Space taps and release without automatic submission remain
+   unreported. The language used for the successful correction/Submit check was not specified.
+3. Whisper-specific submission remains unreported. Both languages are already recognized; the
+   selector chooses a separate model and does not detect language automatically.
+4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
    Optional Listen requires its own headphone test. Speaker feedback is a separate unperformed case.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner reports English and German recognition working through Space hold-to-talk. Full correction/submission, microphone/device and echo qualification remains open.",
+  "conclusion": "Owner confirms English/German Space recognition, draft correction before explicit Submit and Stop mic during a hold. Remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -35,10 +35,15 @@
     {
       "id": "MIC04",
       "name": "English partial/final observation, correction and explicit Submit",
-      "status": "not_performed",
-      "evidence_kind": "pending_operator",
-      "report_id": null,
-      "notes": "Basic English recognition is owner-confirmed in MIC01. Separate partial/final observation, manual correction and explicit Submit outcomes have not been reported."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "correction-submit-stop-report",
+      "notes": "Manual draft correction before explicit Submit works. The language used for this correction check and separate partial/final observations were not specified.",
+      "subchecks": {
+        "manual_correction": "pass",
+        "explicit_submit": "pass",
+        "english_partial_final_observation": "not_performed"
+      }
     },
     {
       "id": "MIC05",
@@ -46,7 +51,7 @@
       "status": "not_performed",
       "evidence_kind": "pending_operator",
       "report_id": null,
-      "notes": "Basic German recognition is owner-confirmed in MIC01. Separate partial/final observation, manual correction and explicit Whisper outcomes have not been reported."
+      "notes": "German recognition is confirmed in MIC01; correction/Submit are confirmed without a specified language in MIC04. German partial/final observation and Whisper-specific submission remain unreported."
     },
     {
       "id": "MIC06",
@@ -59,10 +64,15 @@
     {
       "id": "MIC07",
       "name": "Stop, close and language-switch cancellation",
-      "status": "not_performed",
-      "evidence_kind": "pending_operator",
-      "report_id": null,
-      "notes": "Check each transition during capture; retired sessions must not change a later draft."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "correction-submit-stop-report",
+      "notes": "Stop mic during held Space works. Close and language-switch cancellation were not reported.",
+      "subchecks": {
+        "stop_during_hold": "pass",
+        "close_during_capture": "not_performed",
+        "language_switch_during_capture": "not_performed"
+      }
     },
     {
       "id": "MIC08",
