@@ -29,6 +29,11 @@
       "id": "builtin-device-noise-report",
       "text": "built-in + built-in speakers. Slightly noisy room. Both english as well ad German were tried",
       "source": "Owner message on 2026-10-15 confirming the successful trial input/output route, room conditions and both languages; selector usage and OS permission host were not specified."
+    },
+    {
+      "id": "bilingual-live-update-report",
+      "text": "I see the text of what I spoke updating live, bioth in German as well as in English",
+      "source": "Owner message on 2026-10-15 during the resumed human microphone trial; confirms live draft updates in both languages, without separate release/finalization or Whisper outcomes."
     }
   ],
   "intake": {

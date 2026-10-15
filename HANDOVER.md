@@ -19,8 +19,9 @@ after a 300ms hold regardless of game control or popup focus, without a voice mo
 the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
 the owner confirms English and German recognition through held Space. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
 also records correction before Submit and Stop mic during a hold as working. The owner confirms
-built-in microphone/speakers and both languages in a slightly noisy room. Selector/permission-host
-intake and remaining lifecycle/device/echo qualification remain incomplete.
+built-in microphone/speakers and both languages in a slightly noisy room, and now confirms live draft
+updates in English and German. Selector/permission-host intake and remaining lifecycle/device/echo
+qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
 [controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
@@ -46,20 +47,21 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
 
-Missing deliverable: Remaining permission/host and selector intake, human partial/final and
-lifecycle observations, input-loss conditions and actual reply-interruption/headphone/speaker-
-feedback evidence. Built-in microphone/speakers and slightly noisy English/German recognition are
-owner-confirmed.
+Missing deliverable: Remaining permission/host and selector intake, finalization/release and
+lifecycle observations, Whisper submission, input-loss conditions and actual reply-
+interruption/headphone/speaker-feedback evidence. Built-in microphone/speakers, slightly noisy
+English/German recognition and bilingual live draft updates are owner-confirmed.
 
 The owner confirms English/German Space recognition using the built-in microphone and built-in
-speakers in a slightly noisy room, editing a recognized word before explicit Submit and Stop mic
-during a hold. Do not repeat those successful checks. The partial package records two complete
-qualitative passes, four partially completed cases and nine unperformed cases. Remaining work is
-selector/permission-host intake, partial/final and Whisper details, tap/release behavior, other
-cancellation/lifecycle cases, interruption and remaining device/noise/echo conditions in the guide.
-Keep this slice open until remaining cases and the conclusion are reviewable. Existing live opt-in
-remains authorized; OS privacy/device changes or personal-audio persistence require explicit
-enablement. Preserve corrected-text Submit and closed model/runtime work.
+speakers in a slightly noisy room, live draft updates in both languages, editing a recognized word
+before explicit Submit and Stop mic during a hold. Do not repeat those successful checks. The
+partial package records two complete qualitative passes, five partially completed cases and eight
+unperformed cases. Remaining work is selector/permission-host intake, finalization and Whisper
+details, tap/release behavior, other cancellation/lifecycle cases, interruption and remaining
+device/noise/echo conditions in the guide. Keep this slice open until remaining cases and the
+conclusion are reviewable. Existing live opt-in remains authorized; OS privacy/device changes or
+personal-audio persistence require explicit enablement. Preserve corrected-text Submit and closed
+model/runtime work.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

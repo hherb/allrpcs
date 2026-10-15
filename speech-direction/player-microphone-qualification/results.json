@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, draft correction before explicit Submit and Stop mic during a hold. Selector/permission details and remaining lifecycle/device/echo cases stay open.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Selector/permission details, finalization/release, Whisper and remaining lifecycle/device/echo cases stay open.",
   "cases": [
     {
       "id": "MIC01",
@@ -44,21 +44,31 @@
       "name": "English partial/final observation, correction and explicit Submit",
       "status": "partial",
       "evidence_kind": "owner_report",
-      "report_id": "correction-submit-stop-report",
-      "notes": "Manual draft correction before explicit Submit works. The language used for this correction check and separate partial/final observations were not specified.",
+      "notes": "Manual draft correction before explicit Submit works, with the correction language unspecified. Owner separately confirms live draft updates in English; final text after release remains unreported.",
       "subchecks": {
         "manual_correction": "pass",
         "explicit_submit": "pass",
-        "english_partial_final_observation": "not_performed"
-      }
+        "english_live_partial_updates": "pass",
+        "english_final_on_release": "not_performed"
+      },
+      "report_ids": [
+        "correction-submit-stop-report",
+        "bilingual-live-update-report"
+      ]
     },
     {
       "id": "MIC05",
       "name": "German partial/final observation, correction and explicit Whisper",
-      "status": "not_performed",
-      "evidence_kind": "pending_operator",
-      "report_id": null,
-      "notes": "German recognition is confirmed in MIC01; correction/Submit are confirmed without a specified language in MIC04. German partial/final observation and Whisper-specific submission remain unreported."
+      "status": "partial",
+      "evidence_kind": "owner_report",
+      "report_id": "bilingual-live-update-report",
+      "notes": "Owner confirms live draft updates in German. Final text after release, German-specific correction and explicit Whisper submission remain unreported.",
+      "subchecks": {
+        "german_live_partial_updates": "pass",
+        "german_final_on_release": "not_performed",
+        "german_manual_correction": "not_performed",
+        "explicit_whisper": "not_performed"
+      }
     },
     {
       "id": "MIC06",

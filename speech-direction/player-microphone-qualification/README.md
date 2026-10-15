@@ -4,23 +4,26 @@ The owner reports good recognition and a working held-Space interaction, then ex
 that both English and German are understood through Space hold-to-talk. These are qualitative
 owner results. The owner also confirms editing a recognized word before explicit Submit and
 Stop mic during a hold. The owner identifies the MacBook Pro built-in microphone and built-in
-speakers, with both languages tried in a slightly noisy room. OS permission identity, remaining
-lifecycle cases, quiet/accent comparisons and echo safety still need their own outcomes.
+speakers, with both languages tried in a slightly noisy room. The resumed trial confirms live draft
+updates in both English and German. OS permission identity, remaining lifecycle cases, quiet/accent
+comparisons and echo safety still need their own outcomes.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
 and OS permission host intake remain incomplete. [Results](results.json)
-accounts for 15 finite cases: two complete qualitative passes, four partially completed cases
-(device/route, correction/Submit, Stop and slightly noisy recognition subchecks), and nine not
-performed. This slice stays open. No personal audio or recognized speech has been retained in this package.
+accounts for 15 finite cases: two complete qualitative passes, five partially completed cases
+(device/route, English live updates and correction/Submit, German live updates, Stop and slightly
+noisy recognition subchecks), and eight not performed. This slice stays open. No personal audio or
+recognized speech has been retained in this package.
 
 ## Next operator checks
 
 1. Record selector usage and the OS microphone permission host, if known. Built-in microphone,
    built-in speakers and slightly noisy room conditions are already confirmed.
 2. Correction before Submit and Stop mic during a hold are confirmed; do not repeat those checks.
-   Separate partial/final updates, brief Space taps and release without automatic submission remain
-   unreported. The language used for the successful correction/Submit check was not specified.
+   Live updates in English and German are also confirmed. Final text after release, brief Space taps
+   and release without automatic submission remain unreported. The language used for the successful
+   correction/Submit check was not specified.
 3. Whisper-specific submission remains unreported. Both languages are already recognized; the
    selector chooses a separate model and does not detect language automatically.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
