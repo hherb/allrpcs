@@ -46,7 +46,8 @@ public partial class AudioSettingsMainSmokeCheck : Node
             Require(ReferenceEquals(time.WorldTime, beforeTime) && response.Text == beforeText,
                 "Audio preferences changed world time or dialogue text.");
             panel._Input(new InputEventAction { Action = "ui_cancel", Pressed = true });
-            Require(!panel.Visible && settings.Visible && dialogue.Visible && entry.HasFocus(), "Close did not restore entry focus.");
+            // Since dialogue keyboard accessibility, the dialogue overlay opens only from its own entry.
+            Require(!panel.Visible && settings.Visible && !dialogue.Visible && entry.HasFocus(), "Close did not restore entry focus.");
             entry.EmitSignal(BaseButton.SignalName.Pressed);
             panel._Input(new InputEventAction { Action = "optional_overlays_toggle", Pressed = true });
             Require(!panel.Visible && !settings.Visible && !dialogue.Visible, "Tab did not hide all optional surfaces.");

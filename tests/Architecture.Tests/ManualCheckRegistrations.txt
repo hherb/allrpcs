@@ -1,0 +1,52 @@
+# Engine checks that no live launch source runs, each with the reason (read by
+# CheckRegistrationTests).
+#
+# Every ALLRPCS_*_CHECK gate in game/*.cs and game/*.gd, and every game/*Check*.tscn and
+# game/*Proof*.tscn scene, must be launched by scripts/smoke-godot.sh or quality.py, or be listed
+# here. Frozen scripts/quality.sh is historical evidence and does not count as a launch source.
+#
+# Format: one "<ALLRPCS_NAME_CHECK or res://Scene.tscn>  # <reason>" per line; the reason is
+# mandatory. Blank lines and lines starting with "#" are ignored. Prefer adding a launch to
+# scripts/smoke-godot.sh over adding an entry. Remove an entry once its check is launched or
+# deleted; the test fails on stale entries.
+
+# Native Master-output renders. Each gate makes its proof scene play every case through Master and
+# write a timeline; it refuses to run outside Movie Maker mode (--write-movie), and the evidence is
+# the captured WAV analysed offline (ffmpeg plus scripts/check-*-audio-output.py). The same scenes
+# without the gate are launched stopped by scripts/smoke-godot.sh.
+ALLRPCS_AUDIO_CHECK  # owner-operated Movie Maker render of res://AudioBusesControlsProof.tscn
+ALLRPCS_CASK_OUTPUT_CHECK  # owner-operated Movie Maker render of res://CaskCoverHandlingAudioOutputCheck.tscn
+ALLRPCS_COOLING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedyCoolingAudioRuntimeProof.tscn
+ALLRPCS_FOLIAGE_OUTPUT_CHECK  # owner-operated Movie Maker render of res://FoliageAudioRuntimeProof.tscn
+ALLRPCS_FOOTSTEP_OUTPUT_CHECK  # owner-operated Movie Maker render of res://FootstepAudioRuntimeProof.tscn
+ALLRPCS_HEALER_FOOTSTEP_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HealerFootstepAudioRuntimeProof.tscn
+ALLRPCS_HEATING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedyHeatingAudioRuntimeProof.tscn
+ALLRPCS_HERB_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HerbCollectionAudioRuntimeProof.tscn
+ALLRPCS_HERB_LAST_CASE_CHECK  # modifier of ALLRPCS_HERB_OUTPUT_CHECK: starts that Movie Maker render at its last cases
+ALLRPCS_INTERIOR_OUTPUT_CHECK  # owner-operated Movie Maker render of res://InteriorAudioRuntimeProof.tscn
+ALLRPCS_MATERIAL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://MaterialAudioRuntimeProof.tscn
+ALLRPCS_MUSIC_OUTPUT_CHECK  # owner-operated Movie Maker render of res://MusicAudioRuntimeProof.tscn
+ALLRPCS_POSITIONAL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://PositionalAudioRuntimeProof.tscn
+ALLRPCS_RAIN_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RainAudioRuntimeProof.tscn
+ALLRPCS_STEEPING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedySteepingAudioRuntimeProof.tscn
+ALLRPCS_TOOL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HandToolTapAudioOutputCheck.tscn
+ALLRPCS_WATER_OUTPUT_CHECK  # owner-operated Movie Maker render of res://WaterContactAudioOutputCheck.tscn
+ALLRPCS_WIND_OUTPUT_CHECK  # owner-operated Movie Maker render of res://WindAudioRuntimeProof.tscn
+
+# Check scenes instanced by game/Main.tscn, so every Main launch loads them; their gates are
+# launched by quality.py.
+res://ControlSettingsMainSmokeCheck.tscn  # instanced by game/Main.tscn; gate ALLRPCS_CONTROLS_MAIN_CHECK launched by quality.py
+res://DialogueAccessibilityMainSmokeCheck.tscn  # instanced by game/Main.tscn; gate ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK launched by quality.py
+
+# Art proof scenes loaded by a script rather than launched directly.
+res://CharacterAnimationImportProof.tscn  # loaded by game/CharacterAnimationImportProofCheck.gd, launched by scripts/smoke-godot.sh
+res://SeekerCloakGaitCorrectionProof.tscn  # owner-operated art review: game/SeekerCloakGaitCorrectionCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-gait-correction/README.md
+res://SeekerCloakGaitSideRevisionProof.tscn  # owner-operated art review: game/SeekerCloakGaitSideRevisionCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-gait-side-revision/README.md
+res://SeekerCloakLeadExchangeProof.tscn  # owner-operated art review: game/SeekerCloakLeadExchangeCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-lead-exchange-revision/README.md
+res://SeekerCloakPelvisHingeProof.tscn  # owner-operated art review: game/SeekerCloakPelvisHingeCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-pelvis-hinge-revision/README.md
+res://SeekerCloakReferenceGaitProof.tscn  # owner-operated art review: game/SeekerCloakReferenceGaitCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-reference-gait-revision/README.md
+res://CharacterAnimationImportProofCorrectedCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-gait-correction/check-cohort.gd
+res://CharacterAnimationImportProofRevisedCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-gait-side-revision/check-cohort.gd
+res://CharacterAnimationImportProofLeadExchangeCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-lead-exchange-revision/check-cohort.gd
+res://CharacterAnimationImportProofPelvisCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-pelvis-hinge-revision/check-cohort.gd
+res://CharacterAnimationImportProofReferenceGaitCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-reference-gait-revision/check-cohort.gd

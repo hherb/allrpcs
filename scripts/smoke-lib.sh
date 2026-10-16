@@ -6,8 +6,9 @@
 # CheckDeadline autoload: a check still running after that many frames exits with code 124 and
 # prints "FAIL: check deadline of <N> frames reached". "--quit-after $((2 * N + 60))" is appended
 # only as a backstop. "-" means no deadline (editor import and --script launches). A deadline
-# must be a decimal integer from 1 to 2147483647 without leading zeros, so the shell and
-# CheckDeadline (which parses an Int32) agree on it; anything else returns 2.
+# must be a decimal integer from 1 to 1073741793 without leading zeros, so the shell and
+# CheckDeadline (which parses an Int32) agree on it and the backstop still fits Godot's Int32
+# --quit-after (2 * 1073741793 + 60 = 2147483646); anything else returns 2.
 #
 # Per-launch environment assignments go after the deadline and are applied with env(1), so
 # they reach only that launch. (A "NAME=VALUE run_check ..." prefix would persist in the
@@ -46,14 +47,14 @@ smoke_native_shutdown()
     ! smoke_last_launch "$2" | grep -qE 'ERROR:|AssertionError|Unhandled exception'
 }
 
-# Accepts "-" or a decimal frame count in 1..2147483647 written without leading zeros.
+# Accepts "-" or a decimal frame count in 1..1073741793 written without leading zeros.
 smoke_valid_deadline()
 {
     case $1 in
         -) return 0 ;;
         '' | 0* | *[!0-9]*) return 1 ;;
     esac
-    [ "${#1}" -le 10 ] && [ "$1" -le 2147483647 ]
+    [ "${#1}" -le 10 ] && [ "$1" -le 1073741793 ]
 }
 
 # Prints the launch id of run_check's arguments (after the deadline): the leading NAME=VALUE
@@ -129,7 +130,7 @@ run_check()
     smoke_deadline=$1
     shift
     if ! smoke_valid_deadline "$smoke_deadline"; then
-        echo "FAIL: run_check deadline must be - or a frame count from 1 to 2147483647" \
+        echo "FAIL: run_check deadline must be - or a frame count from 1 to 1073741793" \
             "without leading zeros: $smoke_deadline" >&2
         return 2
     fi

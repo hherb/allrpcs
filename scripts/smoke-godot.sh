@@ -482,7 +482,10 @@ run_check 120 ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=terminal godot --headless --p
 # frames on any machine, so the frame deadline only catches a check that stops evaluating.
 run_check 6000 ALLRPCS_ORDINARY_MODEL_TIMEOUT_CHECK=1 \
     godot --headless --path "$repository_root/game" --max-fps 120
-run_check 240 ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK=1 godot --headless --path "$repository_root/game"
+# The check polls asynchronous model completions within its own 240-frame bound; uncapped headless
+# frames can spend that bound in well under a second, so cap the frame rate (240 frames = 2 s).
+run_check 240 ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK=1 \
+    godot --headless --path "$repository_root/game" --max-fps 120
 run_check 120 ALLRPCS_ORDINARY_MALFORMED_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
     ALLRPCS_CHARACTER_MODEL_SETTINGS_STORAGE_CHECK=1 \
@@ -507,5 +510,77 @@ run_check 30 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
     ALLRPCS_OPENAI_CREDENTIAL_TEST_STORE=1 \
     ALLRPCS_CHARACTER_MODEL_CONNECTION_PANEL_CHECK=1 \
     godot --headless --path "$repository_root/game"
+
+# Audio Main checks (#422). The music check awaits physics frames, whose process-frame cost grows
+# with an uncapped frame rate, so --max-fps 120 bounds it; the material check's 0.8 s timers and the
+# footstep check's physics ticks run under --fixed-fps 60 so their frame counts are deterministic.
+# The footstep deadline keeps the check's own 5,000-tick navigation wait.
+run_check 30 ALLRPCS_AUDIO_MAIN_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 330 ALLRPCS_MUSIC_MAIN_CHECK=1 \
+    godot --headless --path "$repository_root/game" --max-fps 120
+run_check 330 ALLRPCS_MATERIAL_MAIN_CHECK=1 \
+    godot --headless --fixed-fps 60 --path "$repository_root/game"
+run_check 5400 ALLRPCS_FOOTSTEP_MAIN_CHECK=1 \
+    godot --headless --fixed-fps 60 --path "$repository_root/game"
+run_check 120 ALLRPCS_POSITIONAL_MAIN_CHECK=1 godot --headless --path "$repository_root/game"
+# Retained terrain underlay checks that used to run only from the frozen scripts/quality.sh list.
+run_check 30 ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_SQUARE_GROUND_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 \
+    godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_WAGON_GROUND_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_SHRINE_GROUND_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_LAUNDRY_GROUND_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK=1 \
+    godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_RUNTIME_WOODLAND_CLEARING_DRESSING_CHECK=1 \
+    godot --headless --path "$repository_root/game"
+# Character animation import proof, at the fixed frame rate its frozen verifier uses (playback
+# order checks are frame-timing sensitive).
+run_check - godot --headless --fixed-fps 100 --path "$repository_root/game" \
+    --script "$repository_root/game/CharacterAnimationImportProofCheck.gd"
+# Stopped audio proof and diagnostic scenes: without their output gates (which need Movie Maker)
+# they must load, start stopped and never quit on their own, so --quit-after ends them and only an
+# exception or script error fails the launch.
+run_check - godot --headless --path "$repository_root/game" \
+    res://AudioBusesControlsProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://CaskCoverHandlingAudioOutputCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://CaskCoverHandlingRuntimeSmokeCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://FoliageAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://FootstepAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://HandToolTapAudioOutputCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://HandToolTapRuntimeSmokeCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://HealerFootstepAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://HerbCollectionAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://InteriorAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://MaterialAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://MusicAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://PositionalAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://RainAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://RemedyCoolingAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://RemedyHeatingAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://RemedySteepingAudioRuntimeProof.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://WaterContactAudioOutputCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://WaterContactRuntimeSmokeCheck.tscn --quit-after 30
+run_check - godot --headless --path "$repository_root/game" \
+    res://WindAudioRuntimeProof.tscn --quit-after 30
 
 smoke_summary

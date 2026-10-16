@@ -51,6 +51,7 @@ echo "$count" >"$SHIM_COUNT"
 eval "output=\${SHIM_OUTPUT_$count-}; code=\${SHIM_CODE_$count-0}"
 printf '%s\n' "Godot Engine v4.6.3.stable.mono.official" "$output"
 echo "leak probe: ${ALLRPCS_SMOKE_HARNESS_LEAK_CHECK-unset}" >"$SHIM_COUNT.env"
+echo "$*" >"$SHIM_COUNT.args"
 exit "$code"
 SHIM
 chmod +x "$shim_dir/godot"
@@ -85,9 +86,10 @@ run_check - ALLRPCS_SMOKE_HARNESS_LEAK_CHECK=1 godot >/dev/null 2>&1 || failures
 expect 'per-launch assignment reaches the launch' 'leak probe: 1' "$(cat "$shim_dir/count.env")"
 expect 'per-launch assignment does not leak' unset "${ALLRPCS_SMOKE_HARNESS_LEAK_CHECK-unset}"
 
-# Deadlines must be "-" or 1..2147483647 without leading zeros (CheckDeadline parses an Int32);
-# anything else is rejected with 2 before Godot starts.
-for deadline in '' 0 012 abc 1x 2147483648 99999999999; do
+# Deadlines must be "-" or 1..1073741793 without leading zeros (CheckDeadline parses an Int32 and
+# the 2 * N + 60 backstop must fit Godot's Int32 --quit-after); anything else is rejected with 2
+# before Godot starts.
+for deadline in '' 0 012 abc 1x 1073741794 2147483647 2147483648 99999999999; do
     rm -f "$shim_dir/count"
     status=0
     run_check "$deadline" godot >/dev/null 2>&1 || status=$?
@@ -95,7 +97,9 @@ for deadline in '' 0 012 abc 1x 2147483648 99999999999; do
         "$status/$(cat "$shim_dir/count" 2>/dev/null || echo none)"
 done
 rm -f "$shim_dir/count"
-expect 'largest deadline is accepted' 0 "$(launch_status 2147483647 godot)"
+expect 'largest deadline is accepted' 0 "$(launch_status 1073741793 godot)"
+expect 'largest deadline backstop fits an Int32' '--quit-after 2147483646' \
+    "$(sed -n 's/.*\(--quit-after [0-9-]*\).*/\1/p' "$shim_dir/count.args")"
 
 expect 'launch id keeps assignments, scenes and script names' \
     'A=1 B_CHECK=route res://Probe.tscn check-probe.gd' \
