@@ -16,8 +16,9 @@ matching item in `ROADMAP.md`, and run `python3 scripts/check-continuation.py`. 
   Never prune closed entries; the checker compares against `HEAD:CONTINUATION.json`.
 - Never alter frozen art/audio evidence, acceptance hashes or historical validators to make a
   successor pass. Historical "pending"/"next slice" prose in packages is evidence, not a queue.
-- Preserve the uncommitted `game/project.godot` editor rewrite (SHA recorded in `HANDOVER.md` and
-  `quality.py`), `.DS_Store`, and unrelated concurrent work under `speech-direction/`.
+- The Godot editor rewrite of `game/project.godot` is committed at `a55e9e8d` (`EDITOR_REVISION` in
+  `quality.py` pins historical snapshot overlays); `project.godot` may now change normally. Preserve
+  `.DS_Store` and unrelated concurrent work under `speech-direction/`.
 - Walking animation work must follow [art-direction/reference-gait-model.md](art-direction/reference-gait-model.md).
 - `HANDOVER.md` records a standing owner grant to commit and push when a task is finished.
 

@@ -113,7 +113,7 @@ dialogue `e7b17575`, controls `1b0cab40` and herb `db298c8f`. Cold checks restor
 four accepted UID sidecars. Run Godot on the host, serialize native focus fixtures, and retry only
 diagnosed native mutex shutdowns identically. No OS reader setting or broad reader claim is authorized.
 
-Preserve/exclude unrelated `game/project.godot` editor SHA
-`36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`, `.DS_Store` and concurrent
-`speech-direction/` work. UID cleanup removes only newly generated sidecars of unchanged tracked
+The Godot editor rewrite of `game/project.godot` is committed at `a55e9e8d` (`EDITOR_REVISION` in
+`quality.py` pins the historical snapshot overlays), so `game/project.godot` may now change normally.
+Preserve/exclude `.DS_Store` and concurrent `speech-direction/` work. UID cleanup removes only newly generated sidecars of unchanged tracked
 GD sources. The existing C# executable-export limitation remains; no executable release is verified.
