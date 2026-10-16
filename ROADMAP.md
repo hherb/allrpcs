@@ -93,7 +93,7 @@ packaging, and accessibility claims remain limited to their recorded evidence.
 
 ## Code health and playable vertical slice (owner request 2026-10-17)
 
-- [ ] Phase 1: smoke launches prove completion and every check is registered.
+- [x] Phase 1: smoke launches prove completion and every check is registered.
 - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
 - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.

@@ -70,33 +70,28 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase1-safety-net — Make smoke launches, check registration and CI trustworthy** (in_progress).
+**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (ready).
 
-Roadmap item: - [ ] Phase 1: smoke launches prove completion and every check is registered.
+Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: Smoke launches fail on hang or exception; every check gate and scene is
-launched or allowlisted; complete architecture test; CI runs the solution tests and Python tooling.
+Missing deliverable: A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-
+review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.
 
-Owner-approved program plan: docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md.
-Evidence for code fixes is the GitHub issue, its tests and the commit; no new *-direction evidence
-packages for code fixes. Full ./quality.sh runs once at the phase exit; between, run dotnet
-format/build/test plus affected smoke launches. The microphone qualification slice is paused
-unchanged in deferred_slices.
+First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was
+closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-
+phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime
+per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).
 
-Done when: Issues #421, #422 and #423 are closed by commits with tests, CI is green on main, and one
-full ./quality.sh passes.
+Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
+tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
+passes.
 
 Expected outputs:
 
-- `tests/Architecture.Tests/ProjectSdkAndPackageTests.cs`
-- `game/CheckDeadline.cs`
-- `scripts/smoke-lib.sh`
-- `scripts/test-smoke-harness.sh`
-- `scripts/smoke-quarantine.txt`
-- `tests/Architecture.Tests/CheckRegistrationTests.cs`
-- `tests/Architecture.Tests/ManualCheckRegistrations.txt`
+- `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
 
-Boundary: Test and CI infrastructure only; no gameplay behaviour changes.
+Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
+pipeline consolidation (Phase 3).
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

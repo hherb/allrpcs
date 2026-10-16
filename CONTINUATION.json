@@ -970,6 +970,20 @@
           "sha256": "61939291cc9923aad8b07b1899dd07ccaa8c5b0f606a475f4d37f8c83e09a47e"
         }
       ]
+    },
+    {
+      "id": "code-health-phase1-safety-net",
+      "reason": "Phase 1 of the owner-approved code-health program is complete: smoke launches fail on hang/exception, every engine check is launched or allowlisted, the architecture test covers every project, CI hardened (CI run itself unverified: Actions budget exhausted). Do not reopen without an explicit owner request.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-17-code-health-phase1-closure.json",
+          "sha256": "879728c02c14932238d71a6387b16e19a3a2e65b71c9318844c5b179e02962ac"
+        },
+        {
+          "path": "docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md",
+          "sha256": "ee410480ae9302f00b8d423945d8a5b31168e1761c3914ac59af5fc0fe9af864"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1515,25 +1529,19 @@
     }
   ],
   "active_slice": {
-    "id": "code-health-phase1-safety-net",
-    "title": "Make smoke launches, check registration and CI trustworthy",
-    "status": "in_progress",
+    "id": "code-health-phase2-player-defects",
+    "title": "Fix the player-facing code-review-1 defects",
+    "status": "ready",
     "workstream": "code-health-program",
     "authority_status": "owner_approved_code_health_program_2026-10-17",
-    "roadmap_item": "- [ ] Phase 1: smoke launches prove completion and every check is registered.",
-    "missing_deliverable": "Smoke launches fail on hang or exception; every check gate and scene is launched or allowlisted; complete architecture test; CI runs the solution tests and Python tooling.",
-    "instructions": "Owner-approved program plan: docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. Evidence for code fixes is the GitHub issue, its tests and the commit; no new *-direction evidence packages for code fixes. Full ./quality.sh runs once at the phase exit; between, run dotnet format/build/test plus affected smoke launches. The microphone qualification slice is paused unchanged in deferred_slices.",
-    "completion_condition": "Issues #421, #422 and #423 are closed by commits with tests, CI is green on main, and one full ./quality.sh passes.",
+    "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
+    "missing_deliverable": "A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.",
+    "instructions": "First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).",
+    "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
     "outputs": [
-      "tests/Architecture.Tests/ProjectSdkAndPackageTests.cs",
-      "game/CheckDeadline.cs",
-      "scripts/smoke-lib.sh",
-      "scripts/test-smoke-harness.sh",
-      "scripts/smoke-quarantine.txt",
-      "tests/Architecture.Tests/CheckRegistrationTests.cs",
-      "tests/Architecture.Tests/ManualCheckRegistrations.txt"
+      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md"
     ],
-    "boundary": "Test and CI infrastructure only; no gameplay behaviour changes."
+    "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
   },
   "deferred_slices": [
     {
