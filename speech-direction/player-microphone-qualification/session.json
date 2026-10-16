@@ -60,6 +60,22 @@
       "text": "Owner screenshot shows Whisper enabled, Dialogue submission: ACCEPTED, Character response: NONE, English selected, microphone off with draft kept, and reply speech ready.",
       "source": "Owner-provided codex-clipboard-21ffcf32-dcfd-4754-8e3e-2327eddc5be4.png on 2026-10-16, inspected in conversation. Image and personal recognition content are not persisted in this package.",
       "evidence_kind": "owner_screenshot"
+    },
+    {
+      "id": "two-spoken-turns-then-failure-report",
+      "text": "The spoken dialogue worked for two turns, failed after the second turn",
+      "source": "Owner follow-up on 2026-10-16 after the repaired runtime was restarted. Attached screenshot inspected in conversation; image and personal dialogue are not retained.",
+      "evidence_kind": "owner_report_and_screenshot",
+      "observed_ui": {
+        "whisper_enabled": true,
+        "submission": "ACCEPTED",
+        "character_response": "FAILED",
+        "reply_speech": "interrupted",
+        "language_selector": "English",
+        "previous_reply_visible": true
+      },
+      "runtime_revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
+      "limit": "Two spoken turns succeeded qualitatively. The later response failed; this does not isolate provider, schema, timeout or speech playback failure. No personal audio or recognized sentences retained."
     }
   ],
   "intake": {

@@ -1,0 +1,208 @@
+{
+  "revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
+  "fictionalInputsOnly": true,
+  "personalAudioCaptured": false,
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMilliseconds": 2101,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 1,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 1,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "elapsedMilliseconds": 1697,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 2,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 5,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "elapsedMilliseconds": 2101,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 3,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 7,
+      "synthetic_response_shape": [
+        {
+          "disposition": "clarify",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "examine-object",
+            "targetObjectId": "herb-patch"
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "elapsedMilliseconds": 1934,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 4,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 9,
+      "synthetic_response_shape": [
+        {
+          "disposition": "clarify",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "examine-object",
+            "targetObjectId": "herb-patch"
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "elapsedMilliseconds": 1602,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 5,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 10,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "elapsedMilliseconds": 1599,
+      "newResult": true,
+      "replyTermination": "Failed",
+      "replyFailure": "InvalidResponse",
+      "replyCalls": 1,
+      "participationCalls": 6,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 12,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": true
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "elapsedMilliseconds": 1732,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 7,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 14,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 8,
+      "elapsedMilliseconds": 1636,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 8,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 15,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    }
+  ],
+  "limit": "Reproduces InvalidResponse on fictional turn six; does not identify the unlogged failure code from the human session. No microphone or playback tested. Seven other generation results completed, including subsequent turns seven and eight. This is not a full physical pass or turn-count limit."
+}

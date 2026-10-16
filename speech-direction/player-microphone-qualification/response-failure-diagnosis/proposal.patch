@@ -1,0 +1,106 @@
+--- a/src/Infrastructure/Dialogue/CharacterTurnResponseJsonSchemaWriter.cs
++++ b/src/Infrastructure/Dialogue/CharacterTurnResponseJsonSchemaWriter.cs
+@@ -7,24 +7,53 @@
+ /// <summary>Writes the closed character-turn response schema for one provider dialect.</summary>
+ internal static class CharacterTurnResponseJsonSchemaWriter
+ {
+-    internal static void Write(Utf8JsonWriter writer, bool includeBounds)
++    internal static void Write(Utf8JsonWriter writer, bool includeBounds, bool enforceDeliveryPairing = false)
+     {
+         ArgumentNullException.ThrowIfNull(writer);
++        if (!enforceDeliveryPairing)
++        {
++            WriteObject(writer, includeBounds, speechIsNull: null);
++            return;
++        }
++        writer.WriteStartObject();
++        writer.WriteString("type", "object");
++        writer.WritePropertyName("anyOf");
++        writer.WriteStartArray();
++        WriteObject(writer, includeBounds, speechIsNull: false);
++        WriteObject(writer, includeBounds, speechIsNull: true);
++        writer.WriteEndArray();
++        writer.WriteEndObject();
++    }
++
++    private static void WriteObject(Utf8JsonWriter writer, bool includeBounds, bool? speechIsNull)
++    {
++        ArgumentNullException.ThrowIfNull(writer);
+ 
+         writer.WriteStartObject();
+         writer.WriteString("type", "object");
+         writer.WritePropertyName("properties");
+         writer.WriteStartObject();
+         WriteStringEnum(writer, "disposition", CharacterTurnDisposition.All.Select(value => value.Value));
+-        WriteNullableString(
+-            writer,
+-            "speech",
+-            DialogueUtterance.MaximumTextLength,
+-            includeBounds);
+-        WriteNullableStringEnum(
+-            writer,
+-            "deliveryMode",
+-            DialogueDeliveryMode.All.Select(value => value.Value));
++        if (speechIsNull is null)
++        {
++            WriteNullableString(writer, "speech", DialogueUtterance.MaximumTextLength, includeBounds);
++            WriteNullableStringEnum(writer, "deliveryMode", DialogueDeliveryMode.All.Select(value => value.Value));
++        }
++        else if (speechIsNull.Value)
++        {
++            foreach (string property in new[] { "speech", "deliveryMode" })
++            {
++                writer.WritePropertyName(property);
++                writer.WriteStartObject();
++                writer.WriteString("type", "null");
++                writer.WriteEndObject();
++            }
++        }
++        else
++        {
++            WriteBoundedString(writer, "speech", DialogueUtterance.MaximumTextLength, includeBounds);
++            WriteStringEnum(writer, "deliveryMode", DialogueDeliveryMode.All.Select(value => value.Value));
++        }
+         writer.WritePropertyName("immediateIntention");
+         WriteIntentionSchema(writer, includeBounds);
+         WriteCommitmentsSchema(writer, includeBounds);
+--- a/src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs
++++ b/src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs
+@@ -35,7 +35,7 @@
+             WriteMessage(writer, "user", request.TurnRequest.DialogueEvent.Utterance.Text);
+             writer.WriteEndArray();
+             writer.WritePropertyName("format");
+-            CharacterTurnResponseJsonSchemaWriter.Write(writer, includeBounds: false);
++            CharacterTurnResponseJsonSchemaWriter.Write(writer, includeBounds: false, enforceDeliveryPairing: true);
+             writer.WritePropertyName("options");
+             writer.WriteStartObject();
+             writer.WriteNumber("temperature", 0);
+--- a/game/TemporaryCharacterTurnCompletionController.cs
++++ b/game/TemporaryCharacterTurnCompletionController.cs
+@@ -31,12 +31,25 @@
+         CharacterTurnActivity? activity = turnController.Activity;
+         CharacterTurnResponse? response = activity?.Response;
+         if (activity is null
+-            || response?.Speech is not { } speech
++            || response is null
+             || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking))
+         {
+             return;
+         }
+ 
++        if (response.Speech is null)
++        {
++            bool silentCompleted = budgetController.Budget is null
++                ? turnController.TryComplete()
++                : budgetController.TryCompleteTurn(turnController);
++            if (!silentCompleted)
++            {
++                throw new InvalidOperationException("The silent temporary character turn could not complete.");
++            }
++            return;
++        }
++
++        DialogueUtterance speech = response.Speech;
+         if (!ReferenceEquals(response, observedResponse))
+         {
+             CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;

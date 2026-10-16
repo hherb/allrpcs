@@ -1,0 +1,209 @@
+{
+  "revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
+  "fictionalInputsOnly": true,
+  "personalAudioCaptured": false,
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMilliseconds": 1731,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 1,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 2,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "elapsedMilliseconds": 1699,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 2,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 5,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "elapsedMilliseconds": 2067,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 3,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 6,
+      "synthetic_response_shape": [
+        {
+          "disposition": "clarify",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "examine-object",
+            "targetObjectId": "herb-patch"
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "elapsedMilliseconds": 2000,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 4,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 8,
+      "synthetic_response_shape": [
+        {
+          "disposition": "clarify",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "examine-object",
+            "targetObjectId": "herb-patch"
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "elapsedMilliseconds": 1667,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 5,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 10,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "elapsedMilliseconds": 1666,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 6,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 12,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": null,
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": true
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "elapsedMilliseconds": 1700,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 7,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 14,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    },
+    {
+      "turn": 8,
+      "elapsedMilliseconds": 1701,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 8,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 16,
+      "synthetic_response_shape": [
+        {
+          "disposition": "accept",
+          "deliveryMode": "whispering",
+          "immediateIntention": {
+            "type": "wait",
+            "targetObjectId": null
+          },
+          "speech_is_null": false
+        }
+      ]
+    }
+  ],
+  "prototype_status": "Eight distinct completed generation results, including valid silence and later new generations. Not eight spoken responses or a physical pass.",
+  "proposal_patch_sha256": "bae28b6560115ddfde7438a6ffb81719c887ad2f74a14bb88729e63c0c2edb82"
+}

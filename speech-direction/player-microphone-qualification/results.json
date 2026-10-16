@@ -2,7 +2,7 @@
   "schema_version": 1,
   "session_id": "macbook-space-trial-2026-10-15",
   "status": "partial",
-  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Follow-up on 2026-10-16 found the saved dialogue model gemma3 absent from reachable local Ollama; the authored initial Healer distance also exceeds Whisper range. The owner selected gemma4:e4b; saved settings were updated, its local availability check passed and the game restarted. Live listener position and a corrected-setup reply outcome remain unconfirmed. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open. The owner screenshot confirms local acceptance with Whisper enabled and response NONE. Source inspection identifies an additional missing Ollama participation binding before reply generation; the owner-approved repair is implemented and its local-model diagnostic commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair is closed and human qualification remains partial.",
+  "conclusion": "Owner confirms English/German Space recognition using the built-in microphone and speakers in a slightly noisy room, live draft updates in both languages, draft correction before explicit Submit and Stop mic during a hold. Releasing Space stops listening and leaves the draft editable and unsent. Brief Space taps insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft but produces no observed response; end-to-end delivery remains inconclusive. Follow-up on 2026-10-16 found the saved dialogue model gemma3 absent from reachable local Ollama; the authored initial Healer distance also exceeds Whisper range. The owner selected gemma4:e4b; saved settings were updated, its local availability check passed and the game restarted. Live listener position and a corrected-setup reply outcome remain unconfirmed. Selector/permission details, language-specific final text and remaining lifecycle/device/echo cases stay open. The owner screenshot confirms local acceptance with Whisper enabled and response NONE. Source inspection identifies an additional missing Ollama participation binding before reply generation; the owner-approved repair is implemented and its local-model diagnostic commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair is closed and human qualification remains partial. In the repaired live session, the owner reports two successful spoken dialogue turns followed by failure. The screenshot shows Whisper enabled, ACCEPTED submission, FAILED character response, interrupted reply speech and the previous reply still visible. Repeated dialogue is therefore unreliable; this is a new observation, not a reversal of successful recognition or of the closed one-turn repair evidence.",
   "cases": [
     {
       "id": "MIC01",
@@ -61,25 +61,28 @@
       "name": "German partial/final observation, correction and explicit Whisper",
       "status": "partial",
       "evidence_kind": "owner_report",
-      "notes": "Owner confirms live draft updates in German. The Whisper/Submit attempt clears the draft without an observed response. A subsequent screenshot confirms Whisper enabled, submission ACCEPTED and response NONE, with English selected. Local acceptance is confirmed; end-to-end Whisper delivery remains inconclusive. Listener conditions, German final text after release and German-specific correction remain unconfirmed. Source inspection identifies a missing Ollama participation binding before reply generation; the owner-approved repair now completes the ordinary path with fictional local-model input. A new human Whisper outcome is still required.",
+      "notes": "Owner confirms live draft updates in German. The Whisper/Submit attempt clears the draft without an observed response. A subsequent screenshot confirms Whisper enabled, submission ACCEPTED and response NONE, with English selected. Local acceptance is confirmed; end-to-end Whisper delivery remains inconclusive. Listener conditions, German final text after release and German-specific correction remain unconfirmed. Source inspection identifies a missing Ollama participation binding before reply generation; the owner-approved repair now completes the ordinary path with fictional local-model input. A new human Whisper outcome is still required. Post-repair owner observation: two spoken dialogue turns worked, then a later character response FAILED while submission remained ACCEPTED and Whisper was enabled. Two successful turns are retained, but stable repeated Whisper/reply delivery remains unresolved; German-specific observations are still unconfirmed.",
       "subchecks": {
         "german_live_partial_updates": "pass",
         "german_final_on_release": "not_performed",
         "german_manual_correction": "not_performed",
         "explicit_whisper": "inconclusive",
         "submit_clears_draft": "pass",
-        "visible_submission_accepted": "pass"
+        "visible_submission_accepted": "pass",
+        "post_repair_two_spoken_turns": "pass",
+        "post_repair_repeated_reply_reliability": "fail"
       },
       "report_ids": [
         "bilingual-live-update-report",
         "whisper-submit-no-response-report",
-        "accepted-no-response-screenshot"
+        "accepted-no-response-screenshot",
+        "two-spoken-turns-then-failure-report"
       ],
       "submit_observation_triage": {
         "source_inspection": "TemporaryDialogueInputPanel.SubmitInput clears the input only after DialogueInputController.TrySubmit returns true. Local acceptance does not establish audience or reply success.",
         "hearing_condition": "Main uses a 48-pixel Whisper hearing range and schedules only heard participants. Current operator/listener positions are unknown.",
         "runtime_console": "No new output returned from the owner-trial game process during this check; absence of console errors does not establish a working provider or reply.",
-        "next_observation": "Resume the owner-operated human Whisper check beside the intended listener. Original local acceptance/no-response evidence remains historical; selected-model synthetic proof is not a physical Whisper/echo pass.",
+        "next_observation": "Investigate the newly observed repeated-turn response failure using fictional-input diagnostics. Preserve the two successful human turns and all prior physical results. No cause is established by the screenshot alone.",
         "source_paths": [
           "game/TemporaryDialogueInputPanel.cs",
           "game/DialogueInputController.cs",
@@ -113,6 +116,14 @@
         "repair_closure": {
           "path": "speech-direction/ollama-participation-repair/closure.json",
           "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
+        },
+        "fictional_repeated_turn_diagnosis": {
+          "report": "speech-direction/player-microphone-qualification/response-failure-diagnosis/before.json",
+          "generation_outcomes": "Seven completed, one InvalidResponse on fictional turn six; later turns seven and eight completed.",
+          "defect": "Model returned null speech with whispering deliveryMode; deserializer correctly rejects. Ollama output schema permits this invalid combination.",
+          "limit": "Same failure class reproduced; exact human failure code was not retained. No physical pass inferred.",
+          "runtime_implementation_authority": "not_granted_for_this_successor",
+          "prototype": "Schema-only prototype exposed a second stall after valid silence. Combined schema and existing silent-turn completion prototype completed eight distinct fictional generations. No runtime change installed."
         }
       }
     },

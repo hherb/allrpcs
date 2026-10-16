@@ -29,7 +29,13 @@ The screenshot confirms local acceptance without a reply. The owner approved the
 participation repair](speech-direction/ollama-participation-repair/README.md): its missing binding
 and cached-usage metadata support are implemented. A fictional-input `gemma4:e4b` Main diagnostic
 commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair
-is closed. Human Whisper/echo outcomes remain unconfirmed.
+is closed. In the subsequent human trial, two spoken turns worked, then response generation failed
+with submission ACCEPTED, Whisper enabled and the previous reply still visible. Repeated dialogue
+is unreliable. An eight-turn fictional Main diagnostic reproduced one InvalidResponse from null
+speech paired with whispering; the exact human failure cause remains unlogged. A schema-only prototype exposed a second stall after valid silence. A combined schema and silent-
+turn completion prototype completed eight distinct fictional generations. A distinct
+[response repair is proposed](speech-direction/player-microphone-qualification/response-failure-diagnosis/README.md).
+German-specific final text and echo remain unconfirmed.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -56,9 +62,10 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
 
-Missing deliverable: Remaining human selector/permission-host intake, final text and Whisper/reply
-observation with the repaired runtime, cancellation/load/device/noise/accent/headphone/speaker cases
-and a reviewable finite conclusion. The Ollama prerequisite is closed.
+Missing deliverable: Remaining human selector/permission-host intake, language-specific final text,
+unresolved repeated Whisper/reply failure after two successful spoken turns,
+lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion. The prior Ollama
+prerequisite stays closed.
 
 The owner-approved Ollama participation prerequisite is complete and closed in speech-
 direction/ollama-participation-repair/closure.json. Selected gemma4:e4b commits an ordinary Main
@@ -67,10 +74,17 @@ not reopen this repair or convert synthetic/local-model checks into physical pas
 remaining operator checks in the human trial guide. Preserve the three complete qualitative passes,
 five partially completed cases and seven unperformed cases; do not repeat confirmed bilingual
 recognition/live updates, corrected Submit, Stop mic or Space tap/release checks. The previous
-accepted/no-response screenshot is historical; a new nearby-listener Whisper/reply outcome remains
-required. Keep this human slice open until remaining cases and its conclusion are reviewable.
-Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio persistence
-need explicit enablement.
+accepted/no-response screenshot is historical; the subsequent owner trial reports two successful
+spoken turns followed by response FAILED despite local submission ACCEPTED and Whisper enabled.
+Preserve both successes and this failure. Repeated delivery remains unresolved; eight fictional Main
+turns reproduced one InvalidResponse from null speech paired with whispering, followed by successful
+later generations. The exact human failure is unlogged. A disposable schema-only prototype exposed a
+second stall after valid silence; a combined schema and silent-turn completion prototype completed
+eight distinct fictional generations. A separate bounded response repair is proposed in speech-
+direction/player-microphone-qualification/response-failure-diagnosis/README.md; no new runtime
+repair grant is recorded. Keep this human slice open until remaining cases and its conclusion are
+reviewable. Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio
+persistence need explicit enablement.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "baseline_revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
+  "status": "diagnosis and disposable prototype complete; runtime successor not approved or installed",
+  "baseline": {
+    "generations": 8,
+    "completed": 7,
+    "failed": 1,
+    "failure_turn": 6,
+    "failure_code": "InvalidResponse"
+  },
+  "schema_only": {
+    "new_generations": 6,
+    "later_submissions_without_generation": 2
+  },
+  "combined_prototype": {
+    "new_generations": 8,
+    "completed": 8,
+    "failed": 0
+  },
+  "human_failure_exact_match": "unproven; no detailed live failure code retained",
+  "physical_qualification": "partial; unchanged 3 pass, 5 partial, 7 not_performed",
+  "source_sha256": {
+    "src/Infrastructure/Dialogue/CharacterTurnResponseJsonSchemaWriter.cs": "8556c2ed3cf292e4cea20e385fa771113f3d56b8500897d7a889e7298d7ea511",
+    "src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs": "225ad64e46ac448e4e92298f8c398161000123b2bb9122f9d6859dea3f981666",
+    "src/Infrastructure/Dialogue/CharacterTurnResponseJsonDeserializer.cs": "4f9f6352252f66b3d35ecb29e62f941d1b071a156fb97fdd372dcda5ef05f8b6",
+    "game/Main.cs": "05138c74107c2a405553a9a7c7a72e1ab30e3be821962f54228f564d17833774",
+    "game/OllamaParticipationMainCheck.cs": "68452455a667bebc31218c238b77909da976feb3865c43afd8260b062104b73e",
+    "game/TemporaryCharacterTurnCompletionController.cs": "b81ff4463ae6eeace9d2a228182e19d78adeadfd8659c9f4116323e2cefe3f6e"
+  },
+  "evidence_sha256": {
+    "README.md": "beb77f1ca8fdcc182b1ffd3b793c4ef035e395c1585f4b16944f482974409cb9",
+    "before.json": "86bba3374bed1c2406ff353049bc201cc333624920d3902824a8d8170117c5b1",
+    "proposal.patch": "bae28b6560115ddfde7438a6ffb81719c887ad2f74a14bb88729e63c0c2edb82",
+    "prototype-build.log": "01a438bf560a92c239da4b5d7955d640adcb9cbc992017ef4d9fb4c5d3048607",
+    "prototype-import.log": "00478f545e045d7be3199f247fd09972a2575dc139f9094fc65fceeb862fab42",
+    "prototype-run.log": "ed4ce45eafe82c803cdfcacd1fd588bb0024fefd224b211e446c7e98d169ff9c",
+    "prototype.json": "bf239e5a140434efedeee30ab0d56ee73ca467557088305da70a4f4f9f12a007",
+    "prototype.py": "fae2a3bf85b4a2bc5cede930522d836dcc982e41806a73d6ea3476e3700a8236",
+    "reproduce.py": "392092d7a93728b9ddd6526062ed2630675e6230a126f42edb8f6002ff8d3fe8",
+    "schema-only.json": "4992462abf5b3d1474ba8a96c8b407a44aaed87a6aa1ce40689834e633a3dc20"
+  },
+  "limits": [
+    "No microphone, playback or human transcript captured.",
+    "Existing validation, silence and root runtime untouched.",
+    "Isolated prototype evidence is not full quality.",
+    "Prototype exited with an ObjectDB cleanup-leak warning; full runtime/quality verification remains required."
+  ]
+}

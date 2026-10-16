@@ -1,0 +1,120 @@
+{
+  "revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
+  "fictionalInputsOnly": true,
+  "personalAudioCaptured": false,
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMilliseconds": 1215,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 1,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 1
+    },
+    {
+      "turn": 2,
+      "elapsedMilliseconds": 1735,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 2,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 4
+    },
+    {
+      "turn": 3,
+      "elapsedMilliseconds": 2068,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 3,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 7
+    },
+    {
+      "turn": 4,
+      "elapsedMilliseconds": 1868,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 4,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 8
+    },
+    {
+      "turn": 5,
+      "elapsedMilliseconds": 1631,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 5,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 11
+    },
+    {
+      "turn": 6,
+      "elapsedMilliseconds": 1534,
+      "newResult": true,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 1,
+      "participationCalls": 6,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 12
+    },
+    {
+      "turn": 7,
+      "elapsedMilliseconds": 15000,
+      "newResult": false,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 0,
+      "participationCalls": 6,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 13
+    },
+    {
+      "turn": 8,
+      "elapsedMilliseconds": 15015,
+      "newResult": false,
+      "replyTermination": "Completed",
+      "replyFailure": null,
+      "replyCalls": 0,
+      "participationCalls": 6,
+      "nativeMessageFields": [
+        "content",
+        "role"
+      ],
+      "transcriptEntries": 14
+    }
+  ],
+  "finding": "Schema-only prototype: six new completed generations, then two accepted inputs did not start generation after a valid silent response. Console printed stale Completed for the last two; newResult=false and replyCalls=0 establish this is not a pass."
+}

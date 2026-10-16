@@ -9,7 +9,9 @@ updates in both English and German. The owner confirms release stops listening a
 editable and unsent. Brief Space taps insert normal spaces without starting the microphone.
 OS permission identity, remaining lifecycle cases, quiet/accent comparisons and echo safety still
 need their own outcomes. The attempted Whisper/Submit check clears the draft but produces no
-observed response; end-to-end Whisper delivery remains inconclusive.
+observed response in the earlier runtime. After the repair, two spoken turns worked and a later
+response failed. [Fictional-input diagnosis](response-failure-diagnosis/README.md) reproduces one
+invalid speech/delivery pairing; repeated Whisper delivery remains unresolved.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
@@ -47,6 +49,14 @@ has been retained in this package.
    participation and reply commit with fictional input. The recovered full gate passed 217 recorded
    stages and 5,629 unit tests; the repair is closed. Resume the nearby-listener human trial.
    No earlier result is promoted to a human pass.
+
+   The subsequent owner trial reports two successful spoken turns, followed by failure. The new
+   screenshot shows Whisper enabled, submission ACCEPTED, character response FAILED, reply speech
+   interrupted and the previous reply still displayed, with English selected. The two successful
+   turns are retained as qualitative observations; repeated delivery is unreliable. The screenshot
+   does not isolate a provider, schema, timeout or playback cause. This finding needs a distinct
+   [bounded schema successor](response-failure-diagnosis/README.md), while the earlier repair and
+   its one-turn evidence stay closed.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
