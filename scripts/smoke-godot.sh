@@ -14,8 +14,11 @@ export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 smoke_quarantine_file="$script_dir/smoke-quarantine.txt"
 . "$script_dir/smoke-lib.sh"
 
-run_check - godot --headless --editor --path "$repository_root/game" --quit-after 120
-# Prove the wrapper itself (pass, hang and throw probes) before trusting any check through it.
+# Import every resource first. --import exits by itself (with 0) once importing finishes, so a cold
+# checkout is fully imported before any check runs; quality.py imports the same way.
+run_check - godot --headless --editor --path "$repository_root/game" --import
+# Prove the wrapper itself (pass, hang, throw and async-throw probes) before trusting any check
+# through it.
 "$script_dir/test-smoke-harness.sh"
 run_check 30 godot --headless --path "$repository_root/game" \
     res://DirectionAImportProof.tscn

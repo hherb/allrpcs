@@ -17,9 +17,10 @@
 # A launch fails when it exits nonzero or its output names an unhandled .NET exception or a
 # GDScript runtime error: Godot logs exceptions escaping _Ready/_Process as
 # "ERROR: <Type>Exception: <message>" and GDScript errors as "SCRIPT ERROR: <message>", and in
-# both cases keeps running and can still exit 0. Only the diagnosed native mutex shutdown abort (exit 134 with "mutex lock failed" and
-# no reported error) is retried, exactly once, with the identical command; this mirrors
-# native_shutdown() in quality.py.
+# both cases keeps running and can still exit 0. Such a launch returns 3 (smoke_exception_status),
+# distinct from the deadline code 124 and from a check's own failure exit. Only the diagnosed
+# native mutex shutdown abort (exit 134 with "mutex lock failed" and no reported error) is
+# retried, exactly once, with the identical command; this mirrors native_shutdown() in quality.py.
 #
 # Quarantine: when smoke_quarantine_file names a file, a launch whose launch id (see
 # smoke_launch_id) is listed there still runs, but its result is reported as
@@ -29,6 +30,7 @@
 unset ALLRPCS_CHECK_DEADLINE_FRAMES
 
 smoke_exception_pattern='^(ERROR: [A-Za-z_][A-Za-z0-9_.]*Exception: |SCRIPT ERROR: )'
+smoke_exception_status=3
 smoke_quarantine_file=${smoke_quarantine_file-}
 smoke_passed=0
 smoke_quarantined=0
@@ -155,7 +157,7 @@ run_check()
     if [ "$smoke_status" -eq 0 ] && grep -qE "$smoke_exception_pattern" "$smoke_output"; then
         echo "FAIL: smoke launch logged an unhandled exception or script error:" \
             "run_check $smoke_deadline $*" >&2
-        smoke_status=1
+        smoke_status=$smoke_exception_status
     elif [ "$smoke_status" -ne 0 ]; then
         echo "FAIL: smoke launch exited $smoke_status: run_check $smoke_deadline $*" >&2
     fi

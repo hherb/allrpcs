@@ -1,7 +1,8 @@
 #!/bin/sh
 # Self-test for scripts/smoke-lib.sh: a passing launch passes, a hung launch fails with the
-# deadline code 124, a launch that logs an unhandled exception or GDScript error fails even though
-# Godot exits 0, only the diagnosed native mutex shutdown abort is retried, exactly once, invalid
+# deadline code 124, a launch that logs an unhandled exception (from _Ready or from an awaited
+# async continuation) or a GDScript error fails with smoke_exception_status even though Godot
+# exits 0, only the diagnosed native mutex shutdown abort is retried, exactly once, invalid
 # deadlines are rejected, and quarantined launches report without failing.
 
 set -eu
@@ -37,8 +38,14 @@ expect 'passing probe succeeds' 0 \
     "$(launch_status 30 godot --headless --path "$repository_root/game" res://SmokeHarnessPassProbe.tscn)"
 expect 'hung probe fails at the deadline' 124 \
     "$(launch_status 30 godot --headless --path "$repository_root/game" res://SmokeHarnessHangProbe.tscn)"
-throw_status=$(launch_status 30 godot --headless --path "$repository_root/game" res://SmokeHarnessThrowProbe.tscn)
-expect 'throwing probe fails' nonzero "$([ "$throw_status" -ne 0 ] && echo nonzero || echo zero)"
+# The throw probes quit with 0, so only the exception pattern can produce this status (never the
+# deadline's 124).
+expect 'exception code is distinct from the deadline code' distinct \
+    "$([ "$smoke_exception_status" -ne 124 ] && [ "$smoke_exception_status" -ne 0 ] && echo distinct || echo same)"
+expect 'throwing probe fails through the exception pattern' "$smoke_exception_status" \
+    "$(launch_status 30 godot --headless --path "$repository_root/game" res://SmokeHarnessThrowProbe.tscn)"
+expect 'async-throwing probe fails through the exception pattern' "$smoke_exception_status" \
+    "$(launch_status 30 godot --headless --path "$repository_root/game" res://SmokeHarnessAsyncThrowProbe.tscn)"
 
 # Simulated native shutdown aborts: a fake godot on PATH counts its launches and replays a
 # scripted exit code and output per attempt.
@@ -74,9 +81,9 @@ expect 'mutex abort after a reported error is not retried' 134/1 "$(shim_case)"
 export SHIM_OUTPUT_1='mutex lock failed: Invalid argument' SHIM_CODE_1=1
 expect 'other exit codes are not retried' 1/1 "$(shim_case)"
 export SHIM_OUTPUT_1='ERROR: System.InvalidOperationException: shim probe' SHIM_CODE_1=0
-expect 'exception text fails a zero exit' 1/1 "$(shim_case)"
+expect 'exception text fails a zero exit' "$smoke_exception_status/1" "$(shim_case)"
 export SHIM_OUTPUT_1='SCRIPT ERROR: Out of bounds get index '"'3'"' (on base: '"'Array'"')'
-expect 'GDScript runtime error fails a zero exit' 1/1 "$(shim_case)"
+expect 'GDScript runtime error fails a zero exit' "$smoke_exception_status/1" "$(shim_case)"
 
 # Per-launch assignments reach the launch but must not persist into later launches; a
 # function-prefix assignment would persist under bash's POSIX mode (macOS /bin/sh).
