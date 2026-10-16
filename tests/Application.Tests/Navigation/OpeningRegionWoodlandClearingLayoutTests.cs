@@ -109,6 +109,24 @@ public sealed class OpeningRegionWoodlandClearingLayoutTests
         Assert.False(OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(layout, [clearing]));
     }
 
+    [Fact]
+    public void RoutePolicyBoundsEachSideWallByItsOwnOpening()
+    {
+        OpeningRegionWoodlandClearingLayout layout = Layout();
+        float halfOpening = layout.OpeningWidthPixels / 2.0f;
+        float inShrineOpeningOnly = layout.ShrineOpening.Y + halfOpening - 1.0f;
+        float inLaundryOpeningOnly = layout.LaundryOpening.Y - halfOpening + 1.0f;
+
+        Assert.True(inShrineOpeningOnly > layout.LaundryOpening.Y + halfOpening);
+        Assert.True(inLaundryOpeningOnly < layout.ShrineOpening.Y - halfOpening);
+        Assert.True(OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(
+            layout,
+            [new Vector2(300.0f, inShrineOpeningOnly), new Vector2(200.0f, inShrineOpeningOnly)]));
+        Assert.False(OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(
+            layout,
+            [new Vector2(300.0f, inLaundryOpeningOnly), new Vector2(200.0f, inLaundryOpeningOnly)]));
+    }
+
     private static OpeningRegionWoodlandClearingLayout Layout() => Layout(
         Binding(),
         OpeningWidthPixels,

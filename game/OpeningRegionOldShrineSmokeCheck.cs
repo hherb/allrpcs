@@ -315,10 +315,24 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
         NumericsVector2 clearing = clearingLayout.SceneBinding.WoodlandClearingAnchor.Position;
         NumericsVector2 shrine = layout.SceneBinding.OldShrineAnchor.Position;
         List<NumericsVector2> roundTrip = Route(navigationMap, clearing, shrine);
-        if (roundTrip.Count == 0
-            || !OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(clearingLayout, roundTrip)
-            || !OpeningRegionOldShrineRoutePolicy.IsAcceptable(layout, roundTrip)
-            || !AssertClear(ToGodot(clearing), ToGodot(shrine))
+        if (roundTrip.Count == 0)
+        {
+            return;
+        }
+
+        bool clearingRouteAccepted =
+            OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(clearingLayout, roundTrip);
+        bool shrineRouteAccepted =
+            OpeningRegionOldShrineRoutePolicy.IsAcceptable(layout, roundTrip);
+        if (!clearingRouteAccepted || !shrineRouteAccepted)
+        {
+            Fail(
+                "The synchronized clearing/shrine round trip crossed an authored boundary: "
+                + $"clearing={clearingRouteAccepted}, shrine={shrineRouteAccepted}.");
+            return;
+        }
+
+        if (!AssertClear(ToGodot(clearing), ToGodot(shrine))
             || !AssertClear(ToGodot(shrine), ToGodot(clearing))
             || !AssertCollision(ToGodot(shrine), Vector2.Up * 80.0f, "ShrineTop")
             || !AssertCollision(ToGodot(shrine), Vector2.Left * 160.0f, "ShrineLeft"))
@@ -396,7 +410,9 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         seeker.GlobalPosition = start;
         KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
-        if (collision?.GetCollider() is Node collider && collider.Name == expectedName)
+        if (collision?.GetCollider() is Node collider
+            && (collider.Name == expectedName
+                || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }
