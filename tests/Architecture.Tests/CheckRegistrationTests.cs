@@ -5,14 +5,17 @@ namespace Allrpcs.Architecture.Tests;
 
 /// <summary>
 /// Every engine check must actually run somewhere: its ALLRPCS_*_CHECK gate and its check or
-/// proof scene must appear in a live launch source, or in ManualCheckRegistrations.txt with a
-/// reason. Frozen scripts/quality.sh is historical evidence, not a live launch source.
+/// proof scene must appear on a non-comment line of scripts/smoke-godot.sh, or in
+/// ManualCheckRegistrations.txt with a reason. scripts/smoke-godot.sh is the only parsed launch
+/// source: quality.py runs many checks only inside frozen historical snapshots (their HEAD code
+/// never runs), so the checks it does run at HEAD are allowlisted with that stage named, and
+/// frozen scripts/quality.sh is historical evidence.
 /// </summary>
 public sealed partial class CheckRegistrationTests
 {
     private const string AllowlistPath = "tests/Architecture.Tests/ManualCheckRegistrations.txt";
 
-    private static readonly string[] LaunchSourcePaths = ["scripts/smoke-godot.sh", "quality.py"];
+    private const string LaunchSourcePath = "scripts/smoke-godot.sh";
 
     private static readonly string[] ExcludedSegments = [".godot", "bin", "obj"];
 
@@ -31,7 +34,7 @@ public sealed partial class CheckRegistrationTests
 
         Assert.True(
             unregistered.Length == 0,
-            $"Check gates neither launched by {string.Join(" or ", LaunchSourcePaths)} nor listed in {AllowlistPath}:\n"
+            $"Check gates neither launched by {LaunchSourcePath} nor listed in {AllowlistPath}:\n"
                 + string.Join('\n', unregistered));
     }
 
@@ -50,7 +53,7 @@ public sealed partial class CheckRegistrationTests
 
         Assert.True(
             unregistered.Length == 0,
-            $"Check scenes neither launched by {string.Join(" or ", LaunchSourcePaths)} nor listed in {AllowlistPath}:\n"
+            $"Check scenes neither launched by {LaunchSourcePath} nor listed in {AllowlistPath}:\n"
                 + string.Join('\n', unregistered));
     }
 
@@ -69,7 +72,7 @@ public sealed partial class CheckRegistrationTests
 
         Assert.True(
             stale.Length == 0,
-            $"{AllowlistPath} entries that no longer exist in game/ or are now launched (remove them):\n"
+            $"{AllowlistPath} entries that no longer exist in game/ or are now launched by {LaunchSourcePath} (remove them):\n"
                 + string.Join('\n', stale));
     }
 
@@ -117,9 +120,32 @@ public sealed partial class CheckRegistrationTests
         Assert.Equal(["line 5: duplicate entry ALLRPCS_EXAMPLE_CHECK"], parse.Problems);
     }
 
+    [Fact]
+    public void LaunchSourceIgnoresCommentedOutLaunches()
+    {
+        string launchSources = LaunchLines(
+        [
+            "# run_check 30 ALLRPCS_COMMENTED_CHECK=1 godot --headless --path game",
+            "    #run_check - godot --headless --path game res://CommentedProof.tscn --quit-after 30",
+            "run_check 30 ALLRPCS_LAUNCHED_CHECK=1 godot --headless --path game  # trailing note",
+            "run_check - godot --headless --path game res://LaunchedProof.tscn --quit-after 30",
+        ]);
+
+        Assert.False(IsLaunched(launchSources, "ALLRPCS_COMMENTED_CHECK"));
+        Assert.False(IsLaunched(launchSources, "res://CommentedProof.tscn"));
+        Assert.True(IsLaunched(launchSources, "ALLRPCS_LAUNCHED_CHECK"));
+        Assert.True(IsLaunched(launchSources, "res://LaunchedProof.tscn"));
+    }
+
     private static string ReadLaunchSources(string repositoryRoot)
     {
-        return string.Join('\n', LaunchSourcePaths.Select(path => File.ReadAllText(Path.Combine(repositoryRoot, path))));
+        return LaunchLines(File.ReadAllLines(Path.Combine(repositoryRoot, LaunchSourcePath)));
+    }
+
+    // Drops shell comment lines, so a commented-out launch does not count as registered.
+    private static string LaunchLines(IEnumerable<string> lines)
+    {
+        return string.Join('\n', lines.Where(line => !CommentLinePattern().IsMatch(line)));
     }
 
     private static bool IsLaunched(string launchSources, string entry)
@@ -205,6 +231,9 @@ public sealed partial class CheckRegistrationTests
 
         return new AllowlistParse(entries, problems);
     }
+
+    [GeneratedRegex(@"^\s*#")]
+    private static partial Regex CommentLinePattern();
 
     [GeneratedRegex(@"\bALLRPCS_[A-Z0-9_]+_CHECK\b")]
     private static partial Regex GatePattern();
