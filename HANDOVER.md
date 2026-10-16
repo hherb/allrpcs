@@ -6,6 +6,8 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
+The microphone trial is paused for the owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md).
+
 [Optional Pocket reply playback](speech-direction/dialogue-integration/README.md) is integrated in
 Main: Settings → Dialogue → Speak replies, English/German and Stop speech. It speaks exact committed
 reply text on the Speech bus, with bounded PCM, interruption and text fallback. Local developer
@@ -68,59 +70,33 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase10-player-microphone-qualification — Qualify a named human microphone and echo session** (in_progress).
+**code-health-phase1-safety-net — Make smoke launches, check registration and CI trustworthy** (in_progress).
 
-Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
-and noisy   input.
+Roadmap item: - [ ] Phase 1: smoke launches prove completion and every check is registered.
 
-Missing deliverable: Remaining permission/selector intake, language-specific final text and post-
-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker
-cases and a finite conclusion.
+Missing deliverable: Smoke launches fail on hang or exception; every check gate and scene is
+launched or allowlisted; complete architecture test; CI runs the solution tests and Python tooling.
 
-The reply runtime prerequisites are closed: speech-direction/ollama-participation-
-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes
-malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-
-model generations and recovered full quality. Preserve all closed receipts and the three complete
-physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two
-successful spoken turns followed by failure; its exact live failure was unlogged. Resume only
-remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener.
-Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space
-tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks.
-Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require
-explicit enablement. The owner clarified ordinary answers work but examination requests lacked
-action or reply. The separately approved herb examination action repair is now complete and closed
-at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual
-selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination
-movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve
-every prior report and all 15 physical statuses. Resume the owner-operated trial on the published
-repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed
-repairs or infer a new runtime scope. The separately owner-requested conversation context repair is
-complete and closed at speech-direction/conversation-context-repair/closure.json. It supplies
-bounded heard/own history, speaker roles and exact examination outcomes, with private speech
-filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass.
-History is session-local and clears on successful save restoration. Resume only the unchanged
-remaining human trial cases; no new physical pass is inferred. The latest owner follow-up reports
-that turn-based dialogue seems to work quite well after the context repair. Preserve this positive
-qualitative result alongside earlier observations. Input method, turn count, language, Whisper use
-and audibility were unspecified; physical case totals remain unchanged.
+Owner-approved program plan: docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md.
+Evidence for code fixes is the GitHub issue, its tests and the commit; no new *-direction evidence
+packages for code fixes. Full ./quality.sh runs once at the phase exit; between, run dotnet
+format/build/test plus affected smoke launches. The microphone qualification slice is paused
+unchanged in deferred_slices.
 
-Done when: Named finite session records permission/device intake, natural English/German
-partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
-loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-
-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion,
-then close and publish; hands-free speaker qualification requires actual echo-safe results.
+Done when: Issues #421, #422 and #423 are closed by commits with tests, CI is green on main, and one
+full ./quality.sh passes.
 
 Expected outputs:
 
-- `speech-direction/player-microphone-qualification/authority.json`
-- `speech-direction/player-microphone-qualification/session.json`
-- `speech-direction/player-microphone-qualification/results.json`
-- `speech-direction/player-microphone-qualification/README.md`
+- `tests/Architecture.Tests/ProjectSdkAndPackageTests.cs`
+- `game/CheckDeadline.cs`
+- `scripts/smoke-lib.sh`
+- `scripts/test-smoke-harness.sh`
+- `scripts/smoke-quarantine.txt`
+- `tests/Architecture.Tests/CheckRegistrationTests.cs`
+- `tests/Architecture.Tests/ManualCheckRegistrations.txt`
 
-Boundary: Existing named owner-operated physical trial only; preserve both closed runtime repairs
-and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio
-persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad
-certification or packaged release.
+Boundary: Test and CI infrastructure only; no gameplay behaviour changes.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
