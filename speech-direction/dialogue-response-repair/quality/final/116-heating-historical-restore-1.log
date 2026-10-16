@@ -1,0 +1,4 @@
+  Determining projects to restore...
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-6q6162vl/tree/src/Application/Allrpcs.Application.csproj (in 92 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-6q6162vl/tree/src/Domain/Allrpcs.Domain.csproj (in 92 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-6q6162vl/tree/tests/Application.Tests/Allrpcs.Application.Tests.csproj (in 206 ms).

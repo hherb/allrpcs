@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "method": "Primary-agent source review, supported by focused tests and ordinary Main receipts; not an independent review.",
+  "status": "complete",
+  "findings": [],
+  "reviewed_source_inputs_sha256": "bfb41e10fff521ab3223f2f62b2094f13548c20f30c4e0701bb2ad037679893d",
+  "checks": [
+    "Ollama-only opt-in; unchanged default schema writer behavior for other provider callers.",
+    "Each Ollama alternative contains the complete closed six-property response.",
+    "Strict decoder and world/intention/participation/hearing/retry policies unchanged.",
+    "Silent completion delegates to existing turn/budget transitions and cannot repeat after terminal state.",
+    "Spoken response exact-occurrence and transcript fence remains intact.",
+    "Controlled repeated fixture covers valid silence, malformed output, cancellation and later fresh generations.",
+    "New result identity, one model call, exact transcript and budget totals prevent stale-result false passes.",
+    "Settled fixture teardown removes the observed prototype cleanup warning.",
+    "Main scene, ASR/playback product code, frozen evidence and unrelated editor state preserved.",
+    "Cancellation fixture now deliberately holds unrecorded speech instead of relying on a stalled silent response; existing cancellation/response identity/state assertions unchanged.",
+    "Recovered complete gate passed; every product/runtime stage rerun after fixture setup correction, source/evidence bytes verified."
+  ],
+  "pending": []
+}

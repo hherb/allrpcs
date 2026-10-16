@@ -1,0 +1,7 @@
+{
+  "path": "game/CharacterModelGenerationFlowSmokeCheck.cs",
+  "before_sha256": "1d01f73555ce5f033dc2a42996c807eafe17e9f443068e64d62d894a38d0ecbd",
+  "after_sha256": "fea3bc25ae9c3d823dd6434be1b7e3a7e8d7d743cbcd06ef23ffc022004776ce",
+  "reason": "Original cancel-mode fixture held a silent response in Speaking. Silent responses now correctly complete. Hold an unrecorded spoken response instead; preserve all existing cancellation and state assertions.",
+  "product_behavior_changed": false
+}

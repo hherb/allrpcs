@@ -7,7 +7,25 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// <summary>Writes the closed character-turn response schema for one provider dialect.</summary>
 internal static class CharacterTurnResponseJsonSchemaWriter
 {
-    internal static void Write(Utf8JsonWriter writer, bool includeBounds)
+    internal static void Write(Utf8JsonWriter writer, bool includeBounds, bool enforceDeliveryPairing = false)
+    {
+        ArgumentNullException.ThrowIfNull(writer);
+        if (!enforceDeliveryPairing)
+        {
+            WriteObject(writer, includeBounds, speechIsNull: null);
+            return;
+        }
+        writer.WriteStartObject();
+        writer.WriteString("type", "object");
+        writer.WritePropertyName("anyOf");
+        writer.WriteStartArray();
+        WriteObject(writer, includeBounds, speechIsNull: false);
+        WriteObject(writer, includeBounds, speechIsNull: true);
+        writer.WriteEndArray();
+        writer.WriteEndObject();
+    }
+
+    private static void WriteObject(Utf8JsonWriter writer, bool includeBounds, bool? speechIsNull)
     {
         ArgumentNullException.ThrowIfNull(writer);
 
@@ -16,15 +34,26 @@ internal static class CharacterTurnResponseJsonSchemaWriter
         writer.WritePropertyName("properties");
         writer.WriteStartObject();
         WriteStringEnum(writer, "disposition", CharacterTurnDisposition.All.Select(value => value.Value));
-        WriteNullableString(
-            writer,
-            "speech",
-            DialogueUtterance.MaximumTextLength,
-            includeBounds);
-        WriteNullableStringEnum(
-            writer,
-            "deliveryMode",
-            DialogueDeliveryMode.All.Select(value => value.Value));
+        if (speechIsNull is null)
+        {
+            WriteNullableString(writer, "speech", DialogueUtterance.MaximumTextLength, includeBounds);
+            WriteNullableStringEnum(writer, "deliveryMode", DialogueDeliveryMode.All.Select(value => value.Value));
+        }
+        else if (speechIsNull.Value)
+        {
+            foreach (string property in new[] { "speech", "deliveryMode" })
+            {
+                writer.WritePropertyName(property);
+                writer.WriteStartObject();
+                writer.WriteString("type", "null");
+                writer.WriteEndObject();
+            }
+        }
+        else
+        {
+            WriteBoundedString(writer, "speech", DialogueUtterance.MaximumTextLength, includeBounds);
+            WriteStringEnum(writer, "deliveryMode", DialogueDeliveryMode.All.Select(value => value.Value));
+        }
         writer.WritePropertyName("immediateIntention");
         WriteIntentionSchema(writer, includeBounds);
         WriteCommitmentsSchema(writer, includeBounds);

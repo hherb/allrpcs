@@ -92,6 +92,8 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
         bool arrangedTurn = turnController.TryStart(request.TurnRequest);
         if (mode == CancelMode)
         {
+            // Hold an unrecorded spoken response so cancellation exercises a genuinely active turn.
+            GetNode<TemporaryCharacterTurnResponseSpeechRecorder>("../TemporaryCharacterTurnResponseSpeechRecorder").SetProcess(false);
             arrangedTurn = arrangedTurn
                 && turnController.TryReceiveResponse(Response(request.TurnRequest));
         }
@@ -354,13 +356,7 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
     }
 
     private static CharacterTurnResponse Response(CharacterTurnRequest request) =>
-        new(
-            request,
-            CharacterTurnDisposition.Accept,
-            null,
-            new CharacterIntention(CharacterIntentionType.Wait, null),
-            [],
-            []);
+        CompletedResponse(request);
 
     private static CharacterTurnResponse CompletedResponse(CharacterTurnRequest request) =>
         new(

@@ -1,0 +1,13 @@
+test_complete_report (__main__.Rejections.test_complete_report) ... ok
+test_forged_hardware_provenance (__main__.Rejections.test_forged_hardware_provenance) ... ok
+test_incomplete_status (__main__.Rejections.test_incomplete_status) ... ok
+test_missing_check (__main__.Rejections.test_missing_check) ... ok
+test_stale_source (__main__.Rejections.test_stale_source) ... ok
+test_unsafe_path (__main__.Rejections.test_unsafe_path) ... ok
+test_wrong_action_count (__main__.Rejections.test_wrong_action_count) ... ok
+test_wrong_mode (__main__.Rejections.test_wrong_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK

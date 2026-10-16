@@ -159,5 +159,12 @@
       "path": "speech-direction/ollama-participation-repair/closure.json",
       "sha256": "6e24c8332a366875f934e0ac56c6f58fef0f9770d1d59b98578e5d13ca2bd25b"
     }
+  },
+  "response_repair": {
+    "authority": "speech-direction/dialogue-response-repair/authority.json",
+    "closure": "speech-direction/dialogue-response-repair/closure.json",
+    "verification": "speech-direction/dialogue-response-repair/verification.json",
+    "status": "complete; controlled and selected local-model eight-turn checks and recovered full quality passed",
+    "physical_outcome": "Awaiting resumed owner-operated trial; existing successes and failure preserved."
   }
 }

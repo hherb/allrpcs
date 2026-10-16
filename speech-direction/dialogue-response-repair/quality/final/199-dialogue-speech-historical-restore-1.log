@@ -1,0 +1,10 @@
+  Determining projects to restore...
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/src/Domain/Allrpcs.Domain.csproj (in 97 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/src/Application/Allrpcs.Application.csproj (in 102 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj (in 102 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/src/Infrastructure/Allrpcs.Infrastructure.csproj (in 102 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/game/Allrpcs.Game.csproj (in 112 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/tests/Application.Tests/Allrpcs.Application.Tests.csproj (in 216 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/tests/Domain.Tests/Allrpcs.Domain.Tests.csproj (in 216 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj (in 216 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-sow6ffus/tree/tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj (in 216 ms).

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "method": "Final repair/test/CI inputs, including the required cancel-fixture setup adaptation after the first smoke run. Full product checks are rerun; only unchanged historical/art boundary stages are reused.",
+  "inputs": {
+    "src/Infrastructure/Dialogue/CharacterTurnResponseJsonSchemaWriter.cs": "b33041c38b2b13727069c5fbc5526a3de170e22dbe451d9cc1d70b030a540f97",
+    "src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs": "be692d7fc800e7948ea374cbc08bdb140d729e20013c1a4e03da1843eb11cb88",
+    "game/TemporaryCharacterTurnCompletionController.cs": "ed79c83e2b39fc96ed3ec5931d2c231bb45faf45c78faf02f5933c92ac947f51",
+    "game/OllamaParticipationMainCheck.cs": "a4fbc41194e14e91ce4b932577e66262b943592172fc0190bc06bfed5816342b",
+    "game/OllamaParticipationHttpHandler.cs": "a70a9951015510b40b817cc29b035f61f33bbfd867cdfeb8c6e04920f0dc67aa",
+    "game/DialogueResponseRepairMainCheck.cs": "64fc51bf635c0274ae7ef8743d3659ddae4b2bb34e8357d7f18ba4509f6be169",
+    "game/DialogueResponseRepairMainCheck.tscn": "d94cc0d2e2d3020e9d671847548d48db18afc1e254ca57b076b6771b6c41e338",
+    "tests/Infrastructure.Tests/Dialogue/OllamaCharacterModelRequestSerializerTests.cs": "e91d92142e9d2335bdcc58f984bf9b67154011b1048f42159bb6f9465eb1ddb2",
+    "quality.py": "3ce5955a1d7b2edef1332eb7eeb6a9ed12eee9ab4fe625f4f836f5f0afde1c59",
+    "quality.sh": "3b6716808a1c4999554d2384801aba4da438c8100ac433d1ac0ae2cc67f0cae9",
+    "scripts/quality.sh": "477480d3432874c429fbb618a6f3d45c00466dd6c25da1b4f24c7d5d9aeb12b3",
+    "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f",
+    "game/Main.cs": "05138c74107c2a405553a9a7c7a72e1ab30e3be821962f54228f564d17833774",
+    "game/Main.tscn": "cff51048da36cf85bba7eb023cc0d85ddc1afc1086c45fc65bea9e692db0cf64",
+    "game/CharacterModelGenerationFlowSmokeCheck.cs": "fea3bc25ae9c3d823dd6434be1b7e3a7e8d7d743cbcd06ef23ffc022004776ce"
+  }
+}

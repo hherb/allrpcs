@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase10-dialogue-response-repair",
+  "status": "complete",
+  "date": "2026-10-16",
+  "authority": {
+    "path": "speech-direction/dialogue-response-repair/authority.json",
+    "sha256": "9a5978321c6526181f1a3bf5e73d441f924f216ac78b3daa888fd7476c06b570"
+  },
+  "verification": {
+    "path": "speech-direction/dialogue-response-repair/verification.json",
+    "sha256": "0bb2e3ded8ec7f96bd21bb7d886a097133b5de44177aa1f617af82d39a757cbb"
+  },
+  "completion": "Ollama schema pairs speech/delivery, valid silence completes once via existing owners, subsequent explicit generations continue. Strict decoding, silence, spoken occurrence, hearing, retries, ASR and playback preserved. Controlled and local-model eight-turn checks and recovered full gate passed.",
+  "next_boundary": "Resume the partial owner-operated microphone trial; runtime success is not a physical pass."
+}

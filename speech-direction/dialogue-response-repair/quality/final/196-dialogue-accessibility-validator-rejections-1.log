@@ -1,0 +1,15 @@
+test_missing_check (__main__.Rejections.test_missing_check) ... ok
+test_missing_file (__main__.Rejections.test_missing_file) ... ok
+test_missing_focus (__main__.Rejections.test_missing_focus) ... ok
+test_reader_overclaim (__main__.Rejections.test_reader_overclaim) ... ok
+test_stale_source (__main__.Rejections.test_stale_source) ... ok
+test_unsafe_path (__main__.Rejections.test_unsafe_path) ... ok
+test_valid_report (__main__.Rejections.test_valid_report) ... ok
+test_wrong_live_policy (__main__.Rejections.test_wrong_live_policy) ... ok
+test_wrong_mode (__main__.Rejections.test_wrong_mode) ... ok
+test_wrong_provenance (__main__.Rejections.test_wrong_provenance) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

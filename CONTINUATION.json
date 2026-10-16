@@ -932,6 +932,20 @@
           "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
         }
       ]
+    },
+    {
+      "id": "phase10-dialogue-response-repair",
+      "reason": "Owner-approved paired delivery schema and silent-turn lifecycle successor complete; eight distinct controlled and local-model requests and recovered full quality verified. Prior repair and physical trial evidence remain separate.",
+      "evidence": [
+        {
+          "path": "speech-direction/dialogue-response-repair/closure.json",
+          "sha256": "9881d05483163d94aff1178a294bd573a56f0b3e606598b55cc593e0760765b7"
+        },
+        {
+          "path": "speech-direction/dialogue-response-repair/verification.json",
+          "sha256": "0bb2e3ded8ec7f96bd21bb7d886a097133b5de44177aa1f617af82d39a757cbb"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1340,6 +1354,20 @@
           "sha256": "c3111836c11b95c116aa2e629a5ad831669b13433a19ac42d7332d1ceb238ea8"
         }
       ]
+    },
+    {
+      "id": "dialogue-response-repair",
+      "reason": "Both approved response defects and required test adaptation are complete. No broader runtime or provider work follows without a new concrete owner request. Resume partial physical qualification.",
+      "evidence": [
+        {
+          "path": "speech-direction/dialogue-response-repair/closure.json",
+          "sha256": "9881d05483163d94aff1178a294bd573a56f0b3e606598b55cc593e0760765b7"
+        },
+        {
+          "path": "speech-direction/dialogue-response-repair/verification.json",
+          "sha256": "0bb2e3ded8ec7f96bd21bb7d886a097133b5de44177aa1f617af82d39a757cbb"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1435,10 +1463,10 @@
     "title": "Qualify a named human microphone and echo session",
     "status": "in_progress",
     "workstream": "player-microphone-qualification",
-    "authority_status": "owner_approved_live_trial_ollama_prerequisite_complete",
+    "authority_status": "owner_approved_live_trial_response_repair_complete",
     "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
-    "missing_deliverable": "Remaining human selector/permission-host intake, language-specific final text, unresolved repeated Whisper/reply failure after two successful spoken turns, lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion. The prior Ollama prerequisite stays closed.",
-    "instructions": "The owner-approved Ollama participation prerequisite is complete and closed in speech-direction/ollama-participation-repair/closure.json. Selected gemma4:e4b commits an ordinary Main reply on fictional input; the recovered full gate passed 217 recorded stages and 5629 unit tests. Do not reopen this repair or convert synthetic/local-model checks into physical passes. Resume only remaining operator checks in the human trial guide. Preserve the three complete qualitative passes, five partially completed cases and seven unperformed cases; do not repeat confirmed bilingual recognition/live updates, corrected Submit, Stop mic or Space tap/release checks. The previous accepted/no-response screenshot is historical; the subsequent owner trial reports two successful spoken turns followed by response FAILED despite local submission ACCEPTED and Whisper enabled. Preserve both successes and this failure. Repeated delivery remains unresolved; eight fictional Main turns reproduced one InvalidResponse from null speech paired with whispering, followed by successful later generations. The exact human failure is unlogged. A disposable schema-only prototype exposed a second stall after valid silence; a combined schema and silent-turn completion prototype completed eight distinct fictional generations. A separate bounded response repair is proposed in speech-direction/player-microphone-qualification/response-failure-diagnosis/README.md; no new runtime repair grant is recorded. Keep this human slice open until remaining cases and its conclusion are reviewable. Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio persistence need explicit enablement.",
+    "missing_deliverable": "Remaining permission/selector intake, language-specific final text and post-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion.",
+    "instructions": "Both runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-model generations and recovered full quality. Preserve all closed receipts and the three complete physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require explicit enablement.",
     "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
     "outputs": [
       "speech-direction/player-microphone-qualification/authority.json",
@@ -1446,7 +1474,7 @@
       "speech-direction/player-microphone-qualification/results.json",
       "speech-direction/player-microphone-qualification/README.md"
     ],
-    "boundary": "Existing named owner-operated physical trial only; preserve the closed Ollama repair. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad platform/reader/controller certification or packaged release."
+    "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
   },
   "deferred_slices": [
     {

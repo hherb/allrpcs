@@ -21,21 +21,16 @@ the owner confirms English and German recognition through held Space. The [parti
 also records correction before Submit and Stop mic during a hold as working. The owner confirms
 built-in microphone/speakers and both languages in a slightly noisy room, and now confirms live draft
 updates in English and German. Release stops listening with an editable, unsent draft. Brief taps
-insert normal spaces without starting the microphone. The Whisper/Submit attempt clears the draft
-but produces no observed response; end-to-end delivery remains inconclusive. Read-only follow-up on
-2026-10-16 found the saved Ollama model `gemma3` missing from local inventory. The owner selected
-`gemma4:e4b`; saved settings were updated, local model availability passed and the game restarted.
-The screenshot confirms local acceptance without a reply. The owner approved the [Ollama
-participation repair](speech-direction/ollama-participation-repair/README.md): its missing binding
-and cached-usage metadata support are implemented. A fictional-input `gemma4:e4b` Main diagnostic
-commits a reply. The recovered full gate passed 217 recorded stages and 5,629 unit tests; the repair
-is closed. In the subsequent human trial, two spoken turns worked, then response generation failed
-with submission ACCEPTED, Whisper enabled and the previous reply still visible. Repeated dialogue
-is unreliable. An eight-turn fictional Main diagnostic reproduced one InvalidResponse from null
-speech paired with whispering; the exact human failure cause remains unlogged. A schema-only prototype exposed a second stall after valid silence. A combined schema and silent-
-turn completion prototype completed eight distinct fictional generations. A distinct
-[response repair is proposed](speech-direction/player-microphone-qualification/response-failure-diagnosis/README.md).
-German-specific final text and echo remain unconfirmed.
+insert normal spaces without starting the microphone. The owner reported two successful spoken dialogue turns followed by failure. The closed
+[Ollama participation repair](speech-direction/ollama-participation-repair/README.md) supplies the
+missing ordinary binding and cached metadata support. The separately approved
+[response repair](speech-direction/dialogue-response-repair/README.md) constrains Ollama
+speech/mode pairing and completes silent turns without blocking later input. Eight distinct
+fictional controlled and selected `gemma4:e4b` local-model generations and the recovered full
+quality gate passed. The cancellation fixture now holds unrecorded speech, preserving its
+assertions. Both runtime repairs are closed; human repeated Whisper/reply and echo outcomes
+remain partial or unperformed. Preserve the successful recognition/typing observations and
+reported two-turn success followed by failure. Resume only the remaining operator checks.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -62,29 +57,20 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
 and noisy   input.
 
-Missing deliverable: Remaining human selector/permission-host intake, language-specific final text,
-unresolved repeated Whisper/reply failure after two successful spoken turns,
-lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion. The prior Ollama
-prerequisite stays closed.
+Missing deliverable: Remaining permission/selector intake, language-specific final text and post-
+repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker
+cases and a finite conclusion.
 
-The owner-approved Ollama participation prerequisite is complete and closed in speech-
-direction/ollama-participation-repair/closure.json. Selected gemma4:e4b commits an ordinary Main
-reply on fictional input; the recovered full gate passed 217 recorded stages and 5629 unit tests. Do
-not reopen this repair or convert synthetic/local-model checks into physical passes. Resume only
-remaining operator checks in the human trial guide. Preserve the three complete qualitative passes,
-five partially completed cases and seven unperformed cases; do not repeat confirmed bilingual
-recognition/live updates, corrected Submit, Stop mic or Space tap/release checks. The previous
-accepted/no-response screenshot is historical; the subsequent owner trial reports two successful
-spoken turns followed by response FAILED despite local submission ACCEPTED and Whisper enabled.
-Preserve both successes and this failure. Repeated delivery remains unresolved; eight fictional Main
-turns reproduced one InvalidResponse from null speech paired with whispering, followed by successful
-later generations. The exact human failure is unlogged. A disposable schema-only prototype exposed a
-second stall after valid silence; a combined schema and silent-turn completion prototype completed
-eight distinct fictional generations. A separate bounded response repair is proposed in speech-
-direction/player-microphone-qualification/response-failure-diagnosis/README.md; no new runtime
-repair grant is recorded. Keep this human slice open until remaining cases and its conclusion are
-reviewable. Existing capture opt-in remains authorized; OS privacy/device changes or personal-audio
-persistence need explicit enablement.
+Both runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and
+speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs
+and silent-turn stalls, with eight distinct fictional controlled/local-model generations and
+recovered full quality. Preserve all closed receipts and the three complete physical passes, five
+partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns
+followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated
+checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed
+bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer
+physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in
+remains authorized; personal-audio persistence and new OS changes require explicit enablement.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
@@ -99,9 +85,9 @@ Expected outputs:
 - `speech-direction/player-microphone-qualification/results.json`
 - `speech-direction/player-microphone-qualification/README.md`
 
-Boundary: Existing named owner-operated physical trial only; preserve the closed Ollama repair. No
-new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device
-changes beyond the grant, model comparison/requalification, broad platform/reader/controller
+Boundary: Existing named owner-operated physical trial only; preserve both closed runtime repairs
+and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio
+persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad
 certification or packaged release.
 <!-- active-slice:end -->
 

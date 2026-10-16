@@ -1,0 +1,2 @@
+PASS: continuation regression probes: 11
+PASS: one unfinished roadmap slice; persistent closed scopes; handover matches ledger

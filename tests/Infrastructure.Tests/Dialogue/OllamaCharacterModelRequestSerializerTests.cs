@@ -67,30 +67,84 @@ public sealed class OllamaCharacterModelRequestSerializerTests
 
         JsonElement schema = document.RootElement.GetProperty("format");
         Assert.Equal("object", schema.GetProperty("type").GetString());
-        Assert.False(schema.GetProperty("additionalProperties").GetBoolean());
-        Assert.Equal(
-            [
-                "disposition",
-                "speech",
-                "deliveryMode",
-                "immediateIntention",
-                "commitments",
-                "stateProposals",
-            ],
-            schema.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
-        Assert.Equal(
-            1,
-            schema.GetProperty("properties")
-                .GetProperty("commitments")
-                .GetProperty("items")
-                .GetProperty("properties")
-                .GetProperty("proposedIntentions")
-                .GetProperty("minItems")
-                .GetInt32());
+        JsonElement[] variants = schema.GetProperty("anyOf").EnumerateArray().ToArray();
+        Assert.Equal(2, variants.Length);
+        Assert.Equal("string", variants[0].GetProperty("properties").GetProperty("speech").GetProperty("type").GetString());
+        Assert.Equal("string", variants[0].GetProperty("properties").GetProperty("deliveryMode").GetProperty("type").GetString());
+        Assert.Equal("null", variants[1].GetProperty("properties").GetProperty("speech").GetProperty("type").GetString());
+        Assert.Equal("null", variants[1].GetProperty("properties").GetProperty("deliveryMode").GetProperty("type").GetString());
+        foreach (JsonElement variant in variants)
+        {
+            Assert.Equal("object", variant.GetProperty("type").GetString());
+            Assert.Equal(
+                variant.GetProperty("required").EnumerateArray().Select(value => value.GetString()),
+                variant.GetProperty("properties").EnumerateObject().Select(property => property.Name));
+            Assert.False(variant.GetProperty("additionalProperties").GetBoolean());
+            Assert.Equal(
+                [
+                    "disposition",
+                    "speech",
+                    "deliveryMode",
+                    "immediateIntention",
+                    "commitments",
+                    "stateProposals",
+                ],
+                variant.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
+            Assert.Equal(
+                1,
+                variant.GetProperty("properties")
+                    .GetProperty("commitments")
+                    .GetProperty("items")
+                    .GetProperty("properties")
+                    .GetProperty("proposedIntentions")
+                    .GetProperty("minItems")
+                    .GetInt32());
+        }
         Assert.DoesNotContain(
             EnumeratePropertyNames(schema),
             name => name is "minLength" or "maxLength" or "maxItems");
     }
+
+    [Theory]
+    [InlineData(null, null, true)]
+    [InlineData("A reply.", "ordinary-speech", true)]
+    [InlineData("A reply.", "whispering", true)]
+    [InlineData(null, "whispering", false)]
+    [InlineData(null, "ordinary-speech", false)]
+    [InlineData("A reply.", null, false)]
+    [InlineData("A reply.", "shout", false)]
+    public void PairedDeliverySchemaAndStrictDecoderAgree(string? speech, string? deliveryMode, bool valid)
+    {
+        using JsonDocument request = JsonDocument.Parse(
+            OllamaCharacterModelRequestSerializer.Serialize(CreateRequest(), "model:test"));
+        bool permitted = request.RootElement.GetProperty("format").GetProperty("anyOf")
+            .EnumerateArray().Any(variant =>
+            {
+                JsonElement properties = variant.GetProperty("properties");
+                return Permits(properties.GetProperty("speech"), speech)
+                    && Permits(properties.GetProperty("deliveryMode"), deliveryMode);
+            });
+        Assert.Equal(valid, permitted);
+        string response = JsonSerializer.Serialize(new
+        {
+            disposition = "accept",
+            speech,
+            deliveryMode,
+            immediateIntention = new { type = "wait", targetObjectId = (string?)null },
+            commitments = Array.Empty<string>(),
+            stateProposals = Array.Empty<string>()
+        });
+        CharacterModelStreamTermination terminal = CharacterModelJsonResponseCompletion.Create(
+            CreateRequest().TurnRequest, response);
+        Assert.Equal(valid ? CharacterModelStreamTerminationStatus.Completed : CharacterModelStreamTerminationStatus.Failed,
+            terminal.Status);
+        if (!valid) { Assert.Equal(CharacterModelFailureCode.InvalidResponse, terminal.Failure!.Code); }
+    }
+
+    private static bool Permits(JsonElement field, string? value) =>
+        field.GetProperty("type").GetString() == (value is null ? "null" : "string")
+        && (!field.TryGetProperty("enum", out JsonElement choices)
+            || choices.EnumerateArray().Any(choice => choice.GetString() == value));
 
     private static IEnumerable<string> EnumeratePropertyNames(JsonElement element)
     {

@@ -963,6 +963,23 @@ def ollama_participation_runtime(run, environment):
                            ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
                   retry_native=True, completion='PASS: Ollama participation Main: ' + mode)
 
+    report = run.directory / 'dialogue-response-repair.json'
+    run.stage('dialogue-response-repair',
+              ['godot', '--headless', '--path', 'game', 'res://DialogueResponseRepairMainCheck.tscn'],
+              env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0',
+                       ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE='1',
+                       ALLRPCS_RESPONSE_REPAIR_MODE='controlled', ALLRPCS_RESPONSE_REPAIR_REPORT=str(report),
+                       ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                       ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+              retry_native=True, completion='PASS: dialogue response repair Main: controlled')
+    result = json.loads(report.read_text())
+    if result['status'] != 'passed' or len(result['turns']) != 8 or any(
+            not turn['newResult'] or turn['replyCalls'] != 1 for turn in result['turns']):
+        raise ValueError('Repeated response fixture did not produce eight distinct generations')
+    log = run.directory / run.report['stages'][-1]['attempts'][-1]['log']
+    if 'ObjectDB instances leaked' in log.read_text():
+        raise ValueError('Repeated response fixture leaked native objects at exit')
+
 
 def space_hold_runtime(run, environment):
     """Qualify the new tap/hold owner without opening physical microphone input."""

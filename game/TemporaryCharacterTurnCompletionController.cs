@@ -31,12 +31,25 @@ public partial class TemporaryCharacterTurnCompletionController : Node
         CharacterTurnActivity? activity = turnController.Activity;
         CharacterTurnResponse? response = activity?.Response;
         if (activity is null
-            || response?.Speech is not { } speech
+            || response is null
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking))
         {
             return;
         }
 
+        if (response.Speech is null)
+        {
+            bool silentCompleted = budgetController.Budget is null
+                ? turnController.TryComplete()
+                : budgetController.TryCompleteTurn(turnController);
+            if (!silentCompleted)
+            {
+                throw new InvalidOperationException("The silent temporary character turn could not complete.");
+            }
+            return;
+        }
+
+        DialogueUtterance speech = response.Speech;
         if (!ReferenceEquals(response, observedResponse))
         {
             CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;

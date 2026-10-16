@@ -35,7 +35,7 @@ public static class OllamaCharacterModelRequestSerializer
             WriteMessage(writer, "user", request.TurnRequest.DialogueEvent.Utterance.Text);
             writer.WriteEndArray();
             writer.WritePropertyName("format");
-            CharacterTurnResponseJsonSchemaWriter.Write(writer, includeBounds: false);
+            CharacterTurnResponseJsonSchemaWriter.Write(writer, includeBounds: false, enforceDeliveryPairing: true);
             writer.WritePropertyName("options");
             writer.WriteStartObject();
             writer.WriteNumber("temperature", 0);

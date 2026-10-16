@@ -1,0 +1,67 @@
+{
+  "observed_at": "2026-10-16T00:29:41.595209+00:00",
+  "method": "Read-only local version and selected-model metadata; no catalogue comparison, microphone or human dialogue.",
+  "ollama": {
+    "version": "0.35.0"
+  },
+  "selected_model": {
+    "name": "gemma4:e4b",
+    "model": "gemma4:e4b",
+    "modified_at": "2026-04-05T19:51:41.152815124+10:00",
+    "size": 9608350718,
+    "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gemma4",
+      "families": [
+        "gemma4"
+      ],
+      "parameter_size": "8.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 131072,
+      "embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "audio",
+      "tools",
+      "thinking"
+    ]
+  },
+  "host": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "final_selected_model": {
+    "name": "gemma4:e4b",
+    "model": "gemma4:e4b",
+    "modified_at": "2026-04-05T19:51:41.152815124+10:00",
+    "size": 9608350718,
+    "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gemma4",
+      "families": [
+        "gemma4"
+      ],
+      "parameter_size": "8.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 131072,
+      "embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "audio",
+      "tools",
+      "thinking"
+    ]
+  },
+  "final_ollama_version": {
+    "version": "0.35.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "slice_id": "phase10-dialogue-response-repair",
+  "owner_statement": "approved",
+  "source": "Direct owner reply to the published response repair proposal in this conversation.",
+  "baseline_revision": "43826907",
+  "proposal_bindings": [
+    {
+      "path": "speech-direction/player-microphone-qualification/response-failure-diagnosis/README.md",
+      "sha256": "beb77f1ca8fdcc182b1ffd3b793c4ef035e395c1585f4b16944f482974409cb9"
+    },
+    {
+      "path": "speech-direction/player-microphone-qualification/response-failure-diagnosis/proposal.patch",
+      "sha256": "bae28b6560115ddfde7438a6ffb81719c887ad2f74a14bb88729e63c0c2edb82"
+    }
+  ],
+  "scope": "Ollama-only correlated speech/delivery schema; valid silent-turn completion through existing owners; focused regression tests, repeated-turn Main fixture and corresponding quality integration; full root quality, review, evidence, commit/push.",
+  "boundary": "Preserve other provider schemas, domain validation and silence, hearing, participation, intention eligibility, retries, cancellation, ASR and playback. Prior participation repair and all frozen receipts remain closed. No personal speech/audio retention or broader release/model work.",
+  "dependent_test_adaptation": {
+    "path": "game/CharacterModelGenerationFlowSmokeCheck.cs",
+    "reason": "Existing cancellation fixture relied on the silent-turn stall being repaired. Hold unrecorded speech to keep its active-cancellation setup valid. All existing assertions retained; no new product scope.",
+    "evidence": "speech-direction/dialogue-response-repair/quality/attempt1/fixture-adaptation.json"
+  }
+}

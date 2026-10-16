@@ -31,32 +31,16 @@ has been retained in this package.
    are also confirmed. Brief taps insert normal spaces without opening capture. Language-specific
    final text observations remain unreported. The language used for the successful correction/Submit
    check was not specified.
-3. The Whisper/Submit attempt remains inconclusive. Read-only follow-up on 2026-10-16 found saved
-   provider Ollama/model `gemma3`, while the reachable local Ollama model inventory contains neither
-   `gemma3` nor `gemma3:latest`. The owner chose installed `gemma4:e4b`. Saved settings were updated
-   atomically with other provider settings preserved, the local model-availability check returned
-   HTTP 200, and the owner-trial game restarted. This matches the existing connection tester's
-   `/api/show` check; it establishes model availability, without generating a reply.
-   Main's authored initial Seeker/Healer positions are 120 pixels apart, outside the 48-pixel Whisper
-   range. Current positions are unknown. In the restarted session, move beside the Healer and record
-   submission/response statuses for the Whisper check. Clearing follows local acceptance;
-   hearing and reply/provider outcomes remain separate. The owner screenshot now confirms Whisper
-   enabled, local submission ACCEPTED and response NONE, with English selected. Source inspection
-   identifies a separate blocker: participation is bound only for OpenAI, so ordinary Ollama
-   conversation falls back to an unavailable participation model before reply generation.
-   The owner-approved [repair](../ollama-participation-repair/README.md) now supplies that binding
-   and accepts bounded cached-prompt usage metadata. Actual `gemma4:e4b` completes ordinary
-   participation and reply commit with fictional input. The recovered full gate passed 217 recorded
-   stages and 5,629 unit tests; the repair is closed. Resume the nearby-listener human trial.
-   No earlier result is promoted to a human pass.
-
-   The subsequent owner trial reports two successful spoken turns, followed by failure. The new
-   screenshot shows Whisper enabled, submission ACCEPTED, character response FAILED, reply speech
-   interrupted and the previous reply still displayed, with English selected. The two successful
-   turns are retained as qualitative observations; repeated delivery is unreliable. The screenshot
-   does not isolate a provider, schema, timeout or playback cause. This finding needs a distinct
-   [bounded schema successor](response-failure-diagnosis/README.md), while the earlier repair and
-   its one-turn evidence stay closed.
+3. The owner reported two successful spoken turns followed by failure. The selected local dialogue
+   model remains `gemma4:e4b`. Both the participation prerequisite and the separately approved
+   [response repair](../dialogue-response-repair/README.md) are complete and closed. The latter
+   constrains speech/mode pairing and completes valid silent turns without blocking later input.
+   Eight distinct fictional controlled/local-model requests and recovered full quality passed;
+   these are not physical passes. Move beside the Healer, enable the intended Whisper/Speak replies
+   controls, and observe several explicit submissions after restart. Record whether new replies
+   continue and the submission/response statuses on any failure; no exact personal sentences or
+   audio are needed. Preserve the two earlier successes and failure. German-specific final text,
+   correction and actual Whisper/reply reliability remain unresolved.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
@@ -80,3 +64,8 @@ Its held-key load check used the reset notification seam; actual held-key save/l
 No product/CI input changed for this record, so full quality is reused. JSON parsing, local evidence
 bindings, case totals, continuation sync/check and all 11 continuation regression probes passed for
 this documentation update. The editor exception hash is unchanged.
+
+The owner subsequently approved and completed the [bounded response repair](../dialogue-response-repair/README.md).
+Its malformed-pair and silent-turn defects have controlled and fictional local-model regression
+evidence plus recovered full quality. Resume the repeated human Whisper/reply observation; retain
+all earlier successes and the later failure. Neither repair receipt is a physical qualification pass.

@@ -1,0 +1,15 @@
+MSBuild version 17.8.49+7806cbf7b for .NET
+  Determining projects to restore...
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/src/Infrastructure/Allrpcs.Infrastructure.csproj (in 140 ms).
+  Restored /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/game/Allrpcs.Game.csproj (in 140 ms).
+  2 of 4 projects are up-to-date for restore.
+  Allrpcs.Domain -> /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/src/Domain/bin/Debug/net8.0/Allrpcs.Domain.dll
+  Allrpcs.Application -> /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/src/Application/bin/Debug/net8.0/Allrpcs.Application.dll
+  Allrpcs.Infrastructure -> /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/src/Infrastructure/bin/Debug/net8.0/Allrpcs.Infrastructure.dll
+  Allrpcs.Game -> /private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-quality-03yfsu28/tree/game/.godot/mono/temp/bin/Debug/Allrpcs.Game.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.45
