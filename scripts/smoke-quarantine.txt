@@ -1,0 +1,13 @@
+# Smoke launches that still run but cannot fail scripts/smoke-godot.sh, each pending an issue.
+#
+# Format: one "<launch-id> #<issue>" per line; blank lines and lines starting with "#" are
+# ignored. The launch id is what smoke_launch_id (scripts/smoke-lib.sh) derives from the
+# run_check arguments after the deadline, joined by single spaces in order:
+#   - every leading NAME=VALUE environment assignment, e.g.
+#     ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK=route
+#     ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 ALLRPCS_CHARACTER_MODEL_SETTINGS_PANEL_CHECK=1
+#   - every res:// scene argument, e.g. res://DirectionAImportProof.tscn
+#   - the file name of a --script argument, e.g. check-closed-forest-runtime.gd
+# Each id names exactly one launch. A quarantined launch prints "QUARANTINED (#<issue>)" with its
+# result; when it passes, remove its line. An entry that matches no launch fails the smoke run.
+# Quarantined launches are tracked under the smoke-quarantine label (see #421).

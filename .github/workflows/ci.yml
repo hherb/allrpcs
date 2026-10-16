@@ -97,7 +97,9 @@ jobs:
   godot-smoke:
     name: Headless Godot smoke
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # 293 launches take about 7 minutes locally (Apple silicon); a hosted runner is slower and
+    # several checks wait on wall-clock model deadlines, so keep generous headroom.
+    timeout-minutes: 45
     steps:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

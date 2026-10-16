@@ -10,6 +10,8 @@ export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 
 # Every launch goes through run_check (scripts/smoke-lib.sh): it fails on a nonzero exit, on an
 # unhandled .NET exception in the output, and (with a frame deadline) on a check that never quits.
+# Launches listed in smoke-quarantine.txt still run but are reported instead of failing.
+smoke_quarantine_file="$script_dir/smoke-quarantine.txt"
 . "$script_dir/smoke-lib.sh"
 
 run_check - godot --headless --editor --path "$repository_root/game" --quit-after 120
@@ -475,7 +477,11 @@ run_check 120 ALLRPCS_INVALID_MODEL_RESPONSE_CHECK=1 godot --headless --path "$r
 run_check 120 ALLRPCS_ORDINARY_MODEL_CANCELLATION_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 180 ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=terminal godot --headless --path "$repository_root/game"
-run_check 100000000 ALLRPCS_ORDINARY_MODEL_TIMEOUT_CHECK=1 godot --headless --path "$repository_root/game"
+# The check waits on the scene's 30-second wall-clock model deadline and fails itself after 45
+# seconds (about 2,900 frames here). Capping the frame rate bounds those 45 seconds to 5,400
+# frames on any machine, so the frame deadline only catches a check that stops evaluating.
+run_check 6000 ALLRPCS_ORDINARY_MODEL_TIMEOUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --max-fps 120
 run_check 240 ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_ORDINARY_MALFORMED_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
@@ -501,3 +507,5 @@ run_check 30 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
     ALLRPCS_OPENAI_CREDENTIAL_TEST_STORE=1 \
     ALLRPCS_CHARACTER_MODEL_CONNECTION_PANEL_CHECK=1 \
     godot --headless --path "$repository_root/game"
+
+smoke_summary
