@@ -83,6 +83,13 @@
       "source": "Owner follow-up after restart of repaired runtime ff5b8d2d, recorded on 2026-10-16.",
       "runtime_revision": "ff5b8d2d",
       "limit": "Owner reports intermittent absence of a response. Whether written reply is absent or only audio is absent remains unconfirmed. No exact player dialogue or audio retained."
+    },
+    {
+      "id": "action-request-clarification",
+      "text": "I see - dialogue seems to be working, it is just that the healer doesn't do anything when asked e.g. to examine the herb patch, not even responding - but when prompted to answer something, the healer still answers",
+      "source": "Owner clarification on 2026-10-16 after the intermittent-silence report; qualitative behavior only, no audio or recognized speech retained.",
+      "runtime_revision": "ff5b8d2d",
+      "limit": "Ordinary answers are reported working. Action requests lack visible execution and acknowledgement. Exact participation decision and structured response from the human submission were not captured."
     }
   ],
   "intake": {
@@ -172,7 +179,7 @@
     "closure": "speech-direction/dialogue-response-repair/closure.json",
     "verification": "speech-direction/dialogue-response-repair/verification.json",
     "status": "complete; controlled and selected local-model eight-turn checks and recovered full quality passed",
-    "physical_outcome": "Awaiting resumed owner-operated trial; existing successes and failure preserved.",
+    "physical_outcome": "Owner now reports ordinary dialogue answers working but herb-patch examination requests produce neither visible action nor reply. This narrows the latest complaint to action handling; it does not resolve every physical case or erase the historical response failure.",
     "owner_trial_restart": {
       "date": "2026-10-16",
       "source_revision": "ff5b8d2d39264c604fef8ae74d6cf61031120613",

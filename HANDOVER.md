@@ -31,9 +31,11 @@ quality gate passed. The cancellation fixture now holds unrecorded speech, prese
 assertions. Both runtime repairs are closed; human repeated Whisper/reply and echo outcomes
 remain partial or unperformed. Preserve the successful recognition/typing observations and
 reported two-turn success followed by failure. The latest post-restart report still finds occasional
-missing Healer responses. Text-versus-audio absence is awaiting clarification; admitted silence and
-unreported participation-start rejection are possible paths, not a confirmed live diagnosis.
-Resume only the remaining operator checks.
+missing Healer responses. The owner now clarifies that ordinary answers work, while examination
+requests produce neither visible action nor reply. Source tracing finds a speech-dependent action
+occurrence gate and no navigation handoff in the temporary logical examination flow. The exact
+human model output is unknown. A [bounded action execution proposal](speech-direction/player-microphone-qualification/herb-examination-action-proposal.md)
+is prepared; its distinct runtime grant is pending. Preserve the physical case totals and closed repairs.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -73,12 +75,15 @@ followed by failure; its exact live failure was unlogged. Resume only remaining 
 checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed
 bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer
 physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in
-remains authorized; personal-audio persistence and new OS changes require explicit enablement.
-Latest post-restart owner report still finds occasional missing Healer responses. Written-versus-
-audio absence is awaiting clarification. Existing tests allowed silence; source inspection also
-identifies unreported participation-start rejection for busy/no-listener conditions. These
-possibilities are not a confirmed live cause or a new runtime grant. Preserve the closed repairs and
-obtain the specific observed outcome before proposing another change.
+remains authorized; personal-audio persistence and new OS changes require explicit enablement. The
+owner now clarifies that ordinary dialogue answers work, while herb-patch examination requests
+produce neither visible action nor reply. Read-only tracing confirms silent examination admission
+conflicts with speech-dependent occurrence and the temporary logical flow has no navigation handoff.
+Exact model output from the human submission is unknown. The concrete bounded action execution
+proposal is speech-direction/player-microphone-qualification/herb-examination-action-proposal.md; it
+targets the remaining Phase 10 typed/spoken intention-flow acceptance. Its distinct runtime grant is
+pending. Preserve the closed repairs and physical case totals. Do not implement this proposal or
+select another active slice without the applicable grant.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

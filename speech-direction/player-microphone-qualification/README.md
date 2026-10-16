@@ -13,6 +13,14 @@ observed response in the earlier runtime. After the repair, two spoken turns wor
 response failed. [Fictional-input diagnosis](response-failure-diagnosis/README.md) reproduces one
 invalid speech/delivery pairing; repeated Whisper delivery remains unresolved.
 
+The owner subsequently clarified that ordinary questions receive answers, while requests to examine
+the herb patch produce neither visible action nor acknowledgement. The latest complaint concerns
+action handling. Read-only source tracing found that silent examination intentions are eligible but
+cannot pass speech-dependent occurrence checks, and the logical examination flow never commands
+movement. The exact model response in the human submission is unknown. The [bounded examination
+action proposal](herb-examination-action-proposal.md) describes a distinct runtime successor awaiting
+authority; no product change or additional physical pass is claimed.
+
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
 and OS permission host intake remain incomplete. [Results](results.json)
@@ -36,11 +44,11 @@ has been retained in this package.
    [response repair](../dialogue-response-repair/README.md) are complete and closed. The latter
    constrains speech/mode pairing and completes valid silent turns without blocking later input.
    Eight distinct fictional controlled/local-model requests and recovered full quality passed;
-   these are not physical passes. Move beside the Healer, enable the intended Whisper/Speak replies
-   controls, and observe several explicit submissions after restart. Record whether new replies
-   continue and the submission/response statuses on any failure; no exact personal sentences or
-   audio are needed. Preserve the two earlier successes and failure. German-specific final text,
-   correction and actual Whisper/reply reliability remain unresolved.
+   these are not physical passes. The owner now confirms ordinary answers still work and distinguishes
+   action requests that produce no action or reply. Use the linked action proposal for that gap;
+   do not repeat dialogue-only testing as proof of action execution. Preserve the two earlier successes
+   and failure. German-specific final text, correction and a finite Whisper/reply reliability result
+   remain unresolved.
 4. Remaining cancellation checks are Close, language switch and switching to another app. Return,
    release Space and start a fresh hold; old text must not overwrite the new draft.
 5. With headphones and Speak replies enabled, hold Space during a reply and confirm interruption.
@@ -67,5 +75,5 @@ this documentation update. The editor exception hash is unchanged.
 
 The owner subsequently approved and completed the [bounded response repair](../dialogue-response-repair/README.md).
 Its malformed-pair and silent-turn defects have controlled and fictional local-model regression
-evidence plus recovered full quality. Resume the repeated human Whisper/reply observation; retain
-all earlier successes and the later failure. Neither repair receipt is a physical qualification pass.
+evidence plus recovered full quality. Retain all earlier successes and the later failure, alongside
+the action-specific clarification. Neither repair receipt is a physical qualification pass.
