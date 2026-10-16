@@ -43,7 +43,8 @@ The owner-requested [conversation context repair](speech-direction/conversation-
 is complete and closed. Generation receives bounded heard/own speech with speaker roles and exact
 examination outcomes. Private speech stays filtered; successful loads clear session history and
 fence pending replies. Five fictional selected-model submissions and full current quality pass.
-Conversation persistence is not added. Resume the unchanged human trial after the repaired game restart.
+Conversation persistence is not added. The ordinary trial game was opened from published `44df588c`;
+startup is verified with the existing Ollama/`gemma4:e4b` selection. Resume the unchanged human trial.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),

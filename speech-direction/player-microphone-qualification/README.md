@@ -82,3 +82,15 @@ the action-specific clarification. Neither repair receipt is a physical qualific
 The examination action successor is complete and closed. Resume the human trial on the published
 runtime; the two earlier successful spoken turns, subsequent failure and action-specific clarification
 remain retained. Synthetic/local-model action execution does not close the physical cases.
+
+Conversation context checkpoint (2026-10-16): the separately owner-requested
+[repair](../conversation-context-repair/README.md) is complete and closed. The
+selected local model retained a conversational name across follow-ups, completed a
+silent examination, and accurately reported its safety result while remembering
+the instruction to leave the herbs. Controlled Main passed 63 assertions; recovered
+full quality passed 217 stages and 5,657 unit tests. The ordinary game was opened
+from published `44df588c` with the existing Ollama/`gemma4:e4b` selection and opt-in
+capture. Startup is verified; no new human pass is inferred. All 15 statuses remain
+three pass, five partial, seven not performed. History is bounded and session-local;
+loading a save clears it. Remaining owner observations concern conversation
+follow-ups and the existing uncompleted device/lifecycle/echo cases.

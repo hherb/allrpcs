@@ -200,5 +200,19 @@
       "method": "Launched the published ordinary game with --max-fps 60 and test-only configuration overrides removed. Startup completed and the process remained running. Existing user settings and explicit capture opt-in are preserved.",
       "physical_outcome": "No new human examination, microphone, playback or echo pass inferred."
     }
+  },
+  "conversation_context_repair": {
+    "authority": "speech-direction/conversation-context-repair/authority.json",
+    "closure": "speech-direction/conversation-context-repair/closure.json",
+    "status": "complete; 63 controlled Main assertions, five fictional selected-model submissions and recovered full quality (217 stages; 5657 unit tests) passed",
+    "history_boundary": "Bounded session history; successful full save restoration clears it. No conversation persistence is added.",
+    "physical_outcome": "No new human pass inferred. Preserve all 15 cases: three pass, five partial, seven not performed.",
+    "owner_trial_restart": {
+      "date": "2026-10-16",
+      "source_revision": "44df588ca6a731aecd3ff00bf233612985218a10",
+      "engine": "Godot 4.6.3 stable mono; Apple M3 Max; OpenGL compatibility",
+      "method": "Opened the published ordinary game with --max-fps 60 in an attached terminal after removing test-only configuration overrides. Startup was observed and the process remained running. Existing saved Ollama selection and gemma4:e4b are retained; capture remains opt-in.",
+      "physical_outcome": "No new human conversation, microphone, playback or echo pass inferred."
+    }
   }
 }
