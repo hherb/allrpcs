@@ -165,6 +165,13 @@
     "closure": "speech-direction/dialogue-response-repair/closure.json",
     "verification": "speech-direction/dialogue-response-repair/verification.json",
     "status": "complete; controlled and selected local-model eight-turn checks and recovered full quality passed",
-    "physical_outcome": "Awaiting resumed owner-operated trial; existing successes and failure preserved."
+    "physical_outcome": "Awaiting resumed owner-operated trial; existing successes and failure preserved.",
+    "owner_trial_restart": {
+      "date": "2026-10-16",
+      "source_revision": "ff5b8d2d39264c604fef8ae74d6cf61031120613",
+      "engine": "Godot 4.6.3 stable mono; Apple M3 Max; OpenGL compatibility",
+      "method": "Stopped only the exact previously launched owner-trial process, then launched the committed game with --max-fps 60. Startup completed and process remained running.",
+      "physical_outcome": "No new human recognition, reply, playback or echo pass inferred."
+    }
   }
 }
