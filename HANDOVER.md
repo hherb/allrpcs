@@ -34,8 +34,11 @@ reported two-turn success followed by failure. The latest post-restart report st
 missing Healer responses. The owner now clarifies that ordinary answers work, while examination
 requests produce neither visible action nor reply. Source tracing finds a speech-dependent action
 occurrence gate and no navigation handoff in the temporary logical examination flow. The exact
-human model output is unknown. A [bounded action execution proposal](speech-direction/player-microphone-qualification/herb-examination-action-proposal.md)
-is prepared; its distinct runtime grant is pending. Preserve the physical case totals and closed repairs.
+human model output is unknown. The owner approved the [examination action successor](speech-direction/herb-examination-action-repair/README.md).
+Its implementation now executes accepted spoken/silent examinations through movement and arrival,
+with visible result/failure and no automatic collection. Controlled native Main, a fictional
+`gemma4:e4b` examination and the recovered full gate (216 stages; 5,644 unit tests) pass.
+This runtime repair is closed; resume the existing physical trial and preserve its case totals.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -66,24 +69,24 @@ Missing deliverable: Remaining permission/selector intake, language-specific fin
 repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker
 cases and a finite conclusion.
 
-Both runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and
-speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs
-and silent-turn stalls, with eight distinct fictional controlled/local-model generations and
-recovered full quality. Preserve all closed receipts and the three complete physical passes, five
-partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns
-followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated
-checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed
-bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer
-physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in
-remains authorized; personal-audio persistence and new OS changes require explicit enablement. The
-owner now clarifies that ordinary dialogue answers work, while herb-patch examination requests
-produce neither visible action nor reply. Read-only tracing confirms silent examination admission
-conflicts with speech-dependent occurrence and the temporary logical flow has no navigation handoff.
-Exact model output from the human submission is unknown. The concrete bounded action execution
-proposal is speech-direction/player-microphone-qualification/herb-examination-action-proposal.md; it
-targets the remaining Phase 10 typed/spoken intention-flow acceptance. Its distinct runtime grant is
-pending. Preserve the closed repairs and physical case totals. Do not implement this proposal or
-select another active slice without the applicable grant.
+The reply runtime prerequisites are closed: speech-direction/ollama-participation-
+repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes
+malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-
+model generations and recovered full quality. Preserve all closed receipts and the three complete
+physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two
+successful spoken turns followed by failure; its exact live failure was unlogged. Resume only
+remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener.
+Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space
+tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks.
+Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require
+explicit enablement. The owner clarified ordinary answers work but examination requests lacked
+action or reply. The separately approved herb examination action repair is now complete and closed
+at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual
+selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination
+movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve
+every prior report and all 15 physical statuses. Resume the owner-operated trial on the published
+repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed
+repairs or infer a new runtime scope.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

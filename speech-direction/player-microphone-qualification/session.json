@@ -187,5 +187,11 @@
       "method": "Stopped only the exact previously launched owner-trial process, then launched the committed game with --max-fps 60. Startup completed and process remained running.",
       "physical_outcome": "No new human recognition, reply, playback or echo pass inferred."
     }
+  },
+  "examination_action_repair": {
+    "authority": "speech-direction/herb-examination-action-repair/authority.json",
+    "closure": "speech-direction/herb-examination-action-repair/closure.json",
+    "status": "complete; controlled Main, native visual, selected local-model examination and recovered full quality passed",
+    "physical_outcome": "No new human pass inferred; resume the existing owner-operated trial after restart."
   }
 }

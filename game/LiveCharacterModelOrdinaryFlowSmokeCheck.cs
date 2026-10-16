@@ -55,6 +55,9 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
     {
         bool ollamaActionEnabled =
             OS.GetEnvironment(LiveOllamaCheckEnvironmentVariable) == EnabledEnvironmentValue;
+        // This legacy fixture explicitly exercises the conditional collection scaffold.
+        if (ollamaActionEnabled || OS.GetEnvironment(LiveOpenAiCheckEnvironmentVariable) == EnabledEnvironmentValue)
+        { GetParent<Main>().ConditionalCollectionScaffolding = true; }
         bool ollamaWaitEnabled =
             OS.GetEnvironment(LiveOllamaWaitCheckEnvironmentVariable) == EnabledEnvironmentValue;
         bool openAiActionEnabled =

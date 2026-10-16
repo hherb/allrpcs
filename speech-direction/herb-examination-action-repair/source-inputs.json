@@ -1,0 +1,61 @@
+{
+  "baseline_commit": "59406ec0017d9dfb302b7a5d20da5b51c92667b7",
+  "files": [
+    {
+      "path": "game/CharacterExaminationFlowSmokeCheck.cs",
+      "sha256": "a03142fe6822a953b516177bbe174481a7f8917d29c1a4f0229a9c207072322b"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "c935ee197ed2b0af901eadad8c2598eb1ce7ade97efa86ec98209fa13d6d2e90"
+    },
+    {
+      "path": "game/HerbExaminationActionController.cs",
+      "sha256": "515f12ade2268ae3127a4944a41c250a77f63d7c4195aabcc3f6e4f99653e255"
+    },
+    {
+      "path": "game/HerbExaminationActionMainCheck.cs",
+      "sha256": "6bb1de7370698cb793d1f85f3bf8dd0d50d98916ad93eb147ddcfecd19526e3f"
+    },
+    {
+      "path": "game/HerbExaminationActionMainCheck.tscn",
+      "sha256": "c0adcad25a416a86ecdaf632afcf2e40fadb94704364a20852e47a473b936b6c"
+    },
+    {
+      "path": "game/LiveCharacterModelOrdinaryFlowSmokeCheck.cs",
+      "sha256": "3bca7bd3fe7f4e8138b93724df1c14feeab2081276e8d9e8a81611a31f8becf0"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "7c646b8c1e616b93dc68cbbe79b314f309d9eef7652656a0e54a84c3c0b26ab2"
+    },
+    {
+      "path": "game/OllamaParticipationHttpHandler.cs",
+      "sha256": "0c136216c40e97d8925e53b872864a331133862442c35bd6dfb3b1ae348fe687"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "e372c2157787fb82e1d04adbfcfecaba90433c1be0d27b6563c4b9a9b9cef166"
+    },
+    {
+      "path": "game/WorldEventController.cs",
+      "sha256": "70f026c9f7a4db47f8b50530b889a5965a611b008fbe94728f08dc5e764d3853"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "52daafc4bc9ce05606d7196eea397b10c5e18ca9d10da8f69b0c2695dd152c76"
+    },
+    {
+      "path": "src/Application/Dialogue/AcceptedCharacterExamination.cs",
+      "sha256": "c83e3e29dad983029b6ab8f4d4f8cb01c22869782cd3dfddb511a7187bc74348"
+    },
+    {
+      "path": "src/Application/Dialogue/HerbExaminationEventCatalog.cs",
+      "sha256": "fab621142de49b1699a8362b1f9a1a9cc7ac2623c31dbbd4059516a744f99ee9"
+    },
+    {
+      "path": "tests/Application.Tests/Dialogue/AcceptedCharacterExaminationTests.cs",
+      "sha256": "fc6d390b56e67d48031d5acfd35b66bb16183646512601e53030d8f7f04a50d1"
+    }
+  ]
+}

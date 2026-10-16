@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "mode": "unavailable",
+  "checks": [
+    "default-off-typed-dialogue-parity",
+    "missing-runtime-text-fallback",
+    "combined-ten-control-focus-and-world-gate",
+    "scene-exit-awaits-capture-and-recognizer-retirement"
+  ],
+  "realMoonshine": false,
+  "recognized": "",
+  "captureOpens": 0,
+  "size": [
+    1280,
+    720
+  ],
+  "provenance": "Synthetic PCM and engine UI input in ordinary Main. Actual local Moonshine when selected. No physical microphone, human acoustic trial or echo qualification."
+}

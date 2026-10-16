@@ -1,0 +1,17 @@
+{
+  "game/HerbExaminationActionController.cs": {
+    "before_sha256": "e980a75d216295db24a0f97839decb0092020a0ac2e55c0d5f61ca77dc584d9d",
+    "after_sha256": "515f12ade2268ae3127a4944a41c250a77f63d7c4195aabcc3f6e4f99653e255",
+    "tokens_unchanged": true
+  },
+  "game/HerbExaminationActionMainCheck.cs": {
+    "before_sha256": "567176c64e2aa752c666fe39541c9b5fa3b0131c97e1848f803ea03dda2c36cf",
+    "after_sha256": "6bb1de7370698cb793d1f85f3bf8dd0d50d98916ad93eb147ddcfecd19526e3f",
+    "tokens_unchanged": true
+  },
+  "game/OllamaParticipationHttpHandler.cs": {
+    "before_sha256": "d7d38eb6175a9bf0048fedc1a5e8002d0c406f0c0ec1c1b2f1a07a9e5fdca994",
+    "after_sha256": "0c136216c40e97d8925e53b872864a331133862442c35bd6dfb3b1ae348fe687",
+    "tokens_unchanged": true
+  }
+}

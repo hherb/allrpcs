@@ -72,7 +72,7 @@ public partial class SaveSnapshotRestorationController : Node
         ArgumentNullException.ThrowIfNull(snapshot);
 
         WorldObjectSnapshot? worldObjects = worldObjectController.WorldObjects;
-        WorldEventSnapshot? worldEvents = worldEventController.WorldEvents;
+        WorldEventSnapshot? worldEvents = worldEventController.DefinitionsFor(snapshot.WorldEvents);
         if (worldObjects is null
             || worldEvents is null
             || !SaveSnapshotRestorationPolicy.CanRestore(

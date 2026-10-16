@@ -1,0 +1,14 @@
+{
+  "game/Main.cs": {
+    "before_sha256": "b504b43611caf7b8e9e16aef31f49b7e0fb5121f83ec25772f54a95aaaf679ee",
+    "after_sha256": "7c646b8c1e616b93dc68cbbe79b314f309d9eef7652656a0e54a84c3c0b26ab2",
+    "old": "        AddChild(examinationAction);",
+    "new": "        AddChild(examinationAction);\n        MoveChild(examinationAction, GetChildCount() - 2);"
+  },
+  "game/LiveCharacterModelOrdinaryFlowSmokeCheck.cs": {
+    "before_sha256": "38974ee4ceb3d4c0eb61fb0918870c38d6b26df1793fb698455a687903604f49",
+    "after_sha256": "3bca7bd3fe7f4e8138b93724df1c14feeab2081276e8d9e8a81611a31f8becf0",
+    "old": "        GetParent<Main>().ConditionalCollectionScaffolding = OS.GetEnvironment(LiveOllamaCheckEnvironmentVariable) == EnabledEnvironmentValue\n                || OS.GetEnvironment(LiveOpenAiCheckEnvironmentVariable) == EnabledEnvironmentValue;",
+    "new": "        if (ollamaActionEnabled || OS.GetEnvironment(LiveOpenAiCheckEnvironmentVariable) == EnabledEnvironmentValue)\n        { GetParent<Main>().ConditionalCollectionScaffolding = true; }"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-16",
+  "scope_id": "phase10-herb-examination-action-repair",
+  "owner_statement": "approved",
+  "context": "Direct approval of the concrete herb-patch examination action repair proposed immediately before this message. Includes dependent validation, documentation, publication and restarting the owner trial.",
+  "proposal": {
+    "path": "speech-direction/player-microphone-qualification/herb-examination-action-proposal.md",
+    "sha256": "8932b0a9efbabb9a057aad7e24805e4447e244c1e1d8aef18135c95e2c3f13de"
+  },
+  "boundary": "Accepted examination intentions only: navigation, arrival-gated examination, silent/spoken admission, reusable execution, feedback, cancellation/load and examine-only without collection. Preserve autonomy, closed receipts and art. No general planner, harvest/inventory redesign, microphone capture or OS settings changes."
+}

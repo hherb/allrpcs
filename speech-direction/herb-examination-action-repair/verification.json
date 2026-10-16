@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase10-herb-examination-action-repair",
+  "date": "2026-10-16",
+  "status": "passed",
+  "source_provenance": "Quality metadata names the pre-commit baseline; source-inputs.json binds every changed/new product and test file actually compiled and exercised.",
+  "quality_stages": 216,
+  "unit_tests": 5644,
+  "unit_project_counts": {
+    "product-5": 2849,
+    "product-6": 1432,
+    "product-7": 1355,
+    "product-8": 8
+  },
+  "native_checks": 127,
+  "controlled_checks": 125,
+  "local_model_observation": [
+    {
+      "target": "(920, 350)",
+      "Visible": true,
+      "IsInteractionEnabled": true,
+      "IsInteractionVisible": true,
+      "ObjectIdText": "herb-patch",
+      "healerVisible": true,
+      "actor": "healer",
+      "objectId": "herb-patch",
+      "closest": "(920, 350)",
+      "pathPointCount": 201,
+      "pathEnd": "(920, 350)"
+    },
+    {
+      "disposition": "accept",
+      "intention": "examine-object",
+      "speech": false,
+      "actionStatus": "Healer: walking to examine the herb patch\u2026",
+      "completed": 0,
+      "position": "(2032.2092, 924)"
+    },
+    {
+      "Status": "Healer: examined the herb patch. Safe to collect; herbs left in place.",
+      "position": "(927.44293, 355.277)",
+      "destination": "(920, 350)",
+      "CompletedCount": 1,
+      "lastCollision": "/root/HerbExaminationActionMainCheck/Main/OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomLeft at (1079.9999, 449.92618) normal (0, -1)"
+    },
+    {
+      "choseAction": true,
+      "executed": true,
+      "Status": "Healer: examined the herb patch. Safe to collect; herbs left in place."
+    }
+  ],
+  "review": "Bounded source review, exact frozen examination controller, unchanged accepted validators/receipts, command ownership, typed/synthetic draft submission, arrival and load fences verified.",
+  "physical_qualification": "No new physical microphone, echo, playback or platform pass; preserve 3 pass, 5 partial and 7 unperformed cases.",
+  "evidence": [
+    {
+      "path": "speech-direction/herb-examination-action-repair/authority.json",
+      "sha256": "78afd95f21a0d817ac52f7e4b05296463ae1224b45f29f6eea29084ceaf11108"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/source-inputs.json",
+      "sha256": "95ca48b3e1dd7912843564c5bd25642138e64fbafcaf643277e8a0154fb4f58c"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/README.md",
+      "sha256": "2b721d456edb0e293be1f9eb328c86f472b05071d63e319fc9144d0879df9b84"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/review.md",
+      "sha256": "b7d8c86bdc2f5cf21767d9a1339b055e1c3ab03358894e0dde01bd3d394c2bea"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/native-main.json",
+      "sha256": "9957b65a0eb6cd2b3c224ec2026eb9cf5f16548590f2e5ab8a987536c4c49b89"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/native-main.png",
+      "sha256": "28b751972b2769f58fe84b7d34c1dfe8e1d75855f0c1157984df9f5cad704bfa"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/live-main.json",
+      "sha256": "036cb3859417b7c52d7cd669a23192da9f8f66529d5c0569d549eb3bc22c398b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/finish-quality.py",
+      "sha256": "a0c21c047d28ebb388ede273a2475f6a00d55a0220e4e401cf9450254b3eae4c"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/finish-gameplay-quality.py",
+      "sha256": "bffe2ac8e854db14c2a4f491b1ba82082a8bd244f8b6bf6f468545c664f84e2b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/final/manifest.json",
+      "sha256": "78e8732d32a35f7f764de1c7571fe00a797f0d40cacecf5bd5d4c44fcbfa65f4"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/final/summary.json",
+      "sha256": "e4ca3e7302ef57a31db90f8dac93ec558b33ca2604d44f780bdb5e44f689124a"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/02-art-1-1.log",
+      "sha256": "a6bc5a5bfff06099fdbe9e5a4fe48eb935a427ec24b56c6f710b9317cb3bf543"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/25-product-3-1.log",
+      "sha256": "df0fe031e344a0bdf6581c5210a1a6cbe81e078dd494ee23909b1581eb6b8be1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/HerbExaminationActionController.cs",
+      "sha256": "e980a75d216295db24a0f97839decb0092020a0ac2e55c0d5f61ca77dc584d9d"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/HerbExaminationActionMainCheck.cs",
+      "sha256": "567176c64e2aa752c666fe39541c9b5fa3b0131c97e1848f803ea03dda2c36cf"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/OllamaParticipationHttpHandler.cs",
+      "sha256": "d7d38eb6175a9bf0048fedc1a5e8002d0c406f0c0ec1c1b2f1a07a9e5fdca994"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/formatting.json",
+      "sha256": "cdf8620a7ae100882a663b8925ee5b2c979676b0d7bb0fea0f81376dbd4e44bc"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/source-inputs.json",
+      "sha256": "ef27fe111d3e662dd88e5481d6e7fa2eacb2e55b169bab890fa620eb3041028b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt1/summary.json",
+      "sha256": "a56a90e9dee14d23e109aa717bd62fd9dca5f80d1644bab109ac245b07a8fc9a"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/02-art-1-1.log",
+      "sha256": "a6bc5a5bfff06099fdbe9e5a4fe48eb935a427ec24b56c6f710b9317cb3bf543"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/25-product-3-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/26-product-4-1.log",
+      "sha256": "43496b89a104be672bf291078ee9187a7ba1b1714de419cbb008180c35235192"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/27-product-5-1.log",
+      "sha256": "29f10208006a99a5cd1854ec5f5270cc23eec4aac6765de37bea5875c96168b1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/28-product-6-1.log",
+      "sha256": "08736f3eaad1a8ccd3b238a00ea69e153f760f6d5f4ef94dddbc4cc9e4b3cc0c"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/29-product-7-1.log",
+      "sha256": "4bd29f7b1c2ed53f83be1d2e2ed77f27fd397314f0144e864c7de600b4ac947e"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/30-product-8-1.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/31-product-9-1.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/32-boundary-hand-tool-resume-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/33-boundary-healer-resume-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/34-boundary-foliage-resume-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/35-product-10-1.log",
+      "sha256": "f41c3f926267c6a659f4629fd93a427c33b84e7303855336dec053ad5dd7c72f"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/LiveCharacterModelOrdinaryFlowSmokeCheck.cs",
+      "sha256": "38974ee4ceb3d4c0eb61fb0918870c38d6b26df1793fb698455a687903604f49"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/Main.cs",
+      "sha256": "b504b43611caf7b8e9e16aef31f49b7e0fb5121f83ec25772f54a95aaaf679ee"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/corrections.json",
+      "sha256": "e27e77397013a2d747e64d752dcc1a3946b62f7888d46915fd1edfe65b5d5f17"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/source-inputs.json",
+      "sha256": "145b460eca7be8442a42c23b34331e09b8023c9bd32383e67cb5ef08b8e7e2b1"
+    },
+    {
+      "path": "speech-direction/herb-examination-action-repair/quality/attempt2/summary.json",
+      "sha256": "b4faabe2871a0975ba6b214512a272a9e36183453cc96785b9c3fcb1570a7324"
+    }
+  ],
+  "native_capture": "Final 1280x720 visible-window capture uses --always-on-top; result line inspected. Replaces an occluded initial-frame capture before publication; no product change."
+}

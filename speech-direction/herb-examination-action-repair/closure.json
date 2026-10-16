@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase10-herb-examination-action-repair",
+  "workstream": "herb-examination-action-repair",
+  "date": "2026-10-16",
+  "status": "complete",
+  "authority": {
+    "path": "speech-direction/herb-examination-action-repair/authority.json",
+    "sha256": "78afd95f21a0d817ac52f7e4b05296463ae1224b45f29f6eea29084ceaf11108"
+  },
+  "verification": {
+    "path": "speech-direction/herb-examination-action-repair/verification.json",
+    "sha256": "1881492000d6117bff860c48de99b2c434563913b02d57bd23622adc1b2e1d9e"
+  },
+  "completed": "Accepted spoken/silent examinations execute through collision-resolved navigation and arrival, with bounded feedback, repeat/cancel/load ownership and no ordinary automatic collection. Controlled Main, selected local-model observation and recovered full quality pass.",
+  "limits": "One existing examination action, not a general planner or forced obedience. Physical qualification remains partial. Preserve closed owners and all frozen evidence.",
+  "next": "Restore the existing physical session and publish under standing authority, then restart the trial game."
+}

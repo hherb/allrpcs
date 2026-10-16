@@ -18,8 +18,9 @@ the herb patch produce neither visible action nor acknowledgement. The latest co
 action handling. Read-only source tracing found that silent examination intentions are eligible but
 cannot pass speech-dependent occurrence checks, and the logical examination flow never commands
 movement. The exact model response in the human submission is unknown. The [bounded examination
-action proposal](herb-examination-action-proposal.md) describes a distinct runtime successor awaiting
-authority; no product change or additional physical pass is claimed.
+action proposal](herb-examination-action-proposal.md) describes the separately approved [completed repair](../herb-examination-action-repair/README.md).
+Accepted spoken/silent examinations now move and execute with visible result/failure; the recovered
+full gate passes. No additional physical pass is claimed.
 
 [Authority](authority.json) records the enabled trial. [Session](session.json) records current local
 runtime provenance, reported languages, built-in input/output and room conditions. Selector usage
@@ -77,3 +78,7 @@ The owner subsequently approved and completed the [bounded response repair](../d
 Its malformed-pair and silent-turn defects have controlled and fictional local-model regression
 evidence plus recovered full quality. Retain all earlier successes and the later failure, alongside
 the action-specific clarification. Neither repair receipt is a physical qualification pass.
+
+The examination action successor is complete and closed. Resume the human trial on the published
+runtime; the two earlier successful spoken turns, subsequent failure and action-specific clarification
+remain retained. Synthetic/local-model action execution does not close the physical cases.

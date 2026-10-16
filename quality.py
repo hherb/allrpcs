@@ -980,6 +980,23 @@ def ollama_participation_runtime(run, environment):
     if 'ObjectDB instances leaked' in log.read_text():
         raise ValueError('Repeated response fixture leaked native objects at exit')
 
+    report = run.directory / 'herb-examination-action.json'
+    run.stage('herb-examination-action',
+              ['godot', '--headless', '--path', 'game', '--quit-after', '10800',
+               'res://HerbExaminationActionMainCheck.tscn'],
+              env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0',
+                       ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE='1',
+                       ALLRPCS_EXAMINATION_MODE='controlled', ALLRPCS_EXAMINATION_REPORT=str(report),
+                       ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                       ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+              retry_native=True, completion='PASS: herb examination action Main: controlled')
+    result = json.loads(report.read_text())
+    if result['status'] != 'passed' or len(result['checks']) < 50:
+        raise ValueError('Examination action fixture did not complete its ordinary Main cases')
+    log = run.directory / run.report['stages'][-1]['attempts'][-1]['log']
+    if 'ObjectDB instances leaked' in log.read_text():
+        raise ValueError('Examination action fixture leaked native objects at exit')
+
 
 def space_hold_runtime(run, environment):
     """Qualify the new tap/hold owner without opening physical microphone input."""

@@ -12,6 +12,9 @@ internal sealed class OllamaParticipationHttpHandler(string mode) : HttpMessageH
         root.GetProperty("format").TryGetProperty("properties", out JsonElement properties)
         && properties.TryGetProperty("kind", out _);
 
+    internal int ReplyDelayMilliseconds { get; set; }
+    internal bool SilentExaminationReply { get; set; }
+    internal bool WaitInsteadOfExamination { get; set; }
     public int ParticipationCalls { get; private set; }
     public int ReplyCalls { get; private set; }
     public int? LastHttpStatus { get; private set; }
@@ -60,20 +63,27 @@ internal sealed class OllamaParticipationHttpHandler(string mode) : HttpMessageH
             ParticipationCalls++;
             if (mode == "failure") { return new(HttpStatusCode.ServiceUnavailable); }
             using JsonDocument context = JsonDocument.Parse(root.GetProperty("messages")[1].GetProperty("content").GetString()!);
-            bool respond = mode is "respond" or "repeated" && context.RootElement.GetProperty("isDirectlyAddressed").GetBoolean();
+            bool respond = mode is "respond" or "repeated" or "examination" && context.RootElement.GetProperty("isDirectlyAddressed").GetBoolean();
             string? motive = respond ? null : context.RootElement.GetProperty("goals")[0].GetProperty("key").GetString();
             body = JsonSerializer.Serialize(new { kind = respond ? "respond" : "remain-silent", motiveKey = motive });
         }
         else
         {
             ReplyCalls++;
+            if (ReplyDelayMilliseconds > 0) { await Task.Delay(ReplyDelayMilliseconds, token); }
             body = JsonSerializer.Serialize(new
             {
                 disposition = "accept",
-                speech = mode == "repeated" && ReplyCalls is 3 or 4 or 6 ? null : "I hear you.",
-                deliveryMode = mode == "repeated" && ReplyCalls is 3 or 6 ? null
+                speech = (mode == "examination" && SilentExaminationReply)
+                    || (mode == "repeated" && ReplyCalls is 3 or 4 or 6) ? null : "I hear you.",
+                deliveryMode = (mode == "examination" && SilentExaminationReply)
+                    || (mode == "repeated" && ReplyCalls is 3 or 6) ? null
                     : mode == "repeated" && ReplyCalls is 2 or 4 ? "whispering" : "ordinary-speech",
-                immediateIntention = new { type = "wait", targetObjectId = (string?)null },
+                immediateIntention = new
+                {
+                    type = mode == "examination" && !WaitInsteadOfExamination ? "examine-object" : "wait",
+                    targetObjectId = mode == "examination" && !WaitInsteadOfExamination ? "herb-patch" : (string?)null
+                },
                 commitments = Array.Empty<string>(),
                 stateProposals = Array.Empty<string>()
             });

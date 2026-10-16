@@ -35,6 +35,7 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
         string mode = OS.GetEnvironment(CheckEnvironmentVariable);
         bool enabled = mode is EnabledEnvironmentValue or GeneratedMode;
         SetProcess(enabled);
+        if (enabled) { GetParent<Main>().ConditionalCollectionScaffolding = true; }
         if (!enabled)
         {
             return;

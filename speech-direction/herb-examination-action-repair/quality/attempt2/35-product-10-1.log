@@ -1,0 +1,253 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofCorrectedCloak.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofLeadExchangeCloak.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofPelvisCloak.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofReferenceGaitCloak.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://CharacterAnimationImportProofRevisedCloak.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakGaitCorrectionCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakGaitCorrectionProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakGaitSideRevisionCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakGaitSideRevisionProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakLeadExchangeCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakLeadExchangeProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakPelvisHingeCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakPelvisHingeProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakReferenceGaitCheck.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+WARNING: Missing .uid file for path "res://SeekerCloakReferenceGaitProof.gd". The file was re-created from cache.
+     at: _process_file_system (editor/file_system/editor_file_system.cpp:1374)
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (10 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | Reopening scenes...[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | Loading central editor layout...[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | Loading plugin window layout...[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | Editor layout ready.[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Direction A import proof passed: lossless source-parity textures, linear filtering, straight, 90-degree, T-junction, cross-junction, end-cap, and exact live-angle opening- and Village-Square-junction path modules, repeatable stream water, mirrored bank edge, and reusable opening cap, repeatable woodland leaf litter and its straight, outer-corner, and two inset-corner quiet-moss transitions plus the softly feathered Village Edge overlay, separate table cue, 144px-minimum visible Seeker, four six-frame 120 ms walks, four two-frame 600 ms idle loops, four four-frame 160 ms non-looping interactions, 48 unique character textures, and no gameplay authority.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Shrine–Road smoke passed: identity owner, distinct layers, decoded source parity and exact hidden fill.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Woodland–Shrine smoke passed: exact imported pixels, placement and retained Laundry join.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Woodland–Village Edge smoke passed: exact imported pixels, placement and retained Laundry join.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Village Edge–Stream smoke passed: exact imported pixels, placement and retained bridge and sibling order.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Stream–Laundry smoke passed: exact imported pixels, placement and retained bridge and sibling order.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime closed-forest smoke passed: exact imported pixels, placement, order and closed physical gate.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, straight transitions, complementary outer corners, one softly feathered Village Edge transition, and one straight path with its rounded end cap plus the exact live-angle opening junction and tailored Village Square junction with its 124x96 Village Edge connector form bounded presentation behind the retained greybox.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime garden foliage smoke passed: six placements of one exact manifest-bound 72x56 broadleaf sprite retain their planted-foot pivots, cover the existing Healer's Garden beneath its preparation table, and add no collision or gameplay authority.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime preparation-table smoke passed: one exact manifest-bound 96x96 table retains its planted-foot pivot at the existing station, draws above the accepted garden foliage, and adds no collision or gameplay authority.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime herb-bed smoke passed: two placements of one exact manifest-bound 96x80 raised-bed sprite retain their planted-foot pivots beneath the six manifest-bound broadleaf plantings and add no collision or gameplay authority.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Runtime Seeker animation smoke passed: 24 walk, eight idle/breathe, and 16 interaction frames form direction-matched 120 ms walk, 600 ms idle, and interruptible 160 ms non-looping interaction animations while leaving movement and collision authority unchanged.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Adaptive display smoke passed: 1280x720 minimum, resizable window, canvas-item scaling, and aspect expansion support larger and fullscreen displays.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Optional overlay visibility smoke passed: settings and dialogue started hidden, the retained toggle action toggled settings, the compact HUD remained visible, hidden UI released focus, and the controller surface stayed closed.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Navigation diagnostics: vertices=8080, polygons=6853, region_iteration=1, map_iteration=2.
+Navigation smoke passed: map synchronized, retained route reachable, empty-area budgets excluded.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region projection smoke passed: 11 exact anchors, 12 navigation-backed connections, 24px path clearance, 120px landmark clearance.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region first-patient scene smoke passed: exact sickhouse entry, exact deep-sleeping patient, and collision-aware greybox layout were retained without changing disease state.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region sickhouse navigation smoke passed: five collision-backed wall sections retained one entrance, and the Seeker can enter, reach the exact patient approach, and leave over bounded synchronized navigation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region first-patient administration input smoke passed: inert startup, T mapping, authored patient-approach range and provenance, visible proximity and administration feedback, one full dose, atomic stabilization, world-event and experiment recording, rejection paths, and isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 3 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region first-patient stabilization testimony smoke passed: unstabilized and null rejection, exact administration provenance, fixed provider-neutral copy, one-shot ordinary delivery, visible sage guidance, exact Seeker audience, and isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region sage consultation input smoke passed: inert gating, K mapping, exact stabilization and heard-testimony provenance, fixed provider-neutral recovery guidance, visible proximity and completion status, ordered safe journal testimony, one-shot Seeker audience, rejection paths, and isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+First-patient recovery restoration smoke passed: before preparation, full batch, post-stabilization, post-testimony, and post-consultation saves resumed exactly once; incompatible recovery progress stayed inert.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region remedy-preparation scene smoke passed: exact healer-garden anchor, exact first-remedy recipe, bounded reachable station, and inert preparation state.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region remedy-preparation input smoke passed: inert startup, P mapping, exact station range and provenance, one-step authored progression, full-batch installation, visible proximity and progress feedback, rejection paths, and unrelated-state isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+ERROR: 3 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region village transition smoke passed: 11 collision-backed boundary sections, all retained topology openings, and synchronized round trip.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region stream/laundry smoke passed: two collision-backed banks, six inert laundry boundary sections, explicit route openings, and synchronized round trip.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region woodland-clearing smoke passed: eight collision-backed tree boundaries, four route openings, one concealed inert specimen marker, and synchronized village/laundry round trips.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region environmental-state smoke passed: inert exact baseline ownership, released/unrelated/null/absent/rebuilt input rejection, one ordinary I-key exact discovery-to-variation-to-label flow, stale/already-varied/already-presented/repeated rejection, retained weather/non-woodland regions, unchanged exact discovery and evidence state, and one exact completed flow token.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Seeker customization selection smoke passed: inert empty startup, stable representative order, null/rebuilt/foreign/wrong-character/incomplete rejection, one exact selection/install, repeated-path preservation, and exact option, identity, pronoun, appearance, background, and profile retention.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Seeker customization menu smoke passed: inert hidden startup, released/unrelated input rejection, explicit modal opening with movement suspension, complete-field validation, exact appearance/background submission, atomic customized-character and route-definition application, current route guidance, unchanged non-Forester gate, one-shot closure, movement resumption, and repeated-input preservation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Seeker background route state smoke passed: inert exact four-route catalogue, one exact applied Forester selection, exact closed-path access consumption, one removed gate barrier, and one-shot compare-and-swap preservation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scribe inspection access smoke passed: inert startup, one exact Scribe route, one exact old-shrine inspection token, concealed inscription, unchanged discovery and environment state, and one-shot preservation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Apothecary preparation access smoke passed: inert startup, rejected Forester, Scribe, Traveller, null, stale, rebuilt, and pre-binding inputs, one exact Apothecary token, unchanged preparation state, and one-shot preservation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Traveller road and wagon access smoke passed: inert startup, rejected Forester, Scribe, Apothecary, null, stale, rebuilt, and pre-binding inputs, one exact Traveller token, unchanged geometry and presentation, and one-shot preservation.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region southern-road/wagon smoke passed: exact retained shrine/road/wagon provenance, two road and five wagon collision boundaries, minimum-clearance synchronized round trip, representative collision rejection, one inert wagon marker, no clue/residue state, and preserved shrine snapshots.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region closed-forest-path smoke passed: exact clearing/path provenance, two approach boundaries, one visible collision-backed closed gate, synchronized and physically clear gate travel, representative side/gate collision rejection, and retained clearing, shrine, road, and wagon snapshots.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ERROR: Channel owner must be final root child with exactly five sprites
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] _fail (/Users/hherb/src/allrpcs/scripts/check-whole-channel-runtime.gd:9)
+       [1] _check (/Users/hherb/src/allrpcs/scripts/check-whole-channel-runtime.gd:20)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

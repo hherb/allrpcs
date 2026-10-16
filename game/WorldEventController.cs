@@ -1,3 +1,5 @@
+using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Persistence;
@@ -70,13 +72,14 @@ public partial class WorldEventController : Node
     {
         ArgumentNullException.ThrowIfNull(state);
 
-        WorldEventSnapshot? worldEvents = WorldEvents;
+        WorldEventSnapshot? worldEvents = DefinitionsFor(state);
         if (worldEvents is null
             || !WorldEventSaveStateRestorationPolicy.CanRestore(state, worldEvents))
         {
             return false;
         }
 
+        WorldEvents = worldEvents;
         EventLog = state.EventLog;
         WorldTime = state.WorldTime;
         return true;
@@ -91,6 +94,34 @@ public partial class WorldEventController : Node
         return worldEvents is null
             ? null
             : WorldEventLookup.FindById(eventId, worldEvents);
+    }
+
+    // Preflight is pure: a rejected load never changes the authoritative catalog.
+    internal WorldEventSnapshot? DefinitionsFor(WorldEventSaveState state)
+    {
+        if (WorldEvents is null) { return null; }
+        try { return HerbExaminationEventCatalog.Expand(WorldEvents, state.EventLog); }
+        catch (ArgumentException) { return null; }
+    }
+
+    /// <summary>Commits one arrived examination and its exact action transcript atomically.</summary>
+    internal CharacterTurnWorldEventOccurrence? TryOccurExamination(AcceptedCharacterExamination execution,
+        CharacterTurnTranscriptController transcriptController)
+    {
+        if (WorldEvents is null || EventLog is null || WorldTime is null
+            || transcriptController.Transcript is not { } transcript) { return null; }
+        WorldEvent next = HerbExaminationEventCatalog.Next(WorldEvents, EventLog);
+        WorldEventSnapshot definitions = WorldEventLookup.FindById(next.EventId, WorldEvents) is null
+            ? new(WorldEvents.Entries.Append(next)) : WorldEvents;
+        CharacterTurnWorldEventOccurrence occurrence = new(next, execution.CreateTranscriptEntry());
+        if (!CharacterTurnWorldEventOccurrencePolicy.CanOccur(occurrence, definitions, EventLog, WorldTime))
+        { return null; }
+        var result = CharacterTurnWorldEventOccurrenceTransition.Occur(
+            occurrence, definitions, EventLog, WorldTime, transcript);
+        WorldEvents = definitions;
+        InstallCharacterTurnOccurrence(result.WorldEventResult);
+        transcriptController.InstallCharacterTurnOccurrence(result.Transcript);
+        return occurrence;
     }
 
     internal void InstallCharacterTurnOccurrence(WorldEventOccurrenceResult result)

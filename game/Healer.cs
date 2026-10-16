@@ -19,6 +19,20 @@ public partial class Healer : CharacterBody2D
     private static readonly NavigationWorldBounds WorldBounds =
         new(0.0f, 0.0f, 3200.0f, 1800.0f);
 
+    /// <summary>Changes only when an external command replaces the current navigation ownership.</summary>
+    internal ulong CommandRevision { get; private set; }
+
+    /// <summary>Checks that the authored examination destination has a complete navigation route.</summary>
+    internal bool TryCommandExaminationMove(Vector2 destination)
+    {
+        if (!destination.IsFinite()) { return false; }
+        Rid map = NavigationServer2D.RegionGetMap(navigationRegion.GetRid());
+        if (NavigationServer2D.MapGetIterationId(map) == 0) { return false; }
+        Vector2[] path = NavigationServer2D.MapGetPath(map, GlobalPosition, destination, true);
+        return path.Length > 0 && path[^1].DistanceTo(destination) <= NavigationSurfaceTolerancePixels
+            && TryCommandMoveToDestination(destination);
+    }
+
     private long motionTick;
     /// <summary>Exact most recent producer-issued motion, without world-state authority.</summary>
     internal FootstepMotionSample? LastMotion { get; private set; }
@@ -69,12 +83,14 @@ public partial class Healer : CharacterBody2D
     /// <summary>Selects deterministic follow mode.</summary>
     public void CommandFollow()
     {
+        CommandRevision++;
         activeCommand = HealerCommandSelector.SelectFollow();
     }
 
     /// <summary>Selects deterministic wait mode.</summary>
     public void CommandWait()
     {
+        CommandRevision++;
         activeCommand = HealerCommandSelector.SelectWait();
     }
 
@@ -105,6 +121,7 @@ public partial class Healer : CharacterBody2D
             return false;
         }
 
+        CommandRevision++;
         activeCommand = selection;
         return true;
     }

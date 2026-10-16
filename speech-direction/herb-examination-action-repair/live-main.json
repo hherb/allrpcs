@@ -1,0 +1,59 @@
+{
+  "mode": "live",
+  "status": "passed",
+  "checks": [
+    "Known mode",
+    "Isolated Ollama HTTP transport",
+    "Ordinary model composition activated",
+    "Healer returned from the authored independent task",
+    "Dialogue chain idle",
+    "Fresh generation for explicit submission",
+    "Valid response received",
+    "Dialogue chain idle",
+    "Exactly one generation per submitted request",
+    "Exact submitted words retained by existing dialogue owner",
+    "Action reached a terminal outcome",
+    "Committed examination is physically at the patch: Healer: examined the herb patch. Safe to collect; herbs left in place. at (927.44293, 355.277)",
+    "Arrived action committed with feedback",
+    "Local accepted examination executed",
+    "Dialogue chain idle"
+  ],
+  "observations": [
+    {
+      "target": "(920, 350)",
+      "Visible": true,
+      "IsInteractionEnabled": true,
+      "IsInteractionVisible": true,
+      "ObjectIdText": "herb-patch",
+      "healerVisible": true,
+      "actor": "healer",
+      "objectId": "herb-patch",
+      "closest": "(920, 350)",
+      "pathPointCount": 201,
+      "pathEnd": "(920, 350)"
+    },
+    {
+      "disposition": "accept",
+      "intention": "examine-object",
+      "speech": false,
+      "actionStatus": "Healer: walking to examine the herb patch\u2026",
+      "completed": 0,
+      "position": "(2032.2092, 924)"
+    },
+    {
+      "Status": "Healer: examined the herb patch. Safe to collect; herbs left in place.",
+      "position": "(927.44293, 355.277)",
+      "destination": "(920, 350)",
+      "CompletedCount": 1,
+      "lastCollision": "/root/HerbExaminationActionMainCheck/Main/OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomLeft at (1079.9999, 449.92618) normal (0, -1)"
+    },
+    {
+      "choseAction": true,
+      "executed": true,
+      "Status": "Healer: examined the herb patch. Safe to collect; herbs left in place."
+    }
+  ],
+  "fictionalInputsOnly": true,
+  "physicalMicrophoneOpened": false,
+  "playbackQualified": false
+}

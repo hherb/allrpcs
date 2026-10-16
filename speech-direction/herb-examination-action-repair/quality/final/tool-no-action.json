@@ -1,0 +1,10 @@
+{
+  "mode": "no-action",
+  "checks": [
+    "ordinary collision-resolved movement to supported Village Edge example and route return; no walking/standing/startup contact"
+  ],
+  "truthChecks": [],
+  "commits": 0,
+  "presentations": 0,
+  "transcript": []
+}

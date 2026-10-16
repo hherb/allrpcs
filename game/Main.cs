@@ -39,6 +39,8 @@ public partial class Main : Node
     private static readonly StringName LayeredInscriptionDiscoverAction =
         new("layered_inscription_discover");
 
+    internal bool ConditionalCollectionScaffolding { get; set; }
+    private HerbExaminationActionController examinationAction = null!;
     private Healer healer = null!;
     private SeekerWalkAnimationPresenter seekerAnimationPresenter = null!;
     private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
@@ -288,6 +290,9 @@ public partial class Main : Node
         }
 
         InitializeWorldEvents();
+        examinationAction = new() { Name = "HerbExaminationActionController" };
+        AddChild(examinationAction);
+        MoveChild(examinationAction, GetChildCount() - 2);
         RecordInitialWorldEvent();
         InitializeSabotageTurnOpportunity();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
@@ -702,11 +707,20 @@ public partial class Main : Node
             })
         {
             if (activity is not null
-                && CharacterTurnResponseReceptionPolicy.CanReceive(activity, termination.Response)
-                && !characterTurnController.TryReceiveResponse(termination.Response))
+                && CharacterTurnResponseReceptionPolicy.CanReceive(activity, termination.Response))
             {
-                throw new InvalidOperationException(
-                    "The validated model response could not enter its exact awaiting turn.");
+                if (!characterTurnController.TryReceiveResponse(termination.Response))
+                {
+                    throw new InvalidOperationException(
+                        "The validated model response could not enter its exact awaiting turn.");
+                }
+                var scaffold = GetNode<TemporaryCharacterExaminationFlowController>(
+                    "TemporaryCharacterExaminationFlowController");
+                if (!ConditionalCollectionScaffolding)
+                {
+                    scaffold.SetProcess(false);
+                    examinationAction.Offer(characterTurnController.Activity!);
+                }
             }
 
             return;
@@ -839,6 +853,7 @@ public partial class Main : Node
         if (!ControlInputContext.WorldAllowed(this)) { return; }
         if (ControlInputMatcher.Pressed(@event, CharacterTurnCancelAction))
         {
+            examinationAction.Cancel();
             _ = modelFlowController.TryCancel();
             _ = participationRoundController.TryCancel();
             _ = characterTurnController.TryCancel();
@@ -1059,7 +1074,9 @@ public partial class Main : Node
         }
 
         displayedMode = healer.CommandMode;
-        healerModeStatus.Text = $"Current healer mode: {FormatMode(displayedMode)}";
+        string mode = examinationAction.Running && displayedMode == HealerCommandMode.MoveToDestination
+            ? "EXAMINE HERB PATCH" : FormatMode(displayedMode);
+        healerModeStatus.Text = $"Current healer mode: {mode}";
     }
 
     private static string FormatMode(HealerCommandMode mode)
