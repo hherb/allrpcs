@@ -29,13 +29,22 @@ public sealed class ProjectSdkAndPackageTests
         Assert.Empty(project.Descendants().Where(element => ForbiddenElements.Contains(element.Name.LocalName)));
     }
 
-    [Fact]
-    public void DirectoryBuildPropsAddsNoReferences()
+    [Theory]
+    [InlineData("Directory.Build.props")]
+    [InlineData("Directory.Build.targets")]
+    [InlineData("Directory.Packages.props")]
+    public void SharedBuildFilesAddNoReferences(string fileName)
     {
-        XDocument props = XDocument.Load(
-            Path.Combine(ProjectReferenceTests.FindRepositoryRoot(), "Directory.Build.props"));
+        string path = Path.Combine(ProjectReferenceTests.FindRepositoryRoot(), fileName);
+        if (!File.Exists(path))
+        {
+            Assert.NotEqual("Directory.Build.props", fileName);
+            return;
+        }
+
         string[] forbidden = ["ProjectReference", .. ForbiddenElements];
 
-        Assert.Empty(props.Descendants().Where(element => forbidden.Contains(element.Name.LocalName)));
+        Assert.Empty(XDocument.Load(path).Descendants()
+            .Where(element => forbidden.Contains(element.Name.LocalName)));
     }
 }

@@ -1,3 +1,4 @@
+using System.IO.Enumeration;
 using System.Xml.Linq;
 using Xunit;
 
@@ -72,10 +73,8 @@ public sealed class ProjectReferenceTests
         string repositoryRoot = FindRepositoryRoot();
         string[] excludedSegments = ["bin", "obj", "artifacts", ".git", ".godot"];
 
-        string[] actualProjects = Directory
-            .EnumerateFiles(repositoryRoot, "*.csproj", SearchOption.AllDirectories)
+        string[] actualProjects = EnumerateProjects(repositoryRoot, excludedSegments)
             .Select(path => Path.GetRelativePath(repositoryRoot, path).Replace('\\', '/'))
-            .Where(path => !path.Split('/').Any(segment => excludedSegments.Contains(segment)))
             .Order(StringComparer.Ordinal)
             .ToArray();
         string[] allowedProjects = AllowedReferences
@@ -100,6 +99,41 @@ public sealed class ProjectReferenceTests
             .ToArray();
 
         Assert.Empty(missing);
+    }
+
+    private static FileSystemEnumerable<string> EnumerateProjects(string repositoryRoot, string[] excludedSegments)
+    {
+        EnumerationOptions options = new()
+        {
+            RecurseSubdirectories = true,
+            IgnoreInaccessible = true,
+            AttributesToSkip = FileAttributes.ReparsePoint,
+        };
+
+        return new FileSystemEnumerable<string>(
+            repositoryRoot,
+            (ref FileSystemEntry entry) => entry.ToFullPath(),
+            options)
+        {
+            ShouldIncludePredicate = (ref FileSystemEntry entry) =>
+                !entry.IsDirectory
+                && entry.FileName.EndsWith(".csproj", StringComparison.Ordinal),
+            ShouldRecursePredicate = (ref FileSystemEntry entry) =>
+                !IsExcludedDirectory(entry.FileName, excludedSegments),
+        };
+    }
+
+    private static bool IsExcludedDirectory(ReadOnlySpan<char> name, string[] excludedSegments)
+    {
+        foreach (string segment in excludedSegments)
+        {
+            if (name.SequenceEqual(segment))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     internal static string FindRepositoryRoot()

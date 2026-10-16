@@ -10,6 +10,8 @@ public sealed class DomainAssemblyTests
         Assert.Equal("Allrpcs.Domain", DomainAssembly.Name);
     }
 
+    // Secondary guard: Roslyn drops unused references from metadata, so the csproj-level
+    // SDK/package test in Architecture.Tests is the primary enforcement.
     [Fact]
     public void ReferencesNoGodotAssembly()
     {
