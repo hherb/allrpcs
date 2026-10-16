@@ -30,8 +30,8 @@ fictional controlled and selected `gemma4:e4b` local-model generations and the r
 quality gate passed. The cancellation fixture now holds unrecorded speech, preserving its
 assertions. Both runtime repairs are closed; human repeated Whisper/reply and echo outcomes
 remain partial or unperformed. Preserve the successful recognition/typing observations and
-reported two-turn success followed by failure. The latest post-restart report still finds occasional
-missing Healer responses. The owner now clarifies that ordinary answers work, while examination
+reported two-turn success followed by failure. An earlier post-restart report found occasional
+missing Healer responses. The owner then clarified that ordinary answers work, while examination
 requests produce neither visible action nor reply. Source tracing finds a speech-dependent action
 occurrence gate and no navigation handoff in the temporary logical examination flow. The exact
 human model output is unknown. The owner approved the [examination action successor](speech-direction/herb-examination-action-repair/README.md).
@@ -44,7 +44,9 @@ is complete and closed. Generation receives bounded heard/own speech with speake
 examination outcomes. Private speech stays filtered; successful loads clear session history and
 fence pending replies. Five fictional selected-model submissions and full current quality pass.
 Conversation persistence is not added. The ordinary trial game was opened from published `44df588c`;
-startup is verified with the existing Ollama/`gemma4:e4b` selection. Resume the unchanged human trial.
+startup is verified with the existing Ollama/`gemma4:e4b` selection. The owner now reports that
+turn-based dialogue seems to work quite well. Input method, turn count and audibility were not
+specified; retain the physical case totals and resume only the remaining human trial checks.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -97,7 +99,10 @@ complete and closed at speech-direction/conversation-context-repair/closure.json
 bounded heard/own history, speaker roles and exact examination outcomes, with private speech
 filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass.
 History is session-local and clears on successful save restoration. Resume only the unchanged
-remaining human trial cases; no new physical pass is inferred.
+remaining human trial cases; no new physical pass is inferred. The latest owner follow-up reports
+that turn-based dialogue seems to work quite well after the context repair. Preserve this positive
+qualitative result alongside earlier observations. Input method, turn count, language, Whisper use
+and audibility were unspecified; physical case totals remain unchanged.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

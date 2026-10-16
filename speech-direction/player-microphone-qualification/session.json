@@ -90,6 +90,14 @@
       "source": "Owner clarification on 2026-10-16 after the intermittent-silence report; qualitative behavior only, no audio or recognized speech retained.",
       "runtime_revision": "ff5b8d2d",
       "limit": "Ordinary answers are reported working. Action requests lack visible execution and acknowledgement. Exact participation decision and structured response from the human submission were not captured."
+    },
+    {
+      "id": "post-context-repair-turn-based-dialogue-positive",
+      "text": "Turn based dialogue works quite well now it seems",
+      "source": "Owner follow-up on 2026-10-16 after the conversation context repair and ordinary trial restart.",
+      "evidence_kind": "owner_report",
+      "runtime_revision": "44df588ca6a731aecd3ff00bf233612985218a10",
+      "limit": "Positive qualitative dialogue feedback. Input method, turn count, language, Whisper use and reply audibility were not specified; no additional microphone, playback or echo case is marked passed."
     }
   ],
   "intake": {

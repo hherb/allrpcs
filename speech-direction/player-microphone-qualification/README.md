@@ -14,7 +14,7 @@ response failed. [Fictional-input diagnosis](response-failure-diagnosis/README.m
 invalid speech/delivery pairing; repeated Whisper delivery remains unresolved.
 
 The owner subsequently clarified that ordinary questions receive answers, while requests to examine
-the herb patch produce neither visible action nor acknowledgement. The latest complaint concerns
+the herb patch produce neither visible action nor acknowledgement. That earlier complaint concerned
 action handling. Read-only source tracing found that silent examination intentions are eligible but
 cannot pass speech-dependent occurrence checks, and the logical examination flow never commands
 movement. The exact model response in the human submission is unknown. The [bounded examination
@@ -94,3 +94,9 @@ capture. Startup is verified; no new human pass is inferred. All 15 statuses rem
 three pass, five partial, seven not performed. History is bounded and session-local;
 loading a save clears it. Remaining owner observations concern conversation
 follow-ups and the existing uncompleted device/lifecycle/echo cases.
+
+Latest owner observation (2026-10-16), following the context repair and restart:
+“Turn based dialogue works quite well now it seems.” This is positive qualitative
+feedback on dialogue. Input method, turn count, language, Whisper use and reply
+audibility were not specified. Preserve the earlier reports and all 15 physical
+case statuses; the remaining microphone, playback and echo checks stay open.
