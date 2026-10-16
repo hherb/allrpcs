@@ -32,6 +32,7 @@ public static class OllamaCharacterModelRequestSerializer
                 writer,
                 "system",
                 CharacterModelRequestContent.SerializeTrustedContext(request));
+            CharacterModelRequestContent.WriteHistoricalMessages(writer, request);
             WriteMessage(writer, "user", request.TurnRequest.DialogueEvent.Utterance.Text);
             writer.WriteEndArray();
             writer.WritePropertyName("format");

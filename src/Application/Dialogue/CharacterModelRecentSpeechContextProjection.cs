@@ -36,7 +36,8 @@ public static class CharacterModelRecentSpeechContextProjection
                 entries.Add(new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.RecentSpeech,
                     dialogueEvent.Utterance.Text,
-                    dialogueEvent.Delivery.Mode));
+                    dialogueEvent.Delivery.Mode,
+                    dialogueEvent.Utterance.SpeakerCharacterId));
             }
         }
 

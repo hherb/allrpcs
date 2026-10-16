@@ -1,0 +1,14 @@
+{
+  "game/DialogueEventController.cs": {
+    "old": "    public CharacterConversationHistory History { get; } = new();",
+    "new": "    internal CharacterConversationHistory History { get; } = new();",
+    "before_sha256": "0a086081c451571c51bc8929cbf08725c561914b2223bb56cc751b6fccf13987",
+    "after_sha256": "270cd115bd198cd7bd458aa2d27ac5fa9a6d86fbe26ae8f6092dc5ac806b1b98"
+  },
+  "game/DialogueEventControllerSmokeCheck.cs": {
+    "old": "            .Where(method => !method.IsSpecialName)",
+    "new": "            .Where(method => !method.IsSpecialName\n                && method.Name != nameof(Node._Ready) && method.Name != nameof(Node._ExitTree))",
+    "before_sha256": "4aa46e010bc869cda5b1811abec08196523cd5ea15941ac078e8175b8cb370ec",
+    "after_sha256": "fd89cf0fff09f15b3f5f5cf063bbb753dc86bdc53cce59e135f366c35b818b3f"
+  }
+}

@@ -997,6 +997,23 @@ def ollama_participation_runtime(run, environment):
     if 'ObjectDB instances leaked' in log.read_text():
         raise ValueError('Examination action fixture leaked native objects at exit')
 
+    report = run.directory / 'conversation-context.json'
+    run.stage('conversation-context',
+              ['godot', '--headless', '--path', 'game', '--quit-after', '10800',
+               'res://ConversationContextMainCheck.tscn'],
+              env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0',
+                       ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE='1',
+                       ALLRPCS_CONVERSATION_MODE='controlled', ALLRPCS_CONVERSATION_REPORT=str(report),
+                       ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-missing.json',
+                       ALLRPCS_PLAYER_SPEECH_CONFIG='/private/tmp/allrpcs-asr-missing.json'),
+              retry_native=True, completion='PASS: conversation context Main: controlled')
+    result = json.loads(report.read_text())
+    if result['status'] != 'passed' or len(result['checks']) < 35:
+        raise ValueError('Conversation context fixture did not complete its Main cases')
+    log = run.directory / run.report['stages'][-1]['attempts'][-1]['log']
+    if 'ObjectDB instances leaked' in log.read_text():
+        raise ValueError('Conversation context fixture leaked native objects at exit')
+
 
 def space_hold_runtime(run, environment):
     """Qualify the new tap/hold owner without opening physical microphone input."""

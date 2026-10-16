@@ -700,6 +700,12 @@ public partial class Main : Node
         }
 
         CharacterTurnActivity? activity = characterTurnController.Activity;
+        if (activity is not null && !characterModelInputSource.IsCurrent(activity.Request))
+        {
+            if (CharacterTurnCancellationPolicy.CanCancel(activity)) { _ = characterTurnController.TryCancel(); }
+            return;
+        }
+
         if (termination is
             {
                 Status: CharacterModelStreamTerminationStatus.Completed,

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "phase10-conversation-context-repair",
+  "status": "closed",
+  "date": "2026-10-16",
+  "reason": "Owner-requested bounded heard/own dialogue, speaker roles and exact examination outcomes are implemented, reviewed and verified through current product quality and selected-model follow-ups.",
+  "verification": {
+    "path": "speech-direction/conversation-context-repair/verification.json",
+    "sha256": "612489f287dbd7b4aee6091040029a441173d5fc399da8ef0adc7f2a8413f29c"
+  },
+  "no_new_physical_pass": true,
+  "history_boundary": "Session-local; cleared by successful load."
+}

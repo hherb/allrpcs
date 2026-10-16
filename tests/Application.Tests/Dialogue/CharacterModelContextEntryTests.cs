@@ -1,5 +1,6 @@
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 
 namespace Allrpcs.Application.Tests.Dialogue;
 
@@ -12,6 +13,7 @@ public sealed class CharacterModelContextEntryTests
         CharacterModelContextEntryKind.Goal,
         CharacterModelContextEntryKind.Memory,
         CharacterModelContextEntryKind.ValidAffordance,
+        CharacterModelContextEntryKind.ActionOutcome,
     };
 
     public static TheoryData<CharacterModelContextEntryKind> DialogueKinds => new()
@@ -111,6 +113,7 @@ public sealed class CharacterModelContextEntryTests
             entryType.GetProperties().OrderBy(property => property.Name, StringComparer.Ordinal),
             property => AssertProperty(property, "DeliveryMode", typeof(DialogueDeliveryMode)),
             property => AssertProperty(property, "Kind", typeof(CharacterModelContextEntryKind)),
+            property => AssertProperty(property, "SpeakerCharacterId", typeof(CharacterId)),
             property => AssertProperty(property, "Text", typeof(string)));
         Assert.Collection(
             entryType.GetConstructors().OrderBy(constructor => constructor.GetParameters().Length),
@@ -122,6 +125,7 @@ public sealed class CharacterModelContextEntryTests
                     typeof(CharacterModelContextEntryKind),
                     typeof(string),
                     typeof(DialogueDeliveryMode),
+                    typeof(CharacterId),
                 ],
                 constructor.GetParameters().Select(parameter => parameter.ParameterType)));
     }

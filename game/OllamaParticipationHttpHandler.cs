@@ -12,6 +12,8 @@ internal sealed class OllamaParticipationHttpHandler(string mode) : HttpMessageH
         root.GetProperty("format").TryGetProperty("properties", out JsonElement properties)
         && properties.TryGetProperty("kind", out _);
 
+    internal List<JsonElement> ReplyRequests { get; } = [];
+    internal string ReplyText { get; set; } = "I hear you.";
     internal int ReplyDelayMilliseconds { get; set; }
     internal bool SilentExaminationReply { get; set; }
     internal bool WaitInsteadOfExamination { get; set; }
@@ -28,6 +30,7 @@ internal sealed class OllamaParticipationHttpHandler(string mode) : HttpMessageH
     {
         using JsonDocument document = JsonDocument.Parse(await request.Content!.ReadAsStringAsync(token));
         JsonElement root = document.RootElement;
+        if (!IsParticipation(root)) { ReplyRequests.Add(root.Clone()); }
         if (mode == "live")
         {
             if (IsParticipation(root)) { ParticipationCalls++; }
@@ -75,7 +78,7 @@ internal sealed class OllamaParticipationHttpHandler(string mode) : HttpMessageH
             {
                 disposition = "accept",
                 speech = (mode == "examination" && SilentExaminationReply)
-                    || (mode == "repeated" && ReplyCalls is 3 or 4 or 6) ? null : "I hear you.",
+                    || (mode == "repeated" && ReplyCalls is 3 or 4 or 6) ? null : ReplyText,
                 deliveryMode = (mode == "examination" && SilentExaminationReply)
                     || (mode == "repeated" && ReplyCalls is 3 or 6) ? null
                     : mode == "repeated" && ReplyCalls is 2 or 4 ? "whispering" : "ordinary-speech",

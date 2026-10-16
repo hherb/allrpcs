@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-16",
+  "owner_statement": "Sounds right - please start working on it",
+  "context": "Owner requests correction of latest-utterance-only dialogue context after verified diagnosis.",
+  "scope": [
+    "Bounded session conversation history filtered by captured hearing audience",
+    "Speaker identity and prior committed character replies",
+    "Exact actor-owned completed examination result",
+    "Privacy, context budget and successful-load/stale-response fences",
+    "Controlled and selected local-model validation, documentation, commit and push"
+  ],
+  "exclusions": [
+    "Persistent conversation save schema",
+    "New action execution or collection",
+    "Artwork, layout, audio or model selection changes",
+    "New physical qualification claims"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "interrupted_without_terminal_receipt",
+  "last_completed_stage": "product-9",
+  "completed_stages": 31,
+  "observations": [
+    "No matching runner or git archive process was present.",
+    "The execution session was no longer available.",
+    "No failure traceback or terminal result was written."
+  ],
+  "cause": "unknown; no product failure is inferred",
+  "next": "Repeat the guarded recovery from its retained exact failure, under an attached PTY with periodic session waits."
+}

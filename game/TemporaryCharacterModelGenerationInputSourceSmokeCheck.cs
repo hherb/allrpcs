@@ -192,8 +192,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                 request.TurnRequest.DialogueEvent.Utterance.Text,
                 playerDialogue.Single().Text)
             && playerDialogue.Single().Text == PromptShapedText
-            && recentSpeech.Length == 1
-            && ReferenceEquals(recentSpeech[0].Text, activity.Request.DialogueEvent.Utterance.Text)
+            && recentSpeech.Length == 0
             && perception.Length == 1
             && perception[0].Text == VisibleWorldObjectDescription
             && knowledge.Length == 1
@@ -294,8 +293,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             && Entries(request, CharacterModelContextEntryKind.Goal)
                 .Single().Text == SageGoalText
             && Entries(request, CharacterModelContextEntryKind.Memory).Length == 0
+            && Entries(request, CharacterModelContextEntryKind.RecentSpeech).Length == 0
             && ReferenceEquals(
-                Entries(request, CharacterModelContextEntryKind.RecentSpeech).Single().Text,
+                Entries(request, CharacterModelContextEntryKind.UntrustedPlayerDialogue).Single().Text,
                 activity.Request.DialogueEvent.Utterance.Text)
             && Entries(request, CharacterModelContextEntryKind.ValidAffordance).Length == 0
             && input.Affordances.Entries.Count == 0
@@ -348,7 +348,8 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                     System.Reflection.BindingFlags.Public
                         | System.Reflection.BindingFlags.Instance
                         | System.Reflection.BindingFlags.DeclaredOnly)
-                .Where(method => !method.IsSpecialName && method.Name != nameof(Node._Ready))
+                .Where(method => !method.IsSpecialName
+                    && method.Name != nameof(Node._Ready) && method.Name != nameof(Node._ExitTree))
                 .ToArray();
 
         return inputProperties.Select(property => property.Name).Order()

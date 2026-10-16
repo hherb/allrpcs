@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "command": "python3 speech-direction/conversation-context-repair/finish-quality.py --self-test",
+  "tests": 1,
+  "drift_probes": [
+    "input bytes",
+    "exact correction",
+    "log digest",
+    "exit code",
+    "completion flag",
+    "failure stage"
+  ],
+  "input_inventory_count": 18911
+}

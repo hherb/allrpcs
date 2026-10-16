@@ -1,0 +1,56 @@
+PASS: one exact Square underlay, isolated editable master and append-only manifest
+PASS: exact Square source/master/imports, 92 assets/43 masters, normalized scenes and preserved predecessor
+PASS: exact Square source/master/imports, 92 assets/43 masters, normalized scenes and preserved predecessor
+PASS: rejects phase
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects dropped owner
+PASS: rejects physical scope
+PASS: rejects paint
+PASS: rejects mask/source
+PASS: rejects import processing
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 55102
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 55166
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 87165
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 86637
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 220471
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 262203
+  }
+]
+PASS: frozen Square checks on approved 06f0dab4d9575bcc9ec0a4bfa88cd0b16d50d58d

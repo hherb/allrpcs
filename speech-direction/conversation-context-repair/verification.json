@@ -1,0 +1,1297 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "date": "2026-10-16",
+  "tested_tree": {
+    "baseline": "3185f7926e1430a4c34685cc6912239ee6beb44c",
+    "changed_sources": {
+      "path": "speech-direction/conversation-context-repair/source-inputs.json",
+      "sha256": "c8efbea4b1599e6974ea82903fb15be68ff967b5e01c2f9095511034993594b7"
+    },
+    "note": "All current product checks were rerun after the final source/fixture edits. The 21 unchanged frozen/art boundary passes were reused by the exact-failure, full-input and log-guarded recovery driver. Subsequent closure/handover edits are prose only."
+  },
+  "root_quality": {
+    "stages": 217,
+    "unit_tests": 5657,
+    "unit_counts": {
+      "product-5": 2849,
+      "product-6": 1443,
+      "product-7": 1357,
+      "product-8": 8
+    },
+    "skipped": 0,
+    "summary": {
+      "path": "speech-direction/conversation-context-repair/quality/final/summary.json",
+      "sha256": "d798a4dd2f392c6b021aa9c27dc08761c59226e79b00b09985e7f98cd4624fc4"
+    }
+  },
+  "controlled_main_checks": 63,
+  "live_model": "gemma4:e4b",
+  "live_main_checks": 35,
+  "live_submissions": 5,
+  "editor_preserved": true,
+  "physical_cases_changed": false,
+  "conversation_persistence_added": false,
+  "evidence": [
+    {
+      "path": "speech-direction/conversation-context-repair/README.md",
+      "sha256": "92fd425520a81147457b2169c4a545b056970da3555497887eec3321bd1e9627"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/application-tests.log.gz",
+      "sha256": "ae9005c69db3e427f2e63fe3247425504c7690e8c1b119d87ab940fe29d83948"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/authority.json",
+      "sha256": "af0b49eb603f4dbace87bf255eb4b3fcbd57bd6fbb064cfa2d9421e457981595"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/controlled-main.json",
+      "sha256": "d25f623e6d3bed01cce6e47a71db80e7a629939595a35a77615d24737870ea47"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/controller.log.gz",
+      "sha256": "f8d0f951244dbc924ec6d42a210b4b99c7550865daf04a1a7b4e76cfa441d772"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-ambiguous-followup.json",
+      "sha256": "f7f3b4db410e329dc8b5e1ac96dfaecba31e45001e6d05fd9f492b17de729392"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-chat-clarification.json",
+      "sha256": "928887a9a09f9b90720e34e6d10bc890c182dc34207a4fb5204f0a075839cfd6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-context-clarification.json",
+      "sha256": "50ca8717c962a102c88de4d6e3fce82db8a40725658d84daaffbcf54f434a270"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-initial.json",
+      "sha256": "c5213640e985c608f6852a578a56e6576c6e849e9e309fee64c7ab005b4842f6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-nearby-interjection.json",
+      "sha256": "7259ffb5fda3ba1cb7f70e481b9b3180b94877be310a8fa10eea8d6b8db17b92"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/diagnostics/live-untyped-outcome.json",
+      "sha256": "8c66e9467eb985f9bd2ab20c6e05ebd742e8ab5810a202eb51bc19a937160061"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/examination-regression.json",
+      "sha256": "74b2ce308b24841584d34761efe8e85b5bfab50dd403aaf7f7203e1a859d2777"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/finish-quality.py",
+      "sha256": "dcfb4e04bb13189da6e731dc8b30f849a13997d6ce55567c5a3178d8455df927"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/infrastructure-tests.log.gz",
+      "sha256": "c06d28fa6cba48be9cd39af3c53c5be5b615417a454ad0278645afb40e3511d5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/input-source.log.gz",
+      "sha256": "f2bc7b84c84814d592556568d63a3a09e2771e724009f869053ea3ec84190033"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/live-main.json",
+      "sha256": "d4ff6af37e507d9a49246fdcf4ec8154f9be9034aa997a681cffeed07181bb2b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/live-outcome.log.gz",
+      "sha256": "e482dd03ff06aa27776192ef37d6f689dcd25d00c0b9f18c91e8e9ae5a3d67d5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/physical-slice.json",
+      "sha256": "10928d31bbac85a0089c893dea0379594fd8e1d6e6d30b7629674d0f1b1cbfb3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attached-runner.log.gz",
+      "sha256": "f2b45d9cd18da482b4fabeea0fb6106e6c99cfe47ff49e259c0841ed1d0d5805"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/01-continuation-1.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/02-art-1-1.log",
+      "sha256": "0b367e95ef057efc9da49b63e12bc80bd4153b31e9fad20b7c27045106f2f12f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/03-art-2-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/04-art-3-1.log",
+      "sha256": "411f65182cf9b78d8d28c06ea5c537711bce71870f5a2cbfa2da6776f98a1fd2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/05-art-4-1.log",
+      "sha256": "5e230945d423d7209594bf4a01d32002c183e22baa650a6e15b5e0b1eb6b1fab"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/06-art-5-1.log",
+      "sha256": "9303f4a45a09ccf1c0cf1f6f13b21dbda078f225b6050b656f670f944125e7fc"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/07-art-6-1.log",
+      "sha256": "83174b3ba1a8fedd9d666a860d5f595065efcbb629b20ab7759a9828009ab13e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/08-art-7-1.log",
+      "sha256": "87ff61cdf3114f3407c8b065a2078a3110030a870f500bded5288d793ed225f8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/09-art-8-1.log",
+      "sha256": "e04362864f792b21ff618f2ec7f0197d0d34347f5953629db6712790ae86dcb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/10-art-9-1.log",
+      "sha256": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/11-boundary-buses-1.log",
+      "sha256": "9787163bad2e5719e07cf94efcb26356240b4baed044921b4f746162cdeb2edf"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/12-boundary-material-1.log",
+      "sha256": "048b63da31e6ceeba1d417959ce6896ea66398647a3f7ad4f74a75e1307fb166"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/13-boundary-footstep-1.log",
+      "sha256": "5f4384ab140141192d9dd65d67efd94c14368edf84448751ce01096d9e22dda2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/14-boundary-positional-1.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/15-boundary-music-1.log",
+      "sha256": "9caf1f7160790245ff6d7461b36cf125b6bfc9f67caf66068a7719fdba0d0f76"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/16-boundary-interior-1.log",
+      "sha256": "6d64e477d0c135c8069db11e625096e95111eefe36d1e313067e9e39116a3563"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/17-boundary-water-1.log",
+      "sha256": "7ea18625ac145a2d7dd65d4a75e4261c6c419d1904646211be7ae5414686c16b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/18-boundary-cask-1.log",
+      "sha256": "ee5a1ebf7c51844802b5367f525b3e2a8832476bb6c5ddfc53d75cd2a4f0ccf1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/19-boundary-hand-tool-current-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/20-boundary-healer-current-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/21-boundary-foliage-current-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/22-current-art-imports-1.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/23-product-1-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/24-product-2-1.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/25-product-3-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/26-product-4-1.log",
+      "sha256": "8bfbd6fff565f840cd0563a5488ab9defb65b92c749c62bc17c3293c43705a47"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/27-product-5-1.log",
+      "sha256": "3f33de4391dcf6a4f0ec9219ba6f9dd52c61303f1e6c38836b1e5323a77c7798"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/28-product-6-1.log",
+      "sha256": "67cca4be9ef3f0729aee9f43c0a94bd85c02f2ff72ef76c9be100ec38f9aa1a4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/29-product-7-1.log",
+      "sha256": "39e66bb59969a2b741a1dacfdbe804f8b62817c35671cfa887bece2e72c9dc41"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/30-product-8-1.log",
+      "sha256": "2fc7824f5bc1ba20a30b6e69441856fa6a983c307ddf5fa06e12b53b5601186a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/31-product-9-1.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/32-boundary-hand-tool-resume-1.log",
+      "sha256": "7eec86d90001f99e193d179279f15443e91f6f29ac1bc9b31f0adf76ad724869"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/33-boundary-healer-resume-1.log",
+      "sha256": "eeedcac5ebe55cdd923fc214de29ba748ee3fb6d806b6d7f4c291b7fb2d97eba"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/34-boundary-foliage-resume-1.log",
+      "sha256": "9bf08c2fc3ec15a39f9ed1e651966ade49775e8b6020454df7aa11de01df3937"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/35-product-10-1.log",
+      "sha256": "01a8a0824442ebad557bff2d4bb8b91be9f34ad76cf4dc347c982a6ee162e06b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/DialogueEventController.cs",
+      "sha256": "0a086081c451571c51bc8929cbf08725c561914b2223bb56cc751b6fccf13987"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/DialogueEventControllerSmokeCheck.cs",
+      "sha256": "4aa46e010bc869cda5b1811abec08196523cd5ea15941ac078e8175b8cb370ec"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/corrections.json",
+      "sha256": "22b3048d6c40973dc59b3bca2e5ef5e0b92e8032a601c8557a855a432bc7a357"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/root.log.gz",
+      "sha256": "a02173acbbeb4df6cf357a4caa6cc532414a5f4cc68639b84579a1a5b347e71f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/source-inputs.json",
+      "sha256": "067e8b79c7e05892c7257cc12577fe037e6a6d07e61c99bebb45ff59f3ee1047"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/summary.json",
+      "sha256": "619a824ac861791ee98f24d04e8b2a0e11842e4778556798f6d4f874ea1eca7f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/02-art-1-1.log.gz",
+      "sha256": "76e489137749a2b0343486b79ee7d629a798c0f96e808754c48e6cf3bfa277ab"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/100-wind-master-output-1.log.gz",
+      "sha256": "a48c336a6ed9f59fc5778ed6d20060fdaf24e0bea7290575615967bee0d32c6e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/101-boundary-wind-reviewed-1.log.gz",
+      "sha256": "f6145508f58950f53ccd7bf0a1bab2d923b7a7cf3fddbe7c4f5a5f469250151a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/102-rain-historical-restore-1.log.gz",
+      "sha256": "99372a6a696af1318c6d8f62f75fc3c938a8b3e2fd91d54352e40bf4397b7012"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/103-rain-historical-build-1.log.gz",
+      "sha256": "b642d0efdb09b34bb4a5669c90ccec818d328307bd75eac163bcf9638be6fb5f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/104-rain-historical-import-1.log.gz",
+      "sha256": "a914905a35531522e3e6f935fe193da1a66128e65c37c61bcd0f64c14ea5c567"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/105-rain-focused-1.log.gz",
+      "sha256": "bbe025a120b765c8919634d6f768df52777fbb3a36ced10fdfe6493d81ffad1e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/106-boundary-rain-source-1.log.gz",
+      "sha256": "d6b331b458995ab9858dc907eb4450312c8177b83988f461fabc14d1899fbbbe"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/107-rain-default-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/108-rain-quiet-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/109-rain-master-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/110-rain-ambience-muted-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/111-rain-missing-stream-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/112-rain-captions-off-1.log.gz",
+      "sha256": "d8a568d0deca63fa49cba58ce05f12a6311552ecf658995109d23f08bb4554dd"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/113-rain-rain-disabled-1.log.gz",
+      "sha256": "dfbe987fb121088257f60a86420f002e0a3a1553e3031b9e96f4e13923ab5ae9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/114-rain-master-output-1.log.gz",
+      "sha256": "b9ec0ac19947e6d4188df64c2b2ed335167c40a84b92f44639360f6ac12dbfc0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/115-boundary-rain-reviewed-1.log.gz",
+      "sha256": "8ecd827ae5ee28b463e1b5c6d5ced61af79eb9197969bd8f6efb7d15e1cb240b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/116-heating-historical-restore-1.log.gz",
+      "sha256": "af68a6531d81ffa974b4e73bf26ec01c3d265c49cd171f4cbeb915e1134e62d0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/117-heating-historical-build-1.log.gz",
+      "sha256": "1be1fb458879583c33c987396d529a8516d54df16d57063da9401a7dc613e4d8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/118-heating-historical-import-1.log.gz",
+      "sha256": "6261932e254b391c9d3dd523c7ac64268f5ec836b70924488d46241a97102c0d"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/119-heating-focused-1.log.gz",
+      "sha256": "b31f6cc57ace8751790c9170e83ab47a44daa236e95b62664c052c0e6a939d67"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/120-boundary-heating-source-1.log.gz",
+      "sha256": "2e4eb46e579ff226b4e9193114b266439ef6d6804ddb44803fa3232ba2d5bb58"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/121-heating-default-1.log.gz",
+      "sha256": "5f7929ae163c77e627e3fb2da87ca9cf739fbff471e69993dd2f30ea85934ac4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/122-heating-quiet-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/123-heating-master-muted-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/124-heating-effects-muted-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/125-heating-missing-stream-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/126-heating-captions-off-1.log.gz",
+      "sha256": "8fb99bcb19862ad062c80ec22e68d8d28477fc5cc10404e30f891ab5703b9c72"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/127-heating-heating-disabled-1.log.gz",
+      "sha256": "3bd502e78d0a2149f1677233cf482b6e6f1916030404db37ee5212fdb68a0900"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/128-heating-master-output-1.log.gz",
+      "sha256": "0eae35ec4c92384f30c2bb573d03ec87b21feaafc23fbe0c2247e8f09103b35a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/129-boundary-heating-reviewed-1.log.gz",
+      "sha256": "516908dbbad16aaa5863fae073320c6068bd5365b97e631c00afea397ada7437"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/130-steeping-historical-restore-1.log.gz",
+      "sha256": "5265943401593361831653362f025e691b8d7dc3924a151a671a7b5364d047c0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/131-steeping-historical-build-1.log.gz",
+      "sha256": "52aee94ad4ea19bc318d79008766357622f5b4da234295996618404a718516e8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/132-steeping-historical-import-1.log.gz",
+      "sha256": "1f696ba52a22391515b084cec7e03f1c916b8ed20bc811492bd0291f701f0756"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/133-steeping-focused-1.log.gz",
+      "sha256": "5b3311b8fab0156f01015f7a7eff2c4555c34819a4ece8316fa9b4e68b266704"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/134-boundary-steeping-source-1.log.gz",
+      "sha256": "5e3a75c66792b6d2b09fa51119cd13cfef20d8d7c61c170c5e7922c5d45c9cab"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/135-steeping-default-1.log.gz",
+      "sha256": "8927ae2039379f2127f70aabdfeec6a101aa7d27b5d76cd2fbddf10a1fc59300"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/136-steeping-quiet-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/137-steeping-master-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/138-steeping-effects-muted-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/139-steeping-missing-stream-1.log.gz",
+      "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/140-steeping-captions-off-1.log.gz",
+      "sha256": "50531f6995cb6a48702e3468a95fd7de5ad6ec2ad7c7f9fc98ddcbf87eb02cdb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/141-steeping-steeping-disabled-1.log.gz",
+      "sha256": "e960d9dde29ae262e494f55de63d8270f14df6a666d0d9d70b689261820822a8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/142-steeping-master-output-1.log.gz",
+      "sha256": "583158fd2151692b8d24e5e1881aa4bb1cfce647ea14c21a631922edeed641bc"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/143-boundary-steeping-reviewed-1.log.gz",
+      "sha256": "924923ea8711671a78c247fb7aff19713c65ff8204b446110f98eaeedf099d7e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/144-cooling-historical-restore-1.log.gz",
+      "sha256": "d7add421ae6679bf6d23a9f0a9d0cd7b46b29905cb74033f9f8b43c8ab756dce"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/145-cooling-historical-build-1.log.gz",
+      "sha256": "d9aac41785bce1bc203a89efb5dd547e025c15ffbb22e20ade91dcba78bfa64a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/146-cooling-historical-import-1.log.gz",
+      "sha256": "44cdbcd4d2825a71e46f5e0424955a92c8e8e9d489ef50c8c79b523c03faf60c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/147-cooling-focused-1.log.gz",
+      "sha256": "b0f7235266d1e2ca69db3eab9c71ff61e9bab63350c7b15930bfe550a0f573a6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/148-boundary-cooling-source-1.log.gz",
+      "sha256": "48c52fd37041079faeeeb5c709098b03c64e86839493b667678aee1231fadb95"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/149-cooling-default-1.log.gz",
+      "sha256": "b33177845dbe7ab236fc6252106e5957386c25a53dbb3d1f6c2b00c0a76532d0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/150-cooling-quiet-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/151-cooling-master-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/152-cooling-effects-muted-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/153-cooling-missing-stream-1.log.gz",
+      "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/154-cooling-captions-off-1.log.gz",
+      "sha256": "57011a5c874f9d4316a3fd726ff11a60ca6c3412a1f34c2a1c111ec47367053a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/155-cooling-cooling-disabled-1.log.gz",
+      "sha256": "304ffe382c06992ee66aba1a88fa1ad311284aab1888fcbb17aa94347fa5eb9a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/156-cooling-master-output-1.log.gz",
+      "sha256": "9e3c452bb05868377c3dfeee2044281c40c07d6b075d3d0543ac7f17c5d53ed8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/157-boundary-cooling-reviewed-1.log.gz",
+      "sha256": "228d9d651623dafbec75bb007cc4761b6b61150d94f09239ca6414a3c6165b28"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/158-herb-historical-restore-1.log.gz",
+      "sha256": "bace317b99946916554cb8ac2ddae9247e11be53a4579977c3769e0e8375cab2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/159-herb-historical-build-1.log.gz",
+      "sha256": "3cbcbfdb185880ec8e6b79f087ac4af022dab2795b576e15dde861f599b9b7f5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/160-herb-historical-import-1.log.gz",
+      "sha256": "7e6d6e330bbf5c4d0d8c93ada03e7d081592b5123570f78957b1d821813c96c2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/161-herb-focused-1.log.gz",
+      "sha256": "005b78a3c3393f60ded5c4dcba20c2f86560d2e824f2543e8b0dfa381a9293a4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/162-boundary-herb-source-1.log.gz",
+      "sha256": "b3a635d873d0de443653a390e6e12393e50eb271b53c4b7ff882017024bfe621"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/163-herb-source-rejections-1.log.gz",
+      "sha256": "a56a564f63d0a018886cbd339aab15d9f43066e39b4be0ff7123284302a18682"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/164-herb-validator-rejections-1.log.gz",
+      "sha256": "9b2f8a73e4ebf3e898c5e3918eefbcb80252b68a445c9883bc6a5b8a48669947"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/165-herb-near-default-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/166-herb-near-quiet-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/167-herb-near-master-muted-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/168-herb-near-effects-muted-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/169-herb-near-missing-stream-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/170-herb-near-captions-off-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/171-herb-near-audio-disabled-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/172-herb-remote-default-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/173-herb-remote-quiet-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/174-herb-remote-master-muted-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/175-herb-remote-effects-muted-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/176-herb-remote-missing-stream-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/177-herb-remote-captions-off-1.log.gz",
+      "sha256": "ee516705017213720ac2b951fd3b6fe800936b010ce5995b2055657cec5ae6d9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/178-herb-remote-audio-disabled-1.log.gz",
+      "sha256": "8a37b17d1eae1af4effbf52f35bfae3d70840428e89d9266a08178fc6e699ef0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/179-herb-master-output-1.log.gz",
+      "sha256": "dc4a4ee964920c78eb9c0e5b635d686be7768855c5243e7bda224ee1c92a30d7"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/180-boundary-herb-reviewed-1.log.gz",
+      "sha256": "48f5f30d38e91c8217147b52873402f8c58648a1f9997278411344d597c71134"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/181-controls-historical-restore-1.log.gz",
+      "sha256": "515b3876ad0c6a1b3f238972560cff1814d04cb43a018a2edfd613af92ef0518"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/182-controls-historical-build-1.log.gz",
+      "sha256": "a59cc9119d97d2242e5cef8eb416f7fd217c965172674e00d1db0df0086cac5f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/183-controls-historical-import-1.log.gz",
+      "sha256": "6c6578cc45de1adcf12dd34304115ce270a6ac3d85e6926349990599524b8aec"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/184-controls-application-1.log.gz",
+      "sha256": "874d3a8693fb058a273eac92104d8e2f9944ee5397eadfa2d51ddbd41c61cb82"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/185-controls-infrastructure-1.log.gz",
+      "sha256": "272613cd2da40362fe6bfb0f00c8e6534105089add5480988e115ef434863330"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/186-controls-source-1.log.gz",
+      "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/187-controls-validator-rejections-1.log.gz",
+      "sha256": "f35bec3b7ea7ce9d55af37ed3950fbf9735922482a1aea55e5895b83c2fa9df4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/188-controls-main-1.log.gz",
+      "sha256": "4b353f492bbeebacb410b8af401a749b27ce346e47e2838947441bc241a3f333"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/189-controls-native-output-1.log.gz",
+      "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/190-controls-mounted-resources-1.log.gz",
+      "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/191-controls-reviewed-1.log.gz",
+      "sha256": "b353c89e314763c6163ff7753a77386e9c1c03b0acac13fecf8f7d4faa12f423"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/192-dialogue-accessibility-historical-restore-1.log.gz",
+      "sha256": "fdcece90d9085952a0ac5e1c91054c58d335e9e03538b49ff6ea67d276496387"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/193-dialogue-accessibility-historical-build-1.log.gz",
+      "sha256": "75881c9dbf3863ba40598421c137c27f820c317c94014abbfc707c9b8b829759"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/194-dialogue-accessibility-historical-import-1.log.gz",
+      "sha256": "a667a83c69137c438d0fdf6eaa27491b17ff509f9a8116db7b0e06e8e68829f6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/195-dialogue-accessibility-source-1.log.gz",
+      "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/196-dialogue-accessibility-validator-rejections-1.log.gz",
+      "sha256": "76f9606c5ccbc1eae607079577584e7dce41d900b1dc81ad44185bfe511e99c3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/197-dialogue-accessibility-main-1.log.gz",
+      "sha256": "7242101e6c129c2695ebd186310b7d2d879b4c878af4960cb825ea624a5531aa"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/198-dialogue-accessibility-reviewed-1.log.gz",
+      "sha256": "242623361f12c920f3732a43d064c962086147d658d551a171856713c23e2f6a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/199-dialogue-speech-historical-restore-1.log.gz",
+      "sha256": "31c0439b739f8ed259c64107e967b7837bc09aa611d8c4c0f80c2982521a022d"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/200-dialogue-speech-historical-build-1.log.gz",
+      "sha256": "a1d6526424cbdc95b649014bb0b71ebec73b270a4deb2776549a6785f9883ce6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/201-dialogue-speech-historical-import-1.log.gz",
+      "sha256": "49b65b74244bcb9236196485ca91eb8be786ed75c9431fa41ea3d6aa27ab6643"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/202-dialogue-speech-headless-1.log.gz",
+      "sha256": "c7fb0897355f366f79956d124c6e7445e5df59aede04dc150be93bfe932648d8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/203-dialogue-speech-unavailable-1.log.gz",
+      "sha256": "6e4097622b5fd43b8214ced1269f42bd345e8dfb5e4be838e9443adbd7f27dac"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/204-player-asr-capture-boundary-1.log.gz",
+      "sha256": "01a1d54e15ef1fbb4290fa68ab9c1b6155acb36be5dd57c4fe4066966e877e87"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/205-player-asr-historical-restore-1.log.gz",
+      "sha256": "da8a766855324fbfecd8bd2af45fbe5bfb24efeb450b55ac73197c0cbdfa9836"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/206-player-asr-historical-build-1.log.gz",
+      "sha256": "6363af889b52a35338228bef4a0dd073c913a9d96201d4daa12c117d0b0fed06"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/207-player-asr-historical-import-1.log.gz",
+      "sha256": "2a5cd84d1c36c24249ec497a2b1be9bfaf13cbbcd4c82121dd227f6ac0c10817"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/208-player-asr-headless-1.log.gz",
+      "sha256": "aa98615ec2b7d3b4017e3bb00de9a35a7d0a448d76de68a1850c34ac1d874520"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/209-player-asr-unavailable-1.log.gz",
+      "sha256": "956bfbe7745f483a402eb245201be5941c815cf2dbdb79308a7eba75135e91f5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/210-space-hold-headless-1.log.gz",
+      "sha256": "654c73f35b86e4f410924ec51b500ba03deef4467357e19fb0fd268a85dd035c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/211-space-hold-unavailable-1.log.gz",
+      "sha256": "3f8ef1dfb19d5df950b1f9d7b4340e780d2186953f9bee6a67443f635616269c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/212-ollama-participation-respond-1.log.gz",
+      "sha256": "b933a151c10850390953700bc12e69cd688c14e6e8a6f561db71b2f18a671968"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/213-ollama-participation-silence-1.log.gz",
+      "sha256": "a533bc2bc19c69dd6648585713f4464878814dd574119a3c70e865bca5e234e5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/214-ollama-participation-failure-1.log.gz",
+      "sha256": "bb16b018280c120a8d2af4898ca7d6e2becda4fce3099fff74219679cffe017f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/215-dialogue-response-repair-1.log.gz",
+      "sha256": "185e98f0db63d7b5d4b859623b8ff548090f1aca887e14c24ba6957fe7b26cc2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/216-herb-examination-action-1.log.gz",
+      "sha256": "b34b0558b6f364cbe953af020bc6ee947517324c5f94a403100d50ebf823ea75"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/217-conversation-context-1.log.gz",
+      "sha256": "fadfc328959a4a60ade8c624f3a0a2c3af42dcce13243d82a3d20be8aad57603"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/26-product-4-1.log.gz",
+      "sha256": "66915c2b25c73d5040004dc8c9b941c77fe7fd29523b53070c47cc20bbcb9a88"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/27-product-5-1.log.gz",
+      "sha256": "b3f4b501d522ac7f2fecc0c323e162c69efc237d2e532ecc284a332be0b7106e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/28-product-6-1.log.gz",
+      "sha256": "a43155d3765ad1af49e3736f7c97e208f3dcab58ca70d23c3c5614a7105e05c6"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/29-product-7-1.log.gz",
+      "sha256": "a1e7bb4a0c096eb6d411c6f370d7b9c50e88d0c3ffd62dc928e8b05a2449ba2f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/30-product-8-1.log.gz",
+      "sha256": "05dd36b5cd939ee4840ea383ba29c42841aba9b47ef2ba988d1e137b866b1efe"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/32-boundary-hand-tool-resume-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/33-boundary-healer-resume-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/34-boundary-foliage-resume-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/35-product-10-1.log.gz",
+      "sha256": "17f75042b165757f99b72c0f521c1faded22b41e2b022c917585e0d8204903de"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/36-product-11-1.log.gz",
+      "sha256": "5899bc6b8967827fc12328ca0fa5781cd419c2cb4b9007a723fbc9bb5bdc8a4e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/37-product-12-1.log.gz",
+      "sha256": "fcef5503a03314f7335aef89c70a9407f70c06d2fbb62f85b6165701b490b62b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/38-product-13-1.log.gz",
+      "sha256": "cb3525e0958c85faa8382a71dca254a5bc467e347e3eab336ee86af9888e9454"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/39-product-14-1.log.gz",
+      "sha256": "0730482660634f6a2cdb94a4093cc177be41846d1860ca23e041ceeede637cc5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/40-product-15-1.log.gz",
+      "sha256": "7a02405132c2fb0b5576105546bfe32986312b6cae0100cf358ec29538467b3c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/41-product-16-1.log.gz",
+      "sha256": "8d42e9c9f19d0610568ad5c97fb2661c4fd416f1ae6dd2c417d4f110e6f765bb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/42-product-17-1.log.gz",
+      "sha256": "19215d7b5805b0a85af5c1e530de9da312da4d9dfef61a3ef764df554bf718f7"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/43-product-18-1.log.gz",
+      "sha256": "7dad2423d8c93a0da21d4ba144a0cd155b543a1b2e397dd09a9e046fa9d168c2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/44-product-19-1.log.gz",
+      "sha256": "3dcf89763b4bb1f49d0d6222e01065889bdeba861502e7a50b570b786b1c60cc"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/45-interior-normal-1.log.gz",
+      "sha256": "61ac14002d919673f7251e45f235d506d7e6135dbec65b597dd9b124bef8d3d5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/46-interior-muted-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/47-interior-zero-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/48-interior-mono-reduced-1.log.gz",
+      "sha256": "4da9383ce1fa475733ad3ec1f87e79a8a79a8b61a35f8305f7732cfc1d6b46c4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/49-water-default-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/50-water-quiet-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/51-water-master-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/52-water-effects-muted-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/53-water-missing-stream-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/54-water-no-action-1.log.gz",
+      "sha256": "78a72b8cfe321274521cd7618cab30a107edf3c289430213371b070986e19374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/55-cask-default-1.log.gz",
+      "sha256": "20ec50ee81899686ea8c63ad61ee74d457f565608e5658e4dfb3f5e1b07c65ca"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/56-cask-quiet-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/57-cask-master-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/58-cask-effects-muted-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/59-cask-missing-stream-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/60-cask-no-action-1.log.gz",
+      "sha256": "b2ace32af80ecb7b0750ea07631c1115f6dc78fcc17224de2bb4e1aa428bfdb1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/61-hand-tool-default-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/62-hand-tool-quiet-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/63-hand-tool-master-muted-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/64-hand-tool-effects-muted-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/65-hand-tool-missing-stream-1.log.gz",
+      "sha256": "89096cbeb4427064dd03ce53c443fe236ace6e976b4025200631b879d137d4c0"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/66-hand-tool-no-action-1.log.gz",
+      "sha256": "460602d76eda2a26e9b93c8c35ed8b59e87b288945cf4241b1616b8a106fe89c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/67-healer-footstep-default-1.log.gz",
+      "sha256": "b1f0993d9fa8b101080486edae9f5613ae946c980a2bf8716015199a67f64783"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/68-healer-footstep-quiet-1.log.gz",
+      "sha256": "5b9e8166dd3512e6210198ce3f6007c369223249c48f342840d3dc2dbb299ef7"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/69-healer-footstep-master-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/70-healer-footstep-effects-muted-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/71-healer-footstep-missing-resources-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/72-healer-footstep-captions-off-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/73-healer-footstep-observer-disabled-1.log.gz",
+      "sha256": "b18b1a9c71ffa40c573a0b45aba056944296223b3146c86146ec9f63f0c4a2df"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/74-boundary-hand-tool-after-runtime-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/75-healer-master-output-1.log.gz",
+      "sha256": "4bd693a2f0c3e9ff60428efe425e5e52b8b06c253f95ac9958c0973149bc56bd"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/76-boundary-healer-after-runtime-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/77-foliage-historical-build-1.log.gz",
+      "sha256": "960daffe0d390dba34c87bcfeaa16ea98af2afc46dcf092274903ee127509bcc"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/78-foliage-historical-import-1.log.gz",
+      "sha256": "289c1e9fbf439251e56a519d76231ba987672b5dac9c50d63409b647eb55f4a4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/79-foliage-default-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/80-foliage-quiet-1.log.gz",
+      "sha256": "83f0f15861ba00ada2b3a46aa79b0347e04ca8089a0da6c96b16a4bb6d92da35"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/81-foliage-master-muted-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/82-foliage-ambience-muted-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/83-foliage-missing-stream-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/84-foliage-captions-off-1.log.gz",
+      "sha256": "66b912aafffc601c9abeb7fc26d1f2decb34383b798cf756c5c8a1dbc766e8ed"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/85-foliage-foliage-disabled-1.log.gz",
+      "sha256": "70bd6ba1031aa84cbac143b697be5d98f05bf35e7ce985716023560481f63c2b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/86-foliage-master-output-1.log.gz",
+      "sha256": "c6918616aad351730eec60aa6ecf1f99c1d72b45beac125d94c4122724bd29b1"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/87-boundary-foliage-after-runtime-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/88-wind-historical-restore-1.log.gz",
+      "sha256": "b927d37f120ae266b914dc4f9b04c181f3162b0bcb0bcb97d78c67f60b25b0e9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/89-wind-historical-build-1.log.gz",
+      "sha256": "c675ad23459de5a7351e0586c4df0a3cab9602b5e380748d8fa77973ba9ba874"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/90-wind-historical-import-1.log.gz",
+      "sha256": "50d8b978a86aed5512c5ced577e7e498da5f7857d8e347eccf046622300753ed"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/91-wind-focused-1.log.gz",
+      "sha256": "15d517cf0b1318e6e648d66ad57bf93d7bd17372493c6a6d8bc06153a53bcc45"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/92-boundary-wind-source-1.log.gz",
+      "sha256": "dc851eea3d9055000f73c654b2d7c49b84a6e5009380a897f07a56edcfc079b5"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/93-wind-default-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/94-wind-quiet-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/95-wind-master-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/96-wind-ambience-muted-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/97-wind-missing-stream-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/98-wind-captions-off-1.log.gz",
+      "sha256": "02224ce6ef2c17b604a018634c16c0a8fc609dd81ebb08d293892c7656460acb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/99-wind-wind-disabled-1.log.gz",
+      "sha256": "3a3be59194674161eeb47070a4ab33bdcb52bd39dad22992e86ff50fa7b6a414"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/final/summary.json",
+      "sha256": "d798a4dd2f392c6b021aa9c27dc08761c59226e79b00b09985e7f98cd4624fc4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/01-continuation-1.log.gz",
+      "sha256": "38459efba09dbd0594c46281aaa2caae805f3fe5d1ede045f4b65e394ebda98a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/02-art-1-1.log.gz",
+      "sha256": "76e489137749a2b0343486b79ee7d629a798c0f96e808754c48e6cf3bfa277ab"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/03-art-2-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/04-art-3-1.log.gz",
+      "sha256": "dbc5c970d9dfad3f9e6dae0897cb1766c84a50f7fe7739e09e7e7d5fc8555919"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/05-art-4-1.log.gz",
+      "sha256": "0dbab9922565931f17adf3fc93472a9c9060d3a547147d7d80a06ff69893358b"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/06-art-5-1.log.gz",
+      "sha256": "1d82d457bf626cec5b8833dd99022dfb7133e7f9f5c7adb497f0cee53f50bffb"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/07-art-6-1.log.gz",
+      "sha256": "9981883e121c203e92ea1b4d2274d8842281fdf30290d211f649da8a63995870"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/08-art-7-1.log.gz",
+      "sha256": "7edc4802ce2e04e6760ee440909d82658bfd405ccdf3de94640c623fc0cf8eb9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/09-art-8-1.log.gz",
+      "sha256": "6932a812452a99df5a065a77b4896ed9571979c83fd1036e60065515559e6aa3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/10-art-9-1.log.gz",
+      "sha256": "caf50e6c04929dd4a15fe74e28865e5d0615a32ce8b06047fbd0bd54aedfe045"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/11-boundary-buses-1.log.gz",
+      "sha256": "68e9bf5ba72102c8de5deed6a33ce7bb1c79b518c4e9a62af786e24cf45dc0f9"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/12-boundary-material-1.log.gz",
+      "sha256": "4ed490572a3fa91f2c5f446599f66c908086128ce341a416a02a0d8e7e73f547"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/13-boundary-footstep-1.log.gz",
+      "sha256": "a11060a2799654fbee190524c36ecd27798dc917db7027dc300441124ad17428"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/14-boundary-positional-1.log.gz",
+      "sha256": "9f87ca55956fc5ded9ef73e90ddf032be52571556b6ce2135bb29e2b153637c4"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/15-boundary-music-1.log.gz",
+      "sha256": "b2a2896adea6955b0fcd83ecdef6aaa7507340c2f07e93bb2b300eb8b8da42d3"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/16-boundary-interior-1.log.gz",
+      "sha256": "1bc58d0776ec3f0a2ab9ab16e68de5ba0f8dc337f02e6f72662ad5b2664a5715"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/17-boundary-water-1.log.gz",
+      "sha256": "7380391c6e0becfed2d71a2ef6a733673db10d7256bd32c1c07e1339bf585b7f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/18-boundary-cask-1.log.gz",
+      "sha256": "acc5673afb6fa6d86c47f7ab4436b91bdc4b0ac98efb9d1417465415c8f46260"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/19-boundary-hand-tool-current-1.log.gz",
+      "sha256": "e55f1361735a23e266cc27ade45526f8fb7ff4e6ddedc91989c00dabf3435b9c"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/20-boundary-healer-current-1.log.gz",
+      "sha256": "f59be9c68617e6e661e70aaf68fd8bdc3949c23e8a4c77834094ce69f1917274"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/21-boundary-foliage-current-1.log.gz",
+      "sha256": "067a6e676831386fe7cc513c86e77aa78b6850648a5c39148df11dda20936356"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/22-current-art-imports-1.log.gz",
+      "sha256": "400e46357f1d90f723dd758899411e1a9c6aa6eeefc4d06dd8f263e2109d6437"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/23-product-1-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/24-product-2-1.log.gz",
+      "sha256": "743d965c0be12ca88d103b24bcf5ee297567755857a7b452dd1d0c067b38117d"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/25-product-3-1.log.gz",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/26-product-4-1.log.gz",
+      "sha256": "db2b18921dcbedc35c0a0dd9e7df43dbf15c11d90e93481d265a7849375ce6b8"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/27-product-5-1.log.gz",
+      "sha256": "470f6cd4b7971fdf6427a7c26cc3453c9679f0a7d115e40e17181e3e7d4c4374"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/28-product-6-1.log.gz",
+      "sha256": "a31404d943725a9f1acccbcd01a88166132b61ac68949506f8eb28412f98f59e"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/29-product-7-1.log.gz",
+      "sha256": "a1e7bb4a0c096eb6d411c6f370d7b9c50e88d0c3ffd62dc928e8b05a2449ba2f"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/30-product-8-1.log.gz",
+      "sha256": "2c3c8422b6b409a54d0f3eaa204dae5bfd642ff8540b14d777c562c754e4698d"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/31-product-9-1.log.gz",
+      "sha256": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/interruption.json",
+      "sha256": "ec02ac5e280cffc60029e3c11f27bb88abc479f8682fa1b77122b42169794fcc"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/runner.log.gz",
+      "sha256": "7b917aa5943e905a72a81980c8dce01aabca703a07ee8a9bf05fbcd0615e3015"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/interrupted/summary.json",
+      "sha256": "f381da63fb6db2ae260c7fbcfe106a33f9567bef3c1d33e00da2648796cc67b2"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/recovery-guard.json",
+      "sha256": "52fb331f38e93477781adf8ee9e5b5799bb2961cb61737162fa8812164617bca"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/review.md",
+      "sha256": "94759f3998f0dff8e0262d9bd3aa262cfff36e8a81ba52513aae1eda06dc511a"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/source-inputs.json",
+      "sha256": "c8efbea4b1599e6974ea82903fb15be68ff967b5e01c2f9095511034993594b7"
+    }
+  ]
+}

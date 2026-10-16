@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 
 namespace Allrpcs.Application.Dialogue;
 
@@ -35,7 +36,8 @@ public sealed record CharacterModelContextEntry
     public CharacterModelContextEntry(
         CharacterModelContextEntryKind kind,
         string text,
-        DialogueDeliveryMode deliveryMode)
+        DialogueDeliveryMode deliveryMode,
+        CharacterId? speakerCharacterId = null)
     {
         ValidateKindAndText(kind, text);
         ArgumentNullException.ThrowIfNull(deliveryMode);
@@ -49,6 +51,7 @@ public sealed record CharacterModelContextEntry
         Kind = kind;
         Text = text;
         DeliveryMode = deliveryMode;
+        SpeakerCharacterId = speakerCharacterId;
     }
 
     /// <summary>
@@ -65,6 +68,9 @@ public sealed record CharacterModelContextEntry
     /// Gets the exact delivery mode for recent or current dialogue context, if applicable.
     /// </summary>
     public DialogueDeliveryMode? DeliveryMode { get; }
+
+    /// <summary>Gets the captured speaker identity for historical speech, when supplied.</summary>
+    public CharacterId? SpeakerCharacterId { get; }
 
     private static bool IsDialogueKind(CharacterModelContextEntryKind kind) =>
         kind is CharacterModelContextEntryKind.RecentSpeech

@@ -1,0 +1,18 @@
+{
+  "id": "phase10-player-microphone-qualification",
+  "title": "Qualify a named human microphone and echo session",
+  "status": "in_progress",
+  "workstream": "player-microphone-qualification",
+  "authority_status": "owner_approved_live_trial_examination_action_repair_complete",
+  "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
+  "missing_deliverable": "Remaining permission/selector intake, language-specific final text and post-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion.",
+  "instructions": "The reply runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-model generations and recovered full quality. Preserve all closed receipts and the three complete physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require explicit enablement. The owner clarified ordinary answers work but examination requests lacked action or reply. The separately approved herb examination action repair is now complete and closed at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve every prior report and all 15 physical statuses. Resume the owner-operated trial on the published repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed repairs or infer a new runtime scope.",
+  "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
+  "outputs": [
+    "speech-direction/player-microphone-qualification/authority.json",
+    "speech-direction/player-microphone-qualification/session.json",
+    "speech-direction/player-microphone-qualification/results.json",
+    "speech-direction/player-microphone-qualification/README.md"
+  ],
+  "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
+}

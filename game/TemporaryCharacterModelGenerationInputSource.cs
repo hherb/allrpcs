@@ -27,6 +27,20 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
     private TemporaryOrdinaryCharacterParticipantSource participantSource = null!;
     private IReadOnlyDictionary<CharacterId, CharacterPerceptionSnapshot> perceptions = null!;
     private WorldObjectSnapshot worldObjects = null!;
+    private DialogueEventController dialogue = null!;
+    private CharacterTurnTranscriptController transcript = null!;
+    private SaveSnapshotRestorationController restoration = null!;
+    private CharacterTurnRequest? invalidatedRequest;
+
+    internal bool IsCurrent(CharacterTurnRequest request) => !ReferenceEquals(request, invalidatedRequest);
+
+    private void OnRestored()
+    {
+        invalidatedRequest = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity?.Request;
+    }
+
+    /// <inheritdoc />
+    public override void _ExitTree() => restoration.PresentationReset -= OnRestored;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -34,6 +48,10 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
         participantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
             "../TemporaryOrdinaryCharacterParticipantSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        dialogue = GetNode<DialogueEventController>("../DialogueEventController");
+        transcript = GetNode<CharacterTurnTranscriptController>("../CharacterTurnTranscriptController");
+        restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
+        restoration.PresentationReset += OnRestored;
         worldObjects = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects;
 
@@ -97,6 +115,11 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
 
         CharacterId characterId = character.Identity.Id;
         CharacterIntentionAffordanceSnapshot characterAffordances = affordances[characterId];
+        IReadOnlyList<CharacterModelContextEntry> actionOutcomes = transcript.Transcript is { } recorded
+            ? CharacterModelExaminationContextProjection.Project(characterId,
+                GetNodeOrNull<HerbExaminationActionController>("../HerbExaminationActionController")?.LastResult,
+                recorded)
+            : [];
         CharacterModelGenerationRequest generationRequest =
             CharacterModelContextAssembler.Assemble(
                 activity.Request,
@@ -107,8 +130,9 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
                 CharacterModelCommitmentMemoryContextProjection.Project(
                     characterId,
                     memoryController.Memory),
-                [activity.Request.DialogueEvent],
-                characterAffordances);
+                dialogue.History.RecentFor(characterId, activity.Request.DialogueEvent),
+                characterAffordances,
+                actionOutcomes);
 
         return new TemporaryCharacterModelGenerationInput(
             generationRequest,

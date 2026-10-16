@@ -39,8 +39,11 @@ Its implementation now executes accepted spoken/silent examinations through move
 with visible result/failure and no automatic collection. Controlled native Main, a fictional
 `gemma4:e4b` examination and the recovered full gate (216 stages; 5,644 unit tests) pass.
 This runtime repair is closed; resume the existing physical trial and preserve its case totals.
-The ordinary trial game was restarted from published `fd0910b2`; startup is verified.
-The next owner observation is an examination request, followed by remaining physical cases.
+The owner-requested [conversation context repair](speech-direction/conversation-context-repair/README.md)
+is complete and closed. Generation receives bounded heard/own speech with speaker roles and exact
+examination outcomes. Private speech stays filtered; successful loads clear session history and
+fence pending replies. Five fictional selected-model submissions and full current quality pass.
+Conversation persistence is not added. Resume the unchanged human trial after the repaired game restart.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -88,7 +91,12 @@ selected gemma4:e4b observation and recovered full quality verify accepted spoke
 movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve
 every prior report and all 15 physical statuses. Resume the owner-operated trial on the published
 repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed
-repairs or infer a new runtime scope.
+repairs or infer a new runtime scope. The separately owner-requested conversation context repair is
+complete and closed at speech-direction/conversation-context-repair/closure.json. It supplies
+bounded heard/own history, speaker roles and exact examination outcomes, with private speech
+filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass.
+History is session-local and clears on successful save restoration. Resume only the unchanged
+remaining human trial cases; no new physical pass is inferred.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input

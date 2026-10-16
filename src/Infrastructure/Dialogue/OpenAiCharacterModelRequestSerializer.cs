@@ -69,6 +69,7 @@ public static class OpenAiCharacterModelRequestSerializer
             writer,
             "developer",
             CharacterModelRequestContent.SerializeTrustedContext(request));
+        CharacterModelRequestContent.WriteHistoricalMessages(writer, request);
         WriteMessage(writer, "user", request.TurnRequest.DialogueEvent.Utterance.Text);
         writer.WriteEndArray();
     }

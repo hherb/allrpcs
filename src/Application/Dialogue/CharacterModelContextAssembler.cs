@@ -24,7 +24,8 @@ public static class CharacterModelContextAssembler
         KnowledgeSnapshot knowledge,
         IEnumerable<CharacterModelContextEntry> memoryEntries,
         IEnumerable<DialogueEvent> recentDialogueEvents,
-        CharacterIntentionAffordanceSnapshot validAffordances)
+        CharacterIntentionAffordanceSnapshot validAffordances,
+        IEnumerable<CharacterModelContextEntry>? actionOutcomes = null)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(character);
@@ -54,11 +55,31 @@ public static class CharacterModelContextAssembler
         entries.AddRange(CharacterModelKnowledgeContextProjection.Project(character, knowledge));
         entries.AddRange(CharacterModelGoalContextProjection.Project(character));
         entries.AddRange(memories);
-        entries.AddRange(CharacterModelRecentSpeechContextProjection.Project(
-            character,
-            recentDialogueEvents));
+        entries.AddRange(RetainExactKind(actionOutcomes ?? [],
+            CharacterModelContextEntryKind.ActionOutcome, nameof(actionOutcomes)));
+        int speechIndex = entries.Count;
         entries.AddRange(CharacterModelValidAffordanceContextProjection.Project(validAffordances));
         entries.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
+        // Reserve authoritative state and the current utterance before fitting older dialogue.
+        CharacterModelContextSnapshot required = new(entries);
+        int remainingLength = CharacterModelContextSnapshot.MaximumTotalTextLength
+            - required.Entries.Sum(entry => entry.Text.Length);
+        int remainingCount = CharacterModelContextSnapshot.MaximumEntryCount - entries.Count;
+        List<CharacterModelContextEntry> recent = new();
+        foreach (CharacterModelContextEntry entry in CharacterModelRecentSpeechContextProjection.Project(
+            character, recentDialogueEvents).Reverse())
+        {
+            if (recent.Count == remainingCount || entry.Text.Length > remainingLength)
+            {
+                break;
+            }
+
+            recent.Add(entry);
+            remainingLength -= entry.Text.Length;
+        }
+
+        recent.Reverse();
+        entries.InsertRange(speechIndex, recent);
         CharacterModelContextSnapshot context = new(entries);
 
         return new CharacterModelGenerationRequest(request, context);

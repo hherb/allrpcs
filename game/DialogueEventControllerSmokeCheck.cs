@@ -218,7 +218,8 @@ public partial class DialogueEventControllerSmokeCheck : Node
                 System.Reflection.BindingFlags.Public
                     | System.Reflection.BindingFlags.Instance
                     | System.Reflection.BindingFlags.DeclaredOnly)
-            .Where(method => !method.IsSpecialName)
+            .Where(method => !method.IsSpecialName
+                && method.Name != nameof(Node._Ready) && method.Name != nameof(Node._ExitTree))
             .ToArray();
         bool matches = properties.Length == 1
             && properties[0].Name == nameof(DialogueEventController.LastOccurredEvent)

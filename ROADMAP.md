@@ -311,6 +311,13 @@ Selected `gemma4:e4b` commits a reply through Main on fictional input. The recov
 217 recorded stages and 5,629 unit tests; the bounded repair is closed.
 This is local model integration evidence, not a new physical microphone/Whisper/echo pass.
 
+Conversation continuity prerequisite (2026-10-16): the owner-requested
+[context repair](speech-direction/conversation-context-repair/README.md) supplies bounded heard/own
+history with native speaker roles and exact completed examination outcomes. Five fictional
+selected `gemma4:e4b` submissions verify earlier-name recall and post-examination safety reporting.
+Privacy, budget and successful-load fencing pass with full current quality. The repair is closed;
+history is session-local, and the existing human microphone/device/echo cases remain unchanged.
+
 Acceptance:
 
 - [ ] Typed and spoken input produce the same dialogue events and intention flow, and the game

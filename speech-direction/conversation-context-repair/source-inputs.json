@@ -1,0 +1,98 @@
+{
+  "baseline": "3185f7926e1430a4c34685cc6912239ee6beb44c",
+  "description": "Exact changed product, fixture and quality runner bytes for current-tree checks; baseline HEAD alone does not include this repair.",
+  "files": [
+    {
+      "path": "game/ConversationContextMainCheck.cs",
+      "sha256": "11b62e427321f3ee281fcaf8b540ded95232cd92f7e8b880f46d0d0059391cb5"
+    },
+    {
+      "path": "game/ConversationContextMainCheck.tscn",
+      "sha256": "2258e7643a75a224635f1c882750b12a353027ef653b4e1d153aea169444a518"
+    },
+    {
+      "path": "game/DialogueEventController.cs",
+      "sha256": "270cd115bd198cd7bd458aa2d27ac5fa9a6d86fbe26ae8f6092dc5ac806b1b98"
+    },
+    {
+      "path": "game/DialogueEventControllerSmokeCheck.cs",
+      "sha256": "fd89cf0fff09f15b3f5f5cf063bbb753dc86bdc53cce59e135f366c35b818b3f"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "84ef9da8be86794d47ca51ebd10b8bb7169e5efa3ff9d5c94790d67e104b0b50"
+    },
+    {
+      "path": "game/OllamaParticipationHttpHandler.cs",
+      "sha256": "8ea20f32b552058f8b6310e64c3f9e49df7df2cacd9aeb09bdaf2b1c65714ee5"
+    },
+    {
+      "path": "game/TemporaryCharacterModelGenerationInputSource.cs",
+      "sha256": "b93f0d6e6a297aef5c7e76bcf18c0f814ebeb7f0bdee7a7d8f6e8501ea1c4456"
+    },
+    {
+      "path": "game/TemporaryCharacterModelGenerationInputSourceSmokeCheck.cs",
+      "sha256": "1ae71fda556312e2a329fb6e50de0defaa6ca4c44c7eaf3a22d6f12d47fd2635"
+    },
+    {
+      "path": "quality.py",
+      "sha256": "b09e3db48d768d114d8ac0fbfdc5a157ae7fb682092644ce0f36c2b388951369"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/DialogueEventController.cs",
+      "sha256": "0a086081c451571c51bc8929cbf08725c561914b2223bb56cc751b6fccf13987"
+    },
+    {
+      "path": "speech-direction/conversation-context-repair/quality/attempt1/DialogueEventControllerSmokeCheck.cs",
+      "sha256": "4aa46e010bc869cda5b1811abec08196523cd5ea15941ac078e8175b8cb370ec"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterConversationHistory.cs",
+      "sha256": "5176a896f78c7fc7774e8afc8b63f1adc3fca3273f3c08ca8882fe98bb21982b"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelContextAssembler.cs",
+      "sha256": "bcaaecd465e0a1e9d58356fe25dd6e6e1e3e3b6236b5bbf6450ae660d5899243"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelContextEntry.cs",
+      "sha256": "551d953c57d17da5ee528304c56c0f3e179ed90576f47af3dd50b2c81f6691cc"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelContextEntryKind.cs",
+      "sha256": "345b91e51e82e7d9c21cd121b62ca6c5cc310532da0d0b8f0a6408d464fdce9a"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelExaminationContextProjection.cs",
+      "sha256": "ba4efaabc6095895144a5ab34ef77e0642f524543219c519112e5145c0af3411"
+    },
+    {
+      "path": "src/Application/Dialogue/CharacterModelRecentSpeechContextProjection.cs",
+      "sha256": "d9572e8fe5f410b365dcf485af5c3b5ea11091590118e1dc52c8a022e2b5a59b"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/CharacterModelRequestContent.cs",
+      "sha256": "779204eabcce84844301ccce1e9a54d01e996b3bb746f1d7e6404f01fcade4e9"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OllamaCharacterModelRequestSerializer.cs",
+      "sha256": "7729efc5cec3c60535b622956ed0b8a448da8231b7295e46737020de068ddae0"
+    },
+    {
+      "path": "src/Infrastructure/Dialogue/OpenAiCharacterModelRequestSerializer.cs",
+      "sha256": "f369da5e34a230ee477b3e9baa8c409464aee37213dc18fc7fa2ef3debeaf43d"
+    },
+    {
+      "path": "tests/Application.Tests/Dialogue/CharacterConversationHistoryTests.cs",
+      "sha256": "fabfb814fdfa8335b8691d79372b883b8aad6fb53435d96a61ea221e225194a2"
+    },
+    {
+      "path": "tests/Application.Tests/Dialogue/CharacterModelContextEntryTests.cs",
+      "sha256": "248331337bae68e872deaa7df75f19a5d365fa6802e0f5b520807968933a2a12"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Dialogue/OllamaCharacterModelRequestSerializerTests.cs",
+      "sha256": "76f80c79c27d734af5a6faeaa9cd246d75346f1e9f6ba57063f514c87ce63e41"
+    }
+  ]
+}

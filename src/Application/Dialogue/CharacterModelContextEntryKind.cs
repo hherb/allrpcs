@@ -25,4 +25,7 @@ public enum CharacterModelContextEntryKind
 
     /// <summary>Exact player dialogue treated as untrusted in-world content.</summary>
     UntrustedPlayerDialogue,
+
+    /// <summary>An authoritative completed action observation owned by this character.</summary>
+    ActionOutcome,
 }
