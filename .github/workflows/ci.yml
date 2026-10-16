@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: "1"
   DOTNET_NOLOGO: "1"
@@ -39,20 +43,56 @@ jobs:
       - name: Build with zero warnings
         run: dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
 
-      - name: Run pure domain tests
-        run: dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
-
-      - name: Run pure application tests
-        run: dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build
-
-      - name: Run infrastructure tests
-        run: dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build
-
-      - name: Run architecture tests
-        run: dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
+      - name: Run solution tests
+        run: dotnet test Allrpcs.sln --no-build
 
       - name: Validate representative discovery scenario
         run: dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore
+
+  python-tooling:
+    name: Python tooling and workflow lint
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      ACTIONLINT_VERSION: "1.7.12"
+      ACTIONLINT_SHA256: 8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Install pinned actionlint
+        run: |
+          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL -o "${RUNNER_TEMP}/${archive}" \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${archive}"
+          echo "${ACTIONLINT_SHA256}  ${RUNNER_TEMP}/${archive}" | sha256sum --check -
+          mkdir -p "${RUNNER_TEMP}/actionlint"
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}/actionlint" actionlint
+          echo "${RUNNER_TEMP}/actionlint" >> "${GITHUB_PATH}"
+
+      - name: Install speech worker test dependency
+        run: python3 -m pip install --no-cache-dir numpy==2.5.3
+
+      - name: Validate workflows
+        run: ./scripts/validate-workflows.sh
+
+      - name: Run continuation checker self-test
+        run: python3 scripts/check-continuation.py --self-test
+
+      - name: Run player speech worker tests
+        run: python3 scripts/test-player-speech-worker.py
+
+      - name: Compile live Python tooling
+        env:
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
+        run: python3 -m py_compile quality.py scripts/check-continuation.py scripts/*-speech-worker.py
 
   godot-smoke:
     name: Headless Godot smoke
@@ -135,6 +175,7 @@ jobs:
           mkdir -p "${RUNNER_TEMP}/allrpcs-macos-verification"
           unzip -q artifacts/unsigned-development/macos-universal/Allrpcs-macOS.zip \
             -d "${RUNNER_TEMP}/allrpcs-macos-verification"
+          test -d "${RUNNER_TEMP}/allrpcs-macos-verification/Allrpcs.app" || { echo "Allrpcs.app missing" >&2; exit 1; }
           if codesign --verify --deep --strict \
             "${RUNNER_TEMP}/allrpcs-macos-verification/Allrpcs.app"; then
             echo "Expected an unsigned macOS development bundle." >&2
