@@ -89,6 +89,9 @@ jobs:
       - name: Run player speech worker tests
         run: python3 scripts/test-player-speech-worker.py
 
+      # quality.py --self-test is not run here: it passes with a plain python3 (no venv), but one
+      # contract test reads quality.py at a historical revision (git show HERB_REVISION:quality.py),
+      # so it fails in this shallow checkout and would need fetch-depth: 0 on the ~2.4 GB history.
       - name: Compile live Python tooling
         env:
           PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache
@@ -97,8 +100,8 @@ jobs:
   godot-smoke:
     name: Headless Godot smoke
     runs-on: ubuntu-24.04
-    # 293 launches take about 7 minutes locally (Apple silicon); a hosted runner is slower and
-    # several checks wait on wall-clock model deadlines, so keep generous headroom.
+    # Roughly 330 launches take about 8 minutes locally (Apple silicon); a hosted runner is slower
+    # and several checks wait on wall-clock model deadlines, so keep generous headroom.
     timeout-minutes: 45
     steps:
       - name: Check out source

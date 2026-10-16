@@ -43,6 +43,10 @@ public partial class FootstepAudioRuntimeSmokeCheck : Node
             }
             for (int wait = 0; wait < 5000 && materials.Select(new(2200, 900)) is null; wait++) { await Ticks(1); }
             WorldTimeSnapshot initialTime = GetNode<WorldTimeController>("../WorldTimeController").WorldTime;
+            // (2640, 1450) and (1500, 220) lie inside the sickhouse and laundry interiors, whose
+            // Timber and Earth floors OpeningRegionInteriorAudioSource.TrySelectMaterial has
+            // supplied since 20081e90 ("Add approved sickhouse and laundry interior audio"); this
+            // check predated it and expected no material there until a0a82d0e first launched it.
             foreach ((Vector2 position, FootstepMaterial? expected) in new (Vector2, FootstepMaterial?)[]
             {
                 (new(2200, 900), FootstepMaterial.Earth), (new(1800, 500), FootstepMaterial.Timber),
