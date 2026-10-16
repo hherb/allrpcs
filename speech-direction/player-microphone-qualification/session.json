@@ -76,6 +76,13 @@
       },
       "runtime_revision": "1f90251ac841216a1ba8d0c3b26575ce19b1d53a",
       "limit": "Two spoken turns succeeded qualitatively. The later response failed; this does not isolate provider, schema, timeout or speech playback failure. No personal audio or recognized sentences retained."
+    },
+    {
+      "id": "post-response-repair-intermittent-silence",
+      "text": "Not very productive. Sometimes the healer simply doesn't respond at all.",
+      "source": "Owner follow-up after restart of repaired runtime ff5b8d2d, recorded on 2026-10-16.",
+      "runtime_revision": "ff5b8d2d",
+      "limit": "Owner reports intermittent absence of a response. Whether written reply is absent or only audio is absent remains unconfirmed. No exact player dialogue or audio retained."
     }
   ],
   "intake": {

@@ -30,7 +30,10 @@ fictional controlled and selected `gemma4:e4b` local-model generations and the r
 quality gate passed. The cancellation fixture now holds unrecorded speech, preserving its
 assertions. Both runtime repairs are closed; human repeated Whisper/reply and echo outcomes
 remain partial or unperformed. Preserve the successful recognition/typing observations and
-reported two-turn success followed by failure. Resume only the remaining operator checks.
+reported two-turn success followed by failure. The latest post-restart report still finds occasional
+missing Healer responses. Text-versus-audio absence is awaiting clarification; admitted silence and
+unreported participation-start rejection are possible paths, not a confirmed live diagnosis.
+Resume only the remaining operator checks.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
@@ -71,6 +74,11 @@ checks, starting with repeated Whisper/reply dialogue beside the listener. Do no
 bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer
 physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in
 remains authorized; personal-audio persistence and new OS changes require explicit enablement.
+Latest post-restart owner report still finds occasional missing Healer responses. Written-versus-
+audio absence is awaiting clarification. Existing tests allowed silence; source inspection also
+identifies unreported participation-start rejection for busy/no-listener conditions. These
+possibilities are not a confirmed live cause or a new runtime grant. Preserve the closed repairs and
+obtain the specific observed outcome before proposing another change.
 
 Done when: Named finite session records permission/device intake, natural English/German
 partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
