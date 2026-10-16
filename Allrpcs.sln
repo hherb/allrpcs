@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{B449BD11
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allrpcs.ScenarioValidator", "tools\ScenarioValidator\Allrpcs.ScenarioValidator.csproj", "{7C661858-05D5-4EBD-901B-5A76770035CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allrpcs.SpeechServiceProbe", "tools\SpeechServiceProbe\Allrpcs.SpeechServiceProbe.csproj", "{E27D3E7B-AA0F-4649-A9A9-1A4C53056246}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{7C661858-05D5-4EBD-901B-5A76770035CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C661858-05D5-4EBD-901B-5A76770035CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C661858-05D5-4EBD-901B-5A76770035CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27D3E7B-AA0F-4649-A9A9-1A4C53056246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27D3E7B-AA0F-4649-A9A9-1A4C53056246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27D3E7B-AA0F-4649-A9A9-1A4C53056246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27D3E7B-AA0F-4649-A9A9-1A4C53056246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{01193B78-870E-4E35-9A83-58D3437ECDEC} = {3751B222-89D8-4909-8DC8-5FD49D27B346}
@@ -82,5 +88,6 @@ Global
 		{5D51DE90-5506-49FC-82CC-50736D732B3F} = {5C564270-81AB-406A-B613-46C43808F4F5}
 		{0F87F284-03D0-4A63-A84B-45A7186D4C72} = {5C564270-81AB-406A-B613-46C43808F4F5}
 		{7C661858-05D5-4EBD-901B-5A76770035CD} = {B449BD11-B327-4834-909B-2E7906B9A6E2}
+		{E27D3E7B-AA0F-4649-A9A9-1A4C53056246} = {B449BD11-B327-4834-909B-2E7906B9A6E2}
 	EndGlobalSection
 EndGlobal

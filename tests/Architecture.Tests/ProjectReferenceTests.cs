@@ -35,6 +35,11 @@ public sealed class ProjectReferenceTests
             "tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj",
             ["src/Domain/Allrpcs.Domain.csproj"]
         },
+        {
+            "tools/SpeechServiceProbe/Allrpcs.SpeechServiceProbe.csproj",
+            ["src/Infrastructure/Allrpcs.Infrastructure.csproj"]
+        },
+        { "tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj", [] },
     };
 
     [Theory]
@@ -61,7 +66,43 @@ public sealed class ProjectReferenceTests
         Assert.Equal(expectedReferences, actualReferences);
     }
 
-    private static string FindRepositoryRoot()
+    [Fact]
+    public void EveryRepositoryProjectIsInAllowedGraph()
+    {
+        string repositoryRoot = FindRepositoryRoot();
+        string[] excludedSegments = ["bin", "obj", "artifacts", ".git", ".godot"];
+
+        string[] actualProjects = Directory
+            .EnumerateFiles(repositoryRoot, "*.csproj", SearchOption.AllDirectories)
+            .Select(path => Path.GetRelativePath(repositoryRoot, path).Replace('\\', '/'))
+            .Where(path => !path.Split('/').Any(segment => excludedSegments.Contains(segment)))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        string[] allowedProjects = AllowedReferences
+            .Select(row => (string)row[0])
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+
+        Assert.Equal(allowedProjects, actualProjects);
+    }
+
+    [Fact]
+    public void EveryAllowedProjectIsInSolution()
+    {
+        string repositoryRoot = FindRepositoryRoot();
+        string solution = File.ReadAllText(Path.Combine(repositoryRoot, SolutionFileName))
+            .Replace('\\', '/');
+
+        string[] missing = AllowedReferences
+            .Select(row => (string)row[0])
+            .Where(project => !solution.Contains($"\"{project}\"", StringComparison.Ordinal))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+
+        Assert.Empty(missing);
+    }
+
+    internal static string FindRepositoryRoot()
     {
         DirectoryInfo? directory = new(AppContext.BaseDirectory);
 
