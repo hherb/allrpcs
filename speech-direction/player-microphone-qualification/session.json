@@ -192,6 +192,13 @@
     "authority": "speech-direction/herb-examination-action-repair/authority.json",
     "closure": "speech-direction/herb-examination-action-repair/closure.json",
     "status": "complete; controlled Main, native visual, selected local-model examination and recovered full quality passed",
-    "physical_outcome": "No new human pass inferred; resume the existing owner-operated trial after restart."
+    "physical_outcome": "No new human pass inferred; resume the existing owner-operated trial after restart.",
+    "owner_trial_restart": {
+      "date": "2026-10-16",
+      "source_revision": "fd0910b29d73299ae55700fcc09d0713affcb829",
+      "engine": "Godot 4.6.3 stable mono; Apple M3 Max; OpenGL compatibility",
+      "method": "Launched the published ordinary game with --max-fps 60 and test-only configuration overrides removed. Startup completed and the process remained running. Existing user settings and explicit capture opt-in are preserved.",
+      "physical_outcome": "No new human examination, microphone, playback or echo pass inferred."
+    }
   }
 }

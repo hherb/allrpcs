@@ -39,6 +39,8 @@ Its implementation now executes accepted spoken/silent examinations through move
 with visible result/failure and no automatic collection. Controlled native Main, a fictional
 `gemma4:e4b` examination and the recovered full gate (216 stages; 5,644 unit tests) pass.
 This runtime repair is closed; resume the existing physical trial and preserve its case totals.
+The ordinary trial game was restarted from published `fd0910b2`; startup is verified.
+The next owner observation is an examination request, followed by remaining physical cases.
 Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
 
 Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
