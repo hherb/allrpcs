@@ -1,4 +1,5 @@
 using System.Buffers.Binary;
+using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Channels;
@@ -57,22 +58,45 @@ public sealed class MoonshineSpeechTests
         await Assert.ThrowsAsync<IOException>(() => iterator.MoveNextAsync().AsTask());
         Assert.True(factory.Worker!.Disposed);
     }
+    // The input fails only after the recognizer is provably blocked on a receive the worker never
+    // answers, so an IOException (not the receive's 10 s TimeoutException) proves the failure is not
+    // queued behind that receive. The enumeration starts under a context that never runs posted
+    // work: propagation must not depend on the consumer's context (a source continuation posted to
+    // xUnit's shared context once missed a 2 s wall-clock bound on a loaded CI runner). The 30 s
+    // bound only turns a deadlocked regression into a failure; it is not what the test measures.
     [Fact]
     public async Task InputFailureCancelsReceiverAndClosesWorker()
     {
         await using Factory factory = new();
+        TaskCompletionSource inputFailure = new(TaskCreationOptions.RunContinuationsAsynchronously);
         await using IAsyncEnumerator<SpeechRecognitionEvent> iterator = new MoonshineSpeechRecognizer(factory)
-            .RecognizeAsync(SpeechLanguage.English, FailedInput(), default).GetAsyncEnumerator();
-        await Assert.ThrowsAsync<IOException>(() => iterator.MoveNextAsync().AsTask().WaitAsync(TimeSpan.FromSeconds(2)));
-        Assert.True(factory.Worker!.Disposed);
+            .RecognizeAsync(SpeechLanguage.English, FailedInput(inputFailure.Task), default).GetAsyncEnumerator();
+        HeldContext consumer = new();
+        SynchronizationContext? previous = SynchronizationContext.Current;
+        SynchronizationContext.SetSynchronizationContext(consumer);
+        Task<bool> next;
+        try { next = iterator.MoveNextAsync().AsTask(); }
+        finally { SynchronizationContext.SetSynchronizationContext(previous); }
+        Assert.False(next.IsCompleted);
+        Assert.Equal(2, factory.Worker!.Receives);
+        inputFailure.SetException(new IOException("source lost"));
+        IOException error = await Assert.ThrowsAsync<IOException>(() => next.WaitAsync(TimeSpan.FromSeconds(30)));
+        Assert.Equal("source lost", error.Message);
+        Assert.True(factory.Worker.Disposed);
+        Assert.Empty(consumer.Posted);
     }
     [Fact]
     public void LocalOptionsRejectRelativeExecutableAndModelPaths()
     { Assert.Throws<ArgumentException>(() => new PlayerSpeechWorkerOptions("python", "/worker", "/en", "/de", "/manifest")); }
     private static async IAsyncEnumerable<SpeechAudioChunk> Input([EnumeratorCancellation] CancellationToken token = default)
     { await Task.Yield(); token.ThrowIfCancellationRequested(); yield return new(16000, [0.25f]); }
-    private static async IAsyncEnumerable<SpeechAudioChunk> FailedInput([EnumeratorCancellation] CancellationToken token = default)
-    { await Task.Yield(); token.ThrowIfCancellationRequested(); await Task.FromException(new IOException("source lost")); yield break; }
+    private static async IAsyncEnumerable<SpeechAudioChunk> FailedInput(Task failure, [EnumeratorCancellation] CancellationToken token = default)
+    { token.ThrowIfCancellationRequested(); await failure.ConfigureAwait(false); yield break; }
+    private sealed class HeldContext : SynchronizationContext
+    {
+        internal readonly ConcurrentQueue<SendOrPostCallback> Posted = new();
+        public override void Post(SendOrPostCallback d, object? state) => Posted.Enqueue(d);
+    }
     private sealed class Factory : IPlayerSpeechWorkerFactory, IAsyncDisposable
     {
         internal Worker? Worker;
@@ -86,6 +110,7 @@ public sealed class MoonshineSpeechTests
         private readonly Factory factory;
         private readonly Channel<string> output = Channel.CreateUnbounded<string>();
         internal bool Disposed;
+        internal int Receives;
         internal List<JsonElement> Requests = [];
         internal Worker(Factory factory) { this.factory = factory; output.Writer.TryWrite("{\"type\":\"ready\"}"); }
         public ValueTask SendAsync(string message, CancellationToken token)
@@ -106,7 +131,8 @@ public sealed class MoonshineSpeechTests
             }
             return ValueTask.CompletedTask;
         }
-        public async ValueTask<string?> ReceiveAsync(CancellationToken token) => await output.Reader.ReadAsync(token);
+        public async ValueTask<string?> ReceiveAsync(CancellationToken token)
+        { Interlocked.Increment(ref Receives); return await output.Reader.ReadAsync(token).ConfigureAwait(false); }
         public ValueTask DisposeAsync() { Disposed = true; output.Writer.TryComplete(); return ValueTask.CompletedTask; }
     }
 }
