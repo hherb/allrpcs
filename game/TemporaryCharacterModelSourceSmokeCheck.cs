@@ -49,8 +49,8 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
             return;
         }
 
-        // This speech-only fixture owns Main ticks so unrelated task time cannot change its snapshots.
-        GetParent<Main>().SetProcess(false);
+        // Godot enables Main processing after child readiness; freeze it after Main is ready.
+        GetParent<Main>().Ready += FreezeMainProcessing;
 
         TemporaryCharacterModelSource modelSource = GetNode<TemporaryCharacterModelSource>(
             "../TemporaryCharacterModelSource");
@@ -84,8 +84,26 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        Main main = GetParent<Main>();
+        var clock = GetNode<CharacterIndependentTaskStepClockController>("../CharacterIndependentTaskStepClockController").Clock;
+        var travel = GetNode<CharacterIndependentTaskTravelController>("../CharacterIndependentTaskTravelController").Progress;
+        bool occurred = GetNode<CharacterIndependentTaskOccurrenceController>("../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null;
+        if (!main.IsNodeReady() || main.IsProcessing() || clock?.ElapsedTowardNextStep != TimeSpan.Zero
+            || travel?.CompletedWaypointCount != 0 || occurred)
+        {
+            Fail("Scripted fixture lost exclusive Main ticks before manual processing. " + JsonSerializer.Serialize(new
+            {
+                processFrames,
+                parentReady = main.IsNodeReady(),
+                parentProcessing = main.IsProcessing(),
+                independentElapsedSeconds = clock?.ElapsedTowardNextStep.TotalSeconds,
+                independentCompletedWaypoints = travel?.CompletedWaypointCount,
+                hasIndependentOccurrence = occurred,
+            }));
+            return;
+        }
         // Exercise ordinary dialogue without advancing the unrelated independent-task clock.
-        GetParent<Main>()._Process(0);
+        main._Process(0);
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
@@ -279,6 +297,13 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
         && ReferenceEquals(worldEventController.WorldTime, initialWorldTime)
         && ReferenceEquals(worldObjectController.WorldObjects, initialWorldObjects)
         && ReferenceEquals(searchController.Perception, initialPerception);
+
+    private void FreezeMainProcessing()
+    {
+        Main main = GetParent<Main>();
+        main.Ready -= FreezeMainProcessing;
+        main.SetProcess(false);
+    }
 
     private string DescribeOfflineFailure(CharacterModelStreamSnapshot result,
         CharacterTurnActivity? activity, CharacterModelStreamTermination? termination) =>

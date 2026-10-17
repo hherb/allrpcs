@@ -49,8 +49,8 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             return;
         }
 
-        // Keep physics movement live while this speech-only fixture owns Main ticks.
-        GetParent<Main>().SetProcess(false);
+        // Godot enables Main processing after child readiness; keep physics live and freeze Main after it is ready.
+        GetParent<Main>().Ready += FreezeMainProcessing;
 
         flow = GetNode<CharacterModelGenerationFlowController>(
             "../CharacterModelGenerationFlowController");
@@ -73,8 +73,26 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        Main main = GetParent<Main>();
+        var clock = GetNode<CharacterIndependentTaskStepClockController>("../CharacterIndependentTaskStepClockController").Clock;
+        var travel = GetNode<CharacterIndependentTaskTravelController>("../CharacterIndependentTaskTravelController").Progress;
+        bool occurred = GetNode<CharacterIndependentTaskOccurrenceController>("../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null;
+        if (!main.IsNodeReady() || main.IsProcessing() || clock?.ElapsedTowardNextStep != TimeSpan.Zero
+            || travel?.CompletedWaypointCount != 0 || occurred)
+        {
+            Fail("Offline fixture lost exclusive Main ticks before manual processing. " + JsonSerializer.Serialize(new
+            {
+                processFrames,
+                parentReady = main.IsNodeReady(),
+                parentProcessing = main.IsProcessing(),
+                independentElapsedSeconds = clock?.ElapsedTowardNextStep.TotalSeconds,
+                independentCompletedWaypoints = travel?.CompletedWaypointCount,
+                hasIndependentOccurrence = occurred,
+            }));
+            return;
+        }
         // Exercise ordinary dialogue without advancing the unrelated independent-task clock.
-        GetParent<Main>()._Process(0);
+        main._Process(0);
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
@@ -106,6 +124,12 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
 
     private void CaptureAcceptedDialogueBoundary()
     {
+        // One fixture-owned Main tick submits after the participation coordinator's frame.
+        if (GetNode<OrdinaryPlayerDialogueParticipationCoordinator>("../OrdinaryPlayerDialogueParticipationCoordinator").IsBusy)
+        {
+            return;
+        }
+
         string expectedText = stage == 1 ? PlayerText : SecondPlayerText;
         int expectedTranscriptCount = stage == 1 ? 1 : 2;
         DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
@@ -127,7 +151,20 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             || (firstUtterance is not null
                 && !ReferenceEquals(transcript.Entries[0].SpokenStatement, firstUtterance)))
         {
-            Fail("Player dialogue did not start the exact ordinary awaiting healer turn.");
+            Fail("Player dialogue did not start the exact ordinary awaiting healer turn. " + JsonSerializer.Serialize(new
+            {
+                stage,
+                processFrames,
+                hasUtterance = utterance is not null,
+                hasActivity = activity is not null,
+                activityState = activity?.State.Value,
+                transcriptCount = transcript?.Entries.Count,
+                expectedTranscriptCount,
+                sameUtterance = ReferenceEquals(dialogue?.Utterance, utterance),
+                sameRequestEvent = ReferenceEquals(activity?.Request.DialogueEvent, dialogue),
+                participationBusy = GetNode<OrdinaryPlayerDialogueParticipationCoordinator>("../OrdinaryPlayerDialogueParticipationCoordinator").IsBusy,
+                participationStatus = GetNode<CharacterTurnParticipationRoundTaskController>("../CharacterTurnParticipationRoundTaskController").Status.ToString(),
+            }));
             return;
         }
 
@@ -278,6 +315,13 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             + "turns, only canonical failure status appeared, and routine movement continued "
             + "without fabricated speech or authoritative state mutation.");
         GetTree().Quit();
+    }
+
+    private void FreezeMainProcessing()
+    {
+        Main main = GetParent<Main>();
+        main.Ready -= FreezeMainProcessing;
+        main.SetProcess(false);
     }
 
     private void Fail(string message)
