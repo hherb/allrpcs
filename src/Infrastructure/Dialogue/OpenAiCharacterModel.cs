@@ -11,6 +11,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OpenAiCharacterModel : ICharacterModel
 {
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly ICharacterModelGenerationDiagnosticSink? diagnosticSink;
     private readonly TimeProvider? diagnosticTimeProvider;
     private readonly IOpenAiCredentialSource credentialSource;
@@ -36,7 +37,8 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         HttpClient client,
         IOpenAiCredentialSource credentialSource,
         CharacterModelSettings settings,
-        OpenAiEndpoint endpoint)
+        OpenAiEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
@@ -48,6 +50,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         }
 
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.credentialSource = credentialSource;
         this.settings = settings;
         this.endpoint = endpoint;
@@ -135,9 +138,10 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         CharacterModelFailureCode? transportFailure = null;
         try
         {
-            response = await client.SendAsync(
+            response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -167,7 +171,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
             if (!response!.IsSuccessStatusCode)
             {
                 yield return await ObserveAsync(
-                    Failure(CharacterModelHttpFailurePolicy.Classify(response.StatusCode)),
+                    CharacterModelHttpFailurePolicy.Termination(response, timeoutOptions.TimeProvider),
                     diagnosticStartTimestamp,
                     null,
                     null,

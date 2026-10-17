@@ -15,6 +15,7 @@ public sealed class AnthropicCharacterModel : ICharacterModel
         new("https://api.anthropic.com/v1/messages", UriKind.Absolute);
 
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly ICharacterModelGenerationDiagnosticSink? diagnosticSink;
     private readonly TimeProvider? diagnosticTimeProvider;
     private readonly IAnthropicCredentialSource credentialSource;
@@ -27,7 +28,8 @@ public sealed class AnthropicCharacterModel : ICharacterModel
     public AnthropicCharacterModel(
         HttpClient client,
         IAnthropicCredentialSource credentialSource,
-        CharacterModelSettings settings)
+        CharacterModelSettings settings,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
@@ -40,6 +42,7 @@ public sealed class AnthropicCharacterModel : ICharacterModel
         }
 
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.credentialSource = credentialSource;
         this.settings = settings;
     }
@@ -98,9 +101,10 @@ public sealed class AnthropicCharacterModel : ICharacterModel
         CharacterModelFailureCode? transportFailure = null;
         try
         {
-            response = await client.SendAsync(
+            response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -130,7 +134,7 @@ public sealed class AnthropicCharacterModel : ICharacterModel
             if (!response!.IsSuccessStatusCode)
             {
                 yield return await ObserveAsync(
-                    Failure(CharacterModelHttpFailurePolicy.Classify(response.StatusCode)),
+                    CharacterModelHttpFailurePolicy.Termination(response, timeoutOptions.TimeProvider),
                     diagnosticStartTimestamp,
                     null,
                     null,

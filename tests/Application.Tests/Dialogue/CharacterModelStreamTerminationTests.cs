@@ -124,7 +124,8 @@ public sealed class CharacterModelStreamTerminationTests
         Assert.True(typeof(CharacterModelFailure).IsSealed);
         Assert.Collection(
             typeof(CharacterModelFailure).GetProperties(),
-            property => AssertGetOnlyProperty(property, nameof(CharacterModelFailure.Code)));
+            property => AssertGetOnlyProperty(property, nameof(CharacterModelFailure.Code)),
+            property => AssertGetOnlyProperty(property, nameof(CharacterModelFailure.RetryAfter)));
 
         Assert.True(typeof(CharacterModelStreamTermination).IsSealed);
         Assert.Equal(typeof(CharacterModelStreamUpdate), typeof(CharacterModelStreamTermination).BaseType);

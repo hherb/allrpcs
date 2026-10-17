@@ -26,4 +26,8 @@
     <ProjectReference Include="..\..\src\Infrastructure\Allrpcs.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../TestSupport/ManualTimeProvider.cs" Link="TestSupport/ManualTimeProvider.cs" />
+  </ItemGroup>
+
 </Project>

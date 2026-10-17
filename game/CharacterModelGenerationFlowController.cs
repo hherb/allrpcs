@@ -55,7 +55,8 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
         CharacterModelGenerationRequest request,
         WorldObjectSnapshot worldObjects,
         CharacterIntentionAffordanceSnapshot affordances,
-        TimeSpan deadline)
+        TimeSpan deadline,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(request);
@@ -88,7 +89,8 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
             affordances,
             deadline,
             observation,
-            generationCancellation.Token);
+            generationCancellation.Token,
+            timeProvider);
         _ = statusLabel!.Observe(stream);
         _ = textLabel!.Observe(stream);
         return true;

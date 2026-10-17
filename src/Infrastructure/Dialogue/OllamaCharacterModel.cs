@@ -10,6 +10,7 @@ public sealed class OllamaCharacterModel : ICharacterModel
 {
     private const string NdjsonMediaType = "application/x-ndjson";
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly ICharacterModelGenerationDiagnosticSink? diagnosticSink;
     private readonly TimeProvider? diagnosticTimeProvider;
     private readonly OllamaEndpoint endpoint;
@@ -25,7 +26,8 @@ public sealed class OllamaCharacterModel : ICharacterModel
     public OllamaCharacterModel(
         HttpClient client,
         CharacterModelSettings settings,
-        OllamaEndpoint endpoint)
+        OllamaEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(settings);
@@ -38,6 +40,7 @@ public sealed class OllamaCharacterModel : ICharacterModel
         }
 
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.settings = settings;
         this.endpoint = endpoint;
     }
@@ -79,9 +82,10 @@ public sealed class OllamaCharacterModel : ICharacterModel
         CharacterModelFailureCode? transportFailure = null;
         try
         {
-            response = await client.SendAsync(
+            response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -111,7 +115,7 @@ public sealed class OllamaCharacterModel : ICharacterModel
             if (!response!.IsSuccessStatusCode)
             {
                 yield return await ObserveAsync(
-                    Failure(CharacterModelHttpFailurePolicy.Classify(response.StatusCode)),
+                    CharacterModelHttpFailurePolicy.Termination(response, timeoutOptions.TimeProvider),
                     diagnosticStartTimestamp,
                     null,
                     null,

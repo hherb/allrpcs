@@ -7,6 +7,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnectionTester
 {
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly IOpenAiCredentialSource credentialSource;
     private readonly OpenAiEndpoint endpoint;
 
@@ -22,12 +23,14 @@ public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnec
     public OpenAiCharacterModelConnectionTester(
         HttpClient client,
         IOpenAiCredentialSource credentialSource,
-        OpenAiEndpoint endpoint)
+        OpenAiEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
         ArgumentNullException.ThrowIfNull(endpoint);
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.credentialSource = credentialSource;
         this.endpoint = endpoint;
     }
@@ -60,9 +63,10 @@ public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnec
 
         try
         {
-            using HttpResponseMessage response = await client.SendAsync(
+            using HttpResponseMessage response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode

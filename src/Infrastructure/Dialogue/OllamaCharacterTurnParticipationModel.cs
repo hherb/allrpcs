@@ -11,6 +11,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OllamaCharacterTurnParticipationModel : ICharacterTurnParticipationModel
 {
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly OllamaEndpoint endpoint;
     private readonly CharacterModelSettings settings;
 
@@ -26,7 +27,8 @@ public sealed class OllamaCharacterTurnParticipationModel : ICharacterTurnPartic
     public OllamaCharacterTurnParticipationModel(
         HttpClient client,
         CharacterModelSettings settings,
-        OllamaEndpoint endpoint)
+        OllamaEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(settings);
@@ -37,6 +39,7 @@ public sealed class OllamaCharacterTurnParticipationModel : ICharacterTurnPartic
         }
 
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.settings = settings;
         this.endpoint = endpoint;
     }
@@ -113,9 +116,10 @@ public sealed class OllamaCharacterTurnParticipationModel : ICharacterTurnPartic
     {
         try
         {
-            return await client.SendAsync(
+            return await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
         }

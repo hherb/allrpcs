@@ -139,7 +139,8 @@ public sealed class CharacterModelGenerationControllerDiagnosticTests
     {
         RecordingSink sink = new();
         StubModel model = new(
-            Updates(Failed(CharacterModelFailureCode.Transport)),
+            Updates(new CharacterModelStreamTermination(CharacterModelStreamTerminationStatus.Failed,
+                null, new CharacterModelFailure(CharacterModelFailureCode.Transport, TimeSpan.Zero))),
             WaitForCancellation());
 
         CharacterModelStreamSnapshot result = await GenerateAsync(

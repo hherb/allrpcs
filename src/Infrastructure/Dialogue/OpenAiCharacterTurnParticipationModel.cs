@@ -11,6 +11,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OpenAiCharacterTurnParticipationModel : ICharacterTurnParticipationModel
 {
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly IOpenAiCredentialSource credentialSource;
     private readonly OpenAiEndpoint endpoint;
     private readonly CharacterModelSettings settings;
@@ -29,7 +30,8 @@ public sealed class OpenAiCharacterTurnParticipationModel : ICharacterTurnPartic
         HttpClient client,
         IOpenAiCredentialSource credentialSource,
         CharacterModelSettings settings,
-        OpenAiEndpoint endpoint)
+        OpenAiEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
@@ -41,6 +43,7 @@ public sealed class OpenAiCharacterTurnParticipationModel : ICharacterTurnPartic
         }
 
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.credentialSource = credentialSource;
         this.settings = settings;
         this.endpoint = endpoint;
@@ -118,9 +121,10 @@ public sealed class OpenAiCharacterTurnParticipationModel : ICharacterTurnPartic
     {
         try
         {
-            return await client.SendAsync(
+            return await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
         }

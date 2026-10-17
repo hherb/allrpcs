@@ -80,7 +80,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             "../TemporaryCharacterSabotageActionModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
-        client ??= new NetHttpClient
+        client ??= new NetHttpClient(ProviderHttpTransport.CreateHandler())
         {
             Timeout = Timeout.InfiniteTimeSpan,
         };

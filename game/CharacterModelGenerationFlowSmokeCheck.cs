@@ -19,6 +19,7 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
     private static readonly TimeSpan CancelDeadline = TimeSpan.FromSeconds(5);
     private static readonly TimeSpan TimeoutDeadline = TimeSpan.FromMilliseconds(50);
 
+    private readonly CharacterModelSmokeTimeProvider timeoutClock = new();
     private CharacterModelGenerationFlowController flow = null!;
     private Main main = null!;
     private CharacterModelStreamController stream = null!;
@@ -116,7 +117,8 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
                 request,
                 new WorldObjectSnapshot([]),
                 new CharacterIntentionAffordanceSnapshot([]),
-                deadline)
+                deadline,
+                mode == TimeoutMode ? timeoutClock : null)
             || !flow.IsGenerating
             || !flow.HasStarted
             || !ReferenceEquals(
@@ -167,6 +169,12 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
         {
             Fail("Character-model flow did not present accepted streamed text while generating.");
             return;
+        }
+
+        if (mode == TimeoutMode)
+        {
+            // Expire the unchanged deadline only after the main thread has proved visible progress.
+            timeoutClock.Advance(TimeoutDeadline);
         }
 
         if (mode == CancelMode)
