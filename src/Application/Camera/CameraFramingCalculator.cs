@@ -50,7 +50,7 @@ public static class CameraFramingCalculator
     /// <param name="maximumZoom">The nearest supported zoom-in value.</param>
     /// <returns>A validated immutable camera framing plan.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// Thrown when bounds, viewport size, or zoom tuning values are invalid.
+    /// Thrown when bounds, viewport size, or zoom tuning values are invalid, or the covering zoom is not finite.
     /// </exception>
     public static CameraFramingPlan Create(
         CameraWorldBounds worldBounds,
@@ -66,6 +66,14 @@ public static class CameraFramingCalculator
         float minimumCoveringZoom = MathF.Max(
             viewportSizePixels.X / worldBounds.Width,
             viewportSizePixels.Y / worldBounds.Height);
+        if (!float.IsFinite(minimumCoveringZoom))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(viewportSizePixels),
+                viewportSizePixels,
+                "Viewport requires a covering zoom that cannot be represented as a finite value.");
+        }
+
         float effectiveMinimumZoom = MathF.Max(minimumZoom, minimumCoveringZoom);
         float effectiveMaximumZoom = MathF.Max(maximumZoom, effectiveMinimumZoom);
         return new CameraFramingPlan(

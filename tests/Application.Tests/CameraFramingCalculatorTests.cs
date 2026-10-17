@@ -85,6 +85,17 @@ public sealed class CameraFramingCalculatorTests
     }
 
     [Theory]
+    [InlineData(float.Epsilon, 1.0f)]
+    [InlineData(1.0f, float.Epsilon)]
+    public void RejectsUnrepresentableCoveringZoom(float worldWidth, float worldHeight)
+    {
+        CameraWorldBounds bounds = new(0.0f, 0.0f, worldWidth, worldHeight);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+            CameraFramingCalculator.Create(bounds, Vector2.One, 0.8f, 1.0f, 2.0f));
+    }
+
+    [Theory]
     [InlineData(1280.0f, 720.0f, 0.8f)]
     [InlineData(1279.6875f, 2275.0f, 2275.0f / 900.0f)]
     [InlineData(900.0f, 1600.0f, 1600.0f / 900.0f)]
