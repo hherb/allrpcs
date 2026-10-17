@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
 using Godot;
@@ -48,6 +49,9 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             return;
         }
 
+        // Keep physics movement live while this speech-only fixture owns Main ticks.
+        GetParent<Main>().SetProcess(false);
+
         flow = GetNode<CharacterModelGenerationFlowController>(
             "../CharacterModelGenerationFlowController");
         healer = GetNode<Healer>("../Healer");
@@ -69,6 +73,8 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        // Exercise ordinary dialogue without advancing the unrelated independent-task clock.
+        GetParent<Main>()._Process(0);
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
@@ -205,7 +211,42 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
                     "../Seeker/FocusedSearchActivityController").Perception,
                 initialPerception))
         {
-            Fail("Ordinary offline failure fabricated dialogue or changed scene state.");
+            Fail("Ordinary offline failure fabricated dialogue or changed scene state. "
+                + JsonSerializer.Serialize(new
+                {
+                    stage,
+                    processFrames,
+                    hasExpectedInput = expectedInput is not null,
+                    updateKinds = result.Updates.Select(update => update.GetType().Name),
+                    terminationStatus = termination?.Status.ToString(),
+                    failureCode = termination?.Failure?.Code.ToString(),
+                    terminalHasResponse = termination?.Response is not null,
+                    sameRequest = ReferenceEquals(turnController.Activity?.Request, expectedInput?.GenerationRequest.TurnRequest),
+                    activityState = turnController.Activity?.State.Value,
+                    activityHasResponse = turnController.Activity?.Response is not null,
+                    sameDialogue = ReferenceEquals(dialogueController.LastOccurredEvent, acceptedDialogue),
+                    sameTranscript = ReferenceEquals(transcriptController.Transcript, acceptedTranscript),
+                    transcriptKinds = transcriptController.Transcript?.Entries.Select(entry => entry.Kind.Value),
+                    canonicalStatus = ReferenceEquals(status.Presentation, CharacterModelGenerationStatusPresentation.Failed),
+                    canonicalStatusText = status.Text == CharacterModelGenerationStatusPresentation.Failed.Text,
+                    text.Visible,
+                    hasStreamText = text.Text.Length != 0,
+                    noDeterministicResponse = deterministicResponse.Text == NoResponseText,
+                    hasRetryStatus = dialogueStatus.Text.Contains("retry", StringComparison.OrdinalIgnoreCase),
+                    hasExamination = examinationController.LastExaminationResult is not null,
+                    hasCollection = examinationController.LastCollectionOccurrence is not null,
+                    sameEventLog = ReferenceEquals(worldEventController.EventLog, initialEventLog),
+                    sameWorldTime = ReferenceEquals(worldEventController.WorldTime, initialWorldTime),
+                    sameWorldObjects = ReferenceEquals(GetNode<WorldObjectController>("../WorldObjectController").WorldObjects, initialWorldObjects),
+                    samePerception = ReferenceEquals(GetNode<FocusedSearchActivityController>("../Seeker/FocusedSearchActivityController").Perception, initialPerception),
+                    healerMoved = !healer.Position.IsEqualApprox(initialHealerPosition),
+                    independentElapsedSeconds = GetNode<CharacterIndependentTaskStepClockController>(
+                        "../CharacterIndependentTaskStepClockController").Clock?.ElapsedTowardNextStep.TotalSeconds,
+                    independentCompletedWaypoints = GetNode<CharacterIndependentTaskTravelController>(
+                        "../CharacterIndependentTaskTravelController").Progress?.CompletedWaypointCount,
+                    hasIndependentOccurrence = GetNode<CharacterIndependentTaskOccurrenceController>(
+                        "../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null,
+                }));
             return;
         }
 
