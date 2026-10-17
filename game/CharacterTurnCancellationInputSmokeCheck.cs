@@ -63,6 +63,7 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
             }
 
             input.Text = RequestText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, RequestText);
             stage = 1;
             return;

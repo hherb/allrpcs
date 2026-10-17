@@ -64,20 +64,29 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
             participant => participant.Identity.Id.Equals(speech.SpeakerCharacterId))
             ?? throw new InvalidOperationException(
                 "The response speaker was absent from ordinary scene participants.");
+        lastRecordedDelivery = delivery;
+        if (ReferenceEquals(speaker, participants[0]) && !healer.Visible)
+        {
+            // No occurrence can complete this exact speaking turn once its speaker is absent.
+            if (ReferenceEquals(turnController.Activity, activity) && turnController.TryCancel())
+            { inputController.SetStatus("The responder is absent. Please retry."); }
+            return;
+        }
         Character otherParticipant = ReferenceEquals(
             speaker,
             participants[0])
             ? participants[1]
             : participants[0];
         Vector2 speakerPosition = GetParticipantPosition(speaker, participants);
-        DialogueHearingCandidate[] candidates =
+        List<DialogueHearingCandidate> candidates =
         [
             new(speech.SpeakerCharacterId, ToNumerics(speakerPosition)),
             new(seekerId, ToNumerics(seeker.Position)),
-            new(
-                otherParticipant.Identity.Id,
-                ToNumerics(GetParticipantPosition(otherParticipant, participants))),
         ];
+        if (!ReferenceEquals(otherParticipant, participants[0]) || healer.Visible)
+        {
+            candidates.Add(new(otherParticipant.Identity.Id, ToNumerics(GetParticipantPosition(otherParticipant, participants))));
+        }
         if (!eventController.TryOccur(
                 delivery,
                 candidates[0].Position,
@@ -90,7 +99,6 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
                 "The complete response delivery could not occur and append once.");
         }
 
-        lastRecordedDelivery = delivery;
         DialogueEvent occurred = eventController.LastOccurredEvent!;
         Node2D source = ReferenceEquals(speaker, participants[0]) ? healer : sageHearingPosition;
         RecordedReplyPresentation notice = new(occurred, delivery, speaker.Identity.Id,

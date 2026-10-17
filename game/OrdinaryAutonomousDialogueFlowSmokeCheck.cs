@@ -77,6 +77,7 @@ public partial class OrdinaryAutonomousDialogueFlowSmokeCheck : Node
             initialPerception = GetNode<FocusedSearchActivityController>(
                 "../Seeker/FocusedSearchActivityController").Perception;
             input.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             submitted = true;
             return;

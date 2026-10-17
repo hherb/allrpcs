@@ -96,8 +96,8 @@ public partial class DialogueInputSmokeCheck : Node
         }
 
         GD.Print(
-            "Dialogue input smoke passed: exact Seeker identity, prompt-shaped and repeated panel "
-            + "submission, Domain-delegated invalid-input rejection, last-utterance replacement, "
+            "Dialogue input smoke passed: exact Seeker identity, prompt-shaped and busy panel "
+            + "submission, Domain-delegated invalid-input rejection, available-owner replacement, "
             + "and unrelated-state preservation were correct.");
         GetTree().Quit();
     }
@@ -126,19 +126,21 @@ public partial class DialogueInputSmokeCheck : Node
         input.Text = SecondText;
         submit.EmitSignal(BaseButton.SignalName.Pressed);
 
-        DialogueDelivery? repeatedDelivery = controller.LastSubmittedDelivery;
-        DialogueUtterance? repeated = controller.LastSubmittedUtterance;
-        if (repeatedDelivery is null
-            || repeated is null
-            || ReferenceEquals(repeatedDelivery, previous)
-            || !ReferenceEquals(repeatedDelivery.Utterance, repeated)
-            || !ReferenceEquals(repeatedDelivery.Mode, DialogueDeliveryMode.Whispering)
-            || !ReferenceEquals(repeated.SpeakerCharacterId, expectedSpeaker)
-            || repeated.Text != SecondText
-            || input.Text.Length != 0
-            || status.Text != TemporaryDialogueInputPanel.AcceptedStatusText)
+        if (!ReferenceEquals(controller.LastSubmittedDelivery, previous)
+            || input.Text != SecondText || !status.Text.Contains("BUSY", StringComparison.Ordinal))
         {
-            Fail("Dialogue panel failed exact repeated submission.");
+            Fail("Dialogue panel overwrote a pending delivery or erased the busy draft.");
+            return false;
+        }
+        // The reusable text owner still accepts exact replacement when no Main round owns it.
+        using DialogueInputController isolated = new();
+        if (!isolated.TryInitialize(expectedSpeaker)
+            || !isolated.TrySubmit(FirstText, DialogueDeliveryMode.OrdinarySpeech)
+            || !isolated.TrySubmit(SecondText, DialogueDeliveryMode.Whispering)
+            || isolated.LastSubmittedUtterance?.Text != SecondText
+            || !ReferenceEquals(isolated.LastSubmittedDelivery?.Mode, DialogueDeliveryMode.Whispering))
+        {
+            Fail("Available text owner failed exact replacement and whisper mode.");
             return false;
         }
 

@@ -99,6 +99,7 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
     {
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         CharacterBody2D healer = GetNode<CharacterBody2D>("../Healer");
+        healer.Visible = true; // Explicit present speaker in this disposable fixture.
         Marker2D sage = GetNode<Marker2D>("../SageHearingPosition");
         IReadOnlyList<Allrpcs.Domain.Characters.Character> participants =
             GetNode<TemporaryOrdinaryCharacterParticipantSource>(

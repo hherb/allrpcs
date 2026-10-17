@@ -193,6 +193,7 @@ public partial class SpaceHoldSpeechSmokeCheck : Node
         Reply model = new();
         Require(GetNode<TemporaryCharacterTurnParticipationModelSource>("../TemporaryCharacterTurnParticipationModelSource").TrySupplyModel(new Participation()), "Participation source collision");
         Require(GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource").TrySupplyModel(model), "Reply source collision");
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present synthetic dialogue listener.
         text.Text = value; text.EmitSignal(LineEdit.SignalName.TextSubmitted, value); await Wait(() => model.Calls > 0);
     }
     private async Task Frames(int count) { for (int i = 0; i < count; i++) { await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); } }

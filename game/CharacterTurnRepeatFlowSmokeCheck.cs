@@ -234,6 +234,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private void Submit(string text)
     {
         input.Text = text;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         input.EmitSignal(LineEdit.SignalName.TextSubmitted, text);
     }
 

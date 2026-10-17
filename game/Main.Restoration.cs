@@ -20,7 +20,7 @@ public partial class Main
             CharacterTurnTranscriptSnapshot empty = new([]);
             return new(() => characterTurnTranscriptController.InstallCharacterTurnOccurrence(empty));
         });
-        Register("dialogue-input", () => new(dialogueInputController.ResetSession));
+        Register("dialogue-input", () => new(dialogueInputController.ResetSession, dialogueInputController.PublishStatus));
         Register("main-result-tracking", () => new(() =>
         {
             lastProcessedModelResult = null;

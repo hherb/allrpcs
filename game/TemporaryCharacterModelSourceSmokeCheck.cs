@@ -291,6 +291,7 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
     private void Submit(string text)
     {
         inputControl.Text = text;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, text);
     }
 

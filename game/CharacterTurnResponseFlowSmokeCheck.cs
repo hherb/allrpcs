@@ -65,6 +65,7 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             }
 
             input.Text = PromptShapedText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PromptShapedText);
             stage = 1;
             return;
@@ -97,6 +98,7 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             speakingActivity = turnController.Activity;
             firstUtterance = inputController.LastSubmittedUtterance;
             input.Text = LaterText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, LaterText);
             stage = 3;
             return;
@@ -111,7 +113,7 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
         GD.Print(
             "Character-turn response flow smoke passed: one exact live awaiting request "
             + "received one fresh deterministic complete response as a speaking activity, "
-            + "prompt-shaped and later player text remained ordinary exact speech, prevented the "
+            + "prompt-shaped speech remained exact, a busy later draft was retained, prevented the "
             + "proposed examination, and preserved unrelated state.");
         GetTree().Quit();
     }
@@ -219,14 +221,15 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             && utterance is not null
             && occurred is not null
             && ReferenceEquals(turnController.Activity, speakingActivity)
-            && ReferenceEquals(occurred.Utterance, utterance)
-            && utterance.Text == LaterText
-            && transcript is { Entries.Count: 3 }
+            && ReferenceEquals(occurred.Utterance, speakingActivity.Response?.Speech)
+            && ReferenceEquals(utterance, firstUtterance)
+            && input.Text == LaterText
+            && GetNode<Label>("../DialogueOverlay/Panel/Status").Text.Contains("BUSY", StringComparison.Ordinal)
+            && transcript is { Entries.Count: 2 }
             && ReferenceEquals(transcript.Entries[0].SpokenStatement, firstUtterance)
             && ReferenceEquals(
                 transcript.Entries[1].SpokenStatement,
                 speakingActivity.Response?.Speech)
-            && ReferenceEquals(transcript.Entries[2].SpokenStatement, utterance)
             && transcript.Entries.All(entry => entry.PhysicalAction is null);
         if (!matches)
         {

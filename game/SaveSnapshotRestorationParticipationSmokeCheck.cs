@@ -28,6 +28,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             var snapshot = GetNode<SaveSnapshotCaptureController>("../SaveSnapshotCaptureController").Capture()!;
             LineEdit input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
             input.Text = "Please answer after I load.";
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, input.Text);
             for (int frame = 0; frame < 60 && model.Request is null; frame++)
             {
@@ -59,6 +60,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             HeldRestoreParticipation next = new();
             if (!source.TrySupplyModel(next)) { throw new InvalidOperationException("Supply next model"); }
             input.Text = "A fresh request after loading.";
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, input.Text);
             for (int frame = 0; frame < 60 && next.Request is null; frame++)
             {

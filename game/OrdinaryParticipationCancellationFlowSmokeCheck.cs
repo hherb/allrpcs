@@ -76,6 +76,7 @@ public partial class OrdinaryParticipationCancellationFlowSmokeCheck : Node
             initialPerception = GetNode<FocusedSearchActivityController>(
                 "../Seeker/FocusedSearchActivityController").Perception;
             input.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
             return;

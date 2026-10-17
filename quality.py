@@ -2,7 +2,7 @@
 """Run frozen contracts at recorded revisions and full current product quality."""
 
 import argparse
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -915,12 +915,16 @@ def dialogue_speech_checks(run, environment, tree=ROOT, revision=None):
     """Retain the exact completed reply/fallback modes and their completion criteria."""
     if not (ROOT / 'speech-direction/dialogue-integration/authority.json').exists():
         return
-    for mode in ('headless', 'unavailable'):
-        report = run.directory / ('dialogue-speech-' + mode + '.json')
-        run.stage('dialogue-speech-' + mode, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'],
-                  cwd=tree, revision=revision, env=dict(environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_DIALOGUE_SPEECH_CHECK='1', ALLRPCS_DIALOGUE_SPEECH_MODE=mode,
-                           ALLRPCS_DIALOGUE_SPEECH_REPORT=str(report), ALLRPCS_SPEECH_CONFIG='/private/tmp/allrpcs-speech-not-configured.json'),
-                  retry_native=True, completion='PASS: dialogue speech Main: ' + mode)
+    with (tempfile.TemporaryDirectory(prefix='allrpcs-live-speech-') if revision is None else nullcontext(None)) as config_dir:
+        config = str(Path(config_dir) / 'absent.json') if config_dir else '/private/tmp/allrpcs-speech-not-configured.json'
+        current_environment = dict(environment, ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE='1') if revision is None else environment
+        for mode in ('headless', 'unavailable'):
+            report = run.directory / ('dialogue-speech-' + mode + '.json')
+            pacing = ['--max-fps', '60'] if revision is None else ['--fixed-fps', '60']
+            run.stage('dialogue-speech-' + mode, ['godot', '--headless', *pacing, '--path', 'game', '--quit-after', '3600'],
+                      cwd=tree, revision=revision, env=dict(current_environment, ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL='0', ALLRPCS_DIALOGUE_SPEECH_CHECK='1', ALLRPCS_DIALOGUE_SPEECH_MODE=mode,
+                               ALLRPCS_DIALOGUE_SPEECH_REPORT=str(report), ALLRPCS_SPEECH_CONFIG=config),
+                      retry_native=True, completion='PASS: dialogue speech Main: ' + mode)
 
 
 def player_asr_runtime(run, environment):
@@ -1213,6 +1217,30 @@ def finish_rain():
 
 class ContractTests(unittest.TestCase):
     """Reject omitted checks and failed stages, and constrain the exceptional native retry."""
+
+    def test_live_speech_pacing_preserves_historical_commands(self):
+        class SpeechRun:
+            directory = Path('/tmp')
+            def __init__(self):
+                self.calls = []
+            def stage(self, name, arguments, **kwargs):
+                self.calls.append((name, arguments, kwargs))
+                if kwargs['revision'] is None:
+                    assert not Path(kwargs['env']['ALLRPCS_SPEECH_CONFIG']).exists()
+        live = SpeechRun()
+        historical = SpeechRun()
+        dialogue_speech_checks(live, {})
+        dialogue_speech_checks(historical, {}, ROOT, DIALOGUE_SPEECH_REVISION)
+        self.assertEqual(len(live.calls), 2)
+        for (_, current_args, current), (_, old_args, old) in zip(live.calls, historical.calls):
+            self.assertIn('--max-fps', current_args)
+            self.assertNotIn('--fixed-fps', current_args)
+            self.assertEqual(current['env']['ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE'], '1')
+            self.assertNotIn('ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE', old['env'])
+            self.assertNotIn('--max-fps', old_args)
+            self.assertEqual(old_args, ['godot', '--headless', '--fixed-fps', '60', '--path', 'game', '--quit-after', '3600'])
+            self.assertEqual(old['env']['ALLRPCS_SPEECH_CONFIG'], '/private/tmp/allrpcs-speech-not-configured.json')
+            self.assertNotEqual(current['env']['ALLRPCS_SPEECH_CONFIG'], old['env']['ALLRPCS_SPEECH_CONFIG'])
 
     def test_command_membership(self):
         """Unknown commands and lost retained checks cannot silently pass."""

@@ -90,6 +90,7 @@ public partial class CharacterModelInvalidResponseFlowSmokeCheck : Node
             initialWorldObjects = worldObjectController.WorldObjects;
             initialPerception = searchController.Perception;
             inputControl.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
             return;

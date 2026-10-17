@@ -65,6 +65,7 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
         {
             CaptureInitialState();
             input.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
             return;

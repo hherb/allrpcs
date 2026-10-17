@@ -13,6 +13,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
 {
     internal void ResetSession() { activeRoundController = null; activeBudgetController = null; activeTurnController = null; }
 
+    internal bool IsBusy => activeRoundController is not null;
+    internal event Action<string>? StatusChanged;
     private CharacterTurnParticipationRoundTaskController? activeRoundController;
     private AutonomousConversationBudgetController? activeBudgetController;
     private CharacterTurnActivityController? activeTurnController;
@@ -203,6 +205,14 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
                 activeTurnController!,
                 result,
                 DialogueActType.Request);
+        }
+
+        if (roundController.Status is CharacterTurnParticipationRoundTaskStatus.Failed
+            or CharacterTurnParticipationRoundTaskStatus.TimedOut)
+        {
+            StatusChanged?.Invoke(roundController.Status == CharacterTurnParticipationRoundTaskStatus.TimedOut
+                ? "Dialogue response timed out. Please retry."
+                : "Dialogue provider unavailable. Check provider settings and retry.");
         }
 
         if (!roundController.TryReset())

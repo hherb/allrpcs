@@ -7,7 +7,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryDialogueInputPanel : Control
 {
     /// <summary>Displayed after an utterance is accepted.</summary>
-    public const string AcceptedStatusText = "Dialogue submission: ACCEPTED";
+    public const string AcceptedStatusText = "Dialogue submission: ACCEPTED — BUSY";
     private const string RejectedStatusText = "Dialogue submission: REJECTED";
     private DialogueInputController controller = null!;
     private LineEdit input = null!;
@@ -24,6 +24,7 @@ public partial class TemporaryDialogueInputPanel : Control
         controller = GetNode<DialogueInputController>("../../DialogueInputController");
         input = GetNode<LineEdit>("Input");
         status = GetNode<Label>("Status");
+        controller.StatusChanged += PresentStatus;
         whispering = GetNode<CheckButton>("Whispering");
         submit = GetNode<Button>("Submit");
         close = GetNode<Button>("Close");
@@ -84,6 +85,8 @@ public partial class TemporaryDialogueInputPanel : Control
         GetViewport().SetInputAsHandled();
     }
 
+    private void PresentStatus(string value) { if (status.Text != value) { status.Text = value; } }
+
     private void OnClosePressed() => Closed?.Invoke();
     private void OnTextSubmitted(string text) => SubmitInput(text);
     private void OnSubmitPressed() => SubmitInput(input.Text);
@@ -92,7 +95,7 @@ public partial class TemporaryDialogueInputPanel : Control
         DialogueDeliveryMode mode = whispering.ButtonPressed
             ? DialogueDeliveryMode.Whispering : DialogueDeliveryMode.OrdinarySpeech;
         bool accepted = controller.TrySubmit(text, mode);
-        string result = accepted ? AcceptedStatusText : RejectedStatusText;
+        string result = accepted || controller.Status.Contains("BUSY", StringComparison.Ordinal) ? controller.Status : RejectedStatusText;
         // Only a changed submission result updates the polite region; no frame polling or duplicate writes.
         if (status.Text != result) { status.Text = result; }
         if (accepted) { input.Clear(); }
@@ -101,6 +104,7 @@ public partial class TemporaryDialogueInputPanel : Control
     /// <inheritdoc />
     public override void _ExitTree()
     {
+        controller.StatusChanged -= PresentStatus;
         input.TextSubmitted -= OnTextSubmitted;
         submit.Pressed -= OnSubmitPressed;
         close.Pressed -= OnClosePressed;

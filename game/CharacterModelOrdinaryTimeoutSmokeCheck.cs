@@ -116,6 +116,7 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
         initialPerception = searchController.Perception;
         initialTranscriptEntryCount = transcriptController.Transcript?.Entries.Count ?? 0;
         inputControl.Text = PlayerText;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
     }
 

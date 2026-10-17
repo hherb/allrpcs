@@ -72,7 +72,10 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
-            Fail("Ordinary offline character-model flow did not finish within its bound.");
+            Fail("Ordinary offline character-model flow did not finish within its bound: stage=" + stage
+                + "; generating=" + flow.IsGenerating + "; result=" + (flow.Result is not null)
+                + "; turn=" + turnController.Activity?.State + "; healer=" + healer.Position
+                + "; initial=" + initialHealerPosition + "; input=" + dialogueInputController.Status);
             return;
         }
 
@@ -80,6 +83,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
         {
             initialHealerPosition = healer.Position;
             inputControl.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
             return;
@@ -188,7 +192,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             || text.Visible
             || text.Text.Length != 0
             || deterministicResponse.Text != NoResponseText
-            || dialogueStatus.Text != TemporaryDialogueInputPanel.AcceptedStatusText
+            || !dialogueStatus.Text.Contains("retry", StringComparison.OrdinalIgnoreCase)
             || examinationController.LastExaminationResult is not null
             || examinationController.LastCollectionOccurrence is not null
             || !ReferenceEquals(worldEventController.EventLog, initialEventLog)
@@ -211,6 +215,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             firstRequest = expectedInput.GenerationRequest.TurnRequest;
             firstUtterance = firstRequest.DialogueEvent.Utterance;
             inputControl.Text = SecondPlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, SecondPlayerText);
             stage = 3;
             return;

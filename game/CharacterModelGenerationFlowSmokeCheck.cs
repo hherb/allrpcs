@@ -105,6 +105,7 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
             return;
         }
 
+        if (mode == CompleteMode) { GetNode<Healer>("../Healer").Visible = true; }
         TimeSpan deadline = mode == TimeoutMode ? TimeoutDeadline : CancelDeadline;
         ICharacterModel model = mode == CompleteMode
             ? new CompletingModel(request)

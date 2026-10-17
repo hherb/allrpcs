@@ -56,7 +56,8 @@ public partial class SaveDocumentStorageController : Node
             : ProjectSettings.GlobalizePath(SaveDocumentVirtualPath);
 
     private static bool IsIsolatedSmokeCheck() =>
-        OS.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
+        OS.GetEnvironment("ALLRPCS_DIALOGUE_OWNERSHIP_CHECK").Length > 0
+        || OS.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
         || OS.GetEnvironment(SaveLoadInputController.SmokeCheckEnvironmentVariable)
             == EnabledEnvironmentValue;
 }

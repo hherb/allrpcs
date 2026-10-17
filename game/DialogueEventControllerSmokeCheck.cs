@@ -48,6 +48,9 @@ public partial class DialogueEventControllerSmokeCheck : Node
         if (stage == 0)
         {
             CaptureInitialState();
+            GetNode<OrdinaryParticipationSmokeModelSupplier>("../OrdinaryParticipationSmokeModelSupplier").SetProcess(false);
+            SupplySilence();
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listeners for the scene hearing query.
             input.Text = FirstText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, FirstText);
             stage = 1;
@@ -61,7 +64,9 @@ public partial class DialogueEventControllerSmokeCheck : Node
                 return;
             }
 
+            if (!inputController.CanAccept!()) { return; }
             firstEvent = controller.LastOccurredEvent;
+            SupplySilence();
             input.Text = RepeatedText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, RepeatedText);
             stage = 2;
@@ -84,6 +89,20 @@ public partial class DialogueEventControllerSmokeCheck : Node
             + "repeated equal text remained distinct occurrences, invalid queries failed closed, "
             + "and unrelated state was preserved.");
         GetTree().Quit();
+    }
+
+    private void SupplySilence()
+    {
+        var source = GetNode<TemporaryCharacterTurnParticipationModelSource>("../TemporaryCharacterTurnParticipationModelSource");
+        _ = source.TakeModel(); // Retire the legacy supplier's queued direct response in this event-only fixture.
+        if (!source.TrySupplyModel(new SilentModel())) { throw new InvalidOperationException("Silence fixture unavailable"); }
+    }
+
+    private sealed class SilentModel : ICharacterTurnParticipationModel
+    {
+        public ValueTask<CharacterTurnParticipationDecision> DecideAsync(CharacterTurnParticipationConsiderationRequest request,
+            CancellationToken token) => ValueTask.FromResult(new CharacterTurnParticipationDecision(request.ScheduledCharacter.Identity.Id,
+                CharacterTurnParticipationKind.RemainSilent, request.ScheduledCharacter.Goals.Entries[0]));
     }
 
     private void CaptureInitialState()

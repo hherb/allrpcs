@@ -489,7 +489,9 @@ run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=cancel godot --headless --path 
 run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=complete godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=failed godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_CHARACTER_MODEL_GENERATION_INPUT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
-run_check 120 ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
+# Two ordinary offline generations each retain the one-second retry backoff. Pace current
+# frames so both real delays fit the unchanged 120-frame fixture and 30-second generation limits.
+run_check 120 ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game" --max-fps 30
 run_check 180 ALLRPCS_SCRIPTED_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_INVALID_MODEL_RESPONSE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_ORDINARY_MODEL_CANCELLATION_CHECK=1 godot --headless --path "$repository_root/game"
@@ -600,5 +602,21 @@ run_check - godot --headless --path "$repository_root/game" \
     res://WaterContactRuntimeSmokeCheck.tscn --quit-after 30
 run_check - godot --headless --path "$repository_root/game" \
     res://WindAudioRuntimeProof.tscn --quit-after 30
+
+# The current speech fixture includes microphone toolbar focus, with no capture/provider.
+speech_check_dir=$(mktemp -d "${TMPDIR:-/tmp}/allrpcs-speech-smoke.XXXXXX")
+trap 'rm -rf "$speech_check_dir"' EXIT HUP INT TERM
+for mode in unavailable headless; do
+    run_check 3600 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 \
+        ALLRPCS_SPEECH_CONFIG="$speech_check_dir/absent.json" ALLRPCS_DIALOGUE_SPEECH_CHECK=1 \
+        ALLRPCS_DIALOGUE_SPEECH_MODE="$mode" ALLRPCS_DIALOGUE_SPEECH_REPORT="$speech_check_dir/$mode.json" \
+        godot --headless --max-fps 60 --path "$repository_root/game"
+done
+
+for mode in pending once hidden hiddenreply unavailable stopped timeout held invalid generation-held generation-stopped generation-timeout budget; do
+    run_check 300 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 \
+        ALLRPCS_SPEECH_CONFIG="$speech_check_dir/absent.json" ALLRPCS_DIALOGUE_OWNERSHIP_CHECK="$mode" \
+        godot --headless --max-fps 60 --path "$repository_root/game"
+done
 
 smoke_summary
