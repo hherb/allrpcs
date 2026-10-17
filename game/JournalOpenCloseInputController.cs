@@ -105,7 +105,7 @@ public partial class JournalOpenCloseInputController : Node
     {
         PreparedRestore reset = PrepareSessionReset();
         reset.Commit();
-        reset.Publish?.Invoke();
+        if (reset.Publish is { } publish) { RestoreParticipantRegistry.Publish(publish); }
     }
 
     internal PreparedRestore PrepareSessionReset()
@@ -114,9 +114,9 @@ public partial class JournalOpenCloseInputController : Node
         return new PreparedRestore(() =>
         {
             isOpen = false;
-            panel.Visible = false;
         }, () =>
         {
+            panel.Visible = false;
             if (wasOpen)
             {
                 GetViewport().GuiGetFocusOwner()?.ReleaseFocus();

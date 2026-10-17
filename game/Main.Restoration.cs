@@ -27,9 +27,9 @@ public partial class Main
             lastProcessedCompletedCharacterTurn = null;
             lastProcessedDialogueDelivery = null;
         }));
-        Register("character-response-presentation", () => new(
-            GetNode<TemporaryCharacterTurnResponseLabel>("DialogueOverlay/Panel/Response").ResetPresentation));
-        Register("resolved-perception", () => new(() =>
+        Register("character-response-presentation", GetNode<TemporaryCharacterTurnResponseLabel>(
+            "DialogueOverlay/Panel/Response").PrepareSessionReset);
+        Register("resolved-perception", () => new(() => { }, () =>
         {
             foreach (TemporaryResolvedPerceptionIndicator indicator in resolvedPerceptionIndicators)
             {
