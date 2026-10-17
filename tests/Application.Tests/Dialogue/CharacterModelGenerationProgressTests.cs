@@ -37,7 +37,10 @@ public sealed class CharacterModelGenerationProgressTests
     public async Task HidesTextFreeRetryFailureFromProgress()
     {
         CharacterModelGenerationRequest request = Request();
-        CharacterModelStreamTermination retryFailure = Failed(CharacterModelFailureCode.Transport);
+        CharacterModelStreamTermination retryFailure = new(
+            CharacterModelStreamTerminationStatus.Failed,
+            null,
+            new CharacterModelFailure(CharacterModelFailureCode.Transport, TimeSpan.Zero));
         CharacterModelTextDelta text = new("Retried response.");
         CharacterModelStreamTermination completed = Completed(request);
         RecordingSink sink = new();
@@ -187,12 +190,6 @@ public sealed class CharacterModelGenerationProgressTests
                 [],
                 []),
             null);
-
-    private static CharacterModelStreamTermination Failed(CharacterModelFailureCode code) =>
-        new(
-            CharacterModelStreamTerminationStatus.Failed,
-            null,
-            new CharacterModelFailure(code));
 
     private static async IAsyncEnumerable<CharacterModelStreamUpdate> Updates(
         params CharacterModelStreamUpdate[] updates)
