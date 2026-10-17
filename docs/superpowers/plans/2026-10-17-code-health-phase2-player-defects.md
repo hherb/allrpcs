@@ -48,7 +48,7 @@
 - [x] Introduce the helper and switch all twelve accumulators in the same task; do not consolidate their pipelines.
 - [x] Run Infrastructure tests, format/build/solution tests; inspect diff for all twelve consumers.
 - [ ] Confirm with a fictional live OpenAI request and retain a sanitized real stream fixture when a configured credential is available; otherwise record the missing prerequisite and keep this step open.
-- [ ] Commit `fix: accept bounded Responses schema echoes (Fixes #417)` only when the issue's completion evidence is satisfied; otherwise use `Refs #417`.
+- [x] Commit `fix: accept bounded Responses schema echoes (Fixes #417)` only when the issue's completion evidence is satisfied; otherwise use `Refs #417`.
 
 ### Task 2: Stream incrementally and preserve dialogue and valid answers (#418, #419)
 
@@ -56,11 +56,11 @@
 
 **Interfaces:** Add an incremental `IAsyncEnumerable<string>` document API; keep `ReadAsync` as a bounded compatibility collector if used by tests. Completion consumers return immediately on the terminal semantic event, disposing the enumerator but leaving caller-owned streams open.
 
-- [ ] Pin prior dialogue text in Anthropic and loopback requests (no unresolved `messageIndex` placeholder), a valid >1,024-delta reply within the response budget, and terminal-event completion before an unread/stalling tail.
-- [ ] Pin bounded per-document/total-byte consumption for endless nonterminal streams, malformed JSON/UTF-8, cancellation, and split multibyte reads.
-- [ ] Pin malformed, absent and partial usage telemetry as unknown while retaining a valid response, including Ollama `eval_count` without `prompt_eval_count`.
-- [ ] Observe failures, implement incremental readers with finite total budgets sized for supported output tokens, then update every completion consumer and usage parser.
-- [ ] Run affected Infrastructure tests and the solution checks; commit with `Fixes #418` and `Fixes #419`.
+- [x] Pin prior dialogue text in Anthropic and loopback requests (no unresolved `messageIndex` placeholder), a valid >1,024-delta reply within the response budget, and terminal-event completion before an unread/stalling tail.
+- [x] Pin bounded per-document/total-byte consumption for endless nonterminal streams, malformed JSON/UTF-8, cancellation, and split multibyte reads.
+- [x] Pin malformed, absent and partial usage telemetry as unknown while retaining a valid response, including Ollama `eval_count` without `prompt_eval_count`.
+- [x] Observe failures, implement incremental readers with finite total budgets sized for supported output tokens, then update every completion consumer and usage parser.
+- [x] Run affected Infrastructure tests and the solution checks; commit with `Fixes #418` and `Fixes #419`.
 
 ### Task 3: Bound provider requests, redirects and retries
 
@@ -178,4 +178,4 @@
 
 ## Progress
 
-Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Tasks 2-13 remain. Full quality gate is reserved for phase exit.
+Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 is in progress; Tasks 4-13 remain. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); its deterministic repair is included in Task 3 affected checks. Full quality gate is reserved for phase exit.
