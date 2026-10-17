@@ -221,26 +221,48 @@ public partial class HerbExaminationActionMainCheck : Node
         Require(action.CompletedCount == completed, "Blocked travel never records an examination");
 
         Reposition(); await Submit(FictionalRequest);
+        CharacterTurnActivity preLoadActivity = turns.Activity
+            ?? throw new InvalidOperationException("The exact pre-load activity was absent.");
+        Require(preLoadActivity.State == CharacterTurnActivityState.Completed && preLoadActivity.Response is not null,
+            "Exact completed response retained before load during examination travel");
         Require(main.GetNode<SaveSnapshotJsonController>("SaveSnapshotJsonController").TryRestoreSerialized(
             Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer.Serialize(saved)),
             "Successful complete JSON snapshot load during travel");
         await Frames(8);
         Require(!action.Running && action.LastOccurrence is null && action.CompletedCount == completed,
             "Load fences stale examination and clears its presentation token");
-        action.Offer(turns.Activity!); await Frames(4);
+        Require(turns.Activity is null, "Successful load clears the completed turn owner");
+        action.Offer(preLoadActivity); await Frames(4);
         Require(!action.Running, "Pre-load response cannot restart an examination");
 
         Reposition();
         handler.ReplyDelayMilliseconds = 500;
         int beforeCalls = handler.ReplyCalls;
-        Task delayed = Submit(FictionalRequest);
+        TaskCompletionSource<RetiredSubmission> retirement = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        Task delayed = Submit(FictionalRequest, retirement.Task);
         await Until(() => handler.ReplyCalls > beforeCalls, 5000, "Generation in flight before load");
+        CharacterTurnRequest pendingRequest = turns.Activity?.Request
+            ?? throw new InvalidOperationException("The exact pending request was absent before load.");
+        DialogueUtterance acceptedUtterance = main.GetNode<DialogueInputController>("DialogueInputController").LastSubmittedUtterance!;
+        Require(generation.IsGenerating && generation.Result is null
+            && turns.Activity?.State == CharacterTurnActivityState.AwaitingResponse
+            && ReferenceEquals(pendingRequest.DialogueEvent.Utterance, acceptedUtterance),
+            "Exact accepted request owns the active pre-load generation");
         Require(main.GetNode<SaveSnapshotJsonController>("SaveSnapshotJsonController").TryRestoreSerialized(
             Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer.Serialize(saved)), "Load during pending generation");
+        object? restoredEventLog = world.EventLog, restoredWorldTime = world.WorldTime;
+        object? restoredObjects = main.GetNode<WorldObjectController>("WorldObjectController").WorldObjects;
+        object? restoredTranscript = main.GetNode<CharacterTurnTranscriptController>("CharacterTurnTranscriptController").Transcript;
+        retirement.SetResult(new(pendingRequest, acceptedUtterance));
         await delayed;
         handler.ReplyDelayMilliseconds = 0;
         Require(!action.Running && action.CompletedCount == completed,
             "A delayed pre-load response cannot launch stale movement");
+        Require(action.LastOccurrence is null && ReferenceEquals(world.EventLog, restoredEventLog)
+            && ReferenceEquals(world.WorldTime, restoredWorldTime)
+            && ReferenceEquals(main.GetNode<WorldObjectController>("WorldObjectController").WorldObjects, restoredObjects)
+            && ReferenceEquals(main.GetNode<CharacterTurnTranscriptController>("CharacterTurnTranscriptController").Transcript, restoredTranscript),
+            "Retired generation preserves restored roots and transcript without a stale occurrence");
 
         Reposition(); await Submit(FictionalRequest);
         // A newer accepted examination replaces the earlier one; one final event is recorded.
@@ -267,7 +289,15 @@ public partial class HerbExaminationActionMainCheck : Node
         healer.GlobalPosition = new(2000, 950);
     }
 
-    private async Task Submit(string text)
+    private sealed record RetiredSubmission(CharacterTurnRequest Request, DialogueUtterance AcceptedUtterance);
+
+    private bool IsRetired(Task<RetiredSubmission>? retirement) => retirement is { IsCompletedSuccessfully: true }
+        && !generation.HasStarted && generation.Result is null
+        && turns.Activity is { State: var state, Response: null } current
+        && state == CharacterTurnActivityState.Cancelled
+        && ReferenceEquals(current.Request, retirement.Result.Request);
+
+    private async Task Submit(string text, Task<RetiredSubmission>? retirement = null)
     {
         await Idle();
         seeker.GlobalPosition = healer.GlobalPosition + new Vector2(12, 0);
@@ -275,8 +305,19 @@ public partial class HerbExaminationActionMainCheck : Node
         int calls = handler.ReplyCalls;
         input.Text = text;
         main.GetNode<Button>("DialogueOverlay/Panel/Submit").EmitSignal(BaseButton.SignalName.Pressed);
-        await Until(() => generation.Result is not null && !ReferenceEquals(generation.Result, previous),
+        await Until(() => (generation.Result is not null && !ReferenceEquals(generation.Result, previous)) || IsRetired(retirement),
             mode == "live" ? 70000UL : 10000UL, "Fresh generation for explicit submission");
+        if (IsRetired(retirement))
+        {
+            await Idle();
+            Require(IsRetired(retirement), "Exact pending request is cancelled with no post-load generation result");
+            Require(handler.ReplyCalls == calls + 1, "Exactly one HTTP request for the retired submission");
+            RetiredSubmission receipt = retirement!.Result;
+            Require(receipt.AcceptedUtterance.Text == text
+                && ReferenceEquals(receipt.Request.DialogueEvent.Utterance, receipt.AcceptedUtterance),
+                "Exact accepted pre-load words retained by the retired submission receipt");
+            return;
+        }
         Require(generation.Result!.Updates.OfType<CharacterModelStreamTermination>().Last().Status
             == CharacterModelStreamTerminationStatus.Completed, "Valid response received");
         await Idle();

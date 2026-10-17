@@ -56,12 +56,14 @@ public partial class OllamaParticipationMainCheck : Node
 
             CharacterBody2D healer = main.GetNode<CharacterBody2D>("Healer"), seeker = main.GetNode<CharacterBody2D>("Seeker");
             healer.SetPhysicsProcess(false); seeker.SetPhysicsProcess(false);
+            healer.Visible = true; // Explicit present listener in this disposable synthetic dialogue fixture.
             seeker.GlobalPosition = healer.GlobalPosition + new Vector2(12, 0);
             main.GetNode<Button>("SettingsOverlay/DialogueEntry").EmitSignal(BaseButton.SignalName.Pressed);
             await Frames(3);
             main.GetNode<CheckButton>("DialogueOverlay/Panel/Whispering").ButtonPressed = true;
             LineEdit input = main.GetNode<LineEdit>("DialogueOverlay/Panel/Input");
             input.Text = PlayerText;
+            bool listenerPresentAtSubmit = healer.Visible;
             main.GetNode<Button>("DialogueOverlay/Panel/Submit").EmitSignal(BaseButton.SignalName.Pressed);
             Require(input.Text.Length == 0, "Accepted draft cleared");
             Require(main.GetNode<Label>("DialogueOverlay/Panel/Status").Text == TemporaryDialogueInputPanel.AcceptedStatusText, "Explicit Submit accepted");
@@ -92,7 +94,20 @@ public partial class OllamaParticipationMainCheck : Node
             int replies = final.Entries.Count(e => e.SpokenStatement is { } statement && statement.Text != PlayerText);
             Require(final.Entries.Count(e => e.SpokenStatement?.Text == PlayerText) == 1, "One explicit player submission");
             Require(main.GetNode<DialogueEventController>("DialogueEventController").LastOccurredEvent is not null, "Dialogue event occurred");
-            Require(handler.ParticipationCalls > 0, "Ordinary participation HTTP reached");
+            Require(handler.ParticipationCalls > 0, "Ordinary participation HTTP reached: " + JsonSerializer.Serialize(new
+            {
+                listenerPresentAtSubmit,
+                listenerPresentNow = healer.Visible,
+                distance = seeker.GlobalPosition.DistanceTo(healer.GlobalPosition),
+                audienceCount = main.GetNode<DialogueEventController>("DialogueEventController").LastOccurredEvent?.Audience.ListenerCharacterIds.Count,
+                roundStatus = round.Status.ToString(),
+                turnState = main.GetNode<CharacterTurnActivityController>("CharacterTurnActivityController").Activity?.State.Value,
+                generation.IsGenerating,
+                hasResult = generation.Result is not null,
+                handler.ParticipationCalls,
+                handler.ReplyCalls,
+                transcriptCount = final.Entries.Count,
+            }));
             if (mode == "respond")
             {
                 Require(handler.ParticipationCalls > 0 && handler.ReplyCalls > 0, "Ordinary participation reached reply HTTP");
