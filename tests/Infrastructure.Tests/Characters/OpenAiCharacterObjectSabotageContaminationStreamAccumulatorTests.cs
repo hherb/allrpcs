@@ -1,5 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
+using Allrpcs.Infrastructure.Tests.Dialogue;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -34,6 +35,50 @@ public sealed class OpenAiCharacterObjectSabotageContaminationStreamAccumulatorT
         }
 
         AssertRequestUnchanged(input);
+    }
+
+    [Theory]
+    [InlineData(16, false)]
+    [InlineData(64, true)]
+    public void CompletesWithBoundedSchemaEchoes(int depth, bool abstain)
+    {
+        Input input = CreateInput();
+        OpenAiCharacterObjectSabotageContaminationStreamAccumulator accumulator = new(input.Request);
+        string? selectedEvidenceId = abstain ? null : input.Candidate.Evidence.EvidenceId.Value;
+        string response = DecisionDocument(input.Character.Identity.Id.Value, selectedEvidenceId);
+
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.created", depth)));
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.in_progress", depth)));
+        Assert.Null(accumulator.Apply(Delta(response)));
+        Assert.Null(accumulator.Apply(Done(response)));
+
+        CharacterObjectSabotageContaminationDecision? decision = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Same(input.Character.Identity.Id, decision?.CharacterId);
+        if (abstain)
+        {
+            Assert.Null(decision?.SelectedEvidenceId);
+        }
+        else
+        {
+            Assert.Same(input.Candidate.Evidence.EvidenceId, decision?.SelectedEvidenceId);
+        }
+
+        AssertRequestUnchanged(input);
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        Input input = CreateInput();
+        OpenAiCharacterObjectSabotageContaminationStreamAccumulator accumulator = new(input.Request);
+
+        Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
     }
 
     [Theory]

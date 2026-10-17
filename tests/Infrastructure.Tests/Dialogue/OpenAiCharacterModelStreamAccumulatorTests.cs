@@ -38,6 +38,49 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
         Assert.Null(completed?.Failure);
     }
 
+    [Theory]
+    [InlineData(16)]
+    [InlineData(64)]
+    public void CompletesWithBoundedSchemaEchoes(int depth)
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+
+        CharacterModelStreamTermination? created = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.created", depth));
+        CharacterModelStreamTermination? first = accumulator.Apply(Delta(FirstDocumentPart));
+        CharacterModelStreamTermination? second = accumulator.Apply(Delta(SecondDocumentPart));
+        CharacterModelStreamTermination? done = accumulator.Apply(
+            Done(FirstDocumentPart + SecondDocumentPart));
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Null(created);
+        Assert.Null(first);
+        Assert.Null(second);
+        Assert.Null(done);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Same(request, completed?.Response?.Request);
+        Assert.Same(CharacterIntentionType.Wait, completed?.Response?.ImmediateIntention.Type);
+        Assert.Null(completed?.Failure);
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+
+        CharacterModelStreamTermination? result = accumulator.Apply(serializedEvent);
+
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(result?.Response);
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
+    }
+
     [Fact]
     public void IgnoresReasoningEventsAndUsesTheBoundedDoneTextAsAuthoritative()
     {

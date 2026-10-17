@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Infrastructure.Characters;
 
 /// <summary>Accumulates one bounded OpenAI semantic stream into an exact substitution decision.</summary>
 public sealed class OpenAiCharacterObjectSabotageSubstitutionStreamAccumulator
 {
-    private const int MaximumEventDepth = 8;
     private readonly CharacterObjectSabotageSubstitutionConsiderationRequest request;
     private CharacterObjectSabotageSubstitutionDecision? completedDecision;
     private int responseDeltaLength;
@@ -40,14 +40,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionStreamAccumulator
 
         try
         {
-            using JsonDocument document = JsonDocument.Parse(
-                serializedEvent,
-                new JsonDocumentOptions
-                {
-                    AllowTrailingCommas = false,
-                    CommentHandling = JsonCommentHandling.Disallow,
-                    MaxDepth = MaximumEventDepth,
-                });
+            using JsonDocument document = OpenAiStreamDocument.Parse(serializedEvent);
             JsonElement root = document.RootElement;
             if (root.ValueKind != JsonValueKind.Object
                 || !root.TryGetProperty("type", out JsonElement typeElement)

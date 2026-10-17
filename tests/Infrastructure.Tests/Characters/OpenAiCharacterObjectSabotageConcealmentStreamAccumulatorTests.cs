@@ -1,5 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
+using Allrpcs.Infrastructure.Tests.Dialogue;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -36,6 +37,53 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
                 Assert.Single(request.Candidates).Evidence.EvidenceId,
                 decision?.SelectedEvidenceId);
         }
+    }
+
+    [Theory]
+    [InlineData(16, false)]
+    [InlineData(64, true)]
+    public void CompletesWithBoundedSchemaEchoes(int depth, bool abstain)
+    {
+        CharacterObjectSabotageConcealmentConsiderationRequest request =
+            OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
+        string? selectedEvidenceId = abstain
+            ? null
+            : Assert.Single(request.Candidates).Evidence.EvidenceId.Value;
+        string response = DecisionDocument(request.Character.Identity.Id.Value, selectedEvidenceId);
+
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.created", depth)));
+        Assert.Null(accumulator.Apply(Delta(response)));
+        Assert.Null(accumulator.Apply(Done(response)));
+
+        CharacterObjectSabotageConcealmentDecision? decision = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Same(request.Character.Identity.Id, decision?.CharacterId);
+        if (abstain)
+        {
+            Assert.Null(decision?.SelectedEvidenceId);
+        }
+        else
+        {
+            Assert.Same(
+                Assert.Single(request.Candidates).Evidence.EvidenceId,
+                decision?.SelectedEvidenceId);
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        CharacterObjectSabotageConcealmentConsiderationRequest request =
+            OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
+
+        Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
     }
 
     [Fact]
