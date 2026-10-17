@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "village-02",
+      "name": "Meeting/store cottage",
+      "source": "art-direction/structures-batch/exports/village-02.png",
+      "runtime": "game/art/runtime/structures/village-02.png",
+      "size": [
+        633,
+        520
+      ],
+      "sha256": "ce73ce0b9e34ce0742e38ea81ef9e2e1d682e352806cf64a1edb4324abc433df",
+      "master": "art-direction/structures-batch/masters/village-02.ora"
+    },
+    {
+      "id": "shrine-02",
+      "name": "Open shrine shelter",
+      "source": "art-direction/structures-batch/exports/shrine-02.png",
+      "runtime": "game/art/runtime/structures/shrine-02.png",
+      "size": [
+        382,
+        380
+      ],
+      "sha256": "64f5ce618a5b291316eaf72848e4e24bcd4f2db42d5f6263b00d7081a27662db",
+      "master": "art-direction/structures-batch/masters/shrine-02.ora"
+    },
+    {
+      "id": "laundry-01",
+      "name": "Laundry shelter",
+      "source": "art-direction/structures-batch/exports/laundry-01.png",
+      "runtime": "game/art/runtime/structures/laundry-01.png",
+      "size": [
+        345,
+        340
+      ],
+      "sha256": "9e8fae6c2e20f64a587878cee875efb710c11fc24019f53bb59b4f5ef02301ef",
+      "master": "art-direction/structures-batch/masters/laundry-01.ora"
+    },
+    {
+      "id": "laundry-02",
+      "name": "Stone washing trough",
+      "source": "art-direction/structures-batch/exports/laundry-02.png",
+      "runtime": "game/art/runtime/structures/laundry-02.png",
+      "size": [
+        139,
+        100
+      ],
+      "sha256": "13f262f43bec617f595d8609e61a09a829180180dc00fe3e243b30888a8498ce",
+      "master": "art-direction/structures-batch/masters/laundry-02.ora"
+    },
+    {
+      "id": "laundry-03",
+      "name": "Drying rack",
+      "source": "art-direction/structures-batch/exports/laundry-03.png",
+      "runtime": "game/art/runtime/structures/laundry-03.png",
+      "size": [
+        221,
+        230
+      ],
+      "sha256": "0b6cd32709154d02b29075b3b9c68d79d3d97d0b97bb11ca7ca8e40b05db412c",
+      "master": "art-direction/structures-batch/masters/laundry-03.ora"
+    },
+    {
+      "id": "wagon-02",
+      "name": "Abandoned wagon",
+      "source": "art-direction/structures-batch/exports/wagon-02.png",
+      "runtime": "game/art/runtime/structures/wagon-02.png",
+      "size": [
+        289,
+        230
+      ],
+      "sha256": "09f5a164226f09f3a2f166f0dd9e732bdad06af7edaed6ff9092bd701c5e9771",
+      "master": "art-direction/structures-batch/masters/wagon-02.ora"
+    },
+    {
+      "id": "sickhouse-north-entry",
+      "name": "Sickhouse closed south wall; north entrance remains authoritative",
+      "source": "art-direction/map-structures-runtime/sources/sickhouse-north-entry-exterior.png",
+      "runtime": "game/art/runtime/structures/sickhouse-north-entry.png",
+      "size": [
+        627,
+        627
+      ],
+      "sha256": "89a8a873d83788676b000ce0c8d9299eb5565ad7ac0dc1a661b4cfdca3ddcddd",
+      "source_sha256": "81bbb088fca7231f8ebd9e9fd7064665be3a023240019b95b2c7ab273fadaed5",
+      "master": "art-direction/map-structures-runtime/masters/sickhouse-north-entry-exterior.ora",
+      "master_sha256": "4cf55566ad2e2a7d419da2705ad22013d9b207719e8906882176aaaaf84f9346",
+      "master_size": [
+        1254,
+        1254
+      ],
+      "generator": "built-in image_gen",
+      "transparent": true,
+      "processing": "Half-resolution LANCZOS; zero RGB only where alpha is zero",
+      "acceptance": "New candidate; no owner visual acceptance yet",
+      "derivative_of": "art-direction/structures-batch/exports/sickhouse-01.png"
+    },
+    {
+      "id": "cutaway-wood",
+      "name": "Painted timber floor",
+      "source": "art-direction/map-structures-runtime/sources/cutaway-wood.png",
+      "runtime": "game/art/runtime/structures/cutaway-wood.png",
+      "size": [
+        627,
+        627
+      ],
+      "sha256": "dda3ec2b1916f2e79bd7f60ab118fe7885446fe5710fa5be1010f9beb3e5b383",
+      "source_sha256": "06821cd04d8d532be1db9120453b1e8e2143023b33e158adfc60a9b2bd6576c2",
+      "master": "art-direction/map-structures-runtime/masters/cutaway-wood.ora",
+      "master_sha256": "29b9cc05aa82ed59d929c9c6e951c8c2d42f60a0ce6ded1feaa63729f8c104ff",
+      "master_size": [
+        1254,
+        1254
+      ],
+      "generator": "built-in image_gen",
+      "transparent": false,
+      "processing": "Half-resolution LANCZOS; zero RGB only where alpha is zero",
+      "acceptance": "New candidate; no owner visual acceptance yet"
+    },
+    {
+      "id": "cutaway-stone",
+      "name": "Painted worn-stone floor",
+      "source": "art-direction/map-structures-runtime/sources/cutaway-stone.png",
+      "runtime": "game/art/runtime/structures/cutaway-stone.png",
+      "size": [
+        627,
+        627
+      ],
+      "sha256": "04075ba355437aa2fc48f7377ae9ba5e69fbec401e377634a191b951a707a785",
+      "source_sha256": "1ccf22f45ab77db8d1e4fee0a4b0b4d48135e3911555ccdb516fe23d1bfaeb66",
+      "master": "art-direction/map-structures-runtime/masters/cutaway-stone.ora",
+      "master_sha256": "d20790cef07b8325c9fb7e490ccb9260128c01ac3a767b387a31f80ed8ec8f5d",
+      "master_size": [
+        1254,
+        1254
+      ],
+      "generator": "built-in image_gen",
+      "transparent": false,
+      "processing": "Half-resolution LANCZOS; zero RGB only where alpha is zero",
+      "acceptance": "New candidate; no owner visual acceptance yet"
+    }
+  ],
+  "notes": "Six exact approved exports plus three new image_gen candidates: sickhouse orientation variant, timber floor and worn-stone floor. Original approved art unchanged; exact 2x layered masters retained."
+}

@@ -6,79 +6,62 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
-is active. Phase 2 Tasks 1–12 and the original whole-phase review passed. The retained
-[218-stage root pass](docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json) on
-`010439d5` is historical: product/tooling review corrections `cee9df2b` and fixture correction
-`b841afed` followed it. Latest [hosted run 39069028898](https://github.com/hherb/allrpcs/actions/runs/39069028898)
-on `b841afed` passed all four jobs: 5,924 solution tests, 23 runner self-tests and native
-363 passed / zero failed / two existing quarantines. Full hosted logs are retained locally at
-`/private/tmp/allrpcs-phase2-current-ci.log`.
+The owner prioritized missing map artwork/buildings on 18 October. The isolated
+`codex/map-building-artwork` branch now presents all five named sites: sickhouse, laundry,
+old shrine, abandoned wagon and village meeting-house backdrop. Six source exports remain
+byte-identical to the approved structure batch. A new built-in image_gen variant removes
+the sickhouse's misleading south doorway; two new painted floor textures finish the
+cutaways. Original approved sources remain unchanged.
 
-Another session already owns a full `./quality.sh` on `b841afed`, started 2026-10-17
-20:57:41 UTC (18 October Sydney time). Its report at `artifacts/quality-current/summary.json`
-was still running with 47 completed passing stages when inspected at 21:28 UTC. Preserve that
-run and its logs; do not launch a competing gate or interrupt it. Record its terminal result
-when available. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-retains the earlier complete/failed evidence. [PR #440](https://github.com/hherb/allrpcs/pull/440)
-is now open and ready for review, no longer draft. Keep Phase 2 open and Phase 3 unselected.
+[Complete grouped review and evidence](art-direction/map-structures-runtime/README.md):
+12 actual Main captures, exterior and cutaway boards, editable 2x variant master, provenance,
+zero-warning build/format and passing affected native/navigation/discovery, shipping-policy,
+shipping-repack, frozen-evidence and continuation checks. RID/ObjectDB shutdown warnings
+remain recorded. This is a candidate for the new visual checkpoint, not owner acceptance
+or a full-root-quality claim. Finish grouped review/revisions before the consolidated gate,
+following ROADMAP.md's artwork workflow. Keep existing collision, routes and hidden evidence.
 
-The live fictional OpenAI request/captured stream (#417) remains unavailable: an existence-only
-application Keychain query on 18 October returned item-not-found and retrieved no secret.
-The new schema-echo regression uses the real schema in a generated fixture; it is not a captured
-live stream. The owner Keychain save check was requested once and has no reported result.
-Keep both conditions open without repeating the pending question.
-
-The [microphone qualification](speech-direction/player-microphone-qualification/README.md)
-remains paused: preserve its 3 pass / 5 partial / 7 unperformed cases and all qualitative owner
-reports. Closed reply, recognition, Space, Ollama, examination and conversation-context work stays
-closed; its records remain linked from the ledger and qualification package. Do not infer a physical
-pass from synthetic or local-model checks. [Physical controls](input-direction/physical-controls-deferral.json)
-remain deferred pending hardware and authority; VoiceOver qualification remains unperformed.
-
-Keep all persistent closures and frozen acceptance evidence. Privacy/provider disclosures and
-accepted controls/dialogue accessibility remain closed. Future walking work uses the accepted
+The code-health Phase 2 slice is deferred at the owner's new priority, not closed. Its
+original-checkout full gate and live #417/owner Keychain prerequisites remain separately
+owned; do not interrupt or duplicate its run. Retain its plan and exact evidence. Keep Phase 3
+unselected. Physical controls and microphone qualification remain deferred; preserve all
+recorded owner results, persistent closures and accepted art. Future gait work uses the
 [reference gait model](art-direction/reference-gait-model.md).
 
-Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
-[the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json).
-This authorizes review-branch publication; no merge or release is authorized here.
+Standing publication authority: “ALWAYS commit and push when you finish a task.” Publish
+this isolated review branch only; no merge or release is authorized.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (in_progress).
+**phase9-map-structures-runtime — Finish structure presentation at the existing map sites** (in_progress).
 
-Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
+Roadmap item: - [ ] Integrate approved structure artwork at the existing opening-region building and
+wagon sites.
 
-Missing deliverable: Completion of the already-running full root gate on b841afed after the PR
-review corrections, live fictional OpenAI request/captured stream for #417, and the already
-requested owner Keychain save result. Latest hosted CI passed all four jobs.
+Missing deliverable: Owner visual review of the complete five-site building and cutaway series, any
+agreed revisions, then consolidated final validation. The isolated implementation, 12 actual scene
+captures and scoped build/native/preservation checks are complete.
 
-Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-
-defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage
-root pass on 010439d5, so that pass is historical evidence rather than validation of current source.
-Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests,
-native 363 passed with two existing quarantines). Another session already owns a full ./quality.sh
-run on b841afed, started 2026-10-17 20:57:41 UTC; preserve its report/logs in artifacts/quality-
-current and do not start a competing run or interrupt it. Record its terminal result when available.
-PR #440 is open and ready for review, no longer draft; do not merge. The 2026-10-18 existence-only
-application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the
-pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select
-Phase 3, merge, release or reopen closed scopes before satisfying exit conditions and applicable
-authority. Reuse unchanged passing evidence for subsequent prose-only changes.
+Carry approved structures-batch pixels forward unchanged. Complete the group in the isolated map-
+building-artwork checkout, retaining all collision/navigation/anchor/discovery ownership and keeping
+entry routes and interactables visible. Present the grouped actual runtime captures for the new
+visual review. Preserve the separate original-checkout Phase 2 gate and every closed scope.
 
-Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
-tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
-passes.
+Done when: All five sites use the approved structure art or the separately shown sickhouse variant;
+the owner has accepted the exact grouped runtime views, any agreed revisions and consolidated checks
+pass, and reviewed changes are committed/pushed. Preserve the original art acceptance and all
+physical owners.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
-- `docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json`
+- `art-direction/map-structures-runtime/README.md`
+- `art-direction/map-structures-runtime/manifest.json`
+- `art-direction/map-structures-runtime/capture-evidence.json`
 
-Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
-pipeline consolidation (Phase 3).
+Boundary: Presentation of existing named map sites only. No new locations,
+movement/collision/navigation/layout authority, gameplay features, accepted source repainting or
+closed visual re-audits.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

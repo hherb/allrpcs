@@ -1,0 +1,179 @@
+{
+	"captures": {
+		"captures/laundry-cutaway-tall.png": "8f2dafb9f8b353486508569ec4fdef08828ebc90860eba4567b009891ba08351",
+		"captures/laundry-cutaway.png": "8c19d79ca944d0895f33201fbada5d08f76d4f266f3b67311556423763c65e6f",
+		"captures/laundry-exterior.png": "f4954f0cc597cec06d13b3e033a85ad651d65183f239c49887a24fecf719efdb",
+		"captures/map-overview.png": "fcba5ae84cddbe348fcc89b300b56d625408000ed21117adcf286b6f340fdaad",
+		"captures/shrine-cutaway-tall.png": "51e9cdf178c7c5bbd52e84270d4d11b697fab5f5b51cfc9977408fa757196821",
+		"captures/shrine-cutaway.png": "8b001b369dbfa7a4d9aa79dece9bbb7085ac251f45157c214445ae89140dcfcd",
+		"captures/shrine-exterior.png": "4bd0ba38eaa52d2eff0236810f31b008af8e6c781ec6522681c17f0c160b33c5",
+		"captures/sickhouse-cutaway-tall.png": "dbf8abb2cebeef688df5fbf44203e19c0c7d0273620830521ca50e2892d28e55",
+		"captures/sickhouse-cutaway.png": "a1442c4d784c33db5a5eaa2f2d412de6898c9f7e6c7ce6d4f063a2dc8aaf5e3d",
+		"captures/sickhouse-exterior.png": "83564e4ed49b1a2037f144beb39c979a883c4dfe2ad829361b8c0bb56a70eb0f",
+		"captures/village-exterior.png": "ceba2746c78b77608858b276bf1021f9d3324c22b0d86f0f5595b286d9022e10",
+		"captures/wagon-exterior.png": "aff214737c9bff6f6242a35f55de00e29010e85057341253359ab8b73a5b5efd"
+	},
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/laundry-cutaway-tall.png": {
+			"center": [
+				1500.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"zoom": 1.0
+		},
+		"captures/laundry-cutaway.png": {
+			"center": [
+				1500.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/laundry-exterior.png": {
+			"center": [
+				1500.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/map-overview.png": {
+			"center": [
+				1600.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 0.400000005960464
+		},
+		"captures/shrine-cutaway-tall.png": {
+			"center": [
+				640.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"zoom": 1.0
+		},
+		"captures/shrine-cutaway.png": {
+			"center": [
+				640.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/shrine-exterior.png": {
+			"center": [
+				640.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/sickhouse-cutaway-tall.png": {
+			"center": [
+				2560.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"zoom": 1.0
+		},
+		"captures/sickhouse-cutaway.png": {
+			"center": [
+				2560.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/sickhouse-exterior.png": {
+			"center": [
+				2560.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/village-exterior.png": {
+			"center": [
+				2200.0,
+				790.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		},
+		"captures/wagon-exterior.png": {
+			"center": [
+				1880.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"zoom": 1.0
+		}
+	},
+	"inputs": {
+		"res://../scripts/capture-map-structures.gd": "24c0dbbcb4145abb25d95af3a983d72d6ef85423da175109f5a575840400219f",
+		"res://Main.tscn": "e1f57802f13dc84cb78e0c82dca708d315b2e45e7a29a7c8a83784a8cb07945e",
+		"res://MapStructureCutawayFloor.cs": "668697a13bf4b9527831da97611fc016f8c2f6fdd279a04575e9437ac578730c",
+		"res://MapStructuresPresentation.cs": "c85d8cceeb1bcf0bc0d72403be0d11f49400d0791f49c7556243df345f1f1eb6",
+		"res://MapStructuresPresentation.tscn": "292ae51d569235e91d0a4bed827a7a01c66f5c6d89f6c66a9a6baf988783d513",
+		"res://art/runtime/structures/cutaway-stone.png": "04075ba355437aa2fc48f7377ae9ba5e69fbec401e377634a191b951a707a785",
+		"res://art/runtime/structures/cutaway-stone.png.import": "6f69bede6e45a194701555b879c2339a57d55a1f5b934aaff7ed7654d496a6cf",
+		"res://art/runtime/structures/cutaway-wood.png": "dda3ec2b1916f2e79bd7f60ab118fe7885446fe5710fa5be1010f9beb3e5b383",
+		"res://art/runtime/structures/cutaway-wood.png.import": "0b8c6601331662e8c71b3f4564f54a1b0bd3c06a8f0802a0464c60bdc8b8bfbe",
+		"res://art/runtime/structures/laundry-01.png": "9e8fae6c2e20f64a587878cee875efb710c11fc24019f53bb59b4f5ef02301ef",
+		"res://art/runtime/structures/laundry-01.png.import": "6a0afec4aa925a02b57a8db479bc0f5e3079599312915d45e27947a7c8d158f8",
+		"res://art/runtime/structures/laundry-02.png": "13f262f43bec617f595d8609e61a09a829180180dc00fe3e243b30888a8498ce",
+		"res://art/runtime/structures/laundry-02.png.import": "671105f0d8d8e3791c6437180e6fdeb32104ec12dde81572941ea561cf5b8a0d",
+		"res://art/runtime/structures/laundry-03.png": "0b6cd32709154d02b29075b3b9c68d79d3d97d0b97bb11ca7ca8e40b05db412c",
+		"res://art/runtime/structures/laundry-03.png.import": "7aa8512131c8f73f75d05d4aef055e15109e614fe08ae5a0c8d21b1f8434986e",
+		"res://art/runtime/structures/shrine-02.png": "64f5ce618a5b291316eaf72848e4e24bcd4f2db42d5f6263b00d7081a27662db",
+		"res://art/runtime/structures/shrine-02.png.import": "d2b8631e7200f906db276e5d91af291f747228476ed7e6b30f6d6b78d5cb47bb",
+		"res://art/runtime/structures/sickhouse-north-entry.png": "89a8a873d83788676b000ce0c8d9299eb5565ad7ac0dc1a661b4cfdca3ddcddd",
+		"res://art/runtime/structures/sickhouse-north-entry.png.import": "0a6f791390b593ddc93ba3f4f582bcbaaa8e088b528cbb8edabffc7b1bb90ebb",
+		"res://art/runtime/structures/village-02.png": "ce73ce0b9e34ce0742e38ea81ef9e2e1d682e352806cf64a1edb4324abc433df",
+		"res://art/runtime/structures/village-02.png.import": "1142c9108eaff8709e6dcaea06e84b64e5298308550165a77a8a86e5c08fe496",
+		"res://art/runtime/structures/wagon-02.png": "09f5a164226f09f3a2f166f0dd9e732bdad06af7edaed6ff9092bd701c5e9771",
+		"res://art/runtime/structures/wagon-02.png.import": "93d44b401fba1014c739033ef157623cdf8d85a803b28e2a1478b31a3fa8413f",
+		"res://shaders/structure-cutaway.gdshader": "de62cc2b7b8592981a011d5f68b7e840937c8865b993152f92562535e36a9756"
+	},
+	"schema_version": 1,
+	"status": "candidate runtime views; owner visual acceptance not yet recorded"
+}

@@ -1526,23 +1526,36 @@
           "sha256": "c9245f4e639a45e267049bb341d1824bd1dd46148cadae221df5f82c6eeb88b1"
         }
       ]
+    },
+    {
+      "id": "owner-missing-map-artwork-2026-10-18",
+      "owner_statement": "work on finalizing the artwork that is still missing in the game's map - for example the buildings",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/map-structures-runtime/authority.json",
+          "sha256": "33459afb63fc0409931053ffa47dcb009c8c29465ced3523ab69a146d6f858e3"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase2-player-defects",
-    "title": "Fix the player-facing code-review-1 defects",
+    "id": "phase9-map-structures-runtime",
+    "title": "Finish structure presentation at the existing map sites",
     "status": "in_progress",
-    "workstream": "code-health-program",
-    "authority_status": "owner_approved_code_health_program_2026-10-17",
-    "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
-    "missing_deliverable": "Completion of the already-running full root gate on b841afed after the PR review corrections, live fictional OpenAI request/captured stream for #417, and the already requested owner Keychain save result. Latest hosted CI passed all four jobs.",
-    "instructions": "Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage root pass on 010439d5, so that pass is historical evidence rather than validation of current source. Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests, native 363 passed with two existing quarantines). Another session already owns a full ./quality.sh run on b841afed, started 2026-10-17 20:57:41 UTC; preserve its report/logs in artifacts/quality-current and do not start a competing run or interrupt it. Record its terminal result when available. PR #440 is open and ready for review, no longer draft; do not merge. The 2026-10-18 existence-only application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen closed scopes before satisfying exit conditions and applicable authority. Reuse unchanged passing evidence for subsequent prose-only changes.",
-    "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
+    "workstream": "map-structures-runtime",
+    "authority_status": "direct_owner_request_2026-10-18",
+    "roadmap_item": "- [ ] Integrate approved structure artwork at the existing opening-region building and wagon sites.",
+    "missing_deliverable": "Owner visual review of the complete five-site building and cutaway series, any agreed revisions, then consolidated final validation. The isolated implementation, 12 actual scene captures and scoped build/native/preservation checks are complete.",
+    "instructions": "Carry approved structures-batch pixels forward unchanged. Complete the group in the isolated map-building-artwork checkout, retaining all collision/navigation/anchor/discovery ownership and keeping entry routes and interactables visible. Present the grouped actual runtime captures for the new visual review. Preserve the separate original-checkout Phase 2 gate and every closed scope.",
+    "completion_condition": "All five sites use the approved structure art or the separately shown sickhouse variant; the owner has accepted the exact grouped runtime views, any agreed revisions and consolidated checks pass, and reviewed changes are committed/pushed. Preserve the original art acceptance and all physical owners.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
-      "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
+      "art-direction/map-structures-runtime/README.md",
+      "art-direction/map-structures-runtime/manifest.json",
+      "art-direction/map-structures-runtime/capture-evidence.json"
     ],
-    "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
+    "boundary": "Presentation of existing named map sites only. No new locations, movement/collision/navigation/layout authority, gameplay features, accepted source repainting or closed visual re-audits."
   },
   "deferred_slices": [
     {
@@ -1608,6 +1621,23 @@
         "speech-direction/player-microphone-qualification/README.md"
       ],
       "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
+    },
+    {
+      "id": "code-health-phase2-player-defects",
+      "title": "Fix the player-facing code-review-1 defects",
+      "status": "deferred",
+      "workstream": "code-health-program",
+      "authority_status": "owner_approved_code_health_program_2026-10-17",
+      "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
+      "missing_deliverable": "Completion of the already-running full root gate on b841afed after the PR review corrections, live fictional OpenAI request/captured stream for #417, and the already requested owner Keychain save result. Latest hosted CI passed all four jobs.",
+      "instructions": "Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage root pass on 010439d5, so that pass is historical evidence rather than validation of current source. Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests, native 363 passed with two existing quarantines). Another session already owns a full ./quality.sh run on b841afed, started 2026-10-17 20:57:41 UTC; preserve its report/logs in artifacts/quality-current and do not start a competing run or interrupt it. Record its terminal result when available. PR #440 is open and ready for review, no longer draft; do not merge. The 2026-10-18 existence-only application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen closed scopes before satisfying exit conditions and applicable authority. Reuse unchanged passing evidence for subsequent prose-only changes.",
+      "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
+      "outputs": [
+        "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
+        "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
+      ],
+      "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3).",
+      "deferral_reason": "Owner explicitly prioritized missing map artwork/buildings on 2026-10-18. Preserve the concurrent original-checkout quality run and remaining live/owner evidence."
     }
   ]
 }

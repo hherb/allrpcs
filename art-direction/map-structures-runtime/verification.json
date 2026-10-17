@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "base_commit": "03e6abbd",
+  "status": "scoped checks passed; owner visual review and consolidated gate pending",
+  "evidence": {
+    "build": {
+      "local_log": "/private/tmp/map-structures-build.log",
+      "sha256": "8bf1bce56f2f8088f131b6f8a6ae21c43bb4fc0fb4643d70c09646d663165d97"
+    },
+    "format": {
+      "local_log": "/private/tmp/map-structures-format-verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sites": {
+      "local_log": "/private/tmp/map-structures-sites.log",
+      "sha256": "d4bea2f5531d4e78f74b8a0aa06473cbc9b14cd8ebbaffdba605008a112ed398"
+    },
+    "final_native_shipping_continuation": {
+      "local_log": "/private/tmp/map-structures-final-checks.log",
+      "sha256": "13237ccf162559099244ab19b35aeb4f4924d3ca3df394a53223b90cb6a78cd6"
+    },
+    "captures": {
+      "local_log": "/private/tmp/map-structures-capture.log",
+      "sha256": "8269fd0af13230798c4c9545eef4b9063d3c40ba95baeda67a1fcc22ff1d910a"
+    },
+    "cutaway_final": {
+      "local_log": "/private/tmp/map-structures-check-final.log",
+      "sha256": "a432fdaa1158a13d32f20ffc9b9a4391c4124c783e038ef0f8124449baa26446"
+    },
+    "shipping_final": {
+      "local_log": "/private/tmp/map-structures-shipping-final.log",
+      "sha256": "d0f79fe265be6e06331613d95be90af68fd8b40a42b8918e706cb4eafbdfd0a4"
+    }
+  },
+  "limits": [
+    "Initial temporary relative-script invocation did not load; corrected absolute invocation has the required PASS marker.",
+    "Editor shipping repack exited zero with the required marker but RID/ObjectDB shutdown warnings were observed; no leak-clean claim.",
+    "No owner acceptance, full root gate, physical playthrough or accessibility certification claimed for this branch.",
+    "A provisional capture was discarded by its input-change guard; the delivered 12-image set was regenerated with stable input hashes."
+  ],
+  "review_images": {
+    "building-review.png": "f83a6a437ee9ffcaae0af29e578bcac3640055b87f6a90a132c36c51eafeafa0",
+    "cutaway-review.png": "f03af328eac17c6d6fd01ba1a8959e29cb373d5defebfc6fe9210ea2fa841585"
+  },
+  "asset_count": 9,
+  "unchanged_approved_exports": 6,
+  "new_generated_assets": 3,
+  "capture_count": 12
+}

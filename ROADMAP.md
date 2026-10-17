@@ -145,6 +145,7 @@ promotions and their runtime visual checkpoints require the applicable authority
 the same session without repeating unchanged approval gates.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
+- [ ] Integrate approved structure artwork at the existing opening-region building and wagon sites.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.
 - [ ] Keep editable source assets separate from exported runtime assets.
