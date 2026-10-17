@@ -26,6 +26,12 @@
 # smoke_launch_id) is listed there still runs, but its result is reported as
 # "QUARANTINED (#<issue>)" and never fails the caller. smoke_summary prints the final counts and
 # fails when a quarantine entry matched no launch.
+#
+# Collect-all mode: with ALLRPCS_SMOKE_CONTINUE=1 in the environment (CI sets it so one run lists
+# every failing launch), a counted launch failure is recorded (launch id and status) and run_check
+# returns 0 so a "set -e" caller keeps going; smoke_summary then prints every recorded failure and
+# fails. Usage errors (invalid deadline, malformed quarantine file) still return 2 immediately.
+# Without the variable a counted failure is returned at once, so "set -e" callers stop there.
 
 unset ALLRPCS_CHECK_DEADLINE_FRAMES
 
@@ -35,6 +41,13 @@ smoke_quarantine_file=${smoke_quarantine_file-}
 smoke_passed=0
 smoke_quarantined=0
 smoke_quarantine_seen=
+smoke_failed=0
+smoke_failures=
+
+smoke_continue_mode()
+{
+    [ "${ALLRPCS_SMOKE_CONTINUE-}" = 1 ]
+}
 
 # Prints the output of the last Godot launch in the file (text after the last engine banner).
 smoke_last_launch()
@@ -177,12 +190,20 @@ $smoke_launch_key"
     fi
     if [ "$smoke_status" -eq 0 ]; then
         smoke_passed=$((smoke_passed + 1))
+    elif smoke_continue_mode; then
+        smoke_failed=$((smoke_failed + 1))
+        smoke_failures="$smoke_failures
+exit $smoke_status: ${smoke_launch_key:-$*}"
+        echo "CONTINUE: failure recorded; ALLRPCS_SMOKE_CONTINUE=1 runs the remaining launches" >&2
+        return 0
     fi
     return "$smoke_status"
 }
 
-# Prints "smoke: <n> passed, <q> quarantined". Fails when a quarantine entry matched no launch,
-# so a renamed or removed launch cannot leave a stale entry behind.
+# Prints "smoke: <n> passed, <q> quarantined" ("smoke: <n> passed, <f> failed, <q> quarantined"
+# in collect-all mode, after one "FAIL: exit <status>: <launch id>" line per recorded failure).
+# Fails when a quarantine entry matched no launch, so a renamed or removed launch cannot leave a
+# stale entry behind, and in collect-all mode when any launch failed.
 smoke_summary()
 {
     smoke_stale=0
@@ -205,6 +226,14 @@ smoke_summary()
             smoke_stale=1
         fi
     fi
-    echo "smoke: $smoke_passed passed, $smoke_quarantined quarantined"
+    if smoke_continue_mode; then
+        if [ "$smoke_failed" -ne 0 ]; then
+            printf '%s\n' "$smoke_failures" | sed '/^$/d; s/^/FAIL: /' >&2
+            smoke_stale=1
+        fi
+        echo "smoke: $smoke_passed passed, $smoke_failed failed, $smoke_quarantined quarantined"
+    else
+        echo "smoke: $smoke_passed passed, $smoke_quarantined quarantined"
+    fi
     return "$smoke_stale"
 }

@@ -146,7 +146,11 @@ jobs:
       - name: Build with zero warnings
         run: dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
 
+      # Collect every failing launch in one run instead of stopping at the first; local runs and
+      # quality.py keep fail-fast (scripts/smoke-lib.sh).
       - name: Launch main scene headlessly
+        env:
+          ALLRPCS_SMOKE_CONTINUE: "1"
         run: ./scripts/smoke-godot.sh
 
   development-build:

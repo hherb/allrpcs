@@ -3,9 +3,13 @@
 # deadline code 124, a launch that logs an unhandled exception (from _Ready or from an awaited
 # async continuation) or a GDScript error fails with smoke_exception_status even though Godot
 # exits 0, only the diagnosed native mutex shutdown abort is retried, exactly once, invalid
-# deadlines are rejected, and quarantined launches report without failing.
+# deadlines are rejected, quarantined launches report without failing, and ALLRPCS_SMOKE_CONTINUE=1
+# records every failure and fails the summary instead of stopping at the first.
 
 set -eu
+
+# The self-test proves the default fail-fast behavior; collect-all mode is enabled explicitly below.
+unset ALLRPCS_SMOKE_CONTINUE
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 repository_root=$(dirname -- "$script_dir")
@@ -148,6 +152,54 @@ rm -f "$shim_dir/count"
 run_check - ALLRPCS_SMOKE_HARNESS_QUARANTINE_CHECK=1 godot >/dev/null 2>&1 || status=$?
 expect 'malformed quarantine entry is rejected' 2 "$status"
 smoke_quarantine_file=
+
+# Collect-all mode: failing launches are recorded and return 0, the summary lists each with its
+# status and fails; with no failures the summary passes. Without the mode the summary keeps its
+# two-count line (checked above) and a failure is returned at once (checked by the shim cases).
+smoke_passed=0 smoke_quarantined=0 smoke_quarantine_seen= smoke_failed=0 smoke_failures=
+export ALLRPCS_SMOKE_CONTINUE=1
+export SHIM_CODE_1=0 SHIM_OUTPUT_1=done
+rm -f "$shim_dir/count"
+expect 'collect-all passing launch succeeds' 0 "$(launch_status - ALLRPCS_SMOKE_HARNESS_OK_CHECK=1 godot)"
+rm -f "$shim_dir/count"
+run_check - ALLRPCS_SMOKE_HARNESS_OK_CHECK=1 godot >/dev/null 2>&1
+status=0
+summary=$(smoke_summary 2>&1) || status=$?
+expect 'collect-all summary without failures passes' 0 "$status"
+expect 'collect-all summary counts failures' 'smoke: 1 passed, 0 failed, 0 quarantined' "$summary"
+export SHIM_CODE_1=7 SHIM_OUTPUT_1='first failure'
+status=0
+rm -f "$shim_dir/count"
+run_check - ALLRPCS_SMOKE_HARNESS_FIRST_CHECK=1 godot >/dev/null 2>&1 || status=$?
+expect 'collect-all failing launch continues' 0 "$status"
+export SHIM_CODE_1=0 SHIM_OUTPUT_1='ERROR: System.InvalidOperationException: second failure'
+rm -f "$shim_dir/count"
+run_check - ALLRPCS_SMOKE_HARNESS_SECOND_CHECK=1 godot res://Second.tscn >/dev/null 2>&1 || status=$?
+expect 'collect-all exception launch continues' 0 "$status"
+rm -f "$shim_dir/count"
+status=0
+run_check 0 godot >/dev/null 2>&1 || status=$?
+expect 'collect-all still rejects an invalid deadline' 2 "$status"
+status=0
+summary=$(smoke_summary 2>&1) || status=$?
+expect 'collect-all summary with failures fails' 1 "$status"
+expect 'collect-all summary lists both failures and the counts' yes \
+    "$(printf '%s\n' "$summary" | grep -qx 'FAIL: exit 7: ALLRPCS_SMOKE_HARNESS_FIRST_CHECK=1' \
+        && printf '%s\n' "$summary" | grep -qx \
+            "FAIL: exit $smoke_exception_status: ALLRPCS_SMOKE_HARNESS_SECOND_CHECK=1 res://Second.tscn" \
+        && printf '%s\n' "$summary" | grep -qx 'smoke: 1 passed, 2 failed, 0 quarantined' \
+        && echo yes || echo no)"
+unset ALLRPCS_SMOKE_CONTINUE
+smoke_passed=0 smoke_quarantined=0 smoke_quarantine_seen= smoke_failed=0 smoke_failures=
+export SHIM_CODE_1=5 SHIM_OUTPUT_1='fail-fast failure'
+status=0
+rm -f "$shim_dir/count"
+run_check - ALLRPCS_SMOKE_HARNESS_FIRST_CHECK=1 godot >/dev/null 2>&1 || status=$?
+expect 'without collect-all a failure is returned' 5 "$status"
+status=0
+summary=$(smoke_summary 2>&1) || status=$?
+expect 'without collect-all the summary keeps two counts' '0/smoke: 0 passed, 0 quarantined' \
+    "$status/$summary"
 
 if [ "$failures" -ne 0 ]; then
     echo "FAIL: smoke harness self-test ($failures failed)" >&2
