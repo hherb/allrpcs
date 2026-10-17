@@ -53,7 +53,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         TemporarySeekerCharacterSource seekerSource =
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
         Seeker seeker = GetNode<Seeker>("../Seeker");
-        LineEdit priorFocus = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
+        Button priorFocus = GetNode<Button>("../CommandOverlay/SaveLoadPanel/Save");
         FocusedSearchActivityController focusedSearch =
             GetNode<FocusedSearchActivityController>("../Seeker/FocusedSearchActivityController");
         WorldObjectController worldObjects = GetNode<WorldObjectController>(

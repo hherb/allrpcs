@@ -25,7 +25,6 @@ public partial class SeekerMapOpenCloseInputController : Node
     private SeekerMapSnapshot? presentedMap;
     private SeekerMapNoteSnapshot? presentedNotes;
     private bool isOpen;
-    private bool seekerWasPhysicsProcessing;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -185,9 +184,7 @@ public partial class SeekerMapOpenCloseInputController : Node
         }
 
         priorFocusOwner = GetViewport().GuiGetFocusOwner();
-        seekerWasPhysicsProcessing = seeker.IsPhysicsProcessing();
-        seeker.Velocity = Vector2.Zero;
-        seeker.SetPhysicsProcess(false);
+        seeker.SuspendForModal(this);
         close.GrabFocus();
         presentedMap = map;
         presentedNotes = notes;
@@ -231,7 +228,7 @@ public partial class SeekerMapOpenCloseInputController : Node
             if (wasOpen)
             {
                 GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-                seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+                seeker.ResumeAfterModal(this);
             }
         });
     }
@@ -244,9 +241,10 @@ public partial class SeekerMapOpenCloseInputController : Node
         }
 
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-        priorFocusOwner?.GrabFocus();
+        if (GodotObject.IsInstanceValid(priorFocusOwner) && priorFocusOwner!.IsVisibleInTree())
+        { priorFocusOwner.GrabFocus(); }
         priorFocusOwner = null;
-        seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+        seeker.ResumeAfterModal(this);
         isOpen = false;
         return true;
     }

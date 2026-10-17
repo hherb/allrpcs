@@ -43,7 +43,7 @@ public static class ControlPreferencesJson
         if (bytes.Length > MaximumBytes) { throw new ArgumentException("Controls document is too large."); }
         return StrictUtf8.GetString(bytes.ToArray());
     }
-    /// <summary>Rejects all incomplete, duplicate, unknown or invalid data before materializing.</summary>
+    /// <summary>Adds defaults for absent actions, rejecting duplicate, unknown or invalid supplied data.</summary>
     public static ControlPreferences Deserialize(string serialized)
     {
         ArgumentNullException.ThrowIfNull(serialized);
@@ -76,6 +76,10 @@ public static class ControlPreferencesJson
                 }
                 rows.Add(new(row.GetProperty("id").GetString()!, row.GetProperty("deadzone").GetDouble(), bindings));
             }
+            if (rows.Select(row => row.Id).Distinct(StringComparer.Ordinal).Count() != rows.Count)
+            { throw new ArgumentException("Duplicate controls action."); }
+            HashSet<string> supplied = rows.Select(row => row.Id).ToHashSet(StringComparer.Ordinal);
+            rows.AddRange(ControlPreferences.Defaults().Actions.Where(row => !supplied.Contains(row.Id)));
             return new(rows);
         }
         catch (Exception e) when (e is JsonException or InvalidOperationException or FormatException or KeyNotFoundException

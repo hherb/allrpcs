@@ -19,7 +19,6 @@ public partial class JournalOpenCloseInputController : Node
     private Seeker seeker = null!;
     private JournalSectionSelectionController selection = null!;
     private bool isOpen;
-    private bool seekerWasPhysicsProcessing;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -91,9 +90,7 @@ public partial class JournalOpenCloseInputController : Node
             return false;
         }
 
-        seekerWasPhysicsProcessing = seeker.IsPhysicsProcessing();
-        seeker.Velocity = Vector2.Zero;
-        seeker.SetPhysicsProcess(false);
+        seeker.SuspendForModal(this);
         close.GrabFocus();
         isOpen = true;
         UpdateNavigationButtons();
@@ -120,7 +117,7 @@ public partial class JournalOpenCloseInputController : Node
             if (wasOpen)
             {
                 GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-                seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+                seeker.ResumeAfterModal(this);
             }
         });
     }
@@ -133,7 +130,7 @@ public partial class JournalOpenCloseInputController : Node
         }
 
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-        seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+        seeker.ResumeAfterModal(this);
         isOpen = false;
         return true;
     }

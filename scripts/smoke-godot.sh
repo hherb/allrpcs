@@ -145,6 +145,19 @@ run_check 30 ALLRPCS_SEEKER_MAP_PANEL_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SEEKER_MAP_OPEN_CLOSE_INPUT_CHECK=1 \
     godot --headless --path "$repository_root/game"
+# Each launch owns a fresh one-shot customization state.
+for modal in map journal; do
+    for opening in custom reading; do
+        for closing in custom reading; do
+            for baseline in active suspended; do
+                run_check 120 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
+                    ALLRPCS_MODAL_INPUT_CHECK="$modal-$opening-$closing-$baseline" godot --headless --path "$repository_root/game"
+            done
+        done
+        run_check 120 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
+            ALLRPCS_MODAL_INPUT_CHECK="$modal-$opening-reading-active-restore" godot --headless --path "$repository_root/game"
+    done
+done
 run_check 30 ALLRPCS_SEEKER_MAP_NOTE_EDITING_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_OPENING_REGION_MAP_VISIT_VERIFICATION_CHECK=1 \
