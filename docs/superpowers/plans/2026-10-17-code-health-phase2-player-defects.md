@@ -20,7 +20,7 @@
 - Evidence is issue + tests + commit under D2; run full `./quality.sh` once at phase exit.
 - Commit and push under the standing publication grant. Do not merge or release.
 - Do not expose credentials or retain private prompts/audio. A captured live stream must use fictional content and remove secrets/identifying metadata. Record unavailable live or human checks honestly.
-- New check scenes must be registered in `scripts/smoke-godot.sh`/`scripts/check-smoke-registration.py` and run through `run_check`.
+- New check scenes must be registered in current smoke tooling and run through `run_check`; validate their registration with the existing harness or a focused check.
 
 ## Review Focus
 
@@ -35,7 +35,8 @@
 - Starting checkout: clean `code-health/phase1`, `e55463b0`.
 - Phase 1 CI: [run 38997183007](https://github.com/hherb/allrpcs/actions/runs/38997183007), successful at `9a7e2715`; merge `e55463b0` run 38998433672 initially pending. Record its final result before product changes.
 - Phase 1 follow-ups #432-#435, #437 and #439 remain separate; this phase does not silently close them.
-- The owner-operated Keychain save check has been requested. No result is assumed.
+- The owner-operated Keychain save check has been requested. No result is assumed. A host existence-only query returned item-not-found for the application-specific credential; no secret was requested and the live OpenAI fixture remains unavailable.
+- Preparatory source inventory corrected two stale plan assumptions: three existing export presets, and eighteen directly collection-bearing domain records. Cover every current instance; do not invent extra presets or records. The preflight at `66282920` recorded 214 matching Main harness resource edges plus the CheckDeadline autoload; export filtering must enumerate the current graph after new checks are added.
 
 ### Task 1: Accept bounded schema echoes in every Responses accumulator (#417)
 
@@ -111,9 +112,9 @@
 
 **Interfaces:** Accepted submission shows busy while a current round owns it; another submission must not claim acceptance after a drop. Unconfigured/unavailable/timed-out provider exposes a retryable visible status. Mark delivery processed before side effects. Absent healer is excluded from hearing admission and speech history.
 
-- [ ] Pin no-provider and stopped-Ollama failures, saving after failure, double submission during held response, and provider-timeout visible failure/retry.
-- [ ] Pin a failing submission side effect is not retried every frame; absent healer hears/records no speech while the next visible healer turn works.
-- [ ] Observe failures, implement without adding new gameplay, run registered Main checks and solution checks; commit.
+- [x] Pin no-provider and stopped-Ollama failures, saving after failure, double submission during held response, and provider-timeout visible failure/retry.
+- [x] Pin a failing submission side effect is not retried every frame; absent healer hears/records no speech while the next visible healer turn works.
+- [x] Observe failures, implement without adding new gameplay, run registered Main checks and solution checks; commit.
 
 ### Task 8: Keep the camera valid on portrait startup and resize
 
@@ -138,9 +139,9 @@
 
 ### Task 10: Exclude harness assets and gate test overrides in exports
 
-**Files:** `game/export_presets.cfg`, credential/settings/ordinary-participation controllers reading test-store variables, `scripts/check-smoke-registration.py`, focused shipping checks.
+**Files:** `game/export_presets.cfg`, credential/settings/ordinary-participation controllers reading test-store variables, focused shipping/registration checks (the planned `scripts/check-smoke-registration.py` does not exist in this checkout).
 
-**Interfaces:** All six export presets exclude `*Check*`, `*Proof*`, `*Probe*` resources. Test-store/model overrides take effect only in debug builds; ordinary production settings continue to work.
+**Interfaces:** All three existing development export presets exclude `*Check*`, `*Proof*`, `*Probe*` resources. Test-store/model overrides take effect only in debug builds; ordinary production settings continue to work.
 
 - [ ] Pin every preset's exclusions and all test-environment read sites behind a debug-only policy; verify Main still imports/loads under debug smoke checks.
 - [ ] Implement minimal exclusions and gating, inspect exported resource references for missing required runtime scripts; run focused checks and solution checks; commit.
@@ -165,7 +166,7 @@
 - [ ] Pin strongest foreground ending while a weaker one remains, then release to baseline.
 - [ ] Pin the 65th relationship reason and recording beyond summary capacity; retain valid prior state and finite storage.
 - [ ] Pin old transcript/event snapshots remain unchanged after many appends, ordering/lookups and bounded linear total append work using structural metrics rather than flaky timings.
-- [ ] Inventory the 19 list-holding records, pin equality/hash consistency for equal-valued separately allocated lists or document identity-class semantics and update callers/tests.
+- [ ] Inventory all collection-bearing records (18 direct records verified; the historical review says 19), pin equality/hash consistency for equal-valued separately allocated lists or document identity-class semantics and update callers/tests.
 - [ ] Observe failures, implement, run Domain/Application tests, native audio/transcript checks and solution checks; commit `Fixes #424` with the related bounded-session fixes.
 
 ### Task 13: Review, phase exit and publication
@@ -178,4 +179,4 @@
 
 ## Progress
 
-Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 implementation completed at `e1e4a0e9`: all 18 provider consumers have finite request/idle bounds, redirects are refused, retry delays are bounded/cancellable, and the existing 50ms native timeout fixture uses a deterministic clock. Independent review passes, 5,858 solution tests and seven affected native checks pass. Its owner Keychain step remains open. Task 3 follow-up `94de440b` removes a non-timing fixture race without changing product behavior; scoped review and five progress tests pass. Task 4 implemented in `bf118728`/`36d06fad`: optional budgets, whitespace handling and typed required-budget status; 1,455 Application tests pass, including four review-added invalid-input precedence cases. Scoped re-review passes. Task 7 still must integrate the typed failure into the game before #425 closes. Task 5 completed at `e6dccb64`/`39d88edb`: named prepare/commit/publish registry, session fencing/resets, restored-ID equality and public modal reset APIs. Independent review correction moved native UI changes after all commits; actual visibility-observer RED/GREEN and scoped re-review pass. All 5,866 unit tests and affected native checks pass. Two confirmed pre-existing speech focus-fixture failures are assigned to Task 6 with exact repro. Task 6 completed at `e56cf1be` (Fixes #427/#428): shared modal causes, HUD focus release and missing-action migration; 5,867 solution tests and 24 native input checks pass, with independent spec/quality review passing. Its current speech fixture exposed a supplied reply never consumed; the fixture/pacing/isolation work is explicitly deferred to Task 7, without a passing speech claim. Task 7 is in progress; Tasks 8-13 remain. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); the exact fixture failure was reproduced and repaired in Task 3, including a passing 10 FPS run; no newer hosted-green result is claimed. Full quality gate is reserved for phase exit.
+Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 implementation completed at `e1e4a0e9`: all 18 provider consumers have finite request/idle bounds, redirects are refused, retry delays are bounded/cancellable, and the existing 50ms native timeout fixture uses a deterministic clock. Independent review passes, 5,858 solution tests and seven affected native checks pass. Its owner Keychain step remains open. Task 3 follow-up `94de440b` removes a non-timing fixture race without changing product behavior; scoped review and five progress tests pass. Task 4 implemented in `bf118728`/`36d06fad`: optional budgets, whitespace handling and typed required-budget status; 1,455 Application tests pass, including four review-added invalid-input precedence cases. Scoped re-review passes. Task 7 still must integrate the typed failure into the game before #425 closes. Task 5 completed at `e6dccb64`/`39d88edb`: named prepare/commit/publish registry, session fencing/resets, restored-ID equality and public modal reset APIs. Independent review correction moved native UI changes after all commits; actual visibility-observer RED/GREEN and scoped re-review pass. All 5,866 unit tests and affected native checks pass. Two confirmed pre-existing speech focus-fixture failures are assigned to Task 6 with exact repro. Task 6 completed at `e56cf1be` (Fixes #427/#428): shared modal causes, HUD focus release and missing-action migration; 5,867 solution tests and 24 native input checks pass, with independent spec/quality review passing. Its current speech fixture exposed a supplied reply never consumed; the fixture/pacing/isolation work is explicitly deferred to Task 7, without a passing speech claim. Task 7 completed at `5fece811` (Fixes #425): pending/busy admission, once-only processing, visible retry failures, typed context-budget handling and absent-speaker cancellation; independent spec/quality review passes. All 62 affected native variants pass across documented diagnosed batches, 5,867 managed tests and 15 launcher self-tests pass. Current speech fixture supplies valid participation and proves exact replies; historical commands remain unchanged. The initial incorrectly isolated provider check has unknown inherited traffic and supplies no live qualification. Task 8 is in progress; Tasks 9-13 remain. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); the exact fixture failure was reproduced and repaired in Task 3, including a passing 10 FPS run; no newer hosted-green result is claimed. Full quality gate is reserved for phase exit.
