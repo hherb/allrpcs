@@ -68,8 +68,9 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
                 if (type == "audio")
                 {
                     SpeechAudioChunk chunk = Decode(root, sequence++);
-                    linked.Token.ThrowIfCancellationRequested();
+                    // Valid audio leaves the protocol known, so a cancellation here retires instead of resetting.
                     poisoned = false;
+                    linked.Token.ThrowIfCancellationRequested();
                     yield return chunk;
                 }
                 else if (type == "finished" && PocketSpeechProtocol.StringField(root, "status") == "completed" && sequence > 0)
@@ -79,9 +80,10 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
                 }
                 else
                 {
-                    if (type == "error" && !string.IsNullOrWhiteSpace(PocketSpeechProtocol.StringField(root, "code")))
+                    if (type == "finished"
+                        || (type == "error" && !string.IsNullOrWhiteSpace(PocketSpeechProtocol.StringField(root, "code"))))
                     {
-                        // A request error is terminal: the worker will send no further completion.
+                        // Any finished or request error is terminal: the worker sends no further completion.
                         completed = true;
                     }
                     throw new SpeechSynthesisException("Speech generation failed; text remains available.");
@@ -90,18 +92,24 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
         }
         finally
         {
-            if (!completed)
+            try
             {
-                if (poisoned)
+                if (!completed)
                 {
-                    await ResetAsync().ConfigureAwait(false);
-                }
-                else
-                {
-                    await RetireAsync(id, sent).ConfigureAwait(false);
+                    if (poisoned)
+                    {
+                        await ResetAsync().ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        await RetireAsync(id, sent).ConfigureAwait(false);
+                    }
                 }
             }
-            _gate.Release();
+            finally
+            {
+                _gate.Release();
+            }
         }
     }
 

@@ -13,6 +13,7 @@ public sealed class AudioDuckingEnvelope
     private long nextToken;
     private double holdRemaining;
     private double releaseSeconds = 0.4;
+    private bool endedThisFrame;
 
     /// <summary>Starts one foreground lease; its token must be ended on success, failure or cancellation.</summary>
     public long Begin(AudioForeground foreground)
@@ -24,17 +25,6 @@ public sealed class AudioDuckingEnvelope
         long token = ++nextToken;
         active.Add(token, foreground);
         foregroundCounts[(int)foreground]++;
-        releaseSeconds = Math.Max(releaseSeconds, foreground == AudioForeground.ConsequentialCue ? 0.4 : 0.6);
-        holdRemaining = Math.Max(holdRemaining, foreground == AudioForeground.ConsequentialCue ? 0.1 : 0.15);
-        foreach (AudioCategory category in Enum.GetValues<AudioCategory>())
-        {
-            int index = (int)category;
-            double target = Target(category, foreground);
-            if (target > peak[index])
-            {
-                peak[index] = target;
-            }
-        }
         return token;
     }
 
@@ -43,6 +33,14 @@ public sealed class AudioDuckingEnvelope
     {
         if (!active.Remove(token, out AudioForeground foreground)) { return false; }
         foregroundCounts[(int)foreground]--;
+        // The ending foreground's policy timing releases from the current level, never a historical peak;
+        // leases ending in the same frame keep the longest timing, independent of their End order.
+        Array.Copy(reduction, peak, reduction.Length);
+        double release = foreground == AudioForeground.ConsequentialCue ? 0.4 : 0.6;
+        double hold = foreground == AudioForeground.ConsequentialCue ? 0.1 : 0.15;
+        releaseSeconds = endedThisFrame ? Math.Max(releaseSeconds, release) : release;
+        holdRemaining = endedThisFrame ? Math.Max(holdRemaining, hold) : hold;
+        endedThisFrame = true;
         return true;
     }
 
@@ -53,6 +51,7 @@ public sealed class AudioDuckingEnvelope
         {
             throw new ArgumentOutOfRangeException(nameof(seconds));
         }
+        endedThisFrame = false;
         if (active.Count > 0)
         {
             for (int index = 0; index < reduction.Length; index++)
@@ -90,6 +89,7 @@ public sealed class AudioDuckingEnvelope
         Array.Clear(peak);
         holdRemaining = 0;
         releaseSeconds = 0.4;
+        endedThisFrame = false;
     }
 
     private (double Target, double Attack) ActiveTarget(AudioCategory category)

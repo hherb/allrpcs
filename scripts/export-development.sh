@@ -35,6 +35,13 @@ mkdir -p "$target_directory"
 
 godot --headless --path "$repository_root/game" --export-debug "$preset" "$output_path"
 
+# The export plugin's failures are only logged, so prove the shipped pack has no harness.
+pack_path="$target_directory/shipping-pack.zip"
+godot --headless --path "$repository_root/game" --export-pack "$preset" "$pack_path"
+godot --headless --path "$repository_root/game" --script "$script_dir/check-shipping-pack.gd" -- "$pack_path" 2>&1 |
+  tee /dev/stderr | grep -q '^PASS: shipping pack'
+rm -f "$pack_path"
+
 {
   echo "ALLRPCS UNSIGNED DEVELOPMENT BUILD EVIDENCE"
   echo

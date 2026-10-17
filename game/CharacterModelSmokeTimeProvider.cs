@@ -3,19 +3,35 @@ namespace Allrpcs.Game;
 /// <summary>A smoke-owned clock advanced only after the visible generating-state handshake.</summary>
 internal sealed class CharacterModelSmokeTimeProvider : TimeProvider
 {
+    // Timers may be created on thread-pool continuations while a test thread advances the clock.
+    private readonly object gate = new();
     private readonly List<ManualTimer> timers = [];
     private TimeSpan elapsed;
-    public override DateTimeOffset GetUtcNow() => DateTimeOffset.UnixEpoch + elapsed;
-    public override long GetTimestamp() => elapsed.Ticks;
+    public override DateTimeOffset GetUtcNow() => DateTimeOffset.UnixEpoch + Elapsed;
+    public override long GetTimestamp() => Elapsed.Ticks;
     public override long TimestampFrequency => TimeSpan.TicksPerSecond;
-    public int ActiveTimerCount => timers.Count(timer => !timer.Disposed);
+
+    public int ActiveTimerCount
+    {
+        get { lock (gate) return timers.Count(timer => !timer.Disposed); }
+    }
+
+    private TimeSpan Elapsed
+    {
+        get { lock (gate) return elapsed; }
+    }
 
     public void Advance(TimeSpan duration)
     {
-        elapsed += duration;
-        foreach (ManualTimer timer in timers.ToArray())
+        List<ManualTimer> due;
+        lock (gate)
         {
-            timer.Fire(elapsed);
+            elapsed += duration;
+            due = timers.Where(timer => timer.TakeDue(elapsed)).ToList();
+        }
+        foreach (ManualTimer timer in due)
+        {
+            timer.Fire();
         }
     }
 
@@ -23,7 +39,7 @@ internal sealed class CharacterModelSmokeTimeProvider : TimeProvider
     {
         ManualTimer timer = new(this, callback, state);
         timer.Change(dueTime, period);
-        timers.Add(timer);
+        lock (gate) timers.Add(timer);
         return timer;
     }
 
@@ -33,22 +49,30 @@ internal sealed class CharacterModelSmokeTimeProvider : TimeProvider
         public bool Disposed { get; private set; }
         public bool Change(TimeSpan dueTime, TimeSpan period)
         {
-            if (Disposed) return false;
             if (period != Timeout.InfiniteTimeSpan) throw new NotSupportedException();
-            due = dueTime == Timeout.InfiniteTimeSpan ? null : owner.elapsed + dueTime;
-            return true;
-        }
-
-        public void Fire(TimeSpan now)
-        {
-            if (!Disposed && due is { } deadline && now >= deadline)
+            lock (owner.gate)
             {
-                due = null;
-                callback(state);
+                if (Disposed) return false;
+                due = dueTime == Timeout.InfiniteTimeSpan ? null : owner.elapsed + dueTime;
+                return true;
             }
         }
 
-        public void Dispose() => Disposed = true;
+        /// <summary>Clears and reports an expired due time; the caller holds the owner's lock.</summary>
+        public bool TakeDue(TimeSpan now)
+        {
+            if (Disposed || due is not { } deadline || now < deadline) return false;
+            due = null;
+            return true;
+        }
+
+        public void Fire() => callback(state);
+
+        public void Dispose()
+        {
+            lock (owner.gate) Disposed = true;
+        }
+
         public ValueTask DisposeAsync()
         {
             Dispose();

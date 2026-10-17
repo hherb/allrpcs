@@ -42,6 +42,8 @@ public static class CameraFramingCalculator
 {
     /// <summary>
     /// Creates a framing plan whose minimum zoom cannot reveal beyond the supplied world bounds.
+    /// Valid tuning is raised to the covering zoom when the viewport needs it: minimum and maximum
+    /// rise to at least that zoom and the default is clamped between them, rather than rejected.
     /// </summary>
     /// <param name="worldBounds">The finite world rectangle to keep on screen.</param>
     /// <param name="viewportSizePixels">The finite positive viewport size in pixels.</param>

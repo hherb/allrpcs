@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Characters;
 /// <summary>Completes one substitution decision from bounded OpenAI Responses SSE input.</summary>
 public static class OpenAiCharacterObjectSabotageSubstitutionSseCompletion
 {
-    /// <summary>Reads and applies complete semantic events for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
     public static async Task<CharacterObjectSabotageSubstitutionDecision> CompleteAsync(
         CharacterObjectSabotageSubstitutionConsiderationRequest request,
         Stream stream,

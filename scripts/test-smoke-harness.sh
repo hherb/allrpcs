@@ -82,6 +82,9 @@ expect 'repeated mutex abort is retried only once' 134/2 "$(shim_case)"
 export SHIM_OUTPUT_1='ERROR: check failed
 mutex lock failed: Invalid argument'
 expect 'mutex abort after a reported error is not retried' 134/1 "$(shim_case)"
+export SHIM_OUTPUT_1='FAIL: controls Main: fixture
+mutex lock failed: Invalid argument'
+expect 'mutex abort after a check FAIL is not retried' 134/1 "$(shim_case)"
 export SHIM_OUTPUT_1='mutex lock failed: Invalid argument' SHIM_CODE_1=1
 expect 'other exit codes are not retried' 1/1 "$(shim_case)"
 export SHIM_OUTPUT_1='ERROR: System.InvalidOperationException: shim probe' SHIM_CODE_1=0

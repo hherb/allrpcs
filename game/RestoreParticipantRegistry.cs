@@ -21,11 +21,15 @@ internal sealed class RestoreParticipantRegistry
 
     internal bool TryRestore(SaveSnapshot snapshot)
     {
-        PreparedRestore[] prepared;
-        try { prepared = participants.Select(participant => participant.Prepare(snapshot)).ToArray(); }
-        catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
+        List<PreparedRestore> prepared = [];
+        foreach (IRestoreParticipant participant in participants)
         {
-            return false;
+            try { prepared.Add(participant.Prepare(snapshot)); }
+            catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
+            {
+                GD.PushWarning($"Restore rejected by {participant.Owner}: {exception}");
+                return false;
+            }
         }
         foreach (PreparedRestore participant in prepared) { participant.Commit(); }
         foreach (PreparedRestore participant in prepared)
@@ -38,6 +42,6 @@ internal sealed class RestoreParticipantRegistry
     internal static void Publish(Action publish)
     {
         try { publish(); }
-        catch (Exception exception) { GD.PrintErr($"Restoration presentation failed: {exception.Message}"); }
+        catch (Exception exception) { GD.PrintErr($"Restoration presentation failed: {exception}"); }
     }
 }

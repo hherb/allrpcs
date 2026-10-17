@@ -113,12 +113,10 @@ public partial class JournalOpenCloseInputController : Node
             isOpen = false;
         }, () =>
         {
+            // Resume first so a presentation failure cannot leave the Seeker suspended.
+            if (wasOpen) { seeker.ResumeAfterModal(this); }
             panel.Visible = false;
-            if (wasOpen)
-            {
-                GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-                seeker.ResumeAfterModal(this);
-            }
+            if (wasOpen) { GetViewport().GuiGetFocusOwner()?.ReleaseFocus(); }
         });
     }
 

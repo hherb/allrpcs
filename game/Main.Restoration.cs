@@ -29,13 +29,7 @@ public partial class Main
         }));
         Register("character-response-presentation", GetNode<TemporaryCharacterTurnResponseLabel>(
             "DialogueOverlay/Panel/Response").PrepareSessionReset);
-        Register("resolved-perception", () => new(() => { }, () =>
-        {
-            foreach (TemporaryResolvedPerceptionIndicator indicator in resolvedPerceptionIndicators)
-            {
-                indicator.ResetPresentation();
-            }
-        }));
+        Register("resolved-perception", () => new(() => { }, RefreshResolvedPerceptionPresentation));
         Register("journal-modal", GetNode<JournalOpenCloseInputController>(
             "JournalOpenCloseInputController").PrepareSessionReset);
         Register("map-modal", GetNode<SeekerMapOpenCloseInputController>(

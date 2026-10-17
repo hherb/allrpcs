@@ -24,11 +24,14 @@ public sealed class PocketSpeechSynthesizerTests
         Assert.Equal("en", factory.Workers[0].Requests[1].GetProperty("language").GetString());
     }
 
-    [Fact]
-    public async Task RequestErrorIsTerminalAndReusesSameWarmWorkerWithoutCancellation()
+    [Theory]
+    [InlineData("error")]
+    [InlineData("finished")]
+    public async Task TerminalFailureReusesSameWarmWorkerWithoutCancellation(string terminal)
     {
-        FakeFactory factory = new((worker, request) => worker.Output.Writer.TryWrite(
-            JsonSerializer.Serialize(new { type = "error", id = request.GetProperty("id").GetString(), code = "synthesis_failed" })));
+        FakeFactory factory = new((worker, request) => worker.Output.Writer.TryWrite(terminal == "error"
+            ? JsonSerializer.Serialize(new { type = "error", id = request.GetProperty("id").GetString(), code = "synthesis_failed" })
+            : JsonSerializer.Serialize(new { type = "finished", id = request.GetProperty("id").GetString(), status = "completed" })));
         await using PocketSpeechSynthesizer synthesizer = new(factory);
         await Assert.ThrowsAsync<SpeechSynthesisException>(() => Collect(synthesizer, "First."));
         FakeWorker original = Assert.Single(factory.Workers);

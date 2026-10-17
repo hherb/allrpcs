@@ -38,6 +38,26 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
         Assert.Null(completed?.Failure);
     }
 
+    [Fact]
+    public void CompletesWithRealCharacterTurnSchemaEcho()
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+        string created = OpenAiSchemaEcho.RealEvent("response.created", "in_progress");
+        // The echoed real schema is deeper than the former eight-level event cap (#417).
+        Assert.ThrowsAny<System.Text.Json.JsonException>(() => System.Text.Json.JsonDocument.Parse(
+            created, new System.Text.Json.JsonDocumentOptions { MaxDepth = 8 }));
+
+        Assert.Null(accumulator.Apply(created));
+        Assert.Null(accumulator.Apply(Delta(FirstDocumentPart + SecondDocumentPart)));
+        Assert.Null(accumulator.Apply(Done(FirstDocumentPart + SecondDocumentPart)));
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            OpenAiSchemaEcho.RealEvent("response.completed", "completed"));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Same(CharacterIntentionType.Wait, completed?.Response?.ImmediateIntention.Type);
+    }
+
     [Theory]
     [InlineData(16)]
     [InlineData(64)]

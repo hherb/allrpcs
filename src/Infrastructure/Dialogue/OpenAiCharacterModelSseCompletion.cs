@@ -9,7 +9,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public static class OpenAiCharacterModelSseCompletion
 {
     /// <summary>
-    /// Reads and applies complete semantic event documents for one exact turn request.
+    /// Applies semantic event documents for one exact turn request until the first terminal event.
     /// </summary>
     public static async Task<CharacterModelStreamTermination> CompleteAsync(
         CharacterTurnRequest request,
@@ -25,7 +25,7 @@ public static class OpenAiCharacterModelSseCompletion
     }
 
     /// <summary>
-    /// Reads and applies complete semantic events while retaining only bounded terminal usage.
+    /// Applies semantic events until the first terminal event while retaining only bounded terminal usage.
     /// </summary>
     public static async Task<OpenAiCharacterModelSseResult> CompleteWithUsageAsync(
         CharacterTurnRequest request,

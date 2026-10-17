@@ -13,7 +13,8 @@ matching item in `ROADMAP.md`, and run `python3 scripts/check-continuation.py`. 
   accepted, unchanged area is not progress.
 - After ledger edits, run `python3 scripts/check-continuation.py --sync` (regenerates the
   `<!-- active-slice:start/end -->` block in `HANDOVER.md`), then the checker and `--self-test`.
-  Never prune closed entries; the checker compares against `HEAD:CONTINUATION.json`.
+  Never prune closed entries; the checker unions every committed ledger since `HISTORY_BASELINE`
+  (a commit on main) and needs full history, not a shallow clone.
 - Never alter frozen art/audio evidence, acceptance hashes or historical validators to make a
   successor pass. Historical "pending"/"next slice" prose in packages is evidence, not a queue.
 - The Godot editor rewrite of `game/project.godot` is committed at `a55e9e8d` (`EDITOR_REVISION` in

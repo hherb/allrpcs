@@ -23,14 +23,6 @@ public partial class TemporaryResolvedPerceptionIndicator : Node2D
         resolvedIndicator.Visible = false;
     }
 
-    /// <summary>Clears the session-only resolved description after successful restoration.</summary>
-    public void ResetPresentation()
-    {
-        Label label = GetIndicator();
-        label.Text = string.Empty;
-        label.Visible = false;
-    }
-
     /// <summary>
     /// Presents the existing world object's exact authored description only when its retained
     /// visibility is the identified state.

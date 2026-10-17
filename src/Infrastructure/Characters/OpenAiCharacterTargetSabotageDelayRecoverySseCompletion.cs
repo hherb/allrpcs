@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Characters;
 /// <summary>Completes one delay-recovery decision from bounded OpenAI Responses SSE.</summary>
 public static class OpenAiCharacterTargetSabotageDelayRecoverySseCompletion
 {
-    /// <summary>Reads and applies complete semantic events for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
     public static async Task<CharacterTargetSabotageDelayRecoveryDecision> CompleteAsync(
         CharacterTargetSabotageDelayRecoveryConsiderationRequest request,
         Stream stream,

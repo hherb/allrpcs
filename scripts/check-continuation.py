@@ -12,9 +12,10 @@ import tempfile
 
 REPO = Path(__file__).resolve().parents[1]
 # Accepted checkpoint: earlier legacy rewrites do not redefine this baseline.
+# It must already be on main, so squash or rebase merges of later branches keep it as an ancestor.
 # Descendant ledger commits and merge states contribute persistent entries.
 # Older divergent branches do not resurrect superseded pre-baseline records.
-HISTORY_BASELINE = '9823b1a3dcdbb2ddb9a76abbe0d1eb3f5ae4450e'
+HISTORY_BASELINE = 'e55463b0ad22dbb79487766877a0ddfa3384d662'
 START = '<!-- active-slice:start -->'
 END = '<!-- active-slice:end -->'
 
@@ -84,7 +85,8 @@ def validate(state, previous=None, check_files=True):
     require(active['status'] in ('ready', 'in_progress'), 'Active slice has no executable status')
     require(active['missing_deliverable'] and active['completion_condition'] and active['outputs'],
             'Active slice lacks a finite missing deliverable')
-    require(isinstance(active['roadmap_item'], str) and active['roadmap_item'].strip()
+    require(isinstance(active['roadmap_item'], str) and active['roadmap_item'].startswith('- [ ] ')
+            and active['roadmap_item'][6:].strip()
             and active['roadmap_item'] in (REPO / 'ROADMAP.md').read_text(), 'Missing roadmap item')
     require(len(active['outputs']) == len(set(active['outputs'])), 'Duplicate active output')
     outputs = [local_path(name) for name in active['outputs']]
@@ -228,7 +230,7 @@ def self_test(state):
     bad = copy.deepcopy(state)
     bad['closed_scopes'].pop()
     reject('pruned acceptance history', lambda: validate(bad, previous=state, check_files=False))
-    for item in ('', '   '):
+    for item in ('', '   ', 'a', '- [ ] '):
         bad = copy.deepcopy(state)
         bad['active_slice']['roadmap_item'] = item
         reject('empty roadmap item', lambda: validate(bad, check_files=False))

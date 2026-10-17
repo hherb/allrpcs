@@ -86,10 +86,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             Fail("Restore ownership: rejected load cleared the transcript.");
             return false;
         }
+        // The snapshot leaves the herb patch only noticed and identifies the stone marker, so the
+        // stale herb label must hide and the stone label must re-present from restored perception.
         if (!controller.TryRestore(snapshot) || transcript.Transcript is not { Entries.Count: 0 }
-            || panel.Visible || indicators.Any(indicator => indicator.IsIndicatorVisible))
+            || panel.Visible || indicators[0].IsIndicatorVisible || !indicators[1].IsIndicatorVisible)
         {
-            Fail("Restore ownership: successful load retained the session transcript.");
+            Fail("Restore ownership: successful load retained session state or stale perception labels.");
             return false;
         }
         responseLabel._Process(0);

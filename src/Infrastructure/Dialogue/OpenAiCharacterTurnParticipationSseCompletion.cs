@@ -7,7 +7,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// </summary>
 public static class OpenAiCharacterTurnParticipationSseCompletion
 {
-    /// <summary>Reads and applies complete semantic events for one exact participation request.</summary>
+    /// <summary>Stops at the first terminal event for one exact participation request.</summary>
     public static async Task<CharacterTurnParticipationDecision> CompleteAsync(
         CharacterTurnParticipationConsiderationRequest request,
         Stream stream,

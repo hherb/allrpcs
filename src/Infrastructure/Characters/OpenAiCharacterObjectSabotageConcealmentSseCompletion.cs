@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Characters;
 /// <summary>Completes one concealment decision from bounded OpenAI Responses SSE input.</summary>
 public static class OpenAiCharacterObjectSabotageConcealmentSseCompletion
 {
-    /// <summary>Reads and applies complete semantic events for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
     public static async Task<CharacterObjectSabotageConcealmentDecision> CompleteAsync(
         CharacterObjectSabotageConcealmentConsiderationRequest request,
         Stream stream,

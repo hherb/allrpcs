@@ -21,8 +21,8 @@ import tarfile
 import tempfile
 import unittest
 
-# One hour per stage, including retries: generous even relative to the retained
-# 48m43s entire 217-stage gate. Tests inject short deadlines; no stage is unbounded.
+# One hour per stage, including retries: generous even relative to the whole retained
+# gate (under an hour). Tests inject short deadlines; no stage is unbounded.
 STAGE_TIMEOUT_SECONDS = 60 * 60
 ROOT = Path(__file__).resolve().parent
 ART_REVISION = 'ea63fcc46834e84ffab98aabd76530e60f760955'
@@ -91,7 +91,9 @@ def commands(text):
 def native_shutdown(returncode, output):
     """Retry only the diagnosed native mutex abort, never ordinary check failures."""
     last_launch = output.rsplit('Godot Engine v', 1)[-1]
-    return ('FAIL:' not in output and returncode in (-6, 134) and 'mutex lock failed' in last_launch
+    # smoke-lib reports its own exit status as "FAIL: smoke launch exited"; only a check's FAIL forbids retry.
+    return (returncode in (-6, 134) and 'mutex lock failed' in last_launch
+            and not re.search(r'^FAIL:(?! smoke launch exited )', last_launch, re.M)
             and not any(marker in last_launch for marker in ('ERROR:', 'AssertionError', 'Unhandled exception')))
 
 
@@ -1407,9 +1409,12 @@ class ContractTests(unittest.TestCase):
                 self.assertEqual(json.loads((output / 'summary.resume.json').read_text())['status'], 'failed')
 
     def test_fail_marker_forbids_native_retry(self):
+        wrapper = 'FAIL: smoke launch exited 134: run_check 30 godot\n'
         for output in ('FAIL: fixture\nmutex lock failed',
-                       'FAIL: earlier fixture\nGodot Engine v4.6\nmutex lock failed'):
+                       'Godot Engine v4.6\nFAIL: fixture\nmutex lock failed\n' + wrapper):
             self.assertFalse(native_shutdown(134, output))
+        # The harness's own exit report and a quarantined earlier launch's FAIL do not block retry.
+        self.assertTrue(native_shutdown(134, 'FAIL: quarantined\nGodot Engine v4.6\nmutex lock failed\n' + wrapper))
 
     def test_resume_keeps_failed_report_until_success(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -1482,7 +1487,8 @@ class ContractTests(unittest.TestCase):
             plan += [('product-10', ['sh', '-c', product[9]], None)]
             rows = []
             for i, (name, args, revision) in enumerate(plan):
-                data = b'mutex lock failed' if name == 'product-10' else b'passed'
+                data = (b'Godot Engine v4.6.3\nmutex lock failed: Invalid argument\n'
+                        b'FAIL: smoke launch exited 134: run_check 30 godot\n') if name == 'product-10' else b'passed'
                 log = f'{i}.log'
                 (root / log).write_bytes(data)
                 rows.append(dict(name=name, arguments=args, revision=revision,

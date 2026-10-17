@@ -33,10 +33,31 @@ public sealed class AudioDuckingEnvelopeTests
         Assert.Equal(0, envelope.ReductionDb(AudioCategory.Effects), 8);
         envelope.End(weak);
         Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
-        envelope.Advance(0.15);
+        // The last-ending foreground's own hold and release apply, not the earlier speech timing.
+        bool cue = weaker == AudioForeground.ConsequentialCue;
+        envelope.Advance(cue ? 0.1 : 0.15);
         Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(cue ? 0.2 : 0.3);
+        Assert.Equal(1.5, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(cue ? 0.2 : 0.3);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Music), 8);
+    }
+
+    [Fact]
+    public void SimultaneousEndingsReleaseEveryCategory()
+    {
+        AudioDuckingEnvelope envelope = new();
+        long speech = envelope.Begin(AudioForeground.Speech);
+        long cue = envelope.Begin(AudioForeground.ConsequentialCue);
+        envelope.Advance(0.1);
+        envelope.End(cue);
+        envelope.End(speech);
+        envelope.Advance(0.15);
+        Assert.Equal(6, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Effects), 8);
         envelope.Advance(0.6);
         Assert.Equal(0, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Effects), 8);
     }
 
     [Fact]

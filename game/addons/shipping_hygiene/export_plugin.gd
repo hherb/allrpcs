@@ -1,6 +1,8 @@
 @tool
 extends EditorExportPlugin
-## Operates only on engine-owned export scene copies; never saves source settings/scenes.
+## Transforms export scene copies and lifts harness autoloads from in-memory settings until
+## _export_end; never saves source settings/scenes. A failed transform ships the original scene,
+## which scripts/check-shipping-pack.gd (run by export-development.sh) rejects.
 
 const PATTERNS := ["*Check*", "*Proof*", "*Probe*"]
 var saved_autoloads: Dictionary = {}
@@ -35,6 +37,9 @@ func _export_file(path: String, type: String, _features: PackedStringArray) -> v
 	if type != "PackedScene":
 		return
 	var packed: PackedScene = load(path)
+	if packed == null:
+		push_error("Shipping hygiene could not load " + path)
+		return
 	var scene := packed.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 	var removed := remove_harness_children(scene)
 	if removed == 0:
@@ -54,6 +59,9 @@ func _export_file(path: String, type: String, _features: PackedStringArray) -> v
 		return
 	var bytes := FileAccess.get_file_as_bytes(temporary)
 	DirAccess.remove_absolute(temporary)
+	if bytes.is_empty():
+		push_error("Shipping hygiene could not read serialized " + path)
+		return
 	# add_file(remap=true) suppresses the original and makes Godot write its remap.
 	add_file(path + ".shipping.scn", bytes, true)
 

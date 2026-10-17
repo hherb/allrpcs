@@ -112,6 +112,7 @@ public static class CharacterModelGenerationController
         using CancellationTokenSource deadlineCancellation =
             CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, deadlineTimer.Token);
 
+        long started = timeProvider.GetTimestamp();
         TimeSpan retryDelay = TimeSpan.Zero;
         for (int attemptCount = 1;
              attemptCount <= CharacterModelRetryPolicy.MaximumAttemptCount;
@@ -128,7 +129,16 @@ public static class CharacterModelGenerationController
                 cancellationToken).ConfigureAwait(false);
             attempt = ValidateCompletedResponse(request, worldObjects, affordances, attempt);
 
-            if (!CharacterModelRetryPolicy.CanRetry(attemptCount, attempt))
+            bool retry = CharacterModelRetryPolicy.CanRetry(attemptCount, attempt);
+            if (retry)
+            {
+                CharacterModelStreamTermination failed = (CharacterModelStreamTermination)attempt.Updates[^1];
+                retryDelay = CharacterModelRetryPolicy.GetDelay(failed.Failure!);
+                // A wait that cannot finish before the deadline would report TimedOut instead of the provider's failure.
+                retry = retryDelay < deadline - timeProvider.GetElapsedTime(started);
+            }
+
+            if (!retry)
             {
                 await TryObserveTerminalAsync(attempt, observation).ConfigureAwait(false);
                 if (synthesizedTermination)
@@ -141,9 +151,6 @@ public static class CharacterModelGenerationController
 
                 return attempt;
             }
-
-            CharacterModelStreamTermination failed = (CharacterModelStreamTermination)attempt.Updates[^1];
-            retryDelay = CharacterModelRetryPolicy.GetDelay(failed.Failure!);
         }
 
         throw new InvalidOperationException("The bounded retry loop did not return a result.");

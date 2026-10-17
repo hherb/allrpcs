@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// <summary>Completes one provider-neutral response from bounded Anthropic Messages SSE.</summary>
 public static class AnthropicCharacterModelSseCompletion
 {
-    /// <summary>Reads one complete semantic stream for the exact turn request.</summary>
+    /// <summary>Stops at the first terminal document for the exact turn request.</summary>
     public static async Task<CharacterModelStreamTermination> CompleteAsync(
         CharacterTurnRequest request,
         Stream stream,

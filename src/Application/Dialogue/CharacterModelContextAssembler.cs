@@ -12,9 +12,9 @@ namespace Allrpcs.Application.Dialogue;
 public static class CharacterModelContextAssembler
 {
     /// <summary>
-    /// Returns a generation request containing authoritative perception, knowledge and goals,
-    /// supplied memories, recent local speech, exact validation affordances, and exact untrusted
-    /// player dialogue in roadmap order.
+    /// Returns a generation request with exact validation affordances and untrusted player dialogue,
+    /// plus perception, knowledge, goals, memories and recent speech fitted to the context budget.
+    /// Throws <see cref="InvalidOperationException"/> when the required entries alone exceed it.
     /// </summary>
     public static CharacterModelGenerationRequest Assemble(
         CharacterTurnRequest request,

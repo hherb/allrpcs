@@ -15,8 +15,7 @@ public sealed class CharacterModelGenerationControllerTests
     [Theory]
     [InlineData("complete")]
     [InlineData("cancel")]
-    [InlineData("timeout")]
-    public async Task BackoffWaitsForBoundedHintAndHonoursCancellationAndDeadline(string mode)
+    public async Task BackoffWaitsForBoundedHintAndHonoursCancellation(string mode)
     {
         ManualTimeProvider clock = new();
         using CancellationTokenSource caller = new();
@@ -26,22 +25,38 @@ public sealed class CharacterModelGenerationControllerTests
         StubModel model = new(Updates(failed), Updates(Completed(request)));
         Task<CharacterModelStreamSnapshot> task = CharacterModelGenerationController.GenerateAsync(
             model, request, new WorldObjectSnapshot([]), new CharacterIntentionAffordanceSnapshot([]),
-            TimeSpan.FromSeconds(mode == "timeout" ? 10 : 120), caller.Token, clock);
+            TimeSpan.FromSeconds(120), caller.Token, clock);
         Assert.Equal(1, model.CallCount);
         Assert.False(task.IsCompleted);
         clock.Advance(TimeSpan.FromSeconds(9));
         Assert.Equal(1, model.CallCount);
         if (mode == "cancel") caller.Cancel();
-        else clock.Advance(TimeSpan.FromSeconds(mode == "timeout" ? 1 : 8));
+        else clock.Advance(TimeSpan.FromSeconds(8));
         CharacterModelStreamSnapshot result = await task;
         CharacterModelStreamTermination termination = Assert.IsType<CharacterModelStreamTermination>(result.Updates[^1]);
-        Assert.Equal(mode switch
-        {
-            "cancel" => CharacterModelStreamTerminationStatus.Cancelled,
-            "timeout" => CharacterModelStreamTerminationStatus.TimedOut,
-            _ => CharacterModelStreamTerminationStatus.Completed,
-        }, termination.Status);
+        Assert.Equal(mode == "cancel"
+            ? CharacterModelStreamTerminationStatus.Cancelled
+            : CharacterModelStreamTerminationStatus.Completed, termination.Status);
         Assert.Equal(mode == "complete" ? 2 : 1, model.CallCount);
+    }
+
+    [Fact]
+    public async Task HintBeyondDeadlineReturnsProviderFailureWithoutWaiting()
+    {
+        ManualTimeProvider clock = new();
+        CharacterModelGenerationRequest request = Request();
+        CharacterModelStreamTermination failed = new(CharacterModelStreamTerminationStatus.Failed,
+            null, new CharacterModelFailure(CharacterModelFailureCode.RateLimited, TimeSpan.FromSeconds(17)));
+        StubModel model = new(Updates(failed), Updates(Completed(request)));
+        Task<CharacterModelStreamSnapshot> task = CharacterModelGenerationController.GenerateAsync(
+            model, request, new WorldObjectSnapshot([]), new CharacterIntentionAffordanceSnapshot([]),
+            TimeSpan.FromSeconds(10), default, clock);
+        Assert.True(task.IsCompleted);
+        CharacterModelStreamSnapshot result = await task;
+        Assert.Equal(CharacterModelFailureCode.RateLimited,
+            Assert.IsType<CharacterModelStreamTermination>(Assert.Single(result.Updates)).Failure?.Code);
+        Assert.Equal(1, model.CallCount);
+        Assert.Equal(0, clock.ActiveTimerCount);
     }
 
     [Fact]
