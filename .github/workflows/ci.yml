@@ -1,17 +1,36 @@
 name: Credential-free CI
 
+# Cost policy: CI runs only when product, test, tooling or CI inputs change. Evidence packages,
+# prose and the continuation ledger are checked locally (AGENTS.md) and never start hosted runners.
+# macOS (10x) and Windows (2x) exports run only on demand or for release tags; every run exports
+# the Linux build so export breakage is still caught.
 on:
   pull_request:
+    paths-ignore: &docs-and-evidence
+      - "**/*.md"
+      - "docs/**"
+      - "art-direction/**"
+      - "audio-direction/**"
+      - "speech-direction/**"
+      - "input-direction/**"
+      - "release-direction/**"
+      - "quality-review/**"
+      - "CONTINUATION.json"
   push:
     branches:
       - main
+    tags:
+      - "v*"
+    paths-ignore: *docs-and-evidence
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+# Only the newest run per branch or pull request matters; superseded runs are cancelled.
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  cancel-in-progress: true
 
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: "1"
@@ -127,7 +146,11 @@ jobs:
       - name: Build with zero warnings
         run: dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
 
+      # Collect every failing launch in one run instead of stopping at the first; local runs and
+      # quality.py keep fail-fast (scripts/smoke-lib.sh).
       - name: Launch main scene headlessly
+        env:
+          ALLRPCS_SMOKE_CONTINUE: "1"
         run: ./scripts/smoke-godot.sh
 
   development-build:
@@ -137,16 +160,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - target: Linux x64
-            runner: ubuntu-24.04
-            artifact_id: linux-x64
-          - target: macOS Universal 2
-            runner: macos-15
-            artifact_id: macos-universal
-          - target: Windows x64
-            runner: windows-2025
-            artifact_id: windows-x64
+        # Linux always; macOS and Windows only for manual runs and release tags (see cost policy).
+        include: >-
+          ${{ fromJSON((github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/'))
+          && '[{"target":"Linux x64","runner":"ubuntu-24.04","artifact_id":"linux-x64"},
+          {"target":"macOS Universal 2","runner":"macos-15","artifact_id":"macos-universal"},
+          {"target":"Windows x64","runner":"windows-2025","artifact_id":"windows-x64"}]'
+          || '[{"target":"Linux x64","runner":"ubuntu-24.04","artifact_id":"linux-x64"}]') }}
     defaults:
       run:
         shell: bash
@@ -197,6 +217,7 @@ jobs:
           }
 
       - name: Upload explicitly unsigned development evidence
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: UNSIGNED-DEVELOPMENT-${{ matrix.artifact_id }}

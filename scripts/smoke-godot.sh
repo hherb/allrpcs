@@ -18,8 +18,9 @@ smoke_quarantine_file="$script_dir/smoke-quarantine.txt"
 # checkout is fully imported before any check runs; quality.py imports the same way.
 run_check - godot --headless --editor --path "$repository_root/game" --import
 # Prove the wrapper itself (pass, hang, throw and async-throw probes) before trusting any check
-# through it.
-"$script_dir/test-smoke-harness.sh"
+# through it. The self-test always fails fast, even when ALLRPCS_SMOKE_CONTINUE=1 collects the
+# failures of the launches below.
+(unset ALLRPCS_SMOKE_CONTINUE; "$script_dir/test-smoke-harness.sh")
 run_check 30 godot --headless --path "$repository_root/game" \
     res://DirectionAImportProof.tscn
 run_check - godot --headless --path "$repository_root/game" \
