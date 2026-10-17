@@ -599,9 +599,9 @@ def main(resume_smoke=False, finish_interior=False):
         player_asr_runtime(run, environment)
         space_hold_runtime(run, environment)
         ollama_participation_runtime(run, environment)
-        run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
+        run.report.update(interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
-    except Exception:
+    except BaseException:
         run.report.update(status='failed', finished=now())
         run.save()
         raise
@@ -610,11 +610,13 @@ def main(resume_smoke=False, finish_interior=False):
             generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
             run.report.setdefault('generated_uid_cleanup', []).extend(
                 cleanup_generated_uids(ROOT, generated, existed, sources))
-        except Exception:
+        except BaseException:
             run.report.update(status='failed', finished=now())
             raise
         finally:
             run.save()
+    run.report.update(status='passed', finished=now())
+    run.save()
     print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes and seven rain modes', flush=True)
 
 
@@ -1260,24 +1262,89 @@ def finish_rain():
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1', 'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         wind_runtime(run, environment)
         rain_runtime(run, environment)
-        run.report.update(status='passed', finished=now())
-    except Exception:
+    except BaseException:
         run.report.update(status='failed', finished=now()); run.save(); raise
     finally:
         try:
             generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
             run.report.setdefault('generated_uid_cleanup', []).extend(
                 cleanup_generated_uids(ROOT, generated, existed, sources))
-        except Exception:
+        except BaseException:
             run.report.update(status='failed', finished=now())
             raise
         finally:
             run.save()
+    run.report.update(status='passed', finished=now())
+    run.save()
     print('PASS: full current quality; verified unchanged product prefix, restored historical wind and all current rain stages', flush=True)
 
 
 class ContractTests(unittest.TestCase):
     """Reject omitted checks and failed stages, and constrain the exceptional native retry."""
+
+    def test_final_cleanup_interruption_preserves_failure(self):
+        """Drive both real entry points to final cleanup with product execution stubbed."""
+        from contextlib import ExitStack
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        scope = sys.modules[__name__]
+        for entry in ('main', 'finish_rain'):
+            with self.subTest(entry=entry), tempfile.TemporaryDirectory() as directory:
+                repository = Path(directory)
+                output = repository / 'artifacts/quality-current'
+                output.mkdir(parents=True)
+                for name in ('quality.py', 'quality.sh', 'requirements-quality.txt',
+                             'scripts/quality.sh', 'scripts/smoke-godot.sh'):
+                    target = repository / name
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes((ROOT / name).read_bytes())
+                prior = dict(status='failed', failed_stage='product-10', stages=[], inputs={},
+                             product_revision='fixture', python=sys.version)
+                summary = output / 'summary.json'
+                summary.write_text(json.dumps(prior))
+                original = summary.read_bytes()
+                log = output / 'original.log'
+                log.write_bytes(b'original failed launch')
+                for group, count, modes in (
+                        ('interior', 0, ('normal', 'muted', 'zero', 'mono-reduced')),
+                        ('water', 5, ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'no-action')),
+                        ('cask', 7, ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'no-action')),
+                        ('tool', 6, ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-stream', 'no-action')),
+                        ('healer', 4, ('default', 'quiet', 'master-muted', 'effects-muted', 'missing-resources',
+                                       'captions-off', 'observer-disabled'))):
+                    for mode in modes:
+                        number = 0 if mode in ('no-action', 'observer-disabled') else count
+                        (output / f'{group}-{mode}.json').write_text(json.dumps(dict(
+                            transcript=[], commits=number, presentations=number, contacts=number,
+                            motion=[], truthBefore={}, truthAfter={})))
+                        (output / f'{group}-{mode}.json.save.json').write_bytes(b'same save')
+                pillow = SimpleNamespace(__version__='12.3.0',
+                    Image=SimpleNamespace(Image=SimpleNamespace(get_flattened_data=True)),
+                    features=SimpleNamespace(check_feature=lambda _: False, version=lambda _: 'fixture'))
+                with ExitStack() as stack:
+                    stack.enter_context(patch.dict(sys.modules, PIL=pillow, numpy=SimpleNamespace(__version__='2.5.3')))
+                    stack.enter_context(patch.object(scope, 'ROOT', repository))
+                    stack.enter_context(patch.object(scope, 'git', side_effect=lambda *args:
+                        b'fixture' if args[0] == 'rev-parse' else b''))
+                    stack.enter_context(patch.object(scope, 'snapshot', side_effect=lambda *a, **k:
+                        nullcontext((repository, {}))))
+                    stack.enter_context(patch.object(scope, 'native_retry_shim', side_effect=lambda: nullcontext({})))
+                    stack.enter_context(patch.object(Run, 'stage'))
+                    for name in ('resume_prefix', 'resume_rain_prefix'):
+                        stack.enter_context(patch.object(scope, name, return_value=[]))
+                    for name in ('frozen_evidence', 'foliage_runtime', 'wind_runtime', 'rain_runtime',
+                                 'heating_runtime', 'steeping_runtime', 'cooling_runtime', 'herb_runtime',
+                                 'controls_runtime', 'dialogue_accessibility_runtime', 'dialogue_speech_runtime',
+                                 'player_asr_runtime', 'space_hold_runtime', 'ollama_participation_runtime'):
+                        stack.enter_context(patch.object(scope, name))
+                    cleanup = stack.enter_context(patch.object(scope, 'cleanup_generated_uids',
+                        side_effect=[[], KeyboardInterrupt()] if entry == 'main' else [KeyboardInterrupt()]))
+                    with self.assertRaises(KeyboardInterrupt):
+                        main(resume_smoke=True) if entry == 'main' else finish_rain()
+                    self.assertEqual(cleanup.call_count, 2 if entry == 'main' else 1)
+                self.assertEqual(summary.read_bytes(), original)
+                self.assertEqual(log.read_bytes(), b'original failed launch')
+                self.assertEqual(json.loads((output / 'summary.resume.json').read_text())['status'], 'failed')
 
     def test_fail_marker_forbids_native_retry(self):
         for output in ('FAIL: fixture\nmutex lock failed',
