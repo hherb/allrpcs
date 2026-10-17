@@ -1535,11 +1535,12 @@
     "workstream": "code-health-program",
     "authority_status": "owner_approved_code_health_program_2026-10-17",
     "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
-    "missing_deliverable": "One full ./quality.sh phase-exit result and latest hosted CI after reviewed fixes; live fictional OpenAI request/captured stream for #417 and the requested owner Keychain save result remain open.",
-    "instructions": "Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. Tasks 1-12 and whole-phase review passed. Latest scoped correction ad2927df aligns three current tail fixtures with Task 5 restore and Task 7 listener ownership; seven fresh launches and every root postcondition passed with scoped review approval. Hosted 39016146273 on prior 70a9f258 passed all four jobs, but local root failed after 212 passing stages; retain that failure and all earlier reports. Draft PR #440 is open. Run one complete ./quality.sh under D2 and confirm latest hosted CI. Keep live #417 and requested owner Keychain evidence open. Do not close Phase 2, select Phase 3 or merge without satisfying exit conditions and applicable authority.",
+    "missing_deliverable": "Live fictional OpenAI request/captured stream for #417 and the already requested owner Keychain save result. Automated implementation, reviews, complete 218-stage root gate and hosted CI have passed.",
+    "instructions": "Continue only the remaining live/owner evidence in Task 13 of docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md when those prerequisites become available. Complete ./quality.sh on 010439d5 passed all 218 stages/required markers; hosted 39020148424 on the same source passed all four jobs (5921 solution tests, 23 runner self-tests, native363 plus two existing quarantines). The full stage summary is committed under docs/superpowers/evidence; failed/interrupted runs and passing full logs are retained locally. Draft PR #440 is published. Reuse unchanged passing product evidence for prose-only successors. Do not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen closed scopes without satisfying the exit conditions and applicable authority.",
     "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md"
+      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
+      "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
     ],
     "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
   },

@@ -7,17 +7,16 @@ terminal acceptance take precedence. Keep every persistent closure.
 ## Current checkpoint
 
 The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
-is active. Phase 2 Tasks 1–12 and fresh whole-phase review passed. Hosted run 39016146273
-on `70a9f258` passed all jobs: 5,921 tests, 23 runner self-tests and native 363 passed / zero
-failed / two existing quarantines. The complete local gate passed 212 stages before its
-synthetic Ollama tail failed. `ad2927df` corrects three current fixtures: explicit present
-listeners, retained exact completed pre-load activity, and exact pending-generation retirement.
-All seven tail/integration launches and root postconditions pass, including eight distinct
-response generations, 129 examination checks and 64 unchanged context checks; scoped review
-approved with no findings. The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-records every failure, correction and limit. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
-is open. Task 13 still needs a complete root quality result and latest hosted confirmation;
-failed/interrupted runs remain retained and never count as complete passes.
+is active. Phase 2 Tasks 1–12, whole-phase review and all scoped corrections passed.
+The complete `./quality.sh` on `010439d5` passed all 218 stages and required completion markers
+(2026-10-17 09:10–10:02 UTC). [Its unchanged summary](docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json)
+is retained in Git; full logs/reports are preserved locally in the ignored SDD recovery directory.
+Hosted [run 39020148424](https://github.com/hherb/allrpcs/actions/runs/39020148424) on the same
+checkpoint passed all four jobs: 5,921 solution tests, 23 runner self-tests and native 363 passed /
+zero failed / two existing quarantines. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
+records all evidence, earlier failed runs and limits. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
+is published. Automated exit work is complete; only the live/owner evidence below remains.
+Reuse this product evidence for documentation-only successors. Keep Phase 2 open and Phase 3 unselected.
 Merged Phase 1 main `032c5b30` has an identical tree to starting `e55463b0`; its model-timeout
 fixture failure was repaired and verified in Phase 2 Task 3.
 
@@ -47,18 +46,20 @@ This authorizes review-branch publication; no merge or release is authorized her
 
 Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: One full ./quality.sh phase-exit result and latest hosted CI after reviewed
-fixes; live fictional OpenAI request/captured stream for #417 and the requested owner Keychain save
-result remain open.
+Missing deliverable: Live fictional OpenAI request/captured stream for #417 and the already
+requested owner Keychain save result. Automated implementation, reviews, complete 218-stage root
+gate and hosted CI have passed.
 
-Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. Tasks
-1-12 and whole-phase review passed. Latest scoped correction ad2927df aligns three current tail
-fixtures with Task 5 restore and Task 7 listener ownership; seven fresh launches and every root
-postcondition passed with scoped review approval. Hosted 39016146273 on prior 70a9f258 passed all
-four jobs, but local root failed after 212 passing stages; retain that failure and all earlier
-reports. Draft PR #440 is open. Run one complete ./quality.sh under D2 and confirm latest hosted CI.
-Keep live #417 and requested owner Keychain evidence open. Do not close Phase 2, select Phase 3 or
-merge without satisfying exit conditions and applicable authority.
+Continue only the remaining live/owner evidence in Task 13 of
+docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md when those prerequisites
+become available. Complete ./quality.sh on 010439d5 passed all 218 stages/required markers; hosted
+39020148424 on the same source passed all four jobs (5921 solution tests, 23 runner self-tests,
+native363 plus two existing quarantines). The full stage summary is committed under
+docs/superpowers/evidence; failed/interrupted runs and passing full logs are retained locally. Draft
+PR #440 is published. Reuse unchanged passing product evidence for prose-only successors. Do not
+repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do
+not select Phase 3, merge, release or reopen closed scopes without satisfying the exit conditions
+and applicable authority.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
@@ -67,6 +68,7 @@ passes.
 Expected outputs:
 
 - `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
+- `docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json`
 
 Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
 pipeline consolidation (Phase 3).
