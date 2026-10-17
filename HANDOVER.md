@@ -7,16 +7,15 @@ terminal acceptance take precedence. Keep every persistent closure.
 ## Current checkpoint
 
 The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
-is active. Phase 2 Tasks 1–12 are implemented and independently reviewed through `075d3ac2`;
-5,921 solution tests, a zero-warning build/format check and the affected native checks pass.
-The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-records commits, evidence, decisions and known limits. Fresh whole-phase review passed; its one
-minor CI correction (`58c05ef9`) and actual gate/CI regression repairs (`571f1e22`, `b5d020cd`)
-passed scoped reviews. The latter preserves the accepted final channel node and establishes
-present speakers in two current audio fixtures (seven native passes). Provider-fixture clock
-isolation (`2d10ba23`) also passed controlled RED/GREEN and eight native checks plus scoped review;
-it retains real retries and physics while freezing unrelated independent-task time in those fixtures. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
-is open. Task 13 requires one full quality run and latest hosted CI; no full Phase 2 pass is claimed yet.
+is active. Phase 2 Tasks 1–12 and fresh whole-phase review passed; actual gate/CI regressions
+are repaired and scoped reviews approved through `c062a5a4`. The
+[Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
+records evidence, decisions and limits. Hosted run 39011243428 on `7c348508` passed 5,921 solution
+tests, 23 runner self-tests and native 363 passed / zero failed / two existing quarantines.
+The subsequent one-line Interior fixture correction passed all 22 current audio-tail modes and
+save/transcript/count parity, build/format/evidence guard and review. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
+is open. Task 13 still needs a complete root quality result and latest hosted confirmation;
+earlier failed/interrupted reports are retained and do not count as passes.
 Merged Phase 1 main `032c5b30` has an identical tree to starting `e55463b0`; its model-timeout
 fixture failure was repaired and verified in Phase 2 Task 3.
 
@@ -51,12 +50,13 @@ fixes; live fictional OpenAI request/captured stream for #417 and the requested 
 result remain open.
 
 Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. All
-twelve tasks and whole-phase review passed; actual gate/CI regressions were repaired and scoped
-reviews approved through 2d10ba23 (provider fixture independent-clock isolation). Draft PR #440 is
-open. Run one complete ./quality.sh under D2 and confirm latest hosted CI; preserve earlier
-failed/interrupted reports and the exact original-CI diagnostic uncertainty. Keep live #417 and
-requested owner Keychain evidence open. Do not close Phase 2, select Phase 3 or merge without
-satisfying exit conditions and applicable authority.
+twelve tasks and whole-phase review passed; actual gate/CI fixture regressions were repaired and
+scoped reviews approved through c062a5a4. Hosted 39011243428 at 7c348508 passed 5921 tests/23 self-
+tests/native363 plus2existingquarantines; later Interior correction passed22 current-tail
+modes/parity. Draft PR #440 is open. Run one complete ./quality.sh under D2 and confirm latest
+hosted CI; retain all failed/interrupted reports and diagnostic limits. Keep live #417 and requested
+owner Keychain evidence open. Do not close Phase 2, select Phase 3 or merge without satisfying exit
+conditions and applicable authority.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
