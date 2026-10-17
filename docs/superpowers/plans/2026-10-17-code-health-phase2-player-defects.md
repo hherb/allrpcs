@@ -43,10 +43,10 @@
 
 **Interfaces:** Shared `OpenAiStreamDocument.Parse(string serializedEvent)` returns a caller-disposed `JsonDocument`. Preserve each accumulator's event/text bounds and failure mapping. Maximum event depth 64, strict JSON, no comments/trailing commas.
 
-- [ ] Add schema-echo events deeper than eight levels to dialogue, participation and all ten decision accumulators; assert ordinary completion remains possible. Assert depth >64 and overlong/malformed events still fail closed.
-- [ ] Run focused tests and observe the old depth rejection.
-- [ ] Introduce the helper and switch all twelve accumulators in the same task; do not consolidate their pipelines.
-- [ ] Run Infrastructure tests, format/build/solution tests; inspect diff for all twelve consumers.
+- [x] Add schema-echo events deeper than eight levels to dialogue, participation and all ten decision accumulators; assert ordinary completion remains possible. Assert depth >64 and overlong/malformed events still fail closed.
+- [x] Run focused tests and observe the old depth rejection.
+- [x] Introduce the helper and switch all twelve accumulators in the same task; do not consolidate their pipelines.
+- [x] Run Infrastructure tests, format/build/solution tests; inspect diff for all twelve consumers.
 - [ ] Confirm with a fictional live OpenAI request and retain a sanitized real stream fixture when a configured credential is available; otherwise record the missing prerequisite and keep this step open.
 - [ ] Commit `fix: accept bounded Responses schema echoes (Fixes #417)` only when the issue's completion evidence is satisfied; otherwise use `Refs #417`.
 
@@ -178,4 +178,4 @@
 
 ## Progress
 
-No product task completed yet. Full quality gate is reserved for phase exit.
+Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Tasks 2-13 remain. Full quality gate is reserved for phase exit.
