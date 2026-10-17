@@ -11,6 +11,8 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
 {
+    internal void ResetSession() { activeRoundController = null; activeBudgetController = null; activeTurnController = null; }
+
     private CharacterTurnParticipationRoundTaskController? activeRoundController;
     private AutonomousConversationBudgetController? activeBudgetController;
     private CharacterTurnActivityController? activeTurnController;

@@ -41,7 +41,7 @@ public sealed class CharacterSabotageTurnOpportunityCadenceSignalPolicyTests
     }
 
     [Fact]
-    public void RejectsRebuiltValueEqualLogIdentifiers()
+    public void AcceptsRebuiltValueEqualLogAndTimeIdentifiers()
     {
         Input input = CreateInput();
         WorldEventLogSnapshot rebuiltLog = new(
@@ -50,7 +50,11 @@ public sealed class CharacterSabotageTurnOpportunityCadenceSignalPolicyTests
                 new WorldEventId(input.CurrentEvent.EventId.Value),
             ]);
 
-        Assert.False(CanCreate(input with { EventLog = rebuiltLog }));
+        Assert.True(CanCreate(input with
+        {
+            EventLog = rebuiltLog,
+            WorldTime = new WorldTimeSnapshot(new WorldEventId(input.CurrentEvent.EventId.Value)),
+        }));
     }
 
     [Fact]

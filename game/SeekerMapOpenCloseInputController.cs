@@ -99,8 +99,8 @@ public partial class SeekerMapOpenCloseInputController : Node
         if (state.Map is not { } map
             || state.Notes is not { } notes
             || state.Catalogue is not { } locationCatalogue
-            || !ReferenceEquals(map.SeekerId, seekerId)
-            || !ReferenceEquals(notes.SeekerId, seekerId))
+            || map.SeekerId != seekerId
+            || notes.SeekerId != seekerId)
         {
             return false;
         }
@@ -208,6 +208,32 @@ public partial class SeekerMapOpenCloseInputController : Node
         return progress.Entries.Any(entry => entry.RecordedEvidenceIds.Any(candidate =>
                 ReferenceEquals(candidate, residueId)))
             || routing.TryRouteVisibleEvidence(progress, evidenceView, residueId);
+    }
+
+    /// <summary>Closes this reading modal after a successful load, releasing its movement suspension.</summary>
+    public void ResetAfterRestore()
+    {
+        PreparedRestore reset = PrepareSessionReset();
+        reset.Commit();
+        reset.Publish?.Invoke();
+    }
+
+    internal PreparedRestore PrepareSessionReset()
+    {
+        bool wasOpen = isOpen;
+        return new PreparedRestore(() =>
+        {
+            isOpen = false;
+            panel.Visible = false;
+            priorFocusOwner = null;
+        }, () =>
+        {
+            if (wasOpen)
+            {
+                GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
+                seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+            }
+        });
     }
 
     private bool TryClose()

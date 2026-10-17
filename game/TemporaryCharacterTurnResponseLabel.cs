@@ -15,6 +15,14 @@ public partial class TemporaryCharacterTurnResponseLabel : Label
     private string? completeSpeechText;
     private int visibleLength;
 
+    internal void ResetPresentation()
+    {
+        lastPresentedResponse = null;
+        completeSpeechText = null;
+        visibleLength = 0;
+        Text = NoResponseText;
+    }
+
     /// <inheritdoc />
     public override void _Ready()
     {

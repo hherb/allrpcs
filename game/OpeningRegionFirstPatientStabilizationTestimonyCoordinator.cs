@@ -153,10 +153,17 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
 
+    internal void InstallPreparedRestoration(DialogueEvent? value) => Testimony = value;
+
     internal void InstallRestored(DialogueEvent? testimony)
     {
         Testimony = testimony;
-        if (testimony is not null)
+        PresentRestoredState();
+    }
+
+    internal void PresentRestoredState()
+    {
+        if (Testimony is not null)
         {
             status.Text = HeardStatusText;
         }

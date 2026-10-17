@@ -34,9 +34,17 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
 
     internal bool IsCurrent(CharacterTurnRequest request) => !ReferenceEquals(request, invalidatedRequest);
 
+    internal PreparedRestore PrepareSessionReset()
+    {
+        CharacterTurnRequest? request = GetNode<CharacterTurnActivityController>(
+            "../CharacterTurnActivityController").Activity?.Request;
+        return new PreparedRestore(() => invalidatedRequest = request ?? invalidatedRequest);
+    }
+
     private void OnRestored()
     {
-        invalidatedRequest = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity?.Request;
+        invalidatedRequest = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController")
+            .Activity?.Request ?? invalidatedRequest;
     }
 
     /// <inheritdoc />

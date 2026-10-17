@@ -7,6 +7,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns the exact player speaker and most recently accepted dialogue delivery.</summary>
 public partial class DialogueInputController : Node
 {
+    internal void ResetSession() => LastSubmittedDelivery = null;
+
     /// <summary>Gets the exact initialized player character identifier, if any.</summary>
     public CharacterId? SpeakerCharacterId { get; private set; }
 

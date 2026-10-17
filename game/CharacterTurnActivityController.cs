@@ -7,6 +7,19 @@ namespace Allrpcs.Game;
 /// <summary>Owns one current immutable character-turn activity and delegates cancellation.</summary>
 public partial class CharacterTurnActivityController : Node
 {
+    internal PreparedRestore PrepareSessionReset()
+    {
+        CharacterTurnActivity? cancelled = Activity is { } activity
+            && CharacterTurnCancellationPolicy.CanCancel(activity)
+                ? new CharacterTurnActivity(activity.Request, null, CharacterTurnActivityState.Cancelled) : null;
+        return new PreparedRestore(() =>
+        {
+            Activity = cancelled;
+            SabotageReservation = null;
+            ReservedSabotageTurn = null;
+        });
+    }
+
     /// <summary>Gets the exact initialized current activity, if any.</summary>
     public CharacterTurnActivity? Activity { get; private set; }
 

@@ -51,6 +51,12 @@ public partial class OpeningRegionInvestigationRouteProgressController : Node
         Progress = restored;
     }
 
+    internal void InstallPreparedRestoration(OpeningRegionInvestigationRouteProgressSnapshot restored)
+    {
+        Catalogue = restored.Catalogue;
+        Progress = restored;
+    }
+
     /// <summary>Records one exact route location through compare-and-swap.</summary>
     public bool TryRecordLocation(
         OpeningRegionInvestigationRouteProgressSnapshot expectedProgress,

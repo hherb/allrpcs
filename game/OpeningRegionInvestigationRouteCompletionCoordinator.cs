@@ -51,6 +51,9 @@ public partial class OpeningRegionInvestigationRouteCompletionCoordinator : Node
     }
 
     /// <summary>Installs preflighted fresh restored completion tokens atomically.</summary>
+    internal void InstallPreparedRestoration(IReadOnlyList<OpeningRegionInvestigationRouteCompletion> restored)
+        => AcceptedCompletions = restored;
+
     internal void InstallRestored(
         OpeningRegionInvestigationRouteProgressSnapshot restoredProgress,
         IReadOnlyList<OpeningRegionInvestigationRouteCompletion> restored)

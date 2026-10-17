@@ -100,6 +100,31 @@ public partial class JournalOpenCloseInputController : Node
         return true;
     }
 
+    /// <summary>Closes this reading modal after a successful load, releasing its movement suspension.</summary>
+    public void ResetAfterRestore()
+    {
+        PreparedRestore reset = PrepareSessionReset();
+        reset.Commit();
+        reset.Publish?.Invoke();
+    }
+
+    internal PreparedRestore PrepareSessionReset()
+    {
+        bool wasOpen = isOpen;
+        return new PreparedRestore(() =>
+        {
+            isOpen = false;
+            panel.Visible = false;
+        }, () =>
+        {
+            if (wasOpen)
+            {
+                GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
+                seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+            }
+        });
+    }
+
     private bool TryClose()
     {
         if (!panel.TryClose())

@@ -15,6 +15,8 @@ public partial class SaveSnapshotRestorationController : Node
     /// <summary>Resets transient presentation only after a complete successful restore.</summary>
     public event Action? PresentationReset;
 
+    internal IReadOnlyList<string> RegisteredOwners { get; private set; } = [];
+
     private FocusedSearchActivityController discoveryController = null!;
     private FirstPatientStateController firstPatientController = null!;
     private FirstPatientPreparationController firstPatientPreparation = null!;
@@ -181,41 +183,76 @@ public partial class SaveSnapshotRestorationController : Node
             }
         }
 
-        bool discoveryRestored = discoveryController.TryRestoreDiscoveryState(
-            snapshot.Discovery,
-            worldObjects);
-        bool worldEventsRestored = worldEventController.TryRestoreWorldEventState(
-            snapshot.WorldEvents);
-        memoryController.Install(snapshot.CharacterMemory);
-        if (reboundFirstPatient is not null)
+        RestoreParticipantRegistry registry = new();
+        void Register(string owner, Func<PreparedRestore> prepare) =>
+            registry.Register(new RestoreParticipant(owner, _ => prepare()));
+        Register("discovery", () => new(
+            () => discoveryController.InstallPreparedRestoration(snapshot.Discovery),
+            discoveryController.PresentRestoredActivity));
+        Register("world-events", () => new(
+            () => worldEventController.InstallPreparedRestoration(snapshot.WorldEvents, worldEvents)));
+        Register("character-memory", () => new(() => memoryController.Install(snapshot.CharacterMemory)));
+        Register("first-patient", () => new(() =>
         {
-            firstPatientController.Install(reboundFirstPatient);
-            firstPatientPreparation.InstallRestored(reboundFirstPatient);
-            patientTestimony.InstallRestored(restoredRecovery?.PatientTestimony);
-            sageConsultation.InstallRestored(restoredRecovery?.SageConsultation);
-        }
-        if (restoredJournal is not null)
+            if (reboundFirstPatient is not null) { firstPatientController.Install(reboundFirstPatient); }
+        }));
+        Register("patient-testimony", () => new(() =>
         {
-            journalController.InstallRestored(restoredJournal.Journal);
-            journalSelection.InstallRestored(restoredJournal.SelectedSection);
-        }
-        if (restoredMap is not null)
+            if (reboundFirstPatient is not null)
+            {
+                patientTestimony.InstallPreparedRestoration(restoredRecovery?.PatientTestimony);
+            }
+        }, () =>
         {
-            restoredMap.InstallInto(mapController);
-        }
-        if (restoredRoutes is not null)
+            if (reboundFirstPatient is not null) { patientTestimony.PresentRestoredState(); }
+        }));
+        Register("sage-consultation", () => new(() =>
         {
-            routeProgress.InstallRestored(restoredRoutes.Progress);
-            routeCompletions.InstallRestored(
-                restoredRoutes.Progress,
-                restoredRoutes.AcceptedCompletions);
-            routeConsumption.InstallRestored(restoredRoutes.ConsumedCompletion);
-        }
-        if (!discoveryRestored || !worldEventsRestored)
+            if (reboundFirstPatient is not null)
+            {
+                sageConsultation.InstallPreparedRestoration(restoredRecovery?.SageConsultation);
+            }
+        }, () =>
         {
-            throw new InvalidOperationException(
-                "A preflighted save root could not be installed into its controllers.");
-        }
+            if (reboundFirstPatient is not null) { sageConsultation.PresentRestoredState(); }
+        }));
+        Register("journal", () => new(() =>
+        {
+            if (restoredJournal is not null) { journalController.InstallRestored(restoredJournal.Journal); }
+        }));
+        Register("journal-selection", () => new(() =>
+        {
+            if (restoredJournal is not null) { journalSelection.InstallRestored(restoredJournal.SelectedSection); }
+        }));
+        Register("map", () => new(() =>
+        {
+            if (restoredMap is not null) { mapController.InstallPreparedRestoration(restoredMap); }
+        }));
+        Register("route-progress", () => new(() =>
+        {
+            if (restoredRoutes is not null) { routeProgress.InstallPreparedRestoration(restoredRoutes.Progress); }
+        }));
+        Register("route-completions", () => new(() =>
+        {
+            if (restoredRoutes is not null)
+            {
+                routeCompletions.InstallPreparedRestoration(restoredRoutes.AcceptedCompletions);
+            }
+        }));
+        Register("route-consumption", () => new(() =>
+        {
+            if (restoredRoutes is not null)
+            {
+                routeConsumption.InstallPreparedRestoration(restoredRoutes.ConsumedCompletion);
+            }
+        }));
+        GetParent<Main>().RegisterSessionRestoreParticipants(registry);
+        // Deliberately last: authored preparation can reject an otherwise valid projected root.
+        Register("first-patient-preparation", () => new(reboundFirstPatient is null
+            ? () => { }
+        : firstPatientPreparation.PrepareRestoration(reboundFirstPatient)));
+        RegisteredOwners = registry.Owners;
+        if (!registry.TryRestore(snapshot)) { return false; }
 
         foreach (Delegate listener in PresentationReset?.GetInvocationList() ?? [])
         {

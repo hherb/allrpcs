@@ -35,6 +35,9 @@ public partial class OpeningRegionInvestigationRouteCompletionConsumptionCoordin
     }
 
     /// <summary>Installs one preflighted exact restored consumed token, or clears consumption.</summary>
+    internal void InstallPreparedRestoration(OpeningRegionInvestigationRouteCompletion? restored)
+        => ConsumedCompletion = restored;
+
     internal void InstallRestored(OpeningRegionInvestigationRouteCompletion? restored)
     {
         if (restored is not null

@@ -321,13 +321,20 @@ public partial class FocusedSearchActivityController : Node
             return false;
         }
 
+        InstallPreparedRestoration(state);
+        PresentRestoredActivity();
+        return true;
+    }
+
+    internal void PresentRestoredActivity() => indicator.Present(SearcherCharacterId, Activities);
+
+    internal void InstallPreparedRestoration(DiscoverySaveState state)
+    {
         Perception = state.Perception;
         Activities = state.FocusedSearchActivities;
         Outcomes = state.FocusedSearchOutcomes;
         PassiveNoticingCandidates = state.PassiveNoticingCandidates;
         ObservationReinterpretationCandidates = state.ObservationReinterpretationCandidates;
-        indicator.Present(SearcherCharacterId, Activities);
-        return true;
     }
 
     private bool IsRequestForSearcher(FocusedSearchRequest request)

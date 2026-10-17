@@ -431,7 +431,7 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
             yield return new CharacterModelStreamTermination(
                 CharacterModelStreamTerminationStatus.Failed,
                 null,
-                new CharacterModelFailure(CharacterModelFailureCode.Unavailable));
+                new CharacterModelFailure(CharacterModelFailureCode.Unavailable, TimeSpan.Zero));
         }
     }
 }
