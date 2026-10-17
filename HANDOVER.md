@@ -10,8 +10,9 @@ The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-
 is active. Phase 2 Tasks 1–12 are implemented and independently reviewed through `075d3ac2`;
 5,921 solution tests, a zero-warning build/format check and the affected native checks pass.
 The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-records commits, evidence, decisions and known limits. Task 13 requires fresh whole-phase review,
-one full quality run and current hosted CI. No Phase 2 hosted green result is claimed yet.
+records commits, evidence, decisions and known limits. Fresh whole-phase review passed; its one
+minor CI correction (`58c05ef9`) passed scoped rereview. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
+is open. Task 13 requires one full quality run and latest hosted CI; no full Phase 2 pass is claimed yet.
 Merged Phase 1 main `032c5b30` has an identical tree to starting `e55463b0`; its model-timeout
 fixture failure was repaired and verified in Phase 2 Task 3.
 
@@ -41,16 +42,16 @@ This authorizes review-branch publication; no merge or release is authorized her
 
 Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: Phase-exit whole-branch review, one full ./quality.sh result and current hosted
-CI for the twelve reviewed implementation tasks; live fictional OpenAI request/captured stream for
-#417 and the requested owner Keychain save result remain open.
+Missing deliverable: One full ./quality.sh phase-exit result and latest hosted CI after reviewed
+fixes; live fictional OpenAI request/captured stream for #417 and the requested owner Keychain save
+result remain open.
 
-Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. Tasks
-1-12 are implemented and independently reviewed through 075d3ac2 (5,921 solution tests). Publish a
-draft PR, obtain a fresh whole-phase review, resolve concrete findings, then run one full
-./quality.sh under decision D2. Confirm current hosted CI. Preserve unavailable live #417 and owner
-Keychain evidence as open; do not close Phase 2, select Phase 3 or merge without satisfying the exit
-conditions and applicable authority.
+Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. All
+twelve implementation tasks and the fresh whole-phase review passed; its one minor CI omission was
+corrected in 58c05ef9 and scoped rereview approved. Draft PR #440 is open. Run one full ./quality.sh
+under decision D2, diagnose relevant failures and confirm latest hosted CI. Preserve unavailable
+live #417 and owner Keychain evidence as open; do not close Phase 2, select Phase 3 or merge without
+satisfying the exit conditions and applicable authority.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh

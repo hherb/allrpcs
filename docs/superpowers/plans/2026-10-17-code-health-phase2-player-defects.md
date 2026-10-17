@@ -171,8 +171,8 @@
 
 ### Task 13: Review, phase exit and publication
 
-- [ ] Resolve task reviews and run a fresh whole-phase review covering all five Review Focus cases.
-- [ ] Run `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, build with zero warnings, and `dotnet test Allrpcs.sln --no-build`.
+- [x] Resolve task reviews and run a fresh whole-phase review covering all five Review Focus cases.
+- [x] Run `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, build with zero warnings, and `dotnet test Allrpcs.sln --no-build`.
 - [ ] Run one full `./quality.sh`; diagnose failures, preserve logs and repair relevant defects. Do not infer a pass from an incomplete run.
 - [ ] Confirm original issues #414-#420/#424-#431 closed by tested commits; list genuinely unavailable manual/live evidence rather than claiming it.
 - [ ] Only after all exit conditions pass, close Phase 2 in the ledger and roadmap, select Phase 3's named missing deliverable, sync/check/self-test and commit/push. Otherwise keep Phase 2 in progress with the exact remaining task.
@@ -194,9 +194,9 @@
 | 10 Shipping hygiene | Complete; `4592f02d` | Three presets; compiled release guard; real pack graph (1,245 entries/431 dependencies); eight native checks; independent review. Executable export remains unsupported. |
 | 11 Tooling | Complete; `76f72ec9`, `544d2d5c` (Fixes #414/#415/#416) | 20 quality self-tests; real Git history and cleanup-interruption regressions; continuation/actionlint; scoped review. |
 | 12 Long sessions/ducking | Complete; `075d3ac2` (Fixes #424) | 5,921 solution tests, zero-warning build/format, four native checks; eighteen identity classes, bounded persistent append, capacity/eviction and ducking regressions; independent review. |
-| 13 Phase exit | In progress | All twelve task reviews passed. Draft publication, fresh whole-phase review and one full quality run remain; live #417 capture and owner Keychain result remain unavailable. |
+| 13 Phase exit | In progress; draft PR [#440](https://github.com/hherb/allrpcs/pull/440) | Fresh whole-phase review passed all five Review Focus paths; one P3 CI self-test step corrected in `58c05ef9` and scoped rereview approved. One full quality run and latest hosted CI remain; live #417 capture and owner Keychain result remain unavailable. |
 
-Phase 1 branch CI run 38998433672 and the subsequently merged main run 38998468190 both failed the same unquarantined 50 ms model-timeout presentation fixture (324 passed, two existing quarantines). Main `032c5b30` merged PR #438 and has an empty tree diff from the starting `e55463b0`, so no upstream product change was lost. Task 3 reproduced and repaired the fixture, including a passing 10 FPS run. No Phase 2 hosted green result is claimed yet. #432-#435/#437/#439 stay separate.
+Phase 1 branch CI run 38998433672 and the subsequently merged main run 38998468190 both failed the same unquarantined 50 ms model-timeout presentation fixture (324 passed, two existing quarantines). Main `032c5b30` merged PR #438 and has an empty tree diff from the starting `e55463b0`, so no upstream product change was lost. Task 3 reproduced and repaired the fixture, including a passing 10 FPS run. PR #440 run 39007686673 passed C# formatting/build/tests, Python/tooling and Linux unsigned-build jobs; Godot was still running when the reviewed CI-only correction was prepared. The correction enables the existing twenty quality-runner self-tests in the now full-history Python job. A final hosted result is still required. #432-#435/#437/#439 stay separate.
 
 Verification limits remain explicit:
 
@@ -205,6 +205,8 @@ Verification limits remain explicit:
 - Task 10's real resource pack/remap/load checks pass using local editor assemblies. Existing missing `game/Allrpcs.Game.sln` errors leave no managed DLL in that export; no executable export passed.
 - A late current controls assertion fails identically with the pre-Task-10 controller code. Accepted frozen controls evidence remains unchanged; no new controls audit or repair was opened.
 - Recorded native ObjectDB/editor shutdown warnings do not establish memory-lifecycle qualification. Physical microphone/controller/reader qualification remains paused or deferred at its existing scope.
+
+The fresh whole-phase reviewer read the entire 293-file diff and all twelve reports. All five Review Focus pins passed review; the single P3 workflow omission was fixed and its scoped rereview approved. The controller accepted each explicit declined judgment: broader unchanged sabotage/new save coverage stays at its later schema boundary; standalone executable export remains unverified; the unchanged late controls assertion is not treated as passing; excluded follow-ups/quarantines and Phase 3 remain excluded; synthetic/native evidence establishes no physical, platform-wide or leak certification. These limits remain open records, not implementation passes.
 
 ## Execution decisions and rework costs
 
