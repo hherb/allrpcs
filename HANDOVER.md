@@ -70,7 +70,7 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (ready).
+**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (in_progress).
 
 Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 

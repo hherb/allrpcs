@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1531,7 +1531,7 @@
   "active_slice": {
     "id": "code-health-phase2-player-defects",
     "title": "Fix the player-facing code-review-1 defects",
-    "status": "ready",
+    "status": "in_progress",
     "workstream": "code-health-program",
     "authority_status": "owner_approved_code_health_program_2026-10-17",
     "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
