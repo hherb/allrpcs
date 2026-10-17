@@ -55,7 +55,11 @@ ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path game --quit-after 120   # one
 ./scripts/export-development.sh linux-x64|macos-universal|windows-x64      # unsigned debug export
 ```
 
-Full quality gate (required for product/CI changes; slow — hundreds of stages):
+Full quality gate (required for product/CI changes; slow — hundreds of stages). Exception: under
+the owner-approved code-health program (decision D2 in
+`docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md`) the full gate runs once per
+phase exit; between phase exits run `dotnet format`/`build`/`test` plus the affected smoke launches.
+Commands:
 
 ```sh
 python3 -m venv artifacts/quality-python

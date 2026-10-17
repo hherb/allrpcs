@@ -100,8 +100,11 @@ After ledger maintenance run `python3 scripts/check-continuation.py --sync`, its
 `--self-test`. Speech evidence and reproduction: [reply playback](speech-direction/dialogue-integration/verification.json) and
 [player recognition](speech-direction/player-asr-integration/verification.json) and
 [Space gesture](speech-direction/space-hold-to-talk/verification.json).
-Runner checks: `python3 quality.py --self-test`. Root `./quality.sh` is required for product/CI
-changes; reuse completed product evidence for subsequent prose-only planning.
+Runner checks: `python3 quality.py --self-test`. Full quality gate (required for product/CI changes;
+slow — hundreds of stages). Exception: under the owner-approved code-health program (decision D2 in
+[the plan](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)) the full gate runs
+once per phase exit; between phase exits run `dotnet format`/`build`/`test` plus the affected smoke
+launches. Reuse completed product evidence for subsequent prose-only planning.
 
 Frozen validators remain unchanged in private historical source trees/indexes, including accepted
 dialogue `e7b17575`, controls `1b0cab40` and herb `db298c8f`. Cold checks restore before build/import; cooling seeds its
