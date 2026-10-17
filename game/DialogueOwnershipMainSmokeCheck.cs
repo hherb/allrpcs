@@ -124,6 +124,13 @@ public partial class DialogueOwnershipMainSmokeCheck : Node
                 var source = GetNode<TemporaryCharacterTurnParticipationModelSource>("../TemporaryCharacterTurnParticipationModelSource");
                 TaskCompletionSource<CharacterTurnParticipationDecision> held = new();
                 FailureModel failureModel = new(mode, held);
+                if (mode == "invalid")
+                {
+                    // The non-addressed sage must hear; the healer's startup walk left it at the 192 px edge.
+                    Vector2 sage = GetNode<Marker2D>("../SageHearingPosition").Position;
+                    seeker.Position = sage - new Vector2(96, 0);
+                    healer.Position = seeker.Position - new Vector2(12, 0);
+                }
                 if (mode != "unavailable") { Require(source.TrySupplyModel(failureModel), "Fixture unavailable"); }
                 Submit("failure is visible and retryable");
                 DialogueDelivery first = input.LastSubmittedDelivery!;
