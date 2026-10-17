@@ -7,15 +7,17 @@ terminal acceptance take precedence. Keep every persistent closure.
 ## Current checkpoint
 
 The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
-is active. Phase 2 Tasks 1–12 and fresh whole-phase review passed; scoped repairs through
-`c062a5a4` are approved. Hosted run 39013194774 on `d1ef178d` exposed automatic Main processing
-resuming after the two provider fixtures disabled it during child readiness. `37bc8fcd` moves
-the freeze to parent Ready and pins zero automatic task time on every fixture frame; actual
-startup REDs, slow 2 FPS probes, eight integration checks, build/format and frozen guard pass.
-Scoped review approved the correction with no findings. The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-records all evidence and limits. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440) is open.
-Task 13 still needs a complete root quality result and latest hosted confirmation. All earlier
-failed/interrupted reports are retained and do not count as passes.
+is active. Phase 2 Tasks 1–12 and fresh whole-phase review passed. Provider Ready lifecycle
+correction `37bc8fcd` passed actual startup/slow-cadence probes and scoped review. Latest hosted
+run 39014801698 on `9dfa4b7b` passed those provider checks and all non-Godot jobs, but failed the
+music exploration fixture (362 native passes, one failure, two existing quarantines).
+`b4eab186` establishes exact cooldown eligibility after its fractional clock preparation;
+controlled failure/recovery, real-cooldown rejection, eight integration checks, mode parity and
+scoped review pass. The exact earlier hosted residual was not logged and remains inferred.
+The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
+records every failure and correction. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
+is open. Task 13 still needs a complete root quality result and latest hosted confirmation;
+earlier failed/interrupted reports are retained and do not count as passes.
 Merged Phase 1 main `032c5b30` has an identical tree to starting `e55463b0`; its model-timeout
 fixture failure was repaired and verified in Phase 2 Task 3.
 
@@ -50,12 +52,14 @@ fixes; live fictional OpenAI request/captured stream for #417 and the requested 
 result remain open.
 
 Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. Tasks
-1-12 and whole-phase review passed. Latest hosted run 39013194774 failed provider clock ownership;
-37bc8fcd corrects parent Ready lifecycle with deterministic startup failures, slow cadence probes,
-eight native integration passes and scoped review approval. Draft PR #440 is open. Run one complete
-./quality.sh under D2 and confirm latest hosted CI; retain every failed/interrupted report and
-diagnostic limit. Keep live #417 and requested owner Keychain evidence open. Do not close Phase 2,
-select Phase 3 or merge without satisfying exit conditions and applicable authority.
+1-12 and whole-phase review passed. Provider Ready correction 37bc8fcd and current music cooldown
+eligibility correction b4eab186 passed controlled regressions, affected integration checks and
+scoped reviews. Latest hosted 39014801698 passed provider checks but failed earlier music
+exploration admission; the exact original pre-transition numeric value was unrecorded. Draft PR #440
+is open. Run one complete ./quality.sh under D2 and confirm latest hosted CI; retain every
+failed/interrupted report and diagnostic limit. Keep live #417 and requested owner Keychain evidence
+open. Do not close Phase 2, select Phase 3 or merge without satisfying exit conditions and
+applicable authority.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
