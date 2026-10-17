@@ -11,7 +11,9 @@ is active. Phase 2 Tasks 1–12 are implemented and independently reviewed throu
 5,921 solution tests, a zero-warning build/format check and the affected native checks pass.
 The [Phase 2 task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
 records commits, evidence, decisions and known limits. Fresh whole-phase review passed; its one
-minor CI correction (`58c05ef9`) passed scoped rereview. [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
+minor CI correction (`58c05ef9`) and actual gate/CI regression repairs (`571f1e22`, `b5d020cd`)
+passed scoped reviews. The latter preserves the accepted final channel node and establishes
+present speakers in two current audio fixtures (seven native passes). [Draft PR #440](https://github.com/hherb/allrpcs/pull/440)
 is open. Task 13 requires one full quality run and latest hosted CI; no full Phase 2 pass is claimed yet.
 Merged Phase 1 main `032c5b30` has an identical tree to starting `e55463b0`; its model-timeout
 fixture failure was repaired and verified in Phase 2 Task 3.
@@ -47,11 +49,12 @@ fixes; live fictional OpenAI request/captured stream for #417 and the requested 
 result remain open.
 
 Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. All
-twelve implementation tasks and the fresh whole-phase review passed; its one minor CI omission was
-corrected in 58c05ef9 and scoped rereview approved. Draft PR #440 is open. Run one full ./quality.sh
-under decision D2, diagnose relevant failures and confirm latest hosted CI. Preserve unavailable
-live #417 and owner Keychain evidence as open; do not close Phase 2, select Phase 3 or merge without
-satisfying the exit conditions and applicable authority.
+twelve tasks and whole-phase review passed; CI self-tests, actual preflight guard and four hosted
+fixture regressions were repaired in 58c05ef9/571f1e22/b5d020cd and scoped reviews approved. Draft
+PR #440 is open. Restart one full ./quality.sh under D2 after these reviewed repairs and confirm
+latest hosted CI; preserve the earlier failed/interrupted reports. Keep live #417 and requested
+owner Keychain evidence open. Do not close Phase 2, select Phase 3 or merge without satisfying exit
+conditions and applicable authority.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
