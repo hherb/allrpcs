@@ -11,3 +11,4 @@
 # Each id names exactly one launch. A quarantined launch prints "QUARANTINED (#<issue>)" with its
 # result; when it passes, remove its line. An entry that matches no launch fails the smoke run.
 # Quarantined launches are tracked under the smoke-quarantine label (see #421).
+ALLRPCS_ORDINARY_SAGE_INTERJECTION_CHECK=1 #437
