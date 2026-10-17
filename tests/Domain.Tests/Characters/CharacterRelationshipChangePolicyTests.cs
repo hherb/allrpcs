@@ -76,7 +76,7 @@ public sealed class CharacterRelationshipChangePolicyTests
     }
 
     [Fact]
-    public void RejectsWhenNoReasonCapacityRemains()
+    public void AcceptsByEvictingOldestReasonWhenCapacityIsFull()
     {
         CharacterRelationshipReason[] reasons = Enumerable
             .Range(0, CharacterRelationshipMemory.MaximumReasonCount)
@@ -86,7 +86,7 @@ public sealed class CharacterRelationshipChangePolicyTests
             .ToArray();
         CharacterRelationshipMemory relationship = Relationship(0, reasons);
 
-        Assert.False(CharacterRelationshipChangePolicy.CanApply(
+        Assert.True(CharacterRelationshipChangePolicy.CanApply(
             relationship,
             CharacterRelationshipChangeTests.Change(
                 reason: CharacterRelationshipChangeTests.Reason("extra", "extra-turn"))));

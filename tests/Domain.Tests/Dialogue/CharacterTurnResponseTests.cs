@@ -29,6 +29,7 @@ public sealed class CharacterTurnResponseTests
             intention,
             [commitment],
             [proposal]);
+        ListIdentityContractTests.AssertIdentity(response);
 
         Assert.Same(request, response.Request);
         Assert.Same(CharacterTurnDisposition.Accept, response.Disposition);

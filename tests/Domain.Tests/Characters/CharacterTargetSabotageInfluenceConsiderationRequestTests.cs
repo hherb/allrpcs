@@ -17,6 +17,7 @@ public sealed class CharacterTargetSabotageInfluenceConsiderationRequestTests
             input.InteractionAccess,
             input.Relationship,
             supplied);
+        ListIdentityContractTests.AssertIdentity(request);
 
         supplied[0] = second;
 

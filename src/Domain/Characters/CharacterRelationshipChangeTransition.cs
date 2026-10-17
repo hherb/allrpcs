@@ -24,6 +24,8 @@ public static class CharacterRelationshipChangeTransition
             relationship.CharacterId,
             relationship.RelatedCharacterId,
             dimensions,
-            relationship.Reasons.Append(change.Reason));
+            relationship.Reasons
+                .Skip(Math.Max(0, relationship.Reasons.Count - CharacterRelationshipMemory.MaximumReasonCount + 1))
+                .Append(change.Reason));
     }
 }

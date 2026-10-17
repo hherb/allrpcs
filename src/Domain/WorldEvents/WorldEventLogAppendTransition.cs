@@ -20,6 +20,6 @@ public static class WorldEventLogAppendTransition
                 "The supplied world-event identifier is already recorded.");
         }
 
-        return new WorldEventLogSnapshot(eventLog.Entries.Append(eventId));
+        return eventLog.Append(eventId);
     }
 }

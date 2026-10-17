@@ -32,10 +32,21 @@ public static class CharacterConversationSummaryRecordingTransition
                 nameof(summary));
         }
 
+        if (summaries.Summaries.Any(existing => existing.SummaryId == summary.SummaryId))
+        {
+            throw new ArgumentException("Conversation-summary identities must be unique.", nameof(summary));
+        }
+        if (summaries.Summaries.Count == CharacterConversationSummarySnapshot.MaximumSummaryCount)
+        {
+            return new(CharacterConversationSummaryRecordingOutcome.CapacityRejected,
+                summaries, recentConversation, transcript);
+        }
+
         CharacterConversationSummarySnapshot updatedSummaries = new(
             summaries.CharacterId,
             summaries.Summaries.Append(summary));
         return new CharacterConversationSummaryRecordingResult(
+            CharacterConversationSummaryRecordingOutcome.Recorded,
             updatedSummaries,
             recentConversation,
             transcript);

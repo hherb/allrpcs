@@ -8,6 +8,34 @@ namespace Allrpcs.Domain.Tests.Characters;
 public sealed class CharacterConversationSummaryRecordingTransitionTests
 {
     [Fact]
+    public void ReachingCapacitySucceedsThenRejectsValidSummaryWithoutMaskingInvalidInput()
+    {
+        CharacterId character = new("healer");
+        CharacterConversationSummarySnapshot source = new(character, Enumerable.Range(0, 127)
+            .Select(index => Summary(character, $"summary-{index}", ["turn-one"])));
+        CharacterRecentConversationWindow window = Window("turn-one");
+        CharacterTurnTranscriptSnapshot transcript = Transcript();
+        CharacterConversationSummaryRecordingResult success = CharacterConversationSummaryRecordingTransition.Record(
+            Summary(character, "last", ["turn-one"]), source, window, transcript);
+        Assert.Equal(CharacterConversationSummaryRecordingOutcome.Recorded, success.Outcome);
+        Assert.Equal(128, success.Summaries.Summaries.Count);
+        Assert.Equal(127, source.Summaries.Count);
+        for (int attempt = 0; attempt < 3; attempt++)
+        {
+            CharacterConversationSummaryRecordingResult full = CharacterConversationSummaryRecordingTransition.Record(
+                Summary(character, "extra", ["turn-one"]), success.Summaries, window, transcript);
+            Assert.Equal(CharacterConversationSummaryRecordingOutcome.CapacityRejected, full.Outcome);
+            Assert.Same(success.Summaries, full.Summaries);
+            Assert.Same(window, full.RecentConversation);
+            Assert.Same(transcript, full.Transcript);
+        }
+        Assert.Throws<ArgumentException>(() => CharacterConversationSummaryRecordingTransition.Record(
+            Summary(character, "last", ["turn-one"]), success.Summaries, window, transcript));
+        Assert.Throws<ArgumentException>(() => CharacterConversationSummaryRecordingTransition.Record(
+            Summary(character, "missing", ["absent"]), success.Summaries, window, transcript));
+    }
+
+    [Fact]
     public void AppendsExactSummaryAndRetainsConversationSourcesUnchanged()
     {
         CharacterId characterId = new("healer");
@@ -27,6 +55,7 @@ public sealed class CharacterConversationSummaryRecordingTransitionTests
                 recent,
                 transcript);
 
+        Assert.Equal(CharacterConversationSummaryRecordingOutcome.Recorded, result.Outcome);
         Assert.Collection(
             result.Summaries.Summaries,
             summary => Assert.Same(existing, summary),
@@ -86,12 +115,13 @@ public sealed class CharacterConversationSummaryRecordingTransitionTests
             summaries,
             recent,
             transcript));
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        CharacterConversationSummaryRecordingResult rejected =
             CharacterConversationSummaryRecordingTransition.Record(
-                Summary(characterId, "extra", ["turn-one"]),
-                full,
-                recent,
-                transcript));
+                Summary(characterId, "extra", ["turn-one"]), full, recent, transcript);
+        Assert.Equal(CharacterConversationSummaryRecordingOutcome.CapacityRejected, rejected.Outcome);
+        Assert.Same(full, rejected.Summaries);
+        Assert.Same(recent, rejected.RecentConversation);
+        Assert.Same(transcript, rejected.Transcript);
         Assert.Throws<ArgumentException>(() => CharacterConversationSummaryRecordingTransition.Record(
             Summary(characterId, "other-window", ["turn-one"]),
             summaries,
@@ -132,7 +162,7 @@ public sealed class CharacterConversationSummaryRecordingTransitionTests
             typeof(CharacterRecentConversationWindow),
             typeof(CharacterTurnTranscriptSnapshot),
         ];
-        string[] expectedProperties = ["RecentConversation", "Summaries", "Transcript"];
+        string[] expectedProperties = ["Outcome", "RecentConversation", "Summaries", "Transcript"];
 
         Assert.Equal(nameof(CharacterConversationSummaryRecordingTransition.Record), method.Name);
         Assert.Equal(resultType, method.ReturnType);

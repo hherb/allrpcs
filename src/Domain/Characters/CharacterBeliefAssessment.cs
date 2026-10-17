@@ -4,7 +4,8 @@ using Allrpcs.Domain.Identifiers;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains bounded confidence and evidence references for one uncertain belief.</summary>
-public sealed record CharacterBeliefAssessment
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterBeliefAssessment
 {
     /// <summary>Gets the minimum confidence in basis points.</summary>
     public const int MinimumConfidenceBasisPoints = 0;

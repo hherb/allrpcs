@@ -3,7 +3,8 @@ using Allrpcs.Domain.Identifiers;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains one bounded local summary referencing exact completed source turns.</summary>
-public sealed record CharacterConversationSummary
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterConversationSummary
 {
     /// <summary>Gets the maximum source turns referenced by one summary.</summary>
     public const int MaximumSourceTurnCount = 32;

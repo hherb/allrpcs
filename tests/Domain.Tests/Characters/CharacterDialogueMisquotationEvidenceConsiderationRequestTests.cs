@@ -19,6 +19,7 @@ public sealed class CharacterDialogueMisquotationEvidenceConsiderationRequestTes
         CharacterDialogueMisquotationEvidenceConsiderationRequest request = new(
             input.Actor,
             supplied);
+        ListIdentityContractTests.AssertIdentity(request);
         supplied[0] = second;
 
         Assert.Same(input.Actor, request.Actor);

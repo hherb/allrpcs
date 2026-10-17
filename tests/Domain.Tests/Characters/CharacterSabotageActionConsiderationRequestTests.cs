@@ -16,6 +16,7 @@ public sealed class CharacterSabotageActionConsiderationRequestTests
         ];
 
         CharacterSabotageActionConsiderationRequest request = new(actor, supplied);
+        ListIdentityContractTests.AssertIdentity(request);
 
         supplied[0] = CharacterSabotageActionKind.Influence;
         Assert.Same(actor, request.Actor);

@@ -3,7 +3,8 @@ using Allrpcs.Domain.WorldEvents;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded world state for one provider-neutral delay choice.</summary>
-public sealed record CharacterTargetSabotageDelayConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterTargetSabotageDelayConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or applying a delay.</summary>
     public CharacterTargetSabotageDelayConsiderationRequest(

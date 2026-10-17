@@ -5,6 +5,29 @@ namespace Allrpcs.Domain.Tests.Characters;
 public sealed class CharacterRelationshipChangeTransitionTests
 {
     [Fact]
+    public void SixtyFifthReasonEvictsOnlyOldestAndKeepsRetainedDuplicateGuards()
+    {
+        CharacterRelationshipReason[] reasons = Enumerable.Range(0, 64)
+            .Select(index => CharacterRelationshipChangeTests.Reason($"reason-{index}", $"turn-{index}"))
+            .ToArray();
+        CharacterRelationshipMemory source = CharacterRelationshipChangePolicyTests.Relationship(0, reasons);
+        CharacterRelationshipChange change = CharacterRelationshipChangeTests.Change(1,
+            reason: CharacterRelationshipChangeTests.Reason("next", "next-turn"));
+        CharacterRelationshipMemory result = CharacterRelationshipChangeTransition.Apply(source, change);
+        Assert.Equal(64, result.Reasons.Count);
+        Assert.Equal(reasons.Skip(1), result.Reasons.Take(63));
+        Assert.Same(change.Reason, result.Reasons[^1]);
+        Assert.Equal(reasons, source.Reasons);
+        Assert.Equal(0, source.Dimensions[0].Value);
+        Assert.Equal(1, result.Dimensions[0].Value);
+        Assert.False(CharacterRelationshipChangePolicy.CanApply(result, change));
+        Assert.False(CharacterRelationshipChangePolicy.CanApply(result,
+            CharacterRelationshipChangeTests.Change(1, reason: reasons[1])));
+        Assert.True(CharacterRelationshipChangePolicy.CanApply(result,
+            CharacterRelationshipChangeTests.Change(1, reason: reasons[0])));
+    }
+
+    [Fact]
     public void AppliesOneDimensionAndAppendsExactReasonImmutably()
     {
         CharacterRelationshipDimensionValue trust = new(CharacterRelationshipDimension.Trust, 25);

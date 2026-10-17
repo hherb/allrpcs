@@ -97,6 +97,7 @@ public sealed class CharacterRelationshipMemoryTests
             relatedCharacterId,
             dimensions,
             reasons);
+        ListIdentityContractTests.AssertIdentity(relationship);
         dimensions[0] = respect;
         reasons[0] = Reason("replacement", CharacterRelationshipDimension.Respect);
 

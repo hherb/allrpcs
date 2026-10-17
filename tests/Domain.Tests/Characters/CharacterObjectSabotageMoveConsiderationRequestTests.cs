@@ -27,6 +27,7 @@ public sealed class CharacterObjectSabotageMoveConsiderationRequestTests
             input.Placements,
             input.Evidence,
             supplied);
+        ListIdentityContractTests.AssertIdentity(request);
 
         supplied[0] = second;
 

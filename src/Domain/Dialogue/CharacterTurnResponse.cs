@@ -3,7 +3,8 @@ namespace Allrpcs.Domain.Dialogue;
 /// <summary>
 /// Retains the immutable provider-neutral core of one proposed character-turn response.
 /// </summary>
-public sealed record CharacterTurnResponse
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterTurnResponse
 {
     /// <summary>Gets the maximum number of state proposals retained by one response.</summary>
     public const int MaximumStateProposalCount = 8;

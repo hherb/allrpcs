@@ -15,6 +15,7 @@ public sealed class CharacterTargetSabotageDelayConsiderationRequestTests
         CharacterTargetSabotageDelayCandidate[] supplied = [input.Candidate, second];
 
         CharacterTargetSabotageDelayConsiderationRequest request = Request(input, supplied);
+        ListIdentityContractTests.AssertIdentity(request);
 
         supplied[0] = second;
         Assert.Same(input.Actor, request.Actor);

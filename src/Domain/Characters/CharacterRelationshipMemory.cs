@@ -3,7 +3,8 @@ using Allrpcs.Domain.Identifiers;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains bounded multidimensional relationship state and its recorded local reasons.</summary>
-public sealed record CharacterRelationshipMemory
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterRelationshipMemory
 {
     /// <summary>Gets the maximum recorded reasons retained for one relationship.</summary>
     public const int MaximumReasonCount = 64;

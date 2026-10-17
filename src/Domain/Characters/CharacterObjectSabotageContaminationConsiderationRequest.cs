@@ -5,7 +5,8 @@ using Allrpcs.Domain.WorldObjects;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded world state for one provider-neutral contamination choice.</summary>
-public sealed record CharacterObjectSabotageContaminationConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterObjectSabotageContaminationConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or applying contamination.</summary>
     public CharacterObjectSabotageContaminationConsiderationRequest(

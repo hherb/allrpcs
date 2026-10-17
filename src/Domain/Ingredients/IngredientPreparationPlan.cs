@@ -1,7 +1,8 @@
 namespace Allrpcs.Domain.Ingredients;
 
 /// <summary>Retains one non-empty bounded authored preparation order.</summary>
-public sealed record IngredientPreparationPlan
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class IngredientPreparationPlan
 {
     /// <summary>Gets the maximum number of steps in one preparation plan.</summary>
     public const int MaximumStepCount = 16;

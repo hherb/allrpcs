@@ -5,7 +5,8 @@ using Allrpcs.Domain.WorldObjects;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded world state for one provider-neutral move choice.</summary>
-public sealed record CharacterObjectSabotageMoveConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterObjectSabotageMoveConsiderationRequest
 {
     /// <summary>The maximum number of exact move candidates in one consideration.</summary>
     public const int MaximumCandidateCount = 64;

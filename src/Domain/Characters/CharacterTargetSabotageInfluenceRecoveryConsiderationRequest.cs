@@ -1,7 +1,8 @@
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded state for one provider-neutral influence-recovery choice.</summary>
-public sealed record CharacterTargetSabotageInfluenceRecoveryConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterTargetSabotageInfluenceRecoveryConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or applying recovery.</summary>
     public CharacterTargetSabotageInfluenceRecoveryConsiderationRequest(

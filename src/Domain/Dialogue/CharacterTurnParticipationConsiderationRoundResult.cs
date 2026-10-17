@@ -5,7 +5,8 @@ namespace Allrpcs.Domain.Dialogue;
 /// <summary>
 /// Retains one complete bounded round of exact participation-consideration requests and results.
 /// </summary>
-public sealed record CharacterTurnParticipationConsiderationRoundResult
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterTurnParticipationConsiderationRoundResult
 {
     /// <summary>
     /// Creates an immutable round after every exact request and accepted result is preflighted.
