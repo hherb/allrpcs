@@ -4490,6 +4490,9 @@ script = ExtResource("space_hold_speech")
 [node name="SpaceHoldSpeechSmokeCheck" type="Node" parent="."]
 script = ExtResource("space_hold_check")
 
+[node name="DialogueOwnershipMainSmokeCheck" type="Node" parent="."]
+script = ExtResource("dialogue_ownership_check")
+
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
 WaterTexture = ExtResource("436_channel_water")
@@ -4498,6 +4501,3 @@ DecksTexture = ExtResource("438_channel_decks")
 DetailTexture = ExtResource("439_channel_detail")
 FringeTexture = ExtResource("440_channel_fringe")
 OverlapClipShader = ExtResource("442_channel_clip")
-
-[node name="DialogueOwnershipMainSmokeCheck" type="Node" parent="."]
-script = ExtResource("dialogue_ownership_check")

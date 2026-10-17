@@ -39,6 +39,7 @@ public partial class MusicAudioRuntimeSmokeCheck : Node
             GetNode<Node>("../TemporaryCharacterTurnCompletionController").SetProcess(false);
             seeker = GetNode<Seeker>("../Seeker"); seeker.SetPhysicsProcess(false);
             GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present speaker in this disposable recorder fixture.
             music = GetNode<OpeningRegionMusicAudioController>("../OpeningRegionMusicAudioController"); music.SetProcess(false);
             material = GetNode<OpeningRegionMaterialAudioController>("../OpeningRegionMaterialAudioController"); material.SetProcess(false);
             turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
