@@ -4,6 +4,114 @@ namespace Allrpcs.Application.Tests.Audio;
 
 public sealed class AudioDuckingEnvelopeTests
 {
+    [Theory]
+    [InlineData(AudioForeground.Reading)]
+    [InlineData(AudioForeground.ConsequentialCue)]
+    public void PartialReleaseIsMonotonicAndNewSpeechAttacksWithoutResurrectingPeak(AudioForeground weaker)
+    {
+        AudioDuckingEnvelope envelope = new();
+        long speech = envelope.Begin(AudioForeground.Speech);
+        long weak = envelope.Begin(weaker);
+        envelope.Advance(0.1);
+        envelope.End(speech);
+        double previous = 6;
+        for (int step = 0; step < 10; step++)
+        {
+            envelope.Advance(0.05);
+            double current = envelope.ReductionDb(AudioCategory.Music);
+            Assert.InRange(current, 3, previous);
+            previous = current;
+        }
+        Assert.Equal(3, previous, 8);
+        long secondSpeech = envelope.Begin(AudioForeground.Speech);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(0.025);
+        Assert.Equal(4.5, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.End(secondSpeech);
+        envelope.Advance(1);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Effects), 8);
+        envelope.End(weak);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        // The last-ending foreground's own hold and release apply, not the earlier speech timing.
+        bool cue = weaker == AudioForeground.ConsequentialCue;
+        envelope.Advance(cue ? 0.1 : 0.15);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(cue ? 0.2 : 0.3);
+        Assert.Equal(1.5, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(cue ? 0.2 : 0.3);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Music), 8);
+    }
+
+    [Fact]
+    public void SimultaneousEndingsReleaseEveryCategory()
+    {
+        AudioDuckingEnvelope envelope = new();
+        long speech = envelope.Begin(AudioForeground.Speech);
+        long cue = envelope.Begin(AudioForeground.ConsequentialCue);
+        envelope.Advance(0.1);
+        envelope.End(cue);
+        envelope.End(speech);
+        envelope.Advance(0.15);
+        Assert.Equal(6, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Effects), 8);
+        envelope.Advance(0.6);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Effects), 8);
+    }
+
+    [Fact]
+    public void WeakerEndingFirstAndDuplicateStrongLeasePreserveActiveTarget()
+    {
+        AudioDuckingEnvelope envelope = new();
+        long first = envelope.Begin(AudioForeground.Speech);
+        long second = envelope.Begin(AudioForeground.Speech);
+        long weaker = envelope.Begin(AudioForeground.Reading);
+        envelope.Advance(0.025);
+        envelope.End(weaker);
+        envelope.End(first);
+        envelope.Advance(0.075);
+        Assert.Equal(6, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.End(second);
+        envelope.Advance(0.75);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Music), 8);
+    }
+
+    [Fact]
+    public void CueStartedDuringReleaseUsesItsOwnActiveAttackTiming()
+    {
+        AudioDuckingEnvelope envelope = new();
+        long speech = envelope.Begin(AudioForeground.Speech);
+        envelope.Advance(0.1);
+        envelope.End(speech);
+        envelope.Advance(0.7);
+        Assert.Equal(0.5, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Begin(AudioForeground.ConsequentialCue);
+        Assert.Equal(0.5, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(0.025);
+        Assert.Equal(2, envelope.ReductionDb(AudioCategory.Music), 8);
+    }
+
+    [Fact]
+    public void StrongestEndingReleasesToWeakerPlateauThenBaseline()
+    {
+        AudioDuckingEnvelope envelope = new();
+        long speech = envelope.Begin(AudioForeground.Speech);
+        long reading = envelope.Begin(AudioForeground.Reading);
+        envelope.Advance(0.1);
+        envelope.End(speech);
+        envelope.Advance(0.3);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(1);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        Assert.Equal(0, envelope.ReductionDb(AudioCategory.Effects), 8);
+        envelope.End(reading);
+        envelope.Advance(0.15);
+        Assert.Equal(3, envelope.ReductionDb(AudioCategory.Music), 8);
+        envelope.Advance(0.6);
+        Assert.Equal(1, envelope.Gain(AudioCategory.Music), 8);
+    }
+
     [Fact]
     public void AttacksHoldsAndReleasesAfterOverlappingSpeechCancellation()
     {

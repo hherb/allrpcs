@@ -38,7 +38,7 @@ public partial class CharacterModelSettingsStorageController : Node
         documentController.Load();
 
     internal static string CurrentFilePath() =>
-        OS.GetEnvironment(TestStorageEnvironmentVariable) == EnabledEnvironmentValue
+        DebugTestEnvironment.GetEnvironment(TestStorageEnvironmentVariable) == EnabledEnvironmentValue
             ? Path.Combine(
                 Path.GetTempPath(),
                 $"allrpcs-character-model-settings-v1-smoke-{OS.GetProcessId()}.json")

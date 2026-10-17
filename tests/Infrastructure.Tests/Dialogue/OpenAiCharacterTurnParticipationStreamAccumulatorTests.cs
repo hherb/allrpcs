@@ -40,6 +40,51 @@ public sealed class OpenAiCharacterTurnParticipationStreamAccumulatorTests
         }
     }
 
+    [Theory]
+    [InlineData(16, true, "respond", null)]
+    [InlineData(64, false, "interject", "compare-evidence")]
+    public void CompletesWithBoundedSchemaEchoes(
+        int depth,
+        bool isDirectlyAddressed,
+        string kind,
+        string? motiveKey)
+    {
+        CharacterTurnParticipationConsiderationRequest request = CreateRequest(isDirectlyAddressed);
+        OpenAiCharacterTurnParticipationStreamAccumulator accumulator = new(request);
+        string response = DecisionDocument(kind, motiveKey);
+
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.created", depth)));
+        Assert.Null(accumulator.Apply(Delta(response)));
+        Assert.Null(accumulator.Apply(Done(response)));
+
+        CharacterTurnParticipationDecision? decision = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Same(request.ScheduledCharacter.Identity.Id, decision?.ScheduledCharacterId);
+        Assert.Same(CharacterTurnParticipationKind.Parse(kind), decision?.Kind);
+        if (motiveKey is null)
+        {
+            Assert.Null(decision?.Motive);
+        }
+        else
+        {
+            Assert.Same(Assert.Single(request.ScheduledCharacter.Goals.Entries), decision?.Motive);
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        CharacterTurnParticipationConsiderationRequest request = CreateRequest(true);
+        OpenAiCharacterTurnParticipationStreamAccumulator accumulator = new(request);
+
+        Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
+    }
+
     [Fact]
     public void IgnoresSupportedMetadataAndDoesNotRetainProviderTextOrIdentifiers()
     {

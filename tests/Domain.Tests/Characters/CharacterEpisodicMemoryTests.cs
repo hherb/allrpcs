@@ -25,6 +25,7 @@ public sealed class CharacterEpisodicMemoryTests
             worldTime,
             sourceTurnId,
             "The Seeker asked me to examine the moonwort.");
+        ListIdentityContractTests.AssertIdentity(memory);
         participants[0] = new CharacterId("hermit");
 
         Assert.Same(memoryId, memory.MemoryId);

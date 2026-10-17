@@ -8,8 +8,14 @@ import json
 from pathlib import Path
 import subprocess
 import textwrap
+import tempfile
 
 REPO = Path(__file__).resolve().parents[1]
+# Accepted checkpoint: earlier legacy rewrites do not redefine this baseline.
+# It must already be on main, so squash or rebase merges of later branches keep it as an ancestor.
+# Descendant ledger commits and merge states contribute persistent entries.
+# Older divergent branches do not resurrect superseded pre-baseline records.
+HISTORY_BASELINE = 'e55463b0ad22dbb79487766877a0ddfa3384d662'
 START = '<!-- active-slice:start -->'
 END = '<!-- active-slice:end -->'
 
@@ -30,15 +36,26 @@ def local_path(name):
 
 
 def previous_state():
-    """Use committed state to prevent pruning earlier closure entries."""
-    tracked = subprocess.check_output(['git', 'ls-tree', 'HEAD', 'CONTINUATION.json'],
-                                      cwd=REPO, text=True)
-    if not tracked:
-        return None
-    result = subprocess.run(['git', 'show', 'HEAD:CONTINUATION.json'], cwd=REPO,
-                            capture_output=True, text=True)
-    require(result.returncode == 0, 'Cannot read committed continuation ledger')
-    return json.loads(result.stdout)
+    """Union the pinned checkpoint and subsequent committed history; never trust HEAD alone."""
+    def read_git(*args):
+        result = subprocess.run(['git', *args], cwd=REPO, capture_output=True, text=True)
+        require(result.returncode == 0,
+                'Continuation history unavailable; fetch full history including ' + HISTORY_BASELINE)
+        return result.stdout.strip()
+    require(read_git('rev-parse', '--is-shallow-repository') == 'false',
+            'Continuation validation requires full history; fetch --unshallow first')
+    read_git('merge-base', '--is-ancestor', HISTORY_BASELINE, 'HEAD')
+    commits = [HISTORY_BASELINE] + read_git('rev-list', '--reverse', '--full-history', '--ancestry-path',
+        HISTORY_BASELINE + '..HEAD', '--', 'CONTINUATION.json').splitlines()
+    retained = {key: {} for key in ('closed_scopes', 'closed_workstreams', 'reopenings')}
+    for revision in commits:
+        committed = json.loads(read_git('show', revision + ':CONTINUATION.json'))
+        for key, entries in retained.items():
+            for row in committed[key]:
+                require(row['id'] not in entries or entries[row['id']] == row,
+                        'Previously recorded closure rewritten in committed history: ' + row['id'])
+                entries[row['id']] = row
+    return {key: list(entries.values()) for key, entries in retained.items()}
 
 
 def validate(state, previous=None, check_files=True):
@@ -68,7 +85,9 @@ def validate(state, previous=None, check_files=True):
     require(active['status'] in ('ready', 'in_progress'), 'Active slice has no executable status')
     require(active['missing_deliverable'] and active['completion_condition'] and active['outputs'],
             'Active slice lacks a finite missing deliverable')
-    require(active['roadmap_item'] in (REPO / 'ROADMAP.md').read_text(), 'Missing roadmap item')
+    require(isinstance(active['roadmap_item'], str) and active['roadmap_item'].startswith('- [ ] ')
+            and active['roadmap_item'][6:].strip()
+            and active['roadmap_item'] in (REPO / 'ROADMAP.md').read_text(), 'Missing roadmap item')
     require(len(active['outputs']) == len(set(active['outputs'])), 'Duplicate active output')
     outputs = [local_path(name) for name in active['outputs']]
     if check_files and active['status'] == 'ready':
@@ -83,10 +102,15 @@ def validate(state, previous=None, check_files=True):
                 require(hashlib.sha256(path.read_bytes()).hexdigest() == binding['sha256'],
                         'Closure evidence changed: ' + binding['path'])
     if previous:
-        for key in ('closed_scopes', 'closed_workstreams', 'reopenings'):
-            current = {row['id']: row for row in state[key]}
-            for row in previous[key]:
-                require(current.get(row['id']) == row, 'Previously recorded closure removed or rewritten')
+        preserve_history(state, previous)
+
+
+def preserve_history(state, previous):
+    """Require every retained entry verbatim, even after a pruning commit."""
+    for key in ('closed_scopes', 'closed_workstreams', 'reopenings'):
+        current = {row['id']: row for row in state[key]}
+        for row in previous[key]:
+            require(current.get(row['id']) == row, 'Previously recorded closure removed or rewritten')
 
 
 def render_active(state):
@@ -112,8 +136,75 @@ def check_handover(state, text):
     require(text.count('## Next bounded slice') == 1, 'Multiple next-slice queues in handover')
 
 
+def history_self_test():
+    """Use real commits, including a future closure pruned in a later commit."""
+    global REPO, HISTORY_BASELINE
+    original_repo = REPO
+    original_baseline = globals().get('HISTORY_BASELINE')
+    try:
+        for key in ('closed_scopes', 'closed_workstreams', 'reopenings'):
+            with tempfile.TemporaryDirectory() as directory:
+                REPO = Path(directory)
+                def git_fixture(*args):
+                    return subprocess.check_output(['git', *args], cwd=REPO, text=True,
+                                                   stderr=subprocess.DEVNULL).strip()
+                git_fixture('init', '-q')
+                git_fixture('config', 'user.name', 'Fixture')
+                git_fixture('config', 'user.email', 'fixture@example.invalid')
+                state = {name: [] for name in ('closed_scopes', 'closed_workstreams', 'reopenings')}
+                def commit():
+                    (REPO / 'CONTINUATION.json').write_text(json.dumps(state))
+                    git_fixture('add', 'CONTINUATION.json')
+                    git_fixture('commit', '-qm', 'fixture')
+                state[key].append({'id': 'baseline', 'reason': 'legacy'})
+                commit()
+                git_fixture('branch', 'legacy')
+                state[key][0]['reason'] = 'preserved'
+                commit()
+                HISTORY_BASELINE = git_fixture('rev-parse', 'HEAD')
+                state[key].append({'id': 'future', 'reason': 'newly committed'})
+                commit()
+                require(previous_state()[key] == state[key], 'Preserved history must pass: ' + key)
+                preserve_history(state, previous_state())
+                state[key].pop()
+                commit()
+                try:
+                    preserve_history(state, previous_state())
+                except ValueError:
+                    pass
+                else:
+                    raise ValueError('Committed pruning admitted: ' + key)
+                require(any(row['id'] == 'future' for row in previous_state()[key]),
+                        'Committed pruning lost future history: ' + key)
+                state[key].clear()
+                commit()
+                require(any(row['id'] == 'baseline' for row in previous_state()[key]),
+                        'Committed pruning lost baseline history: ' + key)
+                # Older divergent ledger commits merged with the accepted state must not
+                # resurrect pre-baseline rewrites. Only descendants and merge states count.
+                branch = git_fixture('branch', '--show-current')
+                git_fixture('checkout', '-q', 'legacy')
+                state[key] = [{'id': 'baseline', 'reason': 'older divergent rewrite'}]
+                commit()
+                git_fixture('checkout', '-q', branch)
+                git_fixture('merge', '-q', '-s', 'ours', 'legacy', '-m', 'retain accepted state')
+                previous_state()
+                (REPO / '.git/shallow').write_text(HISTORY_BASELINE + '\n')
+                try:
+                    previous_state()
+                except ValueError as error:
+                    require('full history' in str(error), 'Shallow history diagnostic missing')
+                else:
+                    raise ValueError('Shallow history silently admitted')
+        print('PASS: temporary Git closure/workstream/reopening history probes')
+    finally:
+        REPO = original_repo
+        HISTORY_BASELINE = original_baseline
+
+
 def self_test(state):
     """Exercise real regressions that caused completed work to be repeated."""
+    history_self_test()
     # Probes must still work after the real queue advances or gains owner reopening.
     state = copy.deepcopy(state)
     state['active_slice'].update(id='regression-unfinished-slice',
@@ -139,6 +230,10 @@ def self_test(state):
     bad = copy.deepcopy(state)
     bad['closed_scopes'].pop()
     reject('pruned acceptance history', lambda: validate(bad, previous=state, check_files=False))
+    for item in ('', '   ', 'a', '- [ ] '):
+        bad = copy.deepcopy(state)
+        bad['active_slice']['roadmap_item'] = item
+        reject('empty roadmap item', lambda: validate(bad, check_files=False))
     bad = copy.deepcopy(state)
     bad['active_slice']['missing_deliverable'] = ''
     reject('no missing deliverable', lambda: validate(bad, check_files=False))

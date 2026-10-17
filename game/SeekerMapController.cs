@@ -72,6 +72,13 @@ public partial class SeekerMapController : Node, IMapSaveStateRestorationTarget
         Notes = notes;
     }
 
+    internal void InstallPreparedRestoration(MapSaveStateRestoration restored)
+    {
+        Catalogue = restored.Catalogue;
+        Map = restored.Map;
+        Notes = restored.Notes;
+    }
+
     /// <summary>Reports one exact location from exact current map and already-safe testimony.</summary>
     public bool TryReport(
         SeekerMapSnapshot expectedMap,

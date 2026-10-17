@@ -84,15 +84,34 @@ public sealed class CameraFramingCalculatorTests
                 maximumZoom));
     }
 
-    [Fact]
-    public void RejectsMinimumZoomThatWouldRevealBeyondWorld()
+    [Theory]
+    [InlineData(float.Epsilon, 1.0f)]
+    [InlineData(1.0f, float.Epsilon)]
+    public void RejectsUnrepresentableCoveringZoom(float worldWidth, float worldHeight)
     {
+        CameraWorldBounds bounds = new(0.0f, 0.0f, worldWidth, worldHeight);
+
         Assert.Throws<ArgumentOutOfRangeException>(() =>
-            CameraFramingCalculator.Create(
-                TestWorldBounds,
-                TestViewportSize,
-                minimumZoom: 0.75f,
-                defaultZoom: 1.0f,
-                maximumZoom: 2.0f));
+            CameraFramingCalculator.Create(bounds, Vector2.One, 0.8f, 1.0f, 2.0f));
+    }
+
+    [Theory]
+    [InlineData(1280.0f, 720.0f, 0.8f)]
+    [InlineData(1279.6875f, 2275.0f, 2275.0f / 900.0f)]
+    [InlineData(900.0f, 1600.0f, 1600.0f / 900.0f)]
+    public void ClampsZoomToCoverViewport(float width, float height, float expectedMinimum)
+    {
+        CameraFramingPlan plan = CameraFramingCalculator.Create(
+            TestWorldBounds, new Vector2(width, height), 0.75f, 1.0f, 2.0f);
+
+        Assert.Equal(expectedMinimum, plan.MinimumZoom);
+        Assert.Equal(Math.Clamp(1.0f, expectedMinimum, Math.Max(2.0f, expectedMinimum)), plan.DefaultZoom);
+        Assert.Equal(Math.Max(2.0f, expectedMinimum), plan.MaximumZoom);
+        Assert.True(float.IsFinite(plan.MinimumZoom));
+        Assert.True(float.IsFinite(plan.DefaultZoom));
+        Assert.True(float.IsFinite(plan.MaximumZoom));
+        Assert.True(plan.MinimumZoom <= plan.DefaultZoom && plan.DefaultZoom <= plan.MaximumZoom);
+        Assert.True(width / plan.MinimumZoom <= TestWorldBounds.Width + 0.001f);
+        Assert.True(height / plan.MinimumZoom <= TestWorldBounds.Height + 0.001f);
     }
 }

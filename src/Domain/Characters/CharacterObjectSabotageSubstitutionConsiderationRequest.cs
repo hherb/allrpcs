@@ -5,7 +5,8 @@ using Allrpcs.Domain.WorldObjects;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded world state for one provider-neutral substitution choice.</summary>
-public sealed record CharacterObjectSabotageSubstitutionConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterObjectSabotageSubstitutionConsiderationRequest
 {
     /// <summary>The maximum number of exact substitution candidates in one consideration.</summary>
     public const int MaximumCandidateCount = 64;

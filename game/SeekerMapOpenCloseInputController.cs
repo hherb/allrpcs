@@ -25,7 +25,6 @@ public partial class SeekerMapOpenCloseInputController : Node
     private SeekerMapSnapshot? presentedMap;
     private SeekerMapNoteSnapshot? presentedNotes;
     private bool isOpen;
-    private bool seekerWasPhysicsProcessing;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -99,8 +98,8 @@ public partial class SeekerMapOpenCloseInputController : Node
         if (state.Map is not { } map
             || state.Notes is not { } notes
             || state.Catalogue is not { } locationCatalogue
-            || !ReferenceEquals(map.SeekerId, seekerId)
-            || !ReferenceEquals(notes.SeekerId, seekerId))
+            || map.SeekerId != seekerId
+            || notes.SeekerId != seekerId)
         {
             return false;
         }
@@ -185,9 +184,7 @@ public partial class SeekerMapOpenCloseInputController : Node
         }
 
         priorFocusOwner = GetViewport().GuiGetFocusOwner();
-        seekerWasPhysicsProcessing = seeker.IsPhysicsProcessing();
-        seeker.Velocity = Vector2.Zero;
-        seeker.SetPhysicsProcess(false);
+        seeker.SuspendForModal(this);
         close.GrabFocus();
         presentedMap = map;
         presentedNotes = notes;
@@ -210,6 +207,30 @@ public partial class SeekerMapOpenCloseInputController : Node
             || routing.TryRouteVisibleEvidence(progress, evidenceView, residueId);
     }
 
+    /// <summary>Closes this reading modal after a successful load, releasing its movement suspension.</summary>
+    public void ResetAfterRestore()
+    {
+        PreparedRestore reset = PrepareSessionReset();
+        reset.Commit();
+        if (reset.Publish is { } publish) { RestoreParticipantRegistry.Publish(publish); }
+    }
+
+    internal PreparedRestore PrepareSessionReset()
+    {
+        bool wasOpen = isOpen;
+        return new PreparedRestore(() =>
+        {
+            isOpen = false;
+            priorFocusOwner = null;
+        }, () =>
+        {
+            // Resume first so a presentation failure cannot leave the Seeker suspended.
+            if (wasOpen) { seeker.ResumeAfterModal(this); }
+            panel.Visible = false;
+            if (wasOpen) { GetViewport().GuiGetFocusOwner()?.ReleaseFocus(); }
+        });
+    }
+
     private bool TryClose()
     {
         if (!isOpen || !panel.TryClose())
@@ -218,9 +239,10 @@ public partial class SeekerMapOpenCloseInputController : Node
         }
 
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-        priorFocusOwner?.GrabFocus();
+        if (GodotObject.IsInstanceValid(priorFocusOwner) && priorFocusOwner!.IsVisibleInTree())
+        { priorFocusOwner.GrabFocus(); }
         priorFocusOwner = null;
-        seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+        seeker.ResumeAfterModal(this);
         isOpen = false;
         return true;
     }

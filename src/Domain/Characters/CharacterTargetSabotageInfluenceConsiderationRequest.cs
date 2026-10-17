@@ -1,7 +1,8 @@
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded relationship state for one provider-neutral influence choice.</summary>
-public sealed record CharacterTargetSabotageInfluenceConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterTargetSabotageInfluenceConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or applying influence.</summary>
     public CharacterTargetSabotageInfluenceConsiderationRequest(

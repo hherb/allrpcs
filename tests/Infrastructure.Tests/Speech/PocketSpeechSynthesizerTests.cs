@@ -24,6 +24,24 @@ public sealed class PocketSpeechSynthesizerTests
         Assert.Equal("en", factory.Workers[0].Requests[1].GetProperty("language").GetString());
     }
 
+    [Theory]
+    [InlineData("error")]
+    [InlineData("finished")]
+    public async Task TerminalFailureReusesSameWarmWorkerWithoutCancellation(string terminal)
+    {
+        FakeFactory factory = new((worker, request) => worker.Output.Writer.TryWrite(terminal == "error"
+            ? JsonSerializer.Serialize(new { type = "error", id = request.GetProperty("id").GetString(), code = "synthesis_failed" })
+            : JsonSerializer.Serialize(new { type = "finished", id = request.GetProperty("id").GetString(), status = "completed" })));
+        await using PocketSpeechSynthesizer synthesizer = new(factory);
+        await Assert.ThrowsAsync<SpeechSynthesisException>(() => Collect(synthesizer, "First."));
+        FakeWorker original = Assert.Single(factory.Workers);
+        Assert.Equal(0, original.Cancellations);
+        Assert.False(original.Disposed);
+        factory.Handler = Normal;
+        Assert.Single(await Collect(synthesizer, "Next."));
+        Assert.Same(original, Assert.Single(factory.Workers));
+    }
+
     [Fact]
     public async Task EarlyConsumerExitRetiresBufferedAudioBeforeNextRequest()
     {
@@ -62,6 +80,9 @@ public sealed class PocketSpeechSynthesizerTests
     }
 
     [Theory]
+    [InlineData("error-missing-code")]
+    [InlineData("error-wrong-id")]
+    [InlineData("transport")]
     [InlineData("missing-id")]
     [InlineData("stale-id")]
     [InlineData("bad-pcm")]
@@ -74,8 +95,11 @@ public sealed class PocketSpeechSynthesizerTests
         FakeFactory factory = new((worker, request) =>
         {
             string id = request.GetProperty("id").GetString()!;
+            if (fault == "transport") { throw new IOException("synthetic broken pipe"); }
             worker.Output.Writer.TryWrite(fault switch
             {
+                "error-missing-code" => JsonSerializer.Serialize(new { type = "error", id }),
+                "error-wrong-id" => JsonSerializer.Serialize(new { type = "error", id = "stale", code = "synthesis_failed" }),
                 "missing-id" => "{\"type\":\"audio\"}",
                 "stale-id" => Audio("obsolete"),
                 "bad-pcm" => JsonSerializer.Serialize(new
@@ -100,6 +124,7 @@ public sealed class PocketSpeechSynthesizerTests
         }
         await using PocketSpeechSynthesizer synthesizer = new(factory);
         await Assert.ThrowsAsync<SpeechSynthesisException>(() => Collect(synthesizer, "Do not take the herb."));
+        Assert.True(factory.Workers[0].Disposed);
     }
 
     [Fact]
@@ -150,6 +175,20 @@ public sealed class PocketSpeechSynthesizerTests
         factory.Handler = Normal;
         Assert.Single(await Collect(synthesizer, "Recovered reply."));
         Assert.Equal(2, factory.Workers.Count);
+    }
+
+    [Theory]
+    [InlineData("error")]
+    [InlineData("finished")]
+    public async Task MalformedCancellationAcknowledgementDiscardsWorker(string kind)
+    {
+        FakeFactory factory = new((worker, request) =>
+            worker.Output.Writer.TryWrite(Audio(request.GetProperty("id").GetString()!)))
+        { CancellationReply = id => JsonSerializer.Serialize(new { type = kind, id }) };
+        await using PocketSpeechSynthesizer synthesizer = new(factory);
+        await using (IAsyncEnumerator<SpeechAudioChunk> current = synthesizer.SynthesizeAsync(Request(), default).GetAsyncEnumerator())
+        { Assert.True(await current.MoveNextAsync()); }
+        Assert.True(factory.Workers[0].Disposed);
     }
 
     [Fact]
@@ -222,6 +261,7 @@ public sealed class PocketSpeechSynthesizerTests
         public List<FakeWorker> Workers { get; } = [];
         public Action<FakeWorker, JsonElement> Handler { get; set; } = handler;
         public string Ready { get; set; } = PocketSpeechSynthesizerTests.Ready;
+        public Func<string, string>? CancellationReply { get; init; }
         public bool AcknowledgeCancellation { get; init; } = true;
 
         public ValueTask<IPocketSpeechWorker> StartAsync(CancellationToken cancellationToken)
@@ -256,7 +296,9 @@ public sealed class PocketSpeechSynthesizerTests
                 Cancellations++;
                 if (!_finished && factory.AcknowledgeCancellation)
                 {
-                    Finish(root.GetProperty("id").GetString()!);
+                    string id = root.GetProperty("id").GetString()!;
+                    if (factory.CancellationReply is { } reply) { Output.Writer.TryWrite(reply(id)); }
+                    else { Finish(id); }
                 }
             }
             else

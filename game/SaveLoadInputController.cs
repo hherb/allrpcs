@@ -47,8 +47,8 @@ public partial class SaveLoadInputController : Node
         recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         status = GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status");
 
-        save.Pressed += Save;
-        load.Pressed += Load;
+        save.Pressed += () => Activate(save, Save);
+        load.Pressed += () => Activate(load, Load);
         ControlSettingsController.SetGuidance(status, ReadyStatusText);
     }
 
@@ -72,6 +72,12 @@ public partial class SaveLoadInputController : Node
         }
 
         GetViewport().SetInputAsHandled();
+    }
+
+    private static void Activate(Button button, Action action)
+    {
+        try { action(); }
+        finally { button.ReleaseFocus(); }
     }
 
     private void Save()

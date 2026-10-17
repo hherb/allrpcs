@@ -59,7 +59,7 @@ smoke_native_shutdown()
 {
     [ "$1" -eq 134 ] || return 1
     smoke_last_launch "$2" | grep -q 'mutex lock failed' || return 1
-    ! smoke_last_launch "$2" | grep -qE 'ERROR:|AssertionError|Unhandled exception'
+    ! smoke_last_launch "$2" | grep -qE '^FAIL:|ERROR:|AssertionError|Unhandled exception'
 }
 
 # Accepts "-" or a decimal frame count in 1..1073741793 written without leading zeros.

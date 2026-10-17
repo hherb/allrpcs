@@ -21,8 +21,8 @@ public static class CharacterSabotageTurnOpportunityCadenceSignalPolicy
 
         if (!worldEvents.Entries.Any(candidate => ReferenceEquals(candidate, currentEvent))
             || !ReferenceEquals(currentEvent.TimeEffect, WorldEventTimeEffect.Advance)
-            || !eventLog.Entries.Any(eventId => ReferenceEquals(eventId, currentEvent.EventId))
-            || !ReferenceEquals(worldTime.CurrentEventId, currentEvent.EventId))
+            || !eventLog.Entries.Any(eventId => eventId == currentEvent.EventId)
+            || worldTime.CurrentEventId != currentEvent.EventId)
         {
             return false;
         }
@@ -37,6 +37,6 @@ public static class CharacterSabotageTurnOpportunityCadenceSignalPolicy
         WorldEventLogSnapshot eventLog) =>
         eventLog.Entries.Count(
             eventId => worldEvents.Entries.Any(
-                worldEvent => ReferenceEquals(worldEvent.EventId, eventId)
+                worldEvent => worldEvent.EventId == eventId
                     && ReferenceEquals(worldEvent.TimeEffect, WorldEventTimeEffect.Advance)));
 }

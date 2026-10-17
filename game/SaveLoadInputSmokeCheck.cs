@@ -110,6 +110,11 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
+        save.GrabFocus();
+        save.EmitSignal(BaseButton.SignalName.Pressed);
+        if (save.HasFocus() || status.Text != SaveLoadInputController.MapRequiredStatusText)
+        { Fail("Prerequisite save return retained GUI focus."); return; }
+
         input._UnhandledInput(Action(LoadAction, pressed: true));
         if (status.Text != SaveLoadInputController.MissingStatusText)
         {
@@ -127,7 +132,9 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
+        save.GrabFocus();
         save.EmitSignal(BaseButton.SignalName.Pressed);
+        if (save.HasFocus()) { Fail("Save activation retained GUI focus."); return; }
         string initial = jsonController.CaptureSerialized()
             ?? throw new InvalidOperationException("Explicit save did not initialize safe journal state.");
         if (journalController.Journal is null
@@ -138,6 +145,11 @@ public partial class SaveLoadInputSmokeCheck : Node
             Fail("Visible save control did not persist the exact complete capture.");
             return;
         }
+
+        load.GrabFocus();
+        save.EmitSignal(BaseButton.SignalName.Pressed);
+        if (!load.HasFocus()) { Fail("Save released another control's navigation focus."); return; }
+        load.ReleaseFocus();
 
         if (!restorationController.TryRestore(CreateAlternateState(worldObjects, worldEvents)))
         {
@@ -157,7 +169,9 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         File.WriteAllText(StoragePath(), "{");
+        load.GrabFocus();
         load.EmitSignal(BaseButton.SignalName.Pressed);
+        if (load.HasFocus()) { Fail("Load activation retained GUI focus."); return; }
         if (status.Text != SaveLoadInputController.LoadFailedStatusText
             || !HasExpectedState(initial))
         {
@@ -179,7 +193,9 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         File.Delete(StoragePath());
+        load.GrabFocus();
         load.EmitSignal(BaseButton.SignalName.Pressed);
+        if (load.HasFocus()) { Fail("Load activation retained GUI focus."); return; }
         if (status.Text != SaveLoadInputController.MissingStatusText
             || !HasExpectedState(initial)
             || !ReferenceEquals(worldObjectController.WorldObjects, worldObjects)

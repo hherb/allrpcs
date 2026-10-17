@@ -86,23 +86,22 @@ public sealed class CharacterModelCommitmentMemoryContextProjectionTests
     }
 
     [Fact]
-    public void RejectsMemoryThatWouldExceedExistingContextBoundsWithoutChangingIt()
+    public void ProjectsMemoryWithoutConstructingOverflowingContextSnapshot()
     {
         CharacterId healerId = new("healer");
         string description = new('x', CharacterCommitmentMemory.MaximumDescriptionLength);
-        CharacterCommitmentMemory[] commitments = Enumerable.Range(0, 33)
+        CharacterCommitmentMemory[] commitments = Enumerable.Range(0, 128)
             .Select(index => Commitment(
                 healerId,
                 CharacterCommitmentKind.Promise,
                 "seeker",
-                $"turn-{NumberWord(index)}",
+                $"turn-{index}",
                 description,
-                $"commitment-{NumberWord(index)}"))
+                $"commitment-{index}"))
             .ToArray();
         CharacterMemorySnapshot memory = new([Aggregate(healerId, commitments)]);
 
-        Assert.Throws<ArgumentException>(() =>
-            CharacterModelCommitmentMemoryContextProjection.Project(healerId, memory));
+        Assert.Equal(128, CharacterModelCommitmentMemoryContextProjection.Project(healerId, memory).Count);
         Assert.All(
             commitments,
             commitment => Assert.Contains(
@@ -159,40 +158,4 @@ public sealed class CharacterModelCommitmentMemoryContextProjectionTests
         new CharacterTurnId(sourceTurn),
         description);
 
-    private static string NumberWord(int value) => value switch
-    {
-        0 => "zero",
-        1 => "one",
-        2 => "two",
-        3 => "three",
-        4 => "four",
-        5 => "five",
-        6 => "six",
-        7 => "seven",
-        8 => "eight",
-        9 => "nine",
-        10 => "ten",
-        11 => "eleven",
-        12 => "twelve",
-        13 => "thirteen",
-        14 => "fourteen",
-        15 => "fifteen",
-        16 => "sixteen",
-        17 => "seventeen",
-        18 => "eighteen",
-        19 => "nineteen",
-        20 => "twenty",
-        21 => "twenty-one",
-        22 => "twenty-two",
-        23 => "twenty-three",
-        24 => "twenty-four",
-        25 => "twenty-five",
-        26 => "twenty-six",
-        27 => "twenty-seven",
-        28 => "twenty-eight",
-        29 => "twenty-nine",
-        30 => "thirty",
-        31 => "thirty-one",
-        _ => "thirty-two",
-    };
 }

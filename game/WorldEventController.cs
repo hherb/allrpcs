@@ -79,10 +79,15 @@ public partial class WorldEventController : Node
             return false;
         }
 
+        InstallPreparedRestoration(state, worldEvents);
+        return true;
+    }
+
+    internal void InstallPreparedRestoration(WorldEventSaveState state, WorldEventSnapshot worldEvents)
+    {
         WorldEvents = worldEvents;
         EventLog = state.EventLog;
         WorldTime = state.WorldTime;
-        return true;
     }
 
     /// <summary>Finds the exact initialized world event with the supplied identifier.</summary>

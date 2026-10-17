@@ -9,6 +9,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OllamaCharacterModelConnectionTester : ICharacterModelConnectionTester
 {
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly OllamaEndpoint endpoint;
 
     /// <summary>Creates a tester using the conventional local Ollama endpoint.</summary>
@@ -18,11 +19,13 @@ public sealed class OllamaCharacterModelConnectionTester : ICharacterModelConnec
     }
 
     /// <summary>Creates a tester over caller-owned HTTP and one validated loopback endpoint.</summary>
-    public OllamaCharacterModelConnectionTester(HttpClient client, OllamaEndpoint endpoint)
+    public OllamaCharacterModelConnectionTester(HttpClient client, OllamaEndpoint endpoint,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(endpoint);
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.endpoint = endpoint;
     }
 
@@ -49,9 +52,10 @@ public sealed class OllamaCharacterModelConnectionTester : ICharacterModelConnec
 
         try
         {
-            using HttpResponseMessage response = await client.SendAsync(
+            using HttpResponseMessage response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode

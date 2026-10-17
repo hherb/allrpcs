@@ -59,7 +59,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceSseCompletionTest
     }
 
     [Fact]
-    public async Task RejectsTrailingEventsAfterCompletionAndPreservesCallerCancellation()
+    public async Task ReturnsAtCompletionBeforeTrailingEventsAndPreservesCallerCancellation()
     {
         CharacterDialogueMisquotationEvidenceDecisionJsonDeserializerTests.Input input =
             CharacterDialogueMisquotationEvidenceDecisionJsonDeserializerTests.CreateInput();
@@ -77,8 +77,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceSseCompletionTest
         using CancellationTokenSource cancellation = new();
         cancellation.Cancel();
 
-        await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterDialogueMisquotationEvidenceSseCompletion.CompleteAsync(
+        Assert.NotNull(await OpenAiCharacterDialogueMisquotationEvidenceSseCompletion.CompleteAsync(
                 input.Request,
                 trailing));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>

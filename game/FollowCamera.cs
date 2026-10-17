@@ -18,6 +18,8 @@ public partial class FollowCamera : Camera2D
     private const float DefaultStartingZoom = 1.0f;
     private const float DefaultMaximumZoom = 2.0f;
 
+    private Viewport? _viewport;
+
     /// <summary>
     /// Gets or sets how quickly the camera catches up to the Seeker.
     /// </summary>
@@ -69,17 +71,8 @@ public partial class FollowCamera : Camera2D
     /// <inheritdoc />
     public override void _Ready()
     {
-        Vector2 viewportSize = GetViewportRect().Size;
-        CameraFramingPlan framing = CameraFramingCalculator.Create(
-            new CameraWorldBounds(
-                WorldLeftLimitPixels,
-                WorldTopLimitPixels,
-                WorldRightLimitPixels,
-                WorldBottomLimitPixels),
-            new NumericsVector2(viewportSize.X, viewportSize.Y),
-            MinimumZoom,
-            StartingZoom,
-            MaximumZoom);
+        _viewport = GetViewport();
+        CameraFramingPlan framing = CreateFraming();
 
         Position = Vector2.Zero;
         Offset = Vector2.Zero;
@@ -94,5 +87,50 @@ public partial class FollowCamera : Camera2D
         PositionSmoothingSpeed = FollowSmoothingSpeed;
         MakeCurrent();
         ResetSmoothing();
+        _viewport.SizeChanged += OnViewportSizeChanged;
+    }
+
+    /// <inheritdoc />
+    public override void _ExitTree()
+    {
+        if (_viewport is not null)
+        {
+            _viewport.SizeChanged -= OnViewportSizeChanged;
+            _viewport = null;
+        }
+    }
+
+    private void OnViewportSizeChanged()
+    {
+        CameraFramingPlan framing = CreateFraming();
+        float zoom = Mathf.Clamp(Zoom.X, framing.MinimumZoom, framing.MaximumZoom);
+        Zoom = new Vector2(zoom, zoom);
+        ForceUpdateScroll();
+        Vector2 halfView = GetViewportRect().Size / Zoom / 2.0f;
+        Vector2 center = GetScreenCenterPosition();
+        if (center.X - halfView.X < WorldLeftLimitPixels
+            || center.Y - halfView.Y < WorldTopLimitPixels
+            || center.X + halfView.X > WorldRightLimitPixels
+            || center.Y + halfView.Y > WorldBottomLimitPixels)
+        {
+            // A newly narrower valid center range must not expose outside space while smoothing catches up.
+            ResetSmoothing();
+            ForceUpdateScroll();
+        }
+    }
+
+    private CameraFramingPlan CreateFraming()
+    {
+        Vector2 viewportSize = GetViewportRect().Size;
+        return CameraFramingCalculator.Create(
+            new CameraWorldBounds(
+                WorldLeftLimitPixels,
+                WorldTopLimitPixels,
+                WorldRightLimitPixels,
+                WorldBottomLimitPixels),
+            new NumericsVector2(viewportSize.X, viewportSize.Y),
+            MinimumZoom,
+            StartingZoom,
+            MaximumZoom);
     }
 }

@@ -18,6 +18,6 @@ public static class WorldEventLogLookup
         ArgumentNullException.ThrowIfNull(eventId);
         ArgumentNullException.ThrowIfNull(eventLog);
 
-        return eventLog.Entries.FirstOrDefault(entry => entry == eventId);
+        return eventLog.Find(eventId);
     }
 }

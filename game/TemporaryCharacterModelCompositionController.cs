@@ -80,7 +80,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             "../TemporaryCharacterSabotageActionModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
-        client ??= new NetHttpClient
+        client ??= new NetHttpClient(ProviderHttpTransport.CreateHandler())
         {
             Timeout = Timeout.InfiniteTimeSpan,
         };
@@ -89,7 +89,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
         recoveryComposition = new(recoveryModelSource);
         delayRecoveryComposition = new(delayRecoveryModelSource);
         sabotageActionComposition = new(sabotageActionModelSource);
-        if (OS.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
+        if (DebugTestEnvironment.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
             != DisabledEnvironmentValue)
         {
             TryLoadCurrent();

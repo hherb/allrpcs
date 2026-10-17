@@ -25,6 +25,7 @@ public sealed class CharacterTurnParticipationConsiderationRoundResultTests
         CharacterTurnParticipationConsiderationRoundResult round = new(
             [hermitRequest, sageRequest],
             [hermitResult, sageResult]);
+        ListIdentityContractTests.AssertIdentity(round);
 
         Assert.Collection(
             round.Requests,

@@ -31,12 +31,21 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
     private CharacterTurnTranscriptController transcript = null!;
     private SaveSnapshotRestorationController restoration = null!;
     private CharacterTurnRequest? invalidatedRequest;
+    internal CharacterModelContextAssemblyStatus? LastAssemblyStatus { get; private set; }
 
     internal bool IsCurrent(CharacterTurnRequest request) => !ReferenceEquals(request, invalidatedRequest);
 
+    internal PreparedRestore PrepareSessionReset()
+    {
+        CharacterTurnRequest? request = GetNode<CharacterTurnActivityController>(
+            "../CharacterTurnActivityController").Activity?.Request;
+        return new PreparedRestore(() => invalidatedRequest = request ?? invalidatedRequest);
+    }
+
     private void OnRestored()
     {
-        invalidatedRequest = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity?.Request;
+        invalidatedRequest = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController")
+            .Activity?.Request ?? invalidatedRequest;
     }
 
     /// <inheritdoc />
@@ -104,6 +113,7 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
     public TemporaryCharacterModelGenerationInput? CreateInput(CharacterTurnActivity activity)
     {
         ArgumentNullException.ThrowIfNull(activity);
+        LastAssemblyStatus = null;
 
         Character? character = CharacterTurnParticipantLookup.Find(
             participantSource.Participants,
@@ -120,22 +130,23 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
                 GetNodeOrNull<HerbExaminationActionController>("../HerbExaminationActionController")?.LastResult,
                 recorded)
             : [];
-        CharacterModelGenerationRequest generationRequest =
-            CharacterModelContextAssembler.Assemble(
-                activity.Request,
-                character,
-                perceptions[characterId],
-                worldObjects,
-                knowledge,
-                CharacterModelCommitmentMemoryContextProjection.Project(
-                    characterId,
-                    memoryController.Memory),
-                dialogue.History.RecentFor(characterId, activity.Request.DialogueEvent),
-                characterAffordances,
-                actionOutcomes);
+        LastAssemblyStatus = CharacterModelContextAssembler.TryAssemble(
+            activity.Request,
+            character,
+            perceptions[characterId],
+            worldObjects,
+            knowledge,
+            CharacterModelCommitmentMemoryContextProjection.Project(
+                characterId,
+                memoryController.Memory),
+            dialogue.History.RecentFor(characterId, activity.Request.DialogueEvent),
+            characterAffordances,
+            out CharacterModelGenerationRequest? generationRequest,
+            actionOutcomes);
+        if (LastAssemblyStatus == CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded) { return null; }
 
         return new TemporaryCharacterModelGenerationInput(
-            generationRequest,
+            generationRequest!,
             worldObjects,
             characterAffordances);
     }

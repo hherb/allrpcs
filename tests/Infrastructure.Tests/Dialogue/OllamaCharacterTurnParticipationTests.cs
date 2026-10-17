@@ -10,6 +10,14 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 public sealed class OllamaCharacterTurnParticipationTests
 {
     [Fact]
+    public void BoundsParticipationOutputTokens()
+    {
+        using JsonDocument document = JsonDocument.Parse(
+            OllamaCharacterTurnParticipationRequestSerializer.Serialize(Request(), "model"));
+        Assert.Equal(128, document.RootElement.GetProperty("options").GetProperty("num_predict").GetInt32());
+    }
+
+    [Fact]
     public void SerializesStatelessStructuredDecisionWithSeparatedTrustedAndPlayerContext()
     {
         CharacterTurnParticipationConsiderationRequest request = Request();
@@ -83,12 +91,18 @@ public sealed class OllamaCharacterTurnParticipationTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public async Task RejectsMissingCompletionAndTrailingDocuments(bool trailing)
+    public async Task RequiresCompletionAndReturnsBeforeTrailingDocuments(bool trailing)
     {
         string body = Chunk("{\"kind\":\"respond\",\"motiveKey\":null}", trailing);
         if (trailing) { body += Chunk(""); }
         using Handler handler = new(_ => Response(body));
         using HttpClient client = new(handler);
+        if (trailing)
+        {
+            Assert.NotNull(await new OllamaCharacterTurnParticipationModel(client, Settings())
+                .DecideAsync(Request(), CancellationToken.None));
+            return;
+        }
         await Assert.ThrowsAsync<InvalidDataException>(async () =>
             await new OllamaCharacterTurnParticipationModel(client, Settings()).DecideAsync(Request(), CancellationToken.None));
     }

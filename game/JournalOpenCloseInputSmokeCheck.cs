@@ -232,7 +232,7 @@ public partial class JournalOpenCloseInputSmokeCheck : Node
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
-        return methods.SequenceEqual(["_Ready", "_UnhandledInput"])
+        return methods.SequenceEqual(["ResetAfterRestore", "_Ready", "_UnhandledInput"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance

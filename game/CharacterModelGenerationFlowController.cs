@@ -10,7 +10,7 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class CharacterModelGenerationFlowController : Node, ICharacterModelStreamUpdateSink
 {
-    private readonly ConcurrentQueue<CharacterModelStreamUpdate> pendingUpdates = new();
+    private ConcurrentQueue<CharacterModelStreamUpdate> pendingUpdates = new();
     private CancellationTokenSource? generationCancellation;
     private Task<CharacterModelStreamSnapshot>? generationTask;
     private bool cancellationRequested;
@@ -55,7 +55,8 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
         CharacterModelGenerationRequest request,
         WorldObjectSnapshot worldObjects,
         CharacterIntentionAffordanceSnapshot affordances,
-        TimeSpan deadline)
+        TimeSpan deadline,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(request);
@@ -79,7 +80,7 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
         generationCancellation = new CancellationTokenSource();
         observationCancellation = new CancellationTokenSource();
         CharacterModelStreamObservation observation = new(
-            this,
+            new GenerationSink(pendingUpdates),
             observationCancellation.Token);
         generationTask = CharacterModelGenerationController.GenerateAsync(
             model,
@@ -88,7 +89,8 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
             affordances,
             deadline,
             observation,
-            generationCancellation.Token);
+            generationCancellation.Token,
+            timeProvider);
         _ = statusLabel!.Observe(stream);
         _ = textLabel!.Observe(stream);
         return true;
@@ -133,6 +135,41 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
         statusLabel!.ClearPresentation();
         textLabel!.ClearPresentation();
         return true;
+    }
+
+    internal PreparedRestore PrepareSessionReset()
+    {
+        Task? retiredTask = generationTask;
+        CancellationTokenSource? retiredGeneration = generationCancellation;
+        CancellationTokenSource? retiredObservation = observationCancellation;
+        ConcurrentQueue<CharacterModelStreamUpdate> freshUpdates = new();
+        CharacterModelStreamSnapshot empty = new([]);
+        return new PreparedRestore(() =>
+        {
+            generationTask = null;
+            generationCancellation = null;
+            observationCancellation = null;
+            pendingUpdates = freshUpdates;
+            Result = null;
+            cancellationRequested = false;
+            streamController?.InstallPreparedRestoration(empty);
+        }, () =>
+        {
+            RetiredRestoreTask.Retire(retiredTask, retiredGeneration, retiredObservation);
+            statusLabel?.ClearPresentation();
+            textLabel?.ClearPresentation();
+        });
+    }
+
+    private sealed class GenerationSink(ConcurrentQueue<CharacterModelStreamUpdate> updates)
+        : ICharacterModelStreamUpdateSink
+    {
+        public ValueTask RecordAsync(CharacterModelStreamUpdate update, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            updates.Enqueue(update);
+            return ValueTask.CompletedTask;
+        }
     }
 
     /// <inheritdoc />

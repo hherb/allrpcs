@@ -63,7 +63,6 @@ ALLRPCS_COOLING_MAIN_CHECK  # historical quality.py snapshot only — #432
 ALLRPCS_HERB_MAIN_CHECK  # historical quality.py snapshot only — #432
 ALLRPCS_CONTROLS_MAIN_CHECK  # historical quality.py snapshot only — #432
 ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK  # historical quality.py snapshot only — #432
-ALLRPCS_DIALOGUE_SPEECH_CHECK  # historical quality.py snapshot only — #432
 ALLRPCS_PLAYER_ASR_CHECK  # historical quality.py snapshot only — #432
 
 # Check scenes instanced by game/Main.tscn, so every Main launch loads them, but their gates run

@@ -90,6 +90,10 @@ internal static class Program
                 results.Add(new { id = "unsupported-profile", failureReported = true, textRetained = English });
             }
             results.Add(await Capture(synthesizer, directory, "after-worker-error", English, SpeechLanguage.English));
+            if (factory.Starts != 1)
+            {
+                throw new InvalidOperationException("A request error replaced the warm worker.");
+            }
         }
         bool allExited = factory.Processes.All(process => HasExited(process));
         if (!allExited)

@@ -17,6 +17,9 @@ smoke_quarantine_file="$script_dir/smoke-quarantine.txt"
 # Import every resource first. --import exits by itself (with 0) once importing finishes, so a cold
 # checkout is fully imported before any check runs; quality.py imports the same way.
 run_check - godot --headless --editor --path "$repository_root/game" --import
+python3 "$script_dir/check-shipping-policy.py"
+run_check - godot --headless --editor --path "$repository_root/game" \
+    --script "$script_dir/check-shipping-scene.gd"
 # Prove the wrapper itself (pass, hang, throw and async-throw probes) before trusting any check
 # through it. The self-test always fails fast, even when ALLRPCS_SMOKE_CONTINUE=1 collects the
 # failures of the launches below.
@@ -45,6 +48,7 @@ run_check 30 ALLRPCS_RUNTIME_HERB_BED_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_RUNTIME_SEEKER_WALK_CHECK=1 \
     godot --headless --path "$repository_root/game"
+run_check 30 godot --headless --fixed-fps 60 --path "$repository_root/game" res://CameraFramingSmokeCheck.tscn
 run_check 30 ALLRPCS_ADAPTIVE_DISPLAY_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK=1 \
     godot --headless --path "$repository_root/game"
@@ -145,6 +149,19 @@ run_check 30 ALLRPCS_SEEKER_MAP_PANEL_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SEEKER_MAP_OPEN_CLOSE_INPUT_CHECK=1 \
     godot --headless --path "$repository_root/game"
+# Each launch owns a fresh one-shot customization state.
+for modal in map journal; do
+    for opening in custom reading; do
+        for closing in custom reading; do
+            for baseline in active suspended; do
+                run_check 120 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
+                    ALLRPCS_MODAL_INPUT_CHECK="$modal-$opening-$closing-$baseline" godot --headless --path "$repository_root/game"
+            done
+        done
+        run_check 120 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
+            ALLRPCS_MODAL_INPUT_CHECK="$modal-$opening-reading-active-restore" godot --headless --path "$repository_root/game"
+    done
+done
 run_check 30 ALLRPCS_SEEKER_MAP_NOTE_EDITING_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_OPENING_REGION_MAP_VISIT_VERIFICATION_CHECK=1 \
@@ -183,6 +200,7 @@ run_check 30 ALLRPCS_FOCUSED_SEARCH_OUTCOME_RESOLUTION_CONTROLLER_CHECK=1 godot 
 run_check 30 ALLRPCS_DISCOVERY_SAVE_STATE_RESTORATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_WORLD_EVENT_SAVE_STATE_RESTORATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SAVE_SNAPSHOT_RESTORATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
+run_check 300 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 ALLRPCS_RESTORE_REGRESSION=participation ALLRPCS_SAVE_SNAPSHOT_RESTORATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SAVE_SNAPSHOT_CAPTURE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SAVE_SNAPSHOT_JSON_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SAVE_DOCUMENT_STORAGE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
@@ -475,7 +493,9 @@ run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=cancel godot --headless --path 
 run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=complete godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=failed godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_CHARACTER_MODEL_GENERATION_INPUT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
-run_check 120 ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
+# Two ordinary offline generations each retain the one-second retry backoff. Pace current
+# frames so both real delays fit the unchanged 120-frame fixture and 30-second generation limits.
+run_check 120 ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game" --max-fps 30
 run_check 180 ALLRPCS_SCRIPTED_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_INVALID_MODEL_RESPONSE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_ORDINARY_MODEL_CANCELLATION_CHECK=1 godot --headless --path "$repository_root/game"
@@ -586,5 +606,21 @@ run_check - godot --headless --path "$repository_root/game" \
     res://WaterContactRuntimeSmokeCheck.tscn --quit-after 30
 run_check - godot --headless --path "$repository_root/game" \
     res://WindAudioRuntimeProof.tscn --quit-after 30
+
+# The current speech fixture includes microphone toolbar focus, with no capture/provider.
+speech_check_dir=$(mktemp -d "${TMPDIR:-/tmp}/allrpcs-speech-smoke.XXXXXX")
+trap 'rm -rf "$speech_check_dir"' EXIT HUP INT TERM
+for mode in unavailable headless; do
+    run_check 3600 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 \
+        ALLRPCS_SPEECH_CONFIG="$speech_check_dir/absent.json" ALLRPCS_DIALOGUE_SPEECH_CHECK=1 \
+        ALLRPCS_DIALOGUE_SPEECH_MODE="$mode" ALLRPCS_DIALOGUE_SPEECH_REPORT="$speech_check_dir/$mode.json" \
+        godot --headless --max-fps 60 --path "$repository_root/game"
+done
+
+for mode in pending once hidden hiddenreply unavailable stopped timeout held invalid generation-held generation-stopped generation-timeout budget; do
+    run_check 300 ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=0 \
+        ALLRPCS_SPEECH_CONFIG="$speech_check_dir/absent.json" ALLRPCS_DIALOGUE_OWNERSHIP_CHECK="$mode" \
+        godot --headless --max-fps 60 --path "$repository_root/game"
+done
 
 smoke_summary

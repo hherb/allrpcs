@@ -7,6 +7,18 @@ namespace Allrpcs.Game;
 /// <summary>Owns the exact player speaker and most recently accepted dialogue delivery.</summary>
 public partial class DialogueInputController : Node
 {
+    internal void ResetSession() { LastSubmittedDelivery = null; Status = "Dialogue submission: READY"; }
+    internal void PublishStatus() => StatusChanged?.Invoke(Status);
+    internal Func<bool>? CanAccept { get; set; }
+    internal string Status { get; private set; } = "Dialogue submission: READY";
+    internal event Action<string>? StatusChanged;
+    internal void SetStatus(string value)
+    {
+        if (Status == value) { return; }
+        Status = value;
+        StatusChanged?.Invoke(value);
+    }
+
     /// <summary>Gets the exact initialized player character identifier, if any.</summary>
     public CharacterId? SpeakerCharacterId { get; private set; }
 
@@ -43,15 +55,24 @@ public partial class DialogueInputController : Node
             return false;
         }
 
+        DialogueUtterance utterance;
         try
         {
-            DialogueUtterance utterance = new(speakerCharacterId, text);
-            LastSubmittedDelivery = new DialogueDelivery(utterance, mode);
-            return true;
+            utterance = new DialogueUtterance(speakerCharacterId, text);
         }
         catch (ArgumentException)
         {
+            SetStatus("Dialogue submission: REJECTED");
             return false;
         }
+
+        if (CanAccept is not null && !CanAccept())
+        {
+            SetStatus("Dialogue submission: BUSY — wait for the current reply, then retry.");
+            return false;
+        }
+        LastSubmittedDelivery = new DialogueDelivery(utterance, mode);
+        SetStatus(TemporaryDialogueInputPanel.AcceptedStatusText);
+        return true;
     }
 }

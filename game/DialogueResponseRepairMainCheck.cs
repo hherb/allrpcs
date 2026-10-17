@@ -52,6 +52,7 @@ public partial class DialogueResponseRepairMainCheck : Node
             CharacterBody2D healer = main.GetNode<CharacterBody2D>("Healer");
             CharacterBody2D seeker = main.GetNode<CharacterBody2D>("Seeker");
             healer.SetPhysicsProcess(false); seeker.SetPhysicsProcess(false);
+            healer.Visible = true; // Explicit present listener in this disposable repeated-dialogue fixture.
             main.GetNode<Button>("SettingsOverlay/DialogueEntry").EmitSignal(BaseButton.SignalName.Pressed);
             await Frames(3);
             main.GetNode<CheckButton>("DialogueOverlay/Panel/Whispering").ButtonPressed = true;
@@ -68,12 +69,25 @@ public partial class DialogueResponseRepairMainCheck : Node
                 int beforeCalls = handler.ReplyCalls;
                 int beforeStatements = SpokenCount(transcript);
                 seeker.GlobalPosition = healer.GlobalPosition + new Vector2(12, 0);
+                bool listenerPresentAtSubmit = healer.Visible;
                 input.Text = FictionalInputs[index];
                 main.GetNode<Button>("DialogueOverlay/Panel/Submit").EmitSignal(BaseButton.SignalName.Pressed);
                 Require(input.Text.Length == 0, "Explicit submission accepted: " + (index + 1));
                 ulong started = Time.GetTicksMsec();
                 await Until(() => generation.Result is not null && !ReferenceEquals(previous, generation.Result),
-                    mode == "live" ? 70_000UL : 10_000UL, "Fresh generation: " + (index + 1));
+                    mode == "live" ? 70_000UL : 10_000UL, "Fresh generation: " + (index + 1),
+                    () => JsonSerializer.Serialize(new
+                    {
+                        listenerPresentAtSubmit,
+                        listenerPresentNow = healer.Visible,
+                        distance = seeker.GlobalPosition.DistanceTo(healer.GlobalPosition),
+                        handler.ParticipationCalls,
+                        handler.ReplyCalls,
+                        roundStatus = round.Status.ToString(),
+                        turnState = activity.Activity?.State.Value,
+                        generation.IsGenerating,
+                        hasResult = generation.Result is not null,
+                    }));
                 CharacterModelStreamTermination terminal = generation.Result!.Updates.OfType<CharacterModelStreamTermination>().Last();
                 bool rejected = mode == "controlled" && index == 3;
                 Require(terminal.Status == (rejected ? CharacterModelStreamTerminationStatus.Failed : CharacterModelStreamTerminationStatus.Completed),
@@ -181,12 +195,13 @@ public partial class DialogueResponseRepairMainCheck : Node
     private static int SpokenCount(CharacterTurnTranscriptController transcript) =>
         transcript.Transcript!.Entries.Count(entry => entry.SpokenStatement is not null);
 
-    private async Task Until(Func<bool> condition, ulong timeout, string check)
+    private async Task Until(Func<bool> condition, ulong timeout, string check, Func<string>? failureDetails = null)
     {
         ulong started = Time.GetTicksMsec();
         while (!condition() && Time.GetTicksMsec() - started < timeout)
         { await Task.Delay(10); await Frames(1); }
-        Require(condition(), check);
+        bool completed = condition();
+        Require(completed, check + (!completed && failureDetails is not null ? ": " + failureDetails() : ""));
     }
 
     private async Task Frames(int count)

@@ -62,6 +62,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
                 return;
             }
 
+            if (!inputController.CanAccept!()) { return; }
             Submit();
             stage = 2;
             return;
@@ -95,6 +96,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
     {
         whispering.ButtonPressed = true;
         input.Text = Text;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         input.EmitSignal(LineEdit.SignalName.TextSubmitted, Text);
     }
 

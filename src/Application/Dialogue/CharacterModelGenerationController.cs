@@ -18,7 +18,8 @@ public static class CharacterModelGenerationController
         WorldObjectSnapshot worldObjects,
         CharacterIntentionAffordanceSnapshot affordances,
         TimeSpan deadline,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        TimeProvider? timeProvider = null)
     {
         return await GenerateCoreAsync(
             model,
@@ -28,7 +29,7 @@ public static class CharacterModelGenerationController
             deadline,
             null,
             null,
-            cancellationToken).ConfigureAwait(false);
+            cancellationToken, timeProvider).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -42,7 +43,8 @@ public static class CharacterModelGenerationController
         CharacterIntentionAffordanceSnapshot affordances,
         TimeSpan deadline,
         CharacterModelGenerationControllerDiagnostics diagnostics,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(diagnostics);
         return await GenerateCoreAsync(
@@ -53,7 +55,7 @@ public static class CharacterModelGenerationController
             deadline,
             diagnostics,
             null,
-            cancellationToken).ConfigureAwait(false);
+            cancellationToken, timeProvider).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -67,7 +69,8 @@ public static class CharacterModelGenerationController
         CharacterIntentionAffordanceSnapshot affordances,
         TimeSpan deadline,
         CharacterModelStreamObservation observation,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(observation);
         return await GenerateCoreAsync(
@@ -78,7 +81,7 @@ public static class CharacterModelGenerationController
             deadline,
             null,
             observation,
-            cancellationToken).ConfigureAwait(false);
+            cancellationToken, timeProvider).ConfigureAwait(false);
     }
 
     private static async Task<CharacterModelStreamSnapshot> GenerateCoreAsync(
@@ -89,7 +92,8 @@ public static class CharacterModelGenerationController
         TimeSpan deadline,
         CharacterModelGenerationControllerDiagnostics? diagnostics,
         CharacterModelStreamObservation? observation,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(request);
@@ -103,10 +107,13 @@ public static class CharacterModelGenerationController
 
         long? diagnosticStartTimestamp = TryGetDiagnosticTimestamp(diagnostics);
 
+        timeProvider ??= TimeProvider.System;
+        using CancellationTokenSource deadlineTimer = new(deadline, timeProvider);
         using CancellationTokenSource deadlineCancellation =
-            CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        deadlineCancellation.CancelAfter(deadline);
+            CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, deadlineTimer.Token);
 
+        long started = timeProvider.GetTimestamp();
+        TimeSpan retryDelay = TimeSpan.Zero;
         for (int attemptCount = 1;
              attemptCount <= CharacterModelRetryPolicy.MaximumAttemptCount;
              attemptCount++)
@@ -116,11 +123,22 @@ public static class CharacterModelGenerationController
                 model,
                 request,
                 observation,
+                retryDelay,
+                timeProvider,
                 deadlineCancellation.Token,
                 cancellationToken).ConfigureAwait(false);
             attempt = ValidateCompletedResponse(request, worldObjects, affordances, attempt);
 
-            if (!CharacterModelRetryPolicy.CanRetry(attemptCount, attempt))
+            bool retry = CharacterModelRetryPolicy.CanRetry(attemptCount, attempt);
+            if (retry)
+            {
+                CharacterModelStreamTermination failed = (CharacterModelStreamTermination)attempt.Updates[^1];
+                retryDelay = CharacterModelRetryPolicy.GetDelay(failed.Failure!);
+                // A wait that cannot finish before the deadline would report TimedOut instead of the provider's failure.
+                retry = retryDelay < deadline - timeProvider.GetElapsedTime(started);
+            }
+
+            if (!retry)
             {
                 await TryObserveTerminalAsync(attempt, observation).ConfigureAwait(false);
                 if (synthesizedTermination)
@@ -144,12 +162,20 @@ public static class CharacterModelGenerationController
         ICharacterModel model,
         CharacterModelGenerationRequest request,
         CharacterModelStreamObservation? observation,
+        TimeSpan retryDelay,
+        TimeProvider timeProvider,
         CancellationToken deadlineToken,
         CancellationToken callerToken)
     {
         CharacterModelStreamSnapshot snapshot = new([]);
         try
         {
+            if (retryDelay > TimeSpan.Zero)
+            {
+                await Task.Delay(retryDelay, timeProvider, deadlineToken).ConfigureAwait(false);
+            }
+
+            deadlineToken.ThrowIfCancellationRequested();
             await foreach (CharacterModelStreamUpdate update in model
                 .StreamResponseAsync(request, deadlineToken)
                 .WithCancellation(deadlineToken)

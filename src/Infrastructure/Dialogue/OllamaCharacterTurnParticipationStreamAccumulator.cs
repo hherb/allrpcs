@@ -166,7 +166,7 @@ public sealed class OllamaCharacterTurnParticipationStreamAccumulator
         bool hasCached = root.TryGetProperty("prompt_eval_cached_count", out JsonElement cachedElement);
         if (!hasInput && !hasOutput)
         {
-            return !hasCached;
+            return true;
         }
 
         if (!hasInput
@@ -177,7 +177,7 @@ public sealed class OllamaCharacterTurnParticipationStreamAccumulator
             || (long)boundedInput + boundedOutput
                 > CharacterModelGenerationDiagnostic.MaximumTokenCount)
         {
-            return false;
+            return true;
         }
 
         inputTokens = boundedInput;

@@ -84,6 +84,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
+        if (OS.GetEnvironment("ALLRPCS_RESTORE_REGRESSION") == "participation")
+        {
+            _ = CheckHeldParticipationRestoreAsync();
+            return;
+        }
+
         WorldObjectSnapshot worldObjects = worldObjectController.WorldObjects
             ?? throw new InvalidOperationException("World objects were not initialized.");
         WorldEventSnapshot worldEvents = worldEventController.WorldEvents
@@ -127,6 +133,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             || !HasRestoredRoutes())
         {
             Fail("Save restoration controller smoke failed exact or repeated root restoration.");
+            return;
+        }
+
+        if (!CheckPreparationFailurePreservesState(snapshot) || !CheckSessionReset(snapshot)
+            || !CheckPublicationOrdering(snapshot))
+        {
             return;
         }
 

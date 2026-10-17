@@ -8,6 +8,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns one exact immutable autonomous-conversation budget.</summary>
 public partial class AutonomousConversationBudgetController : Node
 {
+    internal void ResetSession() { Budget = null; }
+
     /// <summary>Gets the exact initialized budget, if any.</summary>
     public AutonomousConversationBudget? Budget { get; private set; }
 

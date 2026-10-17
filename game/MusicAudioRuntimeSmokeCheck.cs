@@ -17,6 +17,7 @@ namespace Allrpcs.Game;
 /// <summary>Finite ordinary owner, action, reading, restore and state-parity fixtures.</summary>
 public partial class MusicAudioRuntimeSmokeCheck : Node
 {
+    private const double MaximumCooldownResidualSeconds = 1e-9;
     private OpeningRegionMusicAudioController music = null!;
     private OpeningRegionMaterialAudioController material = null!;
     private AudioSettingsController settings = null!;
@@ -39,6 +40,7 @@ public partial class MusicAudioRuntimeSmokeCheck : Node
             GetNode<Node>("../TemporaryCharacterTurnCompletionController").SetProcess(false);
             seeker = GetNode<Seeker>("../Seeker"); seeker.SetPhysicsProcess(false);
             GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present speaker in this disposable recorder fixture.
             music = GetNode<OpeningRegionMusicAudioController>("../OpeningRegionMusicAudioController"); music.SetProcess(false);
             material = GetNode<OpeningRegionMaterialAudioController>("../OpeningRegionMaterialAudioController"); material.SetProcess(false);
             turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
@@ -240,6 +242,28 @@ public partial class MusicAudioRuntimeSmokeCheck : Node
     {
         await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
         music.ResetPresentation(); Tick(180);
+        // Repeated quarter steps can leave a rounding residual on the owner's fractional startup clock.
+        // Reach exact eligibility before producing the fresh region transitions; real cooldown stays forbidden.
+        double cooldown = music.Schedule.CooldownRemaining;
+        Require(double.IsFinite(cooldown) && cooldown >= 0 && cooldown <= MaximumCooldownResidualSeconds,
+            "Exploration cooldown exceeded numeric residual bound: " + JsonSerializer.Serialize(new
+            {
+                cooldown = double.IsFinite(cooldown) ? (double?)cooldown : null,
+                finiteCooldown = double.IsFinite(cooldown),
+                maximumResidual = MaximumCooldownResidualSeconds,
+                mode,
+            }));
+        if (cooldown > 0) { music._Process(cooldown); }
+        Require(music.Schedule.CooldownRemaining == 0, "Exploration transition attempted before actual cooldown expiry: "
+            + JsonSerializer.Serialize(new
+            {
+                cooldown = music.Schedule.CooldownRemaining,
+                music.Schedule.Pending,
+                music.Schedule.Active,
+                music.Starts,
+                materialClip = material.Current?.ClipId,
+                mode,
+            }));
         // Anchor positions are deterministic scene fixtures; the following 24px is actual collision-resolved input.
         OpeningRegionProjectionSource projection = GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource");
         seeker.GlobalPosition = projection.ToGlobal(new(500, 900)); material._Process(0); music._Process(0);

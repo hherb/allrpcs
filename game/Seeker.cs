@@ -17,6 +17,26 @@ public partial class Seeker : CharacterBody2D
     private static readonly StringName MoveDownAction = new("move_down");
     private SeekerWalkAnimationPresenter? walkAnimationPresenter;
     private long motionTick;
+    private readonly HashSet<Node> modalSuspensions = [];
+    private bool physicsProcessingBeforeModals;
+
+    /// <summary>Acquires one modal cause while preserving any pre-existing deliberate suspension.</summary>
+    internal void SuspendForModal(Node owner)
+    {
+        if (modalSuspensions.Contains(owner)) { return; }
+        if (modalSuspensions.Count == 0) { physicsProcessingBeforeModals = IsPhysicsProcessing(); }
+        modalSuspensions.Add(owner);
+        Velocity = Vector2.Zero;
+        SetPhysicsProcess(false);
+    }
+
+    /// <summary>Releases only this modal cause; the last release restores the original baseline.</summary>
+    internal void ResumeAfterModal(Node owner)
+    {
+        if (modalSuspensions.Remove(owner) && modalSuspensions.Count == 0)
+        { SetPhysicsProcess(physicsProcessingBeforeModals); }
+    }
+
 
     /// <summary>Observes completed displacement without allowing presentation to deny movement.</summary>
     public event Action<FootstepMotionSample>? MotionCompleted;

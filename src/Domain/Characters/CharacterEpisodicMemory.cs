@@ -6,7 +6,8 @@ namespace Allrpcs.Domain.Characters;
 /// <summary>
 /// Retains one bounded significant experience with local participants and exact provenance.
 /// </summary>
-public sealed record CharacterEpisodicMemory
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterEpisodicMemory
 {
     /// <summary>Gets the maximum number of participants retained by one memory.</summary>
     public const int MaximumParticipantCount = 32;

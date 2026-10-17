@@ -5,7 +5,8 @@ using Allrpcs.Domain.WorldObjects;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded world state for one provider-neutral sabotage choice.</summary>
-public sealed record CharacterObjectSabotageConcealmentConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterObjectSabotageConcealmentConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or applying sabotage.</summary>
     public CharacterObjectSabotageConcealmentConsiderationRequest(

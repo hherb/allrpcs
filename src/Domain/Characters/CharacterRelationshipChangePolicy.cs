@@ -13,7 +13,6 @@ public static class CharacterRelationshipChangePolicy
 
         if (relationship.CharacterId != change.CharacterId
             || relationship.RelatedCharacterId != change.RelatedCharacterId
-            || relationship.Reasons.Count >= CharacterRelationshipMemory.MaximumReasonCount
             || relationship.Reasons.Any(reason =>
                 reason.ReasonId == change.Reason.ReasonId
                 || reason.SourceTurnId == change.Reason.SourceTurnId))

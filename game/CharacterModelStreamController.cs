@@ -9,6 +9,8 @@ public partial class CharacterModelStreamController : Node
     /// <summary>Gets the exact initialized stream snapshot, if any.</summary>
     public CharacterModelStreamSnapshot? Snapshot { get; private set; }
 
+    internal void InstallPreparedRestoration(CharacterModelStreamSnapshot snapshot) => Snapshot = snapshot;
+
     /// <summary>Initializes this controller once from one exact existing stream snapshot.</summary>
     public bool TryInitialize(CharacterModelStreamSnapshot snapshot)
     {

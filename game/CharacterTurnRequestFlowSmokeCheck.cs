@@ -64,6 +64,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             initialSagePosition = sagePosition.Position;
             sagePosition.Position = new Vector2(-10_000.0f, -10_000.0f);
             input.Text = UnheardText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, UnheardText);
             stage = 1;
             return;
@@ -79,6 +80,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             GetNode<Healer>("../Healer").Position = initialHealerPosition;
             GetNode<Marker2D>("../SageHearingPosition").Position = initialSagePosition;
             input.Text = FirstText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, FirstText);
             stage = 2;
             return;
@@ -98,6 +100,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             }
 
             input.Text = SecondText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, SecondText);
             stage = 3;
             return;
@@ -229,9 +232,12 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
             || activity.Response is null
             || !ReferenceEquals(activity.Response.Request, firstActivity.Request)
-            || !ReferenceEquals(occurred.Utterance, submitted)
-            || !ReferenceEquals(entry?.SpokenStatement, submitted)
-            || submitted.Text != SecondText)
+            || submitted.Text != FirstText
+            || input.Text != SecondText
+            || !GetNode<Label>("../DialogueOverlay/Panel/Status").Text.Contains("BUSY", StringComparison.Ordinal)
+            || !ReferenceEquals(occurred.Delivery, activity.Response.Delivery)
+            || !ReferenceEquals(entry?.Delivery, activity.Response.Delivery)
+            || transcript!.Entries.Any(retained => retained.SpokenStatement?.Text == SecondText))
         {
             Fail("Later occurred dialogue replaced the active request or lost its exact state.");
             return false;

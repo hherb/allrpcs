@@ -30,7 +30,6 @@ public partial class SeekerCustomizationMenuController : Control
     private OptionButton appearance = null!;
     private OptionButton background = null!;
     private Label status = null!;
-    private bool seekerWasPhysicsProcessing;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -69,10 +68,8 @@ public partial class SeekerCustomizationMenuController : Control
             return;
         }
 
-        seekerWasPhysicsProcessing = seeker.IsPhysicsProcessing();
         Show();
-        seeker.Velocity = Vector2.Zero;
-        seeker.SetPhysicsProcess(false);
+        seeker.SuspendForModal(this);
         displayName.GrabFocus();
         GetViewport().SetInputAsHandled();
     }
@@ -139,7 +136,9 @@ public partial class SeekerCustomizationMenuController : Control
 
             status.Text = SelectedStatusText;
             Hide();
-            seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+            Control? focus = GetViewport().GuiGetFocusOwner();
+            if (focus is not null && IsAncestorOf(focus)) { focus.ReleaseFocus(); }
+            seeker.ResumeAfterModal(this);
         }
         catch (ArgumentException)
         {

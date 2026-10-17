@@ -53,7 +53,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         TemporarySeekerCharacterSource seekerSource =
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
         Seeker seeker = GetNode<Seeker>("../Seeker");
-        LineEdit priorFocus = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
+        Button priorFocus = GetNode<Button>("../CommandOverlay/SaveLoadPanel/Save");
         FocusedSearchActivityController focusedSearch =
             GetNode<FocusedSearchActivityController>("../Seeker/FocusedSearchActivityController");
         WorldObjectController worldObjects = GetNode<WorldObjectController>(
@@ -347,7 +347,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
-        return methods.SequenceEqual(["_Ready", "_UnhandledInput"])
+        return methods.SequenceEqual(["ResetAfterRestore", "_Ready", "_UnhandledInput"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance

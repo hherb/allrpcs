@@ -43,6 +43,7 @@ public partial class DialogueSpeechMainSmokeCheck : Node
             CharacterBody2D healer = GetNode<CharacterBody2D>("../Healer");
             CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
             healer.SetPhysicsProcess(false); seeker.SetPhysicsProcess(false);
+            healer.Visible = true; // This disposable dialogue fixture supplies a present listener.
             seeker.GlobalPosition = healer.GlobalPosition + new Vector2(12, 0);
             if (!pocket && mode != "unavailable") { speech.Configure(fake); }
             if (mode != "headless" && mode != "unavailable")
@@ -153,7 +154,7 @@ public partial class DialogueSpeechMainSmokeCheck : Node
             }
             GetNode<CanvasLayer>("../DialogueOverlay").Visible = true;
             text.GrabFocus();
-            string[] focus = ["Whispering", "SpeakReplies", "SpeechLanguage", "StopSpeech", "Submit", "Close", "Input"];
+            string[] focus = ["Whispering", "SpeakReplies", "SpeechLanguage", "StopSpeech", "HoldToTalk", "ListenToPlayer", "StopMicrophone", "Submit", "Close", "Input"];
             foreach (string name in focus)
             {
                 await Press(Key.Tab);
@@ -204,13 +205,24 @@ public partial class DialogueSpeechMainSmokeCheck : Node
 
     private async Task Submit(string playerText, string replyText = "The reply remains in the transcript.")
     {
+        CharacterTurnActivityController turn = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
+        CharacterTurnParticipationRoundTaskController round = GetNode<CharacterTurnParticipationRoundTaskController>(
+            "../CharacterTurnParticipationRoundTaskController");
+        await Wait(() => CharacterTurnStartPolicy.CanStart(turn.Activity)
+            && round.Status == CharacterTurnParticipationRoundTaskStatus.Idle, stage: "submission readiness");
         int before = transcript.Transcript!.Entries.Count;
         submissions++;
         Require(GetNode<TemporaryCharacterTurnParticipationModelSource>("../TemporaryCharacterTurnParticipationModelSource")
             .TrySupplyModel(new ParticipationModel()), "Participation fixture not available");
-        Require(modelSource.TrySupplyModel(new ReplyModel(replyText)), "Model fixture not available at submission " + submissions);
+        ReplyModel reply = new(replyText);
+        Require(modelSource.TrySupplyModel(reply), "Model fixture not available at submission " + submissions);
         text.Text = playerText; text.EmitSignal(LineEdit.SignalName.TextSubmitted, playerText);
-        await Wait(() => transcript.Transcript!.Entries.Count >= before + 2);
+        await Wait(() => reply.Delivery is { } delivery
+            && transcript.Transcript!.Entries.Any(entry => ReferenceEquals(entry.Delivery, delivery)),
+            stage: "supplied reply commit");
+        Require(transcript.Transcript!.Entries.Count >= before + 2, "Submitted turn did not append player and reply");
+        Require(ReferenceEquals(reply.Request?.TurnRequest.DialogueEvent.Delivery.Utterance, input.LastSubmittedUtterance),
+            "Reply model consumed another player delivery");
         Require(input.LastSubmittedUtterance?.Text == playerText, "Typed owner changed submitted words");
         await Frames(4);
     }
@@ -244,10 +256,16 @@ public partial class DialogueSpeechMainSmokeCheck : Node
         await Frames(2);
     }
     private async Task Frames(int count) { for (int index = 0; index < count; index++) { await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); } }
-    private async Task Wait(Func<bool> ready, ulong milliseconds = 15000)
+    private async Task Wait(Func<bool> ready, ulong milliseconds = 15000, string stage = "Fixture")
     {
         ulong deadline = Time.GetTicksMsec() + milliseconds;
-        while (!ready()) { Require(Time.GetTicksMsec() < deadline, "Fixture deadline"); await Frames(1); }
+        while (!ready())
+        {
+            Require(Time.GetTicksMsec() < deadline, stage + " deadline; turn="
+            + GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity?.State
+            + "; round=" + GetNode<CharacterTurnParticipationRoundTaskController>("../CharacterTurnParticipationRoundTaskController").Status
+            + "; transcript=" + string.Join(" | ", transcript.Transcript!.Entries.Select(entry => entry.SpokenStatement?.Text ?? entry.Kind.ToString()))); await Frames(1);
+        }
     }
     private static void Require(bool value, string message) { if (!value) { throw new InvalidOperationException(message); } }
 
@@ -255,16 +273,23 @@ public partial class DialogueSpeechMainSmokeCheck : Node
     {
         public ValueTask<CharacterTurnParticipationDecision> DecideAsync(CharacterTurnParticipationConsiderationRequest request,
             CancellationToken cancellationToken) => ValueTask.FromResult(new CharacterTurnParticipationDecision(
-                request.ScheduledCharacter.Identity.Id, CharacterTurnParticipationKind.Respond, null));
+                request.ScheduledCharacter.Identity.Id,
+                request.IsDirectlyAddressed ? CharacterTurnParticipationKind.Respond : CharacterTurnParticipationKind.RemainSilent,
+                request.IsDirectlyAddressed ? null : request.ScheduledCharacter.Goals.Entries[0]));
     }
     private sealed class ReplyModel(string reply) : ICharacterModel
     {
+        internal CharacterModelGenerationRequest? Request { get; private set; }
+        internal DialogueDelivery? Delivery { get; private set; }
         public async IAsyncEnumerable<CharacterModelStreamUpdate> StreamResponseAsync(CharacterModelGenerationRequest request,
             [EnumeratorCancellation] CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
+            Request = request;
+            Delivery = new DialogueDelivery(new DialogueUtterance(request.TurnRequest.RespondingCharacterId, reply),
+                DialogueDeliveryMode.OrdinarySpeech);
             CharacterTurnResponse response = new(request.TurnRequest, CharacterTurnDisposition.Accept,
-                new DialogueDelivery(new DialogueUtterance(request.TurnRequest.RespondingCharacterId, reply), DialogueDeliveryMode.OrdinarySpeech),
+                Delivery,
                 new CharacterIntention(CharacterIntentionType.Wait, null), [], []);
             yield return new CharacterModelTextDelta(reply);
             yield return new CharacterModelStreamTermination(CharacterModelStreamTerminationStatus.Completed, response, null);

@@ -20,6 +20,30 @@ class CaptureTests(unittest.TestCase):
                 worker.microphone(device)
         return [json.loads(line) for line in output.getvalue().splitlines()]
 
+    def test_supported_rates_finish_normally_and_close_capture(self):
+        for rate in (11025, 22050, 44100, 48000):
+            with self.subTest(rate=rate):
+                class FinishingDevice(Device):
+                    def query_devices(self, **kwargs):
+                        return dict(super().query_devices(**kwargs), default_samplerate=rate)
+                    def InputStream(self, **kwargs):
+                        assert kwargs['samplerate'] == rate
+                        assert kwargs['blocksize'] == int(rate * .032)
+                        return self
+                    def read(self, frames):
+                        import numpy as np
+                        return np.full((frames, 1), .1, dtype=np.float32), False
+                device = FinishingDevice()
+                output = io.StringIO()
+                with patch.object(sys, 'stdin', io.StringIO('{"type":"start"}\n')), patch.object(worker, 'OUTPUT', output):
+                    with patch.object(worker.time, 'monotonic', return_value=0):
+                        worker.microphone(device)
+                values = [json.loads(line) for line in output.getvalue().splitlines()]
+                self.assertTrue(device.closed)
+                self.assertEqual(values[-1], {'type':'finished'})
+                self.assertEqual(len(values[1:-1]), 938)
+                self.assertTrue(all(value['sampleRate'] == rate for value in values[1:-1]))
+
     def test_start_is_explicit_and_no_device_is_queried_before_it(self):
         class Device:
             def query_devices(self, **kwargs):

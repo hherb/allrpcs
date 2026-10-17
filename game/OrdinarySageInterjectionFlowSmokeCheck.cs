@@ -84,8 +84,12 @@ public partial class OrdinarySageInterjectionFlowSmokeCheck : Node
             initialPerception = GetNode<FocusedSearchActivityController>(
                 "../Seeker/FocusedSearchActivityController").Perception;
             initialSeekerPosition = seeker.Position;
+            GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+            GetNode<Healer>("../Healer").Position = new Vector2(2000, 950);
+            seeker.SetPhysicsProcess(false);
             seeker.Position = DialogueSeekerPosition;
             input.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             submitted = true;
             return;
@@ -164,7 +168,11 @@ public partial class OrdinarySageInterjectionFlowSmokeCheck : Node
                 initialPerception);
         if (!matches)
         {
-            Fail("The ordinary scene did not complete the exact bounded sage interjection.");
+            Fail("The ordinary scene did not complete the exact bounded sage interjection: shifted=" + seekerShifted
+                + "; requests=" + participationModel.Requests.Count + "; listeners="
+                + string.Join(",", speechEvent?.Audience.ListenerCharacterIds.Select(id => id.Value) ?? [])
+                + "; transcript=" + transcript?.Entries.Count + "; budget=" + budgetController.Budget?.CompletedTurnCount
+                + "; healer=" + GetNode<Healer>("../Healer").Position + "; seeker=" + seeker.Position);
         }
 
         return matches;

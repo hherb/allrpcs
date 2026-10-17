@@ -26,9 +26,9 @@ public partial class OrdinaryParticipationSmokeModelSupplier : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        bool enabled = OS.GetEnvironment(EnabledEnvironmentVariable) == EnabledEnvironmentValue
+        bool enabled = DebugTestEnvironment.GetEnvironment(EnabledEnvironmentVariable) == EnabledEnvironmentValue
             && !ExcludedCheckEnvironmentVariables.Any(
-                variable => !string.IsNullOrEmpty(OS.GetEnvironment(variable)));
+                variable => !string.IsNullOrEmpty(DebugTestEnvironment.GetEnvironment(variable)));
         SetProcess(enabled);
         if (!enabled)
         {

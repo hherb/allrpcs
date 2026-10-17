@@ -3,7 +3,10 @@ namespace Allrpcs.Domain.Characters;
 /// <summary>Applies one eligible bounded exchange change to immutable relationship memory.</summary>
 public static class CharacterRelationshipChangeTransition
 {
-    /// <summary>Returns a new relationship with one changed dimension and exact appended reason.</summary>
+    /// <summary>
+    /// Returns a new relationship with one changed dimension and the exact reason appended, evicting
+    /// the oldest reason at capacity; once-only checks then cover only the retained reasons.
+    /// </summary>
     public static CharacterRelationshipMemory Apply(
         CharacterRelationshipMemory relationship,
         CharacterRelationshipChange change)
@@ -24,6 +27,8 @@ public static class CharacterRelationshipChangeTransition
             relationship.CharacterId,
             relationship.RelatedCharacterId,
             dimensions,
-            relationship.Reasons.Append(change.Reason));
+            relationship.Reasons
+                .Skip(Math.Max(0, relationship.Reasons.Count - CharacterRelationshipMemory.MaximumReasonCount + 1))
+                .Append(change.Reason));
     }
 }

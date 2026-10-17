@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// <summary>Completes one provider-neutral response from bounded native Ollama NDJSON.</summary>
 public static class OllamaCharacterModelNdjsonCompletion
 {
-    /// <summary>Reads one complete native stream for the exact turn request.</summary>
+    /// <summary>Stops at the first terminal document for the exact turn request.</summary>
     public static async Task<CharacterModelStreamTermination> CompleteAsync(
         CharacterTurnRequest request,
         Stream stream,
@@ -29,13 +29,20 @@ public static class OllamaCharacterModelNdjsonCompletion
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
 
-        IReadOnlyList<string> documents;
+        OllamaCharacterModelStreamAccumulator accumulator = new(request);
+        CharacterModelStreamTermination? termination = null;
         try
         {
-            documents = await OllamaNewlineDelimitedJsonReader.ReadAsync(
-                    stream,
-                    cancellationToken)
-                .ConfigureAwait(false);
+            await foreach (string document in OllamaNewlineDelimitedJsonReader
+                .ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+            {
+                termination = accumulator.Apply(document);
+                if (termination is not null)
+                {
+                    break;
+                }
+            }
         }
         catch (InvalidDataException)
         {
@@ -44,18 +51,6 @@ public static class OllamaCharacterModelNdjsonCompletion
         catch (IOException)
         {
             return FailureResult(CharacterModelFailureCode.Transport);
-        }
-
-        OllamaCharacterModelStreamAccumulator accumulator = new(request);
-        CharacterModelStreamTermination? termination = null;
-        foreach (string document in documents)
-        {
-            if (termination is not null)
-            {
-                return FailureResult(CharacterModelFailureCode.InvalidResponse);
-            }
-
-            termination = accumulator.Apply(document);
         }
 
         if (termination is null)

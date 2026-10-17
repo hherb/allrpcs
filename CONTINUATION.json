@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-16",
+  "updated": "2026-10-18",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1531,15 +1531,16 @@
   "active_slice": {
     "id": "code-health-phase2-player-defects",
     "title": "Fix the player-facing code-review-1 defects",
-    "status": "ready",
+    "status": "in_progress",
     "workstream": "code-health-program",
     "authority_status": "owner_approved_code_health_program_2026-10-17",
     "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
-    "missing_deliverable": "A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.",
-    "instructions": "First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).",
+    "missing_deliverable": "Live fictional OpenAI request/captured stream for #417 and the already requested owner Keychain save result. The complete root gate and hosted CI on b841afed after the PR review corrections have passed.",
+    "instructions": "Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage root pass on 010439d5, so that pass is historical evidence rather than validation of current source. Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests, native 363 passed with two existing quarantines). The complete ./quality.sh on b841afed passed all 218 stages and required markers (2026-10-17 20:57:41-22:12:12 UTC); its summary is committed at docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json. Hosted run 39071192535 on the same source also passed all four jobs. PR #440 is open and ready for review, no longer draft; do not merge. The 2026-10-18 existence-only application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen closed scopes before satisfying exit conditions and applicable authority. Reuse unchanged passing evidence for subsequent prose-only changes.",
     "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md"
+      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
+      "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
     ],
     "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
   },

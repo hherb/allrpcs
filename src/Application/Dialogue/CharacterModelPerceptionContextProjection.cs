@@ -41,7 +41,7 @@ public static class CharacterModelPerceptionContextProjection
                     "Every identified object must exist in the authoritative world-object snapshot.",
                     nameof(worldObjects));
 
-            if (worldObject.Description.Text.Length > 0)
+            if (!string.IsNullOrWhiteSpace(worldObject.Description.Text))
             {
                 entries.Add(new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.FilteredPerception,

@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
 using Godot;
@@ -36,6 +37,7 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
     private TemporaryCharacterModelGenerationInput? firstInput;
     private CharacterModelStreamSnapshot? firstResult;
     private CharacterTurnTranscriptSnapshot? secondAcceptedTranscript;
+    private CharacterTurnRequest? secondRequest;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -46,6 +48,9 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
         {
             return;
         }
+
+        // Godot enables Main processing after child readiness; freeze it after Main is ready.
+        GetParent<Main>().Ready += FreezeMainProcessing;
 
         TemporaryCharacterModelSource modelSource = GetNode<TemporaryCharacterModelSource>(
             "../TemporaryCharacterModelSource");
@@ -79,6 +84,26 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        Main main = GetParent<Main>();
+        var clock = GetNode<CharacterIndependentTaskStepClockController>("../CharacterIndependentTaskStepClockController").Clock;
+        var travel = GetNode<CharacterIndependentTaskTravelController>("../CharacterIndependentTaskTravelController").Progress;
+        bool occurred = GetNode<CharacterIndependentTaskOccurrenceController>("../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null;
+        if (!main.IsNodeReady() || main.IsProcessing() || clock?.ElapsedTowardNextStep != TimeSpan.Zero
+            || travel?.CompletedWaypointCount != 0 || occurred)
+        {
+            Fail("Scripted fixture lost exclusive Main ticks before manual processing. " + JsonSerializer.Serialize(new
+            {
+                processFrames,
+                parentReady = main.IsNodeReady(),
+                parentProcessing = main.IsProcessing(),
+                independentElapsedSeconds = clock?.ElapsedTowardNextStep.TotalSeconds,
+                independentCompletedWaypoints = travel?.CompletedWaypointCount,
+                hasIndependentOccurrence = occurred,
+            }));
+            return;
+        }
+        // Exercise ordinary dialogue without advancing the unrelated independent-task clock.
+        main._Process(0);
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
@@ -219,6 +244,7 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
         }
 
         secondAcceptedTranscript = transcript;
+        secondRequest = activity.Request;
         stage = 4;
     }
 
@@ -252,7 +278,8 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
             || examinationController.LastCollectionOccurrence is not null
             || !HasUnchangedAuthoritativeState())
         {
-            Fail("The later default-offline request did not fail closed after terminal reset.");
+            Fail("The later default-offline request did not fail closed after terminal reset. "
+                + DescribeOfflineFailure(result, activity, termination));
             return;
         }
 
@@ -270,6 +297,43 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
         && ReferenceEquals(worldEventController.WorldTime, initialWorldTime)
         && ReferenceEquals(worldObjectController.WorldObjects, initialWorldObjects)
         && ReferenceEquals(searchController.Perception, initialPerception);
+
+    private void FreezeMainProcessing()
+    {
+        Main main = GetParent<Main>();
+        main.Ready -= FreezeMainProcessing;
+        main.SetProcess(false);
+    }
+
+    private string DescribeOfflineFailure(CharacterModelStreamSnapshot result,
+        CharacterTurnActivity? activity, CharacterModelStreamTermination? termination) =>
+        JsonSerializer.Serialize(new
+        {
+            stage,
+            processFrames,
+            scriptedModel.CallCount,
+            updateKinds = result.Updates.Select(update => update.GetType().Name),
+            terminationStatus = termination?.Status.ToString(),
+            failureCode = termination?.Failure?.Code.ToString(),
+            terminalHasResponse = termination?.Response is not null,
+            activityState = activity?.State.Value,
+            activityHasResponse = activity?.Response is not null,
+            sameSecondRequest = ReferenceEquals(activity?.Request, secondRequest),
+            sameTranscript = ReferenceEquals(transcriptController.Transcript, secondAcceptedTranscript),
+            transcriptKinds = transcriptController.Transcript?.Entries.Select(entry => entry.Kind.Value),
+            hasExamination = examinationController.LastExaminationResult is not null,
+            hasCollection = examinationController.LastCollectionOccurrence is not null,
+            sameEventLog = ReferenceEquals(worldEventController.EventLog, initialEventLog),
+            sameWorldTime = ReferenceEquals(worldEventController.WorldTime, initialWorldTime),
+            sameWorldObjects = ReferenceEquals(worldObjectController.WorldObjects, initialWorldObjects),
+            samePerception = ReferenceEquals(searchController.Perception, initialPerception),
+            independentElapsedSeconds = GetNode<CharacterIndependentTaskStepClockController>(
+                "../CharacterIndependentTaskStepClockController").Clock?.ElapsedTowardNextStep.TotalSeconds,
+            independentCompletedWaypoints = GetNode<CharacterIndependentTaskTravelController>(
+                "../CharacterIndependentTaskTravelController").Progress?.CompletedWaypointCount,
+            hasIndependentOccurrence = GetNode<CharacterIndependentTaskOccurrenceController>(
+                "../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null,
+        });
 
     private static bool HasOnlyFilteredProviderContext(CharacterModelGenerationRequest request) =>
         request.Context.Entries.Any(
@@ -291,6 +355,7 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
     private void Submit(string text)
     {
         inputControl.Text = text;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, text);
     }
 

@@ -80,6 +80,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 0 # Persistent continuation validation needs history since its pinned baseline.
 
       - name: Set up Python 3.12
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
@@ -105,12 +106,14 @@ jobs:
       - name: Run continuation checker self-test
         run: python3 scripts/check-continuation.py --self-test
 
-      - name: Run player speech worker tests
-        run: python3 scripts/test-player-speech-worker.py
+      - name: Run synthetic speech worker tests
+        run: |
+          python3 scripts/test-player-speech-worker.py
+          python3 scripts/test-pocket-speech-worker.py
 
-      # quality.py --self-test is not run here: it passes with a plain python3 (no venv), but one
-      # contract test reads quality.py at a historical revision (git show HERB_REVISION:quality.py),
-      # so it fails in this shallow checkout and would need fetch-depth: 0 on the ~2.4 GB history.
+      - name: Run quality runner self-test
+        run: python3 quality.py --self-test
+
       - name: Compile live Python tooling
         env:
           PYTHONPYCACHEPREFIX: ${{ runner.temp }}/pycache

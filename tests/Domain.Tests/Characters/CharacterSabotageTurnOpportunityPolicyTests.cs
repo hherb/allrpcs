@@ -86,7 +86,7 @@ public sealed class CharacterSabotageTurnOpportunityPolicyTests
     }
 
     [Fact]
-    public void RejectsAValueEqualButNonAuthoritativeLogIdentifier()
+    public void AcceptsValueEqualRestoredLogIdentifiers()
     {
         Input input = CreateInput();
         WorldEventLogSnapshot rebuiltLog = new(
@@ -95,7 +95,7 @@ public sealed class CharacterSabotageTurnOpportunityPolicyTests
                 new WorldEventId(input.CurrentEvent.EventId.Value),
             ]);
 
-        Assert.False(CanCreate(input with { EventLog = rebuiltLog }));
+        Assert.True(CanCreate(input with { EventLog = rebuiltLog }));
     }
 
     [Fact]

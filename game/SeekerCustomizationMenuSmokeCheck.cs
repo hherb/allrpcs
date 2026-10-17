@@ -24,6 +24,8 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
     {
         _ = delta;
         SetProcess(false);
+        string mode = OS.GetEnvironment("ALLRPCS_MODAL_INPUT_CHECK");
+        if (mode.Length > 0) { ModalInputRecoverySmokeCheck.Run(this, mode); return; }
         RunChecks();
     }
 

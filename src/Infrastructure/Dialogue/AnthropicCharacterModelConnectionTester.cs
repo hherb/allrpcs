@@ -13,16 +13,19 @@ public sealed class AnthropicCharacterModelConnectionTester : ICharacterModelCon
         new("https://api.anthropic.com/v1/models/", UriKind.Absolute);
 
     private readonly HttpClient client;
+    private readonly ProviderHttpTimeoutOptions timeoutOptions;
     private readonly IAnthropicCredentialSource credentialSource;
 
     /// <summary>Creates a tester over caller-owned HTTP and credential dependencies.</summary>
     public AnthropicCharacterModelConnectionTester(
         HttpClient client,
-        IAnthropicCredentialSource credentialSource)
+        IAnthropicCredentialSource credentialSource,
+        ProviderHttpTimeoutOptions? timeoutOptions = null)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
         this.client = client;
+        this.timeoutOptions = timeoutOptions ?? new ProviderHttpTimeoutOptions();
         this.credentialSource = credentialSource;
     }
 
@@ -57,9 +60,10 @@ public sealed class AnthropicCharacterModelConnectionTester : ICharacterModelCon
 
         try
         {
-            using HttpResponseMessage response = await client.SendAsync(
+            using HttpResponseMessage response = await ProviderHttpTransport.SendAsync(
+                    client,
                     message,
-                    HttpCompletionOption.ResponseHeadersRead,
+                    timeoutOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
             return response.IsSuccessStatusCode

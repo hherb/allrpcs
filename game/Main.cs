@@ -134,6 +134,14 @@ public partial class Main : Node
             "CharacterTurnTranscriptController");
         dialogueEventController = GetNode<DialogueEventController>("DialogueEventController");
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
+        participationCoordinator.StatusChanged += dialogueInputController.SetStatus;
+        dialogueInputController.CanAccept = () =>
+            (dialogueInputController.LastSubmittedDelivery is null
+                || ReferenceEquals(dialogueInputController.LastSubmittedDelivery, lastProcessedDialogueDelivery))
+            && !participationCoordinator.IsBusy
+            && !modelFlowController.IsGenerating
+            && participationRoundController.Status == CharacterTurnParticipationRoundTaskStatus.Idle
+            && CharacterTurnStartPolicy.CanStart(characterTurnController.Activity);
         characterModelInputSource = GetNode<TemporaryCharacterModelGenerationInputSource>(
             "TemporaryCharacterModelGenerationInputSource");
         healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
@@ -514,6 +522,8 @@ public partial class Main : Node
         ProcessCharacterTurnResponse();
         ProcessCompletedCharacterTurnParticipation();
         ProcessDialogueSubmission();
+        if (dialogueInputController.CanAccept!() && dialogueInputController.Status.Contains("BUSY", StringComparison.Ordinal))
+        { dialogueInputController.SetStatus("Dialogue submission: READY"); }
         UpdateModeStatus(force: false);
     }
 
@@ -669,6 +679,12 @@ public partial class Main : Node
         CharacterControllerAssignment assignment = character.ControllerAssignment;
         TemporaryCharacterModelGenerationInput? input = characterModelInputSource.CreateInput(
             activity);
+        if (input is null && characterModelInputSource.LastAssemblyStatus == CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded)
+        {
+            _ = characterTurnController.TryCancel();
+            dialogueInputController.SetStatus("Required dialogue context exceeds the budget. Reduce context and retry.");
+            return;
+        }
         if (!ReferenceEquals(assignment.CharacterId, activity.Request.RespondingCharacterId)
             || !ReferenceEquals(assignment.ControllerType, ControllerType.Llm)
             || input is null
@@ -732,6 +748,12 @@ public partial class Main : Node
             return;
         }
 
+        dialogueInputController.SetStatus(termination.Status switch
+        {
+            CharacterModelStreamTerminationStatus.TimedOut => "Dialogue response timed out. Please retry.",
+            CharacterModelStreamTerminationStatus.Cancelled => "Dialogue response cancelled. Please retry.",
+            _ => "Dialogue provider unavailable or response failed. Check provider settings and retry.",
+        });
         if (activity is not null
             && CharacterTurnCancellationPolicy.CanCancel(activity)
             && !characterTurnController.TryCancel())
@@ -784,15 +806,16 @@ public partial class Main : Node
             return;
         }
 
+        lastProcessedDialogueDelivery = delivery;
         DialogueUtterance utterance = delivery.Utterance;
         IReadOnlyList<Character> ordinaryParticipants =
             ordinaryCharacterParticipantSource.Participants;
-        DialogueHearingCandidate[] candidates =
+        List<DialogueHearingCandidate> candidates =
         [
             new(utterance.SpeakerCharacterId, ToNumerics(GetNode<Node2D>("Seeker").Position)),
-            new(ordinaryParticipants[0].Identity.Id, ToNumerics(healer.Position)),
-            new(ordinaryParticipants[1].Identity.Id, ToNumerics(sageHearingPosition.Position)),
         ];
+        if (healer.Visible) { candidates.Add(new(ordinaryParticipants[0].Identity.Id, ToNumerics(healer.Position))); }
+        candidates.Add(new(ordinaryParticipants[1].Identity.Id, ToNumerics(sageHearingPosition.Position)));
         if (!dialogueEventController.TryOccur(
                 delivery,
                 candidates[0].Position,
@@ -815,8 +838,6 @@ public partial class Main : Node
         }
 
         StartParticipationRoundIfEligible();
-
-        lastProcessedDialogueDelivery = delivery;
     }
 
     private void StartParticipationRoundIfEligible()
@@ -829,7 +850,7 @@ public partial class Main : Node
             character => ReferenceEquals(character, healerCharacter))
             ? [new CharacterId(healerCharacter.Identity.Id.Value)]
             : [];
-        _ = participationCoordinator.TryStartNewChain(
+        bool started = participationCoordinator.TryStartNewChain(
             occurredEvent,
             heardParticipants,
             directAddresses,
@@ -842,6 +863,7 @@ public partial class Main : Node
                 AutonomousConversationMaximumTurnCount,
                 false),
             ParticipationRoundDeadline);
+        if (!started) { dialogueInputController.SetStatus("No available listener can respond. Please retry."); }
     }
 
     private Character[] GetHeardOrdinaryParticipants(DialogueEvent occurredEvent)
@@ -849,7 +871,8 @@ public partial class Main : Node
         HashSet<CharacterId> heardCharacterIds =
             occurredEvent.Audience.ListenerCharacterIds.ToHashSet();
         return ordinaryCharacterParticipantSource.Participants
-            .Where(character => heardCharacterIds.Contains(character.Identity.Id))
+            .Where(character => heardCharacterIds.Contains(character.Identity.Id)
+                && (!ReferenceEquals(character, ordinaryCharacterParticipantSource.Participants[0]) || healer.Visible))
             .ToArray();
     }
 

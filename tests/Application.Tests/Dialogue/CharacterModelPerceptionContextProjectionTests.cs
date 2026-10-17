@@ -68,7 +68,7 @@ public sealed class CharacterModelPerceptionContextProjectionTests
             .Select((_, index) => CreateWorldObject(
                 $"object-{index}",
                 $"Hidden name {index}",
-                index == 2 ? string.Empty : $"Hidden description {index}"))
+                index == 2 ? " \t " : $"Hidden description {index}"))
             .ToArray();
         CharacterPerceptionSnapshot perception = new(character.Identity.Id, visibilityEntries);
 

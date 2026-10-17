@@ -206,10 +206,17 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
 
+    internal void InstallPreparedRestoration(DialogueEvent? value) => Consultation = value;
+
     internal void InstallRestored(DialogueEvent? consultation)
     {
         Consultation = consultation;
-        if (consultation is not null)
+        PresentRestoredState();
+    }
+
+    internal void PresentRestoredState()
+    {
+        if (Consultation is not null)
         {
             ControlSettingsController.SetGuidance(status, ConsultedStatusText);
         }

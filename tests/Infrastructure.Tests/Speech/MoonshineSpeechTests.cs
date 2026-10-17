@@ -40,6 +40,21 @@ public sealed class MoonshineSpeechTests
         Assert.True(factory.Worker!.Disposed);
     }
     [Theory]
+    [InlineData(11025)]
+    [InlineData(22050)]
+    [InlineData(44100)]
+    [InlineData(48000)]
+    public async Task CaptureFinishedNormallyClosesWorkerAtSupportedRates(int rate)
+    {
+        await using Factory factory = new() { Rate = rate, FinishCapture = true };
+        List<SpeechAudioChunk> chunks = [];
+        await foreach (SpeechAudioChunk chunk in new PortAudioMicrophoneCapture(factory).CaptureAsync(default))
+        { chunks.Add(chunk); }
+        Assert.Equal(rate, Assert.Single(chunks).SampleRate);
+        Assert.True(factory.Worker!.Disposed);
+    }
+
+    [Theory]
     [InlineData("denied")]
     [InlineData("device_lost")]
     public async Task MicrophoneErrorsRetireCaptureWithoutReturningAudio(string error)
@@ -49,6 +64,19 @@ public sealed class MoonshineSpeechTests
         await Assert.ThrowsAsync<IOException>(() => iterator.MoveNextAsync().AsTask());
         Assert.True(factory.Worker!.Disposed);
     }
+    [Theory]
+    [InlineData("{\"type\":\"finished\",\"unexpected\":true}")]
+    [InlineData("{\"type\":\"unknown\"}")]
+    [InlineData("{\"type\":\"error\",\"code\":\"device_lost\"}")]
+    public async Task NonCompletionMessagesFailCaptureAndCloseWorker(string message)
+    {
+        await using Factory factory = new() { CaptureMessage = message };
+        await using IAsyncEnumerator<SpeechAudioChunk> iterator = new PortAudioMicrophoneCapture(factory)
+            .CaptureAsync(default).GetAsyncEnumerator();
+        await Assert.ThrowsAsync<IOException>(() => iterator.MoveNextAsync().AsTask());
+        Assert.True(factory.Worker!.Disposed);
+    }
+
     [Fact]
     public async Task MalformedRecognitionSequenceClosesWorker()
     {
@@ -100,6 +128,8 @@ public sealed class MoonshineSpeechTests
     private sealed class Factory : IPlayerSpeechWorkerFactory, IAsyncDisposable
     {
         internal Worker? Worker;
+        internal string? CaptureMessage;
+        internal int Rate = 16000; internal bool FinishCapture;
         internal bool Microphone; internal SpeechLanguage Language; internal string? Error; internal bool WrongSequence;
         public async ValueTask DisposeAsync() { if (Worker is not null) { await Worker.DisposeAsync(); } }
         public ValueTask<IPlayerSpeechWorker> StartAsync(bool microphone, SpeechLanguage language, CancellationToken token)
@@ -120,9 +150,12 @@ public sealed class MoonshineSpeechTests
             switch (value.GetProperty("type").GetString())
             {
                 case "start":
+                    if (factory.CaptureMessage is not null) { output.Writer.TryWrite(factory.CaptureMessage); break; }
                     if (factory.Error is not null) { output.Writer.TryWrite(JsonSerializer.Serialize(new { type = "error", code = factory.Error })); break; }
                     byte[] bytes = new byte[4]; BinaryPrimitives.WriteSingleLittleEndian(bytes, 0.25f);
-                    output.Writer.TryWrite(JsonSerializer.Serialize(new { type = "audio", sequence = 0, samples = 1, sampleRate = 16000, pcm = Convert.ToBase64String(bytes) })); break;
+                    output.Writer.TryWrite(JsonSerializer.Serialize(new { type = "audio", sequence = 0, samples = 1, sampleRate = factory.Rate, pcm = Convert.ToBase64String(bytes) }));
+                    if (factory.FinishCapture) { output.Writer.TryWrite("{\"type\":\"finished\"}"); }
+                    break;
                 case "audio":
                     output.Writer.TryWrite(JsonSerializer.Serialize(new { type = "event", sequence = factory.WrongSequence ? 2 : 0, kind = "partial", utterance = "1", text = "Do not" })); break;
                 case "finish":

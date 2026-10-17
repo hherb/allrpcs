@@ -10,6 +10,8 @@ namespace Allrpcs.Game;
 /// <summary>Checks actual ordinary Main requests across conversation, action, privacy and load.</summary>
 public partial class ConversationContextMainCheck : Node
 {
+    private CharacterTurnRequest? restoredPendingRequest;
+
     private static readonly JsonSerializerOptions ReportOptions = new() { WriteIndented = true };
     private readonly List<string> checks = [];
     private readonly List<object> observations = [];
@@ -165,6 +167,9 @@ public partial class ConversationContextMainCheck : Node
         int calls = handler.ReplyCalls;
         Task<string> delayed = Submit("Healer, this is a pending pre-load turn.", expectSpeech: false);
         await Until(() => handler.ReplyCalls > calls, 5000, "Generation pending before load");
+        restoredPendingRequest = turns.Activity?.Request;
+        Require(generation.IsGenerating && restoredPendingRequest is not null,
+            "Exact pre-load generation is active before retirement");
         Require(loader.TryRestoreSerialized(serialized), "Successful full save restoration");
         await delayed;
         handler.ReplyDelayMilliseconds = 0;
@@ -197,7 +202,10 @@ public partial class ConversationContextMainCheck : Node
         var previous = generation.Result;
         var input = main.GetNode<LineEdit>("DialogueOverlay/Panel/Input"); input.Text = text;
         main.GetNode<Button>("DialogueOverlay/Panel/Submit").EmitSignal(BaseButton.SignalName.Pressed);
-        await Until(() => generation.Result is not null && !ReferenceEquals(generation.Result, previous),
+        await Until(() => (generation.Result is not null && !ReferenceEquals(generation.Result, previous))
+            || (!expectSpeech && restoredPendingRequest is not null && !generation.HasStarted
+                && turns.Activity?.State == CharacterTurnActivityState.Cancelled
+                && ReferenceEquals(turns.Activity.Request, restoredPendingRequest)),
             mode == "live" ? 90000UL : 10000UL, "Fresh generation");
         await Idle();
         string speech = turns.Activity?.Response?.Speech?.Text ?? "";

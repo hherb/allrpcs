@@ -37,6 +37,7 @@ public partial class PositionalAudioRuntimeSmokeCheck : Node
             recorder.SetProcess(false);
             seeker = GetNode<Seeker>("../Seeker"); seeker.SetPhysicsProcess(false);
             GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present speaker in this disposable recorder fixture.
             audio = GetNode<OpeningRegionPositionalAudioController>("../OpeningRegionPositionalAudioController");
             turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
             captions = GetNode<MaterialSoundCaptionPanel>("../MaterialSoundCaptionPanel");

@@ -57,7 +57,7 @@ public sealed class OpenAiCharacterTurnParticipationSseCompletionTests
     }
 
     [Fact]
-    public async Task RejectsTrailingEventsAfterCompletion()
+    public async Task ReturnsAtCompletionBeforeTrailingEvents()
     {
         CharacterTurnParticipationConsiderationRequest request =
             OpenAiCharacterTurnParticipationStreamAccumulatorTests.CreateRequest(true);
@@ -69,8 +69,7 @@ public sealed class OpenAiCharacterTurnParticipationSseCompletionTests
             + Frame(new { type = "response.created" });
         using MemoryStream stream = Utf8Stream(events);
 
-        await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterTurnParticipationSseCompletion.CompleteAsync(request, stream));
+        Assert.NotNull(await OpenAiCharacterTurnParticipationSseCompletion.CompleteAsync(request, stream));
     }
 
     [Fact]

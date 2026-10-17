@@ -34,7 +34,9 @@ internal static class CharacterModelRequestContent
         + "intention type must be exactly wait, examine-object, or collect-object; speech must be "
         + "a string or JSON null. Return one response matching the required schema.";
 
-    internal static string SerializeTrustedContext(CharacterModelGenerationRequest request)
+    internal static string SerializeTrustedContext(
+        CharacterModelGenerationRequest request,
+        int firstHistoricalMessageIndex = 2)
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -52,7 +54,7 @@ internal static class CharacterModelRequestContent
                 request.TurnRequest.DialogueEvent.Delivery.Mode.Value);
             writer.WritePropertyName("context");
             writer.WriteStartArray();
-            int historicalMessageIndex = 2;
+            int historicalMessageIndex = firstHistoricalMessageIndex;
             foreach (CharacterModelContextEntry entry in request.Context.Entries)
             {
                 if (entry.Kind == CharacterModelContextEntryKind.UntrustedPlayerDialogue)

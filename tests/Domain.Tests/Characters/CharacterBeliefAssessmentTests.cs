@@ -20,6 +20,7 @@ public sealed class CharacterBeliefAssessmentTests
             7_250,
             supporting,
             contradicting);
+        ListIdentityContractTests.AssertIdentity(assessment);
         supporting[0] = contradiction;
         contradicting[0] = firstSupport;
 

@@ -20,6 +20,7 @@ public sealed class CharacterConversationSummaryTests
             characterId,
             sourceTurnIds,
             Text);
+        ListIdentityContractTests.AssertIdentity(summary);
         sourceTurnIds[0] = secondTurnId;
 
         Assert.Same(summaryId, summary.SummaryId);

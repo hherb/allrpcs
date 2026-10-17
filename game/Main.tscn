@@ -676,6 +676,8 @@
 
 [ext_resource type="Script" path="res://SpaceHoldSpeechSmokeCheck.cs" id="space_hold_check"]
 
+[ext_resource type="Script" path="res://DialogueOwnershipMainSmokeCheck.cs" id="dialogue_ownership_check"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
 
@@ -4487,6 +4489,9 @@ script = ExtResource("space_hold_speech")
 
 [node name="SpaceHoldSpeechSmokeCheck" type="Node" parent="."]
 script = ExtResource("space_hold_check")
+
+[node name="DialogueOwnershipMainSmokeCheck" type="Node" parent="."]
+script = ExtResource("dialogue_ownership_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

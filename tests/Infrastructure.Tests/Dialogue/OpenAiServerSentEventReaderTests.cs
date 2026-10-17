@@ -5,6 +5,56 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 
 public sealed class OpenAiServerSentEventReaderTests
 {
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task BoundsEncodedBytesBeforeDecodedCharacterLimit(bool ndjson)
+    {
+        string line = ndjson ? "{\"text\":\"" + new string('語', 1_024) + "\"}\n"
+            : ":" + new string('語', 1_024) + "\n";
+        using MemoryStream excessive = Utf8Stream(string.Concat(Enumerable.Repeat(line, 3_000)));
+        await Assert.ThrowsAsync<InvalidDataException>(async () =>
+        {
+            if (ndjson) { await OllamaNewlineDelimitedJsonReader.ReadAsync(excessive); }
+            else { await OpenAiServerSentEventReader.ReadAsync(excessive); }
+        });
+        Assert.True(excessive.Position <= 8_388_608 + 4_096);
+        Assert.True(excessive.Position < excessive.Length);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task EnforcesFiniteTotalConsumptionAndPreservesSplitUtf8(bool ndjson)
+    {
+        using SplitReadStream split = new(Encoding.UTF8.GetBytes(ndjson ? "{\"text\":\"語😀\"}\n" : "data: 語😀\n\n"));
+        IReadOnlyList<string> documents = ndjson
+            ? await OllamaNewlineDelimitedJsonReader.ReadAsync(split)
+            : await OpenAiServerSentEventReader.ReadAsync(split);
+        Assert.Contains("語😀", Assert.Single(documents), StringComparison.Ordinal);
+        string line = ndjson ? new string(' ', 1_024) + "{}\n" : ":" + new string('x', 1_024) + "\n";
+        using MemoryStream excessive = Utf8Stream(string.Concat(Enumerable.Repeat(line, 4_100)));
+        await Assert.ThrowsAsync<InvalidDataException>(async () =>
+        {
+            if (ndjson) { await OllamaNewlineDelimitedJsonReader.ReadAsync(excessive); }
+            else { await OpenAiServerSentEventReader.ReadAsync(excessive); }
+        });
+        Assert.True(excessive.Position <= OpenAiServerSentEventReader.MaximumStreamLength + 4_096);
+    }
+
+    private sealed class SplitReadStream(byte[] bytes) : MemoryStream(bytes)
+    {
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default) =>
+            base.ReadAsync(buffer[..Math.Min(buffer.Length, 1)], cancellationToken);
+    }
+
+    [Fact]
+    public async Task AcceptsOutputTokenBudgetWithLifecycleMargin()
+    {
+        using MemoryStream stream = Utf8Stream(string.Concat(Enumerable.Repeat("data: {}\n\n", 4_100)));
+        Assert.Equal(4_100, (await OpenAiServerSentEventReader.ReadAsync(stream)).Count);
+    }
+
     [Fact]
     public async Task ReadsCompleteDocumentsInSourceOrderAcrossLfAndCrLfFrames()
     {

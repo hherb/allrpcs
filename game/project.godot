@@ -31,6 +31,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Allrpcs.Game"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/shipping_hygiene/plugin.cfg")
+
 [input]
 
 move_left={

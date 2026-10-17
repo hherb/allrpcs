@@ -13,6 +13,7 @@ public sealed class IngredientPreparationPlanTests
         List<IngredientPreparationStep> supplied = [first, second, third];
 
         IngredientPreparationPlan plan = new(supplied);
+        ListIdentityContractTests.AssertIdentity(plan);
         supplied.Clear();
 
         Assert.Collection(

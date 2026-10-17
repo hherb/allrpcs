@@ -84,7 +84,7 @@ public sealed class CharacterTargetSabotageInfluenceRecoveryCandidateTests
     }
 
     [Fact]
-    public void PolicyRejectsOtherwiseInapplicableInverseChange()
+    public void PolicyAllowsInverseChangeAtCapacityWithOldestReasonEviction()
     {
         RecoveryInput input = Input();
         CharacterRelationshipReason[] priorReasons = Enumerable
@@ -107,7 +107,7 @@ public sealed class CharacterTargetSabotageInfluenceRecoveryCandidateTests
             staleResult,
             input.RecoveryChange);
 
-        Assert.False(CharacterTargetSabotageInfluenceRecoveryPolicy.CanRecover(
+        Assert.True(CharacterTargetSabotageInfluenceRecoveryPolicy.CanRecover(
             conflicting,
             candidate));
         Assert.Equal(CharacterRelationshipMemory.MaximumReasonCount, conflicting.Reasons.Count);

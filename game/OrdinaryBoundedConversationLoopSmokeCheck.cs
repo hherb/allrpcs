@@ -97,6 +97,7 @@ public partial class OrdinaryBoundedConversationLoopSmokeCheck : Node
             initialSagePosition = sagePosition.Position;
             sagePosition.Position = CloseSagePosition;
             input.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             submitted = true;
             return;

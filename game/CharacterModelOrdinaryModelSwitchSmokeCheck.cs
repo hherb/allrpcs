@@ -131,13 +131,17 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
-            Fail("The ordinary model switch did not resolve within its bound.");
+            Fail("The ordinary model switch did not resolve within its bound: stage=" + stage
+                + "; turn=" + turnController.Activity?.State + "; first=" + firstModel.CallCount + "; second=" + secondModel.CallCount
+                + "; draft=" + inputControl.Text + "; status=" + dialogueInputController.Status);
             return;
         }
 
         switch (stage)
         {
             case 0:
+                GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+                GetNode<Healer>("../Healer").Position = new Vector2(2000, 950);
                 CaptureInitialStateAndSubmit();
                 stage = 1;
                 break;
@@ -406,6 +410,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private void Submit(string text)
     {
         inputControl.Text = text;
+        GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
         inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, text);
     }
 

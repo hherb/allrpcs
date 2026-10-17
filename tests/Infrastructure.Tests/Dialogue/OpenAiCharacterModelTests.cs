@@ -27,6 +27,30 @@ public sealed class OpenAiCharacterModelTests
         { HttpStatusCode.BadRequest, CharacterModelFailureCode.ProviderRejected },
     };
 
+    [Theory]
+    [InlineData("17", 17)]
+    [InlineData("999999", 30)]
+    [InlineData("nonsense", 1)]
+    [InlineData("-1", 1)]
+    [InlineData(null, 1)]
+    [InlineData("Thu, 01 Jan 1970 00:00:12 GMT", 12)]
+    [InlineData("Wed, 31 Dec 1969 23:59:59 GMT", 1)]
+    public async Task RetainsOnlyBoundedRetryAfter(string? value, int seconds)
+    {
+        CapturingHandler handler = new(_ =>
+        {
+            HttpResponseMessage response = new(HttpStatusCode.ServiceUnavailable);
+            if (value is not null) response.Headers.TryAddWithoutValidation("Retry-After", value);
+            return response;
+        });
+        using HttpClient client = new(handler);
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings(),
+            OpenAiEndpoint.Default, new ProviderHttpTimeoutOptions(timeProvider: new Allrpcs.TestSupport.ManualTimeProvider()));
+        CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(await CollectAsync(model, CreateRequest())));
+        Assert.Equal(TimeSpan.FromSeconds(seconds), result.Failure?.RetryAfter);
+    }
+
     [Fact]
     public async Task PostsOneAuthenticatedStatelessStreamingRequestAndCompletes()
     {

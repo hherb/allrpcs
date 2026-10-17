@@ -1,5 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
+using Allrpcs.Infrastructure.Tests.Dialogue;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -27,6 +28,45 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryStreamAccumulatorT
         Assert.Same(input.Actor.Identity.Id, decision?.ActorId);
         Assert.Same(abstain ? null : input.Candidates[0], decision?.SelectedCandidate);
         AssertRequestUnchanged(input);
+    }
+
+    [Theory]
+    [InlineData(16, false)]
+    [InlineData(64, true)]
+    public void CompletesWithBoundedSchemaEchoes(int depth, bool abstain)
+    {
+        CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Input input =
+            CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create();
+        OpenAiCharacterTargetSabotageDelayRecoveryStreamAccumulator accumulator = new(
+            input.Request);
+        string response = DecisionDocument(input.Actor.Identity.Id.Value, abstain ? null : 0);
+
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.created", depth)));
+        Assert.Null(accumulator.Apply(OpenAiSchemaEcho.Event("response.in_progress", depth)));
+        Assert.Null(accumulator.Apply("{\"type\":\"response.output_item.added\"}"));
+        Assert.Null(accumulator.Apply(Delta(response)));
+        Assert.Null(accumulator.Apply(Done(response)));
+        CharacterTargetSabotageDelayRecoveryDecision? decision = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Same(input.Actor.Identity.Id, decision?.ActorId);
+        Assert.Same(abstain ? null : input.Candidates[0], decision?.SelectedCandidate);
+        AssertRequestUnchanged(input);
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Input input =
+            CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create();
+        OpenAiCharacterTargetSabotageDelayRecoveryStreamAccumulator accumulator = new(
+            input.Request);
+
+        Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
     }
 
     [Theory]

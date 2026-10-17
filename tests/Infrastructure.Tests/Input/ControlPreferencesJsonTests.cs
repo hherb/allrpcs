@@ -16,12 +16,43 @@ public sealed class ControlPreferencesJsonTests
         Assert.DoesNotContain("device", serialized); Assert.DoesNotContain("path", serialized);
         Assert.Equal(29, ControlPreferencesJson.Deserialize(serialized).Actions.Count);
     }
+    [Fact]
+    public void MissingActionsReceiveDefaultsWithoutChangingCustomRowsAndMigrationIsIdempotent()
+    {
+        ControlPreferences customized = ControlBindingEdit.Set(ControlPreferences.Defaults(), "save_current", new("mouseButton", 8));
+        JsonNode root = JsonNode.Parse(ControlPreferencesJson.Serialize(customized))!;
+        JsonArray rows = root["actions"]!.AsArray();
+        rows.Remove(rows.Single(row => (string?)row!["id"] == "load_current"));
+        string migrated = ControlPreferencesJson.Serialize(ControlPreferencesJson.Deserialize(root.ToJsonString()));
+        Assert.Equal(ControlPreferencesJson.Serialize(customized), migrated);
+        Assert.Equal(migrated, ControlPreferencesJson.Serialize(ControlPreferencesJson.Deserialize(migrated)));
+    }
+
+    [Fact]
+    public void MissingDefaultConflictingWithCustomRowFailsWithoutOverwritingFile()
+    {
+        JsonNode root = JsonNode.Parse(ControlPreferencesJson.Serialize(ControlPreferences.Defaults()))!;
+        JsonArray rows = root["actions"]!.AsArray();
+        JsonNode load = rows.Single(row => (string?)row!["id"] == "load_current")!;
+        rows.Single(row => (string?)row!["id"] == "save_current")!["bindings"] = load["bindings"]!.DeepClone();
+        rows.Remove(load);
+        string text = root.ToJsonString();
+        Assert.Throws<ArgumentException>(() => ControlPreferencesJson.Deserialize(text));
+        string path = Path.Combine(Path.GetTempPath(), "allrpcs-controls-migration-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            File.WriteAllText(path, text);
+            Assert.Equal(ControlPreferencesLoadStatus.Invalid, new FileControlPreferencesStore(path).Load().Status);
+            Assert.Equal(text, File.ReadAllText(path));
+        }
+        finally { File.Delete(path); }
+    }
+
     [Theory]
     [InlineData("version")]
     [InlineData("unknownRoot")]
     [InlineData("missingRoot")]
     [InlineData("duplicateAction")]
-    [InlineData("missingAction")]
     [InlineData("unknownAction")]
     [InlineData("emptyEvents")]
     [InlineData("unknownKind")]
@@ -43,7 +74,6 @@ public sealed class ControlPreferencesJsonTests
             case "unknownRoot": root["extra"] = true; break;
             case "missingRoot": root.AsObject().Remove("schemaVersion"); break;
             case "duplicateAction": rows[1] = rows[0]!.DeepClone(); break;
-            case "missingAction": rows.RemoveAt(0); break;
             case "unknownAction": rows[0]!["id"] = "MOVE_LEFT"; break;
             case "emptyEvents": rows[0]!["bindings"] = new JsonArray(); break;
             case "unknownKind": key["kind"] = "resource"; break;

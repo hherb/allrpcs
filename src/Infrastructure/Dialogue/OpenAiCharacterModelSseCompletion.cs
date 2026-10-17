@@ -9,7 +9,7 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public static class OpenAiCharacterModelSseCompletion
 {
     /// <summary>
-    /// Reads and applies complete semantic event documents for one exact turn request.
+    /// Applies semantic event documents for one exact turn request until the first terminal event.
     /// </summary>
     public static async Task<CharacterModelStreamTermination> CompleteAsync(
         CharacterTurnRequest request,
@@ -25,7 +25,7 @@ public static class OpenAiCharacterModelSseCompletion
     }
 
     /// <summary>
-    /// Reads and applies complete semantic events while retaining only bounded terminal usage.
+    /// Applies semantic events until the first terminal event while retaining only bounded terminal usage.
     /// </summary>
     public static async Task<OpenAiCharacterModelSseResult> CompleteWithUsageAsync(
         CharacterTurnRequest request,
@@ -35,11 +35,19 @@ public static class OpenAiCharacterModelSseCompletion
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
 
-        IReadOnlyList<string> documents;
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+        CharacterModelStreamTermination? termination = null;
         try
         {
-            documents = await OpenAiServerSentEventReader.ReadAsync(stream, cancellationToken)
-                .ConfigureAwait(false);
+            await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+            {
+                termination = accumulator.Apply(document);
+                if (termination is not null)
+                {
+                    break;
+                }
+            }
         }
         catch (InvalidDataException)
         {
@@ -48,18 +56,6 @@ public static class OpenAiCharacterModelSseCompletion
         catch (IOException)
         {
             return Result(Failure(CharacterModelFailureCode.Transport));
-        }
-
-        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
-        CharacterModelStreamTermination? termination = null;
-        foreach (string document in documents)
-        {
-            if (termination is not null)
-            {
-                return Result(Failure(CharacterModelFailureCode.InvalidResponse));
-            }
-
-            termination = accumulator.Apply(document);
         }
 
         return new OpenAiCharacterModelSseResult(

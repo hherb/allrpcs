@@ -14,6 +14,21 @@ public sealed class AnthropicCharacterModelStreamAccumulatorTests
         "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
+    [Theory]
+    [InlineData("null", true)]
+    [InlineData("{}", true)]
+    [InlineData("{\"output_tokens\":-1}", true)]
+    [InlineData("{\"output_tokens\":7}", false)]
+    public void PreservesResponseWithAbsentPartialOrMalformedUsage(string usage, bool hasInput)
+    {
+        AnthropicCharacterModelStreamAccumulator accumulator = StartedAccumulator(includeUsage: hasInput);
+        Assert.Null(accumulator.Apply("{\"type\":\"message_delta\",\"delta\":{\"stop_reason\":\"end_turn\"},\"usage\":" + usage + "}"));
+        Assert.NotNull(accumulator.Apply("{\"type\":\"message_stop\"}")?.Response);
+        Assert.Null(accumulator.InputTokenCount);
+        Assert.Null(accumulator.OutputTokenCount);
+        Assert.Null(accumulator.TotalTokenCount);
+    }
+
     [Fact]
     public void BuffersOneTextBlockAndCompletesTheExactResponse()
     {
@@ -126,7 +141,7 @@ public sealed class AnthropicCharacterModelStreamAccumulatorTests
     }
 
     [Fact]
-    public void RejectsExcessiveCombinedTextNullsAndMalformedUsage()
+    public void RejectsExcessiveCombinedTextAndNullsButIgnoresMalformedUsage()
     {
         AnthropicCharacterModelStreamAccumulator excessive = new(CreateRequest());
         Assert.Null(excessive.Apply(MessageStart(inputTokens: 1)));
@@ -142,7 +157,8 @@ public sealed class AnthropicCharacterModelStreamAccumulatorTests
             + "\"stop_reason\":null,\"usage\":{\"input_tokens\":-1}}}");
 
         Assert.Equal(CharacterModelFailureCode.InvalidResponse, excessiveResult?.Failure?.Code);
-        Assert.Equal(CharacterModelFailureCode.InvalidResponse, usageResult?.Failure?.Code);
+        Assert.Null(usageResult);
+        Assert.Null(malformedUsage.InputTokenCount);
         Assert.Throws<ArgumentNullException>(() =>
             new AnthropicCharacterModelStreamAccumulator(null!));
         Assert.Throws<ArgumentNullException>(() => excessive.Apply(null!));

@@ -23,4 +23,9 @@ public static class AnthropicServerSentEventReader
         Stream stream,
         CancellationToken cancellationToken = default) =>
         OpenAiServerSentEventReader.ReadAsync(stream, cancellationToken);
+    /// <summary>Yields complete data documents without closing the stream.</summary>
+    public static IAsyncEnumerable<string> ReadDocumentsAsync(
+        Stream stream,
+        CancellationToken cancellationToken = default) =>
+        OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken);
 }

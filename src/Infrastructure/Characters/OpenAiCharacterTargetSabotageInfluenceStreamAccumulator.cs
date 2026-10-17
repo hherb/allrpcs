@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Infrastructure.Characters;
 
 /// <summary>Accumulates one bounded OpenAI stream into an exact influence decision.</summary>
 public sealed class OpenAiCharacterTargetSabotageInfluenceStreamAccumulator
 {
-    private const int MaximumEventDepth = 8;
     private readonly CharacterTargetSabotageInfluenceConsiderationRequest request;
     private CharacterTargetSabotageInfluenceDecision? completedDecision;
     private int responseDeltaLength;
@@ -42,14 +42,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceStreamAccumulator
 
         try
         {
-            using JsonDocument document = JsonDocument.Parse(
-                serializedEvent,
-                new JsonDocumentOptions
-                {
-                    AllowTrailingCommas = false,
-                    CommentHandling = JsonCommentHandling.Disallow,
-                    MaxDepth = MaximumEventDepth,
-                });
+            using JsonDocument document = OpenAiStreamDocument.Parse(serializedEvent);
             JsonElement root = document.RootElement;
             if (root.ValueKind != JsonValueKind.Object
                 || !root.TryGetProperty("type", out JsonElement typeElement)

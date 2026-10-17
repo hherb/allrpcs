@@ -5,6 +5,19 @@ namespace Allrpcs.Application.Dialogue;
 /// </summary>
 public static class CharacterModelRetryPolicy
 {
+    /// <summary>Gets the fallback delay when a retryable failure has no valid timing hint.</summary>
+    public static TimeSpan DefaultDelay => TimeSpan.FromSeconds(1);
+
+    /// <summary>Gets the longest permitted server-directed retry delay.</summary>
+    public static TimeSpan MaximumDelay => TimeSpan.FromSeconds(30);
+
+    /// <summary>Gets the bounded delay for a retryable failure.</summary>
+    public static TimeSpan GetDelay(CharacterModelFailure failure)
+    {
+        ArgumentNullException.ThrowIfNull(failure);
+        return failure.RetryAfter ?? DefaultDelay;
+    }
+
     /// <summary>Gets the initial attempt plus the single permitted retry.</summary>
     public const int MaximumAttemptCount = 2;
 

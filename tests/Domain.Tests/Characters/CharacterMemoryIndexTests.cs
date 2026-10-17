@@ -17,6 +17,7 @@ public sealed class CharacterMemoryIndexTests
         CharacterMemoryTag[] tags = [topic, entity, location, relationship];
 
         CharacterMemoryIndexEntry entry = new(reference, tags);
+        ListIdentityContractTests.AssertIdentity(entry);
         tags[0] = entity;
 
         Assert.Same(reference, entry.MemoryReference);

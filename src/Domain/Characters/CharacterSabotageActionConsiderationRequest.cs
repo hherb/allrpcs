@@ -1,7 +1,8 @@
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains one exact actor and caller-supplied sabotage kinds for consideration.</summary>
-public sealed record CharacterSabotageActionConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterSabotageActionConsiderationRequest
 {
     /// <summary>Creates one provider-neutral request without selecting or applying an action.</summary>
     public CharacterSabotageActionConsiderationRequest(

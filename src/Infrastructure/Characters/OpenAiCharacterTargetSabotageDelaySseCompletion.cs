@@ -6,7 +6,7 @@ namespace Allrpcs.Infrastructure.Characters;
 /// <summary>Completes one target-delay decision from bounded OpenAI Responses SSE.</summary>
 public static class OpenAiCharacterTargetSabotageDelaySseCompletion
 {
-    /// <summary>Reads and applies complete semantic events for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
     public static async Task<CharacterTargetSabotageDelayDecision> CompleteAsync(
         CharacterTargetSabotageDelayConsiderationRequest request,
         Stream stream,
@@ -14,21 +14,17 @@ public static class OpenAiCharacterTargetSabotageDelaySseCompletion
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
-
-        IReadOnlyList<string> documents = await OpenAiServerSentEventReader
-            .ReadAsync(stream, cancellationToken)
-            .ConfigureAwait(false);
         OpenAiCharacterTargetSabotageDelayStreamAccumulator accumulator = new(request);
         CharacterTargetSabotageDelayDecision? decision = null;
-        foreach (string document in documents)
+        await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
         {
-            if (decision is not null)
-            {
-                throw new InvalidDataException(
-                    "The OpenAI target-delay stream contains events after completion.");
-            }
 
             decision = accumulator.Apply(document);
+            if (decision is not null)
+            {
+                return decision;
+            }
         }
 
         return decision ?? throw new InvalidDataException(

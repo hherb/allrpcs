@@ -8,7 +8,6 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// </summary>
 public sealed class OpenAiCharacterTurnParticipationStreamAccumulator
 {
-    private const int MaximumEventDepth = 8;
     private readonly CharacterTurnParticipationConsiderationRequest request;
     private CharacterTurnParticipationDecision? completedDecision;
     private int responseDeltaLength;
@@ -44,14 +43,7 @@ public sealed class OpenAiCharacterTurnParticipationStreamAccumulator
 
         try
         {
-            using JsonDocument document = JsonDocument.Parse(
-                serializedEvent,
-                new JsonDocumentOptions
-                {
-                    AllowTrailingCommas = false,
-                    CommentHandling = JsonCommentHandling.Disallow,
-                    MaxDepth = MaximumEventDepth,
-                });
+            using JsonDocument document = OpenAiStreamDocument.Parse(serializedEvent);
             JsonElement root = document.RootElement;
             if (root.ValueKind != JsonValueKind.Object
                 || !root.TryGetProperty("type", out JsonElement typeElement)

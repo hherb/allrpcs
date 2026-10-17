@@ -1,3 +1,5 @@
+using Allrpcs.Domain.Collections;
+
 namespace Allrpcs.Domain.Dialogue;
 
 /// <summary>
@@ -9,10 +11,13 @@ public sealed class CharacterTurnTranscriptSnapshot
     /// Creates a transcript snapshot. Repeated entries remain valid in-world occurrences.
     /// </summary>
     public CharacterTurnTranscriptSnapshot(IEnumerable<CharacterTurnTranscriptEntry> entries)
+        : this(entries, null) { }
+
+    internal CharacterTurnTranscriptSnapshot(IEnumerable<CharacterTurnTranscriptEntry> entries, AppendWork? work)
     {
         ArgumentNullException.ThrowIfNull(entries);
 
-        List<CharacterTurnTranscriptEntry> retainedEntries = new();
+        AppendSequence<CharacterTurnTranscriptEntry> retainedEntries = new(work);
         foreach (CharacterTurnTranscriptEntry entry in entries)
         {
             if (entry is null)
@@ -22,11 +27,16 @@ public sealed class CharacterTurnTranscriptSnapshot
                     nameof(entries));
             }
 
-            retainedEntries.Add(entry);
+            retainedEntries = retainedEntries.Append(entry);
         }
 
-        Entries = retainedEntries.AsReadOnly();
+        Entries = retainedEntries;
     }
+
+    private CharacterTurnTranscriptSnapshot(AppendSequence<CharacterTurnTranscriptEntry> entries) => Entries = entries;
+
+    internal CharacterTurnTranscriptSnapshot Append(CharacterTurnTranscriptEntry entry) =>
+        new(((AppendSequence<CharacterTurnTranscriptEntry>)Entries).Append(entry));
 
     /// <summary>Gets transcript entries in their stable supplied order.</summary>
     public IReadOnlyList<CharacterTurnTranscriptEntry> Entries { get; }

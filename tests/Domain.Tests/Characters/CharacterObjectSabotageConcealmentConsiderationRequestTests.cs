@@ -25,6 +25,7 @@ public sealed class CharacterObjectSabotageConcealmentConsiderationRequestTests
             input.Concealment,
             input.Evidence,
             supplied);
+        ListIdentityContractTests.AssertIdentity(request);
 
         supplied[0] = second;
 

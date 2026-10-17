@@ -89,6 +89,20 @@ public partial class CharacterTurnParticipationRoundTaskController : Node
         return true;
     }
 
+    internal PreparedRestore PrepareSessionReset()
+    {
+        Task? retiredTask = roundTask;
+        CancellationTokenSource? retiredCancellation = roundCancellation;
+        return new PreparedRestore(() =>
+        {
+            roundTask = null;
+            roundCancellation = null;
+            Result = null;
+            cancellationRequested = false;
+            Status = CharacterTurnParticipationRoundTaskStatus.Idle;
+        }, () => RetiredRestoreTask.Retire(retiredTask, retiredCancellation));
+    }
+
     /// <inheritdoc />
     public override void _Process(double delta)
     {

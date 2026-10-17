@@ -19,7 +19,6 @@ public partial class JournalOpenCloseInputController : Node
     private Seeker seeker = null!;
     private JournalSectionSelectionController selection = null!;
     private bool isOpen;
-    private bool seekerWasPhysicsProcessing;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -91,13 +90,34 @@ public partial class JournalOpenCloseInputController : Node
             return false;
         }
 
-        seekerWasPhysicsProcessing = seeker.IsPhysicsProcessing();
-        seeker.Velocity = Vector2.Zero;
-        seeker.SetPhysicsProcess(false);
+        seeker.SuspendForModal(this);
         close.GrabFocus();
         isOpen = true;
         UpdateNavigationButtons();
         return true;
+    }
+
+    /// <summary>Closes this reading modal after a successful load, releasing its movement suspension.</summary>
+    public void ResetAfterRestore()
+    {
+        PreparedRestore reset = PrepareSessionReset();
+        reset.Commit();
+        if (reset.Publish is { } publish) { RestoreParticipantRegistry.Publish(publish); }
+    }
+
+    internal PreparedRestore PrepareSessionReset()
+    {
+        bool wasOpen = isOpen;
+        return new PreparedRestore(() =>
+        {
+            isOpen = false;
+        }, () =>
+        {
+            // Resume first so a presentation failure cannot leave the Seeker suspended.
+            if (wasOpen) { seeker.ResumeAfterModal(this); }
+            panel.Visible = false;
+            if (wasOpen) { GetViewport().GuiGetFocusOwner()?.ReleaseFocus(); }
+        });
     }
 
     private bool TryClose()
@@ -108,7 +128,7 @@ public partial class JournalOpenCloseInputController : Node
         }
 
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
-        seeker.SetPhysicsProcess(seekerWasPhysicsProcessing);
+        seeker.ResumeAfterModal(this);
         isOpen = false;
         return true;
     }

@@ -39,6 +39,69 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
     }
 
     [Fact]
+    public void CompletesWithRealCharacterTurnSchemaEcho()
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+        string created = OpenAiSchemaEcho.RealEvent("response.created", "in_progress");
+        // The echoed real schema is deeper than the former eight-level event cap (#417).
+        Assert.ThrowsAny<System.Text.Json.JsonException>(() => System.Text.Json.JsonDocument.Parse(
+            created, new System.Text.Json.JsonDocumentOptions { MaxDepth = 8 }));
+
+        Assert.Null(accumulator.Apply(created));
+        Assert.Null(accumulator.Apply(Delta(FirstDocumentPart + SecondDocumentPart)));
+        Assert.Null(accumulator.Apply(Done(FirstDocumentPart + SecondDocumentPart)));
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            OpenAiSchemaEcho.RealEvent("response.completed", "completed"));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Same(CharacterIntentionType.Wait, completed?.Response?.ImmediateIntention.Type);
+    }
+
+    [Theory]
+    [InlineData(16)]
+    [InlineData(64)]
+    public void CompletesWithBoundedSchemaEchoes(int depth)
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+
+        CharacterModelStreamTermination? created = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.created", depth));
+        CharacterModelStreamTermination? first = accumulator.Apply(Delta(FirstDocumentPart));
+        CharacterModelStreamTermination? second = accumulator.Apply(Delta(SecondDocumentPart));
+        CharacterModelStreamTermination? done = accumulator.Apply(
+            Done(FirstDocumentPart + SecondDocumentPart));
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            OpenAiSchemaEcho.Event("response.completed", depth));
+
+        Assert.Null(created);
+        Assert.Null(first);
+        Assert.Null(second);
+        Assert.Null(done);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Same(request, completed?.Response?.Request);
+        Assert.Same(CharacterIntentionType.Wait, completed?.Response?.ImmediateIntention.Type);
+        Assert.Null(completed?.Failure);
+    }
+
+    [Theory]
+    [MemberData(nameof(OpenAiSchemaEcho.InvalidEvents),
+        MemberType = typeof(OpenAiSchemaEcho))]
+    public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+
+        CharacterModelStreamTermination? result = accumulator.Apply(serializedEvent);
+
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(result?.Response);
+        Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
+            "{\"type\":\"response.created\"}"));
+    }
+
+    [Fact]
     public void IgnoresReasoningEventsAndUsesTheBoundedDoneTextAsAuthoritative()
     {
         CharacterTurnRequest request = CreateRequest();
@@ -124,7 +187,7 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
     [InlineData("{\"input_tokens\":1.5,\"output_tokens\":2,\"total_tokens\":3.5}")]
     [InlineData("{\"input_tokens\":1000000,\"output_tokens\":1,\"total_tokens\":1000001}")]
     [InlineData("{\"input_tokens\":1,\"input_tokens\":1,\"output_tokens\":2,\"total_tokens\":3}")]
-    public void RejectsMalformedInconsistentOrExcessiveCompletedUsage(string usage)
+    public void RetainsValidResponseWithUnknownMalformedInconsistentOrExcessiveUsage(string usage)
     {
         OpenAiCharacterModelStreamAccumulator accumulator = CompletedAccumulator();
         string completed = "{\"type\":\"response.completed\",\"response\":{\"usage\":"
@@ -133,7 +196,8 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
 
         CharacterModelStreamTermination? result = accumulator.Apply(completed);
 
-        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(result?.Failure);
+        Assert.NotNull(result?.Response);
         Assert.Null(accumulator.InputTokenCount);
         Assert.Null(accumulator.OutputTokenCount);
         Assert.Null(accumulator.TotalTokenCount);

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
 using Godot;
@@ -48,6 +49,9 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             return;
         }
 
+        // Godot enables Main processing after child readiness; keep physics live and freeze Main after it is ready.
+        GetParent<Main>().Ready += FreezeMainProcessing;
+
         flow = GetNode<CharacterModelGenerationFlowController>(
             "../CharacterModelGenerationFlowController");
         healer = GetNode<Healer>("../Healer");
@@ -69,10 +73,33 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        Main main = GetParent<Main>();
+        var clock = GetNode<CharacterIndependentTaskStepClockController>("../CharacterIndependentTaskStepClockController").Clock;
+        var travel = GetNode<CharacterIndependentTaskTravelController>("../CharacterIndependentTaskTravelController").Progress;
+        bool occurred = GetNode<CharacterIndependentTaskOccurrenceController>("../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null;
+        if (!main.IsNodeReady() || main.IsProcessing() || clock?.ElapsedTowardNextStep != TimeSpan.Zero
+            || travel?.CompletedWaypointCount != 0 || occurred)
+        {
+            Fail("Offline fixture lost exclusive Main ticks before manual processing. " + JsonSerializer.Serialize(new
+            {
+                processFrames,
+                parentReady = main.IsNodeReady(),
+                parentProcessing = main.IsProcessing(),
+                independentElapsedSeconds = clock?.ElapsedTowardNextStep.TotalSeconds,
+                independentCompletedWaypoints = travel?.CompletedWaypointCount,
+                hasIndependentOccurrence = occurred,
+            }));
+            return;
+        }
+        // Exercise ordinary dialogue without advancing the unrelated independent-task clock.
+        main._Process(0);
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
-            Fail("Ordinary offline character-model flow did not finish within its bound.");
+            Fail("Ordinary offline character-model flow did not finish within its bound: stage=" + stage
+                + "; generating=" + flow.IsGenerating + "; result=" + (flow.Result is not null)
+                + "; turn=" + turnController.Activity?.State + "; healer=" + healer.Position
+                + "; initial=" + initialHealerPosition + "; input=" + dialogueInputController.Status);
             return;
         }
 
@@ -80,6 +107,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
         {
             initialHealerPosition = healer.Position;
             inputControl.Text = PlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
             return;
@@ -96,6 +124,12 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
 
     private void CaptureAcceptedDialogueBoundary()
     {
+        // One fixture-owned Main tick submits after the participation coordinator's frame.
+        if (GetNode<OrdinaryPlayerDialogueParticipationCoordinator>("../OrdinaryPlayerDialogueParticipationCoordinator").IsBusy)
+        {
+            return;
+        }
+
         string expectedText = stage == 1 ? PlayerText : SecondPlayerText;
         int expectedTranscriptCount = stage == 1 ? 1 : 2;
         DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
@@ -117,7 +151,20 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             || (firstUtterance is not null
                 && !ReferenceEquals(transcript.Entries[0].SpokenStatement, firstUtterance)))
         {
-            Fail("Player dialogue did not start the exact ordinary awaiting healer turn.");
+            Fail("Player dialogue did not start the exact ordinary awaiting healer turn. " + JsonSerializer.Serialize(new
+            {
+                stage,
+                processFrames,
+                hasUtterance = utterance is not null,
+                hasActivity = activity is not null,
+                activityState = activity?.State.Value,
+                transcriptCount = transcript?.Entries.Count,
+                expectedTranscriptCount,
+                sameUtterance = ReferenceEquals(dialogue?.Utterance, utterance),
+                sameRequestEvent = ReferenceEquals(activity?.Request.DialogueEvent, dialogue),
+                participationBusy = GetNode<OrdinaryPlayerDialogueParticipationCoordinator>("../OrdinaryPlayerDialogueParticipationCoordinator").IsBusy,
+                participationStatus = GetNode<CharacterTurnParticipationRoundTaskController>("../CharacterTurnParticipationRoundTaskController").Status.ToString(),
+            }));
             return;
         }
 
@@ -188,7 +235,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             || text.Visible
             || text.Text.Length != 0
             || deterministicResponse.Text != NoResponseText
-            || dialogueStatus.Text != TemporaryDialogueInputPanel.AcceptedStatusText
+            || !dialogueStatus.Text.Contains("retry", StringComparison.OrdinalIgnoreCase)
             || examinationController.LastExaminationResult is not null
             || examinationController.LastCollectionOccurrence is not null
             || !ReferenceEquals(worldEventController.EventLog, initialEventLog)
@@ -201,7 +248,42 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
                     "../Seeker/FocusedSearchActivityController").Perception,
                 initialPerception))
         {
-            Fail("Ordinary offline failure fabricated dialogue or changed scene state.");
+            Fail("Ordinary offline failure fabricated dialogue or changed scene state. "
+                + JsonSerializer.Serialize(new
+                {
+                    stage,
+                    processFrames,
+                    hasExpectedInput = expectedInput is not null,
+                    updateKinds = result.Updates.Select(update => update.GetType().Name),
+                    terminationStatus = termination?.Status.ToString(),
+                    failureCode = termination?.Failure?.Code.ToString(),
+                    terminalHasResponse = termination?.Response is not null,
+                    sameRequest = ReferenceEquals(turnController.Activity?.Request, expectedInput?.GenerationRequest.TurnRequest),
+                    activityState = turnController.Activity?.State.Value,
+                    activityHasResponse = turnController.Activity?.Response is not null,
+                    sameDialogue = ReferenceEquals(dialogueController.LastOccurredEvent, acceptedDialogue),
+                    sameTranscript = ReferenceEquals(transcriptController.Transcript, acceptedTranscript),
+                    transcriptKinds = transcriptController.Transcript?.Entries.Select(entry => entry.Kind.Value),
+                    canonicalStatus = ReferenceEquals(status.Presentation, CharacterModelGenerationStatusPresentation.Failed),
+                    canonicalStatusText = status.Text == CharacterModelGenerationStatusPresentation.Failed.Text,
+                    text.Visible,
+                    hasStreamText = text.Text.Length != 0,
+                    noDeterministicResponse = deterministicResponse.Text == NoResponseText,
+                    hasRetryStatus = dialogueStatus.Text.Contains("retry", StringComparison.OrdinalIgnoreCase),
+                    hasExamination = examinationController.LastExaminationResult is not null,
+                    hasCollection = examinationController.LastCollectionOccurrence is not null,
+                    sameEventLog = ReferenceEquals(worldEventController.EventLog, initialEventLog),
+                    sameWorldTime = ReferenceEquals(worldEventController.WorldTime, initialWorldTime),
+                    sameWorldObjects = ReferenceEquals(GetNode<WorldObjectController>("../WorldObjectController").WorldObjects, initialWorldObjects),
+                    samePerception = ReferenceEquals(GetNode<FocusedSearchActivityController>("../Seeker/FocusedSearchActivityController").Perception, initialPerception),
+                    healerMoved = !healer.Position.IsEqualApprox(initialHealerPosition),
+                    independentElapsedSeconds = GetNode<CharacterIndependentTaskStepClockController>(
+                        "../CharacterIndependentTaskStepClockController").Clock?.ElapsedTowardNextStep.TotalSeconds,
+                    independentCompletedWaypoints = GetNode<CharacterIndependentTaskTravelController>(
+                        "../CharacterIndependentTaskTravelController").Progress?.CompletedWaypointCount,
+                    hasIndependentOccurrence = GetNode<CharacterIndependentTaskOccurrenceController>(
+                        "../CharacterIndependentTaskOccurrenceController").LastOccurrence is not null,
+                }));
             return;
         }
 
@@ -211,6 +293,7 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             firstRequest = expectedInput.GenerationRequest.TurnRequest;
             firstUtterance = firstRequest.DialogueEvent.Utterance;
             inputControl.Text = SecondPlayerText;
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.
             inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, SecondPlayerText);
             stage = 3;
             return;
@@ -232,6 +315,13 @@ public partial class TemporaryOfflineCharacterModelSourceSmokeCheck : Node
             + "turns, only canonical failure status appeared, and routine movement continued "
             + "without fabricated speech or authoritative state mutation.");
         GetTree().Quit();
+    }
+
+    private void FreezeMainProcessing()
+    {
+        Main main = GetParent<Main>();
+        main.Ready -= FreezeMainProcessing;
+        main.SetProcess(false);
     }
 
     private void Fail(string message)

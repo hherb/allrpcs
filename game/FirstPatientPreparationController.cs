@@ -117,7 +117,9 @@ public partial class FirstPatientPreparationController : Node
     }
 
     /// <summary>Reconstructs transient preparation state from durable first-patient state.</summary>
-    internal void InstallRestored(FirstPatientSaveState state)
+    internal void InstallRestored(FirstPatientSaveState state) => PrepareRestoration(state)();
+
+    internal Action PrepareRestoration(FirstPatientSaveState state)
     {
         ArgumentNullException.ThrowIfNull(state);
 
@@ -137,10 +139,7 @@ public partial class FirstPatientPreparationController : Node
                     : state.PreparedBatches.Batches[0].Preparation;
         if (retainedPreparation is null)
         {
-            Ingredients = initial;
-            Activity = null;
-            Outcome = null;
-            return;
+            return () => { Ingredients = initial; Activity = null; Outcome = null; };
         }
 
         if (!ReferenceEquals(retainedPreparation.Activity.Recipe, recipe))
@@ -152,8 +151,11 @@ public partial class FirstPatientPreparationController : Node
         IngredientPreparationStartResult started = IngredientPreparationStartTransition.Start(
             recipe,
             initial);
-        Ingredients = started.Ingredients;
-        Activity = retainedPreparation.Activity;
-        Outcome = retainedPreparation;
+        return () =>
+        {
+            Ingredients = started.Ingredients;
+            Activity = retainedPreparation.Activity;
+            Outcome = retainedPreparation;
+        };
     }
 }

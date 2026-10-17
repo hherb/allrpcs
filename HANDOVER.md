@@ -6,81 +6,69 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-The microphone trial is paused for the owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md).
+The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
+is active. Phase 2 Tasks 1–12 and the original whole-phase review passed. The retained
+[218-stage root pass](docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json) on
+`010439d5` is historical: product/tooling review corrections `cee9df2b` and fixture correction
+`b841afed` followed it. Latest [hosted run 39069028898](https://github.com/hherb/allrpcs/actions/runs/39069028898)
+on `b841afed` passed all four jobs: 5,924 solution tests, 23 runner self-tests and native
+363 passed / zero failed / two existing quarantines. Full hosted logs are retained locally at
+`/private/tmp/allrpcs-phase2-current-ci.log`.
 
-[Optional Pocket reply playback](speech-direction/dialogue-integration/README.md) is integrated in
-Main: Settings → Dialogue → Speak replies, English/German and Stop speech. It speaks exact committed
-reply text on the Speech bus, with bounded PCM, interruption and text fallback. Local developer
-configuration is documented in that package; no packaged interpreter/model installer is provided.
-The owner selected Moonshine Small Streaming. [Player speech integration](speech-direction/player-asr-integration/README.md)
-adds opt-in Hold to talk, Listen (headphones), Stop mic and editable English/German drafts. Submit and
-Whisper still use the existing dialogue owner. Native/synthetic Main and full quality pass; linked
-verification binds the final evidence.
-The [Space successor](speech-direction/space-hold-to-talk/README.md) keeps native taps and starts voice
-after a 300ms hold regardless of game control or popup focus, without a voice mode. Release finalizes
-the editable draft. Its current checks and full quality pass. The owner reported good live recognition;
-the owner confirms English and German recognition through held Space. The [partial human trial record](speech-direction/player-microphone-qualification/README.md)
-also records correction before Submit and Stop mic during a hold as working. The owner confirms
-built-in microphone/speakers and both languages in a slightly noisy room, and now confirms live draft
-updates in English and German. Release stops listening with an editable, unsent draft. Brief taps
-insert normal spaces without starting the microphone. The owner reported two successful spoken dialogue turns followed by failure. The closed
-[Ollama participation repair](speech-direction/ollama-participation-repair/README.md) supplies the
-missing ordinary binding and cached metadata support. The separately approved
-[response repair](speech-direction/dialogue-response-repair/README.md) constrains Ollama
-speech/mode pairing and completes silent turns without blocking later input. Eight distinct
-fictional controlled and selected `gemma4:e4b` local-model generations and the recovered full
-quality gate passed. The cancellation fixture now holds unrecorded speech, preserving its
-assertions. Both runtime repairs are closed; human repeated Whisper/reply and echo outcomes
-remain partial or unperformed. Preserve the successful recognition/typing observations and
-reported two-turn success followed by failure. An earlier post-restart report found occasional
-missing Healer responses. The owner then clarified that ordinary answers work, while examination
-requests produce neither visible action nor reply. Source tracing finds a speech-dependent action
-occurrence gate and no navigation handoff in the temporary logical examination flow. The exact
-human model output is unknown. The owner approved the [examination action successor](speech-direction/herb-examination-action-repair/README.md).
-Its implementation now executes accepted spoken/silent examinations through movement and arrival,
-with visible result/failure and no automatic collection. Controlled native Main, a fictional
-`gemma4:e4b` examination and the recovered full gate (216 stages; 5,644 unit tests) pass.
-This runtime repair is closed; resume the existing physical trial and preserve its case totals.
-The owner-requested [conversation context repair](speech-direction/conversation-context-repair/README.md)
-is complete and closed. Generation receives bounded heard/own speech with speaker roles and exact
-examination outcomes. Private speech stays filtered; successful loads clear session history and
-fence pending replies. Five fictional selected-model submissions and full current quality pass.
-Conversation persistence is not added. The ordinary trial game was opened from published `44df588c`;
-startup is verified with the existing Ollama/`gemma4:e4b` selection. The owner now reports that
-turn-based dialogue seems to work quite well. Input method, turn count and audibility were not
-specified; retain the physical case totals and resume only the remaining human trial checks.
-Selector/permission-host intake and remaining lifecycle/device/echo qualification remain incomplete.
+The complete `./quality.sh` on `b841afed` passed all 218 stages and required completion markers
+(2026-10-17 20:57:41–22:12:12 UTC); its [summary](docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json)
+is committed and full logs remain in ignored `artifacts/quality-current/`. Hosted
+[run 39071192535](https://github.com/hherb/allrpcs/actions/runs/39071192535) on the same source
+also passed all four jobs. An earlier gate on `cee9df2b` failed product-10 on the flaky invalid
+ownership fixture that `b841afed` fixed. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
+retains the earlier complete/failed evidence. [PR #440](https://github.com/hherb/allrpcs/pull/440)
+is now open and ready for review, no longer draft. Keep Phase 2 open and Phase 3 unselected.
 
-Closed [dialogue accessibility](input-direction/dialogue-accessibility-runtime-review/README.md),
-[controls](input-direction/remapping-runtime-review/README.md), Pocket service and earlier art/audio/domain
-owners remain unchanged. Historical full-quality results belong to their linked packages. VoiceOver
-and physical-controller qualification remain unperformed. Only built-in keyboard/trackpad are available;
-retain the [hardware deferral](input-direction/physical-controls-deferral.json) while the owner procures a controller.
+The live fictional OpenAI request/captured stream (#417) remains unavailable: an existence-only
+application Keychain query on 18 October returned item-not-found and retrieved no secret.
+The new schema-echo regression uses the real schema in a generated fixture; it is not a captured
+live stream. The owner Keychain save check was requested once and has no reported result.
+Keep both conditions open without repeating the pending question.
 
-[Privacy](release-direction/privacy.md) and [provider disclosures](release-direction/model-providers.md)
-are complete; [reply playback](release-direction/voice-privacy-update.md) and
-[microphone input](release-direction/player-asr-privacy-update.md) supplement them.
-OpenAI/local Ollama composition exists; Anthropic and an offline conversational fallback remain
-uninstalled. Development release documentation is deferred under the owner's speech priority.
-Future walking work uses the accepted [reference gait model](art-direction/reference-gait-model.md).
+The [microphone qualification](speech-direction/player-microphone-qualification/README.md)
+remains paused: preserve its 3 pass / 5 partial / 7 unperformed cases and all qualitative owner
+reports. Closed reply, recognition, Space, Ollama, examination and conversation-context work stays
+closed; its records remain linked from the ledger and qualification package. Do not infer a physical
+pass from synthetic or local-model checks. [Physical controls](input-direction/physical-controls-deferral.json)
+remain deferred pending hardware and authority; VoiceOver qualification remains unperformed.
+
+Keep all persistent closures and frozen acceptance evidence. Privacy/provider disclosures and
+accepted controls/dialogue accessibility remain closed. Future walking work uses the accepted
+[reference gait model](art-direction/reference-gait-model.md).
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json).
+This authorizes review-branch publication; no merge or release is authorized here.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (ready).
+**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (in_progress).
 
 Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-
-review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.
+Missing deliverable: Live fictional OpenAI request/captured stream for #417 and the already
+requested owner Keychain save result. The complete root gate and hosted CI on b841afed after the PR
+review corrections have passed.
 
-First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was
-closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-
-phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime
-per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).
+Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-
+defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage
+root pass on 010439d5, so that pass is historical evidence rather than validation of current source.
+Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests,
+native 363 passed with two existing quarantines). The complete ./quality.sh on b841afed passed all
+218 stages and required markers (2026-10-17 20:57:41-22:12:12 UTC); its summary is committed at
+docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json. Hosted run
+39071192535 on the same source also passed all four jobs. PR #440 is open and ready for review, no
+longer draft; do not merge. The 2026-10-18 existence-only application Keychain recheck returned
+item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live
+#417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen
+closed scopes before satisfying exit conditions and applicable authority. Reuse unchanged passing
+evidence for subsequent prose-only changes.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
@@ -89,6 +77,7 @@ passes.
 Expected outputs:
 
 - `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
+- `docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json`
 
 Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
 pipeline consolidation (Phase 3).

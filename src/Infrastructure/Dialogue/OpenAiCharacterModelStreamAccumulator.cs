@@ -9,7 +9,6 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// </summary>
 public sealed class OpenAiCharacterModelStreamAccumulator
 {
-    private const int MaximumEventDepth = 8;
     private readonly CharacterTurnRequest request;
     private string? completedResponseDocument;
     private int responseDeltaLength;
@@ -54,14 +53,7 @@ public sealed class OpenAiCharacterModelStreamAccumulator
 
         try
         {
-            using JsonDocument document = JsonDocument.Parse(
-                serializedEvent,
-                new JsonDocumentOptions
-                {
-                    AllowTrailingCommas = false,
-                    CommentHandling = JsonCommentHandling.Disallow,
-                    MaxDepth = MaximumEventDepth,
-                });
+            using JsonDocument document = OpenAiStreamDocument.Parse(serializedEvent);
             JsonElement root = document.RootElement;
             if (root.ValueKind != JsonValueKind.Object
                 || !root.TryGetProperty("type", out JsonElement typeElement)
@@ -180,7 +172,7 @@ public sealed class OpenAiCharacterModelStreamAccumulator
             || !TryReadTokenCount(usage, "total_tokens", out int totalTokenCount)
             || (long)inputTokenCount + outputTokenCount != totalTokenCount)
         {
-            return false;
+            return true;
         }
 
         InputTokenCount = inputTokenCount;

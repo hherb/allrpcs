@@ -11,6 +11,6 @@ public static class CharacterTurnTranscriptAppendTransition
         ArgumentNullException.ThrowIfNull(entry);
         ArgumentNullException.ThrowIfNull(transcript);
 
-        return new CharacterTurnTranscriptSnapshot(transcript.Entries.Append(entry));
+        return transcript.Append(entry);
     }
 }

@@ -15,6 +15,20 @@ namespace Allrpcs.Infrastructure.Tests.Persistence;
 public sealed class SaveSnapshotJsonSerializerTests
 {
     [Fact]
+    public void RestoredWorldEventIdentifiersRetainSabotageCadence()
+    {
+        SaveSnapshot snapshot = CreateCompleteSnapshot();
+        SaveSnapshot restored = SaveSnapshotJsonDeserializer.Deserialize(
+            SaveSnapshotJsonSerializer.Serialize(snapshot));
+        WorldEvent current = new(snapshot.WorldEvents.WorldTime.CurrentEventId!, WorldEventTimeEffect.Advance);
+        WorldEventSnapshot definitions = new([current]);
+        Assert.NotSame(current.EventId, restored.WorldEvents.WorldTime.CurrentEventId);
+        Assert.True(CharacterSabotageTurnOpportunityCadenceSignalPolicy.CanCreate(
+            new CharacterSabotageTurnOpportunityCadence(1), current, definitions,
+            restored.WorldEvents.EventLog, restored.WorldEvents.WorldTime));
+    }
+
+    [Fact]
     public void SerializeWritesStableCompleteVersionOneDocument()
     {
         SaveSnapshot snapshot = CreateCompleteSnapshot();

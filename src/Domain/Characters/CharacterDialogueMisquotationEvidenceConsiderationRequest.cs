@@ -3,7 +3,8 @@ using Allrpcs.Domain.Dialogue;
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Retains exact bounded candidates for one provider-neutral evidence choice.</summary>
-public sealed record CharacterDialogueMisquotationEvidenceConsiderationRequest
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterDialogueMisquotationEvidenceConsiderationRequest
 {
     /// <summary>Creates one immutable request without selecting or exposing evidence.</summary>
     public CharacterDialogueMisquotationEvidenceConsiderationRequest(

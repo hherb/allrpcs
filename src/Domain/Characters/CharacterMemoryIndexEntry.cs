@@ -1,7 +1,8 @@
 namespace Allrpcs.Domain.Characters;
 
 /// <summary>Associates one exact existing local memory with bounded deterministic tags.</summary>
-public sealed record CharacterMemoryIndexEntry
+/// <remarks>Instances use reference identity; copied collections do not define value equality.</remarks>
+public sealed class CharacterMemoryIndexEntry
 {
     /// <summary>Gets the maximum tags accepted by one indexed memory.</summary>
     public const int MaximumTagCount = 16;

@@ -7,7 +7,7 @@ namespace Allrpcs.Infrastructure.Speech;
 internal sealed class PocketSpeechWorkerProcess : IPocketSpeechWorker
 {
     private readonly Process _process;
-    private readonly Task _stderr;
+    private readonly OwnedSpeechWorkerLifetime _lifetime;
     private readonly char[] _buffer = new char[4096];
     private int _position;
     private int _length;
@@ -16,7 +16,7 @@ internal sealed class PocketSpeechWorkerProcess : IPocketSpeechWorker
     {
         _process = process;
         _process.StandardInput.AutoFlush = true;
-        _stderr = DrainErrorAsync();
+        _lifetime = new(process);
     }
 
     public async ValueTask SendAsync(string message, CancellationToken cancellationToken) =>
@@ -55,29 +55,5 @@ internal sealed class PocketSpeechWorkerProcess : IPocketSpeechWorker
         }
     }
 
-    private async Task DrainErrorAsync()
-    {
-        char[] buffer = new char[4096];
-        while (await _process.StandardError.ReadAsync(buffer.AsMemory()).ConfigureAwait(false) > 0)
-        {
-            // Never retain or log model-library output that could contain requested dialogue.
-        }
-    }
-
-    public async ValueTask DisposeAsync()
-    {
-        try
-        {
-            if (!_process.HasExited)
-            {
-                _process.Kill(entireProcessTree: true);
-            }
-            await _process.WaitForExitAsync().ConfigureAwait(false);
-            await _stderr.ConfigureAwait(false);
-        }
-        finally
-        {
-            _process.Dispose();
-        }
-    }
+    public ValueTask DisposeAsync() => _lifetime.DisposeAsync();
 }

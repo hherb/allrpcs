@@ -20,6 +20,27 @@ public sealed class OllamaCharacterModelNdjsonCompletionTests
         + "\"commitments\":[],\"stateProposals\":[]}";
 
     [Fact]
+    public async Task CompletesOver1024DeltasBeforeUnreadTerminalTail()
+    {
+        string ndjson = string.Concat(Enumerable.Repeat(Line(" ", done: false), 1_100))
+            + Line(ResponseDocument, done: true, "stop");
+        using TerminalTailStream stream = new(Encoding.UTF8.GetBytes(ndjson));
+        CharacterModelStreamTermination result = await OllamaCharacterModelNdjsonCompletion.CompleteAsync(
+            CreateRequest(), stream);
+        Assert.NotNull(result.Response);
+        Assert.True(stream.CanRead);
+    }
+
+    private sealed class TerminalTailStream(byte[] bytes) : MemoryStream(bytes)
+    {
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            if (Position == Length) { throw new IOException("Terminal tail must remain unread."); }
+            return base.ReadAsync(buffer, cancellationToken);
+        }
+    }
+
+    [Fact]
     public async Task CompletesTheExactRequestFromBoundedNativeNdjson()
     {
         CharacterTurnRequest request = CreateRequest();
@@ -57,7 +78,7 @@ public sealed class OllamaCharacterModelNdjsonCompletionTests
     }
 
     [Fact]
-    public async Task RejectsDocumentsAfterTermination()
+    public async Task ReturnsBeforeDocumentsAfterTermination()
     {
         string ndjson = Line(ResponseDocument, done: true, "stop")
             + Line(string.Empty, done: true, "stop");
@@ -66,8 +87,8 @@ public sealed class OllamaCharacterModelNdjsonCompletionTests
         CharacterModelStreamTermination result =
             await OllamaCharacterModelNdjsonCompletion.CompleteAsync(CreateRequest(), stream);
 
-        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result.Failure?.Code);
-        Assert.Null(result.Response);
+        Assert.Null(result.Failure);
+        Assert.NotNull(result.Response);
     }
 
     [Fact]
