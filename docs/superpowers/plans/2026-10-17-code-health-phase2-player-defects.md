@@ -163,11 +163,11 @@
 
 **Interfaces:** Ducking follows strongest currently active overlap, preserving attack/release behavior. Relationship reasons evict oldest beyond 64. Full summary recording returns an explicit capacity rejection instead of throwing. Transcript/world-event appends use persistent/chunked storage with O(1) amortized append and immutable earlier snapshots. List-bearing domain values use structural equality or explicit identity classes, consistently with callers.
 
-- [ ] Pin strongest foreground ending while a weaker one remains, then release to baseline.
-- [ ] Pin the 65th relationship reason and recording beyond summary capacity; retain valid prior state and finite storage.
-- [ ] Pin old transcript/event snapshots remain unchanged after many appends, ordering/lookups and bounded linear total append work using structural metrics rather than flaky timings.
-- [ ] Inventory all collection-bearing records (18 direct records verified; the historical review says 19), pin equality/hash consistency for equal-valued separately allocated lists or document identity-class semantics and update callers/tests.
-- [ ] Observe failures, implement, run Domain/Application tests, native audio/transcript checks and solution checks; commit `Fixes #424` with the related bounded-session fixes.
+- [x] Pin strongest foreground ending while a weaker one remains, then release to baseline.
+- [x] Pin the 65th relationship reason and recording beyond summary capacity; retain valid prior state and finite storage.
+- [x] Pin old transcript/event snapshots remain unchanged after many appends, ordering/lookups and bounded linear total append work using structural metrics rather than flaky timings.
+- [x] Inventory all collection-bearing records (18 direct records verified; the historical review says 19), pin equality/hash consistency for equal-valued separately allocated lists or document identity-class semantics and update callers/tests.
+- [x] Observe failures, implement, run Domain/Application tests, native audio/transcript checks and solution checks; commit `Fixes #424` with the related bounded-session fixes.
 
 ### Task 13: Review, phase exit and publication
 
@@ -179,4 +179,50 @@
 
 ## Progress
 
-Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 implementation completed at `e1e4a0e9`: all 18 provider consumers have finite request/idle bounds, redirects are refused, retry delays are bounded/cancellable, and the existing 50ms native timeout fixture uses a deterministic clock. Independent review passes, 5,858 solution tests and seven affected native checks pass. Its owner Keychain step remains open. Task 3 follow-up `94de440b` removes a non-timing fixture race without changing product behavior; scoped review and five progress tests pass. Task 4 implemented in `bf118728`/`36d06fad`: optional budgets, whitespace handling and typed required-budget status; 1,455 Application tests pass, including four review-added invalid-input precedence cases. Scoped re-review passes. Task 7 still must integrate the typed failure into the game before #425 closes. Task 5 completed at `e6dccb64`/`39d88edb`: named prepare/commit/publish registry, session fencing/resets, restored-ID equality and public modal reset APIs. Independent review correction moved native UI changes after all commits; actual visibility-observer RED/GREEN and scoped re-review pass. All 5,866 unit tests and affected native checks pass. Two confirmed pre-existing speech focus-fixture failures are assigned to Task 6 with exact repro. Task 6 completed at `e56cf1be` (Fixes #427/#428): shared modal causes, HUD focus release and missing-action migration; 5,867 solution tests and 24 native input checks pass, with independent spec/quality review passing. Its current speech fixture exposed a supplied reply never consumed; the fixture/pacing/isolation work is explicitly deferred to Task 7, without a passing speech claim. Task 7 completed at `5fece811` (Fixes #425): pending/busy admission, once-only processing, visible retry failures, typed context-budget handling and absent-speaker cancellation; independent spec/quality review passes. All 62 affected native variants pass across documented diagnosed batches, 5,867 managed tests and 15 launcher self-tests pass. Current speech fixture supplies valid participation and proves exact replies; historical commands remain unchanged. The initial incorrectly isolated provider check has unknown inherited traffic and supplies no live qualification. Task 8 completed at `cf652f1c`/`fce0ad5c`: covering zoom clamps, resize lifecycle and conditional smoothing correction; fixed and ordinary paced native checks pass actual portrait/startup/return edges. Independent review added two overflow regressions; scoped re-review passes, all 21 camera and 1,459 Application tests pass after the 5,869-test solution run. Task 9 completed at `550a53e4` (Fixes #430/#431): request-error reuse, fail-closed protocol handling, normal capture completion, cancelled reads and bounded owned-process shutdown; independent review passes. All 42 speech tests, seven Python tests and four native modes pass. An exposed unrelated 10 ms diagnostic-test race is fixed deterministically in `b06085a5`; independent review and all 5,889 concurrent solution tests pass. Task 10 completed at `4592f02d`: all three preset exclusions, export-owned PackedScene replacement/remap, restored autoloads and compiled debug-only test overrides; independent review passes. Actual pack graph/load checks cover 1,245 entries and 431 Main dependencies; all 5,889 solution tests, Debug/ExportRelease builds and eight native checks pass. The existing missing game solution still prevents an executable export; a late current controls assertion fails identically before Task 10, while accepted frozen controls evidence stays unchanged. Neither gap is claimed as a pass. Task 11 completed at `76f72ec9`/`544d2d5c` (Fixes #414/#415/#416): preserved resume evidence, FAIL-aware retry, pinned descendant closure history and finite stage/process cleanup. Independent review added actual main/rain cleanup-interruption regressions; scoped re-review and all 20 quality self-tests pass, alongside continuation/history fixtures and actionlint. Task 12 is in progress; Task 13 remains. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); the exact fixture failure was reproduced and repaired in Task 3, including a passing 10 FPS run; no newer hosted-green result is claimed. Full quality gate is reserved for phase exit.
+| Task | State / commits | Evidence |
+| --- | --- | --- |
+| 1 Responses depth | Local implementation reviewed; `285a5128` (Refs #417) | 68 new regressions; 5,756 solution tests. Live request/captured stream remains open. |
+| 2 Incremental providers | Complete; `d0a04c21` (Fixes #418/#419) | Independent review; 5,776 solution tests. |
+| 3 Deadlines/retries | Local implementation reviewed; `e1e4a0e9` | 18 consumers bounded; 5,858 solution tests and seven native checks. Owner Keychain save check remains open. |
+| 3 Fixture follow-ups | Complete; `94de440b`, `b06085a5` | Retry-hint and deterministic 10 ms diagnostic fixtures; independent reviews; 5,889 concurrent solution tests. |
+| 4 Context budgets | Complete with Task 7 caller; `bf118728`, `36d06fad` | Required typed failure, optional priority and invalid-input precedence; scoped review; 1,455 Application tests. |
+| 5 Atomic restore | Complete; `e6dccb64`, `39d88edb` (Fixes #420/#426/#429) | 5,866 solution tests; native ownership, held-load and observer ordering; scoped review. |
+| 6 Input/controls migration | Complete; `e56cf1be` (Fixes #427/#428) | 5,867 solution tests and 24 native input checks; independent review. |
+| 7 Dialogue ownership/status | Complete; `5fece811` (Fixes #425) | 62 affected native variants across diagnosed batches; exact reply ownership; 15 launcher self-tests; independent review. |
+| 8 Camera | Complete; `cf652f1c`, `fce0ad5c` | Actual-edge native checks at fixed and ordinary cadence; 21 camera/1,459 Application tests; overflow review correction. |
+| 9 Speech workers | Complete; `550a53e4` (Fixes #430/#431) | 42 speech tests, seven Python tests, four native modes; independent review. |
+| 10 Shipping hygiene | Complete; `4592f02d` | Three presets; compiled release guard; real pack graph (1,245 entries/431 dependencies); eight native checks; independent review. Executable export remains unsupported. |
+| 11 Tooling | Complete; `76f72ec9`, `544d2d5c` (Fixes #414/#415/#416) | 20 quality self-tests; real Git history and cleanup-interruption regressions; continuation/actionlint; scoped review. |
+| 12 Long sessions/ducking | Complete; `075d3ac2` (Fixes #424) | 5,921 solution tests, zero-warning build/format, four native checks; eighteen identity classes, bounded persistent append, capacity/eviction and ducking regressions; independent review. |
+| 13 Phase exit | In progress | All twelve task reviews passed. Draft publication, fresh whole-phase review and one full quality run remain; live #417 capture and owner Keychain result remain unavailable. |
+
+Phase 1 branch CI run 38998433672 and the subsequently merged main run 38998468190 both failed the same unquarantined 50 ms model-timeout presentation fixture (324 passed, two existing quarantines). Main `032c5b30` merged PR #438 and has an empty tree diff from the starting `e55463b0`, so no upstream product change was lost. Task 3 reproduced and repaired the fixture, including a passing 10 FPS run. No Phase 2 hosted green result is claimed yet. #432-#435/#437/#439 stay separate.
+
+Verification limits remain explicit:
+
+- The application-specific Keychain item was absent in an existence-only host query; no secret was retrieved. Live #417 capture and the owner-operated save result remain open.
+- An initial incorrectly isolated Task 7 case may have contacted an inherited provider binding; traffic was not instrumented, so it supplies no live qualification. Subsequent synthetic evidence isolates settings and configuration.
+- Task 10's real resource pack/remap/load checks pass using local editor assemblies. Existing missing `game/Allrpcs.Game.sln` errors leave no managed DLL in that export; no executable export passed.
+- A late current controls assertion fails identically with the pre-Task-10 controller code. Accepted frozen controls evidence remains unchanged; no new controls audit or repair was opened.
+- Recorded native ObjectDB/editor shutdown warnings do not establish memory-lifecycle qualification. Physical microphone/controller/reader qualification remains paused or deferred at its existing scope.
+
+## Execution decisions and rework costs
+
+These are controller rulings, in decision order. They supplement the exact implementation and test evidence; they do not grant a successor scope.
+
+| Decision | Cost if wrong |
+| --- | --- |
+| Reuse the clean feature checkout in place. | Branch-local rework if separate isolation was preferred. |
+| Execute the approved write-then-execute plan without another approval boundary. | Reversible implementation rework. |
+| Reuse successful Phase 1 evidence for an identical tree while its redundant run finishes. | Delayed discovery of a runner-only failure; the observed timeout failure was subsequently fixed in Task 3. |
+| Return typed required-context capacity failure while retaining Assemble compatibility. | An extra API seam; its game caller is now integrated. |
+| Prioritize completed outcomes and goals before optional perception/history. | Lower-priority optional history can be omitted at limits. |
+| Use central named restore adapters with prepare/commit/publish. | Explicit owner inventory maintenance. |
+| Make the current held-load fixture prove exact immediate retirement. | Fixture-contract risk if identity checks were weak; no-stale and fresh-submit assertions remain. |
+| Pace the current repeated-offline fixture at 30 FPS with its existing bounds. | Slower, scheduler-dependent check; no production clock seam or historical invocation changed. |
+| Reset smoothing on resize only when actual camera edges exceed bounds. | A brief snap for an invalid resized view. |
+| Use export-owned PackedScene replacement and temporary restored autoload settings. | Dependence on Godot export hooks and upgrade rework. |
+| Protect pinned closure state plus descendant history and require full Git history. | Fetch/storage cost and dependence on baseline reachability. |
+| Use chunked skew storage and a compressed exact-ID crit-bit index. | O(log n) older indexing, implementation complexity and a bounded but potentially large historical-root constant. |
+| Give all eighteen list-bearing domain types explicit instance identity. | Unseen callers lose record equality/copy/deconstruction semantics; repository callers are compiled and tested. |
+| Smooth partial ducking release toward the strongest remaining target. | Changed partial-overlap envelope; existing final hold/release behavior remains covered. |

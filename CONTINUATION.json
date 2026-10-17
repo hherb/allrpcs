@@ -1535,8 +1535,8 @@
     "workstream": "code-health-program",
     "authority_status": "owner_approved_code_health_program_2026-10-17",
     "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
-    "missing_deliverable": "A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.",
-    "instructions": "First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).",
+    "missing_deliverable": "Phase-exit whole-branch review, one full ./quality.sh result and current hosted CI for the twelve reviewed implementation tasks; live fictional OpenAI request/captured stream for #417 and the requested owner Keychain save result remain open.",
+    "instructions": "Continue Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. Tasks 1-12 are implemented and independently reviewed through 075d3ac2 (5,921 solution tests). Publish a draft PR, obtain a fresh whole-phase review, resolve concrete findings, then run one full ./quality.sh under decision D2. Confirm current hosted CI. Preserve unavailable live #417 and owner Keychain evidence as open; do not close Phase 2, select Phase 3 or merge without satisfying the exit conditions and applicable authority.",
     "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
     "outputs": [
       "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md"
