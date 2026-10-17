@@ -35,6 +35,7 @@ public partial class InteriorAudioRuntimeSmokeCheck : Node
             GetParent().SetProcess(false);
             GetNode<Node>("../TemporaryCharacterTurnCompletionController").SetProcess(false);
             GetNode<Healer>("../Healer").SetPhysicsProcess(false);
+            GetNode<Healer>("../Healer").Visible = true; // Explicit present speaker in this disposable recorder fixture.
             interior = GetNode<OpeningRegionInteriorAudioSource>("../OpeningRegionInteriorAudioSource");
             floors = GetNode<OpeningRegionFootstepMaterialSource>("../OpeningRegionFootstepMaterialSource");
             footsteps = GetNode<OpeningRegionFootstepAudioController>("../OpeningRegionFootstepAudioController");
