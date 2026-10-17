@@ -50,8 +50,7 @@ public static class CameraFramingCalculator
     /// <param name="maximumZoom">The nearest supported zoom-in value.</param>
     /// <returns>A validated immutable camera framing plan.</returns>
     /// <exception cref="ArgumentOutOfRangeException">
-    /// Thrown when bounds, viewport size, or zoom values are invalid, or when minimum zoom would
-    /// reveal space beyond the world region.
+    /// Thrown when bounds, viewport size, or zoom tuning values are invalid.
     /// </exception>
     public static CameraFramingPlan Create(
         CameraWorldBounds worldBounds,
@@ -67,15 +66,13 @@ public static class CameraFramingCalculator
         float minimumCoveringZoom = MathF.Max(
             viewportSizePixels.X / worldBounds.Width,
             viewportSizePixels.Y / worldBounds.Height);
-        if (minimumZoom < minimumCoveringZoom)
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(minimumZoom),
-                minimumZoom,
-                $"Minimum zoom must be at least {minimumCoveringZoom} for this viewport and world.");
-        }
-
-        return new CameraFramingPlan(worldBounds, minimumZoom, defaultZoom, maximumZoom);
+        float effectiveMinimumZoom = MathF.Max(minimumZoom, minimumCoveringZoom);
+        float effectiveMaximumZoom = MathF.Max(maximumZoom, effectiveMinimumZoom);
+        return new CameraFramingPlan(
+            worldBounds,
+            effectiveMinimumZoom,
+            Math.Clamp(defaultZoom, effectiveMinimumZoom, effectiveMaximumZoom),
+            effectiveMaximumZoom);
     }
 
     private static void ValidateWorldBounds(CameraWorldBounds worldBounds)

@@ -45,6 +45,7 @@ run_check 30 ALLRPCS_RUNTIME_HERB_BED_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_RUNTIME_SEEKER_WALK_CHECK=1 \
     godot --headless --path "$repository_root/game"
+run_check 30 godot --headless --fixed-fps 60 --path "$repository_root/game" res://CameraFramingSmokeCheck.tscn
 run_check 30 ALLRPCS_ADAPTIVE_DISPLAY_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK=1 \
     godot --headless --path "$repository_root/game"
