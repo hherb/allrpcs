@@ -6,17 +6,24 @@ from contextlib import contextmanager, nullcontext
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
 import shlex
 import shutil
+import signal
+import time
+import uuid
 import subprocess
 import sys
 import tarfile
 import tempfile
 import unittest
 
+# One hour per stage, including retries: generous even relative to the retained
+# 48m43s entire 217-stage gate. Tests inject short deadlines; no stage is unbounded.
+STAGE_TIMEOUT_SECONDS = 60 * 60
 ROOT = Path(__file__).resolve().parent
 ART_REVISION = 'ea63fcc46834e84ffab98aabd76530e60f760955'
 AUDIO_REVISIONS = (
@@ -84,7 +91,7 @@ def commands(text):
 def native_shutdown(returncode, output):
     """Retry only the diagnosed native mutex abort, never ordinary check failures."""
     last_launch = output.rsplit('Godot Engine v', 1)[-1]
-    return (returncode in (-6, 134) and 'mutex lock failed' in last_launch
+    return ('FAIL:' not in output and returncode in (-6, 134) and 'mutex lock failed' in last_launch
             and not any(marker in last_launch for marker in ('ERROR:', 'AssertionError', 'Unhandled exception')))
 
 
@@ -143,12 +150,29 @@ def sandbox_log_startup(returncode, output):
             and not any(marker in last_launch for marker in ('AssertionError', 'Unhandled exception')))
 
 
+def stop_stage(process):
+    """Terminate only this stage's new session/group, including children after leader exit."""
+    for signum in (signal.SIGTERM, signal.SIGKILL):
+        try:
+            os.killpg(process.pid, signum)
+        except ProcessLookupError:
+            pass
+        if signum == signal.SIGTERM:
+            try:
+                process.wait(timeout=0.2)
+            except subprocess.TimeoutExpired:
+                pass
+    process.wait()
+
+
 class Run:
     """Persist all attempts, stop on failed checks and publish success only at the end."""
 
-    def __init__(self, directory):
-        """Start a new report; previous success cannot survive an interrupted run."""
+    def __init__(self, directory, preserve_failed=False):
+        """Start a run; explicit resumes retain the failed summary until recovery passes."""
         self.directory = directory
+        self.preserve_failed = preserve_failed
+        self.log_prefix = uuid.uuid4().hex + '-' if preserve_failed else ''
         directory.mkdir(parents=True, exist_ok=True)
         self.report = {'schema_version': 1, 'status': 'running', 'started': now(), 'stages': []}
         self.save()
@@ -157,28 +181,53 @@ class Run:
         """Replace the report atomically so readers never see partial JSON."""
         pending = self.directory / 'summary.pending.json'
         pending.write_text(json.dumps(self.report, indent=2) + '\n')
-        pending.replace(self.directory / 'summary.json')
+        target = 'summary.resume.json' if self.preserve_failed and self.report['status'] != 'passed' else 'summary.json'
+        pending.replace(self.directory / target)
 
-    def stage(self, name, args, cwd=ROOT, env=None, revision=None, retry_native=False, completion=None):
+    def stage(self, name, args, cwd=ROOT, env=None, revision=None, retry_native=False, completion=None,
+              timeout_seconds=STAGE_TIMEOUT_SECONDS):
         """Run an exact command, log every attempt and propagate every unresolved failure."""
+        if not math.isfinite(timeout_seconds) or timeout_seconds <= 0:
+            raise ValueError('Stage timeout must be finite and positive')
+        if os.name != 'posix':
+            raise ValueError('Quality stages require POSIX owned process groups')
+        deadline = time.monotonic() + timeout_seconds
         print('RUN:', name, flush=True)
         row = {'name': name, 'arguments': args, 'revision': revision,
                'environment_overrides': env or {}, 'attempts': []}
         self.report['stages'].append(row)
         environment = dict(os.environ, **(env or {}))
         for attempt in range(1, 4 if retry_native else 2):
-            log = self.directory / f'{len(self.report["stages"]):02d}-{name}-{attempt}.log'
+            log = self.directory / f'{self.log_prefix}{len(self.report["stages"]):02d}-{name}-{attempt}.log'
+            timed_out = False
             with log.open('wb') as output:
-                result = subprocess.run(args, cwd=cwd, env=environment, stdout=output, stderr=subprocess.STDOUT)
+                try:
+                    result = subprocess.Popen(args, cwd=cwd, env=environment, stdout=output,
+                                              stderr=subprocess.STDOUT, start_new_session=True)
+                except OSError as error:
+                    output.write(str(error).encode())
+                    result = subprocess.CompletedProcess(args, 127)
+                else:
+                    try:
+                        result.wait(timeout=max(0, deadline - time.monotonic()))
+                    except subprocess.TimeoutExpired:
+                        timed_out = True
+                        stop_stage(result)
+                    except BaseException:
+                        stop_stage(result)
+                        raise
+                if timed_out:
+                    output.write(b'\nFAIL: stage wall-clock timeout\n')
             data = log.read_bytes()
             completed = completion is None or completion in data.decode(errors='replace')
             row['attempts'].append({'exit_code': result.returncode, 'log': log.name, 'sha256': sha(data),
-                                    'required_completion': completion, 'completion_seen': completed})
+                                    'required_completion': completion, 'completion_seen': completed,
+                                    'timed_out': timed_out, 'timeout_seconds': timeout_seconds})
             self.save()
-            if result.returncode == 0 and completed:
+            if result.returncode == 0 and completed and not timed_out:
                 print('PASS:', name, flush=True)
                 return
-            if retry_native and attempt < 3 and native_shutdown(result.returncode, data.decode(errors='replace')):
+            if not timed_out and retry_native and attempt < 3 and native_shutdown(result.returncode, data.decode(errors='replace')):
                 print('RETRY identical command after diagnosed native shutdown:', name, flush=True)
                 continue
             self.report.update(status='failed', finished=now(), failed_stage=name)
@@ -336,8 +385,9 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
-    if finish_interior and prior.get('resumed_from'):
-        index = len(plan) - 19 + 9
+    boundary_names = {'boundary-hand-tool-resume', 'boundary-healer-resume', 'boundary-foliage-resume'}
+    if any(row['name'] in boundary_names for row in prior['stages']):
+        index = len(plan) - count + 9
         plan[index:index] = [
             ('boundary-hand-tool-resume', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
             ('boundary-healer-resume', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
@@ -390,7 +440,7 @@ def main(resume_smoke=False, finish_interior=False):
     prior_bytes = (directory / 'summary.json').read_bytes() if resume else None
     prior = json.loads(prior_bytes) if prior_bytes else None
     reused = resume_prefix(prior, directory, art, product, metadata, finish_interior) if prior else []
-    run = Run(directory)
+    run = Run(directory, preserve_failed=resume)
     run.report.update(metadata)
     if prior:
         run.report.update(stages=reused, resumed_from={'report_sha256': sha(prior_bytes),
@@ -551,17 +601,21 @@ def main(resume_smoke=False, finish_interior=False):
         ollama_participation_runtime(run, environment)
         run.report.update(status='passed', finished=now(), interior_save_sha256=sha(saves[0]),
                           transcript=transcripts[0])
-        run.save()
-        print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes and seven rain modes', flush=True)
     except Exception:
         run.report.update(status='failed', finished=now())
         run.save()
         raise
     finally:
-        generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
-        run.report.setdefault('generated_uid_cleanup', []).extend(
-            cleanup_generated_uids(ROOT, generated, existed, sources))
-        run.save()
+        try:
+            generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
+            run.report.setdefault('generated_uid_cleanup', []).extend(
+                cleanup_generated_uids(ROOT, generated, existed, sources))
+        except Exception:
+            run.report.update(status='failed', finished=now())
+            raise
+        finally:
+            run.save()
+    print('PASS: full current quality; frozen contracts, current product, four interior modes, six water/control modes and six cask/control modes and six hand-tool/control modes and seven Healer motion modes, seven foliage modes and seven wind modes and seven rain modes', flush=True)
 
 
 def foliage_runtime(run, environment):
@@ -766,7 +820,7 @@ def finish_cooling_uids():
         if name != 'quality.py' and sha((ROOT / name).read_bytes()) != digest:
             raise ValueError('Cooling UID resume quality input changed: ' + name)
     frozen_evidence()
-    run = Run(directory)
+    run = Run(directory, preserve_failed=True)
     metadata = {key: value for key, value in prior.items() if key not in
                 ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
     metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
@@ -1129,7 +1183,7 @@ def finish_foliage():
         if name != 'quality.py' and sha((ROOT / name).read_bytes()) != value:
             raise ValueError('Foliage resume input changed: ' + name)
     frozen_evidence()
-    run = Run(directory)
+    run = Run(directory, preserve_failed=True)
     metadata = {key: value for key, value in prior.items() if key not in
                 ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
     metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
@@ -1192,7 +1246,7 @@ def finish_rain():
         if name != 'quality.py' and sha((ROOT / name).read_bytes()) != digest:
             raise ValueError('Rain finish quality input changed: ' + name)
     frozen_evidence()
-    run = Run(directory)
+    run = Run(directory, preserve_failed=True)
     metadata = {key: value for key, value in prior.items() if key not in
                 ('status', 'stages', 'started', 'finished', 'failed_stage', 'resumed_from')}
     metadata['inputs'] = dict(prior['inputs'], **{'quality.py': sha((ROOT / 'quality.py').read_bytes())})
@@ -1206,18 +1260,130 @@ def finish_rain():
         environment = {'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1', 'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'}
         wind_runtime(run, environment)
         rain_runtime(run, environment)
-        run.report.update(status='passed', finished=now()); run.save()
-        print('PASS: full current quality; verified unchanged product prefix, restored historical wind and all current rain stages', flush=True)
+        run.report.update(status='passed', finished=now())
     except Exception:
         run.report.update(status='failed', finished=now()); run.save(); raise
     finally:
-        generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
-        run.report.setdefault('generated_uid_cleanup', []).extend(cleanup_generated_uids(ROOT, generated, existed, sources))
-        run.save()
+        try:
+            generated = git('ls-files', '--others', '--exclude-standard', '--', 'game').decode().splitlines()
+            run.report.setdefault('generated_uid_cleanup', []).extend(
+                cleanup_generated_uids(ROOT, generated, existed, sources))
+        except Exception:
+            run.report.update(status='failed', finished=now())
+            raise
+        finally:
+            run.save()
+    print('PASS: full current quality; verified unchanged product prefix, restored historical wind and all current rain stages', flush=True)
 
 
 class ContractTests(unittest.TestCase):
     """Reject omitted checks and failed stages, and constrain the exceptional native retry."""
+
+    def test_fail_marker_forbids_native_retry(self):
+        for output in ('FAIL: fixture\nmutex lock failed',
+                       'FAIL: earlier fixture\nGodot Engine v4.6\nmutex lock failed'):
+            self.assertFalse(native_shutdown(134, output))
+
+    def test_resume_keeps_failed_report_until_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = Run(root)
+            with self.assertRaises(RuntimeError):
+                original.stage('product-10', [sys.executable, '-c', 'raise SystemExit(134)'])
+            before = (root / 'summary.json').read_bytes()
+            old_log = root / original.report['stages'][0]['attempts'][0]['log']
+            log_bytes = old_log.read_bytes()
+            resumed = Run(root, preserve_failed=True)
+            resumed.save()  # A preparation failure can happen before any stage starts.
+            self.assertEqual((root / 'summary.json').read_bytes(), before)
+            with self.assertRaises(RuntimeError):
+                resumed.stage('product-10', [sys.executable, '-c', 'print("new"); raise SystemExit(7)'])
+            self.assertEqual((root / 'summary.json').read_bytes(), before)
+            self.assertEqual(old_log.read_bytes(), log_bytes)
+            self.assertEqual(json.loads((root / 'summary.resume.json').read_text())['failed_stage'], 'product-10')
+            resumed.report.update(status='passed')
+            resumed.save()
+            self.assertEqual(json.loads((root / 'summary.json').read_text())['status'], 'passed')
+
+    def test_stage_timeout_cleans_descendants(self):
+        import time
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            heartbeat = root / 'heartbeat'
+            child = 'import time,signal; signal.signal(signal.SIGTERM, signal.SIG_IGN); from pathlib import Path; p=Path(' + repr(str(heartbeat)) + '); ' + \
+                    '\nwhile True: p.write_text(str(time.monotonic())); time.sleep(0.02)'
+            code = 'import subprocess,sys,time; subprocess.Popen([sys.executable,"-c",' + repr(child) + ']); time.sleep(60)'
+            run = Run(root)
+            started = time.monotonic()
+            with self.assertRaises(RuntimeError):
+                run.stage('hung', [sys.executable, '-c', code], timeout_seconds=0.5)
+            self.assertLess(time.monotonic() - started, 5)
+            report = json.loads((root / 'summary.json').read_text())
+            self.assertEqual(report['failed_stage'], 'hung')
+            self.assertTrue(report['stages'][0]['attempts'][0]['timed_out'])
+            stamp = heartbeat.read_text()
+            time.sleep(0.15)
+            self.assertEqual(heartbeat.read_text(), stamp)
+
+    def test_fresh_product_ten_resume(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            root = repository / 'artifacts/quality-current'
+            root.mkdir(parents=True)
+            for name in ('quality.py', 'quality.sh', 'requirements-quality.txt',
+                         'scripts/quality.sh', 'scripts/smoke-godot.sh'):
+                target = repository / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / name).read_bytes())
+            art, product = commands((ROOT / 'scripts/quality.sh').read_text())
+            plan = [('continuation', [sys.executable, 'scripts/check-continuation.py', '--self-test'], None)]
+            plan += [(f'art-{i}', [sys.executable, *args], ART_REVISION) for i, args in enumerate(art, 1)]
+            plan += [('boundary-' + name, [sys.executable, validator] +
+                      ([] if name in ('buses', 'material') else ['--reviewed']), rev)
+                     for name, rev, validator in AUDIO_REVISIONS]
+            boundaries = [('hand-tool', HAND_TOOL_REVISION, 'scripts/validate-hand-tool-runtime.py'),
+                          ('healer', HEALER_REVISION, 'scripts/validate-healer-footstep-runtime.py'),
+                          ('foliage', FOLIAGE_REVISION, 'scripts/validate-foliage-runtime.py')]
+            plan += [('boundary-' + name + '-current', [sys.executable, script, '--reviewed'], rev)
+                     for name, rev, script in boundaries]
+            plan += [('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
+            plan += [(f'product-{i}', ['sh', '-c', cmd], None) for i, cmd in enumerate(product[:9], 1)]
+            plan += [('boundary-' + name + '-resume', [sys.executable, script, '--reviewed'], rev)
+                     for name, rev, script in boundaries]
+            plan += [('product-10', ['sh', '-c', product[9]], None)]
+            rows = []
+            for i, (name, args, revision) in enumerate(plan):
+                data = b'mutex lock failed' if name == 'product-10' else b'passed'
+                log = f'{i}.log'
+                (root / log).write_bytes(data)
+                rows.append(dict(name=name, arguments=args, revision=revision,
+                    environment_overrides={'ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED': '1',
+                    'ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL': '1'} if 'godot' in ' '.join(args) else {},
+                    attempts=[dict(exit_code=134 if name == 'product-10' else 0, log=log, sha256=sha(data))]))
+            metadata = dict(product_revision='fixture', python=sys.version, pillow='12.3.0', numpy='2.5.3',
+                            zlib='fixture', inputs={name: sha((repository / name).read_bytes()) for name in
+                            ('quality.py', 'quality.sh', 'requirements-quality.txt',
+                             'scripts/quality.sh', 'scripts/smoke-godot.sh')})
+            prior = dict(metadata, status='failed', failed_stage='product-10', stages=rows)
+            self.assertEqual(resume_prefix(prior, root, art, product, metadata), rows[:-1])
+            summary = root / 'summary.json'
+            summary.write_text(json.dumps(prior))
+            before = {path.name: path.read_bytes() for path in root.iterdir()}
+            pillow = SimpleNamespace(__version__='12.3.0',
+                Image=SimpleNamespace(Image=SimpleNamespace(get_flattened_data=True)),
+                features=SimpleNamespace(check_feature=lambda _: False, version=lambda _: 'fixture'))
+            scope = sys.modules[__name__]
+            with patch.dict(sys.modules, PIL=pillow, numpy=SimpleNamespace(__version__='2.5.3')), \
+                 patch.object(scope, 'ROOT', repository), \
+                 patch.object(scope, 'git', side_effect=lambda *args: b'fixture' if args[0] == 'rev-parse' else b''), \
+                 patch.object(scope, 'frozen_evidence', side_effect=ValueError('early resume probe')):
+                with self.assertRaisesRegex(ValueError, 'early resume probe'):
+                    main(resume_smoke=True)
+            for name, data in before.items():
+                self.assertEqual((root / name).read_bytes(), data)
+
 
     def test_live_speech_pacing_preserves_historical_commands(self):
         class SpeechRun:
