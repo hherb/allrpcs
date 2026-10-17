@@ -1,0 +1,48 @@
+{
+  "phase": "code-health-phase1-safety-net",
+  "closed": "2026-10-17",
+  "branch": "code-health/phase1",
+  "head": "6ac4ddd0d49c270d0abe02351d082d9ec67470b2",
+  "commits": [
+    "a55e9e8d docs: add code review and code health plan",
+    "d6902852 docs: start code-health program and pause microphone trial",
+    "cf403833 chore: pin historical editor overlay to a committed revision",
+    "1eca37d4 test: enforce the complete project graph and rule-layer SDKs (Fixes #423)",
+    "091ee082 test: prune excluded directories in project enumeration",
+    "baa0a323 ci: run solution tests and Python tooling; cancel superseded runs",
+    "1e7a2525 test: smoke launches fail on hang or unhandled exception (refs #421)",
+    "86705fb5 fix: bound the clearing's west wall by the shrine opening (refs #421)",
+    "4490b31e test: make smoke launches prove completion (Fixes #421)",
+    "a0a82d0e test: require every engine check to be launched or allowlisted (Fixes #422)",
+    "b827f660 test: parse only smoke-godot.sh as the check launch source",
+    "e90b449f test: forbid assembly references and extra SDKs in the rule layer",
+    "c22a8a2e test: import with --import and pin the smoke exception exit code",
+    "6ac4ddd0 docs: correct CI smoke timing and record two test rationales"
+  ],
+  "issues_fixed": [
+    421,
+    422,
+    423
+  ],
+  "follow_up_issues": [
+    432,
+    433,
+    434,
+    435
+  ],
+  "verification": {
+    "dotnet_test": "5688/5688 passed",
+    "smoke": "smoke: 327 passed, 0 quarantined (≈470 s)",
+    "quality": {
+      "result": "PASS: full current quality",
+      "stages": 217,
+      "product_revision": "6ac4ddd0d49c270d0abe02351d082d9ec67470b2",
+      "summary_sha256": "7fc237bab96d88dbb2ed53315b19f3a9d6439f0afe6a41bce3ba7b9d4c54437e"
+    },
+    "ci": "UNVERIFIED: GitHub Actions jobs are blocked ('an Actions budget is preventing further use') since at least 2026-10-16; local verification substituted (controller ruling R13/R18, pending owner confirmation)."
+  },
+  "open_owner_items": [
+    "Restore GitHub Actions budget and confirm CI green on this branch/PR",
+    "Apply decision D2 wording to CLAUDE.md and HANDOVER.md (agent edit was blocked by the permission system)"
+  ]
+}

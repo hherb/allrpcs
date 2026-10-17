@@ -1,0 +1,85 @@
+# Engine checks that scripts/smoke-godot.sh does not launch, each with the reason (read by
+# CheckRegistrationTests).
+#
+# Every ALLRPCS_*_CHECK gate in game/*.cs and game/*.gd, and every game/*Check*.tscn and
+# game/*Proof*.tscn scene, must appear on a non-comment line of scripts/smoke-godot.sh (the only
+# parsed launch source), or be listed here. quality.py is not parsed: many of its launches run a
+# frozen historical snapshot, never the HEAD code. A check quality.py does run at HEAD is listed
+# with "# launched at HEAD by quality.py (<stage or function>)"; one it runs only in a historical
+# snapshot is listed with "# historical quality.py snapshot only — #<issue>". Frozen
+# scripts/quality.sh is historical evidence and does not count either.
+#
+# Format: one "<ALLRPCS_NAME_CHECK or res://Scene.tscn>  # <reason>" per line; the reason is
+# mandatory. Blank lines and lines starting with "#" are ignored. Prefer adding a launch to
+# scripts/smoke-godot.sh over adding an entry. Remove an entry once its check is launched or
+# deleted; the test fails on stale entries.
+
+# Native Master-output renders. Each gate makes its proof scene play every case through Master and
+# write a timeline; it refuses to run outside Movie Maker mode (--write-movie), and the evidence is
+# the captured WAV analysed offline (ffmpeg plus scripts/check-*-audio-output.py). The same scenes
+# without the gate are launched stopped by scripts/smoke-godot.sh.
+ALLRPCS_AUDIO_CHECK  # owner-operated Movie Maker render of res://AudioBusesControlsProof.tscn
+ALLRPCS_CASK_OUTPUT_CHECK  # owner-operated Movie Maker render of res://CaskCoverHandlingAudioOutputCheck.tscn
+ALLRPCS_COOLING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedyCoolingAudioRuntimeProof.tscn
+ALLRPCS_FOLIAGE_OUTPUT_CHECK  # owner-operated Movie Maker render of res://FoliageAudioRuntimeProof.tscn
+ALLRPCS_FOOTSTEP_OUTPUT_CHECK  # owner-operated Movie Maker render of res://FootstepAudioRuntimeProof.tscn
+ALLRPCS_HEALER_FOOTSTEP_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HealerFootstepAudioRuntimeProof.tscn
+ALLRPCS_HEATING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedyHeatingAudioRuntimeProof.tscn
+ALLRPCS_HERB_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HerbCollectionAudioRuntimeProof.tscn
+ALLRPCS_HERB_LAST_CASE_CHECK  # modifier of ALLRPCS_HERB_OUTPUT_CHECK: starts that Movie Maker render at its last cases
+ALLRPCS_INTERIOR_OUTPUT_CHECK  # owner-operated Movie Maker render of res://InteriorAudioRuntimeProof.tscn
+ALLRPCS_MATERIAL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://MaterialAudioRuntimeProof.tscn
+ALLRPCS_MUSIC_OUTPUT_CHECK  # owner-operated Movie Maker render of res://MusicAudioRuntimeProof.tscn
+ALLRPCS_POSITIONAL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://PositionalAudioRuntimeProof.tscn
+ALLRPCS_RAIN_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RainAudioRuntimeProof.tscn
+ALLRPCS_STEEPING_OUTPUT_CHECK  # owner-operated Movie Maker render of res://RemedySteepingAudioRuntimeProof.tscn
+ALLRPCS_TOOL_OUTPUT_CHECK  # owner-operated Movie Maker render of res://HandToolTapAudioOutputCheck.tscn
+ALLRPCS_WATER_OUTPUT_CHECK  # owner-operated Movie Maker render of res://WaterContactAudioOutputCheck.tscn
+ALLRPCS_WIND_OUTPUT_CHECK  # owner-operated Movie Maker render of res://WindAudioRuntimeProof.tscn
+
+# Checks quality.py launches against the HEAD tree (no snapshot). Each names the quality.py
+# function and the stages it runs.
+ALLRPCS_INTERIOR_MAIN_CHECK  # launched at HEAD by quality.py (main: interior-<mode> stages)
+ALLRPCS_WATER_MAIN_CHECK  # launched at HEAD by quality.py (main: water-<mode> stages)
+ALLRPCS_CASK_MAIN_CHECK  # launched at HEAD by quality.py (main: cask-<mode> stages)
+ALLRPCS_TOOL_MAIN_CHECK  # launched at HEAD by quality.py (main: hand-tool-<mode> stages)
+ALLRPCS_HEALER_FOOTSTEP_CHECK  # launched at HEAD by quality.py (main: healer-footstep-<mode> stages)
+ALLRPCS_SPACE_HOLD_CHECK  # launched at HEAD by quality.py (space_hold_runtime: space-hold-<mode> stages)
+res://OllamaParticipationMainCheck.tscn  # launched at HEAD by quality.py (ollama_participation_runtime: ollama-participation-<mode> stages)
+res://DialogueResponseRepairMainCheck.tscn  # launched at HEAD by quality.py (ollama_participation_runtime: dialogue-response-repair stage)
+res://HerbExaminationActionMainCheck.tscn  # launched at HEAD by quality.py (ollama_participation_runtime: herb-examination-action stage)
+res://ConversationContextMainCheck.tscn  # launched at HEAD by quality.py (ollama_participation_runtime: conversation-context stage)
+
+# Checks quality.py launches only inside "with snapshot(<NAME>_REVISION)", which builds and runs
+# the frozen historical tree; the HEAD-tree branches of controls, dialogue accessibility, dialogue
+# speech and player ASR are dead because their successor authority files exist. Their HEAD code
+# runs nowhere until #432 launches it.
+ALLRPCS_FOLIAGE_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_WIND_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_RAIN_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_HEATING_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_STEEPING_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_COOLING_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_HERB_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_CONTROLS_MAIN_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_DIALOGUE_SPEECH_CHECK  # historical quality.py snapshot only — #432
+ALLRPCS_PLAYER_ASR_CHECK  # historical quality.py snapshot only — #432
+
+# Check scenes instanced by game/Main.tscn, so every Main launch loads them, but their gates run
+# only in a historical quality.py snapshot (above), so their checks never run at HEAD.
+res://ControlSettingsMainSmokeCheck.tscn  # instanced by game/Main.tscn; gate ALLRPCS_CONTROLS_MAIN_CHECK is historical quality.py snapshot only — #432
+res://DialogueAccessibilityMainSmokeCheck.tscn  # instanced by game/Main.tscn; gate ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK is historical quality.py snapshot only — #432
+
+# Art proof scenes loaded by a script rather than launched directly.
+res://CharacterAnimationImportProof.tscn  # loaded by game/CharacterAnimationImportProofCheck.gd, launched by scripts/smoke-godot.sh
+res://SeekerCloakGaitCorrectionProof.tscn  # owner-operated art review: game/SeekerCloakGaitCorrectionCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-gait-correction/README.md
+res://SeekerCloakGaitSideRevisionProof.tscn  # owner-operated art review: game/SeekerCloakGaitSideRevisionCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-gait-side-revision/README.md
+res://SeekerCloakLeadExchangeProof.tscn  # owner-operated art review: game/SeekerCloakLeadExchangeCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-lead-exchange-revision/README.md
+res://SeekerCloakPelvisHingeProof.tscn  # owner-operated art review: game/SeekerCloakPelvisHingeCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-pelvis-hinge-revision/README.md
+res://SeekerCloakReferenceGaitProof.tscn  # owner-operated art review: game/SeekerCloakReferenceGaitCheck.gd needs windowed Compatibility rendering (fails headless); see art-direction/seeker-cloak-reference-gait-revision/README.md
+res://CharacterAnimationImportProofCorrectedCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-gait-correction/check-cohort.gd
+res://CharacterAnimationImportProofRevisedCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-gait-side-revision/check-cohort.gd
+res://CharacterAnimationImportProofLeadExchangeCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-lead-exchange-revision/check-cohort.gd
+res://CharacterAnimationImportProofPelvisCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-pelvis-hinge-revision/check-cohort.gd
+res://CharacterAnimationImportProofReferenceGaitCloak.tscn  # owner-operated art review cohort: loaded only by frozen art-direction/seeker-cloak-reference-gait-revision/check-cohort.gd

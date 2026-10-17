@@ -6,6 +6,8 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
+The microphone trial is paused for the owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md).
+
 [Optional Pocket reply playback](speech-direction/dialogue-integration/README.md) is integrated in
 Main: Settings → Dialogue → Speak replies, English/German and Stop speech. It speaks exact committed
 reply text on the Speech bus, with bounded PCM, interruption and text fallback. Local developer
@@ -68,59 +70,28 @@ Standing publication authority: “ALWAYS commit and push when you finish a task
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase10-player-microphone-qualification — Qualify a named human microphone and echo session** (in_progress).
+**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (ready).
 
-Roadmap item: - [ ] Test device loss, permission denial, network failure, feedback loops, accents,
-and noisy   input.
+Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: Remaining permission/selector intake, language-specific final text and post-
-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker
-cases and a finite conclusion.
+Missing deliverable: A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-
+review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.
 
-The reply runtime prerequisites are closed: speech-direction/ollama-participation-
-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes
-malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-
-model generations and recovered full quality. Preserve all closed receipts and the three complete
-physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two
-successful spoken turns followed by failure; its exact live failure was unlogged. Resume only
-remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener.
-Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space
-tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks.
-Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require
-explicit enablement. The owner clarified ordinary answers work but examination requests lacked
-action or reply. The separately approved herb examination action repair is now complete and closed
-at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual
-selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination
-movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve
-every prior report and all 15 physical statuses. Resume the owner-operated trial on the published
-repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed
-repairs or infer a new runtime scope. The separately owner-requested conversation context repair is
-complete and closed at speech-direction/conversation-context-repair/closure.json. It supplies
-bounded heard/own history, speaker roles and exact examination outcomes, with private speech
-filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass.
-History is session-local and clears on successful save restoration. Resume only the unchanged
-remaining human trial cases; no new physical pass is inferred. The latest owner follow-up reports
-that turn-based dialogue seems to work quite well after the context repair. Preserve this positive
-qualitative result alongside earlier observations. Input method, turn count, language, Whisper use
-and audibility were unspecified; physical case totals remain unchanged.
+First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was
+closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-
+phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime
+per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).
 
-Done when: Named finite session records permission/device intake, natural English/German
-partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input
-loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-
-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion,
-then close and publish; hands-free speaker qualification requires actual echo-safe results.
+Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
+tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
+passes.
 
 Expected outputs:
 
-- `speech-direction/player-microphone-qualification/authority.json`
-- `speech-direction/player-microphone-qualification/session.json`
-- `speech-direction/player-microphone-qualification/results.json`
-- `speech-direction/player-microphone-qualification/README.md`
+- `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
 
-Boundary: Existing named owner-operated physical trial only; preserve both closed runtime repairs
-and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio
-persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad
-certification or packaged release.
+Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
+pipeline consolidation (Phase 3).
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
@@ -129,15 +100,18 @@ After ledger maintenance run `python3 scripts/check-continuation.py --sync`, its
 `--self-test`. Speech evidence and reproduction: [reply playback](speech-direction/dialogue-integration/verification.json) and
 [player recognition](speech-direction/player-asr-integration/verification.json) and
 [Space gesture](speech-direction/space-hold-to-talk/verification.json).
-Runner checks: `python3 quality.py --self-test`. Root `./quality.sh` is required for product/CI
-changes; reuse completed product evidence for subsequent prose-only planning.
+Runner checks: `python3 quality.py --self-test`. Full quality gate (required for product/CI changes;
+slow — hundreds of stages). Exception: under the owner-approved code-health program (decision D2 in
+[the plan](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)) the full gate runs
+once per phase exit; between phase exits run `dotnet format`/`build`/`test` plus the affected smoke
+launches. Reuse completed product evidence for subsequent prose-only planning.
 
 Frozen validators remain unchanged in private historical source trees/indexes, including accepted
 dialogue `e7b17575`, controls `1b0cab40` and herb `db298c8f`. Cold checks restore before build/import; cooling seeds its
 four accepted UID sidecars. Run Godot on the host, serialize native focus fixtures, and retry only
 diagnosed native mutex shutdowns identically. No OS reader setting or broad reader claim is authorized.
 
-Preserve/exclude unrelated `game/project.godot` editor SHA
-`36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca`, `.DS_Store` and concurrent
-`speech-direction/` work. UID cleanup removes only newly generated sidecars of unchanged tracked
+The Godot editor rewrite of `game/project.godot` is committed at `a55e9e8d` (`EDITOR_REVISION` in
+`quality.py` pins the historical snapshot overlays), so `game/project.godot` may now change normally.
+Preserve/exclude `.DS_Store` and concurrent `speech-direction/` work. UID cleanup removes only newly generated sidecars of unchanged tracked
 GD sources. The existing C# executable-export limitation remains; no executable release is verified.

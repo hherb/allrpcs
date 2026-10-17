@@ -42,6 +42,7 @@ CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
 PLAYER_ASR_REVISION = 'ad10fcd34eab0520492591bef78c1fea1ea62572'
+EDITOR_REVISION = 'a55e9e8dae73e9ec65472cb6a631a350d2ef1aba'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -206,7 +207,7 @@ def snapshot(revision, editor=False, repository=ROOT):
         subprocess.run(['git', 'read-tree', revision], cwd=tree,
                        env=dict(os.environ, **environment), check=True)
         if editor:
-            data = (ROOT / 'game/project.godot').read_bytes()
+            data = git('show', f'{EDITOR_REVISION}:game/project.godot')
             if sha(data) != EDITOR_SHA:
                 raise ValueError('Recorded editor exception changed')
             (tree / 'game/project.godot').write_bytes(data)

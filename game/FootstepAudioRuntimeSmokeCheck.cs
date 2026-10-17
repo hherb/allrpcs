@@ -43,11 +43,15 @@ public partial class FootstepAudioRuntimeSmokeCheck : Node
             }
             for (int wait = 0; wait < 5000 && materials.Select(new(2200, 900)) is null; wait++) { await Ticks(1); }
             WorldTimeSnapshot initialTime = GetNode<WorldTimeController>("../WorldTimeController").WorldTime;
+            // (2640, 1450) and (1500, 220) lie inside the sickhouse and laundry interiors, whose
+            // Timber and Earth floors OpeningRegionInteriorAudioSource.TrySelectMaterial has
+            // supplied since 20081e90 ("Add approved sickhouse and laundry interior audio"); this
+            // check predated it and expected no material there until a0a82d0e first launched it.
             foreach ((Vector2 position, FootstepMaterial? expected) in new (Vector2, FootstepMaterial?)[]
             {
                 (new(2200, 900), FootstepMaterial.Earth), (new(1800, 500), FootstepMaterial.Timber),
                 (new(2500, 1275), FootstepMaterial.Gravel), (new(690, 325), FootstepMaterial.Leaves),
-                (new(825, 250), FootstepMaterial.Leaves), (new(2640, 1450), null), (new(1500, 220), null),
+                (new(825, 250), FootstepMaterial.Leaves), (new(2640, 1450), FootstepMaterial.Timber), (new(1500, 220), FootstepMaterial.Earth),
                 (new(3000, 100), null)
             })
             {
@@ -143,7 +147,8 @@ public partial class FootstepAudioRuntimeSmokeCheck : Node
                 Reposition(new(2150, 900));
                 await Move(Vector2.Left, 24);
                 Require(captions.GetNode<Label>("Panel/Lines/Footstep").Text ==
-                    (mode == "captions-off" ? string.Empty : "Footsteps on earth"), "Three-line contact view lost its footstep caption.");
+                    (mode == "captions-off" ? string.Empty : "Footsteps on earth"),
+                    $"Three-line contact view lost its footstep caption: \"{captions.GetNode<Label>("Panel/Lines/Footstep").Text}\" after {audio.LastContact?.Material} at {seeker.GlobalPosition}.");
                 Require(GetViewport().GetVisibleRect().Encloses(captions.GetNode<Control>("Panel").GetGlobalRect()), "Three-line caption surface exceeds viewport.");
                 await Capture($"captions-{size.X}");
                 ReleaseInput();
@@ -163,6 +168,9 @@ public partial class FootstepAudioRuntimeSmokeCheck : Node
                 panel._Input(new InputEventAction { Action = "ui_cancel", Pressed = true });
                 Require(entry.HasFocus() && panel.Visible && !credits.Visible, "Credits failed return focus.");
                 panel.Close(false);
+                // ControlInputContext fences gameplay actions on the frame after a reading modal closes;
+                // let that happen before the next iteration presses movement.
+                await Frame();
             }
             audio.ResetPresentation();
             string output = OS.GetEnvironment("ALLRPCS_FOOTSTEP_RESULT");

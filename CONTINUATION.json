@@ -970,6 +970,20 @@
           "sha256": "61939291cc9923aad8b07b1899dd07ccaa8c5b0f606a475f4d37f8c83e09a47e"
         }
       ]
+    },
+    {
+      "id": "code-health-phase1-safety-net",
+      "reason": "Phase 1 of the owner-approved code-health program is complete: smoke launches fail on hang/exception, every engine check is launched or allowlisted, the architecture test covers every project, CI hardened (CI run itself unverified: Actions budget exhausted). Do not reopen without an explicit owner request.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-17-code-health-phase1-closure.json",
+          "sha256": "879728c02c14932238d71a6387b16e19a3a2e65b71c9318844c5b179e02962ac"
+        },
+        {
+          "path": "docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md",
+          "sha256": "ee410480ae9302f00b8d423945d8a5b31168e1761c3914ac59af5fc0fe9af864"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1500,25 +1514,34 @@
           "sha256": "3c8c09bac742faeed45ce66945c7e6265258263e3c4bab5b2720019d0f7a53be"
         }
       ]
+    },
+    {
+      "id": "owner-code-review-1-2026-10-17",
+      "owner_statement": "2026-10-17: 'Please read CLAUDE_CODE_REVIEW_1.md and start writing a plan how to fix this messy code and work towards a functional game.' After reviewing docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md (decisions D1-D6 as recommended), the owner replied: 'subagent driven please'.",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "CLAUDE_CODE_REVIEW_1.md",
+          "sha256": "c9245f4e639a45e267049bb341d1824bd1dd46148cadae221df5f82c6eeb88b1"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "phase10-player-microphone-qualification",
-    "title": "Qualify a named human microphone and echo session",
-    "status": "in_progress",
-    "workstream": "player-microphone-qualification",
-    "authority_status": "owner_approved_live_trial_conversation_context_repair_complete",
-    "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
-    "missing_deliverable": "Remaining permission/selector intake, language-specific final text and post-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion.",
-    "instructions": "The reply runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-model generations and recovered full quality. Preserve all closed receipts and the three complete physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require explicit enablement. The owner clarified ordinary answers work but examination requests lacked action or reply. The separately approved herb examination action repair is now complete and closed at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve every prior report and all 15 physical statuses. Resume the owner-operated trial on the published repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed repairs or infer a new runtime scope. The separately owner-requested conversation context repair is complete and closed at speech-direction/conversation-context-repair/closure.json. It supplies bounded heard/own history, speaker roles and exact examination outcomes, with private speech filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass. History is session-local and clears on successful save restoration. Resume only the unchanged remaining human trial cases; no new physical pass is inferred. The latest owner follow-up reports that turn-based dialogue seems to work quite well after the context repair. Preserve this positive qualitative result alongside earlier observations. Input method, turn count, language, Whisper use and audibility were unspecified; physical case totals remain unchanged.",
-    "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
+    "id": "code-health-phase2-player-defects",
+    "title": "Fix the player-facing code-review-1 defects",
+    "status": "ready",
+    "workstream": "code-health-program",
+    "authority_status": "owner_approved_code_health_program_2026-10-17",
+    "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
+    "missing_deliverable": "A detailed Phase 2 plan and fixes, each with a pinning test, for the open code-review-1 defects (#414-#420, #424-#431) and the plan's Phase 2 scope items.",
+    "instructions": "First, once GitHub Actions runs again, confirm CI is green for the Phase 1 branch; Phase 1 was closed on local verification only. Write docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md from the program plan's Phase 2 section, then execute it. Evidence regime per decision D2 (issue + tests + commit; full ./quality.sh once at phase exit).",
+    "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
     "outputs": [
-      "speech-direction/player-microphone-qualification/authority.json",
-      "speech-direction/player-microphone-qualification/session.json",
-      "speech-direction/player-microphone-qualification/results.json",
-      "speech-direction/player-microphone-qualification/README.md"
+      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md"
     ],
-    "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
+    "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
   },
   "deferred_slices": [
     {
@@ -1566,6 +1589,24 @@
         "path": "speech-direction/dialogue-integration/authority.json",
         "sha256": "1fc079679c66f5e9b0c5fc6f2418bbc2a0afb4270e6113c77c289054d0e204ee"
       }
+    },
+    {
+      "id": "phase10-player-microphone-qualification",
+      "title": "Qualify a named human microphone and echo session",
+      "status": "deferred",
+      "workstream": "player-microphone-qualification",
+      "authority_status": "owner_paused_for_code_health_program_2026-10-17",
+      "roadmap_item": "- [ ] Test device loss, permission denial, network failure, feedback loops, accents, and noisy\n  input.",
+      "missing_deliverable": "Remaining permission/selector intake, language-specific final text and post-repair human repeated Whisper/reply observation, lifecycle/device/noise/accent/headphone/speaker cases and a finite conclusion.",
+      "instructions": "The reply runtime prerequisites are closed: speech-direction/ollama-participation-repair/closure.json and speech-direction/dialogue-response-repair/closure.json. The latter fixes malformed speech/mode pairs and silent-turn stalls, with eight distinct fictional controlled/local-model generations and recovered full quality. Preserve all closed receipts and the three complete physical passes, five partial cases and seven unperformed cases. Preserve the owner report of two successful spoken turns followed by failure; its exact live failure was unlogged. Resume only remaining owner-operated checks, starting with repeated Whisper/reply dialogue beside the listener. Do not repeat confirmed bilingual recognition/live updates, correction, Stop mic or Space tap/release. Do not infer physical, echo or audibility passes from synthetic/local-model checks. Existing capture opt-in remains authorized; personal-audio persistence and new OS changes require explicit enablement. The owner clarified ordinary answers work but examination requests lacked action or reply. The separately approved herb examination action repair is now complete and closed at speech-direction/herb-examination-action-repair/closure.json. Controlled native Main, actual selected gemma4:e4b observation and recovered full quality verify accepted spoken/silent examination movement, arrival, repeat/cancel/load ownership and visible outcomes without collection. Preserve every prior report and all 15 physical statuses. Resume the owner-operated trial on the published repaired runtime; no synthetic/local-model result is a physical pass. Do not reopen the closed repairs or infer a new runtime scope. The separately owner-requested conversation context repair is complete and closed at speech-direction/conversation-context-repair/closure.json. It supplies bounded heard/own history, speaker roles and exact examination outcomes, with private speech filtering and successful-load fencing. Selected gemma4:e4b follow-ups and full current quality pass. History is session-local and clears on successful save restoration. Resume only the unchanged remaining human trial cases; no new physical pass is inferred. The latest owner follow-up reports that turn-based dialogue seems to work quite well after the context repair. Preserve this positive qualitative result alongside earlier observations. Input method, turn count, language, Whisper use and audibility were unspecified; physical case totals remain unchanged.",
+      "completion_condition": "Named finite session records permission/device intake, natural English/German partial/final correction and explicit Submit/Whisper, stop/release/close/focus/load, input loss/recovery and quiet/noisy/accent/headphone/speaker cases. Each result has honest pass/fail/not-performed status and source/runtime provenance. Retain permitted evidence, limits and conclusion, then close and publish; hands-free speaker qualification requires actual echo-safe results.",
+      "outputs": [
+        "speech-direction/player-microphone-qualification/authority.json",
+        "speech-direction/player-microphone-qualification/session.json",
+        "speech-direction/player-microphone-qualification/results.json",
+        "speech-direction/player-microphone-qualification/README.md"
+      ],
+      "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
     }
   ]
 }

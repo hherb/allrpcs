@@ -36,8 +36,10 @@ public static class OpeningRegionWoodlandClearingRoutePolicy
     {
         NavigationWorldBounds bounds = layout.SceneBinding.WoodlandClearingBounds;
         float halfOpening = layout.OpeningWidthPixels / 2.0f;
-        float sideTop = layout.LaundryOpening.Y - halfOpening;
-        float sideBottom = layout.LaundryOpening.Y + halfOpening;
+        float eastTop = layout.LaundryOpening.Y - halfOpening;
+        float eastBottom = layout.LaundryOpening.Y + halfOpening;
+        float westTop = layout.ShrineOpening.Y - halfOpening;
+        float westBottom = layout.ShrineOpening.Y + halfOpening;
         bool closedPathIsNorth = layout.ClosedForestPathOpening.Y == bounds.Top;
         float villageOpeningLeft = layout.VillageEdgeOpening.X - halfOpening;
         float villageOpeningRight = layout.VillageEdgeOpening.X + halfOpening;
@@ -82,10 +84,10 @@ public static class OpeningRegionWoodlandClearingRoutePolicy
                     villageOpeningRight,
                     bounds.Right);
         return crossesTop
-            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, sideTop)
-            || CrossesVerticalWall(start, end, bounds.Left, sideBottom, bounds.Bottom)
-            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, sideTop)
-            || CrossesVerticalWall(start, end, bounds.Right, sideBottom, bounds.Bottom)
+            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, westTop)
+            || CrossesVerticalWall(start, end, bounds.Left, westBottom, bounds.Bottom)
+            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, eastTop)
+            || CrossesVerticalWall(start, end, bounds.Right, eastBottom, bounds.Bottom)
             || crossesBottom;
     }
 
