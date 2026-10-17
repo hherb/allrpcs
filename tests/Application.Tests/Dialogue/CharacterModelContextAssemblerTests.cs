@@ -313,6 +313,36 @@ public sealed class CharacterModelContextAssemblerTests
             request, character, CreateEmptyPerception(character), [], [], affordances));
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    public void MandatoryOverflowDoesNotMaskInvalidOptionalInputs(int invalidInput)
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(new CharacterGoalSet([]));
+        CharacterIntentionAffordanceSnapshot affordances = new(Enumerable.Range(0, 128).Select(index =>
+            new CharacterIntentionAffordance(CharacterIntentionType.ExamineObject, new ObjectId($"object-{index}"))));
+        CharacterPerceptionSnapshot wrongOwner = new(new CharacterId("someone-else"), []);
+        CharacterPerceptionSnapshot missingObject = new(character.Identity.Id,
+            [new WorldObjectVisibility(new ObjectId("missing-object"), VisibilityState.Identified)]);
+
+        CharacterPerceptionSnapshot perception = invalidInput switch
+        {
+            0 => wrongOwner,
+            1 => missingObject,
+            _ => CreateEmptyPerception(character),
+        };
+        KnowledgeSnapshot knowledge = invalidInput == 2 ? new KnowledgeSnapshot([]) : CreateKnowledge(character);
+        DialogueEvent[] recent = invalidInput == 3 ? [null!] : [];
+        Assert.Throws<ArgumentException>(() => Try(perception, knowledge, recent));
+
+        void Try(CharacterPerceptionSnapshot perception, KnowledgeSnapshot knowledge, IEnumerable<DialogueEvent> recent) =>
+            CharacterModelContextAssembler.TryAssemble(request, character, perception, new WorldObjectSnapshot([]),
+                knowledge, [], recent, affordances, out _);
+    }
+
     private static CharacterModelGenerationRequest Assemble(
         CharacterTurnRequest request,
         Character character,

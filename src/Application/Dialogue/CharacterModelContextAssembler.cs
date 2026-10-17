@@ -79,12 +79,7 @@ public static class CharacterModelContextAssembler
         int remainingCount = CharacterModelContextSnapshot.MaximumEntryCount - required.Count;
         int remainingLength = CharacterModelContextSnapshot.MaximumTotalTextLength
             - required.Sum(entry => entry.Text.Length);
-        if (remainingCount < 0 || remainingLength < 0)
-        {
-            result = null;
-            return CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded;
-        }
-
+        // Projection validates all optional-input invariants even when mandatory context cannot fit.
         IReadOnlyList<CharacterModelContextEntry>[] categories =
         [
             CharacterModelPerceptionContextProjection.Project(character, perception, worldObjects),
@@ -94,6 +89,12 @@ public static class CharacterModelContextAssembler
             outcomes,
             CharacterModelRecentSpeechContextProjection.Project(character, recentDialogueEvents),
         ];
+        if (remainingCount < 0 || remainingLength < 0)
+        {
+            result = null;
+            return CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded;
+        }
+
         List<CharacterModelContextEntry>[] retained = categories.Select(_ => new List<CharacterModelContextEntry>())
             .ToArray();
         // Protect completed outcomes and authored goals before bulk perception/knowledge,
