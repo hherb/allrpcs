@@ -335,6 +335,11 @@ def frozen_evidence():
                 if sha(git('show', COOLING_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen cooling predecessor evidence: ' + row['path'])
                 continue
+            if path.name == 'herb-collection-runtime-verification.json' and row['path'] == 'game/export_presets.cfg':
+                # Phase 2 shipping exclusions are authorized; retain the exact herb export predecessor.
+                if sha(git('show', HERB_REVISION + ':' + row['path'])) != row['sha256']:
+                    raise ValueError('Changed frozen herb predecessor evidence: ' + row['path'])
+                continue
             if row['path'] in controls_paths:
                 # Input-only successor changes are granted; retained predecessor evidence stays exact.
                 if sha(git('show', controls_baseline + ':' + row['path'])) != row['sha256']:
@@ -1281,6 +1286,61 @@ def finish_rain():
 
 class ContractTests(unittest.TestCase):
     """Reject omitted checks and failed stages, and constrain the exceptional native retry."""
+
+    @contextmanager
+    def herb_export_fixture(self, manifest='herb-collection-runtime-verification.json',
+                            retained_path='game/export_presets.cfg', corrupt_binding=False,
+                            corrupt_predecessor=False):
+        """Exercise the real guard with private evidence and an isolated Git read seam."""
+        from unittest.mock import patch
+        authority_path = 'audio-direction/material-runtime-review/publication/authority.json'
+        authority = (ROOT / authority_path).read_bytes()
+        predecessor = git('show', HERB_REVISION + ':game/export_presets.cfg')
+        self.assertEqual(sha(predecessor), 'e10c14cfde8ed35b7ae80293c4fecd32309d2f4ddb8cdb74621faacad31d27ba')
+        binding = '0' * 64 if corrupt_binding else sha(predecessor)
+        with tempfile.TemporaryDirectory() as directory:
+            repository = Path(directory)
+            target = repository / retained_path
+            target.parent.mkdir(parents=True)
+            target.write_bytes(b'authorized current successor\n')
+            authority_file = repository / authority_path
+            authority_file.parent.mkdir(parents=True)
+            authority_file.write_bytes(authority)
+            (repository / 'audio-direction' / manifest).write_text(json.dumps({
+                'evidence_bindings': [{'path': retained_path, 'sha256': binding}]}))
+
+            def historical_read(*arguments):
+                if arguments == ('show', AUDIO_REVISIONS[1][1] + ':' + authority_path):
+                    return authority
+                self.assertEqual(arguments, ('show', HERB_REVISION + ':game/export_presets.cfg'))
+                return predecessor + (b'corrupt' if corrupt_predecessor else b'')
+
+            with patch.object(sys.modules[__name__], 'ROOT', repository), \
+                    patch.object(sys.modules[__name__], 'git', side_effect=historical_read) as read:
+                yield read
+
+    def test_herb_export_successor_preserves_pinned_predecessor(self):
+        """Changed live presets pass only after the herb revision's exact bytes are read."""
+        with self.herb_export_fixture() as read:
+            frozen_evidence()
+            self.assertIn(unittest.mock.call('show', HERB_REVISION + ':game/export_presets.cfg'),
+                          read.call_args_list)
+
+    def test_herb_export_corrupt_history_is_fatal(self):
+        """Neither a changed binding nor changed historical bytes may authorize a successor."""
+        message = 'Changed frozen herb predecessor evidence: game/export_presets.cfg'
+        for corruption in ('corrupt_binding', 'corrupt_predecessor'):
+            with self.subTest(corruption=corruption), self.herb_export_fixture(**{corruption: True}):
+                with self.assertRaisesRegex(ValueError, message):
+                    frozen_evidence()
+
+    def test_herb_export_exception_does_not_admit_unrelated_drift(self):
+        """The same manifest with another path, or same path with another manifest, stays exact."""
+        for changes in ({'retained_path': 'game/retained.cfg'},
+                        {'manifest': 'unrelated-runtime-verification.json'}):
+            with self.subTest(changes=changes), self.herb_export_fixture(**changes):
+                with self.assertRaisesRegex(ValueError, 'Changed retained evidence: '):
+                    frozen_evidence()
 
     def test_final_cleanup_interruption_preserves_failure(self):
         """Drive both real entry points to final cleanup with product execution stubbed."""
