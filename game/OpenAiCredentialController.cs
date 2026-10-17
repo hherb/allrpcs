@@ -16,7 +16,7 @@ public partial class OpenAiCredentialController : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        if (OS.GetEnvironment(TestStoreEnvironmentVariable) != EnabledEnvironmentValue)
+        if (DebugTestEnvironment.GetEnvironment(TestStoreEnvironmentVariable) != EnabledEnvironmentValue)
         {
             credentialStore = CreateCredentialStore();
         }
