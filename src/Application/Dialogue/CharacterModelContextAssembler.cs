@@ -27,6 +27,30 @@ public static class CharacterModelContextAssembler
         CharacterIntentionAffordanceSnapshot validAffordances,
         IEnumerable<CharacterModelContextEntry>? actionOutcomes = null)
     {
+        CharacterModelContextAssemblyStatus status = TryAssemble(
+            request, character, perception, worldObjects, knowledge, memoryEntries,
+            recentDialogueEvents, validAffordances, out CharacterModelGenerationRequest? result, actionOutcomes);
+        return status == CharacterModelContextAssemblyStatus.Success
+            ? result!
+            : throw new InvalidOperationException("Required model context exceeds the context budget.");
+    }
+
+    /// <summary>
+    /// Fits optional context while preserving exact required constraints; reports an impossible
+    /// mandatory budget without issuing a partial generation request. Invalid inputs still throw.
+    /// </summary>
+    public static CharacterModelContextAssemblyStatus TryAssemble(
+        CharacterTurnRequest request,
+        Character character,
+        CharacterPerceptionSnapshot perception,
+        WorldObjectSnapshot worldObjects,
+        KnowledgeSnapshot knowledge,
+        IEnumerable<CharacterModelContextEntry> memoryEntries,
+        IEnumerable<DialogueEvent> recentDialogueEvents,
+        CharacterIntentionAffordanceSnapshot validAffordances,
+        out CharacterModelGenerationRequest? result,
+        IEnumerable<CharacterModelContextEntry>? actionOutcomes = null)
+    {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(character);
         ArgumentNullException.ThrowIfNull(perception);
@@ -47,42 +71,70 @@ public static class CharacterModelContextAssembler
             memoryEntries,
             CharacterModelContextEntryKind.Memory,
             nameof(memoryEntries));
-        List<CharacterModelContextEntry> entries = new();
-        entries.AddRange(CharacterModelPerceptionContextProjection.Project(
-            character,
-            perception,
-            worldObjects));
-        entries.AddRange(CharacterModelKnowledgeContextProjection.Project(character, knowledge));
-        entries.AddRange(CharacterModelGoalContextProjection.Project(character));
-        entries.AddRange(memories);
-        entries.AddRange(RetainExactKind(actionOutcomes ?? [],
-            CharacterModelContextEntryKind.ActionOutcome, nameof(actionOutcomes)));
-        int speechIndex = entries.Count;
-        entries.AddRange(CharacterModelValidAffordanceContextProjection.Project(validAffordances));
-        entries.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
-        // Reserve authoritative state and the current utterance before fitting older dialogue.
-        CharacterModelContextSnapshot required = new(entries);
+        List<CharacterModelContextEntry> outcomes = RetainExactKind(actionOutcomes ?? [],
+            CharacterModelContextEntryKind.ActionOutcome, nameof(actionOutcomes));
+        List<CharacterModelContextEntry> required = new(
+            CharacterModelValidAffordanceContextProjection.Project(validAffordances));
+        required.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
+        int remainingCount = CharacterModelContextSnapshot.MaximumEntryCount - required.Count;
         int remainingLength = CharacterModelContextSnapshot.MaximumTotalTextLength
-            - required.Entries.Sum(entry => entry.Text.Length);
-        int remainingCount = CharacterModelContextSnapshot.MaximumEntryCount - entries.Count;
-        List<CharacterModelContextEntry> recent = new();
-        foreach (CharacterModelContextEntry entry in CharacterModelRecentSpeechContextProjection.Project(
-            character, recentDialogueEvents).Reverse())
+            - required.Sum(entry => entry.Text.Length);
+        if (remainingCount < 0 || remainingLength < 0)
         {
-            if (recent.Count == remainingCount || entry.Text.Length > remainingLength)
-            {
-                break;
-            }
-
-            recent.Add(entry);
-            remainingLength -= entry.Text.Length;
+            result = null;
+            return CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded;
         }
 
-        recent.Reverse();
-        entries.InsertRange(speechIndex, recent);
-        CharacterModelContextSnapshot context = new(entries);
+        IReadOnlyList<CharacterModelContextEntry>[] categories =
+        [
+            CharacterModelPerceptionContextProjection.Project(character, perception, worldObjects),
+            CharacterModelKnowledgeContextProjection.Project(character, knowledge),
+            CharacterModelGoalContextProjection.Project(character),
+            memories,
+            outcomes,
+            CharacterModelRecentSpeechContextProjection.Project(character, recentDialogueEvents),
+        ];
+        List<CharacterModelContextEntry>[] retained = categories.Select(_ => new List<CharacterModelContextEntry>())
+            .ToArray();
+        // Protect completed outcomes and authored goals before bulk perception/knowledge,
+        // then prefer newest memory and local speech. Emit in the original category order.
+        foreach (int category in new[] { 4, 2, 0, 1, 3, 5 })
+        {
+            Select(categories[category], retained[category], category is 3 or 4 or 5);
+        }
 
-        return new CharacterModelGenerationRequest(request, context);
+        List<CharacterModelContextEntry> entries = retained.SelectMany(category => category).ToList();
+        entries.AddRange(required);
+        result = new CharacterModelGenerationRequest(request, new CharacterModelContextSnapshot(entries));
+        return CharacterModelContextAssemblyStatus.Success;
+
+        void Select(
+            IEnumerable<CharacterModelContextEntry> candidates,
+            List<CharacterModelContextEntry> selected,
+            bool newestFirst)
+        {
+            foreach (CharacterModelContextEntry entry in newestFirst ? candidates.Reverse() : candidates)
+            {
+                if (remainingCount == 0)
+                {
+                    break;
+                }
+
+                if (entry.Text.Length > remainingLength)
+                {
+                    continue;
+                }
+
+                selected.Add(entry);
+                remainingCount--;
+                remainingLength -= entry.Text.Length;
+            }
+
+            if (newestFirst)
+            {
+                selected.Reverse();
+            }
+        }
     }
 
     private static List<CharacterModelContextEntry> RetainExactKind(

@@ -9,7 +9,7 @@ namespace Allrpcs.Application.Dialogue;
 public static class CharacterModelCommitmentMemoryContextProjection
 {
     /// <summary>
-    /// Returns bounded fresh memory entries in stable commitment order from the matching aggregate.
+    /// Returns fresh memory entries in stable commitment order from the matching aggregate.
     /// </summary>
     public static IReadOnlyList<CharacterModelContextEntry> Project(
         CharacterId respondingCharacterId,
@@ -36,6 +36,6 @@ public static class CharacterModelCommitmentMemoryContextProjection
                     + $"description={commitment.Description}"));
         }
 
-        return new CharacterModelContextSnapshot(entries).Entries;
+        return entries.AsReadOnly();
     }
 }

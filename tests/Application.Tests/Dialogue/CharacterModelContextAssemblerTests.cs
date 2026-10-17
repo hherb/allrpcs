@@ -218,7 +218,7 @@ public sealed class CharacterModelContextAssemblerTests
     }
 
     [Fact]
-    public void RejectsExcessiveContextWithoutChangingInputs()
+    public void FitsExcessiveContextWithoutChangingInputs()
     {
         CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
         Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(
@@ -232,15 +232,85 @@ public sealed class CharacterModelContextAssemblerTests
             new ObjectId("herb-patch"));
         CharacterIntentionAffordanceSnapshot affordances = new([affordance]);
 
-        Assert.Throws<ArgumentException>(() => Assemble(
-            request,
-            character,
-            CreateEmptyPerception(character),
-            memories,
-            [],
-            affordances));
+        CharacterModelGenerationRequest result = Assemble(
+            request, character, CreateEmptyPerception(character), memories, [], affordances);
+        Assert.Equal(128, result.Context.Entries.Count);
+        Assert.Equal(request.DialogueEvent.Utterance.Text, result.Context.Entries[^1].Text);
         Assert.All(memories, retained => Assert.Same(memory, retained));
         Assert.Same(affordance, affordances.Entries[0]);
+    }
+
+    [Fact]
+    public void LongOptionalContextRetainsLatestOutcomeGoalsAndExactRequiredContext()
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(
+            new CharacterGoalSet([new CharacterGoal("help-safely", "Help safely.")]));
+        CharacterModelContextEntry[] memories = Enumerable.Range(0, 128)
+            .Select(index => new CharacterModelContextEntry(CharacterModelContextEntryKind.Memory,
+                $"memory-{index}:" + new string('x', 1000))).ToArray();
+        CharacterModelContextEntry outcome = new(CharacterModelContextEntryKind.ActionOutcome,
+            "Completed examination: exact authoritative result.");
+        CharacterIntentionAffordanceSnapshot affordances = new(
+            [new CharacterIntentionAffordance(CharacterIntentionType.ExamineObject, new ObjectId("herb-patch"))]);
+
+        CharacterModelGenerationRequest Generate() => CharacterModelContextAssembler.Assemble(
+            request, character, CreateEmptyPerception(character), new WorldObjectSnapshot([]),
+            CreateKnowledge(character), memories, [], affordances, [outcome]);
+        CharacterModelGenerationRequest result = Generate();
+
+        Assert.Contains(outcome, result.Context.Entries);
+        Assert.Contains(result.Context.Entries, entry => entry.Kind == CharacterModelContextEntryKind.Goal);
+        Assert.Contains(memories[^1], result.Context.Entries);
+        Assert.DoesNotContain(memories[0], result.Context.Entries);
+        Assert.Equal(result.Context.Entries.Select(entry => entry.Text),
+            Generate().Context.Entries.Select(entry => entry.Text));
+        Assert.True(result.Context.Entries.Sum(entry => entry.Text.Length) <= 32000);
+        Assert.True(result.Context.Entries.Count <= 128);
+        Assert.Equal(request.DialogueEvent.Utterance.Text, result.Context.Entries[^1].Text);
+        Assert.Same(request.DialogueEvent.Delivery.Mode, result.Context.Entries[^1].DeliveryMode);
+        Assert.Equal("type=examine-object;target=herb-patch", result.Context.Entries[^2].Text);
+    }
+
+    [Fact]
+    public void FitsUnboundedPerceptionVolumeAtMaximumDescriptionLength()
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(new CharacterGoalSet([]));
+        WorldObject[] objects = Enumerable.Range(0, 128).Select(index =>
+            CharacterModelPerceptionContextProjectionTests.CreateWorldObject(
+                $"object-{index}", "Object", new string('x', WorldObjectDescription.MaximumLength))).ToArray();
+        CharacterPerceptionSnapshot perception = new(character.Identity.Id, objects.Select(item =>
+            new WorldObjectVisibility(item.Identity.Id, VisibilityState.Identified)));
+
+        CharacterModelGenerationRequest result = CharacterModelContextAssembler.Assemble(
+            request, character, perception, new WorldObjectSnapshot(objects), CreateKnowledge(character),
+            [], [], new CharacterIntentionAffordanceSnapshot([]));
+
+        Assert.Equal(7, result.Context.Entries.Count(entry =>
+            entry.Kind == CharacterModelContextEntryKind.FilteredPerception));
+        Assert.Same(objects[0].Description.Text, result.Context.Entries[0].Text);
+        Assert.True(result.Context.Entries.Sum(entry => entry.Text.Length) <= 32000);
+        Assert.Equal(request.DialogueEvent.Utterance.Text, result.Context.Entries[^1].Text);
+    }
+
+    [Fact]
+    public void ReportsMandatoryBudgetExhaustionWithoutPartialRequest()
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(new CharacterGoalSet([]));
+        CharacterIntentionAffordanceSnapshot affordances = new(Enumerable.Range(0, 128).Select(index =>
+            new CharacterIntentionAffordance(CharacterIntentionType.ExamineObject, new ObjectId($"object-{index}"))));
+
+        CharacterModelContextAssemblyStatus status = CharacterModelContextAssembler.TryAssemble(
+            request, character, CreateEmptyPerception(character), new WorldObjectSnapshot([]),
+            CreateKnowledge(character), [], [], affordances, out CharacterModelGenerationRequest? result);
+
+        Assert.Equal(CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded, status);
+        Assert.Null(result);
+        Assert.Equal(128, affordances.Entries.Count);
+        Assert.Throws<InvalidOperationException>(() => Assemble(
+            request, character, CreateEmptyPerception(character), [], [], affordances));
     }
 
     private static CharacterModelGenerationRequest Assemble(
