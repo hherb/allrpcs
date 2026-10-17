@@ -85,6 +85,7 @@ public sealed class PortAudioMicrophoneCapture(IPlayerSpeechWorkerFactory factor
             {
                 using JsonDocument message = await PlayerSpeechProtocol.Read(worker, cancellationToken).ConfigureAwait(false);
                 JsonElement value = message.RootElement;
+                if (value.GetProperty("type").GetString() == "finished" && value.EnumerateObject().Count() == 1) { yield break; }
                 if (value.GetProperty("type").GetString() != "audio" || value.GetProperty("sequence").GetInt32() != sequence++)
                 { throw new IOException("Microphone unavailable; check permission/device."); }
                 yield return PlayerSpeechProtocol.Decode(value);
@@ -96,9 +97,14 @@ public sealed class PortAudioMicrophoneCapture(IPlayerSpeechWorkerFactory factor
 
 internal static class PlayerSpeechProtocol
 {
-    internal static async Task<JsonDocument> Read(IPlayerSpeechWorker worker, CancellationToken token)
+    internal static async Task<JsonDocument> Read(IPlayerSpeechWorker worker, CancellationToken token, TimeProvider? clock = null)
     {
-        string? line = await worker.ReceiveAsync(token).AsTask().WaitAsync(TimeSpan.FromSeconds(10), token).ConfigureAwait(false);
+        using CancellationTokenSource timeout = new(TimeSpan.FromSeconds(10), clock ?? TimeProvider.System);
+        using CancellationTokenSource deadline = CancellationTokenSource.CreateLinkedTokenSource(token, timeout.Token);
+        string? line;
+        try { line = await worker.ReceiveAsync(deadline.Token).ConfigureAwait(false); }
+        catch (OperationCanceledException) when (!token.IsCancellationRequested && timeout.IsCancellationRequested)
+        { throw new TimeoutException("Input speech worker response timed out."); }
         if (line is null || line.Length > 32000) { throw new IOException("Input speech worker unavailable."); }
         return JsonDocument.Parse(line);
     }

@@ -33,6 +33,7 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
         string id = Guid.NewGuid().ToString("N");
         bool sent = false;
         bool completed = false;
+        bool poisoned = true;
         try
         {
             await EnsureReadyAsync(linked.Token).ConfigureAwait(false);
@@ -49,7 +50,15 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
             while (true)
             {
                 linked.Token.ThrowIfCancellationRequested();
-                using JsonDocument document = await ReceiveAsync(linked.Token).ConfigureAwait(false);
+                poisoned = true;
+                JsonDocument received;
+                try { received = await ReceiveAsync(linked.Token).ConfigureAwait(false); }
+                catch (OperationCanceledException) when (linked.IsCancellationRequested)
+                {
+                    poisoned = false;
+                    throw;
+                }
+                using JsonDocument document = received;
                 JsonElement root = document.RootElement;
                 if (PocketSpeechProtocol.StringField(root, "id") != id)
                 {
@@ -60,6 +69,7 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
                 {
                     SpeechAudioChunk chunk = Decode(root, sequence++);
                     linked.Token.ThrowIfCancellationRequested();
+                    poisoned = false;
                     yield return chunk;
                 }
                 else if (type == "finished" && PocketSpeechProtocol.StringField(root, "status") == "completed" && sequence > 0)
@@ -69,6 +79,11 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
                 }
                 else
                 {
+                    if (type == "error" && !string.IsNullOrWhiteSpace(PocketSpeechProtocol.StringField(root, "code")))
+                    {
+                        // A request error is terminal: the worker will send no further completion.
+                        completed = true;
+                    }
                     throw new SpeechSynthesisException("Speech generation failed; text remains available.");
                 }
             }
@@ -77,7 +92,14 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
         {
             if (!completed)
             {
-                await RetireAsync(id, sent).ConfigureAwait(false);
+                if (poisoned)
+                {
+                    await ResetAsync().ConfigureAwait(false);
+                }
+                else
+                {
+                    await RetireAsync(id, sent).ConfigureAwait(false);
+                }
             }
             _gate.Release();
         }
@@ -163,10 +185,13 @@ public sealed class PocketSpeechSynthesizer : ISpeechSynthesizer, IAsyncDisposab
                     {
                         break;
                     }
-                    if (root.GetProperty("type").GetString() is "finished" or "error")
+                    string type = PocketSpeechProtocol.StringField(root, "type");
+                    if ((type == "finished" && PocketSpeechProtocol.StringField(root, "status") is "completed" or "cancelled") ||
+                        (type == "error" && !string.IsNullOrWhiteSpace(PocketSpeechProtocol.StringField(root, "code"))))
                     {
                         return;
                     }
+                    if (type != "audio") { break; }
                 }
             }
         }

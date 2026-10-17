@@ -900,6 +900,7 @@ def dialogue_accessibility_checks(run, environment, tree, revision):
 
 def dialogue_speech_runtime(run, environment):
     """Keep the closed seven-control reply-playback fixture in its accepted source snapshot."""
+    run.stage('pocket-speech-worker-boundary', [sys.executable, 'scripts/test-pocket-speech-worker.py'])
     if (ROOT / 'speech-direction/player-asr-integration/authority.json').exists():
         with snapshot(DIALOGUE_SPEECH_REVISION, editor=True) as (tree, env):
             run.stage('dialogue-speech-historical-restore', ['dotnet', 'restore', 'Allrpcs.sln'], tree, env, DIALOGUE_SPEECH_REVISION)

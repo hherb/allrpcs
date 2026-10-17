@@ -73,10 +73,10 @@ public sealed class PlayerSpeechWorkerFactory(PlayerSpeechWorkerOptions options)
     private sealed class LocalProcess : IPlayerSpeechWorker
     {
         private readonly Process process;
-        private readonly Task stderr;
+        private readonly OwnedSpeechWorkerLifetime lifetime;
         private readonly char[] buffer = new char[4096];
         private int offset; private int count;
-        internal LocalProcess(Process process) { this.process = process; process.StandardInput.AutoFlush = true; stderr = Drain(); }
+        internal LocalProcess(Process process) { this.process = process; process.StandardInput.AutoFlush = true; lifetime = new(process); }
         public async ValueTask SendAsync(string message, CancellationToken cancellationToken)
         {
             if (message.Length > 32000) { throw new IOException("Input speech message exceeded bound."); }
@@ -99,16 +99,6 @@ public sealed class PlayerSpeechWorkerFactory(PlayerSpeechWorkerOptions options)
                 if (newline >= 0) { return line.ToString().TrimEnd('\r'); }
             }
         }
-        private async Task Drain()
-        { char[] discarded = new char[4096]; while (await process.StandardError.ReadAsync(discarded.AsMemory()).ConfigureAwait(false) > 0) { } }
-        public async ValueTask DisposeAsync()
-        {
-            try
-            {
-                if (!process.HasExited) { process.Kill(entireProcessTree: true); }
-                await process.WaitForExitAsync().ConfigureAwait(false); await stderr.ConfigureAwait(false);
-            }
-            finally { process.Dispose(); }
-        }
+        public ValueTask DisposeAsync() => lifetime.DisposeAsync();
     }
 }
