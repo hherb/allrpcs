@@ -5,6 +5,7 @@ using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Knowledge;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
+using Allrpcs.TestSupport;
 
 namespace Allrpcs.Application.Tests.Dialogue;
 
@@ -138,19 +139,29 @@ public sealed class CharacterModelGenerationControllerDiagnosticTests
     public async Task RecordsOnlyFinalSynthesizedTimeoutAfterSafeRetry()
     {
         RecordingSink sink = new();
+        ManualTimeProvider generationClock = new();
+        bool secondAttemptEntered = false;
         StubModel model = new(
             Updates(new CharacterModelStreamTermination(CharacterModelStreamTerminationStatus.Failed,
                 null, new CharacterModelFailure(CharacterModelFailureCode.Transport, TimeSpan.Zero))),
-            WaitForCancellation());
+            WaitForCancellation(() => secondAttemptEntered = true));
 
-        CharacterModelStreamSnapshot result = await GenerateAsync(
+        Task<CharacterModelStreamSnapshot> generation = GenerateAsync(
             model,
             TimeSpan.FromMilliseconds(10),
             Diagnostics(
                 new SequenceTimeProvider(TimeSpan.Zero, TimeSpan.FromMilliseconds(10)),
                 sink),
             null,
-            CancellationToken.None);
+            CancellationToken.None,
+            generationClock);
+
+        Assert.Equal(2, model.CallCount);
+        Assert.True(secondAttemptEntered);
+        Assert.False(generation.IsCompleted);
+        Assert.Empty(sink.Diagnostics);
+        generationClock.Advance(TimeSpan.FromMilliseconds(10));
+        CharacterModelStreamSnapshot result = await generation;
 
         Assert.Equal(2, model.CallCount);
         Assert.Equal(
@@ -257,7 +268,8 @@ public sealed class CharacterModelGenerationControllerDiagnosticTests
         TimeSpan deadline,
         CharacterModelGenerationControllerDiagnostics diagnostics,
         CharacterModelGenerationRequest? request,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken,
+        TimeProvider? generationTimeProvider = null) =>
         CharacterModelGenerationController.GenerateAsync(
             model,
             request ?? Request(),
@@ -265,7 +277,8 @@ public sealed class CharacterModelGenerationControllerDiagnosticTests
             new CharacterIntentionAffordanceSnapshot([]),
             deadline,
             diagnostics,
-            cancellationToken);
+            cancellationToken,
+            generationTimeProvider);
 
     private static CharacterModelGenerationRequest Request()
     {
@@ -315,9 +328,12 @@ public sealed class CharacterModelGenerationControllerDiagnosticTests
     }
 
     private static async IAsyncEnumerable<CharacterModelStreamUpdate> WaitForCancellation(
+        Action? onEntered = null,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        await Task.Delay(Timeout.InfiniteTimeSpan, cancellationToken);
+        Task pendingCancellation = Task.Delay(Timeout.InfiniteTimeSpan, cancellationToken);
+        onEntered?.Invoke();
+        await pendingCancellation;
         yield break;
     }
 
