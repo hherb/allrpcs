@@ -15,11 +15,12 @@ on `b841afed` passed all four jobs: 5,924 solution tests, 23 runner self-tests a
 363 passed / zero failed / two existing quarantines. Full hosted logs are retained locally at
 `/private/tmp/allrpcs-phase2-current-ci.log`.
 
-Another session already owns a full `./quality.sh` on `b841afed`, started 2026-10-17
-20:57:41 UTC (18 October Sydney time). Its report at `artifacts/quality-current/summary.json`
-was still running with 47 completed passing stages when inspected at 21:28 UTC. Preserve that
-run and its logs; do not launch a competing gate or interrupt it. Record its terminal result
-when available. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
+The complete `./quality.sh` on `b841afed` passed all 218 stages and required completion markers
+(2026-10-17 20:57:41–22:12:12 UTC); its [summary](docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json)
+is committed and full logs remain in ignored `artifacts/quality-current/`. Hosted
+[run 39071192535](https://github.com/hherb/allrpcs/actions/runs/39071192535) on the same source
+also passed all four jobs. An earlier gate on `cee9df2b` failed product-10 on the flaky invalid
+ownership fixture that `b841afed` fixed. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
 retains the earlier complete/failed evidence. [PR #440](https://github.com/hherb/allrpcs/pull/440)
 is now open and ready for review, no longer draft. Keep Phase 2 open and Phase 3 unselected.
 
@@ -51,22 +52,23 @@ This authorizes review-branch publication; no merge or release is authorized her
 
 Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 
-Missing deliverable: Completion of the already-running full root gate on b841afed after the PR
-review corrections, live fictional OpenAI request/captured stream for #417, and the already
-requested owner Keychain save result. Latest hosted CI passed all four jobs.
+Missing deliverable: Live fictional OpenAI request/captured stream for #417 and the already
+requested owner Keychain save result. The complete root gate and hosted CI on b841afed after the PR
+review corrections have passed.
 
 Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-
 defects.md. New product/tooling corrections cee9df2b and b841afed postdate the retained 218-stage
 root pass on 010439d5, so that pass is historical evidence rather than validation of current source.
 Hosted run 39069028898 on b841afed passed all four jobs (5924 solution tests, 23 runner self-tests,
-native 363 passed with two existing quarantines). Another session already owns a full ./quality.sh
-run on b841afed, started 2026-10-17 20:57:41 UTC; preserve its report/logs in artifacts/quality-
-current and do not start a competing run or interrupt it. Record its terminal result when available.
-PR #440 is open and ready for review, no longer draft; do not merge. The 2026-10-18 existence-only
-application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the
-pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress; do not select
-Phase 3, merge, release or reopen closed scopes before satisfying exit conditions and applicable
-authority. Reuse unchanged passing evidence for subsequent prose-only changes.
+native 363 passed with two existing quarantines). The complete ./quality.sh on b841afed passed all
+218 stages and required markers (2026-10-17 20:57:41-22:12:12 UTC); its summary is committed at
+docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json. Hosted run
+39071192535 on the same source also passed all four jobs. PR #440 is open and ready for review, no
+longer draft; do not merge. The 2026-10-18 existence-only application Keychain recheck returned
+item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live
+#417/Keychain success. Keep Phase 2 in progress; do not select Phase 3, merge, release or reopen
+closed scopes before satisfying exit conditions and applicable authority. Reuse unchanged passing
+evidence for subsequent prose-only changes.
 
 Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
 tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh

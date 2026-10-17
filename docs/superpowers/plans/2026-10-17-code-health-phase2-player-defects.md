@@ -175,7 +175,7 @@
 - [x] Run `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, build with zero warnings, and `dotnet test Allrpcs.sln --no-build`.
 - [x] Run one full `./quality.sh`; diagnose failures, preserve logs and repair relevant defects. Final complete run: 218 stages passed on `010439d5`.
 - [x] Confirm hosted CI for the tested product checkpoint: run 39020148424 passed all four jobs; latest review-correction checkpoint b841afed passed run 39069028898.
-- [ ] Record the terminal result of the already-running full root gate on b841afed after cee9df2b/b841afed; the earlier full pass remains historical evidence.
+- [x] Record the terminal result of the already-running full root gate on b841afed after cee9df2b/b841afed (218 stages passed); the earlier full pass remains historical evidence.
 - [ ] Confirm original issues #414-#420/#424-#431 closed by tested commits; list genuinely unavailable manual/live evidence rather than claiming it.
 - [ ] Only after all exit conditions pass, close Phase 2 in the ledger and roadmap, select Phase 3's named missing deliverable, sync/check/self-test and commit/push. Otherwise keep Phase 2 in progress with the exact remaining task.
 
@@ -196,7 +196,7 @@
 | 10 Shipping hygiene | Complete; `4592f02d` | Three presets; compiled release guard; real pack graph (1,245 entries/431 dependencies); eight native checks; independent review. Executable export remains unsupported. |
 | 11 Tooling | Complete; `76f72ec9`, `544d2d5c` (Fixes #414/#415/#416) | 20 quality self-tests; real Git history and cleanup-interruption regressions; continuation/actionlint; scoped review. |
 | 12 Long sessions/ducking | Complete; `075d3ac2` (Fixes #424) | 5,921 solution tests, zero-warning build/format, four native checks; eighteen identity classes, bounded persistent append, capacity/eviction and ducking regressions; independent review. |
-| 13 Phase exit | In progress; open PR [#440](https://github.com/hherb/allrpcs/pull/440) | Whole-phase review and all scoped corrections approved through `ad2927df`. Complete root quality: 218 stages passed on `010439d5`; hosted 39020148424 passed all jobs. Current full root gate is running after cee9df2b/b841afed; hosted 39069028898 passed. Live #417 and owner Keychain evidence also remain open. |
+| 13 Phase exit | In progress; open PR [#440](https://github.com/hherb/allrpcs/pull/440) | Whole-phase review and all scoped corrections approved through `ad2927df`. Complete root quality: 218 stages passed on `010439d5`; hosted 39020148424 passed all jobs. Complete root quality after cee9df2b/b841afed: 218 stages passed on `b841afed`; hosted 39069028898 and 39071192535 passed. Live #417 and owner Keychain evidence also remain open. |
 
 Phase 1 branch CI run 38998433672 and the subsequently merged main run 38998468190 both failed the same unquarantined 50 ms model-timeout presentation fixture (324 passed, two existing quarantines). Main `032c5b30` merged PR #438 and has an empty tree diff from the starting `e55463b0`, so no upstream product change was lost. Task 3 reproduced and repaired the fixture, including a passing 10 FPS run. PR #440 run 39007686673 passed C# formatting/build/tests, Python/tooling and Linux unsigned-build jobs; Godot was still running when the reviewed CI-only correction was prepared. The correction enables the existing twenty quality-runner self-tests in the now full-history Python job. Latest run 39008345177 passed 5,921 solution tests and 23 runner self-tests but failed four native fixtures (359 passed, two existing quarantines). `b5d020cd` restores the new Task 7 harness before the accepted final channel node and explicitly makes the two direct audio fixture speakers present. All four exact RED checks then passed, together with three hidden/once ownership cases; build/format and scoped review passed. Run 39009633071 then passed those four checks (362 native passes, one different failure, two existing quarantines). The scripted provider fixture's generic terminal assertion failed; its original individual predicate values were not logged. Controlled experiments proved a separate three-second independent-task occurrence changes the asserted transcript/EventLog/WorldTime during real retry, while the exact model and turn predicates remain correct. The named repeated-offline peer has the same demonstrated vulnerability; no hosted peer failure is claimed. `2d10ba23` isolates elapsed independent-task time in those two disposable fixtures by calling Main once per frame with zero delta, retaining physics, all original assertions, real retry and frame/deadline bounds. Both controlled RED-to-GREEN cases, eight final native checks, zero-warning build/format and scoped review pass. Manual fixture ordering differs from automatic parent dispatch; automatic ownership/timeout/navigation/healer-command checks supply the explicit integration coverage. A final hosted result is still required. #432-#435/#437/#439 stay separate.
 
@@ -249,6 +249,18 @@ retrieving a secret. The generated real-schema echo fixture in `OpenAiSchemaEcho
 is local regression evidence, not a live provider capture. Live #417 and the previously requested
 owner-operated Keychain save result remain open. Phase 2 stays in progress with Phase 3
 unselected. Untracked Godot UID sidecars were left untouched.
+
+The complete root gate on `b841afed3e7c505edf440d58c6647db4a6916b87` exited zero from
+2026-10-17 20:57:41 UTC to 22:12:12 UTC: all 218 stages passed and every required completion
+marker was seen. Its [stage summary](../evidence/2026-10-18-code-health-phase2-review-corrections-quality.json)
+is committed, SHA-256 `da4459faf9b9e627549e86ab11d306fa886d933faa55898543041e1879bff114`; full
+logs remain in ignored `artifacts/quality-current/`. Hosted
+[run 39071192535](https://github.com/hherb/allrpcs/actions/runs/39071192535) on the same source
+passed all four jobs. The preceding gate on `cee9df2b` failed product-10 at stage 35 on
+`ALLRPCS_DIALOGUE_OWNERSHIP_CHECK=invalid`; instrumentation showed the non-addressed sage at the
+192 px hearing edge after the healer's startup walk, which `b841afed` fixed (old head 1/48,
+`cee9df2b` 5/48, fix 40/40). Its failed report was superseded by the passing run. Live #417 and the
+owner Keychain save result remain the only open Phase 2 exit evidence.
 
 ## Execution decisions and rework costs
 
