@@ -7,6 +7,7 @@ terminal acceptance take precedence. Keep every persistent closure.
 ## Current checkpoint
 
 The microphone trial is paused for the owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md).
+Phase 2 implementation progress and remaining checks are tracked in its [task plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md).
 
 [Optional Pocket reply playback](speech-direction/dialogue-integration/README.md) is integrated in
 Main: Settings → Dialogue → Speak replies, English/German and Stop speech. It speaks exact committed

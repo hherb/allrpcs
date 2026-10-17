@@ -68,10 +68,10 @@
 
 **Interfaces:** All provider requests have a finite request deadline (120 seconds) and idle-read deadline (30 seconds), separately preserving caller cancellation. Use linked tokens, not abandoned reads. Production provider handlers set `AllowAutoRedirect = false`. Retryable server errors honour bounded `Retry-After` with cancellable delay.
 
-- [ ] Use deterministic stalled headers/body streams to pin retryable timeout, caller cancellation and stream disposal; cover turn, participation, connection-test and decision consumers.
-- [ ] Pin cross-host redirect rejection without forwarding Anthropic credentials; test handler construction rather than contacting a third party.
-- [ ] Pin `Retry-After` seconds/date and malformed/excessive fallback without real long sleeps. Clamp delays to 30 seconds, use a one-second fallback and retain bounded attempt count.
-- [ ] Observe failures, implement, run affected adapter/retry tests and solution checks; commit.
+- [x] Use deterministic stalled headers/body streams to pin retryable timeout, caller cancellation and stream disposal; cover turn, participation, connection-test and decision consumers.
+- [x] Pin cross-host redirect rejection without forwarding Anthropic credentials; test handler construction rather than contacting a third party.
+- [x] Pin `Retry-After` seconds/date and malformed/excessive fallback without real long sleeps. Clamp delays to 30 seconds, use a one-second fallback and retain bounded attempt count.
+- [x] Observe failures, implement, run affected adapter/retry tests and solution checks; commit.
 - [ ] Record the owner-operated Keychain result. Reproduce a confirmed defect through the process-runner seam before fixing it; never print or pass a key in argv. Leave this manual step open until reported.
 
 ### Task 4: Fit context within domain limits (#425)
@@ -178,4 +178,4 @@
 
 ## Progress
 
-Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 is in progress; Tasks 4-13 remain. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); its deterministic repair is included in Task 3 affected checks. Full quality gate is reserved for phase exit.
+Task 1 implementation committed at `285a5128` (Refs #417): 68 new regression cases; 5,756 solution tests, zero-warning build and format verification pass. Independent task review passes for implementation and local evidence; no actionable findings. Live OpenAI call/real stream fixture remains open, so #417 is not closed. Task 2 completed at `d0a04c21` (Fixes #418/#419): incremental bounded readers, exact provider history, output budgets and unknown-on-invalid usage. Independent spec/quality review passes; 5,776 solution tests pass. Task 3 implementation completed at `e1e4a0e9`: all 18 provider consumers have finite request/idle bounds, redirects are refused, retry delays are bounded/cancellable, and the existing 50ms native timeout fixture uses a deterministic clock. Independent review passes, 5,858 solution tests and seven affected native checks pass. Its owner Keychain step remains open. Task 4 is in progress; Tasks 5-13 remain. Latest Phase 1 CI run 38998433672 failed its unquarantined 50ms model-timeout presentation fixture (324 passed, two existing quarantines); the exact fixture failure was reproduced and repaired in Task 3, including a passing 10 FPS run; no newer hosted-green result is claimed. Full quality gate is reserved for phase exit.
