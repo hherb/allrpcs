@@ -52,6 +52,7 @@ public sealed class OllamaCharacterModelRequestSerializerTests
             "model:test");
         using JsonDocument document = JsonDocument.Parse(serialized);
         JsonElement root = document.RootElement;
+        Assert.Equal(4_096, root.GetProperty("options").GetProperty("num_predict").GetInt32());
 
         Assert.Equal("model:test", root.GetProperty("model").GetString());
         Assert.True(root.GetProperty("stream").GetBoolean());

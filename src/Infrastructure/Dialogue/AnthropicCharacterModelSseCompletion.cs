@@ -29,11 +29,20 @@ public static class AnthropicCharacterModelSseCompletion
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
 
-        IReadOnlyList<string> documents;
+        AnthropicCharacterModelStreamAccumulator accumulator = new(request);
+        CharacterModelStreamTermination? termination = null;
         try
         {
-            documents = await AnthropicServerSentEventReader.ReadAsync(stream, cancellationToken)
-                .ConfigureAwait(false);
+            await foreach (string document in AnthropicServerSentEventReader
+                .ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+            {
+                termination = accumulator.Apply(document);
+                if (termination is not null)
+                {
+                    break;
+                }
+            }
         }
         catch (InvalidDataException)
         {
@@ -42,18 +51,6 @@ public static class AnthropicCharacterModelSseCompletion
         catch (IOException)
         {
             return FailureResult(CharacterModelFailureCode.Transport);
-        }
-
-        AnthropicCharacterModelStreamAccumulator accumulator = new(request);
-        CharacterModelStreamTermination? termination = null;
-        foreach (string document in documents)
-        {
-            if (termination is not null)
-            {
-                return FailureResult(CharacterModelFailureCode.InvalidResponse);
-            }
-
-            termination = accumulator.Apply(document);
         }
 
         if (termination is null)

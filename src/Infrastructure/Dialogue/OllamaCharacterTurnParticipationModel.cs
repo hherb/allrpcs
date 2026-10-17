@@ -79,17 +79,17 @@ public sealed class OllamaCharacterTurnParticipationModel : ICharacterTurnPartic
             .ConfigureAwait(false);
         try
         {
-            IReadOnlyList<string> documents = await OllamaNewlineDelimitedJsonReader.ReadAsync(
-                responseStream, cancellationToken).ConfigureAwait(false);
             OllamaCharacterTurnParticipationStreamAccumulator accumulator = new(request);
             CharacterTurnParticipationDecision? decision = null;
-            foreach (string document in documents)
+            await foreach (string document in OllamaNewlineDelimitedJsonReader
+                .ReadDocumentsAsync(responseStream, cancellationToken)
+                .ConfigureAwait(false))
             {
+                decision = accumulator.Apply(document);
                 if (decision is not null)
                 {
-                    throw new InvalidDataException("The Ollama participation stream continued after completion.");
+                    return decision;
                 }
-                decision = accumulator.Apply(document);
             }
             return decision ?? throw new InvalidDataException("The Ollama participation stream is incomplete.");
         }

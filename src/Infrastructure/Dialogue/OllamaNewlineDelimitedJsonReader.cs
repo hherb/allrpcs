@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Allrpcs.Infrastructure.Dialogue;
@@ -6,8 +6,6 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// <summary>Reads bounded newline-delimited JSON from a caller-owned UTF-8 stream.</summary>
 public static class OllamaNewlineDelimitedJsonReader
 {
-    private const int ReadBufferSize = 4_096;
-
     /// <summary>Gets the maximum accepted length of one decoded line.</summary>
     public const int MaximumLineLength = 64_000;
 
@@ -15,12 +13,25 @@ public static class OllamaNewlineDelimitedJsonReader
     public const int MaximumDocumentLength = MaximumLineLength;
 
     /// <summary>Gets the maximum accepted number of JSON documents.</summary>
-    public const int MaximumDocumentCount = 1_024;
+    public const int MaximumDocumentCount = 8_192;
 
     /// <summary>Reads complete non-blank documents in source order without closing the stream.</summary>
     public static async Task<IReadOnlyList<string>> ReadAsync(
+        Stream stream, CancellationToken cancellationToken = default)
+    {
+        List<string> documents = [];
+        await foreach (string document in ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+        {
+            documents.Add(document);
+        }
+        return documents.AsReadOnly();
+    }
+
+    /// <summary>Yields each terminated document without closing the supplied stream.</summary>
+    public static async IAsyncEnumerable<string> ReadDocumentsAsync(
         Stream stream,
-        CancellationToken cancellationToken = default)
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(stream);
         if (!stream.CanRead)
@@ -30,81 +41,70 @@ public static class OllamaNewlineDelimitedJsonReader
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        List<string> documents = [];
+        int documentCount = 0;
+        int totalLength = 0;
         StringBuilder line = new();
-        char[] buffer = new char[ReadBufferSize];
         bool awaitsLineFeed = false;
 
-        using StreamReader reader = new(
-            stream,
-            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true),
-            detectEncodingFromByteOrderMarks: false,
-            bufferSize: ReadBufferSize,
-            leaveOpen: true);
+        IncrementalUtf8Reader reader = new(stream);
 
-        try
+        while (true)
         {
-            while (true)
+            int nextCharacter = await reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+            if (nextCharacter == -1)
             {
-                int read = await reader.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
-                if (read == 0)
+                break;
+            }
+
+            if (++totalLength > OpenAiServerSentEventReader.MaximumStreamLength)
+
+            {
+
+                throw InvalidDocument();
+
+            }
+            char character = (char)nextCharacter;
+            if (character == '\0')
+            {
+                throw InvalidDocument();
+            }
+
+            if (awaitsLineFeed)
+            {
+                if (character != '\n')
                 {
-                    break;
+                    throw InvalidDocument();
                 }
 
-                for (int index = 0; index < read; index++)
+                awaitsLineFeed = false;
+                yield return TerminateLine();
+                continue;
+            }
+
+            if (character == '\r')
+            {
+                awaitsLineFeed = true;
+            }
+            else if (character == '\n')
+            {
+                yield return TerminateLine();
+            }
+            else
+            {
+                if (line.Length == MaximumLineLength)
                 {
-                    char character = buffer[index];
-                    if (character == '\0')
-                    {
-                        throw InvalidDocument();
-                    }
-
-                    if (awaitsLineFeed)
-                    {
-                        if (character != '\n')
-                        {
-                            throw InvalidDocument();
-                        }
-
-                        awaitsLineFeed = false;
-                        TerminateLine();
-                        continue;
-                    }
-
-                    if (character == '\r')
-                    {
-                        awaitsLineFeed = true;
-                    }
-                    else if (character == '\n')
-                    {
-                        TerminateLine();
-                    }
-                    else
-                    {
-                        if (line.Length == MaximumLineLength)
-                        {
-                            throw InvalidDocument();
-                        }
-
-                        line.Append(character);
-                    }
+                    throw InvalidDocument();
                 }
+
+                line.Append(character);
             }
         }
-        catch (DecoderFallbackException exception)
-        {
-            throw new InvalidDataException("The NDJSON stream is not valid UTF-8.", exception);
-        }
-
-        if (awaitsLineFeed || line.Length != 0 || documents.Count == 0)
+        if (awaitsLineFeed || line.Length != 0 || documentCount == 0)
         {
             throw InvalidDocument();
         }
 
-        return new ReadOnlyCollection<string>(documents);
-
-        void TerminateLine()
+        string TerminateLine()
         {
             if (line.Length == 0
                 || line.Length > MaximumDocumentLength
@@ -113,13 +113,15 @@ public static class OllamaNewlineDelimitedJsonReader
                 throw InvalidDocument();
             }
 
-            if (documents.Count == MaximumDocumentCount)
+            if (documentCount == MaximumDocumentCount)
             {
                 throw InvalidDocument();
             }
 
-            documents.Add(line.ToString());
+            string document = line.ToString();
+            documentCount++;
             line.Clear();
+            return document;
         }
     }
 

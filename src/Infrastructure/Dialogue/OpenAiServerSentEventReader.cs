@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Allrpcs.Infrastructure.Dialogue;
@@ -8,19 +8,20 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// </summary>
 public static class OpenAiServerSentEventReader
 {
-    private const int ReadBufferSize = 4_096;
+    /// <summary>Gets the maximum decoded character budget for one stream.</summary>
+    public const int MaximumStreamLength = 4_194_304;
 
     /// <summary>Gets the maximum accepted length of one decoded SSE line.</summary>
     public const int MaximumLineLength = 65_536;
 
     /// <summary>Gets the maximum accepted number of lines in one stream.</summary>
-    public const int MaximumLineCount = 8_192;
+    public const int MaximumLineCount = 32_768;
 
     /// <summary>Gets the maximum accepted number of terminated SSE frames.</summary>
-    public const int MaximumEventCount = 2_048;
+    public const int MaximumEventCount = 8_192;
 
     /// <summary>Gets the maximum number of returned data documents.</summary>
-    public const int MaximumDocumentCount = 1_024;
+    public const int MaximumDocumentCount = 8_192;
 
     /// <summary>Gets the maximum accepted length of one joined data document.</summary>
     public const int MaximumDocumentLength =
@@ -33,6 +34,20 @@ public static class OpenAiServerSentEventReader
         Stream stream,
         CancellationToken cancellationToken = default)
     {
+        List<string> documents = [];
+        await foreach (string document in ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+        {
+            documents.Add(document);
+        }
+        return documents.AsReadOnly();
+    }
+
+    /// <summary>Yields each document as soon as its frame terminates, leaving the stream open.</summary>
+    public static async IAsyncEnumerable<string> ReadDocumentsAsync(
+        Stream stream,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    {
         ArgumentNullException.ThrowIfNull(stream);
         if (!stream.CanRead)
         {
@@ -41,10 +56,11 @@ public static class OpenAiServerSentEventReader
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        List<string> documents = [];
+        int documentCount = 0;
+        string? pendingDocument = null;
+        int totalLength = 0;
         StringBuilder line = new();
         StringBuilder data = new();
-        char[] buffer = new char[ReadBufferSize];
         bool frameHasContent = false;
         bool hasData = false;
         bool hasEventName = false;
@@ -52,74 +68,73 @@ public static class OpenAiServerSentEventReader
         int lineCount = 0;
         int eventCount = 0;
 
-        using StreamReader reader = new(
-            stream,
-            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true),
-            detectEncodingFromByteOrderMarks: false,
-            bufferSize: ReadBufferSize,
-            leaveOpen: true);
+        IncrementalUtf8Reader reader = new(stream);
 
-        try
+        while (true)
         {
-            while (true)
+            int nextCharacter = await reader.ReadAsync(cancellationToken).ConfigureAwait(false);
+            if (nextCharacter == -1)
             {
-                int read = await reader.ReadAsync(buffer, cancellationToken).ConfigureAwait(false);
-                if (read == 0)
+                break;
+            }
+
+            if (++totalLength > MaximumStreamLength)
+
+            {
+
+                throw InvalidFrame();
+
+            }
+            char character = (char)nextCharacter;
+            if (character == '\0')
+            {
+                throw InvalidFrame();
+            }
+
+            if (awaitsLineFeed)
+            {
+                if (character != '\n')
                 {
-                    break;
+                    throw InvalidFrame();
                 }
 
-                for (int index = 0; index < read; index++)
+                awaitsLineFeed = false;
+                ProcessLine();
+                if (pendingDocument is not null)
                 {
-                    char character = buffer[index];
-                    if (character == '\0')
-                    {
-                        throw InvalidFrame();
-                    }
+                    yield return pendingDocument;
+                    pendingDocument = null;
+                }
+                continue;
+            }
 
-                    if (awaitsLineFeed)
-                    {
-                        if (character != '\n')
-                        {
-                            throw InvalidFrame();
-                        }
-
-                        awaitsLineFeed = false;
-                        ProcessLine();
-                        continue;
-                    }
-
-                    if (character == '\r')
-                    {
-                        awaitsLineFeed = true;
-                    }
-                    else if (character == '\n')
-                    {
-                        ProcessLine();
-                    }
-                    else
-                    {
-                        if (line.Length == MaximumLineLength)
-                        {
-                            throw InvalidFrame();
-                        }
-
-                        line.Append(character);
-                    }
+            if (character == '\r')
+            {
+                awaitsLineFeed = true;
+            }
+            else if (character == '\n')
+            {
+                ProcessLine();
+                if (pendingDocument is not null)
+                {
+                    yield return pendingDocument;
+                    pendingDocument = null;
                 }
             }
-        }
-        catch (DecoderFallbackException exception)
-        {
-            throw new InvalidDataException("The SSE stream is not valid UTF-8.", exception);
-        }
+            else
+            {
+                if (line.Length == MaximumLineLength)
+                {
+                    throw InvalidFrame();
+                }
 
+                line.Append(character);
+            }
+        }
         if (awaitsLineFeed || line.Length != 0 || frameHasContent)
         {
             throw InvalidFrame();
         }
-
-        return new ReadOnlyCollection<string>(documents);
 
         void ProcessLine()
         {
@@ -216,12 +231,13 @@ public static class OpenAiServerSentEventReader
             }
             else
             {
-                if (documents.Count == MaximumDocumentCount)
+                if (documentCount == MaximumDocumentCount)
                 {
                     throw InvalidFrame();
                 }
 
-                documents.Add(data.ToString());
+                pendingDocument = data.ToString();
+                documentCount++;
             }
 
             data.Clear();

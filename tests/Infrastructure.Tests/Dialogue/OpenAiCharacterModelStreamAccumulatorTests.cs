@@ -167,7 +167,7 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
     [InlineData("{\"input_tokens\":1.5,\"output_tokens\":2,\"total_tokens\":3.5}")]
     [InlineData("{\"input_tokens\":1000000,\"output_tokens\":1,\"total_tokens\":1000001}")]
     [InlineData("{\"input_tokens\":1,\"input_tokens\":1,\"output_tokens\":2,\"total_tokens\":3}")]
-    public void RejectsMalformedInconsistentOrExcessiveCompletedUsage(string usage)
+    public void RetainsValidResponseWithUnknownMalformedInconsistentOrExcessiveUsage(string usage)
     {
         OpenAiCharacterModelStreamAccumulator accumulator = CompletedAccumulator();
         string completed = "{\"type\":\"response.completed\",\"response\":{\"usage\":"
@@ -176,7 +176,8 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
 
         CharacterModelStreamTermination? result = accumulator.Apply(completed);
 
-        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(result?.Failure);
+        Assert.NotNull(result?.Response);
         Assert.Null(accumulator.InputTokenCount);
         Assert.Null(accumulator.OutputTokenCount);
         Assert.Null(accumulator.TotalTokenCount);

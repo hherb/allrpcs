@@ -172,7 +172,7 @@ public sealed class OpenAiCharacterModelStreamAccumulator
             || !TryReadTokenCount(usage, "total_tokens", out int totalTokenCount)
             || (long)inputTokenCount + outputTokenCount != totalTokenCount)
         {
-            return false;
+            return true;
         }
 
         InputTokenCount = inputTokenCount;

@@ -209,9 +209,12 @@ public sealed class AnthropicCharacterModelStreamAccumulator
             return true;
         }
 
-        return usage.ValueKind == JsonValueKind.Object
-            && TryReadTokenCount(usage, "input_tokens", out int inputTokens)
-            && SetInputTokenCount(inputTokens);
+        if (usage.ValueKind == JsonValueKind.Object
+            && TryReadTokenCount(usage, "input_tokens", out int inputTokens))
+        {
+            SetInputTokenCount(inputTokens);
+        }
+        return true;
     }
 
     private bool TryReadOutputUsage(JsonElement root)
@@ -219,7 +222,8 @@ public sealed class AnthropicCharacterModelStreamAccumulator
         if (!root.TryGetProperty("usage", out JsonElement usage)
             || usage.ValueKind == JsonValueKind.Null)
         {
-            return InputTokenCount is null;
+            InputTokenCount = null;
+            return true;
         }
 
         if (usage.ValueKind != JsonValueKind.Object
@@ -227,7 +231,8 @@ public sealed class AnthropicCharacterModelStreamAccumulator
             || InputTokenCount is not int inputTokens
             || (long)inputTokens + outputTokens > CharacterModelGenerationDiagnostic.MaximumTokenCount)
         {
-            return false;
+            InputTokenCount = null;
+            return true;
         }
 
         OutputTokenCount = outputTokens;

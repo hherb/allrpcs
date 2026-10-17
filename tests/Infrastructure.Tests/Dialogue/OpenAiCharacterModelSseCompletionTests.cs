@@ -14,6 +14,33 @@ public sealed class OpenAiCharacterModelSseCompletionTests
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1_100)]
+    public async Task CompletesOver1024DeltasWithoutReadingOrDecodingTerminalTail(int deltaCount)
+    {
+        string events = string.Concat(Enumerable.Repeat(
+            Frame(new { type = "response.output_text.delta", delta = " " }), deltaCount))
+            + Frame(new { type = "response.output_text.done", text = ResponseDocument })
+            + Frame(new { type = "response.completed" });
+        using TerminalTailStream stalling = new(Encoding.UTF8.GetBytes(events));
+        CharacterModelStreamTermination result = await OpenAiCharacterModelSseCompletion.CompleteAsync(
+            CreateRequest(), stalling);
+        Assert.NotNull(result.Response);
+        Assert.True(stalling.CanRead);
+        using MemoryStream malformedTail = new([.. Encoding.UTF8.GetBytes(events), 0xff]);
+        Assert.NotNull((await OpenAiCharacterModelSseCompletion.CompleteAsync(CreateRequest(), malformedTail)).Response);
+    }
+
+    private sealed class TerminalTailStream(byte[] bytes) : MemoryStream(bytes)
+    {
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            if (Position == Length) { throw new IOException("Terminal tail must remain unread."); }
+            return base.ReadAsync(buffer, cancellationToken);
+        }
+    }
+
     [Fact]
     public async Task CompletesTheExactRequestFromFramedSemanticEvents()
     {
@@ -87,9 +114,8 @@ public sealed class OpenAiCharacterModelSseCompletionTests
     [InlineData("data: {\"type\":\"response.created\"}\n\n")]
     [InlineData("data: not-json\n\n")]
     [InlineData("data: {\"type\":\"response.completed\"}\n\n")]
-    [InlineData("data: {\"type\":\"response.failed\"}\n\ndata: {}\n\n")]
     [InlineData("data: {}")]
-    public async Task MapsIncompleteMalformedAndTrailingInputToInvalidResponse(string events)
+    public async Task MapsIncompleteAndMalformedInputToInvalidResponse(string events)
     {
         using MemoryStream stream = Utf8Stream(events);
 

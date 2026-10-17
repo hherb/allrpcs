@@ -18,6 +18,21 @@ public sealed class OllamaCharacterModelStreamAccumulatorTests
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
+    [Theory]
+    [InlineData("\"eval_count\":1")]
+    [InlineData("\"prompt_eval_count\":1")]
+    [InlineData("\"eval_count\":\"bad\"")]
+    public void PreservesResponseWithPartialUsageAsUnknown(string usage)
+    {
+        OllamaCharacterModelStreamAccumulator accumulator = new(CreateRequest());
+        string document = "{\"message\":{\"role\":\"assistant\",\"content\":"
+            + JsonSerializer.Serialize(ResponseDocument) + "},\"done\":true,\"done_reason\":\"stop\"," + usage + "}";
+        Assert.NotNull(accumulator.Apply(document)?.Response);
+        Assert.Null(accumulator.InputTokenCount);
+        Assert.Null(accumulator.OutputTokenCount);
+        Assert.Null(accumulator.TotalTokenCount);
+    }
+
     [Fact]
     public void CompletesExactRequestAndRetainsWhollyPresentBoundedUsage()
     {
@@ -175,21 +190,22 @@ public sealed class OllamaCharacterModelStreamAccumulatorTests
     [InlineData(-1, 1)]
     [InlineData(1, -1)]
     [InlineData(1000000, 1)]
-    public void RejectsMalformedOrExcessiveUsage(int promptCount, int outputCount)
+    public void RetainsResponseWithUnknownMalformedOrExcessiveUsage(int promptCount, int outputCount)
     {
         OllamaCharacterModelStreamAccumulator accumulator = new(CreateRequest());
 
         CharacterModelStreamTermination? result = accumulator.Apply(
             ChatChunk(ResponseDocument, done: true, "stop", promptCount, outputCount));
 
-        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(result?.Failure);
+        Assert.NotNull(result?.Response);
         Assert.Null(accumulator.InputTokenCount);
         Assert.Null(accumulator.OutputTokenCount);
         Assert.Null(accumulator.TotalTokenCount);
     }
 
     [Fact]
-    public void RejectsPartiallyPresentUsageAndUsageBeforeTermination()
+    public void AcceptsPartialTerminalUsageButRejectsUsageBeforeTermination()
     {
         OllamaCharacterModelStreamAccumulator partial = new(CreateRequest());
         string partialUsage = JsonSerializer.Serialize(new
@@ -203,9 +219,9 @@ public sealed class OllamaCharacterModelStreamAccumulatorTests
         OllamaCharacterModelStreamAccumulator early = new(CreateRequest());
         string earlyUsage = ChatChunk("x", done: false, promptCount: 1, outputCount: 1);
 
-        Assert.Equal(
-            CharacterModelFailureCode.InvalidResponse,
-            partial.Apply(partialUsage)?.Failure?.Code);
+        Assert.NotNull(partial.Apply(partialUsage)?.Response);
+        Assert.Null(partial.InputTokenCount);
+        Assert.Null(partial.OutputTokenCount);
         Assert.Equal(
             CharacterModelFailureCode.InvalidResponse,
             early.Apply(earlyUsage)?.Failure?.Code);

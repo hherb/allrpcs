@@ -31,6 +31,7 @@ public static class AnthropicCharacterModelRequestSerializer
             WriteSystem(writer, request);
             writer.WritePropertyName("messages");
             writer.WriteStartArray();
+            CharacterModelRequestContent.WriteHistoricalMessages(writer, request);
             writer.WriteStartObject();
             writer.WriteString("role", "user");
             writer.WriteString("content", request.TurnRequest.DialogueEvent.Utterance.Text);
@@ -58,7 +59,8 @@ public static class AnthropicCharacterModelRequestSerializer
         writer.WritePropertyName("system");
         writer.WriteStartArray();
         WriteTextBlock(writer, CharacterModelRequestContent.DeveloperInstructions);
-        WriteTextBlock(writer, CharacterModelRequestContent.SerializeTrustedContext(request));
+        WriteTextBlock(writer, CharacterModelRequestContent.SerializeTrustedContext(
+            request, firstHistoricalMessageIndex: 0));
         writer.WriteEndArray();
     }
 

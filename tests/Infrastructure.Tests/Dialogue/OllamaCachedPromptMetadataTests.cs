@@ -8,6 +8,19 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 
 public sealed class OllamaCachedPromptMetadataTests
 {
+    [Fact]
+    public void ParticipationRetainsValidDecisionWithOutputOnlyUsageAsUnknown()
+    {
+        OllamaCharacterTurnParticipationStreamAccumulator accumulator = new(
+            OpenAiCharacterTurnParticipationStreamAccumulatorTests.CreateRequest(true));
+        string document = Native("{\"kind\":\"respond\",\"motiveKey\":null}", "0")
+            .Replace("\"prompt_eval_count\":5,", "", StringComparison.Ordinal);
+        Assert.Same(CharacterTurnParticipationKind.Respond, accumulator.Apply(document)?.Kind);
+        Assert.Null(accumulator.InputTokenCount);
+        Assert.Null(accumulator.OutputTokenCount);
+        Assert.Null(accumulator.TotalTokenCount);
+    }
+
     [Theory]
     [InlineData("0", true)]
     [InlineData("4", true)]
@@ -27,7 +40,12 @@ public sealed class OllamaCachedPromptMetadataTests
             Assert.Equal(5, decision.InputTokenCount);
             Assert.Equal(2, decision.OutputTokenCount);
         }
-        else { Assert.Throws<InvalidDataException>(() => decision.Apply(document)); }
+        else
+        {
+            Assert.Same(CharacterTurnParticipationKind.Respond, decision.Apply(document)?.Kind);
+            Assert.Null(decision.InputTokenCount);
+            Assert.Null(decision.OutputTokenCount);
+        }
 
         DialogueUtterance utterance = new(new CharacterId("seeker"), "Please wait.");
         DialogueEvent heard = new(new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
@@ -37,12 +55,13 @@ public sealed class OllamaCachedPromptMetadataTests
         const string response = "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,"
             + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},\"commitments\":[],\"stateProposals\":[]}";
         CharacterModelStreamTermination? result = reply.Apply(Native(response, cached));
-        Assert.Equal(valid ? CharacterModelStreamTerminationStatus.Completed : CharacterModelStreamTerminationStatus.Failed, result?.Status);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result?.Status);
+        if (!valid) { Assert.Null(reply.TotalTokenCount); }
         if (valid) { Assert.Same(turn, result?.Response?.Request); Assert.Equal(7, reply.TotalTokenCount); }
     }
 
     [Fact]
-    public void CachedUsageIsTerminalAndCannotReplaceTheRequiredUsagePair()
+    public void RejectsEarlyCachedUsageAndInvalidEmptyDecision()
     {
         string[] invalid = [
             "{\"message\":{\"role\":\"assistant\",\"content\":\"\"},\"done\":false,\"prompt_eval_cached_count\":0}",

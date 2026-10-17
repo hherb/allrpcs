@@ -55,7 +55,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
     }
 
     [Fact]
-    public async Task RejectsTrailingEventsAfterCompletion()
+    public async Task ReturnsAtCompletionBeforeTrailingEvents()
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
@@ -67,8 +67,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
             + Frame(new { type = "response.created" });
         using MemoryStream stream = Utf8Stream(events);
 
-        await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, stream));
+        Assert.NotNull(await OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, stream));
     }
 
     [Fact]

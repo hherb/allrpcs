@@ -56,7 +56,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoverySseCompletionTests
     }
 
     [Fact]
-    public async Task RejectsTrailingEventsAfterCompletionAndPreservesCallerCancellation()
+    public async Task ReturnsAtCompletionBeforeTrailingEventsAndPreservesCallerCancellation()
     {
         CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create();
@@ -72,8 +72,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoverySseCompletionTests
         using CancellationTokenSource cancellation = new();
         cancellation.Cancel();
 
-        await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterTargetSabotageDelayRecoverySseCompletion.CompleteAsync(
+        Assert.NotNull(await OpenAiCharacterTargetSabotageDelayRecoverySseCompletion.CompleteAsync(
                 input.Request,
                 trailing));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>

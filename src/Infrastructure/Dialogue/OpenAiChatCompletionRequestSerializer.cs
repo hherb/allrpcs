@@ -59,8 +59,9 @@ public static class OpenAiChatCompletionRequestSerializer
             "content",
             CharacterModelRequestContent.DeveloperInstructions
                 + "\n\n"
-                + CharacterModelRequestContent.SerializeTrustedContext(request));
+                + CharacterModelRequestContent.SerializeTrustedContext(request, firstHistoricalMessageIndex: 1));
         writer.WriteEndObject();
+        CharacterModelRequestContent.WriteHistoricalMessages(writer, request);
         writer.WriteStartObject();
         writer.WriteString("role", "user");
         writer.WriteString("content", request.TurnRequest.DialogueEvent.Utterance.Text);

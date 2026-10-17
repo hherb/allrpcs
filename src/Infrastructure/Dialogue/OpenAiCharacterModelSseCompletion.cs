@@ -35,11 +35,19 @@ public static class OpenAiCharacterModelSseCompletion
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
 
-        IReadOnlyList<string> documents;
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+        CharacterModelStreamTermination? termination = null;
         try
         {
-            documents = await OpenAiServerSentEventReader.ReadAsync(stream, cancellationToken)
-                .ConfigureAwait(false);
+            await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
+                .ConfigureAwait(false))
+            {
+                termination = accumulator.Apply(document);
+                if (termination is not null)
+                {
+                    break;
+                }
+            }
         }
         catch (InvalidDataException)
         {
@@ -48,18 +56,6 @@ public static class OpenAiCharacterModelSseCompletion
         catch (IOException)
         {
             return Result(Failure(CharacterModelFailureCode.Transport));
-        }
-
-        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
-        CharacterModelStreamTermination? termination = null;
-        foreach (string document in documents)
-        {
-            if (termination is not null)
-            {
-                return Result(Failure(CharacterModelFailureCode.InvalidResponse));
-            }
-
-            termination = accumulator.Apply(document);
         }
 
         return new OpenAiCharacterModelSseResult(

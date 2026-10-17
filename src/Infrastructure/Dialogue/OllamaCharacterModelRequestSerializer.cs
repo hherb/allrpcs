@@ -10,6 +10,9 @@ public static class OllamaCharacterModelRequestSerializer
     /// <summary>Gets the maximum supported Ollama model-name length.</summary>
     public const int MaximumModelNameLength = CharacterModelSettings.MaximumModelNameLength;
 
+    /// <summary>Gets the bounded provider output-token request.</summary>
+    public const int MaximumOutputTokens = OpenAiCharacterModelRequestSerializer.MaximumOutputTokens;
+
     /// <summary>Serializes one stateless streaming structured-output request.</summary>
     public static string Serialize(
         CharacterModelGenerationRequest request,
@@ -40,6 +43,7 @@ public static class OllamaCharacterModelRequestSerializer
             writer.WritePropertyName("options");
             writer.WriteStartObject();
             writer.WriteNumber("temperature", 0);
+            writer.WriteNumber("num_predict", MaximumOutputTokens);
             writer.WriteEndObject();
             writer.WriteEndObject();
         }
