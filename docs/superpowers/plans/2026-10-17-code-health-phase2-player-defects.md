@@ -176,7 +176,7 @@
 - [x] Run one full `./quality.sh`; diagnose failures, preserve logs and repair relevant defects. Final complete run: 218 stages passed on `010439d5`.
 - [x] Confirm hosted CI for the tested product checkpoint: run 39020148424 passed all four jobs; latest review-correction checkpoint b841afed passed run 39069028898.
 - [x] Record the terminal result of the already-running full root gate on b841afed after cee9df2b/b841afed (218 stages passed); the earlier full pass remains historical evidence.
-- [ ] Confirm original issues #414-#420/#424-#431 closed by tested commits; list genuinely unavailable manual/live evidence rather than claiming it.
+- [x] Confirm post-merge issue status: #414-#416, #418-#420 and #424-#431 are closed by PR #440. #417 remains open pending live evidence; the owner Keychain result is also unavailable.
 - [ ] Only after all exit conditions pass, close Phase 2 in the ledger and roadmap, select Phase 3's named missing deliverable, sync/check/self-test and commit/push. Otherwise keep Phase 2 in progress with the exact remaining task.
 
 ## Progress
@@ -196,7 +196,7 @@
 | 10 Shipping hygiene | Complete; `4592f02d` | Three presets; compiled release guard; real pack graph (1,245 entries/431 dependencies); eight native checks; independent review. Executable export remains unsupported. |
 | 11 Tooling | Complete; `76f72ec9`, `544d2d5c` (Fixes #414/#415/#416) | 20 quality self-tests; real Git history and cleanup-interruption regressions; continuation/actionlint; scoped review. |
 | 12 Long sessions/ducking | Complete; `075d3ac2` (Fixes #424) | 5,921 solution tests, zero-warning build/format, four native checks; eighteen identity classes, bounded persistent append, capacity/eviction and ducking regressions; independent review. |
-| 13 Phase exit | In progress; open PR [#440](https://github.com/hherb/allrpcs/pull/440) | Whole-phase review and all scoped corrections approved through `ad2927df`. Complete root quality: 218 stages passed on `010439d5`; hosted 39020148424 passed all jobs. Complete root quality after cee9df2b/b841afed: 218 stages passed on `b841afed`; hosted 39069028898 and 39071192535 passed. Live #417 and owner Keychain evidence also remain open. |
+| 13 Phase exit | In progress; merged PR [#440](https://github.com/hherb/allrpcs/pull/440) | Whole-phase review and all scoped corrections approved through `ad2927df`. Complete root quality: 218 stages passed on `010439d5`; hosted 39020148424 passed all jobs. Complete root quality after cee9df2b/b841afed: 218 stages passed on `b841afed`; hosted 39069028898 and 39071192535 passed. Live #417 and owner Keychain evidence also remain open. |
 
 Phase 1 branch CI run 38998433672 and the subsequently merged main run 38998468190 both failed the same unquarantined 50 ms model-timeout presentation fixture (324 passed, two existing quarantines). Main `032c5b30` merged PR #438 and has an empty tree diff from the starting `e55463b0`, so no upstream product change was lost. Task 3 reproduced and repaired the fixture, including a passing 10 FPS run. PR #440 run 39007686673 passed C# formatting/build/tests, Python/tooling and Linux unsigned-build jobs; Godot was still running when the reviewed CI-only correction was prepared. The correction enables the existing twenty quality-runner self-tests in the now full-history Python job. Latest run 39008345177 passed 5,921 solution tests and 23 runner self-tests but failed four native fixtures (359 passed, two existing quarantines). `b5d020cd` restores the new Task 7 harness before the accepted final channel node and explicitly makes the two direct audio fixture speakers present. All four exact RED checks then passed, together with three hidden/once ownership cases; build/format and scoped review passed. Run 39009633071 then passed those four checks (362 native passes, one different failure, two existing quarantines). The scripted provider fixture's generic terminal assertion failed; its original individual predicate values were not logged. Controlled experiments proved a separate three-second independent-task occurrence changes the asserted transcript/EventLog/WorldTime during real retry, while the exact model and turn predicates remain correct. The named repeated-offline peer has the same demonstrated vulnerability; no hosted peer failure is claimed. `2d10ba23` isolates elapsed independent-task time in those two disposable fixtures by calling Main once per frame with zero delta, retaining physics, all original assertions, real retry and frame/deadline bounds. Both controlled RED-to-GREEN cases, eight final native checks, zero-warning build/format and scoped review pass. Manual fixture ordering differs from automatic parent dispatch; automatic ownership/timeout/navigation/healer-command checks supply the explicit integration coverage. A final hosted result is still required. #432-#435/#437/#439 stay separate.
 
@@ -261,6 +261,27 @@ passed all four jobs. The preceding gate on `cee9df2b` failed product-10 at stag
 192 px hearing edge after the healer's startup walk, which `b841afed` fixed (old head 1/48,
 `cee9df2b` 5/48, fix 40/40). Its failed report was superseded by the passing run. Live #417 and the
 owner Keychain save result remain the only open Phase 2 exit evidence.
+
+## Post-merge continuation, 18 October
+
+The owner requested: “continue after refreshing the repo from the recently merged PR”.
+PR [#440](https://github.com/hherb/allrpcs/pull/440) merged at
+`3c4d6c639e196f5553ef86588b885b308adc1329` on 18 October at 09:58:16 Australia/Sydney.
+The clean local `main` was fast-forwarded to that commit. Its tree equals reviewed branch head
+`b71d057f`; only documentation differs from product checkpoint `b841afed`. The passing 218-stage
+root gate and two hosted runs therefore remain applicable without repeating product checks.
+
+GitHub confirms all fourteen other Phase 2 issues (#414-#416, #418-#420, #424-#431) closed.
+[#417](https://github.com/hherb/allrpcs/issues/417) remains open. The fictional live OpenAI
+request/sanitized capture and already requested owner Keychain save result remain unavailable;
+merging the implementation supplies neither result. Phase 2 stays in progress and Phase 3 stays
+unselected. No credential query or repeated owner question was made during this reconciliation.
+Excluded Phase 1 follow-ups #432-#435/#437/#439 remain open and outside this slice.
+
+Merge [CI run 39077177772](https://github.com/hherb/allrpcs/actions/runs/39077177772) was still
+in progress when checked (Python tooling passed; the other three jobs were running). This is
+an observation of the merge run, not a new terminal pass or a replacement for missing live evidence.
+This post-merge record supersedes the earlier pre-merge issue/publication status above.
 
 ## Execution decisions and rework costs
 
