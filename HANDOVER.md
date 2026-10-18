@@ -21,9 +21,15 @@ review fixes. Because #443 had already merged, [PR #444](https://github.com/hher
 publishes them on top of main (a plain revert cannot pass the ledger checker), and the scope is
 closed again ([receipt](docs/superpowers/evidence/2026-10-18-pr443-review-fixes.json)): 6,007 tests
 and the full smoke suite (363 passed, 0 failed) pass. Live Anthropic qualification and two follow-ups in
-closed areas are tracked as GitHub issues. Full Phase 3 completion is not claimed: next is program item 2,
-conversation-turn/focused-search coordinator extraction, then SmokeCheckHost and the phase-exit gate.
-Use approved D2 scoped checks until that exit. Do not repeat the completed extraction.
+closed areas are tracked as GitHub issues.
+
+Phase 3 items 2 and 3 are also complete and closed: the Main coordinators merged via
+[PR #449](https://github.com/hherb/allrpcs/pull/449), and the
+[SmokeCheckHost slice](docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md)
+left `Main.tscn` with no check node ([receipt](docs/superpowers/evidence/2026-10-18-phase3-smoke-check-host.json);
+review branch `codex/phase3-smoke-check-host`). Main checks are now `game/SmokeCheckHost.cs`
+entries, never scene nodes. Full Phase 3 completion is not claimed: the remaining exit work is
+`Main.cs` under 400 lines and one full root gate. Use approved D2 scoped checks until that exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -42,38 +48,37 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase3-smoke-check-host — Instantiate only the requested check through a SmokeCheckHost** (ready).
+**code-health-phase3-thin-main-exit — Bring Main.cs under 400 lines and pass the Phase 3 exit gate** (ready).
 
 Roadmap item: - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
 
-Missing deliverable: A bounded SmokeCheckHost plan and host that instantiates only the requested
-engine check, removing the always-present check nodes from Main.tscn. The structured-decision and
-Main-coordinator items are complete and closed.
+Missing deliverable: game/Main.cs is 732 lines; the Phase 3 exit needs it under 400 with behavior
+unchanged, and one full root ./quality.sh pass. Structured decisions, the Main coordinators and
+SmokeCheckHost are complete and closed.
 
-Continue Phase 3 program item 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-
-slice.md. First count the check nodes in Main.tscn and how each is gated and launched
-(scripts/smoke-godot.sh, tests/Architecture.Tests/CheckRegistrationTests.cs, quality.py current-
-revision stages), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-
-phase3-smoke-check-host.md. Migrate checks in batches behind their existing launches without
-changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing.
-Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase
-3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate.
-ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure, quarantined
-as #448 so it no longer fails the suite. Use D2 format/build/test and affected native launches;
-commit/push reviewed work; no merge or release.
+Finish Phase 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First measure
+what Main.cs still does inline (the items the coordinator plan left out: independent-task tick,
+healer commands, layered inscription input, first-patient and world initialization, and _Ready
+composition), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-
+phase3-thin-main.md. Under the rolling rule move each state machine into src/Application with xUnit
+tests behind a thin node adapter; keep MainProcessOrderCheck and every smoke launch passing, and
+keep Main checks as SmokeCheckHost entries. Then run the full root ./quality.sh once for the Phase 3
+exit and record it. Do not reopen the closed structured-decision, coordinator or SmokeCheckHost
+scopes or the deferred Phase 2 checks. Use D2 format/build/test and affected native launches until
+the exit gate; commit/push reviewed work; no merge or release.
 
-Done when: Main.tscn holds no check nodes, every check still launches through the host with
-unchanged assertions, check registration still passes, and scoped format/build/test/native checks
-pass with synced continuation evidence and review-branch publication.
+Done when: Main.cs is under 400 lines with unchanged gameplay, all tests and smoke checks pass, one
+full ./quality.sh passes and is recorded as evidence, and continuation evidence is synced with
+review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md`
-- `game/SmokeCheckHost.cs`
+- `docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md`
+- `docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json`
 
-Boundary: Phase 3 SmokeCheckHost only. Preserve check assertions, frozen/closed evidence and
-gameplay. No new gameplay or sabotage kind, Phase 4, physical/provider qualification, phase-exit
-claim or release.
+Boundary: Phase 3 thin Main and exit gate only. Preserve gameplay, check assertions and
+frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, physical/provider qualification
+or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
