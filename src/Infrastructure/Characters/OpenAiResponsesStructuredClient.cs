@@ -8,7 +8,7 @@ using Allrpcs.Infrastructure.Dialogue;
 namespace Allrpcs.Infrastructure.Characters;
 
 /// <summary>Obtains one typed structured decision through the shared bounded Responses transport.</summary>
-public sealed class OpenAiResponsesStructuredClient<TRequest, TDecision> : IStructuredDecisionClient<TRequest, TDecision>
+public sealed class OpenAiResponsesStructuredClient<TRequest, TDecision>
     where TRequest : class
     where TDecision : class
 {
@@ -77,8 +77,90 @@ public sealed class OpenAiResponsesStructuredClient<TRequest, TDecision> : IStru
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
         message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/event-stream"));
 
-        return await StructuredDecisionHttpTransport.CompleteAsync(
-            client, message, "text/event-stream", timeoutOptions,
-            (stream, token) => complete(request, stream, token), cancellationToken).ConfigureAwait(false);
+        using HttpResponseMessage response = await SendAsync(message, cancellationToken)
+            .ConfigureAwait(false);
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new HttpRequestException(
+                "The OpenAI structured-decision request was rejected.",
+                null,
+                response.StatusCode);
+        }
+
+        string? mediaType = response.Content.Headers.ContentType?.MediaType;
+        if (!string.Equals(mediaType, "text/event-stream", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new InvalidDataException(
+                "The OpenAI structured-decision response is not an event stream.");
+        }
+
+        Stream responseStream = await ReadResponseStreamAsync(response, cancellationToken)
+            .ConfigureAwait(false);
+        try
+        {
+            return await complete(request, responseStream, cancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (InvalidDataException)
+        {
+            throw;
+        }
+        catch (IOException)
+        {
+            throw TransportFailure();
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw TransportFailure();
+        }
     }
+
+    private async Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage message,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await ProviderHttpTransport.SendAsync(
+                    client,
+                    message,
+                    timeoutOptions,
+                    cancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (HttpRequestException)
+        {
+            throw TransportFailure();
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw TransportFailure();
+        }
+    }
+
+    private static async Task<Stream> ReadResponseStreamAsync(
+        HttpResponseMessage response,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            return await response.Content.ReadAsStreamAsync(cancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (HttpRequestException)
+        {
+            throw TransportFailure();
+        }
+        catch (IOException)
+        {
+            throw TransportFailure();
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            throw TransportFailure();
+        }
+    }
+
+    private static IOException TransportFailure() =>
+        new("The OpenAI structured-decision transport failed.");
 }

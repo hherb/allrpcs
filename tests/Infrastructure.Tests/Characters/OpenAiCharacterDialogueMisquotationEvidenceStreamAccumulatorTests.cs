@@ -1,7 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Tests.Dialogue;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -13,7 +12,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     public void CompletesAnExactAcceptedSelectionOrAbstention(bool abstain)
     {
         Input input = CreateInput();
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> accumulator = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator accumulator = new(
             input.Request);
         int? selectedEvidenceIndex = abstain ? null : 0;
         string response = DecisionDocument(input.Actor.Identity.Id.Value, selectedEvidenceIndex);
@@ -45,7 +44,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     public void CompletesWithBoundedSchemaEchoes(int depth, bool abstain)
     {
         Input input = CreateInput();
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> accumulator = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator accumulator = new(
             input.Request);
         int? selectedEvidenceIndex = abstain ? null : 0;
         string response = DecisionDocument(input.Actor.Identity.Id.Value, selectedEvidenceIndex);
@@ -77,7 +76,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     public void RejectsUnboundedOrNonStrictSchemaEchoes(string serializedEvent)
     {
         Input input = CreateInput();
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> accumulator = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator accumulator = new(
             input.Request);
 
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
@@ -97,7 +96,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     [InlineData("{\"type\":\"response.failed\",\"detail\":\"secret\"}")]
     public void RejectsMalformedPartialUnexpectedAndFailedEvents(string serializedEvent)
     {
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> accumulator = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator accumulator = new(
             CreateInput().Request);
 
         InvalidDataException exception = Assert.Throws<InvalidDataException>(
@@ -112,16 +111,16 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     public void RejectsDuplicateAndOutOfOrderLifecycleEvents()
     {
         Input input = CreateInput();
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> duplicateStart = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator duplicateStart = new(
             input.Request);
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> outOfOrder = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator outOfOrder = new(
             input.Request);
 
         Assert.Null(duplicateStart.Apply("{\"type\":\"response.created\"}"));
         Assert.Throws<InvalidDataException>(() => duplicateStart.Apply(
             "{\"type\":\"response.created\"}"));
         Assert.Throws<InvalidDataException>(() => outOfOrder.Apply(Delta("{}")));
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> metadataBeforeStart = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator metadataBeforeStart = new(
             input.Request);
         Assert.Throws<InvalidDataException>(() => metadataBeforeStart.Apply(
             "{\"type\":\"response.output_item.added\"}"));
@@ -133,9 +132,9 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     {
         Input input = CreateInput();
         string response = DecisionDocument(input.Actor.Identity.Id.Value, null);
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> invalid = AccumulateCharacterDialogueMisquotationEvidence(input.Request);
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> duplicate = AccumulateCharacterDialogueMisquotationEvidence(input.Request);
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> excessive = AccumulateCharacterDialogueMisquotationEvidence(input.Request);
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator invalid = new(input.Request);
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator duplicate = new(input.Request);
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator excessive = new(input.Request);
 
         Assert.Null(invalid.Apply("{\"type\":\"response.created\"}"));
         Assert.Null(invalid.Apply("{\"type\":\"response.in_progress\"}"));
@@ -155,18 +154,44 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator
     }
 
     [Fact]
-    public void RejectsNullsAndOversizedEvents()
+    public void RejectsNullsAndOversizedEventsAndExposesOnlyTheBoundedAccumulatorSurface()
     {
         Input input = CreateInput();
-        OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision> accumulator = AccumulateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator accumulator = new(
             input.Request);
+        Type accumulatorType = typeof(
+            OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator);
+        System.Reflection.ConstructorInfo constructor = Assert.Single(
+            accumulatorType.GetConstructors());
+        System.Reflection.MethodInfo method = Assert.Single(
+            accumulatorType.GetMethods().Where(
+                candidate => candidate.DeclaringType == accumulatorType));
+        System.Reflection.FieldInfo field = Assert.Single(
+            accumulatorType.GetFields(
+                System.Reflection.BindingFlags.Public
+                    | System.Reflection.BindingFlags.Static
+                    | System.Reflection.BindingFlags.DeclaredOnly));
+
         Assert.Throws<ArgumentNullException>(() =>
-            AccumulateCharacterDialogueMisquotationEvidence(null!));
+            new OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator(null!));
         Assert.Throws<ArgumentNullException>(() => accumulator.Apply(null!));
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(new string(
             'x',
-            OpenAiStructuredDecisionAccumulator<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision>.MaximumEventLength + 1)));
-
+            OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulator.MaximumEventLength + 1)));
+        Assert.Equal(
+            [typeof(CharacterDialogueMisquotationEvidenceConsiderationRequest)],
+            constructor.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal("Apply", method.Name);
+        Assert.Equal(typeof(CharacterDialogueMisquotationEvidenceDecision), method.ReturnType);
+        Assert.Equal(
+            [typeof(string)],
+            method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal("MaximumEventLength", field.Name);
+        Assert.True(field.IsLiteral);
+        Assert.Empty(accumulatorType.GetProperties());
+        Assert.Empty(accumulatorType.GetEvents());
+        Assert.True(accumulatorType.IsSealed);
+        AssertRequestUnchanged(input);
     }
 
     internal static string DecisionDocument(string actorId, int? selectedEvidenceIndex) =>

@@ -26,15 +26,15 @@ public partial class TemporaryCharacterTargetSabotageInfluenceModelCompositionSm
         ICharacterTargetSabotageInfluenceDecisionModel offline = source.TakeModel();
 
         bool initialized = composition.TryInitialize(initialSettings, client, credentials);
-        CharacterTargetSabotageInfluenceModel? initialModel =
-            source.TakeModel() as CharacterTargetSabotageInfluenceModel;
+        OpenAiCharacterTargetSabotageInfluenceModel? initialModel =
+            source.TakeModel() as OpenAiCharacterTargetSabotageInfluenceModel;
         bool rejectedRepeatedInitialization = !composition.TryInitialize(
             initialSettings,
             client,
             credentials);
         bool replaced = composition.TryReplace(replacementSettings, client, credentials);
-        CharacterTargetSabotageInfluenceModel? replacementModel =
-            source.TakeModel() as CharacterTargetSabotageInfluenceModel;
+        OpenAiCharacterTargetSabotageInfluenceModel? replacementModel =
+            source.TakeModel() as OpenAiCharacterTargetSabotageInfluenceModel;
         bool cleared = composition.TryClear();
         bool resumedOffline = ReferenceEquals(source.TakeModel(), offline);
         bool rejectedRepeatedClear = !composition.TryClear();
@@ -68,7 +68,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceModelCompositionSm
     }
 
     private static bool RetainsExactDependencies(
-        CharacterTargetSabotageInfluenceModel model,
+        OpenAiCharacterTargetSabotageInfluenceModel model,
         CharacterModelSettings settings,
         NetHttpClient client,
         IOpenAiCredentialSource credentials)

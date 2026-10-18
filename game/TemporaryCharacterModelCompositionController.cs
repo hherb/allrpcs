@@ -29,12 +29,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterTargetSabotageDelayRecoveryModelSource delayRecoveryModelSource = null!;
     private TemporaryCharacterSabotageActionModelSource sabotageActionModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
-    private TemporaryCharacterDialogueMisquotationEvidenceModelSource misquotationModelSource = null!;
-    private CharacterDialogueMisquotationEvidenceModelBinding? misquotationBinding;
     private NetHttpClient client = null!;
     private OllamaEndpoint ollamaEndpoint = OllamaEndpoint.Default;
     private bool isInitialized;
-    private IAnthropicCredentialSource? anthropicCredentials;
     private CharacterObjectSabotageConcealmentModelBinding? concealmentBinding;
     private CharacterObjectSabotageMoveModelBinding? moveBinding;
     private CharacterObjectSabotageSubstitutionModelBinding? substitutionBinding;
@@ -83,8 +80,6 @@ public partial class TemporaryCharacterModelCompositionController : Node
             "../TemporaryCharacterSabotageActionModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
-        misquotationModelSource = GetNode<TemporaryCharacterDialogueMisquotationEvidenceModelSource>(
-            "../TemporaryCharacterDialogueMisquotationEvidenceModelSource");
         client ??= new NetHttpClient(ProviderHttpTransport.CreateHandler())
         {
             Timeout = Timeout.InfiniteTimeSpan,
@@ -109,15 +104,6 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (client is not null || isInitialized) { return false; }
         client = transport;
         ollamaEndpoint = endpoint;
-        return true;
-    }
-
-    /// <summary>Supplies caller-owned Anthropic credentials before bindings are initialized, without I/O.</summary>
-    internal bool TryInitializeAnthropicCredentials(IAnthropicCredentialSource credentials)
-    {
-        ArgumentNullException.ThrowIfNull(credentials);
-        if (isInitialized || anthropicCredentials is not null) return false;
-        anthropicCredentials = credentials;
         return true;
     }
 
@@ -165,8 +151,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyInfluenceBinding(selection)
             || !TryApplyRecoveryBinding(selection)
             || !TryApplyDelayRecoveryBinding(selection)
-            || !TryApplySabotageActionBinding(selection)
-            || !TryApplyMisquotationBinding(selection))
+            || !TryApplySabotageActionBinding(selection))
         {
             return false;
         }
@@ -196,8 +181,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyInfluenceBinding(selection)
             && TryApplyRecoveryBinding(selection)
             && TryApplyDelayRecoveryBinding(selection)
-            && TryApplySabotageActionBinding(selection)
-            && TryApplyMisquotationBinding(selection);
+            && TryApplySabotageActionBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -268,12 +252,6 @@ public partial class TemporaryCharacterModelCompositionController : Node
                 ollamaEndpoint);
         }
 
-        if (settings.Provider == CharacterModelProvider.Anthropic)
-        {
-            return anthropicCredentials is null ? null
-                : AnthropicCharacterModelBindingFactory.Create(settings, client, anthropicCredentials);
-        }
-
         if (!ReferenceEquals(settings.Provider, CharacterModelProvider.OpenAi))
         {
             return null;
@@ -332,53 +310,38 @@ public partial class TemporaryCharacterModelCompositionController : Node
         return applied;
     }
 
-    private bool TryApplyMisquotationBinding(
-        CharacterModelSettingsSelectionSnapshot selection)
-    {
-        CharacterModelSettings selectedSettings = selection.Settings.Single(
-            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
-        {
-            return false;
-        }
-
-        CharacterDialogueMisquotationEvidenceModelBinding replacement =
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
-                selectedSettings,
-                client,
-                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
-        bool applied = misquotationBinding is null
-            ? misquotationModelSource.TryInitializeBinding(replacement)
-            : misquotationModelSource.TryReplaceBinding(misquotationBinding, replacement);
-        if (applied)
-        {
-            misquotationBinding = replacement;
-        }
-
-        return applied;
-    }
-
     private bool TryApplyConcealmentBinding(
         CharacterModelSettingsSelectionSnapshot selection)
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (concealmentBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = concealmentModelSource.TryClearBinding(concealmentBinding);
+            if (cleared)
+            {
+                concealmentBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         CharacterObjectSabotageConcealmentModelBinding replacement =
-            CharacterObjectSabotageConcealmentModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageConcealmentModelBindingFactory.Create(
                 selectedSettings,
                 client,
-                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
+                credentialSource);
         bool applied = concealmentBinding is null
             ? concealmentModelSource.TryInitializeBinding(replacement)
             : concealmentModelSource.TryReplaceBinding(concealmentBinding, replacement);
@@ -394,19 +357,33 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (moveBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = moveModelSource.TryClearBinding(moveBinding);
+            if (cleared)
+            {
+                moveBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         CharacterObjectSabotageMoveModelBinding replacement =
-            CharacterObjectSabotageMoveModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageMoveModelBindingFactory.Create(
                 selectedSettings,
                 client,
-                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
+                credentialSource);
         bool applied = moveBinding is null
             ? moveModelSource.TryInitializeBinding(replacement)
             : moveModelSource.TryReplaceBinding(moveBinding, replacement);
@@ -423,19 +400,33 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (substitutionBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = substitutionModelSource.TryClearBinding(substitutionBinding);
+            if (cleared)
+            {
+                substitutionBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         CharacterObjectSabotageSubstitutionModelBinding replacement =
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 selectedSettings,
                 client,
-                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
+                credentialSource);
         bool applied = substitutionBinding is null
             ? substitutionModelSource.TryInitializeBinding(replacement)
             : substitutionModelSource.TryReplaceBinding(substitutionBinding, replacement);
@@ -452,19 +443,33 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (contaminationBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = contaminationModelSource.TryClearBinding(contaminationBinding);
+            if (cleared)
+            {
+                contaminationBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         CharacterObjectSabotageContaminationModelBinding replacement =
-            CharacterObjectSabotageContaminationModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageContaminationModelBindingFactory.Create(
                 selectedSettings,
                 client,
-                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
+                credentialSource);
         bool applied = contaminationBinding is null
             ? contaminationModelSource.TryInitializeBinding(replacement)
             : contaminationModelSource.TryReplaceBinding(contaminationBinding, replacement);
@@ -481,17 +486,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!influenceBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = influenceComposition.TryClear();
+            if (cleared)
+            {
+                influenceBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         bool applied = influenceBindingInitialized
-            ? influenceComposition.TryReplace(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint)
-            : influenceComposition.TryInitialize(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint);
+            ? influenceComposition.TryReplace(selectedSettings, client, credentialSource)
+            : influenceComposition.TryInitialize(selectedSettings, client, credentialSource);
         if (applied)
         {
             influenceBindingInitialized = true;
@@ -504,17 +523,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!delayBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = delayComposition.TryClear();
+            if (cleared)
+            {
+                delayBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         bool applied = delayBindingInitialized
-            ? delayComposition.TryReplace(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint)
-            : delayComposition.TryInitialize(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint);
+            ? delayComposition.TryReplace(selectedSettings, client, credentialSource)
+            : delayComposition.TryInitialize(selectedSettings, client, credentialSource);
         if (applied)
         {
             delayBindingInitialized = true;
@@ -528,17 +561,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!recoveryBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = recoveryComposition.TryClear();
+            if (cleared)
+            {
+                recoveryBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         bool applied = recoveryBindingInitialized
-            ? recoveryComposition.TryReplace(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint)
-            : recoveryComposition.TryInitialize(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint);
+            ? recoveryComposition.TryReplace(selectedSettings, client, credentialSource)
+            : recoveryComposition.TryInitialize(selectedSettings, client, credentialSource);
         if (applied)
         {
             recoveryBindingInitialized = true;
@@ -552,17 +599,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!delayRecoveryBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = delayRecoveryComposition.TryClear();
+            if (cleared)
+            {
+                delayRecoveryBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         bool applied = delayRecoveryBindingInitialized
-            ? delayRecoveryComposition.TryReplace(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint)
-            : delayRecoveryComposition.TryInitialize(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint);
+            ? delayRecoveryComposition.TryReplace(selectedSettings, client, credentialSource)
+            : delayRecoveryComposition.TryInitialize(selectedSettings, client, credentialSource);
         if (applied)
         {
             delayRecoveryBindingInitialized = true;
@@ -576,17 +637,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
     {
         CharacterModelSettings selectedSettings = selection.Settings.Single(
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
-        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
-            ? CreateOpenAiCredentialSource() : null;
-        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
-            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!sabotageActionBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = sabotageActionComposition.TryClear();
+            if (cleared)
+            {
+                sabotageActionBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
         {
             return false;
         }
 
         bool applied = sabotageActionBindingInitialized
-            ? sabotageActionComposition.TryReplace(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint)
-            : sabotageActionComposition.TryInitialize(selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint);
+            ? sabotageActionComposition.TryReplace(selectedSettings, client, credentialSource)
+            : sabotageActionComposition.TryInitialize(selectedSettings, client, credentialSource);
         if (applied)
         {
             sabotageActionBindingInitialized = true;

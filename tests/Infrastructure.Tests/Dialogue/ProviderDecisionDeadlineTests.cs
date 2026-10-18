@@ -2,23 +2,22 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
 using Allrpcs.Infrastructure.Tests.Characters;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Dialogue;
 
 public sealed class ProviderDecisionDeadlineTests
 {
     private static readonly bool[] Flags = [false, true];
-    private static readonly string[] Names = ["CharacterTargetSabotageDelayModel",
-        "CharacterObjectSabotageSubstitutionModel",
-        "CharacterObjectSabotageMoveModel",
-        "CharacterDialogueMisquotationEvidenceModel",
-        "CharacterSabotageActionModel",
-        "CharacterTargetSabotageInfluenceModel",
-        "CharacterObjectSabotageContaminationModel",
-        "CharacterTargetSabotageInfluenceRecoveryModel",
-        "CharacterTargetSabotageDelayRecoveryModel",
-        "CharacterObjectSabotageConcealmentModel",
+    private static readonly string[] Names = ["OpenAiCharacterTargetSabotageDelayModel",
+        "OpenAiCharacterObjectSabotageSubstitutionModel",
+        "OpenAiCharacterObjectSabotageMoveModel",
+        "OpenAiCharacterDialogueMisquotationEvidenceModel",
+        "OpenAiCharacterSabotageActionModel",
+        "OpenAiCharacterTargetSabotageInfluenceModel",
+        "OpenAiCharacterObjectSabotageContaminationModel",
+        "OpenAiCharacterTargetSabotageInfluenceRecoveryModel",
+        "OpenAiCharacterTargetSabotageDelayRecoveryModel",
+        "OpenAiCharacterObjectSabotageConcealmentModel",
         "OpenAiParticipation",
         "OllamaParticipation"];
 
@@ -44,72 +43,72 @@ public sealed class ProviderDecisionDeadlineTests
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "model");
         Func<Task> invoke = name switch
         {
-            "CharacterTargetSabotageDelayModel" => async () =>
+            "OpenAiCharacterTargetSabotageDelayModel" => async () =>
             {
-                _ = await CreateCharacterTargetSabotageDelay(
+                _ = await new OpenAiCharacterTargetSabotageDelayModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(CharacterTargetSabotageDelayDecisionJsonDeserializerTests.CreateInput().Request, caller.Token);
             }
             ,
-            "CharacterObjectSabotageSubstitutionModel" => async () =>
+            "OpenAiCharacterObjectSabotageSubstitutionModel" => async () =>
             {
-                _ = await CreateCharacterObjectSabotageSubstitution(
+                _ = await new OpenAiCharacterObjectSabotageSubstitutionModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTests.CreateRequest(), caller.Token);
             }
             ,
-            "CharacterObjectSabotageMoveModel" => async () =>
+            "OpenAiCharacterObjectSabotageMoveModel" => async () =>
             {
-                _ = await CreateCharacterObjectSabotageMove(
+                _ = await new OpenAiCharacterObjectSabotageMoveModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest(), caller.Token);
             }
             ,
-            "CharacterDialogueMisquotationEvidenceModel" => async () =>
+            "OpenAiCharacterDialogueMisquotationEvidenceModel" => async () =>
             {
-                _ = await CreateCharacterDialogueMisquotationEvidence(
+                _ = await new OpenAiCharacterDialogueMisquotationEvidenceModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterDialogueMisquotationEvidenceRequestSerializerTests.CreateRequest(), caller.Token);
             }
             ,
-            "CharacterSabotageActionModel" => async () =>
+            "OpenAiCharacterSabotageActionModel" => async () =>
             {
-                _ = await CreateCharacterSabotageAction(
+                _ = await new OpenAiCharacterSabotageActionModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput().Request, caller.Token);
             }
             ,
-            "CharacterTargetSabotageInfluenceModel" => async () =>
+            "OpenAiCharacterTargetSabotageInfluenceModel" => async () =>
             {
-                _ = await CreateCharacterTargetSabotageInfluence(
+                _ = await new OpenAiCharacterTargetSabotageInfluenceModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterTargetSabotageInfluenceRequestSerializerTests.CreateRequest(), caller.Token);
             }
             ,
-            "CharacterObjectSabotageContaminationModel" => async () =>
+            "OpenAiCharacterObjectSabotageContaminationModel" => async () =>
             {
-                _ = await CreateCharacterObjectSabotageContamination(
+                _ = await new OpenAiCharacterObjectSabotageContaminationModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterObjectSabotageContaminationRequestSerializerTests.CreateRequest(), caller.Token);
             }
             ,
-            "CharacterTargetSabotageInfluenceRecoveryModel" => async () =>
+            "OpenAiCharacterTargetSabotageInfluenceRecoveryModel" => async () =>
             {
-                _ = await CreateCharacterTargetSabotageInfluenceRecovery(
+                _ = await new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request, caller.Token);
             }
             ,
-            "CharacterTargetSabotageDelayRecoveryModel" => async () =>
+            "OpenAiCharacterTargetSabotageDelayRecoveryModel" => async () =>
             {
-                _ = await CreateCharacterTargetSabotageDelayRecovery(
+                _ = await new OpenAiCharacterTargetSabotageDelayRecoveryModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request, caller.Token);
             }
             ,
-            "CharacterObjectSabotageConcealmentModel" => async () =>
+            "OpenAiCharacterObjectSabotageConcealmentModel" => async () =>
             {
-                _ = await CreateCharacterObjectSabotageConcealment(
+                _ = await new OpenAiCharacterObjectSabotageConcealmentModel(
                 client, credential, settings, OpenAiEndpoint.Default, transport.Options)
                 .DecideAsync(OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest(), caller.Token);
             }

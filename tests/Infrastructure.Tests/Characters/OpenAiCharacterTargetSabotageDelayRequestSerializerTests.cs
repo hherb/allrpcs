@@ -13,7 +13,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         CharacterTargetSabotageDelayDecisionJsonDeserializerTests.Input input =
             CharacterTargetSabotageDelayDecisionJsonDeserializerTests.CreateInput();
 
-        string serialized = Serialize(
+        string serialized = OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(
             input.Request,
             "gpt-test-model");
         using JsonDocument document = JsonDocument.Parse(serialized);
@@ -23,7 +23,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         Assert.False(root.GetProperty("store").GetBoolean());
         Assert.True(root.GetProperty("stream").GetBoolean());
         Assert.Equal(
-            CharacterStructuredDecisions.TargetSabotageDelay.MaximumOutputTokens,
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.MaximumOutputTokens,
             root.GetProperty("max_output_tokens").GetInt32());
         Assert.False(root.TryGetProperty("api_key", out _));
         JsonElement[] messages = root.GetProperty("input").EnumerateArray().ToArray();
@@ -45,7 +45,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         CharacterTargetSabotageDelayDecisionJsonDeserializerTests.Input input =
             CharacterTargetSabotageDelayDecisionJsonDeserializerTests.CreateInput();
         using JsonDocument requestDocument = JsonDocument.Parse(
-            Serialize(
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(
                 input.Request,
                 "gpt-test-model"));
         string contextText = requestDocument.RootElement.GetProperty("input")[1]
@@ -78,7 +78,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         CharacterTargetSabotageDelayDecisionJsonDeserializerTests.Input input =
             CharacterTargetSabotageDelayDecisionJsonDeserializerTests.CreateInput();
         using JsonDocument document = JsonDocument.Parse(
-            Serialize(
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(
                 input.Request,
                 "gpt-test-model"));
 
@@ -116,7 +116,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
             input.WorldTime,
             []);
         using JsonDocument document = JsonDocument.Parse(
-            Serialize(empty, "gpt-test"));
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(empty, "gpt-test"));
         JsonElement[] values = document.RootElement.GetProperty("text").GetProperty("format")
             .GetProperty("schema").GetProperty("properties")
             .GetProperty("selectedCandidateIndex").GetProperty("enum").EnumerateArray().ToArray();
@@ -124,20 +124,45 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         Assert.Single(values);
         Assert.Equal(JsonValueKind.Null, values[0].ValueKind);
         Assert.Throws<ArgumentNullException>(() =>
-            Serialize(null!, "gpt-test"));
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(null!, "gpt-test"));
         Assert.Throws<ArgumentNullException>(() =>
-            Serialize(input.Request, null!));
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(input.Request, null!));
         Assert.Throws<ArgumentException>(() =>
-            Serialize(input.Request, " model "));
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(input.Request, " model "));
         Assert.Throws<ArgumentException>(() =>
-            Serialize(
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.Serialize(
                 input.Request,
                 new string(
                     'm',
-                    Allrpcs.Application.Dialogue.CharacterModelSettings.MaximumModelNameLength + 1)));
+                    OpenAiCharacterTargetSabotageDelayRequestSerializer.MaximumModelNameLength + 1)));
     }
 
+    [Fact]
+    public void ExposesOnlyOneSerializerAndItsTwoBounds()
+    {
+        Type serializerType = typeof(OpenAiCharacterTargetSabotageDelayRequestSerializer);
+        System.Reflection.MethodInfo method = Assert.Single(
+            serializerType.GetMethods().Where(candidate => candidate.DeclaringType == serializerType));
+        System.Reflection.FieldInfo[] fields = serializerType.GetFields(
+            System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Static
+                | System.Reflection.BindingFlags.DeclaredOnly);
 
+        Assert.Equal("Serialize", method.Name);
+        Assert.Equal(typeof(string), method.ReturnType);
+        Assert.Equal(
+            [typeof(CharacterTargetSabotageDelayConsiderationRequest), typeof(string)],
+            method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal(
+            ["MaximumModelNameLength", "MaximumOutputTokens"],
+            fields.Select(field => field.Name).OrderBy(name => name, StringComparer.Ordinal));
+        Assert.All(fields, field => Assert.True(field.IsLiteral));
+        Assert.Empty(serializerType.GetConstructors());
+        Assert.True(serializerType.IsAbstract && serializerType.IsSealed);
+        Assert.Equal(
+            CharacterModelSettings.MaximumModelNameLength,
+            OpenAiCharacterTargetSabotageDelayRequestSerializer.MaximumModelNameLength);
+    }
 
     private static void AssertRequestUnchanged(
         CharacterTargetSabotageDelayDecisionJsonDeserializerTests.Input input)
@@ -149,7 +174,4 @@ public sealed class OpenAiCharacterTargetSabotageDelayRequestSerializerTests
         Assert.Same(input.WorldTime, input.Request.WorldTime);
         Assert.Same(input.Candidate, Assert.Single(input.Request.Candidates));
     }
-    private static string Serialize(CharacterTargetSabotageDelayConsiderationRequest request, string modelName) =>
-        CharacterStructuredDecisions.TargetSabotageDelay.Serialize(request, Allrpcs.Application.Dialogue.CharacterModelProvider.OpenAi, modelName);
-
 }

@@ -7,7 +7,6 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -20,7 +19,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
             OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -54,7 +53,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
             OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings(),
@@ -73,7 +72,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -98,7 +97,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
             Content = new ThrowingContent("secret provider response"),
         });
         using HttpClient client = new(handler);
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -122,7 +121,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
             OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request), mediaType));
         using HttpClient client = new(handler);
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -136,7 +135,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
     {
         CapturingHandler transport = new(_ => throw new HttpRequestException("secret network detail"));
         using HttpClient transportClient = new(transport);
-        CharacterObjectSabotageSubstitutionModel transportModel = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel transportModel = new(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -149,7 +148,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
         CapturingHandler semantic = new(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" })));
         using HttpClient semanticClient = new(semantic);
-        CharacterObjectSabotageSubstitutionModel semanticModel = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel semanticModel = new(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -161,7 +160,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        CharacterObjectSabotageSubstitutionModel cancellingModel = CreateCharacterObjectSabotageSubstitution(
+        OpenAiCharacterObjectSabotageSubstitutionModel cancellingModel = new(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -182,21 +181,25 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelTests
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
         StubCredentialSource credentials = new("test-secret");
-        CharacterObjectSabotageSubstitutionModel model = CreateCharacterObjectSabotageSubstitution(client, credentials, Settings());
+        OpenAiCharacterObjectSabotageSubstitutionModel model = new(client, credentials, Settings());
 
         await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             await model.DecideAsync(null!, CancellationToken.None));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterObjectSabotageSubstitution(null!, credentials, Settings()));
+            new OpenAiCharacterObjectSabotageSubstitutionModel(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterObjectSabotageSubstitution(client, null!, Settings()));
+            new OpenAiCharacterObjectSabotageSubstitutionModel(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterObjectSabotageSubstitution(client, credentials, null!));
-        Assert.Throws<ArgumentNullException>(() => CreateCharacterObjectSabotageSubstitution(
+            new OpenAiCharacterObjectSabotageSubstitutionModel(client, credentials, null!));
+        Assert.Throws<ArgumentException>(() => new OpenAiCharacterObjectSabotageSubstitutionModel(
             client,
             credentials,
             new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));
-        Assert.Throws<ArgumentNullException>(() => new CharacterObjectSabotageSubstitutionModel(null!));
+        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterObjectSabotageSubstitutionModel(
+            client,
+            credentials,
+            Settings(),
+            null!));
 
         Assert.Contains(
             typeof(ICharacterObjectSabotageSubstitutionDecisionModel),

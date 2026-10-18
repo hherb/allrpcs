@@ -7,7 +7,6 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -20,7 +19,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
             OpenAiCharacterDialogueMisquotationEvidenceRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -52,7 +51,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
             OpenAiCharacterDialogueMisquotationEvidenceRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings(),
@@ -71,7 +70,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -96,7 +95,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
             Content = new ThrowingContent("secret provider response"),
         });
         using HttpClient client = new(handler);
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -120,7 +119,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
             OpenAiCharacterDialogueMisquotationEvidenceRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request), mediaType));
         using HttpClient client = new(handler);
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -135,7 +134,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
         CapturingHandler transport = new(_ =>
             throw new HttpRequestException("secret network detail"));
         using HttpClient transportClient = new(transport);
-        CharacterDialogueMisquotationEvidenceModel transportModel = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel transportModel = new(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -148,7 +147,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
         CapturingHandler semantic = new(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" })));
         using HttpClient semanticClient = new(semantic);
-        CharacterDialogueMisquotationEvidenceModel semanticModel = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel semanticModel = new(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -160,7 +159,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        CharacterDialogueMisquotationEvidenceModel cancellingModel = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel cancellingModel = new(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -181,7 +180,7 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
         StubCredentialSource credentials = new("test-secret");
-        CharacterDialogueMisquotationEvidenceModel model = CreateCharacterDialogueMisquotationEvidence(
+        OpenAiCharacterDialogueMisquotationEvidenceModel model = new(
             client,
             credentials,
             Settings());
@@ -189,17 +188,22 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelTests
         await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             await model.DecideAsync(null!, CancellationToken.None));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterDialogueMisquotationEvidence(null!, credentials, Settings()));
+            new OpenAiCharacterDialogueMisquotationEvidenceModel(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterDialogueMisquotationEvidence(client, null!, Settings()));
+            new OpenAiCharacterDialogueMisquotationEvidenceModel(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterDialogueMisquotationEvidence(client, credentials, null!));
-        Assert.Throws<ArgumentNullException>(() =>
-            CreateCharacterDialogueMisquotationEvidence(
+            new OpenAiCharacterDialogueMisquotationEvidenceModel(client, credentials, null!));
+        Assert.Throws<ArgumentException>(() =>
+            new OpenAiCharacterDialogueMisquotationEvidenceModel(
                 client,
                 credentials,
                 new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));
-        Assert.Throws<ArgumentNullException>(() => new CharacterDialogueMisquotationEvidenceModel(null!));
+        Assert.Throws<ArgumentNullException>(() =>
+            new OpenAiCharacterDialogueMisquotationEvidenceModel(
+                client,
+                credentials,
+                Settings(),
+                null!));
 
         Assert.Contains(
             typeof(ICharacterDialogueMisquotationEvidenceDecisionModel),

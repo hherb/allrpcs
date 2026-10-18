@@ -13,7 +13,7 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         CharacterSabotageActionDecisionJsonDeserializerTests.Input input =
             CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput();
 
-        string serialized = Serialize(
+        string serialized = OpenAiCharacterSabotageActionRequestSerializer.Serialize(
             input.Request,
             "gpt-test-model");
         using JsonDocument document = JsonDocument.Parse(serialized);
@@ -23,7 +23,7 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         Assert.False(root.GetProperty("store").GetBoolean());
         Assert.True(root.GetProperty("stream").GetBoolean());
         Assert.Equal(
-            CharacterStructuredDecisions.SabotageAction.MaximumOutputTokens,
+            OpenAiCharacterSabotageActionRequestSerializer.MaximumOutputTokens,
             root.GetProperty("max_output_tokens").GetInt32());
         Assert.False(root.TryGetProperty("api_key", out _));
         JsonElement[] messages = root.GetProperty("input").EnumerateArray().ToArray();
@@ -45,7 +45,7 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         CharacterSabotageActionDecisionJsonDeserializerTests.Input input =
             CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput();
         using JsonDocument requestDocument = JsonDocument.Parse(
-            Serialize(
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(
                 input.Request,
                 "gpt-test-model"));
         string contextText = requestDocument.RootElement.GetProperty("input")[1]
@@ -76,7 +76,7 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         CharacterSabotageActionDecisionJsonDeserializerTests.Input input =
             CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput();
         using JsonDocument document = JsonDocument.Parse(
-            Serialize(
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(
                 input.Request,
                 "gpt-test-model"));
 
@@ -107,7 +107,7 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
             CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput();
         CharacterSabotageActionConsiderationRequest empty = new(input.Actor, []);
         using JsonDocument document = JsonDocument.Parse(
-            Serialize(empty, "gpt-test"));
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(empty, "gpt-test"));
         JsonElement[] values = document.RootElement.GetProperty("text").GetProperty("format")
             .GetProperty("schema").GetProperty("properties")
             .GetProperty("selectedActionKind").GetProperty("enum").EnumerateArray().ToArray();
@@ -115,20 +115,45 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         Assert.Single(values);
         Assert.Equal(JsonValueKind.Null, values[0].ValueKind);
         Assert.Throws<ArgumentNullException>(() =>
-            Serialize(null!, "gpt-test"));
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(null!, "gpt-test"));
         Assert.Throws<ArgumentNullException>(() =>
-            Serialize(input.Request, null!));
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(input.Request, null!));
         Assert.Throws<ArgumentException>(() =>
-            Serialize(input.Request, " model "));
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(input.Request, " model "));
         Assert.Throws<ArgumentException>(() =>
-            Serialize(
+            OpenAiCharacterSabotageActionRequestSerializer.Serialize(
                 input.Request,
                 new string(
                     'm',
-                    Allrpcs.Application.Dialogue.CharacterModelSettings.MaximumModelNameLength + 1)));
+                    OpenAiCharacterSabotageActionRequestSerializer.MaximumModelNameLength + 1)));
     }
 
+    [Fact]
+    public void ExposesOnlyOneSerializerAndItsTwoBounds()
+    {
+        Type serializerType = typeof(OpenAiCharacterSabotageActionRequestSerializer);
+        System.Reflection.MethodInfo method = Assert.Single(
+            serializerType.GetMethods().Where(candidate => candidate.DeclaringType == serializerType));
+        System.Reflection.FieldInfo[] fields = serializerType.GetFields(
+            System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Static
+                | System.Reflection.BindingFlags.DeclaredOnly);
 
+        Assert.Equal("Serialize", method.Name);
+        Assert.Equal(typeof(string), method.ReturnType);
+        Assert.Equal(
+            [typeof(CharacterSabotageActionConsiderationRequest), typeof(string)],
+            method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal(
+            ["MaximumModelNameLength", "MaximumOutputTokens"],
+            fields.Select(field => field.Name).OrderBy(name => name, StringComparer.Ordinal));
+        Assert.All(fields, field => Assert.True(field.IsLiteral));
+        Assert.Empty(serializerType.GetConstructors());
+        Assert.True(serializerType.IsAbstract && serializerType.IsSealed);
+        Assert.Equal(
+            CharacterModelSettings.MaximumModelNameLength,
+            OpenAiCharacterSabotageActionRequestSerializer.MaximumModelNameLength);
+    }
 
     private static void AssertRequestUnchanged(
         CharacterSabotageActionDecisionJsonDeserializerTests.Input input)
@@ -137,7 +162,4 @@ public sealed class OpenAiCharacterSabotageActionRequestSerializerTests
         Assert.Same(input.FirstKind, input.Request.ActionKinds[0]);
         Assert.Same(input.SelectedKind, input.Request.ActionKinds[1]);
     }
-    private static string Serialize(CharacterSabotageActionConsiderationRequest request, string modelName) =>
-        CharacterStructuredDecisions.SabotageAction.Serialize(request, Allrpcs.Application.Dialogue.CharacterModelProvider.OpenAi, modelName);
-
 }

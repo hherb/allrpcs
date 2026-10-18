@@ -2,7 +2,6 @@ using System.Text;
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -27,7 +26,7 @@ public sealed class OpenAiCharacterObjectSabotageContaminationSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         CharacterObjectSabotageContaminationDecision decision =
-            await CompleteCharacterObjectSabotageContaminationAsync(
+            await OpenAiCharacterObjectSabotageContaminationSseCompletion.CompleteAsync(
                 input.Request,
                 stream);
 
@@ -49,7 +48,7 @@ public sealed class OpenAiCharacterObjectSabotageContaminationSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         InvalidDataException exception = await Assert.ThrowsAsync<InvalidDataException>(() =>
-            CompleteCharacterObjectSabotageContaminationAsync(
+            OpenAiCharacterObjectSabotageContaminationSseCompletion.CompleteAsync(
                 CharacterObjectSabotageContaminationDecisionJsonDeserializerTests.CreateInput().Request,
                 stream));
 
@@ -74,15 +73,36 @@ public sealed class OpenAiCharacterObjectSabotageContaminationSseCompletionTests
         using CancellationTokenSource cancellation = new();
         cancellation.Cancel();
 
-        Assert.NotNull(await CompleteCharacterObjectSabotageContaminationAsync(input.Request, trailing));
+        Assert.NotNull(await OpenAiCharacterObjectSabotageContaminationSseCompletion.CompleteAsync(input.Request, trailing));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
-            CompleteCharacterObjectSabotageContaminationAsync(
+            OpenAiCharacterObjectSabotageContaminationSseCompletion.CompleteAsync(
                 input.Request,
                 empty,
                 cancellation.Token));
     }
 
+    [Fact]
+    public void ExposesOnlyOneBoundedAsyncCompletionOperation()
+    {
+        Type completionType = typeof(OpenAiCharacterObjectSabotageContaminationSseCompletion);
+        System.Reflection.MethodInfo method = Assert.Single(completionType.GetMethods().Where(
+            candidate => candidate.DeclaringType == completionType));
 
+        Assert.Equal("CompleteAsync", method.Name);
+        Assert.True(method.IsStatic);
+        Assert.Equal(typeof(Task<CharacterObjectSabotageContaminationDecision>), method.ReturnType);
+        Assert.Equal(
+            [
+                typeof(CharacterObjectSabotageContaminationConsiderationRequest),
+                typeof(Stream),
+                typeof(CancellationToken),
+            ],
+            method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Empty(completionType.GetConstructors());
+        Assert.Empty(completionType.GetProperties());
+        Assert.Empty(completionType.GetEvents());
+        Assert.True(completionType.IsAbstract && completionType.IsSealed);
+    }
 
     private static string Frame(object semanticEvent) =>
         "data: " + JsonSerializer.Serialize(semanticEvent) + "\n\n";

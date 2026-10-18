@@ -20,14 +20,14 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory
         ThrowingCredentialSource credentialSource = new();
 
         CharacterObjectSabotageSubstitutionModelBinding binding =
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource);
 
         Assert.Same(settings, binding.Settings);
-        CharacterObjectSabotageSubstitutionModel model =
-            Assert.IsType<CharacterObjectSabotageSubstitutionModel>(binding.Model);
+        OpenAiCharacterObjectSabotageSubstitutionModel model =
+            Assert.IsType<OpenAiCharacterObjectSabotageSubstitutionModel>(binding.Model);
         object transport = Field<object>(model, "client");
         Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
         Assert.Same(client, Field<HttpClient>(transport, "client"));
@@ -54,11 +54,11 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory
 
         CharacterObjectSabotageSubstitutionModelBinding binding =
             baseUri is null
-                ? CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+                ? OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                     settings,
                     client,
                     credentialSource)
-                : CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+                : OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                     settings,
                     client,
                     credentialSource,
@@ -84,27 +84,52 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory
         ThrowingCredentialSource credentialSource = new();
 
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 null!, client, credentialSource));
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 settings, null!, credentialSource));
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 settings, client, null!));
-        Assert.Throws<ArgumentNullException>(() =>
-            CharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+        Assert.Throws<ArgumentException>(() =>
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
                 anthropic, client, credentialSource));
+        Assert.Throws<ArgumentNullException>(() =>
+            OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory.Create(
+                settings, client, credentialSource, null!));
         Assert.Equal(0, handler.SendCount);
         Assert.Equal(0, credentialSource.LoadCount);
     }
 
     [Fact]
-    public void ExposesOneProviderNeutralCreationMethod()
+    public void ExposesOnlyTheTwoExactCreationOverloads()
     {
-        MethodInfo method = Assert.Single(typeof(CharacterObjectSabotageSubstitutionModelBindingFactory).GetMethods(
-            BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly));
-        Assert.Equal("Create", method.Name);
+        MethodInfo[] methods = typeof(OpenAiCharacterObjectSabotageSubstitutionModelBindingFactory)
+            .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+
+        Assert.Collection(
+            methods.OrderBy(method => method.GetParameters().Length),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                    typeof(OpenAiEndpoint),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)));
+        Assert.All(methods, method =>
+        {
+            Assert.Equal("Create", method.Name);
+            Assert.Equal(typeof(CharacterObjectSabotageSubstitutionModelBinding), method.ReturnType);
+        });
     }
 
     private static T Field<T>(object instance, string name) where T : class =>

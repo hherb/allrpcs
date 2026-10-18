@@ -20,14 +20,14 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelBindingFacto
         ThrowingCredentialSource credentialSource = new();
 
         CharacterDialogueMisquotationEvidenceModelBinding binding =
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource);
 
         Assert.Same(settings, binding.Settings);
-        CharacterDialogueMisquotationEvidenceModel model =
-            Assert.IsType<CharacterDialogueMisquotationEvidenceModel>(binding.Model);
+        OpenAiCharacterDialogueMisquotationEvidenceModel model =
+            Assert.IsType<OpenAiCharacterDialogueMisquotationEvidenceModel>(binding.Model);
         object transport = Field<object>(model, "client");
         Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
         Assert.Same(client, Field<HttpClient>(transport, "client"));
@@ -53,11 +53,11 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelBindingFacto
         LoadedCredentialSource credentialSource = new();
 
         CharacterDialogueMisquotationEvidenceModelBinding binding = baseUri is null
-            ? CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            ? OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource)
-            : CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            : OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource,
@@ -83,27 +83,55 @@ public sealed class OpenAiCharacterDialogueMisquotationEvidenceModelBindingFacto
         ThrowingCredentialSource credentialSource = new();
 
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 null!, client, credentialSource));
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 settings, null!, credentialSource));
         Assert.Throws<ArgumentNullException>(() =>
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 settings, client, null!));
-        Assert.Throws<ArgumentNullException>(() =>
-            CharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+        Assert.Throws<ArgumentException>(() =>
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
                 anthropic, client, credentialSource));
+        Assert.Throws<ArgumentNullException>(() =>
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory.Create(
+                settings, client, credentialSource, null!));
         Assert.Equal(0, handler.SendCount);
         Assert.Equal(0, credentialSource.LoadCount);
     }
 
     [Fact]
-    public void ExposesOneProviderNeutralCreationMethod()
+    public void ExposesOnlyTheTwoExactCreationOverloads()
     {
-        MethodInfo method = Assert.Single(typeof(CharacterDialogueMisquotationEvidenceModelBindingFactory).GetMethods(
-            BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly));
-        Assert.Equal("Create", method.Name);
+        MethodInfo[] methods = typeof(
+            OpenAiCharacterDialogueMisquotationEvidenceModelBindingFactory)
+            .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+
+        Assert.Collection(
+            methods.OrderBy(method => method.GetParameters().Length),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                    typeof(OpenAiEndpoint),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)));
+        Assert.All(methods, method =>
+        {
+            Assert.Equal("Create", method.Name);
+            Assert.Equal(
+                typeof(CharacterDialogueMisquotationEvidenceModelBinding),
+                method.ReturnType);
+        });
     }
 
     private static T Field<T>(object instance, string name) where T : class =>

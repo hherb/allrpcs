@@ -2,7 +2,6 @@ using System.Text;
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -25,7 +24,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletionT
         using MemoryStream stream = Utf8Stream(events);
 
         CharacterTargetSabotageInfluenceRecoveryDecision decision =
-            await CompleteCharacterTargetSabotageInfluenceRecoveryAsync(
+            await OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(
                 input.Request,
                 stream);
 
@@ -49,7 +48,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletionT
         using MemoryStream stream = Utf8Stream(events);
 
         InvalidDataException exception = await Assert.ThrowsAsync<InvalidDataException>(() =>
-            CompleteCharacterTargetSabotageInfluenceRecoveryAsync(
+            OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(
                 CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request,
                 stream));
 
@@ -73,11 +72,11 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletionT
         using CancellationTokenSource cancellation = new();
         cancellation.Cancel();
 
-        Assert.NotNull(await CompleteCharacterTargetSabotageInfluenceRecoveryAsync(
+        Assert.NotNull(await OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(
                 input.Request,
                 trailing));
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
-            CompleteCharacterTargetSabotageInfluenceRecoveryAsync(
+            OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(
                 input.Request,
                 empty,
                 cancellation.Token));
@@ -89,11 +88,30 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletionT
         CharacterTargetSabotageInfluenceRecoveryConsiderationRequest request =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request;
         using MemoryStream stream = Utf8Stream(string.Empty);
-        await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            CompleteCharacterTargetSabotageInfluenceRecoveryAsync(null!, stream));
-        await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            CompleteCharacterTargetSabotageInfluenceRecoveryAsync(request, null!));
+        Type completionType = typeof(OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion);
+        System.Reflection.MethodInfo method = Assert.Single(
+            completionType.GetMethods().Where(candidate => candidate.DeclaringType == completionType));
 
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(null!, stream));
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            OpenAiCharacterTargetSabotageInfluenceRecoverySseCompletion.CompleteAsync(request, null!));
+        Assert.Equal("CompleteAsync", method.Name);
+        Assert.True(method.IsStatic);
+        Assert.Equal(
+            typeof(Task<CharacterTargetSabotageInfluenceRecoveryDecision>),
+            method.ReturnType);
+        Assert.Equal(
+            [
+                typeof(CharacterTargetSabotageInfluenceRecoveryConsiderationRequest),
+                typeof(Stream),
+                typeof(CancellationToken),
+            ],
+            method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Empty(completionType.GetConstructors());
+        Assert.Empty(completionType.GetProperties());
+        Assert.Empty(completionType.GetEvents());
+        Assert.True(completionType.IsAbstract && completionType.IsSealed);
     }
 
     private static string Frame(object semanticEvent) =>

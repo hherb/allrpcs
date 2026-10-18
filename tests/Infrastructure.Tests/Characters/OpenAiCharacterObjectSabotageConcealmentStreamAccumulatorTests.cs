@@ -1,7 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Tests.Dialogue;
-using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -14,7 +13,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     {
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> accumulator = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
         string? selectedEvidenceId = abstain
             ? null
             : Assert.Single(request.Candidates).Evidence.EvidenceId.Value;
@@ -47,7 +46,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     {
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> accumulator = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
         string? selectedEvidenceId = abstain
             ? null
             : Assert.Single(request.Candidates).Evidence.EvidenceId.Value;
@@ -80,7 +79,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     {
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> accumulator = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
 
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
         Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
@@ -92,7 +91,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     {
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> accumulator = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(request);
         string response = DecisionDocument(request.Character.Identity.Id.Value, null);
         string[] metadataEvents =
         [
@@ -139,7 +138,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     [InlineData("{\"type\":\"error\",\"detail\":\"secret\"}")]
     public void RejectsMalformedUnexpectedIncompleteAndProviderFailureEvents(string serializedEvent)
     {
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> accumulator = AccumulateCharacterObjectSabotageConcealment(
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator accumulator = new(
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest());
 
         InvalidDataException exception = Assert.Throws<InvalidDataException>(
@@ -154,9 +153,9 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
         string response = DecisionDocument(request.Character.Identity.Id.Value, null);
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> invalid = AccumulateCharacterObjectSabotageConcealment(request);
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> duplicate = AccumulateCharacterObjectSabotageConcealment(request);
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> completed = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator invalid = new(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator duplicate = new(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator completed = new(request);
 
         Assert.Throws<InvalidDataException>(() => invalid.Apply(Done(
             DecisionDocument("unknown-character", null))));
@@ -177,13 +176,13 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
     {
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> excessiveEvent = AccumulateCharacterObjectSabotageConcealment(request);
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> excessiveDeltas = AccumulateCharacterObjectSabotageConcealment(request);
-        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision> excessiveDone = AccumulateCharacterObjectSabotageConcealment(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator excessiveEvent = new(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator excessiveDeltas = new(request);
+        OpenAiCharacterObjectSabotageConcealmentStreamAccumulator excessiveDone = new(request);
 
         Assert.Throws<InvalidDataException>(() => excessiveEvent.Apply(new string(
             'x',
-            OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest, CharacterObjectSabotageConcealmentDecision>.MaximumEventLength + 1)));
+            OpenAiCharacterObjectSabotageConcealmentStreamAccumulator.MaximumEventLength + 1)));
         Assert.Null(excessiveDeltas.Apply(Delta(new string(
             'x',
             CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength))));
@@ -192,11 +191,34 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTes
             'x',
             CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength + 1))));
         Assert.Throws<ArgumentNullException>(() =>
-            AccumulateCharacterObjectSabotageConcealment(null!));
+            new OpenAiCharacterObjectSabotageConcealmentStreamAccumulator(null!));
         Assert.Throws<ArgumentNullException>(() => excessiveEvent.Apply(null!));
     }
 
+    [Fact]
+    public void ExposesOnlyTheBoundedAccumulatorSurface()
+    {
+        Type accumulatorType = typeof(OpenAiCharacterObjectSabotageConcealmentStreamAccumulator);
+        System.Reflection.ConstructorInfo constructor = Assert.Single(accumulatorType.GetConstructors());
+        System.Reflection.MethodInfo method = Assert.Single(
+            accumulatorType.GetMethods().Where(candidate => candidate.DeclaringType == accumulatorType));
+        System.Reflection.FieldInfo field = Assert.Single(accumulatorType.GetFields(
+            System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Static
+                | System.Reflection.BindingFlags.DeclaredOnly));
 
+        Assert.Equal(
+            [typeof(CharacterObjectSabotageConcealmentConsiderationRequest)],
+            constructor.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal("Apply", method.Name);
+        Assert.Equal(typeof(CharacterObjectSabotageConcealmentDecision), method.ReturnType);
+        Assert.Equal([typeof(string)], method.GetParameters().Select(parameter => parameter.ParameterType));
+        Assert.Equal("MaximumEventLength", field.Name);
+        Assert.True(field.IsLiteral);
+        Assert.Empty(accumulatorType.GetProperties());
+        Assert.Empty(accumulatorType.GetEvents());
+        Assert.True(accumulatorType.IsSealed);
+    }
 
     internal static string DecisionDocument(string characterId, string? selectedEvidenceId) =>
         System.Text.Json.JsonSerializer.Serialize(new { characterId, selectedEvidenceId });
