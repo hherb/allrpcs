@@ -113,6 +113,10 @@ public partial class CharacterTargetSabotageDelayRecoveryTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Target sabotage delay recovery decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterTargetSabotageDelayRecoveryTaskStatus.Failed;
         }
 

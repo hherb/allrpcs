@@ -121,6 +121,10 @@ public partial class CharacterObjectSabotageContaminationTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Object sabotage contamination decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterObjectSabotageContaminationTaskStatus.Failed;
         }
 

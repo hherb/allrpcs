@@ -153,3 +153,44 @@ plus temporary Git history probes).
 Next program item: plan and extract the conversation-turn and focused-search coordinators from
 `Main.cs`, retaining behavior and explicit process order. SmokeCheckHost remains subsequent work.
 One complete root gate is still required at full Phase 3 exit under approved D2.
+
+## PR #443 review fixes (owner reopening, 18 October)
+
+The owner [asked](../evidence/2026-10-18-pr443-review-fixes-authority.json) for every PR #443
+review finding to be fixed, re-reviewed, verified and pushed, with GitHub issues for anything that
+cannot be fixed. Fixes:
+
+- **Ollama:** the trusted context is now a `user` message after the system instructions. Before,
+  both were `system` messages, which some chat templates render as an empty prompt.
+- **Anthropic:**
+  - Streams now skip leading `thinking`/`redacted_thinking` blocks, which current Claude models
+    emit by default.
+  - Decisions request `max_tokens: 4096`, the same as the Anthropic dialogue request, because
+    thinking counts against that budget.
+- **Provider selection:** the serializer and factory now match each provider explicitly and throw
+  for an unknown one.
+- **Descriptor and OpenAI client:** the OpenAI client takes the descriptor, the lifecycle flags
+  have no defaults, and the shared 128-token bound is one constant.
+- **Media type:** an unsupported response media type keeps its own error message.
+- **Logging:** the ten decision task controllers log the type of a faulted decision.
+- **Tests:**
+  - New tests pin the exact request fields and roles for every kind and provider, real Anthropic
+    stream framing, text split across events and the bound on the joined text, the index of each
+    malformed event, missing stop reasons, and credential rejection.
+  - Fifty per-kind test files no longer carry the names of deleted `OpenAiCharacter*` types.
+
+**Ollama budget measurement:** four local models ran all ten kinds (40 runs). The most any run
+used was 29 output tokens, every run ended with `done_reason: stop`, and every run returned valid
+JSON. The Ollama bound therefore stays at 128.
+
+**OpenAI:** request bytes and stream policies are unchanged.
+
+**Results:** zero-warning build; format clean; 6,007 solution tests passing; full smoke suite at
+363 passed, 0 failed (the two existing quarantines also passed). An independent re-review found no
+blocking issues. See the [receipt](../evidence/2026-10-18-pr443-review-fixes.json).
+
+**Not fixed here (filed as GitHub issues):**
+- live Anthropic qualification;
+- thinking-block handling in the closed Anthropic dialogue adapter;
+- a separate failure category for deadline expiry versus other transport failures in the shared
+  provider transport.

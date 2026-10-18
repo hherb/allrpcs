@@ -113,6 +113,10 @@ public partial class CharacterTargetSabotageInfluenceRecoveryTaskController : No
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Target sabotage influence recovery decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterTargetSabotageInfluenceRecoveryTaskStatus.Failed;
         }
 

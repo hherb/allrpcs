@@ -994,6 +994,16 @@
           "sha256": "44d93de80da68f22d3d25205ee9ef7ae41934ba8f121a4c91f73b321382f30d9"
         }
       ]
+    },
+    {
+      "id": "code-health-phase3-pr443-review-fixes",
+      "reason": "The owner-requested PR #443 review fixes are complete: Ollama user-role context, Anthropic thinking-block tolerance and output budget, explicit provider selection, descriptor-bound OpenAI client, distinct media-type failure, decision failure logging, pinned request/stream tests and renamed per-kind tests. 6007 solution tests and the full smoke suite (363 passed, 0 failed) pass. Live Anthropic qualification and two closed-scope follow-ups are filed as GitHub issues; the structured-decision scope is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-pr443-review-fixes.json",
+          "sha256": "e5214fe5db0ee9028e1319f636c8d27dc7bd2f38b3969ce723cc9c6f639cf918"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1546,6 +1556,20 @@
         {
           "path": "docs/superpowers/evidence/2026-10-18-phase3-authority.json",
           "sha256": "4589d3cb7794913a1d4758f3285e5618d599e39df7cc9f8a8ed56dbde0762c8c"
+        }
+      ]
+    },
+    {
+      "id": "owner-pr443-review-fixes-2026-10-18",
+      "owner_statement": "Please implement all your suggestions and fixes, then review your code again, and once happy that all is working , push the changes into the PR. Only what you genuinely cannot fix, open as issues on github.",
+      "scope_ids": [
+        "code-health-phase3-structured-decisions"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-pr443-review-fixes-authority.json",
+          "sha256": "6f72c666db3ac5a2dbb67288675031b53233e6d95c9bdfac0e5c004c9de0b8aa"
         }
       ]
     }

@@ -25,8 +25,8 @@ public sealed class StructuredDecisionContractsTests
         {
             case "DialogueMisquotationEvidence":
                 {
-                    var request = OpenAiCharacterDialogueMisquotationEvidenceRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterDialogueMisquotationEvidenceStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
+                    var request = CharacterDialogueMisquotationEvidenceOpenAiRequestTests.CreateRequest();
+                    string document = CharacterDialogueMisquotationEvidenceOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
                     await VerifyAsync(CharacterStructuredDecisions.DialogueMisquotationEvidence, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -36,8 +36,8 @@ public sealed class StructuredDecisionContractsTests
                 }
             case "ObjectSabotageConcealment":
                 {
-                    var request = OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterObjectSabotageConcealmentStreamAccumulatorTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.EvidenceId.Value);
+                    var request = CharacterObjectSabotageConcealmentOpenAiRequestTests.CreateRequest();
+                    string document = CharacterObjectSabotageConcealmentOpenAiStreamTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.EvidenceId.Value);
                     await VerifyAsync(CharacterStructuredDecisions.ObjectSabotageConcealment, request, provider, document, decision =>
                     {
                         Assert.Same(request.Character.Identity.Id, decision.CharacterId);
@@ -47,8 +47,8 @@ public sealed class StructuredDecisionContractsTests
                 }
             case "ObjectSabotageContamination":
                 {
-                    var request = OpenAiCharacterObjectSabotageContaminationRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterObjectSabotageContaminationStreamAccumulatorTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.EvidenceId.Value);
+                    var request = CharacterObjectSabotageContaminationOpenAiRequestTests.CreateRequest();
+                    string document = CharacterObjectSabotageContaminationOpenAiStreamTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.EvidenceId.Value);
                     await VerifyAsync(CharacterStructuredDecisions.ObjectSabotageContamination, request, provider, document, decision =>
                     {
                         Assert.Same(request.Character.Identity.Id, decision.CharacterId);
@@ -58,8 +58,8 @@ public sealed class StructuredDecisionContractsTests
                 }
             case "ObjectSabotageMove":
                 {
-                    var request = OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.Evidence.EvidenceId.Value);
+                    var request = CharacterObjectSabotageMoveOpenAiRequestTests.CreateRequest();
+                    string document = CharacterObjectSabotageMoveOpenAiStreamTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.Evidence.EvidenceId.Value);
                     await VerifyAsync(CharacterStructuredDecisions.ObjectSabotageMove, request, provider, document, decision =>
                     {
                         Assert.Same(request.Character.Identity.Id, decision.CharacterId);
@@ -69,8 +69,8 @@ public sealed class StructuredDecisionContractsTests
                 }
             case "ObjectSabotageSubstitution":
                 {
-                    var request = OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterObjectSabotageSubstitutionStreamAccumulatorTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.Evidence.EvidenceId.Value);
+                    var request = CharacterObjectSabotageSubstitutionOpenAiRequestTests.CreateRequest();
+                    string document = CharacterObjectSabotageSubstitutionOpenAiStreamTests.DecisionDocument(request.Character.Identity.Id.Value, request.Candidates[0].Evidence.Evidence.EvidenceId.Value);
                     await VerifyAsync(CharacterStructuredDecisions.ObjectSabotageSubstitution, request, provider, document, decision =>
                     {
                         Assert.Same(request.Character.Identity.Id, decision.CharacterId);
@@ -81,7 +81,7 @@ public sealed class StructuredDecisionContractsTests
             case "SabotageAction":
                 {
                     var request = CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput().Request;
-                    string document = OpenAiCharacterSabotageActionStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, request.ActionKinds[0].Value);
+                    string document = CharacterSabotageActionOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, request.ActionKinds[0].Value);
                     await VerifyAsync(CharacterStructuredDecisions.SabotageAction, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -92,7 +92,7 @@ public sealed class StructuredDecisionContractsTests
             case "TargetSabotageDelay":
                 {
                     var request = CharacterTargetSabotageDelayDecisionJsonDeserializerTests.CreateInput().Request;
-                    string document = OpenAiCharacterTargetSabotageDelayStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
+                    string document = CharacterTargetSabotageDelayOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
                     await VerifyAsync(CharacterStructuredDecisions.TargetSabotageDelay, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -103,7 +103,7 @@ public sealed class StructuredDecisionContractsTests
             case "TargetSabotageDelayRecovery":
                 {
                     var request = CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request;
-                    string document = OpenAiCharacterTargetSabotageDelayRecoveryStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
+                    string document = CharacterTargetSabotageDelayRecoveryOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
                     await VerifyAsync(CharacterStructuredDecisions.TargetSabotageDelayRecovery, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -113,8 +113,8 @@ public sealed class StructuredDecisionContractsTests
                 }
             case "TargetSabotageInfluence":
                 {
-                    var request = OpenAiCharacterTargetSabotageInfluenceRequestSerializerTests.CreateRequest();
-                    string document = OpenAiCharacterTargetSabotageInfluenceStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
+                    var request = CharacterTargetSabotageInfluenceOpenAiRequestTests.CreateRequest();
+                    string document = CharacterTargetSabotageInfluenceOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
                     await VerifyAsync(CharacterStructuredDecisions.TargetSabotageInfluence, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -125,7 +125,7 @@ public sealed class StructuredDecisionContractsTests
             case "TargetSabotageInfluenceRecovery":
                 {
                     var request = CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request;
-                    string document = OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulatorTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
+                    string document = CharacterTargetSabotageInfluenceRecoveryOpenAiStreamTests.DecisionDocument(request.Actor.Identity.Id.Value, 0);
                     await VerifyAsync(CharacterStructuredDecisions.TargetSabotageInfluenceRecovery, request, provider, document, decision =>
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
@@ -155,21 +155,58 @@ public sealed class StructuredDecisionContractsTests
 
         using var openAi = JsonDocument.Parse(descriptor.Serialize(request, CharacterModelProvider.OpenAi, "model-test"));
         using var actual = JsonDocument.Parse(descriptor.Serialize(request, provider, "model-test"));
+        JsonElement root = actual.RootElement;
         var expectedInput = openAi.RootElement.GetProperty("input");
         var expectedSchema = openAi.RootElement.GetProperty("text").GetProperty("format").GetProperty("schema");
-        if (provider == CharacterModelProvider.Anthropic)
+        Assert.Equal("model-test", root.GetProperty("model").GetString());
+        Assert.True(root.GetProperty("stream").GetBoolean());
+        if (provider == CharacterModelProvider.OpenAi)
         {
-            Assert.Equal(expectedInput[0].GetProperty("content").GetString(), actual.RootElement.GetProperty("system").GetString());
-            Assert.Equal(expectedInput[1].GetProperty("content").GetString(), actual.RootElement.GetProperty("messages")[0].GetProperty("content").GetString());
-            Assert.Equal(expectedSchema.GetRawText(), actual.RootElement.GetProperty("output_config").GetProperty("format").GetProperty("schema").GetRawText());
+            AssertKeys(root, "model", "store", "stream", "max_output_tokens", "input", "text");
+            Assert.False(root.GetProperty("store").GetBoolean());
+            Assert.Equal(128, root.GetProperty("max_output_tokens").GetInt32());
+            Assert.Equal(["developer", "developer"], Roles(root.GetProperty("input")));
+            AssertKeys(root.GetProperty("text"), "format");
+            JsonElement format = root.GetProperty("text").GetProperty("format");
+            AssertKeys(format, "type", "name", "strict", "schema");
+            Assert.Equal("json_schema", format.GetProperty("type").GetString());
+            Assert.Equal(descriptor.Name, format.GetProperty("name").GetString());
+            Assert.True(format.GetProperty("strict").GetBoolean());
         }
-        else if (provider == CharacterModelProvider.Ollama)
+        else if (provider == CharacterModelProvider.Anthropic)
         {
-            Assert.Equal(expectedInput[0].GetProperty("content").GetString(), actual.RootElement.GetProperty("messages")[0].GetProperty("content").GetString());
-            Assert.Equal(expectedInput[1].GetProperty("content").GetString(), actual.RootElement.GetProperty("messages")[1].GetProperty("content").GetString());
-            Assert.Equal(expectedSchema.GetRawText(), actual.RootElement.GetProperty("format").GetRawText());
-            Assert.False(actual.RootElement.GetProperty("think").GetBoolean());
+            AssertKeys(root, "model", "stream", "max_tokens", "system", "messages", "output_config");
+            Assert.Equal(4_096, root.GetProperty("max_tokens").GetInt32());
+            Assert.Equal(["user"], Roles(root.GetProperty("messages")));
+            Assert.Equal(expectedInput[0].GetProperty("content").GetString(), root.GetProperty("system").GetString());
+            Assert.Equal(expectedInput[1].GetProperty("content").GetString(), root.GetProperty("messages")[0].GetProperty("content").GetString());
+            AssertKeys(root.GetProperty("output_config"), "format");
+            JsonElement format = root.GetProperty("output_config").GetProperty("format");
+            AssertKeys(format, "type", "schema");
+            Assert.Equal("json_schema", format.GetProperty("type").GetString());
+            Assert.Equal(expectedSchema.GetRawText(), format.GetProperty("schema").GetRawText());
         }
+        else
+        {
+            AssertKeys(root, "model", "stream", "think", "messages", "format", "options");
+            Assert.False(root.GetProperty("think").GetBoolean());
+            Assert.Equal(["system", "user"], Roles(root.GetProperty("messages")));
+            Assert.Equal(expectedInput[0].GetProperty("content").GetString(), root.GetProperty("messages")[0].GetProperty("content").GetString());
+            Assert.Equal(expectedInput[1].GetProperty("content").GetString(), root.GetProperty("messages")[1].GetProperty("content").GetString());
+            Assert.Equal(expectedSchema.GetRawText(), root.GetProperty("format").GetRawText());
+            AssertKeys(root.GetProperty("options"), "temperature", "num_predict");
+            Assert.Equal(0, root.GetProperty("options").GetProperty("temperature").GetInt32());
+            Assert.Equal(128, root.GetProperty("options").GetProperty("num_predict").GetInt32());
+        }
+    }
+
+    private static void AssertKeys(JsonElement element, params string[] expected) =>
+        Assert.Equal(expected, element.EnumerateObject().Select(property => property.Name));
+
+    private static string[] Roles(JsonElement messages)
+    {
+        Assert.All(messages.EnumerateArray(), message => AssertKeys(message, "role", "content"));
+        return messages.EnumerateArray().Select(message => message.GetProperty("role").GetString()!).ToArray();
     }
 
     private sealed class ThrowingCredentials : IOpenAiCredentialSource, IAnthropicCredentialSource

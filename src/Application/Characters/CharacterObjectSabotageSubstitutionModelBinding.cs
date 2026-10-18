@@ -17,7 +17,7 @@ public sealed class CharacterObjectSabotageSubstitutionModelBinding
         Model = model;
     }
 
-    /// <summary>Gets the exact immutable provider-selected provider and model setting.</summary>
+    /// <summary>Gets the exact immutable selected provider and model setting.</summary>
     public CharacterModelSettings Settings { get; }
 
     /// <summary>Gets the exact caller-composed substitution-decision model.</summary>
