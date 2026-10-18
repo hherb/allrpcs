@@ -26,15 +26,15 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryModelCompositi
         ICharacterTargetSabotageDelayRecoveryDecisionModel offline = source.TakeModel();
 
         bool initialized = composition.TryInitialize(initialSettings, client, credentials);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel? initialModel =
-            source.TakeModel() as OpenAiCharacterTargetSabotageDelayRecoveryModel;
+        CharacterTargetSabotageDelayRecoveryModel? initialModel =
+            source.TakeModel() as CharacterTargetSabotageDelayRecoveryModel;
         bool rejectedRepeatedInitialization = !composition.TryInitialize(
             initialSettings,
             client,
             credentials);
         bool replaced = composition.TryReplace(replacementSettings, client, credentials);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel? replacementModel =
-            source.TakeModel() as OpenAiCharacterTargetSabotageDelayRecoveryModel;
+        CharacterTargetSabotageDelayRecoveryModel? replacementModel =
+            source.TakeModel() as CharacterTargetSabotageDelayRecoveryModel;
         bool cleared = composition.TryClear();
         bool resumedOffline = ReferenceEquals(source.TakeModel(), offline);
         bool rejectedRepeatedClear = !composition.TryClear();
@@ -68,7 +68,7 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryModelCompositi
     }
 
     private static bool RetainsExactDependencies(
-        OpenAiCharacterTargetSabotageDelayRecoveryModel model,
+        CharacterTargetSabotageDelayRecoveryModel model,
         CharacterModelSettings settings,
         NetHttpClient client,
         IOpenAiCredentialSource credentials)

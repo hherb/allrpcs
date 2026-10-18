@@ -1,0 +1,214 @@
+{
+  "id": "code-health-phase3-structured-decisions",
+  "status": "complete",
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-18-phase3-authority.json",
+  "merged_baseline": {
+    "pr": 442,
+    "commit": "a33cdc124c60ecff96e06138570da893e6f64dc9",
+    "ci_run": 39086701001,
+    "ci_conclusion": "success"
+  },
+  "scope": "All ten existing structured-decision kinds share descriptors, Application lifecycle and OpenAI/Anthropic/Ollama clients; per-decision OpenAI wrappers removed; existing typed decision and exact binding policies retained.",
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "solution_tests": {
+      "architecture": 37,
+      "application": 1484,
+      "domain": 2877,
+      "infrastructure": 1596,
+      "total": 5994,
+      "failed": 0
+    },
+    "native": {
+      "passed": 17,
+      "failed": 0,
+      "initial_passes": 16,
+      "corrected_fixture_passes": 1,
+      "fixture_correction": "The old unsupported-Anthropic replacement expectation was replaced by assertions for all ten injected Anthropic/Ollama bindings; no credential I/O occurred."
+    },
+    "full_phase3_root_gate": "not run; D2 requires it at full Phase 3 exit",
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "continuation": "sync, checker and self-test passed (15 regression probes plus temporary Git history probes)"
+  },
+  "limits": [
+    "Anthropic requires a caller-owned credential source injected before native composition; no new credential store or settings UI.",
+    "No live hosted provider qualification, actual Keychain save, physical-input qualification, release, or leak qualification.",
+    "Phase 2 live #417 and owner Keychain checks remain explicitly deferred.",
+    "Main coordinator extraction and SmokeCheckHost remain subsequent Phase 3 work."
+  ],
+  "source_bindings": [
+    {
+      "path": "src/Application/Characters/CharacterDialogueMisquotationEvidenceModelBinding.cs",
+      "sha256": "a4e6880dd8972fc06d097500330eeade348c9943a4992a8ac8431bdab657288d"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageConcealmentModelBinding.cs",
+      "sha256": "ccbabc4818f2e48a88639247c6e7d1ae840a7381613f48e4d07b30f12db06043"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageContaminationModelBinding.cs",
+      "sha256": "f9da219e3211f93ebd726c24fd7f513f6109a59a666e35293797e8e63162078d"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageMoveModelBinding.cs",
+      "sha256": "4fefa40973af634579e2e3eda5d549825d2ab2c0e6809669251b3b3e9e4e9551"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageSubstitutionModelBinding.cs",
+      "sha256": "d528b370c1c1f4131042f2a18e54fe25f165c0ffc8afaa28b8ab08b243f5af3c"
+    },
+    {
+      "path": "src/Application/Characters/CharacterSabotageActionModelBinding.cs",
+      "sha256": "c05b92800434e99373766a437191caa4a1efd6e50627a7e2d793f7e120647b00"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageDelayModelBinding.cs",
+      "sha256": "da8721cbd9e189df9f87f9024e6e8c314f02c7a1a9c74ee7f207ae1e32c329be"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageDelayRecoveryModelBinding.cs",
+      "sha256": "94ce82f5a30388da3f48306153735a4e0044553521711bf854c5a34ff66b6853"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageInfluenceModelBinding.cs",
+      "sha256": "23b388d0bb445fb04e5192626d7dad9fbb2a88c67b5acbc0bd62a14a2454fd65"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageInfluenceRecoveryModelBinding.cs",
+      "sha256": "6a7764a1b6acf5a528bb82a65658c9b13b54340dba71980f5486aae4f592cc5d"
+    },
+    {
+      "path": "src/Application/Characters/IStructuredDecisionClient.cs",
+      "sha256": "350dc99e7002e466258fd445cc260eed14b141cc55fc195dd9ca3210ed786976"
+    },
+    {
+      "path": "src/Application/Characters/StructuredDecisionPipeline.cs",
+      "sha256": "e3c47964d98626495ad9b9bb30ed638bdd53c104d6ef2a0bd23b66734e8f0ae8"
+    },
+    {
+      "path": "src/Infrastructure/Characters/AnthropicMessagesStructuredClient.cs",
+      "sha256": "bd830cb4bf85c40250c076fcca24681a2a6cee20c414d4d63eb602ddb08b9456"
+    },
+    {
+      "path": "src/Infrastructure/Characters/AnthropicStructuredDecisionAccumulator.cs",
+      "sha256": "0e19fd86e0c78890976f88366fa2365e11585f9064509741756cb341a000e538"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterDialogueMisquotationEvidenceModel.cs",
+      "sha256": "21c65fd9223f74de4f5b318ff820e5017dde59aaedf690cafa0ebd2955ff7383"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterDialogueMisquotationEvidenceModelBindingFactory.cs",
+      "sha256": "65cecdaa72b1bfeffa009547f96df9d24d624e771e3619ffc3cea621a6dd931b"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageConcealmentModel.cs",
+      "sha256": "826cfc8ebf9c439f750789f8deb8f86c0d18baaee67d5ba2cbf946c1f8a9114d"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageConcealmentModelBindingFactory.cs",
+      "sha256": "0d1f0ebfdaa5ebc61ff5dd7b44c2963421e6b59602156cf48a9f4e69c9f9082b"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageContaminationModel.cs",
+      "sha256": "05903f3b3f2acbfb1174b0f25d891003bc44dc02e901684df9cc85df8f25aad1"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageContaminationModelBindingFactory.cs",
+      "sha256": "b3103545d8d50889ec45dec4dea79343ce0024079464269b722f70d72f736c99"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageMoveModel.cs",
+      "sha256": "97c44f1f5ee7583c43f2a11fcdd4bf555c8d31b805e172f0dd9db4db58e9713d"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageMoveModelBindingFactory.cs",
+      "sha256": "29245999cc0ae8f863336e9aaa8968fdf54e79c68ab5b5851df39e5f7a06fba3"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageSubstitutionModel.cs",
+      "sha256": "af78745f7be1f7ffdf5d875d1cdd204110afe8224fd8a382b859ccbabeb97ab2"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterObjectSabotageSubstitutionModelBindingFactory.cs",
+      "sha256": "0dda6825e6484e98a93c659602395b4285259ad3d4c46247c5c7c2a3b285534a"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterSabotageActionModel.cs",
+      "sha256": "97a15e730de2fe70d78cf346a6cc2182d90d8a8c4a5fc4cce5a727c6c6451050"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterSabotageActionModelBindingFactory.cs",
+      "sha256": "7b12d7a8a0a3b0c82e54dc957e6f0bceef0f7f400455c486a3c1cad7d72f443c"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterStructuredDecisions.cs",
+      "sha256": "90be776ba6d1b6055ad8f1309d1812491e0329660d612ec566616fe8452d1491"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageDelayModel.cs",
+      "sha256": "f1b3f99923eae8e15ec6a72f8652c200a06d939c67b6783e126697a4b374cbe8"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageDelayModelBindingFactory.cs",
+      "sha256": "bf7e124f2ceff903a9b864f9f46348462dd52ee3710b6333ee80c6fdc132a1ec"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageDelayRecoveryModel.cs",
+      "sha256": "8f5bdaea36c64f06d76cc97e2ec674080ec9f28b840f64c807e47dba7aef5013"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageDelayRecoveryModelBindingFactory.cs",
+      "sha256": "04d8edcd9cf7fff4366944dbdcb747a6fb2d85e771bd0be48e9e8c4212583fd9"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageInfluenceModel.cs",
+      "sha256": "d0e2903b374ee29fc51ee4077e3d71abf439b8324fa859bf1d30e461b5644f67"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageInfluenceModelBindingFactory.cs",
+      "sha256": "5b0d72bf3f3a8968082e5512814177ed7737801c298a686c180b9b4e8adba899"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageInfluenceRecoveryModel.cs",
+      "sha256": "6f6a5fbb75c8f8308b810a1720eed20cd1e79f75ed925aebed0f75cd36d46eed"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterTargetSabotageInfluenceRecoveryModelBindingFactory.cs",
+      "sha256": "d0a01aeed760f8447bfccbcf9ce7aeb4d66bb9b05fab5ea1c1df668102d707d8"
+    },
+    {
+      "path": "src/Infrastructure/Characters/OllamaChatStructuredClient.cs",
+      "sha256": "18ea6abc724c6e84b17c2ce26fdcbdc5376e672f8c4e82883a9a5c7b19561753"
+    },
+    {
+      "path": "src/Infrastructure/Characters/OllamaStructuredDecisionAccumulator.cs",
+      "sha256": "bba6133adf14e084847a605de4827792eb58ed5f584baec71de4174adf94de44"
+    },
+    {
+      "path": "src/Infrastructure/Characters/OpenAiResponsesStructuredClient.cs",
+      "sha256": "4c771c0898a0d5eab63ecce37f747fdfe2e8cb1cee697f8c1e3768dd43ee6eed"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionClientFactory.cs",
+      "sha256": "6697b181ea06bc063e604f62ef4aaf087e41e5e7186116e7d8ee610bb35a444e"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionDescriptor.cs",
+      "sha256": "2b02e95db9fdb00320c7f3e269bc07389ab67589856ce2e58c57da2b280dffbd"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionHttpTransport.cs",
+      "sha256": "dd6093a9624d580fe72a6f6b39932ad47bc91dec047df6dfa37bcca548e15ce9"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionRequestSerializer.cs",
+      "sha256": "2153ddfba8f1d59604d78ea5df46ebfd2a7f2f086ddb2255266e73ac5115545f"
+    }
+  ]
+}

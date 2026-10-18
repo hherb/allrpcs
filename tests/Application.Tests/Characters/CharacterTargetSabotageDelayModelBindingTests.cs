@@ -21,7 +21,7 @@ public sealed class CharacterTargetSabotageDelayModelBindingTests
     }
 
     [Fact]
-    public void RejectsNullsAndNonOpenAiSettingsWithoutInvokingTheModel()
+    public void RejectsNullsAndAcceptsOtherProvidersWithoutInvokingTheModel()
     {
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -31,8 +31,7 @@ public sealed class CharacterTargetSabotageDelayModelBindingTests
             new CharacterTargetSabotageDelayModelBinding(null!, model));
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterTargetSabotageDelayModelBinding(settings, null!));
-        Assert.Throws<ArgumentException>(() =>
-            new CharacterTargetSabotageDelayModelBinding(anthropic, model));
+        Assert.Same(model, new CharacterTargetSabotageDelayModelBinding(anthropic, model).Model);
         Assert.Equal(0, model.CallCount);
     }
 

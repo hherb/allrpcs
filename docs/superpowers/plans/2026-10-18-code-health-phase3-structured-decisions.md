@@ -27,11 +27,13 @@ Main extraction and SmokeCheckHost are later Phase 3 items, outside this slice.
   sabotage-action; target-delay; target-delay-recovery; target-influence;
   target-influence-recovery; object-move; object-concealment; object-substitution;
   object-contamination; dialogue-misquotation-evidence.
-- [ ] Generalize structured request descriptors and provider-neutral bindings; add Anthropic
+- [x] Generalize structured request descriptors and provider-neutral bindings; add Anthropic
   and Ollama clients using the shared pipeline, and migrate production composition.
-- [ ] Remove per-decision OpenAI compatibility wrappers after their consumers/tests migrate.
-- [ ] Review final changes, run zero-warning build, format verification, solution tests,
-  affected native checks and continuation sync/check/self-test. Publish a review PR.
+- [x] Remove per-decision OpenAI compatibility wrappers after their consumers/tests migrate.
+- [x] Review final changes, run zero-warning build, format verification, solution tests,
+  affected native checks and continuation sync/check/self-test.
+- [x] Commit/push the reviewed branch and publish draft [PR #443](https://github.com/hherb/allrpcs/pull/443).
+  The owner explicitly approved commit/push and the draft PR on 18 October. Product commit: `19745021`.
 
 ## Implementation decisions
 
@@ -87,6 +89,67 @@ is `/private/tmp/allrpcs-phase3-composition-red.log`. Per-type migration logs ar
 these files. Existing native ObjectDB exit warnings remain; no leak qualification is claimed.
 No full root gate was repeated: approved D2 runs it at complete Phase 3 exit.
 
-Next implementation boundary: generalize request/schema descriptors and provider-neutral bindings,
-add Anthropic/Ollama structured clients using the shared Application policy, migrate production
-composition and then remove the typed OpenAI facades. Keep Phase 2 live checks deferred.
+The provider-neutral continuation below supersedes this historical next boundary. Phase 2 live checks
+remain deferred.
+
+
+## Provider-neutral continuation (18 October)
+
+PR [#442](https://github.com/hherb/allrpcs/pull/442) merged at `a33cdc12`, with the same tree as
+`53e44e76`. Merge [CI 39086701001](https://github.com/hherb/allrpcs/actions/runs/39086701001) passed.
+This continuation completes the structured-decision item, rather than all of Phase 3.
+
+`CharacterStructuredDecisions` names the ten unchanged prompt/context, schema, deserializer,
+128-token bound and document/lifecycle policies. One serializer maps those contracts to OpenAI
+Responses, Anthropic Messages and Ollama chat. The typed models depend on the Application
+`IStructuredDecisionClient` contract. Three generic provider clients share response ownership,
+deadlines and redacted HTTP failures; each provider has one bounded stream adapter feeding the
+same Application pipeline. All fifty per-kind OpenAI model, binding, request, SSE and accumulator
+files have been removed; the twenty typed model/binding adapters are provider-neutral.
+
+The native provider composition installs all ten decision kinds, including the previously unwired
+misquotation-evidence source, and preserves exact binding replacement and one-shot supply.
+Ollama uses the exact caller-selected validated loopback endpoint and needs no credential.
+Anthropic supports explicit caller-owned credential injection before composition; no Anthropic
+credential settings UI or native credential store is implemented here. Without that injected
+source, Anthropic remains unavailable. No live hosted request, model qualification or credential
+store success is inferred from controlled tests.
+
+Wire contracts were checked against the providers' official documentation:
+[Anthropic structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs),
+[Anthropic stream lifecycle](https://platform.claude.com/docs/en/build-with-claude/streaming), and
+[Ollama chat](https://docs.ollama.com/api/chat). Anthropic publishes only after a complete text block,
+`end_turn` and `message_stop`; Ollama requires assistant content plus `done: true` and `done_reason:
+stop`. Truncation, refusal, malformed/out-of-order data and incomplete streams cannot publish a decision.
+
+Validation:
+
+- New generic provider tests were first observed RED with the missing descriptor API; the initial
+  nine protocol tests then passed. The completed suite adds 30 exact-selection/payload cases
+  (ten kinds × three providers), eight header/body deadline/cancellation cases, early completion
+  and response ownership, malformed ordering/bounds, terminal fencing and sanitized failures.
+- `dotnet build Allrpcs.sln --no-restore`: zero warnings/errors.
+- `dotnet test Allrpcs.sln --no-build`: 5,994 passed (37 Architecture, 1,484 Application,
+  2,877 Domain, 1,596 Infrastructure). Removal of reflection-only tests for deleted wrapper APIs
+  explains the difference from the earlier checkpoint; behavioral cases were retained.
+- Seventeen affected native launches passed: five standalone compositions, the persisted
+  composition, ordinary provider switching, and ten sabotage/misquotation consideration or
+  presentation checks. Sixteen passed initially; the composition fixture's obsolete claim that
+  injected Anthropic replacement must fail was updated, and that one fixture passed on retry.
+  It now checks all ten selected Ollama/Anthropic decision bindings and no credential I/O.
+- Manual review confirmed unchanged request-content, schema-writer and deserializer source;
+  exact native binding/one-shot ownership; three legacy prelude-optional OpenAI policies and
+  delay-recovery's metadata-after-text rejection. No per-decision OpenAI source files remain.
+- Existing native ObjectDB exit warnings remain; no leak qualification is claimed.
+
+Local logs: `/private/tmp/allrpcs-phase3-host-{build,tests}.log`,
+`/private/tmp/allrpcs-phase3-format-verify.log`, and the sixteen passing launches plus obsolete
+fixture failure at `/private/tmp/allrpcs-phase3-provider-native-initial.log`. The final corrected
+composition pass is recorded in the closure receipt. Sandbox build attempts produced no complete
+result; the identical authorized host build/test retry supplies the reported evidence.
+The [closure receipt](../evidence/2026-10-18-phase3-structured-decisions.json) binds final sources.
+Full solution format verification and continuation sync/check/self-test passed (15 regression probes
+plus temporary Git history probes).
+Next program item: plan and extract the conversation-turn and focused-search coordinators from
+`Main.cs`, retaining behavior and explicit process order. SmokeCheckHost remains subsequent work.
+One complete root gate is still required at full Phase 3 exit under approved D2.

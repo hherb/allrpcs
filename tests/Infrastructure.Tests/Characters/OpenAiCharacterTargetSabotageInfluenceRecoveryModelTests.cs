@@ -7,6 +7,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -19,7 +20,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request;
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel model = new(
+        CharacterTargetSabotageInfluenceRecoveryModel model = CreateCharacterTargetSabotageInfluenceRecovery(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -47,7 +48,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request;
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel model = new(
+        CharacterTargetSabotageInfluenceRecoveryModel model = CreateCharacterTargetSabotageInfluenceRecovery(
             client,
             new StubCredentialSource("test-secret"),
             Settings(),
@@ -66,7 +67,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel model = new(
+        CharacterTargetSabotageInfluenceRecoveryModel model = CreateCharacterTargetSabotageInfluenceRecovery(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -93,7 +94,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
             {
                 Content = new StringContent("secret provider response"),
             }));
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel rejected = new(
+        CharacterTargetSabotageInfluenceRecoveryModel rejected = CreateCharacterTargetSabotageInfluenceRecovery(
             rejectedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -104,7 +105,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
 
         using HttpClient jsonClient = new(new CapturingHandler(_ =>
             EventStreamResponse("{}", "application/json")));
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel json = new(
+        CharacterTargetSabotageInfluenceRecoveryModel json = CreateCharacterTargetSabotageInfluenceRecovery(
             jsonClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -119,7 +120,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request;
         using HttpClient transportClient = new(new CapturingHandler(_ =>
             throw new HttpRequestException("secret network detail")));
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel transport = new(
+        CharacterTargetSabotageInfluenceRecoveryModel transport = CreateCharacterTargetSabotageInfluenceRecovery(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -129,7 +130,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
 
         using HttpClient semanticClient = new(new CapturingHandler(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" }))));
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel semantic = new(
+        CharacterTargetSabotageInfluenceRecoveryModel semantic = CreateCharacterTargetSabotageInfluenceRecovery(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -139,7 +140,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel cancelling = new(
+        CharacterTargetSabotageInfluenceRecoveryModel cancelling = CreateCharacterTargetSabotageInfluenceRecovery(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -155,25 +156,20 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryModelTests
     {
         using HttpClient client = new(new CapturingHandler(_ => throw new NotSupportedException()));
         StubCredentialSource credentials = new("test-secret");
-        OpenAiCharacterTargetSabotageInfluenceRecoveryModel model = new(
+        CharacterTargetSabotageInfluenceRecoveryModel model = CreateCharacterTargetSabotageInfluenceRecovery(
             client,
             credentials,
             Settings());
 
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(null!, credentials, Settings()));
+            CreateCharacterTargetSabotageInfluenceRecovery(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(client, null!, Settings()));
+            CreateCharacterTargetSabotageInfluenceRecovery(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(client, credentials, null!));
+            CreateCharacterTargetSabotageInfluenceRecovery(client, credentials, null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterTargetSabotageInfluenceRecoveryModel(null!));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(
-                client,
-                credentials,
-                Settings(),
-                null!));
-        Assert.Throws<ArgumentException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryModel(
+            CreateCharacterTargetSabotageInfluenceRecovery(
                 client,
                 credentials,
                 new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));

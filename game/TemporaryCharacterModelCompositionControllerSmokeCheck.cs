@@ -29,6 +29,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
     private TemporaryCharacterTargetSabotageDelayRecoveryModelSource delayRecoveryModelSource = null!;
     private TemporaryCharacterSabotageActionModelSource sabotageActionModelSource = null!;
+    private TemporaryCharacterDialogueMisquotationEvidenceModelSource misquotationModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
 
     /// <inheritdoc />
@@ -71,6 +72,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
         sabotageActionModelSource = GetNode<TemporaryCharacterSabotageActionModelSource>(
             "../TemporaryCharacterSabotageActionModelSource");
+        misquotationModelSource = GetNode<TemporaryCharacterDialogueMisquotationEvidenceModelSource>(
+            "../TemporaryCharacterDialogueMisquotationEvidenceModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
     }
@@ -128,6 +131,14 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             return;
         }
 
+        ThrowingAnthropicCredentials anthropicCredentials = new();
+        if (!controller.TryInitializeAnthropicCredentials(anthropicCredentials)
+            || controller.TryInitializeAnthropicCredentials(anthropicCredentials))
+        {
+            Fail("Anthropic credential dependencies were not retained exactly once before initialization.");
+            return;
+        }
+
         CharacterModelSettings ollamaSettings = new(
             CharacterModelProvider.Ollama,
             "gemma3");
@@ -150,15 +161,15 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         if (first is not OllamaCharacterModel
             || !ReferenceEquals(first, second)
             || participationModelSource.TakeModel() is not OllamaCharacterTurnParticipationModel
-            || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
-            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
-            || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
-            || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
-            || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
-            || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
-            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery)
-            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), offlineDelayRecovery)
-            || !ReferenceEquals(sabotageActionModelSource.TakeModel(), offlineSabotageAction))
+            || concealmentModelSource.TakeModel() is not CharacterObjectSabotageConcealmentModel
+            || moveModelSource.TakeModel() is not CharacterObjectSabotageMoveModel
+            || substitutionModelSource.TakeModel() is not CharacterObjectSabotageSubstitutionModel
+            || contaminationModelSource.TakeModel() is not CharacterObjectSabotageContaminationModel
+            || delayModelSource.TakeModel() is not CharacterTargetSabotageDelayModel
+            || influenceModelSource.TakeModel() is not CharacterTargetSabotageInfluenceModel
+            || recoveryModelSource.TakeModel() is not CharacterTargetSabotageInfluenceRecoveryModel
+            || delayRecoveryModelSource.TakeModel() is not CharacterTargetSabotageDelayRecoveryModel
+            || sabotageActionModelSource.TakeModel() is not CharacterSabotageActionModel)
         {
             Fail("Provider composition did not retain its exact persisted Ollama model.");
             return;
@@ -227,10 +238,11 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || ReferenceEquals(activated, first)
             || !ReferenceEquals(modelSource.TakeModel(), activated)
             || !settingsController.TryApply(anthropicSettings)
-            || controller.TryReplaceCurrentBindings()
-            || !ReferenceEquals(modelSource.TakeModel(), activated))
+            || !controller.TryReplaceCurrentBindings()
+            || modelSource.TakeModel() is not AnthropicCharacterModel
+            || !RetainsDecisionProviders(CharacterModelProvider.Anthropic))
         {
-            Fail("Provider composition changed the model after an unsupported replacement.");
+            Fail("Provider composition did not replace all selected Anthropic decision bindings.");
             return;
         }
 
@@ -269,15 +281,15 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             "gpt-replacement-test");
         if (openAiModel is not OpenAiCharacterModel
             || openAiParticipation is not OpenAiCharacterTurnParticipationModel
-            || openAiConcealment is not OpenAiCharacterObjectSabotageConcealmentModel
-            || openAiMove is not OpenAiCharacterObjectSabotageMoveModel
-            || openAiSubstitution is not OpenAiCharacterObjectSabotageSubstitutionModel
-            || openAiContamination is not OpenAiCharacterObjectSabotageContaminationModel
-            || openAiDelay is not OpenAiCharacterTargetSabotageDelayModel
-            || openAiInfluence is not OpenAiCharacterTargetSabotageInfluenceModel
-            || openAiRecovery is not OpenAiCharacterTargetSabotageInfluenceRecoveryModel
-            || openAiDelayRecovery is not OpenAiCharacterTargetSabotageDelayRecoveryModel
-            || openAiSabotageAction is not OpenAiCharacterSabotageActionModel
+            || openAiConcealment is not CharacterObjectSabotageConcealmentModel
+            || openAiMove is not CharacterObjectSabotageMoveModel
+            || openAiSubstitution is not CharacterObjectSabotageSubstitutionModel
+            || openAiContamination is not CharacterObjectSabotageContaminationModel
+            || openAiDelay is not CharacterTargetSabotageDelayModel
+            || openAiInfluence is not CharacterTargetSabotageInfluenceModel
+            || openAiRecovery is not CharacterTargetSabotageInfluenceRecoveryModel
+            || openAiDelayRecovery is not CharacterTargetSabotageDelayRecoveryModel
+            || openAiSabotageAction is not CharacterSabotageActionModel
             || !ReferenceEquals(
                 Field<CharacterModelSettings>(Field<object>(openAiSabotageAction, "client"), "settings"),
                 openAiSettings)
@@ -300,40 +312,40 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !settingsController.TryApply(replacementOpenAiSettings)
             || !controller.TryReplaceCurrentBindings()
             || concealmentModelSource.TakeModel()
-                is not OpenAiCharacterObjectSabotageConcealmentModel replacementConcealment
+                is not CharacterObjectSabotageConcealmentModel replacementConcealment
             || ReferenceEquals(replacementConcealment, openAiConcealment)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), replacementConcealment)
             || moveModelSource.TakeModel()
-                is not OpenAiCharacterObjectSabotageMoveModel replacementMove
+                is not CharacterObjectSabotageMoveModel replacementMove
             || ReferenceEquals(replacementMove, openAiMove)
             || !ReferenceEquals(moveModelSource.TakeModel(), replacementMove)
             || substitutionModelSource.TakeModel()
-                is not OpenAiCharacterObjectSabotageSubstitutionModel replacementSubstitution
+                is not CharacterObjectSabotageSubstitutionModel replacementSubstitution
             || ReferenceEquals(replacementSubstitution, openAiSubstitution)
             || !ReferenceEquals(
                 substitutionModelSource.TakeModel(),
                 replacementSubstitution)
             || contaminationModelSource.TakeModel()
-                is not OpenAiCharacterObjectSabotageContaminationModel replacementContamination
+                is not CharacterObjectSabotageContaminationModel replacementContamination
             || ReferenceEquals(replacementContamination, openAiContamination)
             || !ReferenceEquals(
                 contaminationModelSource.TakeModel(),
                 replacementContamination)
             || delayModelSource.TakeModel()
-                is not OpenAiCharacterTargetSabotageDelayModel replacementDelay
+                is not CharacterTargetSabotageDelayModel replacementDelay
             || ReferenceEquals(replacementDelay, openAiDelay)
             || !ReferenceEquals(delayModelSource.TakeModel(), replacementDelay)
             || influenceModelSource.TakeModel()
-                is not OpenAiCharacterTargetSabotageInfluenceModel replacementInfluence
+                is not CharacterTargetSabotageInfluenceModel replacementInfluence
             || ReferenceEquals(replacementInfluence, openAiInfluence)
             || !ReferenceEquals(influenceModelSource.TakeModel(), replacementInfluence)
             || recoveryModelSource.TakeModel()
-                is not OpenAiCharacterTargetSabotageInfluenceRecoveryModel replacementRecovery
+                is not CharacterTargetSabotageInfluenceRecoveryModel replacementRecovery
             || ReferenceEquals(replacementRecovery, openAiRecovery)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), replacementRecovery)
             || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), oneShotDelayRecovery)
             || delayRecoveryModelSource.TakeModel()
-                is not OpenAiCharacterTargetSabotageDelayRecoveryModel replacementDelayRecovery
+                is not CharacterTargetSabotageDelayRecoveryModel replacementDelayRecovery
             || ReferenceEquals(replacementDelayRecovery, openAiDelayRecovery)
             || !ReferenceEquals(
                 Field<CharacterModelSettings>(Field<object>(replacementDelayRecovery, "client"), "settings"),
@@ -341,7 +353,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), replacementDelayRecovery)
             || !ReferenceEquals(sabotageActionModelSource.TakeModel(), oneShotSabotageAction)
             || sabotageActionModelSource.TakeModel()
-                is not OpenAiCharacterSabotageActionModel replacementSabotageAction
+                is not CharacterSabotageActionModel replacementSabotageAction
             || ReferenceEquals(replacementSabotageAction, openAiSabotageAction)
             || !ReferenceEquals(
                 Field<CharacterModelSettings>(Field<object>(replacementSabotageAction, "client"), "settings"),
@@ -351,28 +363,40 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !controller.TryReplaceCurrentBindings()
             || modelSource.TakeModel() is not OllamaCharacterModel
             || participationModelSource.TakeModel() is not OllamaCharacterTurnParticipationModel
-            || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
-            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
-            || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
-            || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
-            || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
-            || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
-            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery)
-            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), offlineDelayRecovery)
-            || !ReferenceEquals(sabotageActionModelSource.TakeModel(), offlineSabotageAction))
+            || concealmentModelSource.TakeModel() is not CharacterObjectSabotageConcealmentModel
+            || moveModelSource.TakeModel() is not CharacterObjectSabotageMoveModel
+            || substitutionModelSource.TakeModel() is not CharacterObjectSabotageSubstitutionModel
+            || contaminationModelSource.TakeModel() is not CharacterObjectSabotageContaminationModel
+            || delayModelSource.TakeModel() is not CharacterTargetSabotageDelayModel
+            || influenceModelSource.TakeModel() is not CharacterTargetSabotageInfluenceModel
+            || recoveryModelSource.TakeModel() is not CharacterTargetSabotageInfluenceRecoveryModel
+            || delayRecoveryModelSource.TakeModel() is not CharacterTargetSabotageDelayRecoveryModel
+            || sabotageActionModelSource.TakeModel() is not CharacterSabotageActionModel)
         {
-            Fail("Provider composition did not activate and safely clear specialized bindings.");
+            Fail("Provider composition did not activate and replace specialized provider bindings.");
+            return;
+        }
+
+        if (!RetainsDecisionProviders(CharacterModelProvider.Ollama)
+            || !settingsController.TryApply(anthropicSettings)
+            || !controller.TryReplaceCurrentBindings()
+            || modelSource.TakeModel() is not AnthropicCharacterModel
+            || !RetainsDecisionProviders(CharacterModelProvider.Anthropic)
+            || anthropicCredentials.LoadCount != 0
+            || controller.TryInitializeAnthropicCredentials(anthropicCredentials))
+        {
+            Fail("All ten decisions did not follow the selected Ollama/Anthropic binding without credential I/O.");
             return;
         }
 
         GD.Print(
-            "Temporary character-model composition smoke passed: unsupported Anthropic remained "
+            "Temporary character-model composition smoke passed: Anthropic without an injected credential source remained "
             + "offline, one exact persisted Ollama snapshot composed without input/output, "
             + "replacement was atomic and one-shot preserving, the current Ollama setting "
             + "activated as one stable future model, OpenAI activated exact ordinary and "
             + "specialized bindings with exact concealment, move, substitution, contamination, "
-            + "delay, influence, recovery, and sabotage-action replacement, and Ollama restored "
-            + "fail-closed "
+            + "delay, influence, recovery, and sabotage-action replacement, and Ollama installed "
+            + "provider-neutral "
             + "participation, concealment, move, substitution, contamination, delay, influence, "
             + "influence recovery, delay recovery, and sabotage-action decisions.");
         GetTree().Quit();
@@ -382,6 +406,32 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         CharacterModelSettings settings,
         ICharacterModel model) =>
         new(settings.Provider, settings, model, new ScriptedConnectionTester());
+
+    private bool RetainsDecisionProviders(CharacterModelProvider provider)
+    {
+        object[] models = [concealmentModelSource.TakeModel(),
+            moveModelSource.TakeModel(),
+            substitutionModelSource.TakeModel(),
+            contaminationModelSource.TakeModel(),
+            delayModelSource.TakeModel(),
+            influenceModelSource.TakeModel(),
+            recoveryModelSource.TakeModel(),
+            delayRecoveryModelSource.TakeModel(),
+            sabotageActionModelSource.TakeModel(),
+            misquotationModelSource.TakeModel()];
+        return misquotationModelSource.TakeModel() is CharacterDialogueMisquotationEvidenceModel
+            && models.All(model => Field<CharacterModelSettings>(Field<object>(model, "client"), "settings").Provider == provider);
+    }
+
+    private sealed class ThrowingAnthropicCredentials : IAnthropicCredentialSource
+    {
+        internal int LoadCount { get; private set; }
+        public ValueTask<AnthropicCredentialLoadResult> LoadApiKeyAsync(CancellationToken cancellationToken)
+        {
+            LoadCount++;
+            throw new InvalidOperationException("Composition must not load credentials.");
+        }
+    }
 
     private static T Field<T>(object instance, string name) where T : class =>
         (T)instance.GetType().GetField(
