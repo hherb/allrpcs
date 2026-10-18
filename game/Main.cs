@@ -35,11 +35,9 @@ public partial class Main : Node
     internal bool ConditionalCollectionScaffolding { get; set; }
 
     /// <summary>Gets the per-frame conversation-turn state machine Main drives.</summary>
-    internal ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput> ConversationTurns
-    {
-        get;
-        private set;
-    } = null!;
+    internal ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput> ConversationTurns =>
+        conversationTurns
+        ?? throw new InvalidOperationException("Main's conversation coordinator is used before _Ready completed.");
 
     private HerbExaminationActionController examinationAction = null!;
     private Healer healer = null!;
@@ -84,6 +82,7 @@ public partial class Main : Node
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
+    private ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput>? conversationTurns;
     private FocusedSearchInputCoordinator focusedSearchInput = null!;
     private HealerCommandMode displayedMode;
 
@@ -226,7 +225,8 @@ public partial class Main : Node
         InitializeWorldEvents();
         examinationAction = new() { Name = "HerbExaminationActionController" };
         AddChild(examinationAction);
-        // Part of MainProcessOrder: immediately before WholeChannelPresentation.
+        // Part of MainProcessOrder: appended after WholeChannelPresentation, so moving to its index
+        // lands immediately before it.
         MoveChild(examinationAction, GetNode("WholeChannelPresentation").GetIndex());
         RecordInitialWorldEvent();
         InitializeSabotageTurnOpportunity();
@@ -263,7 +263,7 @@ public partial class Main : Node
 
     private void InitializeCoordinators()
     {
-        ConversationTurns = new(new ConversationTurnNodePorts(
+        conversationTurns = new(new ConversationTurnNodePorts(
             modelFlowController,
             characterModelInputSource,
             GetNode<TemporaryCharacterModelSource>("TemporaryCharacterModelSource"),
@@ -727,4 +727,3 @@ public partial class Main : Node
         };
     }
 }
-

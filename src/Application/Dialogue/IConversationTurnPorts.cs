@@ -7,7 +7,7 @@ namespace Allrpcs.Application.Dialogue;
 
 /// <summary>
 /// The native owners a <see cref="ConversationTurnCoordinator{TInput}"/> sequences. Each member
-/// forwards to exactly one existing owner; none decides anything.
+/// is a thin forward to existing node members; none decides anything.
 /// </summary>
 /// <typeparam name="TInput">The exact prepared generation input the input source fences.</typeparam>
 public interface IConversationTurnPorts<TInput>
@@ -28,10 +28,10 @@ public interface IConversationTurnPorts<TInput>
     /// <summary>Gets the current exact character turn.</summary>
     CharacterTurnActivity? TurnActivity { get; }
 
-    /// <summary>Gets the ordinary LLM participants; index 0 is the healer.</summary>
+    /// <summary>Gets the ordinary LLM participants; index 0 is the healer and index 1 the sage.</summary>
     IReadOnlyList<Character> OrdinaryParticipants { get; }
 
-    /// <summary>Gets whether the healer's body is present in the world.</summary>
+    /// <summary>Gets whether the healer's body is visible; an invisible healer neither hears nor is addressed.</summary>
     bool HealerPresent { get; }
 
     /// <summary>Gets the Seeker's current position.</summary>
@@ -57,9 +57,6 @@ public interface IConversationTurnPorts<TInput>
 
     /// <summary>Gets whether the participation-round task is idle.</summary>
     bool ParticipationRoundIdle { get; }
-
-    /// <summary>Gets whether smoke scaffolding owns conditional collection instead of the examination action.</summary>
-    bool ConditionalCollectionScaffolding { get; }
 
     /// <summary>Resets a completed generation.</summary>
     bool TryResetGeneration();
@@ -117,7 +114,7 @@ public interface IConversationTurnPorts<TInput>
     /// <summary>Interrupts the autonomous conversation budget.</summary>
     bool TryInterruptConversationBudget();
 
-    /// <summary>Hands the received turn to the examination action, stopping the smoke scaffold.</summary>
+    /// <summary>Hands the received turn to the examination action unless greybox scaffolding owns it.</summary>
     void OfferExamination(CharacterTurnActivity activity);
 
     /// <summary>Cancels pending examination ownership.</summary>

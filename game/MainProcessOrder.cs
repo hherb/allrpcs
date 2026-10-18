@@ -14,12 +14,14 @@ internal static class MainProcessOrder
     internal const int MainPriority = -40;
 
     /// <summary>
-    /// Node paths under Main; the first of each pair must process first. The children share the
+    /// Tree-order pins under Main; the first of each pair must come first. The children share the
     /// default priority on purpose, so their tree order is the contract.
     /// </summary>
     internal static readonly (string Earlier, string Later)[] Dependencies =
     [
-        // Main drives the conversation and focused-search coordinators before their owners run.
+        // Main's _Process drives the conversation coordinator before the owners it reads or writes
+        // run. The turn and dialogue-input controllers have no per-frame callback today; their pins
+        // keep the order should they gain one.
         (".", "CharacterTurnActivityController"),
         (".", "DialogueInputController"),
         (".", "CharacterTurnParticipationRoundTaskController"),
@@ -31,6 +33,8 @@ internal static class MainProcessOrder
         ("CharacterTurnParticipationRoundTaskController", "OrdinaryPlayerDialogueParticipationCoordinator"),
         // Reply speech is recorded before the completion controller ends the Speaking turn.
         ("TemporaryCharacterTurnResponseSpeechRecorder", "TemporaryCharacterTurnCompletionController"),
+        // Not a process dependency: WholeChannelPresentation has no per-frame callback. This pins the
+        // examination action's long-standing tree position just before it.
         ("HerbExaminationActionController", "WholeChannelPresentation"),
     ];
 }

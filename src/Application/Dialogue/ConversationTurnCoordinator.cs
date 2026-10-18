@@ -14,20 +14,11 @@ namespace Allrpcs.Application.Dialogue;
 public sealed class ConversationTurnCoordinator<TInput>
     where TInput : class, ICharacterModelGenerationInput
 {
-    /// <summary>The fixed bounded deadline for one ordinary character-model generation.</summary>
-    public static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
-
-    /// <summary>The fixed bounded deadline for one participation round.</summary>
-    public static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
-
-    /// <summary>The autonomous turns one player utterance may start.</summary>
-    public const int AutonomousConversationMaximumTurnCount = 2;
-
-    /// <summary>The ordinary-speech hearing range.</summary>
-    public const float DialogueHearingRangePixels = 192.0f;
-
-    /// <summary>The whisper hearing range.</summary>
-    public const float WhisperHearingRangePixels = 48.0f;
+    private const int AutonomousConversationMaximumTurnCount = 2;
+    private const float DialogueHearingRangePixels = 192.0f;
+    private const float WhisperHearingRangePixels = 48.0f;
+    private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
 
     private readonly IConversationTurnPorts<TInput> ports;
     private CharacterModelStreamSnapshot? lastProcessedModelResult;
@@ -218,10 +209,7 @@ public sealed class ConversationTurnCoordinator<TInput>
                         "The validated model response could not enter its exact awaiting turn.");
                 }
 
-                if (!ports.ConditionalCollectionScaffolding)
-                {
-                    ports.OfferExamination(ports.TurnActivity!);
-                }
+                ports.OfferExamination(ports.TurnActivity!);
             }
 
             return;

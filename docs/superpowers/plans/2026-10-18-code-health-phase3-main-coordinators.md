@@ -38,8 +38,9 @@ success presentation and the `Focused search <ACTION>: CHANGED|UNCHANGED` status
 ## Design
 
 - `Allrpcs.Application.Dialogue.ConversationTurnCoordinator<TInput>` sequences the steps over
-  `IConversationTurnPorts<TInput>`. Each port member forwards to exactly one existing node
-  member. `TInput : ICharacterModelGenerationInput` keeps the input source's exact prepared
+  `IConversationTurnPorts<TInput>`. Each port member is a thin forward to existing node members
+  and decides nothing; the greybox conditional-collection scaffold check stays in the adapter's
+  `OfferExamination`. `TInput : ICharacterModelGenerationInput` keeps the input source's exact prepared
   input (and its currency fence) opaque to Application; `TemporaryCharacterModelGenerationInput`
   implements the one-property interface.
 - `Allrpcs.Application.Input.FocusedSearchInputCoordinator` handles a
@@ -50,19 +51,25 @@ success presentation and the `Focused search <ACTION>: CHANGED|UNCHANGED` status
   `_Process` and `_UnhandledInput`, so the many checks that pause Main with `SetProcess(false)`
   keep pausing the same work, and input precedence is unchanged.
 - Reflection-based checks: `DialogueOwnershipMainSmokeCheck` calls the coordinator's public steps
-  through `Main.ConversationTurns` and injects its transcript fault on the adapter.
+  through `Main.ConversationTurns` and injects its transcript fault on
+  `CharacterTurnTranscriptController.Transcript`.
   `RefreshResolvedPerceptionPresentation` and `resolvedPerceptionIndicators` stay on Main.
 
 ## Process order (§1.5)
 
 - Main gets an explicit `ProcessPriority` of -40 (`MainProcessOrder.MainPriority`): still after
   the four early coordinators/sources (-50…-43) and the -100 check fixtures, still before every
-  default-priority child. The only relative change is against the `CheckDeadline` autoload
-  watchdog, which shares no state with Main.
+  default-priority child. The relative changes are against priority-0 nodes outside Main's
+  subtree: the `CheckDeadline` autoload watchdog, which shares no state with Main, and the 11 audio
+  proof hosts that instance `Main.tscn` as a child (`*AudioRuntimeProof`, `*AudioOutputCheck`).
+  Those hosts now process after Main instead of before it; they count frames and observe audio
+  driven at -50, not conversation state, and their launches pass.
 - The order-dependent children stay at default priority. Giving them non-zero priorities would
   reorder them against hundreds of interleaved default-priority siblings, which is a behavior
   change this slice does not authorize. Their contract is equal priority plus tree order, now
-  written down in `MainProcessOrder.Dependencies` and asserted.
+  written down as ten pins in `MainProcessOrder.Dependencies` and asserted. Seven are same-frame
+  process dependencies; three are tree-position pins only, because `CharacterTurnActivityController`,
+  `DialogueInputController` and `WholeChannelPresentation` have no per-frame callback.
 - `MoveChild(examinationAction, GetChildCount() - 2)` becomes an explicit placement immediately
   before `WholeChannelPresentation`. That is what `-2` meant when it was added in `fd0910b2`, and
   it still yields the same index.
@@ -97,6 +104,30 @@ save-snapshot restoration ownership and the new process-order check.
 
 Complete; see [the evidence record](../evidence/2026-10-18-phase3-main-coordinators.json).
 `game/Main.cs` went from 1,123 to 730 lines. The 37 new xUnit cases and all 6,044 solution
-tests pass. The full smoke suite passed 363 launches. Its one failure,
+tests passed. The full smoke suite passed 363 launches. Its one failure,
 `ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry`, is intermittent on unmodified `main` too (3 of 10
-runs) and is not caused by this change.
+runs) and is not caused by this change; it is now quarantined as #448.
+
+## PR #449 review fixes
+
+Recorded under owner reopening `owner-pr449-review-fixes-2026-10-18`; see
+[the review-fix evidence](../evidence/2026-10-18-pr449-review-fixes.json).
+
+- The greybox conditional-collection scaffold check moved from the Application port into the
+  adapter's `OfferExamination`; its unit test is replaced by the existing
+  `CharacterExaminationFlowSmokeCheck` coverage.
+- The coordinator's deadline, turn-count and hearing-range constants are private.
+- The wagon-clue route names a missing Seeker perception instead of passing `null!` on.
+- `Main.ConversationTurns` throws a named exception if used before `_Ready` completes.
+- `CharacterModelGenerationFlowController` logs an unexpected generation fault as a warning
+  instead of discarding it (the visible Failed result is unchanged).
+- New tests cover the invisible-healer filter on continuation, continuation before a same-frame
+  submission, and both cancellation guards. The cancel fake now refuses a non-cancellable turn,
+  as the native owner does. The unreachable "generating with a new result" test is replaced by
+  the reachable case: a result for another request is not received, and the awaiting turn starts
+  its own generation. Each new test fails when its guard is removed.
+- Doc corrections: port interfaces, healer visibility, the herb-patch commit (prevalidated, not
+  rolled back), the process-order relative changes and the three tree-position-only pins.
+
+After the fixes, 6,047 solution tests pass (40 new for this slice), and the full smoke suite
+passes 363 with 3 quarantined launches.

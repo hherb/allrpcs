@@ -8,7 +8,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Forwards each focused-search input port to its one Main-scene owner.</summary>
+/// <summary>Forwards each focused-search input port to its Main-scene owners.</summary>
 internal sealed class FocusedSearchInputNodePorts(
     FocusedSearchActivityController searches,
     InteractionFocusController interactionFocus,

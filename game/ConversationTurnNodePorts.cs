@@ -7,7 +7,7 @@ using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
-/// <summary>Forwards each conversation-turn port to its one Main-scene owner.</summary>
+/// <summary>Forwards each conversation-turn port to its Main-scene owners.</summary>
 internal sealed class ConversationTurnNodePorts(
     CharacterModelGenerationFlowController modelFlow,
     TemporaryCharacterModelGenerationInputSource inputSource,
@@ -60,8 +60,6 @@ internal sealed class ConversationTurnNodePorts(
 
     public bool ParticipationRoundIdle =>
         round.Status == CharacterTurnParticipationRoundTaskStatus.Idle;
-
-    public bool ConditionalCollectionScaffolding => conditionalCollectionScaffolding();
 
     public bool TryResetGeneration() => modelFlow.TryReset();
 
@@ -141,6 +139,11 @@ internal sealed class ConversationTurnNodePorts(
 
     public void OfferExamination(CharacterTurnActivity activity)
     {
+        if (conditionalCollectionScaffolding())
+        {
+            return;
+        }
+
         examinationScaffold.SetProcess(false);
         examination.Offer(activity);
     }

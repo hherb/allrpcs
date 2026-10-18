@@ -1014,6 +1014,16 @@
           "sha256": "97cf022be8f622c425e6e6122314dc36cb03777c81b93fdf48ec5ba85c0f21c5"
         }
       ]
+    },
+    {
+      "id": "code-health-phase3-pr449-review-fixes",
+      "reason": "The owner-requested PR #449 review fixes are complete: scaffold check moved into the adapter, private constants, named failures for a missing wagon-route perception and pre-_Ready coordinator use, logged generation faults, four new guard tests with a faithful cancel fake, and doc corrections. 6047 solution tests and the full smoke suite (363 passed, 0 failed, 3 quarantined) pass; the retry launch failed 0 of 47 on both branch and main and the data is on #448. The coordinator scope is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-pr449-review-fixes.json",
+          "sha256": "d54dc2582dc9881420653dedacb336f7dc74b96da36f936f08df8a47f21a0b81"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1582,6 +1592,20 @@
           "sha256": "b9fa4c572c3523656cfaa515402a296756a0511342393126c063d51702514bf2"
         }
       ]
+    },
+    {
+      "id": "owner-pr449-review-fixes-2026-10-18",
+      "owner_statement": "Please aaddress all \"should fix\" as ewell as the suggestions. Only what you cannot resolve in this session lodge as issue on github. Then review your changes until happy with the correctness, then commit and push into this PR",
+      "scope_ids": [
+        "code-health-phase3-main-coordinators"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-pr449-review-fixes-authority.json",
+          "sha256": "adc5d47c066188bda50d8c2a44bd2a81f710bb0378093549663a7a0f69bb4cc9"
+        }
+      ]
     }
   ],
   "active_slice": {
@@ -1593,7 +1617,7 @@
     "authority_status": "owner_approved_phase3_with_phase2_live_checks_deferred_2026-10-18",
     "roadmap_item": "- [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.",
     "missing_deliverable": "A bounded SmokeCheckHost plan and host that instantiates only the requested engine check, removing the always-present check nodes from Main.tscn. The structured-decision and Main-coordinator items are complete and closed.",
-    "instructions": "Continue Phase 3 program item 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First count the check nodes in Main.tscn and how each is gated and launched (scripts/smoke-godot.sh, tests/Architecture.Tests/CheckRegistrationTests.cs, quality.py current-revision stages), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md. Migrate checks in batches behind their existing launches without changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing. Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase 3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate. ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure. Use D2 format/build/test and affected native launches; commit/push reviewed work; no merge or release.",
+    "instructions": "Continue Phase 3 program item 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First count the check nodes in Main.tscn and how each is gated and launched (scripts/smoke-godot.sh, tests/Architecture.Tests/CheckRegistrationTests.cs, quality.py current-revision stages), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md. Migrate checks in batches behind their existing launches without changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing. Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase 3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate. ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure, quarantined as #448 so it no longer fails the suite. Use D2 format/build/test and affected native launches; commit/push reviewed work; no merge or release.",
     "completion_condition": "Main.tscn holds no check nodes, every check still launches through the host with unchanged assertions, check registration still passes, and scoped format/build/test/native checks pass with synced continuation evidence and review-branch publication.",
     "outputs": [
       "docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md",

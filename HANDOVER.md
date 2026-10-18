@@ -58,8 +58,9 @@ phase3-smoke-check-host.md. Migrate checks in batches behind their existing laun
 changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing.
 Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase
 3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate.
-ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure. Use D2
-format/build/test and affected native launches; commit/push reviewed work; no merge or release.
+ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure, quarantined
+as #448 so it no longer fails the suite. Use D2 format/build/test and affected native launches;
+commit/push reviewed work; no merge or release.
 
 Done when: Main.tscn holds no check nodes, every check still launches through the host with
 unchanged assertions, check registration still passes, and scoped format/build/test/native checks

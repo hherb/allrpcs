@@ -225,29 +225,13 @@ public sealed class ConversationTurnCoordinatorTests
     }
 
     [Fact]
-    public void ConditionalCollectionScaffoldingKeepsTheExaminationUnoffered()
+    public void ResponseForAnotherRequestIsNotReceivedAndTheAwaitingTurnGenerates()
     {
-        FakePorts ports = new() { ConditionalCollectionScaffolding = true };
+        FakePorts ports = new();
         ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
         CharacterTurnActivity awaiting = ports.AwaitingHealerTurn();
         ports.TurnActivity = awaiting;
         ports.GenerationHasStarted = true;
-        ports.GenerationResult = Terminal(
-            new(CharacterModelStreamTerminationStatus.Completed, Response(awaiting.Request), null));
-
-        coordinator.ProcessCharacterTurnResponse();
-
-        Assert.Equal(["receive"], ports.Calls);
-    }
-
-    [Fact]
-    public void ResponseForAnotherRequestIsIgnored()
-    {
-        FakePorts ports = new();
-        ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
-        ports.TurnActivity = ports.AwaitingHealerTurn();
-        ports.GenerationHasStarted = true;
-        ports.IsGenerating = true;
         ports.GenerationResult = Terminal(new(
             CharacterModelStreamTerminationStatus.Completed,
             Response(ports.AwaitingHealerTurn().Request),
@@ -255,7 +239,8 @@ public sealed class ConversationTurnCoordinatorTests
 
         coordinator.ProcessCharacterTurnResponse();
 
-        Assert.Empty(ports.Calls);
+        Assert.Equal(["reset-generation", "create-input", "start-generation"], ports.Calls);
+        Assert.Same(awaiting.Request, ports.StartedInput!.GenerationRequest.TurnRequest);
     }
 
     [Fact]
@@ -273,6 +258,22 @@ public sealed class ConversationTurnCoordinatorTests
         coordinator.ProcessCharacterTurnResponse();
 
         Assert.Equal(["cancel-turn"], ports.Calls);
+    }
+
+    [Fact]
+    public void StaleInputForAnAlreadyCancelledTurnDoesNotCancelAgain()
+    {
+        FakePorts ports = new() { InputCurrent = false };
+        ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
+        CharacterTurnActivity awaiting = ports.AwaitingHealerTurn();
+        ports.TurnActivity = new(awaiting.Request, null, CharacterTurnActivityState.Cancelled);
+        ports.GenerationHasStarted = true;
+        ports.GenerationResult = Terminal(
+            new(CharacterModelStreamTerminationStatus.Completed, Response(awaiting.Request), null));
+
+        coordinator.ProcessCharacterTurnResponse();
+
+        Assert.Empty(ports.Calls);
     }
 
     [Theory]
@@ -316,6 +317,22 @@ public sealed class ConversationTurnCoordinatorTests
     }
 
     [Fact]
+    public void UnsuccessfulResultAfterThePlayerCancelledOnlyShowsStatus()
+    {
+        FakePorts ports = new();
+        ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
+        CharacterTurnActivity awaiting = ports.AwaitingHealerTurn();
+        ports.TurnActivity = new(awaiting.Request, null, CharacterTurnActivityState.Cancelled);
+        ports.GenerationHasStarted = true;
+        ports.GenerationResult = Terminal(new(CharacterModelStreamTerminationStatus.Cancelled, null, null));
+
+        coordinator.ProcessCharacterTurnResponse();
+
+        Assert.Equal("Dialogue response cancelled. Please retry.", ports.DialogueStatus);
+        Assert.Empty(ports.Calls);
+    }
+
+    [Fact]
     public void NonTerminalResultIsAnInvariantViolation()
     {
         FakePorts ports = new();
@@ -345,6 +362,26 @@ public sealed class ConversationTurnCoordinatorTests
         Assert.Equal([ports.Sage], ports.ContinueScheduled);
         Assert.Empty(ports.ContinueAddresses!);
         Assert.Equal(TimeSpan.FromSeconds(30), ports.ContinueDeadline);
+    }
+
+    [Fact]
+    public void CompletedTurnContinuationSkipsAnInvisibleHealer()
+    {
+        FakePorts ports = new() { HealerPresent = false };
+        CharacterTurnActivity awaiting = ports.AwaitingSageTurn();
+        CharacterTurnResponse response = Response(awaiting.Request);
+        ports.TurnActivity = new(awaiting.Request, response, CharacterTurnActivityState.Completed);
+        ports.LastOccurredDialogueEvent = new(
+            response.Delivery!,
+            new DialogueAudienceSnapshot(ports.Sage.Identity.Id, [ports.SeekerId, ports.Healer.Identity.Id]));
+
+        new ConversationTurnCoordinator<FakeInput>(ports).Process();
+        Assert.Empty(ports.Calls);
+
+        ports.HealerPresent = true;
+        new ConversationTurnCoordinator<FakeInput>(ports).Process();
+        Assert.Equal(["continue"], ports.Calls);
+        Assert.Equal([ports.Healer], ports.ContinueScheduled);
     }
 
     [Fact]
@@ -380,7 +417,7 @@ public sealed class ConversationTurnCoordinatorTests
     }
 
     [Fact]
-    public void ProcessConsumesTheResponseBeforeTheNewSubmission()
+    public void ProcessStartsGenerationBeforeTheNewSubmission()
     {
         FakePorts ports = new();
         ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
@@ -390,6 +427,27 @@ public sealed class ConversationTurnCoordinatorTests
         coordinator.Process();
 
         Assert.Equal(["create-input", "start-generation", "occur", "append", "chain"], ports.Calls);
+    }
+
+    [Fact]
+    public void ProcessContinuesTheCompletedTurnBeforeTheNewSubmissionReplacesItsEvent()
+    {
+        FakePorts ports = new();
+        ConversationTurnCoordinator<FakeInput> coordinator = new(ports);
+        CharacterTurnActivity awaiting = ports.AwaitingHealerTurn();
+        CharacterTurnResponse response = Response(awaiting.Request);
+        ports.TurnActivity = new(awaiting.Request, response, CharacterTurnActivityState.Completed);
+        DialogueEvent responseEvent = new(
+            response.Delivery!,
+            new DialogueAudienceSnapshot(ports.Healer.Identity.Id, [ports.SeekerId, ports.Sage.Identity.Id]));
+        ports.LastOccurredDialogueEvent = responseEvent;
+        ports.LastSubmittedDelivery = ports.PlayerDelivery("same frame");
+
+        coordinator.Process();
+
+        Assert.Equal(["continue", "occur", "append", "chain"], ports.Calls);
+        Assert.Same(responseEvent, ports.ContinueEvent);
+        Assert.Equal([ports.Sage], ports.ContinueScheduled);
     }
 
     [Fact]
@@ -496,8 +554,6 @@ public sealed class ConversationTurnCoordinatorTests
 
         public bool ParticipationRoundIdle { get; set; } = true;
 
-        public bool ConditionalCollectionScaffolding { get; set; }
-
         public bool ResetResult { get; set; } = true;
 
         public bool StartResult { get; set; } = true;
@@ -542,6 +598,8 @@ public sealed class ConversationTurnCoordinatorTests
 
         public TimeSpan? ChainDeadline { get; private set; }
 
+        public DialogueEvent? ContinueEvent { get; private set; }
+
         public IReadOnlyList<Character>? ContinueScheduled { get; private set; }
 
         public IReadOnlyList<CharacterId>? ContinueAddresses { get; private set; }
@@ -551,14 +609,18 @@ public sealed class ConversationTurnCoordinatorTests
         public DialogueDelivery PlayerDelivery(string text) =>
             new(new DialogueUtterance(SeekerId, text), DialogueDeliveryMode.OrdinarySpeech);
 
-        public CharacterTurnActivity AwaitingHealerTurn()
+        public CharacterTurnActivity AwaitingHealerTurn() => AwaitingTurn(Healer);
+
+        public CharacterTurnActivity AwaitingSageTurn() => AwaitingTurn(Sage);
+
+        private CharacterTurnActivity AwaitingTurn(Character responder)
         {
             DialogueUtterance utterance = new(SeekerId, "Please help.");
             CharacterTurnRequest request = new(
-                Healer.Identity.Id,
+                responder.Identity.Id,
                 new DialogueEvent(
                     new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
-                    new DialogueAudienceSnapshot(SeekerId, [Healer.Identity.Id])),
+                    new DialogueAudienceSnapshot(SeekerId, [responder.Identity.Id])),
                 new DialogueAct(utterance, DialogueActType.Request));
             return new CharacterTurnActivity(request, null, CharacterTurnActivityState.AwaitingResponse);
         }
@@ -610,12 +672,16 @@ public sealed class ConversationTurnCoordinatorTests
         public bool TryCancelTurn()
         {
             Calls.Add("cancel-turn");
-            if (CancelTurnResult && TurnActivity is { } activity)
+            // Like the native owner, only an awaiting or speaking turn can cancel.
+            if (!CancelTurnResult
+                || TurnActivity is not { } activity
+                || !CharacterTurnCancellationPolicy.CanCancel(activity))
             {
-                TurnActivity = new(activity.Request, activity.Response, CharacterTurnActivityState.Cancelled);
+                return false;
             }
 
-            return CancelTurnResult;
+            TurnActivity = new(activity.Request, activity.Response, CharacterTurnActivityState.Cancelled);
+            return true;
         }
 
         public bool TryReceiveTurnResponse(CharacterTurnResponse response)
@@ -666,6 +732,7 @@ public sealed class ConversationTurnCoordinatorTests
             TimeSpan deadline)
         {
             Calls.Add("continue");
+            ContinueEvent = heardDialogueEvent;
             ContinueScheduled = scheduledCharacters;
             ContinueAddresses = directlyAddressedCharacterIds;
             ContinueDeadline = deadline;

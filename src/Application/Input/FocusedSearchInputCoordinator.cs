@@ -7,7 +7,8 @@ namespace Allrpcs.Application.Input;
 
 /// <summary>
 /// Applies one player focused-search action to the Seeker's searches and reports whether it
-/// changed anything. Identifying the authored herb patch also occurs its world event, atomically.
+/// changed anything. Identifying the authored herb patch also occurs its world event; both steps
+/// are prevalidated, and a failed commit throws as an invariant violation.
 /// </summary>
 public sealed class FocusedSearchInputCoordinator
 {
@@ -91,7 +92,12 @@ public sealed class FocusedSearchInputCoordinator
             bool resolved = ports.TryResolveOutcome(outcome, worldObject);
             if (resolved && ReferenceEquals(worldObject, ports.WagonClue))
             {
-                _ = ports.TryRouteWagonClue(outcome, worldObject, ports.Perception!);
+                _ = ports.TryRouteWagonClue(
+                    outcome,
+                    worldObject,
+                    ports.Perception
+                        ?? throw new InvalidOperationException(
+                            "The resolved wagon-clue search had no Seeker perception."));
             }
 
             return resolved;

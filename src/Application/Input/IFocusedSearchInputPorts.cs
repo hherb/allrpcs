@@ -8,7 +8,7 @@ namespace Allrpcs.Application.Input;
 
 /// <summary>
 /// The native owners a <see cref="FocusedSearchInputCoordinator"/> sequences. Each member
-/// forwards to exactly one existing owner; none decides anything.
+/// is a thin forward to existing node members; none decides anything.
 /// </summary>
 public interface IFocusedSearchInputPorts
 {
