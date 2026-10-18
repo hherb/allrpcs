@@ -1,10 +1,9 @@
-[gd_scene load_steps=453 format=3]
+[gd_scene load_steps=445 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="3_camera"]
 [ext_resource type="Script" path="res://GreyboxNavigation.cs" id="4_navigation"]
-[ext_resource type="Script" path="res://NavigationSmokeCheck.cs" id="5_navigation_check"]
 [ext_resource type="Script" path="res://Healer.cs" id="6_healer"]
 [ext_resource type="Script" path="res://HealerCommandSmokeCheck.cs" id="7_healer_check"]
 [ext_resource type="Script" path="res://GreyboxInteractionTarget.cs" id="8_interaction_target"]
@@ -58,7 +57,6 @@
 [ext_resource type="Script" path="res://SaveSnapshotJsonController.cs" id="56_save_json_controller"]
 [ext_resource type="Script" path="res://SaveSnapshotJsonControllerSmokeCheck.cs" id="57_save_json_controller_check"]
 [ext_resource type="Script" path="res://SaveDocumentStorageController.cs" id="58_save_storage_controller"]
-[ext_resource type="Script" path="res://SaveDocumentStorageControllerSmokeCheck.cs" id="59_save_storage_controller_check"]
 [ext_resource type="Script" path="res://SaveLoadInputController.cs" id="396_save_load_input"]
 [ext_resource type="Script" path="res://SaveLoadInputSmokeCheck.cs" id="397_save_load_input_check"]
 [ext_resource type="Script" path="res://CharacterTurnActivityController.cs" id="60_character_turn_controller"]
@@ -124,7 +122,6 @@
 [ext_resource type="Script" path="res://OpenAiCredentialControllerSmokeCheck.cs" id="120_openai_credential_controller_check"]
 [ext_resource type="Script" path="res://OpenAiCredentialPanelSmokeCheck.cs" id="121_openai_credential_panel_check"]
 [ext_resource type="Script" path="res://CharacterModelConnectionPanelSmokeCheck.cs" id="122_model_connection_panel_check"]
-[ext_resource type="Script" path="res://LiveCharacterModelOrdinaryFlowSmokeCheck.cs" id="123_live_model_flow_check"]
 [ext_resource type="Script" path="res://CharacterMemoryController.cs" id="124_character_memory_controller"]
 [ext_resource type="Script" path="res://CharacterMemoryControllerSmokeCheck.cs" id="125_character_memory_controller_check"]
 [ext_resource type="Script" path="res://FirstPatientStateController.cs" id="126_first_patient_state_controller"]
@@ -426,7 +423,6 @@
 [ext_resource type="Script" path="res://OpeningRegionVillageTransitionSceneSource.cs" id="312_opening_region_village_transition_scene"]
 [ext_resource type="Script" path="res://OpeningRegionVillageTransitionSmokeCheck.cs" id="313_opening_region_village_transition_check"]
 [ext_resource type="Script" path="res://AdaptiveDisplay.cs" id="314_adaptive_display"]
-[ext_resource type="Script" path="res://AdaptiveDisplaySmokeCheck.cs" id="315_adaptive_display_check"]
 [ext_resource type="Script" path="res://OpeningRegionStreamLaundrySceneSource.cs" id="316_opening_region_stream_laundry_scene"]
 [ext_resource type="Script" path="res://OpeningRegionStreamLaundrySmokeCheck.cs" id="317_opening_region_stream_laundry_check"]
 [ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSceneSource.cs" id="318_opening_region_woodland_clearing_scene"]
@@ -446,7 +442,6 @@
 [ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSource.cs" id="332_seeker_customization_source"]
 [ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSmokeCheck.cs" id="333_seeker_customization_check"]
 [ext_resource type="Script" path="res://SeekerCustomizationMenuController.cs" id="334_seeker_customization_menu"]
-[ext_resource type="Script" path="res://SeekerCustomizationMenuSmokeCheck.cs" id="335_seeker_customization_menu_check"]
 [ext_resource type="Script" path="res://SeekerCustomizationApplicationCoordinator.cs" id="336_seeker_customization_application"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSource.cs" id="337_seeker_background_route_source"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSmokeCheck.cs" id="338_seeker_background_route_check"]
@@ -508,7 +503,6 @@
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputSmokeCheck.cs" id="394_sage_consultation_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientRecoveryRestorationSmokeCheck.cs" id="395_recovery_restoration_check"]
 [ext_resource type="Script" path="res://OptionalOverlayVisibilityController.cs" id="398_optional_overlay_visibility"]
-[ext_resource type="Script" path="res://OptionalOverlayVisibilitySmokeCheck.cs" id="399_optional_overlay_visibility_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/quiet-moss.png" id="400_runtime_quiet_moss"]
 [ext_resource type="Script" path="res://RuntimeTerrainGroundSmokeCheck.cs" id="401_runtime_terrain_ground_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter.png" id="402_runtime_leaf_litter"]
@@ -591,8 +585,6 @@
 [ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-fallen-wood-09.png" id="471_woodland_fallen_wood_09"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-08.png" id="472_woodland_environmental_details_08"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-07.png" id="473_woodland_shrubs_07"]
-[ext_resource type="Script" path="res://RuntimeWoodlandClearingDressingSmokeCheck.cs" id="474_woodland_dressing_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionMusicAudioController.cs" id="music_controller"]
 [ext_resource type="Script" path="res://MusicAudioRuntimeSmokeCheck.cs" id="music_check"]
 
@@ -661,8 +653,6 @@
 [ext_resource type="Script" path="res://ControlSettingsController.cs" id="controls_controller"]
 [ext_resource type="Script" path="res://ControlInputContext.cs" id="controls_context"]
 [ext_resource type="PackedScene" path="res://ControlSettingsPanel.tscn" id="controls_panel"]
-[ext_resource type="PackedScene" path="res://ControlSettingsMainSmokeCheck.tscn" id="controls_check"]
-
 [ext_resource type="PackedScene" path="res://DialogueAccessibilityMainSmokeCheck.tscn" id="dialogue_accessibility_check"]
 
 [ext_resource type="Script" path="res://DialogueSpeechController.cs" id="dialogue_speech"]
@@ -779,9 +769,6 @@ script = ExtResource("controls_context")
 [node name="AdaptiveDisplay" type="Node" parent="."]
 script = ExtResource("314_adaptive_display")
 
-[node name="AdaptiveDisplaySmokeCheck" type="Node" parent="."]
-script = ExtResource("315_adaptive_display_check")
-
 [node name="AudioSettingsStorageController" type="Node" parent="."]
 script = ExtResource("audio_storage")
 
@@ -801,9 +788,6 @@ script = ExtResource("music_check")
 
 [node name="OptionalOverlayVisibilityController" type="Node" parent="."]
 script = ExtResource("398_optional_overlay_visibility")
-
-[node name="OptionalOverlayVisibilitySmokeCheck" type="Node" parent="."]
-script = ExtResource("399_optional_overlay_visibility_check")
 
 [node name="Ground" type="Sprite2D" parent="."]
 z_index = -100
@@ -872,9 +856,6 @@ WoodlandVillageEdgePathTexture = ExtResource("432_runtime_woodland_village_edge_
 VillageEdgeStreamPathTexture = ExtResource("433_runtime_village_edge_stream_path")
 StreamLaundryPathTexture = ExtResource("434_runtime_stream_laundry_path")
 ClosedForestPathTexture = ExtResource("435_runtime_closed_forest_path")
-
-[node name="NavigationSmokeCheck" type="Node" parent="."]
-script = ExtResource("5_navigation_check")
 
 [node name="OpeningRegionProjectionSource" type="Node2D" parent="."]
 script = ExtResource("305_opening_region_projection_source")
@@ -2808,9 +2789,6 @@ script = ExtResource("341_seeker_apothecary_preparation_access_check")
 [node name="SeekerTravellerRoadWagonAccessSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("342_seeker_traveller_road_wagon_access_check")
 
-[node name="SeekerCustomizationMenuSmokeCheck" type="Node" parent="."]
-script = ExtResource("335_seeker_customization_menu_check")
-
 [node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
 script = ExtResource("322_opening_region_old_shrine_check")
 
@@ -3214,9 +3192,6 @@ script = ExtResource("55_save_capture_controller_check")
 [node name="SaveSnapshotJsonControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("57_save_json_controller_check")
 
-[node name="SaveDocumentStorageControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("59_save_storage_controller_check")
-
 [node name="SaveLoadInputSmokeCheck" type="Node" parent="."]
 script = ExtResource("397_save_load_input_check")
 
@@ -3462,9 +3437,6 @@ script = ExtResource("109_ordinary_model_switch_check")
 
 [node name="CharacterModelOrdinaryMalformedStreamSmokeCheck" type="Node" parent="."]
 script = ExtResource("110_ordinary_malformed_model_check")
-
-[node name="LiveCharacterModelOrdinaryFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("123_live_model_flow_check")
 
 [node name="CharacterModelSettingsStorageControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("112_model_settings_storage_check")
@@ -4305,10 +4277,6 @@ texture_repeat = 1
 texture = ExtResource("473_woodland_shrubs_07")
 centered = false
 
-[node name="RuntimeWoodlandClearingDressingSmokeCheck" type="Node" parent="."]
-script = ExtResource("474_woodland_dressing_check")
-
-
 [node name="MaterialSoundCaptionPanel" parent="." instance=ExtResource("material_captions")]
 
 [node name="OpeningRegionMaterialAudioController" type="Node" parent="."]
@@ -4446,8 +4414,6 @@ script = ExtResource("herb_audio")
 script = ExtResource("herb_check")
 
 [node name="ControlSettingsPanel" parent="." instance=ExtResource("controls_panel")]
-
-[node name="ControlSettingsMainSmokeCheck" parent="." instance=ExtResource("controls_check")]
 
 [node name="ControlsEntry" type="Button" parent="SettingsOverlay"]
 offset_left = 172.0

@@ -87,6 +87,9 @@ public partial class Main : Node
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
+    public override void _EnterTree() => SmokeCheckHost.Attach(this);
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         ProcessPriority = MainProcessOrder.MainPriority;
