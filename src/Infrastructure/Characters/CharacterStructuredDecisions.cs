@@ -3,8 +3,11 @@ using Allrpcs.Domain.Characters;
 namespace Allrpcs.Infrastructure.Characters;
 
 /// <summary>Retains the unchanged request, schema and decision policies for all ten decision kinds.</summary>
+/// <remarks>The lifecycle flags are OpenAI-only stream policies; the 128-token bound serves OpenAI and Ollama.</remarks>
 public static class CharacterStructuredDecisions
 {
+    private const int DecisionOutputTokens = 128;
+
     /// <summary>Gets the exact character_dialogue_misquotation_evidence_decision contract.</summary>
     public static StructuredDecisionDescriptor<CharacterDialogueMisquotationEvidenceConsiderationRequest, CharacterDialogueMisquotationEvidenceDecision>
         DialogueMisquotationEvidence
@@ -14,7 +17,7 @@ public static class CharacterStructuredDecisions
             CharacterDialogueMisquotationEvidenceRequestContent.SerializeTrustedContext,
             CharacterDialogueMisquotationEvidenceDecisionJsonSchemaWriter.Write,
             CharacterDialogueMisquotationEvidenceDecisionJsonDeserializer.Deserialize,
-            128, CharacterDialogueMisquotationEvidenceDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterDialogueMisquotationEvidenceDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_object_sabotage_concealment_decision contract.</summary>
@@ -26,7 +29,7 @@ public static class CharacterStructuredDecisions
             CharacterObjectSabotageConcealmentRequestContent.SerializeTrustedContext,
             CharacterObjectSabotageConcealmentDecisionJsonSchemaWriter.Write,
             CharacterObjectSabotageConcealmentDecisionJsonDeserializer.Deserialize,
-            128, CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: false, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_object_sabotage_contamination_decision contract.</summary>
@@ -38,7 +41,7 @@ public static class CharacterStructuredDecisions
             CharacterObjectSabotageContaminationRequestContent.SerializeTrustedContext,
             CharacterObjectSabotageContaminationDecisionJsonSchemaWriter.Write,
             CharacterObjectSabotageContaminationDecisionJsonDeserializer.Deserialize,
-            128, CharacterObjectSabotageContaminationDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterObjectSabotageContaminationDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_object_sabotage_move_decision contract.</summary>
@@ -50,7 +53,7 @@ public static class CharacterStructuredDecisions
             CharacterObjectSabotageMoveRequestContent.SerializeTrustedContext,
             CharacterObjectSabotageMoveDecisionJsonSchemaWriter.Write,
             CharacterObjectSabotageMoveDecisionJsonDeserializer.Deserialize,
-            128, CharacterObjectSabotageMoveDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterObjectSabotageMoveDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: false, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_object_sabotage_substitution_decision contract.</summary>
@@ -62,7 +65,7 @@ public static class CharacterStructuredDecisions
             CharacterObjectSabotageSubstitutionRequestContent.SerializeTrustedContext,
             CharacterObjectSabotageSubstitutionDecisionJsonSchemaWriter.Write,
             CharacterObjectSabotageSubstitutionDecisionJsonDeserializer.Deserialize,
-            128, CharacterObjectSabotageSubstitutionDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterObjectSabotageSubstitutionDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: false, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_sabotage_action_decision contract.</summary>
@@ -74,7 +77,7 @@ public static class CharacterStructuredDecisions
             CharacterSabotageActionRequestContent.SerializeTrustedContext,
             CharacterSabotageActionDecisionJsonSchemaWriter.Write,
             CharacterSabotageActionDecisionJsonDeserializer.Deserialize,
-            128, CharacterSabotageActionDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterSabotageActionDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_target_sabotage_delay_decision contract.</summary>
@@ -86,7 +89,7 @@ public static class CharacterStructuredDecisions
             CharacterTargetSabotageDelayRequestContent.SerializeTrustedContext,
             CharacterTargetSabotageDelayDecisionJsonSchemaWriter.Write,
             CharacterTargetSabotageDelayDecisionJsonDeserializer.Deserialize,
-            128, CharacterTargetSabotageDelayDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterTargetSabotageDelayDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_target_sabotage_delay_recovery_decision contract.</summary>
@@ -98,7 +101,7 @@ public static class CharacterStructuredDecisions
             CharacterTargetSabotageDelayRecoveryRequestContent.SerializeTrustedContext,
             CharacterTargetSabotageDelayRecoveryDecisionJsonSchemaWriter.Write,
             CharacterTargetSabotageDelayRecoveryDecisionJsonDeserializer.Deserialize,
-            128, CharacterTargetSabotageDelayRecoveryDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterTargetSabotageDelayRecoveryDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: false);
 
     /// <summary>Gets the exact character_target_sabotage_influence_decision contract.</summary>
@@ -110,7 +113,7 @@ public static class CharacterStructuredDecisions
             CharacterTargetSabotageInfluenceRequestContent.SerializeTrustedContext,
             CharacterTargetSabotageInfluenceDecisionJsonSchemaWriter.Write,
             CharacterTargetSabotageInfluenceDecisionJsonDeserializer.Deserialize,
-            128, CharacterTargetSabotageInfluenceDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterTargetSabotageInfluenceDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     /// <summary>Gets the exact character_target_sabotage_influence_recovery_decision contract.</summary>
@@ -122,7 +125,7 @@ public static class CharacterStructuredDecisions
             CharacterTargetSabotageInfluenceRecoveryRequestContent.SerializeTrustedContext,
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonSchemaWriter.Write,
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonDeserializer.Deserialize,
-            128, CharacterTargetSabotageInfluenceRecoveryDecisionJsonDeserializer.MaximumDocumentLength,
+            DecisionOutputTokens, CharacterTargetSabotageInfluenceRecoveryDecisionJsonDeserializer.MaximumDocumentLength,
             requireLifecycle: true, allowMetadataAfterTextDone: true);
 
 }

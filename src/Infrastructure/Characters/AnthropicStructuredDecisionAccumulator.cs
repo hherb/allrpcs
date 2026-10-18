@@ -6,12 +6,16 @@ using Allrpcs.Infrastructure.Dialogue;
 namespace Allrpcs.Infrastructure.Characters;
 
 /// <summary>Maps one bounded Anthropic text block and successful stop to the shared lifecycle.</summary>
+/// <remarks>Thinking blocks that current models emit before the text block are skipped unread.</remarks>
 public sealed class AnthropicStructuredDecisionAccumulator<TRequest, TDecision>
     where TRequest : class where TDecision : class
 {
     private readonly StructuredDecisionPipeline<TRequest, TDecision> pipeline;
     private readonly StringBuilder text = new();
     private bool started;
+    private int nextIndex;
+    private int openIndex = -1;
+    private bool openThinking;
     private bool blockStarted;
     private bool blockStopped;
     private bool stopReceived;
@@ -30,7 +34,7 @@ public sealed class AnthropicStructuredDecisionAccumulator<TRequest, TDecision>
     {
         ArgumentNullException.ThrowIfNull(serializedEvent);
         if (terminal) throw new InvalidOperationException("The structured-decision stream is already terminal.");
-        if (serializedEvent.Length > OpenAiStructuredDecisionAccumulator<TRequest, TDecision>.MaximumEventLength)
+        if (serializedEvent.Length > AnthropicCharacterModelStreamAccumulator.MaximumEventLength)
             return Fail();
         try
         {
@@ -49,25 +53,32 @@ public sealed class AnthropicStructuredDecisionAccumulator<TRequest, TDecision>
                     pipeline.Apply(StructuredDecisionEvent.Started);
                     return pipeline.Apply(StructuredDecisionEvent.InProgress);
                 case "content_block_start":
-                    if (!started || blockStarted || !HasZeroIndex(root)
-                        || !TryObject(root, "content_block", out JsonElement block)
-                        || ReadString(block, "type") != "text" || ReadString(block, "text") != "") return Fail();
+                    if (!started || blockStarted || openIndex >= 0 || !HasIndex(root, nextIndex)
+                        || !TryObject(root, "content_block", out JsonElement block)) return Fail();
+                    openIndex = nextIndex++;
+                    openThinking = ReadString(block, "type") is "thinking" or "redacted_thinking";
+                    if (openThinking) return null;
+                    if (ReadString(block, "type") != "text" || ReadString(block, "text") != "") return Fail();
                     blockStarted = true;
                     return null;
                 case "content_block_delta":
-                    if (!blockStarted || blockStopped || !HasZeroIndex(root)
-                        || !TryObject(root, "delta", out JsonElement delta)
-                        || ReadString(delta, "type") != "text_delta"
+                    if (openIndex < 0 || !HasIndex(root, openIndex)
+                        || !TryObject(root, "delta", out JsonElement delta)) return Fail();
+                    if (openThinking)
+                        return ReadString(delta, "type") is "thinking_delta" or "signature_delta" ? null : Fail();
+                    if (ReadString(delta, "type") != "text_delta"
                         || ReadString(delta, "text") is not { } fragment) return Fail();
                     pipeline.Apply(StructuredDecisionEvent.TextDelta, fragment);
                     text.Append(fragment);
                     return null;
                 case "content_block_stop":
-                    if (!blockStarted || blockStopped || !HasZeroIndex(root)) return Fail();
+                    if (openIndex < 0 || !HasIndex(root, openIndex)) return Fail();
+                    openIndex = -1;
+                    if (openThinking) return null;
                     blockStopped = true;
                     return pipeline.Apply(StructuredDecisionEvent.TextDone, text.ToString());
                 case "message_delta":
-                    if (!blockStopped || stopReceived || !TryObject(root, "delta", out JsonElement stop)
+                    if (!blockStopped || openIndex >= 0 || stopReceived || !TryObject(root, "delta", out JsonElement stop)
                         || ReadString(stop, "stop_reason") != "end_turn") return Fail();
                     stopReceived = true;
                     return null;
@@ -85,7 +96,7 @@ public sealed class AnthropicStructuredDecisionAccumulator<TRequest, TDecision>
     /// <summary>Stops before any unread tail and leaves the caller's stream open.</summary>
     public async Task<TDecision> CompleteAsync(Stream stream, CancellationToken cancellationToken = default)
     {
-        await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
+        await foreach (string document in AnthropicServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
             .ConfigureAwait(false))
         {
             if (Apply(document) is { } decision) return decision;
@@ -110,7 +121,7 @@ public sealed class AnthropicStructuredDecisionAccumulator<TRequest, TDecision>
             && value.ValueKind == JsonValueKind.Object;
     }
 
-    private static bool HasZeroIndex(JsonElement root) =>
+    private static bool HasIndex(JsonElement root, int expected) =>
         root.TryGetProperty("index", out JsonElement index) && index.ValueKind == JsonValueKind.Number
-        && index.TryGetInt32(out int value) && value == 0;
+        && index.TryGetInt32(out int value) && value == expected;
 }

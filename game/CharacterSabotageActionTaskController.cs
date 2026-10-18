@@ -113,6 +113,10 @@ public partial class CharacterSabotageActionTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Sabotage action decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterSabotageActionTaskStatus.Failed;
         }
 

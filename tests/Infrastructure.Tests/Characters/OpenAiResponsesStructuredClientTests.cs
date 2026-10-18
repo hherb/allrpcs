@@ -80,9 +80,13 @@ public sealed class OpenAiResponsesStructuredClientTests
 
     private static OpenAiResponsesStructuredClient<Request, Decision> Create(HttpClient http) =>
         new(http, new Credential(), new CharacterModelSettings(CharacterModelProvider.OpenAi, "test"),
-            OpenAiEndpoint.Default, (_, _) => "{}", (request, stream, token) =>
-                new OpenAiStructuredDecisionAccumulator<Request, Decision>(request,
-                    (actual, text) => new Decision(actual, text), 16).CompleteAsync(stream, token));
+            OpenAiEndpoint.Default, Descriptor);
+
+    private static readonly StructuredDecisionDescriptor<Request, Decision> Descriptor = new(
+        "test_decision", "instructions", _ => "context",
+        (writer, _) => { writer.WriteStartObject(); writer.WriteEndObject(); },
+        (actual, text) => new Decision(actual, text), 128, 16,
+        requireLifecycle: true, allowMetadataAfterTextDone: true);
 
     private static HttpResponseMessage Response(HttpStatusCode status, string mediaType, Stream body)
     {

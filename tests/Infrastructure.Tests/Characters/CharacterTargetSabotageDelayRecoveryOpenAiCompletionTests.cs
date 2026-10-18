@@ -1,0 +1,103 @@
+using System.Text;
+using System.Text.Json;
+using Allrpcs.Domain.Characters;
+using Allrpcs.Infrastructure.Characters;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
+
+namespace Allrpcs.Infrastructure.Tests.Characters;
+
+public sealed class CharacterTargetSabotageDelayRecoveryOpenAiCompletionTests
+{
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task CompletesTheExactDecisionFromFramedSemanticEvents(bool abstain)
+    {
+        CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Input input =
+            CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create();
+        string document = CharacterTargetSabotageDelayRecoveryOpenAiStreamTests
+            .DecisionDocument(input.Actor.Identity.Id.Value, abstain ? null : 0);
+        string events = Frame(new { type = "response.created" })
+            + Frame(new { type = "response.in_progress" })
+            + Frame(new { type = "response.output_text.delta", delta = document })
+            + Frame(new { type = "response.output_text.done", text = document })
+            + Frame(new { type = "response.completed" });
+        using MemoryStream stream = Utf8Stream(events);
+
+        CharacterTargetSabotageDelayRecoveryDecision decision =
+            await CompleteCharacterTargetSabotageDelayRecoveryAsync(
+                input.Request,
+                stream);
+
+        Assert.Same(input.Actor.Identity.Id, decision.ActorId);
+        Assert.Same(abstain ? null : input.Candidates[0], decision.SelectedCandidate);
+        Assert.True(stream.CanRead);
+        Assert.Same(input.EventLog, input.Request.EventLog);
+        Assert.Same(input.RecoveryEvent, input.Candidates[0].RecoveryEvent);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(": heartbeat\n\n")]
+    [InlineData("data: {\"type\":\"response.created\"}\n\n")]
+    [InlineData("data: not-json\n\n")]
+    [InlineData("data: {\"type\":\"response.completed\"}\n\n")]
+    [InlineData("data: {\"type\":\"response.failed\",\"detail\":\"secret\"}\n\n")]
+    [InlineData("data: {}")]
+    public async Task RejectsIncompleteMalformedFailedAndUnframedInput(string events)
+    {
+        using MemoryStream stream = Utf8Stream(events);
+
+        InvalidDataException exception = await Assert.ThrowsAsync<InvalidDataException>(() =>
+            CompleteCharacterTargetSabotageDelayRecoveryAsync(
+                CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request,
+                stream));
+
+        Assert.DoesNotContain("secret", exception.ToString(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task ReturnsAtCompletionBeforeTrailingEventsAndPreservesCallerCancellation()
+    {
+        CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Input input =
+            CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create();
+        string document = CharacterTargetSabotageDelayRecoveryOpenAiStreamTests
+            .DecisionDocument(input.Actor.Identity.Id.Value, null);
+        string events = Frame(new { type = "response.created" })
+            + Frame(new { type = "response.in_progress" })
+            + Frame(new { type = "response.output_text.done", text = document })
+            + Frame(new { type = "response.completed" })
+            + Frame(new { type = "response.created" });
+        using MemoryStream trailing = Utf8Stream(events);
+        using MemoryStream empty = Utf8Stream(string.Empty);
+        using CancellationTokenSource cancellation = new();
+        cancellation.Cancel();
+
+        Assert.NotNull(await CompleteCharacterTargetSabotageDelayRecoveryAsync(
+                input.Request,
+                trailing));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
+            CompleteCharacterTargetSabotageDelayRecoveryAsync(
+                input.Request,
+                empty,
+                cancellation.Token));
+    }
+
+    [Fact]
+    public async Task RejectsNullDependenciesAndExposesOnlyOneBoundedAsyncCompletionOperation()
+    {
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest request =
+            CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request;
+        using MemoryStream stream = Utf8Stream(string.Empty);
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            CompleteCharacterTargetSabotageDelayRecoveryAsync(null!, stream));
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            CompleteCharacterTargetSabotageDelayRecoveryAsync(request, null!));
+
+    }
+
+    private static string Frame(object semanticEvent) =>
+        "data: " + JsonSerializer.Serialize(semanticEvent) + "\n\n";
+
+    private static MemoryStream Utf8Stream(string value) => new(Encoding.UTF8.GetBytes(value));
+}

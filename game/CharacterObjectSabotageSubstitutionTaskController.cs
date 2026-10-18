@@ -121,6 +121,10 @@ public partial class CharacterObjectSabotageSubstitutionTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Object sabotage substitution decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterObjectSabotageSubstitutionTaskStatus.Failed;
         }
 

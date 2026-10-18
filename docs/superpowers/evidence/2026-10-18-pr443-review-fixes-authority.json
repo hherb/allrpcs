@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "context": "After a multi-agent review of draft PR #443 (provider-neutral structured decisions), the owner was shown the critical/important/suggestion findings.",
+  "owner_statement": "Please implement all your suggestions and fixes, then review your code again, and once happy that all is working , push the changes into the PR. Only what you genuinely cannot fix, open as issues on github.",
+  "effect": "Reopen the closed code-health-phase3-structured-decisions scope only to apply the PR #443 review findings, re-review, verify, publish to the PR branch and file GitHub issues for anything that cannot be fixed within this authority.",
+  "limits": "No merge, release, live hosted-provider qualification, credential store/UI, closed dialogue-adapter change or Main coordinator work. The active slice code-health-phase3-main-coordinators stays queued unchanged.",
+  "publication_update": {
+    "owner_statement": "PR #444 is the reopened PR #443. It fails on CI. Please investigate, then push your fixes into the PR",
+    "effect": "PR #443 merged at 4692ed82 before the fixes reached it. PR #444 began as a plain revert, which the continuation checker rejects because it removes a committed closure. The revert is undone on the #444 branch and the review fixes are applied on top of main there."
+  }
+}

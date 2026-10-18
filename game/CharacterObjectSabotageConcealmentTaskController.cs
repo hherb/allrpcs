@@ -121,6 +121,10 @@ public partial class CharacterObjectSabotageConcealmentTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Object sabotage concealment decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterObjectSabotageConcealmentTaskStatus.Failed;
         }
 

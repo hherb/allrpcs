@@ -18,7 +18,7 @@ public sealed class CharacterDialogueMisquotationEvidenceModelBinding
         Model = model;
     }
 
-    /// <summary>Gets the exact immutable provider-selected provider and model setting.</summary>
+    /// <summary>Gets the exact immutable selected provider and model setting.</summary>
     public CharacterModelSettings Settings { get; }
 
     /// <summary>Gets the exact caller-composed misquotation-evidence decision model.</summary>
