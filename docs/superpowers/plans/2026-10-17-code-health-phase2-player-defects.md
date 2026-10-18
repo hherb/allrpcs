@@ -278,10 +278,21 @@ merging the implementation supplies neither result. Phase 2 stays in progress an
 unselected. No credential query or repeated owner question was made during this reconciliation.
 Excluded Phase 1 follow-ups #432-#435/#437/#439 remain open and outside this slice.
 
-Merge [CI run 39077177772](https://github.com/hherb/allrpcs/actions/runs/39077177772) was still
-in progress when checked (Python tooling passed; the other three jobs were running). This is
-an observation of the merge run, not a new terminal pass or a replacement for missing live evidence.
+Merge [CI run 39077177772](https://github.com/hherb/allrpcs/actions/runs/39077177772) subsequently
+passed all four jobs: 5,924 solution tests (37 Architecture, 1,465 Application, 2,877 Domain,
+1,545 Infrastructure), Python tooling, unsigned development build, and native 363 passed / zero
+failed / two existing quarantines. Full logs are retained locally at
+`/private/tmp/allrpcs-phase2-merge-ci.log`. This terminal merge pass does not replace the missing
+live provider capture or owner-operated Keychain result.
 This post-merge record supersedes the earlier pre-merge issue/publication status above.
+
+## Owner-directed live-evidence deferral
+
+On 18 October the owner answered “Yes, defer those checks and begin Phase 3” to the explicit
+question about deferring live #417 and the Keychain check. The
+[recorded decision](../evidence/2026-10-18-phase3-authority.json) supersedes the earlier Phase 3
+selection boundary. Preserve both missing results and the unchecked Phase 2 roadmap item;
+this is a deferral, not a claim of full Phase 2 completion.
 
 ## Execution decisions and rework costs
 

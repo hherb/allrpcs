@@ -25,9 +25,11 @@ public sealed class OpenAiCharacterSabotageActionModelBindingFactoryTests
         Assert.Same(settings, binding.Settings);
         OpenAiCharacterSabotageActionModel model =
             Assert.IsType<OpenAiCharacterSabotageActionModel>(binding.Model);
-        Assert.Same(client, Field<HttpClient>(model, "client"));
-        Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(model, "credentialSource"));
-        Assert.Same(settings, Field<CharacterModelSettings>(model, "settings"));
+        object transport = Field<object>(model, "client");
+        Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
+        Assert.Same(client, Field<HttpClient>(transport, "client"));
+        Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(transport, "credentialSource"));
+        Assert.Same(settings, Field<CharacterModelSettings>(transport, "settings"));
         Assert.Equal(0, handler.SendCount);
         Assert.Equal(0, credentialSource.LoadCount);
     }

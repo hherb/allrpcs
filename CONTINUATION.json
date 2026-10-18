@@ -1526,23 +1526,37 @@
           "sha256": "c9245f4e639a45e267049bb341d1824bd1dd46148cadae221df5f82c6eeb88b1"
         }
       ]
+    },
+    {
+      "id": "owner-code-health-phase3-2026-10-18",
+      "owner_statement": "Yes, defer those checks and begin Phase 3",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-phase3-authority.json",
+          "sha256": "4589d3cb7794913a1d4758f3285e5618d599e39df7cc9f8a8ed56dbde0762c8c"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase2-player-defects",
-    "title": "Fix the player-facing code-review-1 defects",
+    "id": "code-health-phase3-structured-decisions",
+    "title": "Consolidate the structured-decision pipeline",
     "status": "in_progress",
     "workstream": "code-health-program",
-    "authority_status": "owner_approved_code_health_program_2026-10-17",
-    "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
-    "missing_deliverable": "Live fictional OpenAI request/captured stream for #417 and the already requested owner Keychain save result. PR #440 is merged at 3c4d6c63; all fourteen other Phase 2 issues are closed. The complete 218-stage root gate and hosted CI on the unchanged b841afed product source have passed.",
-    "instructions": "Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md. The owner requested continuation after refreshing from the recently merged PR on 2026-10-18. PR #440 merged at 3c4d6c639e196f5553ef86588b885b308adc1329 (2026-10-18 09:58:16 Australia/Sydney); its tree equals reviewed branch head b71d057f. Issues #414-#416, #418-#420 and #424-#431 are confirmed closed; #417 remains open. The complete ./quality.sh on b841afed passed all 218 stages and required markers; its summary is committed at docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json. Hosted runs 39069028898 and 39071192535 passed all four jobs on the same product source. Merge CI run 39077177772 was in progress at reconciliation; do not imply a terminal result. The 2026-10-18 existence-only application Keychain recheck returned item-not-found without retrieving a secret. Do not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress and Phase 3 unselected until its remaining exit evidence exists or the owner explicitly changes that boundary. Preserve closed scopes; no merge or release is authorized by this continuation. Reuse unchanged passing product evidence for prose-only changes.",
-    "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
+    "reopening_id": "owner-code-health-phase3-2026-10-18",
+    "authority_status": "owner_approved_phase3_with_phase2_live_checks_deferred_2026-10-18",
+    "roadmap_item": "- [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.",
+    "missing_deliverable": "Provider-neutral structured request/schema descriptors and bindings, Anthropic/Ollama structured clients and production composition, then removal of per-decision OpenAI compatibility facades. The shared Application pipeline and OpenAI transport/stream extraction across all ten decision kinds are implemented and verified.",
+    "instructions": "Continue docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md at provider-neutral descriptors/bindings and Anthropic/Ollama clients. The first checkpoint migrated all ten existing OpenAI model/SSE/accumulator facades to shared Application lifecycle and Responses transport: 5946 solution tests, zero-warning build, full format verification, 53 focused shared-client/deadline cases and 16 affected native launches pass. Preserve the three legacy prelude-optional policies and delay-recovery metadata-after-text rejection; keep exact identities, document/event bounds, cancellation, disposal and redaction. Request serializers, schemas, deserializers and domain policies are unchanged. Do not repeat completed extraction or claim full Phase 3 completion; Main extraction and SmokeCheckHost remain later program items. Phase 2 live #417 and owner Keychain checks are explicitly deferred by docs/superpowers/evidence/2026-10-18-phase3-authority.json, not passed. Preserve closed scopes and frozen evidence. Use D2 scoped format/build/test and affected native checks; one full quality gate is required at full Phase 3 exit. Commit/push reviewed changes; no merge or release.",
+    "completion_condition": "All ten structured-decision kinds use the shared tested Application pipeline and provider clients, provider-neutral bindings support OpenAI/Anthropic/Ollama, and no per-decision OpenAI transport/stream implementations remain; scoped tests and native integration pass.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
-      "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
+      "docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md",
+      "src/Application/Characters/StructuredDecisionPipeline.cs",
+      "src/Infrastructure/Characters/OpenAiResponsesStructuredClient.cs"
     ],
-    "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3)."
+    "boundary": "Phase 3 structured-decision consolidation only. Preserve domain decisions, prompts/schemas, identity policies and gameplay behavior. No new sabotage types, Phase 4 gameplay, Main/SmokeCheckHost extraction, phase exit claim, live-provider qualification or release."
   },
   "deferred_slices": [
     {
@@ -1608,6 +1622,27 @@
         "speech-direction/player-microphone-qualification/README.md"
       ],
       "boundary": "Existing named owner-operated physical trial only; preserve both closed runtime repairs and all frozen evidence. No new runtime fixes, automatic transcript execution, personal-audio persistence, OS privacy/device changes beyond the grant, model comparison/requalification, broad certification or packaged release."
+    },
+    {
+      "id": "code-health-phase2-player-defects",
+      "title": "Fix the player-facing code-review-1 defects",
+      "status": "deferred",
+      "workstream": "code-health-program",
+      "authority_status": "owner_deferred_live_checks_for_phase3_2026-10-18",
+      "roadmap_item": "- [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.",
+      "missing_deliverable": "Live fictional OpenAI request/sanitized captured stream for #417 and the already requested owner-operated Keychain save result.",
+      "instructions": "Owner explicitly deferred these two checks on 2026-10-18 to begin Phase 3. Preserve all passing automated evidence and issue closures from merged PR #440. Keep #417 and the Phase 2 roadmap item open; do not repeat the pending owner question or claim live/Keychain success. Resume when the missing prerequisites/results are available.",
+      "completion_condition": "All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh passes.",
+      "outputs": [
+        "docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md",
+        "docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json"
+      ],
+      "boundary": "Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no pipeline consolidation (Phase 3).",
+      "deferral_reason": "Yes, defer those checks and begin Phase 3",
+      "owner_deferral": {
+        "path": "docs/superpowers/evidence/2026-10-18-phase3-authority.json",
+        "sha256": "4589d3cb7794913a1d4758f3285e5618d599e39df7cc9f8a8ed56dbde0762c8c"
+      }
     }
   ]
 }

@@ -1,33 +1,22 @@
 using Allrpcs.Domain.Characters;
-using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Infrastructure.Characters;
 
-/// <summary>Completes one target-delay decision from bounded OpenAI Responses SSE.</summary>
+/// <summary>Completes the typed decision through shared bounded Responses event handling.</summary>
 public static class OpenAiCharacterTargetSabotageDelaySseCompletion
 {
-    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event without disposing the caller-owned stream.</summary>
     public static async Task<CharacterTargetSabotageDelayDecision> CompleteAsync(
         CharacterTargetSabotageDelayConsiderationRequest request,
         Stream stream,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(request);
-        ArgumentNullException.ThrowIfNull(stream);
-        OpenAiCharacterTargetSabotageDelayStreamAccumulator accumulator = new(request);
-        CharacterTargetSabotageDelayDecision? decision = null;
-        await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
-                .ConfigureAwait(false))
-        {
-
-            decision = accumulator.Apply(document);
-            if (decision is not null)
-            {
-                return decision;
-            }
-        }
-
-        return decision ?? throw new InvalidDataException(
-            "The OpenAI target-delay stream did not complete.");
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageDelayConsiderationRequest,
+            CharacterTargetSabotageDelayDecision> accumulator = new(request,
+            CharacterTargetSabotageDelayDecisionJsonDeserializer.Deserialize,
+            CharacterTargetSabotageDelayDecisionJsonDeserializer.MaximumDocumentLength,
+            requireLifecycle: true,
+            allowMetadataAfterTextDone: true);
+        return await accumulator.CompleteAsync(stream, cancellationToken).ConfigureAwait(false);
     }
 }

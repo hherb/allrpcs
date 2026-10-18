@@ -71,10 +71,14 @@ public partial class TemporaryCharacterSabotageActionModelCompositionSmokeCheck 
         OpenAiCharacterSabotageActionModel model,
         CharacterModelSettings settings,
         NetHttpClient client,
-        IOpenAiCredentialSource credentials) =>
-        ReferenceEquals(Field<NetHttpClient>(model, "client"), client)
-        && ReferenceEquals(Field<IOpenAiCredentialSource>(model, "credentialSource"), credentials)
-        && ReferenceEquals(Field<CharacterModelSettings>(model, "settings"), settings);
+        IOpenAiCredentialSource credentials)
+    {
+        object transport = Field<object>(model, "client");
+        return transport.GetType().GetGenericTypeDefinition() == typeof(OpenAiResponsesStructuredClient<,>)
+            && ReferenceEquals(Field<NetHttpClient>(transport, "client"), client)
+            && ReferenceEquals(Field<IOpenAiCredentialSource>(transport, "credentialSource"), credentials)
+            && ReferenceEquals(Field<CharacterModelSettings>(transport, "settings"), settings);
+    }
 
     private static bool RejectsInvalidInputs(
         TemporaryCharacterSabotageActionModelComposition composition,

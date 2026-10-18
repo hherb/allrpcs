@@ -6,42 +6,30 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-The owner-approved [code-health program](docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md)
-is active. Phase 2 Tasks 1–12 and the original whole-phase review passed. The retained
-[218-stage root pass](docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json) on
-`010439d5` is historical: product/tooling review corrections `cee9df2b` and fixture correction
-`b841afed` followed it. Latest [hosted run 39069028898](https://github.com/hherb/allrpcs/actions/runs/39069028898)
-on `b841afed` passed all four jobs: 5,924 solution tests, 23 runner self-tests and native
-363 passed / zero failed / two existing quarantines. Full hosted logs are retained locally at
-`/private/tmp/allrpcs-phase2-current-ci.log`.
+PR [#440](https://github.com/hherb/allrpcs/pull/440) merged at `3c4d6c63`. Merge
+[CI 39077177772](https://github.com/hherb/allrpcs/actions/runs/39077177772) passed all four jobs:
+5,924 solution tests, native 363 passed / zero failed / two existing quarantines. Full logs are
+retained at `/private/tmp/allrpcs-phase2-merge-ci.log`. The retained complete 218-stage root pass
+on `b841afed` validates the unchanged product baseline; new Phase 3 code needs its own scoped checks.
 
-The complete `./quality.sh` on `b841afed` passed all 218 stages and required completion markers
-(2026-10-17 20:57:41–22:12:12 UTC); its [summary](docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json)
-is committed and full logs remain in ignored `artifacts/quality-current/`. Hosted
-[run 39071192535](https://github.com/hherb/allrpcs/actions/runs/39071192535) on the same source
-also passed all four jobs. An earlier gate on `cee9df2b` failed product-10 on the flaky invalid
-ownership fixture that `b841afed` fixed. The [Phase 2 plan](docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md)
-retains the earlier complete/failed evidence. [PR #440](https://github.com/hherb/allrpcs/pull/440)
-merged on 18 October at `3c4d6c63`; `main` was refreshed to that merge. Its tree equals reviewed
-branch head `b71d057f`, so the passing product evidence remains applicable. All fourteen Phase 2
-issues other than #417 are confirmed closed. Merge [CI run 39077177772](https://github.com/hherb/allrpcs/actions/runs/39077177772)
-is still running at this reconciliation; no terminal result is claimed. Keep Phase 2 open and Phase 3 unselected.
+The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) the live
+OpenAI #417 capture and already requested owner Keychain save check and authorized Phase 3.
+Phase 2 and #417 remain open; neither live result is claimed. Do not repeat the pending question.
+Follow the [structured-decision plan](docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md).
+Main extraction and SmokeCheckHost are later Phase 3 items, not this slice.
 
-The live fictional OpenAI request/captured stream (#417) remains unavailable: an existence-only
-application Keychain query on 18 October returned item-not-found and retrieved no secret.
-The new schema-echo regression uses the real schema in a generated fixture; it is not a captured
-live stream. The owner Keychain save check was requested once and has no reported result.
-Keep both conditions open without repeating the pending question.
+The first Phase 3 checkpoint replaces ten duplicated OpenAI model/SSE/accumulator implementations
+with shared Application lifecycle and Responses transport (3,790 → 1,270 lines including facades).
+All ten existing type suites, 5,946 solution tests, zero-warning build, full format verification and
+sixteen affected native launches pass. Preserve legacy lifecycle and delay-recovery metadata policies.
+Next: provider-neutral descriptors/bindings, Anthropic/Ollama clients, production composition, then
+removal of the compatibility facades. Detailed evidence and local log paths are in the plan.
+Phase 3 remains in progress; the full phase-exit gate has not been run on this new code.
 
-The [microphone qualification](speech-direction/player-microphone-qualification/README.md)
-remains paused: preserve its 3 pass / 5 partial / 7 unperformed cases and all qualitative owner
-reports. Closed reply, recognition, Space, Ollama, examination and conversation-context work stays
-closed; its records remain linked from the ledger and qualification package. Do not infer a physical
-pass from synthetic or local-model checks. [Physical controls](input-direction/physical-controls-deferral.json)
-remain deferred pending hardware and authority; VoiceOver qualification remains unperformed.
-
-Keep all persistent closures and frozen acceptance evidence. Privacy/provider disclosures and
-accepted controls/dialogue accessibility remain closed. Future walking work uses the accepted
+Keep all persistent closures and frozen acceptance evidence. Microphone qualification remains
+paused at 3 pass / 5 partial / 7 unperformed; physical controls remain deferred pending hardware
+and authority, and VoiceOver remains unperformed. Accepted controls/dialogue, art, audio, speech
+repairs, privacy and provider disclosures stay closed. Future walking work uses the accepted
 [reference gait model](art-direction/reference-gait-model.md).
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
@@ -51,41 +39,42 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase2-player-defects — Fix the player-facing code-review-1 defects** (in_progress).
+**code-health-phase3-structured-decisions — Consolidate the structured-decision pipeline** (in_progress).
 
-Roadmap item: - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
+Roadmap item: - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
 
-Missing deliverable: Live fictional OpenAI request/captured stream for #417 and the already
-requested owner Keychain save result. PR #440 is merged at 3c4d6c63; all fourteen other Phase 2
-issues are closed. The complete 218-stage root gate and hosted CI on the unchanged b841afed product
-source have passed.
+Missing deliverable: Provider-neutral structured request/schema descriptors and bindings,
+Anthropic/Ollama structured clients and production composition, then removal of per-decision OpenAI
+compatibility facades. The shared Application pipeline and OpenAI transport/stream extraction across
+all ten decision kinds are implemented and verified.
 
-Continue only Phase 2 Task 13 in docs/superpowers/plans/2026-10-17-code-health-phase2-player-
-defects.md. The owner requested continuation after refreshing from the recently merged PR on
-2026-10-18. PR #440 merged at 3c4d6c639e196f5553ef86588b885b308adc1329 (2026-10-18 09:58:16
-Australia/Sydney); its tree equals reviewed branch head b71d057f. Issues #414-#416, #418-#420 and
-#424-#431 are confirmed closed; #417 remains open. The complete ./quality.sh on b841afed passed all
-218 stages and required markers; its summary is committed at
-docs/superpowers/evidence/2026-10-18-code-health-phase2-review-corrections-quality.json. Hosted runs
-39069028898 and 39071192535 passed all four jobs on the same product source. Merge CI run
-39077177772 was in progress at reconciliation; do not imply a terminal result. The 2026-10-18
-existence-only application Keychain recheck returned item-not-found without retrieving a secret. Do
-not repeat the pending owner question or imply live #417/Keychain success. Keep Phase 2 in progress
-and Phase 3 unselected until its remaining exit evidence exists or the owner explicitly changes that
-boundary. Preserve closed scopes; no merge or release is authorized by this continuation. Reuse
-unchanged passing product evidence for prose-only changes.
+Continue docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md at provider-
+neutral descriptors/bindings and Anthropic/Ollama clients. The first checkpoint migrated all ten
+existing OpenAI model/SSE/accumulator facades to shared Application lifecycle and Responses
+transport: 5946 solution tests, zero-warning build, full format verification, 53 focused shared-
+client/deadline cases and 16 affected native launches pass. Preserve the three legacy prelude-
+optional policies and delay-recovery metadata-after-text rejection; keep exact identities,
+document/event bounds, cancellation, disposal and redaction. Request serializers, schemas,
+deserializers and domain policies are unchanged. Do not repeat completed extraction or claim full
+Phase 3 completion; Main extraction and SmokeCheckHost remain later program items. Phase 2 live #417
+and owner Keychain checks are explicitly deferred by
+docs/superpowers/evidence/2026-10-18-phase3-authority.json, not passed. Preserve closed scopes and
+frozen evidence. Use D2 scoped format/build/test and affected native checks; one full quality gate
+is required at full Phase 3 exit. Commit/push reviewed changes; no merge or release.
 
-Done when: All code-review-1 issues except the Phase 1 follow-ups are closed by commits with pinning
-tests, the five Review Focus items in the program plan have pinning tests, and one full ./quality.sh
-passes.
+Done when: All ten structured-decision kinds use the shared tested Application pipeline and provider
+clients, provider-neutral bindings support OpenAI/Anthropic/Ollama, and no per-decision OpenAI
+transport/stream implementations remain; scoped tests and native integration pass.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-17-code-health-phase2-player-defects.md`
-- `docs/superpowers/evidence/2026-10-17-code-health-phase2-quality.json`
+- `docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md`
+- `src/Application/Characters/StructuredDecisionPipeline.cs`
+- `src/Infrastructure/Characters/OpenAiResponsesStructuredClient.cs`
 
-Boundary: Player-facing defect fixes and their tests only; no new gameplay features (Phase 4) and no
-pipeline consolidation (Phase 3).
+Boundary: Phase 3 structured-decision consolidation only. Preserve domain decisions,
+prompts/schemas, identity policies and gameplay behavior. No new sabotage types, Phase 4 gameplay,
+Main/SmokeCheckHost extraction, phase exit claim, live-provider qualification or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
