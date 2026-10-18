@@ -623,4 +623,6 @@ for mode in pending once hidden hiddenreply unavailable stopped timeout held inv
         godot --headless --max-fps 60 --path "$repository_root/game"
 done
 
+run_check 300 godot --headless --path "$repository_root/game" res://MainProcessOrderCheck.tscn
+
 smoke_summary

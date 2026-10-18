@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "context": "After a multi-agent review of PR #449 (Main conversation-turn and focused-search coordinators), the owner was shown the should-fix and suggestion findings.",
+  "owner_statement": "Please aaddress all \"should fix\" as ewell as the suggestions. Only what you cannot resolve in this session lodge as issue on github. Then review your changes until happy with the correctness, then commit and push into this PR",
+  "effect": "Reopen the closed code-health-phase3-main-coordinators scope only to apply the PR #449 review findings, re-review, verify, publish to the PR branch and file GitHub issues for anything that cannot be resolved in this session.",
+  "limits": "No merge, release, SmokeCheckHost work or phase-exit claim. The active slice code-health-phase3-smoke-check-host stays queued; its instructions only gain the #448 quarantine note."
+}

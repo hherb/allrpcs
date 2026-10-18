@@ -42,38 +42,38 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase3-main-coordinators — Extract the conversation-turn and focused-search coordinators** (ready).
+**code-health-phase3-smoke-check-host — Instantiate only the requested check through a SmokeCheckHost** (ready).
 
 Roadmap item: - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
 
-Missing deliverable: A bounded coordinator-extraction plan and tested Application conversation-
-turn/focused-search state machines, thin native adapters, explicit process priorities and an order
-check. The structured-decision consolidation is complete and closed.
+Missing deliverable: A bounded SmokeCheckHost plan and host that instantiates only the requested
+engine check, removing the always-present check nodes from Main.tscn. The structured-decision and
+Main-coordinator items are complete and closed.
 
-Continue Phase 3 program item 2 in docs/superpowers/plans/2026-10-17-code-health-and-playable-
-slice.md. First inspect Main.cs and the current conversation/focused-search owners, then write the
-finite extraction plan in docs/superpowers/plans/2026-10-18-code-health-phase3-main-coordinators.md.
-Extract the existing state machines into Application tests and thin native adapters without changing
-gameplay, input semantics or exact request/restore/cancellation ownership. Set explicit process
-priorities and verify dependency order. Do not reopen the closed structured-decision slice or
-deferred Phase 2 checks. Use approved D2 format/build/test and affected native launches; the full
-root gate remains due at complete Phase 3 exit. Complete review, documentation and authorized
-commit/push for the bounded work; no merge or release.
+Continue Phase 3 program item 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-
+slice.md. First count the check nodes in Main.tscn and how each is gated and launched
+(scripts/smoke-godot.sh, tests/Architecture.Tests/CheckRegistrationTests.cs, quality.py current-
+revision stages), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-
+phase3-smoke-check-host.md. Migrate checks in batches behind their existing launches without
+changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing.
+Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase
+3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate.
+ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure, quarantined
+as #448 so it no longer fails the suite. Use D2 format/build/test and affected native launches;
+commit/push reviewed work; no merge or release.
 
-Done when: Both existing state machines are in tested Application coordinators, Main delegates
-through thin native adapters, exact lifecycle and input behavior is preserved, explicit process
-order is checked, and scoped format/build/test/native checks pass with synced continuation evidence
-and review-branch publication.
+Done when: Main.tscn holds no check nodes, every check still launches through the host with
+unchanged assertions, check registration still passes, and scoped format/build/test/native checks
+pass with synced continuation evidence and review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-18-code-health-phase3-main-coordinators.md`
-- `src/Application/Dialogue/ConversationTurnCoordinator.cs`
-- `src/Application/Input/FocusedSearchInputCoordinator.cs`
+- `docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md`
+- `game/SmokeCheckHost.cs`
 
-Boundary: Phase 3 coordinator extraction only. Preserve domain behavior, prompts/schemas, exact
-identities and frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, SmokeCheckHost
-migration, physical/provider qualification, phase-exit claim or release.
+Boundary: Phase 3 SmokeCheckHost only. Preserve check assertions, frozen/closed evidence and
+gameplay. No new gameplay or sabotage kind, Phase 4, physical/provider qualification, phase-exit
+claim or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

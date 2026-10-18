@@ -229,7 +229,13 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
         }
 
         DrainObservedUpdates();
-        _ = task.Exception;
+        if (task.Exception is { } fault)
+        {
+            // A warning, not an error: the fault already becomes a visible Failed result, and smoke
+            // launches treat "ERROR: ...Exception:" lines as unhandled exceptions.
+            GD.PushWarning($"Character-model generation faulted unexpectedly: {fault.Flatten()}");
+        }
+
         CharacterModelStreamSnapshot result = task.IsCompletedSuccessfully
             ? task.Result
             : InstallUnexpectedFailure();

@@ -6,7 +6,7 @@ namespace Allrpcs.Game;
 /// <summary>
 /// Retains one temporary generation request with its exact response-validation snapshots.
 /// </summary>
-public sealed record TemporaryCharacterModelGenerationInput
+public sealed record TemporaryCharacterModelGenerationInput : ICharacterModelGenerationInput
 {
     /// <summary>Creates one immutable temporary generation-input bundle.</summary>
     public TemporaryCharacterModelGenerationInput(

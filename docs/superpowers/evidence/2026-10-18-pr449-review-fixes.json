@@ -1,0 +1,57 @@
+{
+  "id": "code-health-phase3-pr449-review-fixes",
+  "status": "complete",
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-18-pr449-review-fixes-authority.json",
+  "baseline": {
+    "reviewed_pr": 449,
+    "reviewed_commit": "daad72a36cdb5666f9311ddf3957a45818811ddd",
+    "main": "b0e390f5"
+  },
+  "scope": "Apply the PR #449 review findings to the Main coordinator extraction without changing gameplay, input semantics or request/restore/cancellation ownership.",
+  "fixes": [
+    "The conditional-collection scaffold check moved from IConversationTurnPorts into ConversationTurnNodePorts.OfferExamination (covered by CharacterExaminationFlowSmokeCheck).",
+    "The coordinator's constants are private.",
+    "The wagon-clue route throws a named exception for a missing Seeker perception instead of passing null! on.",
+    "Main.ConversationTurns throws a named exception if used before _Ready completes.",
+    "CharacterModelGenerationFlowController logs an unexpected generation fault as a warning instead of discarding it.",
+    "Four new tests (invisible healer on continuation, continuation before a same-frame submission, both cancellation guards); the cancel fake refuses a non-cancellable turn; the unreachable generating-with-result test is replaced by the reachable case. Each new test fails when its guard is removed.",
+    "Doc corrections in the ports, coordinators, MainProcessOrder, the plan and this record."
+  ],
+  "corrections_to_closed_record": [
+    "docs/superpowers/evidence/2026-10-18-phase3-main-coordinators.json stays as committed. Read its 'each port member forwards to one existing node member' as a thin forward to existing node members, and its 'ten same-frame dependencies' as ten tree-order pins: seven same-frame process dependencies and three nodes without a per-frame callback.",
+    "Only Main gets an explicit priority; re-prioritizing its children would reorder them against hundreds of default-priority siblings (program plan item 2 said 'each').",
+    "Main's -40 priority also makes the 11 audio proof hosts that instance Main.tscn process after Main; they observe audio driven at -50, and their launches pass.",
+    "Its native 'failure' entry predates the #448 quarantine commit daad72a3."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 37,
+      "application": 1524,
+      "domain": 2877,
+      "infrastructure": 1609,
+      "total": 6047,
+      "failed": 0,
+      "new_for_slice": 40
+    },
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 363,
+      "failed": 0,
+      "quarantined": 3,
+      "note": "All three quarantined launches (#437, #439, #448) passed in this run."
+    },
+    "retry_flake": "ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry, measured alongside origin/main b0e390f5: alone 0/30 vs 0/30, 16-core CPU load 0/5 vs 0/5, three concurrent streams 0/12 vs 0/12. Recorded on #448; main and branch behave alike.",
+    "mutation": "Removing the healer filter, swapping continuation and submission, or removing either CanCancel guard each fails exactly its new test.",
+    "review": "Five review agents (code, tests, silent failures, types, comments) on PR #449, then a self-review of the fix diff."
+  },
+  "issues": [
+    "#448 updated with the retry measurements; no new issue was needed."
+  ]
+}

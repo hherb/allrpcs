@@ -13,3 +13,4 @@
 # Quarantined launches are tracked under the smoke-quarantine label (see #421).
 ALLRPCS_ORDINARY_SAGE_INTERJECTION_CHECK=1 #437
 ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK=1 #439
+ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry #448
