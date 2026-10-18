@@ -6,10 +6,13 @@ namespace Allrpcs.Application.Tests.Characters;
 
 public sealed class CharacterSabotageActionModelBindingTests
 {
-    [Fact]
-    public void RetainsExactOpenAiSettingsAndModelWithoutInvokingIt()
+    [Theory]
+    [InlineData("openai")]
+    [InlineData("anthropic")]
+    [InlineData("ollama")]
+    public void RetainsExactSettingsAndModelWithoutInvokingIt(string provider)
     {
-        CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
+        CharacterModelSettings settings = new(CharacterModelProvider.Parse(provider), "model-test");
         ThrowingModel model = new();
 
         CharacterSabotageActionModelBinding binding = new(settings, model);
@@ -20,7 +23,7 @@ public sealed class CharacterSabotageActionModelBindingTests
     }
 
     [Fact]
-    public void RejectsNullsAndNonOpenAiSettings()
+    public void RejectsNullsAndAcceptsOtherProviders()
     {
         CharacterModelSettings openAi = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -30,8 +33,7 @@ public sealed class CharacterSabotageActionModelBindingTests
             new CharacterSabotageActionModelBinding(null!, model));
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterSabotageActionModelBinding(openAi, null!));
-        Assert.Throws<ArgumentException>(() =>
-            new CharacterSabotageActionModelBinding(anthropic, model));
+        Assert.Same(model, new CharacterSabotageActionModelBinding(anthropic, model).Model);
         Assert.Equal(0, model.CallCount);
     }
 

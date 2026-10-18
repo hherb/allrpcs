@@ -17,14 +17,14 @@ public sealed class OpenAiCharacterSabotageActionModelBindingFactoryTests
         ThrowingCredentialSource credentialSource = new();
 
         CharacterSabotageActionModelBinding binding =
-            OpenAiCharacterSabotageActionModelBindingFactory.Create(
+            CharacterSabotageActionModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource);
 
         Assert.Same(settings, binding.Settings);
-        OpenAiCharacterSabotageActionModel model =
-            Assert.IsType<OpenAiCharacterSabotageActionModel>(binding.Model);
+        CharacterSabotageActionModel model =
+            Assert.IsType<CharacterSabotageActionModel>(binding.Model);
         object transport = Field<object>(model, "client");
         Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
         Assert.Same(client, Field<HttpClient>(transport, "client"));
@@ -35,7 +35,7 @@ public sealed class OpenAiCharacterSabotageActionModelBindingFactoryTests
     }
 
     [Fact]
-    public void RejectsInvalidInputsAndExposesOnlyTwoCreationOverloads()
+    public void RejectsInvalidInputsAndExposesOneProviderNeutralCreationMethod()
     {
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -43,16 +43,16 @@ public sealed class OpenAiCharacterSabotageActionModelBindingFactoryTests
         ThrowingCredentialSource credentials = new();
 
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterSabotageActionModelBindingFactory.Create(null!, client, credentials));
+            CharacterSabotageActionModelBindingFactory.Create(null!, client, credentials));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterSabotageActionModelBindingFactory.Create(settings, null!, credentials));
+            CharacterSabotageActionModelBindingFactory.Create(settings, null!, credentials));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterSabotageActionModelBindingFactory.Create(settings, client, null!));
-        Assert.Throws<ArgumentException>(() =>
-            OpenAiCharacterSabotageActionModelBindingFactory.Create(anthropic, client, credentials));
-        MethodInfo[] methods = typeof(OpenAiCharacterSabotageActionModelBindingFactory)
+            CharacterSabotageActionModelBindingFactory.Create(settings, client, null!));
+        Assert.Throws<ArgumentNullException>(() =>
+            CharacterSabotageActionModelBindingFactory.Create(anthropic, client, credentials));
+        MethodInfo[] methods = typeof(CharacterSabotageActionModelBindingFactory)
             .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
-        Assert.Equal(2, methods.Length);
+        Assert.Single(methods);
         Assert.All(methods, method =>
         {
             Assert.Equal("Create", method.Name);

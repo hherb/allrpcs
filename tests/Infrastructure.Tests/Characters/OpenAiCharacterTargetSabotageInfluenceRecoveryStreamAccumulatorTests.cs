@@ -1,6 +1,7 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Tests.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -13,7 +14,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     {
         CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create();
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
         string response = DecisionDocument(input.Actor.Identity.Id.Value, abstain ? null : 0);
 
@@ -37,7 +38,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     {
         CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create();
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
         string response = DecisionDocument(input.Actor.Identity.Id.Value, abstain ? null : 0);
 
@@ -61,7 +62,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     {
         CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create();
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
 
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
@@ -82,7 +83,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     [InlineData("{\"type\":\"response.failed\",\"detail\":\"secret\"}")]
     public void RejectsMalformedPartialUnexpectedRefusedAndFailedEvents(string serializedEvent)
     {
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator = AccumulateCharacterTargetSabotageInfluenceRecovery(
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create().Request);
 
         InvalidDataException exception = Assert.Throws<InvalidDataException>(
@@ -99,14 +100,14 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
         CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create();
         string response = DecisionDocument(input.Actor.Identity.Id.Value, null);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator duplicateStart = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> duplicateStart = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator outOfOrder = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> outOfOrder = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator invalid = new(input.Request);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator duplicateDone = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> invalid = AccumulateCharacterTargetSabotageInfluenceRecovery(input.Request);
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> duplicateDone = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator excessive = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> excessive = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
 
         Assert.Null(duplicateStart.Apply("{\"type\":\"response.created\"}"));
@@ -128,41 +129,19 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     }
 
     [Fact]
-    public void RejectsNullsAndOversizedEventsAndExposesOnlyTheBoundedAccumulatorSurface()
+    public void RejectsNullsAndOversizedEvents()
     {
         CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Input input =
             CharacterTargetSabotageInfluenceRecoveryDecisionJsonTestInput.Create();
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator = AccumulateCharacterTargetSabotageInfluenceRecovery(
             input.Request);
-        Type accumulatorType = typeof(
-            OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator);
-        System.Reflection.ConstructorInfo constructor = Assert.Single(
-            accumulatorType.GetConstructors());
-        System.Reflection.MethodInfo method = Assert.Single(
-            accumulatorType.GetMethods().Where(candidate => candidate.DeclaringType == accumulatorType));
-        System.Reflection.FieldInfo field = Assert.Single(accumulatorType.GetFields(
-            System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.Static
-                | System.Reflection.BindingFlags.DeclaredOnly));
-
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator(null!));
+            AccumulateCharacterTargetSabotageInfluenceRecovery(null!));
         Assert.Throws<ArgumentNullException>(() => accumulator.Apply(null!));
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(new string(
             'x',
-            OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator.MaximumEventLength + 1)));
-        Assert.Equal(
-            [typeof(CharacterTargetSabotageInfluenceRecoveryConsiderationRequest)],
-            constructor.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Equal("Apply", method.Name);
-        Assert.Equal(typeof(CharacterTargetSabotageInfluenceRecoveryDecision), method.ReturnType);
-        Assert.Equal([typeof(string)], method.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Equal("MaximumEventLength", field.Name);
-        Assert.True(field.IsLiteral);
-        Assert.Empty(accumulatorType.GetProperties());
-        Assert.Empty(accumulatorType.GetEvents());
-        Assert.True(accumulatorType.IsSealed);
-        AssertRequestUnchanged(input);
+            OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision>.MaximumEventLength + 1)));
+
     }
 
     internal static string DecisionDocument(string actorId, int? selectedCandidateIndex) =>
@@ -181,7 +160,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumula
     });
 
     private static void Begin(
-        OpenAiCharacterTargetSabotageInfluenceRecoveryStreamAccumulator accumulator)
+        OpenAiStructuredDecisionAccumulator<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest, CharacterTargetSabotageInfluenceRecoveryDecision> accumulator)
     {
         Assert.Null(accumulator.Apply("{\"type\":\"response.created\"}"));
         Assert.Null(accumulator.Apply("{\"type\":\"response.in_progress\"}"));

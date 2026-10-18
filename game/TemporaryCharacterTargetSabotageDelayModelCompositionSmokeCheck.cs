@@ -26,15 +26,15 @@ public partial class TemporaryCharacterTargetSabotageDelayModelCompositionSmokeC
         ICharacterTargetSabotageDelayDecisionModel offline = source.TakeModel();
 
         bool initialized = composition.TryInitialize(initialSettings, client, credentials);
-        OpenAiCharacterTargetSabotageDelayModel? initialModel =
-            source.TakeModel() as OpenAiCharacterTargetSabotageDelayModel;
+        CharacterTargetSabotageDelayModel? initialModel =
+            source.TakeModel() as CharacterTargetSabotageDelayModel;
         bool rejectedRepeatedInitialization = !composition.TryInitialize(
             initialSettings,
             client,
             credentials);
         bool replaced = composition.TryReplace(replacementSettings, client, credentials);
-        OpenAiCharacterTargetSabotageDelayModel? replacementModel =
-            source.TakeModel() as OpenAiCharacterTargetSabotageDelayModel;
+        CharacterTargetSabotageDelayModel? replacementModel =
+            source.TakeModel() as CharacterTargetSabotageDelayModel;
         bool cleared = composition.TryClear();
         bool resumedOffline = ReferenceEquals(source.TakeModel(), offline);
         bool rejectedRepeatedClear = !composition.TryClear();
@@ -68,7 +68,7 @@ public partial class TemporaryCharacterTargetSabotageDelayModelCompositionSmokeC
     }
 
     private static bool RetainsExactDependencies(
-        OpenAiCharacterTargetSabotageDelayModel model,
+        CharacterTargetSabotageDelayModel model,
         CharacterModelSettings settings,
         NetHttpClient client,
         IOpenAiCredentialSource credentials)

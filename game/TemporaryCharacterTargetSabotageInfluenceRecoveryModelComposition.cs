@@ -5,7 +5,7 @@ using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Game;
 
-/// <summary>Composes one explicit OpenAI influence-recovery binding into one exact model source.</summary>
+/// <summary>Composes one explicit provider-selected influence-recovery binding into one exact model source.</summary>
 public sealed class TemporaryCharacterTargetSabotageInfluenceRecoveryModelComposition
 {
     private readonly TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource source;
@@ -23,13 +23,14 @@ public sealed class TemporaryCharacterTargetSabotageInfluenceRecoveryModelCompos
     public bool TryInitialize(
         CharacterModelSettings settings,
         HttpClient client,
-        IOpenAiCredentialSource credentialSource)
+        IOpenAiCredentialSource? credentialSource = null,
+        IAnthropicCredentialSource? anthropicCredentials = null, OllamaEndpoint? ollamaEndpoint = null)
     {
         CharacterTargetSabotageInfluenceRecoveryModelBinding replacement =
-            OpenAiCharacterTargetSabotageInfluenceRecoveryModelBindingFactory.Create(
+            CharacterTargetSabotageInfluenceRecoveryModelBindingFactory.Create(
                 settings,
                 client,
-                credentialSource);
+                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
         if (binding is not null || !source.TryInitializeBinding(replacement))
         {
             return false;
@@ -43,13 +44,14 @@ public sealed class TemporaryCharacterTargetSabotageInfluenceRecoveryModelCompos
     public bool TryReplace(
         CharacterModelSettings settings,
         HttpClient client,
-        IOpenAiCredentialSource credentialSource)
+        IOpenAiCredentialSource? credentialSource = null,
+        IAnthropicCredentialSource? anthropicCredentials = null, OllamaEndpoint? ollamaEndpoint = null)
     {
         CharacterTargetSabotageInfluenceRecoveryModelBinding replacement =
-            OpenAiCharacterTargetSabotageInfluenceRecoveryModelBindingFactory.Create(
+            CharacterTargetSabotageInfluenceRecoveryModelBindingFactory.Create(
                 settings,
                 client,
-                credentialSource);
+                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
         if (binding is null || !source.TryReplaceBinding(binding, replacement))
         {
             return false;

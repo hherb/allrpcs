@@ -7,6 +7,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -19,7 +20,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
             OpenAiCharacterTargetSabotageInfluenceRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageInfluenceModel model = new(
+        CharacterTargetSabotageInfluenceModel model = CreateCharacterTargetSabotageInfluence(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -48,7 +49,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageInfluenceModel model = new(
+        CharacterTargetSabotageInfluenceModel model = CreateCharacterTargetSabotageInfluence(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -73,7 +74,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
             {
                 Content = new StringContent("secret provider response"),
             }));
-        OpenAiCharacterTargetSabotageInfluenceModel rejected = new(
+        CharacterTargetSabotageInfluenceModel rejected = CreateCharacterTargetSabotageInfluence(
             rejectedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -86,7 +87,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
 
         using HttpClient jsonClient = new(new CapturingHandler(_ =>
             EventStreamResponse("{}", "application/json")));
-        OpenAiCharacterTargetSabotageInfluenceModel json = new(
+        CharacterTargetSabotageInfluenceModel json = CreateCharacterTargetSabotageInfluence(
             jsonClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -101,7 +102,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
     {
         using HttpClient transportClient = new(new CapturingHandler(_ =>
             throw new HttpRequestException("secret network detail")));
-        OpenAiCharacterTargetSabotageInfluenceModel transport = new(
+        CharacterTargetSabotageInfluenceModel transport = CreateCharacterTargetSabotageInfluence(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -113,7 +114,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
 
         using HttpClient semanticClient = new(new CapturingHandler(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" }))));
-        OpenAiCharacterTargetSabotageInfluenceModel semantic = new(
+        CharacterTargetSabotageInfluenceModel semantic = CreateCharacterTargetSabotageInfluence(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -125,7 +126,7 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        OpenAiCharacterTargetSabotageInfluenceModel cancelling = new(
+        CharacterTargetSabotageInfluenceModel cancelling = CreateCharacterTargetSabotageInfluence(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -143,15 +144,15 @@ public sealed class OpenAiCharacterTargetSabotageInfluenceModelTests
     {
         using HttpClient client = new(new CapturingHandler(_ => throw new NotSupportedException()));
         StubCredentialSource credentials = new("test-secret");
-        OpenAiCharacterTargetSabotageInfluenceModel model = new(client, credentials, Settings());
+        CharacterTargetSabotageInfluenceModel model = CreateCharacterTargetSabotageInfluence(client, credentials, Settings());
 
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceModel(null!, credentials, Settings()));
+            CreateCharacterTargetSabotageInfluence(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceModel(client, null!, Settings()));
+            CreateCharacterTargetSabotageInfluence(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageInfluenceModel(client, credentials, null!));
-        Assert.Throws<ArgumentException>(() => new OpenAiCharacterTargetSabotageInfluenceModel(
+            CreateCharacterTargetSabotageInfluence(client, credentials, null!));
+        Assert.Throws<ArgumentNullException>(() => CreateCharacterTargetSabotageInfluence(
             client,
             credentials,
             new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));

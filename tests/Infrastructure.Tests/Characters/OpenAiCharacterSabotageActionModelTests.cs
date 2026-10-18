@@ -7,6 +7,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -19,7 +20,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
             CharacterSabotageActionDecisionJsonDeserializerTests.CreateInput();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(input)));
         using HttpClient client = new(handler);
-        OpenAiCharacterSabotageActionModel model = new(
+        CharacterSabotageActionModel model = CreateCharacterSabotageAction(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -48,7 +49,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterSabotageActionModel model = new(
+        CharacterSabotageActionModel model = CreateCharacterSabotageAction(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -73,7 +74,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
             {
                 Content = new StringContent("secret provider response"),
             }));
-        OpenAiCharacterSabotageActionModel rejected = new(
+        CharacterSabotageActionModel rejected = CreateCharacterSabotageAction(
             rejectedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -86,7 +87,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
 
         using HttpClient jsonClient = new(new CapturingHandler(_ =>
             EventStreamResponse("{}", "application/json")));
-        OpenAiCharacterSabotageActionModel json = new(
+        CharacterSabotageActionModel json = CreateCharacterSabotageAction(
             jsonClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -101,7 +102,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
     {
         using HttpClient transportClient = new(new CapturingHandler(_ =>
             throw new HttpRequestException("secret network detail")));
-        OpenAiCharacterSabotageActionModel transport = new(
+        CharacterSabotageActionModel transport = CreateCharacterSabotageAction(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -113,7 +114,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
 
         using HttpClient semanticClient = new(new CapturingHandler(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" }))));
-        OpenAiCharacterSabotageActionModel semantic = new(
+        CharacterSabotageActionModel semantic = CreateCharacterSabotageAction(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -125,7 +126,7 @@ public sealed class OpenAiCharacterSabotageActionModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        OpenAiCharacterSabotageActionModel cancelling = new(
+        CharacterSabotageActionModel cancelling = CreateCharacterSabotageAction(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -143,15 +144,15 @@ public sealed class OpenAiCharacterSabotageActionModelTests
     {
         using HttpClient client = new(new CapturingHandler(_ => throw new NotSupportedException()));
         StubCredentialSource credentials = new("test-secret");
-        OpenAiCharacterSabotageActionModel model = new(client, credentials, Settings());
+        CharacterSabotageActionModel model = CreateCharacterSabotageAction(client, credentials, Settings());
 
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterSabotageActionModel(null!, credentials, Settings()));
+            CreateCharacterSabotageAction(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterSabotageActionModel(client, null!, Settings()));
+            CreateCharacterSabotageAction(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterSabotageActionModel(client, credentials, null!));
-        Assert.Throws<ArgumentException>(() => new OpenAiCharacterSabotageActionModel(
+            CreateCharacterSabotageAction(client, credentials, null!));
+        Assert.Throws<ArgumentNullException>(() => CreateCharacterSabotageAction(
             client,
             credentials,
             new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));

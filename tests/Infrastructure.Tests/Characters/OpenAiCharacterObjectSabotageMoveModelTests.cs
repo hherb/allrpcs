@@ -7,6 +7,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -19,7 +20,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterObjectSabotageMoveModel model = new(
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -53,7 +54,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterObjectSabotageMoveModel model = new(
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(
             client,
             new StubCredentialSource("test-secret"),
             Settings(),
@@ -72,7 +73,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterObjectSabotageMoveModel model = new(
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -97,7 +98,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
             Content = new ThrowingContent("secret provider response"),
         });
         using HttpClient client = new(handler);
-        OpenAiCharacterObjectSabotageMoveModel model = new(
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -121,7 +122,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request), mediaType));
         using HttpClient client = new(handler);
-        OpenAiCharacterObjectSabotageMoveModel model = new(
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -135,7 +136,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
     {
         CapturingHandler transport = new(_ => throw new HttpRequestException("secret network detail"));
         using HttpClient transportClient = new(transport);
-        OpenAiCharacterObjectSabotageMoveModel transportModel = new(
+        CharacterObjectSabotageMoveModel transportModel = CreateCharacterObjectSabotageMove(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -148,7 +149,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
         CapturingHandler semantic = new(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" })));
         using HttpClient semanticClient = new(semantic);
-        OpenAiCharacterObjectSabotageMoveModel semanticModel = new(
+        CharacterObjectSabotageMoveModel semanticModel = CreateCharacterObjectSabotageMove(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -160,7 +161,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        OpenAiCharacterObjectSabotageMoveModel cancellingModel = new(
+        CharacterObjectSabotageMoveModel cancellingModel = CreateCharacterObjectSabotageMove(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -181,25 +182,21 @@ public sealed class OpenAiCharacterObjectSabotageMoveModelTests
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
         StubCredentialSource credentials = new("test-secret");
-        OpenAiCharacterObjectSabotageMoveModel model = new(client, credentials, Settings());
+        CharacterObjectSabotageMoveModel model = CreateCharacterObjectSabotageMove(client, credentials, Settings());
 
         await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             await model.DecideAsync(null!, CancellationToken.None));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterObjectSabotageMoveModel(null!, credentials, Settings()));
+            CreateCharacterObjectSabotageMove(null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterObjectSabotageMoveModel(client, null!, Settings()));
+            CreateCharacterObjectSabotageMove(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterObjectSabotageMoveModel(client, credentials, null!));
-        Assert.Throws<ArgumentException>(() => new OpenAiCharacterObjectSabotageMoveModel(
+            CreateCharacterObjectSabotageMove(client, credentials, null!));
+        Assert.Throws<ArgumentNullException>(() => CreateCharacterObjectSabotageMove(
             client,
             credentials,
             new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));
-        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterObjectSabotageMoveModel(
-            client,
-            credentials,
-            Settings(),
-            null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterObjectSabotageMoveModel(null!));
 
         Assert.Contains(typeof(ICharacterObjectSabotageMoveDecisionModel), model.GetType().GetInterfaces());
         System.Reflection.MethodInfo method = Assert.Single(model.GetType().GetMethods().Where(

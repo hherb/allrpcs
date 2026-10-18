@@ -21,7 +21,7 @@ public sealed class CharacterObjectSabotageSubstitutionModelBindingTests
     }
 
     [Fact]
-    public void RejectsNullsAndNonOpenAiSettingsWithoutInvokingTheModel()
+    public void RejectsNullsAndAcceptsOtherProvidersWithoutInvokingTheModel()
     {
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -31,8 +31,7 @@ public sealed class CharacterObjectSabotageSubstitutionModelBindingTests
             new CharacterObjectSabotageSubstitutionModelBinding(null!, model));
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterObjectSabotageSubstitutionModelBinding(settings, null!));
-        Assert.Throws<ArgumentException>(() =>
-            new CharacterObjectSabotageSubstitutionModelBinding(anthropic, model));
+        Assert.Same(model, new CharacterObjectSabotageSubstitutionModelBinding(anthropic, model).Model);
         Assert.Equal(0, model.CallCount);
     }
 

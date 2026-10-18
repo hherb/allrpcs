@@ -1,6 +1,7 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Tests.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -13,7 +14,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator accumulator = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> accumulator = AccumulateCharacterObjectSabotageMove(request);
         string? selectedEvidenceId = abstain
             ? null
             : Assert.Single(request.Candidates).Evidence.Evidence.EvidenceId.Value;
@@ -46,7 +47,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator accumulator = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> accumulator = AccumulateCharacterObjectSabotageMove(request);
         string? selectedEvidenceId = abstain
             ? null
             : Assert.Single(request.Candidates).Evidence.Evidence.EvidenceId.Value;
@@ -79,7 +80,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator accumulator = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> accumulator = AccumulateCharacterObjectSabotageMove(request);
 
         Assert.Throws<InvalidDataException>(() => accumulator.Apply(serializedEvent));
         Assert.Throws<InvalidOperationException>(() => accumulator.Apply(
@@ -91,7 +92,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator accumulator = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> accumulator = AccumulateCharacterObjectSabotageMove(request);
         string response = DecisionDocument(request.Character.Identity.Id.Value, null);
         string[] metadataEvents =
         [
@@ -138,7 +139,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     [InlineData("{\"type\":\"error\",\"detail\":\"secret\"}")]
     public void RejectsMalformedUnexpectedIncompleteAndProviderFailureEvents(string serializedEvent)
     {
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator accumulator = new(
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> accumulator = AccumulateCharacterObjectSabotageMove(
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest());
 
         InvalidDataException exception = Assert.Throws<InvalidDataException>(
@@ -153,9 +154,9 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
         string response = DecisionDocument(request.Character.Identity.Id.Value, null);
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator invalid = new(request);
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator duplicate = new(request);
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator completed = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> invalid = AccumulateCharacterObjectSabotageMove(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> duplicate = AccumulateCharacterObjectSabotageMove(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> completed = AccumulateCharacterObjectSabotageMove(request);
 
         Assert.Throws<InvalidDataException>(() => invalid.Apply(Done(
             DecisionDocument("unknown-character", null))));
@@ -176,13 +177,13 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
     {
         CharacterObjectSabotageMoveConsiderationRequest request =
             OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest();
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator excessiveEvent = new(request);
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator excessiveDeltas = new(request);
-        OpenAiCharacterObjectSabotageMoveStreamAccumulator excessiveDone = new(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> excessiveEvent = AccumulateCharacterObjectSabotageMove(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> excessiveDeltas = AccumulateCharacterObjectSabotageMove(request);
+        OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision> excessiveDone = AccumulateCharacterObjectSabotageMove(request);
 
         Assert.Throws<InvalidDataException>(() => excessiveEvent.Apply(new string(
             'x',
-            OpenAiCharacterObjectSabotageMoveStreamAccumulator.MaximumEventLength + 1)));
+            OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageMoveConsiderationRequest, CharacterObjectSabotageMoveDecision>.MaximumEventLength + 1)));
         Assert.Null(excessiveDeltas.Apply(Delta(new string(
             'x',
             CharacterObjectSabotageMoveDecisionJsonDeserializer.MaximumDocumentLength))));
@@ -191,34 +192,11 @@ public sealed class OpenAiCharacterObjectSabotageMoveStreamAccumulatorTests
             'x',
             CharacterObjectSabotageMoveDecisionJsonDeserializer.MaximumDocumentLength + 1))));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterObjectSabotageMoveStreamAccumulator(null!));
+            AccumulateCharacterObjectSabotageMove(null!));
         Assert.Throws<ArgumentNullException>(() => excessiveEvent.Apply(null!));
     }
 
-    [Fact]
-    public void ExposesOnlyTheBoundedAccumulatorSurface()
-    {
-        Type accumulatorType = typeof(OpenAiCharacterObjectSabotageMoveStreamAccumulator);
-        System.Reflection.ConstructorInfo constructor = Assert.Single(accumulatorType.GetConstructors());
-        System.Reflection.MethodInfo method = Assert.Single(
-            accumulatorType.GetMethods().Where(candidate => candidate.DeclaringType == accumulatorType));
-        System.Reflection.FieldInfo field = Assert.Single(accumulatorType.GetFields(
-            System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.Static
-                | System.Reflection.BindingFlags.DeclaredOnly));
 
-        Assert.Equal(
-            [typeof(CharacterObjectSabotageMoveConsiderationRequest)],
-            constructor.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Equal("Apply", method.Name);
-        Assert.Equal(typeof(CharacterObjectSabotageMoveDecision), method.ReturnType);
-        Assert.Equal([typeof(string)], method.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Equal("MaximumEventLength", field.Name);
-        Assert.True(field.IsLiteral);
-        Assert.Empty(accumulatorType.GetProperties());
-        Assert.Empty(accumulatorType.GetEvents());
-        Assert.True(accumulatorType.IsSealed);
-    }
 
     internal static string DecisionDocument(string characterId, string? selectedEvidenceId) =>
         System.Text.Json.JsonSerializer.Serialize(new { characterId, selectedEvidenceId });
