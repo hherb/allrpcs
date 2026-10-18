@@ -21,7 +21,7 @@ public sealed class CharacterDialogueMisquotationEvidenceModelBindingTests
     }
 
     [Fact]
-    public void RejectsNullsAndNonOpenAiSettingsWithoutInvokingTheModel()
+    public void RejectsNullsAndAcceptsOtherProvidersWithoutInvokingTheModel()
     {
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -31,8 +31,7 @@ public sealed class CharacterDialogueMisquotationEvidenceModelBindingTests
             new CharacterDialogueMisquotationEvidenceModelBinding(null!, model));
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterDialogueMisquotationEvidenceModelBinding(settings, null!));
-        Assert.Throws<ArgumentException>(() =>
-            new CharacterDialogueMisquotationEvidenceModelBinding(anthropic, model));
+        Assert.Same(model, new CharacterDialogueMisquotationEvidenceModelBinding(anthropic, model).Model);
         Assert.Equal(0, model.CallCount);
     }
 

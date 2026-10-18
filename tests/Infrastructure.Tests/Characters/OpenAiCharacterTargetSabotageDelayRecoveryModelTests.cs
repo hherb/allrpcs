@@ -7,6 +7,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -19,7 +20,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
             CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request;
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel model = new(
+        CharacterTargetSabotageDelayRecoveryModel model = CreateCharacterTargetSabotageDelayRecovery(
             client,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -47,7 +48,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
             CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request;
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(request)));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel model = new(
+        CharacterTargetSabotageDelayRecoveryModel model = CreateCharacterTargetSabotageDelayRecovery(
             client,
             new StubCredentialSource("test-secret"),
             Settings(),
@@ -66,7 +67,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel model = new(
+        CharacterTargetSabotageDelayRecoveryModel model = CreateCharacterTargetSabotageDelayRecovery(
             client,
             new StubCredentialSource(apiKey),
             Settings());
@@ -93,7 +94,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
             {
                 Content = new StringContent("secret provider response"),
             }));
-        OpenAiCharacterTargetSabotageDelayRecoveryModel rejected = new(
+        CharacterTargetSabotageDelayRecoveryModel rejected = CreateCharacterTargetSabotageDelayRecovery(
             rejectedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -104,7 +105,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
 
         using HttpClient jsonClient = new(new CapturingHandler(_ =>
             EventStreamResponse("{}", "application/json")));
-        OpenAiCharacterTargetSabotageDelayRecoveryModel json = new(
+        CharacterTargetSabotageDelayRecoveryModel json = CreateCharacterTargetSabotageDelayRecovery(
             jsonClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -119,7 +120,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
             CharacterTargetSabotageDelayRecoveryDecisionJsonTestInput.Create().Request;
         using HttpClient transportClient = new(new CapturingHandler(_ =>
             throw new HttpRequestException("secret network detail")));
-        OpenAiCharacterTargetSabotageDelayRecoveryModel transport = new(
+        CharacterTargetSabotageDelayRecoveryModel transport = CreateCharacterTargetSabotageDelayRecovery(
             transportClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -129,7 +130,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
 
         using HttpClient semanticClient = new(new CapturingHandler(_ => EventStreamResponse(
             Frame(new { type = "response.failed", detail = "secret provider detail" }))));
-        OpenAiCharacterTargetSabotageDelayRecoveryModel semantic = new(
+        CharacterTargetSabotageDelayRecoveryModel semantic = CreateCharacterTargetSabotageDelayRecovery(
             semanticClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -139,7 +140,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
 
         CapturingHandler unused = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient unusedClient = new(unused);
-        OpenAiCharacterTargetSabotageDelayRecoveryModel cancelling = new(
+        CharacterTargetSabotageDelayRecoveryModel cancelling = CreateCharacterTargetSabotageDelayRecovery(
             unusedClient,
             new StubCredentialSource("test-secret"),
             Settings());
@@ -155,26 +156,21 @@ public sealed class OpenAiCharacterTargetSabotageDelayRecoveryModelTests
     {
         using HttpClient client = new(new CapturingHandler(_ => throw new NotSupportedException()));
         StubCredentialSource credentials = new("test-secret");
-        OpenAiCharacterTargetSabotageDelayRecoveryModel model = new(
+        CharacterTargetSabotageDelayRecoveryModel model = CreateCharacterTargetSabotageDelayRecovery(
             client,
             credentials,
             Settings());
 
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageDelayRecoveryModel(
+            CreateCharacterTargetSabotageDelayRecovery(
                 null!, credentials, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageDelayRecoveryModel(client, null!, Settings()));
+            CreateCharacterTargetSabotageDelayRecovery(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageDelayRecoveryModel(client, credentials, null!));
+            CreateCharacterTargetSabotageDelayRecovery(client, credentials, null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterTargetSabotageDelayRecoveryModel(null!));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterTargetSabotageDelayRecoveryModel(
-                client,
-                credentials,
-                Settings(),
-                null!));
-        Assert.Throws<ArgumentException>(() =>
-            new OpenAiCharacterTargetSabotageDelayRecoveryModel(
+            CreateCharacterTargetSabotageDelayRecovery(
                 client,
                 credentials,
                 new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));

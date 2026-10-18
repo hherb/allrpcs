@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -28,7 +29,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         CharacterObjectSabotageConcealmentDecision decision =
-            await OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(
+            await CompleteCharacterObjectSabotageConcealmentAsync(
                 request,
                 stream);
 
@@ -50,7 +51,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         InvalidDataException exception = await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(
+            CompleteCharacterObjectSabotageConcealmentAsync(
                 OpenAiCharacterObjectSabotageConcealmentRequestSerializerTests.CreateRequest(),
                 stream));
 
@@ -71,7 +72,7 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentSseCompletionTests
             + Frame(new { type = "response.created" });
         using MemoryStream stream = Utf8Stream(events);
 
-        Assert.NotNull(await OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(request, stream));
+        Assert.NotNull(await CompleteCharacterObjectSabotageConcealmentAsync(request, stream));
     }
 
     [Fact]
@@ -85,41 +86,20 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentSseCompletionTests
         cancellation.Cancel();
 
         IOException exception = await Assert.ThrowsAsync<IOException>(() =>
-            OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(request, throwing));
+            CompleteCharacterObjectSabotageConcealmentAsync(request, throwing));
         Assert.Equal("secret transport detail", exception.Message);
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
-            OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(
+            CompleteCharacterObjectSabotageConcealmentAsync(
                 request,
                 empty,
                 cancellation.Token));
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(null!, empty));
+            CompleteCharacterObjectSabotageConcealmentAsync(null!, empty));
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageConcealmentSseCompletion.CompleteAsync(request, null!));
+            CompleteCharacterObjectSabotageConcealmentAsync(request, null!));
     }
 
-    [Fact]
-    public void ExposesOnlyOneBoundedAsyncCompletionOperation()
-    {
-        Type completionType = typeof(OpenAiCharacterObjectSabotageConcealmentSseCompletion);
-        System.Reflection.MethodInfo method = Assert.Single(completionType.GetMethods().Where(
-            candidate => candidate.DeclaringType == completionType));
 
-        Assert.Equal("CompleteAsync", method.Name);
-        Assert.True(method.IsStatic);
-        Assert.Equal(typeof(Task<CharacterObjectSabotageConcealmentDecision>), method.ReturnType);
-        Assert.Equal(
-            [
-                typeof(CharacterObjectSabotageConcealmentConsiderationRequest),
-                typeof(Stream),
-                typeof(CancellationToken),
-            ],
-            method.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Empty(completionType.GetConstructors());
-        Assert.Empty(completionType.GetProperties());
-        Assert.Empty(completionType.GetEvents());
-        Assert.True(completionType.IsAbstract && completionType.IsSealed);
-    }
 
     private static string Frame(object semanticEvent) =>
         "data: " + JsonSerializer.Serialize(semanticEvent) + "\n\n";

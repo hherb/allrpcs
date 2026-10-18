@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
+using static Allrpcs.Infrastructure.Tests.StructuredDecisionTestModels;
 
 namespace Allrpcs.Infrastructure.Tests.Characters;
 
@@ -27,7 +28,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         CharacterObjectSabotageMoveDecision decision =
-            await OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, stream);
+            await CompleteCharacterObjectSabotageMoveAsync(request, stream);
 
         Assert.Same(request.Character.Identity.Id, decision.CharacterId);
         Assert.Equal(evidenceId, decision.SelectedEvidenceId?.Value);
@@ -47,7 +48,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
         using MemoryStream stream = Utf8Stream(events);
 
         InvalidDataException exception = await Assert.ThrowsAsync<InvalidDataException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(
+            CompleteCharacterObjectSabotageMoveAsync(
                 OpenAiCharacterObjectSabotageMoveRequestSerializerTests.CreateRequest(),
                 stream));
 
@@ -67,7 +68,7 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
             + Frame(new { type = "response.created" });
         using MemoryStream stream = Utf8Stream(events);
 
-        Assert.NotNull(await OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, stream));
+        Assert.NotNull(await CompleteCharacterObjectSabotageMoveAsync(request, stream));
     }
 
     [Fact]
@@ -81,41 +82,20 @@ public sealed class OpenAiCharacterObjectSabotageMoveSseCompletionTests
         cancellation.Cancel();
 
         IOException exception = await Assert.ThrowsAsync<IOException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, throwing));
+            CompleteCharacterObjectSabotageMoveAsync(request, throwing));
         Assert.Equal("secret transport detail", exception.Message);
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(
+            CompleteCharacterObjectSabotageMoveAsync(
                 request,
                 empty,
                 cancellation.Token));
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(null!, empty));
+            CompleteCharacterObjectSabotageMoveAsync(null!, empty));
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageMoveSseCompletion.CompleteAsync(request, null!));
+            CompleteCharacterObjectSabotageMoveAsync(request, null!));
     }
 
-    [Fact]
-    public void ExposesOnlyOneBoundedAsyncCompletionOperation()
-    {
-        Type completionType = typeof(OpenAiCharacterObjectSabotageMoveSseCompletion);
-        System.Reflection.MethodInfo method = Assert.Single(completionType.GetMethods().Where(
-            candidate => candidate.DeclaringType == completionType));
 
-        Assert.Equal("CompleteAsync", method.Name);
-        Assert.True(method.IsStatic);
-        Assert.Equal(typeof(Task<CharacterObjectSabotageMoveDecision>), method.ReturnType);
-        Assert.Equal(
-            [
-                typeof(CharacterObjectSabotageMoveConsiderationRequest),
-                typeof(Stream),
-                typeof(CancellationToken),
-            ],
-            method.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Empty(completionType.GetConstructors());
-        Assert.Empty(completionType.GetProperties());
-        Assert.Empty(completionType.GetEvents());
-        Assert.True(completionType.IsAbstract && completionType.IsSealed);
-    }
 
     private static string Frame(object semanticEvent) =>
         "data: " + JsonSerializer.Serialize(semanticEvent) + "\n\n";

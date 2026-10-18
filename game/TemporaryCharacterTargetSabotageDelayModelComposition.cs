@@ -5,7 +5,7 @@ using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Game;
 
-/// <summary>Composes one explicit OpenAI target-delay binding into one exact model source.</summary>
+/// <summary>Composes one explicit provider-selected target-delay binding into one exact model source.</summary>
 public sealed class TemporaryCharacterTargetSabotageDelayModelComposition
 {
     private readonly TemporaryCharacterTargetSabotageDelayModelSource source;
@@ -23,13 +23,14 @@ public sealed class TemporaryCharacterTargetSabotageDelayModelComposition
     public bool TryInitialize(
         CharacterModelSettings settings,
         HttpClient client,
-        IOpenAiCredentialSource credentialSource)
+        IOpenAiCredentialSource? credentialSource = null,
+        IAnthropicCredentialSource? anthropicCredentials = null, OllamaEndpoint? ollamaEndpoint = null)
     {
         CharacterTargetSabotageDelayModelBinding replacement =
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(
+            CharacterTargetSabotageDelayModelBindingFactory.Create(
                 settings,
                 client,
-                credentialSource);
+                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
         if (binding is not null || !source.TryInitializeBinding(replacement))
         {
             return false;
@@ -43,13 +44,14 @@ public sealed class TemporaryCharacterTargetSabotageDelayModelComposition
     public bool TryReplace(
         CharacterModelSettings settings,
         HttpClient client,
-        IOpenAiCredentialSource credentialSource)
+        IOpenAiCredentialSource? credentialSource = null,
+        IAnthropicCredentialSource? anthropicCredentials = null, OllamaEndpoint? ollamaEndpoint = null)
     {
         CharacterTargetSabotageDelayModelBinding replacement =
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(
+            CharacterTargetSabotageDelayModelBindingFactory.Create(
                 settings,
                 client,
-                credentialSource);
+                credentialSource, anthropicCredentials: anthropicCredentials, ollamaEndpoint: ollamaEndpoint);
         if (binding is null || !source.TryReplaceBinding(binding, replacement))
         {
             return false;

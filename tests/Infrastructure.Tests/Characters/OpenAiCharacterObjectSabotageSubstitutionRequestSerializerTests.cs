@@ -15,7 +15,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
     {
         Input input = CreateInput();
 
-        string serialized = OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(
+        string serialized = Serialize(
             input.Request,
             "gpt-test-model");
         using JsonDocument document = JsonDocument.Parse(serialized);
@@ -25,7 +25,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
         Assert.False(root.GetProperty("store").GetBoolean());
         Assert.True(root.GetProperty("stream").GetBoolean());
         Assert.Equal(
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.MaximumOutputTokens,
+            CharacterStructuredDecisions.ObjectSabotageSubstitution.MaximumOutputTokens,
             root.GetProperty("max_output_tokens").GetInt32());
         Assert.False(root.TryGetProperty("api_key", out _));
         Assert.False(root.TryGetProperty("authorization", out _));
@@ -50,7 +50,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
     {
         Input input = CreateInput();
         using JsonDocument requestDocument = JsonDocument.Parse(
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(
+            Serialize(
                 input.Request,
                 "gpt-test-model"));
         string contextText = requestDocument.RootElement
@@ -101,7 +101,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
     {
         Input input = CreateInput();
         using JsonDocument document = JsonDocument.Parse(
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(
+            Serialize(
                 input.Request,
                 "gpt-test-model"));
 
@@ -143,7 +143,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
             input.Evidence,
             []);
         using JsonDocument document = JsonDocument.Parse(
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(
+            Serialize(
                 emptyRequest,
                 "gpt-test-model"));
 
@@ -162,45 +162,23 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
         CharacterObjectSabotageSubstitutionConsiderationRequest request = CreateInput().Request;
 
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(null!, "gpt-test"));
+            Serialize(null!, "gpt-test"));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(request, null!));
+            Serialize(request, null!));
         Assert.Throws<ArgumentException>(() =>
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(request, string.Empty));
+            Serialize(request, string.Empty));
         Assert.Throws<ArgumentException>(() =>
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(request, " model "));
+            Serialize(request, " model "));
         Assert.Throws<ArgumentException>(() =>
-            OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.Serialize(
+            Serialize(
                 request,
                 new string(
                     'm',
-                    OpenAiCharacterObjectSabotageSubstitutionRequestSerializer.MaximumModelNameLength
+                    Allrpcs.Application.Dialogue.CharacterModelSettings.MaximumModelNameLength
                         + 1)));
     }
 
-    [Fact]
-    public void ExposesOnlyOneSerializerAndItsTwoBounds()
-    {
-        Type serializerType = typeof(OpenAiCharacterObjectSabotageSubstitutionRequestSerializer);
-        System.Reflection.MethodInfo method = Assert.Single(
-            serializerType.GetMethods().Where(candidate => candidate.DeclaringType == serializerType));
-        System.Reflection.FieldInfo[] fields = serializerType.GetFields(
-            System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.Static
-                | System.Reflection.BindingFlags.DeclaredOnly);
 
-        Assert.Equal("Serialize", method.Name);
-        Assert.True(method.IsStatic);
-        Assert.Equal(typeof(string), method.ReturnType);
-        Assert.Equal(
-            [typeof(CharacterObjectSabotageSubstitutionConsiderationRequest), typeof(string)],
-            method.GetParameters().Select(parameter => parameter.ParameterType));
-        Assert.Equal(
-            ["MaximumModelNameLength", "MaximumOutputTokens"],
-            fields.Select(field => field.Name).Order());
-        Assert.All(fields, field => Assert.True(field.IsLiteral));
-        Assert.True(serializerType.IsAbstract && serializerType.IsSealed);
-    }
 
     private static void AssertRequestUnchanged(Input input)
     {
@@ -277,4 +255,7 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
         DiscoveryEvidenceSnapshot Evidence,
         CharacterObjectSabotageSubstitutionCandidate Candidate,
         CharacterObjectSabotageSubstitutionConsiderationRequest Request);
+    private static string Serialize(CharacterObjectSabotageSubstitutionConsiderationRequest request, string modelName) =>
+        CharacterStructuredDecisions.ObjectSabotageSubstitution.Serialize(request, Allrpcs.Application.Dialogue.CharacterModelProvider.OpenAi, modelName);
+
 }

@@ -26,15 +26,15 @@ public partial class TemporaryCharacterSabotageActionModelCompositionSmokeCheck 
         ICharacterSabotageActionDecisionModel offline = source.TakeModel();
 
         bool initialized = composition.TryInitialize(initialSettings, client, credentials);
-        OpenAiCharacterSabotageActionModel? initialModel =
-            source.TakeModel() as OpenAiCharacterSabotageActionModel;
+        CharacterSabotageActionModel? initialModel =
+            source.TakeModel() as CharacterSabotageActionModel;
         bool rejectedRepeatedInitialization = !composition.TryInitialize(
             initialSettings,
             client,
             credentials);
         bool replaced = composition.TryReplace(replacementSettings, client, credentials);
-        OpenAiCharacterSabotageActionModel? replacementModel =
-            source.TakeModel() as OpenAiCharacterSabotageActionModel;
+        CharacterSabotageActionModel? replacementModel =
+            source.TakeModel() as CharacterSabotageActionModel;
         bool cleared = composition.TryClear();
         bool resumedOffline = ReferenceEquals(source.TakeModel(), offline);
         bool rejectedRepeatedClear = !composition.TryClear();
@@ -68,7 +68,7 @@ public partial class TemporaryCharacterSabotageActionModelCompositionSmokeCheck 
     }
 
     private static bool RetainsExactDependencies(
-        OpenAiCharacterSabotageActionModel model,
+        CharacterSabotageActionModel model,
         CharacterModelSettings settings,
         NetHttpClient client,
         IOpenAiCredentialSource credentials)

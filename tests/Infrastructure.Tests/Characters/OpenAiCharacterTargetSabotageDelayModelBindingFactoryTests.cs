@@ -17,14 +17,14 @@ public sealed class OpenAiCharacterTargetSabotageDelayModelBindingFactoryTests
         ThrowingCredentialSource credentialSource = new();
 
         CharacterTargetSabotageDelayModelBinding binding =
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(
+            CharacterTargetSabotageDelayModelBindingFactory.Create(
                 settings,
                 client,
                 credentialSource);
 
         Assert.Same(settings, binding.Settings);
-        OpenAiCharacterTargetSabotageDelayModel model =
-            Assert.IsType<OpenAiCharacterTargetSabotageDelayModel>(binding.Model);
+        CharacterTargetSabotageDelayModel model =
+            Assert.IsType<CharacterTargetSabotageDelayModel>(binding.Model);
         object transport = Field<object>(model, "client");
         Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
         Assert.Same(client, Field<HttpClient>(transport, "client"));
@@ -36,7 +36,7 @@ public sealed class OpenAiCharacterTargetSabotageDelayModelBindingFactoryTests
     }
 
     [Fact]
-    public void RejectsInvalidInputsAndExposesOnlyTwoCreationOverloads()
+    public void RejectsInvalidInputsAndExposesOneProviderNeutralCreationMethod()
     {
         CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
         CharacterModelSettings anthropic = new(CharacterModelProvider.Anthropic, "claude-test");
@@ -44,38 +44,16 @@ public sealed class OpenAiCharacterTargetSabotageDelayModelBindingFactoryTests
         ThrowingCredentialSource credentials = new();
 
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(null!, client, credentials));
+            CharacterTargetSabotageDelayModelBindingFactory.Create(null!, client, credentials));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(settings, null!, credentials));
+            CharacterTargetSabotageDelayModelBindingFactory.Create(settings, null!, credentials));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(settings, client, null!));
-        Assert.Throws<ArgumentException>(() =>
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(anthropic, client, credentials));
+            CharacterTargetSabotageDelayModelBindingFactory.Create(settings, client, null!));
         Assert.Throws<ArgumentNullException>(() =>
-            OpenAiCharacterTargetSabotageDelayModelBindingFactory.Create(
-                settings,
-                client,
-                credentials,
-                null!));
-        MethodInfo[] methods = typeof(OpenAiCharacterTargetSabotageDelayModelBindingFactory)
+            CharacterTargetSabotageDelayModelBindingFactory.Create(anthropic, client, credentials));
+        MethodInfo[] methods = typeof(CharacterTargetSabotageDelayModelBindingFactory)
             .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
-        Assert.Collection(
-            methods.OrderBy(method => method.GetParameters().Length),
-            method => Assert.Equal(
-                [
-                    typeof(CharacterModelSettings),
-                    typeof(HttpClient),
-                    typeof(IOpenAiCredentialSource),
-                ],
-                method.GetParameters().Select(parameter => parameter.ParameterType)),
-            method => Assert.Equal(
-                [
-                    typeof(CharacterModelSettings),
-                    typeof(HttpClient),
-                    typeof(IOpenAiCredentialSource),
-                    typeof(OpenAiEndpoint),
-                ],
-                method.GetParameters().Select(parameter => parameter.ParameterType)));
+        Assert.Single(methods);
         Assert.All(methods, method =>
         {
             Assert.Equal("Create", method.Name);
