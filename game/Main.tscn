@@ -1,230 +1,116 @@
-[gd_scene load_steps=445 format=3]
+[gd_scene load_steps=259 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="3_camera"]
 [ext_resource type="Script" path="res://GreyboxNavigation.cs" id="4_navigation"]
 [ext_resource type="Script" path="res://Healer.cs" id="6_healer"]
-[ext_resource type="Script" path="res://HealerCommandSmokeCheck.cs" id="7_healer_check"]
 [ext_resource type="Script" path="res://GreyboxInteractionTarget.cs" id="8_interaction_target"]
 [ext_resource type="Script" path="res://InteractionFocusController.cs" id="9_interaction_controller"]
-[ext_resource type="Script" path="res://InteractionFocusSmokeCheck.cs" id="10_interaction_check"]
-[ext_resource type="Script" path="res://SeekerMovementBoundarySmokeCheck.cs" id="11_boundary_check"]
 [ext_resource type="Script" path="res://FocusedSearchActivityIndicator.cs" id="12_search_indicator"]
-[ext_resource type="Script" path="res://FocusedSearchActivityIndicatorSmokeCheck.cs" id="13_search_indicator_check"]
 [ext_resource type="Script" path="res://FocusedSearchActivityController.cs" id="14_search_controller"]
-[ext_resource type="Script" path="res://FocusedSearchActivityControllerSmokeCheck.cs" id="15_search_controller_check"]
 [ext_resource type="Script" path="res://TemporaryFocusedSearchContextSource.cs" id="16_search_context_source"]
-[ext_resource type="Script" path="res://FocusedSearchOutcomeControllerSmokeCheck.cs" id="17_search_outcome_controller_check"]
 [ext_resource type="Script" path="res://TemporaryFocusedSearchOutcomeSource.cs" id="18_search_outcome_source"]
-[ext_resource type="Script" path="res://TemporaryFocusedSearchOutcomeSourceSmokeCheck.cs" id="19_search_outcome_source_check"]
 [ext_resource type="Script" path="res://TemporarySeekerPerceptionSource.cs" id="20_seeker_perception_source"]
-[ext_resource type="Script" path="res://TemporarySeekerPerceptionSourceSmokeCheck.cs" id="21_seeker_perception_source_check"]
-[ext_resource type="Script" path="res://FocusedSearchPerceptionControllerSmokeCheck.cs" id="22_search_perception_controller_check"]
-[ext_resource type="Script" path="res://FocusedSearchOutcomeResolutionControllerSmokeCheck.cs" id="23_search_outcome_resolution_controller_check"]
 [ext_resource type="Script" path="res://TemporaryResolvedPerceptionIndicator.cs" id="24_resolved_perception_indicator"]
 [ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="25_world_object_source"]
-[ext_resource type="Script" path="res://TemporaryWorldObjectSourceSmokeCheck.cs" id="26_world_object_source_check"]
 [ext_resource type="Script" path="res://WorldObjectController.cs" id="27_world_object_controller"]
-[ext_resource type="Script" path="res://WorldObjectControllerSmokeCheck.cs" id="28_world_object_controller_check"]
-[ext_resource type="Script" path="res://WorldObjectBoundInteractionFocusSmokeCheck.cs" id="29_world_object_interaction_focus_check"]
 [ext_resource type="Script" path="res://TemporarySeekerCharacterSource.cs" id="30_seeker_character_source"]
-[ext_resource type="Script" path="res://TemporarySeekerCharacterSourceSmokeCheck.cs" id="31_seeker_character_source_check"]
-[ext_resource type="Script" path="res://PassiveNoticingCandidateControllerSmokeCheck.cs" id="32_passive_candidate_controller_check"]
-[ext_resource type="Script" path="res://PassiveNoticingResolutionControllerSmokeCheck.cs" id="33_passive_resolution_controller_check"]
 [ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSource.cs" id="34_passive_candidate_source"]
-[ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSourceSmokeCheck.cs" id="35_passive_candidate_source_check"]
-[ext_resource type="Script" path="res://ObservationReinterpretationCandidateControllerSmokeCheck.cs" id="36_reinterpretation_candidate_controller_check"]
-[ext_resource type="Script" path="res://ObservationReinterpretationResolutionControllerSmokeCheck.cs" id="37_reinterpretation_resolution_controller_check"]
 [ext_resource type="Script" path="res://TemporaryObservationReinterpretationCandidateSource.cs" id="38_reinterpretation_candidate_source"]
-[ext_resource type="Script" path="res://TemporaryObservationReinterpretationCandidateSourceSmokeCheck.cs" id="39_reinterpretation_candidate_source_check"]
 [ext_resource type="Script" path="res://WorldEventLogController.cs" id="40_world_event_log_controller"]
-[ext_resource type="Script" path="res://WorldEventLogControllerSmokeCheck.cs" id="41_world_event_log_controller_check"]
 [ext_resource type="Script" path="res://TemporaryWorldEventSource.cs" id="42_world_event_source"]
-[ext_resource type="Script" path="res://TemporaryWorldEventSourceSmokeCheck.cs" id="43_world_event_source_check"]
-[ext_resource type="Script" path="res://InitialWorldEventRecordingSmokeCheck.cs" id="44_initial_world_event_check"]
 [ext_resource type="Script" path="res://WorldTimeController.cs" id="45_world_time_controller"]
-[ext_resource type="Script" path="res://WorldTimeControllerSmokeCheck.cs" id="46_world_time_controller_check"]
 [ext_resource type="Script" path="res://WorldEventController.cs" id="47_world_event_controller"]
-[ext_resource type="Script" path="res://WorldEventControllerSmokeCheck.cs" id="48_world_event_controller_check"]
-[ext_resource type="Script" path="res://FocusedSearchWorldEventSmokeCheck.cs" id="49_search_world_event_check"]
-[ext_resource type="Script" path="res://DiscoverySaveStateRestorationControllerSmokeCheck.cs" id="50_discovery_save_restoration_controller_check"]
-[ext_resource type="Script" path="res://WorldEventSaveStateRestorationControllerSmokeCheck.cs" id="51_world_event_save_restoration_controller_check"]
 [ext_resource type="Script" path="res://SaveSnapshotRestorationController.cs" id="52_save_restoration_controller"]
-[ext_resource type="Script" path="res://SaveSnapshotRestorationControllerSmokeCheck.cs" id="53_save_restoration_controller_check"]
 [ext_resource type="Script" path="res://SaveSnapshotCaptureController.cs" id="54_save_capture_controller"]
-[ext_resource type="Script" path="res://SaveSnapshotCaptureControllerSmokeCheck.cs" id="55_save_capture_controller_check"]
 [ext_resource type="Script" path="res://SaveSnapshotJsonController.cs" id="56_save_json_controller"]
-[ext_resource type="Script" path="res://SaveSnapshotJsonControllerSmokeCheck.cs" id="57_save_json_controller_check"]
 [ext_resource type="Script" path="res://SaveDocumentStorageController.cs" id="58_save_storage_controller"]
 [ext_resource type="Script" path="res://SaveLoadInputController.cs" id="396_save_load_input"]
-[ext_resource type="Script" path="res://SaveLoadInputSmokeCheck.cs" id="397_save_load_input_check"]
 [ext_resource type="Script" path="res://CharacterTurnActivityController.cs" id="60_character_turn_controller"]
-[ext_resource type="Script" path="res://CharacterTurnActivityControllerSmokeCheck.cs" id="61_character_turn_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnSource.cs" id="62_character_turn_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterTurnSourceSmokeCheck.cs" id="63_character_turn_source_check"]
-[ext_resource type="Script" path="res://CharacterTurnCancellationInputSmokeCheck.cs" id="64_character_turn_input_check"]
 [ext_resource type="Script" path="res://DialogueInputController.cs" id="65_dialogue_input_controller"]
 [ext_resource type="Script" path="res://TemporaryDialogueInputPanel.cs" id="66_dialogue_input_panel"]
-[ext_resource type="Script" path="res://DialogueInputSmokeCheck.cs" id="67_dialogue_input_check"]
 [ext_resource type="Script" path="res://DialogueEventController.cs" id="68_dialogue_event_controller"]
-[ext_resource type="Script" path="res://DialogueEventControllerSmokeCheck.cs" id="69_dialogue_event_controller_check"]
 [ext_resource type="Script" path="res://CharacterTurnTranscriptController.cs" id="70_character_turn_transcript_controller"]
-[ext_resource type="Script" path="res://CharacterTurnTranscriptControllerSmokeCheck.cs" id="71_character_turn_transcript_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterTurnRequestSourceSmokeCheck.cs" id="72_character_turn_request_source_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnRequestSource.cs" id="73_character_turn_request_source"]
-[ext_resource type="Script" path="res://CharacterTurnRequestFlowSmokeCheck.cs" id="74_character_turn_request_flow_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSourceSmokeCheck.cs" id="75_character_turn_response_source_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSource.cs" id="76_character_turn_response_source"]
-[ext_resource type="Script" path="res://CharacterTurnResponseFlowSmokeCheck.cs" id="77_character_turn_response_flow_check"]
-[ext_resource type="Script" path="res://CharacterTurnResponsePresentationSmokeCheck.cs" id="78_character_turn_response_presentation_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseLabel.cs" id="79_character_turn_response_label"]
 [ext_resource type="Script" path="res://CharacterTurnResponseSpeechFlowSmokeCheck.cs" id="80_character_turn_response_speech_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSpeechRecorder.cs" id="81_character_turn_response_speech_recorder"]
-[ext_resource type="Script" path="res://CharacterTurnCompletionFlowSmokeCheck.cs" id="82_character_turn_completion_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnCompletionController.cs" id="83_character_turn_completion_controller"]
-[ext_resource type="Script" path="res://CharacterTurnRepeatFlowSmokeCheck.cs" id="84_character_turn_repeat_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterExaminationResultSource.cs" id="85_examination_result_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterExaminationResultSourceSmokeCheck.cs" id="86_examination_result_source_check"]
 [ext_resource type="Script" path="res://CharacterTurnWorldEventOccurrenceController.cs" id="87_character_action_controller"]
-[ext_resource type="Script" path="res://CharacterTurnWorldEventOccurrenceControllerSmokeCheck.cs" id="88_character_action_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterExaminationFlowController.cs" id="89_examination_flow_controller"]
-[ext_resource type="Script" path="res://CharacterExaminationFlowSmokeCheck.cs" id="90_examination_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelGenerationStatusLabel.cs" id="91_model_status_label"]
-[ext_resource type="Script" path="res://CharacterModelGenerationStatusPresentationSmokeCheck.cs" id="92_model_status_check"]
 [ext_resource type="Script" path="res://CharacterModelStreamController.cs" id="93_model_stream_controller"]
-[ext_resource type="Script" path="res://CharacterModelStreamControllerSmokeCheck.cs" id="94_model_stream_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelStreamTextLabel.cs" id="95_model_stream_text_label"]
-[ext_resource type="Script" path="res://CharacterModelStreamTextPresentationSmokeCheck.cs" id="96_model_stream_text_check"]
 [ext_resource type="Script" path="res://CharacterModelGenerationFlowController.cs" id="97_model_flow_controller"]
-[ext_resource type="Script" path="res://CharacterModelGenerationFlowSmokeCheck.cs" id="98_model_flow_check"]
 [ext_resource type="Script" path="res://TemporaryHealerCharacterSource.cs" id="99_healer_character_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelGenerationInputSource.cs" id="100_model_input_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterModelGenerationInputSourceSmokeCheck.cs" id="101_model_input_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelSource.cs" id="102_model_source"]
-[ext_resource type="Script" path="res://TemporaryOfflineCharacterModelSourceSmokeCheck.cs" id="103_offline_model_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterModelSourceSmokeCheck.cs" id="104_scripted_model_check"]
-[ext_resource type="Script" path="res://CharacterModelInvalidResponseFlowSmokeCheck.cs" id="105_invalid_model_check"]
-[ext_resource type="Script" path="res://CharacterModelOrdinaryCancellationSmokeCheck.cs" id="106_ordinary_model_cancel_check"]
-[ext_resource type="Script" path="res://CharacterModelOrdinaryProviderFailureSmokeCheck.cs" id="107_ordinary_model_failure_check"]
-[ext_resource type="Script" path="res://CharacterModelOrdinaryTimeoutSmokeCheck.cs" id="108_ordinary_model_timeout_check"]
-[ext_resource type="Script" path="res://CharacterModelOrdinaryModelSwitchSmokeCheck.cs" id="109_ordinary_model_switch_check"]
-[ext_resource type="Script" path="res://CharacterModelOrdinaryMalformedStreamSmokeCheck.cs" id="110_ordinary_malformed_model_check"]
 [ext_resource type="Script" path="res://CharacterModelSettingsStorageController.cs" id="111_model_settings_storage_controller"]
-[ext_resource type="Script" path="res://CharacterModelSettingsStorageControllerSmokeCheck.cs" id="112_model_settings_storage_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelCompositionController.cs" id="113_model_composition_controller"]
-[ext_resource type="Script" path="res://TemporaryCharacterModelCompositionControllerSmokeCheck.cs" id="114_model_composition_check"]
 [ext_resource type="Script" path="res://CharacterModelSettingsController.cs" id="115_model_settings_controller"]
-[ext_resource type="Script" path="res://CharacterModelSettingsControllerSmokeCheck.cs" id="116_model_settings_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelSettingsPanel.cs" id="117_model_settings_panel"]
-[ext_resource type="Script" path="res://CharacterModelSettingsPanelSmokeCheck.cs" id="118_model_settings_panel_check"]
 [ext_resource type="Script" path="res://OpenAiCredentialController.cs" id="119_openai_credential_controller"]
-[ext_resource type="Script" path="res://OpenAiCredentialControllerSmokeCheck.cs" id="120_openai_credential_controller_check"]
-[ext_resource type="Script" path="res://OpenAiCredentialPanelSmokeCheck.cs" id="121_openai_credential_panel_check"]
-[ext_resource type="Script" path="res://CharacterModelConnectionPanelSmokeCheck.cs" id="122_model_connection_panel_check"]
 [ext_resource type="Script" path="res://CharacterMemoryController.cs" id="124_character_memory_controller"]
-[ext_resource type="Script" path="res://CharacterMemoryControllerSmokeCheck.cs" id="125_character_memory_controller_check"]
 [ext_resource type="Script" path="res://FirstPatientStateController.cs" id="126_first_patient_state_controller"]
-[ext_resource type="Script" path="res://FirstPatientStateControllerSmokeCheck.cs" id="127_first_patient_state_controller_check"]
 [ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSource.cs" id="128_first_patient_context_source"]
-[ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSourceSmokeCheck.cs" id="129_first_patient_context_source_check"]
 [ext_resource type="Script" path="res://FirstPatientPreparationController.cs" id="130_first_patient_preparation_controller"]
-[ext_resource type="Script" path="res://FirstPatientPreparationControllerSmokeCheck.cs" id="131_first_patient_preparation_check"]
 [ext_resource type="Script" path="res://FirstPatientAdministrationController.cs" id="132_first_patient_administration_controller"]
-[ext_resource type="Script" path="res://FirstPatientAdministrationControllerSmokeCheck.cs" id="133_first_patient_administration_check"]
-[ext_resource type="Script" path="res://FirstPatientSaveStateCaptureSmokeCheck.cs" id="134_first_patient_save_state_capture_check"]
 [ext_resource type="Script" path="res://AutonomousConversationBudgetController.cs" id="135_autonomous_conversation_budget_controller"]
-[ext_resource type="Script" path="res://AutonomousConversationBudgetControllerSmokeCheck.cs" id="136_autonomous_conversation_budget_controller_check"]
 [ext_resource type="Script" path="res://CharacterTurnParticipationRoundTaskController.cs" id="137_participation_round_task_controller"]
-[ext_resource type="Script" path="res://CharacterTurnParticipationRoundTaskControllerSmokeCheck.cs" id="138_participation_round_task_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnParticipationModelSource.cs" id="139_participation_model_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterTurnParticipationModelSourceSmokeCheck.cs" id="140_participation_model_source_check"]
 [ext_resource type="Script" path="res://OrdinaryPlayerDialogueParticipationCoordinator.cs" id="141_ordinary_participation_coordinator"]
-[ext_resource type="Script" path="res://OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck.cs" id="142_ordinary_participation_check"]
-[ext_resource type="Script" path="res://OrdinaryAutonomousDialogueFlowSmokeCheck.cs" id="143_ordinary_autonomous_flow_check"]
 [ext_resource type="Script" path="res://OrdinaryParticipationSmokeModelSupplier.cs" id="144_ordinary_participation_smoke_model"]
-[ext_resource type="Script" path="res://OrdinaryParticipationCancellationFlowSmokeCheck.cs" id="145_ordinary_participation_cancel_check"]
-[ext_resource type="Script" path="res://OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck.cs" id="146_ordinary_participation_scheduling_check"]
-[ext_resource type="Script" path="res://TemporaryOrdinaryCharacterParticipantSourceSmokeCheck.cs" id="147_ordinary_character_participant_source_check"]
 [ext_resource type="Script" path="res://TemporaryOrdinaryCharacterParticipantSource.cs" id="148_ordinary_character_participant_source"]
-[ext_resource type="Script" path="res://OrdinarySageInterjectionFlowSmokeCheck.cs" id="149_ordinary_sage_interjection_check"]
-[ext_resource type="Script" path="res://OrdinaryBoundedConversationLoopSmokeCheck.cs" id="150_ordinary_bounded_loop_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskDepartureController.cs" id="151_independent_task_departure_controller"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskDepartureControllerSmokeCheck.cs" id="152_independent_task_departure_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskSource.cs" id="153_independent_task_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskSourceSmokeCheck.cs" id="154_independent_task_source_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskOccurrenceController.cs" id="155_independent_task_occurrence_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskOccurrenceSource.cs" id="156_independent_task_occurrence_source"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskOccurrenceControllerSmokeCheck.cs" id="157_independent_task_occurrence_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskTravelController.cs" id="158_independent_task_travel_controller"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskTravelControllerSmokeCheck.cs" id="159_independent_task_travel_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskTravelSource.cs" id="160_independent_task_travel_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskTravelSourceSmokeCheck.cs" id="161_independent_task_travel_source_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskReturnTravelController.cs" id="162_independent_task_return_travel_controller"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskReturnTravelControllerSmokeCheck.cs" id="163_independent_task_return_travel_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskReturnTravelSource.cs" id="164_independent_task_return_travel_source"]
-[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck.cs" id="165_independent_task_return_travel_source_check"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskReturnRejoinControllerSmokeCheck.cs" id="166_independent_task_return_rejoin_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskRoundTripCoordinator.cs" id="167_independent_task_round_trip_coordinator"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskRoundTripCoordinatorSmokeCheck.cs" id="168_independent_task_round_trip_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskStepClockController.cs" id="169_independent_task_step_clock_controller"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskStepClockControllerSmokeCheck.cs" id="170_independent_task_step_clock_check"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck.cs" id="171_independent_task_timed_round_trip_check"]
-[ext_resource type="Script" path="res://IndependentTaskLiveRoundTripFlowSmokeCheck.cs" id="172_independent_task_live_round_trip_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationController.cs" id="173_independent_task_body_presentation_controller"]
-[ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationControllerSmokeCheck.cs" id="174_independent_task_body_presentation_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMainSceneSmokeCheck.cs" id="175_object_sabotage_main_scene_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSource.cs" id="176_object_sabotage_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentController.cs" id="177_object_sabotage_state"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageFlowController.cs" id="178_object_sabotage_flow"]
-[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationControllerSmokeCheck.cs" id="179_object_sabotage_presentation_check"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationController.cs" id="180_object_sabotage_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowController.cs" id="181_object_sabotage_presentation_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck.cs" id="182_object_sabotage_presentation_flow_check"]
-[ext_resource type="Script" path="res://WaterCaskInteractionFocusSmokeCheck.cs" id="183_water_cask_interaction_focus_check"]
-[ext_resource type="Script" path="res://WaterCaskSabotageInvestigationFlowSmokeCheck.cs" id="184_water_cask_sabotage_investigation_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConsiderationMainSceneSmokeCheck.cs" id="185_object_sabotage_consideration_main_scene_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConcealmentModelSource.cs" id="186_object_sabotage_model_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentTaskController.cs" id="187_object_sabotage_task_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConsiderationFlowController.cs" id="188_object_sabotage_consideration_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationCoordinator.cs" id="189_object_sabotage_presentation_coordinator"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageModelPresentationMainSceneSmokeCheck.cs" id="190_object_sabotage_model_presentation_main_scene_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck.cs" id="191_object_sabotage_move_main_scene_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveSource.cs" id="192_object_sabotage_move_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMoveController.cs" id="193_object_sabotage_move_state"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveFlowController.cs" id="194_object_sabotage_move_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMovePresentationController.cs" id="195_object_sabotage_move_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMovePresentationFlowController.cs" id="196_object_sabotage_move_presentation_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCheck.cs" id="197_object_sabotage_move_presentation_flow_check"]
-[ext_resource type="Script" path="res://WaterCaskMoveSabotageInvestigationFlowSmokeCheck.cs" id="198_water_cask_move_sabotage_investigation_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveModelSource.cs" id="199_object_sabotage_move_model_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMoveTaskController.cs" id="200_object_sabotage_move_task_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveConsiderationFlowController.cs" id="201_object_sabotage_move_consideration_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMovePresentationCoordinator.cs" id="202_object_sabotage_move_presentation_coordinator"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionMainSceneSmokeCheck.cs" id="203_object_sabotage_substitution_main_scene_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionSource.cs" id="204_object_sabotage_substitution_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionController.cs" id="205_object_sabotage_substitution_state"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionFlowController.cs" id="206_object_sabotage_substitution_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionPresentationFlowSmokeCheck.cs" id="207_object_sabotage_substitution_presentation_flow_check"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionPresentationController.cs" id="208_object_sabotage_substitution_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController.cs" id="209_object_sabotage_substitution_presentation_flow"]
-[ext_resource type="Script" path="res://WaterCaskSubstitutionSabotageInvestigationFlowSmokeCheck.cs" id="210_water_cask_substitution_sabotage_investigation_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionModelSource.cs" id="211_object_sabotage_substitution_model_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionTaskController.cs" id="212_object_sabotage_substitution_task_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController.cs" id="213_object_sabotage_substitution_consideration_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationMainSceneSmokeCheck.cs" id="214_object_sabotage_substitution_consideration_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionPresentationCoordinator.cs" id="215_object_sabotage_substitution_presentation_coordinator"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationModelSource.cs" id="216_object_sabotage_contamination_model_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationSource.cs" id="217_object_sabotage_contamination_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationController.cs" id="218_object_sabotage_contamination_state"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationTaskController.cs" id="219_object_sabotage_contamination_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationConsiderationFlowController.cs" id="220_object_sabotage_contamination_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck.cs" id="221_object_sabotage_contamination_check"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationController.cs" id="222_object_sabotage_contamination_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationPresentationFlowController.cs" id="223_object_sabotage_contamination_presentation_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationCoordinator.cs" id="224_object_sabotage_contamination_coordinator"]
-[ext_resource type="Script" path="res://WaterCaskContaminationSabotageInvestigationFlowSmokeCheck.cs" id="225_water_cask_contamination_sabotage_investigation_check"]
-[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck.cs" id="226_misquotation_evidence_main_scene_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="227_misquotation_evidence_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceModelSource.cs" id="228_misquotation_evidence_model_source"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceTaskController.cs" id="229_misquotation_evidence_task"]
@@ -239,20 +125,17 @@
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="238_misquotation_evidence_presentation_panel"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanel.cs" id="239_misquotation_evidence_review_panel"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationOccurrenceCoordinator.cs" id="240_misquotation_occurrence_coordinator"]
-[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck.cs" id="241_misquotation_occurrence_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateController.cs" id="242_misquotation_evidence_candidate"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateRequestController.cs" id="243_misquotation_evidence_candidate_request"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController.cs" id="244_misquotation_evidence_candidate_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceModelSource.cs" id="245_influence_model_source"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceTaskController.cs" id="246_influence_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController.cs" id="247_influence_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck.cs" id="248_influence_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceController.cs" id="249_influence_state"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceResolutionCoordinator.cs" id="250_influence_resolution"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource.cs" id="251_influence_recovery_model_source"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryTaskController.cs" id="252_influence_recovery_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController.cs" id="253_influence_recovery_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationMainSceneSmokeCheck.cs" id="254_influence_recovery_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryController.cs" id="255_influence_recovery_state"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator.cs" id="256_influence_recovery_resolution"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateController.cs" id="257_influence_recovery_candidate"]
@@ -262,13 +145,11 @@
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayModelSource.cs" id="261_delay_model_source"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayTaskController.cs" id="262_delay_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationFlowController.cs" id="263_delay_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationMainSceneSmokeCheck.cs" id="264_delay_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayController.cs" id="265_delay_state"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayResolutionCoordinator.cs" id="266_delay_resolution"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayRecoveryModelSource.cs" id="267_delay_recovery_model_source"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryTaskController.cs" id="268_delay_recovery_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController.cs" id="269_delay_recovery_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayRecoveryConsiderationMainSceneSmokeCheck.cs" id="270_delay_recovery_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryController.cs" id="271_delay_recovery_state"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryResolutionCoordinator.cs" id="272_delay_recovery_resolution"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateController.cs" id="273_delay_recovery_candidate"]
@@ -278,9 +159,7 @@
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionModelSource.cs" id="277_sabotage_action_model_source"]
 [ext_resource type="Script" path="res://CharacterSabotageActionTaskController.cs" id="278_sabotage_action_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationFlowController.cs" id="279_sabotage_action_flow"]
-[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck.cs" id="280_sabotage_action_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSelectionCoordinator.cs" id="281_sabotage_action_selection"]
-[ext_resource type="Script" path="res://CharacterSabotageActionRequestMainSceneSmokeCheck.cs" id="282_sabotage_action_request_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionConcealmentRequestController.cs" id="283_sabotage_action_conceal_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveRequestController.cs" id="284_sabotage_action_move_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSubstitutionRequestController.cs" id="285_sabotage_action_substitute_request"]
@@ -313,8 +192,6 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator.cs" id="291ao_sabotage_ordinary_lifecycle_resolution"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator.cs" id="291ap_sabotage_ordinary_delay_investigation"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInvestigationSource.cs" id="291aq_target_sabotage_investigation_source"]
-[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
-[ext_resource type="Script" path="res://CharacterSabotageTurnOpportunityControllerSmokeCheck.cs" id="291c_sabotage_turn_opportunity_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestStartCoordinator.cs" id="294_sabotage_action_specific_start"]
@@ -407,104 +284,54 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorSchedulingAuthorizationCoordinator.cs" id="298zzze_sabotage_move_cycle_continuation_successor_scheduling_authorization"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorCycleBoundaryCoordinator.cs" id="298zzzf_sabotage_move_cycle_continuation_successor_cycle_boundary"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorCycleStartAdmissionCoordinator.cs" id="298zzzg_sabotage_move_cycle_continuation_successor_cycle_start_admission"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck.cs" id="302_sabotage_outcome_misquotation_view_check"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeCheck.cs" id="303_sabotage_outcome_delay_recovery_request_check"]
-[ext_resource type="Script" path="res://CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSmokeCheck.cs" id="304_sabotage_outcome_influence_recovery_request_check"]
 [ext_resource type="Script" path="res://OpeningRegionProjectionSource.cs" id="305_opening_region_projection_source"]
-[ext_resource type="Script" path="res://OpeningRegionProjectionSmokeCheck.cs" id="306_opening_region_projection_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientSceneSource.cs" id="307_opening_region_first_patient_scene"]
-[ext_resource type="Script" path="res://OpeningRegionFirstPatientSceneSmokeCheck.cs" id="308_opening_region_first_patient_scene_check"]
-[ext_resource type="Script" path="res://OpeningRegionSickhouseNavigationSmokeCheck.cs" id="309_opening_region_sickhouse_check"]
 [ext_resource type="Script" path="res://OpeningRegionRemedyPreparationSceneSource.cs" id="310_opening_region_remedy_preparation_scene"]
-[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationSceneSmokeCheck.cs" id="311_opening_region_remedy_preparation_scene_check"]
 [ext_resource type="Script" path="res://OpeningRegionVillageTransitionSceneSource.cs" id="312_opening_region_village_transition_scene"]
-[ext_resource type="Script" path="res://OpeningRegionVillageTransitionSmokeCheck.cs" id="313_opening_region_village_transition_check"]
 [ext_resource type="Script" path="res://AdaptiveDisplay.cs" id="314_adaptive_display"]
 [ext_resource type="Script" path="res://OpeningRegionStreamLaundrySceneSource.cs" id="316_opening_region_stream_laundry_scene"]
-[ext_resource type="Script" path="res://OpeningRegionStreamLaundrySmokeCheck.cs" id="317_opening_region_stream_laundry_check"]
 [ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSceneSource.cs" id="318_opening_region_woodland_clearing_scene"]
-[ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSmokeCheck.cs" id="319_opening_region_woodland_clearing_check"]
 [ext_resource type="Script" path="res://OpeningRegionOldShrineSceneSource.cs" id="320_opening_region_old_shrine_scene"]
 [ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionDiscoveryCoordinator.cs" id="321_opening_region_inscription_coordinator"]
-[ext_resource type="Script" path="res://OpeningRegionOldShrineSmokeCheck.cs" id="322_opening_region_old_shrine_check"]
 [ext_resource type="Script" path="res://OpeningRegionSouthernRoadWagonSceneSource.cs" id="323_opening_region_road_wagon_scene"]
-[ext_resource type="Script" path="res://OpeningRegionSouthernRoadWagonSmokeCheck.cs" id="324_opening_region_road_wagon_check"]
 [ext_resource type="Script" path="res://OpeningRegionClosedForestPathSceneSource.cs" id="325_opening_region_closed_forest_scene"]
-[ext_resource type="Script" path="res://OpeningRegionClosedForestPathSmokeCheck.cs" id="326_opening_region_closed_forest_check"]
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSource.cs" id="327_opening_region_environment_source"]
 [ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator.cs" id="328_opening_region_environment_coordinator"]
-[ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSmokeCheck.cs" id="329_opening_region_environment_check"]
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalGreyboxPresentationController.cs" id="330_opening_region_environment_presentation"]
 [ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator.cs" id="331_opening_region_environment_flow"]
 [ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSource.cs" id="332_seeker_customization_source"]
-[ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSmokeCheck.cs" id="333_seeker_customization_check"]
 [ext_resource type="Script" path="res://SeekerCustomizationMenuController.cs" id="334_seeker_customization_menu"]
 [ext_resource type="Script" path="res://SeekerCustomizationApplicationCoordinator.cs" id="336_seeker_customization_application"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSource.cs" id="337_seeker_background_route_source"]
-[ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSmokeCheck.cs" id="338_seeker_background_route_check"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteAccessSceneSource.cs" id="339_seeker_background_route_access_source"]
-[ext_resource type="Script" path="res://SeekerScribeInspectionAccessSceneSmokeCheck.cs" id="340_seeker_scribe_inspection_access_check"]
-[ext_resource type="Script" path="res://SeekerApothecaryPreparationAccessSceneSmokeCheck.cs" id="341_seeker_apothecary_preparation_access_check"]
-[ext_resource type="Script" path="res://SeekerTravellerRoadWagonAccessSceneSmokeCheck.cs" id="342_seeker_traveller_road_wagon_access_check"]
 [ext_resource type="Script" path="res://JournalController.cs" id="343_journal_controller"]
-[ext_resource type="Script" path="res://JournalControllerSmokeCheck.cs" id="344_journal_controller_check"]
 [ext_resource type="Script" path="res://RepresentativeJournalCompositionCoordinator.cs" id="345_journal_composition"]
-[ext_resource type="Script" path="res://RepresentativeJournalCompositionSmokeCheck.cs" id="346_journal_composition_check"]
 [ext_resource type="Script" path="res://JournalSectionSelectionController.cs" id="347_journal_selection"]
-[ext_resource type="Script" path="res://JournalSectionSelectionSmokeCheck.cs" id="348_journal_selection_check"]
 [ext_resource type="Script" path="res://JournalSectionPresentationController.cs" id="349_journal_presentation"]
-[ext_resource type="Script" path="res://JournalSectionPresentationSmokeCheck.cs" id="350_journal_presentation_check"]
-[ext_resource type="Script" path="res://JournalSectionPresentationRefreshSmokeCheck.cs" id="351_journal_refresh_check"]
 [ext_resource type="Script" path="res://JournalSectionPanel.cs" id="352_journal_panel"]
-[ext_resource type="Script" path="res://JournalSectionPanelSmokeCheck.cs" id="353_journal_panel_check"]
 [ext_resource type="Script" path="res://JournalOpenCloseInputController.cs" id="354_journal_input"]
-[ext_resource type="Script" path="res://JournalOpenCloseInputSmokeCheck.cs" id="355_journal_input_check"]
 [ext_resource type="Script" path="res://SeekerMapController.cs" id="356_seeker_map_controller"]
-[ext_resource type="Script" path="res://SeekerMapControllerSmokeCheck.cs" id="357_seeker_map_controller_check"]
 [ext_resource type="Script" path="res://SeekerMapPresentationController.cs" id="358_seeker_map_presentation"]
-[ext_resource type="Script" path="res://SeekerMapPresentationControllerSmokeCheck.cs" id="359_seeker_map_presentation_check"]
 [ext_resource type="Script" path="res://SeekerMapPanel.cs" id="360_seeker_map_panel"]
-[ext_resource type="Script" path="res://SeekerMapPanelSmokeCheck.cs" id="361_seeker_map_panel_check"]
 [ext_resource type="Script" path="res://SeekerMapOpenCloseInputController.cs" id="362_seeker_map_input"]
-[ext_resource type="Script" path="res://SeekerMapOpenCloseInputSmokeCheck.cs" id="363_seeker_map_input_check"]
 [ext_resource type="Script" path="res://SeekerMapNoteEditingController.cs" id="364_seeker_map_note_editing"]
-[ext_resource type="Script" path="res://SeekerMapNoteEditingSmokeCheck.cs" id="365_seeker_map_note_editing_check"]
 [ext_resource type="Script" path="res://OpeningRegionMapVisitVerificationCoordinator.cs" id="366_map_visit_verification"]
-[ext_resource type="Script" path="res://OpeningRegionMapVisitVerificationSmokeCheck.cs" id="367_map_visit_verification_check"]
 [ext_resource type="Script" path="res://SeekerMapTestimonyReportingCoordinator.cs" id="368_map_testimony_reporting"]
-[ext_resource type="Script" path="res://SeekerMapTestimonyReportingSmokeCheck.cs" id="369_map_testimony_reporting_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteProgressController.cs" id="370_route_progress_controller"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteProgressControllerSmokeCheck.cs" id="371_route_progress_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteAuthorityCoordinator.cs" id="372_route_authority"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteAuthorityCoordinatorSmokeCheck.cs" id="373_route_authority_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionCoordinator.cs" id="374_route_completion"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionCoordinatorSmokeCheck.cs" id="375_route_completion_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinator.cs" id="376_route_completion_consumption"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck.cs" id="377_route_completion_consumption_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinator.cs" id="378_route_observation_routing"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck.cs" id="379_route_observation_routing_check"]
 [ext_resource type="Script" path="res://OpeningRegionStreamResiduePassiveNoticingCoordinator.cs" id="380_stream_residue_route"]
-[ext_resource type="Script" path="res://OpeningRegionStreamResiduePassiveNoticingSmokeCheck.cs" id="381_stream_residue_route_check"]
-[ext_resource type="Script" path="res://OpeningRegionWagonClueFocusedSearchRouteSmokeCheck.cs" id="383_wagon_clue_route_check"]
 [ext_resource type="Script" path="res://OpeningRegionWagonClueFocusedSearchRoutingCoordinator.cs" id="382_wagon_clue_route"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPresentationCoordinator.cs" id="384_route_completion_presentation"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPanel.cs" id="385_route_completion_panel"]
-[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPresentationSmokeCheck.cs" id="386_route_completion_presentation_check"]
 [ext_resource type="Script" path="res://OpeningRegionRemedyPreparationInputCoordinator.cs" id="387_remedy_preparation_input"]
-[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationInputSmokeCheck.cs" id="388_remedy_preparation_input_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientAdministrationInputCoordinator.cs" id="389_patient_administration_input"]
-[ext_resource type="Script" path="res://OpeningRegionFirstPatientAdministrationInputSmokeCheck.cs" id="390_patient_administration_input_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientStabilizationTestimonyCoordinator.cs" id="391_patient_testimony"]
-[ext_resource type="Script" path="res://OpeningRegionFirstPatientStabilizationTestimonySmokeCheck.cs" id="392_patient_testimony_check"]
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputCoordinator.cs" id="393_sage_consultation"]
-[ext_resource type="Script" path="res://OpeningRegionSageConsultationInputSmokeCheck.cs" id="394_sage_consultation_check"]
-[ext_resource type="Script" path="res://OpeningRegionFirstPatientRecoveryRestorationSmokeCheck.cs" id="395_recovery_restoration_check"]
 [ext_resource type="Script" path="res://OptionalOverlayVisibilityController.cs" id="398_optional_overlay_visibility"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/quiet-moss.png" id="400_runtime_quiet_moss"]
-[ext_resource type="Script" path="res://RuntimeTerrainGroundSmokeCheck.cs" id="401_runtime_terrain_ground_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter.png" id="402_runtime_leaf_litter"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-transition.png" id="403_runtime_leaf_transition"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png" id="404_runtime_leaf_corner"]
@@ -521,14 +348,10 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/square-garden-path.png" id="425_runtime_square_garden_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/square-sickhouse-path.png" id="426_runtime_square_sickhouse_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/foliage-broadleaf.png" id="410_runtime_broadleaf_foliage"]
-[ext_resource type="Script" path="res://RuntimeGardenFoliageSmokeCheck.cs" id="411_runtime_garden_foliage_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/preparation-table.png" id="412_runtime_preparation_table"]
-[ext_resource type="Script" path="res://RuntimePreparationTableSmokeCheck.cs" id="413_runtime_preparation_table_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/herb-bed-empty.png" id="414_runtime_herb_bed"]
-[ext_resource type="Script" path="res://RuntimeHerbBedSmokeCheck.cs" id="415_runtime_herb_bed_check"]
 [ext_resource type="SpriteFrames" path="res://art/runtime/characters/seeker/walk-animations.tres" id="416_runtime_seeker_walk"]
 [ext_resource type="Script" path="res://SeekerWalkAnimationPresenter.cs" id="417_seeker_walk_presenter"]
-[ext_resource type="Script" path="res://RuntimeSeekerWalkSmokeCheck.cs" id="418_runtime_seeker_walk_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/square-southern-road-path.png" id="427_runtime_square_southern_road_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/southern-road-wagon-path.png" id="428_runtime_southern_road_wagon_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-southern-road-path.png" id="429_runtime_shrine_southern_road_path"]
@@ -549,26 +372,12 @@
 
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/garden-ground-meadow.png" id="443_garden_meadow"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/garden-ground-soil.png" id="444_garden_soil"]
-[ext_resource type="Script" path="res://RuntimeGardenGroundSmokeCheck.cs" id="445_garden_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/village-square-ground.png" id="446_square_ground"]
-[ext_resource type="Script" path="res://RuntimeSquareGroundSmokeCheck.cs" id="447_square_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/sickhouse-entrance-ground.png" id="448_sickhouse_ground"]
-[ext_resource type="Script" path="res://RuntimeSickhouseGroundSmokeCheck.cs" id="449_sickhouse_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/wagon-entrance-ground.png" id="450_wagon_ground"]
-[ext_resource type="Script" path="res://RuntimeWagonGroundSmokeCheck.cs" id="451_wagon_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-entrance-ground.png" id="452_shrine_ground"]
-[ext_resource type="Script" path="res://RuntimeShrineGroundSmokeCheck.cs" id="453_shrine_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/laundry-entrance-ground.png" id="454_laundry_ground"]
-[ext_resource type="Script" path="res://RuntimeLaundryGroundSmokeCheck.cs" id="455_laundry_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/village-edge-entrance-ground.png" id="456_village_edge_ground"]
-[ext_resource type="Script" path="res://RuntimeVillageEdgeGroundSmokeCheck.cs" id="457_village_edge_ground_check"]
-
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-01.png" id="458_woodland_shrubs_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-fallen-wood-07.png" id="459_woodland_fallen_wood_07"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-rocks-08.png" id="460_woodland_rocks_08"]
@@ -653,8 +462,6 @@
 [ext_resource type="Script" path="res://ControlSettingsController.cs" id="controls_controller"]
 [ext_resource type="Script" path="res://ControlInputContext.cs" id="controls_context"]
 [ext_resource type="PackedScene" path="res://ControlSettingsPanel.tscn" id="controls_panel"]
-[ext_resource type="PackedScene" path="res://DialogueAccessibilityMainSmokeCheck.tscn" id="dialogue_accessibility_check"]
-
 [ext_resource type="Script" path="res://DialogueSpeechController.cs" id="dialogue_speech"]
 [ext_resource type="Script" path="res://DialogueSpeechMainSmokeCheck.cs" id="dialogue_speech_check"]
 
@@ -665,8 +472,6 @@
 [ext_resource type="Script" path="res://SpaceHoldSpeechController.cs" id="space_hold_speech"]
 
 [ext_resource type="Script" path="res://SpaceHoldSpeechSmokeCheck.cs" id="space_hold_check"]
-
-[ext_resource type="Script" path="res://DialogueOwnershipMainSmokeCheck.cs" id="dialogue_ownership_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -797,9 +602,6 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 3200, 1800)
 
-[node name="RuntimeTerrainGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("401_runtime_terrain_ground_check")
-
 [node name="StreamCollision" type="StaticBody2D" parent="."]
 
 [node name="WestCollision" type="CollisionPolygon2D" parent="StreamCollision"]
@@ -892,12 +694,6 @@ position = Vector2(1900, 1640)
 
 [node name="closed-deeper-forest-path" type="Marker2D" parent="OpeningRegionProjectionSource"]
 position = Vector2(650, 150)
-
-[node name="OpeningRegionProjectionSmokeCheck" type="Node" parent="."]
-script = ExtResource("306_opening_region_projection_check")
-
-[node name="HealerCommandSmokeCheck" type="Node" parent="."]
-script = ExtResource("7_healer_check")
 
 [node name="HealerStart" type="Marker2D" parent="."]
 position = Vector2(2000, 950)
@@ -2182,12 +1978,6 @@ offset_bottom = 105.0
 text = "SICKHOUSE · SLEEPING PATIENT"
 horizontal_alignment = 1
 
-[node name="OpeningRegionFirstPatientSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("308_opening_region_first_patient_scene_check")
-
-[node name="OpeningRegionSickhouseNavigationSmokeCheck" type="Node" parent="."]
-script = ExtResource("309_opening_region_sickhouse_check")
-
 [node name="OpeningRegionRemedyPreparationSceneSource" type="Node2D" parent="."]
 position = Vector2(2300, 1300)
 script = ExtResource("310_opening_region_remedy_preparation_scene")
@@ -2254,47 +2044,17 @@ offset_bottom = 81.0
 text = "HEALER'S GARDEN · PREPARATION STATION"
 horizontal_alignment = 1
 
-[node name="OpeningRegionRemedyPreparationSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("311_opening_region_remedy_preparation_scene_check")
-
-[node name="RuntimeGardenFoliageSmokeCheck" type="Node" parent="."]
-script = ExtResource("411_runtime_garden_foliage_check")
-
-[node name="RuntimePreparationTableSmokeCheck" type="Node" parent="."]
-script = ExtResource("413_runtime_preparation_table_check")
-
-[node name="RuntimeHerbBedSmokeCheck" type="Node" parent="."]
-script = ExtResource("415_runtime_herb_bed_check")
-
-[node name="RuntimeSeekerWalkSmokeCheck" type="Node" parent="."]
-script = ExtResource("418_runtime_seeker_walk_check")
-
 [node name="OpeningRegionRemedyPreparationInputCoordinator" type="Node" parent="."]
 script = ExtResource("387_remedy_preparation_input")
-
-[node name="OpeningRegionRemedyPreparationInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("388_remedy_preparation_input_check")
 
 [node name="OpeningRegionFirstPatientAdministrationInputCoordinator" type="Node" parent="."]
 script = ExtResource("389_patient_administration_input")
 
-[node name="OpeningRegionFirstPatientAdministrationInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("390_patient_administration_input_check")
-
 [node name="OpeningRegionFirstPatientStabilizationTestimonyCoordinator" type="Node" parent="."]
 script = ExtResource("391_patient_testimony")
 
-[node name="OpeningRegionFirstPatientStabilizationTestimonySmokeCheck" type="Node" parent="."]
-script = ExtResource("392_patient_testimony_check")
-
 [node name="OpeningRegionSageConsultationInputCoordinator" type="Node" parent="."]
 script = ExtResource("393_sage_consultation")
-
-[node name="OpeningRegionSageConsultationInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("394_sage_consultation_check")
-
-[node name="OpeningRegionFirstPatientRecoveryRestorationSmokeCheck" type="Node" parent="."]
-script = ExtResource("395_recovery_restoration_check")
 
 [node name="OpeningRegionVillageTransitionSceneSource" type="Node2D" parent="."]
 script = ExtResource("312_opening_region_village_transition_scene")
@@ -2410,9 +2170,6 @@ position = Vector2(730, 456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeRightBottom"]
 shape = SubResource("RectangleShape2D_village_transition_vertical_section")
-
-[node name="OpeningRegionVillageTransitionSmokeCheck" type="Node" parent="."]
-script = ExtResource("313_opening_region_village_transition_check")
 
 [node name="OpeningRegionStreamLaundrySceneSource" type="Node2D" parent="."]
 script = ExtResource("316_opening_region_stream_laundry_scene")
@@ -2547,9 +2304,6 @@ position = Vector2(748, 100)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryRightBottom"]
 shape = SubResource("RectangleShape2D_laundry_side_section")
 
-[node name="OpeningRegionStreamLaundrySmokeCheck" type="Node" parent="."]
-script = ExtResource("317_opening_region_stream_laundry_check")
-
 [node name="OpeningRegionWoodlandClearingSceneSource" type="Node2D" parent="."]
 script = ExtResource("318_opening_region_woodland_clearing_scene")
 
@@ -2670,9 +2424,6 @@ position = Vector2(528.5, 120)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomRight"]
 shape = SubResource("RectangleShape2D_clearing_bottom_right")
 
-[node name="OpeningRegionWoodlandClearingSmokeCheck" type="Node" parent="."]
-script = ExtResource("319_opening_region_woodland_clearing_check")
-
 [node name="OpeningRegionOldShrineSceneSource" type="Node2D" parent="."]
 script = ExtResource("320_opening_region_old_shrine_scene")
 
@@ -2762,35 +2513,14 @@ script = ExtResource("330_opening_region_environment_presentation")
 [node name="OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator" type="Node" parent="."]
 script = ExtResource("331_opening_region_environment_flow")
 
-[node name="OpeningRegionEnvironmentalStateSmokeCheck" type="Node" parent="."]
-script = ExtResource("329_opening_region_environment_check")
-
 [node name="SeekerCustomizationSelectionSceneSource" type="Node" parent="."]
 script = ExtResource("332_seeker_customization_source")
-
-[node name="SeekerCustomizationSelectionSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("333_seeker_customization_check")
 
 [node name="SeekerBackgroundRouteVariationSceneSource" type="Node" parent="."]
 script = ExtResource("337_seeker_background_route_source")
 
 [node name="SeekerBackgroundRouteAccessSceneSource" type="Node" parent="."]
 script = ExtResource("339_seeker_background_route_access_source")
-
-[node name="SeekerBackgroundRouteVariationSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("338_seeker_background_route_check")
-
-[node name="SeekerScribeInspectionAccessSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("340_seeker_scribe_inspection_access_check")
-
-[node name="SeekerApothecaryPreparationAccessSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("341_seeker_apothecary_preparation_access_check")
-
-[node name="SeekerTravellerRoadWagonAccessSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("342_seeker_traveller_road_wagon_access_check")
-
-[node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
-script = ExtResource("322_opening_region_old_shrine_check")
 
 [node name="OpeningRegionSouthernRoadWagonSceneSource" type="Node2D" parent="."]
 script = ExtResource("323_opening_region_road_wagon_scene")
@@ -2885,9 +2615,6 @@ default_color = Color(0.18, 0.137, 0.09, 1)
 [node name="OpeningRegionWagonClueFocusedSearchRoutingCoordinator" type="Node" parent="."]
 script = ExtResource("382_wagon_clue_route")
 
-[node name="OpeningRegionSouthernRoadWagonSmokeCheck" type="Node" parent="."]
-script = ExtResource("324_opening_region_road_wagon_check")
-
 [node name="OpeningRegionClosedForestPathSceneSource" type="Node2D" parent="."]
 script = ExtResource("325_opening_region_closed_forest_scene")
 
@@ -2924,9 +2651,6 @@ offset_right = 504.0
 offset_bottom = 119.0
 text = "DEEPER FOREST — CLOSED"
 horizontal_alignment = 1
-
-[node name="OpeningRegionClosedForestPathSmokeCheck" type="Node" parent="."]
-script = ExtResource("326_opening_region_closed_forest_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")
@@ -3051,206 +2775,8 @@ script = ExtResource("93_model_stream_controller")
 [node name="CharacterModelGenerationFlowController" type="Node" parent="."]
 script = ExtResource("97_model_flow_controller")
 
-[node name="InteractionFocusSmokeCheck" type="Node" parent="."]
-script = ExtResource("10_interaction_check")
-
-[node name="SeekerMovementBoundarySmokeCheck" type="Node" parent="."]
-script = ExtResource("11_boundary_check")
-
-[node name="FocusedSearchActivityIndicatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("13_search_indicator_check")
-
-[node name="FocusedSearchActivityControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("15_search_controller_check")
-
-[node name="FocusedSearchOutcomeControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("17_search_outcome_controller_check")
-
-[node name="TemporaryFocusedSearchOutcomeSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("19_search_outcome_source_check")
-
-[node name="TemporaryWorldObjectSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("26_world_object_source_check")
-
-[node name="WorldObjectControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("28_world_object_controller_check")
-
-[node name="WorldEventLogControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("41_world_event_log_controller_check")
-
-[node name="TemporaryWorldEventSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("43_world_event_source_check")
-
-[node name="InitialWorldEventRecordingSmokeCheck" type="Node" parent="."]
-script = ExtResource("44_initial_world_event_check")
-
-[node name="WorldTimeControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("46_world_time_controller_check")
-
-[node name="WorldEventControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("48_world_event_controller_check")
-
-[node name="CharacterMemoryControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("125_character_memory_controller_check")
-
-[node name="JournalControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("344_journal_controller_check")
-
-[node name="SeekerMapControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("357_seeker_map_controller_check")
-
-[node name="OpeningRegionInvestigationRouteProgressControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("371_route_progress_check")
-
-[node name="OpeningRegionInvestigationRouteAuthorityCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("373_route_authority_check")
-
-[node name="OpeningRegionInvestigationRouteCompletionCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("375_route_completion_check")
-
-[node name="OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("377_route_completion_consumption_check")
-
-[node name="OpeningRegionInvestigationRouteCompletionPresentationSmokeCheck" type="Node" parent="."]
-script = ExtResource("386_route_completion_presentation_check")
-
-[node name="OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("379_route_observation_routing_check")
-
-[node name="OpeningRegionStreamResiduePassiveNoticingSmokeCheck" type="Node" parent="."]
-script = ExtResource("381_stream_residue_route_check")
-
-[node name="OpeningRegionWagonClueFocusedSearchRouteSmokeCheck" type="Node" parent="."]
-script = ExtResource("383_wagon_clue_route_check")
-
-[node name="SeekerMapPresentationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("359_seeker_map_presentation_check")
-
-[node name="SeekerMapPanelSmokeCheck" type="Node" parent="."]
-script = ExtResource("361_seeker_map_panel_check")
-
-[node name="SeekerMapOpenCloseInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("363_seeker_map_input_check")
-
-[node name="SeekerMapNoteEditingSmokeCheck" type="Node" parent="."]
-script = ExtResource("365_seeker_map_note_editing_check")
-
-[node name="OpeningRegionMapVisitVerificationSmokeCheck" type="Node" parent="."]
-script = ExtResource("367_map_visit_verification_check")
-
-[node name="SeekerMapTestimonyReportingSmokeCheck" type="Node" parent="."]
-script = ExtResource("369_map_testimony_reporting_check")
-
-[node name="RepresentativeJournalCompositionSmokeCheck" type="Node" parent="."]
-script = ExtResource("346_journal_composition_check")
-
-[node name="JournalSectionSelectionSmokeCheck" type="Node" parent="."]
-script = ExtResource("348_journal_selection_check")
-
-[node name="JournalSectionPresentationSmokeCheck" type="Node" parent="."]
-script = ExtResource("350_journal_presentation_check")
-
-[node name="JournalSectionPresentationRefreshSmokeCheck" type="Node" parent="."]
-script = ExtResource("351_journal_refresh_check")
-
-[node name="JournalSectionPanelSmokeCheck" type="Node" parent="."]
-script = ExtResource("353_journal_panel_check")
-
-[node name="JournalOpenCloseInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("355_journal_input_check")
-
-[node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("127_first_patient_state_controller_check")
-
-[node name="TemporaryFirstPatientTreatmentContextSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("129_first_patient_context_source_check")
-
-[node name="FirstPatientPreparationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("131_first_patient_preparation_check")
-
-[node name="FirstPatientAdministrationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("133_first_patient_administration_check")
-
-[node name="FirstPatientSaveStateCaptureSmokeCheck" type="Node" parent="."]
-script = ExtResource("134_first_patient_save_state_capture_check")
-
-[node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
-script = ExtResource("49_search_world_event_check")
-
-[node name="DiscoverySaveStateRestorationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("50_discovery_save_restoration_controller_check")
-
-[node name="WorldEventSaveStateRestorationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("51_world_event_save_restoration_controller_check")
-
-[node name="SaveSnapshotRestorationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("53_save_restoration_controller_check")
-
-[node name="SaveSnapshotCaptureControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("55_save_capture_controller_check")
-
-[node name="SaveSnapshotJsonControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("57_save_json_controller_check")
-
-[node name="SaveLoadInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("397_save_load_input_check")
-
-[node name="CharacterTurnActivityControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("61_character_turn_controller_check")
-
-[node name="TemporaryCharacterTurnSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("63_character_turn_source_check")
-
-[node name="CharacterTurnCancellationInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("64_character_turn_input_check")
-
-[node name="DialogueInputSmokeCheck" type="Node" parent="."]
-script = ExtResource("67_dialogue_input_check")
-
-[node name="DialogueEventControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("69_dialogue_event_controller_check")
-
-[node name="CharacterTurnTranscriptControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("71_character_turn_transcript_check")
-
-[node name="TemporaryCharacterTurnRequestSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("72_character_turn_request_source_check")
-
-[node name="CharacterTurnRequestFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("74_character_turn_request_flow_check")
-
-[node name="TemporaryCharacterTurnResponseSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("75_character_turn_response_source_check")
-
-[node name="TemporaryCharacterExaminationResultSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("86_examination_result_source_check")
-
-[node name="CharacterTurnWorldEventOccurrenceControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("88_character_action_controller_check")
-
-[node name="AutonomousConversationBudgetControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("136_autonomous_conversation_budget_controller_check")
-
-[node name="CharacterIndependentTaskDepartureControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("152_independent_task_departure_check")
-
-[node name="TemporaryCharacterIndependentTaskSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("154_independent_task_source_check")
-
-[node name="CharacterIndependentTaskOccurrenceControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("157_independent_task_occurrence_check")
-
-[node name="CharacterIndependentTaskTravelControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("159_independent_task_travel_check")
-
-[node name="TemporaryCharacterIndependentTaskTravelSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("161_independent_task_travel_source_check")
-
 [node name="CharacterIndependentTaskReturnTravelController" type="Node" parent="."]
 script = ExtResource("162_independent_task_return_travel_controller")
-
-[node name="CharacterIndependentTaskReturnTravelControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("163_independent_task_return_travel_check")
 
 [node name="TemporaryCharacterIndependentTaskReturnTravelSource" type="Node" parent="."]
 script = ExtResource("164_independent_task_return_travel_source")
@@ -3264,120 +2790,6 @@ script = ExtResource("169_independent_task_step_clock_controller")
 [node name="CharacterIndependentTaskBodyPresentationController" type="Node" parent="."]
 script = ExtResource("173_independent_task_body_presentation_controller")
 
-[node name="TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("165_independent_task_return_travel_source_check")
-
-[node name="CharacterIndependentTaskReturnRejoinControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("166_independent_task_return_rejoin_check")
-
-[node name="CharacterIndependentTaskRoundTripCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("168_independent_task_round_trip_check")
-
-[node name="CharacterIndependentTaskStepClockControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("170_independent_task_step_clock_check")
-
-[node name="CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("171_independent_task_timed_round_trip_check")
-
-[node name="IndependentTaskLiveRoundTripFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("172_independent_task_live_round_trip_check")
-
-[node name="CharacterIndependentTaskBodyPresentationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("174_independent_task_body_presentation_check")
-
-[node name="TemporaryCharacterObjectSabotageMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("175_object_sabotage_main_scene_check")
-
-[node name="TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("191_object_sabotage_move_main_scene_check")
-
-[node name="TemporaryCharacterObjectSabotageSubstitutionMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("203_object_sabotage_substitution_main_scene_check")
-
-[node name="TemporaryCharacterObjectSabotageSubstitutionPresentationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("207_object_sabotage_substitution_presentation_flow_check")
-
-[node name="TemporaryCharacterObjectSabotageSubstitutionConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("214_object_sabotage_substitution_consideration_main_scene_check")
-
-[node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("226_misquotation_evidence_main_scene_check")
-
-[node name="TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("248_influence_main_scene_check")
-
-[node name="TemporaryCharacterTargetSabotageDelayConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("264_delay_main_scene_check")
-
-[node name="TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("254_influence_recovery_main_scene_check")
-
-[node name="TemporaryCharacterTargetSabotageDelayRecoveryConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("270_delay_recovery_main_scene_check")
-
-[node name="TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("241_misquotation_occurrence_main_scene_check")
-
-[node name="TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("197_object_sabotage_move_presentation_flow_check")
-
-[node name="WaterCaskMoveSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("198_water_cask_move_sabotage_investigation_check")
-
-[node name="WaterCaskSubstitutionSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("210_water_cask_substitution_sabotage_investigation_check")
-
-[node name="TemporaryCharacterObjectSabotageConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("185_object_sabotage_consideration_main_scene_check")
-
-[node name="TemporaryCharacterObjectSabotageModelPresentationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("190_object_sabotage_model_presentation_main_scene_check")
-
-[node name="CharacterObjectSabotageConcealmentPresentationControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("179_object_sabotage_presentation_check")
-
-[node name="TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("182_object_sabotage_presentation_flow_check")
-
-[node name="WaterCaskInteractionFocusSmokeCheck" type="Node" parent="."]
-script = ExtResource("183_water_cask_interaction_focus_check")
-
-[node name="WaterCaskSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("184_water_cask_sabotage_investigation_check")
-
-[node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("138_participation_round_task_check")
-
-[node name="TemporaryCharacterTurnParticipationModelSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("140_participation_model_source_check")
-
-[node name="OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck" type="Node" parent="."]
-script = ExtResource("142_ordinary_participation_check")
-
-[node name="OrdinaryAutonomousDialogueFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("143_ordinary_autonomous_flow_check")
-
-[node name="OrdinaryParticipationCancellationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("145_ordinary_participation_cancel_check")
-
-[node name="OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck" type="Node" parent="."]
-script = ExtResource("146_ordinary_participation_scheduling_check")
-
-[node name="TemporaryOrdinaryCharacterParticipantSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("147_ordinary_character_participant_source_check")
-
-[node name="OrdinarySageInterjectionFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("149_ordinary_sage_interjection_check")
-
-[node name="OrdinaryBoundedConversationLoopSmokeCheck" type="Node" parent="."]
-script = ExtResource("150_ordinary_bounded_loop_check")
-
-[node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("77_character_turn_response_flow_check")
-
-[node name="CharacterTurnResponsePresentationSmokeCheck" type="Node" parent="."]
-script = ExtResource("78_character_turn_response_presentation_check")
-
 [node name="TemporaryCharacterTurnResponseSpeechRecorder" type="Node" parent="."]
 script = ExtResource("81_character_turn_response_speech_recorder")
 
@@ -3389,108 +2801,6 @@ script = ExtResource("89_examination_flow_controller")
 
 [node name="TemporaryCharacterTurnCompletionController" type="Node" parent="."]
 script = ExtResource("83_character_turn_completion_controller")
-
-[node name="CharacterExaminationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("90_examination_flow_check")
-
-[node name="CharacterTurnCompletionFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("82_character_turn_completion_flow_check")
-
-[node name="CharacterTurnRepeatFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("84_character_turn_repeat_flow_check")
-
-[node name="CharacterModelGenerationStatusPresentationSmokeCheck" type="Node" parent="."]
-script = ExtResource("92_model_status_check")
-
-[node name="CharacterModelStreamControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("94_model_stream_check")
-
-[node name="CharacterModelStreamTextPresentationSmokeCheck" type="Node" parent="."]
-script = ExtResource("96_model_stream_text_check")
-
-[node name="CharacterModelGenerationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("98_model_flow_check")
-
-[node name="TemporaryCharacterModelGenerationInputSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("101_model_input_check")
-
-[node name="TemporaryOfflineCharacterModelSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("103_offline_model_check")
-
-[node name="TemporaryCharacterModelSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("104_scripted_model_check")
-
-[node name="CharacterModelInvalidResponseFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("105_invalid_model_check")
-
-[node name="CharacterModelOrdinaryCancellationSmokeCheck" type="Node" parent="."]
-script = ExtResource("106_ordinary_model_cancel_check")
-
-[node name="CharacterModelOrdinaryProviderFailureSmokeCheck" type="Node" parent="."]
-script = ExtResource("107_ordinary_model_failure_check")
-
-[node name="CharacterModelOrdinaryTimeoutSmokeCheck" type="Node" parent="."]
-script = ExtResource("108_ordinary_model_timeout_check")
-
-[node name="CharacterModelOrdinaryModelSwitchSmokeCheck" type="Node" parent="."]
-script = ExtResource("109_ordinary_model_switch_check")
-
-[node name="CharacterModelOrdinaryMalformedStreamSmokeCheck" type="Node" parent="."]
-script = ExtResource("110_ordinary_malformed_model_check")
-
-[node name="CharacterModelSettingsStorageControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("112_model_settings_storage_check")
-
-[node name="TemporaryCharacterModelCompositionControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("114_model_composition_check")
-
-[node name="TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("280_sabotage_action_main_scene_check")
-
-[node name="CharacterSabotageActionRequestMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("282_sabotage_action_request_main_scene_check")
-
-[node name="CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("299_sabotage_outcome_move_recovery_check")
-
-[node name="CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("300_sabotage_outcome_substitution_recovery_check")
-
-[node name="CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("301_sabotage_outcome_contamination_recovery_check")
-
-[node name="CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("302_sabotage_outcome_misquotation_view_check")
-
-[node name="CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("303_sabotage_outcome_delay_recovery_request_check")
-
-[node name="CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("304_sabotage_outcome_influence_recovery_request_check")
-
-[node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("221_object_sabotage_contamination_check")
-
-[node name="WaterCaskContaminationSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("225_water_cask_contamination_sabotage_investigation_check")
-
-[node name="CharacterModelSettingsControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("116_model_settings_controller_check")
-
-[node name="CharacterModelSettingsPanelSmokeCheck" type="Node" parent="."]
-script = ExtResource("118_model_settings_panel_check")
-
-[node name="OpenAiCredentialControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("120_openai_credential_controller_check")
-
-[node name="OpenAiCredentialPanelSmokeCheck" type="Node" parent="."]
-script = ExtResource("121_openai_credential_panel_check")
-
-[node name="CharacterModelConnectionPanelSmokeCheck" type="Node" parent="."]
-script = ExtResource("122_model_connection_panel_check")
-
-[node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
-script = ExtResource("29_world_object_interaction_focus_check")
 
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(2000, 950)
@@ -3559,36 +2869,6 @@ script = ExtResource("38_reinterpretation_candidate_source")
 
 [node name="TemporarySeekerPerceptionSource" type="Node" parent="."]
 script = ExtResource("20_seeker_perception_source")
-
-[node name="TemporarySeekerCharacterSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("31_seeker_character_source_check")
-
-[node name="PassiveNoticingCandidateControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("32_passive_candidate_controller_check")
-
-[node name="PassiveNoticingResolutionControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("33_passive_resolution_controller_check")
-
-[node name="TemporaryPassiveNoticingCandidateSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("35_passive_candidate_source_check")
-
-[node name="ObservationReinterpretationCandidateControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("36_reinterpretation_candidate_controller_check")
-
-[node name="ObservationReinterpretationResolutionControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("37_reinterpretation_resolution_controller_check")
-
-[node name="TemporaryObservationReinterpretationCandidateSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("39_reinterpretation_candidate_source_check")
-
-[node name="TemporarySeekerPerceptionSourceSmokeCheck" type="Node" parent="."]
-script = ExtResource("21_seeker_perception_source_check")
-
-[node name="FocusedSearchPerceptionControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("22_search_perception_controller_check")
-
-[node name="FocusedSearchOutcomeResolutionControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("23_search_outcome_resolution_controller_check")
 
 [node name="SeekerCustomizationOverlay" type="CanvasLayer" parent="."]
 layer = 10
@@ -4043,12 +3323,6 @@ offset_bottom = 147.0
 autowrap_mode = 2
 script = ExtResource("95_model_stream_text_label")
 
-[node name="CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck" type="Node" parent="."]
-script = ExtResource("291b_sabotage_ordinary_authoring_check")
-
-[node name="CharacterSabotageTurnOpportunityControllerSmokeCheck" type="Node" parent="."]
-script = ExtResource("291c_sabotage_turn_opportunity_check")
-
 [node name="GardenGroundPresentation" type="Node2D" parent="."]
 position = Vector2(2048, 1120)
 
@@ -4066,9 +3340,6 @@ texture_repeat = 1
 texture = ExtResource("444_garden_soil")
 centered = false
 
-[node name="RuntimeGardenGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("445_garden_ground_check")
-
 [node name="SquareGroundPresentation" type="Node2D" parent="."]
 position = Vector2(1920, 620)
 
@@ -4078,9 +3349,6 @@ texture_filter = 2
 texture_repeat = 1
 texture = ExtResource("446_square_ground")
 centered = false
-
-[node name="RuntimeSquareGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("447_square_ground_check")
 
 [node name="SickhouseGroundPresentation" type="Node2D" parent="."]
 position = Vector2(2408, 1248)
@@ -4092,9 +3360,6 @@ texture_repeat = 1
 texture = ExtResource("448_sickhouse_ground")
 centered = false
 
-[node name="RuntimeSickhouseGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("449_sickhouse_ground_check")
-
 [node name="WagonGroundPresentation" type="Node2D" parent="."]
 position = Vector2(1633, 1512)
 
@@ -4104,9 +3369,6 @@ texture_filter = 2
 texture_repeat = 1
 texture = ExtResource("450_wagon_ground")
 centered = false
-
-[node name="RuntimeWagonGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("451_wagon_ground_check")
 
 [node name="ShrineGroundPresentation" type="Node2D" parent="."]
 position = Vector2(596, 250)
@@ -4118,9 +3380,6 @@ texture_repeat = 1
 texture = ExtResource("452_shrine_ground")
 centered = false
 
-[node name="RuntimeShrineGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("453_shrine_ground_check")
-
 [node name="LaundryGroundPresentation" type="Node2D" parent="."]
 position = Vector2(1564, 219)
 
@@ -4131,9 +3390,6 @@ texture_repeat = 1
 texture = ExtResource("454_laundry_ground")
 centered = false
 
-[node name="RuntimeLaundryGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("455_laundry_ground_check")
-
 [node name="VillageEdgeGroundPresentation" type="Node2D" parent="."]
 position = Vector2(1480, 620)
 
@@ -4143,9 +3399,6 @@ texture_filter = 2
 texture_repeat = 1
 texture = ExtResource("456_village_edge_ground")
 centered = false
-
-[node name="RuntimeVillageEdgeGroundSmokeCheck" type="Node" parent="."]
-script = ExtResource("457_village_edge_ground_check")
 
 [node name="WoodlandClearingDressingPresentation" type="Node2D" parent="."]
 
@@ -4436,8 +3689,6 @@ offset_right = 180.0
 offset_bottom = 392.0
 text = "Close settings"
 
-[node name="DialogueAccessibilityMainSmokeCheck" parent="." instance=ExtResource("dialogue_accessibility_check")]
-
 [node name="DialogueSpeechController" type="Node" parent="."]
 script = ExtResource("dialogue_speech")
 
@@ -4455,9 +3706,6 @@ script = ExtResource("space_hold_speech")
 
 [node name="SpaceHoldSpeechSmokeCheck" type="Node" parent="."]
 script = ExtResource("space_hold_check")
-
-[node name="DialogueOwnershipMainSmokeCheck" type="Node" parent="."]
-script = ExtResource("dialogue_ownership_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
