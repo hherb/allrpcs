@@ -279,10 +279,10 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || openAiDelayRecovery is not OpenAiCharacterTargetSabotageDelayRecoveryModel
             || openAiSabotageAction is not OpenAiCharacterSabotageActionModel
             || !ReferenceEquals(
-                Field<CharacterModelSettings>(openAiSabotageAction, "settings"),
+                Field<CharacterModelSettings>(Field<object>(openAiSabotageAction, "client"), "settings"),
                 openAiSettings)
             || !ReferenceEquals(
-                Field<CharacterModelSettings>(openAiDelayRecovery, "settings"),
+                Field<CharacterModelSettings>(Field<object>(openAiDelayRecovery, "client"), "settings"),
                 openAiSettings)
             || !ReferenceEquals(modelSource.TakeModel(), openAiModel)
             || !ReferenceEquals(participationModelSource.TakeModel(), openAiParticipation)
@@ -336,7 +336,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 is not OpenAiCharacterTargetSabotageDelayRecoveryModel replacementDelayRecovery
             || ReferenceEquals(replacementDelayRecovery, openAiDelayRecovery)
             || !ReferenceEquals(
-                Field<CharacterModelSettings>(replacementDelayRecovery, "settings"),
+                Field<CharacterModelSettings>(Field<object>(replacementDelayRecovery, "client"), "settings"),
                 replacementOpenAiSettings)
             || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), replacementDelayRecovery)
             || !ReferenceEquals(sabotageActionModelSource.TakeModel(), oneShotSabotageAction)
@@ -344,7 +344,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 is not OpenAiCharacterSabotageActionModel replacementSabotageAction
             || ReferenceEquals(replacementSabotageAction, openAiSabotageAction)
             || !ReferenceEquals(
-                Field<CharacterModelSettings>(replacementSabotageAction, "settings"),
+                Field<CharacterModelSettings>(Field<object>(replacementSabotageAction, "client"), "settings"),
                 replacementOpenAiSettings)
             || !ReferenceEquals(sabotageActionModelSource.TakeModel(), replacementSabotageAction)
             || !settingsController.TryApply(activatedSettings)

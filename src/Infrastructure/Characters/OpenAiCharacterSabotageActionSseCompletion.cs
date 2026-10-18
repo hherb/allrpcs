@@ -1,33 +1,22 @@
 using Allrpcs.Domain.Characters;
-using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Infrastructure.Characters;
 
-/// <summary>Completes one sabotage-action decision from bounded OpenAI Responses SSE.</summary>
+/// <summary>Completes the typed decision through shared bounded Responses event handling.</summary>
 public static class OpenAiCharacterSabotageActionSseCompletion
 {
-    /// <summary>Stops at the first terminal event for one exact consideration request.</summary>
+    /// <summary>Stops at the first terminal event without disposing the caller-owned stream.</summary>
     public static async Task<CharacterSabotageActionDecision> CompleteAsync(
         CharacterSabotageActionConsiderationRequest request,
         Stream stream,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(request);
-        ArgumentNullException.ThrowIfNull(stream);
-        OpenAiCharacterSabotageActionStreamAccumulator accumulator = new(request);
-        CharacterSabotageActionDecision? decision = null;
-        await foreach (string document in OpenAiServerSentEventReader.ReadDocumentsAsync(stream, cancellationToken)
-                .ConfigureAwait(false))
-        {
-
-            decision = accumulator.Apply(document);
-            if (decision is not null)
-            {
-                return decision;
-            }
-        }
-
-        return decision ?? throw new InvalidDataException(
-            "The OpenAI sabotage-action stream did not complete.");
+        OpenAiStructuredDecisionAccumulator<CharacterSabotageActionConsiderationRequest,
+            CharacterSabotageActionDecision> accumulator = new(request,
+            CharacterSabotageActionDecisionJsonDeserializer.Deserialize,
+            CharacterSabotageActionDecisionJsonDeserializer.MaximumDocumentLength,
+            requireLifecycle: true,
+            allowMetadataAfterTextDone: true);
+        return await accumulator.CompleteAsync(stream, cancellationToken).ConfigureAwait(false);
     }
 }

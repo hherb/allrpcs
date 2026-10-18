@@ -28,10 +28,12 @@ public sealed class OpenAiCharacterObjectSabotageConcealmentModelBindingFactoryT
         Assert.Same(settings, binding.Settings);
         OpenAiCharacterObjectSabotageConcealmentModel model =
             Assert.IsType<OpenAiCharacterObjectSabotageConcealmentModel>(binding.Model);
-        Assert.Same(client, Field<HttpClient>(model, "client"));
-        Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(model, "credentialSource"));
-        Assert.Same(settings, Field<CharacterModelSettings>(model, "settings"));
-        Assert.Same(OpenAiEndpoint.Default, Field<OpenAiEndpoint>(model, "endpoint"));
+        object transport = Field<object>(model, "client");
+        Assert.Equal(typeof(OpenAiResponsesStructuredClient<,>), transport.GetType().GetGenericTypeDefinition());
+        Assert.Same(client, Field<HttpClient>(transport, "client"));
+        Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(transport, "credentialSource"));
+        Assert.Same(settings, Field<CharacterModelSettings>(transport, "settings"));
+        Assert.Same(OpenAiEndpoint.Default, Field<OpenAiEndpoint>(transport, "endpoint"));
         Assert.Equal(0, handler.SendCount);
         Assert.Equal(0, credentialSource.LoadCount);
     }

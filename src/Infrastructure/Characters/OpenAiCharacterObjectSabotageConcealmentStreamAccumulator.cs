@@ -1,154 +1,27 @@
-using System.Text.Json;
 using Allrpcs.Domain.Characters;
-using Allrpcs.Infrastructure.Dialogue;
 
 namespace Allrpcs.Infrastructure.Characters;
 
-/// <summary>Accumulates one bounded OpenAI semantic stream into an exact concealment decision.</summary>
+/// <summary>Retains the typed stream contract over the shared decision lifecycle.</summary>
 public sealed class OpenAiCharacterObjectSabotageConcealmentStreamAccumulator
 {
-    private readonly CharacterObjectSabotageConcealmentConsiderationRequest request;
-    private CharacterObjectSabotageConcealmentDecision? completedDecision;
-    private int responseDeltaLength;
-    private bool hasVerifiedOutputTextDone;
-    private bool isTerminated;
-
     /// <summary>Gets the maximum accepted serialized semantic-event length.</summary>
     public const int MaximumEventLength = 64_000;
 
-    /// <summary>Creates an accumulator bound to one exact concealment request.</summary>
+    private readonly OpenAiStructuredDecisionAccumulator<CharacterObjectSabotageConcealmentConsiderationRequest,
+        CharacterObjectSabotageConcealmentDecision> stream;
+
+    /// <summary>Binds the stream to the exact request and existing decision policy.</summary>
     public OpenAiCharacterObjectSabotageConcealmentStreamAccumulator(
         CharacterObjectSabotageConcealmentConsiderationRequest request)
     {
-        ArgumentNullException.ThrowIfNull(request);
-        this.request = request;
+        stream = new(request,
+            CharacterObjectSabotageConcealmentDecisionJsonDeserializer.Deserialize,
+            CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength,
+            requireLifecycle: false,
+            allowMetadataAfterTextDone: true);
     }
 
-    /// <summary>Applies one event and returns the exact decision only at successful completion.</summary>
-    public CharacterObjectSabotageConcealmentDecision? Apply(string serializedEvent)
-    {
-        ArgumentNullException.ThrowIfNull(serializedEvent);
-        if (isTerminated)
-        {
-            throw new InvalidOperationException("The OpenAI concealment stream is already terminal.");
-        }
-
-        if (serializedEvent.Length > MaximumEventLength)
-        {
-            throw Fail();
-        }
-
-        try
-        {
-            using JsonDocument document = OpenAiStreamDocument.Parse(serializedEvent);
-            JsonElement root = document.RootElement;
-            if (root.ValueKind != JsonValueKind.Object
-                || !root.TryGetProperty("type", out JsonElement typeElement)
-                || typeElement.ValueKind != JsonValueKind.String)
-            {
-                throw Fail();
-            }
-
-            return ApplyTypedEvent(typeElement.GetString()!, root);
-        }
-        catch (JsonException)
-        {
-            throw Fail();
-        }
-    }
-
-    private CharacterObjectSabotageConcealmentDecision? ApplyTypedEvent(
-        string type,
-        JsonElement root) => type switch
-        {
-            "response.created" or
-            "response.in_progress" or
-            "response.output_item.added" or
-            "response.output_item.done" or
-            "response.content_part.added" or
-            "response.content_part.done" or
-            "response.reasoning_summary_part.added" or
-            "response.reasoning_summary_part.done" or
-            "response.reasoning_summary_text.delta" or
-            "response.reasoning_summary_text.done" => null,
-            "response.output_text.delta" => ApplyDelta(root),
-            "response.output_text.done" => ApplyDone(root),
-            "response.completed" => Complete(),
-            "response.incomplete" or
-            "response.refusal.delta" or
-            "response.refusal.done" or
-            "response.failed" or
-            "error" => throw Fail(),
-            _ => throw Fail(),
-        };
-
-    private CharacterObjectSabotageConcealmentDecision? ApplyDelta(JsonElement root)
-    {
-        if (hasVerifiedOutputTextDone
-            || !root.TryGetProperty("delta", out JsonElement deltaElement)
-            || deltaElement.ValueKind != JsonValueKind.String)
-        {
-            throw Fail();
-        }
-
-        string delta = deltaElement.GetString()!;
-        if (responseDeltaLength + delta.Length
-            > CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength)
-        {
-            throw Fail();
-        }
-
-        responseDeltaLength += delta.Length;
-        return null;
-    }
-
-    private CharacterObjectSabotageConcealmentDecision? ApplyDone(JsonElement root)
-    {
-        if (hasVerifiedOutputTextDone
-            || !root.TryGetProperty("text", out JsonElement textElement)
-            || textElement.ValueKind != JsonValueKind.String)
-        {
-            throw Fail();
-        }
-
-        string responseDocument = textElement.GetString()!;
-        if (responseDocument.Length
-            > CharacterObjectSabotageConcealmentDecisionJsonDeserializer.MaximumDocumentLength)
-        {
-            throw Fail();
-        }
-
-        try
-        {
-            completedDecision =
-                CharacterObjectSabotageConcealmentDecisionJsonDeserializer.Deserialize(
-                    request,
-                    responseDocument);
-        }
-        catch (ArgumentException)
-        {
-            throw Fail();
-        }
-
-        hasVerifiedOutputTextDone = true;
-        return null;
-    }
-
-    private CharacterObjectSabotageConcealmentDecision Complete()
-    {
-        if (!hasVerifiedOutputTextDone || completedDecision is null)
-        {
-            throw Fail();
-        }
-
-        isTerminated = true;
-        return completedDecision;
-    }
-
-    private InvalidDataException Fail()
-    {
-        isTerminated = true;
-        return new InvalidDataException(
-            "The OpenAI concealment stream is not a complete supported response.");
-    }
+    /// <summary>Returns the exact decision only after verified successful completion.</summary>
+    public CharacterObjectSabotageConcealmentDecision? Apply(string serializedEvent) => stream.Apply(serializedEvent);
 }
