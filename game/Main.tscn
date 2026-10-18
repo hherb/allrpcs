@@ -1,4 +1,4 @@
-[gd_scene load_steps=259 format=3]
+[gd_scene load_steps=238 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -36,7 +36,6 @@
 [ext_resource type="Script" path="res://TemporaryCharacterTurnRequestSource.cs" id="73_character_turn_request_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSource.cs" id="76_character_turn_response_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseLabel.cs" id="79_character_turn_response_label"]
-[ext_resource type="Script" path="res://CharacterTurnResponseSpeechFlowSmokeCheck.cs" id="80_character_turn_response_speech_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSpeechRecorder.cs" id="81_character_turn_response_speech_recorder"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnCompletionController.cs" id="83_character_turn_completion_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterExaminationResultSource.cs" id="85_examination_result_source"]
@@ -395,83 +394,47 @@
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-08.png" id="472_woodland_environmental_details_08"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-07.png" id="473_woodland_shrubs_07"]
 [ext_resource type="Script" path="res://OpeningRegionMusicAudioController.cs" id="music_controller"]
-[ext_resource type="Script" path="res://MusicAudioRuntimeSmokeCheck.cs" id="music_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionInteriorAudioSource.cs" id="interior_source"]
-[ext_resource type="Script" path="res://InteriorAudioRuntimeSmokeCheck.cs" id="interior_check"]
 [ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="audio_storage"]
 [ext_resource type="Script" path="res://AudioSettingsController.cs" id="audio_settings"]
 [ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="audio_panel"]
 
-[ext_resource type="Script" path="res://AudioSettingsMainSmokeCheck.cs" id="audio_main_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionMaterialAudioController.cs" id="material_audio"]
 [ext_resource type="PackedScene" path="res://MaterialSoundCaptionPanel.tscn" id="material_captions"]
-[ext_resource type="Script" path="res://MaterialAudioRuntimeSmokeCheck.cs" id="material_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionFootstepMaterialSource.cs" id="footstep_material"]
 [ext_resource type="Script" path="res://OpeningRegionFootstepAudioController.cs" id="footstep_audio"]
-[ext_resource type="Script" path="res://FootstepAudioRuntimeSmokeCheck.cs" id="footstep_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionPositionalAudioController.cs" id="positional_audio"]
-[ext_resource type="Script" path="res://PositionalAudioRuntimeSmokeCheck.cs" id="positional_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionStreamWaterContactCoordinator.cs" id="water_0"]
 [ext_resource type="Script" path="res://StreamWaterContactPanel.cs" id="water_1"]
 [ext_resource type="Script" path="res://OpeningRegionWaterContactAudioController.cs" id="water_2"]
-[ext_resource type="Script" path="res://WaterContactRuntimeSmokeCheck.cs" id="water_3"]
-
 [ext_resource type="Script" path="res://OpeningRegionCaskCoverHandlingCoordinator.cs" id="cask_0"]
 [ext_resource type="Script" path="res://CaskCoverHandlingPanel.cs" id="cask_1"]
 [ext_resource type="Script" path="res://OpeningRegionCaskCoverAudioController.cs" id="cask_2"]
-[ext_resource type="Script" path="res://CaskCoverHandlingRuntimeSmokeCheck.cs" id="cask_3"]
-
 [ext_resource type="Script" path="res://OpeningRegionHandToolTapCoordinator.cs" id="tool_0"]
 [ext_resource type="Script" path="res://HandToolTapPanel.cs" id="tool_1"]
 [ext_resource type="Script" path="res://OpeningRegionHandToolTapAudioController.cs" id="tool_2"]
-[ext_resource type="Script" path="res://HandToolTapRuntimeSmokeCheck.cs" id="tool_3"]
-
 [ext_resource type="Script" path="res://OpeningRegionHealerFootstepMaterialSource.cs" id="healer_step_material"]
 [ext_resource type="Script" path="res://OpeningRegionHealerFootstepAudioController.cs" id="healer_step_audio"]
-[ext_resource type="Script" path="res://HealerFootstepRuntimeSmokeCheck.cs" id="healer_step_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionFoliageAudioSource.cs" id="foliage_source"]
 [ext_resource type="Script" path="res://OpeningRegionFoliageAudioController.cs" id="foliage_audio"]
-[ext_resource type="Script" path="res://FoliageAudioRuntimeSmokeCheck.cs" id="foliage_check"]
 [ext_resource type="Script" path="res://OpeningRegionWindAudioSource.cs" id="wind_source"]
 [ext_resource type="Script" path="res://OpeningRegionWindAudioController.cs" id="wind_audio"]
-[ext_resource type="Script" path="res://WindAudioRuntimeSmokeCheck.cs" id="wind_check"]
 [ext_resource type="Script" path="res://OpeningRegionRainAudioSource.cs" id="rain_source"]
 [ext_resource type="Script" path="res://OpeningRegionRainAudioController.cs" id="rain_audio"]
-[ext_resource type="Script" path="res://RainAudioRuntimeSmokeCheck.cs" id="rain_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionRemedyHeatingAudioController.cs" id="heating_audio"]
-[ext_resource type="Script" path="res://RemedyHeatingAudioRuntimeSmokeCheck.cs" id="heating_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionRemedySteepingAudioController.cs" id="steeping_audio"]
-[ext_resource type="Script" path="res://RemedySteepingAudioRuntimeSmokeCheck.cs" id="steeping_check"]
 [ext_resource type="Script" path="res://OpeningRegionRemedyCoolingAudioController.cs" id="cooling_audio"]
-[ext_resource type="Script" path="res://RemedyCoolingAudioRuntimeSmokeCheck.cs" id="cooling_check"]
-
 [ext_resource type="Script" path="res://OpeningRegionHerbCollectionAudioSource.cs" id="herb_source"]
 [ext_resource type="Script" path="res://OpeningRegionHerbCollectionAudioController.cs" id="herb_audio"]
-[ext_resource type="Script" path="res://HerbCollectionAudioRuntimeSmokeCheck.cs" id="herb_check"]
-
 [ext_resource type="Script" path="res://ControlSettingsStorageController.cs" id="controls_storage"]
 [ext_resource type="Script" path="res://ControlInputMapAdapter.cs" id="controls_adapter"]
 [ext_resource type="Script" path="res://ControlSettingsController.cs" id="controls_controller"]
 [ext_resource type="Script" path="res://ControlInputContext.cs" id="controls_context"]
 [ext_resource type="PackedScene" path="res://ControlSettingsPanel.tscn" id="controls_panel"]
 [ext_resource type="Script" path="res://DialogueSpeechController.cs" id="dialogue_speech"]
-[ext_resource type="Script" path="res://DialogueSpeechMainSmokeCheck.cs" id="dialogue_speech_check"]
-
 [ext_resource type="Script" path="res://PlayerSpeechController.cs" id="player_speech"]
 
-[ext_resource type="Script" path="res://PlayerSpeechMainSmokeCheck.cs" id="player_speech_check"]
-
 [ext_resource type="Script" path="res://SpaceHoldSpeechController.cs" id="space_hold_speech"]
-
-[ext_resource type="Script" path="res://SpaceHoldSpeechSmokeCheck.cs" id="space_hold_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -582,14 +545,8 @@ script = ExtResource("audio_settings")
 
 [node name="AudioSettingsPanel" parent="." instance=ExtResource("audio_panel")]
 
-[node name="AudioSettingsMainSmokeCheck" type="Node" parent="."]
-script = ExtResource("audio_main_check")
-
 [node name="OpeningRegionMusicAudioController" type="Node" parent="."]
 script = ExtResource("music_controller")
-
-[node name="MusicAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("music_check")
 
 [node name="OptionalOverlayVisibilityController" type="Node" parent="."]
 script = ExtResource("398_optional_overlay_visibility")
@@ -2793,9 +2750,6 @@ script = ExtResource("173_independent_task_body_presentation_controller")
 [node name="TemporaryCharacterTurnResponseSpeechRecorder" type="Node" parent="."]
 script = ExtResource("81_character_turn_response_speech_recorder")
 
-[node name="CharacterTurnResponseSpeechFlowSmokeCheck" type="Node" parent="."]
-script = ExtResource("80_character_turn_response_speech_flow_check")
-
 [node name="TemporaryCharacterExaminationFlowController" type="Node" parent="."]
 script = ExtResource("89_examination_flow_controller")
 
@@ -3535,31 +3489,19 @@ centered = false
 [node name="OpeningRegionMaterialAudioController" type="Node" parent="."]
 script = ExtResource("material_audio")
 
-[node name="MaterialAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("material_check")
-
 [node name="OpeningRegionFootstepMaterialSource" type="Node" parent="."]
 script = ExtResource("footstep_material")
 
 [node name="OpeningRegionFootstepAudioController" type="Node" parent="."]
 script = ExtResource("footstep_audio")
 
-[node name="FootstepAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("footstep_check")
-
 [node name="OpeningRegionPositionalAudioController" type="Node" parent="."]
 script = ExtResource("positional_audio")
-
-[node name="PositionalAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("positional_check")
 
 [node name="OpeningRegionInteriorAudioSource" type="Node" parent="."]
 process_priority = -50
 script = ExtResource("interior_source")
 Automatic = true
-
-[node name="InteriorAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("interior_check")
 
 [node name="OpeningRegionStreamWaterContactCoordinator" type="Node" parent="."]
 script = ExtResource("water_0")
@@ -3572,9 +3514,6 @@ script = ExtResource("water_1")
 script = ExtResource("water_2")
 Automatic = true
 
-[node name="WaterContactRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("water_3")
-
 [node name="OpeningRegionCaskCoverHandlingCoordinator" type="Node" parent="."]
 script = ExtResource("cask_0")
 Automatic = true
@@ -3585,9 +3524,6 @@ script = ExtResource("cask_1")
 [node name="OpeningRegionCaskCoverAudioController" type="Node" parent="."]
 script = ExtResource("cask_2")
 Automatic = true
-
-[node name="CaskCoverHandlingRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("cask_3")
 
 [node name="OpeningRegionHandToolTapCoordinator" type="Node" parent="."]
 script = ExtResource("tool_0")
@@ -3600,17 +3536,11 @@ script = ExtResource("tool_1")
 script = ExtResource("tool_2")
 Automatic = true
 
-[node name="HandToolTapRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("tool_3")
-
 [node name="OpeningRegionHealerFootstepMaterialSource" type="Node" parent="."]
 script = ExtResource("healer_step_material")
 
 [node name="OpeningRegionHealerFootstepAudioController" type="Node" parent="."]
 script = ExtResource("healer_step_audio")
-
-[node name="HealerFootstepRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("healer_step_check")
 
 [node name="OpeningRegionFoliageAudioSource" type="Node" parent="."]
 script = ExtResource("foliage_source")
@@ -3618,17 +3548,11 @@ script = ExtResource("foliage_source")
 [node name="OpeningRegionFoliageAudioController" type="Node" parent="."]
 script = ExtResource("foliage_audio")
 
-[node name="FoliageAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("foliage_check")
-
 [node name="OpeningRegionWindAudioSource" type="Node" parent="."]
 script = ExtResource("wind_source")
 
 [node name="OpeningRegionWindAudioController" type="Node" parent="."]
 script = ExtResource("wind_audio")
-
-[node name="WindAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("wind_check")
 
 [node name="OpeningRegionRainAudioSource" type="Node" parent="."]
 script = ExtResource("rain_source")
@@ -3636,35 +3560,20 @@ script = ExtResource("rain_source")
 [node name="OpeningRegionRainAudioController" type="Node" parent="."]
 script = ExtResource("rain_audio")
 
-[node name="RainAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("rain_check")
-
 [node name="OpeningRegionRemedyHeatingAudioController" type="Node" parent="."]
 script = ExtResource("heating_audio")
-
-[node name="RemedyHeatingAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("heating_check")
 
 [node name="OpeningRegionRemedySteepingAudioController" type="Node" parent="."]
 script = ExtResource("steeping_audio")
 
-[node name="RemedySteepingAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("steeping_check")
-
 [node name="OpeningRegionRemedyCoolingAudioController" type="Node" parent="."]
 script = ExtResource("cooling_audio")
-
-[node name="RemedyCoolingAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("cooling_check")
 
 [node name="OpeningRegionHerbCollectionAudioSource" type="Node" parent="."]
 script = ExtResource("herb_source")
 
 [node name="OpeningRegionHerbCollectionAudioController" type="Node" parent="."]
 script = ExtResource("herb_audio")
-
-[node name="HerbCollectionAudioRuntimeSmokeCheck" type="Node" parent="."]
-script = ExtResource("herb_check")
 
 [node name="ControlSettingsPanel" parent="." instance=ExtResource("controls_panel")]
 
@@ -3692,20 +3601,11 @@ text = "Close settings"
 [node name="DialogueSpeechController" type="Node" parent="."]
 script = ExtResource("dialogue_speech")
 
-[node name="DialogueSpeechMainSmokeCheck" type="Node" parent="."]
-script = ExtResource("dialogue_speech_check")
-
 [node name="PlayerSpeechController" type="Node" parent="."]
 script = ExtResource("player_speech")
 
-[node name="PlayerSpeechMainSmokeCheck" type="Node" parent="."]
-script = ExtResource("player_speech_check")
-
 [node name="SpaceHoldSpeechController" type="Node" parent="."]
 script = ExtResource("space_hold_speech")
-
-[node name="SpaceHoldSpeechSmokeCheck" type="Node" parent="."]
-script = ExtResource("space_hold_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

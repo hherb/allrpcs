@@ -15,6 +15,8 @@ internal static class SmokeCheckHost
     private static readonly Entry[] Entries =
     [
         Check<AdaptiveDisplaySmokeCheck>("AdaptiveDisplay", "ALLRPCS_ADAPTIVE_DISPLAY_CHECK"),
+        Check<AudioSettingsMainSmokeCheck>("AudioSettingsPanel", "ALLRPCS_AUDIO_MAIN_CHECK"),
+        Check<MusicAudioRuntimeSmokeCheck>("OpeningRegionMusicAudioController", "ALLRPCS_MUSIC_MAIN_CHECK"),
         Check<OptionalOverlayVisibilitySmokeCheck>(
             "OptionalOverlayVisibilityController", "ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK"),
         Check<RuntimeTerrainGroundSmokeCheck>("Ground", "ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK"),
@@ -311,6 +313,8 @@ internal static class SmokeCheckHost
             "CharacterIndependentTaskBodyPresentationController", "ALLRPCS_CHARACTER_TURN_RESPONSE_FLOW_CHECK"),
         Check<CharacterTurnResponsePresentationSmokeCheck>(
             "CharacterIndependentTaskBodyPresentationController", "ALLRPCS_CHARACTER_TURN_RESPONSE_PRESENTATION_CHECK"),
+        Check<CharacterTurnResponseSpeechFlowSmokeCheck>(
+            "TemporaryCharacterTurnResponseSpeechRecorder", "ALLRPCS_CHARACTER_TURN_RESPONSE_SPEECH_FLOW_CHECK"),
         Check<CharacterExaminationFlowSmokeCheck>(
             "TemporaryCharacterTurnCompletionController", "ALLRPCS_CHARACTER_EXAMINATION_FLOW_CHECK"),
         Check<CharacterTurnCompletionFlowSmokeCheck>(
@@ -426,8 +430,42 @@ internal static class SmokeCheckHost
             "VillageEdgeGroundPresentation", "ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK"),
         Check<RuntimeWoodlandClearingDressingSmokeCheck>(
             "WoodlandClearingDressingPresentation", "ALLRPCS_RUNTIME_WOODLAND_CLEARING_DRESSING_CHECK"),
+        Check<MaterialAudioRuntimeSmokeCheck>(
+            "OpeningRegionMaterialAudioController", "ALLRPCS_MATERIAL_MAIN_CHECK", "ALLRPCS_POSITIONAL_MAIN_CHECK"),
+        Check<FootstepAudioRuntimeSmokeCheck>("OpeningRegionFootstepAudioController", "ALLRPCS_FOOTSTEP_MAIN_CHECK"),
+        Check<PositionalAudioRuntimeSmokeCheck>(
+            "OpeningRegionPositionalAudioController", "ALLRPCS_POSITIONAL_MAIN_CHECK"),
+        Check<InteriorAudioRuntimeSmokeCheck>("OpeningRegionInteriorAudioSource", "ALLRPCS_INTERIOR_MAIN_CHECK"),
+        Check<WaterContactRuntimeSmokeCheck>(
+            "OpeningRegionWaterContactAudioController", "ALLRPCS_WATER_MAIN_CHECK", "ALLRPCS_WATER_OUTPUT_CHECK"),
+        Check<CaskCoverHandlingRuntimeSmokeCheck>(
+            "OpeningRegionCaskCoverAudioController", "ALLRPCS_CASK_MAIN_CHECK", "ALLRPCS_CASK_OUTPUT_CHECK"),
+        Check<HandToolTapRuntimeSmokeCheck>(
+            "OpeningRegionHandToolTapAudioController", "ALLRPCS_TOOL_MAIN_CHECK", "ALLRPCS_FOLIAGE_OUTPUT_CHECK",
+            "ALLRPCS_FOLIAGE_MAIN_CHECK", "ALLRPCS_TOOL_OUTPUT_CHECK", "ALLRPCS_HEALER_FOOTSTEP_OUTPUT_CHECK",
+            "ALLRPCS_HEALER_FOOTSTEP_CHECK", "ALLRPCS_HERB_LAST_CASE_CHECK", "ALLRPCS_HERB_OUTPUT_CHECK",
+            "ALLRPCS_HERB_MAIN_CHECK", "ALLRPCS_RAIN_OUTPUT_CHECK", "ALLRPCS_RAIN_MAIN_CHECK",
+            "ALLRPCS_COOLING_OUTPUT_CHECK", "ALLRPCS_COOLING_MAIN_CHECK", "ALLRPCS_HEATING_OUTPUT_CHECK",
+            "ALLRPCS_HEATING_MAIN_CHECK", "ALLRPCS_STEEPING_OUTPUT_CHECK", "ALLRPCS_STEEPING_MAIN_CHECK",
+            "ALLRPCS_WIND_OUTPUT_CHECK", "ALLRPCS_WIND_MAIN_CHECK"),
+        Check<HealerFootstepRuntimeSmokeCheck>(
+            "OpeningRegionHealerFootstepAudioController", "ALLRPCS_HEALER_FOOTSTEP_CHECK"),
+        Check<FoliageAudioRuntimeSmokeCheck>("OpeningRegionFoliageAudioController", "ALLRPCS_FOLIAGE_MAIN_CHECK"),
+        Check<WindAudioRuntimeSmokeCheck>("OpeningRegionWindAudioController", "ALLRPCS_WIND_MAIN_CHECK"),
+        Check<RainAudioRuntimeSmokeCheck>("OpeningRegionRainAudioController", "ALLRPCS_RAIN_MAIN_CHECK"),
+        Check<RemedyHeatingAudioRuntimeSmokeCheck>(
+            "OpeningRegionRemedyHeatingAudioController", "ALLRPCS_HEATING_MAIN_CHECK"),
+        Check<RemedySteepingAudioRuntimeSmokeCheck>(
+            "OpeningRegionRemedySteepingAudioController", "ALLRPCS_STEEPING_MAIN_CHECK"),
+        Check<RemedyCoolingAudioRuntimeSmokeCheck>(
+            "OpeningRegionRemedyCoolingAudioController", "ALLRPCS_COOLING_MAIN_CHECK"),
+        Check<HerbCollectionAudioRuntimeSmokeCheck>(
+            "OpeningRegionHerbCollectionAudioController", "ALLRPCS_HERB_MAIN_CHECK"),
         Scene("ControlSettingsMainSmokeCheck", "ControlSettingsPanel", "ALLRPCS_CONTROLS_MAIN_CHECK"),
         Scene("DialogueAccessibilityMainSmokeCheck", "ControlSettingsPanel", "ALLRPCS_DIALOGUE_ACCESSIBILITY_CHECK"),
+        Check<DialogueSpeechMainSmokeCheck>("DialogueSpeechController", "ALLRPCS_DIALOGUE_SPEECH_CHECK"),
+        Check<PlayerSpeechMainSmokeCheck>("PlayerSpeechController", "ALLRPCS_PLAYER_ASR_CHECK"),
+        Check<SpaceHoldSpeechSmokeCheck>("SpaceHoldSpeechController", "ALLRPCS_SPACE_HOLD_CHECK"),
         Check<DialogueOwnershipMainSmokeCheck>("SpaceHoldSpeechController", "ALLRPCS_DIALOGUE_OWNERSHIP_CHECK"),
     ];
 
@@ -440,19 +478,23 @@ internal static class SmokeCheckHost
             return;
         }
 
-        // Reverse order keeps entries that follow the same sibling in their former order.
-        for (int index = Entries.Length - 1; index >= 0; index--)
+        // Forward order keeps both index and ready (insertion) order among hosted checks; the
+        // count places each one after the checks already attached behind the same sibling.
+        Dictionary<string, int> attachedAfter = [];
+        foreach (Entry entry in Entries)
         {
-            Entry entry = Entries[index];
             if (main.HasNode(entry.Name) || !entry.Gates.Any(gate => OS.GetEnvironment(gate).Length > 0))
             {
                 continue;
             }
 
+            string anchor = entry.After ?? string.Empty;
+            int following = attachedAfter.GetValueOrDefault(anchor);
             Node check = entry.Create();
             check.Name = entry.Name;
             main.AddChild(check);
-            main.MoveChild(check, entry.After is null ? 0 : main.GetNode(entry.After).GetIndex() + 1);
+            main.MoveChild(check, (entry.After is null ? 0 : main.GetNode(entry.After).GetIndex() + 1) + following);
+            attachedAfter[anchor] = following + 1;
         }
     }
 

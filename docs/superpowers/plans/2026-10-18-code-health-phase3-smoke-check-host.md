@@ -58,6 +58,13 @@ item), the full root gate (due at Phase 3 exit) and any phase-exit claim.
   hosted check now readies after Main's scene children instead of between them, and still before
   `Main._Ready`. Matching the old ready order exactly would mean removing and re-adding later
   siblings, which clears their owners; the launches decide whether any check depends on it.
+  Hosted checks attach in entry order, so several requested together keep their former relative
+  ready order. One consequence: Godot's READY re-enables processing on nodes that override
+  `_Process`/`_PhysicsProcess`, so before this change seven checks'
+  `SetPhysicsProcess(false)` on the later Seeker and Healer was silently undone; now it holds
+  (`OpeningRegionSouthernRoadWagon`, `WoodlandClearing`, `VillageTransition`, `StreamLaundry`,
+  `OldShrine`, `ClosedForestPath` and `SeekerMovementBoundary` smoke checks). All seven drive
+  those bodies directly and pass.
 - A check is requested when any of its gates is non-empty; the check still evaluates its own gate
   value, so a mode-valued or mismatched gate behaves as before. Attaching is idempotent per name.
 - Exported builds (`template` feature) attach nothing: exports exclude every harness file, which

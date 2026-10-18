@@ -28,8 +28,9 @@ func verify() -> void:
 	var packed: PackedScene = load("res://Main.tscn")
 	var scene := packed.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 	var before := count_harness(scene, exporter)
-	if before < 200:
-		fail("source Main unexpectedly lost harness composition")
+	# SmokeCheckHost attaches checks at launch, so the source scene itself holds none.
+	if before != 0:
+		fail("source Main holds %d harness nodes; attach checks through SmokeCheckHost" % before)
 		return
 	exporter.remove_harness_children(scene)
 	if count_harness(scene, exporter) != 0:
@@ -60,7 +61,7 @@ func verify() -> void:
 		return
 	instance.free()
 	DirAccess.remove_absolute(output)
-	print("PASS: shipping scene removed ", before, " harness nodes; repack/load and autoload restoration verified")
+	print("PASS: shipping scene holds no harness nodes; repack/load and autoload restoration verified")
 	quit(0)
 
 func count_harness(node: Node, exporter: EditorExportPlugin) -> int:

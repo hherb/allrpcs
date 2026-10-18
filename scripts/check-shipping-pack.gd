@@ -10,12 +10,14 @@ func _initialize() -> void:
 	if not require(archive.open(arguments[0]) == OK, "Cannot read exported ZIP"):
 		return
 	var files := archive.get_files()
-	if not require(not files.has("Main.tscn"), "Original Main shadows export replacement"):
+	# Main holds no harness (SmokeCheckHost attaches checks at launch), so it ships untransformed.
+	if not require(not files.has("Main.tscn.shipping.scn"), "Main was transformed: source Main holds harness nodes"):
 		return
-	if not require(files.has("Main.tscn.shipping.scn"), "Missing transformed Main"):
+	if not require(files.has("Main.tscn.remap"), "Missing Main remap"):
 		return
 	var remap := archive.read_file("Main.tscn.remap").get_string_from_utf8()
-	if not require(remap.contains('path="res://Main.tscn.shipping.scn"'), "Wrong Main remap"):
+	var main_path := remap.get_slice('path="', 1).get_slice('"', 0)
+	if not require(main_path.begins_with("res://"), "Unreadable Main remap"):
 		return
 	# project.binary uses length-prefixed UTF-8 strings, so this token must be absent.
 	var settings := archive.read_file("project.binary")
@@ -29,13 +31,13 @@ func _initialize() -> void:
 			return
 	if not require(ProjectSettings.load_resource_pack(arguments[0]), "Cannot mount exported ZIP"):
 		return
-	var dependencies := ResourceLoader.get_dependencies("res://Main.tscn.shipping.scn")
+	var dependencies := ResourceLoader.get_dependencies(main_path)
 	for entry in dependencies:
 		var path := entry.get_slice("::", entry.get_slice_count("::") - 1).trim_prefix("res://")
 		var present := files.has(path) or files.has(path + ".remap") or files.has(path + ".import")
 		if not require(present, "Pack missing runtime dependency: " + path):
 			return
-	var packed: PackedScene = load("res://Main.tscn.shipping.scn")
+	var packed: PackedScene = load(main_path)
 	if not require(packed != null, "Cannot load exported Main"):
 		return
 	var scene := packed.instantiate()
