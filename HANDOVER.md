@@ -14,12 +14,14 @@ lifecycle and OpenAI/Anthropic/Ollama clients; per-kind OpenAI compatibility fil
 Production composition retains exact replacement/one-shot ownership across all ten sources.
 Anthropic requires explicit caller-owned credential injection; its credential store/UI remains absent.
 
-Current validation: 5,994 solution tests, zero-warning build and 17 affected native launches pass.
-The owner explicitly approved publication on 18 October. The implementation is committed at
-`19745021` and published for review in draft [PR #443](https://github.com/hherb/allrpcs/pull/443)
-on `codex/phase3-provider-bindings`; hosted CI is tracked on the PR.
-The [closure receipt](docs/superpowers/evidence/2026-10-18-phase3-structured-decisions.json)
-retains source bindings and limits. Full Phase 3 completion is not claimed: next is program item 2,
+The implementation (`19745021`) merged to main through [PR #443](https://github.com/hherb/allrpcs/pull/443)
+at `4692ed82`; its [closure receipt](docs/superpowers/evidence/2026-10-18-phase3-structured-decisions.json)
+retains source bindings and limits. The owner then reopened the scope only to apply the PR #443
+review fixes. Because #443 had already merged, [PR #444](https://github.com/hherb/allrpcs/pull/444)
+publishes them on top of main (a plain revert cannot pass the ledger checker), and the scope is
+closed again ([receipt](docs/superpowers/evidence/2026-10-18-pr443-review-fixes.json)): 6,007 tests
+and the full smoke suite (363 passed, 0 failed) pass. Live Anthropic qualification and two follow-ups in
+closed areas are tracked as GitHub issues. Full Phase 3 completion is not claimed: next is program item 2,
 conversation-turn/focused-search coordinator extraction, then SmokeCheckHost and the phase-exit gate.
 Use approved D2 scoped checks until that exit. Do not repeat the completed extraction.
 

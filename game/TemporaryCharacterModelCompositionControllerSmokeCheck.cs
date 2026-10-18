@@ -395,10 +395,10 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             + "replacement was atomic and one-shot preserving, the current Ollama setting "
             + "activated as one stable future model, OpenAI activated exact ordinary and "
             + "specialized bindings with exact concealment, move, substitution, contamination, "
-            + "delay, influence, recovery, and sabotage-action replacement, and Ollama installed "
-            + "provider-neutral "
-            + "participation, concealment, move, substitution, contamination, delay, influence, "
-            + "influence recovery, delay recovery, and sabotage-action decisions.");
+            + "delay, influence, recovery, and sabotage-action replacement, Ollama installed its "
+            + "participation model, and Ollama and injected-credential Anthropic each installed all ten "
+            + "concealment, move, substitution, contamination, delay, influence, influence recovery, "
+            + "delay recovery, sabotage-action, and misquotation-evidence decisions without credential I/O.");
         GetTree().Quit();
     }
 

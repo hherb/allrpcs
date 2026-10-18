@@ -1,0 +1,188 @@
+{
+  "id": "code-health-phase3-pr443-review-fixes",
+  "status": "complete",
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-18-pr443-review-fixes-authority.json",
+  "baseline": {
+    "reviewed_pr": 443,
+    "merged_main": "4692ed82",
+    "reviewed_commit": "261f65b35c005b2d63a7c3280e18ca893ea82318",
+    "publication_pr": 444
+  },
+  "scope": "Apply the PR #443 multi-agent review findings to the provider-neutral structured-decision pipeline without changing OpenAI request bytes or the ten decision policies.",
+  "fixes": [
+    "Ollama decision requests send the trusted context as a user message after the system instructions (previously two system messages, which some chat templates render as an empty prompt).",
+    "Anthropic decision streams skip leading thinking/redacted_thinking blocks with sequential indexes; thinking after text, a second text block and open blocks at message_delta fail closed.",
+    "Anthropic decisions request max_tokens 4096, matching the existing Anthropic dialogue request, because current Claude models think by default and thinking counts against max_tokens.",
+    "Provider selection in the serializer and client factory is explicit; an unknown provider throws instead of falling through to Ollama/Anthropic shapes.",
+    "The OpenAI client takes the descriptor like the Anthropic and Ollama clients; descriptor serialization/lifecycle members are internal; lifecycle flags have no defaults; the shared 128-token bound is one constant.",
+    "An unsupported response media type keeps its own fixed message instead of the generic invalid-stream message.",
+    "The ten decision task controllers log the faulted exception type name instead of discarding it.",
+    "Comment accuracy fixes, the composition smoke pass message, and 50 per-kind test files renamed away from deleted OpenAiCharacter* type names."
+  ],
+  "measurement": {
+    "ollama_output_tokens": {
+      "models": [
+        "gemma4:e4b-it-qat",
+        "granite4.1:8b-q8_0",
+        "qwen3.8:27b-nvfp4",
+        "gemma4:26b-a4b-it-qat"
+      ],
+      "kinds": 10,
+      "runs": 40,
+      "maximum_eval_count": 29,
+      "bound": 128,
+      "done_reason": "stop in all 40 runs",
+      "valid_json": "all 40 runs",
+      "ollama_version": "0.35.0",
+      "conclusion": "128 retained for Ollama"
+    },
+    "anthropic": "Request shape and stream semantics checked against the bundled Claude API reference; no live hosted request was made."
+  },
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 37,
+      "application": 1484,
+      "domain": 2877,
+      "infrastructure": 1609,
+      "total": 6007,
+      "failed": 0
+    },
+    "new_test_mutation_checks": "Reverting the Ollama user role failed 10 contract cases; disabling thinking-block support failed the recorded-stream and split-text Anthropic tests.",
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 363,
+      "failed": 0,
+      "quarantined": 2,
+      "quarantined_note": "#437 and #439 were already quarantined and both passed",
+      "post_run_change": "comment and private constant rename only"
+    },
+    "rereview": "An independent code review of the follow-up diff found no blocking issues; its one doc-comment finding was fixed."
+  },
+  "github_issues": "Live Anthropic qualification, the closed dialogue Anthropic adapter's thinking-block handling and the shared deadline-versus-transport failure category are filed as follow-up issues.",
+  "limits": [
+    "No live hosted-provider request, credential store or settings UI.",
+    "Closed dialogue adapters are unchanged.",
+    "The full Phase 3 root gate remains due at Phase 3 exit under D2."
+  ],
+  "source_bindings": [
+    {
+      "path": "game/CharacterDialogueMisquotationEvidenceTaskController.cs",
+      "sha256": "18b114c16e52a51998a0bd23e808379389a44d747561741444693d943a62640c"
+    },
+    {
+      "path": "game/CharacterObjectSabotageConcealmentTaskController.cs",
+      "sha256": "51d4913cec98436913804b0d470f2f3d86b36c13f14460262b0cf90e1a6138b4"
+    },
+    {
+      "path": "game/CharacterObjectSabotageContaminationTaskController.cs",
+      "sha256": "a4123bd55aff951c2cf183465e9b64e734141fc2637b78b629d7fea414d4f396"
+    },
+    {
+      "path": "game/CharacterObjectSabotageMoveTaskController.cs",
+      "sha256": "4b46ad9b71d47d0139278bc23316c85cf6a0aa9e222b12bd32bdaf551bcf5d9f"
+    },
+    {
+      "path": "game/CharacterObjectSabotageSubstitutionTaskController.cs",
+      "sha256": "48e38fed80ccb8707c65aad24d66bf04e485af54ea5da900ab8dc1bab1269929"
+    },
+    {
+      "path": "game/CharacterSabotageActionTaskController.cs",
+      "sha256": "dc065194ae47c06988ddde9fbf38000889fb04189d8c7f7f4d92cdbd36b6b4e5"
+    },
+    {
+      "path": "game/CharacterTargetSabotageDelayRecoveryTaskController.cs",
+      "sha256": "0dbbbc1312beb6ab6d0b2e64c35cec3ffc1575236685ff489872dad5dd75d55b"
+    },
+    {
+      "path": "game/CharacterTargetSabotageDelayTaskController.cs",
+      "sha256": "26eb2ec0a96fb59f47108e6541198ef56e8f73a30903236023e57a72a171d049"
+    },
+    {
+      "path": "game/CharacterTargetSabotageInfluenceRecoveryTaskController.cs",
+      "sha256": "706afd609fa37cede4a9b1d773d214e696a79cf6074af1b97e32177d79bad4d0"
+    },
+    {
+      "path": "game/CharacterTargetSabotageInfluenceTaskController.cs",
+      "sha256": "284a829999afa6820e01e02df70f0ae71cd2ca552fd40d7ef0d83d405a985c65"
+    },
+    {
+      "path": "game/TemporaryCharacterModelCompositionControllerSmokeCheck.cs",
+      "sha256": "9f0b995fdc0f18f70e6a10f601076326093b9964103b16dfdc54a4a4a626ead1"
+    },
+    {
+      "path": "src/Application/Characters/CharacterDialogueMisquotationEvidenceModelBinding.cs",
+      "sha256": "f6723476eb3d95fdd8246b575f84097de53eed8b29f75bd896c720dc9d1a36a5"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageConcealmentModelBinding.cs",
+      "sha256": "6cecd946bd49201dd723ecad4fdf6d6939c87f4eb08e574a49cb3d905f5c444c"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageContaminationModelBinding.cs",
+      "sha256": "16e213504eb6df9e73c0ab2351340374ac63f8c8f9e7237ed028828b20fc6c2e"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageMoveModelBinding.cs",
+      "sha256": "5d03ce9f9417f5e70982139273b14f51f8707667eaea2bbd51565af1d9759c51"
+    },
+    {
+      "path": "src/Application/Characters/CharacterObjectSabotageSubstitutionModelBinding.cs",
+      "sha256": "001a94045448e49edbc94551a894d892db55a3a269be10e1e4dcda0073bea763"
+    },
+    {
+      "path": "src/Application/Characters/CharacterSabotageActionModelBinding.cs",
+      "sha256": "0a1e1883beb4538e20594e67430bfda5b77f15dd2e6ab42d2b59999e42c3ac58"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageDelayModelBinding.cs",
+      "sha256": "e6c70efaa89de4bdc2d0529f5cad082b4bdda7fa8a277f9622b3c34950c53e4e"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageDelayRecoveryModelBinding.cs",
+      "sha256": "87dc62947a251de1f7fcfb147bfd194337421c2da65666589aec7f7ba29cd0df"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageInfluenceModelBinding.cs",
+      "sha256": "34a573fbf3414e82f8b5cdf70fdcc2ecb703fb8560b19e745b381711fb422c82"
+    },
+    {
+      "path": "src/Application/Characters/CharacterTargetSabotageInfluenceRecoveryModelBinding.cs",
+      "sha256": "4244df6042809eba6977a647336523dce8f8751fdea3488fccc6ddd3b515f8d7"
+    },
+    {
+      "path": "src/Infrastructure/Characters/AnthropicStructuredDecisionAccumulator.cs",
+      "sha256": "49f883871149a1f6ec35750c85bb8fc7ae894461a4ee2afdb19a7538298859f2"
+    },
+    {
+      "path": "src/Infrastructure/Characters/CharacterStructuredDecisions.cs",
+      "sha256": "30ce89d784de83ae8ca557a01f057aa4ca82eedd956dbfa6bcc7bb18374e84c3"
+    },
+    {
+      "path": "src/Infrastructure/Characters/OpenAiResponsesStructuredClient.cs",
+      "sha256": "48fad41ef81dd21d34008bd02a285c17828435bfc8fd79049fd8cf1796b82a0f"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionClientFactory.cs",
+      "sha256": "0681fc10379cc66237c3b79abc1fa5d84b10523c3ed2c8e246d5236e0e95d019"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionDescriptor.cs",
+      "sha256": "aae4349a7616dfb2ea07d6c024333d950beb67001886f020980e23dbd338820d"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionHttpTransport.cs",
+      "sha256": "c9426e5e1b19c76a3ffa5a79dbffeaaa2c7dd1189c1cad536904702e5196ad45"
+    },
+    {
+      "path": "src/Infrastructure/Characters/StructuredDecisionRequestSerializer.cs",
+      "sha256": "6ec235bc4647c4b316c6936d86a05624146e31da844845cbf7b21bf9ab48c67f"
+    }
+  ]
+}

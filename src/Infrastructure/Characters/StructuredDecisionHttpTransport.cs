@@ -11,6 +11,7 @@ internal static class StructuredDecisionHttpTransport
         Func<Stream, CancellationToken, Task<TDecision>> complete,
         CancellationToken cancellationToken)
     {
+        bool streaming = false;
         try
         {
             using HttpResponseMessage response = await ProviderHttpTransport.SendAsync(
@@ -22,12 +23,14 @@ internal static class StructuredDecisionHttpTransport
             if (!string.Equals(response.Content.Headers.ContentType?.MediaType, mediaType,
                     StringComparison.OrdinalIgnoreCase))
             {
-                throw new InvalidDataException("The structured-decision response is not a supported event stream.");
+                // A fixed message without payload, kept distinct from invalid decision streams.
+                throw new InvalidDataException("The structured-decision response has an unsupported media type.");
             }
             Stream stream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+            streaming = true;
             return await complete(stream, cancellationToken).ConfigureAwait(false);
         }
-        catch (InvalidDataException)
+        catch (InvalidDataException) when (streaming)
         {
             // Never retain provider payloads or decision-deserializer inner exceptions.
             throw new InvalidDataException("The structured-decision response is not complete and supported.");

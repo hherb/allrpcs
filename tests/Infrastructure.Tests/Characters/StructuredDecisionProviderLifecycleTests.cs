@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Tests.Dialogue;
@@ -14,8 +15,6 @@ public sealed class StructuredDecisionProviderLifecycleTests
     private static readonly string[] CaseValues1 = ["anthropic", "ollama"];
     private static readonly bool[] CaseValues2 = [false, true];
     private static readonly bool[] CaseValues3 = [false, true];
-    private static readonly string[] CaseValues4 = ["anthropic", "ollama"];
-    private static readonly string[] CaseValues5 = ["invalid-json", "oversized-event", "oversized-text", "wrong-shape", "error", "wrong-role-or-index", "wrong-order"];
 
     public static IEnumerable<object[]> DeadlineCases =>
         from provider in CaseValues1
@@ -90,14 +89,27 @@ public sealed class StructuredDecisionProviderLifecycleTests
         Assert.True(body.Disposed);
     }
 
-    public static IEnumerable<object[]> MalformedCases =>
-        from provider in CaseValues4
-        from defect in CaseValues5
-        select new object[] { provider, defect };
+    // Each defect names the zero-based event that must fail; the fixture events are, for Anthropic,
+    // message_start, content_block_start, delta, content_block_stop, message_delta, message_stop and,
+    // for Ollama, one content record and the done record.
+    public static TheoryData<string, string, int> MalformedCases => new()
+    {
+        { "anthropic", "invalid-json", 0 }, { "ollama", "invalid-json", 0 },
+        { "anthropic", "oversized-event", 0 }, { "ollama", "oversized-event", 0 },
+        { "anthropic", "oversized-text", 2 }, { "ollama", "oversized-text", 0 },
+        { "anthropic", "wrong-shape", 0 }, { "ollama", "wrong-shape", 0 },
+        { "anthropic", "error", 0 }, { "ollama", "error", 0 },
+        { "anthropic", "wrong-role-or-index", 1 }, { "ollama", "wrong-role-or-index", 0 },
+        { "anthropic", "wrong-type", 1 }, { "ollama", "wrong-type", 0 },
+        { "anthropic", "missing-stop", 4 }, { "ollama", "missing-stop", 1 },
+        { "anthropic", "wrong-order", 0 },
+        { "anthropic", "thinking-after-text", 4 },
+        { "anthropic", "second-text-block", 4 },
+    };
 
     [Theory]
     [MemberData(nameof(MalformedCases))]
-    public void RejectsMalformedEventsAndFencesEveryFailure(string provider, string defect)
+    public void RejectsMalformedEventsAndFencesEveryFailure(string provider, string defect, int failingEvent)
     {
         var documents = Documents(provider).ToList();
         switch (defect)
@@ -114,19 +126,60 @@ public sealed class StructuredDecisionProviderLifecycleTests
                     ? value.Replace("\"index\":0", "\"index\":1", StringComparison.Ordinal)
                     : value.Replace("assistant", "user", StringComparison.Ordinal)).ToList();
                 break;
-            case "wrong-order":
-                if (provider == "anthropic") documents.Reverse();
-                else documents[0] = documents[0].Replace("false", "\"false\"", StringComparison.Ordinal);
+            case "wrong-type":
+                documents = documents.Select(value => provider == "anthropic"
+                    ? value.Replace("\"index\":0", "\"index\":\"0\"", StringComparison.Ordinal)
+                    : value.Replace("\"done\":false", "\"done\":\"false\"", StringComparison.Ordinal)).ToList();
+                break;
+            case "missing-stop":
+                if (provider == "anthropic") documents.RemoveAt(4);
+                else documents[1] = documents[1].Replace(",\"done_reason\":\"stop\"", "", StringComparison.Ordinal);
+                break;
+            case "wrong-order": documents.Reverse(); break;
+            case "thinking-after-text":
+                documents.Insert(4, "{\"type\":\"content_block_start\",\"index\":1,\"content_block\":{\"type\":\"thinking\",\"thinking\":\"\"}}");
+                break;
+            case "second-text-block":
+                documents.Insert(4, "{\"type\":\"content_block_start\",\"index\":1,\"content_block\":{\"type\":\"text\",\"text\":\"\"}}");
                 break;
         }
         var apply = Accumulator(provider, new("id"));
+        int index = 0;
         var error = Assert.Throws<InvalidDataException>(() =>
         {
-            foreach (string document in documents) apply(document);
+            for (; index < documents.Count; index++) apply(documents[index]);
         });
+        Assert.Equal(failingEvent, index);
         Assert.DoesNotContain("private", error.ToString());
         Assert.Throws<InvalidOperationException>(() => apply("{}"));
     }
+
+    [Theory]
+    [InlineData("anthropic")]
+    [InlineData("ollama")]
+    public void JoinsTextSplitAcrossEventsAndBoundsTheJoinedLength(string provider)
+    {
+        Request request = new("split");
+        var apply = Accumulator(provider, request);
+        Decision? decision = null;
+        foreach (string document in SplitDocuments(provider, "{", "", "}")) decision = apply(document);
+        Assert.Same(request, decision!.Request);
+
+        // Every fragment is within the 16-character bound, but their join is not.
+        var bounded = Accumulator(provider, request);
+        string[] oversized = SplitDocuments(provider, new string('x', 9), new string('x', 9));
+        Assert.Throws<InvalidDataException>(() =>
+        {
+            foreach (string document in oversized) bounded(document);
+        });
+    }
+
+    private static string[] SplitDocuments(string provider, params string[] fragments) => provider == "anthropic"
+        ? StructuredDecisionProvidersTests.RecordedAnthropicEvents(fragments).Split("\n\n", StringSplitOptions.RemoveEmptyEntries)
+            .Select(frame => frame[(frame.IndexOf("data: ", StringComparison.Ordinal) + 6)..]).ToArray()
+        : fragments.Select(fragment => JsonSerializer.Serialize(new { message = new { role = "assistant", content = fragment }, done = false }))
+            .Append(JsonSerializer.Serialize(new { message = new { role = "assistant", content = "" }, done = true, done_reason = "stop" }))
+            .ToArray();
 
     [Theory]
     [InlineData("anthropic")]

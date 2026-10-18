@@ -7,7 +7,7 @@ namespace Allrpcs.Infrastructure.Characters;
 /// <summary>Selects one provider client without network, credential or request I/O during construction.</summary>
 public static class StructuredDecisionClientFactory
 {
-    /// <summary>Creates an exact caller-owned provider binding with validated optional endpoint overrides.</summary>
+    /// <summary>Creates an exact caller-owned provider binding with optional endpoint overrides.</summary>
     public static IStructuredDecisionClient<TRequest, TDecision> Create<TRequest, TDecision>(
         HttpClient client, CharacterModelSettings settings, StructuredDecisionDescriptor<TRequest, TDecision> descriptor,
         IOpenAiCredentialSource? openAiCredentials = null, IAnthropicCredentialSource? anthropicCredentials = null,
@@ -22,10 +22,7 @@ public static class StructuredDecisionClientFactory
         {
             ArgumentNullException.ThrowIfNull(openAiCredentials);
             return new OpenAiResponsesStructuredClient<TRequest, TDecision>(client, openAiCredentials, settings,
-                openAiEndpoint ?? OpenAiEndpoint.Default,
-                (request, model) => descriptor.Serialize(request, settings.Provider, model),
-                (request, stream, token) => descriptor.CreateOpenAiAccumulator(request).CompleteAsync(stream, token),
-                timeoutOptions);
+                openAiEndpoint ?? OpenAiEndpoint.Default, descriptor, timeoutOptions);
         }
         if (settings.Provider == CharacterModelProvider.Anthropic)
         {
@@ -33,7 +30,11 @@ public static class StructuredDecisionClientFactory
             return new AnthropicMessagesStructuredClient<TRequest, TDecision>(
                 client, anthropicCredentials, settings, descriptor, timeoutOptions);
         }
-        return new OllamaChatStructuredClient<TRequest, TDecision>(
-            client, settings, descriptor, ollamaEndpoint ?? OllamaEndpoint.Default, timeoutOptions);
+        if (settings.Provider == CharacterModelProvider.Ollama)
+        {
+            return new OllamaChatStructuredClient<TRequest, TDecision>(
+                client, settings, descriptor, ollamaEndpoint ?? OllamaEndpoint.Default, timeoutOptions);
+        }
+        throw new ArgumentOutOfRangeException(nameof(settings), "Unsupported character-model provider.");
     }
 }

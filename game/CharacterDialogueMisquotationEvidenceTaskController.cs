@@ -113,6 +113,10 @@ public partial class CharacterDialogueMisquotationEvidenceTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Dialogue misquotation evidence decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterDialogueMisquotationEvidenceTaskStatus.Failed;
         }
 

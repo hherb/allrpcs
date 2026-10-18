@@ -113,6 +113,10 @@ public partial class CharacterTargetSabotageInfluenceTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Target sabotage influence decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterTargetSabotageInfluenceTaskStatus.Failed;
         }
 

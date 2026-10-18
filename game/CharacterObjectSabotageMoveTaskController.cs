@@ -133,6 +133,10 @@ public partial class CharacterObjectSabotageMoveTaskController : Node
         }
         else
         {
+            if (task.Exception is { } error)
+            {
+                GD.PrintErr("Object sabotage move decision failed: " + error.GetBaseException().GetType().Name);
+            }
             Status = CharacterObjectSabotageMoveTaskStatus.Failed;
         }
 
