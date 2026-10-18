@@ -32,8 +32,8 @@ Main extraction and SmokeCheckHost are later Phase 3 items, outside this slice.
 - [x] Remove per-decision OpenAI compatibility wrappers after their consumers/tests migrate.
 - [x] Review final changes, run zero-warning build, format verification, solution tests,
   affected native checks and continuation sync/check/self-test.
-- [ ] Commit/push the reviewed branch and publish a draft review PR. The owner explicitly approved
-  commit/push and the draft PR on 18 October; publication is in progress.
+- [x] Commit/push the reviewed branch and publish draft [PR #443](https://github.com/hherb/allrpcs/pull/443).
+  The owner explicitly approved commit/push and the draft PR on 18 October. Product commit: `19745021`.
 
 ## Implementation decisions
 

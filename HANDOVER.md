@@ -15,8 +15,9 @@ Production composition retains exact replacement/one-shot ownership across all t
 Anthropic requires explicit caller-owned credential injection; its credential store/UI remains absent.
 
 Current validation: 5,994 solution tests, zero-warning build and 17 affected native launches pass.
-The owner explicitly approved commit/push and a draft PR for `codex/phase3-provider-bindings`
-on 18 October. Publication is in progress under that grant.
+The owner explicitly approved publication on 18 October. The implementation is committed at
+`19745021` and published for review in draft [PR #443](https://github.com/hherb/allrpcs/pull/443)
+on `codex/phase3-provider-bindings`; hosted CI is tracked on the PR.
 The [closure receipt](docs/superpowers/evidence/2026-10-18-phase3-structured-decisions.json)
 retains source bindings and limits. Full Phase 3 completion is not claimed: next is program item 2,
 conversation-turn/focused-search coordinator extraction, then SmokeCheckHost and the phase-exit gate.
