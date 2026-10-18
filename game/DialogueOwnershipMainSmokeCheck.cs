@@ -58,12 +58,14 @@ public partial class DialogueOwnershipMainSmokeCheck : Node
             {
                 Submit("side effect fails once");
                 main.SetProcess(false);
-                object retained = typeof(Main).GetField("characterTurnTranscriptController", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(main)!;
-                typeof(Main).GetField("characterTurnTranscriptController", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
-                try { Invoke("ProcessDialogueSubmission"); } catch (TargetInvocationException) { }
+                // An uninitialized transcript makes the append fail after the delivery occurred.
+                PropertyInfo retainedTranscript = typeof(CharacterTurnTranscriptController).GetProperty(nameof(transcript.Transcript))!;
+                object retained = retainedTranscript.GetValue(transcript)!;
+                retainedTranscript.SetValue(transcript, null);
+                try { main.ConversationTurns.ProcessDialogueSubmission(); } catch (InvalidOperationException) { }
                 DialogueEvent first = events.LastOccurredEvent!;
-                typeof(Main).GetField("characterTurnTranscriptController", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, retained);
-                Invoke("ProcessDialogueSubmission");
+                retainedTranscript.SetValue(transcript, retained);
+                main.ConversationTurns.ProcessDialogueSubmission();
                 Require(ReferenceEquals(events.LastOccurredEvent, first), "Failed side effect retried occurrence");
                 Require(!transcript.Transcript!.Entries.Any(entry => ReferenceEquals(entry.Delivery, first.Delivery)), "Failed delivery was replayed");
             }
@@ -190,9 +192,9 @@ public partial class DialogueOwnershipMainSmokeCheck : Node
                 Require(model.TrySupplyModel(new ValidModel()), "Fixture unavailable");
                 main.SetProcess(false);
                 Submit("budget exhaustion");
-                Invoke("ProcessDialogueSubmission");
+                main.ConversationTurns.ProcessDialogueSubmission();
                 await Wait(() => turn.Activity?.State == CharacterTurnActivityState.AwaitingResponse);
-                Invoke("ProcessCharacterTurnResponse");
+                main.ConversationTurns.ProcessCharacterTurnResponse();
                 Require(status.Text.Contains("context", StringComparison.OrdinalIgnoreCase) && status.Text.Contains("retry", StringComparison.OrdinalIgnoreCase), "Budget failure missing visible status");
                 Require(CharacterTurnStartPolicy.CanStart(turn.Activity), "Budget failure retained busy turn");
                 field.SetValue(source, original);
@@ -205,7 +207,6 @@ public partial class DialogueOwnershipMainSmokeCheck : Node
         catch (Exception exception) { GD.PushError(mode + ": " + exception); GetTree().Quit(1); }
     }
     private void Submit(string text) { edit.Text = text; edit.EmitSignal(LineEdit.SignalName.TextSubmitted, text); }
-    private void Invoke(string name) => typeof(Main).GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, null);
     private async Task Frames(int count) { for (int i = 0; i < count; i++) { await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); } }
     private async Task Wait(Func<bool> predicate) { await Frames(3); for (int i = 0; !predicate(); i++) { Require(i < 120, "Fixture deadline"); await Frames(1); } }
     private static void Require(bool value, string message) { if (!value) { throw new InvalidOperationException(message); } }

@@ -21,12 +21,7 @@ public partial class Main
             return new(() => characterTurnTranscriptController.InstallCharacterTurnOccurrence(empty));
         });
         Register("dialogue-input", () => new(dialogueInputController.ResetSession, dialogueInputController.PublishStatus));
-        Register("main-result-tracking", () => new(() =>
-        {
-            lastProcessedModelResult = null;
-            lastProcessedCompletedCharacterTurn = null;
-            lastProcessedDialogueDelivery = null;
-        }));
+        Register("main-result-tracking", () => new(() => ConversationTurns.ResetSession()));
         Register("character-response-presentation", GetNode<TemporaryCharacterTurnResponseLabel>(
             "DialogueOverlay/Panel/Response").PrepareSessionReset);
         Register("resolved-perception", () => new(() => { }, RefreshResolvedPerceptionPresentation));

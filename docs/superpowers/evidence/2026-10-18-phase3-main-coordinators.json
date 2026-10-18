@@ -1,0 +1,51 @@
+{
+  "id": "code-health-phase3-main-coordinators",
+  "status": "complete",
+  "date": "2026-10-18",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-18-phase3-authority.json",
+  "plan": "docs/superpowers/plans/2026-10-18-code-health-phase3-main-coordinators.md",
+  "baseline": {
+    "main": "b0e390f5"
+  },
+  "scope": "Program Phase 3 item 2: move Main's conversation-turn and focused-search state machines into tested Application coordinators behind thin native adapters, and make Main's same-frame process order explicit and checked, without behavior change.",
+  "changes": [
+    "ConversationTurnCoordinator<TInput> (src/Application/Dialogue) owns submission acceptance, generation start and its context-budget refusal, single terminal-result consumption, participation continuation, player-dialogue occurrence and chain start, player cancel and the session reset of the three once-only fences.",
+    "FocusedSearchInputCoordinator (src/Application/Input) owns the cancel/complete/resolve/start actions, the prevalidated herb-patch world-event commit, wagon-clue routing, sabotage-evidence recovery and the result status.",
+    "ConversationTurnNodePorts and FocusedSearchInputNodePorts are plain C# adapters; each port member forwards to one existing node member. Main still calls both coordinators from _Process and _UnhandledInput, so checks that pause Main with SetProcess(false) pause the same work.",
+    "Main.ProcessPriority is explicitly -40 (MainProcessOrder.MainPriority); MainProcessOrder lists ten same-frame dependencies; the examination action is anchored immediately before WholeChannelPresentation instead of GetChildCount() - 2 (same index).",
+    "MainProcessOrderCheck.tscn asserts the priority, every dependency and the anchor; a swapped pair fails it with exit 1.",
+    "DialogueOwnershipMainSmokeCheck calls the coordinator's public steps and injects its transcript fault on CharacterTurnTranscriptController instead of reflecting on Main fields.",
+    "game/Main.cs: 1123 to 730 lines."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 37,
+      "application": 1521,
+      "domain": 2877,
+      "infrastructure": 1609,
+      "total": 6044,
+      "failed": 0,
+      "new": 37
+    },
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 363,
+      "failed": 1,
+      "quarantined": 2,
+      "failure": "ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is intermittent and pre-existing: it failed 3 of 10 runs on unmodified main b0e390f5 and 1 of 13 runs on this branch (10 consecutive reruns passed). Not caused by this change; root cause not investigated in this slice."
+    },
+    "review": "Independent behavior-preservation review found no differences; the items it could not diff against HEAD were cross-checked against b0e390f5 directly."
+  },
+  "not_done": [
+    "Full root ./quality.sh gate (due at Phase 3 exit under D2).",
+    "Main.cs under 400 lines (Phase 3 exit criterion; 730 now).",
+    "SmokeCheckHost (program Phase 3 item 3).",
+    "Deferred Phase 2 live #417 capture and owner Keychain check remain deferred, not passed."
+  ]
+}

@@ -1,14 +1,13 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Application.Input;
 using Allrpcs.Application.Movement;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
-using Allrpcs.Domain.Controllers;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Ingredients;
-using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
@@ -21,14 +20,8 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class Main : Node
 {
-    private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
-    private const int AutonomousConversationMaximumTurnCount = 2;
     private const int SabotageTurnMeaningfulEventInterval = 2;
-    private const float DialogueHearingRangePixels = 192.0f;
-    private const float WhisperHearingRangePixels = 48.0f;
-    private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan IndependentTaskStepInterval = TimeSpan.FromSeconds(3);
-    private static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
@@ -40,21 +33,25 @@ public partial class Main : Node
         new("layered_inscription_discover");
 
     internal bool ConditionalCollectionScaffolding { get; set; }
+
+    /// <summary>Gets the per-frame conversation-turn state machine Main drives.</summary>
+    internal ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput> ConversationTurns
+    {
+        get;
+        private set;
+    } = null!;
+
     private HerbExaminationActionController examinationAction = null!;
     private Healer healer = null!;
-    private SeekerWalkAnimationPresenter seekerAnimationPresenter = null!;
     private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
     private OrdinaryPlayerDialogueParticipationCoordinator participationCoordinator = null!;
     private CharacterTurnParticipationRoundTaskController participationRoundController = null!;
-    private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private CharacterModelGenerationFlowController modelFlowController = null!;
     private CharacterTurnActivityController characterTurnController = null!;
     private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
-    private DialogueEventController dialogueEventController = null!;
     private DialogueInputController dialogueInputController = null!;
     private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
     private TemporaryHealerCharacterSource healerCharacterSource = null!;
-    private TemporaryOrdinaryCharacterParticipantSource ordinaryCharacterParticipantSource = null!;
     private TemporaryCharacterIndependentTaskSource independentTaskSource = null!;
     private CharacterIndependentTaskDepartureController independentTaskDepartureController = null!;
     private TemporaryCharacterIndependentTaskOccurrenceSource independentTaskOccurrenceSource = null!;
@@ -64,39 +61,17 @@ public partial class Main : Node
     private TemporaryCharacterIndependentTaskTravelSource independentTaskTravelSource = null!;
     private CharacterIndependentTaskTravelController independentTaskTravelController = null!;
     private CharacterIndependentTaskReturnTravelController independentTaskReturnTravelController = null!;
-    private TemporaryCharacterObjectSabotageSource objectSabotageSource = null!;
-    private TemporaryCharacterObjectSabotagePresentationFlowController
-        objectSabotagePresentationFlow = null!;
-    private TemporaryCharacterObjectSabotageMoveSource objectSabotageMoveSource = null!;
-    private TemporaryCharacterObjectSabotageMovePresentationFlowController
-        objectSabotageMovePresentationFlow = null!;
-    private TemporaryCharacterObjectSabotageSubstitutionSource
-        objectSabotageSubstitutionSource = null!;
-    private TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController
-        objectSabotageSubstitutionPresentationFlow = null!;
-    private TemporaryCharacterObjectSabotageContaminationSource
-        objectSabotageContaminationSource = null!;
-    private TemporaryCharacterObjectSabotageContaminationPresentationFlowController
-        objectSabotageContaminationPresentationFlow = null!;
-    private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
-    private Marker2D sageHearingPosition = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
-    private Label focusedSearchResultStatus = null!;
-    private InteractionFocusController interactionFocusController = null!;
     private OpeningRegionLayeredInscriptionDiscoveryCoordinator
         layeredInscriptionDiscoveryCoordinator = null!;
     private OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator
         layeredInscriptionEnvironmentalFlowCoordinator = null!;
     private OpeningRegionStreamResiduePassiveNoticingCoordinator
         streamResiduePassiveNoticingCoordinator = null!;
-    private OpeningRegionWagonClueFocusedSearchRoutingCoordinator
-        wagonClueFocusedSearchRoutingCoordinator = null!;
     private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
-    private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
-    private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
     private TemporaryCharacterTurnSource characterTurnSource = null!;
     private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private FirstPatientPreparationController firstPatientPreparationController = null!;
@@ -109,45 +84,31 @@ public partial class Main : Node
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
-    private CharacterModelStreamSnapshot? lastProcessedModelResult;
-    private CharacterTurnActivity? lastProcessedCompletedCharacterTurn;
-    private DialogueDelivery? lastProcessedDialogueDelivery;
+    private FocusedSearchInputCoordinator focusedSearchInput = null!;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
     public override void _Ready()
     {
+        ProcessPriority = MainProcessOrder.MainPriority;
         healer = GetNode<Healer>("Healer");
-        seekerAnimationPresenter = GetNode<SeekerWalkAnimationPresenter>(
-            "Seeker/WalkAnimation");
         autonomousConversationBudgetController = GetNode<AutonomousConversationBudgetController>(
             "AutonomousConversationBudgetController");
         participationCoordinator = GetNode<OrdinaryPlayerDialogueParticipationCoordinator>(
             "OrdinaryPlayerDialogueParticipationCoordinator");
         participationRoundController = GetNode<CharacterTurnParticipationRoundTaskController>(
             "CharacterTurnParticipationRoundTaskController");
-        participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
-            "TemporaryCharacterTurnParticipationModelSource");
         characterTurnController = GetNode<CharacterTurnActivityController>(
             "CharacterTurnActivityController");
         characterTurnTranscriptController = GetNode<CharacterTurnTranscriptController>(
             "CharacterTurnTranscriptController");
-        dialogueEventController = GetNode<DialogueEventController>("DialogueEventController");
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
         participationCoordinator.StatusChanged += dialogueInputController.SetStatus;
-        dialogueInputController.CanAccept = () =>
-            (dialogueInputController.LastSubmittedDelivery is null
-                || ReferenceEquals(dialogueInputController.LastSubmittedDelivery, lastProcessedDialogueDelivery))
-            && !participationCoordinator.IsBusy
-            && !modelFlowController.IsGenerating
-            && participationRoundController.Status == CharacterTurnParticipationRoundTaskStatus.Idle
-            && CharacterTurnStartPolicy.CanStart(characterTurnController.Activity);
+        dialogueInputController.CanAccept = () => ConversationTurns.CanAcceptSubmission();
         characterModelInputSource = GetNode<TemporaryCharacterModelGenerationInputSource>(
             "TemporaryCharacterModelGenerationInputSource");
         healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
             "TemporaryHealerCharacterSource");
-        ordinaryCharacterParticipantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
-            "TemporaryOrdinaryCharacterParticipantSource");
         independentTaskSource = GetNode<TemporaryCharacterIndependentTaskSource>(
             "TemporaryCharacterIndependentTaskSource");
         independentTaskDepartureController =
@@ -174,38 +135,10 @@ public partial class Main : Node
         independentTaskReturnTravelController =
             GetNode<CharacterIndependentTaskReturnTravelController>(
                 "CharacterIndependentTaskReturnTravelController");
-        objectSabotageSource = GetNode<TemporaryCharacterObjectSabotageSource>(
-            "TemporaryCharacterObjectSabotageSource");
-        objectSabotagePresentationFlow =
-            GetNode<TemporaryCharacterObjectSabotagePresentationFlowController>(
-                "TemporaryCharacterObjectSabotagePresentationFlowController");
-        objectSabotageMoveSource = GetNode<TemporaryCharacterObjectSabotageMoveSource>(
-            "TemporaryCharacterObjectSabotageMoveSource");
-        objectSabotageMovePresentationFlow =
-            GetNode<TemporaryCharacterObjectSabotageMovePresentationFlowController>(
-                "TemporaryCharacterObjectSabotageMovePresentationFlowController");
-        objectSabotageSubstitutionSource =
-            GetNode<TemporaryCharacterObjectSabotageSubstitutionSource>(
-                "TemporaryCharacterObjectSabotageSubstitutionSource");
-        objectSabotageSubstitutionPresentationFlow =
-            GetNode<TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController>(
-                "TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController");
-        objectSabotageContaminationSource =
-            GetNode<TemporaryCharacterObjectSabotageContaminationSource>(
-                "TemporaryCharacterObjectSabotageContaminationSource");
-        objectSabotageContaminationPresentationFlow =
-            GetNode<TemporaryCharacterObjectSabotageContaminationPresentationFlowController>(
-                "TemporaryCharacterObjectSabotageContaminationPresentationFlowController");
-        characterModelSource = GetNode<TemporaryCharacterModelSource>(
-            "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
-        sageHearingPosition = GetNode<Marker2D>("SageHearingPosition");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "Seeker/FocusedSearchActivityController");
-        focusedSearchResultStatus = GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult");
-        interactionFocusController = GetNode<InteractionFocusController>(
-            "InteractionFocusController");
         layeredInscriptionDiscoveryCoordinator =
             GetNode<OpeningRegionLayeredInscriptionDiscoveryCoordinator>(
                 "OpeningRegionLayeredInscriptionDiscoveryCoordinator");
@@ -215,9 +148,6 @@ public partial class Main : Node
         streamResiduePassiveNoticingCoordinator =
             GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
                 "OpeningRegionStreamResiduePassiveNoticingCoordinator");
-        wagonClueFocusedSearchRoutingCoordinator =
-            GetNode<OpeningRegionWagonClueFocusedSearchRoutingCoordinator>(
-                "OpeningRegionWagonClueFocusedSearchRoutingCoordinator");
         resolvedPerceptionIndicators =
         [
             GetNode<TemporaryResolvedPerceptionIndicator>(
@@ -230,10 +160,6 @@ public partial class Main : Node
             GetNode<GreyboxInteractionTarget>("InteractionCandidates/HerbPatch"),
             GetNode<GreyboxInteractionTarget>("InteractionCandidates/StoneMarker"),
         ];
-        focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
-            "TemporaryFocusedSearchContextSource");
-        focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
-            "TemporaryFocusedSearchOutcomeSource");
         characterTurnSource = GetNode<TemporaryCharacterTurnSource>(
             "TemporaryCharacterTurnSource");
         firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
@@ -300,7 +226,8 @@ public partial class Main : Node
         InitializeWorldEvents();
         examinationAction = new() { Name = "HerbExaminationActionController" };
         AddChild(examinationAction);
-        MoveChild(examinationAction, GetChildCount() - 2);
+        // Part of MainProcessOrder: immediately before WholeChannelPresentation.
+        MoveChild(examinationAction, GetNode("WholeChannelPresentation").GetIndex());
         RecordInitialWorldEvent();
         InitializeSabotageTurnOpportunity();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
@@ -328,8 +255,65 @@ public partial class Main : Node
 
         RefreshResolvedPerceptionPresentation();
 
-        focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
+        InitializeCoordinators();
+        GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult").Text =
+            FocusedSearchInputCoordinator.InitialResultText;
         UpdateModeStatus(force: true);
+    }
+
+    private void InitializeCoordinators()
+    {
+        ConversationTurns = new(new ConversationTurnNodePorts(
+            modelFlowController,
+            characterModelInputSource,
+            GetNode<TemporaryCharacterModelSource>("TemporaryCharacterModelSource"),
+            characterTurnController,
+            GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+                "TemporaryOrdinaryCharacterParticipantSource"),
+            GetNode<Node2D>("Seeker"),
+            healer,
+            GetNode<Marker2D>("SageHearingPosition"),
+            dialogueInputController,
+            GetNode<DialogueEventController>("DialogueEventController"),
+            characterTurnTranscriptController,
+            participationCoordinator,
+            participationRoundController,
+            GetNode<TemporaryCharacterTurnParticipationModelSource>(
+                "TemporaryCharacterTurnParticipationModelSource"),
+            autonomousConversationBudgetController,
+            examinationAction,
+            GetNode<TemporaryCharacterExaminationFlowController>(
+                "TemporaryCharacterExaminationFlowController"),
+            () => ConditionalCollectionScaffolding));
+        focusedSearchInput = new(new FocusedSearchInputNodePorts(
+            focusedSearchController,
+            GetNode<InteractionFocusController>("InteractionFocusController"),
+            GetNode<TemporaryFocusedSearchContextSource>("TemporaryFocusedSearchContextSource"),
+            GetNode<TemporaryFocusedSearchOutcomeSource>("TemporaryFocusedSearchOutcomeSource"),
+            worldObjectController,
+            worldObjectSource,
+            worldEventController,
+            worldEventSource,
+            GetNode<OpeningRegionWagonClueFocusedSearchRoutingCoordinator>(
+                "OpeningRegionWagonClueFocusedSearchRoutingCoordinator"),
+            GetNode<TemporaryCharacterObjectSabotageSource>("TemporaryCharacterObjectSabotageSource"),
+            GetNode<TemporaryCharacterObjectSabotagePresentationFlowController>(
+                "TemporaryCharacterObjectSabotagePresentationFlowController"),
+            GetNode<TemporaryCharacterObjectSabotageMoveSource>(
+                "TemporaryCharacterObjectSabotageMoveSource"),
+            GetNode<TemporaryCharacterObjectSabotageMovePresentationFlowController>(
+                "TemporaryCharacterObjectSabotageMovePresentationFlowController"),
+            GetNode<TemporaryCharacterObjectSabotageSubstitutionSource>(
+                "TemporaryCharacterObjectSabotageSubstitutionSource"),
+            GetNode<TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController>(
+                "TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController"),
+            GetNode<TemporaryCharacterObjectSabotageContaminationSource>(
+                "TemporaryCharacterObjectSabotageContaminationSource"),
+            GetNode<TemporaryCharacterObjectSabotageContaminationPresentationFlowController>(
+                "TemporaryCharacterObjectSabotageContaminationPresentationFlowController"),
+            GetNode<SeekerWalkAnimationPresenter>("Seeker/WalkAnimation"),
+            GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult"),
+            RefreshResolvedPerceptionPresentation));
     }
 
     private void InitializeFirstPatientState()
@@ -519,11 +503,7 @@ public partial class Main : Node
     public override void _Process(double delta)
     {
         ProcessIndependentTaskRoundTrip(delta);
-        ProcessCharacterTurnResponse();
-        ProcessCompletedCharacterTurnParticipation();
-        ProcessDialogueSubmission();
-        if (dialogueInputController.CanAccept!() && dialogueInputController.Status.Contains("BUSY", StringComparison.Ordinal))
-        { dialogueInputController.SetStatus("Dialogue submission: READY"); }
+        ConversationTurns.Process();
         UpdateModeStatus(force: false);
     }
 
@@ -647,294 +627,29 @@ public partial class Main : Node
             Math.Min(delta, cadence.Interval.TotalSeconds));
     }
 
-    private void ProcessCharacterTurnResponse()
-    {
-        if (modelFlowController.HasStarted)
-        {
-            ProcessCharacterModelTurnResponse();
-            if (modelFlowController.IsGenerating)
-            {
-                return;
-            }
-        }
-
-        CharacterTurnActivity? activity = characterTurnController.Activity;
-        if (activity is null
-            || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
-        {
-            return;
-        }
-
-        if (modelFlowController.Result is not null && !modelFlowController.TryReset())
-        {
-            throw new InvalidOperationException(
-                "The completed character-model flow could not reset for the next exact turn.");
-        }
-
-        Character character = CharacterTurnParticipantLookup.Find(
-            ordinaryCharacterParticipantSource.Participants,
-            activity)
-            ?? throw new InvalidOperationException(
-                "The awaiting ordinary character turn had no exact LLM participant.");
-        CharacterControllerAssignment assignment = character.ControllerAssignment;
-        TemporaryCharacterModelGenerationInput? input = characterModelInputSource.CreateInput(
-            activity);
-        if (input is null && characterModelInputSource.LastAssemblyStatus == CharacterModelContextAssemblyStatus.RequiredContextBudgetExceeded)
-        {
-            _ = characterTurnController.TryCancel();
-            dialogueInputController.SetStatus("Required dialogue context exceeds the budget. Reduce context and retry.");
-            return;
-        }
-        if (!ReferenceEquals(assignment.CharacterId, activity.Request.RespondingCharacterId)
-            || !ReferenceEquals(assignment.ControllerType, ControllerType.Llm)
-            || input is null
-            || !ReferenceEquals(input.GenerationRequest.TurnRequest, activity.Request)
-            || !modelFlowController.TryStart(
-                characterModelSource.TakeModel(),
-                input.GenerationRequest,
-                input.WorldObjects,
-                input.Affordances,
-                CharacterModelGenerationDeadline))
-        {
-            throw new InvalidOperationException(
-                "The ordinary LLM healer turn could not start its bounded generation.");
-        }
-    }
-
-    private void ProcessCharacterModelTurnResponse()
-    {
-        CharacterModelStreamSnapshot? result = modelFlowController.Result;
-        if (result is null || ReferenceEquals(result, lastProcessedModelResult))
-        {
-            return;
-        }
-
-        lastProcessedModelResult = result;
-        if (result.Updates[^1] is not CharacterModelStreamTermination termination)
-        {
-            throw new InvalidOperationException("The completed model flow was not terminal.");
-        }
-
-        CharacterTurnActivity? activity = characterTurnController.Activity;
-        if (activity is not null && !characterModelInputSource.IsCurrent(activity.Request))
-        {
-            if (CharacterTurnCancellationPolicy.CanCancel(activity)) { _ = characterTurnController.TryCancel(); }
-            return;
-        }
-
-        if (termination is
-            {
-                Status: CharacterModelStreamTerminationStatus.Completed,
-                Response: not null,
-            })
-        {
-            if (activity is not null
-                && CharacterTurnResponseReceptionPolicy.CanReceive(activity, termination.Response))
-            {
-                if (!characterTurnController.TryReceiveResponse(termination.Response))
-                {
-                    throw new InvalidOperationException(
-                        "The validated model response could not enter its exact awaiting turn.");
-                }
-                var scaffold = GetNode<TemporaryCharacterExaminationFlowController>(
-                    "TemporaryCharacterExaminationFlowController");
-                if (!ConditionalCollectionScaffolding)
-                {
-                    scaffold.SetProcess(false);
-                    examinationAction.Offer(characterTurnController.Activity!);
-                }
-            }
-
-            return;
-        }
-
-        dialogueInputController.SetStatus(termination.Status switch
-        {
-            CharacterModelStreamTerminationStatus.TimedOut => "Dialogue response timed out. Please retry.",
-            CharacterModelStreamTerminationStatus.Cancelled => "Dialogue response cancelled. Please retry.",
-            _ => "Dialogue provider unavailable or response failed. Check provider settings and retry.",
-        });
-        if (activity is not null
-            && CharacterTurnCancellationPolicy.CanCancel(activity)
-            && !characterTurnController.TryCancel())
-        {
-            throw new InvalidOperationException(
-                "The unsuccessful model response could not cancel its exact pending turn.");
-        }
-    }
-
-    private void ProcessCompletedCharacterTurnParticipation()
-    {
-        CharacterTurnActivity? activity = characterTurnController.Activity;
-        if (activity is null
-            || !ReferenceEquals(activity.State, CharacterTurnActivityState.Completed)
-            || ReferenceEquals(activity, lastProcessedCompletedCharacterTurn))
-        {
-            return;
-        }
-
-        lastProcessedCompletedCharacterTurn = activity;
-        DialogueUtterance? speech = activity.Response?.Speech;
-        DialogueEvent? occurredEvent = dialogueEventController.LastOccurredEvent;
-        if (speech is null || !ReferenceEquals(occurredEvent?.Utterance, speech))
-        {
-            return;
-        }
-
-        Character[] scheduledCharacters = GetHeardOrdinaryParticipants(occurredEvent);
-        if (scheduledCharacters.Length == 0)
-        {
-            return;
-        }
-
-        _ = participationCoordinator.TryStart(
-            occurredEvent,
-            scheduledCharacters,
-            [],
-            participationModelSource,
-            participationRoundController,
-            autonomousConversationBudgetController,
-            characterTurnController,
-            ParticipationRoundDeadline);
-    }
-
-    private void ProcessDialogueSubmission()
-    {
-        DialogueDelivery? delivery = dialogueInputController.LastSubmittedDelivery;
-        if (delivery is null || ReferenceEquals(delivery, lastProcessedDialogueDelivery))
-        {
-            return;
-        }
-
-        lastProcessedDialogueDelivery = delivery;
-        DialogueUtterance utterance = delivery.Utterance;
-        IReadOnlyList<Character> ordinaryParticipants =
-            ordinaryCharacterParticipantSource.Participants;
-        List<DialogueHearingCandidate> candidates =
-        [
-            new(utterance.SpeakerCharacterId, ToNumerics(GetNode<Node2D>("Seeker").Position)),
-        ];
-        if (healer.Visible) { candidates.Add(new(ordinaryParticipants[0].Identity.Id, ToNumerics(healer.Position))); }
-        candidates.Add(new(ordinaryParticipants[1].Identity.Id, ToNumerics(sageHearingPosition.Position)));
-        if (!dialogueEventController.TryOccur(
-                delivery,
-                candidates[0].Position,
-                DialogueHearingRangePixels,
-                WhisperHearingRangePixels,
-                candidates))
-        {
-            throw new InvalidOperationException(
-                "The accepted player dialogue delivery could not occur.");
-        }
-
-        DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
-            ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
-        if (!ReferenceEquals(occurredEvent.Delivery, delivery)
-            || !characterTurnTranscriptController.TryAppendSpokenStatement(
-                occurredEvent.Delivery))
-        {
-            throw new InvalidOperationException(
-                "The occurred player dialogue delivery could not append to the transcript.");
-        }
-
-        StartParticipationRoundIfEligible();
-    }
-
-    private void StartParticipationRoundIfEligible()
-    {
-        DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
-            ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
-        Character[] heardParticipants = GetHeardOrdinaryParticipants(occurredEvent);
-        Character healerCharacter = ordinaryCharacterParticipantSource.Participants[0];
-        CharacterId[] directAddresses = heardParticipants.Any(
-            character => ReferenceEquals(character, healerCharacter))
-            ? [new CharacterId(healerCharacter.Identity.Id.Value)]
-            : [];
-        bool started = participationCoordinator.TryStartNewChain(
-            occurredEvent,
-            heardParticipants,
-            directAddresses,
-            participationModelSource,
-            participationRoundController,
-            autonomousConversationBudgetController,
-            characterTurnController,
-            new AutonomousConversationBudget(
-                0,
-                AutonomousConversationMaximumTurnCount,
-                false),
-            ParticipationRoundDeadline);
-        if (!started) { dialogueInputController.SetStatus("No available listener can respond. Please retry."); }
-    }
-
-    private Character[] GetHeardOrdinaryParticipants(DialogueEvent occurredEvent)
-    {
-        HashSet<CharacterId> heardCharacterIds =
-            occurredEvent.Audience.ListenerCharacterIds.ToHashSet();
-        return ordinaryCharacterParticipantSource.Participants
-            .Where(character => heardCharacterIds.Contains(character.Identity.Id)
-                && (!ReferenceEquals(character, ordinaryCharacterParticipantSource.Participants[0]) || healer.Visible))
-            .ToArray();
-    }
-
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
         if (!ControlInputContext.WorldAllowed(this)) { return; }
         if (ControlInputMatcher.Pressed(@event, CharacterTurnCancelAction))
         {
-            examinationAction.Cancel();
-            _ = modelFlowController.TryCancel();
-            _ = participationRoundController.TryCancel();
-            _ = characterTurnController.TryCancel();
-            _ = autonomousConversationBudgetController.TryInterrupt();
+            ConversationTurns.Cancel();
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchCancelAction))
         {
-            FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
-            bool changed = activeRequest is not null
-                && focusedSearchController.TryCancelSearch(activeRequest);
-            PresentFocusedSearchResult("CANCEL", changed);
+            focusedSearchInput.Handle(FocusedSearchInputAction.Cancel);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchCompleteAction))
         {
-            FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
-            FocusedSearchOutcome? outcome = activeRequest is null
-                ? null
-                : focusedSearchOutcomeSource.CreateOutcome(
-                    activeRequest,
-                    worldObjectController.FindWorldObject(activeRequest.TargetObjectId));
-            bool changed = outcome is not null
-                && focusedSearchController.TryCompleteSearchWithOutcome(outcome);
-            PresentFocusedSearchResult("COMPLETE", changed);
+            focusedSearchInput.Handle(FocusedSearchInputAction.Complete);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchResolveAction))
         {
-            FocusedSearchOutcome? outcome = GetFirstRetainedFocusedSearchOutcome();
-            bool changed = outcome is not null
-                && worldObjectController.FindWorldObject(outcome.Request.TargetObjectId)
-                    is { } worldObject
-                && TryResolveFocusedSearchOutcome(outcome, worldObject);
-            if (changed)
-            {
-                RefreshResolvedPerceptionPresentation();
-                TryRecoverObjectSabotagesForResolvedOutcome(outcome!);
-                seekerAnimationPresenter.PresentSuccessfulInteraction();
-            }
-
-            PresentFocusedSearchResult("RESOLVE", changed);
+            focusedSearchInput.Handle(FocusedSearchInputAction.Resolve);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchStartAction))
         {
-            bool changed = interactionFocusController.FocusedTargetObjectId
-                    is { } focusedTargetObjectId
-                && worldObjectController.FindWorldObject(focusedTargetObjectId)
-                    is { } focusedWorldObject
-                && interactionFocusController.TryStartFocusedSearch(
-                    focusedWorldObject,
-                    focusedSearchContextSource.Conditions,
-                    focusedSearchContextSource.Capabilities,
-                    focusedSearchContextSource.Inventory);
-            PresentFocusedSearchResult("START", changed);
+            focusedSearchInput.Handle(FocusedSearchInputAction.Start);
         }
         else if (ControlInputMatcher.Pressed(@event, LayeredInscriptionDiscoverAction))
         {
@@ -977,82 +692,6 @@ public partial class Main : Node
         GetViewport().SetInputAsHandled();
     }
 
-    private FocusedSearchRequest? GetActiveFocusedSearchRequest()
-    {
-        return focusedSearchController.Activities.Entries
-            .FirstOrDefault(
-                activity => activity.Request.SearcherCharacterId
-                    == focusedSearchController.SearcherCharacterId)
-            ?.Request;
-    }
-
-    private FocusedSearchOutcome? GetFirstRetainedFocusedSearchOutcome()
-    {
-        return focusedSearchController.Outcomes.Entries.FirstOrDefault(
-            outcome => outcome.Request.SearcherCharacterId
-                == focusedSearchController.SearcherCharacterId);
-    }
-
-    private bool TryResolveFocusedSearchOutcome(
-        FocusedSearchOutcome outcome,
-        WorldObject worldObject)
-    {
-        ArgumentNullException.ThrowIfNull(outcome);
-        ArgumentNullException.ThrowIfNull(worldObject);
-
-        WorldObject herbPatch = worldObjectSource.WorldObjects.Entries[0];
-        if (!ReferenceEquals(worldObject, herbPatch)
-            || !ReferenceEquals(outcome.ResultingVisibilityState, VisibilityState.Identified))
-        {
-            bool resolved = focusedSearchController.TryResolveOutcome(outcome, worldObject);
-            if (resolved && ReferenceEquals(
-                    worldObject,
-                    wagonClueFocusedSearchRoutingCoordinator.WagonClue))
-            {
-                _ = wagonClueFocusedSearchRoutingCoordinator.TryRouteResolvedOutcome(
-                    outcome,
-                    worldObject,
-                    focusedSearchController.Perception!);
-            }
-
-            return resolved;
-        }
-
-        WorldEvent advancingEvent = worldEventSource.HerbPatchIdentifiedWorldEvent;
-        if (focusedSearchController.Perception is not { } perception
-            || worldEventController.WorldEvents is not { } worldEvents
-            || worldEventController.EventLog is not { } eventLog
-            || worldEventController.WorldTime is not { } worldTime
-            || !WorldObjectBoundFocusedSearchOutcomeResolutionPolicy.CanResolve(
-                outcome,
-                worldObject,
-                perception,
-                focusedSearchController.Outcomes)
-            || !WorldEventOccurrencePolicy.CanOccur(
-                advancingEvent.EventId,
-                worldEvents,
-                eventLog,
-                worldTime))
-        {
-            return false;
-        }
-
-        if (!focusedSearchController.TryResolveOutcome(outcome, worldObject)
-            || !worldEventController.TryOccur(advancingEvent.EventId))
-        {
-            throw new InvalidOperationException(
-                "Prevalidated focused-search world-event resolution failed to commit.");
-        }
-
-        return true;
-    }
-
-    private void PresentFocusedSearchResult(string action, bool changed)
-    {
-        focusedSearchResultStatus.Text =
-            $"Focused search {action}: {(changed ? "CHANGED" : "UNCHANGED")}";
-    }
-
     private void RefreshResolvedPerceptionPresentation()
     {
         for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
@@ -1061,37 +700,6 @@ public partial class Main : Node
                 worldObjectController.FindWorldObject(
                     resolvedPerceptionTargets[index].ObjectId),
                 focusedSearchController.Perception);
-        }
-    }
-
-    private void TryRecoverObjectSabotagesForResolvedOutcome(FocusedSearchOutcome outcome)
-    {
-        if (focusedSearchController.Perception is not { } perception)
-        {
-            return;
-        }
-
-        if (outcome.Request.TargetObjectId == objectSabotageSource.Candidate.Evidence.ObjectId)
-        {
-            _ = objectSabotagePresentationFlow.TryRecover(perception);
-        }
-
-        if (outcome.Request.TargetObjectId
-            == objectSabotageMoveSource.Candidate.Evidence.Evidence.ObjectId)
-        {
-            _ = objectSabotageMovePresentationFlow.TryRecover(perception);
-        }
-
-        if (outcome.Request.TargetObjectId
-            == objectSabotageSubstitutionSource.Candidate.Evidence.Evidence.ObjectId)
-        {
-            _ = objectSabotageSubstitutionPresentationFlow.TryRecover(perception);
-        }
-
-        if (outcome.Request.TargetObjectId
-            == objectSabotageContaminationSource.Candidate.Evidence.ObjectId)
-        {
-            _ = objectSabotageContaminationPresentationFlow.TryRecover(perception);
         }
     }
 
@@ -1118,6 +726,5 @@ public partial class Main : Node
             _ => "UNKNOWN",
         };
     }
-
-    private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
 }
+
