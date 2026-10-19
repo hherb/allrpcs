@@ -97,6 +97,13 @@ packaging, and accessibility claims remain limited to their recorded evidence.
 - [ ] Phase 2: player-facing code-review-1 defects are fixed with pinning tests.
 - [x] Phase 3: one structured-decision pipeline and a thin Main composition root.
 - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.
+  - [x] 4.1 New-game flow: customization opens at the start; Forester opens the closed forest path.
+  - [ ] 4.2 Memory, transcript, customization and positions survive a save; continue on launch.
+  - [ ] 4.3 Ingredients: unified inventory, Give/Take/Use, conditional collection by default.
+  - [ ] 4.4 Hypotheses: journal proposal interpreted through the structured-decision pipeline.
+  - [ ] 4.5 Stakes and ending: disease progression can fail; explicit slice-complete screen.
+  - [ ] 4.6 Remove boot-time evidence auto-resolution and its Temporary* outcome sources.
+  - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama.
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
 
 ## Phase 9 — Production art and audio

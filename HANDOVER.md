@@ -6,37 +6,22 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-PR [#442](https://github.com/hherb/allrpcs/pull/442) merged at `a33cdc12`; merge
-[CI 39086701001](https://github.com/hherb/allrpcs/actions/runs/39086701001) passed all four jobs.
-The [structured-decision slice](docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md)
-is now complete and closed in the ledger: all ten kinds have shared descriptors, Application
-lifecycle and OpenAI/Anthropic/Ollama clients; per-kind OpenAI compatibility files are removed.
-Production composition retains exact replacement/one-shot ownership across all ten sources.
-Anthropic requires explicit caller-owned credential injection; its credential store/UI remains absent.
-
-The implementation (`19745021`) merged to main through [PR #443](https://github.com/hherb/allrpcs/pull/443)
-at `4692ed82`; its [closure receipt](docs/superpowers/evidence/2026-10-18-phase3-structured-decisions.json)
-retains source bindings and limits. The owner then reopened the scope only to apply the PR #443
-review fixes. Because #443 had already merged, [PR #444](https://github.com/hherb/allrpcs/pull/444)
-publishes them on top of main (a plain revert cannot pass the ledger checker), and the scope is
-closed again ([receipt](docs/superpowers/evidence/2026-10-18-pr443-review-fixes.json)): 6,007 tests
-and the full smoke suite (363 passed, 0 failed) pass. Live Anthropic qualification and two follow-ups in
-closed areas are tracked as GitHub issues.
-
-Phase 3 items 2 and 3 are also complete and closed: the Main coordinators merged via
-[PR #449](https://github.com/hherb/allrpcs/pull/449), and the
-[SmokeCheckHost slice](docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md)
-left `Main.tscn` with no check node ([receipt](docs/superpowers/evidence/2026-10-18-phase3-smoke-check-host.json);
-review branch `codex/phase3-smoke-check-host`). Main checks are now `game/SmokeCheckHost.cs`
-entries, never scene nodes. Phase 3 is complete and closed: the
+Phase 3 of the code-health program is complete and closed. Structured decisions
+([PR #443](https://github.com/hherb/allrpcs/pull/443), review fixes [#444](https://github.com/hherb/allrpcs/pull/444)),
+the Main coordinators ([PR #449](https://github.com/hherb/allrpcs/pull/449)) and SmokeCheckHost
+([PR #450](https://github.com/hherb/allrpcs/pull/450)) are on main. The
 [thin-Main slice](docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md) left `Main.cs`
-at 262 lines with gameplay unchanged, and the exit's full root gate passed at `ca88d200`
-([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json); review branch
-`codex/phase3-thin-main`). The owner then asked to continue towards a playable game
+at 262 lines with gameplay unchanged (`ca88d200`), and the exit's full root `./quality.sh` passed
+there: 218 stages, no retries ([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json)).
+Main checks are `game/SmokeCheckHost.cs` entries, never `Main.tscn` nodes.
+
+The owner then asked to continue towards a playable game
 ([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 began.
-Phase 4 item 1 is complete and closed: a plain launch opens Seeker customization before play
-([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); smoke 364 passed), so
-item 2 is active. Use approved D2 scoped checks until the Phase 4 exit.
+Item 1 is complete and closed (`e9ec6684`): a plain launch opens Seeker customization before play,
+proof scenes and requested checks keep their ordinary start, and Forester opens the closed forest
+path ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); 6,068 tests,
+smoke 364 passed, 0 failed). Both are on review branch `codex/phase3-thin-main`, not yet merged.
+Item 2 is active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
