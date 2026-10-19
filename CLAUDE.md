@@ -107,10 +107,12 @@ Project reference directions (enforced by `tests/Architecture.Tests/ProjectRefer
 
 `game/` is a flat directory (~1,080 tracked files; ~840 `.cs`, about 60% of those lines are checks). `Main.tscn`/`Main.cs` composes the greybox and wires
 many `*Controller` nodes. Engine checks are `*SmokeCheck` / `*Check` nodes (C# or GDScript)
-attached to `Main.tscn` or standalone `.tscn` proof scenes; each is inert unless its
-`ALLRPCS_<NAME>_CHECK=1` environment variable is set, in which case it drives the real scene and
-exits with a pass/fail code. Add new engine checks the same way and register the launch in
-`scripts/smoke-godot.sh`. Classes named `Temporary*` are deliberate greybox scaffolding.
+in standalone `.tscn` proof scenes, or Main checks that `game/SmokeCheckHost.cs` attaches as
+Main children only when their gate is set (`Main.tscn` itself holds none). Each is inert unless
+its `ALLRPCS_<NAME>_CHECK=1` environment variable is set, in which case it drives the real scene
+and exits with a pass/fail code. Add a Main check as a host entry (type, preceding Main sibling,
+gates), never as a `Main.tscn` node, and register the launch in `scripts/smoke-godot.sh`.
+Classes named `Temporary*` are deliberate greybox scaffolding.
 
 Speech: Python workers (`scripts/pocket-speech-worker.py` TTS, `scripts/player-speech-worker.py`
 ASR) speak a bounded JSON-lines IPC protocol on stdout with the game; local configuration is

@@ -28,31 +28,28 @@ func verify() -> void:
 	var packed: PackedScene = load("res://Main.tscn")
 	var scene := packed.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 	var before := count_harness(scene, exporter)
-	if before < 200:
-		fail("source Main unexpectedly lost harness composition")
-		return
-	exporter.remove_harness_children(scene)
-	if count_harness(scene, exporter) != 0:
-		fail("export scene retains harness nodes")
+	# SmokeCheckHost attaches checks at launch, so the source scene itself holds none.
+	if before != 0:
+		fail("source Main holds %d harness nodes; attach checks through SmokeCheckHost" % before)
 		return
 	var result := PackedScene.new()
 	if result.pack(scene) != OK:
-		fail("customized Main could not be repacked")
+		fail("Main could not be repacked")
 		return
 	scene.free()
 	var output := OS.get_environment("ALLRPCS_SHIPPING_SCENE_OUTPUT")
 	if output.is_empty():
 		output = OS.get_temp_dir().path_join("allrpcs-shipping-scene-%s.tscn" % OS.get_process_id())
 	if ResourceSaver.save(result, output) != OK:
-		fail("customized Main could not be saved")
+		fail("repacked Main could not be saved")
 		return
 	for dependency in ResourceLoader.get_dependencies(output):
 		if exporter.is_harness_path(dependency):
-			fail("customized Main retains harness dependency: " + dependency)
+			fail("repacked Main retains harness dependency: " + dependency)
 			return
 	var reloaded: PackedScene = ResourceLoader.load(output, "PackedScene", ResourceLoader.CACHE_MODE_IGNORE)
 	if reloaded == null:
-		fail("customized Main could not be loaded")
+		fail("repacked Main could not be loaded")
 		return
 	var instance := reloaded.instantiate(PackedScene.GEN_EDIT_STATE_MAIN)
 	if count_harness(instance, exporter) != 0:
@@ -60,7 +57,7 @@ func verify() -> void:
 		return
 	instance.free()
 	DirAccess.remove_absolute(output)
-	print("PASS: shipping scene removed ", before, " harness nodes; repack/load and autoload restoration verified")
+	print("PASS: shipping scene holds no harness nodes; repack/load and autoload restoration verified")
 	quit(0)
 
 func count_harness(node: Node, exporter: EditorExportPlugin) -> int:

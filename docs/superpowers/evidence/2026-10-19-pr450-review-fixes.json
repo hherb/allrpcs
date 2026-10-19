@@ -1,0 +1,46 @@
+{
+  "id": "code-health-phase3-pr450-review-fixes",
+  "status": "complete",
+  "date": "2026-10-19",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-19-pr450-review-fixes-authority.json",
+  "reopened_scope": "code-health-phase3-smoke-check-host",
+  "baseline": "34709e49",
+  "changes": [
+    "scripts/check-shipping-pack.gd requires Main's remap target to be inside the pack; under --path game a missing res:// target silently loaded the local project's cached Main.",
+    "game/SmokeCheckHost.cs resolves an entry's anchor before attaching it and throws a named error for a missing anchor or check scene, instead of leaving a misplaced check behind and a bare NullReferenceException.",
+    "tests/Architecture.Tests/SmokeCheckHostTests.cs: gates are read from every partial file of a check, including live _ACTION/_WAIT literals and Type.SmokeCheckEnvironmentVariable constants; every gated game class must be hosted or in a scene; anchors must be Main children in non-decreasing Main order; scene entries must have their .tscn; and every Check</Scene( entry must parse.",
+    "scripts/check-shipping-scene.gd drops the export-plugin removal assertion that a harness-free Main makes unreachable and names the repacked Main in its failures.",
+    "Comment and plan corrections: host enter-tree and relative-position wording, the export plugin's failed-transform sentence, the test summary, and the plan's shipping-pack and verification claims.",
+    "This record corrects the closed smoke-check-host record's not_done claim that the live check's host entries were pinned by the gate test: before these fixes its _ACTION/_WAIT gates and the three controller-constant gates were not checked; now they are."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 42,
+      "application": 1524,
+      "domain": 2877,
+      "infrastructure": 1609,
+      "total": 6052,
+      "failed": 0
+    },
+    "mutations": "Each new guard fails on its mutation: a wrong constant gate, a renamed live gate, a removed entry, an entry moved behind a later anchor, an unparseable entry and a misnamed scene entry.",
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 362,
+      "failed": 1,
+      "quarantined": 3,
+      "failure": "ALLRPCS_CHARACTER_TURN_RESPONSE_PRESENTATION_CHECK=1 printed its pass line, but Main._Process logged 'The exact live independent-task elapsed step could not advance' (Main.ProcessIndependentTaskRoundTrip), outside the host and these fixes. The same launch then passed 10 of 10 reruns; it is an unreported intermittent failure.",
+      "shipping_scene": "check-shipping-scene.gd passed after the message changes.",
+      "shipping_pack": "godot --export-pack 'macOS Development' plus check-shipping-pack.gd passed (1248 entries, 431 direct runtime dependencies); the same pack with its Main remap pointed at a locally cached Main not in the pack fails with 'Main remap target not in pack'."
+    }
+  },
+  "not_done": [
+    "The intermittent independent-task step failure is not diagnosed or filed.",
+    "Full root ./quality.sh gate (due at Phase 3 exit under D2)."
+  ]
+}

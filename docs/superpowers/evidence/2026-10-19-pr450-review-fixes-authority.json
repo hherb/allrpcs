@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Australia/Sydney",
+  "context": "After a multi-agent review of PR #450 (SmokeCheckHost), the owner was shown one important finding (the shipping-pack check no longer requires Main's remap target in the pack) and the suggestions (named anchor and scene-load failures, gate-test blind spots, entry-count, anchor-order and unhosted-check tests, comment and plan corrections).",
+  "owner_statement": "/fixall",
+  "effect": "Reopen the closed code-health-phase3-smoke-check-host scope only to apply the PR #450 review findings, verify and publish to the PR branch.",
+  "limits": "No merge, release, thin-Main work or phase-exit claim. The hash-bound smoke-check-host evidence record stays byte-identical; its overstated gate claim is corrected by the fixes' own record. The active slice code-health-phase3-thin-main-exit stays queued unchanged."
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1024,6 +1024,26 @@
           "sha256": "d54dc2582dc9881420653dedacb336f7dc74b96da36f936f08df8a47f21a0b81"
         }
       ]
+    },
+    {
+      "id": "code-health-phase3-smoke-check-host",
+      "reason": "Program Phase 3 item 3 is complete: Main.tscn holds no engine check and SmokeCheckHost attaches only requested checks at their former index and relative ready order, with check sources, gates, assertions and launches unchanged. 6050 solution tests, the full smoke suite (363 passed, 0 failed, 3 quarantined), the 29 HEAD quality.py audio stages and a local shipping-pack export pass. Do not reopen or re-audit the host migration.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-phase3-smoke-check-host.json",
+          "sha256": "012daf05134d03db45ccbfd5f98d0656c803628a1d0204bba126ed824b8e5546"
+        }
+      ]
+    },
+    {
+      "id": "code-health-phase3-pr450-review-fixes",
+      "reason": "The owner-requested PR #450 review fixes are complete: the shipping-pack check requires Main's remap target in the pack, the host names a missing anchor or check scene before attaching, the architecture tests cover constant and live gates, partial files, unhosted gated classes, anchor order, scene files and unparseable entries, and comments and the plan are corrected. 6052 solution tests pass; the smoke suite passed 362 with one unrelated intermittent independent-task step failure that passed 10 of 10 reruns; local shipping-scene and shipping-pack checks pass. The SmokeCheckHost scope is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-19-pr450-review-fixes.json",
+          "sha256": "0d985c2b5cf644d6e3dc269ab8af1cb49fd460a0f7b957f02d7ffddfd04ae9b0"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1606,24 +1626,38 @@
           "sha256": "adc5d47c066188bda50d8c2a44bd2a81f710bb0378093549663a7a0f69bb4cc9"
         }
       ]
+    },
+    {
+      "id": "owner-pr450-review-fixes-2026-10-19",
+      "owner_statement": "/fixall",
+      "scope_ids": [
+        "code-health-phase3-smoke-check-host"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-19-pr450-review-fixes-authority.json",
+          "sha256": "777fa87eff37d6c3892141315848897884ee69d42585aa97dbc13e90925f8662"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase3-smoke-check-host",
-    "title": "Instantiate only the requested check through a SmokeCheckHost",
+    "id": "code-health-phase3-thin-main-exit",
+    "title": "Bring Main.cs under 400 lines and pass the Phase 3 exit gate",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-code-health-phase3-2026-10-18",
     "authority_status": "owner_approved_phase3_with_phase2_live_checks_deferred_2026-10-18",
     "roadmap_item": "- [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.",
-    "missing_deliverable": "A bounded SmokeCheckHost plan and host that instantiates only the requested engine check, removing the always-present check nodes from Main.tscn. The structured-decision and Main-coordinator items are complete and closed.",
-    "instructions": "Continue Phase 3 program item 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First count the check nodes in Main.tscn and how each is gated and launched (scripts/smoke-godot.sh, tests/Architecture.Tests/CheckRegistrationTests.cs, quality.py current-revision stages), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md. Migrate checks in batches behind their existing launches without changing what each asserts; MainProcessOrderCheck pins Main's process order and must keep passing. Do not reopen closed structured-decision or coordinator scopes or the deferred Phase 2 checks. Phase 3 exit also requires Main.cs under 400 lines (730 after item 2) and one full root gate. ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=retry is a known pre-existing intermittent failure, quarantined as #448 so it no longer fails the suite. Use D2 format/build/test and affected native launches; commit/push reviewed work; no merge or release.",
-    "completion_condition": "Main.tscn holds no check nodes, every check still launches through the host with unchanged assertions, check registration still passes, and scoped format/build/test/native checks pass with synced continuation evidence and review-branch publication.",
+    "missing_deliverable": "game/Main.cs is 732 lines; the Phase 3 exit needs it under 400 with behavior unchanged, and one full root ./quality.sh pass. Structured decisions, the Main coordinators and SmokeCheckHost are complete and closed.",
+    "instructions": "Finish Phase 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First measure what Main.cs still does inline (the items the coordinator plan left out: independent-task tick, healer commands, layered inscription input, first-patient and world initialization, and _Ready composition), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md. Under the rolling rule move each state machine into src/Application with xUnit tests behind a thin node adapter; keep MainProcessOrderCheck and every smoke launch passing, and keep Main checks as SmokeCheckHost entries. Then run the full root ./quality.sh once for the Phase 3 exit and record it. Do not reopen the closed structured-decision, coordinator or SmokeCheckHost scopes or the deferred Phase 2 checks. Use D2 format/build/test and affected native launches until the exit gate; commit/push reviewed work; no merge or release.",
+    "completion_condition": "Main.cs is under 400 lines with unchanged gameplay, all tests and smoke checks pass, one full ./quality.sh passes and is recorded as evidence, and continuation evidence is synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md",
-      "game/SmokeCheckHost.cs"
+      "docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md",
+      "docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json"
     ],
-    "boundary": "Phase 3 SmokeCheckHost only. Preserve check assertions, frozen/closed evidence and gameplay. No new gameplay or sabotage kind, Phase 4, physical/provider qualification, phase-exit claim or release."
+    "boundary": "Phase 3 thin Main and exit gate only. Preserve gameplay, check assertions and frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, physical/provider qualification or release."
   },
   "deferred_slices": [
     {

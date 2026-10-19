@@ -1,8 +1,10 @@
 @tool
 extends EditorExportPlugin
 ## Transforms export scene copies and lifts harness autoloads from in-memory settings until
-## _export_end; never saves source settings/scenes. A failed transform ships the original scene,
-## which scripts/check-shipping-pack.gd (run by export-development.sh) rejects.
+## _export_end; never saves source settings/scenes. A failed transform ships the original scene.
+## Main itself holds no harness (SmokeCheckHost attaches checks at launch);
+## scripts/check-shipping-pack.gd (run by export-development.sh) rejects a transformed Main, any
+## harness file, and a Main remap target or dependency missing from the pack.
 
 const PATTERNS := ["*Check*", "*Proof*", "*Probe*"]
 var saved_autoloads: Dictionary = {}
