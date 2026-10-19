@@ -33,8 +33,10 @@ entries, never scene nodes. Phase 3 is complete and closed: the
 at 262 lines with gameplay unchanged, and the exit's full root gate passed at `ca88d200`
 ([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json); review branch
 `codex/phase3-thin-main`). The owner then asked to continue towards a playable game
-([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 item 1 is
-active. Use approved D2 scoped checks until the Phase 4 exit.
+([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 began.
+Phase 4 item 1 is complete and closed: a plain launch opens Seeker customization before play
+([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); smoke 364 passed), so
+item 2 is active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -53,33 +55,34 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-new-game-flow — Open Seeker customization at the start of a new game** (ready).
+**code-health-phase4-memory-save-continue — Keep memory, customization and positions across save and continue** (ready).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
 
-Missing deliverable: Program Phase 4 item 1: the Seeker customization menu opens only on the U key,
-so a new player can walk past slice step 1. It must open at the start of a new game; a chosen
-background already gates one route-access consumer (Forester opens the closed forest path).
+Missing deliverable: Program Phase 4 item 2 (slice step 9): episodic memory is not written from
+dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker
+customization and character positions, and nothing offers continue-on-launch, so a restarted session
+can pick a different background after loading.
 
-Write docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md, then open the existing
-SeekerCustomizationMenuController at the start of a normal launch through its existing open path,
-inert whenever a SmokeCheckHost gate is requested so existing checks keep their start state. Add one
-host-entry smoke check that a plain launch shows the menu with the Seeker suspended and that
-confirming Forester opens the closed forest gate, registered in scripts/smoke-godot.sh. Keep U while
-nothing is selected. Saving customization and continue-on-launch belong to item 2. Use D2
+Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring
+the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json),
+memory owners and the new-game start from item 1. Move each touched state machine into
+src/Application with xUnit tests (rolling rule). A continued game must not reopen customization.
+Keep save-version handling fail-closed and existing restoration checks passing. Use D2
 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
 
-Done when: A plain launch opens the customization menu before play, confirming a background applies
-it and resumes the Seeker, the new smoke check and every existing smoke launch pass, and
-continuation evidence is synced with review-branch publication.
+Done when: A save taken after customization, dialogue and movement restores the transcript,
+character memory, customization and positions in a relaunched session that offers continue, with
+tests and smoke checks passing and continuation evidence synced with review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md`
+- `docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md`
 
-Boundary: Phase 4 item 1 only. No save-schema change (item 2), no new sabotage kind, no
-physical/provider qualification, no merge or release.
+Boundary: Phase 4 item 2 only. No ingredients, hypotheses, stakes/ending or boot-time auto-
+resolution work (items 3-6), no new sabotage kind, no physical/provider qualification, no merge or
+release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

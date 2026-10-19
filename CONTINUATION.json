@@ -1058,6 +1058,16 @@
           "sha256": "0b8886ed70ac71a919c12da19bccbcfa63c34e34cd571c6562afd69779749703"
         }
       ]
+    },
+    {
+      "id": "code-health-phase4-new-game-flow",
+      "reason": "Program Phase 4 item 1 is complete at e9ec6684: a plain launch opens the existing Seeker customization menu over a suspended Seeker before play (slice step 1), while proof scenes embedding Main and every requested SmokeCheckHost check keep their ordinary start state. The Forester background opens the closed forest path, so the background gates a route-access consumer. NewGameCustomizationStartSmokeCheck proves both; 6068 solution tests and the full smoke suite (364 passed, 0 failed, 3 quarantined) pass. Do not reopen or re-audit item 1.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md",
+          "sha256": "02d5a40fab1d61a2feabb8e1487021a80869fa6f12662fb532503644ff44ab98"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1669,20 +1679,20 @@
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-new-game-flow",
-    "title": "Open Seeker customization at the start of a new game",
+    "id": "code-health-phase4-memory-save-continue",
+    "title": "Keep memory, customization and positions across save and continue",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 1: the Seeker customization menu opens only on the U key, so a new player can walk past slice step 1. It must open at the start of a new game; a chosen background already gates one route-access consumer (Forester opens the closed forest path).",
-    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md, then open the existing SeekerCustomizationMenuController at the start of a normal launch through its existing open path, inert whenever a SmokeCheckHost gate is requested so existing checks keep their start state. Add one host-entry smoke check that a plain launch shows the menu with the Seeker suspended and that confirming Forester opens the closed forest gate, registered in scripts/smoke-godot.sh. Keep U while nothing is selected. Saving customization and continue-on-launch belong to item 2. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
-    "completion_condition": "A plain launch opens the customization menu before play, confirming a background applies it and resumes the Seeker, the new smoke check and every existing smoke launch pass, and continuation evidence is synced with review-branch publication.",
+    "missing_deliverable": "Program Phase 4 item 2 (slice step 9): episodic memory is not written from dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker customization and character positions, and nothing offers continue-on-launch, so a restarted session can pick a different background after loading.",
+    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json), memory owners and the new-game start from item 1. Move each touched state machine into src/Application with xUnit tests (rolling rule). A continued game must not reopen customization. Keep save-version handling fail-closed and existing restoration checks passing. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "completion_condition": "A save taken after customization, dialogue and movement restores the transcript, character memory, customization and positions in a relaunched session that offers continue, with tests and smoke checks passing and continuation evidence synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md"
+      "docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md"
     ],
-    "boundary": "Phase 4 item 1 only. No save-schema change (item 2), no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Phase 4 item 2 only. No ingredients, hypotheses, stakes/ending or boot-time auto-resolution work (items 3-6), no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {
