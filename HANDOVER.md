@@ -28,8 +28,13 @@ Phase 3 items 2 and 3 are also complete and closed: the Main coordinators merged
 [SmokeCheckHost slice](docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md)
 left `Main.tscn` with no check node ([receipt](docs/superpowers/evidence/2026-10-18-phase3-smoke-check-host.json);
 review branch `codex/phase3-smoke-check-host`). Main checks are now `game/SmokeCheckHost.cs`
-entries, never scene nodes. Full Phase 3 completion is not claimed: the remaining exit work is
-`Main.cs` under 400 lines and one full root gate. Use approved D2 scoped checks until that exit.
+entries, never scene nodes. Phase 3 is complete and closed: the
+[thin-Main slice](docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md) left `Main.cs`
+at 262 lines with gameplay unchanged, and the exit's full root gate passed at `ca88d200`
+([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json); review branch
+`codex/phase3-thin-main`). The owner then asked to continue towards a playable game
+([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 item 1 is
+active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -48,37 +53,33 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase3-thin-main-exit — Bring Main.cs under 400 lines and pass the Phase 3 exit gate** (ready).
+**code-health-phase4-new-game-flow — Open Seeker customization at the start of a new game** (ready).
 
-Roadmap item: - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
+Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
+Ollama.
 
-Missing deliverable: game/Main.cs is 732 lines; the Phase 3 exit needs it under 400 with behavior
-unchanged, and one full root ./quality.sh pass. Structured decisions, the Main coordinators and
-SmokeCheckHost are complete and closed.
+Missing deliverable: Program Phase 4 item 1: the Seeker customization menu opens only on the U key,
+so a new player can walk past slice step 1. It must open at the start of a new game; a chosen
+background already gates one route-access consumer (Forester opens the closed forest path).
 
-Finish Phase 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First measure
-what Main.cs still does inline (the items the coordinator plan left out: independent-task tick,
-healer commands, layered inscription input, first-patient and world initialization, and _Ready
-composition), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-
-phase3-thin-main.md. Under the rolling rule move each state machine into src/Application with xUnit
-tests behind a thin node adapter; keep MainProcessOrderCheck and every smoke launch passing, and
-keep Main checks as SmokeCheckHost entries. Then run the full root ./quality.sh once for the Phase 3
-exit and record it. Do not reopen the closed structured-decision, coordinator or SmokeCheckHost
-scopes or the deferred Phase 2 checks. Use D2 format/build/test and affected native launches until
-the exit gate; commit/push reviewed work; no merge or release.
+Write docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md, then open the existing
+SeekerCustomizationMenuController at the start of a normal launch through its existing open path,
+inert whenever a SmokeCheckHost gate is requested so existing checks keep their start state. Add one
+host-entry smoke check that a plain launch shows the menu with the Seeker suspended and that
+confirming Forester opens the closed forest gate, registered in scripts/smoke-godot.sh. Keep U while
+nothing is selected. Saving customization and continue-on-launch belong to item 2. Use D2
+format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
 
-Done when: Main.cs is under 400 lines with unchanged gameplay, all tests and smoke checks pass, one
-full ./quality.sh passes and is recorded as evidence, and continuation evidence is synced with
-review-branch publication.
+Done when: A plain launch opens the customization menu before play, confirming a background applies
+it and resumes the Seeker, the new smoke check and every existing smoke launch pass, and
+continuation evidence is synced with review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md`
-- `docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json`
+- `docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md`
 
-Boundary: Phase 3 thin Main and exit gate only. Preserve gameplay, check assertions and
-frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, physical/provider qualification
-or release.
+Boundary: Phase 4 item 1 only. No save-schema change (item 2), no new sabotage kind, no
+physical/provider qualification, no merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

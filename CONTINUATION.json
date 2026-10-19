@@ -1044,6 +1044,20 @@
           "sha256": "0d985c2b5cf644d6e3dc269ab8af1cb49fd460a0f7b957f02d7ffddfd04ae9b0"
         }
       ]
+    },
+    {
+      "id": "code-health-phase3-thin-main-exit",
+      "reason": "Program Phase 3 is complete. Main.cs is 262 lines (from 732) with gameplay unchanged: the independent-task tick is Application CharacterIndependentTaskTickCoordinator, the healer mode line is HealerModeStatusText (both under xUnit tests), the layered-inscription completion arguments live on its flow node and one-shot initialization is game/MainSceneInitializer.cs. 6068 solution tests, the full smoke suite (363 passed, 0 failed, 3 quarantined) and one full root ./quality.sh at ca88d200 (218 stages, no retries) pass. An independent review found no behavior change. Do not reopen or re-audit Phase 3.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md",
+          "sha256": "770acc3ed98067e08a127b5d078c784877f9ed1eccad0ec97995ba6b61a73075"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json",
+          "sha256": "0b8886ed70ac71a919c12da19bccbcfa63c34e34cd571c6562afd69779749703"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1640,24 +1654,35 @@
           "sha256": "777fa87eff37d6c3892141315848897884ee69d42585aa97dbc13e90925f8662"
         }
       ]
+    },
+    {
+      "id": "owner-playable-phase4-2026-10-19",
+      "owner_statement": "please continue working towards a playable version of this game",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-19-phase4-authority.json",
+          "sha256": "7946caddc77e9c017e40bdc5f386d8109bc577b47115d08912a3561dcf7d16ea"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase3-thin-main-exit",
-    "title": "Bring Main.cs under 400 lines and pass the Phase 3 exit gate",
+    "id": "code-health-phase4-new-game-flow",
+    "title": "Open Seeker customization at the start of a new game",
     "status": "ready",
     "workstream": "code-health-program",
-    "reopening_id": "owner-code-health-phase3-2026-10-18",
-    "authority_status": "owner_approved_phase3_with_phase2_live_checks_deferred_2026-10-18",
-    "roadmap_item": "- [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.",
-    "missing_deliverable": "game/Main.cs is 732 lines; the Phase 3 exit needs it under 400 with behavior unchanged, and one full root ./quality.sh pass. Structured decisions, the Main coordinators and SmokeCheckHost are complete and closed.",
-    "instructions": "Finish Phase 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First measure what Main.cs still does inline (the items the coordinator plan left out: independent-task tick, healer commands, layered inscription input, first-patient and world initialization, and _Ready composition), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md. Under the rolling rule move each state machine into src/Application with xUnit tests behind a thin node adapter; keep MainProcessOrderCheck and every smoke launch passing, and keep Main checks as SmokeCheckHost entries. Then run the full root ./quality.sh once for the Phase 3 exit and record it. Do not reopen the closed structured-decision, coordinator or SmokeCheckHost scopes or the deferred Phase 2 checks. Use D2 format/build/test and affected native launches until the exit gate; commit/push reviewed work; no merge or release.",
-    "completion_condition": "Main.cs is under 400 lines with unchanged gameplay, all tests and smoke checks pass, one full ./quality.sh passes and is recorded as evidence, and continuation evidence is synced with review-branch publication.",
+    "reopening_id": "owner-playable-phase4-2026-10-19",
+    "authority_status": "owner_requested_playable_continuation_2026-10-19",
+    "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
+    "missing_deliverable": "Program Phase 4 item 1: the Seeker customization menu opens only on the U key, so a new player can walk past slice step 1. It must open at the start of a new game; a chosen background already gates one route-access consumer (Forester opens the closed forest path).",
+    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md, then open the existing SeekerCustomizationMenuController at the start of a normal launch through its existing open path, inert whenever a SmokeCheckHost gate is requested so existing checks keep their start state. Add one host-entry smoke check that a plain launch shows the menu with the Seeker suspended and that confirming Forester opens the closed forest gate, registered in scripts/smoke-godot.sh. Keep U while nothing is selected. Saving customization and continue-on-launch belong to item 2. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "completion_condition": "A plain launch opens the customization menu before play, confirming a background applies it and resumes the Seeker, the new smoke check and every existing smoke launch pass, and continuation evidence is synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md",
-      "docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json"
+      "docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md"
     ],
-    "boundary": "Phase 3 thin Main and exit gate only. Preserve gameplay, check assertions and frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, physical/provider qualification or release."
+    "boundary": "Phase 4 item 1 only. No save-schema change (item 2), no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {
