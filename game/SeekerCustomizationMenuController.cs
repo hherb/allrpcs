@@ -68,10 +68,16 @@ public partial class SeekerCustomizationMenuController : Control
             return;
         }
 
+        Open();
+        GetViewport().SetInputAsHandled();
+    }
+
+    /// <summary>Shows the menu, suspends the Seeker for it and focuses the name field.</summary>
+    internal void Open()
+    {
         Show();
         seeker.SuspendForModal(this);
         displayName.GrabFocus();
-        GetViewport().SetInputAsHandled();
     }
 
     private void PopulateOptions()

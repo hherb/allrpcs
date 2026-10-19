@@ -95,6 +95,13 @@ public partial class Main : Node
         GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult").Text =
             FocusedSearchInputCoordinator.InitialResultText;
         UpdateModeStatus(force: true);
+
+        // A new game starts with Seeker customization (slice step 1). Embedding proof scenes and
+        // requested checks keep the ordinary start state they assert against.
+        if (GetTree().CurrentScene == this && !SmokeCheckHost.SuppressesNewGameStart())
+        {
+            GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel").Open();
+        }
     }
 
     private void InitializeCoordinators()

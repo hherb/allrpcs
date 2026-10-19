@@ -74,6 +74,8 @@ internal static class SmokeCheckHost
         Check<SeekerCustomizationMenuSmokeCheck>(
             "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_MODAL_INPUT_CHECK",
             "ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK"),
+        Check<NewGameCustomizationStartSmokeCheck>(
+            "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK"),
         Check<OpeningRegionOldShrineSmokeCheck>(
             "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK"),
         Check<OpeningRegionSouthernRoadWagonSmokeCheck>(
@@ -505,6 +507,15 @@ internal static class SmokeCheckHost
             attachedAfter[anchor] = following + 1;
         }
     }
+
+    /// <summary>
+    /// True when a requested check needs Main's ordinary start state, so a new game must not open
+    /// the customization menu. The new-game check itself is the one gate that keeps it.
+    /// </summary>
+    internal static bool SuppressesNewGameStart() =>
+        !OS.HasFeature("template")
+        && Entries.Any(entry => entry.Name != nameof(NewGameCustomizationStartSmokeCheck)
+            && entry.Gates.Any(gate => OS.GetEnvironment(gate).Length > 0));
 
     private static Entry Check<T>(string? after, params string[] gates)
         where T : Node, new()

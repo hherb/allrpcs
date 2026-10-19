@@ -87,6 +87,8 @@ run_check 120 ALLRPCS_SEEKER_CUSTOMIZATION_SELECTION_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
     godot --headless --path "$repository_root/game"
+run_check 120 ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK=1 \
+    godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \
