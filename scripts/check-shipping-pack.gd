@@ -19,6 +19,9 @@ func _initialize() -> void:
 	var main_path := remap.get_slice('path="', 1).get_slice('"', 0)
 	if not require(main_path.begins_with("res://"), "Unreadable Main remap"):
 		return
+	# res:// falls back to the local project under --path game, so require the target in the pack.
+	if not require(files.has(main_path.trim_prefix("res://")), "Main remap target not in pack: " + main_path):
+		return
 	# project.binary uses length-prefixed UTF-8 strings, so this token must be absent.
 	var settings := archive.read_file("project.binary")
 	if not require(settings.size() > 0, "Missing project settings"):

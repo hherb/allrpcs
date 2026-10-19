@@ -5,10 +5,12 @@ namespace Allrpcs.Game;
 /// <summary>
 /// Attaches only the engine checks a launch requests, so the shipping Main scene holds none. An
 /// entry is requested when any of its gates is set, and the check still evaluates its own gate
-/// value. Entries keep their former Main.tscn order and index (after the named sibling), so process
-/// and input order are unchanged. They attach before Main's children are ready; Godot readies
-/// children in insertion order, so a hosted check readies after Main's scene children and before
-/// Main itself. A fixture that other checks or proofs reach also lists their gates.
+/// value. Entries keep their former Main.tscn order and relative position (directly after the named
+/// sibling, behind earlier hosted checks with the same anchor), so process and input order are
+/// unchanged. They attach during Main._EnterTree, so a hosted check enters the tree before Main's
+/// scene children; Godot readies children in insertion order, so it readies after them and before
+/// Main itself. A fixture that other checks or proofs reach also lists their gates. Exports attach
+/// nothing.
 /// </summary>
 internal static class SmokeCheckHost
 {
@@ -488,12 +490,18 @@ internal static class SmokeCheckHost
                 continue;
             }
 
+            // Resolve the anchor before attaching, so a missing one leaves no misplaced check behind.
+            int index = entry.After is null
+                ? 0
+                : (main.GetNodeOrNull(entry.After)
+                    ?? throw new InvalidOperationException(
+                        $"SmokeCheckHost anchor '{entry.After}' for {entry.Name} is not a Main child.")).GetIndex() + 1;
             string anchor = entry.After ?? string.Empty;
             int following = attachedAfter.GetValueOrDefault(anchor);
             Node check = entry.Create();
             check.Name = entry.Name;
             main.AddChild(check);
-            main.MoveChild(check, (entry.After is null ? 0 : main.GetNode(entry.After).GetIndex() + 1) + following);
+            main.MoveChild(check, index + following);
             attachedAfter[anchor] = following + 1;
         }
     }
@@ -506,7 +514,13 @@ internal static class SmokeCheckHost
 
     private static Entry Scene(string name, string? after, params string[] gates)
     {
-        return new(name, () => GD.Load<PackedScene>($"res://{name}.tscn").Instantiate(), after, gates);
+        string path = $"res://{name}.tscn";
+        return new(
+            name,
+            () => (GD.Load<PackedScene>(path)
+                ?? throw new InvalidOperationException($"SmokeCheckHost cannot load check scene '{path}'.")).Instantiate(),
+            after,
+            gates);
     }
 
     private sealed record Entry(string Name, Func<Node> Create, string? After, string[] Gates);

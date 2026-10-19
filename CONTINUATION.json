@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1034,6 +1034,16 @@
           "sha256": "012daf05134d03db45ccbfd5f98d0656c803628a1d0204bba126ed824b8e5546"
         }
       ]
+    },
+    {
+      "id": "code-health-phase3-pr450-review-fixes",
+      "reason": "The owner-requested PR #450 review fixes are complete: the shipping-pack check requires Main's remap target in the pack, the host names a missing anchor or check scene before attaching, the architecture tests cover constant and live gates, partial files, unhosted gated classes, anchor order, scene files and unparseable entries, and comments and the plan are corrected. 6052 solution tests pass; the smoke suite passed 362 with one unrelated intermittent independent-task step failure that passed 10 of 10 reruns; local shipping-scene and shipping-pack checks pass. The SmokeCheckHost scope is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-19-pr450-review-fixes.json",
+          "sha256": "0d985c2b5cf644d6e3dc269ab8af1cb49fd460a0f7b957f02d7ffddfd04ae9b0"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1614,6 +1624,20 @@
         {
           "path": "docs/superpowers/evidence/2026-10-18-pr449-review-fixes-authority.json",
           "sha256": "adc5d47c066188bda50d8c2a44bd2a81f710bb0378093549663a7a0f69bb4cc9"
+        }
+      ]
+    },
+    {
+      "id": "owner-pr450-review-fixes-2026-10-19",
+      "owner_statement": "/fixall",
+      "scope_ids": [
+        "code-health-phase3-smoke-check-host"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-19-pr450-review-fixes-authority.json",
+          "sha256": "777fa87eff37d6c3892141315848897884ee69d42585aa97dbc13e90925f8662"
         }
       ]
     }

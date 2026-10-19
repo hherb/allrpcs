@@ -69,12 +69,15 @@ item), the full root gate (due at Phase 3 exit) and any phase-exit claim.
   value, so a mode-valued or mismatched gate behaves as before. Attaching is idempotent per name.
 - Exported builds (`template` feature) attach nothing: exports exclude every harness file, which
   matches the plugin removing harness nodes today.
-- Pins: an architecture test asserts `Main.tscn` holds no check node and that every
-  `ALLRPCS_*_CHECK` literal in a hosted check's source is one of its host gates. A missed attach
+- Pins: architecture tests assert `Main.tscn` holds no check node; every gate in a hosted
+  check's partial files (`ALLRPCS_*_CHECK` and live `_ACTION`/`_WAIT` literals, and
+  `Type.SmokeCheckEnvironmentVariable` constants) is one of its host gates; every gated game class
+  is hosted or in a scene; and anchors are Main children in non-decreasing Main order. A missed attach
   of a launched check never quits, so its `run_check` deadline fails.
 - Shipping checks: `check-shipping-scene.gd` now requires source Main to hold no harness node
   (the repack/load and autoload checks stay); `check-shipping-pack.gd` loads the exported Main
-  through its normal remap and requires its dependencies, and its instance, to be harness-free.
+  through its normal remap, requires the remap target and every direct dependency to be in the
+  pack and the scene to instantiate, and rejects any harness file in the pack.
 
 ## Batches
 
@@ -99,5 +102,5 @@ scene, so entries match the former order exactly.
   batch's `smoke-godot.sh` launches.
 - Final: full `./scripts/smoke-godot.sh` (quarantined #448 retry reported, not failed),
   `MainProcessOrderCheck`, the plain main-scene launch, the HEAD `quality.py` stage commands for
-  the allowlisted interior, water, cask, hand-tool and healer-footstep checks, and CI's exports
-  for `check-shipping-pack.gd` (no export templates are installed locally).
+  the allowlisted interior, water, cask, hand-tool and healer-footstep checks, and `godot
+  --export-pack` plus `check-shipping-pack.gd` (no export templates needed).
