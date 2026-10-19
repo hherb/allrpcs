@@ -9,6 +9,21 @@ public partial class Main
     {
         void Register(string owner, Func<PreparedRestore> prepare) =>
             registry.Register(new RestoreParticipant(owner, _ => prepare()));
+        OrdinaryPlayerDialogueParticipationCoordinator participationCoordinator =
+            GetNode<OrdinaryPlayerDialogueParticipationCoordinator>("OrdinaryPlayerDialogueParticipationCoordinator");
+        CharacterTurnParticipationRoundTaskController participationRoundController =
+            GetNode<CharacterTurnParticipationRoundTaskController>("CharacterTurnParticipationRoundTaskController");
+        AutonomousConversationBudgetController autonomousConversationBudgetController =
+            GetNode<AutonomousConversationBudgetController>("AutonomousConversationBudgetController");
+        TemporaryCharacterModelGenerationInputSource characterModelInputSource =
+            GetNode<TemporaryCharacterModelGenerationInputSource>("TemporaryCharacterModelGenerationInputSource");
+        CharacterModelGenerationFlowController modelFlowController =
+            GetNode<CharacterModelGenerationFlowController>("CharacterModelGenerationFlowController");
+        CharacterTurnActivityController characterTurnController =
+            GetNode<CharacterTurnActivityController>("CharacterTurnActivityController");
+        CharacterTurnTranscriptController characterTurnTranscriptController =
+            GetNode<CharacterTurnTranscriptController>("CharacterTurnTranscriptController");
+        DialogueInputController dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
         Register("participation-coordinator", () => new(participationCoordinator.ResetSession));
         Register("participation-round", participationRoundController.PrepareSessionReset);
         Register("conversation-budget", () => new(autonomousConversationBudgetController.ResetSession));

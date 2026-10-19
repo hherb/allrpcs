@@ -48,6 +48,15 @@ public partial class OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator
         CompletedFlow = null;
     }
 
+    /// <summary>Completes the flow from the scene's current shrine and revealed variation state.</summary>
+    public bool TryCompleteRevealed() =>
+        TryComplete(
+            ShrineSource.Presentation,
+            EnvironmentalSource.BaselineRegions,
+            EnvironmentalSource.CurrentRegions,
+            VariationCoordinator.RevealedLightingState,
+            VariationCoordinator.RevealedSoundState);
+
     /// <summary>Preflights and completes one exact discovery-authorized environmental flow.</summary>
     public bool TryComplete(
         OpeningRegionLayeredInscriptionPresentation? presentation,
