@@ -20,8 +20,12 @@ The owner then asked to continue towards a playable game
 Item 1 is complete and closed (`e9ec6684`): a plain launch opens Seeker customization before play,
 proof scenes and requested checks keep their ordinary start, and Forester opens the closed forest
 path ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); 6,068 tests,
-smoke 364 passed, 0 failed). Both are on review branch `codex/phase3-thin-main`, not yet merged.
-Item 2 is active. Use approved D2 scoped checks until the Phase 4 exit.
+smoke 364 passed, 0 failed); both are merged (PR #451). Item 2 is complete and closed (`6c10af88`,
+[PR #453](https://github.com/hherb/allrpcs/pull/453), not yet merged): memory is written from turns
+and examinations, save schema 9 keeps the Seeker profile and positions, and a launch with a save
+offers Continue ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md);
+6,097 tests, smoke 365 passed, 0 failed). Item 3 (ingredients) is active. Use approved D2 scoped
+checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -40,36 +44,35 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-memory-save-continue — Keep memory, customization and positions across save and continue** (ready).
+**code-health-phase4-ingredients — Make ingredients a normal, evidence-identified part of play** (ready).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
 
-Missing deliverable: Program Phase 4 item 2 (slice step 9): episodic memory is not written from
-dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker
-customization and character positions, and nothing offers continue-on-launch, so a restarted session
-can pick a different background after loading.
+Missing deliverable: Program Phase 4 item 3 (slice steps 5 and 7): CharacterInventory and
+InventoryOwnershipSnapshot are separate owners, Give/Take/Use are not wired into play, and
+conditional collection runs only behind the ConditionalCollectionScaffolding gate in Main, so a
+player cannot gather, hand over and use ingredients identified through evidence, and cannot choose a
+wrong remedy.
 
-Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring
-the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json),
-memory owners and the new-game start from item 1. Move each touched state machine into
-src/Application with xUnit tests (rolling rule). A continued game must not reopen customization.
-Keep save-version handling fail-closed and existing restoration checks passing. Use D2
+Write docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md after measuring
+CharacterInventory, InventoryOwnershipSnapshot and its Give/Take/Drop/Capacity policies, the
+ConditionalCollectionScaffolding gate and its checks, and how ingredients are saved. Unify the
+inventory owner, wire Give/Take/Use, make conditional collection the normal path, identify
+ingredients through evidence and allow a wrong remedy. Move each touched state machine into
+src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2
 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
-#452 records the PR #451 relaunch-to-load gap this item closes (the saved guidance currently asks
-the player to finish customizing first).
 
-Done when: A save taken after customization, dialogue and movement restores the transcript,
-character memory, customization and positions in a relaunched session that offers continue, with
-tests and smoke checks passing and continuation evidence synced with review-branch publication.
+Done when: A player collects an evidence-identified ingredient through the normal path, gives, takes
+and uses it, and can prepare a wrong remedy, with inventory surviving save and continue, tests and
+smoke checks passing and continuation evidence synced with review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md`
+- `docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md`
 
-Boundary: Phase 4 item 2 only. No ingredients, hypotheses, stakes/ending or boot-time auto-
-resolution work (items 3-6), no new sabotage kind, no physical/provider qualification, no merge or
-release.
+Boundary: Phase 4 item 3 only. No hypotheses, stakes/ending or boot-time auto-resolution work (items
+4-6), no new sabotage kind, no physical/provider qualification, no merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
