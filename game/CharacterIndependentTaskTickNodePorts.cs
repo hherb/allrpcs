@@ -6,7 +6,10 @@ using Allrpcs.Domain.WorldEvents;
 
 namespace Allrpcs.Game;
 
-/// <summary>Forwards each independent-task tick port to its Main-scene owners.</summary>
+/// <summary>
+/// Forwards each independent-task tick port to its Main-scene owners. Each member is a thin
+/// forward to an existing node member; none decides anything.
+/// </summary>
 internal sealed class CharacterIndependentTaskTickNodePorts(
     CharacterIndependentTaskStepClockController stepClock,
     CharacterIndependentTaskTravelController travel,

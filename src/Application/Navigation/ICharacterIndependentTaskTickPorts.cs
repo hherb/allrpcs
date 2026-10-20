@@ -6,8 +6,8 @@ using Allrpcs.Domain.WorldEvents;
 namespace Allrpcs.Application.Navigation;
 
 /// <summary>
-/// The native owners a <see cref="CharacterIndependentTaskTickCoordinator"/> sequences. Each
-/// member is a thin forward to existing node members; none decides anything.
+/// The live owners a <see cref="CharacterIndependentTaskTickCoordinator"/> sequences. The return
+/// plan and progress are either both present or both absent.
 /// </summary>
 public interface ICharacterIndependentTaskTickPorts
 {

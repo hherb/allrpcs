@@ -1,10 +1,12 @@
+using Allrpcs.Domain.Characters;
 using Godot;
 
 namespace Allrpcs.Game;
 
 /// <summary>
 /// Proves a new game opens Seeker customization before play, and that confirming the Forester
-/// background resumes the Seeker and opens the closed forest path.
+/// background selects that exact profile, keeps the menu from reopening, resumes the Seeker and
+/// opens the closed forest path.
 /// </summary>
 public partial class NewGameCustomizationStartSmokeCheck : Node
 {
@@ -48,6 +50,17 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
         // Item 0 is the disabled prompt; item 1 is the first background, Forester.
         menu.GetNode<OptionButton>("Background").Select(1);
         menu.GetNode<Button>("Confirm").EmitSignal(BaseButton.SignalName.Pressed);
+        SeekerCustomizationProfile? profile = GetNode<SeekerCustomizationSelectionSceneSource>(
+            "../SeekerCustomizationSelectionSceneSource").CurrentState.SelectedProfile;
+        if (profile?.Identity.DisplayName != "Mara"
+            || profile.Background.Key != "forester"
+            || menu.GetNode<Label>("Status").Text != SeekerCustomizationMenuController.SelectedStatusText
+            || menu.TryOpen())
+        {
+            Fail("Confirming Forester did not select Mara's Forester profile, or the menu could reopen.");
+            return;
+        }
+
         if (menu.Visible
             || !seeker.IsPhysicsProcessing()
             || closedPath.CurrentAccess is null
@@ -60,8 +73,8 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
 
         GD.Print(
             "New-game customization start smoke passed: a plain launch opened the menu over a "
-            + "suspended Seeker with the name field focused, and confirming Forester closed it, "
-            + "resumed movement and opened the closed forest path.");
+            + "suspended Seeker with the name field focused, and confirming Forester selected Mara's "
+            + "profile, closed the menu for good, resumed movement and opened the closed forest path.");
         GetTree().Quit();
     }
 

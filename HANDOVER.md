@@ -56,6 +56,8 @@ memory owners and the new-game start from item 1. Move each touched state machin
 src/Application with xUnit tests (rolling rule). A continued game must not reopen customization.
 Keep save-version handling fail-closed and existing restoration checks passing. Use D2
 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
+#452 records the PR #451 relaunch-to-load gap this item closes (the saved guidance currently asks
+the player to finish customizing first).
 
 Done when: A save taken after customization, dialogue and movement restores the transcript,
 character memory, customization and positions in a relaunched session that offers continue, with

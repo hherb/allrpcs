@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1068,6 +1068,16 @@
           "sha256": "02d5a40fab1d61a2feabb8e1487021a80869fa6f12662fb532503644ff44ab98"
         }
       ]
+    },
+    {
+      "id": "code-health-pr451-review-fixes",
+      "reason": "The owner-requested PR #451 review fixes are complete: Main names a pre-_Ready use of its focused-search input and independent-task tick, the customization menu refuses to reopen once open or selected, the saved guidance asks to finish customizing before loading, a suppressed new-game start names its gate, initialization is the Main partial Main.Initialization.cs, the tick coordinator drops its null-forgiving operator, new tests cover zero frame time and later waypoints, and the new-game smoke check reads back the selected profile. 6071 solution tests and the full smoke suite (364 passed, 0 failed, 3 quarantined) pass. Continue-on-launch is filed as #452 for item 2; the Phase 3 and item 1 scopes are closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-20-pr451-review-fixes.json",
+          "sha256": "7db76fc52f94682d6eba0d274704e7572619e3dd169c713e0d187cd9748a27db"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1676,6 +1686,21 @@
           "sha256": "7946caddc77e9c017e40bdc5f386d8109bc577b47115d08912a3561dcf7d16ea"
         }
       ]
+    },
+    {
+      "id": "owner-pr451-review-fixes-2026-10-20",
+      "owner_statement": "Please address all \"should fix\" as ewell as the suggestions. Only what you cannot resolve in this session lodge as issue on github. Then review your changes until happy with the correctness, then commit and push into this PR",
+      "scope_ids": [
+        "code-health-phase3-thin-main-exit",
+        "code-health-phase4-new-game-flow"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-20-pr451-review-fixes-authority.json",
+          "sha256": "2f85e7a67131010095f47eccbfeafc45cb42f3762c35b87c99f960d24d61f783"
+        }
+      ]
     }
   ],
   "active_slice": {
@@ -1687,7 +1712,7 @@
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
     "missing_deliverable": "Program Phase 4 item 2 (slice step 9): episodic memory is not written from dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker customization and character positions, and nothing offers continue-on-launch, so a restarted session can pick a different background after loading.",
-    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json), memory owners and the new-game start from item 1. Move each touched state machine into src/Application with xUnit tests (rolling rule). A continued game must not reopen customization. Keep save-version handling fail-closed and existing restoration checks passing. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json), memory owners and the new-game start from item 1. Move each touched state machine into src/Application with xUnit tests (rolling rule). A continued game must not reopen customization. Keep save-version handling fail-closed and existing restoration checks passing. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release. #452 records the PR #451 relaunch-to-load gap this item closes (the saved guidance currently asks the player to finish customizing first).",
     "completion_condition": "A save taken after customization, dialogue and movement restores the transcript, character memory, customization and positions in a relaunched session that offers continue, with tests and smoke checks passing and continuation evidence synced with review-branch publication.",
     "outputs": [
       "docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md"

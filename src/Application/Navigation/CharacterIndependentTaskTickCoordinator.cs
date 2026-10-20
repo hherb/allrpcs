@@ -51,7 +51,11 @@ public sealed class CharacterIndependentTaskTickCoordinator
 
         CharacterIndependentTaskWorldEventOccurrence? candidate = null;
         Vector2 reachedWaypoint;
-        if (returnPlan is null)
+        if (returnPlan is not null && returnProgress is not null)
+        {
+            reachedWaypoint = returnPlan.Waypoints[returnProgress.CompletedWaypointCount];
+        }
+        else
         {
             CharacterIndependentTaskActivity activeActivity = ports.ActiveActivity
                 ?? throw new InvalidOperationException(
@@ -64,10 +68,6 @@ public sealed class CharacterIndependentTaskTickCoordinator
 
             candidate = ports.CreateOccurrence(activeActivity);
             reachedWaypoint = outboundPlan.Waypoints[outboundProgress.CompletedWaypointCount];
-        }
-        else
-        {
-            reachedWaypoint = returnPlan.Waypoints[returnProgress!.CompletedWaypointCount];
         }
 
         CharacterIndependentTaskActivitySnapshot activities = ports.Activities

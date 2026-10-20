@@ -61,23 +61,23 @@ public partial class SeekerCustomizationMenuController : Control
     public override void _UnhandledInput(InputEvent @event)
     {
         if (!ControlInputContext.TogglesAllowed(this)) { return; }
-        if (!ControlInputMatcher.Pressed(@event, OpenAction)
-            || Visible
-            || source.CurrentState.SelectedProfile is not null)
+        if (ControlInputMatcher.Pressed(@event, OpenAction) && TryOpen())
         {
-            return;
+            GetViewport().SetInputAsHandled();
         }
-
-        Open();
-        GetViewport().SetInputAsHandled();
     }
 
-    /// <summary>Shows the menu, suspends the Seeker for it and focuses the name field.</summary>
-    internal void Open()
+    /// <summary>
+    /// Shows the menu, suspends the Seeker for it and focuses the name field. Refuses while the
+    /// menu is open or once a profile is selected, since Confirm would reject every submission.
+    /// </summary>
+    internal bool TryOpen()
     {
+        if (Visible || source.CurrentState.SelectedProfile is not null) { return false; }
         Show();
         seeker.SuspendForModal(this);
         displayName.GrabFocus();
+        return true;
     }
 
     private void PopulateOptions()

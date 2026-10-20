@@ -12,32 +12,30 @@ using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
-/// <summary>
-/// Initializes the Main scene's authored state once, in a fixed order, failing fast when any
-/// owner rejects it. Main calls the two halves around inserting its examination controller.
-/// </summary>
-internal static class MainSceneInitializer
+// Initializes the Main scene's authored state in a fixed order during _Ready, failing fast when
+// any owner rejects it.
+public partial class Main
 {
     private const int SabotageTurnMeaningfulEventInterval = 2;
     private static readonly TimeSpan IndependentTaskStepInterval = TimeSpan.FromSeconds(3);
 
     /// <summary>Initializes model, dialogue, transcript, first-patient and world-event state.</summary>
-    public static void InitializeBeforeExamination(Node main)
+    private void InitializeBeforeExamination()
     {
         CharacterModelStreamController modelStreamController =
-            main.GetNode<CharacterModelStreamController>("CharacterModelStreamController");
+            GetNode<CharacterModelStreamController>("CharacterModelStreamController");
         if (!modelStreamController.TryInitialize(new CharacterModelStreamSnapshot([])))
         {
             throw new InvalidOperationException(
                 "The character-model stream controller could not initialize empty.");
         }
 
-        if (!main.GetNode<CharacterModelGenerationFlowController>(
+        if (!GetNode<CharacterModelGenerationFlowController>(
                 "CharacterModelGenerationFlowController").TryInitialize(
                 modelStreamController,
-                main.GetNode<TemporaryCharacterModelGenerationStatusLabel>(
+                GetNode<TemporaryCharacterModelGenerationStatusLabel>(
                     "DialogueOverlay/Panel/ModelStatus"),
-                main.GetNode<TemporaryCharacterModelStreamTextLabel>(
+                GetNode<TemporaryCharacterModelStreamTextLabel>(
                     "DialogueOverlay/Panel/ModelStreamText")))
         {
             throw new InvalidOperationException(
@@ -45,15 +43,15 @@ internal static class MainSceneInitializer
         }
 
         TemporarySeekerCharacterSource seeker =
-            main.GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource");
-        if (!main.GetNode<DialogueInputController>("DialogueInputController").TryInitialize(
+            GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource");
+        if (!GetNode<DialogueInputController>("DialogueInputController").TryInitialize(
                 seeker.Character.Identity.Id))
         {
             throw new InvalidOperationException(
                 "The dialogue-input controller could not initialize the scene Seeker.");
         }
 
-        if (!main.GetNode<CharacterTurnTranscriptController>("CharacterTurnTranscriptController")
+        if (!GetNode<CharacterTurnTranscriptController>("CharacterTurnTranscriptController")
                 .TryInitialize(new CharacterTurnTranscriptSnapshot([])))
         {
             throw new InvalidOperationException(
@@ -61,9 +59,9 @@ internal static class MainSceneInitializer
         }
 
         TemporaryFirstPatientTreatmentContextSource firstPatient =
-            main.GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            GetNode<TemporaryFirstPatientTreatmentContextSource>(
                 "TemporaryFirstPatientTreatmentContextSource");
-        if (!main.GetNode<FirstPatientStateController>("FirstPatientStateController").TryInitialize(
+        if (!GetNode<FirstPatientStateController>("FirstPatientStateController").TryInitialize(
                 firstPatient.Context.Scenario.DiseaseTruth,
                 new PreparedIngredientBatchSnapshot([]),
                 new IngredientExperimentJournalSnapshot([]),
@@ -73,7 +71,7 @@ internal static class MainSceneInitializer
                 "The first-patient controller could not initialize the authored scene state.");
         }
 
-        if (!main.GetNode<FirstPatientPreparationController>("FirstPatientPreparationController")
+        if (!GetNode<FirstPatientPreparationController>("FirstPatientPreparationController")
                 .TryInitialize(
                     firstPatient.Context.Scenario.Remedy.Recipe,
                     firstPatient.Context.Scenario.Ingredients))
@@ -82,8 +80,8 @@ internal static class MainSceneInitializer
                 "The first-patient preparation controller could not initialize scene ingredients.");
         }
 
-        if (!main.GetNode<WorldEventController>("WorldEventController").TryInitialize(
-                main.GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource").WorldEvents,
+        if (!GetNode<WorldEventController>("WorldEventController").TryInitialize(
+                GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource").WorldEvents,
                 new WorldEventLogSnapshot([]),
                 new WorldTimeSnapshot(null)))
         {
@@ -96,24 +94,22 @@ internal static class MainSceneInitializer
     /// Occurs the initial world event, then initializes sabotage cadence, world objects, the
     /// healer's independent task and the Seeker's initial perception.
     /// </summary>
-    public static void InitializeAfterExamination(Node main, Healer healer)
+    private void InitializeAfterExamination()
     {
-        WorldEventController worldEvents = main.GetNode<WorldEventController>("WorldEventController");
+        WorldEventController worldEvents = GetNode<WorldEventController>("WorldEventController");
         RecordInitialWorldEvent(
             worldEvents,
-            main.GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource"));
-        InitializeSabotageTurnOpportunity(main);
-        WorldObjectController worldObjects =
-            main.GetNode<WorldObjectController>("WorldObjectController");
-        if (!worldObjects.TryInitializeWorldObjects(
-                main.GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource").WorldObjects))
+            GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource"));
+        InitializeSabotageTurnOpportunity();
+        if (!worldObjectController.TryInitializeWorldObjects(
+                GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource").WorldObjects))
         {
             throw new InvalidOperationException(
                 "The world-object controller could not initialize the scene snapshot.");
         }
 
-        InitializeIndependentTask(main, healer);
-        InitializeSeekerPerception(main, worldObjects);
+        InitializeIndependentTask();
+        InitializeSeekerPerception();
     }
 
     private static void RecordInitialWorldEvent(
@@ -131,12 +127,12 @@ internal static class MainSceneInitializer
         }
     }
 
-    private static void InitializeSabotageTurnOpportunity(Node main)
+    private void InitializeSabotageTurnOpportunity()
     {
         TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source =
-            main.GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
+            GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
                 "TemporaryCharacterSabotageOrdinaryTurnAuthoringSource");
-        if (!main.GetNode<CharacterSabotageTurnOpportunityController>(
+        if (!GetNode<CharacterSabotageTurnOpportunityController>(
                 "CharacterSabotageTurnOpportunityController").TryInitialize(
                 source.Actor,
                 new CharacterSabotageTurnOpportunityCadence(SabotageTurnMeaningfulEventInterval)))
@@ -146,13 +142,13 @@ internal static class MainSceneInitializer
         }
     }
 
-    private static void InitializeIndependentTask(Node main, Healer healer)
+    private void InitializeIndependentTask()
     {
         TemporaryCharacterIndependentTaskSource source =
-            main.GetNode<TemporaryCharacterIndependentTaskSource>(
+            GetNode<TemporaryCharacterIndependentTaskSource>(
                 "TemporaryCharacterIndependentTaskSource");
         CharacterIndependentTaskDepartureController departure =
-            main.GetNode<CharacterIndependentTaskDepartureController>(
+            GetNode<CharacterIndependentTaskDepartureController>(
                 "CharacterIndependentTaskDepartureController");
         CharacterIndependentTaskActivitySnapshot activities = source.Activities;
         CharacterPartySnapshot initialParty = source.Party;
@@ -167,18 +163,18 @@ internal static class MainSceneInitializer
             ?? throw new InvalidOperationException(
                 "The authored independent task did not retain its active departure state.");
         NumericsVector2 origin = new(healer.GlobalPosition.X, healer.GlobalPosition.Y);
-        CharacterIndependentTaskTravelPlan plan = main
-            .GetNode<TemporaryCharacterIndependentTaskTravelSource>(
+        CharacterIndependentTaskTravelPlan plan =
+            GetNode<TemporaryCharacterIndependentTaskTravelSource>(
                 "TemporaryCharacterIndependentTaskTravelSource")
             .CreatePlan(activeActivity, origin);
-        if (!main.GetNode<CharacterIndependentTaskTravelController>(
+        if (!GetNode<CharacterIndependentTaskTravelController>(
                 "CharacterIndependentTaskTravelController").TryInitialize(plan))
         {
             throw new InvalidOperationException(
                 "The authored independent-task travel plan could not initialize.");
         }
 
-        if (!main.GetNode<CharacterIndependentTaskStepClockController>(
+        if (!GetNode<CharacterIndependentTaskStepClockController>(
                 "CharacterIndependentTaskStepClockController").TryInitialize(
                 new CharacterIndependentTaskStepCadence(IndependentTaskStepInterval)))
         {
@@ -189,7 +185,7 @@ internal static class MainSceneInitializer
         CharacterPartySnapshot party = departure.Party
             ?? throw new InvalidOperationException(
                 "The independent-task party state was not initialized for body presentation.");
-        if (!main.GetNode<CharacterIndependentTaskBodyPresentationController>(
+        if (!GetNode<CharacterIndependentTaskBodyPresentationController>(
                 "CharacterIndependentTaskBodyPresentationController").TryInitialize(
                 source.DepartingCharacterId,
                 healer,
@@ -200,12 +196,10 @@ internal static class MainSceneInitializer
         }
     }
 
-    private static void InitializeSeekerPerception(Node main, WorldObjectController worldObjects)
+    private void InitializeSeekerPerception()
     {
-        FocusedSearchActivityController searches =
-            main.GetNode<FocusedSearchActivityController>("Seeker/FocusedSearchActivityController");
-        if (!searches.TryInitializePerception(
-                main.GetNode<TemporarySeekerPerceptionSource>("TemporarySeekerPerceptionSource")
+        if (!focusedSearchController.TryInitializePerception(
+                GetNode<TemporarySeekerPerceptionSource>("TemporarySeekerPerceptionSource")
                     .Perception))
         {
             throw new InvalidOperationException(
@@ -213,27 +207,27 @@ internal static class MainSceneInitializer
         }
 
         Character seeker =
-            main.GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource").Character;
-        PassiveNoticingCandidate noticing = main
-            .GetNode<TemporaryPassiveNoticingCandidateSource>("TemporaryPassiveNoticingCandidateSource")
+            GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource").Character;
+        PassiveNoticingCandidate noticing =
+            GetNode<TemporaryPassiveNoticingCandidateSource>("TemporaryPassiveNoticingCandidateSource")
             .Candidate;
-        WorldObject noticedObject = worldObjects.FindWorldObject(noticing.TargetObjectId)
+        WorldObject noticedObject = worldObjectController.FindWorldObject(noticing.TargetObjectId)
             ?? throw new InvalidOperationException(
                 "The passive-noticing candidate target is absent from live world objects.");
-        if (!searches.TryProducePassiveNoticingCandidate(noticing, seeker, noticedObject))
+        if (!focusedSearchController.TryProducePassiveNoticingCandidate(noticing, seeker, noticedObject))
         {
             throw new InvalidOperationException(
                 "The passive-noticing candidate could not be produced for the Seeker.");
         }
 
-        if (!searches.TryResolveNextPassiveNoticingCandidate())
+        if (!focusedSearchController.TryResolveNextPassiveNoticingCandidate())
         {
             throw new InvalidOperationException(
                 "The initial passive-noticing candidate could not be resolved for the Seeker.");
         }
 
         OpeningRegionStreamResiduePassiveNoticingCoordinator streamResidue =
-            main.GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
+            GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
                 "OpeningRegionStreamResiduePassiveNoticingCoordinator");
         if (!streamResidue.TryResolve(
                 streamResidue.Perception,
@@ -244,14 +238,14 @@ internal static class MainSceneInitializer
                 "The opening-region stream residue could not be passively noticed.");
         }
 
-        ObservationReinterpretationCandidate reinterpretation = main
-            .GetNode<TemporaryObservationReinterpretationCandidateSource>(
+        ObservationReinterpretationCandidate reinterpretation =
+            GetNode<TemporaryObservationReinterpretationCandidateSource>(
                 "TemporaryObservationReinterpretationCandidateSource")
             .Candidate;
-        WorldObject reinterpretedObject = worldObjects.FindWorldObject(reinterpretation.TargetObjectId)
+        WorldObject reinterpretedObject = worldObjectController.FindWorldObject(reinterpretation.TargetObjectId)
             ?? throw new InvalidOperationException(
                 "The observation-reinterpretation candidate target is absent from live world objects.");
-        if (!searches.TryProduceObservationReinterpretationCandidate(
+        if (!focusedSearchController.TryProduceObservationReinterpretationCandidate(
                 reinterpretation,
                 seeker,
                 reinterpretedObject))
@@ -260,7 +254,7 @@ internal static class MainSceneInitializer
                 "The observation-reinterpretation candidate could not be produced for the Seeker.");
         }
 
-        if (!searches.TryResolveNextObservationReinterpretationCandidate(seeker))
+        if (!focusedSearchController.TryResolveNextObservationReinterpretationCandidate(seeker))
         {
             throw new InvalidOperationException(
                 "The initial observation-reinterpretation candidate could not be resolved for the Seeker.");

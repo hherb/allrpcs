@@ -39,6 +39,41 @@ public sealed class CharacterIndependentTaskTickCoordinatorTests
     }
 
     [Fact]
+    public void ZeroFrameTimeAdvancesByZero()
+    {
+        FakePorts ports = new();
+
+        new CharacterIndependentTaskTickCoordinator(ports).Process(0.0d);
+
+        Assert.Equal(TimeSpan.Zero, Assert.Single(ports.Advances).Elapsed);
+    }
+
+    [Fact]
+    public void OutboundStepTargetsTheWaypointAfterTheCompletedOnes()
+    {
+        FakePorts ports = new();
+        ports.OutboundProgress = CharacterIndependentTaskTravelProgressTransition.Advance(
+            ports.OutboundProgress!, ports.OutboundPlan!, ports.OutboundPlan!.Waypoints[0]);
+
+        new CharacterIndependentTaskTickCoordinator(ports).Process(1.0d);
+
+        Assert.Equal(ports.OutboundPlan.Waypoints[1], Assert.Single(ports.Advances).ReachedWaypoint);
+    }
+
+    [Fact]
+    public void ReturnStepTargetsTheWaypointAfterTheCompletedOnes()
+    {
+        FakePorts ports = new();
+        ports.ReturnPlan = ReturnPlan();
+        ports.ReturnProgress = CharacterIndependentTaskReturnTravelProgressTransition.Advance(
+            new(ports.ReturnPlan), ports.ReturnPlan, ports.ReturnPlan.Waypoints[0]);
+
+        new CharacterIndependentTaskTickCoordinator(ports).Process(1.0d);
+
+        Assert.Equal(ports.ReturnPlan.Waypoints[1], Assert.Single(ports.Advances).ReachedWaypoint);
+    }
+
+    [Fact]
     public void ReturnStepTargetsTheNextReturnWaypointWithoutAnOccurrence()
     {
         FakePorts ports = new();

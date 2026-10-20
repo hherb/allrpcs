@@ -14,7 +14,7 @@ public partial class SaveLoadInputController : Node
     internal const string MapRequiredRecoveryText =
         "Save: press M to initialize the map, close it with M, then press Q again.";
     internal const string SavedRecoveryText =
-        "Saved. Fully close the game, reopen it, then press L.";
+        "Saved. Fully close and reopen the game, finish customizing, then press L.";
     internal const string SaveFailedRecoveryText =
         "Save failed after initialization. Check local storage and press Q again.";
     internal const string LoadedStatusText = "LOADED";

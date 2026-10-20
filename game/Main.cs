@@ -28,6 +28,12 @@ public partial class Main : Node
         conversationTurns
         ?? throw new InvalidOperationException("Main's conversation coordinator is used before _Ready completed.");
 
+    private FocusedSearchInputCoordinator FocusedSearchInput => focusedSearchInput
+        ?? throw new InvalidOperationException("Main's focused-search input is used before _Ready completed.");
+
+    private CharacterIndependentTaskTickCoordinator IndependentTaskTick => independentTaskTick
+        ?? throw new InvalidOperationException("Main's independent-task tick is used before _Ready completed.");
+
     private HerbExaminationActionController examinationAction = null!;
     private Healer healer = null!;
     private Marker2D healerCommandDestination = null!;
@@ -41,8 +47,8 @@ public partial class Main : Node
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private WorldObjectController worldObjectController = null!;
     private ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput>? conversationTurns;
-    private FocusedSearchInputCoordinator focusedSearchInput = null!;
-    private CharacterIndependentTaskTickCoordinator independentTaskTick = null!;
+    private FocusedSearchInputCoordinator? focusedSearchInput;
+    private CharacterIndependentTaskTickCoordinator? independentTaskTick;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -81,13 +87,15 @@ public partial class Main : Node
         ];
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
 
-        MainSceneInitializer.InitializeBeforeExamination(this);
+        // The examination controller joins between the two halves only to keep the established
+        // startup order; its _Ready reads no state either half installs.
+        InitializeBeforeExamination();
         examinationAction = new() { Name = "HerbExaminationActionController" };
         AddChild(examinationAction);
         // Part of MainProcessOrder: appended after WholeChannelPresentation, so moving to its index
         // lands immediately before it.
         MoveChild(examinationAction, GetNode("WholeChannelPresentation").GetIndex());
-        MainSceneInitializer.InitializeAfterExamination(this, healer);
+        InitializeAfterExamination();
 
         RefreshResolvedPerceptionPresentation();
 
@@ -100,7 +108,7 @@ public partial class Main : Node
         // requested checks keep the ordinary start state they assert against.
         if (GetTree().CurrentScene == this && !SmokeCheckHost.SuppressesNewGameStart())
         {
-            GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel").Open();
+            _ = GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel").TryOpen();
         }
     }
 
@@ -184,7 +192,7 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _Process(double delta)
     {
-        independentTaskTick.Process(delta);
+        IndependentTaskTick.Process(delta);
         ConversationTurns.Process();
         UpdateModeStatus(force: false);
     }
@@ -199,19 +207,19 @@ public partial class Main : Node
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchCancelAction))
         {
-            focusedSearchInput.Handle(FocusedSearchInputAction.Cancel);
+            FocusedSearchInput.Handle(FocusedSearchInputAction.Cancel);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchCompleteAction))
         {
-            focusedSearchInput.Handle(FocusedSearchInputAction.Complete);
+            FocusedSearchInput.Handle(FocusedSearchInputAction.Complete);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchResolveAction))
         {
-            focusedSearchInput.Handle(FocusedSearchInputAction.Resolve);
+            FocusedSearchInput.Handle(FocusedSearchInputAction.Resolve);
         }
         else if (ControlInputMatcher.Pressed(@event, FocusedSearchStartAction))
         {
-            focusedSearchInput.Handle(FocusedSearchInputAction.Start);
+            FocusedSearchInput.Handle(FocusedSearchInputAction.Start);
         }
         else if (ControlInputMatcher.Pressed(@event, LayeredInscriptionDiscoverAction))
         {
