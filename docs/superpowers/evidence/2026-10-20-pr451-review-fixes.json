@@ -1,0 +1,56 @@
+{
+  "id": "code-health-pr451-review-fixes",
+  "status": "complete",
+  "date": "2026-10-20",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-20-pr451-review-fixes-authority.json",
+  "reopened_scopes": [
+    "code-health-phase3-thin-main-exit",
+    "code-health-phase4-new-game-flow"
+  ],
+  "baseline": "9c9459ee",
+  "changes": [
+    "game/Main.cs reaches its focused-search input and independent-task tick through getters that throw a named InvalidOperationException before _Ready completes, like ConversationTurns, instead of a bare NullReferenceException on every frame after a partial _Ready.",
+    "game/SeekerCustomizationMenuController.cs: Open became TryOpen, which refuses while the menu is visible or once a profile is selected (Confirm would reject every submission and leave the Seeker suspended); the open hotkey and Main's new-game start share that guard.",
+    "game/SaveLoadInputController.cs: the saved guidance now says to finish customizing before pressing L, because a relaunch opens customization and blocks world input until it is confirmed.",
+    "game/SmokeCheckHost.cs: SuppressesNewGameStart prints the gate that skipped customization, since any non-empty value counts, like Attach.",
+    "game/MainSceneInitializer.cs became the Main partial game/Main.Initialization.cs. It uses Main's existing healer, world-object and focused-search fields instead of an untyped Node, its comment no longer claims an unenforced once, and Main explains that the examination controller sits between the two halves only to keep the established order (its _Ready reads no state either half installs). Exception texts and initialization order are unchanged.",
+    "src/Application/Navigation/CharacterIndependentTaskTickCoordinator.cs pattern-matches the return plan and progress instead of using returnProgress!; ICharacterIndependentTaskTickPorts documents their joint presence, and its node-forwarding sentence moved to game/CharacterIndependentTaskTickNodePorts.cs.",
+    "tests/Application.Tests/Navigation/CharacterIndependentTaskTickCoordinatorTests.cs adds zero frame time and outbound and return steps past the first waypoint.",
+    "game/NewGameCustomizationStartSmokeCheck.cs also asserts the selected profile is Mara's Forester, the menu status is SelectedStatusText and TryOpen refuses after confirmation.",
+    "This record corrects the closed records' wording that one-shot initialization is game/MainSceneInitializer.cs and that Main.cs is 262 lines: initialization is now the Main partial game/Main.Initialization.cs, and Main.cs is 277 lines (269 after item 1, plus the two named getters)."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 42,
+      "application": 1543,
+      "domain": 2877,
+      "infrastructure": 1609,
+      "total": 6071,
+      "failed": 0
+    },
+    "mutations": "Both new waypoint tests fail when either lookup uses Waypoints[0]; the new-game smoke check fails with exit 1 when TryOpen's guard is removed.",
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 364,
+      "failed": 0,
+      "quarantined": 3,
+      "note": "The three quarantined launches (#437, #439, #448) also passed this run; quarantine membership is unchanged here."
+    }
+  },
+  "issues": [
+    {
+      "number": 452,
+      "reason": "Continue-on-launch without re-customization, persisted customization and Load while the menu is open are Phase 4 item 2 deliverables, outside these fixes."
+    }
+  ],
+  "not_done": [
+    "Full root ./quality.sh gate (due at the Phase 4 exit under D2).",
+    "Whether the mouse Load button is clickable while the customization menu is open was not checked at runtime; it is recorded on #452."
+  ]
+}

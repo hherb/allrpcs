@@ -6,30 +6,22 @@ terminal acceptance take precedence. Keep every persistent closure.
 
 ## Current checkpoint
 
-PR [#442](https://github.com/hherb/allrpcs/pull/442) merged at `a33cdc12`; merge
-[CI 39086701001](https://github.com/hherb/allrpcs/actions/runs/39086701001) passed all four jobs.
-The [structured-decision slice](docs/superpowers/plans/2026-10-18-code-health-phase3-structured-decisions.md)
-is now complete and closed in the ledger: all ten kinds have shared descriptors, Application
-lifecycle and OpenAI/Anthropic/Ollama clients; per-kind OpenAI compatibility files are removed.
-Production composition retains exact replacement/one-shot ownership across all ten sources.
-Anthropic requires explicit caller-owned credential injection; its credential store/UI remains absent.
+Phase 3 of the code-health program is complete and closed. Structured decisions
+([PR #443](https://github.com/hherb/allrpcs/pull/443), review fixes [#444](https://github.com/hherb/allrpcs/pull/444)),
+the Main coordinators ([PR #449](https://github.com/hherb/allrpcs/pull/449)) and SmokeCheckHost
+([PR #450](https://github.com/hherb/allrpcs/pull/450)) are on main. The
+[thin-Main slice](docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md) left `Main.cs`
+at 262 lines with gameplay unchanged (`ca88d200`), and the exit's full root `./quality.sh` passed
+there: 218 stages, no retries ([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json)).
+Main checks are `game/SmokeCheckHost.cs` entries, never `Main.tscn` nodes.
 
-The implementation (`19745021`) merged to main through [PR #443](https://github.com/hherb/allrpcs/pull/443)
-at `4692ed82`; its [closure receipt](docs/superpowers/evidence/2026-10-18-phase3-structured-decisions.json)
-retains source bindings and limits. The owner then reopened the scope only to apply the PR #443
-review fixes. Because #443 had already merged, [PR #444](https://github.com/hherb/allrpcs/pull/444)
-publishes them on top of main (a plain revert cannot pass the ledger checker), and the scope is
-closed again ([receipt](docs/superpowers/evidence/2026-10-18-pr443-review-fixes.json)): 6,007 tests
-and the full smoke suite (363 passed, 0 failed) pass. Live Anthropic qualification and two follow-ups in
-closed areas are tracked as GitHub issues.
-
-Phase 3 items 2 and 3 are also complete and closed: the Main coordinators merged via
-[PR #449](https://github.com/hherb/allrpcs/pull/449), and the
-[SmokeCheckHost slice](docs/superpowers/plans/2026-10-18-code-health-phase3-smoke-check-host.md)
-left `Main.tscn` with no check node ([receipt](docs/superpowers/evidence/2026-10-18-phase3-smoke-check-host.json);
-review branch `codex/phase3-smoke-check-host`). Main checks are now `game/SmokeCheckHost.cs`
-entries, never scene nodes. Full Phase 3 completion is not claimed: the remaining exit work is
-`Main.cs` under 400 lines and one full root gate. Use approved D2 scoped checks until that exit.
+The owner then asked to continue towards a playable game
+([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 began.
+Item 1 is complete and closed (`e9ec6684`): a plain launch opens Seeker customization before play,
+proof scenes and requested checks keep their ordinary start, and Forester opens the closed forest
+path ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); 6,068 tests,
+smoke 364 passed, 0 failed). Both are on review branch `codex/phase3-thin-main`, not yet merged.
+Item 2 is active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -48,37 +40,36 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase3-thin-main-exit — Bring Main.cs under 400 lines and pass the Phase 3 exit gate** (ready).
+**code-health-phase4-memory-save-continue — Keep memory, customization and positions across save and continue** (ready).
 
-Roadmap item: - [ ] Phase 3: one structured-decision pipeline and a thin Main composition root.
+Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
+Ollama.
 
-Missing deliverable: game/Main.cs is 732 lines; the Phase 3 exit needs it under 400 with behavior
-unchanged, and one full root ./quality.sh pass. Structured decisions, the Main coordinators and
-SmokeCheckHost are complete and closed.
+Missing deliverable: Program Phase 4 item 2 (slice step 9): episodic memory is not written from
+dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker
+customization and character positions, and nothing offers continue-on-launch, so a restarted session
+can pick a different background after loading.
 
-Finish Phase 3 in docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md. First measure
-what Main.cs still does inline (the items the coordinator plan left out: independent-task tick,
-healer commands, layered inscription input, first-patient and world initialization, and _Ready
-composition), then write the finite plan in docs/superpowers/plans/2026-10-18-code-health-
-phase3-thin-main.md. Under the rolling rule move each state machine into src/Application with xUnit
-tests behind a thin node adapter; keep MainProcessOrderCheck and every smoke launch passing, and
-keep Main checks as SmokeCheckHost entries. Then run the full root ./quality.sh once for the Phase 3
-exit and record it. Do not reopen the closed structured-decision, coordinator or SmokeCheckHost
-scopes or the deferred Phase 2 checks. Use D2 format/build/test and affected native launches until
-the exit gate; commit/push reviewed work; no merge or release.
+Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring
+the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json),
+memory owners and the new-game start from item 1. Move each touched state machine into
+src/Application with xUnit tests (rolling rule). A continued game must not reopen customization.
+Keep save-version handling fail-closed and existing restoration checks passing. Use D2
+format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
+#452 records the PR #451 relaunch-to-load gap this item closes (the saved guidance currently asks
+the player to finish customizing first).
 
-Done when: Main.cs is under 400 lines with unchanged gameplay, all tests and smoke checks pass, one
-full ./quality.sh passes and is recorded as evidence, and continuation evidence is synced with
-review-branch publication.
+Done when: A save taken after customization, dialogue and movement restores the transcript,
+character memory, customization and positions in a relaunched session that offers continue, with
+tests and smoke checks passing and continuation evidence synced with review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md`
-- `docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json`
+- `docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md`
 
-Boundary: Phase 3 thin Main and exit gate only. Preserve gameplay, check assertions and
-frozen/closed evidence. No new gameplay or sabotage kind, Phase 4, physical/provider qualification
-or release.
+Boundary: Phase 4 item 2 only. No ingredients, hypotheses, stakes/ending or boot-time auto-
+resolution work (items 3-6), no new sabotage kind, no physical/provider qualification, no merge or
+release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

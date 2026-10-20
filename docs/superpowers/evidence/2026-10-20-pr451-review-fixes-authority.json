@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-20",
+  "timezone": "Australia/Sydney",
+  "context": "After a multi-agent review of PR #451 (Phase 3 thin-Main exit and Phase 4 item 1 new-game customization), the owner was shown three important findings (relaunch-to-load now needs re-customization, a bare NullReferenceException per frame after a partial _Ready, an unguarded customization Open) and the suggestions (suppression gate logging, waypoint and zero-frame tests, the unexplained initializer split, a Main partial instead of a static initializer, comment corrections, the null-forgiving operator and the smoke check's missing profile read-back).",
+  "owner_statement": "Please address all \"should fix\" as ewell as the suggestions. Only what you cannot resolve in this session lodge as issue on github. Then review your changes until happy with the correctness, then commit and push into this PR",
+  "effect": "Reopen the closed code-health-phase3-thin-main-exit and code-health-phase4-new-game-flow scopes only to apply the PR #451 review findings, re-review, verify, publish to the PR branch and file GitHub issues for anything that cannot be resolved in this session.",
+  "limits": "No merge, release, continue-on-launch or other Phase 4 item 2 work, and no phase-exit claim. The hash-bound Phase 3 and item 1 plans and the Phase 3 exit quality record stay byte-identical. The active slice code-health-phase4-memory-save-continue stays queued; its instructions only gain the #452 note."
+}

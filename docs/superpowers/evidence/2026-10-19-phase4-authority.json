@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-19",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "please continue working towards a playable version of this game",
+  "context": "Given while the Phase 3 thin-Main exit slice was active. Phase 4 of the owner-approved program (docs/superpowers/plans/2026-10-17-code-health-and-playable-slice.md, decision D4) is the playable vertical slice.",
+  "effect": "After the Phase 3 exit passes, begin Phase 4 item 1 (new-game flow) under the program's one-plan-per-item rule.",
+  "limits": "Phase 2 roadmap item, #417 and the owner Keychain check remain deferred. No merge, release, physical qualification or provider qualification. The Phase 4 acceptance playtest remains the owner's."
+}

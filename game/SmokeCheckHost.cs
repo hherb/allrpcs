@@ -74,6 +74,8 @@ internal static class SmokeCheckHost
         Check<SeekerCustomizationMenuSmokeCheck>(
             "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_MODAL_INPUT_CHECK",
             "ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK"),
+        Check<NewGameCustomizationStartSmokeCheck>(
+            "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK"),
         Check<OpeningRegionOldShrineSmokeCheck>(
             "SeekerBackgroundRouteAccessSceneSource", "ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK"),
         Check<OpeningRegionSouthernRoadWagonSmokeCheck>(
@@ -504,6 +506,23 @@ internal static class SmokeCheckHost
             main.MoveChild(check, index + following);
             attachedAfter[anchor] = following + 1;
         }
+    }
+
+    /// <summary>
+    /// True when a requested check needs Main's ordinary start state, so a new game must not open
+    /// the customization menu. The new-game check itself is the one gate that keeps it. Like
+    /// <see cref="Attach"/>, any non-empty value counts, so the suppressing gate is printed.
+    /// </summary>
+    internal static bool SuppressesNewGameStart()
+    {
+        if (OS.HasFeature("template")) { return false; }
+        string? gate = Entries
+            .Where(entry => entry.Name != nameof(NewGameCustomizationStartSmokeCheck))
+            .SelectMany(entry => entry.Gates)
+            .FirstOrDefault(name => OS.GetEnvironment(name).Length > 0);
+        if (gate is null) { return false; }
+        GD.Print($"New-game customization skipped: {gate} is set, so Main keeps its ordinary start state.");
+        return true;
     }
 
     private static Entry Check<T>(string? after, params string[] gates)
