@@ -23,6 +23,9 @@ public partial class CharacterTurnActivityController : Node
     /// <summary>Gets the exact initialized current activity, if any.</summary>
     public CharacterTurnActivity? Activity { get; private set; }
 
+    /// <summary>Observes each ordinary or autonomous completion after it is installed.</summary>
+    internal event Action<CharacterTurnActivity>? Completed;
+
     /// <summary>Gets the exact sabotage opportunity that currently owns the shared turn slot.</summary>
     public CharacterSabotageTurnReservation? SabotageReservation { get; private set; }
 
@@ -150,6 +153,7 @@ public partial class CharacterTurnActivityController : Node
         }
 
         Activity = CharacterTurnCompletionTransition.Complete(activity);
+        Completed?.Invoke(Activity);
         return true;
     }
 
@@ -170,6 +174,7 @@ public partial class CharacterTurnActivityController : Node
         }
 
         Activity = completedActivity;
+        Completed?.Invoke(completedActivity);
         return true;
     }
 

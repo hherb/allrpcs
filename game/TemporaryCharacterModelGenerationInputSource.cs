@@ -136,9 +136,8 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
             perceptions[characterId],
             worldObjects,
             knowledge,
-            CharacterModelCommitmentMemoryContextProjection.Project(
-                characterId,
-                memoryController.Memory),
+            CharacterModelCommitmentMemoryContextProjection.Project(characterId, memoryController.Memory)
+                .Concat(CharacterModelEpisodicMemoryContextProjection.Project(characterId, memoryController.Memory)),
             dialogue.History.RecentFor(characterId, activity.Request.DialogueEvent),
             characterAffordances,
             out CharacterModelGenerationRequest? generationRequest,

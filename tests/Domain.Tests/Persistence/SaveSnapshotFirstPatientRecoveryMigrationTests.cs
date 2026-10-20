@@ -41,7 +41,7 @@ public sealed class SaveSnapshotFirstPatientRecoveryMigrationTests
             SaveSnapshotFirstPatientRecoveryMigration.Migrate(null!));
     }
 
-    private static SaveSnapshot RouteVersion()
+    internal static SaveSnapshot RouteVersion()
     {
         CharacterId seeker = new("seeker");
         DiscoverySaveState discovery = new(

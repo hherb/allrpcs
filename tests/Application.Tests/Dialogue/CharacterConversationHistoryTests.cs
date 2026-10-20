@@ -1,5 +1,8 @@
 using System.Globalization;
+using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Application.Tests.Characters;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -14,6 +17,30 @@ public sealed class CharacterConversationHistoryTests
     private static DialogueEvent Speech(string speaker, string text, params string[] listeners) =>
         CharacterModelRecentSpeechContextProjectionTests.CreateEvent(speaker, text,
             DialogueDeliveryMode.Whispering, listeners);
+
+    [Fact]
+    public void OffersEachCharacterItsRestoredWindowBeforeLaterSpeechUntilCleared()
+    {
+        CharacterTurnActivity saved = CharacterMemoryRecordingTransitionTests.Completed("I remember blue fern.");
+        CharacterMemorySnapshot memory = CharacterMemoryRecordingTransition.RecordCompletedTurn(
+            new([]), saved, new LocationId("village-square"), new WorldTimeSnapshot(null));
+        CharacterConversationHistory history = new();
+        DialogueEvent later = Speech("seeker", "And now?", "healer");
+        DialogueEvent current = Speech("seeker", "What did I say?", "healer");
+
+        history.RestoreFrom(memory);
+        history.Record(later);
+
+        var recent = history.RecentFor(new("healer"), current);
+        Assert.Equal(
+            [saved.Request.DialogueEvent.Utterance.Text, "I remember blue fern.", "And now?"],
+            recent.Select(entry => entry.Utterance.Text));
+        Assert.Same(saved.Request.DialogueEvent, recent[0]);
+        Assert.Equal(["seeker"], recent[1].Audience.ListenerCharacterIds.Select(id => id.Value));
+        Assert.Empty(history.RecentFor(new("sage"), current));
+        history.Clear();
+        Assert.Empty(history.RecentFor(new("healer"), current));
+    }
 
     [Fact]
     public void KeepsExactHeardSpeechOwnRepliesAndRepeatedWordsButExcludesCurrentAndUnheardSpeech()

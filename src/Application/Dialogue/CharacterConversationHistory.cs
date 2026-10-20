@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
 
@@ -19,6 +20,7 @@ public sealed class CharacterConversationHistory
     public const int MaximumRecentTextLength = 12_000;
 
     private readonly Queue<DialogueEvent> events = new();
+    private readonly Dictionary<CharacterId, IReadOnlyList<DialogueEvent>> restored = new();
     private int textLength;
 
     /// <summary>Records one exact occurrence; repeated words remain separate occurrences.</summary>
@@ -40,7 +42,10 @@ public sealed class CharacterConversationHistory
         ArgumentNullException.ThrowIfNull(current);
         List<DialogueEvent> selected = new();
         int selectedLength = 0;
-        foreach (DialogueEvent entry in events.Reverse())
+        IEnumerable<DialogueEvent> earlier = restored.TryGetValue(characterId, out IReadOnlyList<DialogueEvent>? prefix)
+            ? prefix.Reverse()
+            : [];
+        foreach (DialogueEvent entry in events.Reverse().Concat(earlier))
         {
             if (ReferenceEquals(entry, current)
                 || (entry.Utterance.SpeakerCharacterId != characterId
@@ -67,6 +72,35 @@ public sealed class CharacterConversationHistory
     public void Clear()
     {
         events.Clear();
+        restored.Clear();
         textLength = 0;
+    }
+
+    /// <summary>
+    /// Replaces each character's earlier speech with its saved recent-conversation window, offered
+    /// before any later session speech. Each window holds only what that character heard and said.
+    /// </summary>
+    public void RestoreFrom(CharacterMemorySnapshot memory)
+    {
+        ArgumentNullException.ThrowIfNull(memory);
+        restored.Clear();
+        foreach (CharacterMemoryAggregate aggregate in memory.Characters)
+        {
+            List<DialogueEvent> speech = new();
+            foreach (CharacterRecentConversationTurn turn in aggregate.RecentConversation.Turns)
+            {
+                DialogueEvent heard = turn.Activity.Request.DialogueEvent;
+                speech.Add(heard);
+                if (turn.Activity.Response?.Delivery is { } reply)
+                {
+                    CharacterId heardSpeaker = heard.Utterance.SpeakerCharacterId;
+                    speech.Add(new DialogueEvent(reply, new DialogueAudienceSnapshot(
+                        aggregate.CharacterId,
+                        heardSpeaker == aggregate.CharacterId ? [] : [heardSpeaker])));
+                }
+            }
+
+            restored[aggregate.CharacterId] = speech.AsReadOnly();
+        }
     }
 }

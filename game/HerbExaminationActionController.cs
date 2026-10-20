@@ -37,6 +37,8 @@ public partial class HerbExaminationActionController : Node
     internal CharacterTurnWorldEventOccurrence? LastOccurrence { get; private set; }
     internal CharacterExaminationResult? LastResult { get; private set; }
     internal int CompletedCount { get; private set; }
+    /// <summary>Observes each committed examination result after it is recorded.</summary>
+    internal event Action<CharacterExaminationResult>? Examined;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -155,6 +157,7 @@ public partial class HerbExaminationActionController : Node
             LastResult = GetNode<TemporaryCharacterExaminationResultSource>(
                 "../TemporaryCharacterExaminationResultSource").CreateResult(occurred, objectId);
             CompletedCount++;
+            if (LastResult is not null) { Examined?.Invoke(LastResult); }
             healer.CommandWait();
             execution = null;
             SetStatus(LastResult?.Safety == CharacterExaminationSafety.SafeToCollect

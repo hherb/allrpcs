@@ -4,6 +4,7 @@ using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -27,6 +28,10 @@ public partial class SaveSnapshotCaptureController : Node
     private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
     private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private WorldEventController worldEventController = null!;
+    private SeekerCustomizationSelectionSceneSource customization = null!;
+    private TemporaryOrdinaryCharacterParticipantSource participants = null!;
+    private Node2D seeker = null!;
+    private Node2D healer = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -52,6 +57,12 @@ public partial class SaveSnapshotCaptureController : Node
         routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
             "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
+        customization = GetNode<SeekerCustomizationSelectionSceneSource>(
+            "../SeekerCustomizationSelectionSceneSource");
+        participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+            "../TemporaryOrdinaryCharacterParticipantSource");
+        seeker = GetNode<Node2D>("../Seeker");
+        healer = GetNode<Node2D>("../Healer");
     }
 
     /// <summary>
@@ -124,8 +135,16 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.PassiveNoticingCandidates,
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
+        SaveContinuationState continuation = new(
+            customization.CurrentState.SelectedProfile is { } profile
+                ? SeekerCustomizationSaveState.From(profile)
+                : null,
+            [
+                Position(perception.CharacterId, seeker),
+                Position(participants.Participants[0].Identity.Id, healer),
+            ]);
         return new SaveSnapshot(
-            SaveSchemaVersion.FirstPatientRecovery,
+            SaveSchemaVersion.Continuation,
             discovery,
             eventState,
             memory,
@@ -133,8 +152,12 @@ public partial class SaveSnapshotCaptureController : Node
             journalState,
             mapState,
             routeState,
-            recoveryStage);
+            recoveryStage,
+            continuation);
     }
+
+    private static CharacterPositionSaveState Position(CharacterId characterId, Node2D body) =>
+        new(characterId, body.GlobalPosition.X, body.GlobalPosition.Y);
 
     private FirstPatientRecoveryStage CaptureRecoveryStage()
     {

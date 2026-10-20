@@ -379,10 +379,11 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 
     private bool HasMatchingMemoryAcrossProviderSwitch()
     {
+        // Episodes recorded by the first turn join the second request; compare the commitment.
         CharacterModelContextEntry? firstMemory = firstModel.ReceivedRequest?.Context.Entries.Single(
-            entry => entry.Kind == CharacterModelContextEntryKind.Memory);
+            entry => entry.Kind == CharacterModelContextEntryKind.Memory && entry.Text == RestoredCommitmentText);
         CharacterModelContextEntry? secondMemory = secondModel.ReceivedRequest?.Context.Entries.Single(
-            entry => entry.Kind == CharacterModelContextEntryKind.Memory);
+            entry => entry.Kind == CharacterModelContextEntryKind.Memory && entry.Text == RestoredCommitmentText);
         return firstMemory is not null
             && secondMemory is not null
             && firstMemory.Text == secondMemory.Text
@@ -405,7 +406,8 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         && ReferenceEquals(worldEventController.WorldTime, initialWorldTime)
         && ReferenceEquals(worldObjectController.WorldObjects, initialWorldObjects)
         && ReferenceEquals(searchController.Perception, initialPerception)
-        && ReferenceEquals(memoryController.Memory, initialMemory);
+        // The engine records completed turns as memory; a model must never change commitments.
+        && ReferenceEquals(memoryController.Memory.Characters.Single().Commitments, initialMemory!.Characters.Single().Commitments);
 
     private void Submit(string text)
     {

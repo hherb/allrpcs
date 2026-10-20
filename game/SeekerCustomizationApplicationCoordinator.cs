@@ -42,12 +42,20 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
     public bool TryApply(
         SeekerCustomizationSelectionState? expectedCurrent,
+        SeekerCustomizationSelectionState? selectedState) =>
+        Prepare(expectedCurrent, selectedState) is { } installation && Install(installation);
+
+    /// <summary>
+    /// Runs every check without changing the scene; null when the selection cannot be installed.
+    /// </summary>
+    internal SeekerCustomizationInstallation? Prepare(
+        SeekerCustomizationSelectionState? expectedCurrent,
         SeekerCustomizationSelectionState? selectedState)
     {
         Character currentCharacter = characterSource.Character;
         if (expectedCurrent is null || selectedState?.SelectedProfile is null)
         {
-            return false;
+            return null;
         }
 
         if (!ReferenceEquals(selectionSource.CurrentState, expectedCurrent)
@@ -64,7 +72,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                 currentCharacter.Identity)
             || routeSource.CurrentState.SelectedVariation is not null)
         {
-            return false;
+            return null;
         }
 
         SeekerCustomizedCharacterApplication application =
@@ -77,7 +85,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                 application);
         if (!routeSource.CanInstallSelection(currentRoutes, selectedRoutes))
         {
-            return false;
+            return null;
         }
 
         SeekerBackgroundRouteAccess? routeAccess =
@@ -89,7 +97,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
         if (routeAccess is null
             || !routeAccessSource.CanInstallAccess(selectedRoutes, routeAccess))
         {
-            return false;
+            return null;
         }
 
         OpeningRegionClosedForestPathAccess? closedPathAccess = null;
@@ -104,7 +112,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                     selectedRoutes,
                     closedPathAccess))
             {
-                return false;
+                return null;
             }
         }
 
@@ -126,7 +134,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                     selectedRoutes,
                     inspectionAccess))
             {
-                return false;
+                return null;
             }
         }
 
@@ -140,7 +148,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                     routeAccess.DestinationAnchor,
                     preparationBinding.GardenAnchor))
             {
-                return false;
+                return null;
             }
 
             preparationAccess = OpeningRegionRemedyPreparationAccessPolicy.Authorize(
@@ -154,7 +162,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                     selectedRoutes,
                     preparationAccess))
             {
-                return false;
+                return null;
             }
         }
 
@@ -174,10 +182,37 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                     selectedRoutes,
                     travellerAccess))
             {
-                return false;
+                return null;
             }
         }
 
+        return new SeekerCustomizationInstallation(
+            expectedCurrent,
+            selectedState,
+            application,
+            currentRoutes,
+            selectedRoutes,
+            routeAccess,
+            closedPathAccess,
+            inspectionAccess,
+            preparationAccess,
+            travellerAccess);
+    }
+
+    /// <summary>Installs one prepared selection; false only if the scene changed since Prepare.</summary>
+    internal bool Install(SeekerCustomizationInstallation installation)
+    {
+        ArgumentNullException.ThrowIfNull(installation);
+        (SeekerCustomizationSelectionState expectedCurrent,
+            SeekerCustomizationSelectionState selectedState,
+            SeekerCustomizedCharacterApplication application,
+            SeekerBackgroundRouteVariationState currentRoutes,
+            SeekerBackgroundRouteVariationState selectedRoutes,
+            SeekerBackgroundRouteAccess routeAccess,
+            OpeningRegionClosedForestPathAccess? closedPathAccess,
+            OpeningRegionOldShrineInspectionAccess? inspectionAccess,
+            OpeningRegionRemedyPreparationAccess? preparationAccess,
+            OpeningRegionSouthernRoadWagonAccess? travellerAccess) = installation;
         if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
         {
             return false;
@@ -216,3 +251,16 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                 travellerAccess);
     }
 }
+
+/// <summary>Every value a prepared Seeker selection installs, computed without changing the scene.</summary>
+internal sealed record SeekerCustomizationInstallation(
+    SeekerCustomizationSelectionState ExpectedCurrent,
+    SeekerCustomizationSelectionState SelectedState,
+    SeekerCustomizedCharacterApplication Application,
+    SeekerBackgroundRouteVariationState CurrentRoutes,
+    SeekerBackgroundRouteVariationState SelectedRoutes,
+    SeekerBackgroundRouteAccess RouteAccess,
+    OpeningRegionClosedForestPathAccess? ClosedPathAccess,
+    OpeningRegionOldShrineInspectionAccess? InspectionAccess,
+    OpeningRegionRemedyPreparationAccess? PreparationAccess,
+    OpeningRegionSouthernRoadWagonAccess? TravellerAccess);

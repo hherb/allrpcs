@@ -48,6 +48,9 @@ public partial class SaveDocumentStorageController : Node
             : SaveDocumentReadStatus.Failed;
     }
 
+    /// <summary>Returns whether a save document exists to offer Continue.</summary>
+    internal static bool HasSavedDocument() => File.Exists(CurrentFilePath());
+
     internal static string CurrentFilePath() =>
         IsIsolatedSmokeCheck()
             ? Path.Combine(
@@ -59,5 +62,9 @@ public partial class SaveDocumentStorageController : Node
         DebugTestEnvironment.GetEnvironment("ALLRPCS_DIALOGUE_OWNERSHIP_CHECK").Length > 0
         || DebugTestEnvironment.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment(SaveLoadInputController.SmokeCheckEnvironmentVariable)
+            == EnabledEnvironmentValue
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK")
+            == EnabledEnvironmentValue
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_SAVE_CONTINUE_CHECK")
             == EnabledEnvironmentValue;
 }

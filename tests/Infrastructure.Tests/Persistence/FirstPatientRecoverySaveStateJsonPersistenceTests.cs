@@ -51,7 +51,7 @@ public sealed class FirstPatientRecoverySaveStateJsonPersistenceTests
         Assert.Throws<ArgumentException>(() => SaveSnapshotJsonDeserializer.Deserialize(malformed));
     }
 
-    private static SaveSnapshot CurrentState(FirstPatientRecoveryStage stage)
+    internal static SaveSnapshot CurrentState(FirstPatientRecoveryStage stage)
     {
         CharacterId seeker = new("seeker");
         DiscoverySaveState discovery = new(
