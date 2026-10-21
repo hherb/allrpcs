@@ -42,8 +42,12 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
     public bool TryApply(
         SeekerCustomizationSelectionState? expectedCurrent,
-        SeekerCustomizationSelectionState? selectedState) =>
-        Prepare(expectedCurrent, selectedState) is { } installation && Install(installation);
+        SeekerCustomizationSelectionState? selectedState)
+    {
+        if (Prepare(expectedCurrent, selectedState) is not { } installation) { return false; }
+        Install(installation);
+        return true;
+    }
 
     /// <summary>
     /// Runs every check without changing the scene; null when the selection cannot be installed.
@@ -199,8 +203,11 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             travellerAccess);
     }
 
-    /// <summary>Installs one prepared selection; false only if the scene changed since Prepare.</summary>
-    internal bool Install(SeekerCustomizationInstallation installation)
+    /// <summary>
+    /// Installs one prepared selection. Throws if the scene changed since Prepare, which no caller
+    /// allows; steps installed before the failing one are not rolled back.
+    /// </summary>
+    internal void Install(SeekerCustomizationInstallation installation)
     {
         ArgumentNullException.ThrowIfNull(installation);
         (SeekerCustomizationSelectionState expectedCurrent,
@@ -213,42 +220,23 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             OpeningRegionOldShrineInspectionAccess? inspectionAccess,
             OpeningRegionRemedyPreparationAccess? preparationAccess,
             OpeningRegionSouthernRoadWagonAccess? travellerAccess) = installation;
-        if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
+        bool installed = selectionSource.TryInstallSelection(expectedCurrent, selectedState)
+            && characterSource.TryApplyCustomization(application)
+            && routeSource.TryInstallSelection(currentRoutes, selectedRoutes)
+            && routeAccessSource.TryInstallAccess(selectedRoutes, routeAccess)
+            && (closedPathAccess is null
+                || closedForestPathSource.TryInstallAccess(selectedRoutes, closedPathAccess))
+            && (inspectionAccess is null
+                || oldShrineSource.TryInstallInspectionAccess(selectedRoutes, inspectionAccess))
+            && (preparationAccess is null
+                || remedyPreparationSource.TryInstallPreparationAccess(selectedRoutes, preparationAccess))
+            && (travellerAccess is null
+                || southernRoadWagonSource.TryInstallTravellerAccess(selectedRoutes, travellerAccess));
+        if (!installed)
         {
-            return false;
+            throw new InvalidOperationException(
+                "The scene changed after the Seeker customization was prepared.");
         }
-
-        if (!characterSource.TryApplyCustomization(application)
-            || !routeSource.TryInstallSelection(currentRoutes, selectedRoutes)
-            || !routeAccessSource.TryInstallAccess(selectedRoutes, routeAccess))
-        {
-            return false;
-        }
-
-        if (closedPathAccess is not null
-            && !closedForestPathSource.TryInstallAccess(selectedRoutes, closedPathAccess))
-        {
-            return false;
-        }
-
-        if (inspectionAccess is not null
-            && !oldShrineSource.TryInstallInspectionAccess(selectedRoutes, inspectionAccess))
-        {
-            return false;
-        }
-
-        if (preparationAccess is not null
-            && !remedyPreparationSource.TryInstallPreparationAccess(
-                selectedRoutes,
-                preparationAccess))
-        {
-            return false;
-        }
-
-        return travellerAccess is null
-            || southernRoadWagonSource.TryInstallTravellerAccess(
-                selectedRoutes,
-                travellerAccess);
     }
 }
 

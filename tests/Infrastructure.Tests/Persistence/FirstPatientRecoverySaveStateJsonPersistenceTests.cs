@@ -20,7 +20,7 @@ public sealed class FirstPatientRecoverySaveStateJsonPersistenceTests
     public void RoundTripsEachClosedRecoveryStage(string stageValue)
     {
         FirstPatientRecoveryStage stage = FirstPatientRecoveryStage.Parse(stageValue);
-        SaveSnapshot source = CurrentState(stage);
+        SaveSnapshot source = RecoveryVersionState(stage);
 
         string serialized = SaveSnapshotJsonSerializer.Serialize(source);
         SaveSnapshot restored = SaveSnapshotJsonDeserializer.Deserialize(serialized);
@@ -42,7 +42,7 @@ public sealed class FirstPatientRecoverySaveStateJsonPersistenceTests
     public void RejectsMalformedOrUnknownRecoveryStage(string replacement)
     {
         string valid = SaveSnapshotJsonSerializer.Serialize(
-            CurrentState(FirstPatientRecoveryStage.NotHeard));
+            RecoveryVersionState(FirstPatientRecoveryStage.NotHeard));
         string malformed = valid.Replace(
             "\"firstPatientRecoveryStage\":\"not-heard\"",
             replacement,
@@ -51,7 +51,7 @@ public sealed class FirstPatientRecoverySaveStateJsonPersistenceTests
         Assert.Throws<ArgumentException>(() => SaveSnapshotJsonDeserializer.Deserialize(malformed));
     }
 
-    internal static SaveSnapshot CurrentState(FirstPatientRecoveryStage stage)
+    internal static SaveSnapshot RecoveryVersionState(FirstPatientRecoveryStage stage)
     {
         CharacterId seeker = new("seeker");
         DiscoverySaveState discovery = new(

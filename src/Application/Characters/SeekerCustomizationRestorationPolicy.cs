@@ -8,8 +8,8 @@ namespace Allrpcs.Application.Characters;
 public static class SeekerCustomizationRestorationPolicy
 {
     /// <summary>
-    /// Returns false when the save belongs to a different, already customized Seeker or names an
-    /// unknown option. Otherwise <paramref name="selectionToApply"/> is the selection to install,
+    /// Returns false when the save belongs to a different, already customized Seeker, names an
+    /// unknown option, or names a Seeker other than <paramref name="seekerId"/>. Otherwise <paramref name="selectionToApply"/> is the selection to install,
     /// or null to keep the session as it is (nothing saved, or the same profile). The applied
     /// identity reuses the live <paramref name="seekerId"/> instance the scene owners compare.
     /// </summary>

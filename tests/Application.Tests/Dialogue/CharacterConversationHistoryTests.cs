@@ -28,6 +28,7 @@ public sealed class CharacterConversationHistoryTests
         DialogueEvent later = Speech("seeker", "And now?", "healer");
         DialogueEvent current = Speech("seeker", "What did I say?", "healer");
 
+        history.Record(Speech("seeker", "Abandoned before the load.", "healer"));
         history.RestoreFrom(memory);
         history.Record(later);
 

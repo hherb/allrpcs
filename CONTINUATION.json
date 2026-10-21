@@ -1088,6 +1088,16 @@
           "sha256": "3c81f381b3a4e7f8d556ef7eb9fe74ad12e49830892876b20c7962a2336f1a35"
         }
       ]
+    },
+    {
+      "id": "code-health-pr453-review-fixes",
+      "reason": "The owner-requested PR #453 review fixes are complete: examinations now reach character memory in Main (the optional lookup ran before Main added the examination controller, so none were recorded), Main-only lookups fail loudly and memory writes without world time are rejected with a named error, every continuation load rejection logs its reason, a commit-time customization install failure throws instead of reporting success, examination episodes are engine facts built in src/Application, RestoreFrom clears session speech itself, stale texts are corrected, and new tests and checks cover recording after a reload, abandoned speech, a save taken before customization and an unreadable save. Requiring continuation on every schema-9 root and dropping profiles with unknown keys were declined with reasons. 6099 solution tests and the full smoke suite (365 passed, 0 failed, 3 quarantined) pass; item 2 is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes.json",
+          "sha256": "3b49723e012f68c73e20fbfbf88df39bc2f117256d5613ed921c66e50621ebff"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1709,6 +1719,20 @@
         {
           "path": "docs/superpowers/evidence/2026-10-20-pr451-review-fixes-authority.json",
           "sha256": "2f85e7a67131010095f47eccbfeafc45cb42f3762c35b87c99f960d24d61f783"
+        }
+      ]
+    },
+    {
+      "id": "owner-pr453-review-fixes-2026-10-21",
+      "owner_statement": "/fixall",
+      "scope_ids": [
+        "code-health-phase4-memory-save-continue"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes-authority.json",
+          "sha256": "98d13fbf45b1f3cce8d01dbeb9ec13036260538c7e61eff4f78a0413e1f7728f"
         }
       ]
     }

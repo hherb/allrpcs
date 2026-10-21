@@ -107,7 +107,10 @@ public sealed record SaveSnapshot
     {
     }
 
-    /// <summary>Creates a save root retaining exact map and ID-only route lifecycle state.</summary>
+    /// <summary>
+    /// Creates a save root retaining exact map, ID-only route lifecycle, first-patient recovery
+    /// and continuation state, each only on the schemas that require it.
+    /// </summary>
     public SaveSnapshot(
         SaveSchemaVersion schemaVersion,
         DiscoverySaveState discovery,
@@ -229,11 +232,12 @@ public sealed record SaveSnapshot
         if (!retainsRecovery && firstPatientRecovery is not null)
         {
             throw new ArgumentException(
-                "Only the first-patient-recovery schema can retain recovery progress.",
+                "Only the first-patient-recovery and continuation schemas can retain recovery progress.",
                 nameof(firstPatientRecovery));
         }
 
-        // A continuation schema root without continuation state restores no profile or positions.
+        // A continuation schema root without continuation state restores no profile or positions;
+        // rejected-restore checks copy a captured root this way.
         if (schemaVersion != SaveSchemaVersion.Continuation && continuation is not null)
         {
             throw new ArgumentException(

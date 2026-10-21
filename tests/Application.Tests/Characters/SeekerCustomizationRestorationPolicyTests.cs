@@ -48,14 +48,17 @@ public sealed class SeekerCustomizationRestorationPolicyTests
     {
         Assert.False(SeekerCustomizationRestorationPolicy.TryDecide(Unselected(), Saved("knight"), LiveSeekerId, out var apply));
         Assert.Null(apply);
+        Assert.False(SeekerCustomizationRestorationPolicy.TryDecide(
+            Unselected(), Saved("forester", "crown"), LiveSeekerId, out var unknownAppearance));
+        Assert.Null(unknownAppearance);
     }
 
     private static SeekerCustomizationSelectionState Unselected() =>
         SeekerCustomizationSelectionStateTransition.Initialize(RepresentativeSeekerCustomizationOptionsSource.Create());
 
-    private static SeekerCustomizationSaveState Saved(string background) => new(
+    private static SeekerCustomizationSaveState Saved(string background, string appearance = "travelling-cloak") => new(
         new CharacterIdentity(new CharacterId("seeker"), "Mara"),
         new SeekerPronouns("she", "her", "her", "hers", "herself"),
-        "travelling-cloak",
+        appearance,
         background);
 }

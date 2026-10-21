@@ -77,13 +77,14 @@ public sealed class CharacterConversationHistory
     }
 
     /// <summary>
-    /// Replaces each character's earlier speech with its saved recent-conversation window, offered
-    /// before any later session speech. Each window holds only what that character heard and said.
+    /// Discards all session speech and installs each character's saved recent-conversation window
+    /// as speech older than any later session speech; a window fills only the recent-speech budget
+    /// later speech leaves. Each window holds only what that character heard and said.
     /// </summary>
     public void RestoreFrom(CharacterMemorySnapshot memory)
     {
         ArgumentNullException.ThrowIfNull(memory);
-        restored.Clear();
+        Clear();
         foreach (CharacterMemoryAggregate aggregate in memory.Characters)
         {
             List<DialogueEvent> speech = new();

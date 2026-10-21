@@ -57,6 +57,17 @@ public sealed class CharacterMemoryRecordingTransitionTests
     }
 
     [Fact]
+    public void RecordsAnExaminationAsEngineFacts()
+    {
+        CharacterMemorySnapshot memory = CharacterMemoryRecordingTransition.RecordExamination(
+            new([]), new CharacterId("healer"), new ObjectId("flowers"), CharacterExaminationSafety.SafeToCollect, Square, Time);
+
+        CharacterEpisodicMemory episode = Assert.Single(Assert.Single(memory.Characters).EpisodicMemories.Memories);
+        Assert.Equal($"examined=flowers;collection-safety={CharacterExaminationSafety.SafeToCollect.Value}", episode.Summary);
+        Assert.Equal(["healer"], episode.ParticipantCharacterIds.Select(id => id.Value));
+    }
+
+    [Fact]
     public void EvictsTheOldestEpisodesAtTheDomainBound()
     {
         CharacterMemorySnapshot memory = new([]);

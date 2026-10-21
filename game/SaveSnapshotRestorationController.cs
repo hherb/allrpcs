@@ -209,6 +209,9 @@ public partial class SaveSnapshotRestorationController : Node
                         seekerCharacter.Character.Identity.Id,
                         out SeekerCustomizationSelectionState? customizationToApply))
                 {
+                    GD.PushError(customization.CurrentState.SelectedProfile is null
+                        ? $"Load rejected: the saved Seeker names appearance '{continuation.SeekerProfile!.AppearanceKey}' or background '{continuation.SeekerProfile.BackgroundKey}', which this build does not offer."
+                        : "Load rejected: the save belongs to a different Seeker than the one customized this session.");
                     return false;
                 }
 
@@ -218,11 +221,16 @@ public partial class SaveSnapshotRestorationController : Node
                     customizationInstallation = customizationApplication.Prepare(
                         customization.CurrentState,
                         customizationToApply);
-                    if (customizationInstallation is null) { return false; }
+                    if (customizationInstallation is null)
+                    {
+                        GD.PushError("Load rejected: the saved Seeker profile cannot be installed in this scene.");
+                        return false;
+                    }
                 }
             }
             catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
             {
+                GD.PushError($"Load rejected: the saved Seeker profile is invalid: {exception}");
                 return false;
             }
 
@@ -231,7 +239,11 @@ public partial class SaveSnapshotRestorationController : Node
                 CharacterBody2D? body = position.CharacterId == discoveryController.SearcherCharacterId ? seeker
                     : position.CharacterId == participants.Participants[0].Identity.Id ? healer
                     : null;
-                if (body is null) { return false; }
+                if (body is null)
+                {
+                    GD.PushError($"Load rejected: no body for saved position of '{position.CharacterId.Value}'.");
+                    return false;
+                }
                 positions.Add((body, new Vector2(position.X, position.Y)));
             }
         }
@@ -301,10 +313,7 @@ public partial class SaveSnapshotRestorationController : Node
         }));
         Register("seeker-customization", () => new(() =>
         {
-            if (customizationInstallation is not null && !customizationApplication.Install(customizationInstallation))
-            {
-                GD.PushError("The prepared Seeker customization could not be installed.");
-            }
+            if (customizationInstallation is not null) { customizationApplication.Install(customizationInstallation); }
         }));
         Register("character-positions", () => new(() =>
         {

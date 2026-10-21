@@ -1,0 +1,62 @@
+{
+  "id": "code-health-pr453-review-fixes",
+  "status": "complete",
+  "date": "2026-10-21",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes-authority.json",
+  "reopened_scopes": [
+    "code-health-phase4-memory-save-continue"
+  ],
+  "baseline": "75c1b73a",
+  "changes": [
+    "game/CharacterMemoryController.cs never observed examinations in Main: Main adds HerbExaminationActionController in its own _Ready, after this node's _Ready, so the optional lookup was always null. Main now calls ObserveExaminations once after adding it, and HerbExaminationActionMainCheck asserts the committed examination is remembered once (it fails with exit 1 when Main's call is removed). The closed item 2 claim that the healer's committed examination is written into memory holds only from this fix.",
+    "game/CharacterMemoryController.cs and game/SeekerCustomizationMenuController.cs resolve their Main-only siblings with GetNode instead of GetNodeOrNull. A memory write without installed world time is rejected instead of stamped with an empty time, and a rejected write is a GD.PushError naming the character and whether it came from a turn or an examination.",
+    "game/SaveSnapshotRestorationController.cs logs the reason for every continuation rejection: an unknown saved appearance or background key (named), a save belonging to a different Seeker than the one customized this session, a profile the scene cannot install, an invalid profile (with the exception), and a position for a character without a body.",
+    "game/SeekerCustomizationApplicationCoordinator.cs: Install throws InvalidOperationException when the scene changed since Prepare instead of returning false, so a restore commit can no longer report a successful load with the profile silently missing; the doc states that earlier steps are not rolled back. TryApply still returns false for every Prepare rejection.",
+    "src/Application/Characters/CharacterMemoryRecordingTransition.cs gains RecordExamination, which builds the examination episode as engine facts (examined=<object>;collection-safety=<safety>) instead of first-person prose in game/. RecordObservation documents that its summary reaches the model as trusted memory and is cut to the domain bound; RecordCompletedTurn documents the participant bound.",
+    "src/Application/Dialogue/CharacterConversationHistory.cs: RestoreFrom clears session speech itself instead of relying on the caller's Clear, and its doc says restored windows are older than later session speech and fill only the budget it leaves.",
+    "src/Application/Characters/SeekerCustomizationRestorationPolicy.cs documents the third rejection (a Seeker other than the live id); its tests add the unknown-appearance branch.",
+    "src/Domain/Persistence/SaveSnapshot.cs: the recovery exception names both schemas that retain recovery progress and the full constructor's summary names recovery and continuation state.",
+    "tests/Infrastructure.Tests/Persistence/SaveContinuationJsonPersistenceTests.cs records memory after a schema-9 reload starting from the legacy fixture ids: numbering continues (healer-episode-3, healer-turn-3) and eviction drops exactly the index entry of the evicted legacy episode (fails when the pruning filter keeps every entry). The schema-8 helper CurrentState is renamed RecoveryVersionState.",
+    "tests/Application.Tests/Dialogue/CharacterConversationHistoryTests.cs records abandoned speech before RestoreFrom and still expects only the restored window and later speech (fails when RestoreFrom keeps session speech).",
+    "game/SaveContinueRelaunchCheck.cs also proves that continuing a save taken before customization opens customization, and that an unreadable save keeps the start panel open with FailedStatusText and the Seeker suspended until New game opens customization."
+  ],
+  "declined": [
+    "Requiring continuation state on every schema-9 SaveSnapshot: about twenty audio runtime checks and proofs copy a captured root without it to build a rejected restore, so the constructor keeps accepting null (written as no profile and no positions) and its comment now says why. Tried and reverted after four Main audio smoke launches failed.",
+    "Restoring the world without the profile when a saved option key is unknown: save-version handling stays fail-closed, a renamed key belongs in a schema migration, and the rejection now names the unknown key."
+  ],
+  "plan_corrections": [
+    "Item 2 says the restored window is offered ahead of later speech; it is older speech that fills only the budget later speech leaves.",
+    "Item 3 says schema 8 migrates to 9 with no continuation state; the migration installs an empty continuation (no profile, no positions).",
+    "Item 4 says a rejected profile rejects the whole load instead of half-applying it; that holds for preflight, while a commit-time install failure now throws without rolling back earlier steps.",
+    "Item 7 says the relaunch check completes a movement; it sets both body positions directly."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 42,
+      "application": 1554,
+      "domain": 2883,
+      "infrastructure": 1620,
+      "total": 6099,
+      "failed": 0
+    },
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 365,
+      "failed": 0,
+      "quarantined": 3,
+      "note": "The three quarantined launches (#437, #439, #448) also passed this run; quarantine membership is unchanged here."
+    },
+    "herb_examination_main": "HerbExaminationActionMainCheck controlled mode passed with 130 checks, including the new memory assertion."
+  },
+  "issues": [],
+  "not_done": [
+    "Full root ./quality.sh gate (due at the Phase 4 exit under D2).",
+    "The start panel shows only the generic failure text when a load is rejected for a different Seeker; the reason is logged, not shown."
+  ]
+}

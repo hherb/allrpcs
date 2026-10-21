@@ -95,6 +95,7 @@ public partial class Main : Node
         // Part of MainProcessOrder: appended after WholeChannelPresentation, so moving to its index
         // lands immediately before it.
         MoveChild(examinationAction, GetNode("WholeChannelPresentation").GetIndex());
+        GetNode<CharacterMemoryController>("CharacterMemoryController").ObserveExaminations(examinationAction);
         InitializeAfterExamination();
 
         RefreshResolvedPerceptionPresentation();

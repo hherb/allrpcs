@@ -9,7 +9,8 @@ namespace Allrpcs.Game;
 /// <summary>
 /// Proves save → relaunch → continue: a fresh Main offers Continue, and continuing restores the
 /// transcript and character memory, the Seeker profile with its route access, and both body
-/// positions, without reopening customization.
+/// positions, without reopening customization. A save taken before customization continues into
+/// customization, and an unreadable save keeps the panel open until New game.
 /// </summary>
 public partial class SaveContinueRelaunchCheck : Node
 {
@@ -40,9 +41,7 @@ public partial class SaveContinueRelaunchCheck : Node
             await Frames(4);
 
             Node second = await Launch();
-            NewGameStartPanelController start = second.GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel");
-            SeekerCustomizationMenuController menu = second.GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel");
-            Seeker seeker = second.GetNode<Seeker>("Seeker");
+            (NewGameStartPanelController start, SeekerCustomizationMenuController menu, Seeker seeker) = StartPanel(second);
             start.Begin();
             Require(start.Visible && !menu.Visible && !seeker.IsPhysicsProcessing(), "A relaunch with a save offers Continue first.");
             start.GetNode<Button>("Continue").EmitSignal(BaseButton.SignalName.Pressed);
@@ -80,6 +79,37 @@ public partial class SaveContinueRelaunchCheck : Node
 
             second.QueueFree();
             await Frames(2);
+
+            Node early = await Launch();
+            InitializeMap(early);
+            early.GetNode<Button>("CommandOverlay/SaveLoadPanel/Save").EmitSignal(BaseButton.SignalName.Pressed);
+            Require(early.GetNode<Label>("CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText,
+                "A session saved before customization.");
+            early.QueueFree();
+            await Frames(4);
+            Node uncustomized = await Launch();
+            (start, menu, seeker) = StartPanel(uncustomized);
+            start.Begin();
+            start.GetNode<Button>("Continue").EmitSignal(BaseButton.SignalName.Pressed);
+            await Frames(2);
+            Require(!start.Visible && menu.Visible && !seeker.IsPhysicsProcessing(),
+                "Continuing a save taken before customization opens customization.");
+            uncustomized.QueueFree();
+            await Frames(2);
+
+            File.WriteAllText(path, "{");
+            Node corrupt = await Launch();
+            (start, menu, seeker) = StartPanel(corrupt);
+            start.Begin();
+            start.GetNode<Button>("Continue").EmitSignal(BaseButton.SignalName.Pressed);
+            await Frames(2);
+            Require(start.Visible && !menu.Visible && !seeker.IsPhysicsProcessing()
+                && start.GetNode<Label>("Status").Text == NewGameStartPanelController.FailedStatusText,
+                "An unreadable save keeps the start panel open with the failure status.");
+            start.GetNode<Button>("NewGame").EmitSignal(BaseButton.SignalName.Pressed);
+            Require(!start.Visible && menu.Visible, "New game after a failed Continue opens customization.");
+            corrupt.QueueFree();
+            await Frames(2);
             File.Delete(path);
             GD.Print("PASS: save continue relaunch");
             GetTree().Quit();
@@ -99,6 +129,12 @@ public partial class SaveContinueRelaunchCheck : Node
         await Frames(4);
         return main;
     }
+
+    private static (NewGameStartPanelController Start, SeekerCustomizationMenuController Menu, Seeker Seeker) StartPanel(
+        Node main) => (
+        main.GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel"),
+        main.GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel"),
+        main.GetNode<Seeker>("Seeker"));
 
     private static void Customize(Node main)
     {

@@ -17,7 +17,7 @@ public static class CharacterMemoryRecordingTransition
 
     /// <summary>
     /// Appends one completed turn to its responder's recent conversation and remembers it as an
-    /// episode with every speaker and listener as a participant.
+    /// episode with every speaker and listener as a participant, up to the domain participant bound.
     /// </summary>
     public static CharacterMemorySnapshot RecordCompletedTurn(
         CharacterMemorySnapshot memory,
@@ -52,8 +52,31 @@ public static class CharacterMemoryRecordingTransition
             NewEpisode(aggregate, participants, locationId, worldTime, turnId, summary));
     }
 
+    /// <summary>Remembers one committed examination as engine facts under a fresh source turn.</summary>
+    public static CharacterMemorySnapshot RecordExamination(
+        CharacterMemorySnapshot memory,
+        CharacterId characterId,
+        ObjectId targetObjectId,
+        CharacterExaminationSafety safety,
+        LocationId locationId,
+        WorldTimeSnapshot worldTime)
+    {
+        ArgumentNullException.ThrowIfNull(targetObjectId);
+        ArgumentNullException.ThrowIfNull(safety);
+
+        return RecordObservation(
+            memory,
+            characterId,
+            [],
+            locationId,
+            worldTime,
+            $"examined={targetObjectId.Value};collection-safety={safety.Value}");
+    }
+
     /// <summary>
-    /// Remembers one observed episode, such as a committed examination, under a fresh source turn.
+    /// Remembers one observed episode under a fresh source turn. The summary reaches the model as
+    /// trusted memory, so it must be engine-built facts, never player or model text; it is cut to
+    /// the domain summary bound.
     /// </summary>
     public static CharacterMemorySnapshot RecordObservation(
         CharacterMemorySnapshot memory,
