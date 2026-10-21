@@ -2,6 +2,7 @@
 .godot/
 .mono/
 *.cs.uid
+*.gd.uid
 
 # .NET build and test output
 bin/
