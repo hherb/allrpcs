@@ -5,7 +5,7 @@ namespace Allrpcs.Application.Diseases;
 /// <summary>Player-facing text for the patient's worsening and the slice's end screen.</summary>
 public static class FirstPatientStakesCopy
 {
-    /// <summary>The status line shown when the patient's illness moves on a stage.</summary>
+    /// <summary>The patient-condition line shown once the illness has moved on a stage.</summary>
     public static string WorsenedStatus(CharacterCondition condition)
     {
         ArgumentNullException.ThrowIfNull(condition);

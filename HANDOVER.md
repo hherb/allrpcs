@@ -34,11 +34,14 @@ derived from saved doses and no schema change
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md); 6,132 tests, smoke
 367 passed, 0 failed). Item 5 is complete and closed
 ([PR #457](https://github.com/hherb/allrpcs/pull/457), not merged): every 3 time-advancing world events the
-untreated patient worsens a stage (`FirstPatientDiseaseProgressionSchedule`); a loss (decline past
-final decline, or both doses wrong) or completion (stabilized and the sage consulted) is derived
-from saved state with no schema change and shown on a full-screen end panel that survives save and
-Continue ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md); stakes are
-on only in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 (remove boot-time evidence
+untreated patient worsens a stage (`FirstPatientDiseaseProgressionSchedule`), shown on its own
+`PatientCondition` HUD line; a loss (a further interval at final decline, or both doses wrong) or
+completion (stabilized and the sage consulted) is derived from saved state with no schema change and
+shown on a full-screen end panel that survives save and Continue
+([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md), hash-frozen: its
+step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
+`FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
+in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 (remove boot-time evidence
 auto-resolution) is active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live

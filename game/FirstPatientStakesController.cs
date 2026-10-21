@@ -10,8 +10,9 @@ namespace Allrpcs.Game;
 
 /// <summary>
 /// Gives the first patient's treatment stakes (slice step 8). Each frame it lets the illness
-/// worsen once enough time-advancing events have passed, shows the worsened condition, and opens
-/// the end panel when the slice is won or lost. The rules are Application code; this node only
+/// worsen once enough time-advancing events have passed, shows the worsened condition on its own
+/// line (also after a load) so the treatment guidance stays readable, and opens the end panel when
+/// the slice is won or lost. The rules are Application code; this node only
 /// reads the owning controllers and installs the result.
 /// </summary>
 public partial class FirstPatientStakesController : Node
@@ -23,7 +24,8 @@ public partial class FirstPatientStakesController : Node
     private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private SaveSnapshotRestorationController restoration = null!;
     private SliceEndPanelController endPanel = null!;
-    private Label status = null!;
+    private Label patientCondition = null!;
+    private DiseaseTruthSnapshot? shownTruth;
     private FirstPatientSliceOutcome presented = FirstPatientSliceOutcome.InProgress;
 
     /// <summary>
@@ -47,7 +49,7 @@ public partial class FirstPatientStakesController : Node
             "../OpeningRegionSageConsultationInputCoordinator");
         restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
         endPanel = GetNode<SliceEndPanelController>("../SliceEndOverlay/Panel");
-        status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
+        patientCondition = GetNode<Label>("../CommandOverlay/Panel/PatientCondition");
         restoration.PresentationReset += OnRestored;
     }
 
@@ -68,14 +70,15 @@ public partial class FirstPatientStakesController : Node
 
         CharacterId patientId = context.Context.Scenario.PatientId;
         DiseaseTruthSnapshot current = FirstPatientDiseaseProgressionSchedule.Apply(truth, patientId, events, log, time);
-        if (!ReferenceEquals(current, truth))
+        if (!ReferenceEquals(current, truth)) { state.InstallDiseaseTruth(current); }
+        if (!ReferenceEquals(current, shownTruth))
         {
-            state.InstallDiseaseTruth(current);
+            shownTruth = current;
             CharacterDiseaseState infection = current.Infections.First(candidate => candidate.CharacterId == patientId);
-            if (DiseaseConditionProjection.Project(infection, current) is { } condition)
-            {
-                ControlSettingsController.SetGuidance(status, FirstPatientStakesCopy.WorsenedStatus(condition));
-            }
+            patientCondition.Text = ReferenceEquals(infection.Stage, DiseaseStage.DeepSleep)
+                || DiseaseConditionProjection.Project(infection, current) is not { } condition
+                ? string.Empty
+                : FirstPatientStakesCopy.WorsenedStatus(condition);
         }
 
         // Only "sage consulted" matters to the outcome, so the earlier recovery stages are not told apart.

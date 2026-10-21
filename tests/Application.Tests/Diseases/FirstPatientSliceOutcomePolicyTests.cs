@@ -45,6 +45,23 @@ public sealed class FirstPatientSliceOutcomePolicyTests
     }
 
     [Fact]
+    public void AWrongDoseThenTheRemedyIsNotALoss()
+    {
+        DiseaseTruthSnapshot stabilized = Truth(DiseaseStage.Wasting, DiseaseCareState.Stabilized);
+        WorldEventLogSnapshot log = new([.. Doses]);
+
+        Assert.Equal(FirstPatientSliceOutcome.InProgress, Evaluate(stabilized, log));
+        Assert.Equal(FirstPatientSliceOutcome.Completed, Evaluate(stabilized, log, FirstPatientRecoveryStage.SageConsulted));
+    }
+
+    [Fact]
+    public void RequiresAtLeastOneDose()
+    {
+        Assert.Throws<ArgumentException>(() => FirstPatientSliceOutcomePolicy.Evaluate(
+            Truth(DiseaseStage.DeepSleep), Patient, Events, After(0).Log, [], FirstPatientRecoveryStage.NotHeard));
+    }
+
+    [Fact]
     public void AStabilizedPatientCompletesTheSliceOnceTheSageIsConsulted()
     {
         DiseaseTruthSnapshot stabilized = Truth(DiseaseStage.FinalDecline, DiseaseCareState.Stabilized, Advances[0].EventId);

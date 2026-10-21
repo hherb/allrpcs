@@ -35,8 +35,7 @@ public partial class TemporaryWorldEventSource : Node
     public WorldEvent FirstPatientRemedySecondDoseWorldEvent { get; private set; } = null!;
 
     /// <summary>
-    /// Gets the authored doses in order. shortcut: two doses; Phase 4 item 5 (stakes and ending)
-    /// decides what follows a second wrong dose.
+    /// Gets the authored doses in order; a second wrong dose loses the patient (slice step 8).
     /// </summary>
     public IReadOnlyList<WorldEvent> FirstPatientRemedyDoseWorldEvents =>
         [FirstPatientRemedyAdministeredWorldEvent, FirstPatientRemedySecondDoseWorldEvent];

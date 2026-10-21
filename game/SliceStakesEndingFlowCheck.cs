@@ -9,15 +9,17 @@ namespace Allrpcs.Game;
 
 /// <summary>
 /// Proves slice step 8 in Main with the patient's stakes on. Time-advancing events (a wrong dose
-/// among them) worsen the patient, and the worsened stage survives save and Continue. Two wrong
-/// doses lose the patient
-/// and open the loss panel, which blocks world input. A save at final decline with a whole
-/// interval passed loads as lost. The remedy, the testimony and the sage complete the slice; the
-/// completion panel lets the player keep exploring and returns after save and Continue.
+/// among them) worsen the patient without hiding the treatment guidance, and the worsened stage
+/// survives save, Continue and a further wrong dose. Two wrong doses lose the patient and open the
+/// loss panel, which blocks world input. A save at final decline with a whole interval passed
+/// loads as lost. The remedy stabilizes a worsened patient at its stage; the testimony and the sage
+/// complete the slice, and the completion panel lets the player keep exploring and returns after
+/// save and Continue.
 /// </summary>
 public partial class SliceStakesEndingFlowCheck : Node
 {
     private const string EnvironmentVariable = "ALLRPCS_SLICE_STAKES_CHECK";
+    private const string Weakened = "Patient: Appears severely weakened.";
 
     /// <inheritdoc />
     public override async void _Ready()
@@ -37,16 +39,18 @@ public partial class SliceStakesEndingFlowCheck : Node
             {
                 Require(world.TryOccur(new WorldEventId(id)), "Occurred " + id);
                 await Frames(2);
-                Require(Stage(first) == DiseaseStage.DeepSleep, "Two events leave the patient in deep sleep.");
+                Require(Stage(first) == DiseaseStage.DeepSleep && Condition(first).Length == 0,
+                    "The patient stays in deep sleep before a whole interval: " + id);
             }
 
             PrepareAtStation(first, 7);
             Administer(first);
             await Frames(2);
             Require(Stage(first) == DiseaseStage.Wasting
-                && Status(first) == "Patient: Appears severely weakened."
+                && Condition(first) == Weakened
+                && Status(first) == OpeningRegionFirstPatientAdministrationInputCoordinator.NoChangeStatusText
                 && Outcome(first) == FirstPatientSliceOutcome.InProgress,
-                "The wrong dose, a third event, weakened the patient: " + Status(first));
+                "The wrong dose, a third event, weakened the patient and kept its guidance: " + Status(first));
             Save(first);
             string wastingSave = File.ReadAllText(path);
             first.QueueFree();
@@ -54,14 +58,19 @@ public partial class SliceStakesEndingFlowCheck : Node
 
             // Continue keeps the worsened stage; the second wrong dose then loses the patient.
             Node second = await Launch(fresh: false);
-            Require(Stage(second) == DiseaseStage.Wasting && Outcome(second) == FirstPatientSliceOutcome.InProgress,
-                "Continue kept the wasting patient.");
+            Require(Stage(second) == DiseaseStage.Wasting
+                && Condition(second) == Weakened
+                && Outcome(second) == FirstPatientSliceOutcome.InProgress,
+                "Continue kept and showed the wasting patient.");
             PrepareAtStation(second, 7);
             Administer(second);
             await Frames(2);
 
             SliceEndPanelController panel = Panel(second);
-            Require(Outcome(second) == FirstPatientSliceOutcome.LostAfterDoses
+            // A focused button already holds the world, so release focus to prove the panel itself does.
+            second.GetViewport().GuiReleaseFocus();
+            Require(Stage(second) == DiseaseStage.Wasting
+                && Outcome(second) == FirstPatientSliceOutcome.LostAfterDoses
                 && panel.Shown == FirstPatientSliceOutcome.LostAfterDoses
                 && panel.Visible
                 && !panel.GetNode<Button>("Box/KeepExploring").Visible
@@ -88,16 +97,25 @@ public partial class SliceStakesEndingFlowCheck : Node
             Node fourth = await Launch(fresh: true);
             CharacterId seekerId = fourth.GetNode<TemporarySeekerCharacterSource>(
                 "TemporarySeekerCharacterSource").Character.Identity.Id;
-            // Gathering itself is proven by the ingredient check; here its event and herb are installed.
-            Require(fourth.GetNode<WorldEventController>("WorldEventController").TryOccur(new WorldEventId("healer-collected-herb-patch"))
-                && fourth.GetNode<InventoryController>("InventoryController").TryTake(seekerId, InventoryController.MoonwortLeaves),
+            // Gathering itself is proven by the ingredient check; here its events and herb are installed,
+            // and that whole interval weakens the patient before the remedy, as in normal play.
+            WorldEventController fourthWorld = fourth.GetNode<WorldEventController>("WorldEventController");
+            foreach (string id in new[] { "herb-patch-identified", "healer-examined-herb-patch", "healer-collected-herb-patch" })
+            {
+                Require(fourthWorld.TryOccur(new WorldEventId(id)), "Occurred " + id);
+            }
+
+            Require(fourth.GetNode<InventoryController>("InventoryController").TryTake(seekerId, InventoryController.MoonwortLeaves),
                 "The Seeker holds gathered moonwort.");
+            await Frames(2);
+            Require(Stage(fourth) == DiseaseStage.Wasting, "The gathering interval weakened the patient.");
             PrepareAtStation(fourth, 7);
             Administer(fourth);
             await Frames(2);
             Require(fourth.GetNode<FirstPatientStateController>("FirstPatientStateController")
-                    .DiseaseTruth!.Infections.Single().CareState == DiseaseCareState.Stabilized,
-                "The remedy stabilized the patient: " + Status(fourth));
+                    .DiseaseTruth!.Infections.Single().CareState == DiseaseCareState.Stabilized
+                && Stage(fourth) == DiseaseStage.Wasting,
+                "The remedy stabilized the weakened patient at its stage: " + Status(fourth));
             OpeningRegionFirstPatientStabilizationTestimonyCoordinator testimony =
                 fourth.GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
                     "OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
@@ -110,12 +128,14 @@ public partial class SliceStakesEndingFlowCheck : Node
             panel = Panel(fourth);
             Require(Outcome(fourth) == FirstPatientSliceOutcome.Completed
                 && panel.Shown == FirstPatientSliceOutcome.Completed
-                && panel.GetNode<Button>("Box/KeepExploring").Visible,
-                "Consulting the sage completed the slice: " + Status(fourth));
+                && panel.GetNode<Button>("Box/KeepExploring").Visible
+                && !fourth.GetNode<Node2D>("Seeker").IsPhysicsProcessing(),
+                "Consulting the sage completed the slice and held the Seeker: " + Status(fourth));
             panel.GetNode<Button>("Box/KeepExploring").EmitSignal(BaseButton.SignalName.Pressed);
             await Frames(2);
-            Require(!panel.Visible && ControlInputContext.WorldAllowed(fourth),
-                "Keep exploring closed the panel and released the world.");
+            Require(!panel.Visible && ControlInputContext.WorldAllowed(fourth)
+                && fourth.GetNode<Node2D>("Seeker").IsPhysicsProcessing(),
+                "Keep exploring closed the panel and released the world and the Seeker.");
             Save(fourth);
             fourth.QueueFree();
             await Frames(4);
@@ -163,7 +183,7 @@ public partial class SliceStakesEndingFlowCheck : Node
         return main;
     }
 
-    // Same Wasting save, but at final decline with three examinations logged after its progression.
+    // Same Wasting save, but at final decline with a whole interval of examinations logged after its progression.
     private static string AtFinalDeclineWithIntervalPassed(string json)
     {
         JsonNode root = JsonNode.Parse(json)!;
@@ -198,6 +218,8 @@ public partial class SliceStakesEndingFlowCheck : Node
         main.GetNode<SliceEndPanelController>("SliceEndOverlay/Panel");
 
     private static string Status(Node main) => main.GetNode<Label>("CommandOverlay/Panel/RecoveryStatus").Text;
+
+    private static string Condition(Node main) => main.GetNode<Label>("CommandOverlay/Panel/PatientCondition").Text;
 
     private async Task Until(Func<bool> condition, int milliseconds, string message)
     {

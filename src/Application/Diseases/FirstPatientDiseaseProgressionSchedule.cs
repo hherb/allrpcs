@@ -42,6 +42,8 @@ public static class FirstPatientDiseaseProgressionSchedule
             ? WorldEventLookup.FindById(currentId, worldEvents)
             : null;
         // The Domain policy refuses a stabilized patient, final decline and a consumed event.
+        // shortcut: it matches the loaded current event by identity, so a save written at the threshold
+        // before this rule existed worsens one event late; rebind loaded event ids if that matters.
         if (infection is null
             || current is null
             || AdvanceEventsSinceProgression(infection, worldEvents, eventLog) < StageInterval
@@ -55,7 +57,7 @@ public static class FirstPatientDiseaseProgressionSchedule
 
     /// <summary>
     /// Counts time-advancing events logged after the infection's last progression event, or in the
-    /// whole log when it has not progressed yet.
+    /// whole log when it has not progressed yet (or, only in a corrupt save, that event is not logged).
     /// </summary>
     public static int AdvanceEventsSinceProgression(
         CharacterDiseaseState infection,

@@ -57,9 +57,11 @@ public partial class SliceEndPanelController : Control
         seeker.ResumeAfterModal(this);
     }
 
+    // Releases the panel only once the reload is under way, so a failed reload never exposes Save on a lost game.
     private void ReturnToTitle()
     {
-        Close();
-        GetTree().ReloadCurrentScene();
+        Error error = GetTree().ReloadCurrentScene();
+        if (error == Error.Ok) { Close(); }
+        else { GD.PushError($"Return to title failed: {error}."); }
     }
 }

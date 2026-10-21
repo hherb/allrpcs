@@ -27,7 +27,7 @@ public enum FirstPatientSliceOutcome
 /// </summary>
 public static class FirstPatientSliceOutcomePolicy
 {
-    /// <summary>Evaluates the current outcome; <paramref name="doseEventIds"/> are every authored dose.</summary>
+    /// <summary>Evaluates the current outcome; <paramref name="doseEventIds"/> are every authored dose (at least one).</summary>
     public static FirstPatientSliceOutcome Evaluate(
         DiseaseTruthSnapshot truth,
         CharacterId patientId,
@@ -42,6 +42,11 @@ public static class FirstPatientSliceOutcomePolicy
         ArgumentNullException.ThrowIfNull(eventLog);
         ArgumentNullException.ThrowIfNull(doseEventIds);
         ArgumentNullException.ThrowIfNull(recovery);
+        WorldEventId[] doses = [.. doseEventIds];
+        if (doses.Length == 0)
+        {
+            throw new ArgumentException("At least one authored dose is required.", nameof(doseEventIds));
+        }
 
         CharacterDiseaseState? infection = truth.Infections.FirstOrDefault(
             candidate => candidate.CharacterId == patientId);
@@ -58,7 +63,7 @@ public static class FirstPatientSliceOutcomePolicy
         }
 
         // A remedy dose always stabilizes, so spent doses on an unstabilized patient were all wrong.
-        if (doseEventIds.All(eventLog.Entries.Contains))
+        if (doses.All(eventLog.Entries.Contains))
         {
             return FirstPatientSliceOutcome.LostAfterDoses;
         }
