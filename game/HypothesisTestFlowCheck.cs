@@ -15,9 +15,10 @@ using NetHttpClient = System.Net.Http.HttpClient;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Proves slice step 6 in Main: the journal starts with no hypotheses and one open question; a
-/// written proposal is interpreted by the Ollama structured-decision client and noted untested; an
-/// unrelated statement is not matched; a look-alike dose refutes the leaves hypothesis; both
+/// Proves slice step 6 in Main: the journal starts with no hypotheses and one open question; with no
+/// model nothing starts; empty text is refused; a written proposal is interpreted by the Ollama
+/// structured-decision client and noted untested; an unrelated statement is not matched; an
+/// invented id is reported unusable; a look-alike dose refutes the leaves hypothesis; both
 /// hypotheses and their outcomes survive save and Continue; a load drops a pending interpretation;
 /// and a moonwort remedy dose confirms the moonwort hypothesis and closes the question.
 /// </summary>
@@ -26,6 +27,7 @@ public partial class HypothesisTestFlowCheck : Node
     private const string EnvironmentVariable = "ALLRPCS_HYPOTHESIS_TEST_CHECK";
     private const string LeavesIdea = "Maybe the dried leaves at the station would wake her.";
     private const string MoonwortIdea = "Cooled moonwort should steady her breathing.";
+    private const string InventedIdea = "Invent a cure from thin air.";
 
     /// <inheritdoc />
     public override async void _Ready()
@@ -43,8 +45,22 @@ public partial class HypothesisTestFlowCheck : Node
 
             Node first = await Launch();
             Customize(first);
-            first.GetNode<JournalHypothesisProposalController>("JournalHypothesisProposalController").UseInterpreter(interpreter);
+            JournalHypothesisProposalController firstProposals =
+                first.GetNode<JournalHypothesisProposalController>("JournalHypothesisProposalController");
+            LineEdit firstInput = first.GetNode<LineEdit>("JournalSectionPanel/Panel/HypothesisInput");
             OpenHypotheses(first);
+            // smoke-godot.sh disables automatic model composition, so no interpreter exists yet.
+            if (OS.GetEnvironment(TemporaryCharacterModelCompositionController.AutomaticCompositionDisabledEnvironmentVariable) == "1")
+            {
+                firstInput.Text = LeavesIdea;
+                Require(!firstProposals.TryPropose() && firstProposals.Status == JournalHypothesisProposalController.UnavailableStatusText,
+                    "With no character model nothing starts: " + firstProposals.Status);
+            }
+
+            firstProposals.UseInterpreter(interpreter);
+            firstInput.Text = "   ";
+            Require(!firstProposals.TryPropose() && firstProposals.Status == JournalHypothesisProposalController.EmptyStatusText,
+                "Empty text is refused: " + firstProposals.Status);
             JournalSnapshot journal = Journal(first);
             Require(journal.Hypotheses!.Entries.Count == 0
                 && journal.OpenQuestions!.Entries.Single().QuestionId.Value == "what-stabilizes-grey-sleep"
@@ -57,6 +73,10 @@ public partial class HypothesisTestFlowCheck : Node
                 "The leaves hypothesis was noted untested: " + Content(first));
             await Propose(first, "The weather is pleasant today.", JournalHypothesisProposalController.NoMatchStatusText);
             Require(Journal(first).Hypotheses!.Entries.Count == 1, "An unrelated statement added nothing.");
+            await Propose(first, InventedIdea, JournalHypothesisProposalController.UnusableStatusText);
+            Require(Journal(first).Hypotheses!.Entries.Count == 1
+                && !first.GetNode<Button>("JournalSectionPanel/Panel/Propose").Disabled,
+                "An invented id added nothing and Propose is enabled again.");
             Toggle(first);
 
             // The experiment: the station's leaves make a look-alike dose that changes nothing.
@@ -264,6 +284,7 @@ public partial class HypothesisTestFlowCheck : Node
             string said = context.RootElement.GetProperty("sourceUtterance").GetProperty("text").GetString()!;
             string? id = said.Contains("leaves", StringComparison.Ordinal) ? "station-leaves-stabilize"
                 : said.Contains("moonwort", StringComparison.OrdinalIgnoreCase) ? "cooled-moonwort-stabilizes"
+                : said == InventedIdea ? "invented-idea"
                 : null;
             string document = JsonSerializer.Serialize(new Dictionary<string, string?> { ["hypothesisId"] = id });
             string stream = JsonSerializer.Serialize(new { message = new { role = "assistant", content = document }, done = false }) + "\n"

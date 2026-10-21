@@ -35,13 +35,27 @@ public static class JournalHypothesisProposalFlow
     /// <summary>Applies one finished interpretation (null for no match) to the current journal.</summary>
     public static (JournalHypothesisProposalResult Result, JournalSnapshot Journal) Apply(
         JournalSnapshot journal,
+        IReadOnlyList<FirstPatientHypothesisTest> tests,
         InvestigationHypothesisRecognition? recognition)
     {
         ArgumentNullException.ThrowIfNull(journal);
+        ArgumentNullException.ThrowIfNull(tests);
 
         if (recognition is null)
         {
             return (JournalHypothesisProposalResult.NoMatch, journal);
+        }
+
+        IReadOnlyList<InvestigationQuestion> open = JournalInvestigationTransition.OpenQuestions(journal, tests);
+        if (journal.Hypotheses!.Entries.Any(entry => entry.HypothesisId == recognition.Hypothesis.HypothesisId))
+        {
+            return (JournalHypothesisProposalResult.AlreadyNoted, journal);
+        }
+
+        // A dose may have answered the question while the interpreter was still working.
+        if (!open.Any(question => question.QuestionId == recognition.Hypothesis.Question.QuestionId))
+        {
+            return (JournalHypothesisProposalResult.AlreadyAnswered, journal);
         }
 
         return JournalInvestigationTransition.Propose(journal, recognition) is { } updated
@@ -61,4 +75,7 @@ public enum JournalHypothesisProposalResult
 
     /// <summary>The text proposed none of the open hypotheses.</summary>
     NoMatch,
+
+    /// <summary>The matched hypothesis's question was answered before the interpretation finished.</summary>
+    AlreadyAnswered,
 }

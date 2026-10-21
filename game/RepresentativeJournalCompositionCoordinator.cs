@@ -73,12 +73,9 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
             return journal.TryInitialize(JournalInvestigationTransition.Refresh(
                 snapshot, HypothesisTests, context.Scenario, doses, experiments));
         }
-        catch (ArgumentException)
+        catch (Exception error) when (error is ArgumentException or InvalidOperationException)
         {
-            return false;
-        }
-        catch (InvalidOperationException)
-        {
+            GD.PrintErr("Journal composition failed: " + error.Message);
             return false;
         }
     }
@@ -100,8 +97,10 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
                 current, HypothesisTests, treatmentContext.Context.Scenario, doses, experiments);
             return ReferenceEquals(refreshed, current) || journal.TryReplace(current, refreshed);
         }
-        catch (ArgumentException)
+        catch (ArgumentException error)
         {
+            // Outcomes and open questions stay stale, so say why.
+            GD.PrintErr("Journal refresh failed: " + error.Message);
             return false;
         }
     }

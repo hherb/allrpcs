@@ -5,6 +5,7 @@ using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Investigations;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -32,9 +33,9 @@ public sealed class JournalInvestigationTransitionTests
             journal, tests, new string('x', DialogueUtterance.MaximumTextLength + 1)));
 
         InvestigationHypothesisRecognition leaves = Recognize(request, tests[1]);
-        (JournalHypothesisProposalResult added, JournalSnapshot withLeaves) = JournalHypothesisProposalFlow.Apply(journal, leaves);
-        (JournalHypothesisProposalResult again, JournalSnapshot unchanged) = JournalHypothesisProposalFlow.Apply(withLeaves, leaves);
-        (JournalHypothesisProposalResult none, JournalSnapshot same) = JournalHypothesisProposalFlow.Apply(withLeaves, null);
+        (JournalHypothesisProposalResult added, JournalSnapshot withLeaves) = JournalHypothesisProposalFlow.Apply(journal, tests, leaves);
+        (JournalHypothesisProposalResult again, JournalSnapshot unchanged) = JournalHypothesisProposalFlow.Apply(withLeaves, tests, leaves);
+        (JournalHypothesisProposalResult none, JournalSnapshot same) = JournalHypothesisProposalFlow.Apply(withLeaves, tests, null);
 
         Assert.Equal(JournalHypothesisProposalResult.Added, added);
         JournalHypothesisAuthoredCopy entry = Assert.Single(withLeaves.Hypotheses!.Entries);
@@ -61,17 +62,10 @@ public sealed class JournalInvestigationTransitionTests
         {
             InvestigationHypothesisRecognitionRequest request =
                 JournalHypothesisProposalFlow.CreateRequest(journal, tests, "a guess")!;
-            journal = JournalHypothesisProposalFlow.Apply(journal, Recognize(request, test)).Journal;
+            journal = JournalHypothesisProposalFlow.Apply(journal, tests, Recognize(request, test)).Journal;
         }
 
-        ExperimentJournalSnapshot oneRecord = new(
-        [
-            new ExperimentJournalRecord(
-                new ExperimentId("dose-0"),
-                new WorldEvent(new WorldEventId("dose-event-0"), WorldEventTimeEffect.Advance),
-                "Administer the look-alike.",
-                "The patient's breathing does not change."),
-        ]);
+        ExperimentJournalSnapshot oneRecord = OneRecord();
         JournalSnapshot refuted = JournalInvestigationTransition.Refresh(
             journal, tests, scenario,
             FirstPatientHypothesisTestPolicyTests.Doses(scenario, scenario.AlternativeRecipes[0]),
@@ -102,6 +96,73 @@ public sealed class JournalInvestigationTransitionTests
     }
 
     [Fact]
+    public void RefreshShowsANewExperimentEvenWhenNoOutcomeOrQuestionChanges()
+    {
+        (FirstPatientScenario scenario, IReadOnlyList<FirstPatientHypothesisTest> tests) = Authored();
+        JournalSnapshot settled = JournalInvestigationTransition.Refresh(EmptyJournal(), tests, scenario, new([]), new([]));
+
+        JournalSnapshot refreshed = JournalInvestigationTransition.Refresh(
+            settled, tests, scenario,
+            FirstPatientHypothesisTestPolicyTests.Doses(scenario, scenario.AlternativeRecipes[0]),
+            OneRecord());
+
+        Assert.NotSame(settled, refreshed);
+        Assert.Equal("dose-0", Assert.Single(refreshed.Experiments!.Entries).ExperimentId.Value);
+        Assert.Single(refreshed.OpenQuestions!.Entries);
+    }
+
+    [Fact]
+    public void AnEarlierRemedyDoseConfirmsAProposalAndALateAnswerToTheClosedQuestionIsNotAdded()
+    {
+        (FirstPatientScenario scenario, IReadOnlyList<FirstPatientHypothesisTest> tests) = Authored();
+        IngredientExperimentJournalSnapshot remedyDose = FirstPatientHypothesisTestPolicyTests.Doses(scenario, scenario.Remedy.Recipe);
+        JournalSnapshot dosed = JournalInvestigationTransition.Refresh(EmptyJournal(), tests, scenario, remedyDose, OneRecord());
+        InvestigationHypothesisRecognitionRequest request =
+            JournalHypothesisProposalFlow.CreateRequest(dosed, tests, "a guess")!;
+
+        JournalSnapshot proposed = JournalHypothesisProposalFlow.Apply(dosed, tests, Recognize(request, tests[0])).Journal;
+        Assert.Equal(InvestigationHypothesisTestOutcome.Untested, Assert.Single(proposed.Hypotheses!.Entries).Outcome);
+        JournalSnapshot confirmed = JournalInvestigationTransition.Refresh(proposed, tests, scenario, remedyDose, OneRecord());
+
+        Assert.Equal(InvestigationHypothesisTestOutcome.Confirmed, Assert.Single(confirmed.Hypotheses!.Entries).Outcome);
+        Assert.Empty(confirmed.OpenQuestions!.Entries);
+        (JournalHypothesisProposalResult late, JournalSnapshot unchanged) =
+            JournalHypothesisProposalFlow.Apply(confirmed, tests, Recognize(request, tests[1]));
+        Assert.Equal(JournalHypothesisProposalResult.AlreadyAnswered, late);
+        Assert.Same(confirmed, unchanged);
+        Assert.Equal(
+            JournalHypothesisProposalResult.AlreadyNoted,
+            JournalHypothesisProposalFlow.Apply(confirmed, tests, Recognize(request, tests[0])).Result);
+    }
+
+    [Fact]
+    public void OffersOnlyTheHypothesesOfQuestionsThatAreStillOpen()
+    {
+        (FirstPatientScenario scenario, IReadOnlyList<FirstPatientHypothesisTest> authored) = Authored();
+        FirstPatientHypothesisTest other = new(
+            new InvestigationHypothesis(
+                new InvestigationHypothesisId("leaves-ease-the-fever"),
+                new InvestigationQuestion(new InvestigationQuestionId("what-eases-the-fever"), "What eases the fever?"),
+                "The station's leaves ease the fever."),
+            scenario.AlternativeRecipes[0]);
+        IReadOnlyList<FirstPatientHypothesisTest> tests = [.. authored, other];
+        IngredientExperimentJournalSnapshot remedyDose = FirstPatientHypothesisTestPolicyTests.Doses(scenario, scenario.Remedy.Recipe);
+        InvestigationHypothesisRecognitionRequest first =
+            JournalHypothesisProposalFlow.CreateRequest(EmptyJournal(), tests, "a guess")!;
+        Assert.Equal(2, first.OpenQuestions.Questions.Count);
+        JournalSnapshot confirmed = JournalInvestigationTransition.Refresh(
+            JournalHypothesisProposalFlow.Apply(EmptyJournal(), tests, Recognize(first, tests[0])).Journal,
+            tests, scenario, remedyDose, OneRecord());
+
+        InvestigationHypothesisRecognitionRequest request =
+            JournalHypothesisProposalFlow.CreateRequest(confirmed, tests, "another guess")!;
+
+        Assert.Same(other.Hypothesis.Question, Assert.Single(request.OpenQuestions.Questions));
+        Assert.Same(other.Hypothesis, Assert.Single(request.Hypotheses.Hypotheses));
+        Assert.Equal("what-eases-the-fever", Assert.Single(confirmed.OpenQuestions!.Entries).QuestionId.Value);
+    }
+
+    [Fact]
     public void RefreshLeavesAnUnknownSavedHypothesisUntestedAndRejectsAnIncompleteJournal()
     {
         (FirstPatientScenario scenario, IReadOnlyList<FirstPatientHypothesisTest> tests) = Authored();
@@ -124,6 +185,15 @@ public sealed class JournalInvestigationTransitionTests
         FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
         return (scenario, RepresentativeFirstPatientHypothesisSource.Create(scenario));
     }
+
+    private static ExperimentJournalSnapshot OneRecord() => new(
+    [
+        new ExperimentJournalRecord(
+            new ExperimentId("dose-0"),
+            new WorldEvent(new WorldEventId("dose-event-0"), WorldEventTimeEffect.Advance),
+            "Administer the look-alike.",
+            "The patient's breathing does not change."),
+    ]);
 
     private static JournalSnapshot EmptyJournal() => JournalSaveStateRestorationProjection.Restore(
         new JournalSaveState(Seeker, [], [], [], [], [], null)).Journal;

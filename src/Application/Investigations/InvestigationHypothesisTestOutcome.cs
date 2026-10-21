@@ -1,14 +1,14 @@
 namespace Allrpcs.Application.Investigations;
 
-/// <summary>States what the recorded experiments say about one proposed hypothesis.</summary>
+/// <summary>States what the recorded doses say about one proposed hypothesis.</summary>
 public enum InvestigationHypothesisTestOutcome
 {
-    /// <summary>No recorded experiment tests the hypothesis yet.</summary>
+    /// <summary>The hypothesis's recipe has not been dosed yet.</summary>
     Untested,
 
-    /// <summary>A recorded experiment showed the predicted effect.</summary>
+    /// <summary>The dosed recipe is the remedy, which stabilizes the patient.</summary>
     Confirmed,
 
-    /// <summary>A recorded experiment showed the predicted effect did not occur.</summary>
+    /// <summary>The dosed recipe is not the remedy, so it changes nothing.</summary>
     Refuted,
 }

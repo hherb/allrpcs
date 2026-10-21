@@ -13,6 +13,10 @@ public partial class JournalHypothesisProposalController : Node
     internal const string AlreadyNotedStatusText = "That hypothesis is already in your journal.";
     internal const string NoMatchStatusText = "That does not connect to anything you have learned yet.";
     internal const string NothingOpenStatusText = "Every open question already has an answer.";
+    internal const string AlreadyAnsweredStatusText = "That question already has an answer.";
+    internal const string EmptyStatusText = "Write a hypothesis first.";
+    internal const string UnusableStatusText =
+        "The character model gave an answer the journal could not use. Try rephrasing or try again.";
     internal const string UnavailableStatusText =
         "The journal could not reach the character model. Check Settings and try again.";
 
@@ -70,11 +74,9 @@ public partial class JournalHypothesisProposalController : Node
             JournalHypothesisProposalFlow.CreateRequest(current, tests, input.Text);
         if (request is null)
         {
-            if (JournalInvestigationTransition.OpenQuestions(current, tests).Count == 0)
-            {
-                status.Text = NothingOpenStatusText;
-            }
-
+            status.Text = JournalInvestigationTransition.OpenQuestions(current, tests).Count == 0
+                ? NothingOpenStatusText
+                : EmptyStatusText;
             return false;
         }
 
@@ -104,25 +106,39 @@ public partial class JournalHypothesisProposalController : Node
         Clear();
         if (!finished.IsCompletedSuccessfully)
         {
-            GD.PrintErr("Hypothesis interpretation failed: " + finished.Exception?.GetBaseException().GetType().Name);
-            status.Text = UnavailableStatusText;
+            Exception? error = finished.Exception?.GetBaseException();
+            // Type and status only: the transport keeps provider payloads out of exceptions.
+            GD.PrintErr("Hypothesis interpretation failed: " + (error is null ? "canceled" : error.GetType().Name)
+                + (error is HttpRequestException { StatusCode: { } code } ? " " + (int)code : string.Empty));
+            status.Text = error is InvalidDataException ? UnusableStatusText : UnavailableStatusText;
             return;
         }
 
+        // Current outcomes decide whether the matched question is still open.
+        _ = composition.TryRefresh();
         if (journal.Journal is not { } current)
         {
+            status.Text = string.Empty;
             return;
         }
 
         (JournalHypothesisProposalResult result, JournalSnapshot updated) =
-            JournalHypothesisProposalFlow.Apply(current, finished.Result);
+            JournalHypothesisProposalFlow.Apply(current, composition.HypothesisTests, finished.Result);
+        if (result == JournalHypothesisProposalResult.Added && !journal.TryReplace(current, updated))
+        {
+            GD.PrintErr("Hypothesis proposal found the journal already replaced.");
+            status.Text = string.Empty;
+            return;
+        }
+
         status.Text = result switch
         {
             JournalHypothesisProposalResult.Added => AddedStatusText,
             JournalHypothesisProposalResult.AlreadyNoted => AlreadyNotedStatusText,
+            JournalHypothesisProposalResult.AlreadyAnswered => AlreadyAnsweredStatusText,
             _ => NoMatchStatusText,
         };
-        if (result != JournalHypothesisProposalResult.Added || !journal.TryReplace(current, updated))
+        if (result != JournalHypothesisProposalResult.Added)
         {
             return;
         }
@@ -155,8 +171,12 @@ public partial class JournalHypothesisProposalController : Node
 
     private void Clear()
     {
-        // Observe a faulted task so it never surfaces as unobserved.
-        _ = pending?.Exception;
+        // Observe a fault, now or after a dropped task ends, so it never surfaces as unobserved.
+        _ = pending?.ContinueWith(
+            static task => task.Exception,
+            CancellationToken.None,
+            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+            TaskScheduler.Default);
         pending = null;
         cancellation?.Dispose();
         cancellation = null;
