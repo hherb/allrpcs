@@ -1118,6 +1118,16 @@
           "sha256": "033b427213f8b2fb7964f42b2e07e5b68e51e40fb5a2df137f433a9ceb7623ac"
         }
       ]
+    },
+    {
+      "id": "code-health-phase4-hypotheses",
+      "reason": "Program Phase 4 item 4 is complete on branch claude/phase4-hypotheses: the journal starts with no hypotheses and lists the open question; a Propose field in its Hypotheses section sends the player's text (marked untrusted) through a new investigation_hypothesis_recognition_decision structured-decision kind (strict {hypothesisId: offered id | null}, all three providers) that replaces the transport-seam interpreter; a recognized hypothesis is noted untested; the journal refreshes on open, deriving each hypothesis outcome from the saved dose records (a look-alike dose refutes the leaves hypothesis, the moonwort remedy confirms the moonwort hypothesis and closes the question) with no save schema change; a load cancels a pending interpretation. HypothesisTestFlowCheck proves propose, no-match, refute, save, Continue, load-drops-pending and confirm through a real Ollama structured client on scripted HTTP. 6132 solution tests and the full smoke suite (367 passed, 0 failed, 3 quarantined) pass after review fixes. Do not reopen or re-audit item 4.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md",
+          "sha256": "39fd8c42df0b630b4939f8cce6aced85ed78ff7c2ea3dc07dc74bc2ad7caedb1"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1772,20 +1782,20 @@
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-hypotheses",
-    "title": "Let the player propose and test a hypothesis",
+    "id": "code-health-phase4-stakes-ending",
+    "title": "Let the patient's illness progress and give the slice an ending",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 4 (slice step 6): InvestigationHypothesis types have no game wiring and the journal is pre-filled, so a player cannot propose a hypothesis in the journal, have it interpreted through the Phase 3 structured-decision pipeline, or test it through an experiment.",
-    "instructions": "Write docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md after measuring the InvestigationHypothesis* Domain types, RepresentativeJournalCompositionCoordinator and the journal pre-fill, the Phase 3 StructuredDecisionPipeline, and how experiment records (now including wrong-remedy doses) reach the journal. Add a journal input that proposes a hypothesis, interpret it through the pipeline, and test the result via an experiment. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
-    "completion_condition": "A player proposes a hypothesis in the journal, the structured-decision pipeline interprets it, and an experiment confirms or refutes it, with the result surviving save and continue, tests and smoke checks passing and continuation evidence synced with review-branch publication.",
+    "missing_deliverable": "Program Phase 4 item 5 (slice step 8): disease progression, exposure and cure transitions are unwired, so stabilization cannot fail and the slice has no explicit ending screen.",
+    "instructions": "Write docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md after measuring the Domain disease progression/exposure/cure transitions, world time and journey events, the first-patient state and save, and what happens after stabilization today. Wire disease progression to journey events so delay or wrong remedies can let the patient worsen, and add an explicit slice-complete (and failure) screen. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "completion_condition": "Stabilization can fail through disease progression driven by journey events, the slice ends on an explicit completion or failure screen, the outcome survives save and continue, and tests, smoke checks and continuation evidence are synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md"
+      "docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md"
     ],
-    "boundary": "Phase 4 item 4 only. No stakes/ending or boot-time auto-resolution work (items 5-6), no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Phase 4 item 5 only. No boot-time auto-resolution work (item 6), no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {
