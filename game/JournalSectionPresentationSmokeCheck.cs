@@ -125,11 +125,16 @@ public partial class JournalSectionPresentationSmokeCheck : Node
             | System.Reflection.BindingFlags.DeclaredOnly)
             .Where(method => !method.IsSpecialName)
             .ToArray();
-        return properties.Length == 1
-            && properties[0].Name == nameof(JournalSectionPresentationController.Presentation)
-            && properties[0].PropertyType == typeof(JournalSectionPresentationSnapshot)
-            && properties[0].CanRead
-            && properties[0].SetMethod?.IsPrivate == true
+        System.Reflection.PropertyInfo? presentation = properties.SingleOrDefault(
+            property => property.Name == nameof(JournalSectionPresentationController.Presentation));
+        return properties.Length == 2
+            && presentation?.PropertyType == typeof(JournalSectionPresentationSnapshot)
+            && presentation.CanRead
+            && presentation.SetMethod?.IsPrivate == true
+            && properties.Any(property =>
+                property.Name == nameof(JournalSectionPresentationController.IsCurrent)
+                && property.PropertyType == typeof(bool)
+                && property.SetMethod is null)
             && methods.Length == 3
             && methods.Any(method => method.Name == nameof(Node._Ready))
             && methods.Any(method =>

@@ -7,6 +7,7 @@ namespace Allrpcs.Game;
 public partial class JournalSectionPanel : CanvasLayer
 {
     private Label content = null!;
+    private Control[] hypothesisRow = [];
     private JournalSectionPresentationController presentations = null!;
     private Label sectionLabel = null!;
 
@@ -20,6 +21,12 @@ public partial class JournalSectionPanel : CanvasLayer
             "../JournalSectionPresentationController");
         sectionLabel = GetNode<Label>("Panel/SectionLabel");
         content = GetNode<Label>("Panel/Scroll/Content");
+        hypothesisRow =
+        [
+            GetNode<Control>("Panel/HypothesisInput"),
+            GetNode<Control>("Panel/Propose"),
+            GetNode<Control>("Panel/HypothesisStatus"),
+        ];
         Presentation = null;
         sectionLabel.Text = string.Empty;
         content.Text = string.Empty;
@@ -52,6 +59,12 @@ public partial class JournalSectionPanel : CanvasLayer
         Presentation = expectedPresentation;
         sectionLabel.Text = text.SectionLabel;
         content.Text = text.Content;
+        // Hypotheses are proposed only while their section is shown.
+        foreach (Control control in hypothesisRow)
+        {
+            control.Visible = expectedPresentation.Hypotheses is not null;
+        }
+
         Show();
         return true;
     }

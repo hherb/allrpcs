@@ -70,16 +70,14 @@ public partial class RepresentativeJournalCompositionSmokeCheck : Node
             && lastDialogue.Audience.ListenerCharacterIds.Contains(perception.CharacterId)
                 ? 1
                 : 0;
-        IReadOnlyList<InvestigationConclusionEvidencePlan> plans =
-            context.Scenario.Investigation.Plans.Plans;
-        int openQuestionCount = plans.Count(
-            plan => !context.Conclusions.Conclusions.Any(
-                conclusion => ReferenceEquals(conclusion, plan.Conclusion)));
+        // The player proposes hypotheses, so the tested question starts open.
+        int openQuestionCount = coordinator.HypothesisTests
+            .Select(test => test.Hypothesis.Question).Distinct().Count();
 
         if (!ReferenceEquals(journal.SeekerId, perception.CharacterId)
             || journal.Observations.Entries.Count != identifiedCount
             || journal.Testimony?.Entries.Count != heardCount
-            || journal.Hypotheses?.Entries.Count != plans.Count
+            || journal.Hypotheses?.Entries.Count != 0
             || journal.Experiments?.Entries.Count != experiments.Records.Count
             || journal.OpenQuestions?.Entries.Count != openQuestionCount
             || journal.PendingSections.Count != 0
@@ -111,8 +109,13 @@ public partial class RepresentativeJournalCompositionSmokeCheck : Node
             System.Reflection.BindingFlags.Public
             | System.Reflection.BindingFlags.Instance
             | System.Reflection.BindingFlags.DeclaredOnly);
-        return methods.Length == 2
+        return methods.Length == 4
             && methods.Any(method => method.Name == nameof(Node._Ready))
+            && methods.Any(method => method.Name == "get_HypothesisTests")
+            && methods.Any(method =>
+                method.Name == nameof(RepresentativeJournalCompositionCoordinator.TryRefresh)
+                && method.ReturnType == typeof(bool)
+                && method.GetParameters().Length == 0)
             && methods.Any(method =>
                 method.Name == nameof(
                     RepresentativeJournalCompositionCoordinator.TryComposeAndInitialize)

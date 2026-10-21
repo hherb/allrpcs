@@ -2,6 +2,7 @@ using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
+using Allrpcs.Infrastructure.Investigations;
 using Godot;
 using NetHttpClient = System.Net.Http.HttpClient;
 
@@ -31,6 +32,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private TemporaryCharacterDialogueMisquotationEvidenceModelSource misquotationModelSource = null!;
     private CharacterDialogueMisquotationEvidenceModelBinding? misquotationBinding;
+    private JournalHypothesisProposalController hypothesisProposals = null!;
     private NetHttpClient client = null!;
     private OllamaEndpoint ollamaEndpoint = OllamaEndpoint.Default;
     private bool isInitialized;
@@ -85,6 +87,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             "../TemporaryCharacterTurnParticipationModelSource");
         misquotationModelSource = GetNode<TemporaryCharacterDialogueMisquotationEvidenceModelSource>(
             "../TemporaryCharacterDialogueMisquotationEvidenceModelSource");
+        hypothesisProposals = GetNode<JournalHypothesisProposalController>(
+            "../JournalHypothesisProposalController");
         client ??= new NetHttpClient(ProviderHttpTransport.CreateHandler())
         {
             Timeout = Timeout.InfiniteTimeSpan,
@@ -166,7 +170,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyRecoveryBinding(selection)
             || !TryApplyDelayRecoveryBinding(selection)
             || !TryApplySabotageActionBinding(selection)
-            || !TryApplyMisquotationBinding(selection))
+            || !TryApplyMisquotationBinding(selection)
+            || !TryApplyHypothesisInterpreter(selection))
         {
             return false;
         }
@@ -197,7 +202,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyRecoveryBinding(selection)
             && TryApplyDelayRecoveryBinding(selection)
             && TryApplySabotageActionBinding(selection)
-            && TryApplyMisquotationBinding(selection);
+            && TryApplyMisquotationBinding(selection)
+            && TryApplyHypothesisInterpreter(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -359,6 +365,23 @@ public partial class TemporaryCharacterModelCompositionController : Node
         }
 
         return applied;
+    }
+
+    private bool TryApplyHypothesisInterpreter(CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        IOpenAiCredentialSource? credentialSource = selectedSettings.Provider == CharacterModelProvider.OpenAi
+            ? CreateOpenAiCredentialSource() : null;
+        if ((selectedSettings.Provider == CharacterModelProvider.OpenAi && credentialSource is null)
+            || (selectedSettings.Provider == CharacterModelProvider.Anthropic && anthropicCredentials is null))
+        {
+            return false;
+        }
+
+        hypothesisProposals.UseInterpreter(StructuredInvestigationHypothesisInterpreter.Create(
+            selectedSettings, client, credentialSource, anthropicCredentials, ollamaEndpoint));
+        return true;
     }
 
     private bool TryApplyConcealmentBinding(

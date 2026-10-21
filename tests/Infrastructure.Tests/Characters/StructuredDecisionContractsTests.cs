@@ -9,7 +9,7 @@ namespace Allrpcs.Infrastructure.Tests.Characters;
 
 public sealed class StructuredDecisionContractsTests
 {
-    private static readonly string[] CaseValues1 = ["DialogueMisquotationEvidence", "ObjectSabotageConcealment", "ObjectSabotageContamination", "ObjectSabotageMove", "ObjectSabotageSubstitution", "SabotageAction", "TargetSabotageDelay", "TargetSabotageDelayRecovery", "TargetSabotageInfluence", "TargetSabotageInfluenceRecovery"];
+    private static readonly string[] CaseValues1 = ["DialogueMisquotationEvidence", "ObjectSabotageConcealment", "ObjectSabotageContamination", "ObjectSabotageMove", "ObjectSabotageSubstitution", "SabotageAction", "TargetSabotageDelay", "TargetSabotageDelayRecovery", "TargetSabotageInfluence", "TargetSabotageInfluenceRecovery", "InvestigationHypothesis"];
     private static readonly string[] CaseValues2 = ["openai", "anthropic", "ollama"];
 
     public static IEnumerable<object[]> Cases =>
@@ -130,6 +130,17 @@ public sealed class StructuredDecisionContractsTests
                     {
                         Assert.Same(request.Actor.Identity.Id, decision.ActorId);
                         Assert.Same(request.Candidates[0], decision.SelectedCandidate);
+                    });
+                    break;
+                }
+            case "InvestigationHypothesis":
+                {
+                    var request = Investigations.InvestigationHypothesisDecisionTests.CreateRequest();
+                    string document = "{\"hypothesisId\":\"station-leaves-stabilize\"}";
+                    await VerifyAsync(Allrpcs.Infrastructure.Investigations.InvestigationHypothesisDecisions.Recognition, request, provider, document, decision =>
+                    {
+                        Assert.Same(request.Hypotheses.Hypotheses[1].HypothesisId, decision.Proposal!.HypothesisId);
+                        Assert.Same(request.OpenQuestions.Questions[0].QuestionId, decision.Proposal.QuestionId);
                     });
                     break;
                 }

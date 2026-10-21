@@ -42,7 +42,7 @@ public sealed class JournalHypothesisAuthoredCopyProjectionTests
                 Assert.Same(secondStatement, copy.Statement);
             });
         Assert.Equal(
-            ["HypothesisId", "QuestionId", "QuestionPrompt", "Statement"],
+            ["HypothesisId", "Outcome", "QuestionId", "QuestionPrompt", "Statement"],
             typeof(JournalHypothesisAuthoredCopy)
                 .GetProperties()
                 .Select(property => property.Name)

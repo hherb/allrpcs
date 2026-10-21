@@ -28,6 +28,21 @@ public partial class JournalController : Node
         return true;
     }
 
+    /// <summary>Replaces the exact expected journal with one updated complete journal.</summary>
+    public bool TryReplace(JournalSnapshot expected, JournalSnapshot replacement)
+    {
+        ArgumentNullException.ThrowIfNull(expected);
+        ArgumentNullException.ThrowIfNull(replacement);
+
+        if (!ReferenceEquals(Journal, expected) || replacement.PendingSections.Count != 0)
+        {
+            return false;
+        }
+
+        Journal = replacement;
+        return true;
+    }
+
     /// <summary>Installs one preflighted complete safe journal during root restoration.</summary>
     internal void InstallRestored(JournalSnapshot journal)
     {

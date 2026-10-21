@@ -65,6 +65,9 @@ public partial class JournalOpenCloseInputController : Node
             return false;
         }
 
+        // Best effort: a scene without first-patient state still reads its installed journal.
+        _ = composition.TryRefresh();
+
         JournalSnapshot currentJournal = journal.Journal!;
         if (selection.Selection is null
             && !selection.TrySelect(currentJournal, currentJournal.Catalogue.Sections[0]))
@@ -77,9 +80,7 @@ public partial class JournalOpenCloseInputController : Node
             return false;
         }
 
-        if (presentation.Presentation is { } projected
-            && !ReferenceEquals(projected.Section, selection.Selection)
-            && !presentation.TryRefresh())
+        if (!presentation.IsCurrent && !presentation.TryRefresh())
         {
             return false;
         }

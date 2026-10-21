@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Domain.Identifiers;
 
 namespace Allrpcs.Application.Journal;
@@ -9,12 +10,14 @@ public sealed class JournalHypothesisAuthoredCopy
         InvestigationHypothesisId hypothesisId,
         InvestigationQuestionId questionId,
         string questionPrompt,
-        string statement)
+        string statement,
+        InvestigationHypothesisTestOutcome outcome = InvestigationHypothesisTestOutcome.Untested)
     {
         HypothesisId = hypothesisId;
         QuestionId = questionId;
         QuestionPrompt = questionPrompt;
         Statement = statement;
+        Outcome = outcome;
     }
 
     /// <summary>Gets the exact canonical authored-hypothesis identifier.</summary>
@@ -28,4 +31,7 @@ public sealed class JournalHypothesisAuthoredCopy
 
     /// <summary>Gets the exact authored hypothesis statement.</summary>
     public string Statement { get; }
+
+    /// <summary>Gets what the recorded experiments currently say about this hypothesis.</summary>
+    public InvestigationHypothesisTestOutcome Outcome { get; }
 }
