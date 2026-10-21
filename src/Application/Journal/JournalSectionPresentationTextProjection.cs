@@ -1,3 +1,5 @@
+using Allrpcs.Application.Investigations;
+
 namespace Allrpcs.Application.Journal;
 
 /// <summary>Projects one safe selected journal section into stable plain presentation text.</summary>
@@ -23,7 +25,7 @@ public static class JournalSectionPresentationTextProjection
                 : presentation.Hypotheses is { } hypotheses
                     ? Render(
                         hypotheses.Entries,
-                        entry => $"{entry.QuestionPrompt}\n{entry.Statement}")
+                        entry => $"{entry.QuestionPrompt}\n{entry.Statement}\n{Describe(entry.Outcome)}")
                     : presentation.Experiments is { } experiments
                         ? Render(
                             experiments.Entries,
@@ -35,6 +37,13 @@ public static class JournalSectionPresentationTextProjection
 
         return new(presentation.Section.DisplayLabel, content);
     }
+
+    private static string Describe(InvestigationHypothesisTestOutcome outcome) => outcome switch
+    {
+        InvestigationHypothesisTestOutcome.Confirmed => "Confirmed by experiment.",
+        InvestigationHypothesisTestOutcome.Refuted => "Refuted by experiment.",
+        _ => "Untested: try it on the patient.",
+    };
 
     private static string Render<T>(
         IReadOnlyList<T> entries,

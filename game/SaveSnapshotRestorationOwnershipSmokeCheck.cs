@@ -198,6 +198,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             "character-response-presentation",
             "resolved-perception",
             "journal-modal",
+            "journal-hypothesis-proposal",
             "map-modal",
             "first-patient-preparation",
         ];

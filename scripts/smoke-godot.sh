@@ -95,6 +95,9 @@ run_check 120 ALLRPCS_SAVE_CONTINUE_CHECK=1 \
 # covers its 60 s wait for the Healer's errand, its 30 s examination wait and both Main launches.
 run_check 6000 ALLRPCS_INGREDIENT_REMEDY_CHECK=1 \
     godot --headless --path "$repository_root/game" res://IngredientRemedyFlowCheck.tscn
+# Two Main launches with scripted (in-process) Ollama replies; 600 frames at 60 fps is about 10 s.
+run_check 600 ALLRPCS_HYPOTHESIS_TEST_CHECK=1 \
+    godot --headless --path "$repository_root/game" res://HypothesisTestFlowCheck.tscn
 run_check 120 ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \

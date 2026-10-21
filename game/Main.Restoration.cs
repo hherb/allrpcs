@@ -42,6 +42,8 @@ public partial class Main
         Register("resolved-perception", () => new(() => { }, RefreshResolvedPerceptionPresentation));
         Register("journal-modal", GetNode<JournalOpenCloseInputController>(
             "JournalOpenCloseInputController").PrepareSessionReset);
+        Register("journal-hypothesis-proposal", () => new(GetNode<JournalHypothesisProposalController>(
+            "JournalHypothesisProposalController").ResetSession));
         Register("map-modal", GetNode<SeekerMapOpenCloseInputController>(
             "SeekerMapOpenCloseInputController").PrepareSessionReset);
     }

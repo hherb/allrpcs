@@ -14,7 +14,7 @@ public sealed class JournalSectionPresentationTextProjectionTests
     [Theory]
     [InlineData(0, "Observations", "Old Shrine\nLayered marks cross the weathered stone.")]
     [InlineData(1, "Testimony", "healer · whispering\nThe stream changed after the rain.")]
-    [InlineData(2, "Hypotheses", "What causes the grey sleep?\nThe stream water may carry it.")]
+    [InlineData(2, "Hypotheses", "What causes the grey sleep?\nThe stream water may carry it.\nUntested: try it on the patient.")]
     [InlineData(
         3,
         "Experiments",

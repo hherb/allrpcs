@@ -1,7 +1,9 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Experiments;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Investigations;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
@@ -20,6 +22,11 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
     private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private TemporaryFirstPatientTreatmentContextSource treatmentContext = null!;
     private WorldObjectController worldObjects = null!;
+    private IReadOnlyList<FirstPatientHypothesisTest>? hypothesisTests;
+
+    /// <summary>Gets the authored hypotheses the player can propose and test.</summary>
+    public IReadOnlyList<FirstPatientHypothesisTest> HypothesisTests =>
+        hypothesisTests ??= RepresentativeFirstPatientHypothesisSource.Create(treatmentContext.Context.Scenario);
 
     /// <inheritdoc />
     public override void _Ready()
@@ -45,10 +52,12 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
         CharacterPerceptionSnapshot? perception = focusedSearch.Perception;
         WorldObjectSnapshot? objects = worldObjects.WorldObjects;
         ExperimentJournalSnapshot? experiments = firstPatient.Experiments;
+        IngredientExperimentJournalSnapshot? doses = firstPatient.AdministrationExperiments;
         FirstPatientTreatmentContext? context = treatmentContext.Context;
         if (perception is null
             || objects is null
             || experiments is null
+            || doses is null
             || context is null)
         {
             return false;
@@ -60,9 +69,9 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
                 perception,
                 objects,
                 GetTestimonyEvents(),
-                context,
                 experiments);
-            return journal.TryInitialize(snapshot);
+            return journal.TryInitialize(JournalInvestigationTransition.Refresh(
+                snapshot, HypothesisTests, context.Scenario, doses, experiments));
         }
         catch (ArgumentException)
         {
@@ -74,11 +83,34 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
         }
     }
 
+    /// <summary>Brings the journal's hypotheses, experiments and open questions up to date.</summary>
+    public bool TryRefresh()
+    {
+        JournalSnapshot? current = journal.Journal;
+        ExperimentJournalSnapshot? experiments = firstPatient.Experiments;
+        IngredientExperimentJournalSnapshot? doses = firstPatient.AdministrationExperiments;
+        if (current is null || experiments is null || doses is null)
+        {
+            return false;
+        }
+
+        try
+        {
+            JournalSnapshot refreshed = JournalInvestigationTransition.Refresh(
+                current, HypothesisTests, treatmentContext.Context.Scenario, doses, experiments);
+            return ReferenceEquals(refreshed, current) || journal.TryReplace(current, refreshed);
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+    }
+
+    // The player proposes hypotheses; open questions come from the refresh that follows.
     private static JournalSnapshot Compose(
         CharacterPerceptionSnapshot perception,
         WorldObjectSnapshot worldObjects,
         IReadOnlyList<DialogueEvent> dialogueEvents,
-        FirstPatientTreatmentContext treatmentContext,
         ExperimentJournalSnapshot experiments)
     {
         JournalSectionCatalogue catalogue = RepresentativeJournalSectionSource.Create();
@@ -102,13 +134,9 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
                 JournalTestimonySectionProjection.Bind(snapshot, dialogueEvents));
         snapshot = JournalTestimonySnapshotProjection.Compose(snapshot, testimonySection);
 
-        IReadOnlyList<InvestigationConclusionEvidencePlan> plans =
-            treatmentContext.Scenario.Investigation.Plans.Plans;
-        InvestigationHypothesisSnapshot hypotheses = new(
-            plans.Select(plan => plan.Conclusion.Hypothesis));
         JournalHypothesisSectionSnapshot hypothesisSection =
             JournalHypothesisSectionSnapshotProjection.Project(
-                JournalHypothesisSectionProjection.Bind(snapshot, hypotheses));
+                JournalHypothesisSectionProjection.Bind(snapshot, new InvestigationHypothesisSnapshot([])));
         snapshot = JournalHypothesisSnapshotProjection.Compose(snapshot, hypothesisSection);
 
         JournalExperimentSectionSnapshot experimentSection =
@@ -116,14 +144,9 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
                 JournalExperimentSectionProjection.Bind(snapshot, experiments));
         snapshot = JournalExperimentSnapshotProjection.Compose(snapshot, experimentSection);
 
-        OpenInvestigationQuestionSnapshot openQuestions = new(
-            plans
-                .Where(plan => !treatmentContext.Conclusions.Conclusions.Any(
-                    conclusion => ReferenceEquals(conclusion, plan.Conclusion)))
-                .Select(plan => plan.Conclusion.Question));
         JournalOpenQuestionSectionSnapshot questionSection =
             JournalOpenQuestionSectionSnapshotProjection.Project(
-                JournalOpenQuestionSectionProjection.Bind(snapshot, openQuestions));
+                JournalOpenQuestionSectionProjection.Bind(snapshot, new OpenInvestigationQuestionSnapshot([])));
         return JournalOpenQuestionSnapshotProjection.Compose(snapshot, questionSection);
     }
 

@@ -8,9 +8,15 @@ public partial class JournalSectionPresentationController : Node
 {
     private JournalController journal = null!;
     private JournalSectionSelectionController selection = null!;
+    private JournalSnapshot? projectedJournal;
 
     /// <summary>Gets the exact projected selected-section presentation, or null before projection.</summary>
     public JournalSectionPresentationSnapshot? Presentation { get; private set; }
+
+    /// <summary>Gets whether the presentation shows the current selection of the current journal.</summary>
+    public bool IsCurrent => Presentation is { } current
+        && ReferenceEquals(current.Section, selection.Selection)
+        && ReferenceEquals(projectedJournal, journal.Journal);
 
     /// <inheritdoc />
     public override void _Ready()
@@ -37,6 +43,7 @@ public partial class JournalSectionPresentationController : Node
             Presentation = JournalSectionPresentationProjection.Project(
                 currentJournal,
                 currentSelection);
+            projectedJournal = currentJournal;
             return true;
         }
         catch (InvalidOperationException)
@@ -45,7 +52,7 @@ public partial class JournalSectionPresentationController : Node
         }
     }
 
-    /// <summary>Replaces projected state for one explicit exact selection change.</summary>
+    /// <summary>Replaces projected state after an exact selection or journal change.</summary>
     public bool TryRefresh()
     {
         JournalSectionPresentationSnapshot? currentPresentation = Presentation;
@@ -54,7 +61,8 @@ public partial class JournalSectionPresentationController : Node
         if (currentPresentation is null
             || currentJournal is null
             || currentSelection is null
-            || ReferenceEquals(currentPresentation.Section, currentSelection))
+            || (ReferenceEquals(currentPresentation.Section, currentSelection)
+                && ReferenceEquals(projectedJournal, currentJournal)))
         {
             return false;
         }
@@ -66,6 +74,7 @@ public partial class JournalSectionPresentationController : Node
                     currentJournal,
                     currentSelection);
             Presentation = replacement;
+            projectedJournal = currentJournal;
             return true;
         }
         catch (InvalidOperationException)
