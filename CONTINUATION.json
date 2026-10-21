@@ -1098,6 +1098,16 @@
           "sha256": "3b49723e012f68c73e20fbfbf88df39bc2f117256d5613ed921c66e50621ebff"
         }
       ]
+    },
+    {
+      "id": "code-health-phase4-ingredients",
+      "reason": "Program Phase 4 item 3 is complete at d8885139 (branch claude/phase4-ingredients): one inventory owner (InventoryOwnershipSnapshot.InventoryOf, Application InventoryExchangeTransition, game InventoryController, which focused search now reads), conditional collection on the normal path with the ConditionalCollectionScaffolding gate removed (the Healer examines, which identifies moonwort, and gathers it into its inventory), Give and Use at the preparation station, a look-alike wrong remedy whose dose is recorded and changes nothing, one further authored dose, and save schema 10 retaining the inventory (schema 9 migrates to the authored start; InventoryRestorationPolicy fails closed). IngredientRemedyFlowCheck proves wrong remedy, conditional gather, give, save, Continue, use and stabilization; 6129 solution tests and the full smoke suite (366 passed, 0 failed, 3 quarantined; the 44 affected launches re-passed after review fixes) pass. Do not reopen or re-audit item 3.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md",
+          "sha256": "2034b81e19a3130c6eb8019703fea1e45e1f261b28f5b570f7566cc880e11eb3"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1738,20 +1748,20 @@
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-ingredients",
-    "title": "Make ingredients a normal, evidence-identified part of play",
+    "id": "code-health-phase4-hypotheses",
+    "title": "Let the player propose and test a hypothesis",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 3 (slice steps 5 and 7): CharacterInventory and InventoryOwnershipSnapshot are separate owners, Give/Take/Use are not wired into play, and conditional collection runs only behind the ConditionalCollectionScaffolding gate in Main, so a player cannot gather, hand over and use ingredients identified through evidence, and cannot choose a wrong remedy.",
-    "instructions": "Write docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md after measuring CharacterInventory, InventoryOwnershipSnapshot and its Give/Take/Drop/Capacity policies, the ConditionalCollectionScaffolding gate and its checks, and how ingredients are saved. Unify the inventory owner, wire Give/Take/Use, make conditional collection the normal path, identify ingredients through evidence and allow a wrong remedy. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
-    "completion_condition": "A player collects an evidence-identified ingredient through the normal path, gives, takes and uses it, and can prepare a wrong remedy, with inventory surviving save and continue, tests and smoke checks passing and continuation evidence synced with review-branch publication.",
+    "missing_deliverable": "Program Phase 4 item 4 (slice step 6): InvestigationHypothesis types have no game wiring and the journal is pre-filled, so a player cannot propose a hypothesis in the journal, have it interpreted through the Phase 3 structured-decision pipeline, or test it through an experiment.",
+    "instructions": "Write docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md after measuring the InvestigationHypothesis* Domain types, RepresentativeJournalCompositionCoordinator and the journal pre-fill, the Phase 3 StructuredDecisionPipeline, and how experiment records (now including wrong-remedy doses) reach the journal. Add a journal input that proposes a hypothesis, interpret it through the pipeline, and test the result via an experiment. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "completion_condition": "A player proposes a hypothesis in the journal, the structured-decision pipeline interprets it, and an experiment confirms or refutes it, with the result surviving save and continue, tests and smoke checks passing and continuation evidence synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md"
+      "docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md"
     ],
-    "boundary": "Phase 4 item 3 only. No hypotheses, stakes/ending or boot-time auto-resolution work (items 4-6), no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Phase 4 item 4 only. No stakes/ending or boot-time auto-resolution work (items 5-6), no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {

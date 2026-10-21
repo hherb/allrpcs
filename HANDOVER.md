@@ -21,11 +21,15 @@ Item 1 is complete and closed (`e9ec6684`): a plain launch opens Seeker customiz
 proof scenes and requested checks keep their ordinary start, and Forester opens the closed forest
 path ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); 6,068 tests,
 smoke 364 passed, 0 failed); both are merged (PR #451). Item 2 is complete and closed (`6c10af88`,
-[PR #453](https://github.com/hherb/allrpcs/pull/453), not yet merged): memory is written from turns
+[PR #453](https://github.com/hherb/allrpcs/pull/453), merged): memory is written from turns
 and examinations, save schema 9 keeps the Seeker profile and positions, and a launch with a save
 offers Continue ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md);
-6,097 tests, smoke 365 passed, 0 failed). Item 3 (ingredients) is active. Use approved D2 scoped
-checks until the Phase 4 exit.
+6,097 tests, smoke 365 passed, 0 failed). Item 3 is complete and closed (`d8885139`, branch
+`claude/phase4-ingredients`, not merged): one inventory owner, conditional gathering on the normal
+path, Give/Use at the station, a wrong remedy that changes nothing, and save schema 10
+([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md); 6,129 tests, smoke
+366 passed, 0 failed). Item 4 (hypotheses) is active. Use approved D2 scoped checks until the
+Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -44,35 +48,35 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-ingredients — Make ingredients a normal, evidence-identified part of play** (ready).
+**code-health-phase4-hypotheses — Let the player propose and test a hypothesis** (ready).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
 
-Missing deliverable: Program Phase 4 item 3 (slice steps 5 and 7): CharacterInventory and
-InventoryOwnershipSnapshot are separate owners, Give/Take/Use are not wired into play, and
-conditional collection runs only behind the ConditionalCollectionScaffolding gate in Main, so a
-player cannot gather, hand over and use ingredients identified through evidence, and cannot choose a
-wrong remedy.
+Missing deliverable: Program Phase 4 item 4 (slice step 6): InvestigationHypothesis types have no
+game wiring and the journal is pre-filled, so a player cannot propose a hypothesis in the journal,
+have it interpreted through the Phase 3 structured-decision pipeline, or test it through an
+experiment.
 
-Write docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md after measuring
-CharacterInventory, InventoryOwnershipSnapshot and its Give/Take/Drop/Capacity policies, the
-ConditionalCollectionScaffolding gate and its checks, and how ingredients are saved. Unify the
-inventory owner, wire Give/Take/Use, make conditional collection the normal path, identify
-ingredients through evidence and allow a wrong remedy. Move each touched state machine into
+Write docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md after measuring the
+InvestigationHypothesis* Domain types, RepresentativeJournalCompositionCoordinator and the journal
+pre-fill, the Phase 3 StructuredDecisionPipeline, and how experiment records (now including wrong-
+remedy doses) reach the journal. Add a journal input that proposes a hypothesis, interpret it
+through the pipeline, and test the result via an experiment. Move each touched state machine into
 src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2
 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.
 
-Done when: A player collects an evidence-identified ingredient through the normal path, gives, takes
-and uses it, and can prepare a wrong remedy, with inventory surviving save and continue, tests and
-smoke checks passing and continuation evidence synced with review-branch publication.
+Done when: A player proposes a hypothesis in the journal, the structured-decision pipeline
+interprets it, and an experiment confirms or refutes it, with the result surviving save and
+continue, tests and smoke checks passing and continuation evidence synced with review-branch
+publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md`
+- `docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md`
 
-Boundary: Phase 4 item 3 only. No hypotheses, stakes/ending or boot-time auto-resolution work (items
-4-6), no new sabotage kind, no physical/provider qualification, no merge or release.
+Boundary: Phase 4 item 4 only. No stakes/ending or boot-time auto-resolution work (items 5-6), no
+new sabotage kind, no physical/provider qualification, no merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
