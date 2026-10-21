@@ -33,7 +33,7 @@ structured-decision pipeline interprets it, and a dose confirms or refutes it, w
 derived from saved doses and no schema change
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md); 6,132 tests, smoke
 367 passed, 0 failed). Item 5 is complete and closed
-[PR #457](https://github.com/hherb/allrpcs/pull/457), not merged): every 3 time-advancing world events the
+([PR #457](https://github.com/hherb/allrpcs/pull/457), not merged): every 3 time-advancing world events the
 untreated patient worsens a stage (`FirstPatientDiseaseProgressionSchedule`); a loss (decline past
 final decline, or both doses wrong) or completion (stabilized and the sage consulted) is derived
 from saved state with no schema change and shown on a full-screen end panel that survives save and
