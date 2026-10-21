@@ -18,7 +18,8 @@ public partial class ControlInputContext : Node
         || GetNodeOrNull<CanvasLayer>("../SeekerMapPanel")?.Visible == true
         || GetNodeOrNull<CanvasLayer>("../JournalSectionPanel")?.Visible == true
         || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true
-        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true;
+        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
+        || GetNodeOrNull<Control>("../SliceEndOverlay/Panel")?.Visible == true;
     /// <inheritdoc />
     public override void _Ready() { Current = this; }
     /// <summary>Standalone predecessor scenes without this new owner retain their exact routing.</summary>

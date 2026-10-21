@@ -98,6 +98,9 @@ run_check 6000 ALLRPCS_INGREDIENT_REMEDY_CHECK=1 \
 # Two Main launches with scripted (in-process) Ollama replies; 600 frames at 60 fps is about 10 s.
 run_check 600 ALLRPCS_HYPOTHESIS_TEST_CHECK=1 \
     godot --headless --path "$repository_root/game" res://HypothesisTestFlowCheck.tscn
+# Five Main launches with no model or errand waits; 900 frames at 60 fps is about 15 s.
+run_check 900 ALLRPCS_SLICE_STAKES_CHECK=1 \
+    godot --headless --path "$repository_root/game" res://SliceStakesEndingFlowCheck.tscn
 run_check 120 ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \

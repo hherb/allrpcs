@@ -48,8 +48,50 @@ public sealed class FirstPatientTreatmentContextTests
             ],
             constructor.GetParameters().Select(parameter => parameter.ParameterType).ToArray());
         Assert.Empty(contextType.GetEvents());
-        Assert.Empty(contextType.GetMethods().Where(
-            method => method.DeclaringType == contextType && !method.IsSpecialName));
+        Assert.Equal(
+            ["WithDiseaseTruth"],
+            contextType.GetMethods()
+                .Where(method => method.DeclaringType == contextType && !method.IsSpecialName)
+                .Select(method => method.Name));
         Assert.True(contextType.IsSealed);
+    }
+
+    [Fact]
+    public void WithTheSameDiseaseTruthReturnsTheSameContext()
+    {
+        FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
+
+        Assert.Same(context, context.WithDiseaseTruth(context.Scenario.DiseaseTruth));
+        Assert.Throws<ArgumentNullException>(() => context.WithDiseaseTruth(null!));
+    }
+
+    [Fact]
+    public void WithLiveDiseaseTruthKeepsEveryOtherAuthoredReference()
+    {
+        FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
+        FirstPatientScenario authored = context.Scenario;
+        CharacterDiseaseState infection = Assert.Single(authored.DiseaseTruth.Infections);
+        DiseaseTruthSnapshot progressed = new(
+            authored.DiseaseTruth.Definitions,
+            [new CharacterDiseaseState(
+                infection.CharacterId,
+                infection.Disease,
+                DiseaseStage.Wasting,
+                null,
+                infection.CareState)]);
+
+        FirstPatientTreatmentContext live = context.WithDiseaseTruth(progressed);
+
+        Assert.NotSame(context, live);
+        Assert.Same(progressed, live.Scenario.DiseaseTruth);
+        Assert.Same(authored.PatientId, live.Scenario.PatientId);
+        Assert.Same(authored.Ingredients, live.Scenario.Ingredients);
+        Assert.Same(authored.Remedy, live.Scenario.Remedy);
+        Assert.Same(authored.Investigation, live.Scenario.Investigation);
+        Assert.Same(authored.GatheredIngredients, live.Scenario.GatheredIngredients);
+        Assert.Equal(authored.AlternativeRecipes, live.Scenario.AlternativeRecipes);
+        Assert.Same(context.EvidenceRequirement, live.EvidenceRequirement);
+        Assert.Same(context.Conclusions, live.Conclusions);
+        Assert.True(FirstPatientTreatmentContextPolicy.IsAuthorized(live));
     }
 }

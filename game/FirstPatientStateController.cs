@@ -119,7 +119,6 @@ public partial class FirstPatientStateController : Node
         PreparedIngredientBatchSnapshot? preparedBatches = PreparedBatches;
         if (diseaseTruth is null
             || preparedBatches is null
-            || !ReferenceEquals(context.Scenario.DiseaseTruth, diseaseTruth)
             || !context.Scenario.IsPreparable(preparation.Activity.Recipe))
         {
             return false;
@@ -165,12 +164,13 @@ public partial class FirstPatientStateController : Node
         if (diseaseTruth is null
             || preparedBatches is null
             || administrationExperiments is null
-            || experiments is null
-            || !ReferenceEquals(context.Scenario.DiseaseTruth, diseaseTruth))
+            || experiments is null)
         {
             return false;
         }
 
+        // The patient may have worsened since the authored scenario; treat the live patient.
+        context = context.WithDiseaseTruth(diseaseTruth);
         FirstPatientStabilizationResult result;
         try
         {
@@ -210,6 +210,13 @@ public partial class FirstPatientStateController : Node
         PreparedBatches = result.PreparedBatches;
         AdministrationExperiments = result.AdministrationExperiments;
         Experiments = result.Experiments;
+    }
+
+    /// <summary>Installs the patient's worsened disease truth from the progression schedule.</summary>
+    internal void InstallDiseaseTruth(DiseaseTruthSnapshot diseaseTruth)
+    {
+        ArgumentNullException.ThrowIfNull(diseaseTruth);
+        DiseaseTruth = diseaseTruth;
     }
 
     internal void Install(FirstPatientSaveState state)

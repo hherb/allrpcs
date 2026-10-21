@@ -70,5 +70,7 @@ public partial class SaveDocumentStorageController : Node
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_INGREDIENT_REMEDY_CHECK")
             == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_HYPOTHESIS_TEST_CHECK")
+            == EnabledEnvironmentValue
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_SLICE_STAKES_CHECK")
             == EnabledEnvironmentValue;
 }

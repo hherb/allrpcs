@@ -27,13 +27,22 @@ offers Continue ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-mem
 6,097 tests, smoke 365 passed, 0 failed). Item 3 is complete and closed (`d8885139`): one inventory owner, conditional gathering on the normal
 path, Give/Use at the station, a wrong remedy that changes nothing, and save schema 10
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md); 6,129 tests, smoke
-366 passed, 0 failed); PR #454 is merged. Item 4 is complete and closed (branch
-`claude/phase4-hypotheses`, not merged): the player proposes a hypothesis in the journal, the
+366 passed, 0 failed); PR #454 is merged. Item 4 is complete and closed
+([PR #455](https://github.com/hherb/allrpcs/pull/455), merged): the player proposes a hypothesis in the journal, the
 structured-decision pipeline interprets it, and a dose confirms or refutes it, with outcomes
 derived from saved doses and no schema change
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md); 6,132 tests, smoke
-367 passed, 0 failed). Item 5 (stakes and ending) is active. Use approved D2 scoped checks until
-the Phase 4 exit.
+367 passed, 0 failed). Item 5 is complete and closed
+([PR #457](https://github.com/hherb/allrpcs/pull/457), not merged): every 3 time-advancing world events the
+untreated patient worsens a stage (`FirstPatientDiseaseProgressionSchedule`), shown on its own
+`PatientCondition` HUD line; a loss (a further interval at final decline, or both doses wrong) or
+completion (stabilized and the sage consulted) is derived from saved state with no schema change and
+shown on a full-screen end panel that survives save and Continue
+([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md), hash-frozen: its
+step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
+`FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
+in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 (remove boot-time evidence
+auto-resolution) is active. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -52,31 +61,34 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-stakes-ending — Let the patient's illness progress and give the slice an ending** (ready).
+**code-health-phase4-boot-resolution — Stop resolving evidence at boot** (ready).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
 
-Missing deliverable: Program Phase 4 item 5 (slice step 8): disease progression, exposure and cure
-transitions are unwired, so stabilization cannot fail and the slice has no explicit ending screen.
+Missing deliverable: Program Phase 4 item 6: Main still resolves evidence at boot (passive noticing,
+stream residue and observation reinterpretation in game/Main.Initialization.cs) from Temporary*
+outcome sources, so discovery does not come from play.
 
-Write docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md after measuring the
-Domain disease progression/exposure/cure transitions, world time and journey events, the first-
-patient state and save, and what happens after stabilization today. Wire disease progression to
-journey events so delay or wrong remedies can let the patient worsen, and add an explicit slice-
-complete (and failure) screen. Move each touched state machine into src/Application with xUnit tests
-(rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected
-native launches; commit/push reviewed work; no merge or release.
+Write docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md after measuring the
+boot-time resolution calls in game/Main.Initialization.cs (TryResolveNextPassiveNoticingCandidate,
+streamResidue.TryResolve, TryResolveNextObservationReinterpretationCandidate), the Temporary*
+outcome sources and the pre-confirmed TemporaryFirstPatientTreatmentContextSource conclusion they
+feed, and which checks rely on them. Remove the boot-time resolution and the Temporary* outcome
+sources it relies on, letting play (search, examination, confirmed hypotheses) produce the evidence
+and conclusion the remedy needs. Move each touched state machine into src/Application with xUnit
+tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the
+affected native launches; commit/push reviewed work; no merge or release.
 
-Done when: Stabilization can fail through disease progression driven by journey events, the slice
-ends on an explicit completion or failure screen, the outcome survives save and continue, and tests,
-smoke checks and continuation evidence are synced with review-branch publication.
+Done when: A fresh launch resolves no evidence at boot, the Temporary* outcome sources it used are
+gone, the remedy's conclusion is reached through play, saves stay loadable or fail closed, and
+tests, smoke checks and continuation evidence are synced with review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md`
+- `docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md`
 
-Boundary: Phase 4 item 5 only. No boot-time auto-resolution work (item 6), no new sabotage kind, no
+Boundary: Phase 4 item 6 only. No owner playtest (item 7), no new sabotage kind, no
 physical/provider qualification, no merge or release.
 <!-- active-slice:end -->
 

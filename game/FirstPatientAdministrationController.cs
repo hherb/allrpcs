@@ -59,11 +59,13 @@ public partial class FirstPatientAdministrationController : Node
             || diseaseTruth is null
             || preparedBatches is null
             || administrationExperiments is null
-            || experiments is null
-            || !ReferenceEquals(context.Scenario.DiseaseTruth, diseaseTruth))
+            || experiments is null)
         {
             return false;
         }
+
+        // The patient may have worsened since the authored scenario; a wrong dose must keep that.
+        context = context.WithDiseaseTruth(diseaseTruth);
 
         FirstPatientAdministrationOccurrenceResult result;
         try
