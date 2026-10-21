@@ -94,6 +94,42 @@ public sealed class FirstPatientSaveStateRestorationTransitionTests
     }
 
     [Fact]
+    public void RebindsASavedLookAlikeBatchToTheAuthoredAlternativeRecipe()
+    {
+        RestorationInput input = Input();
+        IngredientPreparationRecipe authored = input.Context.Scenario.AlternativeRecipes[0];
+        IngredientPreparationRecipe copy = new(
+            new PreparationRecipeId(authored.RecipeId.Value),
+            new IngredientPreparationPlan(authored.Plan.Steps.Select(step =>
+                new IngredientPreparationStep(step.Kind))),
+            authored.Inputs.Select(requirement => new IngredientPreparationInputRequirement(
+                new IngredientDefinition(new IngredientId(requirement.Definition.IngredientId.Value)),
+                new IngredientQuantity(requirement.Quantity.Amount, requirement.Quantity.Unit))),
+            new IngredientDefinition(new IngredientId(authored.ResultDefinition.IngredientId.Value)),
+            new IngredientQuantity(authored.ResultQuantity.Amount, authored.ResultQuantity.Unit));
+        IngredientPreparationOutcome preparation = new(
+            new IngredientPreparationActivity(
+                copy,
+                new IngredientPreparationProgress(copy.Plan, copy.Plan.Steps.Count)),
+            copy.ResultDefinition,
+            copy.ResultQuantity);
+        FirstPatientSaveState saved = new(
+            input.Context.Scenario.DiseaseTruth,
+            new PreparedIngredientBatchSnapshot([new PreparedIngredientBatch(preparation)]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+
+        FirstPatientSaveState result = FirstPatientSaveStateRestorationTransition.Rebind(
+            saved,
+            input.Context,
+            input.WorldEvents);
+
+        Assert.Same(
+            authored,
+            Assert.Single(result.PreparedBatches.Batches).Preparation.Activity.Recipe);
+    }
+
+    [Fact]
     public void RejectsUnknownDiseaseInfectionAndPreparationDefinitionsAtomically()
     {
         RestorationInput input = Input();

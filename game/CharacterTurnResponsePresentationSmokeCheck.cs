@@ -48,6 +48,9 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
         _ = delta;
         if (stage == 0)
         {
+            // Direct installs bypass the conversation coordinator, so they drive the legacy fixture.
+            GetNode<TemporaryCharacterExaminationFlowController>(
+                "../TemporaryCharacterExaminationFlowController").SetProcess(true);
             CaptureInitialState();
             input.Text = PlayerText;
             GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.

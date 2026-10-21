@@ -5,7 +5,10 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Advances the temporary exact herb-patch examination and safe collection flow.</summary>
+/// <summary>
+/// Advances the legacy exact herb-patch examination and safe collection fixture for checks that
+/// install turns directly. It is off unless a check turns on its processing.
+/// </summary>
 public partial class TemporaryCharacterExaminationFlowController : Node
 {
     private CharacterTurnActivityController turnController = null!;
@@ -72,6 +75,9 @@ public partial class TemporaryCharacterExaminationFlowController : Node
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
         safeTargetObjectId = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id;
+        // A check fixture only: play collects through HerbExaminationActionController. Checks that
+        // install turns directly turn this on.
+        SetProcess(false);
     }
 
     /// <inheritdoc />

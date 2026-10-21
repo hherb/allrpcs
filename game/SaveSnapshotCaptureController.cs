@@ -32,6 +32,7 @@ public partial class SaveSnapshotCaptureController : Node
     private TemporaryOrdinaryCharacterParticipantSource participants = null!;
     private Node2D seeker = null!;
     private Node2D healer = null!;
+    private InventoryController inventory = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -57,6 +58,7 @@ public partial class SaveSnapshotCaptureController : Node
         routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
             "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
+        inventory = GetNode<InventoryController>("../InventoryController");
         customization = GetNode<SeekerCustomizationSelectionSceneSource>(
             "../SeekerCustomizationSelectionSceneSource");
         participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
@@ -144,7 +146,7 @@ public partial class SaveSnapshotCaptureController : Node
                 Position(participants.Participants[0].Identity.Id, healer),
             ]);
         return new SaveSnapshot(
-            SaveSchemaVersion.Continuation,
+            SaveSchemaVersion.Inventory,
             discovery,
             eventState,
             memory,
@@ -153,7 +155,8 @@ public partial class SaveSnapshotCaptureController : Node
             mapState,
             routeState,
             recoveryStage,
-            continuation);
+            continuation,
+            inventory.Ownerships);
     }
 
     private static CharacterPositionSaveState Position(CharacterId characterId, Node2D body) =>

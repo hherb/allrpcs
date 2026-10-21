@@ -91,6 +91,9 @@ run_check 120 ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SAVE_CONTINUE_CHECK=1 \
     godot --headless --path "$repository_root/game" res://SaveContinueRelaunchCheck.tscn
+# At 60 fps, 3600 frames leave a minute for the Healer to return from its authored errand.
+run_check 3600 ALLRPCS_INGREDIENT_REMEDY_CHECK=1 \
+    godot --headless --path "$repository_root/game" res://IngredientRemedyFlowCheck.tscn
 run_check 120 ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \

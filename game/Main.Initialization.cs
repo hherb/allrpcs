@@ -72,12 +72,26 @@ public partial class Main
         }
 
         if (!GetNode<FirstPatientPreparationController>("FirstPatientPreparationController")
-                .TryInitialize(
-                    firstPatient.Context.Scenario.Remedy.Recipe,
-                    firstPatient.Context.Scenario.Ingredients))
+                .TryInitialize(firstPatient.Context.Scenario))
         {
             throw new InvalidOperationException(
                 "The first-patient preparation controller could not initialize scene ingredients.");
+        }
+
+        // The Seeker starts with the field lens focused search requires; the Healer carries nothing.
+        Character healerCharacter =
+            GetNode<TemporaryHealerCharacterSource>("TemporaryHealerCharacterSource").Character;
+        CharacterInventory lens =
+            GetNode<TemporaryFocusedSearchContextSource>("TemporaryFocusedSearchContextSource").Inventory;
+        if (!GetNode<InventoryController>("InventoryController").TryInitialize(
+                [
+                    (seeker.Character.Identity.Id,
+                        new CharacterInventory(seeker.Character.Inventory.ObjectReferences
+                            .Concat(lens.ObjectReferences))),
+                    (healerCharacter.Identity.Id, healerCharacter.Inventory),
+                ]))
+        {
+            throw new InvalidOperationException("The inventory could not initialize the authored characters.");
         }
 
         if (!GetNode<WorldEventController>("WorldEventController").TryInitialize(

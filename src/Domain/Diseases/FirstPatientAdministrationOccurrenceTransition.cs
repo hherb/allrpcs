@@ -6,7 +6,10 @@ using Allrpcs.Domain.WorldEvents;
 
 namespace Allrpcs.Domain.Diseases;
 
-/// <summary>Atomically occurs one authored administration and stabilizes the first patient.</summary>
+/// <summary>
+/// Atomically occurs one authored administration: the remedy stabilizes the first patient, and an
+/// alternative (wrong) preparation is recorded as an experiment that leaves the patient unchanged.
+/// </summary>
 public static class FirstPatientAdministrationOccurrenceTransition
 {
     /// <summary>Returns exact world-event and first-patient state after one eligible dose.</summary>
@@ -65,6 +68,32 @@ public static class FirstPatientAdministrationOccurrenceTransition
             context.Scenario.PatientId,
             dosage,
             worldEvent);
+        IngredientPreparationRecipe recipe = batch.Preparation.Activity.Recipe;
+        if (!ReferenceEquals(recipe, context.Scenario.Remedy.Recipe)
+            && context.Scenario.IsPreparable(recipe))
+        {
+            // A wrong remedy is still an experiment: it is recorded and changes no disease truth.
+            IngredientAdministrationExperimentExecutionResult experiment =
+                IngredientAdministrationExperimentExecutionTransition.Execute(
+                    experimentId,
+                    administration,
+                    observedConditions,
+                    procedure,
+                    observedOutcome,
+                    worldEvents,
+                    occurrence.EventLog,
+                    preparedBatches,
+                    administrationExperiments,
+                    experiments);
+            return new FirstPatientAdministrationOccurrenceResult(
+                occurrence.EventLog,
+                occurrence.WorldTime,
+                context.Scenario.DiseaseTruth,
+                experiment.PreparedBatches,
+                experiment.AdministrationExperiments,
+                experiment.Experiments);
+        }
+
         FirstPatientStabilizationResult stabilization = FirstPatientStabilizationTransition.Apply(
             experimentId,
             context,

@@ -62,7 +62,9 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
                 binding.TreatmentContext,
                 diseaseTruth,
                 administrationExperiments,
-                worldEventSource.FirstPatientRemedyAdministeredWorldEvent,
+                administrationExperiments.Records.Count > 0
+                    ? administrationExperiments.Records[^1].Administration.WorldEvent
+                    : worldEventSource.FirstPatientRemedyAdministeredWorldEvent,
                 seekerSource.Character.Identity.Id,
                 binding.PatientPosition,
                 ToNumerics(seekerBody.GlobalPosition));
@@ -96,9 +98,8 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
             || !ReferenceEquals(
                 requestedAdministrationExperiments,
                 state.AdministrationExperiments)
-            || !ReferenceEquals(
-                requestedAdministrationWorldEvent,
-                worldEventSource.FirstPatientRemedyAdministeredWorldEvent)
+            || !worldEventSource.FirstPatientRemedyDoseWorldEvents.Any(
+                dose => ReferenceEquals(dose, requestedAdministrationWorldEvent))
             || !ReferenceEquals(requestedSeekerId, seekerSource.Character.Identity.Id)
             || requestedPatientPosition != currentBinding.PatientPosition
             || requestedSeekerPosition != ToNumerics(seekerBody.GlobalPosition)

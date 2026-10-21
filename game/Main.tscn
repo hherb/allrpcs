@@ -1,4 +1,4 @@
-[gd_scene load_steps=238 format=3]
+[gd_scene load_steps=239 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -54,6 +54,7 @@
 [ext_resource type="Script" path="res://TemporaryCharacterModelSettingsPanel.cs" id="117_model_settings_panel"]
 [ext_resource type="Script" path="res://OpenAiCredentialController.cs" id="119_openai_credential_controller"]
 [ext_resource type="Script" path="res://CharacterMemoryController.cs" id="124_character_memory_controller"]
+[ext_resource type="Script" path="res://InventoryController.cs" id="900_inventory_controller"]
 [ext_resource type="Script" path="res://FirstPatientStateController.cs" id="126_first_patient_state_controller"]
 [ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSource.cs" id="128_first_patient_context_source"]
 [ext_resource type="Script" path="res://FirstPatientPreparationController.cs" id="130_first_patient_preparation_controller"]
@@ -1623,6 +1624,9 @@ script = ExtResource("47_world_event_controller")
 
 [node name="CharacterMemoryController" type="Node" parent="."]
 script = ExtResource("124_character_memory_controller")
+
+[node name="InventoryController" type="Node" parent="."]
+script = ExtResource("900_inventory_controller")
 
 [node name="JournalController" type="Node" parent="."]
 script = ExtResource("343_journal_controller")

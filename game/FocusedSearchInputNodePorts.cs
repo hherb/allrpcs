@@ -13,6 +13,7 @@ internal sealed class FocusedSearchInputNodePorts(
     FocusedSearchActivityController searches,
     InteractionFocusController interactionFocus,
     TemporaryFocusedSearchContextSource context,
+    InventoryController inventory,
     TemporaryFocusedSearchOutcomeSource outcomeSource,
     WorldObjectController worldObjects,
     TemporaryWorldObjectSource worldObjectSource,
@@ -88,7 +89,7 @@ internal sealed class FocusedSearchInputNodePorts(
             worldObject,
             context.Conditions,
             context.Capabilities,
-            context.Inventory);
+            inventory.InventoryOf(searches.SearcherCharacterId));
 
     public void RefreshResolvedPerception() => refreshResolvedPerception();
 

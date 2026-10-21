@@ -113,6 +113,15 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
             return;
         }
 
+        // The remedy needs gathered moonwort; without it the station prepares the look-alike.
+        if (!GetNode<InventoryController>("../InventoryController").TryTake(
+            GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource").Character.Identity.Id,
+            InventoryController.MoonwortLeaves))
+        {
+            Fail("The Seeker could not be given gathered moonwort.");
+            return;
+        }
+
         seeker.GlobalPosition = ToGodot(binding.StationPosition);
         Press(coordinator);
         IngredientPreparationActivity started = preparation.Activity!;
@@ -174,9 +183,11 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
             || !ReferenceEquals(installed.Batches[0].Preparation, outcome)
             || !ReferenceEquals(installed.Batches[0].RemainingQuantity, outcome.Quantity)
             || status.Text
-                != OpeningRegionRemedyPreparationInputCoordinator.BatchReadyStatusText)
+                != OpeningRegionRemedyPreparationInputCoordinator.BatchReadyStatusText
+            || GetNode<InventoryController>("../InventoryController").Ownerships!.Entries.Any(
+                entry => entry.ObjectId == InventoryController.MoonwortLeaves))
         {
-            Fail("Mapped preparation did not install one exact full prepared batch.");
+            Fail("Mapped preparation did not install one exact full prepared batch using the moonwort.");
             return;
         }
 

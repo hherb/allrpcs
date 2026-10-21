@@ -20,39 +20,49 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
     internal const string MoveCloserStatusText = "Treatment: move closer to the patient.";
     internal const string AdministeredStatusText =
         "Treatment: administered. Stay near the patient for testimony.";
+    internal const string NoChangeStatusText =
+        "Treatment: the patient's breathing does not change. Prepare another dose.";
+    internal const string NoDoseLeftStatusText =
+        "Treatment: the patient cannot take another dose.";
 
     private const float MaximumInteractionDistancePixels = 64.0f;
     private const string ObservedOutcome =
         "The patient's breathing becomes quieter and steadier.";
+    private const string NoChangeOutcome = "The patient's breathing does not change.";
     private const string Procedure = "Administer the complete cooled remedy batch.";
+    private static readonly ExperimentId[] DoseExperimentIds =
+        [new("first-patient-remedy-administration"), new("first-patient-remedy-second-dose")];
     private static readonly StringName AdministrationAction = new("remedy_administer");
 
     private FirstPatientAdministrationController administration = null!;
-    private ExperimentId experimentId = null!;
     private TemporaryHealerCharacterSource healer = null!;
     private CharacterConditionSet observedConditions = null!;
+    private CharacterConditionSet unchangedConditions = null!;
     private OpeningRegionFirstPatientSceneSource scene = null!;
     private CharacterBody2D seeker = null!;
     private FirstPatientStateController state = null!;
     private Label status = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
+    private WorldEventController worldEventController = null!;
 
     /// <inheritdoc />
     public override void _Ready()
     {
         administration = GetNode<FirstPatientAdministrationController>(
             "../FirstPatientAdministrationController");
-        experimentId = new ExperimentId("first-patient-remedy-administration");
         healer = GetNode<TemporaryHealerCharacterSource>(
             "../TemporaryHealerCharacterSource");
         observedConditions = new CharacterConditionSet(
             [new CharacterCondition("breathing", "Breathing becomes quieter and steadier.")]);
+        unchangedConditions = new CharacterConditionSet(
+            [new CharacterCondition("breathing", "Breathing is unchanged.")]);
         scene = GetNode<OpeningRegionFirstPatientSceneSource>(
             "../OpeningRegionFirstPatientSceneSource");
         seeker = GetNode<CharacterBody2D>("../Seeker");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
+        worldEventController = GetNode<WorldEventController>("../WorldEventController");
     }
 
     /// <inheritdoc />
@@ -70,11 +80,14 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         IReadOnlyList<PreparedIngredientBatch>? batches = state.PreparedBatches?.Batches;
         PreparedIngredientBatch? batch = batches is { Count: 1 } ? batches[0] : null;
         NumericsVector2 seekerPosition = ToNumerics(seeker.GlobalPosition);
+        WorldEvent? dose = NextDose();
         if (batch is null)
         {
-            ControlSettingsController.SetGuidance(status, state.AdministrationExperiments?.Records.Count > 0
-                ? AdministeredStatusText
-                : BatchRequiredStatusText);
+            ControlSettingsController.SetGuidance(status, AfterDoseStatusText() ?? BatchRequiredStatusText);
+        }
+        else if (dose is null)
+        {
+            ControlSettingsController.SetGuidance(status, NoDoseLeftStatusText);
         }
         else if (binding is not null
             && NumericsVector2.Distance(seekerPosition, binding.PatientPosition)
@@ -87,10 +100,10 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
                 binding,
                 binding.TreatmentContext,
                 batch,
-                worldEventSource.FirstPatientRemedyAdministeredWorldEvent,
+                dose,
                 seekerPosition))
         {
-            ControlSettingsController.SetGuidance(status, AdministeredStatusText);
+            ControlSettingsController.SetGuidance(status, AfterDoseStatusText()!);
         }
 
         GetViewport().SetInputAsHandled();
@@ -120,9 +133,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             || !ReferenceEquals(state.DiseaseTruth, requestedContext.Scenario.DiseaseTruth)
             || currentBatches.Batches.Count != 1
             || !ReferenceEquals(currentBatches.Batches[0], requestedBatch)
-            || !ReferenceEquals(
-                requestedWorldEvent,
-                worldEventSource.FirstPatientRemedyAdministeredWorldEvent)
+            || !ReferenceEquals(requestedWorldEvent, NextDose())
             || NumericsVector2.Distance(seekerPosition, currentBinding.PatientPosition)
                 > MaximumInteractionDistancePixels)
         {
@@ -132,16 +143,21 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         IngredientQuantity dosage = new(
             requestedBatch.RemainingQuantity.Amount,
             requestedBatch.RemainingQuantity.Unit);
+        // Only the remedy changes the patient; the engine records what a wrong dose did.
+        bool remedy = ReferenceEquals(
+            requestedBatch.Preparation.Activity.Recipe,
+            requestedContext.Scenario.Remedy.Recipe);
+        int doseIndex = worldEventSource.FirstPatientRemedyDoseWorldEvents.ToList().IndexOf(requestedWorldEvent);
         bool administered = administration.TryAdminister(
-            experimentId,
+            DoseExperimentIds[doseIndex],
             requestedContext,
             healer.Character.Identity.Id,
             requestedWorldEvent,
             requestedBatch,
             dosage,
-            observedConditions,
+            remedy ? observedConditions : unchangedConditions,
             Procedure,
-            ObservedOutcome);
+            remedy ? ObservedOutcome : NoChangeOutcome);
         if (administered)
         {
             foreach (Delegate listener in TreatmentCompleted?.GetInvocationList() ?? [])
@@ -151,6 +167,25 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             }
         }
         return administered;
+    }
+
+    // The next authored dose whose event has not occurred yet, or none.
+    private WorldEvent? NextDose() => worldEventSource.FirstPatientRemedyDoseWorldEvents.FirstOrDefault(
+        dose => worldEventController.EventLog?.Entries.Contains(dose.EventId) == false);
+
+    private string? AfterDoseStatusText()
+    {
+        IReadOnlyList<IngredientAdministrationExperimentRecord>? records = state.AdministrationExperiments?.Records;
+        if (records is not { Count: > 0 })
+        {
+            return null;
+        }
+
+        CharacterDiseaseState? infection = state.DiseaseTruth?.Infections.FirstOrDefault(
+            candidate => candidate.CharacterId == records[^1].Administration.PatientId);
+        return infection?.CareState == DiseaseCareState.Stabilized ? AdministeredStatusText
+            : NextDose() is null ? NoDoseLeftStatusText
+            : NoChangeStatusText;
     }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>

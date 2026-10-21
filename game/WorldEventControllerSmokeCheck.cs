@@ -92,7 +92,7 @@ public partial class WorldEventControllerSmokeCheck : Node
         }
 
         if (!ReferenceEquals(source.WorldEvents, sourceSnapshot)
-            || sourceSnapshot.Entries.Count != 5
+            || sourceSnapshot.Entries.Count != 6
             || !ReferenceEquals(sourceSnapshot.Entries[0], sourceEvent)
             || !ReferenceEquals(source.InitialWorldEvent, sourceEvent)
             || !ReferenceEquals(

@@ -28,6 +28,15 @@ public sealed class AcceptedCharacterExaminationTests
     }
 
     [Fact]
+    public void AcceptsAConditionalExaminationButNotAClarification()
+    {
+        Assert.NotNull(AcceptedCharacterExamination.TryAccept(
+            Activity(false, disposition: CharacterTurnDisposition.ConditionallyAccept), Actor, Target, new([])));
+        Assert.Null(AcceptedCharacterExamination.TryAccept(
+            Activity(false, disposition: CharacterTurnDisposition.Clarify), Actor, Target, new([])));
+    }
+
+    [Fact]
     public void RejectsUnrecordedOrReconstructedSpeech()
     {
         var activity = Activity(true);
@@ -81,7 +90,11 @@ public sealed class AcceptedCharacterExaminationTests
         Assert.Throws<ArgumentException>(() => HerbExaminationEventCatalog.Expand(new([]), new([new(id)])));
     }
 
-    private static CharacterTurnActivity Activity(bool spoken, bool wait = false, bool refuse = false)
+    private static CharacterTurnActivity Activity(
+        bool spoken,
+        bool wait = false,
+        bool refuse = false,
+        CharacterTurnDisposition? disposition = null)
     {
         CharacterId player = new("seeker");
         DialogueUtterance input = new(player, "Please examine the herb patch.");
@@ -90,7 +103,7 @@ public sealed class AcceptedCharacterExaminationTests
         DialogueDelivery? delivery = spoken ? new(new(Actor, "I will examine it."),
             DialogueDeliveryMode.OrdinarySpeech) : null;
         CharacterTurnResponse response = new(request,
-            refuse ? CharacterTurnDisposition.Refuse : CharacterTurnDisposition.Accept,
+            disposition ?? (refuse ? CharacterTurnDisposition.Refuse : CharacterTurnDisposition.Accept),
             delivery, wait ? new(CharacterIntentionType.Wait, null)
                 : new(CharacterIntentionType.ExamineObject, new("herb-patch")), [], []);
         return new(request, response, CharacterTurnActivityState.Speaking);

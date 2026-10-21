@@ -26,6 +26,7 @@ public partial class SaveSnapshotRestorationController : Node
     private OpeningRegionFirstPatientStabilizationTestimonyCoordinator patientTestimony = null!;
     private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private TemporaryOrdinaryCharacterParticipantSource participants = null!;
+    private InventoryController inventory = null!;
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
@@ -56,6 +57,7 @@ public partial class SaveSnapshotRestorationController : Node
             "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
         sageConsultation = GetNode<OpeningRegionSageConsultationInputCoordinator>(
             "../OpeningRegionSageConsultationInputCoordinator");
+        inventory = GetNode<InventoryController>("../InventoryController");
         participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
             "../TemporaryOrdinaryCharacterParticipantSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
@@ -323,6 +325,7 @@ public partial class SaveSnapshotRestorationController : Node
                 body.Velocity = Vector2.Zero;
             }
         }));
+        Register("inventory", () => new(inventory.PrepareRestoration(snapshot.Inventory)));
         GetParent<Main>().RegisterSessionRestoreParticipants(registry);
         // Deliberately last: authored preparation can reject an otherwise valid projected root.
         Register("first-patient-preparation", () => new(reboundFirstPatient is null

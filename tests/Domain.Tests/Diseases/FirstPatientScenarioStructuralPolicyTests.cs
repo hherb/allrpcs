@@ -23,6 +23,37 @@ public sealed class FirstPatientScenarioStructuralPolicyTests
     }
 
     [Fact]
+    public void RejectsAnUnpreparableAlternativeTheRemedyAsAlternativeAndForeignGatheredState()
+    {
+        FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
+        FirstPatientScenario With(
+            IngredientStateSnapshot gathered,
+            IEnumerable<IngredientPreparationRecipe> alternatives) =>
+            new(
+                scenario.PatientId,
+                scenario.DiseaseTruth,
+                scenario.Ingredients,
+                scenario.Remedy,
+                scenario.Investigation,
+                gathered,
+                alternatives);
+        IngredientState foreignMoonwort = RepresentativeFirstPatientScenarioSource.Create()
+            .GatheredIngredients.States[0];
+
+        Assert.True(FirstPatientScenarioStructuralPolicy.IsAcceptable(
+            With(scenario.GatheredIngredients, scenario.AlternativeRecipes)));
+        Assert.False(FirstPatientScenarioStructuralPolicy.IsAcceptable(
+            With(scenario.GatheredIngredients, [scenario.Remedy.Recipe])));
+        // Gathering the look-alike leaves removes them from the station, so it cannot be made there.
+        IngredientState lookAlike = scenario.Ingredients.States.Single(state =>
+            state.Definition.IngredientId.Value == "false-moonwort-leaf");
+        Assert.False(FirstPatientScenarioStructuralPolicy.IsAcceptable(
+            With(new IngredientStateSnapshot([lookAlike]), scenario.AlternativeRecipes)));
+        Assert.False(FirstPatientScenarioStructuralPolicy.IsAcceptable(
+            With(new IngredientStateSnapshot([foreignMoonwort]), scenario.AlternativeRecipes)));
+    }
+
+    [Fact]
     public void RejectsValueEqualReplacementPatientAndDiseaseDefinitions()
     {
         RepresentativeFirstPatientScenarioSourceTests.ScenarioInput input =

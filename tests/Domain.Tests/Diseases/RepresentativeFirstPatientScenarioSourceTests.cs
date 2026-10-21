@@ -42,6 +42,37 @@ public sealed class RepresentativeFirstPatientScenarioSourceTests
     }
 
     [Fact]
+    public void MoonwortMustBeGatheredWhileTheStationOnlyPreparesTheLookAlike()
+    {
+        FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
+
+        IngredientState gathered = Assert.Single(scenario.GatheredIngredients.States);
+        Assert.Equal("moonwort-leaf", gathered.Definition.IngredientId.Value);
+        Assert.Contains(gathered, scenario.Ingredients.States);
+        Assert.DoesNotContain(scenario.StationIngredients.States, state =>
+            ReferenceEquals(state.Definition, gathered.Definition));
+        Assert.False(IngredientPreparationAvailabilityPolicy.HasRequiredInputs(
+            scenario.Remedy.Recipe,
+            scenario.StationIngredients));
+        Assert.True(IngredientPreparationAvailabilityPolicy.HasRequiredInputs(
+            scenario.Remedy.Recipe,
+            new IngredientStateSnapshot([.. scenario.StationIngredients.States, gathered])));
+
+        IngredientPreparationRecipe lookAlike = Assert.Single(scenario.AlternativeRecipes);
+        Assert.Equal("cooling-false-moonwort-preparation", lookAlike.RecipeId.Value);
+        Assert.True(IngredientPreparationAvailabilityPolicy.HasRequiredInputs(
+            lookAlike,
+            scenario.StationIngredients));
+        Assert.Equal(
+            scenario.Remedy.Recipe.Plan.Steps.Select(step => step.Kind),
+            lookAlike.Plan.Steps.Select(step => step.Kind));
+        Assert.True(scenario.IsPreparable(lookAlike));
+        Assert.True(scenario.IsPreparable(scenario.Remedy.Recipe));
+        Assert.False(scenario.IsPreparable(
+            RepresentativeFirstPatientScenarioSource.Create().Remedy.Recipe));
+    }
+
+    [Fact]
     public void CreatesFreshIndependentAggregatesAndExposesOnlyOneFactoryMethod()
     {
         FirstPatientScenario first = RepresentativeFirstPatientScenarioSource.Create();

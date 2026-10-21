@@ -35,7 +35,6 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
         string mode = OS.GetEnvironment(CheckEnvironmentVariable);
         bool enabled = mode is EnabledEnvironmentValue or GeneratedMode;
         SetProcess(enabled);
-        if (enabled) { GetParent<Main>().ConditionalCollectionScaffolding = true; }
         if (!enabled)
         {
             return;
@@ -69,6 +68,9 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
         _ = delta;
         if (stage == 0)
         {
+            // Direct installs bypass the conversation coordinator, so they drive the legacy
+            // fixture; generated turns take the normal path, which never runs it.
+            flowController.SetProcess(!useGeneratedResponse);
             initialWorldObjects = GetNode<WorldObjectController>(
                 "../WorldObjectController").WorldObjects;
             initialPerception = GetNode<FocusedSearchActivityController>(
@@ -117,6 +119,12 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             return;
         }
 
+        if (useGeneratedResponse)
+        {
+            VerifyGeneratedDispatch();
+            return;
+        }
+
         if (flowController.LastCollectionOccurrence is null)
         {
             return;
@@ -149,26 +157,48 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             || !ReferenceEquals(
                 GetNode<FocusedSearchActivityController>(
                     "../Seeker/FocusedSearchActivityController").Perception,
-                initialPerception)
-            || (useGeneratedResponse && !ProvesGeneratedResponseBoundary(result)))
+                initialPerception))
         {
             Fail("Live examination flow failed exact ordered safe collection containment.");
             return;
         }
 
         GD.Print(
-            useGeneratedResponse
-                ? "Generated character examination flow smoke passed: one validated model response "
-                    + "used a distinct value-equal known target to produce exact healer speech, "
-                    + "authoritative examination and safe collection in order without changing "
-                    + "world objects or perception."
-                : "Character examination flow smoke passed: exact player and healer speech, "
-                    + "examination, authoritative safe result, and collection occurred in order "
-                    + "while world objects and perception remained unchanged.");
+            "Character examination flow smoke passed: exact player and healer speech, "
+            + "examination, authoritative safe result, and collection occurred in order "
+            + "while world objects and perception remained unchanged.");
         GetTree().Quit();
     }
 
-    private bool ProvesGeneratedResponseBoundary(CharacterExaminationResult result)
+    // The walk, examination and collection of the normal path are proven by
+    // IngredientRemedyFlowCheck; this proves the model boundary up to its dispatch.
+    private void VerifyGeneratedDispatch()
+    {
+        HerbExaminationActionController action =
+            GetNode<HerbExaminationActionController>("../HerbExaminationActionController");
+        // Offer sets the status; it stays even if the walk then fails in the same frame.
+        if (action.Status.Length == 0)
+        {
+            return;
+        }
+
+        SetProcess(false);
+        if (!ProvesGeneratedResponseBoundary()
+            || flowController.LastExaminationResult is not null
+            || action.LastResult is not null)
+        {
+            Fail("Generated examination did not enter only the normal examination path.");
+            return;
+        }
+
+        GD.Print(
+            "Generated character examination flow smoke passed: one validated conditional model "
+            + "response used a distinct value-equal known target and entered only the normal "
+            + "examination path.");
+        GetTree().Quit();
+    }
+
+    private bool ProvesGeneratedResponseBoundary()
     {
         CharacterModelGenerationRequest? request = generatedModel.ReceivedRequest;
         CharacterTurnResponse? response = generatedModel.Response;
@@ -197,7 +227,6 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
                 CharacterIntentionType.ExamineObject)
             && proposedTarget == authoritativeTarget
             && !ReferenceEquals(proposedTarget, authoritativeTarget)
-            && ReferenceEquals(result.TargetObjectId, proposedTarget)
             && affordances.Length == 1
             && affordances[0].Text == "type=examine-object;target=herb-patch"
             && request.Context.Entries.All(
@@ -229,7 +258,7 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             ReceivedRequest = request;
             Response = new CharacterTurnResponse(
                 request.TurnRequest,
-                CharacterTurnDisposition.Accept,
+                CharacterTurnDisposition.ConditionallyAccept,
                 new DialogueDelivery(
                     new DialogueUtterance(
                         request.TurnRequest.RespondingCharacterId,

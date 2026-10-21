@@ -109,7 +109,7 @@ public partial class OpeningRegionFirstPatientRecoveryRestorationSmokeCheck : No
             ?? throw new InvalidOperationException("Pre-preparation state was not capturable.");
         FirstPatientTreatmentContext context = contextSource.Context;
         IngredientPreparationRecipe recipe = context.Scenario.Remedy.Recipe;
-        if (!preparation.TryStart(recipe))
+        if (!preparation.TryStart(recipe, context.Scenario.GatheredIngredients.States[0]))
         {
             Fail("Recovery restoration smoke could not start ordinary preparation.");
             return;
@@ -195,7 +195,7 @@ public partial class OpeningRegionFirstPatientRecoveryRestorationSmokeCheck : No
         if (!restoration.TryRestore(beforePreparation)
             || preparation.Activity is not null
             || preparation.Outcome is not null
-            || !preparation.TryStart(recipe))
+            || !preparation.TryStart(recipe, context.Scenario.GatheredIngredients.States[0]))
         {
             Fail("Recovery restoration did not reset the pre-preparation continuation.");
             return;

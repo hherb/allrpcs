@@ -13,7 +13,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
         FirstPatientPreparationController preparation = GetNode<FirstPatientPreparationController>(
             "../FirstPatientPreparationController");
         FieldInfo field = typeof(FirstPatientPreparationController).GetField(
-            "initialIngredients", BindingFlags.Instance | BindingFlags.NonPublic)!;
+            "lifecycle", BindingFlags.Instance | BindingFlags.NonPublic)!;
         object? ingredients = field.GetValue(preparation);
         object? priorTruth = firstPatientController.DiseaseTruth;
         object? priorJournal = journalController.Journal;
@@ -128,6 +128,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             "route-consumption",
             "seeker-customization",
             "character-positions",
+            "inventory",
             "participation-coordinator",
             "participation-round",
             "conversation-budget",

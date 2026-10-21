@@ -1,8 +1,11 @@
 using Allrpcs.Application.Audio;
+using Allrpcs.Application.Diseases;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Persistence;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -44,20 +47,36 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         && ReferenceEquals(scene.Binding, commit.Binding) && ReferenceEquals(preparation.Activity, commit.After)
         && ReferenceEquals(preparation.Recipe, commit.Binding.Recipe);
 
-    internal const string ReadyStatusText = "Preparation: go to the station and press P.";
+    internal const string ReadyStatusText =
+        "Preparation: bring moonwort to the station, or press P there to use its unlabelled dried leaves.";
+    internal const string CarryingStatusText =
+        "Preparation: you carry moonwort leaves. Press P at the station to prepare the remedy.";
     internal const string MoveCloserStatusText = "Preparation: move closer to the station.";
     internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
+    internal const string LookAlikeStartedStatusText =
+        "Preparation: started with the station's unidentified dried leaves. Press P for step 1.";
+    internal const string FailedDoseStatusText =
+        "Preparation: that dose changed nothing. Press P at the station to prepare another.";
     internal const string CompletedStatusText =
         "Preparation: complete. Press P to prepare the batch.";
     internal const string BatchReadyStatusText =
         "Preparation: batch ready. Go to the sickhouse and press T.";
 
     private const float MaximumInteractionDistancePixels = 48.0f;
+    // A following Healer stops 72 px away, so a hand-over reaches a little further than that.
+    private const float MaximumHandOverDistancePixels = 120.0f;
     private static readonly StringName PreparationAction = new("remedy_prepare");
 
     private FirstPatientPreparationController preparation = null!;
     private OpeningRegionRemedyPreparationSceneSource scene = null!;
     private CharacterBody2D seeker = null!;
+    private Healer healer = null!;
+    // The character sources are ready only after this node, so their ids are read on use.
+    private CharacterId SeekerId =>
+        GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource").Character.Identity.Id;
+    private CharacterId HealerId =>
+        GetNode<TemporaryHealerCharacterSource>("../TemporaryHealerCharacterSource").Character.Identity.Id;
+    private InventoryController inventory = null!;
     private FirstPatientStateController state = null!;
     private Label status = null!;
 
@@ -69,6 +88,8 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         scene = GetNode<OpeningRegionRemedyPreparationSceneSource>(
             "../OpeningRegionRemedyPreparationSceneSource");
         seeker = GetNode<CharacterBody2D>("../Seeker");
+        healer = GetNode<Healer>("../Healer");
+        inventory = GetNode<InventoryController>("../InventoryController");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         ControlSettingsController.SetGuidance(status, ReadyStatusText);
@@ -161,31 +182,38 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             return false;
         }
 
+        if (state.AdministrationExperiments is { } doses)
+        {
+            _ = preparation.TryRestartAfterFailedDose(doses);
+        }
+
         IngredientPreparationActivity? activity = preparation.Activity;
         if (activity is null)
         {
-            return preparation.Outcome is null && preparation.TryStart(requestedRecipe);
+            return preparation.Outcome is null && TryIdleAction(requestedContext, requestedRecipe);
         }
 
         if (preparation.Outcome is null)
         {
+            // A look-alike preparation follows the same steps from its own recipe.
+            IngredientPreparationRecipe activeRecipe = activity.Recipe;
             int nextStepIndex = activity.Progress.NextStepIndex;
-            if (nextStepIndex >= requestedRecipe.Plan.Steps.Count) { return preparation.TryComplete(); }
-            IngredientPreparationStep step = requestedRecipe.Plan.Steps[nextStepIndex];
+            if (nextStepIndex >= activeRecipe.Plan.Steps.Count) { return preparation.TryComplete(); }
+            IngredientPreparationStep step = activeRecipe.Plan.Steps[nextStepIndex];
             bool advanced = preparation.TryAdvance(step);
-            if (advanced && OpeningRegionMaterialAudioProjection.IsGrinding(requestedRecipe, step))
+            if (advanced && OpeningRegionMaterialAudioProjection.IsGrinding(activeRecipe, step))
             {
                 foreach (Delegate listener in GrindingCompleted?.GetInvocationList() ?? [])
                 {
                     try
                     {
                         ((Action<IngredientPreparationRecipe, IngredientPreparationStep, Vector2>)listener)(
-                            requestedRecipe, step, new Vector2(currentBinding.StationPosition.X, currentBinding.StationPosition.Y));
+                            activeRecipe, step, new Vector2(currentBinding.StationPosition.X, currentBinding.StationPosition.Y));
                     }
                     catch (Exception exception) { GD.PrintErr($"Grinding presentation failed: {exception.Message}"); }
                 }
             }
-            if (advanced && RemedyHeatingPresentationProjection.IsCommit(requestedRecipe, step, activity, preparation.Activity)
+            if (advanced && RemedyHeatingPresentationProjection.IsCommit(activeRecipe, step, activity, preparation.Activity)
                 && RemedyHeatingPresentationProjection.Local(ToNumerics(seeker.GlobalPosition), seekerPosition, currentBinding.StationPosition))
             {
                 heatingCommit = new(this, currentBinding, activity, preparation.Activity!, step, seeker.GlobalPosition);
@@ -195,7 +223,7 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                     catch (Exception exception) { GD.PrintErr($"Heating presentation failed: {exception.Message}"); }
                 }
             }
-            if (advanced && RemedySteepingPresentationProjection.IsCommit(requestedRecipe, step, activity, preparation.Activity)
+            if (advanced && RemedySteepingPresentationProjection.IsCommit(activeRecipe, step, activity, preparation.Activity)
                 && RemedySteepingPresentationProjection.Local(ToNumerics(seeker.GlobalPosition), seekerPosition, currentBinding.StationPosition))
             {
                 steepingCommit = new(this, currentBinding, activity, preparation.Activity!, step, seeker.GlobalPosition);
@@ -205,7 +233,7 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                     catch (Exception exception) { GD.PrintErr($"Steeping presentation failed: {exception.Message}"); }
                 }
             }
-            if (advanced && RemedyCoolingPresentationProjection.IsCommit(requestedRecipe, step, activity, preparation.Activity)
+            if (advanced && RemedyCoolingPresentationProjection.IsCommit(activeRecipe, step, activity, preparation.Activity)
                 && RemedyCoolingPresentationProjection.Local(ToNumerics(seeker.GlobalPosition), seekerPosition, currentBinding.StationPosition))
             {
                 coolingCommit = new(this, currentBinding, activity, preparation.Activity!, step, seeker.GlobalPosition);
@@ -225,7 +253,48 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             return false;
         }
 
-        return state.TryAddPreparedBatch(requestedContext, outcome);
+        // The remedy's moonwort is used up only when its batch is made, so an unfinished
+        // preparation (which a load discards) never loses the herb.
+        bool remedy = ReferenceEquals(outcome.Activity.Recipe, requestedRecipe);
+        if (remedy && !inventory.Carries(SeekerId, InventoryController.MoonwortLeaves))
+        {
+            return false;
+        }
+
+        if (!state.TryAddPreparedBatch(requestedContext, outcome))
+        {
+            return false;
+        }
+
+        return !remedy || inventory.TryUse(SeekerId, InventoryController.MoonwortLeaves);
+    }
+
+    private bool TryIdleAction(FirstPatientTreatmentContext context, IngredientPreparationRecipe remedy)
+    {
+        // No new preparation once every authored dose has been given; it could never be used.
+        WorldEventLogSnapshot? log = GetNode<WorldEventController>("../WorldEventController").EventLog;
+        if (log is null || GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
+                .FirstPatientRemedyDoseWorldEvents.All(dose => log.Entries.Contains(dose.EventId)))
+        {
+            return false;
+        }
+
+        bool healerNear = healer.Visible
+            && healer.GlobalPosition.DistanceTo(seeker.GlobalPosition) <= MaximumHandOverDistancePixels
+            && inventory.Carries(HealerId, InventoryController.MoonwortLeaves);
+        // shortcut: moonwort is the scenario's only gathered herb and the look-alike its only
+        // alternative; a second herb needs an object-to-ingredient catalog.
+        return RemedyStationPolicy.Choose(
+                inventory.Carries(SeekerId, InventoryController.MoonwortLeaves),
+                healerNear) switch
+        {
+            RemedyStationAction.PrepareRemedy => context.Scenario.GatheredIngredients.States.Count == 1
+                && preparation.TryStart(remedy, context.Scenario.GatheredIngredients.States[0]),
+            RemedyStationAction.ReceiveFromHealer =>
+                inventory.TryGive(HealerId, SeekerId, InventoryController.MoonwortLeaves),
+            _ => context.Scenario.AlternativeRecipes.Count > 0
+                && preparation.TryStart(context.Scenario.AlternativeRecipes[0]),
+        };
     }
 
     private bool RetainsExactFirstPatientState(FirstPatientSaveState requested) =>
@@ -251,6 +320,13 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             return BatchReadyStatusText;
         }
 
+        if (outcome is not null
+            && state.AdministrationExperiments?.Records.Any(record =>
+                ReferenceEquals(record.Administration.Dosage.Preparation, outcome)) == true)
+        {
+            return FailedDoseStatusText;
+        }
+
         if (outcome is not null)
         {
             return CompletedStatusText;
@@ -259,13 +335,15 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         IngredientPreparationActivity? activity = preparation.Activity;
         if (activity is null)
         {
-            return ReadyStatusText;
+            return inventory.Carries(SeekerId, InventoryController.MoonwortLeaves)
+                ? CarryingStatusText
+                : ReadyStatusText;
         }
 
         int completedStepCount = activity.Progress.NextStepIndex;
         return completedStepCount == 0
-            ? StartedStatusText
-            : StepStatusText(completedStepCount, recipe.Plan.Steps.Count);
+            ? ReferenceEquals(activity.Recipe, recipe) ? StartedStatusText : LookAlikeStartedStatusText
+            : StepStatusText(completedStepCount, activity.Recipe.Plan.Steps.Count);
     }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>

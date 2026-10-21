@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Identifiers;
 
 namespace Allrpcs.Domain.Inventory;
@@ -44,4 +45,17 @@ public sealed class InventoryOwnershipSnapshot
     /// Gets inventory-ownership associations in their stable supplied order.
     /// </summary>
     public IReadOnlyList<InventoryOwnership> Entries { get; }
+
+    /// <summary>
+    /// Projects one character's inventory: the objects this snapshot records as owned by that
+    /// character, in snapshot order. This snapshot is the only owner; the view is never stored.
+    /// </summary>
+    public CharacterInventory InventoryOf(CharacterId characterId)
+    {
+        ArgumentNullException.ThrowIfNull(characterId);
+
+        return new CharacterInventory(Entries
+            .Where(entry => entry.OwnerCharacterId == characterId)
+            .Select(entry => entry.ObjectId));
+    }
 }

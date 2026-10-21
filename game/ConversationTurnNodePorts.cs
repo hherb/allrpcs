@@ -25,8 +25,7 @@ internal sealed class ConversationTurnNodePorts(
     TemporaryCharacterTurnParticipationModelSource participationModelSource,
     AutonomousConversationBudgetController budget,
     HerbExaminationActionController examination,
-    TemporaryCharacterExaminationFlowController examinationScaffold,
-    Func<bool> conditionalCollectionScaffolding)
+    TemporaryCharacterExaminationFlowController examinationScaffold)
     : IConversationTurnPorts<TemporaryCharacterModelGenerationInput>
 {
     public bool GenerationHasStarted => modelFlow.HasStarted;
@@ -139,11 +138,7 @@ internal sealed class ConversationTurnNodePorts(
 
     public void OfferExamination(CharacterTurnActivity activity)
     {
-        if (conditionalCollectionScaffolding())
-        {
-            return;
-        }
-
+        // The legacy fixture never runs beside the normal path, even if a check turned it on.
         examinationScaffold.SetProcess(false);
         examination.Offer(activity);
     }

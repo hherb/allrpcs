@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Inventory;
 
 namespace Allrpcs.Domain.Persistence;
 
@@ -121,7 +122,8 @@ public sealed record SaveSnapshot
         MapSaveState? map,
         InvestigationRouteSaveState? investigationRoutes,
         FirstPatientRecoveryStage? firstPatientRecovery = null,
-        SaveContinuationState? continuation = null)
+        SaveContinuationState? continuation = null,
+        InventoryOwnershipSnapshot? inventory = null)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
@@ -134,7 +136,8 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || schemaVersion == SaveSchemaVersion.Continuation;
+            || schemaVersion == SaveSchemaVersion.Continuation
+            || schemaVersion == SaveSchemaVersion.Inventory;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -159,7 +162,8 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || schemaVersion == SaveSchemaVersion.Continuation;
+            || schemaVersion == SaveSchemaVersion.Continuation
+            || schemaVersion == SaveSchemaVersion.Inventory;
         if (retainsJournal && journal is null)
         {
             throw new ArgumentNullException(nameof(journal));
@@ -183,7 +187,8 @@ public sealed record SaveSnapshot
         bool retainsMap = schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || schemaVersion == SaveSchemaVersion.Continuation;
+            || schemaVersion == SaveSchemaVersion.Continuation
+            || schemaVersion == SaveSchemaVersion.Inventory;
         if (retainsMap && map is null)
         {
             throw new ArgumentNullException(nameof(map));
@@ -207,7 +212,8 @@ public sealed record SaveSnapshot
 
         bool retainsRoutes = schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || schemaVersion == SaveSchemaVersion.Continuation;
+            || schemaVersion == SaveSchemaVersion.Continuation
+            || schemaVersion == SaveSchemaVersion.Inventory;
         if (retainsRoutes
             && investigationRoutes is null)
         {
@@ -223,7 +229,8 @@ public sealed record SaveSnapshot
         }
 
         bool retainsRecovery = schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || schemaVersion == SaveSchemaVersion.Continuation;
+            || schemaVersion == SaveSchemaVersion.Continuation
+            || schemaVersion == SaveSchemaVersion.Inventory;
         if (retainsRecovery && firstPatientRecovery is null)
         {
             throw new ArgumentNullException(nameof(firstPatientRecovery));
@@ -238,11 +245,22 @@ public sealed record SaveSnapshot
 
         // A continuation schema root without continuation state restores no profile or positions;
         // rejected-restore checks copy a captured root this way.
-        if (schemaVersion != SaveSchemaVersion.Continuation && continuation is not null)
+        if (schemaVersion != SaveSchemaVersion.Continuation
+            && schemaVersion != SaveSchemaVersion.Inventory
+            && continuation is not null)
         {
             throw new ArgumentException(
                 "Only the continuation schema can retain the Seeker profile and positions.",
                 nameof(continuation));
+        }
+
+        // An inventory schema root without inventory restores the authored starting inventory, as
+        // a migrated schema 9 save does.
+        if (schemaVersion != SaveSchemaVersion.Inventory && inventory is not null)
+        {
+            throw new ArgumentException(
+                "Only the inventory schema can retain inventory ownership.",
+                nameof(inventory));
         }
 
         SchemaVersion = schemaVersion;
@@ -255,6 +273,7 @@ public sealed record SaveSnapshot
         InvestigationRoutes = investigationRoutes;
         FirstPatientRecovery = firstPatientRecovery;
         Continuation = continuation;
+        Inventory = inventory;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -286,4 +305,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets the saved Seeker profile and body positions when retained.</summary>
     public SaveContinuationState? Continuation { get; }
+
+    /// <summary>Gets who carries which world objects when retained.</summary>
+    public InventoryOwnershipSnapshot? Inventory { get; }
 }

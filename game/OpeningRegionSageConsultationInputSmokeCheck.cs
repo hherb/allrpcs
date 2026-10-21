@@ -53,6 +53,10 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
             GetNode<OpeningRegionRemedyPreparationSceneSource>(
                 "../OpeningRegionRemedyPreparationSceneSource").Binding!;
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
+        // The remedy needs gathered moonwort; without it the station prepares the look-alike.
+        _ = GetNode<InventoryController>("../InventoryController").TryTake(
+            GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource").Character.Identity.Id,
+            InventoryController.MoonwortLeaves);
         seeker.GlobalPosition = ToGodot(preparationBinding.StationPosition);
         OpeningRegionRemedyPreparationInputCoordinator preparation =
             GetNode<OpeningRegionRemedyPreparationInputCoordinator>(

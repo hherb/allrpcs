@@ -75,6 +75,14 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
             return;
         }
 
+        if (!GetNode<InventoryController>("../InventoryController").TryTake(
+            GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource").Character.Identity.Id,
+            InventoryController.MoonwortLeaves))
+        {
+            Fail("The Seeker could not be given gathered moonwort.");
+            return;
+        }
+
         seeker.GlobalPosition = ToGodot(preparationBinding.StationPosition);
         int operationCount = preparationBinding.Recipe.Plan.Steps.Count + 3;
         for (int index = 0; index < operationCount; index++)

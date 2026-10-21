@@ -107,7 +107,7 @@ public partial class FirstPatientStateController : Node
         return true;
     }
 
-    /// <summary>Adds one exact completed authored remedy as a full prepared batch.</summary>
+    /// <summary>Adds one completed preparable recipe (the remedy or a wrong one) as a full batch.</summary>
     public bool TryAddPreparedBatch(
         FirstPatientTreatmentContext context,
         IngredientPreparationOutcome preparation)
@@ -120,9 +120,7 @@ public partial class FirstPatientStateController : Node
         if (diseaseTruth is null
             || preparedBatches is null
             || !ReferenceEquals(context.Scenario.DiseaseTruth, diseaseTruth)
-            || !ReferenceEquals(
-                preparation.Activity.Recipe,
-                context.Scenario.Remedy.Recipe))
+            || !context.Scenario.IsPreparable(preparation.Activity.Recipe))
         {
             return false;
         }
