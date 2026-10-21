@@ -95,6 +95,7 @@ public partial class Main : Node
         // Part of MainProcessOrder: appended after WholeChannelPresentation, so moving to its index
         // lands immediately before it.
         MoveChild(examinationAction, GetNode("WholeChannelPresentation").GetIndex());
+        GetNode<CharacterMemoryController>("CharacterMemoryController").ObserveExaminations(examinationAction);
         InitializeAfterExamination();
 
         RefreshResolvedPerceptionPresentation();
@@ -104,11 +105,11 @@ public partial class Main : Node
             FocusedSearchInputCoordinator.InitialResultText;
         UpdateModeStatus(force: true);
 
-        // A new game starts with Seeker customization (slice step 1). Embedding proof scenes and
-        // requested checks keep the ordinary start state they assert against.
+        // A launch offers Continue when a save exists, otherwise starts with Seeker customization
+        // (slice step 1). Embedding proof scenes and requested checks keep the ordinary start state.
         if (GetTree().CurrentScene == this && !SmokeCheckHost.SuppressesNewGameStart())
         {
-            _ = GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel").TryOpen();
+            GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel").Begin();
         }
     }
 

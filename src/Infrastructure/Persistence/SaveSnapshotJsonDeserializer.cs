@@ -86,8 +86,13 @@ public static class SaveSnapshotJsonDeserializer
             snapshot = SaveSnapshotInvestigationRoutesMigration.Migrate(snapshot);
         }
 
-        return snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-            ? SaveSnapshotFirstPatientRecoveryMigration.Migrate(snapshot)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes)
+        {
+            snapshot = SaveSnapshotFirstPatientRecoveryMigration.Migrate(snapshot);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            ? SaveSnapshotContinuationMigration.Migrate(snapshot)
             : snapshot;
     }
 
@@ -103,6 +108,21 @@ public static class SaveSnapshotJsonDeserializer
         if (version == SaveSchemaVersion.FirstSupported)
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
+        }
+        else if (version == SaveSchemaVersion.Continuation)
+        {
+            RequireObject(
+                element,
+                "schemaVersion",
+                "discovery",
+                "worldEvents",
+                "characterMemory",
+                "firstPatient",
+                "journal",
+                "map",
+                "investigationRoutes",
+                "firstPatientRecoveryStage",
+                "continuation");
         }
         else if (version == SaveSchemaVersion.FirstPatientRecovery)
         {
@@ -184,8 +204,10 @@ public static class SaveSnapshotJsonDeserializer
                     || version == SaveSchemaVersion.Journal
                     || version == SaveSchemaVersion.Map
                     || version == SaveSchemaVersion.InvestigationRoutes
-                    || version == SaveSchemaVersion.FirstPatientRecovery);
-        if (version == SaveSchemaVersion.FirstPatientRecovery)
+                    || version == SaveSchemaVersion.FirstPatientRecovery
+                    || version == SaveSchemaVersion.Continuation);
+        if (version == SaveSchemaVersion.FirstPatientRecovery
+            || version == SaveSchemaVersion.Continuation)
         {
             return new SaveSnapshot(
                 version,
@@ -198,7 +220,10 @@ public static class SaveSnapshotJsonDeserializer
                 InvestigationRouteSaveStateJsonReader.Read(
                     element.GetProperty("investigationRoutes")),
                 FirstPatientRecoveryStage.Parse(
-                    ReadString(element.GetProperty("firstPatientRecoveryStage"))));
+                    ReadString(element.GetProperty("firstPatientRecoveryStage"))),
+                version == SaveSchemaVersion.Continuation
+                    ? SaveContinuationJsonReader.Read(element.GetProperty("continuation"))
+                    : null);
         }
 
         if (version == SaveSchemaVersion.InvestigationRoutes)
@@ -271,6 +296,7 @@ public static class SaveSnapshotJsonDeserializer
             6 => SaveSchemaVersion.Map,
             7 => SaveSchemaVersion.InvestigationRoutes,
             8 => SaveSchemaVersion.FirstPatientRecovery,
+            9 => SaveSchemaVersion.Continuation,
             _ => throw InvalidDocument(),
         };
     }

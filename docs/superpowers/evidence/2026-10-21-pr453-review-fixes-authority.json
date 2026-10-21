@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-21",
+  "timezone": "Australia/Sydney",
+  "context": "After a five-agent review of PR #453 (Phase 4 item 2: memory, customization and positions across save and continue), the owner was shown six important findings (continuation load rejections logged nothing, a commit-time customization install failure still reported a successful load, an unknown saved option key blocks the whole save, SaveSnapshot accepted a schema-9 root without continuation state, memory recording could switch off silently through optional node lookups and an invented world time, and no test recorded memory after a reload) and the suggestions (stale SaveSnapshot texts, the RestoreFrom contract and doc, policy and transition doc gaps, plan-doc wording, the schema-8 helper name, examination memory prose built in game/, and start-panel failure paths without a check). The review closed by asking whether to make these fixes on this branch.",
+  "owner_statement": "/fixall",
+  "effect": "Reopen the closed code-health-phase4-memory-save-continue scope only to apply the PR #453 review findings, verify them and publish to the PR branch.",
+  "limits": "No merge, release or Phase 4 item 3 (ingredients) work, and no phase-exit claim. The hash-bound item 2 plan stays byte-identical; this record's companion corrects its wording. The active slice code-health-phase4-ingredients stays queued and unchanged."
+}

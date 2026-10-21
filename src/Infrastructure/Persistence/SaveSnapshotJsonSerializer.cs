@@ -22,13 +22,15 @@ public static class SaveSnapshotJsonSerializer
             || snapshot.SchemaVersion == SaveSchemaVersion.Journal
             || snapshot.SchemaVersion == SaveSchemaVersion.Map
             || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation;
         bool hasFirstPatient = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
             || snapshot.SchemaVersion == SaveSchemaVersion.Journal
             || snapshot.SchemaVersion == SaveSchemaVersion.Map
             || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation;
         if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
@@ -52,7 +54,8 @@ public static class SaveSnapshotJsonSerializer
                         || snapshot.SchemaVersion == SaveSchemaVersion.Journal
                         || snapshot.SchemaVersion == SaveSchemaVersion.Map
                         || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-                        || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery);
+                        || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Continuation);
             }
 
             if (hasFirstPatient)
@@ -63,29 +66,38 @@ public static class SaveSnapshotJsonSerializer
             if (snapshot.SchemaVersion == SaveSchemaVersion.Journal
                 || snapshot.SchemaVersion == SaveSchemaVersion.Map
                 || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery)
+                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
             {
                 JournalSaveStateJsonWriter.Write(writer, snapshot.Journal!);
             }
 
             if (snapshot.SchemaVersion == SaveSchemaVersion.Map
                 || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery)
+                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
             {
                 MapSaveStateJsonWriter.Write(writer, snapshot.Map!);
             }
 
             if (snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
-                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery)
+                || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
             {
                 InvestigationRouteSaveStateJsonWriter.Write(writer, snapshot.InvestigationRoutes!);
             }
 
-            if (snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery)
+            if (snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
             {
                 writer.WriteString(
                     "firstPatientRecoveryStage",
                     snapshot.FirstPatientRecovery!.Value);
+            }
+
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+            {
+                SaveContinuationJsonWriter.Write(writer, snapshot.Continuation);
             }
 
             writer.WriteEndObject();

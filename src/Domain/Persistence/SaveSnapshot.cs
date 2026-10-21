@@ -107,7 +107,10 @@ public sealed record SaveSnapshot
     {
     }
 
-    /// <summary>Creates a save root retaining exact map and ID-only route lifecycle state.</summary>
+    /// <summary>
+    /// Creates a save root retaining exact map, ID-only route lifecycle, first-patient recovery
+    /// and continuation state, each only on the schemas that require it.
+    /// </summary>
     public SaveSnapshot(
         SaveSchemaVersion schemaVersion,
         DiscoverySaveState discovery,
@@ -117,7 +120,8 @@ public sealed record SaveSnapshot
         JournalSaveState? journal,
         MapSaveState? map,
         InvestigationRouteSaveState? investigationRoutes,
-        FirstPatientRecoveryStage? firstPatientRecovery = null)
+        FirstPatientRecoveryStage? firstPatientRecovery = null,
+        SaveContinuationState? continuation = null)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
@@ -129,7 +133,8 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.Journal
             || schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || schemaVersion == SaveSchemaVersion.Continuation;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -153,7 +158,8 @@ public sealed record SaveSnapshot
         bool retainsJournal = schemaVersion == SaveSchemaVersion.Journal
             || schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || schemaVersion == SaveSchemaVersion.Continuation;
         if (retainsJournal && journal is null)
         {
             throw new ArgumentNullException(nameof(journal));
@@ -176,7 +182,8 @@ public sealed record SaveSnapshot
 
         bool retainsMap = schemaVersion == SaveSchemaVersion.Map
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || schemaVersion == SaveSchemaVersion.Continuation;
         if (retainsMap && map is null)
         {
             throw new ArgumentNullException(nameof(map));
@@ -199,7 +206,8 @@ public sealed record SaveSnapshot
         }
 
         bool retainsRoutes = schemaVersion == SaveSchemaVersion.InvestigationRoutes
-            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery;
+            || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || schemaVersion == SaveSchemaVersion.Continuation;
         if (retainsRoutes
             && investigationRoutes is null)
         {
@@ -214,18 +222,27 @@ public sealed record SaveSnapshot
                 nameof(investigationRoutes));
         }
 
-        if (schemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            && firstPatientRecovery is null)
+        bool retainsRecovery = schemaVersion == SaveSchemaVersion.FirstPatientRecovery
+            || schemaVersion == SaveSchemaVersion.Continuation;
+        if (retainsRecovery && firstPatientRecovery is null)
         {
             throw new ArgumentNullException(nameof(firstPatientRecovery));
         }
 
-        if (schemaVersion != SaveSchemaVersion.FirstPatientRecovery
-            && firstPatientRecovery is not null)
+        if (!retainsRecovery && firstPatientRecovery is not null)
         {
             throw new ArgumentException(
-                "Only the first-patient-recovery schema can retain recovery progress.",
+                "Only the first-patient-recovery and continuation schemas can retain recovery progress.",
                 nameof(firstPatientRecovery));
+        }
+
+        // A continuation schema root without continuation state restores no profile or positions;
+        // rejected-restore checks copy a captured root this way.
+        if (schemaVersion != SaveSchemaVersion.Continuation && continuation is not null)
+        {
+            throw new ArgumentException(
+                "Only the continuation schema can retain the Seeker profile and positions.",
+                nameof(continuation));
         }
 
         SchemaVersion = schemaVersion;
@@ -237,6 +254,7 @@ public sealed record SaveSnapshot
         Map = map;
         InvestigationRoutes = investigationRoutes;
         FirstPatientRecovery = firstPatientRecovery;
+        Continuation = continuation;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -265,4 +283,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets durable first-patient recovery dialogue progress when retained.</summary>
     public FirstPatientRecoveryStage? FirstPatientRecovery { get; }
+
+    /// <summary>Gets the saved Seeker profile and body positions when retained.</summary>
+    public SaveContinuationState? Continuation { get; }
 }

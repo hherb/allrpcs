@@ -151,6 +151,10 @@ public partial class HerbExaminationActionMainCheck : Node
         var first = action.LastOccurrence;
         Require(action.LastResult?.Safety == CharacterExaminationSafety.SafeToCollect
             && ReferenceEquals(action.LastResult.Occurrence, first), "Engine examination result owns the occurrence");
+        Require(main.GetNode<CharacterMemoryController>("CharacterMemoryController").Memory.Characters
+                .SelectMany(character => character.EpisodicMemories.Memories)
+                .Count(memory => memory.Summary.StartsWith("examined=", StringComparison.Ordinal)) == 1,
+            "The committed examination is remembered once");
         Require(action.Status.Contains("herbs left in place", StringComparison.OrdinalIgnoreCase), "Visible examination result");
         await Frames(10);
         Require(ReferenceEquals(first, action.LastOccurrence), "Frames cannot replay a completed action");

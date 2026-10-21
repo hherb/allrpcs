@@ -98,7 +98,7 @@ packaging, and accessibility claims remain limited to their recorded evidence.
 - [x] Phase 3: one structured-decision pipeline and a thin Main composition root.
 - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.
   - [x] 4.1 New-game flow: customization opens at the start; Forester opens the closed forest path.
-  - [ ] 4.2 Memory, transcript, customization and positions survive a save; continue on launch.
+  - [x] 4.2 Memory, transcript, customization and positions survive a save; continue on launch.
   - [ ] 4.3 Ingredients: unified inventory, Give/Take/Use, conditional collection by default.
   - [ ] 4.4 Hypotheses: journal proposal interpreted through the structured-decision pipeline.
   - [ ] 4.5 Stakes and ending: disease progression can fail; explicit slice-complete screen.

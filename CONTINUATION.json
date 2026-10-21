@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1078,6 +1078,26 @@
           "sha256": "7db76fc52f94682d6eba0d274704e7572619e3dd169c713e0d187cd9748a27db"
         }
       ]
+    },
+    {
+      "id": "code-health-phase4-memory-save-continue",
+      "reason": "Program Phase 4 item 2 is complete at 6c10af88 (PR #453, fixes #452): completed turns and the healer's committed examination are written into CharacterMemoryController (recent-conversation window plus engine-fact episodes that never quote speech), save schema 9 retains the Seeker profile and the Seeker and Healer positions, a launch with a save offers Continue without reopening customization, and the saved window returns through the untrusted recent-speech channel after a load. SaveContinueRelaunchCheck proves save, fresh Main and Continue restore transcript, memory, profile, forest-path access and positions; 6097 solution tests and the full smoke suite (365 passed, 0 failed, 3 quarantined) pass. Do not reopen or re-audit item 2.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md",
+          "sha256": "3c81f381b3a4e7f8d556ef7eb9fe74ad12e49830892876b20c7962a2336f1a35"
+        }
+      ]
+    },
+    {
+      "id": "code-health-pr453-review-fixes",
+      "reason": "The owner-requested PR #453 review fixes are complete: examinations now reach character memory in Main (the optional lookup ran before Main added the examination controller, so none were recorded), Main-only lookups fail loudly and memory writes without world time are rejected with a named error, every continuation load rejection logs its reason, a commit-time customization install failure throws instead of reporting success, examination episodes are engine facts built in src/Application, RestoreFrom clears session speech itself, stale texts are corrected, and new tests and checks cover recording after a reload, abandoned speech, a save taken before customization and an unreadable save. Requiring continuation on every schema-9 root and dropping profiles with unknown keys were declined with reasons. 6099 solution tests and the full smoke suite (365 passed, 0 failed, 3 quarantined) pass; item 2 is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes.json",
+          "sha256": "3b49723e012f68c73e20fbfbf88df39bc2f117256d5613ed921c66e50621ebff"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1701,23 +1721,37 @@
           "sha256": "2f85e7a67131010095f47eccbfeafc45cb42f3762c35b87c99f960d24d61f783"
         }
       ]
+    },
+    {
+      "id": "owner-pr453-review-fixes-2026-10-21",
+      "owner_statement": "/fixall",
+      "scope_ids": [
+        "code-health-phase4-memory-save-continue"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes-authority.json",
+          "sha256": "98d13fbf45b1f3cce8d01dbeb9ec13036260538c7e61eff4f78a0413e1f7728f"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-memory-save-continue",
-    "title": "Keep memory, customization and positions across save and continue",
+    "id": "code-health-phase4-ingredients",
+    "title": "Make ingredients a normal, evidence-identified part of play",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 2 (slice step 9): episodic memory is not written from dialogue and observation into CharacterMemoryController, the save omits the transcript, Seeker customization and character positions, and nothing offers continue-on-launch, so a restarted session can pick a different background after loading.",
-    "instructions": "Write docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md after measuring the current save schema (SaveSnapshotCapture/Restoration/Json controllers, user://save-v1.json), memory owners and the new-game start from item 1. Move each touched state machine into src/Application with xUnit tests (rolling rule). A continued game must not reopen customization. Keep save-version handling fail-closed and existing restoration checks passing. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release. #452 records the PR #451 relaunch-to-load gap this item closes (the saved guidance currently asks the player to finish customizing first).",
-    "completion_condition": "A save taken after customization, dialogue and movement restores the transcript, character memory, customization and positions in a relaunched session that offers continue, with tests and smoke checks passing and continuation evidence synced with review-branch publication.",
+    "missing_deliverable": "Program Phase 4 item 3 (slice steps 5 and 7): CharacterInventory and InventoryOwnershipSnapshot are separate owners, Give/Take/Use are not wired into play, and conditional collection runs only behind the ConditionalCollectionScaffolding gate in Main, so a player cannot gather, hand over and use ingredients identified through evidence, and cannot choose a wrong remedy.",
+    "instructions": "Write docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md after measuring CharacterInventory, InventoryOwnershipSnapshot and its Give/Take/Drop/Capacity policies, the ConditionalCollectionScaffolding gate and its checks, and how ingredients are saved. Unify the inventory owner, wire Give/Take/Use, make conditional collection the normal path, identify ingredients through evidence and allow a wrong remedy. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
+    "completion_condition": "A player collects an evidence-identified ingredient through the normal path, gives, takes and uses it, and can prepare a wrong remedy, with inventory surviving save and continue, tests and smoke checks passing and continuation evidence synced with review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md"
+      "docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md"
     ],
-    "boundary": "Phase 4 item 2 only. No ingredients, hypotheses, stakes/ending or boot-time auto-resolution work (items 3-6), no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Phase 4 item 3 only. No hypotheses, stakes/ending or boot-time auto-resolution work (items 4-6), no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {

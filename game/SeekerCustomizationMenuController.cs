@@ -30,6 +30,7 @@ public partial class SeekerCustomizationMenuController : Control
     private OptionButton appearance = null!;
     private OptionButton background = null!;
     private Label status = null!;
+    private SaveSnapshotRestorationController restoration = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -54,7 +55,22 @@ public partial class SeekerCustomizationMenuController : Control
         PopulateOptions();
         status.Text = ReadyStatusText;
         GetNode<Button>("Confirm").Pressed += OnConfirmPressed;
+        restoration = GetNode<SaveSnapshotRestorationController>(
+            "../../SaveSnapshotRestorationController");
+        restoration.PresentationReset += OnRestored;
         Hide();
+    }
+
+    /// <inheritdoc />
+    public override void _ExitTree()
+    {
+        restoration.PresentationReset -= OnRestored;
+    }
+
+    // A load that installs the saved profile replaces the new game being customized.
+    private void OnRestored()
+    {
+        if (Visible && source.CurrentState.SelectedProfile is not null) { Close(); }
     }
 
     /// <inheritdoc />
@@ -140,15 +156,20 @@ public partial class SeekerCustomizationMenuController : Control
                 return;
             }
 
-            status.Text = SelectedStatusText;
-            Hide();
-            Control? focus = GetViewport().GuiGetFocusOwner();
-            if (focus is not null && IsAncestorOf(focus)) { focus.ReleaseFocus(); }
-            seeker.ResumeAfterModal(this);
+            Close();
         }
         catch (ArgumentException)
         {
             status.Text = RejectedStatusText;
         }
+    }
+
+    private void Close()
+    {
+        status.Text = SelectedStatusText;
+        Hide();
+        Control? focus = GetViewport().GuiGetFocusOwner();
+        if (focus is not null && IsAncestorOf(focus)) { focus.ReleaseFocus(); }
+        seeker.ResumeAfterModal(this);
     }
 }

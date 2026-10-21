@@ -130,8 +130,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.FirstPatientRecovery)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.FirstPatientRecovery)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Continuation)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Continuation)
             || !ReferenceEquals(
                 first.FirstPatientRecovery,
                 FirstPatientRecoveryStage.NotHeard)

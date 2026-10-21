@@ -1,7 +1,9 @@
+using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
@@ -34,6 +36,11 @@ public partial class SaveSnapshotRestorationController : Node
     private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
+    private SeekerCustomizationSelectionSceneSource customization = null!;
+    private SeekerCustomizationApplicationCoordinator customizationApplication = null!;
+    private TemporarySeekerCharacterSource seekerCharacter = null!;
+    private CharacterBody2D seeker = null!;
+    private CharacterBody2D healer = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -66,6 +73,13 @@ public partial class SaveSnapshotRestorationController : Node
             "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
+        customization = GetNode<SeekerCustomizationSelectionSceneSource>(
+            "../SeekerCustomizationSelectionSceneSource");
+        customizationApplication = GetNode<SeekerCustomizationApplicationCoordinator>(
+            "../SeekerCustomizationApplicationCoordinator");
+        seekerCharacter = GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
+        seeker = GetNode<CharacterBody2D>("../Seeker");
+        healer = GetNode<CharacterBody2D>("../Healer");
     }
 
     /// <summary>Restores all exact state compositions after one complete root preflight.</summary>
@@ -183,6 +197,57 @@ public partial class SaveSnapshotRestorationController : Node
             }
         }
 
+        SeekerCustomizationInstallation? customizationInstallation = null;
+        List<(CharacterBody2D Body, Vector2 Position)> positions = [];
+        if (snapshot.Continuation is { } continuation)
+        {
+            try
+            {
+                if (!SeekerCustomizationRestorationPolicy.TryDecide(
+                        customization.CurrentState,
+                        continuation.SeekerProfile,
+                        seekerCharacter.Character.Identity.Id,
+                        out SeekerCustomizationSelectionState? customizationToApply))
+                {
+                    GD.PushError(customization.CurrentState.SelectedProfile is null
+                        ? $"Load rejected: the saved Seeker names appearance '{continuation.SeekerProfile!.AppearanceKey}' or background '{continuation.SeekerProfile.BackgroundKey}', which this build does not offer."
+                        : "Load rejected: the save belongs to a different Seeker than the one customized this session.");
+                    return false;
+                }
+
+                // Every scene check runs here, so the commit below only installs.
+                if (customizationToApply is not null)
+                {
+                    customizationInstallation = customizationApplication.Prepare(
+                        customization.CurrentState,
+                        customizationToApply);
+                    if (customizationInstallation is null)
+                    {
+                        GD.PushError("Load rejected: the saved Seeker profile cannot be installed in this scene.");
+                        return false;
+                    }
+                }
+            }
+            catch (Exception exception) when (exception is ArgumentException or InvalidOperationException)
+            {
+                GD.PushError($"Load rejected: the saved Seeker profile is invalid: {exception}");
+                return false;
+            }
+
+            foreach (CharacterPositionSaveState position in continuation.Positions)
+            {
+                CharacterBody2D? body = position.CharacterId == discoveryController.SearcherCharacterId ? seeker
+                    : position.CharacterId == participants.Participants[0].Identity.Id ? healer
+                    : null;
+                if (body is null)
+                {
+                    GD.PushError($"Load rejected: no body for saved position of '{position.CharacterId.Value}'.");
+                    return false;
+                }
+                positions.Add((body, new Vector2(position.X, position.Y)));
+            }
+        }
+
         RestoreParticipantRegistry registry = new();
         void Register(string owner, Func<PreparedRestore> prepare) =>
             registry.Register(new RestoreParticipant(owner, _ => prepare()));
@@ -244,6 +309,18 @@ public partial class SaveSnapshotRestorationController : Node
             if (restoredRoutes is not null)
             {
                 routeConsumption.InstallPreparedRestoration(restoredRoutes.ConsumedCompletion);
+            }
+        }));
+        Register("seeker-customization", () => new(() =>
+        {
+            if (customizationInstallation is not null) { customizationApplication.Install(customizationInstallation); }
+        }));
+        Register("character-positions", () => new(() =>
+        {
+            foreach ((CharacterBody2D body, Vector2 position) in positions)
+            {
+                body.GlobalPosition = position;
+                body.Velocity = Vector2.Zero;
             }
         }));
         GetParent<Main>().RegisterSessionRestoreParticipants(registry);

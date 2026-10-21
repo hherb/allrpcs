@@ -126,6 +126,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             "route-progress",
             "route-completions",
             "route-consumption",
+            "seeker-customization",
+            "character-positions",
             "participation-coordinator",
             "participation-round",
             "conversation-budget",

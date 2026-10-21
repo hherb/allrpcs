@@ -192,7 +192,7 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(9),
+            new SaveSchemaVersion(10),
             discovery,
             worldEvents,
             memory,
@@ -306,6 +306,7 @@ public sealed class SaveSnapshotTests
         (string Name, Type Type)[] expectedProperties =
         [
             ("CharacterMemory", typeof(CharacterMemorySnapshot)),
+            ("Continuation", typeof(SaveContinuationState)),
             ("Discovery", typeof(DiscoverySaveState)),
             ("FirstPatient", typeof(FirstPatientSaveState)),
             ("FirstPatientRecovery", typeof(FirstPatientRecoveryStage)),

@@ -15,11 +15,13 @@ public partial class DialogueEventController : Node
     internal CharacterConversationHistory History { get; } = new();
 
     private SaveSnapshotRestorationController? restoration;
+    private CharacterMemoryController? memory;
 
     /// <inheritdoc />
     public override void _Ready()
     {
         restoration = GetNodeOrNull<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
+        memory = GetNodeOrNull<CharacterMemoryController>("../CharacterMemoryController");
         if (restoration is not null) { restoration.PresentationReset += OnRestored; }
     }
 
@@ -32,6 +34,8 @@ public partial class DialogueEventController : Node
     private void OnRestored()
     {
         History.Clear();
+        // The restored memory already holds each character's saved recent conversation.
+        if (memory is not null) { History.RestoreFrom(memory.Memory); }
         LastOccurredEvent = null;
     }
 
