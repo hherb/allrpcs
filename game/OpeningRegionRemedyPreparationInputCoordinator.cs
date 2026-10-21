@@ -55,8 +55,14 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
     internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
     internal const string LookAlikeStartedStatusText =
         "Preparation: started with the station's unidentified dried leaves. Press P for step 1.";
+    internal const string HealerCarryingStatusText =
+        "Preparation: the Healer carries the moonwort. Bring the Healer to the station, then press P.";
     internal const string FailedDoseStatusText =
         "Preparation: that dose changed nothing. Press P at the station to prepare another.";
+    internal const string NoDoseLeftStatusText =
+        "Preparation: every dose has been given; nothing more can be prepared.";
+    internal const string RemedyGivenStatusText =
+        "Preparation: the remedy has been given; nothing more to prepare.";
     internal const string CompletedStatusText =
         "Preparation: complete. Press P to prepare the batch.";
     internal const string BatchReadyStatusText =
@@ -182,7 +188,8 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             return false;
         }
 
-        if (state.AdministrationExperiments is { } doses)
+        // After the last dose the station stays as it is, so a refused press changes nothing.
+        if (state.AdministrationExperiments is { } doses && !AllDosesGiven())
         {
             _ = preparation.TryRestartAfterFailedDose(doses);
         }
@@ -272,30 +279,35 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
     private bool TryIdleAction(FirstPatientTreatmentContext context, IngredientPreparationRecipe remedy)
     {
         // No new preparation once every authored dose has been given; it could never be used.
-        WorldEventLogSnapshot? log = GetNode<WorldEventController>("../WorldEventController").EventLog;
-        if (log is null || GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
-                .FirstPatientRemedyDoseWorldEvents.All(dose => log.Entries.Contains(dose.EventId)))
+        if (AllDosesGiven())
         {
             return false;
         }
 
         bool healerNear = healer.Visible
-            && healer.GlobalPosition.DistanceTo(seeker.GlobalPosition) <= MaximumHandOverDistancePixels
-            && inventory.Carries(HealerId, InventoryController.MoonwortLeaves);
+            && healer.GlobalPosition.DistanceTo(seeker.GlobalPosition) <= MaximumHandOverDistancePixels;
         // shortcut: moonwort is the scenario's only gathered herb and the look-alike its only
         // alternative; a second herb needs an object-to-ingredient catalog.
         return RemedyStationPolicy.Choose(
                 inventory.Carries(SeekerId, InventoryController.MoonwortLeaves),
+                inventory.Carries(HealerId, InventoryController.MoonwortLeaves),
                 healerNear) switch
         {
             RemedyStationAction.PrepareRemedy => context.Scenario.GatheredIngredients.States.Count == 1
                 && preparation.TryStart(remedy, context.Scenario.GatheredIngredients.States[0]),
             RemedyStationAction.ReceiveFromHealer =>
                 inventory.TryGive(HealerId, SeekerId, InventoryController.MoonwortLeaves),
+            RemedyStationAction.WaitForHealer => false,
             _ => context.Scenario.AlternativeRecipes.Count > 0
                 && preparation.TryStart(context.Scenario.AlternativeRecipes[0]),
         };
     }
+
+    // A missing log counts as spent: nothing is prepared before the world can record a dose.
+    private bool AllDosesGiven() =>
+        GetNode<WorldEventController>("../WorldEventController").EventLog is not { } log
+        || GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
+            .FirstPatientRemedyDoseWorldEvents.All(dose => log.Entries.Contains(dose.EventId));
 
     private bool RetainsExactFirstPatientState(FirstPatientSaveState requested) =>
         ReferenceEquals(state.DiseaseTruth, requested.DiseaseTruth)
@@ -324,7 +336,9 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             && state.AdministrationExperiments?.Records.Any(record =>
                 ReferenceEquals(record.Administration.Dosage.Preparation, outcome)) == true)
         {
-            return FailedDoseStatusText;
+            return ReferenceEquals(outcome.Activity.Recipe, recipe) ? RemedyGivenStatusText
+                : AllDosesGiven() ? NoDoseLeftStatusText
+                : FailedDoseStatusText;
         }
 
         if (outcome is not null)
@@ -335,8 +349,8 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         IngredientPreparationActivity? activity = preparation.Activity;
         if (activity is null)
         {
-            return inventory.Carries(SeekerId, InventoryController.MoonwortLeaves)
-                ? CarryingStatusText
+            return inventory.Carries(SeekerId, InventoryController.MoonwortLeaves) ? CarryingStatusText
+                : inventory.Carries(HealerId, InventoryController.MoonwortLeaves) ? HealerCarryingStatusText
                 : ReadyStatusText;
         }
 

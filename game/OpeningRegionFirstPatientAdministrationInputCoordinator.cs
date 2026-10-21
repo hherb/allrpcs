@@ -30,6 +30,8 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         "The patient's breathing becomes quieter and steadier.";
     private const string NoChangeOutcome = "The patient's breathing does not change.";
     private const string Procedure = "Administer the complete cooled remedy batch.";
+    private const string LookAlikeProcedure =
+        "Administer the complete cooled batch made from the station's unlabelled dried leaves.";
     private static readonly ExperimentId[] DoseExperimentIds =
         [new("first-patient-remedy-administration"), new("first-patient-remedy-second-dose")];
     private static readonly StringName AdministrationAction = new("remedy_administer");
@@ -143,7 +145,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         IngredientQuantity dosage = new(
             requestedBatch.RemainingQuantity.Amount,
             requestedBatch.RemainingQuantity.Unit);
-        // Only the remedy changes the patient; the engine records what a wrong dose did.
+        // Only the remedy changes the patient; a wrong dose is recorded as changing nothing.
         bool remedy = ReferenceEquals(
             requestedBatch.Preparation.Activity.Recipe,
             requestedContext.Scenario.Remedy.Recipe);
@@ -156,7 +158,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             requestedBatch,
             dosage,
             remedy ? observedConditions : unchangedConditions,
-            Procedure,
+            remedy ? Procedure : LookAlikeProcedure,
             remedy ? ObservedOutcome : NoChangeOutcome);
         if (administered)
         {

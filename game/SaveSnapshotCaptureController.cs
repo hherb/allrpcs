@@ -5,6 +5,7 @@ using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Inventory;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -105,6 +106,12 @@ public partial class SaveSnapshotCaptureController : Node
             return null;
         }
 
+        // A live save always records the inventory; only a pre-inventory save migrates without one.
+        if (inventory.Ownerships is not { } ownerships)
+        {
+            return null;
+        }
+
         JournalSaveState journalState;
         MapSaveState mapState;
         InvestigationRouteSaveState routeState;
@@ -156,7 +163,7 @@ public partial class SaveSnapshotCaptureController : Node
             routeState,
             recoveryStage,
             continuation,
-            inventory.Ownerships);
+            ownerships);
     }
 
     private static CharacterPositionSaveState Position(CharacterId characterId, Node2D body) =>

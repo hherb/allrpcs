@@ -2,11 +2,15 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Executes one accepted examination at a time, outside the completed dialogue turn.</summary>
+/// <summary>
+/// Executes one accepted or conditionally accepted examination at a time, outside the completed
+/// dialogue turn, and gathers the examined herbs when the turn asked for that and they are safe.
+/// </summary>
 public partial class HerbExaminationActionController : Node
 {
     private const double MaximumTravelSeconds = 45;
@@ -168,13 +172,10 @@ public partial class HerbExaminationActionController : Node
             CompletedCount++;
             if (LastResult is not null) { Examined?.Invoke(LastResult); }
             healer.CommandWait();
-            bool gathered = LastResult is not null && TryCollect(execution.Response, LastResult);
-            execution = null;
             SetStatus(LastResult?.Safety != CharacterExaminationSafety.SafeToCollect
                 ? "Healer: examination finished; safety not established. Herbs left in place."
-                : gathered
-                    ? "Healer: examined the herb patch: moonwort, safe to collect. Gathered moonwort leaves."
-                    : "Healer: examined the herb patch: moonwort, safe to collect. Herbs left in place.");
+                : "Healer: examined the herb patch: moonwort, safe to collect. " + Collect(execution.Response, LastResult));
+            execution = null;
             return;
         }
         stationary = healer.GlobalPosition.DistanceTo(lastPosition) < 0.1f ? stationary + delta : 0;
@@ -220,21 +221,45 @@ public partial class HerbExaminationActionController : Node
     }
 
     // In the examination frame, so the collection directly follows its examination in the transcript.
-    private bool TryCollect(CharacterTurnResponse response, CharacterExaminationResult result)
+    // Returns how a safe examination ends: the herbs gathered, or why they were left in place.
+    private string Collect(CharacterTurnResponse response, CharacterExaminationResult result)
     {
-        // The herbs are gathered only into a free hand, so the event never records an empty take.
-        if (!ConditionalCollectionPolicy.Collects(response, result)
-            || !inventory.CanTake(actor, InventoryController.MoonwortLeaves)
-            || !occurrences.TryOccurPostExaminationCollection(
+        if (!ConditionalCollectionPolicy.Collects(response, result))
+        {
+            return "Herbs left in place; ask the Healer to gather them if they are safe.";
+        }
+
+        // Checked before the one-time collection event, so the event never records a take that fails.
+        if (!inventory.CanTake(actor, InventoryController.MoonwortLeaves))
+        {
+            return inventory.Ownerships?.Entries.Any(entry => entry.ObjectId == InventoryController.MoonwortLeaves) == true
+                ? "Herbs left in place; the moonwort is already gathered."
+                : "Herbs left in place; the Healer cannot carry any more.";
+        }
+
+        WorldEvent collected = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource").HerbPatchCollectedWorldEvent;
+        if (!occurrences.TryOccurPostExaminationCollection(
                 result,
                 DeterministicPostExaminationIntentionSelector.Select(result),
-                GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource").HerbPatchCollectedWorldEvent))
+                collected))
         {
-            return false;
+            if (world.EventLog?.Entries.Contains(collected.EventId) == true)
+            {
+                return "Herbs left in place; the moonwort here was already gathered and used.";
+            }
+
+            GD.PushError("The safe herb-patch collection could not be recorded.");
+            return "Herbs left in place; the gathering could not be recorded.";
         }
 
         LastCollectionOccurrence = occurrences.LastOccurrence;
-        return inventory.TryTake(actor, InventoryController.MoonwortLeaves);
+        if (!inventory.TryTake(actor, InventoryController.MoonwortLeaves))
+        {
+            GD.PushError("The recorded herb-patch collection could not enter the Healer's inventory.");
+            return "Herbs left in place; the Healer could not carry them.";
+        }
+
+        return "Gathered moonwort leaves.";
     }
 
     private bool StartNextLeg()

@@ -61,6 +61,38 @@ public sealed class FirstPatientStabilizationTestimonyProjectionTests
     }
 
     [Fact]
+    public void ProjectsAfterAWrongDoseOnlyFromTheLaterRemedyDose()
+    {
+        TestState state = CreateState();
+        FirstPatientTreatmentContext context = state.Context;
+        IngredientPreparationOutcome lookAlike = Prepared(context.Scenario.AlternativeRecipes[0], context);
+        WorldEvent firstDose = new(
+            new WorldEventId("healer-administered-first-patient-look-alike"),
+            WorldEventTimeEffect.Advance);
+        IngredientAdministrationExperimentRecord wrong = new(
+            new ExperimentId("first-patient-look-alike-administration"),
+            new IngredientAdministrationOutcome(
+                new CharacterId("healer"),
+                context.Scenario.PatientId,
+                new IngredientDosage(lookAlike, lookAlike.Quantity),
+                firstDose),
+            new CharacterConditionSet([]));
+        IngredientExperimentJournalSnapshot both = new([wrong, .. state.AdministrationExperiments.Records]);
+
+        Assert.Equal(
+            FirstPatientStabilizationTestimonyProjection.TestimonyText,
+            FirstPatientStabilizationTestimonyProjection.Project(context, state.StabilizedTruth, both, state.WorldEvent)
+                .Utterance.Text);
+        Assert.Throws<InvalidOperationException>(() =>
+            FirstPatientStabilizationTestimonyProjection.Project(context, state.StabilizedTruth, both, firstDose));
+        Assert.Throws<InvalidOperationException>(() => FirstPatientStabilizationTestimonyProjection.Project(
+            context,
+            state.StabilizedTruth,
+            new IngredientExperimentJournalSnapshot([wrong]),
+            firstDose));
+    }
+
+    [Fact]
     public void ExposesOnlyOnePureProjectionMethodAndTheFixedText()
     {
         Type type = typeof(FirstPatientStabilizationTestimonyProjection);
@@ -77,6 +109,20 @@ public sealed class FirstPatientStabilizationTestimonyProjectionTests
         Assert.Equal(typeof(DialogueDelivery), method.ReturnType);
         Assert.True(field.IsLiteral);
         Assert.Equal("TestimonyText", field.Name);
+    }
+
+    private static IngredientPreparationOutcome Prepared(
+        IngredientPreparationRecipe recipe,
+        FirstPatientTreatmentContext context)
+    {
+        IngredientPreparationActivity activity =
+            IngredientPreparationStartTransition.Start(recipe, context.Scenario.Ingredients).Activity;
+        foreach (IngredientPreparationStep step in recipe.Plan.Steps)
+        {
+            activity = IngredientPreparationActivityProgressionTransition.Advance(activity, step);
+        }
+
+        return IngredientPreparationCompletionTransition.Complete(activity);
     }
 
     private static TestState CreateState()

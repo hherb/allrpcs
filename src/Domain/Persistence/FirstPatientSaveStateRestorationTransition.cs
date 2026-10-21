@@ -42,6 +42,7 @@ public static class FirstPatientSaveStateRestorationTransition
             saved.Experiments,
             authoredWorldEvents);
         RequireAdministrationExperimentPairs(administrationExperiments, experiments);
+        RequireRemedyForStabilization(diseaseTruth, administrationExperiments, authoredContext.Scenario);
 
         return new FirstPatientSaveState(
             diseaseTruth,
@@ -308,6 +309,22 @@ public static class FirstPatientSaveStateRestorationTransition
             {
                 throw Incompatible();
             }
+        }
+    }
+
+    // A wrong remedy changes nothing, so only a recorded remedy dose can explain a stabilized patient.
+    private static void RequireRemedyForStabilization(
+        DiseaseTruthSnapshot diseaseTruth,
+        IngredientExperimentJournalSnapshot administrationExperiments,
+        FirstPatientScenario authoredScenario)
+    {
+        if (diseaseTruth.Infections.Any(infection =>
+                ReferenceEquals(infection.CareState, DiseaseCareState.Stabilized))
+            && !administrationExperiments.Records.Any(record => ReferenceEquals(
+                record.Administration.Dosage.Preparation.Activity.Recipe,
+                authoredScenario.Remedy.Recipe)))
+        {
+            throw Incompatible();
         }
     }
 

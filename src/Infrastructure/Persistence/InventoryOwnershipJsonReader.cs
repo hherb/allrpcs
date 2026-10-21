@@ -8,7 +8,10 @@ namespace Allrpcs.Infrastructure.Persistence;
 /// <summary>Strictly reads the inventory section of a save document.</summary>
 internal static class InventoryOwnershipJsonReader
 {
-    /// <summary>Reads null (the authored starting inventory) or exact ownership pairs.</summary>
+    /// <summary>
+    /// Reads exact ownership pairs, or null, which restores the authored starting inventory plus
+    /// any gathered herb the saved history still holds.
+    /// </summary>
     internal static InventoryOwnershipSnapshot? Read(JsonElement element)
     {
         if (element.ValueKind == JsonValueKind.Null)

@@ -28,9 +28,34 @@ public sealed class RemedyPreparationLifecycleTests
         Assert.False(lifecycle.TryStart(scenario.AlternativeRecipes[0]));
 
         RemedyPreparationLifecycle lookAlike = new(scenario);
+        Assert.False(lookAlike.TryStart(scenario.AlternativeRecipes[0], herb));
+        Assert.Same(scenario.StationIngredients, lookAlike.Ingredients);
         Assert.True(lookAlike.TryStart(scenario.AlternativeRecipes[0]));
         Assert.False(new RemedyPreparationLifecycle(scenario).TryStart(
             RepresentativeFirstPatientScenarioSource.Create().AlternativeRecipes[0]));
+    }
+
+    [Fact]
+    public void AnUncheckedScenarioWhoseGatheredHerbSharesAStockIdRefusesInsteadOfThrowing()
+    {
+        FirstPatientScenario authored = RepresentativeFirstPatientScenarioSource.Create();
+        IngredientState herb = authored.GatheredIngredients.States[0];
+        IngredientState twin = new(
+            new IngredientDefinition(herb.Definition.IngredientId),
+            herb.Quantity,
+            herb.Freshness,
+            herb.PhysicalCondition,
+            herb.Contamination);
+        FirstPatientScenario unverified = new(
+            authored.PatientId,
+            authored.DiseaseTruth,
+            authored.Ingredients,
+            authored.Remedy,
+            authored.Investigation,
+            new IngredientStateSnapshot([twin]),
+            authored.AlternativeRecipes);
+
+        Assert.False(new RemedyPreparationLifecycle(unverified).TryStart(authored.Remedy.Recipe, twin));
     }
 
     [Fact]
@@ -78,15 +103,36 @@ public sealed class RemedyPreparationLifecycleTests
     }
 
     [Theory]
-    [InlineData(true, true, RemedyStationAction.PrepareRemedy)]
-    [InlineData(true, false, RemedyStationAction.PrepareRemedy)]
-    [InlineData(false, true, RemedyStationAction.ReceiveFromHealer)]
-    [InlineData(false, false, RemedyStationAction.PrepareLookAlike)]
-    public void TheStationPrefersTheSeekersHerbThenTheHealersThenTheLookAlike(
+    [InlineData(true, true, true, RemedyStationAction.PrepareRemedy)]
+    [InlineData(true, false, false, RemedyStationAction.PrepareRemedy)]
+    [InlineData(false, true, true, RemedyStationAction.ReceiveFromHealer)]
+    [InlineData(false, true, false, RemedyStationAction.WaitForHealer)]
+    [InlineData(false, false, true, RemedyStationAction.PrepareLookAlike)]
+    [InlineData(false, false, false, RemedyStationAction.PrepareLookAlike)]
+    public void TheStationPrefersTheSeekersHerbThenTheHealersAndNeverTheLookAlikeWhileTheHerbIsCarried(
         bool seekerCarries,
         bool healerCarries,
+        bool healerNear,
         RemedyStationAction expected) =>
-        Assert.Equal(expected, RemedyStationPolicy.Choose(seekerCarries, healerCarries));
+        Assert.Equal(expected, RemedyStationPolicy.Choose(seekerCarries, healerCarries, healerNear));
+
+    [Fact]
+    public void TheGatheredHerbIsHeldFromCollectionUntilARemedyBatchOrDoseUsesIt()
+    {
+        FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
+        IngredientPreparationRecipe remedy = scenario.Remedy.Recipe;
+        IngredientPreparationOutcome wrong =
+            Completed(scenario, scenario.AlternativeRecipes[0], null).Outcome!;
+        IngredientPreparationOutcome right = Completed(
+            scenario, remedy, scenario.GatheredIngredients.States[0]).Outcome!;
+        IngredientExperimentJournalSnapshot none = new([]);
+
+        Assert.False(RemedyStationPolicy.GatheredHerbIsHeld(false, null, remedy));
+        Assert.True(RemedyStationPolicy.GatheredHerbIsHeld(true, null, remedy));
+        Assert.True(RemedyStationPolicy.GatheredHerbIsHeld(true, State(scenario, [wrong], Doses(scenario, wrong)), remedy));
+        Assert.False(RemedyStationPolicy.GatheredHerbIsHeld(true, State(scenario, [right], none), remedy));
+        Assert.False(RemedyStationPolicy.GatheredHerbIsHeld(true, State(scenario, [], Doses(scenario, right)), remedy));
+    }
 
     private static RemedyPreparationLifecycle Completed(
         FirstPatientScenario scenario,

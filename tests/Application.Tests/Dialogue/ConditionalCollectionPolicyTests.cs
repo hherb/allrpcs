@@ -18,6 +18,9 @@ public sealed class ConditionalCollectionPolicyTests
         Assert.False(ConditionalCollectionPolicy.Collects(
             Response(CharacterTurnDisposition.ConditionallyAccept),
             Result(CharacterExaminationSafety.UnsafeToCollect)));
+        Assert.False(ConditionalCollectionPolicy.Collects(
+            Response(CharacterTurnDisposition.ConditionallyAccept, examined: new ObjectId("stone-marker")),
+            Result(CharacterExaminationSafety.SafeToCollect)));
     }
 
     [Fact]
@@ -40,7 +43,8 @@ public sealed class ConditionalCollectionPolicyTests
 
     private static CharacterTurnResponse Response(
         CharacterTurnDisposition disposition,
-        CharacterIntention? committed = null)
+        CharacterIntention? committed = null,
+        ObjectId? examined = null)
     {
         CharacterId seekerId = new("seeker");
         CharacterId healerId = new("healer");
@@ -55,7 +59,7 @@ public sealed class ConditionalCollectionPolicyTests
             request,
             disposition,
             null,
-            new CharacterIntention(CharacterIntentionType.ExamineObject, Patch),
+            new CharacterIntention(CharacterIntentionType.ExamineObject, examined ?? Patch),
             committed is null ? [] : [new CharacterCommitment([committed])],
             []);
     }

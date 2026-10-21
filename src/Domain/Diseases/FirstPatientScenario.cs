@@ -68,8 +68,8 @@ public sealed class FirstPatientScenario
     public IngredientStateSnapshot StationIngredients { get; }
 
     /// <summary>
-    /// Gets other recipes the station can prepare. None of them is the stabilizing remedy, so a
-    /// player can prepare and administer a wrong remedy.
+    /// Gets other recipes the station can prepare, so a player can prepare and administer a wrong
+    /// remedy. The structural policy, not this constructor, requires that none is the remedy.
     /// </summary>
     public IReadOnlyList<IngredientPreparationRecipe> AlternativeRecipes { get; }
 

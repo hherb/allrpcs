@@ -35,7 +35,8 @@ public sealed class RemedyPreparationLifecycle
 
     /// <summary>
     /// Consumes the recipe's inputs from the station stock, plus one gathered herb when given, and
-    /// starts the recipe. Only an idle station starts, and only a recipe the scenario can prepare.
+    /// starts the recipe. Only an idle station starts, only a recipe the scenario can prepare, and
+    /// a gathered herb only into the remedy (the restore rebuilds no other recipe's herb).
     /// </summary>
     public bool TryStart(IngredientPreparationRecipe recipe, IngredientState? gathered = null)
     {
@@ -44,7 +45,8 @@ public sealed class RemedyPreparationLifecycle
         if (Activity is not null
             || Outcome is not null
             || !scenario.IsPreparable(recipe)
-            || (gathered is not null && !IsGathered(gathered)))
+            || (gathered is not null
+                && (!ReferenceEquals(recipe, scenario.Remedy.Recipe) || !IsGathered(gathered))))
         {
             return false;
         }
@@ -179,7 +181,8 @@ public sealed class RemedyPreparationLifecycle
         };
     }
 
+    // By id, as the stock snapshot rejects duplicates, so an unchecked scenario refuses instead of throwing.
     private bool IsGathered(IngredientState state) =>
         scenario.GatheredIngredients.States.Any(gathered => ReferenceEquals(gathered, state))
-        && !Ingredients.States.Any(stocked => ReferenceEquals(stocked.Definition, state.Definition));
+        && !Ingredients.States.Any(stocked => stocked.Definition.IngredientId == state.Definition.IngredientId);
 }

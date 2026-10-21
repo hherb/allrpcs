@@ -1,5 +1,7 @@
 using System.Reflection;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Inventory;
 using Allrpcs.Domain.Persistence;
 using Godot;
 
@@ -28,6 +30,61 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
             Fail("Restore ownership: failed preparation changed installed owners or threw after commit.");
             return false;
         }
+        return true;
+    }
+
+    // A saved inventory that does not fit the world or its history rejects the whole load and keeps
+    // a changed live inventory; a save without one restores the authored start.
+    private bool CheckRejectedInventoryPreservesState(SaveSnapshot snapshot)
+    {
+        InventoryController inventory = GetNode<InventoryController>("../InventoryController");
+        CharacterId seekerId = discoveryController.SearcherCharacterId;
+        CharacterId healerId = GetNode<TemporaryHealerCharacterSource>("../TemporaryHealerCharacterSource")
+            .Character.Identity.Id;
+        ObjectId lens = new("field-lens");
+        SaveSnapshot Root(InventoryOwnershipSnapshot? saved) => new(
+            SaveSchemaVersion.Inventory,
+            snapshot.Discovery,
+            snapshot.WorldEvents,
+            snapshot.CharacterMemory,
+            snapshot.FirstPatient,
+            snapshot.Journal,
+            snapshot.Map,
+            snapshot.InvestigationRoutes,
+            FirstPatientRecoveryStage.NotHeard,
+            null,
+            saved);
+        if (!inventory.TryGive(seekerId, healerId, lens))
+        {
+            Fail("Restore ownership: the live inventory fixture could not give the field lens.");
+            return false;
+        }
+
+        InventoryOwnershipSnapshot changed = inventory.Ownerships!;
+        InventoryOwnershipSnapshot[] unfit =
+        [
+            new([]),
+            new([new(lens, seekerId), new(new ObjectId("gold"), seekerId)]),
+            new([new(lens, new CharacterId("sage"))]),
+            new([new(lens, seekerId), new(InventoryController.MoonwortLeaves, healerId)]),
+        ];
+        foreach (InventoryOwnershipSnapshot saved in unfit)
+        {
+            if (controller.TryRestore(Root(saved)) || !ReferenceEquals(changed, inventory.Ownerships))
+            {
+                Fail($"Restore ownership: an unfit saved inventory ({saved.Entries.Count} entries) loaded or changed the live one.");
+                return false;
+            }
+        }
+
+        if (!controller.TryRestore(Root(null))
+            || !inventory.Carries(seekerId, lens)
+            || inventory.InventoryOf(healerId).ObjectReferences.Any(objectId => objectId == lens))
+        {
+            Fail("Restore ownership: a save without an inventory did not restore the authored start.");
+            return false;
+        }
+
         return true;
     }
 

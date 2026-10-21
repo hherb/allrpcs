@@ -12,8 +12,10 @@ namespace Allrpcs.Game;
 /// <summary>
 /// Proves slice steps 5 and 7 in Main: the station's unidentified leaves make a wrong remedy that
 /// changes nothing; a conditional request makes the Healer examine the herb patch, which
-/// identifies moonwort, and gather it on the normal path; the Healer gives it to the Seeker; the
-/// inventory survives save and Continue; and the Seeker uses it in the remedy that stabilizes.
+/// identifies moonwort, and gather it on the normal path; a distant Healer's herb never turns a
+/// press into the look-alike; the nearby Healer gives it to the Seeker; the inventory survives
+/// save and Continue; the Seeker uses it in the remedy that stabilizes; and the cure survives a
+/// second save and Continue with the station closed.
 /// </summary>
 public partial class IngredientRemedyFlowCheck : Node
 {
@@ -88,10 +90,18 @@ public partial class IngredientRemedyFlowCheck : Node
                 "The examination identified moonwort and the Healer gathered it: " + action.Status);
             first.GetNode<CanvasLayer>("DialogueOverlay").Visible = false;
 
-            // Give: at the station, the nearby Healer hands the moonwort to the Seeker.
+            // A distant Healer's moonwort: the press waits for the Healer instead of the look-alike.
             OpeningRegionRemedyPreparationSceneBinding station = first.GetNode<OpeningRegionRemedyPreparationSceneSource>(
                 "OpeningRegionRemedyPreparationSceneSource").Binding!;
             first.GetNode<Node2D>("Seeker").GlobalPosition = new(station.StationPosition.X, station.StationPosition.Y);
+            healer.GlobalPosition = new(station.StationPosition.X + 300, station.StationPosition.Y);
+            Press(first, "OpeningRegionRemedyPreparationInputCoordinator", "remedy_prepare");
+            Require(first.GetNode<FirstPatientPreparationController>("FirstPatientPreparationController").Activity is null
+                && inventory.Carries(healerId, InventoryController.MoonwortLeaves)
+                && Status(first) == OpeningRegionRemedyPreparationInputCoordinator.HealerCarryingStatusText,
+                "A distant Healer's moonwort kept the station waiting: " + Status(first));
+
+            // Give: at the station, the nearby Healer hands the moonwort to the Seeker.
             healer.GlobalPosition = new(station.StationPosition.X + 60, station.StationPosition.Y);
             Press(first, "OpeningRegionRemedyPreparationInputCoordinator", "remedy_prepare");
             Require(inventory.Carries(seekerId, InventoryController.MoonwortLeaves)
@@ -145,7 +155,33 @@ public partial class IngredientRemedyFlowCheck : Node
                 && state.AdministrationExperiments!.Records.Count == 2
                 && Status(second) == OpeningRegionFirstPatientAdministrationInputCoordinator.AdministeredStatusText,
                 "The second dose, the remedy, stabilized the patient.");
+            PrepareAtStation(second, 1);
+            Require(Status(second) == OpeningRegionRemedyPreparationInputCoordinator.RemedyGivenStatusText,
+                "After the cure the station says the remedy was given: " + Status(second));
+            second.GetNode<Button>("CommandOverlay/SaveLoadPanel/Save").EmitSignal(BaseButton.SignalName.Pressed);
+            Require(second.GetNode<Label>("CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText,
+                "The cured session saved.");
             second.QueueFree();
+            await Frames(4);
+
+            // Continue the cured save: the stabilization, both doses and the used-up herb restore.
+            Node third = await Launch();
+            start = third.GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel");
+            start.Begin();
+            start.GetNode<Button>("Continue").EmitSignal(BaseButton.SignalName.Pressed);
+            await Frames(2);
+            inventory = third.GetNode<InventoryController>("InventoryController");
+            state = third.GetNode<FirstPatientStateController>("FirstPatientStateController");
+            Require(!start.Visible
+                && state.DiseaseTruth!.Infections.Single().CareState == DiseaseCareState.Stabilized
+                && state.AdministrationExperiments!.Records.Count == 2
+                && !inventory.Carries(seekerId, InventoryController.MoonwortLeaves)
+                && !inventory.Carries(healerId, InventoryController.MoonwortLeaves),
+                "Continue restored the cure, both doses and the used-up moonwort.");
+            PrepareAtStation(third, 1);
+            Require(Status(third) == OpeningRegionRemedyPreparationInputCoordinator.RemedyGivenStatusText,
+                "The restored station stays closed after the cure: " + Status(third));
+            third.QueueFree();
             await Frames(2);
             File.Delete(path);
             GD.Print("PASS: ingredient remedy flow");

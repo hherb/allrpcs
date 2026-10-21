@@ -68,17 +68,23 @@ public partial class InventoryController : Node
         && Install(InventoryExchangeTransition.Use(characterId, objectId, ownerships));
 
     /// <summary>
-    /// Checks a saved inventory (null restores the authored start) against the authored objects,
-    /// characters and carrying limits, and returns its install. Throws so the whole load fails.
+    /// Checks a saved inventory against the authored objects, characters and carrying limits and
+    /// against the saved history (whether the gathered moonwort is still held), and returns its
+    /// install. A save without an inventory restores the authored start, with a still-held
+    /// moonwort in the gatherer's hands. Throws so the whole load fails.
     /// </summary>
-    internal Action PrepareRestoration(InventoryOwnershipSnapshot? saved)
+    internal Action PrepareRestoration(InventoryOwnershipSnapshot? saved, bool moonwortHeld, CharacterId gatherer)
     {
+        ArgumentNullException.ThrowIfNull(gatherer);
         InventoryOwnershipSnapshot start = initial
             ?? throw new InvalidOperationException("Inventory restoration requires initialization.");
-        InventoryOwnershipSnapshot restored = saved ?? start;
-        if (!InventoryRestorationPolicy.CanRestore(restored, start, [MoonwortLeaves], Capacities!))
+        InventoryOwnershipSnapshot restored = saved
+            ?? (moonwortHeld ? new([.. start.Entries, new InventoryOwnership(MoonwortLeaves, gatherer)]) : start);
+        if (!InventoryRestorationPolicy.CanRestore(restored, start, moonwortHeld ? [MoonwortLeaves] : [], Capacities!))
         {
-            throw new InvalidOperationException("The saved inventory does not fit the authored world.");
+            throw new InvalidOperationException(
+                $"The saved inventory [{string.Join(", ", restored.Entries.Select(entry => $"{entry.ObjectId.Value}:{entry.OwnerCharacterId.Value}"))}] "
+                + $"does not fit the authored world and history (moonwort held: {moonwortHeld}).");
         }
 
         return () => Ownerships = restored;

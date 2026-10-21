@@ -17,16 +17,16 @@ public sealed class InventoryRestorationPolicyTests
     [Fact]
     public void AcceptsKnownObjectsWithKnownOwnersWithinLimits()
     {
-        Assert.True(CanRestore(new([new(Lens, Seeker), new(Leaves, Healer)])));
-        Assert.True(CanRestore(new([new(Lens, Healer)])));
+        Assert.True(CanRestore(new([new(Lens, Seeker), new(Leaves, Healer)]), [Leaves]));
+        Assert.True(CanRestore(new([new(Lens, Healer)]), []));
     }
 
     [Fact]
     public void RejectsUnknownObjectsOwnersOverCapacityAndLostStartingObjects()
     {
-        Assert.False(CanRestore(new([new(Lens, Seeker), new(new ObjectId("gold"), Seeker)])));
-        Assert.False(CanRestore(new([new(Lens, new CharacterId("sage"))])));
-        Assert.False(CanRestore(new([new(Leaves, Healer)])));
+        Assert.False(CanRestore(new([new(Lens, Seeker), new(new ObjectId("gold"), Seeker)]), []));
+        Assert.False(CanRestore(new([new(Lens, new CharacterId("sage"))]), []));
+        Assert.False(CanRestore(new([new(Leaves, Healer)]), [Leaves]));
         Assert.False(InventoryRestorationPolicy.CanRestore(
             new([new(Lens, Seeker), new(Leaves, Seeker)]),
             Start,
@@ -34,6 +34,15 @@ public sealed class InventoryRestorationPolicyTests
             new([new InventoryCapacity(Seeker, 1)])));
     }
 
-    private static bool CanRestore(InventoryOwnershipSnapshot saved) =>
-        InventoryRestorationPolicy.CanRestore(saved, Start, [Leaves], Capacities);
+    [Fact]
+    public void RequiresAGatheredObjectToBeCarriedExactlyWhileTheHistorySaysItIsHeld()
+    {
+        // Carried although never gathered, or already used up: a duplicated herb.
+        Assert.False(CanRestore(new([new(Lens, Seeker), new(Leaves, Healer)]), []));
+        // Gathered and not yet used, but nobody carries it: a lost herb.
+        Assert.False(CanRestore(new([new(Lens, Seeker)]), [Leaves]));
+    }
+
+    private static bool CanRestore(InventoryOwnershipSnapshot saved, IReadOnlyCollection<ObjectId> held) =>
+        InventoryRestorationPolicy.CanRestore(saved, Start, held, Capacities);
 }

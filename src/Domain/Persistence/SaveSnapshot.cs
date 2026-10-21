@@ -109,8 +109,8 @@ public sealed record SaveSnapshot
     }
 
     /// <summary>
-    /// Creates a save root retaining exact map, ID-only route lifecycle, first-patient recovery
-    /// and continuation state, each only on the schemas that require it.
+    /// Creates a save root retaining exact map, ID-only route lifecycle, first-patient recovery,
+    /// continuation and inventory state, each only on the schemas that require it.
     /// </summary>
     public SaveSnapshot(
         SaveSchemaVersion schemaVersion,
@@ -239,23 +239,23 @@ public sealed record SaveSnapshot
         if (!retainsRecovery && firstPatientRecovery is not null)
         {
             throw new ArgumentException(
-                "Only the first-patient-recovery and continuation schemas can retain recovery progress.",
+                "Only the first-patient-recovery, continuation and inventory schemas can retain recovery progress.",
                 nameof(firstPatientRecovery));
         }
 
-        // A continuation schema root without continuation state restores no profile or positions;
-        // rejected-restore checks copy a captured root this way.
+        // A continuation or inventory schema root without continuation state restores no profile
+        // or positions; rejected-restore checks copy a captured root this way.
         if (schemaVersion != SaveSchemaVersion.Continuation
             && schemaVersion != SaveSchemaVersion.Inventory
             && continuation is not null)
         {
             throw new ArgumentException(
-                "Only the continuation schema can retain the Seeker profile and positions.",
+                "Only the continuation and inventory schemas can retain the Seeker profile and positions.",
                 nameof(continuation));
         }
 
-        // An inventory schema root without inventory restores the authored starting inventory, as
-        // a migrated schema 9 save does.
+        // An inventory schema root without inventory restores the authored starting inventory plus
+        // any gathered herb its history still holds, as a migrated schema 9 save does.
         if (schemaVersion != SaveSchemaVersion.Inventory && inventory is not null)
         {
             throw new ArgumentException(

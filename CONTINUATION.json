@@ -1108,6 +1108,16 @@
           "sha256": "2034b81e19a3130c6eb8019703fea1e45e1f261b28f5b570f7566cc880e11eb3"
         }
       ]
+    },
+    {
+      "id": "code-health-pr454-review-fixes",
+      "reason": "The owner-requested PR #454 review fixes are complete: IngredientRemedyFlowCheck no longer deletes the developer's real save (its gate joins the isolated save-path list); the station says the remedy was given after the cure, leaves itself unchanged with a no-dose-left text after the last dose, and waits for a distant Healer carrying moonwort instead of starting the look-alike; each gathering refusal names its reason and engine refusals are logged; conditional collection checks its target; the lifecycle refuses a gathered herb outside the remedy and an unverified scenario's duplicate; a restored stabilized patient needs a recorded remedy dose; the restored inventory must agree with the event log and first-patient history (a missing inventory restores a still-held moonwort to the Healer); capture refuses an uninitialized inventory; stale SaveSnapshot texts, plan wording and comments are corrected; new tests and checks cover a wrong dose followed by the remedy, look-alike dose rebinding, rejected inventory restores and a cured save and Continue. Rejecting a null v10 inventory was declined with a reason. 6139 solution tests and the full smoke suite (366 passed, 0 failed, 3 quarantined) pass; item 3 is closed again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr454-review-fixes.json",
+          "sha256": "033b427213f8b2fb7964f42b2e07e5b68e51e40fb5a2df137f433a9ceb7623ac"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1743,6 +1753,20 @@
         {
           "path": "docs/superpowers/evidence/2026-10-21-pr453-review-fixes-authority.json",
           "sha256": "98d13fbf45b1f3cce8d01dbeb9ec13036260538c7e61eff4f78a0413e1f7728f"
+        }
+      ]
+    },
+    {
+      "id": "owner-pr454-review-fixes-2026-10-21",
+      "owner_statement": "follow thorugh the recommended actions as well as addressing the suggestions. Then commit, push, and open PR",
+      "scope_ids": [
+        "code-health-phase4-ingredients"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-21-pr454-review-fixes-authority.json",
+          "sha256": "a8c1d0401b6e5a919bb85de0257d590dc551bbf7f356cbe860f4e519fcc63209"
         }
       ]
     }
