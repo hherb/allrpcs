@@ -34,12 +34,13 @@ public partial class FirstPatientPreparationControllerSmokeCheck : Node
             GetNode<FirstPatientPreparationController>("../FirstPatientPreparationController");
         FirstPatientTreatmentContext context = source.Context;
         IngredientPreparationRecipe recipe = context.Scenario.Remedy.Recipe;
-        IngredientStateSnapshot initialIngredients = context.Scenario.Ingredients;
+        IngredientStateSnapshot initialIngredients = context.Scenario.StationIngredients;
+        IngredientState herb = context.Scenario.GatheredIngredients.States[0];
         if (!ReferenceEquals(ordinary.Recipe, recipe)
             || !ReferenceEquals(ordinary.Ingredients, initialIngredients)
             || ordinary.Activity is not null
             || ordinary.Outcome is not null
-            || ordinary.TryInitialize(recipe, new IngredientStateSnapshot([])))
+            || ordinary.TryInitialize(context.Scenario))
         {
             Fail("Ordinary first-patient preparation state was not initialized exactly once.");
             return;
@@ -49,9 +50,10 @@ public partial class FirstPatientPreparationControllerSmokeCheck : Node
         AddChild(controller);
         IngredientPreparationRecipe replacementRecipe =
             RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.Remedy.Recipe;
-        if (!controller.TryInitialize(recipe, initialIngredients)
-            || controller.TryStart(replacementRecipe)
-            || !controller.TryStart(recipe)
+        if (!controller.TryInitialize(context.Scenario)
+            || controller.TryStart(replacementRecipe, herb)
+            || controller.TryStart(recipe)
+            || !controller.TryStart(recipe, herb)
             || !ReferenceEquals(controller.Recipe, recipe)
             || ReferenceEquals(controller.Ingredients, initialIngredients)
             || controller.Activity is null
@@ -66,7 +68,7 @@ public partial class FirstPatientPreparationControllerSmokeCheck : Node
         IngredientStateSnapshot remainingIngredients = controller.Ingredients!;
         IngredientPreparationActivity startedActivity = controller.Activity;
         IngredientPreparationStep replacementStep = new(recipe.Plan.Steps[0].Kind);
-        if (controller.TryStart(recipe)
+        if (controller.TryStart(recipe, herb)
             || controller.TryAdvance(replacementStep)
             || !ReferenceEquals(controller.Ingredients, remainingIngredients)
             || !ReferenceEquals(controller.Activity, startedActivity))
@@ -146,7 +148,7 @@ public partial class FirstPatientPreparationControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "First-patient preparation controller smoke passed: exact scene ingredients, atomic "
+            "First-patient preparation controller smoke passed: exact station stock plus gathered herb, atomic "
             + "input consumption, exact ordered progression and completion, exact prepared-batch "
             + "installation, and rejected operations preserved all retained state.");
         GetTree().Quit();
@@ -171,8 +173,9 @@ public partial class FirstPatientPreparationControllerSmokeCheck : Node
             .Where(method => !method.IsSpecialName)
             .ToArray();
         return properties.Length == 4
-            && properties.All(property => property.CanRead && property.SetMethod?.IsPrivate == true)
-            && methods.Length == 4
+            && properties.All(property => property.CanRead && property.SetMethod is null)
+            && methods.Length == 5
+            && methods.Any(method => method.Name == nameof(FirstPatientPreparationController.TryRestartAfterFailedDose))
             && methods.Any(method => method.Name == nameof(FirstPatientPreparationController.TryInitialize))
             && methods.Any(method => method.Name == nameof(FirstPatientPreparationController.TryStart))
             && methods.Any(method => method.Name == nameof(FirstPatientPreparationController.TryAdvance))

@@ -180,7 +180,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":9",
+            "\"schemaVersion\":10",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         File.WriteAllText(StoragePath(), futureVersion);

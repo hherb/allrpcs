@@ -56,6 +56,34 @@ public sealed class FirstPatientAdministrationOccurrenceTransitionTests
     }
 
     [Fact]
+    public void RecordsAWrongRemedyAsAnExperimentWithoutStabilizing()
+    {
+        Input input = CreateInput(context => context.Scenario.AlternativeRecipes[0]);
+
+        FirstPatientAdministrationOccurrenceResult result = Occur(input);
+
+        Assert.Same(input.WorldEvent.EventId, result.WorldTime.CurrentEventId);
+        Assert.Same(input.Context.Scenario.DiseaseTruth, result.DiseaseTruth);
+        Assert.Same(DiseaseCareState.Unassisted, Assert.Single(result.DiseaseTruth.Infections).CareState);
+        IngredientAdministrationExperimentRecord record = Assert.Single(
+            result.AdministrationExperiments.Records);
+        Assert.Same(input.Batch.Preparation, record.Administration.Dosage.Preparation);
+        Assert.Same(input.WorldEvent, Assert.Single(result.Experiments.Records).WorldEvent);
+        AssertUnchanged(input);
+    }
+
+    [Fact]
+    public void RejectsARecipeTheScenarioCannotPrepare()
+    {
+        IngredientPreparationRecipe foreign = RepresentativeFirstPatientScenarioSource.Create()
+            .AlternativeRecipes[0];
+        Input input = CreateInput(_ => foreign);
+
+        Assert.Throws<InvalidOperationException>(() => Occur(input));
+        AssertUnchanged(input);
+    }
+
+    [Fact]
     public void RejectsReplacementEventBatchAndUnavailableQuantityWithoutPartialState()
     {
         Input input = CreateInput();
@@ -179,10 +207,11 @@ public sealed class FirstPatientAdministrationOccurrenceTransitionTests
             input.AdministrationExperiments,
             input.Experiments);
 
-    private static Input CreateInput()
+    private static Input CreateInput(
+        Func<FirstPatientTreatmentContext, IngredientPreparationRecipe>? selectRecipe = null)
     {
         FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
-        IngredientPreparationRecipe recipe = context.Scenario.Remedy.Recipe;
+        IngredientPreparationRecipe recipe = selectRecipe?.Invoke(context) ?? context.Scenario.Remedy.Recipe;
         IngredientPreparationActivity activity = IngredientPreparationOutcomeTests.Complete(recipe);
         IngredientPreparationOutcome preparation = new(
             activity,

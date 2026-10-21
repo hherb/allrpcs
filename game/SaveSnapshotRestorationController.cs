@@ -1,5 +1,6 @@
 using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Application.Diseases;
 using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
@@ -26,6 +27,7 @@ public partial class SaveSnapshotRestorationController : Node
     private OpeningRegionFirstPatientStabilizationTestimonyCoordinator patientTestimony = null!;
     private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private TemporaryOrdinaryCharacterParticipantSource participants = null!;
+    private InventoryController inventory = null!;
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
@@ -56,6 +58,7 @@ public partial class SaveSnapshotRestorationController : Node
             "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
         sageConsultation = GetNode<OpeningRegionSageConsultationInputCoordinator>(
             "../OpeningRegionSageConsultationInputCoordinator");
+        inventory = GetNode<InventoryController>("../InventoryController");
         participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
             "../TemporaryOrdinaryCharacterParticipantSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
@@ -323,6 +326,16 @@ public partial class SaveSnapshotRestorationController : Node
                 body.Velocity = Vector2.Zero;
             }
         }));
+        // The gathered moonwort is held from its collection until a remedy batch or dose uses it.
+        bool moonwortHeld = RemedyStationPolicy.GatheredHerbIsHeld(
+            snapshot.WorldEvents.EventLog.Entries.Contains(GetNode<TemporaryWorldEventSource>(
+                "../TemporaryWorldEventSource").HerbPatchCollectedWorldEvent.EventId),
+            reboundFirstPatient,
+            firstPatientContextSource.Context.Scenario.Remedy.Recipe);
+        Register("inventory", () => new(inventory.PrepareRestoration(
+            snapshot.Inventory,
+            moonwortHeld,
+            participants.Participants[0].Identity.Id)));
         GetParent<Main>().RegisterSessionRestoreParticipants(registry);
         // Deliberately last: authored preparation can reject an otherwise valid projected root.
         Register("first-patient-preparation", () => new(reboundFirstPatient is null

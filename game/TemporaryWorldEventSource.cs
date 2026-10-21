@@ -13,6 +13,8 @@ public partial class TemporaryWorldEventSource : Node
     private const string HerbPatchCollectedEventIdText = "healer-collected-herb-patch";
     private const string FirstPatientRemedyAdministeredEventIdText =
         "healer-administered-first-patient-remedy";
+    private const string FirstPatientRemedySecondDoseEventIdText =
+        "healer-administered-first-patient-second-dose";
 
     /// <summary>Gets the exact event selected for ordinary scene startup.</summary>
     public WorldEvent InitialWorldEvent { get; private set; } = null!;
@@ -28,6 +30,16 @@ public partial class TemporaryWorldEventSource : Node
 
     /// <summary>Gets the exact event authored for administering the first-patient remedy.</summary>
     public WorldEvent FirstPatientRemedyAdministeredWorldEvent { get; private set; } = null!;
+
+    /// <summary>Gets the event authored for a second dose, after a first that changed nothing.</summary>
+    public WorldEvent FirstPatientRemedySecondDoseWorldEvent { get; private set; } = null!;
+
+    /// <summary>
+    /// Gets the authored doses in order. shortcut: two doses; Phase 4 item 5 (stakes and ending)
+    /// decides what follows a second wrong dose.
+    /// </summary>
+    public IReadOnlyList<WorldEvent> FirstPatientRemedyDoseWorldEvents =>
+        [FirstPatientRemedyAdministeredWorldEvent, FirstPatientRemedySecondDoseWorldEvent];
 
     /// <summary>Gets the retained temporary authoritative world-event snapshot.</summary>
     public WorldEventSnapshot WorldEvents { get; private set; } = null!;
@@ -50,6 +62,9 @@ public partial class TemporaryWorldEventSource : Node
         FirstPatientRemedyAdministeredWorldEvent = new WorldEvent(
             new WorldEventId(FirstPatientRemedyAdministeredEventIdText),
             WorldEventTimeEffect.Advance);
+        FirstPatientRemedySecondDoseWorldEvent = new WorldEvent(
+            new WorldEventId(FirstPatientRemedySecondDoseEventIdText),
+            WorldEventTimeEffect.Advance);
         WorldEvents = new(
         [
             InitialWorldEvent,
@@ -57,6 +72,7 @@ public partial class TemporaryWorldEventSource : Node
             HerbPatchExaminedWorldEvent,
             HerbPatchCollectedWorldEvent,
             FirstPatientRemedyAdministeredWorldEvent,
+            FirstPatientRemedySecondDoseWorldEvent,
         ]);
     }
 }

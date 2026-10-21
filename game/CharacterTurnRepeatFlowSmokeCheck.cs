@@ -60,6 +60,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
         _ = delta;
         if (stage == 0)
         {
+            // Direct installs bypass the conversation coordinator, so they drive the legacy fixture.
+            examinationFlowController.SetProcess(true);
             CaptureInitialState();
             Submit(FirstText);
             stage = 1;

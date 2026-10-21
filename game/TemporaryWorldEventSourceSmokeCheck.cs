@@ -72,7 +72,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
 
         if (!HasExpectedPropertySurface()
             || !ReferenceEquals(firstSnapshot, secondSnapshot)
-            || firstSnapshot.Entries.Count != 5
+            || firstSnapshot.Entries.Count != 6
             || !ReferenceEquals(source.InitialWorldEvent, greyboxReady)
             || !ReferenceEquals(
                 source.HerbPatchIdentifiedWorldEvent,
@@ -82,6 +82,10 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
             || !ReferenceEquals(
                 source.FirstPatientRemedyAdministeredWorldEvent,
                 firstPatientRemedyAdministered)
+            || !ReferenceEquals(source.FirstPatientRemedySecondDoseWorldEvent, firstSnapshot.Entries[5])
+            || !source.FirstPatientRemedyDoseWorldEvents.SequenceEqual(
+                [firstPatientRemedyAdministered, firstSnapshot.Entries[5]])
+            || !ReferenceEquals(firstSnapshot.Entries[5].TimeEffect, WorldEventTimeEffect.Advance)
             || !string.Equals(
                 greyboxReady.EventId.Value,
                 GreyboxReadyEventIdText,
@@ -150,25 +154,32 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
             .OrderBy(property => property.Name, StringComparer.Ordinal)
             .ToArray();
 
-        return properties.Length == 6
+        return properties.Length == 8
             && IsPrivateSetProperty(
                 properties[0],
                 "FirstPatientRemedyAdministeredWorldEvent",
                 typeof(WorldEvent))
-            && IsPrivateSetProperty(
-                properties[1],
-                "HerbPatchCollectedWorldEvent",
-                typeof(WorldEvent))
+            && properties[1].Name == "FirstPatientRemedyDoseWorldEvents"
+            && properties[1].PropertyType == typeof(IReadOnlyList<WorldEvent>)
+            && properties[1].SetMethod is null
             && IsPrivateSetProperty(
                 properties[2],
-                "HerbPatchExaminedWorldEvent",
+                "FirstPatientRemedySecondDoseWorldEvent",
                 typeof(WorldEvent))
             && IsPrivateSetProperty(
                 properties[3],
+                "HerbPatchCollectedWorldEvent",
+                typeof(WorldEvent))
+            && IsPrivateSetProperty(
+                properties[4],
+                "HerbPatchExaminedWorldEvent",
+                typeof(WorldEvent))
+            && IsPrivateSetProperty(
+                properties[5],
                 "HerbPatchIdentifiedWorldEvent",
                 typeof(WorldEvent))
-            && IsPrivateSetProperty(properties[4], "InitialWorldEvent", typeof(WorldEvent))
-            && IsPrivateSetProperty(properties[5], "WorldEvents", typeof(WorldEventSnapshot));
+            && IsPrivateSetProperty(properties[6], "InitialWorldEvent", typeof(WorldEvent))
+            && IsPrivateSetProperty(properties[7], "WorldEvents", typeof(WorldEventSnapshot));
     }
 
     private static bool IsPrivateSetProperty(

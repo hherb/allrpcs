@@ -51,7 +51,7 @@ public partial class FirstPatientAdministrationControllerSmokeCheck : Node
         IngredientStateSnapshot initialIngredients = preparationController.Ingredients!;
         WorldEventSnapshot worldEvents = eventSource.WorldEvents;
         WorldEvent administrationEvent = eventSource.FirstPatientRemedyAdministeredWorldEvent;
-        if (!PrepareExactRemedy(preparationController, recipe)
+        if (!PrepareExactRemedy(preparationController, recipe, context.Scenario.GatheredIngredients.States[0])
             || preparationController.Outcome is not { } preparation
             || ReferenceEquals(preparationController.Ingredients, initialIngredients)
             || !stateController.TryAddPreparedBatch(context, preparation))
@@ -185,9 +185,10 @@ public partial class FirstPatientAdministrationControllerSmokeCheck : Node
 
     private static bool PrepareExactRemedy(
         FirstPatientPreparationController controller,
-        IngredientPreparationRecipe recipe)
+        IngredientPreparationRecipe recipe,
+        IngredientState gatheredHerb)
     {
-        if (!controller.TryStart(recipe))
+        if (!controller.TryStart(recipe, gatheredHerb))
         {
             return false;
         }

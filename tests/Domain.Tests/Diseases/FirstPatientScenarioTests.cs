@@ -49,7 +49,16 @@ public sealed class FirstPatientScenarioTests
         System.Reflection.ConstructorInfo constructor = Assert.Single(scenarioType.GetConstructors());
 
         Assert.Equal(
-            ["DiseaseTruth", "Ingredients", "Investigation", "PatientId", "Remedy"],
+            [
+                "AlternativeRecipes",
+                "DiseaseTruth",
+                "GatheredIngredients",
+                "Ingredients",
+                "Investigation",
+                "PatientId",
+                "Remedy",
+                "StationIngredients",
+            ],
             properties.Select(property => property.Name).Order());
         Assert.All(properties, property => Assert.False(property.CanWrite));
         Assert.Equal(
@@ -59,11 +68,16 @@ public sealed class FirstPatientScenarioTests
                 typeof(IngredientStateSnapshot),
                 typeof(StabilizingRemedyDefinition),
                 typeof(CriticalInvestigationConclusionScenario),
+                typeof(IngredientStateSnapshot),
+                typeof(IEnumerable<IngredientPreparationRecipe>),
             ],
             constructor.GetParameters().Select(parameter => parameter.ParameterType).ToArray());
         Assert.Empty(scenarioType.GetEvents());
-        Assert.Empty(scenarioType.GetMethods().Where(
-            method => method.DeclaringType == scenarioType && !method.IsSpecialName));
+        Assert.Equal(
+            ["IsPreparable"],
+            scenarioType.GetMethods()
+                .Where(method => method.DeclaringType == scenarioType && !method.IsSpecialName)
+                .Select(method => method.Name));
         Assert.True(scenarioType.IsSealed);
     }
 }

@@ -11,7 +11,10 @@ public sealed class AcceptedCharacterExamination
     /// <summary>The exact response that authorized this examination, never a reconstructed reply.</summary>
     public CharacterTurnResponse Response { get; }
 
-    /// <summary>Accepts only the live responder's examination, after any exact speech was recorded.</summary>
+    /// <summary>
+    /// Accepts only the live responder's accepted or conditionally accepted examination, after any
+    /// exact speech was recorded.
+    /// </summary>
     public static AcceptedCharacterExamination? TryAccept(CharacterTurnActivity activity,
         CharacterId actor, ObjectId target, CharacterTurnTranscriptSnapshot transcript)
     {
@@ -21,7 +24,8 @@ public sealed class AcceptedCharacterExamination
         ArgumentNullException.ThrowIfNull(transcript);
         CharacterTurnResponse? response = activity.Response;
         if (activity.State != CharacterTurnActivityState.Speaking || response is null
-            || response.Disposition != CharacterTurnDisposition.Accept
+            || (response.Disposition != CharacterTurnDisposition.Accept
+                && response.Disposition != CharacterTurnDisposition.ConditionallyAccept)
             || !ReferenceEquals(activity.Request.RespondingCharacterId, actor)
             || response.ImmediateIntention.Type != CharacterIntentionType.ExamineObject
             || response.ImmediateIntention.TargetObjectId != target

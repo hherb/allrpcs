@@ -19,6 +19,13 @@ public static class FirstPatientScenarioStructuralPolicy
             && IngredientPreparationAvailabilityPolicy.HasRequiredInputs(
                 scenario.Remedy.Recipe,
                 scenario.Ingredients)
+            && scenario.GatheredIngredients.States.All(gathered =>
+                scenario.Ingredients.States.Any(state => ReferenceEquals(state, gathered)))
+            && scenario.AlternativeRecipes.All(alternative =>
+                !ReferenceEquals(alternative, scenario.Remedy.Recipe)
+                && IngredientPreparationAvailabilityPolicy.HasRequiredInputs(
+                    alternative,
+                    scenario.StationIngredients))
             && CriticalInvestigationConclusionScenarioPolicy.IsAcceptable(
                 scenario.Investigation.Plans,
                 scenario.Investigation.Sources);

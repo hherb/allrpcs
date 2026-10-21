@@ -23,14 +23,16 @@ public static class SaveSnapshotJsonSerializer
             || snapshot.SchemaVersion == SaveSchemaVersion.Map
             || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
             || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+            || snapshot.SchemaVersion == SaveSchemaVersion.Inventory;
         bool hasFirstPatient = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
             || snapshot.SchemaVersion == SaveSchemaVersion.Journal
             || snapshot.SchemaVersion == SaveSchemaVersion.Map
             || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
             || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+            || snapshot.SchemaVersion == SaveSchemaVersion.Inventory;
         if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
@@ -55,7 +57,8 @@ public static class SaveSnapshotJsonSerializer
                         || snapshot.SchemaVersion == SaveSchemaVersion.Map
                         || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
                         || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-                        || snapshot.SchemaVersion == SaveSchemaVersion.Continuation);
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Inventory);
             }
 
             if (hasFirstPatient)
@@ -67,7 +70,8 @@ public static class SaveSnapshotJsonSerializer
                 || snapshot.SchemaVersion == SaveSchemaVersion.Map
                 || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
                 || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                || snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
             {
                 JournalSaveStateJsonWriter.Write(writer, snapshot.Journal!);
             }
@@ -75,29 +79,38 @@ public static class SaveSnapshotJsonSerializer
             if (snapshot.SchemaVersion == SaveSchemaVersion.Map
                 || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
                 || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                || snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
             {
                 MapSaveStateJsonWriter.Write(writer, snapshot.Map!);
             }
 
             if (snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes
                 || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                || snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
             {
                 InvestigationRouteSaveStateJsonWriter.Write(writer, snapshot.InvestigationRoutes!);
             }
 
             if (snapshot.SchemaVersion == SaveSchemaVersion.FirstPatientRecovery
-                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+                || snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                || snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
             {
                 writer.WriteString(
                     "firstPatientRecoveryStage",
                     snapshot.FirstPatientRecovery!.Value);
             }
 
-            if (snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Continuation
+                || snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
             {
                 SaveContinuationJsonWriter.Write(writer, snapshot.Continuation);
+            }
+
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Inventory)
+            {
+                InventoryOwnershipJsonWriter.Write(writer, snapshot.Inventory);
             }
 
             writer.WriteEndObject();

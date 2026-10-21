@@ -35,13 +35,16 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
     private CharacterModelGenerationFlowController modelFlow = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
-    private TemporaryCharacterExaminationFlowController examinationController = null!;
+    // Main adds the examination action after its children are ready, so it is found on first use.
+    private HerbExaminationActionController ExaminationAction =>
+        GetNode<HerbExaminationActionController>("../HerbExaminationActionController");
     private WorldEventController worldEventController = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
     private WorldObjectController worldObjectController = null!;
     private FocusedSearchActivityController searchController = null!;
     private LineEdit input = null!;
     private object? initialEventLog;
+    private int initialTranscriptCount;
     private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
@@ -55,9 +58,6 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
     {
         bool ollamaActionEnabled =
             OS.GetEnvironment(LiveOllamaCheckEnvironmentVariable) == EnabledEnvironmentValue;
-        // This legacy fixture explicitly exercises the conditional collection scaffold.
-        if (ollamaActionEnabled || OS.GetEnvironment(LiveOpenAiCheckEnvironmentVariable) == EnabledEnvironmentValue)
-        { GetParent<Main>().ConditionalCollectionScaffolding = true; }
         bool ollamaWaitEnabled =
             OS.GetEnvironment(LiveOllamaWaitCheckEnvironmentVariable) == EnabledEnvironmentValue;
         bool openAiActionEnabled =
@@ -109,8 +109,6 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
             "../CharacterTurnActivityController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
-        examinationController = GetNode<TemporaryCharacterExaminationFlowController>(
-            "../TemporaryCharacterExaminationFlowController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
@@ -132,12 +130,18 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
 
         if (stage == 0)
         {
+            // The normal examination walks the Healer, who first returns from the authored task.
+            if (actionMode && !GetNode<Healer>("../Healer").Visible)
+            {
+                return;
+            }
+
             CaptureInitialStateAndSubmit();
             stage = 1;
             return;
         }
 
-        if (actionMode && examinationController.LastCollectionOccurrence is not null)
+        if (actionMode && ExaminationAction.LastResult is not null)
         {
             VerifyCompletedActionFlow();
             return;
@@ -168,6 +172,7 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
     private void CaptureInitialStateAndSubmit()
     {
         initialEventLog = worldEventController.EventLog;
+        initialTranscriptCount = transcriptController.Transcript?.Entries.Count ?? 0;
         initialWorldTime = worldEventController.WorldTime;
         initialWorldObjects = worldObjectController.WorldObjects;
         initialPerception = searchController.Perception;
@@ -183,9 +188,7 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
             as CharacterModelStreamTermination;
         CharacterTurnResponse? response = termination?.Response;
         CharacterTurnActivity? activity = turnController.Activity;
-        CharacterExaminationResult? result = examinationController.LastExaminationResult;
-        CharacterTurnWorldEventOccurrence collection =
-            examinationController.LastCollectionOccurrence!;
+        CharacterExaminationResult? result = ExaminationAction.LastResult;
         CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;
         WorldEventLogSnapshot? eventLog = worldEventController.EventLog;
         ObjectId authoritativeTarget = GetNode<TemporaryWorldObjectSource>(
@@ -222,21 +225,19 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
             || result is null
             || !ReferenceEquals(result.Safety, CharacterExaminationSafety.SafeToCollect)
             || !ReferenceEquals(result.TargetObjectId, proposedTarget)
-            || !ReferenceEquals(
-                result.Occurrence.WorldEvent,
-                worldEventSource.HerbPatchExaminedWorldEvent)
-            || !ReferenceEquals(collection.WorldEvent, worldEventSource.HerbPatchCollectedWorldEvent)
-            || transcript is not { Entries.Count: 4 }
-            || transcript.Entries[0].SpokenStatement?.Text != playerText
-            || !ReferenceEquals(transcript.Entries[1].SpokenStatement, response.Speech)
-            || !ReferenceEquals(transcript.Entries[2], result.Occurrence.TranscriptEntry)
-            || !ReferenceEquals(transcript.Entries[3], collection.TranscriptEntry)
-            || eventLog is not { Entries.Count: 3 }
-            || !ReferenceEquals(eventLog.Entries[1], result.Occurrence.WorldEvent.EventId)
-            || !ReferenceEquals(eventLog.Entries[2], collection.WorldEvent.EventId)
+            // A plain examination request leaves the herbs in place on the normal path.
+            || ExaminationAction.LastCollectionOccurrence is not null
+            || transcript is null
+            || transcript.Entries.Count != initialTranscriptCount + 3
+            || transcript.Entries[^3].SpokenStatement?.Text != playerText
+            || !ReferenceEquals(transcript.Entries[^2].SpokenStatement, response.Speech)
+            || !ReferenceEquals(transcript.Entries[^1], result.Occurrence.TranscriptEntry)
+            || eventLog is null
+            || eventLog.Entries.Count != ((WorldEventLogSnapshot)initialEventLog!).Entries.Count + 1
+            || !ReferenceEquals(eventLog.Entries[^1], result.Occurrence.WorldEvent.EventId)
             || !ReferenceEquals(
                 worldEventController.WorldTime?.CurrentEventId,
-                collection.WorldEvent.EventId)
+                result.Occurrence.WorldEvent.EventId)
             || ReferenceEquals(initialEventLog, eventLog)
             || ReferenceEquals(initialWorldTime, worldEventController.WorldTime)
             || !ReferenceEquals(initialWorldObjects, worldObjectController.WorldObjects)
@@ -253,7 +254,7 @@ public partial class LiveCharacterModelOrdinaryFlowSmokeCheck : Node
 
         GD.Print(
             "Live ordinary character-model action smoke passed: one explicitly selected model "
-            + "completed the validated herb-patch examination and safe collection flow without changing "
+            + "completed the validated herb-patch examination on the normal path without changing "
             + "world objects or perception.");
         GetTree().Quit();
     }

@@ -66,5 +66,7 @@ public partial class SaveDocumentStorageController : Node
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK")
             == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_SAVE_CONTINUE_CHECK")
+            == EnabledEnvironmentValue
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_INGREDIENT_REMEDY_CHECK")
             == EnabledEnvironmentValue;
 }

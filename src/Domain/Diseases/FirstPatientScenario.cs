@@ -13,7 +13,9 @@ public sealed class FirstPatientScenario
         DiseaseTruthSnapshot diseaseTruth,
         IngredientStateSnapshot ingredients,
         StabilizingRemedyDefinition remedy,
-        CriticalInvestigationConclusionScenario investigation)
+        CriticalInvestigationConclusionScenario investigation,
+        IngredientStateSnapshot? gatheredIngredients = null,
+        IEnumerable<IngredientPreparationRecipe>? alternativeRecipes = null)
     {
         ArgumentNullException.ThrowIfNull(patientId);
         ArgumentNullException.ThrowIfNull(diseaseTruth);
@@ -26,6 +28,19 @@ public sealed class FirstPatientScenario
         Ingredients = ingredients;
         Remedy = remedy;
         Investigation = investigation;
+        GatheredIngredients = gatheredIngredients ?? new IngredientStateSnapshot([]);
+        StationIngredients = new IngredientStateSnapshot(ingredients.States.Where(state =>
+            !GatheredIngredients.States.Any(gathered =>
+                ReferenceEquals(gathered.Definition, state.Definition))));
+        List<IngredientPreparationRecipe> alternatives = [];
+        foreach (IngredientPreparationRecipe alternative in alternativeRecipes ?? [])
+        {
+            alternatives.Add(alternative ?? throw new ArgumentException(
+                "Alternative recipes cannot contain null values.",
+                nameof(alternativeRecipes)));
+        }
+
+        AlternativeRecipes = alternatives.AsReadOnly();
     }
 
     /// <summary>Gets the exact authored first-patient identity.</summary>
@@ -42,4 +57,24 @@ public sealed class FirstPatientScenario
 
     /// <summary>Gets the exact recoverable critical investigation.</summary>
     public CriticalInvestigationConclusionScenario Investigation { get; }
+
+    /// <summary>
+    /// Gets the ingredients that must be gathered in the world; an empty snapshot means every
+    /// ingredient is already at the preparation station.
+    /// </summary>
+    public IngredientStateSnapshot GatheredIngredients { get; }
+
+    /// <summary>Gets the ingredients kept at the preparation station: all but the gathered ones.</summary>
+    public IngredientStateSnapshot StationIngredients { get; }
+
+    /// <summary>
+    /// Gets other recipes the station can prepare, so a player can prepare and administer a wrong
+    /// remedy. The structural policy, not this constructor, requires that none is the remedy.
+    /// </summary>
+    public IReadOnlyList<IngredientPreparationRecipe> AlternativeRecipes { get; }
+
+    /// <summary>Reports whether the recipe is the remedy or one of the alternatives, by reference.</summary>
+    public bool IsPreparable(IngredientPreparationRecipe recipe) =>
+        ReferenceEquals(recipe, Remedy.Recipe)
+        || AlternativeRecipes.Any(alternative => ReferenceEquals(alternative, recipe));
 }

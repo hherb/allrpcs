@@ -133,7 +133,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         SaveSnapshot migrated = SaveSnapshotJsonDeserializer.DeserializeCurrent(
             legacy,
             InitialFirstPatientState(firstPatientContext));
-        // A legacy save restores no bodies, so the capture keeps the live continuation.
+        // A legacy save restores no bodies and the authored inventory, so the capture keeps the
+        // live continuation and inventory.
         string expectedMigratedCapture = SaveSnapshotJsonSerializer.Serialize(new SaveSnapshot(
             migrated.SchemaVersion,
             migrated.Discovery,
@@ -144,7 +145,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             migrated.Map,
             migrated.InvestigationRoutes,
             migrated.FirstPatientRecovery,
-            initialSnapshot.Continuation));
+            initialSnapshot.Continuation,
+            initialSnapshot.Inventory));
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -159,7 +161,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":9",
+            "\"schemaVersion\":10",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         string unknownMapLocation = initial.Replace(

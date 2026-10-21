@@ -104,6 +104,50 @@ public sealed class FirstPatientRecoveryRestorationProjectionTests
                 state.SeekerId));
     }
 
+    [Fact]
+    public void RestoresSageConsultationAfterAWrongDoseFollowedByTheRemedy()
+    {
+        TestState state = CreateState();
+        FirstPatientTreatmentContext context = state.Context;
+        IngredientPreparationRecipe recipe = context.Scenario.AlternativeRecipes[0];
+        IngredientPreparationActivity activity =
+            IngredientPreparationStartTransition.Start(recipe, context.Scenario.Ingredients).Activity;
+        foreach (IngredientPreparationStep step in recipe.Plan.Steps)
+        {
+            activity = IngredientPreparationActivityProgressionTransition.Advance(activity, step);
+        }
+
+        IngredientPreparationOutcome lookAlike = IngredientPreparationCompletionTransition.Complete(activity);
+        WorldEvent firstDose = new(
+            new WorldEventId("healer-administered-first-patient-look-alike"),
+            WorldEventTimeEffect.Advance);
+        IngredientExperimentJournalSnapshot both = new(
+            [
+                new IngredientAdministrationExperimentRecord(
+                    new ExperimentId("first-patient-look-alike-administration"),
+                    new IngredientAdministrationOutcome(
+                        new CharacterId("healer"),
+                        context.Scenario.PatientId,
+                        new IngredientDosage(lookAlike, lookAlike.Quantity),
+                        firstDose),
+                    new CharacterConditionSet([])),
+                .. state.AdministrationExperiments.Records,
+            ]);
+
+        FirstPatientRecoveryRestoration result = FirstPatientRecoveryRestorationProjection.Restore(
+            FirstPatientRecoveryStage.SageConsulted,
+            context,
+            state.StabilizedTruth,
+            both,
+            both.Records[^1].Administration.WorldEvent,
+            new WorldEventLogSnapshot([firstDose.EventId, state.WorldEvent.EventId]),
+            state.Sage,
+            state.SeekerId);
+
+        Assert.NotNull(result.PatientTestimony);
+        Assert.NotNull(result.SageConsultation);
+    }
+
     private static TestState CreateState()
     {
         FirstPatientTreatmentContext context =

@@ -63,6 +63,8 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
         _ = delta;
         if (stage == 0)
         {
+            // Direct installs bypass the conversation coordinator, so they drive the legacy fixture.
+            examinationFlowController.SetProcess(true);
             CaptureInitialState();
             input.Text = PlayerText;
             GetNode<Healer>("../Healer").Visible = true; // Explicit present listener in this disposable fixture.

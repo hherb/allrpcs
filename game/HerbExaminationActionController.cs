@@ -2,11 +2,15 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Executes one accepted examination at a time, outside the completed dialogue turn.</summary>
+/// <summary>
+/// Executes one accepted or conditionally accepted examination at a time, outside the completed
+/// dialogue turn, and gathers the examined herbs when the turn asked for that and they are safe.
+/// </summary>
 public partial class HerbExaminationActionController : Node
 {
     private const double MaximumTravelSeconds = 45;
@@ -18,6 +22,8 @@ public partial class HerbExaminationActionController : Node
     private CharacterTurnActivityController turns = null!;
     private CharacterTurnTranscriptController transcript = null!;
     private WorldEventController world = null!;
+    private CharacterTurnWorldEventOccurrenceController occurrences = null!;
+    private InventoryController inventory = null!;
     private SaveSnapshotRestorationController restoration = null!;
     private Label status = null!;
     private CharacterTurnRequest? invalidatedRequest;
@@ -36,6 +42,8 @@ public partial class HerbExaminationActionController : Node
     internal string Status => status.Text;
     internal CharacterTurnWorldEventOccurrence? LastOccurrence { get; private set; }
     internal CharacterExaminationResult? LastResult { get; private set; }
+    /// <summary>Gets the collection recorded after the latest safe examination, if one was asked for.</summary>
+    internal CharacterTurnWorldEventOccurrence? LastCollectionOccurrence { get; private set; }
     internal int CompletedCount { get; private set; }
     /// <summary>Observes each committed examination result after it is recorded.</summary>
     internal event Action<CharacterExaminationResult>? Examined;
@@ -52,6 +60,9 @@ public partial class HerbExaminationActionController : Node
         turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
         transcript = GetNode<CharacterTurnTranscriptController>("../CharacterTurnTranscriptController");
         world = GetNode<WorldEventController>("../WorldEventController");
+        occurrences = GetNode<CharacterTurnWorldEventOccurrenceController>(
+            "../CharacterTurnWorldEventOccurrenceController");
+        inventory = GetNode<InventoryController>("../InventoryController");
         restoration = GetNode<SaveSnapshotRestorationController>("../SaveSnapshotRestorationController");
         restoration.PresentationReset += OnRestored;
         // Separate action feedback from both the committed reply and transient generation text.
@@ -82,7 +93,8 @@ public partial class HerbExaminationActionController : Node
     internal void Offer(CharacterTurnActivity activity)
     {
         if (activity.State != CharacterTurnActivityState.Speaking || !ReferenceEquals(turns.Activity, activity)
-            || activity.Response?.Disposition != CharacterTurnDisposition.Accept
+            || (activity.Response?.Disposition != CharacterTurnDisposition.Accept
+                && activity.Response?.Disposition != CharacterTurnDisposition.ConditionallyAccept)
             || activity.Response.ImmediateIntention.Type != CharacterIntentionType.ExamineObject
             || ReferenceEquals(activity.Response, lastOffered)) { return; }
         lastOffered = activity.Response;
@@ -131,6 +143,7 @@ public partial class HerbExaminationActionController : Node
             PlanApproach();
             if (!StartNextLeg()) { Fail("cannot reach the herb patch."); return; }
             execution = accepted;
+            LastCollectionOccurrence = null;
             lastPosition = healer.GlobalPosition;
             stationary = 0;
             elapsed = 0;
@@ -159,10 +172,10 @@ public partial class HerbExaminationActionController : Node
             CompletedCount++;
             if (LastResult is not null) { Examined?.Invoke(LastResult); }
             healer.CommandWait();
+            SetStatus(LastResult?.Safety != CharacterExaminationSafety.SafeToCollect
+                ? "Healer: examination finished; safety not established. Herbs left in place."
+                : "Healer: examined the herb patch: moonwort, safe to collect. " + Collect(execution.Response, LastResult));
             execution = null;
-            SetStatus(LastResult?.Safety == CharacterExaminationSafety.SafeToCollect
-                ? "Healer: examined the herb patch. Safe to collect; herbs left in place."
-                : "Healer: examination finished; safety not established. Herbs left in place.");
             return;
         }
         stationary = healer.GlobalPosition.DistanceTo(lastPosition) < 0.1f ? stationary + delta : 0;
@@ -207,6 +220,48 @@ public partial class HerbExaminationActionController : Node
         approach.Enqueue(destination);
     }
 
+    // In the examination frame, so the collection directly follows its examination in the transcript.
+    // Returns how a safe examination ends: the herbs gathered, or why they were left in place.
+    private string Collect(CharacterTurnResponse response, CharacterExaminationResult result)
+    {
+        if (!ConditionalCollectionPolicy.Collects(response, result))
+        {
+            return "Herbs left in place; ask the Healer to gather them if they are safe.";
+        }
+
+        // Checked before the one-time collection event, so the event never records a take that fails.
+        if (!inventory.CanTake(actor, InventoryController.MoonwortLeaves))
+        {
+            return inventory.Ownerships?.Entries.Any(entry => entry.ObjectId == InventoryController.MoonwortLeaves) == true
+                ? "Herbs left in place; the moonwort is already gathered."
+                : "Herbs left in place; the Healer cannot carry any more.";
+        }
+
+        WorldEvent collected = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource").HerbPatchCollectedWorldEvent;
+        if (!occurrences.TryOccurPostExaminationCollection(
+                result,
+                DeterministicPostExaminationIntentionSelector.Select(result),
+                collected))
+        {
+            if (world.EventLog?.Entries.Contains(collected.EventId) == true)
+            {
+                return "Herbs left in place; the moonwort here was already gathered and used.";
+            }
+
+            GD.PushError("The safe herb-patch collection could not be recorded.");
+            return "Herbs left in place; the gathering could not be recorded.";
+        }
+
+        LastCollectionOccurrence = occurrences.LastOccurrence;
+        if (!inventory.TryTake(actor, InventoryController.MoonwortLeaves))
+        {
+            GD.PushError("The recorded herb-patch collection could not enter the Healer's inventory.");
+            return "Herbs left in place; the Healer could not carry them.";
+        }
+
+        return "Gathered moonwort leaves.";
+    }
+
     private bool StartNextLeg()
     {
         waypoint = approach.Dequeue();
@@ -227,7 +282,7 @@ public partial class HerbExaminationActionController : Node
     private void OnRestored()
     {
         invalidatedRequest = turns.Activity?.Request;
-        Cancel(); LastOccurrence = null; LastResult = null;
+        Cancel(); LastOccurrence = null; LastResult = null; LastCollectionOccurrence = null;
         SetStatus("Healer: examination reset after load.");
     }
 

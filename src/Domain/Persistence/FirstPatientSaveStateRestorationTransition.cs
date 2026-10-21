@@ -31,7 +31,7 @@ public static class FirstPatientSaveStateRestorationTransition
             new(ReferenceEqualityComparer.Instance);
         PreparedIngredientBatchSnapshot preparedBatches = RebindBatches(
             saved.PreparedBatches,
-            authoredContext.Scenario.Remedy.Recipe,
+            authoredContext.Scenario,
             preparations);
         IngredientExperimentJournalSnapshot administrationExperiments = RebindAdministrations(
             saved.AdministrationExperiments,
@@ -42,6 +42,7 @@ public static class FirstPatientSaveStateRestorationTransition
             saved.Experiments,
             authoredWorldEvents);
         RequireAdministrationExperimentPairs(administrationExperiments, experiments);
+        RequireRemedyForStabilization(diseaseTruth, administrationExperiments, authoredContext.Scenario);
 
         return new FirstPatientSaveState(
             diseaseTruth,
@@ -112,7 +113,7 @@ public static class FirstPatientSaveStateRestorationTransition
 
     private static PreparedIngredientBatchSnapshot RebindBatches(
         PreparedIngredientBatchSnapshot saved,
-        IngredientPreparationRecipe authoredRecipe,
+        FirstPatientScenario authoredScenario,
         Dictionary<IngredientPreparationOutcome, IngredientPreparationOutcome> preparations)
     {
         List<PreparedIngredientBatch> batches = [];
@@ -120,8 +121,9 @@ public static class FirstPatientSaveStateRestorationTransition
         {
             IngredientPreparationOutcome preparation = RebindPreparation(
                 savedBatch.Preparation,
-                authoredRecipe,
+                authoredScenario,
                 preparations);
+            IngredientPreparationRecipe authoredRecipe = preparation.Activity.Recipe;
             RequireUnit(savedBatch.RemainingQuantity.Unit, authoredRecipe.ResultQuantity.Unit);
             batches.Add(new PreparedIngredientBatch(
                 preparation,
@@ -140,7 +142,6 @@ public static class FirstPatientSaveStateRestorationTransition
         Dictionary<IngredientPreparationOutcome, IngredientPreparationOutcome> preparations)
     {
         List<IngredientAdministrationExperimentRecord> records = [];
-        IngredientPreparationRecipe authoredRecipe = authoredContext.Scenario.Remedy.Recipe;
         foreach (IngredientAdministrationExperimentRecord savedRecord in saved.Records)
         {
             IngredientAdministrationOutcome savedAdministration = savedRecord.Administration;
@@ -151,8 +152,9 @@ public static class FirstPatientSaveStateRestorationTransition
 
             IngredientPreparationOutcome preparation = RebindPreparation(
                 savedAdministration.Dosage.Preparation,
-                authoredRecipe,
+                authoredContext.Scenario,
                 preparations);
+            IngredientPreparationRecipe authoredRecipe = preparation.Activity.Recipe;
             RequireUnit(
                 savedAdministration.Dosage.Quantity.Unit,
                 authoredRecipe.ResultQuantity.Unit);
@@ -196,7 +198,7 @@ public static class FirstPatientSaveStateRestorationTransition
 
     private static IngredientPreparationOutcome RebindPreparation(
         IngredientPreparationOutcome saved,
-        IngredientPreparationRecipe authoredRecipe,
+        FirstPatientScenario authoredScenario,
         Dictionary<IngredientPreparationOutcome, IngredientPreparationOutcome> preparations)
     {
         if (preparations.TryGetValue(saved, out IngredientPreparationOutcome? existing))
@@ -205,6 +207,10 @@ public static class FirstPatientSaveStateRestorationTransition
         }
 
         IngredientPreparationRecipe savedRecipe = saved.Activity.Recipe;
+        IngredientPreparationRecipe authoredRecipe =
+            authoredScenario.AlternativeRecipes.Prepend(authoredScenario.Remedy.Recipe)
+                .FirstOrDefault(candidate => candidate.RecipeId == savedRecipe.RecipeId)
+            ?? throw Incompatible();
         if (!IsCompatibleRecipe(savedRecipe, authoredRecipe)
             || saved.Activity.Progress.NextStepIndex != authoredRecipe.Plan.Steps.Count)
         {
@@ -303,6 +309,22 @@ public static class FirstPatientSaveStateRestorationTransition
             {
                 throw Incompatible();
             }
+        }
+    }
+
+    // A wrong remedy changes nothing, so only a recorded remedy dose can explain a stabilized patient.
+    private static void RequireRemedyForStabilization(
+        DiseaseTruthSnapshot diseaseTruth,
+        IngredientExperimentJournalSnapshot administrationExperiments,
+        FirstPatientScenario authoredScenario)
+    {
+        if (diseaseTruth.Infections.Any(infection =>
+                ReferenceEquals(infection.CareState, DiseaseCareState.Stabilized))
+            && !administrationExperiments.Records.Any(record => ReferenceEquals(
+                record.Administration.Dosage.Preparation.Activity.Recipe,
+                authoredScenario.Remedy.Recipe)))
+        {
+            throw Incompatible();
         }
     }
 

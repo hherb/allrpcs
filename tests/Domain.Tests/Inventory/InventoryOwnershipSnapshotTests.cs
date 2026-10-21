@@ -28,6 +28,24 @@ public sealed class InventoryOwnershipSnapshotTests
     }
 
     [Fact]
+    public void ProjectsOneCharactersInventoryInSnapshotOrder()
+    {
+        InventoryOwnershipSnapshot snapshot = new(
+            new[]
+            {
+                Create("stone-mortar", "travelling-healer"),
+                Create("healing-herb", "seeker"),
+                Create("field-lens", "seeker"),
+            });
+
+        Assert.Equal(
+            ["healing-herb", "field-lens"],
+            snapshot.InventoryOf(new CharacterId("seeker")).ObjectReferences.Select(id => id.Value));
+        Assert.Empty(snapshot.InventoryOf(new CharacterId("sage")).ObjectReferences);
+        Assert.Throws<ArgumentNullException>(() => snapshot.InventoryOf(null!));
+    }
+
+    [Fact]
     public void CopiesCallerCollection()
     {
         InventoryOwnership original = Create("stone-mortar", "travelling-healer");
@@ -94,7 +112,7 @@ public sealed class InventoryOwnershipSnapshotTests
                 typeof(IEnumerable<InventoryOwnership>),
                 parameter.ParameterType));
         Assert.Empty(snapshotType.GetEvents());
-        Assert.Empty(publicMethods);
+        Assert.Equal([nameof(InventoryOwnershipSnapshot.InventoryOf)], publicMethods);
         Assert.True(snapshotType.IsSealed);
     }
 

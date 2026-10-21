@@ -5,6 +5,7 @@ using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Inventory;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -32,6 +33,7 @@ public partial class SaveSnapshotCaptureController : Node
     private TemporaryOrdinaryCharacterParticipantSource participants = null!;
     private Node2D seeker = null!;
     private Node2D healer = null!;
+    private InventoryController inventory = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -57,6 +59,7 @@ public partial class SaveSnapshotCaptureController : Node
         routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
             "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
+        inventory = GetNode<InventoryController>("../InventoryController");
         customization = GetNode<SeekerCustomizationSelectionSceneSource>(
             "../SeekerCustomizationSelectionSceneSource");
         participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
@@ -103,6 +106,12 @@ public partial class SaveSnapshotCaptureController : Node
             return null;
         }
 
+        // A live save always records the inventory; only a pre-inventory save migrates without one.
+        if (inventory.Ownerships is not { } ownerships)
+        {
+            return null;
+        }
+
         JournalSaveState journalState;
         MapSaveState mapState;
         InvestigationRouteSaveState routeState;
@@ -144,7 +153,7 @@ public partial class SaveSnapshotCaptureController : Node
                 Position(participants.Participants[0].Identity.Id, healer),
             ]);
         return new SaveSnapshot(
-            SaveSchemaVersion.Continuation,
+            SaveSchemaVersion.Inventory,
             discovery,
             eventState,
             memory,
@@ -153,7 +162,8 @@ public partial class SaveSnapshotCaptureController : Node
             mapState,
             routeState,
             recoveryStage,
-            continuation);
+            continuation,
+            ownerships);
     }
 
     private static CharacterPositionSaveState Position(CharacterId characterId, Node2D body) =>

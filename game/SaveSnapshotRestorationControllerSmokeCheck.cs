@@ -136,7 +136,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
-        if (!CheckPreparationFailurePreservesState(snapshot) || !CheckSessionReset(snapshot)
+        if (!CheckPreparationFailurePreservesState(snapshot) || !CheckRejectedInventoryPreservesState(snapshot)
+            || !CheckSessionReset(snapshot)
             || !CheckPublicationOrdering(snapshot))
         {
             return;

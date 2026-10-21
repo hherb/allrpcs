@@ -1,0 +1,68 @@
+{
+  "id": "code-health-pr454-review-fixes",
+  "status": "complete",
+  "date": "2026-10-21",
+  "timezone": "Australia/Sydney",
+  "authority": "docs/superpowers/evidence/2026-10-21-pr454-review-fixes-authority.json",
+  "reopened_scopes": [
+    "code-health-phase4-ingredients"
+  ],
+  "baseline": "927d9d9d",
+  "changes": [
+    "game/SaveDocumentStorageController.cs adds ALLRPCS_INGREDIENT_REMEDY_CHECK to the isolated smoke-check list, so IngredientRemedyFlowCheck saves to a per-process temp file instead of deleting and overwriting the developer's real user:// save.",
+    "game/OpeningRegionRemedyPreparationInputCoordinator.cs: after the cure the station says the remedy was given (RemedyGivenStatusText) instead of that dose changed nothing; once every authored dose is given a press leaves the station unchanged and says so (NoDoseLeftStatusText) instead of resetting it and falling back to the ready text; while the Healer carries the moonwort the idle text says to bring the Healer (HealerCarryingStatusText).",
+    "src/Application/Diseases/RemedyStationPolicy.cs: Choose takes whether the Healer carries the herb and whether it is near. A distant Healer carrying the herb now yields WaitForHealer, so a press never turns into the look-alike (which cannot be cancelled and costs one of the two doses) while the herb is carried.",
+    "game/HerbExaminationActionController.cs: each gathering refusal ends the status with its own reason (ask the Healer to gather them if they are safe; the moonwort is already gathered; the Healer cannot carry more; already gathered and used). An engine refusal to record the collection or to take the recorded herb is a named GD.PushError. The class summary now covers conditional examinations and gathering.",
+    "src/Application/Dialogue/ConditionalCollectionPolicy.cs: a conditional acceptance collects only when its examined target is the result's object; a shortcut comment records that the condition text is not interpreted.",
+    "src/Application/Diseases/RemedyPreparationLifecycle.cs: TryStart refuses a gathered herb for any recipe but the remedy (restoration rebuilds no other recipe's herb), and the gathered-duplicate test compares ingredient ids, so a scenario that skipped the structural policy refuses instead of throwing ArgumentException past the InvalidOperationException catch.",
+    "src/Domain/Persistence/FirstPatientSaveStateRestorationTransition.cs rejects a restored stabilized patient unless an administration record used the authored remedy recipe; a wrong dose changes nothing, so it cannot explain stabilization.",
+    "Inventory restore now agrees with history: RemedyStationPolicy.GatheredHerbIsHeld derives from the saved event log (the herb-patch collection) and the rebound first-patient state (no remedy batch or remedy dose) whether the moonwort is still held; InventoryRestorationPolicy.CanRestore requires exactly the authored starting objects plus the held gathered objects to be carried, so a duplicated or lost herb rejects the load. A save without an inventory (a migrated schema 9 save, or a null v10 section) restores the authored start plus a still-held moonwort in the Healer's hands, so a pre-inventory save whose herb was already collected can still reach the remedy. The rejection message names the saved entries.",
+    "game/SaveSnapshotCaptureController.cs returns no capture when the inventory is uninitialized, so a live save always records its inventory.",
+    "src/Domain/Persistence/SaveSnapshot.cs: the recovery and continuation exception messages name the inventory schema; the constructor summary and the continuation/inventory comments are current. InventoryOwnershipJsonReader and InventoryRestorationPolicy docs describe the history-derived start; the restoration policy carries a shortcut comment for the day a starting object can be used up.",
+    "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs records a look-alike dose with its own procedure text instead of the remedy-batch procedure, and its comment no longer claims the engine decides what a wrong dose did.",
+    "src/Domain/Diseases/FirstPatientScenario.cs: AlternativeRecipes says the structural policy, not the constructor, keeps the remedy out of the alternatives.",
+    "scripts/smoke-godot.sh: the IngredientRemedyFlowCheck deadline is 6000 frames (the check caps itself at 60 fps), covering its 60 s Healer wait, 30 s examination wait and three Main launches; the comment says it is the whole launch's budget.",
+    "New tests: station choice for every carrier/distance combination and GatheredHerbIsHeld; a gathered herb refused for the look-alike; an unverified scenario refusing instead of throwing; conditional collection of a different target refused; inventory restoration rejecting a duplicated and a lost herb; rebinding a look-alike dose and its batch to one authored preparation, rejecting a stabilized patient whose only dose was the look-alike (fails when the new check is removed), and rejecting a look-alike recipe id on the remedy's inputs; testimony and Sage-consultation restoration after a wrong dose followed by the remedy.",
+    "game/IngredientRemedyFlowCheck.cs also proves that a distant Healer's moonwort keeps the station waiting, that the station says the remedy was given after the cure, and that a save and Continue after the cure restore the stabilization, both doses and the used-up moonwort with the station closed. SaveSnapshotRestorationControllerSmokeCheck proves four unfit saved inventories (missing lens, unknown object, unknown owner, an ungathered herb) reject the load and keep a changed live inventory, and that a save without one restores the authored start."
+  ],
+  "declined": [
+    "Rejecting a null inventory section in a schema 10 document: in-process check roots and the schema 9 migration share that null, and restoring it now derives a still-held herb from history, so a null no longer loses the herb or soft-locks the remedy."
+  ],
+  "plan_corrections": [
+    "Item 6 says IngredientRemedyFlowCheck runs a controlled Ollama fixture; it supplies a scripted in-process ICharacterModel through TemporaryCharacterModelSource.TrySupplyModel.",
+    "Item 6 says save, a fresh Main and Continue keep the Healer's moonwort and the Healer then gives at the station; the check gives before saving, so the save records the Seeker carrying the moonwort and after Continue the Seeker only uses it.",
+    "Item 4 says P prepares the look-alike unless the Seeker or a nearby Healer carries moonwort; from this fix a distant Healer carrying it makes P wait instead.",
+    "Item 5 says schema 9 migrates with no inventory, which restores the authored starting inventory, and that preflight rejects unknown objects, owners and over-capacity inventories; from this fix a missing inventory also restores a moonwort the history still holds, and preflight also rejects an inventory that disagrees with the history."
+  ],
+  "verification": {
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "format": "dotnet format Allrpcs.sln --no-restore --verify-no-changes passed",
+    "solution_tests": {
+      "architecture": 42,
+      "application": 1576,
+      "domain": 2893,
+      "infrastructure": 1628,
+      "total": 6139,
+      "failed": 0
+    },
+    "native": {
+      "suite": "scripts/smoke-godot.sh with ALLRPCS_SMOKE_CONTINUE=1",
+      "passed": 366,
+      "failed": 0,
+      "quarantined": 3,
+      "note": "The three quarantined launches (#437, #439, #448) also passed this run; quarantine membership is unchanged here."
+    },
+    "ingredient_remedy_flow": "IngredientRemedyFlowCheck passed with the new distant-Healer, post-cure status and cured save/Continue assertions; it fails with exit 1 when the WaitForHealer arm is removed (the press starts the look-alike)."
+  },
+  "issues": [
+    "The first full smoke run failed SaveSnapshotCaptureControllerSmokeCheck (exit 124, 365 passed): the new inventory guard read the inventory node before the existing guards, so a capture controller built without one threw instead of returning no capture. The guard now runs after them, and the rerun below passed."
+  ],
+  "not_done": [
+    "Full root ./quality.sh gate (due at the Phase 4 exit under D2).",
+    "No check drives a plain-Accept examination to show the new gather hint; the reason texts are covered by reading only.",
+    "The capture controller's new uninitialized-inventory refusal has no dedicated check case."
+  ]
+}

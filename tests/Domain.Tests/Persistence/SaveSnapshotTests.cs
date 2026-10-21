@@ -192,7 +192,7 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(10),
+            new SaveSchemaVersion(11),
             discovery,
             worldEvents,
             memory,
@@ -310,6 +310,7 @@ public sealed class SaveSnapshotTests
             ("Discovery", typeof(DiscoverySaveState)),
             ("FirstPatient", typeof(FirstPatientSaveState)),
             ("FirstPatientRecovery", typeof(FirstPatientRecoveryStage)),
+            ("Inventory", typeof(Allrpcs.Domain.Inventory.InventoryOwnershipSnapshot)),
             ("InvestigationRoutes", typeof(InvestigationRouteSaveState)),
             ("Journal", typeof(JournalSaveState)),
             ("Map", typeof(MapSaveState)),

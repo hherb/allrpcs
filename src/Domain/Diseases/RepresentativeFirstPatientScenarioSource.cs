@@ -24,25 +24,32 @@ public static class RepresentativeFirstPatientScenarioSource
             ]);
         IngredientDefinition moonwortLeaf = new(new IngredientId("moonwort-leaf"));
         IngredientDefinition cleanWater = new(new IngredientId("clean-water"));
+        IngredientDefinition lookAlikeLeaf = new(new IngredientId("false-moonwort-leaf"));
         IngredientPreparationRecipe recipe = new(
             new PreparationRecipeId("cooling-moonwort-remedy"),
-            new IngredientPreparationPlan(
-                [
-                    Step(IngredientPreparationKind.Grinding),
-                    Step(IngredientPreparationKind.Heating),
-                    Step(IngredientPreparationKind.Steeping),
-                    Step(IngredientPreparationKind.Cooling),
-                ]),
+            Plan(),
             [
                 Requirement(moonwortLeaf, 250, IngredientQuantityUnit.Milligram),
                 Requirement(cleanWater, 100, IngredientQuantityUnit.Millilitre),
             ],
             new IngredientDefinition(new IngredientId("cooled-moonwort-preparation")),
             new IngredientQuantity(100, IngredientQuantityUnit.Millilitre));
+        // Unlabelled dried leaves at the station look like moonwort but do not stabilize.
+        IngredientPreparationRecipe lookAlikeRecipe = new(
+            new PreparationRecipeId("cooling-false-moonwort-preparation"),
+            Plan(),
+            [
+                Requirement(lookAlikeLeaf, 250, IngredientQuantityUnit.Milligram),
+                Requirement(cleanWater, 100, IngredientQuantityUnit.Millilitre),
+            ],
+            new IngredientDefinition(new IngredientId("cooled-false-moonwort-preparation")),
+            new IngredientQuantity(100, IngredientQuantityUnit.Millilitre));
+        IngredientState moonwort = State(moonwortLeaf, 500, IngredientQuantityUnit.Milligram);
         IngredientStateSnapshot ingredients = new(
             [
-                State(moonwortLeaf, 500, IngredientQuantityUnit.Milligram),
+                moonwort,
                 State(cleanWater, 250, IngredientQuantityUnit.Millilitre),
+                State(lookAlikeLeaf, 500, IngredientQuantityUnit.Milligram),
             ]);
 
         return new FirstPatientScenario(
@@ -50,8 +57,19 @@ public static class RepresentativeFirstPatientScenarioSource
             diseaseTruth,
             ingredients,
             new StabilizingRemedyDefinition(greySleep, recipe),
-            RepresentativeFirstPatientInvestigationSource.Create());
+            RepresentativeFirstPatientInvestigationSource.Create(),
+            new IngredientStateSnapshot([moonwort]),
+            [lookAlikeRecipe]);
     }
+
+    private static IngredientPreparationPlan Plan() =>
+        new(
+            [
+                Step(IngredientPreparationKind.Grinding),
+                Step(IngredientPreparationKind.Heating),
+                Step(IngredientPreparationKind.Steeping),
+                Step(IngredientPreparationKind.Cooling),
+            ]);
 
     private static IngredientPreparationStep Step(IngredientPreparationKind kind) => new(kind);
 

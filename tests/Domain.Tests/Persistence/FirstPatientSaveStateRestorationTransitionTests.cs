@@ -94,6 +94,74 @@ public sealed class FirstPatientSaveStateRestorationTransitionTests
     }
 
     [Fact]
+    public void RebindsASavedLookAlikeBatchToTheAuthoredAlternativeRecipe()
+    {
+        RestorationInput input = Input();
+        FirstPatientSaveState saved = new(
+            input.Context.Scenario.DiseaseTruth,
+            new PreparedIngredientBatchSnapshot([new PreparedIngredientBatch(LookAlikePreparation(input))]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+
+        FirstPatientSaveState result = FirstPatientSaveStateRestorationTransition.Rebind(
+            saved,
+            input.Context,
+            input.WorldEvents);
+
+        Assert.Same(
+            input.Context.Scenario.AlternativeRecipes[0],
+            Assert.Single(result.PreparedBatches.Batches).Preparation.Activity.Recipe);
+    }
+
+    [Fact]
+    public void RebindsASavedLookAlikeDoseAndItsBatchToOneAuthoredAlternativePreparation()
+    {
+        RestorationInput input = Input();
+        IngredientPreparationOutcome preparation = LookAlikePreparation(input);
+
+        FirstPatientSaveState result = FirstPatientSaveStateRestorationTransition.Rebind(
+            LookAlikeDoseState(input, preparation, input.Context.Scenario.DiseaseTruth, withBatch: true),
+            input.Context,
+            input.WorldEvents);
+
+        IngredientPreparationOutcome dosed = Assert.Single(result.AdministrationExperiments.Records)
+            .Administration.Dosage.Preparation;
+        Assert.Same(input.Context.Scenario.AlternativeRecipes[0], dosed.Activity.Recipe);
+        Assert.Same(dosed, Assert.Single(result.PreparedBatches.Batches).Preparation);
+    }
+
+    [Fact]
+    public void RejectsAStabilizedPatientWhoseOnlyDoseWasTheLookAlike()
+    {
+        RestorationInput input = Input();
+        DiseaseTruthSnapshot stabilized = new(
+            new DiseaseDefinitionSnapshot([input.SavedDisease]),
+            [
+                new CharacterDiseaseState(
+                    input.Context.Scenario.PatientId,
+                    input.SavedDisease,
+                    DiseaseStage.DeepSleep,
+                    input.AdministrationEvent.EventId,
+                    DiseaseCareState.Stabilized),
+            ]);
+
+        Assert.Throws<InvalidOperationException>(() => FirstPatientSaveStateRestorationTransition.Rebind(
+            LookAlikeDoseState(input, LookAlikePreparation(input), stabilized, withBatch: false),
+            input.Context,
+            input.WorldEvents));
+    }
+
+    [Fact]
+    public void RejectsALookAlikeRecipeIdOnTheRemedysInputs()
+    {
+        RestorationInput input = Input();
+
+        AssertRejected(
+            input,
+            SavedState(input, recipeId: input.Context.Scenario.AlternativeRecipes[0].RecipeId.Value));
+    }
+
+    [Fact]
     public void RejectsUnknownDiseaseInfectionAndPreparationDefinitionsAtomically()
     {
         RestorationInput input = Input();
@@ -281,6 +349,62 @@ public sealed class FirstPatientSaveStateRestorationTransitionTests
                                 WorldEventTimeEffect.Advance),
                         "Administer one cooled remedy dose.",
                         "The patient's breathing becomes quieter and steadier."),
+                ]));
+    }
+
+    private static IngredientPreparationOutcome LookAlikePreparation(RestorationInput input)
+    {
+        IngredientPreparationRecipe authored = input.Context.Scenario.AlternativeRecipes[0];
+        IngredientPreparationRecipe copy = new(
+            new PreparationRecipeId(authored.RecipeId.Value),
+            new IngredientPreparationPlan(authored.Plan.Steps.Select(step =>
+                new IngredientPreparationStep(step.Kind))),
+            authored.Inputs.Select(requirement => new IngredientPreparationInputRequirement(
+                new IngredientDefinition(new IngredientId(requirement.Definition.IngredientId.Value)),
+                new IngredientQuantity(requirement.Quantity.Amount, requirement.Quantity.Unit))),
+            new IngredientDefinition(new IngredientId(authored.ResultDefinition.IngredientId.Value)),
+            new IngredientQuantity(authored.ResultQuantity.Amount, authored.ResultQuantity.Unit));
+        return new IngredientPreparationOutcome(
+            new IngredientPreparationActivity(
+                copy,
+                new IngredientPreparationProgress(copy.Plan, copy.Plan.Steps.Count)),
+            copy.ResultDefinition,
+            copy.ResultQuantity);
+    }
+
+    private static FirstPatientSaveState LookAlikeDoseState(
+        RestorationInput input,
+        IngredientPreparationOutcome preparation,
+        DiseaseTruthSnapshot diseaseTruth,
+        bool withBatch)
+    {
+        IngredientQuantity dose = new(25, preparation.Quantity.Unit);
+        ExperimentId experimentId = new("first-patient-remedy-administration");
+        return new FirstPatientSaveState(
+            diseaseTruth,
+            new PreparedIngredientBatchSnapshot(withBatch
+                ? [PreparedIngredientBatchConsumptionTransition.Consume(
+                    new IngredientDosage(preparation, dose),
+                    new PreparedIngredientBatch(preparation))!]
+                : []),
+            new IngredientExperimentJournalSnapshot(
+                [
+                    new IngredientAdministrationExperimentRecord(
+                        experimentId,
+                        new IngredientAdministrationOutcome(
+                            new CharacterId("healer"),
+                            new CharacterId(input.Context.Scenario.PatientId.Value),
+                            new IngredientDosage(preparation, dose),
+                            input.AdministrationEvent),
+                        new CharacterConditionSet([new CharacterCondition("breathing", "Unchanged.")])),
+                ]),
+            new ExperimentJournalSnapshot(
+                [
+                    new ExperimentJournalRecord(
+                        experimentId,
+                        input.AdministrationEvent,
+                        "Administer the complete cooled batch.",
+                        "The patient's breathing does not change."),
                 ]));
     }
 

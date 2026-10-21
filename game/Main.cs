@@ -21,8 +21,6 @@ public partial class Main : Node
     private static readonly StringName LayeredInscriptionDiscoverAction =
         new("layered_inscription_discover");
 
-    internal bool ConditionalCollectionScaffolding { get; set; }
-
     /// <summary>Gets the per-frame conversation-turn state machine Main drives.</summary>
     internal ConversationTurnCoordinator<TemporaryCharacterModelGenerationInput> ConversationTurns =>
         conversationTurns
@@ -141,12 +139,12 @@ public partial class Main : Node
             GetNode<AutonomousConversationBudgetController>("AutonomousConversationBudgetController"),
             examinationAction,
             GetNode<TemporaryCharacterExaminationFlowController>(
-                "TemporaryCharacterExaminationFlowController"),
-            () => ConditionalCollectionScaffolding));
+                "TemporaryCharacterExaminationFlowController")));
         focusedSearchInput = new(new FocusedSearchInputNodePorts(
             focusedSearchController,
             GetNode<InteractionFocusController>("InteractionFocusController"),
             GetNode<TemporaryFocusedSearchContextSource>("TemporaryFocusedSearchContextSource"),
+            GetNode<InventoryController>("InventoryController"),
             GetNode<TemporaryFocusedSearchOutcomeSource>("TemporaryFocusedSearchOutcomeSource"),
             worldObjectController,
             GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource"),

@@ -16,7 +16,9 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck
         JournalSectionPanel panel = GetNode<JournalSectionPanel>("../JournalSectionPanel");
         bool opened = (bool)typeof(JournalOpenCloseInputController).GetMethod(
             "TryOpen", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(journalInput, null)!;
-        if (!opened || !preparation.TryStart(preparation.Recipe!)
+        Allrpcs.Domain.Ingredients.IngredientState herb = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "../TemporaryFirstPatientTreatmentContextSource").Context.Scenario.GatheredIngredients.States[0];
+        if (!opened || !preparation.TryStart(preparation.Recipe!, herb)
             || ReferenceEquals(expectedIngredients, preparation.Ingredients))
         {
             Fail("Restore publication fixture did not change the final ingredient owner.");
