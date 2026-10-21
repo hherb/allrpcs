@@ -28,4 +28,29 @@ public sealed class FirstPatientTreatmentContext
 
     /// <summary>Gets the exact currently confirmed conclusions.</summary>
     public InvestigationConclusionSnapshot Conclusions { get; }
+
+    /// <summary>
+    /// Returns this context over the live disease truth once the patient has progressed: every
+    /// other authored reference is kept, so prepared batches and dose records stay valid. The same
+    /// truth returns this exact context.
+    /// </summary>
+    public FirstPatientTreatmentContext WithDiseaseTruth(DiseaseTruthSnapshot diseaseTruth)
+    {
+        ArgumentNullException.ThrowIfNull(diseaseTruth);
+
+        if (ReferenceEquals(diseaseTruth, Scenario.DiseaseTruth))
+        {
+            return this;
+        }
+
+        FirstPatientScenario live = new(
+            Scenario.PatientId,
+            diseaseTruth,
+            Scenario.Ingredients,
+            Scenario.Remedy,
+            Scenario.Investigation,
+            Scenario.GatheredIngredients,
+            Scenario.AlternativeRecipes);
+        return new FirstPatientTreatmentContext(live, EvidenceRequirement, Conclusions);
+    }
 }

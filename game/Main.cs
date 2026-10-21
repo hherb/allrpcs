@@ -108,6 +108,8 @@ public partial class Main : Node
         if (GetTree().CurrentScene == this && !SmokeCheckHost.SuppressesNewGameStart())
         {
             GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel").Begin();
+            // The patient worsens only in real play; proof scenes keep the authored patient.
+            GetNode<FirstPatientStakesController>("FirstPatientStakesController").Active = true;
         }
     }
 

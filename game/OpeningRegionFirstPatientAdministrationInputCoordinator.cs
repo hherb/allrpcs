@@ -132,7 +132,6 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             || currentBatches is null
             || !ReferenceEquals(requestedBinding, currentBinding)
             || !ReferenceEquals(requestedContext, currentBinding.TreatmentContext)
-            || !ReferenceEquals(state.DiseaseTruth, requestedContext.Scenario.DiseaseTruth)
             || currentBatches.Batches.Count != 1
             || !ReferenceEquals(currentBatches.Batches[0], requestedBatch)
             || !ReferenceEquals(requestedWorldEvent, NextDose())

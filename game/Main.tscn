@@ -1,4 +1,4 @@
-[gd_scene load_steps=240 format=3]
+[gd_scene load_steps=242 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -438,6 +438,8 @@
 [ext_resource type="Script" path="res://PlayerSpeechController.cs" id="player_speech"]
 
 [ext_resource type="Script" path="res://SpaceHoldSpeechController.cs" id="space_hold_speech"]
+[ext_resource type="Script" path="res://FirstPatientStakesController.cs" id="first_patient_stakes"]
+[ext_resource type="Script" path="res://SliceEndPanelController.cs" id="slice_end_panel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3686,6 +3688,65 @@ script = ExtResource("player_speech")
 
 [node name="SpaceHoldSpeechController" type="Node" parent="."]
 script = ExtResource("space_hold_speech")
+
+[node name="FirstPatientStakesController" type="Node" parent="."]
+script = ExtResource("first_patient_stakes")
+
+[node name="SliceEndOverlay" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Panel" type="ColorRect" parent="SliceEndOverlay"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+script = ExtResource("slice_end_panel")
+
+[node name="Box" type="ColorRect" parent="SliceEndOverlay/Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -130.0
+offset_right = 260.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.067, 0.082, 0.98)
+
+[node name="Title" type="Label" parent="SliceEndOverlay/Panel/Box"]
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 496.0
+offset_bottom = 44.0
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="SliceEndOverlay/Panel/Box"]
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 496.0
+offset_bottom = 176.0
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="KeepExploring" type="Button" parent="SliceEndOverlay/Panel/Box"]
+offset_left = 48.0
+offset_top = 196.0
+offset_right = 248.0
+offset_bottom = 236.0
+text = "KEEP EXPLORING"
+
+[node name="ReturnToTitle" type="Button" parent="SliceEndOverlay/Panel/Box"]
+offset_left = 272.0
+offset_top = 196.0
+offset_right = 472.0
+offset_bottom = 236.0
+text = "RETURN TO TITLE"
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
