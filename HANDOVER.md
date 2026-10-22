@@ -36,7 +36,7 @@ derived from saved doses and no schema change
 ([PR #457](https://github.com/hherb/allrpcs/pull/457), merged): the untreated patient worsens every 3
 time-advancing events, and a loss or completion end panel survives save and Continue
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md)). Item 6 is complete
-and closed (branch `claude/phase4-boot-resolution`): nothing is noticed or reinterpreted at boot,
+and closed ([PR #459](https://github.com/hherb/allrpcs/pull/459), not merged): nothing is noticed or reinterpreted at boot,
 the stream residue is noticed on arriving at the stream, and the remedy dose (not a pre-confirmed
 conclusion) confirms the conclusion, by owner decision
 ([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md); 6,158 tests, no
