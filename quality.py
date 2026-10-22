@@ -45,6 +45,9 @@ HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
 COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
+# Authorized successors of herb-retained files: Phase 2 shipping exclusions and (owner decision
+# 2026-10-22) the Phase 4 ingredients fixture switch.
+HERB_SUCCESSOR_PATHS = ('game/export_presets.cfg', 'game/TemporaryCharacterExaminationFlowController.cs')
 CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
@@ -337,8 +340,8 @@ def frozen_evidence():
                 if sha(git('show', COOLING_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen cooling predecessor evidence: ' + row['path'])
                 continue
-            if path.name == 'herb-collection-runtime-verification.json' and row['path'] == 'game/export_presets.cfg':
-                # Phase 2 shipping exclusions are authorized; retain the exact herb export predecessor.
+            if path.name == 'herb-collection-runtime-verification.json' and row['path'] in HERB_SUCCESSOR_PATHS:
+                # Successor edits are authorized; the herb revision must still hold the exact retained bytes.
                 if sha(git('show', HERB_REVISION + ':' + row['path'])) != row['sha256']:
                     raise ValueError('Changed frozen herb predecessor evidence: ' + row['path'])
                 continue
@@ -1297,8 +1300,11 @@ class ContractTests(unittest.TestCase):
         from unittest.mock import patch
         authority_path = 'audio-direction/material-runtime-review/publication/authority.json'
         authority = (ROOT / authority_path).read_bytes()
-        predecessor = git('show', HERB_REVISION + ':game/export_presets.cfg')
-        self.assertEqual(sha(predecessor), 'e10c14cfde8ed35b7ae80293c4fecd32309d2f4ddb8cdb74621faacad31d27ba')
+        # Unrelated paths reuse the export predecessor; the guard must never read it for them.
+        historical_path = retained_path if retained_path in HERB_SUCCESSOR_PATHS else 'game/export_presets.cfg'
+        predecessor = git('show', HERB_REVISION + ':' + historical_path)
+        if historical_path == 'game/export_presets.cfg':
+            self.assertEqual(sha(predecessor), 'e10c14cfde8ed35b7ae80293c4fecd32309d2f4ddb8cdb74621faacad31d27ba')
         binding = '0' * 64 if corrupt_binding else sha(predecessor)
         with tempfile.TemporaryDirectory() as directory:
             repository = Path(directory)
@@ -1314,7 +1320,7 @@ class ContractTests(unittest.TestCase):
             def historical_read(*arguments):
                 if arguments == ('show', AUDIO_REVISIONS[1][1] + ':' + authority_path):
                     return authority
-                self.assertEqual(arguments, ('show', HERB_REVISION + ':game/export_presets.cfg'))
+                self.assertEqual(arguments, ('show', HERB_REVISION + ':' + historical_path))
                 return predecessor + (b'corrupt' if corrupt_predecessor else b'')
 
             with patch.object(sys.modules[__name__], 'ROOT', repository), \
@@ -1322,19 +1328,21 @@ class ContractTests(unittest.TestCase):
                 yield read
 
     def test_herb_export_successor_preserves_pinned_predecessor(self):
-        """Changed live presets pass only after the herb revision's exact bytes are read."""
-        with self.herb_export_fixture() as read:
-            frozen_evidence()
-            self.assertIn(unittest.mock.call('show', HERB_REVISION + ':game/export_presets.cfg'),
-                          read.call_args_list)
+        """Each changed successor passes only after the herb revision's exact bytes are read."""
+        for retained_path in HERB_SUCCESSOR_PATHS:
+            with self.subTest(path=retained_path), self.herb_export_fixture(retained_path=retained_path) as read:
+                frozen_evidence()
+                self.assertIn(unittest.mock.call('show', HERB_REVISION + ':' + retained_path),
+                              read.call_args_list)
 
     def test_herb_export_corrupt_history_is_fatal(self):
         """Neither a changed binding nor changed historical bytes may authorize a successor."""
-        message = 'Changed frozen herb predecessor evidence: game/export_presets.cfg'
-        for corruption in ('corrupt_binding', 'corrupt_predecessor'):
-            with self.subTest(corruption=corruption), self.herb_export_fixture(**{corruption: True}):
-                with self.assertRaisesRegex(ValueError, message):
-                    frozen_evidence()
+        for retained_path in HERB_SUCCESSOR_PATHS:
+            for corruption in ('corrupt_binding', 'corrupt_predecessor'):
+                with self.subTest(path=retained_path, corruption=corruption), \
+                        self.herb_export_fixture(retained_path=retained_path, **{corruption: True}):
+                    with self.assertRaisesRegex(ValueError, 'Changed frozen herb predecessor evidence: ' + retained_path):
+                        frozen_evidence()
 
     def test_herb_export_exception_does_not_admit_unrelated_drift(self):
         """The same manifest with another path, or same path with another manifest, stays exact."""
