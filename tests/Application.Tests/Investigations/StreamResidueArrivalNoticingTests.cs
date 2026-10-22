@@ -24,6 +24,7 @@ public sealed class StreamResidueArrivalNoticingTests
 
     [Theory]
     [InlineData("abandoned-laundry")]
+    [InlineData("abandoned-wagon")]
     [InlineData("old-shrine")]
     [InlineData("southern-road")]
     public void ArrivingAnywhereElseNoticesNothing(string locationId)
@@ -44,6 +45,28 @@ public sealed class StreamResidueArrivalNoticingTests
 
         Assert.NotSame(first, second);
         Assert.Equal(first.EvidenceIds, second.EvidenceIds);
+    }
+
+    [Fact]
+    public void FailsLoudlyWhenTheStreamNoticingExposesNoResidue()
+    {
+        DiscoveryScenario authored = RepresentativeDiscoveryScenarioSource.Create();
+        DiscoveryScenario withoutResidue = new(
+            authored.ObserverCharacterId,
+            authored.WorldObjects,
+            new DiscoveryEvidenceSnapshot(
+                authored.Evidence.Entries.Where(evidence => evidence.EvidenceId.Value != "residue")),
+            authored.InitialPerception,
+            authored.Conditions,
+            authored.AvailableCapabilities,
+            authored.AvailableInventory,
+            authored.AvailableKnowledge,
+            authored.PassiveNoticingCandidates,
+            authored.ReinterpretationCandidates);
+
+        InvalidOperationException error = Assert.Throws<InvalidOperationException>(() =>
+            StreamResidueArrivalNoticing.Notice(withoutResidue, new LocationId("stream")));
+        Assert.Contains("residue", error.Message, StringComparison.Ordinal);
     }
 
     [Fact]

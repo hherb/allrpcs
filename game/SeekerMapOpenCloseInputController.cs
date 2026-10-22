@@ -172,10 +172,7 @@ public partial class SeekerMapOpenCloseInputController : Node
             return false;
         }
 
-        if (routesToInitialize is not null)
-        {
-            RouteLocationsVerifiedBeforeRoutesExisted(map);
-        }
+        RouteVerifiedLocationsNotYetRecorded(map);
 
         if (!noteEditing.TryPresent(map, notes, currentPresentation)
             || !panel.TryPresent(currentPresentation))
@@ -192,9 +189,10 @@ public partial class SeekerMapOpenCloseInputController : Node
         return true;
     }
 
-    // A failed earlier open can leave the map without routes; visits verified then were not routed,
-    // and the visit verifier never revisits them, so catch them (and the stream residue) up once.
-    private void RouteLocationsVerifiedBeforeRoutesExisted(SeekerMapSnapshot map)
+    // Verified visits can be missing from route progress (a failed earlier open, or a save migrated to
+    // empty routes), and the visit verifier never revisits them, so every open catches them and the
+    // stream residue up; routing rejects anything already recorded, so this repeats harmlessly.
+    private void RouteVerifiedLocationsNotYetRecorded(SeekerMapSnapshot map)
     {
         foreach (MapLocationDefinition location in map.VerifiedLocations)
         {

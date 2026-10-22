@@ -149,7 +149,7 @@ run_check 30 ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_PRESENTATION_
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_OBSERVATION_ROUTING_CHECK=1 \
     godot --headless --path "$repository_root/game"
-run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=missing \
+run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=migrated \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=route \
     godot --headless --path "$repository_root/game"

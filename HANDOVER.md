@@ -35,12 +35,19 @@ derived from saved doses and no schema change
 367 passed, 0 failed). Item 5 is complete and closed
 ([PR #457](https://github.com/hherb/allrpcs/pull/457), merged): the untreated patient worsens every 3
 time-advancing events, and a loss or completion end panel survives save and Continue
-([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md)). Item 6 is complete
-and closed ([PR #459](https://github.com/hherb/allrpcs/pull/459), not merged): nothing is noticed or reinterpreted at boot,
-the stream residue is noticed on arriving at the stream, and the remedy dose (not a pre-confirmed
-conclusion) confirms the conclusion, by owner decision
-([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md); 6,158 tests, no
-schema change). Item 7 (owner playtest and the Phase 4 exit gate) is next. Use approved D2 scoped checks until the Phase 4 exit.
+([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md), hash-frozen: its
+step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
+`FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
+in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 is complete and closed
+([PR #459](https://github.com/hherb/allrpcs/pull/459), not merged): nothing is noticed or
+reinterpreted at boot, the stream residue is noticed on arriving at the stream once the map has been
+opened, and by owner decision the remedy dose (not a pre-confirmed conclusion) tests the conclusion
+([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md), hash-frozen: its
+"every existing save already records residue" is false for saves migrated to empty routes, so every
+map open, not only the first, catches up verified locations and the residue; 6,160 tests, smoke 367
+passed, 0 failed, no schema change). Follow-ups for Phase 5 are in
+[#460](https://github.com/hherb/allrpcs/issues/460). Item 7 (owner playtest and the Phase 4 exit
+gate) is next. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.

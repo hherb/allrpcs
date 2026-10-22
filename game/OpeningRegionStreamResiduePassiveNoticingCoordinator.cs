@@ -7,7 +7,10 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Notices the stream residue when the Seeker's visit verifies the stream, and routes it.</summary>
+/// <summary>
+/// Notices the stream residue when a verified map visit reaches the stream (visits verify only once
+/// the map exists), and routes it.
+/// </summary>
 /// <remarks>
 /// Holds no session state: the residue recorded in the (saved) route progress is the only record,
 /// so loading a save never leaves this node believing the residue was already noticed.
@@ -57,8 +60,9 @@ public partial class OpeningRegionStreamResiduePassiveNoticingCoordinator : Node
     }
 
     /// <summary>
-    /// Records the residue on its route when the verified location is the stream. Returns false for
-    /// any other location, before the routes exist, or when the residue is already recorded.
+    /// Routes the residue into every matching route when the verified location is the stream (on
+    /// arrival, and in the map-open catch-up). Returns false for any other location, before the
+    /// routes exist, when the residue is already recorded, or when progress is stale.
     /// </summary>
     public bool TryNoticeOnArrival(LocationId verifiedLocationId)
     {

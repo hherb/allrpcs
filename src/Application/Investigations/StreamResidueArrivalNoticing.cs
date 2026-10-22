@@ -5,8 +5,9 @@ namespace Allrpcs.Application.Investigations;
 
 /// <summary>Passively notices the stream residue when the Seeker arrives at the stream.</summary>
 /// <remarks>
-/// Stateless on purpose: the only record of the noticing is the evidence it routes into the saved
-/// route progress, so a load can never leave a stale "already noticed" flag behind.
+/// Stateless on purpose: the only record of the noticing is the evidence its caller routes into the
+/// saved route progress, so a load can never leave a stale "already noticed" flag behind. It derives
+/// a view only; no live perception changes.
 /// </remarks>
 public static class StreamResidueArrivalNoticing
 {
@@ -15,7 +16,8 @@ public static class StreamResidueArrivalNoticing
 
     /// <summary>
     /// Returns the observer's residue-only evidence view when the verified location is the stream,
-    /// resolved from the scenario's authored passive-noticing candidate; otherwise null.
+    /// resolved from the scenario's authored passive-noticing candidate; otherwise null. Throws when
+    /// that candidate does not expose the residue.
     /// </summary>
     public static CharacterEvidenceViewSnapshot? Notice(DiscoveryScenario scenario, LocationId verifiedLocationId)
     {
@@ -33,7 +35,9 @@ public static class StreamResidueArrivalNoticing
             scenario.InitialPerception,
             scenario.PassiveNoticingCandidates);
         EvidenceId residue = DiscoveryEvidenceProjection.ForCharacter(scenario.Evidence, result.Perception)
-            .EvidenceIds.Single(evidenceId => evidenceId.Value == ResidueEvidenceId);
+            .EvidenceIds.SingleOrDefault(evidenceId => evidenceId.Value == ResidueEvidenceId)
+            ?? throw new InvalidOperationException(
+                "Arriving at the stream did not expose the authored residue evidence.");
         return new CharacterEvidenceViewSnapshot(scenario.ObserverCharacterId, [residue]);
     }
 }

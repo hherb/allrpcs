@@ -66,7 +66,7 @@ public sealed class RepresentativeFirstPatientRecoveryTests
     }
 
     [Fact]
-    public void AReasonableButUnauthoredTheoryCannotAuthorizeTheRemedy()
+    public void AnUnauthoredConclusionMakesTheTreatmentContextInconsistent()
     {
         FirstPatientTreatmentContext authored = RepresentativeFirstPatientTreatmentContextSource.Create();
         InvestigationConclusion expected = authored.EvidenceRequirement.Conclusion;

@@ -132,7 +132,8 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
                 location);
         }
 
-        // Arriving at the stream is what notices its residue; nothing notices it at boot.
+        // Arriving at the stream (visits verify only once the map exists) is what notices its residue;
+        // nothing notices it at boot.
         _ = streamResidue.TryNoticeOnArrival(location.Id);
 
         return true;

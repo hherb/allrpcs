@@ -10,33 +10,33 @@ namespace Allrpcs.Game;
 public partial class OpeningRegionStreamResiduePassiveNoticingSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK";
-    private const string MissingProgressMode = "missing";
+    private const string MigratedSaveMode = "migrated";
     private const string ActiveRouteMode = "route";
     private const string LateRoutesMode = "late-routes";
     private const string StreamRouteKey = "stream-laundry";
 
     private OpeningRegionStreamResiduePassiveNoticingCoordinator coordinator = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
-    private bool activeRouteMode;
-    private bool lateRoutesMode;
+    private OpeningRegionInvestigationRouteCompletionCoordinator completions = null!;
+    private string mode = string.Empty;
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        string mode = OS.GetEnvironment(CheckEnvironmentVariable);
-        bool enabled = mode is MissingProgressMode or ActiveRouteMode or LateRoutesMode;
+        mode = OS.GetEnvironment(CheckEnvironmentVariable);
+        bool enabled = mode is MigratedSaveMode or ActiveRouteMode or LateRoutesMode;
         SetProcess(enabled);
         if (!enabled)
         {
             return;
         }
 
-        activeRouteMode = mode == ActiveRouteMode;
-        lateRoutesMode = mode == LateRoutesMode;
         coordinator = GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
             "../OpeningRegionStreamResiduePassiveNoticingCoordinator");
         routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
             "../OpeningRegionInvestigationRouteProgressController");
+        completions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
     }
 
     /// <inheritdoc />
@@ -57,22 +57,9 @@ public partial class OpeningRegionStreamResiduePassiveNoticingSmokeCheck : Node
         }
 
         LocationId stream = new("stream");
-        if (lateRoutesMode)
+        if (mode != ActiveRouteMode)
         {
-            ProveLateRoutesCatchUp(stream);
-            return;
-        }
-
-        if (!activeRouteMode)
-        {
-            // Without routes (the map was never opened) an arrival records nothing.
-            if (coordinator.TryNoticeOnArrival(stream) || routeProgress.Progress is not null)
-            {
-                Fail("Stream-residue noticing changed state before route progress existed.");
-                return;
-            }
-
-            Pass("no route progress, so an arrival is inert");
+            ProveCatchUpOnMapOpen(stream, initializeRoutesBeforeOpen: mode == MigratedSaveMode);
             return;
         }
 
@@ -87,60 +74,100 @@ public partial class OpeningRegionStreamResiduePassiveNoticingSmokeCheck : Node
             return;
         }
 
-        if (!TryVisitStream(stream))
+        // Laundry first, so the residue noticed on the stream arrival is what completes the route.
+        if (!TryVisit(new LocationId("abandoned-laundry")))
+        {
+            return;
+        }
+
+        if (completions.AcceptedCompletions.Count != 0)
+        {
+            Fail("The laundry visit completed a route before the stream residue was noticed.");
+            return;
+        }
+
+        if (!TryVisit(stream))
         {
             return;
         }
 
         OpeningRegionInvestigationRouteProgressSnapshot noticed = routeProgress.Progress!;
-        if (!HasOnlyStreamResidue(noticed, stream, "Arriving at the stream"))
+        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> accepted = completions.AcceptedCompletions;
+        if (!HasOnlyStreamResidue(noticed, stream, "Arriving at the stream")
+            || accepted.Count != 1
+            || accepted[0].Route.Key != StreamRouteKey)
         {
+            Fail("Arriving at the stream after the laundry did not complete exactly the stream route.");
             return;
         }
 
-        if (coordinator.TryNoticeOnArrival(stream) || !ReferenceEquals(routeProgress.Progress, noticed))
+        if (coordinator.TryNoticeOnArrival(stream)
+            || !ReferenceEquals(routeProgress.Progress, noticed)
+            || !ReferenceEquals(completions.AcceptedCompletions, accepted))
         {
             Fail("A repeated stream arrival changed the recorded residue.");
             return;
         }
 
-        Pass("nothing at boot or elsewhere, residue recorded on stream arrival, repeat arrival inert");
+        Pass("nothing at boot or elsewhere, stream arrival records the residue and completes the route, repeat inert");
     }
 
-    // The stream is verified while the map exists without routes (as after a failed first open);
-    // the next open must catch up both the stream location and its residue.
-    private void ProveLateRoutesCatchUp(LocationId stream)
+    // The stream is verified while route progress lacks it: either no routes exist yet (as after a
+    // failed first open) or empty routes exist (as in a save migrated to route state). The next map
+    // open must catch up both the stream location and its residue.
+    private void ProveCatchUpOnMapOpen(LocationId stream, bool initializeRoutesBeforeOpen)
     {
         Main main = GetParent<Main>();
-        if (!main.GetNode<SeekerMapController>("SeekerMapController").TryInitialize(
+        SeekerMapController map = main.GetNode<SeekerMapController>("SeekerMapController");
+        OpeningRegionOldShrineSceneSource source = main.GetNode<OpeningRegionOldShrineSceneSource>(
+            "OpeningRegionOldShrineSceneSource");
+        if (!map.TryInitialize(
                 main.GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource").Character.Identity.Id)
-            || !TryVisitStream(stream)
-            || routeProgress.Progress is not null)
+            || !TryVisit(stream)
+            || routeProgress.Progress is not null
+            || (initializeRoutesBeforeOpen
+                && !routeProgress.TryInitialize(
+                    RepresentativeOpeningRegionInvestigationRouteSource.Create(map.Catalogue!, source.DiscoveryScenario),
+                    map.Catalogue!,
+                    source.DiscoveryScenario)))
         {
-            Fail("The late-routes scenario could not verify the stream before routes existed.");
+            Fail("The catch-up scenario could not verify the stream before it was routed.");
+            return;
+        }
+
+        if (initializeRoutesBeforeOpen && StreamEntry(routeProgress.Progress!).RecordedLocationIds.Count != 0)
+        {
+            Fail("The migrated-save scenario routed the stream before the map opened.");
             return;
         }
 
         MainFlowCheckSteps.InitializeMap(main);
         if (routeProgress.Progress is not { } caughtUp
-            || !HasOnlyStreamResidue(caughtUp, stream, "The first map open after a routeless stream visit"))
+            || !HasOnlyStreamResidue(caughtUp, stream, "The first map open after an unrouted stream visit"))
         {
             return;
         }
 
-        Pass("a stream visit verified before routes existed is routed with its residue on the next map open");
+        MainFlowCheckSteps.InitializeMap(main);
+        if (!ReferenceEquals(routeProgress.Progress, caughtUp))
+        {
+            Fail("A second map open changed already caught-up route progress.");
+            return;
+        }
+
+        Pass($"{mode}: an unrouted stream visit is routed with its residue on the next map open, once");
     }
 
-    // Walks the Seeker onto the stream anchor and lets the real visit verifier run.
-    private bool TryVisitStream(LocationId stream)
+    // Walks the Seeker onto the location's anchor and lets the real visit verifier run.
+    private bool TryVisit(LocationId location)
     {
         OpeningRegionAnchor anchor = GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource")
-            .Projection.Anchors.Single(candidate => candidate.Location.Identity.Id.Value == stream.Value);
+            .Projection.Anchors.Single(candidate => candidate.Location.Identity.Id.Value == location.Value);
         GetNode<Node2D>("../Seeker").Position = new Vector2(anchor.Position.X, anchor.Position.Y);
         if (!GetNode<OpeningRegionMapVisitVerificationCoordinator>(
                 "../OpeningRegionMapVisitVerificationCoordinator").TryVerifyCurrentVisit())
         {
-            Fail("The Seeker's stream visit was not verified.");
+            Fail($"The Seeker's {location.Value} visit was not verified.");
             return false;
         }
 
