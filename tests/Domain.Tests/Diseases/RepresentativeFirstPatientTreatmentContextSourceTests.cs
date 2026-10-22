@@ -5,7 +5,7 @@ namespace Allrpcs.Domain.Tests.Diseases;
 public sealed class RepresentativeFirstPatientTreatmentContextSourceTests
 {
     [Fact]
-    public void CreatesAnExactEvidenceConfirmedRepresentativeContext()
+    public void CreatesAnExactContextWhoseConclusionAwaitsTheRemedyDose()
     {
         FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
 
@@ -13,10 +13,8 @@ public sealed class RepresentativeFirstPatientTreatmentContextSourceTests
         Assert.Same(
             Assert.Single(context.Scenario.Investigation.Plans.Plans).Conclusion,
             context.EvidenceRequirement.Conclusion);
-        Assert.Same(
-            context.EvidenceRequirement.Conclusion,
-            Assert.Single(context.Conclusions.Conclusions));
-        Assert.True(FirstPatientTreatmentContextPolicy.IsAuthorized(context));
+        Assert.Null(typeof(FirstPatientTreatmentContext).GetProperty("Conclusions"));
+        Assert.True(FirstPatientTreatmentContextPolicy.IsConsistent(context));
     }
 
     [Fact]
@@ -28,7 +26,6 @@ public sealed class RepresentativeFirstPatientTreatmentContextSourceTests
         Assert.NotSame(first, second);
         Assert.NotSame(first.Scenario, second.Scenario);
         Assert.NotSame(first.EvidenceRequirement, second.EvidenceRequirement);
-        Assert.NotSame(first.Conclusions, second.Conclusions);
 
         Type sourceType = typeof(RepresentativeFirstPatientTreatmentContextSource);
         System.Reflection.MethodInfo method = Assert.Single(sourceType.GetMethods().Where(

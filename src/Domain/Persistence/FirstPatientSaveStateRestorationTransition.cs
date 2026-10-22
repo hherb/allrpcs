@@ -18,7 +18,7 @@ public static class FirstPatientSaveStateRestorationTransition
         ArgumentNullException.ThrowIfNull(saved);
         ArgumentNullException.ThrowIfNull(authoredContext);
         ArgumentNullException.ThrowIfNull(authoredWorldEvents);
-        if (!FirstPatientTreatmentContextPolicy.IsAuthorized(authoredContext))
+        if (!FirstPatientTreatmentContextPolicy.IsConsistent(authoredContext))
         {
             throw Incompatible();
         }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1138,6 +1138,16 @@
           "sha256": "debeeafae7cc6d046596a0d265bd01245f918d8dcc29f9e62f267a0be17e0742"
         }
       ]
+    },
+    {
+      "id": "code-health-phase4-boot-resolution",
+      "reason": "Program Phase 4 item 6 is complete on branch claude/phase4-boot-resolution: Main no longer resolves passive noticing, stream residue or observation reinterpretation at boot, and TemporaryPassiveNoticingCandidateSource and TemporaryObservationReinterpretationCandidateSource are deleted with their checks. By owner decision (2026-10-22) the remedy dose confirms the conclusion: FirstPatientTreatmentContext no longer carries a pre-confirmed conclusion and FirstPatientTreatmentContextPolicy.IsConsistent replaces IsAuthorized, so the correct remedy stabilizes and its dose confirms the moonwort hypothesis (item 4). Also by owner decision, arriving at the stream notices its residue: StreamResidueArrivalNoticing (Application, stateless) is called when the Seeker's visit verifies the stream and routes the residue into the saved route progress; the map opens without residue, and the first open that creates routes catches up locations verified before them. No save schema change. 6158 solution tests pass; affected smoke checks pass, including the new late-routes mode. Do not reopen or re-audit item 6.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md",
+          "sha256": "aef1234b38d586fff891e743293611e5f54084868621a61b12e234e4f324a681"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1792,20 +1802,20 @@
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-boot-resolution",
-    "title": "Stop resolving evidence at boot",
+    "id": "code-health-phase4-owner-playtest",
+    "title": "Owner playtest and Phase 4 exit",
     "status": "ready",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 6: Main still resolves evidence at boot (passive noticing, stream residue and observation reinterpretation in game/Main.Initialization.cs) from Temporary* outcome sources, so discovery does not come from play.",
-    "instructions": "Write docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md after measuring the boot-time resolution calls in game/Main.Initialization.cs (TryResolveNextPassiveNoticingCandidate, streamResidue.TryResolve, TryResolveNextObservationReinterpretationCandidate), the Temporary* outcome sources and the pre-confirmed TemporaryFirstPatientTreatmentContextSource conclusion they feed, and which checks rely on them. Remove the boot-time resolution and the Temporary* outcome sources it relies on, letting play (search, examination, confirmed hypotheses) produce the evidence and conclusion the remedy needs. Move each touched state machine into src/Application with xUnit tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the affected native launches; commit/push reviewed work; no merge or release.",
-    "completion_condition": "A fresh launch resolves no evidence at boot, the Temporary* outcome sources it used are gone, the remedy's conclusion is reached through play, saves stay loadable or fail closed, and tests, smoke checks and continuation evidence are synced with review-branch publication.",
+    "missing_deliverable": "Program Phase 4 item 7: no owner playthrough from a fresh profile to the ending on local Ollama is recorded, and the Phase 4 exit full quality gate has not run.",
+    "instructions": "Run the Phase 4 exit full root ./quality.sh once (decision D2) and record it in docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json like the Phase 3 exit record (rename the output if the run happens on another date). Then ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result as an issue comment or a short session note. Fix blocking defects the playtest finds as bounded commits with tests. Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
+    "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",
     "outputs": [
-      "docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md"
+      "docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json"
     ],
-    "boundary": "Phase 4 item 6 only. No owner playtest (item 7), no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind, no physical/provider qualification, no merge or release."
   },
   "deferred_slices": [
     {

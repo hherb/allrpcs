@@ -7,15 +7,16 @@ namespace Allrpcs.Domain.Tests.Diseases;
 public sealed class FirstPatientTreatmentContextPolicyTests
 {
     [Fact]
-    public void AcceptsTheExactAuthoredEvidenceConfirmedRemedy()
+    public void AcceptsTheExactAuthoredRemedyWithoutAnyConfirmedConclusion()
     {
+        // The remedy dose is the experiment that confirms the conclusion, so none is needed first.
         FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
 
-        Assert.True(FirstPatientTreatmentContextPolicy.IsAuthorized(context));
+        Assert.True(FirstPatientTreatmentContextPolicy.IsConsistent(context));
     }
 
     [Fact]
-    public void RejectsReplacementRemedyOrConclusionAndMissingConfirmation()
+    public void RejectsReplacementRemedyOrConclusion()
     {
         FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
         InvestigationConclusion exactConclusion = context.EvidenceRequirement.Conclusion;
@@ -28,30 +29,24 @@ public sealed class FirstPatientTreatmentContextPolicyTests
             context.Scenario.Remedy.Disease,
             context.Scenario.Remedy.Recipe);
 
-        Assert.False(FirstPatientTreatmentContextPolicy.IsAuthorized(new FirstPatientTreatmentContext(
+        Assert.False(FirstPatientTreatmentContextPolicy.IsConsistent(new FirstPatientTreatmentContext(
             context.Scenario,
-            new StabilizingRemedyEvidenceRequirement(replacementRemedy, exactConclusion),
-            context.Conclusions)));
-        Assert.False(FirstPatientTreatmentContextPolicy.IsAuthorized(new FirstPatientTreatmentContext(
+            new StabilizingRemedyEvidenceRequirement(replacementRemedy, exactConclusion))));
+        Assert.False(FirstPatientTreatmentContextPolicy.IsConsistent(new FirstPatientTreatmentContext(
             context.Scenario,
-            new StabilizingRemedyEvidenceRequirement(context.Scenario.Remedy, replacementConclusion),
-            new InvestigationConclusionSnapshot([replacementConclusion]))));
-        Assert.False(FirstPatientTreatmentContextPolicy.IsAuthorized(new FirstPatientTreatmentContext(
-            context.Scenario,
-            context.EvidenceRequirement,
-            new InvestigationConclusionSnapshot([]))));
+            new StabilizingRemedyEvidenceRequirement(context.Scenario.Remedy, replacementConclusion))));
     }
 
     [Fact]
     public void RejectsNullAndExposesOnlyThePurePolicySurface()
     {
-        Assert.Throws<ArgumentNullException>(() => FirstPatientTreatmentContextPolicy.IsAuthorized(null!));
+        Assert.Throws<ArgumentNullException>(() => FirstPatientTreatmentContextPolicy.IsConsistent(null!));
 
         Type policyType = typeof(FirstPatientTreatmentContextPolicy);
         System.Reflection.MethodInfo method = Assert.Single(policyType.GetMethods().Where(
             candidate => candidate.DeclaringType == policyType));
 
-        Assert.Equal("IsAuthorized", method.Name);
+        Assert.Equal("IsConsistent", method.Name);
         Assert.True(method.IsStatic);
         Assert.Equal(typeof(bool), method.ReturnType);
         Assert.Equal(

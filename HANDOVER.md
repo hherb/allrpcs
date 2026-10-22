@@ -33,16 +33,14 @@ structured-decision pipeline interprets it, and a dose confirms or refutes it, w
 derived from saved doses and no schema change
 ([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md); 6,132 tests, smoke
 367 passed, 0 failed). Item 5 is complete and closed
-([PR #457](https://github.com/hherb/allrpcs/pull/457), not merged): every 3 time-advancing world events the
-untreated patient worsens a stage (`FirstPatientDiseaseProgressionSchedule`), shown on its own
-`PatientCondition` HUD line; a loss (a further interval at final decline, or both doses wrong) or
-completion (stabilized and the sage consulted) is derived from saved state with no schema change and
-shown on a full-screen end panel that survives save and Continue
-([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md), hash-frozen: its
-step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
-`FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
-in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 (remove boot-time evidence
-auto-resolution) is active. Use approved D2 scoped checks until the Phase 4 exit.
+([PR #457](https://github.com/hherb/allrpcs/pull/457), merged): the untreated patient worsens every 3
+time-advancing events, and a loss or completion end panel survives save and Continue
+([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md)). Item 6 is complete
+and closed (branch `claude/phase4-boot-resolution`): nothing is noticed or reinterpreted at boot,
+the stream residue is noticed on arriving at the stream, and the remedy dose (not a pre-confirmed
+conclusion) confirms the conclusion, by owner decision
+([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md); 6,158 tests, no
+schema change). Item 7 (owner playtest and the Phase 4 exit gate) is next. Use approved D2 scoped checks until the Phase 4 exit.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -61,35 +59,31 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-boot-resolution — Stop resolving evidence at boot** (ready).
+**code-health-phase4-owner-playtest — Owner playtest and Phase 4 exit** (ready).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
 
-Missing deliverable: Program Phase 4 item 6: Main still resolves evidence at boot (passive noticing,
-stream residue and observation reinterpretation in game/Main.Initialization.cs) from Temporary*
-outcome sources, so discovery does not come from play.
+Missing deliverable: Program Phase 4 item 7: no owner playthrough from a fresh profile to the ending
+on local Ollama is recorded, and the Phase 4 exit full quality gate has not run.
 
-Write docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md after measuring the
-boot-time resolution calls in game/Main.Initialization.cs (TryResolveNextPassiveNoticingCandidate,
-streamResidue.TryResolve, TryResolveNextObservationReinterpretationCandidate), the Temporary*
-outcome sources and the pre-confirmed TemporaryFirstPatientTreatmentContextSource conclusion they
-feed, and which checks rely on them. Remove the boot-time resolution and the Temporary* outcome
-sources it relies on, letting play (search, examination, confirmed hypotheses) produce the evidence
-and conclusion the remedy needs. Move each touched state machine into src/Application with xUnit
-tests (rolling rule); keep save-version handling fail-closed. Use D2 format/build/test and the
-affected native launches; commit/push reviewed work; no merge or release.
+Run the Phase 4 exit full root ./quality.sh once (decision D2) and record it in
+docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json like the Phase 3 exit record (rename
+the output if the run happens on another date). Then ask the owner to play from a fresh profile to
+the ending on local Ollama (gemma4:e4b) and record the result as an issue comment or a short session
+note. Fix blocking defects the playtest finds as bounded commits with tests. Tick ROADMAP 4.7 and
+the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.
 
-Done when: A fresh launch resolves no evidence at boot, the Temporary* outcome sources it used are
-gone, the remedy's conclusion is reached through play, saves stay loadable or fail closed, and
-tests, smoke checks and continuation evidence are synced with review-branch publication.
+Done when: The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is
+recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with
+continuation evidence synced and review-branch publication.
 
 Expected outputs:
 
-- `docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md`
+- `docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json`
 
-Boundary: Phase 4 item 6 only. No owner playtest (item 7), no new sabotage kind, no
-physical/provider qualification, no merge or release.
+Boundary: Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind,
+no physical/provider qualification, no merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

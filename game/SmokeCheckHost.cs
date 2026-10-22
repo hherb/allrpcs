@@ -405,14 +405,10 @@ internal static class SmokeCheckHost
             "TemporarySeekerPerceptionSource", "ALLRPCS_PASSIVE_CANDIDATE_CONTROLLER_CHECK"),
         Check<PassiveNoticingResolutionControllerSmokeCheck>(
             "TemporarySeekerPerceptionSource", "ALLRPCS_PASSIVE_RESOLUTION_CONTROLLER_CHECK"),
-        Check<TemporaryPassiveNoticingCandidateSourceSmokeCheck>(
-            "TemporarySeekerPerceptionSource", "ALLRPCS_PASSIVE_CANDIDATE_SOURCE_CHECK"),
         Check<ObservationReinterpretationCandidateControllerSmokeCheck>(
             "TemporarySeekerPerceptionSource", "ALLRPCS_REINTERPRETATION_CANDIDATE_CONTROLLER_CHECK"),
         Check<ObservationReinterpretationResolutionControllerSmokeCheck>(
             "TemporarySeekerPerceptionSource", "ALLRPCS_REINTERPRETATION_RESOLUTION_CONTROLLER_CHECK"),
-        Check<TemporaryObservationReinterpretationCandidateSourceSmokeCheck>(
-            "TemporarySeekerPerceptionSource", "ALLRPCS_REINTERPRETATION_CANDIDATE_SOURCE_CHECK"),
         Check<TemporarySeekerPerceptionSourceSmokeCheck>(
             "TemporarySeekerPerceptionSource", "ALLRPCS_SEEKER_PERCEPTION_SOURCE_CHECK"),
         Check<FocusedSearchPerceptionControllerSmokeCheck>(

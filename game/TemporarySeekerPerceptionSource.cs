@@ -1,4 +1,5 @@
-using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
@@ -10,6 +11,8 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class TemporarySeekerPerceptionSource : Node
 {
+    // The herb patch starts unnoticed; only the Seeker's focused search reveals it.
+    private const string UnnoticedObjectId = "herb-patch";
     private const string WagonClueObjectId = "wagon-clue";
     private readonly VisibilityState initialVisibilityState = VisibilityState.Noticed;
 
@@ -19,14 +22,13 @@ public partial class TemporarySeekerPerceptionSource : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        PassiveNoticingCandidate candidate =
-            GetNode<TemporaryPassiveNoticingCandidateSource>(
-                "../TemporaryPassiveNoticingCandidateSource").Candidate;
+        Character seeker = GetNode<TemporarySeekerCharacterSource>(
+            "../TemporarySeekerCharacterSource").Character;
         TemporaryWorldObjectSource worldObjectSource = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource");
         WorldObjectSnapshot worldObjects = worldObjectSource.WorldObjects;
 
-        CharacterPerceptionSnapshot temporary = CreatePerception(candidate, worldObjects);
+        CharacterPerceptionSnapshot temporary = CreatePerception(seeker.Identity.Id, worldObjects);
         WorldObjectVisibility exactWagonVisibility = worldObjectSource
             .RepresentativeDiscoveryScenario.InitialPerception.Entries.Single(entry =>
                 entry.ObjectId.Value == WagonClueObjectId);
@@ -39,25 +41,27 @@ public partial class TemporarySeekerPerceptionSource : Node
     }
 
     private CharacterPerceptionSnapshot CreatePerception(
-        PassiveNoticingCandidate candidate,
+        CharacterId observerId,
         WorldObjectSnapshot worldObjects)
     {
-        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(observerId);
         ArgumentNullException.ThrowIfNull(worldObjects);
 
-        WorldObject candidateWorldObject = WorldObjectLookup.FindById(
-            candidate.TargetObjectId,
-            worldObjects) ?? throw new InvalidOperationException(
-                "The passive-noticing candidate target is absent from the world-object snapshot.");
+        if (!worldObjects.Entries.Any(worldObject => worldObject.Identity.Id.Value == UnnoticedObjectId))
+        {
+            throw new InvalidOperationException(
+                "The unnoticed herb patch is absent from the world-object snapshot.");
+        }
+
         WorldObjectVisibility[] entries = worldObjects.Entries
             .Select(
                 worldObject => new WorldObjectVisibility(
                     worldObject.Identity.Id,
-                    ReferenceEquals(worldObject, candidateWorldObject)
+                    worldObject.Identity.Id.Value == UnnoticedObjectId
                         ? VisibilityState.Unnoticed
                         : initialVisibilityState))
             .ToArray();
 
-        return new CharacterPerceptionSnapshot(candidate.ObserverCharacterId, entries);
+        return new CharacterPerceptionSnapshot(observerId, entries);
     }
 }

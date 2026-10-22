@@ -2,11 +2,9 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
-using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.WorldEvents;
-using Allrpcs.Domain.WorldObjects;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -210,6 +208,8 @@ public partial class Main
         }
     }
 
+    // Installs the authored starting perception only: nothing is noticed or reinterpreted at boot,
+    // so every discovery comes from play (focused search, arrivals, examinations).
     private void InitializeSeekerPerception()
     {
         if (!focusedSearchController.TryInitializePerception(
@@ -218,60 +218,6 @@ public partial class Main
         {
             throw new InvalidOperationException(
                 "The focused-search controller could not initialize Seeker perception.");
-        }
-
-        Character seeker =
-            GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource").Character;
-        PassiveNoticingCandidate noticing =
-            GetNode<TemporaryPassiveNoticingCandidateSource>("TemporaryPassiveNoticingCandidateSource")
-            .Candidate;
-        WorldObject noticedObject = worldObjectController.FindWorldObject(noticing.TargetObjectId)
-            ?? throw new InvalidOperationException(
-                "The passive-noticing candidate target is absent from live world objects.");
-        if (!focusedSearchController.TryProducePassiveNoticingCandidate(noticing, seeker, noticedObject))
-        {
-            throw new InvalidOperationException(
-                "The passive-noticing candidate could not be produced for the Seeker.");
-        }
-
-        if (!focusedSearchController.TryResolveNextPassiveNoticingCandidate())
-        {
-            throw new InvalidOperationException(
-                "The initial passive-noticing candidate could not be resolved for the Seeker.");
-        }
-
-        OpeningRegionStreamResiduePassiveNoticingCoordinator streamResidue =
-            GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
-                "OpeningRegionStreamResiduePassiveNoticingCoordinator");
-        if (!streamResidue.TryResolve(
-                streamResidue.Perception,
-                streamResidue.Candidates,
-                streamResidue.Candidate))
-        {
-            throw new InvalidOperationException(
-                "The opening-region stream residue could not be passively noticed.");
-        }
-
-        ObservationReinterpretationCandidate reinterpretation =
-            GetNode<TemporaryObservationReinterpretationCandidateSource>(
-                "TemporaryObservationReinterpretationCandidateSource")
-            .Candidate;
-        WorldObject reinterpretedObject = worldObjectController.FindWorldObject(reinterpretation.TargetObjectId)
-            ?? throw new InvalidOperationException(
-                "The observation-reinterpretation candidate target is absent from live world objects.");
-        if (!focusedSearchController.TryProduceObservationReinterpretationCandidate(
-                reinterpretation,
-                seeker,
-                reinterpretedObject))
-        {
-            throw new InvalidOperationException(
-                "The observation-reinterpretation candidate could not be produced for the Seeker.");
-        }
-
-        if (!focusedSearchController.TryResolveNextObservationReinterpretationCandidate(seeker))
-        {
-            throw new InvalidOperationException(
-                "The initial observation-reinterpretation candidate could not be resolved for the Seeker.");
         }
     }
 }

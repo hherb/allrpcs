@@ -125,10 +125,6 @@ public sealed class FirstPatientStabilizationTransitionTests
         ExperimentJournalSnapshot fullExperiments = new(Enumerable.Range(
             0,
             ExperimentJournalSnapshot.MaximumRecordCount).Select(index => UniversalRecord(index)));
-        FirstPatientTreatmentContext wrongConclusion = new(
-            input.Scenario,
-            input.Context.EvidenceRequirement,
-            new InvestigationConclusionSnapshot([]));
         FirstPatientScenario ineligibleScenario = new(
             input.Scenario.PatientId,
             new DiseaseTruthSnapshot(input.Scenario.DiseaseTruth.Definitions, []),
@@ -137,8 +133,7 @@ public sealed class FirstPatientStabilizationTransitionTests
             input.Scenario.Investigation);
         FirstPatientTreatmentContext ineligibleContext = new(
             ineligibleScenario,
-            input.Context.EvidenceRequirement,
-            input.Context.Conclusions);
+            input.Context.EvidenceRequirement);
 
         Assert.Throws<ArgumentException>(() => FirstPatientStabilizationTransition.Apply(
             experimentId,
@@ -157,12 +152,6 @@ public sealed class FirstPatientStabilizationTransitionTests
             preparedBatches: preparedBatches,
             administrationExperiments: new IngredientExperimentJournalSnapshot([]),
             experiments: fullExperiments));
-        Assert.Throws<InvalidOperationException>(() => Apply(
-            input,
-            context: wrongConclusion,
-            preparedBatches: preparedBatches,
-            administrationExperiments: new IngredientExperimentJournalSnapshot([]),
-            experiments: new ExperimentJournalSnapshot([])));
         Assert.Throws<InvalidOperationException>(() => Apply(
             input,
             context: ineligibleContext,

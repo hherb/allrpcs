@@ -16,8 +16,6 @@
 [ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="25_world_object_source"]
 [ext_resource type="Script" path="res://WorldObjectController.cs" id="27_world_object_controller"]
 [ext_resource type="Script" path="res://TemporarySeekerCharacterSource.cs" id="30_seeker_character_source"]
-[ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSource.cs" id="34_passive_candidate_source"]
-[ext_resource type="Script" path="res://TemporaryObservationReinterpretationCandidateSource.cs" id="38_reinterpretation_candidate_source"]
 [ext_resource type="Script" path="res://WorldEventLogController.cs" id="40_world_event_log_controller"]
 [ext_resource type="Script" path="res://TemporaryWorldEventSource.cs" id="42_world_event_source"]
 [ext_resource type="Script" path="res://WorldTimeController.cs" id="45_world_time_controller"]
@@ -2850,12 +2848,6 @@ script = ExtResource("336_seeker_customization_application")
 
 [node name="TemporaryCharacterTargetSabotageInvestigationSource" type="Node" parent="."]
 script = ExtResource("291aq_target_sabotage_investigation_source")
-
-[node name="TemporaryPassiveNoticingCandidateSource" type="Node" parent="."]
-script = ExtResource("34_passive_candidate_source")
-
-[node name="TemporaryObservationReinterpretationCandidateSource" type="Node" parent="."]
-script = ExtResource("38_reinterpretation_candidate_source")
 
 [node name="TemporarySeekerPerceptionSource" type="Node" parent="."]
 script = ExtResource("20_seeker_perception_source")

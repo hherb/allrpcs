@@ -13,56 +13,38 @@ namespace Allrpcs.Domain.Tests.Diseases;
 public sealed class RepresentativeFirstPatientRecoveryTests
 {
     [Fact]
-    public void EitherDistinctEvidenceRouteCanAuthorizeEarlyStabilization()
+    public void TheRemedyDoseStabilizesWithoutAnEarlierConfirmedConclusion()
     {
-        FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
-        InvestigationConclusionEvidencePlan plan = Assert.Single(scenario.Investigation.Plans.Plans);
-
-        Assert.Equal(2, plan.Routes.Count);
-        for (int routeIndex = 0; routeIndex < plan.Routes.Count; routeIndex++)
-        {
-            InvestigationConclusionEvidenceRoute route = plan.Routes[routeIndex];
-            CharacterEvidenceViewSnapshot visibleEvidence = new(
-                new CharacterId("seeker"),
-                route.RequiredEvidenceIds);
-            InvestigationConclusionConfirmationResult confirmation =
-                InvestigationConclusionConfirmationTransition.Confirm(
-                    plan,
-                    visibleEvidence,
-                    new OpenInvestigationQuestionSnapshot([plan.Conclusion.Question]),
-                    new InvestigationConclusionSnapshot([]));
-            FirstPatientTreatmentContext context = new(
+        // The dose is the experiment that confirms the conclusion, so nothing is confirmed first.
+        FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
+        FirstPatientScenario scenario = context.Scenario;
+        WorldEvent worldEvent = DiseaseProgressionPolicyTests.Event(
+            "stabilized-by-first-dose",
+            WorldEventTimeEffect.NoAdvance);
+        IngredientAdministrationOutcome administration =
+            StabilizingRemedyAdministrationPolicyTests.Administration(
                 scenario,
-                new StabilizingRemedyEvidenceRequirement(scenario.Remedy, plan.Conclusion),
-                confirmation.Conclusions);
-            WorldEvent worldEvent = DiseaseProgressionPolicyTests.Event(
-                $"stabilized-by-route-{routeIndex}",
-                WorldEventTimeEffect.NoAdvance);
-            IngredientAdministrationOutcome administration =
-                StabilizingRemedyAdministrationPolicyTests.Administration(
-                    scenario,
-                    scenario.Remedy.Recipe,
-                    worldEvent);
+                scenario.Remedy.Recipe,
+                worldEvent);
 
-            FirstPatientStabilizationResult result = FirstPatientStabilizationTransition.Apply(
-                new ExperimentId($"route-{routeIndex}-dose"),
-                context,
-                administration,
-                new CharacterConditionSet([]),
-                "Administer one prepared stabilizing remedy dose.",
-                "The patient's breathing becomes steadier.",
-                new WorldEventSnapshot([worldEvent]),
-                new WorldEventLogSnapshot([worldEvent.EventId]),
-                new PreparedIngredientBatchSnapshot(
-                    [new PreparedIngredientBatch(administration.Dosage.Preparation)]),
-                new IngredientExperimentJournalSnapshot([]),
-                new ExperimentJournalSnapshot([]));
+        FirstPatientStabilizationResult result = FirstPatientStabilizationTransition.Apply(
+            new ExperimentId("first-dose"),
+            context,
+            administration,
+            new CharacterConditionSet([]),
+            "Administer one prepared stabilizing remedy dose.",
+            "The patient's breathing becomes steadier.",
+            new WorldEventSnapshot([worldEvent]),
+            new WorldEventLogSnapshot([worldEvent.EventId]),
+            new PreparedIngredientBatchSnapshot(
+                [new PreparedIngredientBatch(administration.Dosage.Preparation)]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
 
-            Assert.Same(DiseaseCareState.Stabilized, Assert.Single(result.DiseaseTruth.Infections).CareState);
-            Assert.Single(result.AdministrationExperiments.Records);
-            Assert.Single(result.Experiments.Records);
-            Assert.Empty(result.PreparedBatches.Batches);
-        }
+        Assert.Same(DiseaseCareState.Stabilized, Assert.Single(result.DiseaseTruth.Infections).CareState);
+        Assert.Single(result.AdministrationExperiments.Records);
+        Assert.Single(result.Experiments.Records);
+        Assert.Empty(result.PreparedBatches.Batches);
     }
 
     [Fact]
@@ -99,10 +81,9 @@ public sealed class RepresentativeFirstPatientRecoveryTests
             "Heating without cooling preserves the remedy.");
         FirstPatientTreatmentContext wrongTheory = new(
             authored.Scenario,
-            new StabilizingRemedyEvidenceRequirement(authored.Scenario.Remedy, wrongConclusion),
-            new InvestigationConclusionSnapshot([wrongConclusion]));
+            new StabilizingRemedyEvidenceRequirement(authored.Scenario.Remedy, wrongConclusion));
 
-        Assert.False(FirstPatientTreatmentContextPolicy.IsAuthorized(wrongTheory));
+        Assert.False(FirstPatientTreatmentContextPolicy.IsConsistent(wrongTheory));
     }
 
     [Fact]
@@ -167,8 +148,7 @@ public sealed class RepresentativeFirstPatientRecoveryTests
             scenario.Investigation);
         FirstPatientTreatmentContext recoveryContext = new(
             deterioratedScenario,
-            context.EvidenceRequirement,
-            context.Conclusions);
+            context.EvidenceRequirement);
         WorldEvent recoveryEvent = DiseaseProgressionPolicyTests.Event(
             "correct-dose-after-failure",
             WorldEventTimeEffect.NoAdvance);

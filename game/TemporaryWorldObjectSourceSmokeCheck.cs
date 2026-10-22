@@ -194,9 +194,10 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 expectedHerbPatchIndicatorText,
                 InitialResolvedDescriptionText,
                 StringComparison.Ordinal)
+            // Nothing is reinterpreted at boot, so the stone-marker label starts empty too.
             || !string.Equals(
                 expectedStoneMarkerIndicatorText,
-                StoneMarkerDescription,
+                InitialResolvedDescriptionText,
                 StringComparison.Ordinal)
             || !string.Equals(expectedFocusStatusText, FocusStatusText, StringComparison.Ordinal)
             || !string.Equals(
@@ -216,7 +217,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         {
             Fail(
                 "Temporary world-object source smoke copied a description into focused-search "
-                + "inputs or failed the exact non-overlapping reinterpretation presentation.");
+                + "inputs or failed the exact unresolved boot presentation.");
             return;
         }
 

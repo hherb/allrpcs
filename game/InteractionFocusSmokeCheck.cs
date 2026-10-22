@@ -1333,8 +1333,8 @@ public partial class InteractionFocusSmokeCheck : Node
             [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
 
         if (!AssertResolvedPerceptionIndicatorStates(
-                [false, true],
-                "initial observation-reinterpretation presentation"))
+                [false, false],
+                "initial unresolved presentation (nothing is identified at boot)"))
         {
             return false;
         }

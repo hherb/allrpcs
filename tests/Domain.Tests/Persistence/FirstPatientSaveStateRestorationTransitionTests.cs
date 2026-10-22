@@ -209,8 +209,7 @@ public sealed class FirstPatientSaveStateRestorationTransitionTests
                 scenario.Ingredients,
                 scenario.Remedy,
                 scenario.Investigation),
-            input.Context.EvidenceRequirement,
-            input.Context.Conclusions);
+            input.Context.EvidenceRequirement);
 
         Assert.Throws<ArgumentNullException>(() =>
             FirstPatientSaveStateRestorationTransition.Rebind(null!, input.Context, input.WorldEvents));

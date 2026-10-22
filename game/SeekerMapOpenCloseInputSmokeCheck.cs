@@ -299,13 +299,9 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         OpeningRegionInvestigationRouteProgressSnapshot progress,
         OpeningRegionMapLocationCatalogue locations,
         Allrpcs.Domain.Discovery.DiscoveryScenario scenario) =>
+        // Nothing is noticed at boot, so the first open records no evidence on any route.
         progress.Entries.Count == 3
-        && progress.Entries[0].RecordedEvidenceIds.Count == 1
-        && ReferenceEquals(
-            progress.Entries[0].RecordedEvidenceIds[0],
-            scenario.Evidence.Entries.Single(evidence =>
-                evidence.EvidenceId.Value == "residue").EvidenceId)
-        && progress.Entries.Skip(1).All(entry => entry.RecordedEvidenceIds.Count == 0)
+        && progress.Entries.All(entry => entry.RecordedEvidenceIds.Count == 0)
         && progress.Entries.All(entry => entry.RecordedLocationIds.Count == 0
             && entry.Route.LocationIds.All(locationId => locations.Locations.Any(location =>
                 ReferenceEquals(location.Id, locationId)))

@@ -15,7 +15,6 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private TemporarySeekerPerceptionSource source = null!;
-    private TemporaryPassiveNoticingCandidateSource candidateSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private FocusedSearchActivityController controller = null!;
     private GreyboxInteractionTarget herbPatch = null!;
@@ -33,8 +32,6 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
         }
 
         source = GetNode<TemporarySeekerPerceptionSource>("../TemporarySeekerPerceptionSource");
-        candidateSource = GetNode<TemporaryPassiveNoticingCandidateSource>(
-            "../TemporaryPassiveNoticingCandidateSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource");
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
@@ -55,7 +52,6 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
         PassiveNoticingCandidateSnapshot expectedCandidates =
             controller.PassiveNoticingCandidates;
         bool expectedIndicatorVisibility = indicator.Visible;
-        PassiveNoticingCandidate candidate = candidateSource.Candidate;
         CharacterPerceptionSnapshot controllerPerception = controller.Perception
             ?? throw new InvalidOperationException(
                 "Temporary Seeker perception source smoke found no live perception.");
@@ -80,9 +76,9 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             return;
         }
 
+        // Boot resolves nothing, so the controller holds this exact authored snapshot.
         if (!ReferenceEquals(first, second)
-            || ReferenceEquals(first, controllerPerception)
-            || !ReferenceEquals(first.CharacterId, candidate.ObserverCharacterId)
+            || !ReferenceEquals(first, controllerPerception)
             || !ReferenceEquals(first.CharacterId, controller.SearcherCharacterId))
         {
             Fail("Temporary Seeker perception source smoke failed stable snapshot retention.");
@@ -91,7 +87,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
 
         if (first.Entries.Count != 4
             || !ReferenceEquals(first.Entries[0].ObjectId, sourceHerbPatch.Identity.Id)
-            || !ReferenceEquals(first.Entries[0].ObjectId, candidate.TargetObjectId)
+            || first.Entries[0].ObjectId.Value != "herb-patch"
             || !ReferenceEquals(first.Entries[0].VisibilityState, VisibilityState.Unnoticed)
             || !ReferenceEquals(first.Entries[1].ObjectId, sourceStoneMarker.Identity.Id)
             || !ReferenceEquals(first.Entries[1].VisibilityState, VisibilityState.Noticed)
@@ -110,8 +106,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
 
         CharacterId independentCharacterId = new("independent-seeker");
         ObjectId independentFirstObjectId = new("independent-first-object");
-        ObjectId independentLastObjectId = new("independent-last-object");
-        ObjectId valueEqualCandidateTargetId = new("independent-last-object");
+        ObjectId independentLastObjectId = new("herb-patch");
         WorldObject independentFirstObject = CreateWorldObject(
             independentFirstObjectId,
             "Independent first object");
@@ -125,11 +120,8 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
         WorldObjectSnapshot emptyWorldObjects = new([]);
         WorldObjectSnapshot independentWorldObjects = new(
             [independentFirstObject, independentLastObject]);
-        PassiveNoticingCandidate independentCandidate = new(
-            independentCharacterId,
-            valueEqualCandidateTargetId);
         CharacterPerceptionSnapshot independentPerception = CreatePerception(
-            independentCandidate,
+            independentCharacterId,
             independentWorldObjects);
 
         if (independentPerception.Entries.Count != 2
@@ -146,13 +138,10 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             || !ReferenceEquals(
                 independentPerception.Entries[1].VisibilityState,
                 VisibilityState.Unnoticed)
-            || ReferenceEquals(
-                independentPerception.Entries[1].ObjectId,
-                valueEqualCandidateTargetId)
-            || !ReturnsMissingTargetFailure(independentCandidate, emptyWorldObjects))
+            || !ReturnsMissingTargetFailure(independentCharacterId, emptyWorldObjects))
         {
             Fail(
-                "Temporary Seeker perception source smoke failed candidate-aligned "
+                "Temporary Seeker perception source smoke failed herb-patch-aligned "
                 + "world-object snapshot derivation.");
             return;
         }
@@ -178,10 +167,6 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             || !ReferenceEquals(controller.Activities, expectedActivities)
             || !ReferenceEquals(controller.Outcomes, expectedOutcomes)
             || !ReferenceEquals(controller.Perception, controllerPerception)
-            || !ReferenceEquals(
-                controllerPerception.Entries.Single(
-                    entry => entry.ObjectId == candidate.TargetObjectId).VisibilityState,
-                VisibilityState.Noticed)
             || !ReferenceEquals(controller.PassiveNoticingCandidates, expectedCandidates)
             || expectedCandidates.Entries.Count != 0
             || indicator.Visible != expectedIndicatorVisibility)
@@ -194,7 +179,8 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary Seeker perception source smoke passed: exact Seeker and world-object "
-            + "identifier retention; candidate-aligned independent snapshot derivation; "
+            + "identifier retention; the controller holds it unresolved; herb-patch-aligned "
+            + "independent snapshot derivation; "
             + "explicit missing-target failure; stable order and visibility states; unchanged "
             + "nested inputs, controller candidates, focused-search state, targets, "
             + "and presentation; and one stable scene snapshot were correct.");
@@ -202,7 +188,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
     }
 
     private CharacterPerceptionSnapshot CreatePerception(
-        PassiveNoticingCandidate candidate,
+        CharacterId observerId,
         WorldObjectSnapshot worldObjects)
     {
         System.Reflection.MethodInfo? method = typeof(TemporarySeekerPerceptionSource).GetMethod(
@@ -215,18 +201,18 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             return null!;
         }
 
-        return (CharacterPerceptionSnapshot)(method.Invoke(source, [candidate, worldObjects])
+        return (CharacterPerceptionSnapshot)(method.Invoke(source, [observerId, worldObjects])
             ?? throw new InvalidOperationException(
                 "The temporary Seeker perception source returned no derived snapshot."));
     }
 
     private bool ReturnsMissingTargetFailure(
-        PassiveNoticingCandidate candidate,
+        CharacterId observerId,
         WorldObjectSnapshot worldObjects)
     {
         try
         {
-            _ = CreatePerception(candidate, worldObjects);
+            _ = CreatePerception(observerId, worldObjects);
             return false;
         }
         catch (System.Reflection.TargetInvocationException exception)

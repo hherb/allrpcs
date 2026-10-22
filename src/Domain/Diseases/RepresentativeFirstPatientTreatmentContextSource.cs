@@ -2,20 +2,17 @@ using Allrpcs.Domain.Investigations;
 
 namespace Allrpcs.Domain.Diseases;
 
-/// <summary>Authors the evidence-confirmed representative first-patient treatment context.</summary>
+/// <summary>Authors the representative first-patient treatment context.</summary>
 public static class RepresentativeFirstPatientTreatmentContextSource
 {
-    /// <summary>Creates fresh exact scenario, remedy requirement, and confirmed conclusion state.</summary>
+    /// <summary>Creates a fresh exact scenario and remedy requirement; no conclusion is confirmed yet.</summary>
     public static FirstPatientTreatmentContext Create()
     {
         FirstPatientScenario scenario = RepresentativeFirstPatientScenarioSource.Create();
         InvestigationConclusion conclusion = GetSingleConclusion(scenario);
         StabilizingRemedyEvidenceRequirement requirement = new(scenario.Remedy, conclusion);
 
-        return new FirstPatientTreatmentContext(
-            scenario,
-            requirement,
-            new InvestigationConclusionSnapshot([conclusion]));
+        return new FirstPatientTreatmentContext(scenario, requirement);
     }
 
     private static InvestigationConclusion GetSingleConclusion(FirstPatientScenario scenario)

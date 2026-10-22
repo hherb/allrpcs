@@ -65,8 +65,7 @@ public sealed class StabilizingRemedyAdministrationPolicyTests
             input.Scenario.Investigation);
         FirstPatientTreatmentContext invalidContext = new(
             invalidScenario,
-            input.Context.EvidenceRequirement,
-            input.Context.Conclusions);
+            input.Context.EvidenceRequirement);
 
         Assert.False(StabilizingRemedyAdministrationPolicy.CanStabilize(
             invalidContext,

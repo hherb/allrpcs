@@ -2,7 +2,7 @@ using Allrpcs.Domain.Investigations;
 
 namespace Allrpcs.Domain.Diseases;
 
-/// <summary>Requires one exact confirmed conclusion before one remedy may stabilize disease.</summary>
+/// <summary>Names the authored conclusion that a dose of one stabilizing remedy tests.</summary>
 public sealed class StabilizingRemedyEvidenceRequirement
 {
     /// <summary>Creates an immutable evidence requirement without confirming it.</summary>
@@ -20,6 +20,6 @@ public sealed class StabilizingRemedyEvidenceRequirement
     /// <summary>Gets the exact authored stabilizing remedy.</summary>
     public StabilizingRemedyDefinition Remedy { get; }
 
-    /// <summary>Gets the exact authored conclusion required as evidence.</summary>
+    /// <summary>Gets the exact authored conclusion the remedy dose confirms.</summary>
     public InvestigationConclusion Conclusion { get; }
 }

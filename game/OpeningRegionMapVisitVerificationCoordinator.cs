@@ -15,6 +15,7 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
     private SeekerMapController map = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
     private OpeningRegionInvestigationRouteObservationRoutingCoordinator routing = null!;
+    private OpeningRegionStreamResiduePassiveNoticingCoordinator streamResidue = null!;
     private OpeningRegionProjectionSource projectionSource = null!;
     private TemporarySeekerCharacterSource seekerCharacter = null!;
     private Seeker seeker = null!;
@@ -27,6 +28,8 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
             "../OpeningRegionInvestigationRouteProgressController");
         routing = GetNode<OpeningRegionInvestigationRouteObservationRoutingCoordinator>(
             "../OpeningRegionInvestigationRouteObservationRoutingCoordinator");
+        streamResidue = GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
+            "../OpeningRegionStreamResiduePassiveNoticingCoordinator");
         projectionSource = GetNode<OpeningRegionProjectionSource>(
             "../OpeningRegionProjectionSource");
         seekerCharacter = GetNode<TemporarySeekerCharacterSource>(
@@ -128,6 +131,9 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
                 verifiedMap,
                 location);
         }
+
+        // Arriving at the stream is what notices its residue; nothing notices it at boot.
+        _ = streamResidue.TryNoticeOnArrival(location.Id);
 
         return true;
     }

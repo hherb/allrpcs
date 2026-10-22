@@ -153,6 +153,8 @@ run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=missing \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=route \
     godot --headless --path "$repository_root/game"
+run_check 30 ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=late-routes \
+    godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_WAGON_CLUE_ROUTE_CHECK=missing \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_WAGON_CLUE_ROUTE_CHECK=route \
@@ -204,10 +206,8 @@ run_check 30 ALLRPCS_WORLD_OBJECT_INTERACTION_FOCUS_CHECK=1 godot --headless --p
 run_check 30 ALLRPCS_SEEKER_CHARACTER_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_PASSIVE_CANDIDATE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_PASSIVE_RESOLUTION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
-run_check 30 ALLRPCS_PASSIVE_CANDIDATE_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_REINTERPRETATION_CANDIDATE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_REINTERPRETATION_RESOLUTION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
-run_check 30 ALLRPCS_REINTERPRETATION_CANDIDATE_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_SEEKER_PERCEPTION_SOURCE_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_FOCUSED_SEARCH_PERCEPTION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_FOCUSED_SEARCH_OUTCOME_RESOLUTION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game"

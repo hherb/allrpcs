@@ -172,9 +172,9 @@ public partial class SeekerMapOpenCloseInputController : Node
             return false;
         }
 
-        if (!TryEnsureRetainedStreamResidueIsRouted())
+        if (routesToInitialize is not null)
         {
-            return false;
+            RouteLocationsVerifiedBeforeRoutesExisted(map);
         }
 
         if (!noteEditing.TryPresent(map, notes, currentPresentation)
@@ -192,19 +192,15 @@ public partial class SeekerMapOpenCloseInputController : Node
         return true;
     }
 
-    private bool TryEnsureRetainedStreamResidueIsRouted()
+    // A failed earlier open can leave the map without routes; visits verified then were not routed,
+    // and the visit verifier never revisits them, so catch them (and the stream residue) up once.
+    private void RouteLocationsVerifiedBeforeRoutesExisted(SeekerMapSnapshot map)
     {
-        if (routeProgress.Progress is not { } progress
-            || streamResidue.EvidenceView is not { } evidenceView)
+        foreach (MapLocationDefinition location in map.VerifiedLocations)
         {
-            return false;
+            _ = routing.TryRouteVerifiedLocation(routeProgress.Progress!, map, location);
+            _ = streamResidue.TryNoticeOnArrival(location.Id);
         }
-
-        Allrpcs.Domain.Identifiers.EvidenceId residueId =
-            streamResidue.ResidueEvidence.EvidenceId;
-        return progress.Entries.Any(entry => entry.RecordedEvidenceIds.Any(candidate =>
-                ReferenceEquals(candidate, residueId)))
-            || routing.TryRouteVisibleEvidence(progress, evidenceView, residueId);
     }
 
     /// <summary>Closes this reading modal after a successful load, releasing its movement suspension.</summary>
