@@ -1,23 +1,18 @@
-using Allrpcs.Domain.Investigations;
-
 namespace Allrpcs.Domain.Diseases;
 
-/// <summary>Composes exact scenario and confirmed-evidence state for first-patient treatment.</summary>
+/// <summary>Composes the exact scenario and remedy requirement for first-patient treatment.</summary>
 public sealed class FirstPatientTreatmentContext
 {
     /// <summary>Creates one immutable treatment context without applying a remedy.</summary>
     public FirstPatientTreatmentContext(
         FirstPatientScenario scenario,
-        StabilizingRemedyEvidenceRequirement evidenceRequirement,
-        InvestigationConclusionSnapshot conclusions)
+        StabilizingRemedyEvidenceRequirement evidenceRequirement)
     {
         ArgumentNullException.ThrowIfNull(scenario);
         ArgumentNullException.ThrowIfNull(evidenceRequirement);
-        ArgumentNullException.ThrowIfNull(conclusions);
 
         Scenario = scenario;
         EvidenceRequirement = evidenceRequirement;
-        Conclusions = conclusions;
     }
 
     /// <summary>Gets the exact authored first-patient scenario.</summary>
@@ -25,9 +20,6 @@ public sealed class FirstPatientTreatmentContext
 
     /// <summary>Gets the exact remedy-to-conclusion requirement.</summary>
     public StabilizingRemedyEvidenceRequirement EvidenceRequirement { get; }
-
-    /// <summary>Gets the exact currently confirmed conclusions.</summary>
-    public InvestigationConclusionSnapshot Conclusions { get; }
 
     /// <summary>
     /// Returns this context over the live disease truth once the patient has progressed: every
@@ -51,6 +43,6 @@ public sealed class FirstPatientTreatmentContext
             Scenario.Investigation,
             Scenario.GatheredIngredients,
             Scenario.AlternativeRecipes);
-        return new FirstPatientTreatmentContext(live, EvidenceRequirement, Conclusions);
+        return new FirstPatientTreatmentContext(live, EvidenceRequirement);
     }
 }

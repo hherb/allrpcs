@@ -16,7 +16,6 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
 
     private FocusedSearchActivityController controller = null!;
     private TemporarySeekerPerceptionSource source = null!;
-    private TemporaryPassiveNoticingCandidateSource candidateSource = null!;
     private Line2D indicator = null!;
     private Label focusedSearchResultStatus = null!;
 
@@ -33,8 +32,6 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         source = GetNode<TemporarySeekerPerceptionSource>("../TemporarySeekerPerceptionSource");
-        candidateSource = GetNode<TemporaryPassiveNoticingCandidateSource>(
-            "../TemporaryPassiveNoticingCandidateSource");
         indicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
         focusedSearchResultStatus = GetNode<Label>(
@@ -47,18 +44,20 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        CharacterPerceptionSnapshot? resolvedPerception = controller.Perception;
-        if (resolvedPerception is null
-            || ReferenceEquals(resolvedPerception, source.Perception)
-            || !ReferenceEquals(resolvedPerception.CharacterId, controller.SearcherCharacterId)
+        // A fresh launch resolves nothing at boot: the controller holds the authored perception.
+        CharacterPerceptionSnapshot? bootPerception = controller.Perception;
+        if (bootPerception is null
+            || !ReferenceEquals(bootPerception, source.Perception)
+            || !ReferenceEquals(bootPerception.CharacterId, controller.SearcherCharacterId)
             || !ReferenceEquals(
-                resolvedPerception.Entries.Single(
-                    entry => entry.ObjectId == candidateSource.Candidate.TargetObjectId)
+                bootPerception.Entries.Single(entry => entry.ObjectId.Value == "herb-patch")
                     .VisibilityState,
-                VisibilityState.Noticed))
+                VisibilityState.Unnoticed)
+            || bootPerception.Entries.Any(entry =>
+                ReferenceEquals(entry.VisibilityState, VisibilityState.Identified)))
         {
             Fail(
-                "Focused-search perception controller smoke failed resolved scene perception.");
+                "Focused-search perception controller smoke found evidence resolved at boot.");
             return;
         }
 
@@ -117,7 +116,7 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "Focused-search perception controller smoke passed: resolved ordinary scene state; "
+            "Focused-search perception controller smoke passed: unresolved authored boot state; "
             + "exact isolated Seeker perception initialization; wrong-character, repeated, and "
             + "null rejection; and unchanged activity, outcome, and presentation state were "
             + "correct.");

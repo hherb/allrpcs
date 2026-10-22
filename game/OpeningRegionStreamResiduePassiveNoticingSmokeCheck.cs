@@ -1,74 +1,42 @@
 using Allrpcs.Application.Investigations;
-using Allrpcs.Application.Map;
-using Allrpcs.Domain.Discovery;
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Proves exact ordinary stream-residue noticing and optional route submission.</summary>
+/// <summary>Proves the stream residue is noticed only by arriving at the stream, never at boot.</summary>
 public partial class OpeningRegionStreamResiduePassiveNoticingSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK";
-    private const string MissingProgressMode = "missing";
+    private const string MigratedSaveMode = "migrated";
     private const string ActiveRouteMode = "route";
+    private const string LateRoutesMode = "late-routes";
+    private const string StreamRouteKey = "stream-laundry";
 
     private OpeningRegionStreamResiduePassiveNoticingCoordinator coordinator = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
-    private CharacterPerceptionSnapshot initialPerception = null!;
-    private PassiveNoticingCandidateSnapshot initialCandidates = null!;
-    private PassiveNoticingCandidate candidate = null!;
-    private bool activeRouteMode;
+    private OpeningRegionInvestigationRouteCompletionCoordinator completions = null!;
+    private string mode = string.Empty;
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        string mode = OS.GetEnvironment(CheckEnvironmentVariable);
-        bool enabled = mode is MissingProgressMode or ActiveRouteMode;
+        mode = OS.GetEnvironment(CheckEnvironmentVariable);
+        bool enabled = mode is MigratedSaveMode or ActiveRouteMode or LateRoutesMode;
         SetProcess(enabled);
         if (!enabled)
         {
             return;
         }
 
-        activeRouteMode = mode == ActiveRouteMode;
         coordinator = GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
             "../OpeningRegionStreamResiduePassiveNoticingCoordinator");
         routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
             "../OpeningRegionInvestigationRouteProgressController");
-        initialPerception = coordinator.Perception;
-        initialCandidates = coordinator.Candidates;
-        candidate = coordinator.Candidate;
-
-        if (coordinator.TryResolve(
-                new CharacterPerceptionSnapshot(
-                    initialPerception.CharacterId,
-                    initialPerception.Entries),
-                initialCandidates,
-                candidate)
-            || coordinator.TryResolve(
-                initialPerception,
-                new PassiveNoticingCandidateSnapshot(initialCandidates.Entries),
-                candidate)
-            || coordinator.TryResolve(
-                initialPerception,
-                initialCandidates,
-                new PassiveNoticingCandidate(
-                    new CharacterId("travelling-healer"),
-                    candidate.TargetObjectId))
-            || !ReferenceEquals(coordinator.Perception, initialPerception)
-            || !ReferenceEquals(coordinator.Candidates, initialCandidates)
-            || coordinator.EvidenceView is not null)
-        {
-            Fail("Rejected stream-residue inputs changed the exact noticing state.");
-            return;
-        }
-
-        if (activeRouteMode)
-        {
-            InitializeNearlyCompleteStreamRoute();
-        }
+        completions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
     }
 
     /// <inheritdoc />
@@ -79,122 +47,159 @@ public partial class OpeningRegionStreamResiduePassiveNoticingSmokeCheck : Node
 
         OpeningRegionOldShrineSceneSource source = GetNode<OpeningRegionOldShrineSceneSource>(
             "../OpeningRegionOldShrineSceneSource");
-        OpeningRegionInvestigationRouteCompletionCoordinator completions = GetNode<
-            OpeningRegionInvestigationRouteCompletionCoordinator>(
-                "../OpeningRegionInvestigationRouteCompletionCoordinator");
-        OpeningRegionInvestigationRouteCompletionConsumptionCoordinator consumption = GetNode<
-            OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
-                "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
-        CharacterPerceptionSnapshot resolvedPerception = coordinator.Perception;
-        CharacterEvidenceViewSnapshot? evidenceView = coordinator.EvidenceView;
-        WorldObjectVisibility resolvedVisibility = resolvedPerception.Entries.Single(entry =>
-            ReferenceEquals(entry.ObjectId, coordinator.StreamResidue.Identity.Id));
-        OpeningRegionInvestigationRouteProgressSnapshot? completedProgress = routeProgress.Progress;
-        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> accepted =
-            completions.AcceptedCompletions;
+        if (!ReferenceEquals(coordinator.Scenario, source.DiscoveryScenario)
+            || coordinator.ResidueEvidence.EvidenceId.Value != "residue"
+            || !ReferenceEquals(coordinator.ResidueEvidence.ObjectId, coordinator.StreamResidue.Identity.Id)
+            || !ReferenceEquals(coordinator.ResidueEvidence.MinimumVisibilityState, VisibilityState.Noticed))
+        {
+            Fail("The stream-residue coordinator lost exact scenario provenance.");
+            return;
+        }
 
-        CharacterPerceptionSnapshot retainedPerception = coordinator.Perception;
-        PassiveNoticingCandidateSnapshot retainedCandidates = coordinator.Candidates;
-        CharacterEvidenceViewSnapshot? retainedView = coordinator.EvidenceView;
-        OpeningRegionInvestigationRouteProgressSnapshot? retainedProgress = routeProgress.Progress;
-        if (coordinator.TryResolve(initialPerception, initialCandidates, candidate)
-            || !ReferenceEquals(coordinator.Perception, retainedPerception)
-            || !ReferenceEquals(coordinator.Candidates, retainedCandidates)
-            || !ReferenceEquals(coordinator.EvidenceView, retainedView)
-            || !ReferenceEquals(routeProgress.Progress, retainedProgress)
+        LocationId stream = new("stream");
+        if (mode != ActiveRouteMode)
+        {
+            ProveCatchUpOnMapOpen(stream, initializeRoutesBeforeOpen: mode == MigratedSaveMode);
+            return;
+        }
+
+        MainFlowCheckSteps.InitializeMap(GetParent());
+        OpeningRegionInvestigationRouteProgressSnapshot opened = routeProgress.Progress
+            ?? throw new InvalidOperationException("Opening the map did not create route progress.");
+        if (StreamEntry(opened).RecordedEvidenceIds.Count != 0
+            || coordinator.TryNoticeOnArrival(new LocationId("old-shrine"))
+            || !ReferenceEquals(routeProgress.Progress, opened))
+        {
+            Fail("The residue was noticed at boot or by arriving somewhere other than the stream.");
+            return;
+        }
+
+        // Laundry first, so the residue noticed on the stream arrival is what completes the route.
+        if (!TryVisit(new LocationId("abandoned-laundry")))
+        {
+            return;
+        }
+
+        if (completions.AcceptedCompletions.Count != 0)
+        {
+            Fail("The laundry visit completed a route before the stream residue was noticed.");
+            return;
+        }
+
+        if (!TryVisit(stream))
+        {
+            return;
+        }
+
+        OpeningRegionInvestigationRouteProgressSnapshot noticed = routeProgress.Progress!;
+        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> accepted = completions.AcceptedCompletions;
+        if (!HasOnlyStreamResidue(noticed, stream, "Arriving at the stream")
+            || accepted.Count != 1
+            || accepted[0].Route.Key != StreamRouteKey)
+        {
+            Fail("Arriving at the stream after the laundry did not complete exactly the stream route.");
+            return;
+        }
+
+        if (coordinator.TryNoticeOnArrival(stream)
+            || !ReferenceEquals(routeProgress.Progress, noticed)
             || !ReferenceEquals(completions.AcceptedCompletions, accepted))
         {
-            Fail("Repeated stream-residue noticing changed completed state.");
+            Fail("A repeated stream arrival changed the recorded residue.");
             return;
         }
 
-        if (!ReferenceEquals(coordinator.Scenario, source.DiscoveryScenario)
-            || !ReferenceEquals(candidate, source.DiscoveryScenario.PassiveNoticingCandidates.Entries.Single())
-            || !ReferenceEquals(candidate.TargetObjectId, coordinator.StreamResidue.Identity.Id)
-            || !ReferenceEquals(coordinator.ResidueEvidence.ObjectId, candidate.TargetObjectId)
-            || coordinator.ResidueEvidence.EvidenceId.Value != "residue"
-            || !ReferenceEquals(
-                coordinator.ResidueEvidence.MinimumVisibilityState,
-                VisibilityState.Noticed)
-            || ReferenceEquals(resolvedPerception, initialPerception)
-            || !ReferenceEquals(resolvedPerception.CharacterId, initialPerception.CharacterId)
-            || !ReferenceEquals(resolvedVisibility.VisibilityState, VisibilityState.Noticed)
-            || coordinator.Candidates.Entries.Count != 0
-            || evidenceView is null
-            || !ReferenceEquals(evidenceView.CharacterId, source.DiscoveryScenario.ObserverCharacterId)
-            || evidenceView.EvidenceIds.Count != 1
-            || !ReferenceEquals(evidenceView.EvidenceIds.Single(), coordinator.ResidueEvidence.EvidenceId)
-            || consumption.ConsumedCompletion is not null
-            || !HasExpectedRouteOutcome(completedProgress, accepted))
-        {
-            Fail("Ordinary stream-residue noticing lost exact scenario or route provenance.");
-            return;
-        }
-
-        GD.Print(
-            "Opening-region stream-residue route smoke passed: exact representative candidate, "
-            + "atomic unnoticed-to-noticed resolution, filtered residue evidence, inert rejected "
-            + "and repeated paths, optional exact route recording, and no completion consumption.");
-        GetTree().Quit();
+        Pass("nothing at boot or elsewhere, stream arrival records the residue and completes the route, repeat inert");
     }
 
-    private void InitializeNearlyCompleteStreamRoute()
+    // The stream is verified while route progress lacks it: either no routes exist yet (as after a
+    // failed first open) or empty routes exist (as in a save migrated to route state). The next map
+    // open must catch up both the stream location and its residue.
+    private void ProveCatchUpOnMapOpen(LocationId stream, bool initializeRoutesBeforeOpen)
     {
-        OpeningRegionOldShrineSceneSource source = GetNode<OpeningRegionOldShrineSceneSource>(
-            "../OpeningRegionOldShrineSceneSource");
-        OpeningRegionMapLocationCatalogue locations =
-            RepresentativeOpeningRegionMapLocationSource.Create();
-        OpeningRegionInvestigationRouteCatalogue routes =
-            RepresentativeOpeningRegionInvestigationRouteSource.Create(
-                locations,
-                source.DiscoveryScenario);
-        if (!routeProgress.TryInitialize(routes, locations, source.DiscoveryScenario))
+        Main main = GetParent<Main>();
+        SeekerMapController map = main.GetNode<SeekerMapController>("SeekerMapController");
+        OpeningRegionOldShrineSceneSource source = main.GetNode<OpeningRegionOldShrineSceneSource>(
+            "OpeningRegionOldShrineSceneSource");
+        if (!map.TryInitialize(
+                main.GetNode<TemporarySeekerCharacterSource>("TemporarySeekerCharacterSource").Character.Identity.Id)
+            || !TryVisit(stream)
+            || routeProgress.Progress is not null
+            || (initializeRoutesBeforeOpen
+                && !routeProgress.TryInitialize(
+                    RepresentativeOpeningRegionInvestigationRouteSource.Create(map.Catalogue!, source.DiscoveryScenario),
+                    map.Catalogue!,
+                    source.DiscoveryScenario)))
         {
-            Fail("The stream-residue route smoke could not initialize route progress.");
+            Fail("The catch-up scenario could not verify the stream before it was routed.");
             return;
         }
 
-        OpeningRegionInvestigationRoute streamRoute = routes.Routes.Single(route =>
-            route.Key == "stream-laundry");
-        foreach (LocationId locationId in streamRoute.LocationIds)
+        if (initializeRoutesBeforeOpen && StreamEntry(routeProgress.Progress!).RecordedLocationIds.Count != 0)
         {
-            OpeningRegionInvestigationRouteProgressSnapshot expected = routeProgress.Progress!;
-            if (!routeProgress.TryRecordLocation(expected, streamRoute, locationId))
-            {
-                Fail("The stream-residue route smoke could not seed exact route locations.");
-                return;
-            }
+            Fail("The migrated-save scenario routed the stream before the map opened.");
+            return;
         }
+
+        MainFlowCheckSteps.InitializeMap(main);
+        if (routeProgress.Progress is not { } caughtUp
+            || !HasOnlyStreamResidue(caughtUp, stream, "The first map open after an unrouted stream visit"))
+        {
+            return;
+        }
+
+        MainFlowCheckSteps.InitializeMap(main);
+        if (!ReferenceEquals(routeProgress.Progress, caughtUp))
+        {
+            Fail("A second map open changed already caught-up route progress.");
+            return;
+        }
+
+        Pass($"{mode}: an unrouted stream visit is routed with its residue on the next map open, once");
     }
 
-    private bool HasExpectedRouteOutcome(
-        OpeningRegionInvestigationRouteProgressSnapshot? completed,
-        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> accepted)
+    // Walks the Seeker onto the location's anchor and lets the real visit verifier run.
+    private bool TryVisit(LocationId location)
     {
-        if (!activeRouteMode)
+        OpeningRegionAnchor anchor = GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource")
+            .Projection.Anchors.Single(candidate => candidate.Location.Identity.Id.Value == location.Value);
+        GetNode<Node2D>("../Seeker").Position = new Vector2(anchor.Position.X, anchor.Position.Y);
+        if (!GetNode<OpeningRegionMapVisitVerificationCoordinator>(
+                "../OpeningRegionMapVisitVerificationCoordinator").TryVerifyCurrentVisit())
         {
-            return completed is null && accepted.Count == 0;
-        }
-
-        if (completed is null)
-        {
+            Fail($"The Seeker's {location.Value} visit was not verified.");
             return false;
         }
 
-        OpeningRegionInvestigationRouteProgress stream = completed.Entries.Single(entry =>
-            entry.Route.Key == "stream-laundry");
-        return stream.RecordedLocationIds.Count == stream.Route.LocationIds.Count
-            && stream.RecordedEvidenceIds.Count == 1
-            && ReferenceEquals(
-                stream.RecordedEvidenceIds.Single(),
-                coordinator.ResidueEvidence.EvidenceId)
-            && completed.Entries
-                .Where(entry => !ReferenceEquals(entry, stream))
-                .All(entry => entry.RecordedLocationIds.Count == 0
-                    && entry.RecordedEvidenceIds.Count == 0)
-            && accepted.Count == 1
-            && ReferenceEquals(accepted[0].Route, stream.Route)
-            && ReferenceEquals(accepted[0].ProgressSnapshot, completed);
+        return true;
+    }
+
+    private bool HasOnlyStreamResidue(
+        OpeningRegionInvestigationRouteProgressSnapshot progress,
+        LocationId stream,
+        string scenario)
+    {
+        OpeningRegionInvestigationRouteProgress streamEntry = StreamEntry(progress);
+        if (streamEntry.RecordedEvidenceIds.Count != 1
+            || !ReferenceEquals(streamEntry.RecordedEvidenceIds[0], coordinator.ResidueEvidence.EvidenceId)
+            || !streamEntry.RecordedLocationIds.Any(locationId => locationId.Value == stream.Value)
+            || progress.Entries.Any(entry => entry.Route.Key != StreamRouteKey && entry.RecordedEvidenceIds.Count != 0))
+        {
+            Fail($"{scenario} did not record exactly the stream and its residue on the stream route.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private static OpeningRegionInvestigationRouteProgress StreamEntry(
+        OpeningRegionInvestigationRouteProgressSnapshot progress) =>
+        progress.Entries.Single(entry => entry.Route.Key == StreamRouteKey);
+
+    private void Pass(string detail)
+    {
+        GD.Print($"Opening-region stream-residue route smoke passed: {detail}.");
+        GetTree().Quit();
     }
 
     private void Fail(string message)

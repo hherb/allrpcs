@@ -102,7 +102,7 @@ packaging, and accessibility claims remain limited to their recorded evidence.
   - [x] 4.3 Ingredients: unified inventory, Give/Take/Use, conditional collection by default.
   - [x] 4.4 Hypotheses: journal proposal interpreted through the structured-decision pipeline.
   - [x] 4.5 Stakes and ending: disease progression can fail; explicit slice-complete screen.
-  - [ ] 4.6 Remove boot-time evidence auto-resolution and its Temporary* outcome sources.
+  - [x] 4.6 No evidence resolves at boot; residue is noticed on arrival, the dose tests the conclusion.
   - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama.
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
 

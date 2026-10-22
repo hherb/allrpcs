@@ -81,7 +81,9 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             return;
         }
 
-        DiscoveryScenario scenario = RepresentativeDiscoveryScenarioSource.Create();
+        // The live scenario, so the stream arrival's residue routes into these exact routes.
+        DiscoveryScenario scenario = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource").DiscoveryScenario;
         OpeningRegionInvestigationRouteCatalogue routes =
             RepresentativeOpeningRegionInvestigationRouteSource.Create(catalogue, scenario);
         if (!routeProgress.TryInitialize(routes, catalogue, scenario)
@@ -199,6 +201,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             || !ReferenceEquals(streamVerified.VerifiedLocations[0], stream)
             || streamRouteProgress.Entries[0].RecordedLocationIds.Count != 1
             || !ReferenceEquals(streamRouteProgress.Entries[0].RecordedLocationIds[0], stream.Id)
+            || streamRouteProgress.Entries[0].RecordedEvidenceIds.Count != 1
+            || streamRouteProgress.Entries[0].RecordedEvidenceIds[0].Value != "residue"
             || routeCompletions.AcceptedCompletions.Count != 0
             || ReferenceEquals(streamVerified, reportedMap)
             || coordinator.TryVerifyVisit(
@@ -241,7 +245,10 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             || bothRouteProgress.Entries[0].RecordedLocationIds.Count != 2
             || !ReferenceEquals(bothRouteProgress.Entries[0].RecordedLocationIds[0], stream.Id)
             || !ReferenceEquals(bothRouteProgress.Entries[0].RecordedLocationIds[1], laundry.Id)
-            || routeCompletions.AcceptedCompletions.Count != 0
+            || routeCompletions.AcceptedCompletions.Count != 1
+            || !ReferenceEquals(
+                routeCompletions.AcceptedCompletions[0].Route,
+                bothRouteProgress.Entries[0].Route)
             || !ReferenceEquals(reportedMap.ReportedLocations[0], stream)
             || streamVerified.VerifiedLocations.Count != 1
             || !ReferenceEquals(streamVerified.VerifiedLocations[0], stream)
@@ -272,7 +279,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         GD.Print(
             "Opening-region map visit verification smoke passed: inert startup, exact live "
             + "provenance, reported promotion, hidden addition, canonical order, immutable "
-            + "sources, explicit route-observation submission, invalid and repeated rejection, "
+            + "sources, explicit route-observation submission, stream residue and route completion, "
+            + "invalid and repeated rejection, "
             + "closed surface, and unrelated isolation were correct.");
         GetTree().Quit();
     }

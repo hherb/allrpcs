@@ -31,7 +31,7 @@ public static class StabilizingRemedyAdministrationPolicy
             infection,
             DiseaseCareState.Stabilized,
             administration.WorldEvent);
-        return FirstPatientTreatmentContextPolicy.IsAuthorized(context)
+        return FirstPatientTreatmentContextPolicy.IsConsistent(context)
             && ReferenceEquals(administration.PatientId, scenario.PatientId)
             && ReferenceEquals(
                 administration.Dosage.Preparation.Activity.Recipe,
