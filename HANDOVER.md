@@ -39,7 +39,7 @@ time-advancing events, and a loss or completion end panel survives save and Cont
 step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
 `FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
 in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 is complete and closed
-([PR #459](https://github.com/hherb/allrpcs/pull/459), not merged): nothing is noticed or
+([PR #459](https://github.com/hherb/allrpcs/pull/459), merged): nothing is noticed or
 reinterpreted at boot, the stream residue is noticed on arriving at the stream once the map has been
 opened, and by owner decision the remedy dose (not a pre-confirmed conclusion) tests the conclusion
 ([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md), hash-frozen: its
