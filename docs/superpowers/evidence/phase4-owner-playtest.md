@@ -17,6 +17,9 @@ to an ending.
 | Save refused until the map had been opened ("PRESS M FIRST"); M is swallowed while dialogue has focus | Save required map and route state that exists only after the first map open | Fixed in PR #464: save schema 11 records an unopened map; loading it resets an opened map |
 | Customization form at every launch | No save could be made, so Continue never appeared; no profile memory | Fixed in PR #464: the confirmed Seeker is remembered and a launch without a save skips the form; New game asks again, prefilled |
 
+The fixes in PR #464 were followed by a full root `./quality.sh` pass at `2df5855c` on 2026-10-23:
+218 stages, no retries, no failures.
+
 ## Still to record
 
 The owner's run from a fresh profile to an ending, and acceptance or the remaining blocking defects.
