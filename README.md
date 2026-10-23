@@ -1037,7 +1037,8 @@ safe journal that J would compose, so saving does not depend on an undocumented 
 incomplete map or route state remains inert without initializing the journal and now explicitly asks
 the player to initialize that state with M instead of reporting only a generic failure. A successful
 save also gives the close, reopen, and L instruction needed for the manual checkpoint. Physical Q or
-the visible Save button reports `SAVED`, `PRESS M FIRST`, or `SAVE FAILED`, while physical L or the
+the visible Save button reports `SAVED` or `SAVE FAILED` (since save schema 11 a game also saves before the
+map is first opened, so `PRESS M FIRST` is gone), while physical L or the
 visible Load button reports `LOADED`, `NO SAVE FOUND`, or `LOAD FAILED`. It never exposes the fixed
 path or serialized content. Startup remains inert, and there is still no autosave, multiple slots,
 user-selected path, settings or provider-state persistence, encryption, compression, sync, replay,

@@ -192,7 +192,7 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(11),
+            new SaveSchemaVersion(12),
             discovery,
             worldEvents,
             memory,

@@ -130,8 +130,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Inventory)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Inventory)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.OptionalMap)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.OptionalMap)
             || first.Inventory is null
             || !ReferenceEquals(first.Inventory, second.Inventory)
             || !ReferenceEquals(

@@ -101,9 +101,9 @@ public partial class HypothesisTestFlowCheck : Node
                 "The first session saved.");
             using (JsonDocument saved = JsonDocument.Parse(File.ReadAllText(path)))
             {
-                Require(saved.RootElement.GetProperty("schemaVersion").GetInt32() == 10
+                Require(saved.RootElement.GetProperty("schemaVersion").GetInt32() == 11
                     && saved.RootElement.GetProperty("journal").GetProperty("hypotheses").GetArrayLength() == 2,
-                    "The save holds both proposed hypotheses in schema 10.");
+                    "The save holds both proposed hypotheses in schema 11.");
             }
 
             first.QueueFree();

@@ -15,6 +15,7 @@ public sealed class SaveSchemaVersionSupportPolicyTests
     [InlineData(8)]
     [InlineData(9)]
     [InlineData(10)]
+    [InlineData(11)]
     public void SupportsEachKnownVersionIncludingADistinctValueEqualInstance(int value)
     {
         SaveSchemaVersion suppliedVersion = new(value);
@@ -29,7 +30,8 @@ public sealed class SaveSchemaVersionSupportPolicyTests
             7 => SaveSchemaVersion.InvestigationRoutes,
             8 => SaveSchemaVersion.FirstPatientRecovery,
             9 => SaveSchemaVersion.Continuation,
-            _ => SaveSchemaVersion.Inventory,
+            10 => SaveSchemaVersion.Inventory,
+            _ => SaveSchemaVersion.OptionalMap,
         };
 
         bool supported = SaveSchemaVersionSupportPolicy.CanLoad(suppliedVersion);
@@ -40,7 +42,7 @@ public sealed class SaveSchemaVersionSupportPolicyTests
     }
 
     [Theory]
-    [InlineData(11)]
+    [InlineData(12)]
     [InlineData(27)]
     [InlineData(int.MaxValue)]
     public void RejectsVersionsWithoutACompleteLoadContractWithoutChangingThem(int value)

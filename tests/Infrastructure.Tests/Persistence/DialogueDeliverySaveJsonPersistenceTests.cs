@@ -72,7 +72,7 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.Inventory, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.OptionalMap, result.SchemaVersion);
         Assert.Same(FirstPatientRecoveryStage.NotHeard, result.FirstPatientRecovery);
         Assert.Same(
             DialogueDeliveryMode.OrdinarySpeech,
@@ -96,7 +96,7 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.Inventory, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.OptionalMap, result.SchemaVersion);
         Assert.Same(FirstPatientRecoveryStage.NotHeard, result.FirstPatientRecovery);
         Assert.Same(
             DialogueDeliveryMode.Whispering,

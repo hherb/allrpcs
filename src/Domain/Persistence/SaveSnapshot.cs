@@ -137,7 +137,8 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
             || schemaVersion == SaveSchemaVersion.Continuation
-            || schemaVersion == SaveSchemaVersion.Inventory;
+            || schemaVersion == SaveSchemaVersion.Inventory
+            || schemaVersion == SaveSchemaVersion.OptionalMap;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -163,7 +164,8 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
             || schemaVersion == SaveSchemaVersion.Continuation
-            || schemaVersion == SaveSchemaVersion.Inventory;
+            || schemaVersion == SaveSchemaVersion.Inventory
+            || schemaVersion == SaveSchemaVersion.OptionalMap;
         if (retainsJournal && journal is null)
         {
             throw new ArgumentNullException(nameof(journal));
@@ -188,8 +190,18 @@ public sealed record SaveSnapshot
             || schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
             || schemaVersion == SaveSchemaVersion.Continuation
-            || schemaVersion == SaveSchemaVersion.Inventory;
-        if (retainsMap && map is null)
+            || schemaVersion == SaveSchemaVersion.Inventory
+            || schemaVersion == SaveSchemaVersion.OptionalMap;
+        // Schema 11 omits both the map and the routes until the map is first opened.
+        bool mapIsOptional = schemaVersion == SaveSchemaVersion.OptionalMap;
+        if (mapIsOptional && (map is null) != (investigationRoutes is null))
+        {
+            throw new ArgumentException(
+                "An optional-map save retains the map and the investigation routes together or neither.",
+                nameof(investigationRoutes));
+        }
+
+        if (retainsMap && map is null && !mapIsOptional)
         {
             throw new ArgumentNullException(nameof(map));
         }
@@ -213,9 +225,11 @@ public sealed record SaveSnapshot
         bool retainsRoutes = schemaVersion == SaveSchemaVersion.InvestigationRoutes
             || schemaVersion == SaveSchemaVersion.FirstPatientRecovery
             || schemaVersion == SaveSchemaVersion.Continuation
-            || schemaVersion == SaveSchemaVersion.Inventory;
+            || schemaVersion == SaveSchemaVersion.Inventory
+            || schemaVersion == SaveSchemaVersion.OptionalMap;
         if (retainsRoutes
-            && investigationRoutes is null)
+            && investigationRoutes is null
+            && !mapIsOptional)
         {
             throw new ArgumentNullException(nameof(investigationRoutes));
         }
@@ -230,7 +244,8 @@ public sealed record SaveSnapshot
 
         bool retainsRecovery = schemaVersion == SaveSchemaVersion.FirstPatientRecovery
             || schemaVersion == SaveSchemaVersion.Continuation
-            || schemaVersion == SaveSchemaVersion.Inventory;
+            || schemaVersion == SaveSchemaVersion.Inventory
+            || schemaVersion == SaveSchemaVersion.OptionalMap;
         if (retainsRecovery && firstPatientRecovery is null)
         {
             throw new ArgumentNullException(nameof(firstPatientRecovery));
@@ -247,6 +262,7 @@ public sealed record SaveSnapshot
         // or positions; rejected-restore checks copy a captured root this way.
         if (schemaVersion != SaveSchemaVersion.Continuation
             && schemaVersion != SaveSchemaVersion.Inventory
+            && schemaVersion != SaveSchemaVersion.OptionalMap
             && continuation is not null)
         {
             throw new ArgumentException(
@@ -256,7 +272,9 @@ public sealed record SaveSnapshot
 
         // An inventory schema root without inventory restores the authored starting inventory plus
         // any gathered herb its history still holds, as a migrated schema 9 save does.
-        if (schemaVersion != SaveSchemaVersion.Inventory && inventory is not null)
+        if (schemaVersion != SaveSchemaVersion.Inventory
+            && schemaVersion != SaveSchemaVersion.OptionalMap
+            && inventory is not null)
         {
             throw new ArgumentException(
                 "Only the inventory schema can retain inventory ownership.",

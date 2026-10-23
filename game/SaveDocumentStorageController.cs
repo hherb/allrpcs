@@ -72,5 +72,8 @@ public partial class SaveDocumentStorageController : Node
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_HYPOTHESIS_TEST_CHECK")
             == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_SLICE_STAKES_CHECK")
+            == EnabledEnvironmentValue
+        // Its save binding now really saves, so it must never touch the player's save.
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_CONTROLS_MAIN_CHECK")
             == EnabledEnvironmentValue;
 }

@@ -51,6 +51,13 @@ public partial class OpeningRegionInvestigationRouteProgressController : Node
         Progress = restored;
     }
 
+    /// <summary>Returns to the uninitialized state; routes initialize again when the map is next opened.</summary>
+    internal void ResetToUnopened()
+    {
+        Catalogue = null;
+        Progress = null;
+    }
+
     internal void InstallPreparedRestoration(OpeningRegionInvestigationRouteProgressSnapshot restored)
     {
         Catalogue = restored.Catalogue;

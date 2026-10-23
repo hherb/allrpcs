@@ -99,22 +99,28 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
+        // Before the map is first opened, a save records the map and routes as unopened.
         input._UnhandledInput(Action(SaveAction, pressed: true));
         Label recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
-        if (status.Text != SaveLoadInputController.MapRequiredStatusText
-            || recoveryStatus.Text != SaveLoadInputController.MapRequiredRecoveryText
-            || File.Exists(StoragePath())
-            || journalController.Journal is not null)
+        string? unopened = jsonController.CaptureSerialized();
+        if (unopened is null
+            || status.Text != SaveLoadInputController.SavedStatusText
+            || recoveryStatus.Text != SaveLoadInputController.SavedRecoveryText
+            || !File.Exists(StoragePath())
+            || !string.Equals(File.ReadAllText(StoragePath()), unopened, StringComparison.Ordinal)
+            || !unopened.Contains(",\"map\":null,\"investigationRoutes\":null,", StringComparison.Ordinal)
+            || journalController.Journal is null
+            || mapController.Map is not null)
         {
-            Fail("Save-load input did not explain the missing map initialization prerequisite.");
+            Fail("Save before the map was first opened did not persist an unopened map.");
             return;
         }
 
         save.GrabFocus();
         save.EmitSignal(BaseButton.SignalName.Pressed);
-        if (save.HasFocus() || status.Text != SaveLoadInputController.MapRequiredStatusText)
-        { Fail("Prerequisite save return retained GUI focus."); return; }
+        if (save.HasFocus()) { Fail("Save before the map retained GUI focus."); return; }
 
+        File.Delete(StoragePath());
         input._UnhandledInput(Action(LoadAction, pressed: true));
         if (status.Text != SaveLoadInputController.MissingStatusText)
         {
@@ -129,6 +135,27 @@ public partial class SaveLoadInputSmokeCheck : Node
                 shrineSource))
         {
             Fail("Save-load input smoke could not initialize exact route state.");
+            return;
+        }
+
+        // Loading that save puts the opened map and its routes back to unopened.
+        if (!jsonController.TryRestoreSerialized(unopened)
+            || mapController.Map is not null
+            || mapController.Catalogue is not null
+            || routeProgress.Progress is not null
+            || routeProgress.Catalogue is not null)
+        {
+            Fail("Loading a save taken before the map was opened did not reset the opened map.");
+            return;
+        }
+
+        MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
+        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
+                routeProgress,
+                mapController,
+                shrineSource))
+        {
+            Fail("Save-load input smoke could not initialize exact route state again.");
             return;
         }
 
@@ -180,7 +207,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":10",
+            "\"schemaVersion\":11",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         File.WriteAllText(StoragePath(), futureVersion);

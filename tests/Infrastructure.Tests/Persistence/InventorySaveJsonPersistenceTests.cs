@@ -45,7 +45,7 @@ public sealed class InventorySaveJsonPersistenceTests
 
         Assert.EndsWith(",\"inventory\":null}", serialized, StringComparison.Ordinal);
         Assert.Null(SaveSnapshotJsonDeserializer.Deserialize(serialized).Inventory);
-        Assert.Same(SaveSchemaVersion.Inventory, current.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.OptionalMap, current.SchemaVersion);
         Assert.Null(current.Inventory);
         Assert.NotNull(current.Continuation);
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(

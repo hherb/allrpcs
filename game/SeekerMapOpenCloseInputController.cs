@@ -222,6 +222,14 @@ public partial class SeekerMapOpenCloseInputController : Node
             if (wasOpen) { seeker.ResumeAfterModal(this); }
             panel.Visible = false;
             if (wasOpen) { GetViewport().GuiGetFocusOwner()?.ReleaseFocus(); }
+            // A load back to an unopened map also forgets what was shown, so the next open initializes again.
+            if (state.Map is null)
+            {
+                presentedMap = null;
+                presentedNotes = null;
+                presentations.ResetToUnopened();
+                panel.ResetToUnopened();
+            }
         });
     }
 

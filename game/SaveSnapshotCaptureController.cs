@@ -84,6 +84,12 @@ public partial class SaveSnapshotCaptureController : Node
         SeekerMapNoteSnapshot? mapNotes = mapController.Notes;
         OpeningRegionMapLocationCatalogue? mapCatalogue = mapController.Catalogue;
         OpeningRegionInvestigationRouteProgressSnapshot? routes = routeProgress.Progress;
+        // Before the map is first opened, none of its or the routes' state exists; that saves as null.
+        bool mapUnopened = map is null
+            && mapNotes is null
+            && mapCatalogue is null
+            && routes is null
+            && routeProgress.Catalogue is null;
         if (perception is null
             || worldEvents is null
             || eventLog is null
@@ -91,17 +97,18 @@ public partial class SaveSnapshotCaptureController : Node
             || firstPatient is null
             || journal is null
             || journal.SeekerId != perception.CharacterId
-            || map is null
-            || mapNotes is null
-            || mapCatalogue is null
-            || routes is null
-            || !ReferenceEquals(routeProgress.Catalogue, routes.Catalogue)
-            || !OpeningRegionInvestigationRouteValidationPolicy.IsValid(
-                routes.Catalogue,
-                mapCatalogue,
-                shrineSource.DiscoveryScenario)
-            || map.SeekerId != perception.CharacterId
-            || mapNotes.SeekerId != perception.CharacterId)
+            || (!mapUnopened
+                && (map is null
+                    || mapNotes is null
+                    || mapCatalogue is null
+                    || routes is null
+                    || !ReferenceEquals(routeProgress.Catalogue, routes.Catalogue)
+                    || !OpeningRegionInvestigationRouteValidationPolicy.IsValid(
+                        routes.Catalogue,
+                        mapCatalogue,
+                        shrineSource.DiscoveryScenario)
+                    || map.SeekerId != perception.CharacterId
+                    || mapNotes.SeekerId != perception.CharacterId)))
         {
             return null;
         }
@@ -113,8 +120,8 @@ public partial class SaveSnapshotCaptureController : Node
         }
 
         JournalSaveState journalState;
-        MapSaveState mapState;
-        InvestigationRouteSaveState routeState;
+        MapSaveState? mapState = null;
+        InvestigationRouteSaveState? routeState = null;
         FirstPatientRecoveryStage recoveryStage;
         try
         {
@@ -125,11 +132,14 @@ public partial class SaveSnapshotCaptureController : Node
                 journalState,
                 patientTestimony.Testimony,
                 sageConsultation.Consultation);
-            mapState = MapSaveStateCaptureProjection.Capture(map, mapNotes);
-            routeState = InvestigationRouteSaveStateCaptureProjection.Capture(
-                routes,
-                routeCompletions.AcceptedCompletions,
-                routeConsumption.ConsumedCompletion);
+            if (!mapUnopened)
+            {
+                mapState = MapSaveStateCaptureProjection.Capture(map!, mapNotes!);
+                routeState = InvestigationRouteSaveStateCaptureProjection.Capture(
+                    routes!,
+                    routeCompletions.AcceptedCompletions,
+                    routeConsumption.ConsumedCompletion);
+            }
             recoveryStage = CaptureRecoveryStage();
         }
         catch (ArgumentException)
@@ -153,7 +163,7 @@ public partial class SaveSnapshotCaptureController : Node
                 Position(participants.Participants[0].Identity.Id, healer),
             ]);
         return new SaveSnapshot(
-            SaveSchemaVersion.Inventory,
+            SaveSchemaVersion.OptionalMap,
             discovery,
             eventState,
             memory,

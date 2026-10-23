@@ -19,6 +19,9 @@ public partial class SeekerMapPresentationController : Node
         state = GetNode<SeekerMapController>("../SeekerMapController");
     }
 
+    /// <summary>Forgets the projected presentation after a load back to an unopened map.</summary>
+    internal void ResetToUnopened() => Presentation = null;
+
     /// <summary>Projects exact current map and note state once without rendering UI.</summary>
     public bool TryProject(
         SeekerMapSnapshot expectedMap,

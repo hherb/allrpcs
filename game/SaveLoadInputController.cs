@@ -10,9 +10,6 @@ public partial class SaveLoadInputController : Node
     internal const string ReadyStatusText = "SAVE / LOAD READY";
     internal const string SavedStatusText = "SAVED";
     internal const string SaveFailedStatusText = "SAVE FAILED";
-    internal const string MapRequiredStatusText = "PRESS M FIRST";
-    internal const string MapRequiredRecoveryText =
-        "Save: press M to initialize the map, close it with M, then press Q again.";
     internal const string SavedRecoveryText =
         "Saved. Next launch, choose Continue to resume.";
     internal const string SaveFailedRecoveryText =
@@ -26,8 +23,6 @@ public partial class SaveLoadInputController : Node
 
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journal = null!;
-    private SeekerMapController map = null!;
-    private OpeningRegionInvestigationRouteProgressController routes = null!;
     private SaveDocumentStorageController storage = null!;
     private Label recoveryStatus = null!;
     private Label status = null!;
@@ -41,9 +36,6 @@ public partial class SaveLoadInputController : Node
         journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
             "../RepresentativeJournalCompositionCoordinator");
         journal = GetNode<JournalController>("../JournalController");
-        map = GetNode<SeekerMapController>("../SeekerMapController");
-        routes = GetNode<OpeningRegionInvestigationRouteProgressController>(
-            "../OpeningRegionInvestigationRouteProgressController");
         recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         status = GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status");
 
@@ -82,16 +74,7 @@ public partial class SaveLoadInputController : Node
 
     private void Save()
     {
-        if (map.Catalogue is null
-            || map.Map is null
-            || map.Notes is null
-            || routes.Progress is null)
-        {
-            ControlSettingsController.SetGuidance(status, MapRequiredStatusText);
-            ControlSettingsController.SetGuidance(recoveryStatus, MapRequiredRecoveryText);
-            return;
-        }
-
+        // A game saves before the map is first opened too; the save records the map as unopened.
         if (journal.Journal is null && !journalComposition.TryComposeAndInitialize())
         {
             ControlSettingsController.SetGuidance(status, SaveFailedStatusText);

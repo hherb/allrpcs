@@ -1804,7 +1804,7 @@
   "active_slice": {
     "id": "code-health-phase4-owner-playtest",
     "title": "Owner playtest and Phase 4 exit",
-    "status": "ready",
+    "status": "in_progress",
     "workstream": "code-health-program",
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",

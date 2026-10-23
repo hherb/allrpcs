@@ -46,15 +46,15 @@ opened, and by owner decision the remedy dose (not a pre-confirmed conclusion) t
 "every existing save already records residue" is false for saves migrated to empty routes, so every
 map open, not only the first, catches up verified locations and the residue; 6,160 tests, smoke 367
 passed, 0 failed, no schema change). Follow-ups for Phase 5 are in
-[#460](https://github.com/hherb/allrpcs/issues/460). Item 7 is in progress
-([PR #461](https://github.com/hherb/allrpcs/pull/461), draft): the Phase 4 exit full root
-`./quality.sh` passed on 2026-10-23, 218 stages, no retries
-([record](docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json)). Reaching it fixed stale
-quality-only checks that D2 scoped runs never exercised: by owner decision the herb-retained
-examination fixture is checked at `HERB_REVISION` (`quality.py`), the water/cask/hand-tool/Healer
-Main checks return characters before byte-exact save parity (schema 9 saves positions), and the
-conversation-context check expects the saved window after a load (item 2). Lesson: run the
-quality-only Main checks a slice touches, not only `smoke-godot.sh`. The owner playtest remains.
+[#460](https://github.com/hherb/allrpcs/issues/460). Item 7 is in progress. The exit gate's full root `./quality.sh` passed on 2026-10-23, 218 stages, no
+retries ([record](docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json); PR #461, merged).
+Lesson: run the quality-only Main checks a slice touches, not only `smoke-godot.sh`. The owner
+playtest is under way ([findings](docs/superpowers/evidence/phase4-owner-playtest.md)). Its fixes so
+far are Talk on Enter and fitted panels (on main), and in
+[PR #464](https://github.com/hherb/allrpcs/pull/464) a remembered Seeker profile
+(`user://seeker-profile-v1.json`) and save schema 11, which saves before the map is first opened.
+Local speech uses the ignored venv `artifacts/pocket-python`; the old `/private/tmp` one was
+deleted by macOS.
 
 The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
 OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
@@ -73,7 +73,7 @@ This authorizes review-branch publication; no merge or release is authorized her
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-owner-playtest — Owner playtest and Phase 4 exit** (ready).
+**code-health-phase4-owner-playtest — Owner playtest and Phase 4 exit** (in_progress).
 
 Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
 Ollama.
