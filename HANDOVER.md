@@ -52,7 +52,9 @@ Lesson: run the quality-only Main checks a slice touches, not only `smoke-godot.
 playtest is under way ([findings](docs/superpowers/evidence/phase4-owner-playtest.md)). Its fixes so
 far are Talk on Enter and fitted panels (on main), and in
 [PR #464](https://github.com/hherb/allrpcs/pull/464) a remembered Seeker profile
-(`user://seeker-profile-v1.json`) and save schema 11, which saves before the map is first opened.
+(`user://seeker-profile-v1.json`) and save schema 11, which saves before the map is first opened;
+its review fixes passed the full gate again at `9be816bf`. A fresh-profile run deletes that profile
+file too ([#466](https://github.com/hherb/allrpcs/issues/466)).
 Local speech uses the ignored venv `artifacts/pocket-python`; the old `/private/tmp` one was
 deleted by macOS.
 
