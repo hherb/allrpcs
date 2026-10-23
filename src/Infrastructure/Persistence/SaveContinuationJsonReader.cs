@@ -32,7 +32,8 @@ internal static class SaveContinuationJsonReader
         return new SaveContinuationState(profile, positions);
     }
 
-    private static SeekerCustomizationSaveState ReadProfile(JsonElement element)
+    /// <summary>Reads one exact profile object, rejecting missing, extra or non-string fields.</summary>
+    internal static SeekerCustomizationSaveState ReadProfile(JsonElement element)
     {
         RequireObject(
             element,

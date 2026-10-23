@@ -89,6 +89,8 @@ run_check 120 ALLRPCS_SEEKER_CUSTOMIZATION_MENU_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK=1 \
     godot --headless --path "$repository_root/game"
+run_check 120 ALLRPCS_NEW_GAME_CUSTOMIZATION_CHECK=1 ALLRPCS_NEW_GAME_CUSTOMIZATION_MODE=remembered \
+    godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SAVE_CONTINUE_CHECK=1 \
     godot --headless --path "$repository_root/game" res://SaveContinueRelaunchCheck.tscn
 # The check caps itself at 60 fps, so this whole-launch budget of 6000 frames (about 100 s)

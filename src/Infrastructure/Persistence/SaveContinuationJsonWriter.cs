@@ -14,16 +14,7 @@ internal static class SaveContinuationJsonWriter
         writer.WritePropertyName("seekerProfile");
         if (state?.SeekerProfile is { } profile)
         {
-            writer.WriteStartObject();
-            writer.WriteString("displayName", profile.Identity.DisplayName);
-            writer.WriteString("subject", profile.Pronouns.Subject);
-            writer.WriteString("objective", profile.Pronouns.Objective);
-            writer.WriteString("possessiveDeterminer", profile.Pronouns.PossessiveDeterminer);
-            writer.WriteString("possessivePronoun", profile.Pronouns.PossessivePronoun);
-            writer.WriteString("reflexive", profile.Pronouns.Reflexive);
-            writer.WriteString("appearanceKey", profile.AppearanceKey);
-            writer.WriteString("backgroundKey", profile.BackgroundKey);
-            writer.WriteEndObject();
+            WriteProfile(writer, profile);
         }
         else
         {
@@ -42,6 +33,21 @@ internal static class SaveContinuationJsonWriter
         }
 
         writer.WriteEndArray();
+        writer.WriteEndObject();
+    }
+
+    /// <summary>Writes one profile object; the remembered-profile settings file shares this shape.</summary>
+    internal static void WriteProfile(Utf8JsonWriter writer, SeekerCustomizationSaveState profile)
+    {
+        writer.WriteStartObject();
+        writer.WriteString("displayName", profile.Identity.DisplayName);
+        writer.WriteString("subject", profile.Pronouns.Subject);
+        writer.WriteString("objective", profile.Pronouns.Objective);
+        writer.WriteString("possessiveDeterminer", profile.Pronouns.PossessiveDeterminer);
+        writer.WriteString("possessivePronoun", profile.Pronouns.PossessivePronoun);
+        writer.WriteString("reflexive", profile.Pronouns.Reflexive);
+        writer.WriteString("appearanceKey", profile.AppearanceKey);
+        writer.WriteString("backgroundKey", profile.BackgroundKey);
         writer.WriteEndObject();
     }
 }
