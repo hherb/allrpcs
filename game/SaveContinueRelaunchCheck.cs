@@ -2,6 +2,8 @@ using System.Text.Json;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Persistence;
+using Allrpcs.Infrastructure.Persistence;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -44,6 +46,8 @@ public partial class SaveContinueRelaunchCheck : Node
             (NewGameStartPanelController start, SeekerCustomizationMenuController menu, Seeker seeker) = StartPanel(second);
             start.Begin();
             Require(start.Visible && !menu.Visible && !seeker.IsPhysicsProcessing(), "A relaunch with a save offers Continue first.");
+            second.GetNode<Button>("CommandOverlay/SaveLoadPanel/Save").EmitSignal(BaseButton.SignalName.Pressed);
+            Require(File.ReadAllText(path) == saved, "The Save button cannot overwrite the save while Continue is offered.");
             start.GetNode<Button>("Continue").EmitSignal(BaseButton.SignalName.Pressed);
             await Frames(2);
 
@@ -106,11 +110,21 @@ public partial class SaveContinueRelaunchCheck : Node
             Require(start.Visible && !menu.Visible && !seeker.IsPhysicsProcessing()
                 && start.GetNode<Label>("Status").Text == NewGameStartPanelController.FailedStatusText,
                 "An unreadable save keeps the start panel open with the failure status.");
+            // New game asks again, filled in; an appearance this build lacks leaves its prompt.
+            File.WriteAllText(NewGameStartPanelController.RememberedProfilePath(), RememberedSeekerProfileJson.Serialize(
+                new SeekerCustomizationSaveState(new CharacterIdentity(new CharacterId(SeekerCustomizationProfile.SeekerCharacterIdValue), "Mara"),
+                    new SeekerPronouns("they", "them", "their", "theirs", "themself"), "retired-appearance", "forester")));
             start.GetNode<Button>("NewGame").EmitSignal(BaseButton.SignalName.Pressed);
             Require(!start.Visible && menu.Visible, "New game after a failed Continue opens customization.");
+            Require(menu.GetNode<LineEdit>("DisplayName").Text == "Mara" && menu.GetNode<LineEdit>("Reflexive").Text == "themself"
+                && menu.GetNode<OptionButton>("Appearance").Selected == 0 && menu.GetNode<OptionButton>("Background").Selected == 1,
+                "New game prefilled the remembered Mara, Forester, and left the unknown appearance unchosen.");
+            corrupt.GetNode<Button>("CommandOverlay/SaveLoadPanel/Save").EmitSignal(BaseButton.SignalName.Pressed);
+            Require(File.ReadAllText(path) == "{", "The Save button cannot overwrite the save before a new Seeker is confirmed.");
             corrupt.QueueFree();
             await Frames(2);
             File.Delete(path);
+            File.Delete(NewGameStartPanelController.RememberedProfilePath());
             GD.Print("PASS: save continue relaunch");
             GetTree().Quit();
         }
@@ -118,6 +132,7 @@ public partial class SaveContinueRelaunchCheck : Node
         {
             GD.PushError(error.ToString());
             File.Delete(path);
+            File.Delete(NewGameStartPanelController.RememberedProfilePath());
             GetTree().Quit(1);
         }
     }

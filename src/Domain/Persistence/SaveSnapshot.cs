@@ -312,10 +312,13 @@ public sealed record SaveSnapshot
     /// <summary>Gets exact content-safe journal state when retained by the schema version.</summary>
     public JournalSaveState? Journal { get; }
 
-    /// <summary>Gets exact visibility-safe map state when retained by the schema version.</summary>
+    /// <summary>
+    /// Gets exact visibility-safe map state when retained by the schema version; at the optional-map
+    /// version it is null, with <see cref="InvestigationRoutes"/>, until the map is first opened.
+    /// </summary>
     public MapSaveState? Map { get; }
 
-    /// <summary>Gets exact ID-only investigation-route lifecycle state when retained.</summary>
+    /// <summary>Gets exact ID-only investigation-route lifecycle state when retained; null exactly when <see cref="Map"/> is.</summary>
     public InvestigationRouteSaveState? InvestigationRoutes { get; }
 
     /// <summary>Gets durable first-patient recovery dialogue progress when retained.</summary>

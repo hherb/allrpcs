@@ -13,7 +13,7 @@ public partial class SaveLoadInputController : Node
     internal const string SavedRecoveryText =
         "Saved. Next launch, choose Continue to resume.";
     internal const string SaveFailedRecoveryText =
-        "Save failed after initialization. Check local storage and press Q again.";
+        "Save failed. Press M to open and close the map, then press Q; else check storage.";
     internal const string LoadedStatusText = "LOADED";
     internal const string MissingStatusText = "NO SAVE FOUND";
     internal const string LoadFailedStatusText = "LOAD FAILED";
@@ -66,11 +66,16 @@ public partial class SaveLoadInputController : Node
         GetViewport().SetInputAsHandled();
     }
 
-    private static void Activate(Button button, Action action)
+    private void Activate(Button button, Action action)
     {
-        try { action(); }
+        // The keys are gated by ControlInputContext; the buttons must not save over a game not yet chosen.
+        try { if (!LaunchChoiceOpen()) { action(); } }
         finally { button.ReleaseFocus(); }
     }
+
+    private bool LaunchChoiceOpen() =>
+        GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
+        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true;
 
     private void Save()
     {

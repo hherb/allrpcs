@@ -27,9 +27,14 @@ public partial class SaveDocumentStorageController : Node
     public SaveDocumentWriteResult SaveCurrent()
     {
         string? serializedDocument = jsonController.CaptureSerialized();
-        return serializedDocument is null
-            ? SaveDocumentWriteResult.Failed
-            : documentStore.Save(serializedDocument);
+        if (serializedDocument is null)
+        {
+            // Not a storage fault: some live state (e.g. a half-initialized map) cannot be captured.
+            GD.PushWarning("Save refused: the current game state could not be captured completely.");
+            return SaveDocumentWriteResult.Failed;
+        }
+
+        return documentStore.Save(serializedDocument);
     }
 
     /// <summary>

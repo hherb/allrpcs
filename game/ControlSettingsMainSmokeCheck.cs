@@ -130,6 +130,8 @@ public partial class ControlSettingsMainSmokeCheck : Node
         Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText
             && File.Exists(SaveDocumentStorageController.CurrentFilePath()), "Save binding did not save");
         File.Delete(SaveDocumentStorageController.CurrentFilePath());
+        // A successful save names no key, so the remap is checked against the failure prompt that does.
+        ControlSettingsController.SetGuidance(GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus"), SaveLoadInputController.SaveFailedRecoveryText);
         ControlPreferences newSave = ControlBindingEdit.Set(defaults, "save_current", new("key", (int)Key.F12, "physical"), 0); controller.Apply(newSave);
         Require(GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus").Text.Contains("F12", StringComparison.Ordinal), "Remapped recovery prompt stayed stale");
         Require(GetNode<Button>("../CommandOverlay/SaveLoadPanel/Save").Text.Contains("F12", StringComparison.Ordinal), "Save button binding stale");

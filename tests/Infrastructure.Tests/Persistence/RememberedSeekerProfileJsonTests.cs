@@ -27,6 +27,7 @@ public sealed class RememberedSeekerProfileJsonTests
     [InlineData("\"displayName\":\"Mara\",", "")]
     [InlineData("\"appearanceKey\":\"weathered-traveller\"", "\"appearanceKey\":\"Weathered Traveller\"")]
     [InlineData("{\"schemaVersion\":1,", "{")]
+    [InlineData("\"displayName\":\"Mara\"", "\"displayName\":\"\\uD800\"")]
     public void RejectsAnythingButOneExactProfileDocument(string original, string replacement)
     {
         string valid = RememberedSeekerProfileJson.Serialize(Profile());

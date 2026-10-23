@@ -51,7 +51,12 @@ public static class RememberedSeekerProfileJson
 
             return SaveContinuationJsonReader.ReadProfile(root.GetProperty("seekerProfile"));
         }
-        catch (Exception exception) when (exception is JsonException or InvalidDataException)
+        catch (Exception exception) when (
+            exception is JsonException
+                or InvalidDataException
+                or ArgumentException
+                or InvalidOperationException
+                or OverflowException)
         {
             throw new ArgumentException(
                 "Value must be a complete remembered Seeker profile document.",

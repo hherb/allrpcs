@@ -60,6 +60,20 @@ public sealed class OptionalMapSaveJsonPersistenceTests
     }
 
     [Fact]
+    public void RejectsAValidMapWithoutItsRoutesOrTheReverse()
+    {
+        string valid = SaveSnapshotJsonSerializer.Serialize(OptionalMapVersion(opened: true));
+        int map = valid.IndexOf(",\"map\":", StringComparison.Ordinal);
+        int routes = valid.IndexOf(",\"investigationRoutes\":", StringComparison.Ordinal);
+        int recovery = valid.IndexOf(",\"firstPatientRecoveryStage\":", StringComparison.Ordinal);
+
+        Assert.Throws<ArgumentException>(() => SaveSnapshotJsonDeserializer.Deserialize(
+            valid[..routes] + ",\"investigationRoutes\":null" + valid[recovery..]));
+        Assert.Throws<ArgumentException>(() => SaveSnapshotJsonDeserializer.Deserialize(
+            valid[..map] + ",\"map\":null" + valid[routes..]));
+    }
+
+    [Fact]
     public void AnInventorySaveCannotOmitTheMap()
     {
         string valid = SaveSnapshotJsonSerializer.Serialize(Inventory());

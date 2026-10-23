@@ -110,10 +110,8 @@ public partial class SeekerCustomizationMenuController : Control
         possessivePronoun.Text = profile.Pronouns.PossessivePronoun;
         reflexive.Text = profile.Pronouns.Reflexive;
         // Item 0 is the disabled prompt, so choice i is item i + 1; -1 + 1 leaves the prompt.
-        int appearanceIndex = source.Options.AppearanceChoices.ToList().FindIndex(choice => choice.Key == profile.AppearanceKey);
-        int backgroundIndex = source.Options.BackgroundChoices.ToList().FindIndex(choice => choice.Key == profile.BackgroundKey);
-        appearance.Select(appearanceIndex < 0 ? -1 : appearanceIndex + 1);
-        background.Select(backgroundIndex < 0 ? -1 : backgroundIndex + 1);
+        appearance.Select(source.Options.AppearanceChoices.ToList().FindIndex(choice => choice.Key == profile.AppearanceKey) + 1);
+        background.Select(source.Options.BackgroundChoices.ToList().FindIndex(choice => choice.Key == profile.BackgroundKey) + 1);
     }
 
     private void PopulateOptions()

@@ -102,15 +102,28 @@ public partial class NewGameStartPanelController : Control
     private SeekerCustomizationSaveState? LoadRemembered()
     {
         SaveDocumentReadResult? result = rememberedProfile?.Load();
+        if (result?.Status == SaveDocumentReadStatus.Failed) { GD.PushWarning($"Could not read {RememberedProfilePath()}."); }
         if (result?.Status != SaveDocumentReadStatus.Loaded) { return null; }
         try { return RememberedSeekerProfileJson.Deserialize(result.SerializedDocument!); }
-        catch (ArgumentException) { return null; }
+        catch (ArgumentException error)
+        {
+            GD.PushWarning($"Ignoring the remembered Seeker profile: {error.Message}");
+            return null;
+        }
     }
 
     private void Remember(SeekerCustomizationProfile profile)
     {
-        // A failed write only means the next launch asks again.
-        _ = rememberedProfile?.Save(RememberedSeekerProfileJson.Serialize(SeekerCustomizationSaveState.From(profile)));
+        // A failed write only means the next launch asks again, so it is logged, not shown.
+        try
+        {
+            if (rememberedProfile?.Save(RememberedSeekerProfileJson.Serialize(SeekerCustomizationSaveState.From(profile)))
+                == SaveDocumentWriteResult.Failed)
+            {
+                GD.PushWarning($"Could not remember the Seeker profile at {RememberedProfilePath()}.");
+            }
+        }
+        catch (ArgumentException error) { GD.PushWarning($"Could not remember the Seeker profile: {error.Message}"); }
     }
 
     private void Close()

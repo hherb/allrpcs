@@ -25,6 +25,10 @@ public partial class SaveLoadInputSmokeCheck : Node
     private SeekerMapController mapController = null!;
     private OpeningRegionOldShrineSceneSource shrineSource = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
+    private SeekerMapOpenCloseInputController mapInput = null!;
+    private SeekerMapPanel mapPanel = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private CharacterBody2D seeker = null!;
@@ -53,6 +57,12 @@ public partial class SaveLoadInputSmokeCheck : Node
             "../OpeningRegionOldShrineSceneSource");
         routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
             "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
+        mapInput = GetNode<SeekerMapOpenCloseInputController>("../SeekerMapOpenCloseInputController");
+        mapPanel = GetNode<SeekerMapPanel>("../SeekerMapPanel");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         seeker = GetNode<CharacterBody2D>("../Seeker");
@@ -128,13 +138,9 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
-        MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
-        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
-                routeProgress,
-                mapController,
-                shrineSource))
+        if (!OpenAndCloseMap())
         {
-            Fail("Save-load input smoke could not initialize exact route state.");
+            Fail("The map did not open and initialize from M before the load.");
             return;
         }
 
@@ -143,9 +149,19 @@ public partial class SaveLoadInputSmokeCheck : Node
             || mapController.Map is not null
             || mapController.Catalogue is not null
             || routeProgress.Progress is not null
-            || routeProgress.Catalogue is not null)
+            || routeProgress.Catalogue is not null
+            || routeCompletions.AcceptedCompletions.Count != 0
+            || routeConsumption.ConsumedCompletion is not null
+            || mapPanel.Visible)
         {
             Fail("Loading a save taken before the map was opened did not reset the opened map.");
+            return;
+        }
+
+        // The next M initializes the map again rather than refusing a stale presentation.
+        if (!OpenAndCloseMap() || !jsonController.TryRestoreSerialized(unopened) || mapController.Map is not null)
+        {
+            Fail("M did not reopen a fresh map after loading a save taken before the map was opened.");
             return;
         }
 
@@ -237,7 +253,8 @@ public partial class SaveLoadInputSmokeCheck : Node
 
         GD.Print(
             "Save-load input smoke passed: visible Q-save and L-load controls, released and "
-            + "unrelated input, explicit map prerequisite guidance and safe journal initialization, "
+            + "unrelated input, saving before the map is opened and reopening it after that load, "
+            + "safe journal initialization, "
             + "bounded save, load, missing, and failure status, exact complete capture, changed-state "
             + "restoration, malformed and "
             + "incompatible rejection, "
@@ -285,6 +302,15 @@ public partial class SaveLoadInputSmokeCheck : Node
         [new LocationId("stream")],
         [new LocationId("old-shrine")],
         [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
+
+    // Presses M twice like a player: the first opens (initializing map and routes), the second closes.
+    private bool OpenAndCloseMap()
+    {
+        mapInput._UnhandledInput(Action("map_toggle", pressed: true));
+        bool opened = mapPanel.Visible && mapController.Map is not null && routeProgress.Progress is not null;
+        mapInput._UnhandledInput(Action("map_toggle", pressed: true));
+        return opened && !mapPanel.Visible;
+    }
 
     private static InputEventAction Action(string action, bool pressed) => new()
     {
