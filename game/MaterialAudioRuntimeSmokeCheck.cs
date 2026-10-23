@@ -36,6 +36,10 @@ public partial class MaterialAudioRuntimeSmokeCheck : Node
                 Require(audio.Current!.ClipId == "B02" || captions.GetNode<Label>("Panel/Lines/Region").Text == audio.Current!.Caption,
                     "Region caption did not follow live presentation.");
             }
+            Control captionBox = captions.GetNode<Control>("Panel");
+            Require(captions.GetNode<Node>("Panel/Lines").GetChildren().OfType<Label>().All(line => line.Visible == (line.Text.Length > 0))
+                && captionBox.Size.Y < 160 && Mathf.IsEqualApprox(captionBox.GetGlobalRect().End.Y, GetViewport().GetVisibleRect().End.Y - 16),
+                "Caption box did not shrink to its shown lines at the bottom edge: " + captionBox.GetGlobalRect());
             Require(audio.GetChildCount() == 5 && audio.GetChildren().All(child => child is AudioStreamPlayer),
                 "Material audio exceeded its five retained non-positional players.");
             Require(audio.GetChildren().Cast<AudioStreamPlayer>().All(player => player.Stream is not null),

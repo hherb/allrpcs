@@ -45,9 +45,10 @@ HEATING_REVISION = 'b7912dd46a91e4b101c44cf56701d00f45b9ffd8'
 STEEPING_REVISION = '7836911042760409e181df80b4bfdd9951a8e7b2'
 COOLING_REVISION = 'e92e6e085e4d498e1339e8babc49a6623a9b7613'
 HERB_REVISION = 'db298c8fa5dfe220467c4cc113d0998e1c1aec01'
-# Authorized successors of herb-retained files: Phase 2 shipping exclusions and (owner decision
-# 2026-10-22) the Phase 4 ingredients fixture switch.
-HERB_SUCCESSOR_PATHS = ('game/export_presets.cfg', 'game/TemporaryCharacterExaminationFlowController.cs')
+# Authorized successors of herb-retained files: Phase 2 shipping exclusions and (owner decisions
+# 2026-10-22/23) the Phase 4 ingredients fixture switch and the compact playtest caption box.
+HERB_SUCCESSOR_PATHS = ('game/export_presets.cfg', 'game/TemporaryCharacterExaminationFlowController.cs',
+                        'game/MaterialSoundCaptionPanel.cs')
 CONTROLS_REVISION = '1b0cab4060dd1eaca9c780cf85c38be1662d8513'
 DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
