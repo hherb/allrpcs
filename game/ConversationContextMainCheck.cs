@@ -162,7 +162,9 @@ public partial class ConversationContextMainCheck : Node
         var loader = main.GetNode<SaveSnapshotJsonController>("SaveSnapshotJsonController");
         Require(!loader.TryRestoreSerialized("invalid JSON"), "Rejected load");
         await Submit("Healer, continue our conversation.");
-        Require(Recent().Length > 0, "Rejected load preserves current conversation");
+        // Nothing was said between the capture and this turn, so its context is the saved window.
+        JsonElement[] savedWindow = Recent();
+        Require(savedWindow.Length > 0, "Rejected load preserves current conversation");
         handler.ReplyDelayMilliseconds = 600;
         int calls = handler.ReplyCalls;
         Task<string> delayed = Submit("Healer, this is a pending pre-load turn.", expectSpeech: false);
@@ -175,10 +177,13 @@ public partial class ConversationContextMainCheck : Node
         handler.ReplyDelayMilliseconds = 0;
         Require(turns.Activity?.State == CharacterTurnActivityState.Cancelled, "Pre-load response cannot speak into the restored conversation");
         await Submit("Healer, a new conversation starts now.");
-        Require(Recent().Length == 0, "Successful load clears session history and excludes stale response");
+        // Save schema 9 keeps each character's conversation window: a load restores exactly the saved
+        // window and drops the post-save turn and the cancelled pre-load response.
+        Require(Recent().Select(entry => entry.GetRawText()).SequenceEqual(savedWindow.Select(entry => entry.GetRawText())),
+            "Successful load restores the saved window and excludes post-save and stale responses");
         Require(!Context().GetRawText().Contains("Completed examination:", StringComparison.Ordinal), "Successful load clears session action context");
         await Submit("Healer, please answer once more.");
-        Require(Recent().Length == 2, "Dialogue resumes with fresh post-load history");
+        Require(Recent().Length == savedWindow.Length + 2, "Dialogue resumes from the restored history");
     }
 
     private JsonElement Context()

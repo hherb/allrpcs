@@ -139,6 +139,8 @@ public partial class HandToolTapRuntimeSmokeCheck : Node
             AudioServer.SetBusName(effects, "Effects"); source.ResetPresentation();
             Require(source.TryTap(), "Lifecycle final contact failed."); seeker.GlobalPosition = new(1768, 900); source._Process(0);
             Require(!audio.GetNode<AudioStreamPlayer>("HandToolTap").Playing, "Departure did not stop contact.");
+            // Saves keep character positions (schema 9), so return before comparing the full save.
+            seeker.GlobalPosition = reached;
             checks.Add("missing Effects stream/bus retain commits/captions without fallback; departure cancels owned audio only");
             Require(SaveSnapshotJsonSerializer.Serialize(capture.Capture()!) == before, "Lifecycle/action checks changed full save.");
             source.ResetPresentation();

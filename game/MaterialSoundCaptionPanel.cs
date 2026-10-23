@@ -38,6 +38,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private string region = string.Empty;
     private string action = string.Empty;
     private double remaining;
+    private Label[] labels = [];
     private string footstep = string.Empty;
     private double footstepRemaining;
 
@@ -48,7 +49,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -532; panel.OffsetBottom = -16;
+        // Zero height anchored at the bottom: the box grows upward to fit only its shown lines.
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -16; panel.OffsetBottom = -16;
+        panel.GrowVertical = Control.GrowDirection.Begin;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -91,8 +94,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(coolingLabel);
         herbLabel = new() { Name = "HerbCollection", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(herbLabel);
-        foreach (Label label in new[] { regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel, steepingLabel, coolingLabel, herbLabel })
-        { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
+        labels = [regionLabel, actionLabel, footstepLabel, conversationLabel, interiorLabel, waterLabel, coverLabel, handToolLabel, healerFootstepLabel, foliageLabel, windLabel, rainLabel, heatingLabel, steepingLabel, coolingLabel, herbLabel];
+        foreach (Label label in labels) { label.AutowrapMode = TextServer.AutowrapMode.WordSmart; }
         settings.Changed += Refresh;
         Refresh();
     }
@@ -207,6 +210,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         coolingLabel.Text = enabled ? cooling : string.Empty;
         herbLabel.Text = enabled ? herb : string.Empty;
         rainLabel.Text = enabled ? rain : string.Empty;
+        // An empty Label still reserves a line of height, so hide it.
+        foreach (Label label in labels) { label.Visible = label.Text.Length > 0; }
         Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0 || interior.Length > 0 || waterContact.Length > 0 || caskCover.Length > 0 || handTool.Length > 0 || healerFootstep.Length > 0 || foliage.Length > 0 || wind.Length > 0 || rain.Length > 0 || heating.Length > 0 || steeping.Length > 0 || cooling.Length > 0 || herb.Length > 0);
     }
 }

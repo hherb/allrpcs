@@ -55,6 +55,10 @@ public partial class HealerFootstepRuntimeSmokeCheck : Node
             var capture = GetNode<SaveSnapshotCaptureController>("../SaveSnapshotCaptureController");
             SaveSnapshot initial = capture.Capture() ?? throw new InvalidOperationException("No complete save.");
             string before = SaveSnapshotJsonSerializer.Serialize(initial), truth = ProtectedTruth();
+            // Saves keep character positions (schema 9); arrival tolerance and fixtures move both
+            // characters, so they return to the baseline spots before each full-save comparison.
+            Vector2 healerStart = healer.GlobalPosition, seekerStart = seeker.GlobalPosition;
+            void ReturnToStart() { healer.GlobalPosition = healerStart; seeker.GlobalPosition = seekerStart; }
             long initialCount = audio.ContactCount;
             Action<FootstepMotionSample> recorder = sample => motion.Add(new
             {
@@ -78,6 +82,7 @@ public partial class HealerFootstepRuntimeSmokeCheck : Node
             healer.MotionCompleted -= recorder;
             Require(mode == "observer-disabled" ? audio.ContactCount == initialCount : audio.ContactCount >= initialCount + 4,
                 "Missing actual independent contacts: " + audio.ContactCount);
+            ReturnToStart();
             if (SaveSnapshotJsonSerializer.Serialize(capture.Capture()!) != before || ProtectedTruth() != truth)
             {
                 File.WriteAllText("/private/tmp/healer-truth-before.json", truth); File.WriteAllText("/private/tmp/healer-truth-after.json", ProtectedTruth());
@@ -100,6 +105,7 @@ public partial class HealerFootstepRuntimeSmokeCheck : Node
             if (mode == "default") { await Lifecycle(initial, truth); }
             string views = OS.GetEnvironment("ALLRPCS_HEALER_FOOTSTEP_VIEWS");
             if (views.Length > 0) { await Views(views); }
+            ReturnToStart();
             Require(ProtectedTruth() == truth && SaveSnapshotJsonSerializer.Serialize(capture.Capture()!) == before, "Checks changed protected truth/save.");
             string output = OS.GetEnvironment("ALLRPCS_HEALER_FOOTSTEP_REPORT");
             if (output.Length > 0)

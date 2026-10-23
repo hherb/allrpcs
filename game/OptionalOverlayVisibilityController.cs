@@ -8,12 +8,15 @@ namespace Allrpcs.Game;
 public partial class OptionalOverlayVisibilityController : Node
 {
     private const string ToggleAction = "optional_overlays_toggle";
+    private const string TalkAction = "dialogue_open";
 
     private CanvasLayer dialogueOverlay = null!;
     private CanvasLayer settingsOverlay = null!;
     private AudioSettingsPanel audioPanel = null!;
     private Button audioEntry = null!;
     private bool closingAll;
+    // Dialogue opened straight from the world returns to the world, not to the settings entries.
+    private bool openedDirectly;
     private TemporaryDialogueInputPanel dialoguePanel = null!;
     private Button dialogueEntry = null!;
     private Button settingsClose = null!;
@@ -110,17 +113,29 @@ public partial class OptionalOverlayVisibilityController : Node
     {
         if (!ControlInputContext.TogglesAllowed(this)) { return; }
         ArgumentNullException.ThrowIfNull(@event);
+        // Unhandled only: a focused button or text field keeps its own Enter.
+        if (ControlInputMatcher.Pressed(@event, TalkAction) && !AnyOverlayVisible())
+        {
+            openedDirectly = true;
+            OnDialoguePressed();
+            GetViewport().SetInputAsHandled();
+            return;
+        }
         if (!ControlInputMatcher.Pressed(@event, ToggleAction))
         {
             return;
         }
 
-        SetVisible(!(settingsOverlay.Visible || dialogueOverlay.Visible || audioPanel.Visible || controlsPanel?.Visible == true));
+        SetVisible(!AnyOverlayVisible());
         GetViewport().SetInputAsHandled();
     }
 
+    private bool AnyOverlayVisible() =>
+        settingsOverlay.Visible || dialogueOverlay.Visible || audioPanel.Visible || controlsPanel?.Visible == true;
+
     private void SetVisible(bool visible)
     {
+        openedDirectly = false;
         closingAll = true;
         if (audioPanel.Visible)
         {
@@ -173,6 +188,7 @@ public partial class OptionalOverlayVisibilityController : Node
     }
     private void OnDialogueClosed()
     {
+        if (openedDirectly) { SetVisible(false); return; }
         dialogueOverlay.Visible = false;
         settingsOverlay.Visible = true;
         dialogueEntry.GrabFocus();

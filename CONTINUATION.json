@@ -1809,11 +1809,12 @@
     "reopening_id": "owner-playable-phase4-2026-10-19",
     "authority_status": "owner_requested_playable_continuation_2026-10-19",
     "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 7: no owner playthrough from a fresh profile to the ending on local Ollama is recorded, and the Phase 4 exit full quality gate has not run.",
-    "instructions": "Run the Phase 4 exit full root ./quality.sh once (decision D2) and record it in docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json like the Phase 3 exit record (rename the output if the run happens on another date). Then ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result as an issue comment or a short session note. Fix blocking defects the playtest finds as bounded commits with tests. Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
+    "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
+    "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
     "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",
     "outputs": [
-      "docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json"
+      "docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json",
+      "docs/superpowers/evidence/phase4-owner-playtest.md"
     ],
     "boundary": "Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind, no physical/provider qualification, no merge or release."
   },
