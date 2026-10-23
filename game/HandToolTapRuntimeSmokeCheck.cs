@@ -43,10 +43,12 @@ public partial class HandToolTapRuntimeSmokeCheck : Node
         }
         try
         {
+            // Freeze the Healer before it can follow: asynchronous navigation sync makes how far it
+            // walks in these frames vary between runs, and its position is part of the compared save.
+            GetNode<Healer>("../Healer").SetPhysicsProcess(false);
             for (int i = 0; i < 8; i++) { await Frame(); }
             GetParent().SetProcess(false);
             GetNode<Node>("../TemporaryCharacterTurnCompletionController").SetProcess(false);
-            GetNode<Healer>("../Healer").SetPhysicsProcess(false);
             source = GetNode<OpeningRegionHandToolTapCoordinator>("../OpeningRegionHandToolTapCoordinator");
             audio = GetNode<OpeningRegionHandToolTapAudioController>("../OpeningRegionHandToolTapAudioController");
             panel = GetNode<HandToolTapPanel>("../HandToolTapPanel");
