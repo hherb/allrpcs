@@ -53,7 +53,7 @@ public sealed class SaveContinuationJsonPersistenceTests
             versionEight,
             FirstPatientRecoverySaveStateJsonPersistenceTests.RecoveryVersionState(FirstPatientRecoveryStage.NotHeard).FirstPatient!);
 
-        Assert.Same(SaveSchemaVersion.Inventory, current.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.OptionalMap, current.SchemaVersion);
         Assert.Same(FirstPatientRecoveryStage.SageConsulted, current.FirstPatientRecovery);
         Assert.Null(current.Continuation!.SeekerProfile);
         Assert.Empty(current.Continuation.Positions);

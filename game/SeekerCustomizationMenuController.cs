@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Persistence;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -16,6 +17,9 @@ public partial class SeekerCustomizationMenuController : Control
     public const string SelectedStatusText = "Customization selected.";
 
     private static readonly StringName OpenAction = new("open_seeker_customization");
+
+    /// <summary>Raised with the profile a Confirm installed, so a plain launch can remember it.</summary>
+    internal event Action<SeekerCustomizationProfile>? ProfileConfirmed;
 
     private SeekerCustomizationSelectionSceneSource source = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
@@ -96,6 +100,20 @@ public partial class SeekerCustomizationMenuController : Control
         return true;
     }
 
+    /// <summary>Fills the form with a remembered profile; option keys this build lacks stay unchosen.</summary>
+    internal void Prefill(SeekerCustomizationSaveState profile)
+    {
+        displayName.Text = profile.Identity.DisplayName;
+        subject.Text = profile.Pronouns.Subject;
+        objective.Text = profile.Pronouns.Objective;
+        possessiveDeterminer.Text = profile.Pronouns.PossessiveDeterminer;
+        possessivePronoun.Text = profile.Pronouns.PossessivePronoun;
+        reflexive.Text = profile.Pronouns.Reflexive;
+        // Item 0 is the disabled prompt, so choice i is item i + 1; -1 + 1 leaves the prompt.
+        appearance.Select(source.Options.AppearanceChoices.ToList().FindIndex(choice => choice.Key == profile.AppearanceKey) + 1);
+        background.Select(source.Options.BackgroundChoices.ToList().FindIndex(choice => choice.Key == profile.BackgroundKey) + 1);
+    }
+
     private void PopulateOptions()
     {
         appearance.AddItem("Choose appearance");
@@ -157,6 +175,7 @@ public partial class SeekerCustomizationMenuController : Control
             }
 
             Close();
+            ProfileConfirmed?.Invoke(source.CurrentState.SelectedProfile!);
         }
         catch (ArgumentException)
         {

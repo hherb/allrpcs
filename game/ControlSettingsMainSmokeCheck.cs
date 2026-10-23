@@ -127,7 +127,11 @@ public partial class ControlSettingsMainSmokeCheck : Node
         controller.Apply(defaults); passed.Add("keyboard/mouse/controller remaps through actual Main Healer owner");
         SaveLoadInputController save = GetNode<SaveLoadInputController>("../SaveLoadInputController");
         save._UnhandledInput(KeyEvent(Key.Q, true));
-        Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.MapRequiredStatusText, "Save qualification bypassed");
+        Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText
+            && File.Exists(SaveDocumentStorageController.CurrentFilePath()), "Save binding did not save");
+        File.Delete(SaveDocumentStorageController.CurrentFilePath());
+        // A successful save names no key, so the remap is checked against the failure prompt that does.
+        ControlSettingsController.SetGuidance(GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus"), SaveLoadInputController.SaveFailedRecoveryText);
         ControlPreferences newSave = ControlBindingEdit.Set(defaults, "save_current", new("key", (int)Key.F12, "physical"), 0); controller.Apply(newSave);
         Require(GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus").Text.Contains("F12", StringComparison.Ordinal), "Remapped recovery prompt stayed stale");
         Require(GetNode<Button>("../CommandOverlay/SaveLoadPanel/Save").Text.Contains("F12", StringComparison.Ordinal), "Save button binding stale");
@@ -163,7 +167,7 @@ public partial class ControlSettingsMainSmokeCheck : Node
         panel.Open(); panel.SelectAction("save_current"); string original = ControlPreferencesJson.Serialize(panel.Draft);
         panel.BeginCapture("Keyboard", 0); await Frames(2);
         await Press(Key.Q); Require(!panel.Capture.Active && panel.Draft.Get("save_current").Bindings.Single().Code == (int)Key.Q, "Keyboard capture not completed");
-        Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.MapRequiredStatusText, "Captured save leaked into gameplay");
+        Require(!File.Exists(SaveDocumentStorageController.CurrentFilePath()), "Captured save leaked into gameplay");
         panel.BeginCapture("Mouse"); await Frames(2);
         Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Xbutton1, Pressed = true, Position = new Vector2(800, 550) }); await Frames(2);
         Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Xbutton1, Pressed = false, Position = new Vector2(800, 550) }); await Frames(1);

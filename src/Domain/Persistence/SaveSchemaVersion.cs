@@ -17,6 +17,7 @@ public sealed record SaveSchemaVersion
     private const int FirstPatientRecoveryValue = 8;
     private const int ContinuationValue = 9;
     private const int InventoryValue = 10;
+    private const int OptionalMapValue = 11;
 
     /// <summary>Gets the first save-schema version supported by the game.</summary>
     public static SaveSchemaVersion FirstSupported { get; } = new(FirstSupportedValue);
@@ -47,6 +48,12 @@ public sealed record SaveSchemaVersion
 
     /// <summary>Gets the schema version that also retains who carries which world objects.</summary>
     public static SaveSchemaVersion Inventory { get; } = new(InventoryValue);
+
+    /// <summary>
+    /// Gets the schema version whose map and investigation routes are absent until the Seeker first
+    /// opens the map, so a game can be saved before that.
+    /// </summary>
+    public static SaveSchemaVersion OptionalMap { get; } = new(OptionalMapValue);
 
     /// <summary>Creates a save-schema version from a positive integer.</summary>
     public SaveSchemaVersion(int value)

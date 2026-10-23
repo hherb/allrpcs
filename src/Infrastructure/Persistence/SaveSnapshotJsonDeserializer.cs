@@ -96,8 +96,13 @@ public static class SaveSnapshotJsonDeserializer
             snapshot = SaveSnapshotContinuationMigration.Migrate(snapshot);
         }
 
-        return snapshot.SchemaVersion == SaveSchemaVersion.Continuation
-            ? SaveSnapshotInventoryMigration.Migrate(snapshot)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.Continuation)
+        {
+            snapshot = SaveSnapshotInventoryMigration.Migrate(snapshot);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.Inventory
+            ? SaveSnapshotOptionalMapMigration.Migrate(snapshot)
             : snapshot;
     }
 
@@ -114,7 +119,8 @@ public static class SaveSnapshotJsonDeserializer
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
         }
-        else if (version == SaveSchemaVersion.Inventory)
+        else if (version == SaveSchemaVersion.Inventory
+            || version == SaveSchemaVersion.OptionalMap)
         {
             RequireObject(
                 element,
@@ -227,11 +233,16 @@ public static class SaveSnapshotJsonDeserializer
                     || version == SaveSchemaVersion.InvestigationRoutes
                     || version == SaveSchemaVersion.FirstPatientRecovery
                     || version == SaveSchemaVersion.Continuation
-                    || version == SaveSchemaVersion.Inventory);
+                    || version == SaveSchemaVersion.Inventory
+                    || version == SaveSchemaVersion.OptionalMap);
         if (version == SaveSchemaVersion.FirstPatientRecovery
             || version == SaveSchemaVersion.Continuation
-            || version == SaveSchemaVersion.Inventory)
+            || version == SaveSchemaVersion.Inventory
+            || version == SaveSchemaVersion.OptionalMap)
         {
+            // Only an optional-map save may write null for a map not yet opened; the snapshot
+            // rejects a null map or routes for every other version, and one without the other.
+            bool mayOmitMap = version == SaveSchemaVersion.OptionalMap;
             return new SaveSnapshot(
                 version,
                 discovery,
@@ -239,15 +250,19 @@ public static class SaveSnapshotJsonDeserializer
                 characterMemory,
                 FirstPatientJsonReader.Read(element.GetProperty("firstPatient")),
                 JournalSaveStateJsonReader.Read(element.GetProperty("journal")),
-                MapSaveStateJsonReader.Read(element.GetProperty("map")),
-                InvestigationRouteSaveStateJsonReader.Read(
-                    element.GetProperty("investigationRoutes")),
+                mayOmitMap && element.GetProperty("map").ValueKind == JsonValueKind.Null
+                    ? null
+                    : MapSaveStateJsonReader.Read(element.GetProperty("map")),
+                mayOmitMap && element.GetProperty("investigationRoutes").ValueKind == JsonValueKind.Null
+                    ? null
+                    : InvestigationRouteSaveStateJsonReader.Read(
+                        element.GetProperty("investigationRoutes")),
                 FirstPatientRecoveryStage.Parse(
                     ReadString(element.GetProperty("firstPatientRecoveryStage"))),
                 version == SaveSchemaVersion.FirstPatientRecovery
                     ? null
                     : SaveContinuationJsonReader.Read(element.GetProperty("continuation")),
-                version == SaveSchemaVersion.Inventory
+                version == SaveSchemaVersion.Inventory || version == SaveSchemaVersion.OptionalMap
                     ? InventoryOwnershipJsonReader.Read(element.GetProperty("inventory"))
                     : null);
         }
@@ -324,6 +339,7 @@ public static class SaveSnapshotJsonDeserializer
             8 => SaveSchemaVersion.FirstPatientRecovery,
             9 => SaveSchemaVersion.Continuation,
             10 => SaveSchemaVersion.Inventory,
+            11 => SaveSchemaVersion.OptionalMap,
             _ => throw InvalidDocument(),
         };
     }

@@ -292,13 +292,17 @@ public partial class SaveSnapshotRestorationController : Node
         {
             if (restoredJournal is not null) { journalSelection.InstallRestored(restoredJournal.SelectedSection); }
         }));
+        // A save taken before the map was first opened puts an opened map and its routes back to unopened.
+        bool unopenedMap = snapshot.SchemaVersion == SaveSchemaVersion.OptionalMap && snapshot.Map is null;
         Register("map", () => new(() =>
         {
             if (restoredMap is not null) { mapController.InstallPreparedRestoration(restoredMap); }
+            else if (unopenedMap) { mapController.ResetToUnopened(); }
         }));
         Register("route-progress", () => new(() =>
         {
             if (restoredRoutes is not null) { routeProgress.InstallPreparedRestoration(restoredRoutes.Progress); }
+            else if (unopenedMap) { routeProgress.ResetToUnopened(); }
         }));
         Register("route-completions", () => new(() =>
         {
@@ -306,6 +310,7 @@ public partial class SaveSnapshotRestorationController : Node
             {
                 routeCompletions.InstallPreparedRestoration(restoredRoutes.AcceptedCompletions);
             }
+            else if (unopenedMap) { routeCompletions.InstallPreparedRestoration([]); }
         }));
         Register("route-consumption", () => new(() =>
         {
@@ -313,6 +318,7 @@ public partial class SaveSnapshotRestorationController : Node
             {
                 routeConsumption.InstallPreparedRestoration(restoredRoutes.ConsumedCompletion);
             }
+            else if (unopenedMap) { routeConsumption.InstallPreparedRestoration(null); }
         }));
         Register("seeker-customization", () => new(() =>
         {

@@ -27,9 +27,14 @@ public partial class SaveDocumentStorageController : Node
     public SaveDocumentWriteResult SaveCurrent()
     {
         string? serializedDocument = jsonController.CaptureSerialized();
-        return serializedDocument is null
-            ? SaveDocumentWriteResult.Failed
-            : documentStore.Save(serializedDocument);
+        if (serializedDocument is null)
+        {
+            // Not a storage fault: some live state (e.g. a half-initialized map) cannot be captured.
+            GD.PushWarning("Save refused: the current game state could not be captured completely.");
+            return SaveDocumentWriteResult.Failed;
+        }
+
+        return documentStore.Save(serializedDocument);
     }
 
     /// <summary>
@@ -58,7 +63,7 @@ public partial class SaveDocumentStorageController : Node
                 $"allrpcs-save-v1-smoke-{OS.GetProcessId()}.json")
             : ProjectSettings.GlobalizePath(SaveDocumentVirtualPath);
 
-    private static bool IsIsolatedSmokeCheck() =>
+    internal static bool IsIsolatedSmokeCheck() =>
         DebugTestEnvironment.GetEnvironment("ALLRPCS_DIALOGUE_OWNERSHIP_CHECK").Length > 0
         || DebugTestEnvironment.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment(SaveLoadInputController.SmokeCheckEnvironmentVariable)
@@ -72,5 +77,8 @@ public partial class SaveDocumentStorageController : Node
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_HYPOTHESIS_TEST_CHECK")
             == EnabledEnvironmentValue
         || DebugTestEnvironment.GetEnvironment("ALLRPCS_SLICE_STAKES_CHECK")
+            == EnabledEnvironmentValue
+        // Its save binding now really saves, so it must never touch the player's save.
+        || DebugTestEnvironment.GetEnvironment("ALLRPCS_CONTROLS_MAIN_CHECK")
             == EnabledEnvironmentValue;
 }

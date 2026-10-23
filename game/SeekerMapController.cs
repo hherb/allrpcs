@@ -72,6 +72,14 @@ public partial class SeekerMapController : Node, IMapSaveStateRestorationTarget
         Notes = notes;
     }
 
+    /// <summary>Returns to the never-opened state a load of a save taken before the map was opened needs.</summary>
+    internal void ResetToUnopened()
+    {
+        Catalogue = null;
+        Map = null;
+        Notes = null;
+    }
+
     internal void InstallPreparedRestoration(MapSaveStateRestoration restored)
     {
         Catalogue = restored.Catalogue;

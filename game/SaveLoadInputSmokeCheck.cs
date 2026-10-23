@@ -25,6 +25,10 @@ public partial class SaveLoadInputSmokeCheck : Node
     private SeekerMapController mapController = null!;
     private OpeningRegionOldShrineSceneSource shrineSource = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
+    private SeekerMapOpenCloseInputController mapInput = null!;
+    private SeekerMapPanel mapPanel = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private CharacterBody2D seeker = null!;
@@ -53,6 +57,12 @@ public partial class SaveLoadInputSmokeCheck : Node
             "../OpeningRegionOldShrineSceneSource");
         routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
             "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
+        mapInput = GetNode<SeekerMapOpenCloseInputController>("../SeekerMapOpenCloseInputController");
+        mapPanel = GetNode<SeekerMapPanel>("../SeekerMapPanel");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         seeker = GetNode<CharacterBody2D>("../Seeker");
@@ -99,26 +109,59 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
+        // Before the map is first opened, a save records the map and routes as unopened.
         input._UnhandledInput(Action(SaveAction, pressed: true));
         Label recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
-        if (status.Text != SaveLoadInputController.MapRequiredStatusText
-            || recoveryStatus.Text != SaveLoadInputController.MapRequiredRecoveryText
-            || File.Exists(StoragePath())
-            || journalController.Journal is not null)
+        string? unopened = jsonController.CaptureSerialized();
+        if (unopened is null
+            || status.Text != SaveLoadInputController.SavedStatusText
+            || recoveryStatus.Text != SaveLoadInputController.SavedRecoveryText
+            || !File.Exists(StoragePath())
+            || !string.Equals(File.ReadAllText(StoragePath()), unopened, StringComparison.Ordinal)
+            || !unopened.Contains(",\"map\":null,\"investigationRoutes\":null,", StringComparison.Ordinal)
+            || journalController.Journal is null
+            || mapController.Map is not null)
         {
-            Fail("Save-load input did not explain the missing map initialization prerequisite.");
+            Fail("Save before the map was first opened did not persist an unopened map.");
             return;
         }
 
         save.GrabFocus();
         save.EmitSignal(BaseButton.SignalName.Pressed);
-        if (save.HasFocus() || status.Text != SaveLoadInputController.MapRequiredStatusText)
-        { Fail("Prerequisite save return retained GUI focus."); return; }
+        if (save.HasFocus()) { Fail("Save before the map retained GUI focus."); return; }
 
+        File.Delete(StoragePath());
         input._UnhandledInput(Action(LoadAction, pressed: true));
         if (status.Text != SaveLoadInputController.MissingStatusText)
         {
             Fail("Save-load input did not expose the missing-document result.");
+            return;
+        }
+
+        if (!OpenAndCloseMap())
+        {
+            Fail("The map did not open and initialize from M before the load.");
+            return;
+        }
+
+        // Loading that save puts the opened map and its routes back to unopened.
+        if (!jsonController.TryRestoreSerialized(unopened)
+            || mapController.Map is not null
+            || mapController.Catalogue is not null
+            || routeProgress.Progress is not null
+            || routeProgress.Catalogue is not null
+            || routeCompletions.AcceptedCompletions.Count != 0
+            || routeConsumption.ConsumedCompletion is not null
+            || mapPanel.Visible)
+        {
+            Fail("Loading a save taken before the map was opened did not reset the opened map.");
+            return;
+        }
+
+        // The next M initializes the map again rather than refusing a stale presentation.
+        if (!OpenAndCloseMap() || !jsonController.TryRestoreSerialized(unopened) || mapController.Map is not null)
+        {
+            Fail("M did not reopen a fresh map after loading a save taken before the map was opened.");
             return;
         }
 
@@ -128,7 +171,7 @@ public partial class SaveLoadInputSmokeCheck : Node
                 mapController,
                 shrineSource))
         {
-            Fail("Save-load input smoke could not initialize exact route state.");
+            Fail("Save-load input smoke could not initialize exact route state again.");
             return;
         }
 
@@ -180,7 +223,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":10",
+            "\"schemaVersion\":11",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         File.WriteAllText(StoragePath(), futureVersion);
@@ -210,7 +253,8 @@ public partial class SaveLoadInputSmokeCheck : Node
 
         GD.Print(
             "Save-load input smoke passed: visible Q-save and L-load controls, released and "
-            + "unrelated input, explicit map prerequisite guidance and safe journal initialization, "
+            + "unrelated input, saving before the map is opened and reopening it after that load, "
+            + "safe journal initialization, "
             + "bounded save, load, missing, and failure status, exact complete capture, changed-state "
             + "restoration, malformed and "
             + "incompatible rejection, "
@@ -258,6 +302,15 @@ public partial class SaveLoadInputSmokeCheck : Node
         [new LocationId("stream")],
         [new LocationId("old-shrine")],
         [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
+
+    // Presses M twice like a player: the first opens (initializing map and routes), the second closes.
+    private bool OpenAndCloseMap()
+    {
+        mapInput._UnhandledInput(Action("map_toggle", pressed: true));
+        bool opened = mapPanel.Visible && mapController.Map is not null && routeProgress.Progress is not null;
+        mapInput._UnhandledInput(Action("map_toggle", pressed: true));
+        return opened && !mapPanel.Visible;
+    }
 
     private static InputEventAction Action(string action, bool pressed) => new()
     {

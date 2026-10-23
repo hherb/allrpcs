@@ -103,7 +103,8 @@ packaging, and accessibility claims remain limited to their recorded evidence.
   - [x] 4.4 Hypotheses: journal proposal interpreted through the structured-decision pipeline.
   - [x] 4.5 Stakes and ending: disease progression can fail; explicit slice-complete screen.
   - [x] 4.6 No evidence resolves at boot; residue is noticed on arrival, the dose tests the conclusion.
-  - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama (exit gate passed 2026-10-23).
+  - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama (exit gate passed
+    2026-10-23; playtest in progress, findings in `docs/superpowers/evidence/phase4-owner-playtest.md`).
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
 
 ## Phase 9 — Production art and audio

@@ -10,13 +10,10 @@ public partial class SaveLoadInputController : Node
     internal const string ReadyStatusText = "SAVE / LOAD READY";
     internal const string SavedStatusText = "SAVED";
     internal const string SaveFailedStatusText = "SAVE FAILED";
-    internal const string MapRequiredStatusText = "PRESS M FIRST";
-    internal const string MapRequiredRecoveryText =
-        "Save: press M to initialize the map, close it with M, then press Q again.";
     internal const string SavedRecoveryText =
         "Saved. Next launch, choose Continue to resume.";
     internal const string SaveFailedRecoveryText =
-        "Save failed after initialization. Check local storage and press Q again.";
+        "Save failed. Press M to open and close the map, then press Q; else check storage.";
     internal const string LoadedStatusText = "LOADED";
     internal const string MissingStatusText = "NO SAVE FOUND";
     internal const string LoadFailedStatusText = "LOAD FAILED";
@@ -26,8 +23,6 @@ public partial class SaveLoadInputController : Node
 
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journal = null!;
-    private SeekerMapController map = null!;
-    private OpeningRegionInvestigationRouteProgressController routes = null!;
     private SaveDocumentStorageController storage = null!;
     private Label recoveryStatus = null!;
     private Label status = null!;
@@ -41,9 +36,6 @@ public partial class SaveLoadInputController : Node
         journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
             "../RepresentativeJournalCompositionCoordinator");
         journal = GetNode<JournalController>("../JournalController");
-        map = GetNode<SeekerMapController>("../SeekerMapController");
-        routes = GetNode<OpeningRegionInvestigationRouteProgressController>(
-            "../OpeningRegionInvestigationRouteProgressController");
         recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         status = GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status");
 
@@ -74,24 +66,20 @@ public partial class SaveLoadInputController : Node
         GetViewport().SetInputAsHandled();
     }
 
-    private static void Activate(Button button, Action action)
+    private void Activate(Button button, Action action)
     {
-        try { action(); }
+        // The keys are gated by ControlInputContext; the buttons must not save over a game not yet chosen.
+        try { if (!LaunchChoiceOpen()) { action(); } }
         finally { button.ReleaseFocus(); }
     }
 
+    private bool LaunchChoiceOpen() =>
+        GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
+        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true;
+
     private void Save()
     {
-        if (map.Catalogue is null
-            || map.Map is null
-            || map.Notes is null
-            || routes.Progress is null)
-        {
-            ControlSettingsController.SetGuidance(status, MapRequiredStatusText);
-            ControlSettingsController.SetGuidance(recoveryStatus, MapRequiredRecoveryText);
-            return;
-        }
-
+        // A game saves before the map is first opened too; the save records the map as unopened.
         if (journal.Journal is null && !journalComposition.TryComposeAndInitialize())
         {
             ControlSettingsController.SetGuidance(status, SaveFailedStatusText);

@@ -26,6 +26,14 @@ public partial class SeekerMapPanel : CanvasLayer
         Hide();
     }
 
+    /// <summary>Forgets the rendered presentation after a load back to an unopened map.</summary>
+    internal void ResetToUnopened()
+    {
+        Presentation = null;
+        title.Text = string.Empty;
+        content.Text = string.Empty;
+    }
+
     /// <summary>Renders only the presentation controller's exact current safe snapshot.</summary>
     public bool TryPresent(SeekerMapPresentationSnapshot expectedPresentation)
     {

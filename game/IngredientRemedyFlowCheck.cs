@@ -116,7 +116,7 @@ public partial class IngredientRemedyFlowCheck : Node
                 "The first session saved.");
             using (JsonDocument saved = JsonDocument.Parse(File.ReadAllText(path)))
             {
-                Require(saved.RootElement.GetProperty("schemaVersion").GetInt32() == 10
+                Require(saved.RootElement.GetProperty("schemaVersion").GetInt32() == 11
                     && saved.RootElement.GetProperty("inventory").GetRawText().Contains(
                         "{\"objectId\":\"moonwort-leaves\",\"ownerCharacterId\":\"" + seekerId.Value + "\"}",
                         StringComparison.Ordinal),
