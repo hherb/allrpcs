@@ -16,7 +16,7 @@ public sealed class FileControlPreferencesStoreTests
             foreach (byte[] bytes in new[] { new byte[] { 255, 254 }, "{bad"u8.ToArray(), new byte[65537] })
             {
                 File.WriteAllBytes(path, bytes); ControlPreferencesLoadResult result = store.Load();
-                Assert.Equal(ControlPreferencesLoadStatus.Invalid, result.Status); Assert.Equal(29, result.Preferences.Actions.Count);
+                Assert.Equal(ControlPreferencesLoadStatus.Invalid, result.Status); Assert.Equal(30, result.Preferences.Actions.Count);
                 Assert.Equal(bytes, File.ReadAllBytes(path));
             }
         });

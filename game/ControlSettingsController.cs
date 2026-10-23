@@ -81,9 +81,8 @@ public partial class ControlSettingsController : Node
         Label? instructions = GetNodeOrNull<Label>("../CommandOverlay/Panel/Instructions");
         if (instructions is not null)
         {
-            instructions.Text = "TEMP · Settings/dialogue: " + ShortBinding("optional_overlays_toggle")
-                + " · Customize: " + ShortBinding("open_seeker_customization") + " · Journal: " + ShortBinding("journal_toggle")
-                + " · Map: " + ShortBinding("map_toggle") + " · All commands: Controls settings";
+            instructions.Text = "Talk: " + ShortBinding("dialogue_open") + " · Journal: " + ShortBinding("journal_toggle")
+                + " · Map: " + ShortBinding("map_toggle") + " · Settings and all commands: " + ShortBinding("optional_overlays_toggle");
         }
         Button? save = GetNodeOrNull<Button>("../CommandOverlay/SaveLoadPanel/Save");
         Button? load = GetNodeOrNull<Button>("../CommandOverlay/SaveLoadPanel/Load");

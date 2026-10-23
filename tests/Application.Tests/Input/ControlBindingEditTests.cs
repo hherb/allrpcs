@@ -37,7 +37,8 @@ public sealed class ControlBindingEditTests
     public void ContextReuseAndUiModifierPairAreDeliberate()
     {
         ControlPreferences before = ControlPreferences.Defaults();
-        Assert.NotNull(ControlBindingEdit.Set(before, "save_current", new("key", 4194309, "logical"), 0));
+        // Keypad Enter is UI Accept only (Enter itself is now gameplay Talk), so gameplay may reuse it.
+        Assert.NotNull(ControlBindingEdit.Set(before, "save_current", new("key", 4194310, "logical"), 0));
         Assert.NotNull(ControlBindingEdit.Set(before, "save_current", new("key", 70, "physical", ctrl: true), 0));
         Assert.Contains(before.Get("ui_focus_prev").Bindings, b => b.Shift);
         Assert.Throws<ArgumentException>(() => ControlBindingEdit.Set(before, "move_left", new("joyAxis", 0, sign: 1)));

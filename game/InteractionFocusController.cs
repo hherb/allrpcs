@@ -13,6 +13,8 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class InteractionFocusController : Node
 {
+    /// <summary>Status shown while nothing is in reach; the command panel hides this idle line.</summary>
+    internal const string NoFocusText = "Interaction focus: NONE";
     /// <summary>The inclusive greybox interaction-focus range in pixels.</summary>
     public const float InteractionRangePixels = 112.0f;
 
@@ -146,7 +148,7 @@ public partial class InteractionFocusController : Node
 
         string nextFocusStatusText = nextFocusedIndex is int focusedIndex
             ? $"Interaction focus: {candidateWorldObjectDisplayNames[focusedIndex]}"
-            : "Interaction focus: NONE";
+            : NoFocusText;
         if (FocusedTargetIndex != nextFocusedIndex
             || !string.Equals(focusStatus.Text, nextFocusStatusText, StringComparison.Ordinal))
         {

@@ -3,16 +3,19 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Checks that optional settings and dialogue overlays stay out of the playfield until requested.
+/// Checks that optional settings and dialogue overlays stay out of the playfield until requested,
+/// that Talk (Enter) opens dialogue straight from the world, and that the command panel fits only
+/// the lines that report something.
 /// </summary>
 public partial class OptionalOverlayVisibilitySmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string ToggleAction = "optional_overlays_toggle";
+    private const string TalkAction = "dialogue_open";
 
     /// <inheritdoc />
-    public override void _Ready()
+    public override async void _Ready()
     {
         if (OS.GetEnvironment(CheckEnvironmentVariable) != EnabledEnvironmentValue)
         {
@@ -82,11 +85,89 @@ public partial class OptionalOverlayVisibilitySmokeCheck : Node
             return;
         }
 
+        if (!await TalkOpensDialogueFromTheWorld(controller, dialogueOverlay, settingsOverlay)
+            || !await CommandPanelFitsShownLines())
+        {
+            return;
+        }
+
         GD.Print(
             "Optional overlay visibility smoke passed: settings and dialogue started hidden, "
             + "the retained toggle action toggled settings, the compact HUD remained visible, hidden UI "
-            + "released focus, and the controller surface stayed closed.");
+            + "released focus, Talk opened dialogue from the world and returned to it, the command "
+            + "panel fit its shown lines, and the controller surface stayed closed.");
         GetTree().Quit();
+    }
+
+    private async Task<bool> TalkOpensDialogueFromTheWorld(
+        OptionalOverlayVisibilityController controller, CanvasLayer dialogueOverlay, CanvasLayer settingsOverlay)
+    {
+        Godot.Collections.Array<InputEvent> talk = InputMap.ActionGetEvents(new StringName(TalkAction));
+        if (talk.Count != 1 || talk[0] is not InputEventKey { PhysicalKeycode: Key.Enter })
+        {
+            Fail("Talk did not default to exactly physical Enter.");
+            return false;
+        }
+
+        controller._UnhandledInput(Action(TalkAction, pressed: true));
+        if (!dialogueOverlay.Visible || settingsOverlay.Visible
+            || !GetNode<LineEdit>("../DialogueOverlay/Panel/Input").HasFocus())
+        {
+            Fail("Talk did not open dialogue directly with its input focused.");
+            return false;
+        }
+
+        GetNode<Button>("../DialogueOverlay/Panel/Close").EmitSignal(BaseButton.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        if (dialogueOverlay.Visible || settingsOverlay.Visible || GetViewport().GuiGetFocusOwner() is not null)
+        {
+            Fail("Closing dialogue opened by Talk did not return to the world.");
+            return false;
+        }
+
+        controller._UnhandledInput(Action(ToggleAction, pressed: true));
+        controller._UnhandledInput(Action(TalkAction, pressed: true));
+        bool ignored = settingsOverlay.Visible && !dialogueOverlay.Visible;
+        controller._UnhandledInput(Action(ToggleAction, pressed: true));
+        if (!ignored)
+        {
+            Fail("Talk replaced an open settings overlay.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private async Task<bool> CommandPanelFitsShownLines()
+    {
+        if (CommandPanelLayout.IsShown(string.Empty)
+            || CommandPanelLayout.IsShown(InteractionFocusController.NoFocusText)
+            || CommandPanelLayout.IsShown(Allrpcs.Application.Input.FocusedSearchInputCoordinator.InitialResultText)
+            || !CommandPanelLayout.IsShown("Interaction focus: herb patch"))
+        {
+            Fail("Command panel did not hide exactly the empty and idle status lines.");
+            return false;
+        }
+
+        // Whatever the live lines report, hidden lines are the idle ones and shown lines stack
+        // inside a panel that ends just after the last of them.
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Control panel = GetNode<Control>("../CommandOverlay/Panel");
+        Label[] lines = [.. panel.GetChildren().OfType<Label>()];
+        Label[] shown = [.. lines.Where(line => line.Visible)];
+        bool fits = lines.All(line => line.Visible == CommandPanelLayout.IsShown(line.Text))
+            && shown.Length > 0
+            && shown.All(line => panel.GetGlobalRect().Encloses(line.GetGlobalRect()))
+            && shown.Zip(shown.Skip(1)).All(pair => pair.First.GetGlobalRect().End.Y <= pair.Second.GetGlobalRect().Position.Y)
+            && panel.GetGlobalRect().End.Y - shown[^1].GetGlobalRect().End.Y <= 8;
+        if (!fits)
+        {
+            Fail($"Command panel did not fit its shown lines: height={panel.Size.Y}; lines="
+                + string.Join(", ", lines.Select(line => $"{line.Name}={line.Visible}/{line.Size.Y}:'{line.Text}'")));
+            return false;
+        }
+
+        return true;
     }
 
     private static bool HasClosedSurface()

@@ -14,7 +14,7 @@ public sealed class ControlPreferencesJsonTests
         string serialized = ControlPreferencesJson.Serialize(value);
         Assert.Equal(serialized, ControlPreferencesJson.Serialize(ControlPreferencesJson.Deserialize(serialized)));
         Assert.DoesNotContain("device", serialized); Assert.DoesNotContain("path", serialized);
-        Assert.Equal(29, ControlPreferencesJson.Deserialize(serialized).Actions.Count);
+        Assert.Equal(30, ControlPreferencesJson.Deserialize(serialized).Actions.Count);
     }
     [Fact]
     public void MissingActionsReceiveDefaultsWithoutChangingCustomRowsAndMigrationIsIdempotent()

@@ -9,8 +9,10 @@ public sealed class ControlPreferencesTests
     public void DefaultsAreCompleteAndDeviceAssignmentsStayBounded()
     {
         ControlPreferences value = ControlPreferences.Defaults();
-        Assert.Equal(29, value.Actions.Count); Assert.Equal(21, ControlActionCatalog.Actions.Count(a => a.Context == "gameplay"));
-        Assert.Equal(16, value.Actions.Count(a => ControlActionCatalog.Get(a.Id).Context == "gameplay" && a.Bindings.All(b => b.DeviceClass != "Controller")));
+        Assert.Equal(30, value.Actions.Count); Assert.Equal(22, ControlActionCatalog.Actions.Count(a => a.Context == "gameplay"));
+        Assert.Equal(17, value.Actions.Count(a => ControlActionCatalog.Get(a.Id).Context == "gameplay" && a.Bindings.All(b => b.DeviceClass != "Controller")));
+        // Playtest: talking is one key (Enter) in gameplay, separate from the UI Accept context.
+        Assert.Equal(4194309, value.Get("dialogue_open").Bindings.Single(b => b.Kind == "key").Code);
         Assert.Equal(65, value.Get("move_left").Bindings.Single(b => b.Kind == "key").Code);
         Assert.Equal(72, value.Get("healer_move").Bindings.Single(b => b.Kind == "key").Code);
         Assert.Contains(value.Get("ui_accept").Bindings, b => b.Kind == "joyButton" && b.Code == 0);

@@ -17,7 +17,8 @@ public sealed class ControlActionDefinition
     { Id = id; Label = label; Context = context; Direction = direction; Defaults = Array.AsReadOnly(defaults); }
 }
 
-/// <summary>The approved 21 project/eight UI action catalog, with no new gameplay actions.</summary>
+/// <summary>The approved project/UI action catalog: 22 gameplay actions (Talk was added after the
+/// Phase 4 owner playtest) and eight UI actions.</summary>
 public static class ControlActionCatalog
 {
     /// <summary>Maximum events on one action.</summary>
@@ -34,6 +35,7 @@ public static class ControlActionCatalog
         new("journal_toggle", "Open/close journal", "gameplay", false, [new("key", 74, "physical")]),
         new("map_toggle", "Open/close map", "gameplay", false, [new("key", 77, "physical")]),
         new("optional_overlays_toggle", "Show/hide settings and dialogue", "gameplay", false, [new("key", 4194306, "physical"), new("joyButton", 6)]),
+        new("dialogue_open", "Talk (open dialogue)", "gameplay", false, [new("key", 4194309, "physical")]),
         new("save_current", "Save current game", "gameplay", false, [new("key", 81, "physical")]),
         new("load_current", "Load current game", "gameplay", false, [new("key", 76, "physical")]),
         new("healer_toggle_follow_wait", "Healer follow/wait", "gameplay", false, [new("key", 88, "physical")]),

@@ -1,4 +1,4 @@
-[gd_scene load_steps=242 format=3]
+[gd_scene load_steps=243 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -438,6 +438,7 @@
 [ext_resource type="Script" path="res://SpaceHoldSpeechController.cs" id="space_hold_speech"]
 [ext_resource type="Script" path="res://FirstPatientStakesController.cs" id="first_patient_stakes"]
 [ext_resource type="Script" path="res://SliceEndPanelController.cs" id="slice_end_panel"]
+[ext_resource type="Script" path="res://CommandPanelLayout.cs" id="command_panel_layout"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3066,6 +3067,7 @@ offset_right = 760.0
 offset_bottom = 188.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
+script = ExtResource("command_panel_layout")
 
 [node name="Instructions" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
