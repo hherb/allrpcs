@@ -1,0 +1,17 @@
+{
+  "generator": "built-in image_gen",
+  "use_case": "precise-object-edit",
+  "reference": "art-direction/structures-batch/exports/sickhouse-01.png",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Asset type: transparent game building sprite. Edit target: the supplied approved gouache sickhouse exterior. Make ONLY this functional architectural change: replace the open dark door on the visible lower-right/south-facing wall, including its projecting entry steps, with a continuous closed cream plaster wall on a low stone foundation, with one small shuttered window matching the neighboring window. This view must show NO visible doorway, open entrance, entry steps or inviting opening on either visible wall: the actual game's entrance is on the far/north side, concealed by the roof from this camera. Preserve the exact building identity, roof/chimney shape, timber framing, mossy terracotta roof tiles, warm hand-painted storybook gouache texture, material palette, lighting, high oblique view, and isolated centered silhouette. Keep essentially the same canvas framing and planted ground baseline. No ground square, no background, no new props or characters. Actual transparent background. No text, logos, signatures, watermarks or cast shadow extending far outside the building. This is a new non-destructive derivative; do not redesign the accepted original.",
+  "floor_prompts": [
+    [
+      "wood",
+      "Use case: stylized-concept. Asset type: seamless hand-painted wooden floor texture for a top-down rustic village game. An orthographic overhead flat square of warm weathered timber floorboards, broad horizontal roughly hewn planks with restrained offset joins, softly painted grain, subtle warm brown and ochre variation, matte gouache brushwork matching a painterly storybook cottage. About 12 horizontal plank courses across the square. Quiet readable floor, low contrast, no dramatic dark gaps. Perfectly flat illumination with no directional shadows. Texture must continue seamlessly across all four edges. Fill the entire opaque square with wood. No room border, walls, furniture, objects, plants, people, perspective, text, logos, signatures or watermark."
+    ],
+    [
+      "stone",
+      "Use case: stylized-concept. Asset type: seamless hand-painted old stone floor texture for a top-down rustic village game. An orthographic overhead flat square of irregular time-worn limestone paving, soft muted grey-beige and warm moss-grey variation, large roughly rectangular slabs with restrained narrow mortar joints, matte gouache brushwork matching a painterly storybook shrine and laundry. About 7 slab courses across the square. Quiet readable floor, low contrast, no grass, no bright moss clumps, no dramatic black cracks. Perfectly flat illumination with no directional shadows. Texture must continue seamlessly across all four edges. Fill the entire opaque square with paving. No room border, walls, furniture, objects, plants, people, perspective, text, logos, signatures or watermark."
+    ]
+  ]
+}

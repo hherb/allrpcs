@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "owner_statement": "work on finalizing the artwork that is still missing in the game's map - for example the buildings",
+  "scope": "Integrate the already-approved structure artwork at existing opening-region sites: sickhouse, laundry, old shrine, abandoned wagon and village-square backdrop. Prepare the complete group and ordinary scene captures for review. Add one separate closed-south-wall sickhouse variant so the artwork does not advertise a doorway where the retained room has a wall. Retire associated greybox fills/lines without changing physical geometry. Finish the three cutaway rooms with separately generated timber and worn-stone floor textures.",
+  "authority": "Direct owner instruction authorizes the bounded presentation implementation; new visual results remain subject to owner review.",
+  "preserve": [
+    "All approved structures-batch sources, masters, exports and acceptance hashes",
+    "All accepted ground/channel/art source bytes",
+    "Existing map anchors, collision, navigation, discovery and interaction authority",
+    "Concurrent Phase 2 quality run in the original checkout"
+  ],
+  "base_commit": "03e6abbd",
+  "no_new_gameplay": true
+}
