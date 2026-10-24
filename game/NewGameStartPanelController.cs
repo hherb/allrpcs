@@ -72,11 +72,14 @@ public partial class NewGameStartPanelController : Control
             rememberedSelection = selected;
             title.Text = RememberedTitleText;
             continueButton.Text = $"START AS {profile.Identity.DisplayName.ToUpperInvariant()}";
+            // A long name is cut short on the button, so the full name stays one hover away.
+            continueButton.TooltipText = $"Start as {profile.Identity.DisplayName}";
         }
         else
         {
             title.Text = SavedTitleText;
             continueButton.Text = "CONTINUE";
+            continueButton.TooltipText = string.Empty;
         }
 
         status.Text = string.Empty;
@@ -90,7 +93,7 @@ public partial class NewGameStartPanelController : Control
         if (rememberedSelection is { } selected)
         {
             Close();
-            if (!application.TryApply(customization.CurrentState, selected)) { _ = menu.TryOpen(); }
+            if (!application.TryApply(customization.CurrentState, selected)) { OpenMenuFilledIn(); }
             return;
         }
 
@@ -110,7 +113,7 @@ public partial class NewGameStartPanelController : Control
     internal void OnNewGamePressed()
     {
         Close();
-        if (menu.TryOpen() && LoadRemembered() is { } profile) { menu.Prefill(profile); }
+        OpenMenuFilledIn();
     }
 
     internal static string RememberedProfilePath() =>
@@ -125,6 +128,11 @@ public partial class NewGameStartPanelController : Control
             out SeekerCustomizationSelectionState? selected)
             ? selected
             : null;
+
+    private void OpenMenuFilledIn()
+    {
+        if (menu.TryOpen() && LoadRemembered() is { } profile) { menu.Prefill(profile); }
+    }
 
     private SeekerCustomizationSaveState? LoadRemembered()
     {

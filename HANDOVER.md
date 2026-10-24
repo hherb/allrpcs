@@ -54,7 +54,9 @@ far are Talk on Enter, fitted panels, a remembered Seeker profile (`user://seeke
 and save schema 11, which saves before the map is first opened (PR #464, merged). On branch
 `claude/phase4-start-as-remembered`: with no save, the start panel offers "Start as <name>" and New
 game changes the Seeker ([#466](https://github.com/hherb/allrpcs/issues/466)), plus a fix for a
-save-parity check flake (Healer moved before being frozen); full gate passed at `705cf36b`.
+save-parity check flake (Healer moved before being frozen); full gate passed at `705cf36b`. Its
+review fixes (full-name tooltip, filled-in form if Start as fails, a no-save check for an unusable
+remembered Seeker) passed format, build and the New-game and save-continue smoke launches only.
 A fresh-profile run deletes both `user://save-v1.json` and the profile file.
 Local speech uses the ignored venv `artifacts/pocket-python`; the old `/private/tmp` one was
 deleted by macOS.

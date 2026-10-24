@@ -22,7 +22,7 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
     {
         SetProcess(OS.GetEnvironment(CheckEnvironmentVariable) == "1");
         // Main's _Ready, which reads the remembered profile, runs after this child's.
-        // A file left by a failed run would make the plain mode skip the menu.
+        // A file left by a failed run would make the plain mode offer Start as that Seeker, not the menu.
         if (IsProcessing() && !Remembered) { File.Delete(NewGameStartPanelController.RememberedProfilePath()); }
         if (IsProcessing() && Remembered)
         {
@@ -128,6 +128,7 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
             || menu.Visible
             || seeker.IsPhysicsProcessing()
             || startAs.Text != "START AS MARA"
+            || startAs.TooltipText != "Start as Mara"
             || GetViewport().GuiGetFocusOwner() != startAs)
         {
             Fail("A remembered profile without a save did not offer Start as Mara over a suspended Seeker.");
