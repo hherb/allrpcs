@@ -8,13 +8,16 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Offers Continue or New game at launch when a save exists. Without a save, a launch starts with
-/// the last confirmed Seeker profile, or opens customization when none is remembered.
+/// Offers Continue or New game at launch when a save exists. Without a save it offers
+/// "Start as &lt;name&gt;" for the last confirmed Seeker profile, where New game changes the Seeker,
+/// or opens customization when none is remembered.
 /// </summary>
 public partial class NewGameStartPanelController : Control
 {
     internal const string MissingStatusText = "No save was found. Choose New game.";
     internal const string FailedStatusText = "The save could not be loaded. Choose New game.";
+    private const string SavedTitleText = "A SAVED JOURNEY WAITS";
+    private const string RememberedTitleText = "NO SAVED JOURNEY YET";
 
     private SaveDocumentStorageController storage = null!;
     private SeekerCustomizationSelectionSceneSource customization = null!;
@@ -25,7 +28,10 @@ public partial class NewGameStartPanelController : Control
     private FileSaveDocumentStore? rememberedProfile;
     private Seeker seeker = null!;
     private Button continueButton = null!;
+    private Label title = null!;
     private Label status = null!;
+    // Set while Continue reads "Start as <name>" because no save exists: the Seeker it starts as.
+    private SeekerCustomizationSelectionState? rememberedSelection;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -40,20 +46,40 @@ public partial class NewGameStartPanelController : Control
         menu.ProfileConfirmed += Remember;
         seeker = GetNode<Seeker>("../../Seeker");
         continueButton = GetNode<Button>("Continue");
+        title = GetNode<Label>("Title");
         status = GetNode<Label>("Status");
         continueButton.Pressed += OnContinuePressed;
         GetNode<Button>("NewGame").Pressed += OnNewGamePressed;
         Hide();
     }
 
-    /// <summary>Starts a launch: the panel when a save exists, otherwise new-game customization.</summary>
+    /// <summary>
+    /// Starts a launch: the panel when a save or a usable remembered Seeker exists, otherwise
+    /// new-game customization.
+    /// </summary>
     internal void Begin()
     {
         rememberedProfile = new FileSaveDocumentStore(RememberedProfilePath());
+        rememberedSelection = null;
         if (!SaveDocumentStorageController.HasSavedDocument())
         {
-            if (!TryStartAsRemembered()) { _ = menu.TryOpen(); }
-            return;
+            if (LoadRemembered() is not { } profile || DecideRemembered(profile) is not { } selected)
+            {
+                _ = menu.TryOpen();
+                return;
+            }
+
+            rememberedSelection = selected;
+            title.Text = RememberedTitleText;
+            continueButton.Text = $"START AS {profile.Identity.DisplayName.ToUpperInvariant()}";
+            // A long name is cut short on the button, so the full name stays one hover away.
+            continueButton.TooltipText = $"Start as {profile.Identity.DisplayName}";
+        }
+        else
+        {
+            title.Text = SavedTitleText;
+            continueButton.Text = "CONTINUE";
+            continueButton.TooltipText = string.Empty;
         }
 
         status.Text = string.Empty;
@@ -64,6 +90,13 @@ public partial class NewGameStartPanelController : Control
 
     internal void OnContinuePressed()
     {
+        if (rememberedSelection is { } selected)
+        {
+            Close();
+            if (!application.TryApply(customization.CurrentState, selected)) { OpenMenuFilledIn(); }
+            return;
+        }
+
         SaveDocumentReadStatus result = storage.LoadCurrent();
         if (result != SaveDocumentReadStatus.Loaded)
         {
@@ -80,7 +113,7 @@ public partial class NewGameStartPanelController : Control
     internal void OnNewGamePressed()
     {
         Close();
-        if (menu.TryOpen() && LoadRemembered() is { } profile) { menu.Prefill(profile); }
+        OpenMenuFilledIn();
     }
 
     internal static string RememberedProfilePath() =>
@@ -88,15 +121,17 @@ public partial class NewGameStartPanelController : Control
             ? Path.Combine(Path.GetTempPath(), $"allrpcs-seeker-profile-v1-smoke-{OS.GetProcessId()}.json")
             : ProjectSettings.GlobalizePath("user://seeker-profile-v1.json");
 
-    private bool TryStartAsRemembered()
+    // An option this build no longer offers yields null, so the launch falls back to the form.
+    private SeekerCustomizationSelectionState? DecideRemembered(SeekerCustomizationSaveState profile) =>
+        SeekerCustomizationRestorationPolicy.TryDecide(
+            customization.CurrentState, profile, seekerCharacter.Character.Identity.Id,
+            out SeekerCustomizationSelectionState? selected)
+            ? selected
+            : null;
+
+    private void OpenMenuFilledIn()
     {
-        SeekerCustomizationSelectionState current = customization.CurrentState;
-        // An unreadable file or an option this build no longer offers falls back to the form.
-        return LoadRemembered() is { } profile
-            && SeekerCustomizationRestorationPolicy.TryDecide(
-                current, profile, seekerCharacter.Character.Identity.Id, out SeekerCustomizationSelectionState? selected)
-            && selected is not null
-            && application.TryApply(current, selected);
+        if (menu.TryOpen() && LoadRemembered() is { } profile) { menu.Prefill(profile); }
     }
 
     private SeekerCustomizationSaveState? LoadRemembered()

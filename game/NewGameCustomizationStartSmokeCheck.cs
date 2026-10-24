@@ -11,7 +11,7 @@ namespace Allrpcs.Game;
 /// background selects that exact profile, keeps the menu from reopening, resumes the Seeker and
 /// opens the closed forest path. Confirming also remembers the profile; with
 /// <c>ALLRPCS_NEW_GAME_CUSTOMIZATION_MODE=remembered</c> the check plants that file first and proves
-/// the launch starts as the remembered Seeker without opening the menu.
+/// the launch offers "Start as Mara" (New game would change the Seeker) and starting needs no menu.
 /// </summary>
 public partial class NewGameCustomizationStartSmokeCheck : Node
 {
@@ -22,7 +22,7 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
     {
         SetProcess(OS.GetEnvironment(CheckEnvironmentVariable) == "1");
         // Main's _Ready, which reads the remembered profile, runs after this child's.
-        // A file left by a failed run would make the plain mode skip the menu.
+        // A file left by a failed run would make the plain mode offer Start as that Seeker, not the menu.
         if (IsProcessing() && !Remembered) { File.Delete(NewGameStartPanelController.RememberedProfilePath()); }
         if (IsProcessing() && Remembered)
         {
@@ -120,9 +120,26 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
         StaticBody2D closedGate)
     {
         File.Delete(NewGameStartPanelController.RememberedProfilePath());
+        NewGameStartPanelController start =
+            GetNode<NewGameStartPanelController>("../SeekerCustomizationOverlay/StartPanel");
+        Button startAs = start.GetNode<Button>("Continue");
+        // Without a save the panel still appears, so the remembered Seeker can be changed with New game.
+        if (!start.Visible
+            || menu.Visible
+            || seeker.IsPhysicsProcessing()
+            || startAs.Text != "START AS MARA"
+            || startAs.TooltipText != "Start as Mara"
+            || GetViewport().GuiGetFocusOwner() != startAs)
+        {
+            Fail("A remembered profile without a save did not offer Start as Mara over a suspended Seeker.");
+            return;
+        }
+
+        startAs.EmitSignal(BaseButton.SignalName.Pressed);
         SeekerCustomizationProfile? profile = GetNode<SeekerCustomizationSelectionSceneSource>(
             "../SeekerCustomizationSelectionSceneSource").CurrentState.SelectedProfile;
-        if (menu.Visible
+        if (start.Visible
+            || menu.Visible
             || !seeker.IsPhysicsProcessing()
             || profile?.Identity.DisplayName != "Mara"
             || profile.Pronouns.Objective != "them"
@@ -130,14 +147,14 @@ public partial class NewGameCustomizationStartSmokeCheck : Node
             || closedPath.CurrentAccess is null
             || !closedGate.GetChild<CollisionShape2D>(0).Disabled)
         {
-            Fail("A remembered profile did not start play as Mara the Forester without the menu.");
+            Fail("Start as Mara did not start play as Mara the Forester without the menu.");
             return;
         }
 
         GD.Print(
             "New-game customization start smoke passed (remembered): a plain launch with a remembered "
-            + "profile skipped the menu, selected Mara's Forester profile, kept the Seeker moving and "
-            + "opened the closed forest path.");
+            + "profile and no save offered Start as Mara, which skipped the menu, selected Mara's Forester "
+            + "profile, resumed the Seeker and opened the closed forest path.");
         GetTree().Quit();
     }
 

@@ -12,7 +12,8 @@ namespace Allrpcs.Game;
 /// Proves save → relaunch → continue: a fresh Main offers Continue, and continuing restores the
 /// transcript and character memory, the Seeker profile with its route access, and both body
 /// positions, without reopening customization. A save taken before customization continues into
-/// customization, and an unreadable save keeps the panel open until New game.
+/// customization, and an unreadable save keeps the panel open until New game. Without a save, a
+/// remembered Seeker this build cannot rebuild opens customization instead of offering Start as.
 /// </summary>
 public partial class SaveContinueRelaunchCheck : Node
 {
@@ -123,7 +124,16 @@ public partial class SaveContinueRelaunchCheck : Node
             Require(File.ReadAllText(path) == "{", "The Save button cannot overwrite the save before a new Seeker is confirmed.");
             corrupt.QueueFree();
             await Frames(2);
+
+            // Without a save, a remembered Seeker this build cannot rebuild opens the form, not Start as.
             File.Delete(path);
+            Node unusable = await Launch();
+            (start, menu, seeker) = StartPanel(unusable);
+            start.Begin();
+            Require(!start.Visible && menu.Visible && !seeker.IsPhysicsProcessing(),
+                "A remembered Seeker with a retired appearance and no save opens customization.");
+            unusable.QueueFree();
+            await Frames(2);
             File.Delete(NewGameStartPanelController.RememberedProfilePath());
             GD.Print("PASS: save continue relaunch");
             GetTree().Quit();

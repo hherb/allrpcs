@@ -103,8 +103,9 @@ public partial class Main : Node
             FocusedSearchInputCoordinator.InitialResultText;
         UpdateModeStatus(force: true);
 
-        // A launch offers Continue when a save exists, otherwise starts with Seeker customization
-        // (slice step 1). Embedding proof scenes and requested checks keep the ordinary start state.
+        // A launch offers Continue when a save exists, Start as the remembered Seeker when only that
+        // exists, otherwise Seeker customization (slice step 1). Embedding proof scenes and requested
+        // checks keep the ordinary start state.
         if (GetTree().CurrentScene == this && !SmokeCheckHost.SuppressesNewGameStart())
         {
             GetNode<NewGameStartPanelController>("SeekerCustomizationOverlay/StartPanel").Begin();
