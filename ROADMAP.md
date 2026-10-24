@@ -134,6 +134,12 @@ Artwork/source acceptance and isolated imports do not grant ordinary runtime ins
 Ordinary character integration, effects animation/anchors/semantics and functional use of
 external UI artwork remain separate implementation boundaries.
 
+The owner requested building integration on 2026-10-24. The
+[current building package](art-direction/buildings-gameplay-integration/README.md)
+fits existing exteriors and cutaway paint to five opening-region sites, preserving
+their physical and interaction owners. Its runtime visual acceptance remains separate
+from the approved source-art collections.
+
 Residual terrain studies and repeatable material/transition artwork are accepted; global
 terrain suitability and integration remain unfinished. A new terrain scope must name the
 field, intended interface/composition and missing deliverable before new feasibility or
@@ -152,6 +158,7 @@ acceptance and the routine external-proof approval waiver forward. New runtime/l
 promotions and their runtime visual checkpoints require the applicable authority; finish already authorized work in
 the same session without repeating unchanged approval gates.
 
+- [ ] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

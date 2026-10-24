@@ -1,109 +1,76 @@
 # Allrpcs Handover
 
 Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the named remaining
-roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner instructions and
-terminal acceptance take precedence. Keep every persistent closure.
+roadmap item, then run `python3 scripts/check-continuation.py`. Direct owner instructions
+and terminal acceptance take precedence. Preserve every persistent closure.
 
 ## Current checkpoint
 
-Phase 3 of the code-health program is complete and closed. Structured decisions
-([PR #443](https://github.com/hherb/allrpcs/pull/443), review fixes [#444](https://github.com/hherb/allrpcs/pull/444)),
-the Main coordinators ([PR #449](https://github.com/hherb/allrpcs/pull/449)) and SmokeCheckHost
-([PR #450](https://github.com/hherb/allrpcs/pull/450)) are on main. The
-[thin-Main slice](docs/superpowers/plans/2026-10-18-code-health-phase3-thin-main.md) left `Main.cs`
-at 262 lines with gameplay unchanged (`ca88d200`), and the exit's full root `./quality.sh` passed
-there: 218 stages, no retries ([record](docs/superpowers/evidence/2026-10-18-phase3-exit-quality.json)).
-Main checks are `game/SmokeCheckHost.cs` entries, never `Main.tscn` nodes.
+Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
+quality gate passed on 2026-10-23 (218 stages, no retries;
+[record](docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json)). The fresh-profile
+owner playthrough to an ending on local Ollama remains unfinished
+([findings](docs/superpowers/evidence/phase4-owner-playtest.md)); it is deferred while the
+owner prioritises fitting existing artwork into gameplay, starting with buildings.
+Do not infer playtest acceptance from automated checks. A fresh profile removes both
+`user://save-v1.json` and `user://seeker-profile-v1.json`; preserve real user saves.
 
-The owner then asked to continue towards a playable game
-([authority](docs/superpowers/evidence/2026-10-19-phase4-authority.json)), so Phase 4 began.
-Item 1 is complete and closed (`e9ec6684`): a plain launch opens Seeker customization before play,
-proof scenes and requested checks keep their ordinary start, and Forester opens the closed forest
-path ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-new-game-flow.md); 6,068 tests,
-smoke 364 passed, 0 failed); both are merged (PR #451). Item 2 is complete and closed (`6c10af88`,
-[PR #453](https://github.com/hherb/allrpcs/pull/453), merged): memory is written from turns
-and examinations, save schema 9 keeps the Seeker profile and positions, and a launch with a save
-offers Continue ([plan](docs/superpowers/plans/2026-10-19-code-health-phase4-memory-save-continue.md);
-6,097 tests, smoke 365 passed, 0 failed). Item 3 is complete and closed (`d8885139`): one inventory owner, conditional gathering on the normal
-path, Give/Use at the station, a wrong remedy that changes nothing, and save schema 10
-([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-ingredients.md); 6,129 tests, smoke
-366 passed, 0 failed); PR #454 is merged. Item 4 is complete and closed
-([PR #455](https://github.com/hherb/allrpcs/pull/455), merged): the player proposes a hypothesis in the journal, the
-structured-decision pipeline interprets it, and a dose confirms or refutes it, with outcomes
-derived from saved doses and no schema change
-([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-hypotheses.md); 6,132 tests, smoke
-367 passed, 0 failed). Item 5 is complete and closed
-([PR #457](https://github.com/hherb/allrpcs/pull/457), merged): the untreated patient worsens every 3
-time-advancing events, and a loss or completion end panel survives save and Continue
-([plan](docs/superpowers/plans/2026-10-21-code-health-phase4-stakes-ending.md), hash-frozen: its
-step 6 and the names `SliceEndingCopy`/`SliceEndPanel` predate the build, which has
-`FirstPatientStakesCopy`, `SliceEndOverlay/Panel` and the check's own scenario; stakes are on only
-in a plain launch or `SliceStakesEndingFlowCheck`). Item 6 is complete and closed
-([PR #459](https://github.com/hherb/allrpcs/pull/459), merged): nothing is noticed or
-reinterpreted at boot, the stream residue is noticed on arriving at the stream once the map has been
-opened, and by owner decision the remedy dose (not a pre-confirmed conclusion) tests the conclusion
-([plan](docs/superpowers/plans/2026-10-22-code-health-phase4-boot-resolution.md), hash-frozen: its
-"every existing save already records residue" is false for saves migrated to empty routes, so every
-map open, not only the first, catches up verified locations and the residue; 6,160 tests, smoke 367
-passed, 0 failed, no schema change). Follow-ups for Phase 5 are in
-[#460](https://github.com/hherb/allrpcs/issues/460). Item 7 is in progress. The exit gate's full root `./quality.sh` passed on 2026-10-23, 218 stages, no
-retries ([record](docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json); PR #461, merged).
-Lesson: run the quality-only Main checks a slice touches, not only `smoke-godot.sh`. The owner
-playtest is under way ([findings](docs/superpowers/evidence/phase4-owner-playtest.md)). Its fixes so
-far are Talk on Enter, fitted panels, a remembered Seeker profile (`user://seeker-profile-v1.json`)
-and save schema 11, which saves before the map is first opened (PR #464, merged). On branch
-`claude/phase4-start-as-remembered`: with no save, the start panel offers "Start as <name>" and New
-game changes the Seeker ([#466](https://github.com/hherb/allrpcs/issues/466)), plus a fix for a
-save-parity check flake (Healer moved before being frozen); full gate passed at `705cf36b`. Its
-review fixes (full-name tooltip, filled-in form if Start as fails, a no-save check for an unusable
-remembered Seeker) passed format, build and the New-game and save-continue smoke launches only.
-A fresh-profile run deletes both `user://save-v1.json` and the profile file.
-Local speech uses the ignored venv `artifacts/pocket-python`; the old `/private/tmp` one was
-deleted by macOS.
+The [building integration](art-direction/buildings-gameplay-integration/README.md) reuses
+six approved structure exports and three existing derived assets from `cfed60a8`, fitted
+to current Main at five sites. Current room layouts drive cutaways, collision segments
+drive low walls, and existing gameplay/geometry remains intact. Full root quality passed all 218 stages with no retries on 2026-10-24; 6,181 solution
+tests and 369 smoke checks pass (3 existing quarantines). Twelve runtime captures and
+grouped review boards are retained with the verification record. Owner runtime visual acceptance remains
+explicit; historical candidate wording never reopens accepted source artwork.
 
-The owner [explicitly deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json) live
-OpenAI #417 capture and the already requested Keychain save check to begin Phase 3.
-Phase 2 and #417 remain open; neither live result is claimed. Do not repeat the pending question.
-
-Keep all persistent closures and frozen acceptance evidence. Microphone qualification remains
-paused at 3 pass / 5 partial / 7 unperformed; physical controls remain deferred pending hardware
-and authority, and VoiceOver remains unperformed. Accepted controls/dialogue, art, audio, speech
-repairs, privacy and provider disclosures stay closed. Future walking work uses the accepted
-[reference gait model](art-direction/reference-gait-model.md).
+Live OpenAI #417 capture and the already requested Keychain save result remain
+[owner-deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json). Phase 2 and
+#417 remain open; do not repeat the pending question or claim those live results.
+Microphone qualification is paused at 3 pass / 5 partial / 7 unperformed; physical controls
+are deferred pending hardware and authority, and VoiceOver remains unperformed. Accepted
+controls/dialogue, art, audio, speech repairs, privacy and provider disclosures stay closed.
+Future walking work uses the [reference gait model](art-direction/reference-gait-model.md).
 
 Standing publication authority: “ALWAYS commit and push when you finish a task.” Retain
 [the recorded grant](audio-direction/footstep-runtime-review/publication/authority.json).
-This authorizes review-branch publication; no merge or release is authorized here.
+It authorizes review-branch publication; no merge or release is authorized here.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**code-health-phase4-owner-playtest — Owner playtest and Phase 4 exit** (in_progress).
+**buildings-gameplay-integration — Fit existing building artwork into gameplay** (in_progress).
 
-Roadmap item: - [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local
-Ollama.
+Roadmap item: - [ ] Fit existing building artwork into ordinary gameplay at the opening-region
+structure sites.
 
-Missing deliverable: Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23
-(218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no
-owner playthrough from a fresh profile to the ending on local Ollama is recorded.
+Missing deliverable: The complete five-site building implementation is verified: full root quality
+passed all 218 stages with no retries, 6181 solution tests and 369 smoke checks (3 existing
+quarantines). Twelve fresh runtime captures and their grouped review boards are complete. Only owner
+runtime visual acceptance of the complete exterior/cutaway group remains; do not repeat source-art
+approval or the passing gate for prose alone.
 
-Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the
-result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest
-finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh
-if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts.
-Commit/push reviewed work; no merge or release.
+Present the complete building and cutaway review group in art-direction/buildings-gameplay-
+integration. The implementation, expanded native player/companion/presence checks and full quality
+gate are complete. Record a whole-slice owner visual result when supplied; revise only specifically
+requested building presentation, and rerun affected checks/full quality only for changed product
+inputs. Preserve all accepted art, routes, physical owners, clue/gameplay state and the deferred
+Phase 4 owner playtest. Publish reviewed branch changes under standing authority; no merge or
+release.
 
-Done when: The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is
-recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with
-continuation evidence synced and review-branch publication.
+Done when: The five building sites and party-aware cutaways are implemented, current native and full
+quality checks pass with retained evidence, the owner accepts the complete runtime visual group, and
+the reviewed branch is committed/pushed.
 
 Expected outputs:
 
-- `docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json`
-- `docs/superpowers/evidence/phase4-owner-playtest.md`
+- `art-direction/buildings-gameplay-integration/README.md`
+- `art-direction/buildings-gameplay-integration/verification.json`
+- `art-direction/buildings-gameplay-integration/building-review.png`
+- `art-direction/buildings-gameplay-integration/cutaway-review.png`
 
-Boundary: Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind,
-no physical/provider qualification, no merge or release.
+Boundary: Buildings presentation and dependent verification/documentation/publication only. No new
+art generation, terrain replacement, actor animation, effects/UI integration, new geography, merge
+or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "owner_statement": "continue with fitting exsting artwork into the gameplay - start wit the buildings",
+  "base_commit": "408c77cd8b609343f397e449ad6d9ee19ee0fbcd",
+  "scope": "Fit existing building artwork into ordinary gameplay at the sickhouse, abandoned laundry, old shrine, abandoned wagon and village square. Reuse existing exports and the previously authored building/cutaway assets from cfed60a8; preserve accepted art bytes and existing geometry, routes, clues, saves and interactions.",
+  "prior_artwork_commit": "cfed60a8a7372453cb1da56476a5acfdbc7a98ae",
+  "boundary": "Buildings presentation and dependent verification/documentation/publication only. No new art generation, terrain replacement, actor animation, effects/UI integration, new geography, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

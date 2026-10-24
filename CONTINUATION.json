@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-22",
+  "updated": "2026-10-24",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1799,26 +1799,58 @@
           "sha256": "a8c1d0401b6e5a919bb85de0257d590dc551bbf7f356cbe860f4e519fcc63209"
         }
       ]
+    },
+    {
+      "id": "owner-buildings-gameplay-integration-2026-10-24",
+      "owner_statement": "continue with fitting exsting artwork into the gameplay - start wit the buildings",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/buildings-gameplay-integration/authority.json",
+          "sha256": "cea3b4a1365aa7535e1527ffc8ad9618ae45914c0f83a48484bfc9ddedd317d7"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "code-health-phase4-owner-playtest",
-    "title": "Owner playtest and Phase 4 exit",
+    "id": "buildings-gameplay-integration",
+    "title": "Fit existing building artwork into gameplay",
     "status": "in_progress",
-    "workstream": "code-health-program",
-    "reopening_id": "owner-playable-phase4-2026-10-19",
-    "authority_status": "owner_requested_playable_continuation_2026-10-19",
-    "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
-    "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
-    "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
-    "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",
+    "workstream": "buildings-gameplay-integration",
+    "reopening_id": "owner-buildings-gameplay-integration-2026-10-24",
+    "authority_status": "owner_requested_runtime_buildings_integration_2026-10-24",
+    "roadmap_item": "- [ ] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.",
+    "missing_deliverable": "The complete five-site building implementation is verified: full root quality passed all 218 stages with no retries, 6181 solution tests and 369 smoke checks (3 existing quarantines). Twelve fresh runtime captures and their grouped review boards are complete. Only owner runtime visual acceptance of the complete exterior/cutaway group remains; do not repeat source-art approval or the passing gate for prose alone.",
+    "instructions": "Present the complete building and cutaway review group in art-direction/buildings-gameplay-integration. The implementation, expanded native player/companion/presence checks and full quality gate are complete. Record a whole-slice owner visual result when supplied; revise only specifically requested building presentation, and rerun affected checks/full quality only for changed product inputs. Preserve all accepted art, routes, physical owners, clue/gameplay state and the deferred Phase 4 owner playtest. Publish reviewed branch changes under standing authority; no merge or release.",
+    "completion_condition": "The five building sites and party-aware cutaways are implemented, current native and full quality checks pass with retained evidence, the owner accepts the complete runtime visual group, and the reviewed branch is committed/pushed.",
     "outputs": [
-      "docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json",
-      "docs/superpowers/evidence/phase4-owner-playtest.md"
+      "art-direction/buildings-gameplay-integration/README.md",
+      "art-direction/buildings-gameplay-integration/verification.json",
+      "art-direction/buildings-gameplay-integration/building-review.png",
+      "art-direction/buildings-gameplay-integration/cutaway-review.png"
     ],
-    "boundary": "Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind, no physical/provider qualification, no merge or release."
+    "boundary": "Buildings presentation and dependent verification/documentation/publication only. No new art generation, terrain replacement, actor animation, effects/UI integration, new geography, merge or release."
   },
   "deferred_slices": [
+    {
+      "id": "code-health-phase4-owner-playtest",
+      "title": "Owner playtest and Phase 4 exit",
+      "status": "deferred",
+      "workstream": "code-health-program",
+      "reopening_id": "owner-playable-phase4-2026-10-19",
+      "authority_status": "owner_requested_playable_continuation_2026-10-19",
+      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
+      "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
+      "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
+      "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",
+      "outputs": [
+        "docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json",
+        "docs/superpowers/evidence/phase4-owner-playtest.md"
+      ],
+      "boundary": "Phase 4 item 7 and the Phase 4 exit only. No Phase 5 reorganisation, no new sabotage kind, no physical/provider qualification, no merge or release.",
+      "deferral_reason": "Owner prioritised existing artwork gameplay integration, starting with buildings, on 2026-10-24."
+    },
     {
       "id": "phase11-physical-controls-evaluation-execution",
       "title": "Evaluate the named physical controls session against the closed proposal",
