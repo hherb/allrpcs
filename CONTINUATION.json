@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1148,6 +1148,16 @@
           "sha256": "aef1234b38d586fff891e743293611e5f54084868621a61b12e234e4f324a681"
         }
       ]
+    },
+    {
+      "id": "gameplay-view-repairs",
+      "reason": "The two owner-selected screenshot repairs are implemented and verified: contained settings and existing-art Stream crossing paint; four viewport sizes, current native semantics, UI-visible captures and the complete root gate pass. No owner building acceptance, physical qualification or broader artwork integration is inferred.",
+      "evidence": [
+        {
+          "path": "art-direction/gameplay-view-repairs/verification.json",
+          "sha256": "8aaf6192891df4aaa3ded5542c62b84c0a0f3811bdcc37a357300bd733044c79"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1590,6 +1600,16 @@
           "sha256": "61939291cc9923aad8b07b1899dd07ccaa8c5b0f606a475f4d37f8c83e09a47e"
         }
       ]
+    },
+    {
+      "id": "gameplay-view-repairs",
+      "reason": "The finite settings/crossing screenshot repair is complete. Preserve its verified presentation and do not create unchanged successor audits; building runtime visual acceptance remains the existing next boundary.",
+      "evidence": [
+        {
+          "path": "art-direction/gameplay-view-repairs/verification.json",
+          "sha256": "8aaf6192891df4aaa3ded5542c62b84c0a0f3811bdcc37a357300bd733044c79"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1811,6 +1831,21 @@
           "sha256": "cea3b4a1365aa7535e1527ffc8ad9618ae45914c0f83a48484bfc9ddedd317d7"
         }
       ]
+    },
+    {
+      "id": "owner-gameplay-view-repairs-2026-10-24",
+      "owner_statement": "I can see the settings panel clipped off the right edge, several overlays covering the map, and grey placeholder blocks at the stream crossing. Which should I address first? Owner reply: 1 and 2 both",
+      "scope_ids": [
+        "whole-channel-runtime",
+        "phase11-dialogue-accessibility-runtime-integration"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/gameplay-view-repairs/authority.json",
+          "sha256": "6f6d9eebf43fd77950ff92b4a488f8c03612342dc5a8fa3ef44753909928580d"
+        }
+      ]
     }
   ],
   "active_slice": {
@@ -1821,7 +1856,7 @@
     "reopening_id": "owner-buildings-gameplay-integration-2026-10-24",
     "authority_status": "owner_requested_runtime_buildings_integration_2026-10-24",
     "roadmap_item": "- [ ] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.",
-    "missing_deliverable": "The complete five-site building implementation is verified: full root quality passed all 218 stages with no retries, 6181 solution tests and 369 smoke checks (3 existing quarantines). Twelve fresh runtime captures and their grouped review boards are complete. Only owner runtime visual acceptance of the complete exterior/cutaway group remains; do not repeat source-art approval or the passing gate for prose alone.",
+    "missing_deliverable": "The five-site building implementation and the two requested screenshot repairs are verified. The current full root gate passed 218 stages, 6181 solution tests and 370 smoke checks (3 existing quarantines). Twelve building runtime captures and eight normal-UI repair captures are retained. Only owner runtime visual acceptance of the complete building exterior/cutaway group remains; do not repeat source-art approval or the passing gate for prose alone.",
     "instructions": "Present the complete building and cutaway review group in art-direction/buildings-gameplay-integration. The implementation, expanded native player/companion/presence checks and full quality gate are complete. Record a whole-slice owner visual result when supplied; revise only specifically requested building presentation, and rerun affected checks/full quality only for changed product inputs. Preserve all accepted art, routes, physical owners, clue/gameplay state and the deferred Phase 4 owner playtest. Publish reviewed branch changes under standing authority; no merge or release.",
     "completion_condition": "The five building sites and party-aware cutaways are implemented, current native and full quality checks pass with retained evidence, the owner accepts the complete runtime visual group, and the reviewed branch is committed/pushed.",
     "outputs": [

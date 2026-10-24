@@ -6,6 +6,14 @@ and terminal acceptance take precedence. Preserve every persistent closure.
 
 ## Current checkpoint
 
+The owner requested both screenshot repairs: fitted settings and removal of retained Stream
+crossing/cap placeholders. [The current successor](art-direction/gameplay-view-repairs/README.md)
+keeps provider/input/physics ownership and predecessor art evidence unchanged. Current
+focused checks and eight UI-visible captures pass. The complete root gate passed all 218
+stages with 0 retries: 6,181 solution tests and 370 smoke checks
+(3 existing quarantines). The two-defect repair is closed; building visual acceptance
+remains the existing owner-review boundary.
+
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
 [record](docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json)). The fresh-profile
@@ -43,11 +51,11 @@ It authorizes review-branch publication; no merge or release is authorized here.
 Roadmap item: - [ ] Fit existing building artwork into ordinary gameplay at the opening-region
 structure sites.
 
-Missing deliverable: The complete five-site building implementation is verified: full root quality
-passed all 218 stages with no retries, 6181 solution tests and 369 smoke checks (3 existing
-quarantines). Twelve fresh runtime captures and their grouped review boards are complete. Only owner
-runtime visual acceptance of the complete exterior/cutaway group remains; do not repeat source-art
-approval or the passing gate for prose alone.
+Missing deliverable: The five-site building implementation and the two requested screenshot repairs
+are verified. The current full root gate passed 218 stages, 6181 solution tests and 370 smoke checks
+(3 existing quarantines). Twelve building runtime captures and eight normal-UI repair captures are
+retained. Only owner runtime visual acceptance of the complete building exterior/cutaway group
+remains; do not repeat source-art approval or the passing gate for prose alone.
 
 Present the complete building and cutaway review group in art-direction/buildings-gameplay-
 integration. The implementation, expanded native player/companion/presence checks and full quality

@@ -158,6 +158,7 @@ acceptance and the routine external-proof approval waiver forward. New runtime/l
 promotions and their runtime visual checkpoints require the applicable authority; finish already authorized work in
 the same session without repeating unchanged approval gates.
 
+- [x] Fit settings within the gameplay viewport and replace retained Stream crossing placeholders.
 - [ ] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "owner_question": "I can see the settings panel clipped off the right edge, several overlays covering the map, and grey placeholder blocks at the stream crossing. Which should I address first?",
+  "owner_statement": "1 and 2 both",
+  "resolved_request": [
+    "Fix the settings layout",
+    "Replace the remaining map placeholders"
+  ],
+  "base_commit": "c3ca1b24d840ba2a871402085fd13d707a5f04fc",
+  "screenshot_url": "https://www.dropbox.com/scl/fi/mbzqrzuixwhtpjvz6j778/Screenshot-2026-10-24-at-13.39.14.png?rlkey=71v2x3wrm9dy8nqqscybdk6ah&dl=0",
+  "scope": "Fit existing settings controls within the ordinary supported viewport without overlap; replace the retained Stream crossing fill and cap placeholders with existing painted deck/channel material. Preserve settings semantics, focus cycle, credentials, collision/navigation, route/clue/save state, accepted source art and channel atlases. Capture actual UI-visible gameplay views.",
+  "boundary": "Only the two named screenshot defects and their verification/documentation/publication. No new geography, art generation, controls remapping, speech implementation, physical qualification, merge or release."
+}
