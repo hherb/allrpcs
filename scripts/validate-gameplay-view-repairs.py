@@ -6,8 +6,6 @@ import json
 from pathlib import Path
 import subprocess
 
-from PIL import Image
-
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / 'art-direction/gameplay-view-repairs'
 BASE = json.loads((PACKAGE / 'authority.json').read_text())['base_commit']
@@ -30,7 +28,7 @@ def original(name):
 
 
 def validate():
-    """Preserve the predecessor and permit only two new presentation owners in Main."""
+    """Preserve the predecessor and permit only the two presentation owners and moved review entry in Main."""
     previous = ROOT / 'art-direction/buildings-gameplay-integration'
     record = json.loads((previous / 'verification.json').read_text())
     summary_path = previous / record['full_quality']['summary']
@@ -54,35 +52,39 @@ def validate():
     restored = current.replace(added, '', 1).replace(node, '', 1).replace(
         script, script.removesuffix('\nscript = ExtResource("gameplay_settings_layout")'), 1)
     restored = restored.replace('load_steps=246', 'load_steps=244', 1)
+    # The evidence review entry, list and close button move together from x=880 to beside Save/Load.
+    start = restored.index('[node name="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"')
+    end = restored.index('[node name="CharacterDialogueMisquotationEvidencePresentationSelectionController"')
+    panel = restored[start:end]
+    require(panel.count('offset_left = 960.0\n') == panel.count('offset_right = 1152.0\n') == 3,
+            'Evidence review controls are not moved together')
+    panel = panel.replace('offset_left = 960.0\n', 'offset_left = 880.0\n').replace(
+        'offset_right = 1152.0\n', 'offset_right = 1072.0\n')
+    restored = restored[:start] + panel + restored[end:]
     require(restored.encode() == original('game/Main.tscn'), 'Unscoped scene, route or physical change')
     names = subprocess.check_output(['git', 'diff', BASE, '--name-only'], cwd=ROOT, text=True).splitlines()
     require(not any(name.startswith('src/') for name in names), 'Gameplay/domain source changed')
     require(not any(name.startswith('art-direction/') and not name.startswith('art-direction/gameplay-view-repairs/')
                     for name in names), 'Predecessor art/evidence changed')
     require(not any(name.startswith('game/art/') for name in names), 'Existing runtime artwork changed')
+    # git diff ignores untracked files, so also reject stray files in fenced trees.
+    untracked = subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard', '--', 'src', 'game/art',
+                                         'art-direction'], cwd=ROOT, text=True).splitlines()
+    require(all(name.startswith('art-direction/gameplay-view-repairs/') for name in untracked),
+            'Untracked file in a fenced source/art tree')
     allowed_game = {'game/Main.tscn', 'game/GameplaySettingsLayout.cs', 'game/RetainedStreamCrossingPresentation.cs'}
     require(all(not name.startswith('game/') or name in allowed_game for name in names),
             'Existing gameplay, geometry or character source changed')
-    # Every sampled UV is inside fully opaque approved timber paint, so the retired fill cannot leak through.
-    import math
-    paint = Image.open(ROOT / 'game/art/runtime/terrain/channel-decks.png').convert('RGBA')
-    length = math.hypot(700, 550)
-    along, across = (700 / length, 550 / length), (-550 / length, 700 / length)
-    for y in range(129):
-        for x in range(129):
-            a, b = (x / 128 * 2 - 1) * 44, (y / 128 * 2 - 1) * 64
-            point = (round(1382.1818 + across[0] * a + along[0] * b),
-                     round(388 + across[1] * a + along[1] * b))
-            require(paint.getpixel(point)[3] == 255, 'Crossing UV enters transparent source pixels')
-    report = PACKAGE / 'capture-results.json'
-    if report.exists():
-        captures = json.loads(report.read_text())
-        for name, expected in captures['captures'].items():
-            require(sha(PACKAGE / name) == expected, 'UI-visible capture changed: ' + name)
-        for name, expected in captures.get('inputs', {}).items():
-            path = (ROOT / 'game' / name.removeprefix('res://')).resolve()
-            require(path.is_relative_to(ROOT) and sha(path) == expected, 'Capture input changed: ' + name)
-    print('PASS: screenshot successor preserves verified building/art evidence, source pixels, physics and scene ownership; approved crossing timber is opaque')
+    # Deck opacity under the live UVs is asserted by scripts/check-gameplay-view-repairs.gd.
+    captures = json.loads((PACKAGE / 'capture-results.json').read_text())
+    require(captures['status'] == 'passed' and len(captures['captures']) == 8 and captures['inputs'],
+            'Incomplete UI-visible capture series')
+    for name, expected in captures['captures'].items():
+        require(sha(PACKAGE / name) == expected, 'UI-visible capture changed: ' + name)
+    for name, expected in captures['inputs'].items():
+        path = (ROOT / 'game' / name.removeprefix('res://')).resolve()
+        require(path.is_relative_to(ROOT) and sha(path) == expected, 'Capture input changed: ' + name)
+    print('PASS: screenshot successor preserves verified building/art evidence, source pixels, physics and scene ownership; eight bound captures')
 
 
 if __name__ == '__main__':

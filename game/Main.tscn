@@ -1508,24 +1508,24 @@ script = ExtResource("234_misquotation_evidence_view")
 script = ExtResource("239_misquotation_evidence_review_panel")
 
 [node name="Review" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 12.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 44.0
 text = "Review evidence"
 
 [node name="Statements" type="ItemList" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
 visible = false
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 52.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 252.0
 
 [node name="Close" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
 visible = false
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 260.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 292.0
 text = "Close review"
 

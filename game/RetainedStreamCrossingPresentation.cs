@@ -34,7 +34,8 @@ public partial class RetainedStreamCrossingPresentation : Node
                 SourceCenter + across - along,
                 SourceCenter + across + along,
                 SourceCenter - across + along],
-            Texture = GD.Load<Texture2D>(DeckPath),
+            Texture = GD.Load<Texture2D>(DeckPath)
+                ?? throw new InvalidOperationException("Missing crossing deck paint " + DeckPath),
             TextureFilter = CanvasItem.TextureFilterEnum.Linear,
             TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
         });

@@ -16,7 +16,6 @@ public partial class GameplaySettingsLayout : CanvasLayer
     private Label heading = null!;
     private Control hud = null!;
     private Control saves = null!;
-    private Button review = null!;
     private Vector2 fittedViewport;
 
     /// <inheritdoc />
@@ -25,7 +24,6 @@ public partial class GameplaySettingsLayout : CanvasLayer
         model = GetNode<Control>("Panel");
         hud = GetNode<Control>("../CommandOverlay/Panel");
         saves = GetNode<Control>("../CommandOverlay/SaveLoadPanel");
-        review = GetNode<Button>("../TemporaryCharacterDialogueMisquotationEvidenceReviewPanel/Review");
         frame = new ColorRect
         {
             Name = "SettingsFrame",
@@ -60,12 +58,6 @@ public partial class GameplaySettingsLayout : CanvasLayer
         float width = Math.Min(1120, viewport.X - 2 * Margin);
         float height = HeaderHeight + ModelHeight + Padding;
         float hudBottom = Math.Max(hud.GetGlobalRect().End.Y, saves.GetGlobalRect().End.Y);
-        Vector2 reviewPosition = new(saves.GetGlobalRect().End.X + 12, saves.Position.Y);
-        if (reviewPosition.X + review.Size.X > viewport.X - Margin)
-        {
-            reviewPosition = new(viewport.X - review.Size.X - Margin, hudBottom + Margin);
-        }
-        review.Position = reviewPosition;
         Vector2 origin = new((viewport.X - width) / 2,
             Math.Max(Margin, Math.Min(Math.Max((viewport.Y - height) / 2, hudBottom + Margin),
                 viewport.Y - height - Margin)));

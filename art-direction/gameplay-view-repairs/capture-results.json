@@ -3,17 +3,17 @@
 		"captures/crossing-1280x720.png": "ede14e1c79d01ab20253d116db29ec0f1be69e4f915989ebb26c5e0878dc6917",
 		"captures/crossing-1280x827.png": "db91bc05e3af4967f4c01b0baa330722a105551bd2dda3081b8aa38ddd2ead6f",
 		"captures/crossing-1920x1080.png": "c630168e12de0f5ed5f8309448cd96b0a34e6e5c875346e5ec61447f9dc155ef",
-		"captures/crossing-960x720.png": "611a7b797728ef5b5c6fec5f3328eda190ef3a63168afb4ed23a85a4b592f607",
+		"captures/crossing-960x720.png": "771c7c65d98453bef2c39f625b4eb233d26ded21a9c32381559d01e0e3efe5f6",
 		"captures/settings-1280x720.png": "5c9f06a1fc510bb3ed2a54ca2f5177922bab077193ed84ebf0709af6e91fe5c3",
 		"captures/settings-1280x827.png": "ef9ff8c61018a1096bb9c4f1f3ccd9a0c32e0bca12b3674ec25f0a4ae67de76f",
 		"captures/settings-1920x1080.png": "6048150f14e0930327c7033d5184aaed3a7131109124d3d115580d4754f881da",
-		"captures/settings-960x720.png": "b972d9009dc471638c1d4bdb7ab6ac745ba9392ca8bf8bf4c42a4458d23a640b"
+		"captures/settings-960x720.png": "0cf63513de650cf7c18aee32e969b729b50b2554fc1703869b57314f6aa0b086"
 	},
 	"inputs": {
-		"res://../scripts/check-gameplay-view-repairs.gd": "49df42d36afe21c8d77400854b7e5a68c4cd63bdf5f6e1090bbc5e03976a1b25",
-		"res://GameplaySettingsLayout.cs": "85162fd130942f8ff5c4c0360188e2ac1753477f0af088bf9f0fe409954efb63",
-		"res://Main.tscn": "bed453d62f724a311560611030c3bf14b3aca7c5cbc3fd89b1714c00db6d03f5",
-		"res://RetainedStreamCrossingPresentation.cs": "442c1343c37b74a08c04d11536232dd0fb179839d822bc6a11c103b5f72beff7",
+		"res://../scripts/check-gameplay-view-repairs.gd": "48c01fdd4e304d7605ea25cbcf39c07f03bb990bd8eb8a10c540d5150125ffd3",
+		"res://GameplaySettingsLayout.cs": "26a9ac627034eafb7e80b49127eba3c84d16123da00a6243a9888110b1f24e29",
+		"res://Main.tscn": "d5b98630d0494263a6cf2a0e67179f56c9eb3ed8e8bb28abf8e71932fb147310",
+		"res://RetainedStreamCrossingPresentation.cs": "03eeb2562bddaad2b3cc49a06214db8d7e41de38ec05c4b0602c78d66550b630",
 		"res://art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb"
 	},
 	"provenance": "controlled ordinary Main; UI retained; synthetic input",
