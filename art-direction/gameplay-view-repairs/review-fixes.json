@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "status": "implementation_verified",
+  "supersedes_claims_in": "verification.json",
+  "request": "Owner /fixall instruction to address the PR #470 review findings in the same branch.",
+  "inputs": {
+    "game/Main.tscn": "d5b98630d0494263a6cf2a0e67179f56c9eb3ed8e8bb28abf8e71932fb147310",
+    "game/GameplaySettingsLayout.cs": "26a9ac627034eafb7e80b49127eba3c84d16123da00a6243a9888110b1f24e29",
+    "game/RetainedStreamCrossingPresentation.cs": "03eeb2562bddaad2b3cc49a06214db8d7e41de38ec05c4b0602c78d66550b630",
+    "scripts/check-gameplay-view-repairs.gd": "48c01fdd4e304d7605ea25cbcf39c07f03bb990bd8eb8a10c540d5150125ffd3",
+    "scripts/validate-gameplay-view-repairs.py": "1ab7ceb1c37394373573cd584ad39ba0aa1fa0c3c94f5f05f139ed06df756e0d",
+    "scripts/smoke-godot.sh": "e75a28984aa13956e2b7e9e088e521522caaaa21da3759d836323e608bbc4320",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    ".github/workflows/ci.yml": "fba992344692d8bdf2aeeca73597285a0028ddb6a01319b7715b6a634d360759"
+  },
+  "corrected_claim": "The predecessor building validator is unchanged at c3ca1b24, where it passed, but it no longer runs: its exact-append Main check cannot pass against current Main. The successor validator carries its coverage forward by verifying its quality receipt and building inputs and rejecting tracked or untracked changes since c3ca1b24 to src/, game/art/ and other art-direction packages.",
+  "resolved": [
+    "PR #470 review: the evidence Review list and Close button now move with the Review entry in Main (x=960), and the settings layout no longer positions the temporary review panel.",
+    "PR #470 review: ordinary smoke runs write no evidence (ALLRPCS_GAMEPLAY_VIEW_RECORD=1 or capture mode records); a 300-second watchdog turns a GDScript error into a failure instead of a hang; the result-file open is checked.",
+    "PR #470 review: physics is compared with a ready Main from which both repair owners were removed, using stored shape properties rather than RIDs; reverse focus traversal is tested; deck visibility, crossing-plus-apron bounds and opaque 2x2 texel footprints under the live UVs are asserted in the native check, replacing the validator's copied constants and Pillow dependency.",
+    "PR #470 review: the validator requires the eight-capture passed record, and CI smoke fetches full history for the base-commit reads.",
+    "PR #470 review: whether base-commit fence validators should stay in the live smoke path is deferred to the owner in issue #471."
+  ],
+  "probes": "Each new assertion failed as intended under a scratch probe: shifted deck UVs, hidden deck, moved deck, a disabled collision polygon, the review list left at x=880, and a GDScript error (caught by the watchdog instead of hanging); the validator rejected an untracked file under game/art/.",
+  "ui_visible_capture": "passed; eight normal-UI captures with source/image hash bindings, regenerated after the PR #470 review fixes (only the two 960x720 stress-size captures changed bytes)",
+  "full_quality": {
+    "status": "passed",
+    "command": "./quality.sh",
+    "product_revision": "a8537d0c8777eb1dbf17709e20a1695a5a45fa84",
+    "stages": 218,
+    "identical_retries": 0,
+    "started": "2026-10-25T01:10:22.670409+00:00",
+    "finished": "2026-10-25T01:56:45.641683+00:00",
+    "summary": "checks/review-fixes/quality-summary.json.gz",
+    "summary_sha256": "cf4796fb1ca1f2a0fec0ad975bf2c561d844385f0b15257c672436e4a64733be",
+    "solution_tests": 6181,
+    "suite_counts": {
+      "product-5": 2899,
+      "product-6": 1607,
+      "product-7": 1633,
+      "product-8": 42
+    },
+    "smoke": {
+      "passed": 370,
+      "quarantined": 3,
+      "failed": 0
+    },
+    "logs": {
+      "checks/review-fixes/capture.log.gz": "20f6ed3515cfe6cc4fe1c567e57c0018a7679f1dc5535a4497dc06dc665a9692",
+      "checks/review-fixes/continuation.log.gz": "67c6d13602176f937c41064a18c1b942c6960e555c1a64e35a0d90c5a034c322",
+      "checks/review-fixes/product-10.log.gz": "d26665bc23ffe70024abb44b02c210d94da13ff8e3e30a0e124f492470b176b4",
+      "checks/review-fixes/product-3.log.gz": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "checks/review-fixes/product-4.log.gz": "193c5cc5795b3dfdf559a67244f1641b0192c81c184eae7a2f17e287a50c548a",
+      "checks/review-fixes/product-5.log.gz": "24f31cbc3ad79fd2596ac272959aa888f9207255267de2e7d79fb5289c50b800",
+      "checks/review-fixes/product-6.log.gz": "d58187e4a864665a978c06e85bcffc6cca8ebc2905ab254f368aa0e5357e86cd",
+      "checks/review-fixes/product-7.log.gz": "247cf0d9581d01449939053d9e4c4f3ff7caa42916f5ae664f645e517e477837",
+      "checks/review-fixes/product-8.log.gz": "eca460313a787bae056453c7439128e0d77751ca1c0ba6429aea6d3416c36d6c",
+      "checks/review-fixes/product-9.log.gz": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156",
+      "checks/review-fixes/quality-console.log.gz": "a48d1b231efa05eb9ed4254bfd565df073b6d02f667347a5c8e09aa24f94e5b9",
+      "checks/review-fixes/quality-summary.json.gz": "cf4796fb1ca1f2a0fec0ad975bf2c561d844385f0b15257c672436e4a64733be"
+    }
+  },
+  "limits": [
+    "Controlled native input/rendering is not owner physical playtest or screen-reader evidence.",
+    "No provider request, credential change, image generation, collision/navigation or gameplay/save change.",
+    "Broader actor/object/terrain artwork integration and prior building visual acceptance remain pending.",
+    "Some inherited focused checks logged ObjectDB shutdown warnings; no leak-clean claim."
+  ]
+}

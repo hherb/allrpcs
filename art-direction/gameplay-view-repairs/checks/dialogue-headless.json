@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "mode": "headless",
+  "checks": [
+    "disabled-typed-dialogue-unchanged",
+    "committed-reply-pcm-speech-bus",
+    "exact-text-and-once-per-commit",
+    "stop-clears-buffer-preserves-transcript",
+    "new-player-submission-interrupts",
+    "master-mute-retires-pcm-without-gameplay-change",
+    "language-choice-disable-and-text-fallback",
+    "keyboard-speech-and-typed-focus-gate",
+    "scene-exit-provider-retirement"
+  ],
+  "size": [
+    1280,
+    720
+  ],
+  "realPocket": false,
+  "provenance": "synthetic keyboard/typed Main input; actual native PCM playback when rendered; no microphone or physical device test"
+}

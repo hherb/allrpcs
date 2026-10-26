@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "status": "implementation_verified",
+  "inputs": {
+    "game/Main.tscn": "bed453d62f724a311560611030c3bf14b3aca7c5cbc3fd89b1714c00db6d03f5",
+    "game/GameplaySettingsLayout.cs": "85162fd130942f8ff5c4c0360188e2ac1753477f0af088bf9f0fe409954efb63",
+    "game/RetainedStreamCrossingPresentation.cs": "442c1343c37b74a08c04d11536232dd0fb179839d822bc6a11c103b5f72beff7",
+    "scripts/check-gameplay-view-repairs.gd": "49df42d36afe21c8d77400854b7e5a68c4cd63bdf5f6e1090bbc5e03976a1b25",
+    "scripts/validate-gameplay-view-repairs.py": "f2f0d1ed3a73e15cb6863f98ea085d577f9d2610cc21f88cb8f1fdd94521e3a7",
+    "scripts/smoke-godot.sh": "e75a28984aa13956e2b7e9e088e521522caaaa21da3759d836323e608bbc4320",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb"
+  },
+  "settings_sizes": [
+    [
+      1280,
+      720
+    ],
+    [
+      1280,
+      827
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      960,
+      720
+    ]
+  ],
+  "focused_checks": {
+    "build": "passed; zero warnings/errors",
+    "format": "passed",
+    "current_native_group": "8 passed, 0 quarantined; settings/stream/buildings/channel/model settings/current speech-aware focus and lifecycle",
+    "ui_visible_capture": "passed; eight normal-UI captures with source/image hash bindings",
+    "legacy_fixture_mismatch": "The initial affected check attempted the pre-speech DialogueAccessibilityMainSmokeCheck against current Main; it expected Submit immediately after Whispering, while current speech controls correctly place SpeakReplies there. Frozen code was preserved; the current DialogueSpeechMainSmokeCheck passed both headless and unavailable modes. Initial diagnostic log retained."
+  },
+  "code_review": {
+    "status": "reviewed",
+    "resolved": [
+      "Replaced off-screen absolute model panel position with one bounded settings card.",
+      "Kept native settings entry paths, focus order and provider/credential owners unchanged.",
+      "Moved the evidence entry clear of Save/Load without hiding normal UI.",
+      "Read existing crossing bounds; sampled only opaque approved deck pixels; retired flat fill/cap paint without changing geometry.",
+      "Preserved complete predecessor building evidence and validator; added separate successor validation."
+    ],
+    "unresolved_blocking_findings": []
+  },
+  "full_quality": {
+    "status": "passed",
+    "command": "./quality.sh",
+    "stages": 218,
+    "identical_retries": 0,
+    "started": "2026-10-24T04:02:51.971942+00:00",
+    "finished": "2026-10-24T04:56:11.502214+00:00",
+    "summary": "checks/quality-summary.json.gz",
+    "summary_sha256": "f48dafb7867ffbd161e530fbb7f5375d817434d46a2b5bb93a7fd0ca8f8f209b",
+    "solution_tests": 6181,
+    "suite_counts": {
+      "product-5": 2899,
+      "product-6": 1607,
+      "product-7": 1633,
+      "product-8": 42
+    },
+    "smoke": {
+      "passed": 370,
+      "quarantined": 3,
+      "failed": 0
+    },
+    "source_binding": "The runner product_revision is the starting HEAD; inputs above bind the reviewed product bytes used in this run.",
+    "current_logs": {
+      "checks/continuation.log.gz": "67c6d13602176f937c41064a18c1b942c6960e555c1a64e35a0d90c5a034c322",
+      "checks/product-3.log.gz": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "checks/product-4.log.gz": "69e410817b19dec8d6d829b0835c41b7c104aa352c98a5693b14ffbb00532ebc",
+      "checks/product-5.log.gz": "34598a3ea30624f64488dd66d27cfd0e6e2fbba87ab6cd77ab49078a573ca555",
+      "checks/product-6.log.gz": "fd9d37e913a947ce10570eb6b283ee3a1e57d7cfc8305c4e9a55ce3adf6532da",
+      "checks/product-7.log.gz": "247cf0d9581d01449939053d9e4c4f3ff7caa42916f5ae664f645e517e477837",
+      "checks/product-8.log.gz": "8737a7046ee400464fd65f0ce733004ab1145ac185765b59bf4b599399df5d75",
+      "checks/product-9.log.gz": "b9876f473a4f37a0625f4c37634250264155a0d1053ab267cd1330901a394156",
+      "checks/product-10.log.gz": "2b1ece080036b5905193969c2a317f9e6b8d6e2d23a4c31f8902361bdaf366f9",
+      "checks/quality-console.log.gz": "a48d1b231efa05eb9ed4254bfd565df073b6d02f667347a5c8e09aa24f94e5b9"
+    }
+  },
+  "limits": [
+    "Controlled native input/rendering is not owner physical playtest or screen-reader evidence.",
+    "No provider request, credential change, image generation, collision/navigation or gameplay/save change.",
+    "Broader actor/object/terrain artwork integration and prior building visual acceptance remain pending.",
+    "Some inherited focused checks logged ObjectDB shutdown warnings; no leak-clean claim."
+  ]
+}

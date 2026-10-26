@@ -17,7 +17,7 @@ smoke_quarantine_file="$script_dir/smoke-quarantine.txt"
 # Import every resource first. --import exits by itself (with 0) once importing finishes, so a cold
 # checkout is fully imported before any check runs; quality.py imports the same way.
 run_check - godot --headless --editor --path "$repository_root/game" --import
-python3 "$script_dir/validate-building-gameplay.py"
+python3 "$script_dir/validate-gameplay-view-repairs.py"
 python3 "$script_dir/check-shipping-policy.py"
 run_check - godot --headless --editor --path "$repository_root/game" \
     --script "$script_dir/check-shipping-scene.gd"
@@ -41,6 +41,8 @@ run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-closed-forest-runtime.gd"
 run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-building-gameplay.gd"
+run_check - ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-gameplay-view-repairs.gd"
 run_check 30 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 30 ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \

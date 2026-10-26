@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=3]
+[gd_scene load_steps=246 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -441,6 +441,9 @@
 [ext_resource type="Script" path="res://CommandPanelLayout.cs" id="command_panel_layout"]
 
 [ext_resource type="PackedScene" path="res://MapStructuresPresentation.tscn" id="map_structures"]
+
+[ext_resource type="Script" path="res://GameplaySettingsLayout.cs" id="gameplay_settings_layout"]
+[ext_resource type="Script" path="res://RetainedStreamCrossingPresentation.cs" id="retained_stream_presentation"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -1505,24 +1508,24 @@ script = ExtResource("234_misquotation_evidence_view")
 script = ExtResource("239_misquotation_evidence_review_panel")
 
 [node name="Review" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 12.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 44.0
 text = "Review evidence"
 
 [node name="Statements" type="ItemList" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
 visible = false
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 52.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 252.0
 
 [node name="Close" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
 visible = false
-offset_left = 880.0
+offset_left = 960.0
 offset_top = 260.0
-offset_right = 1072.0
+offset_right = 1152.0
 offset_bottom = 292.0
 text = "Close review"
 
@@ -3146,6 +3149,7 @@ horizontal_alignment = 1
 [node name="SettingsOverlay" type="CanvasLayer" parent="."]
 visible = false
 layer = 6
+script = ExtResource("gameplay_settings_layout")
 
 [node name="AudioEntry" type="Button" parent="SettingsOverlay"]
 offset_left = 12.0
@@ -3750,6 +3754,9 @@ offset_top = 196.0
 offset_right = 472.0
 offset_bottom = 236.0
 text = "RETURN TO TITLE"
+
+[node name="RetainedStreamCrossingPresentation" type="Node" parent="."]
+script = ExtResource("retained_stream_presentation")
 
 [node name="MapStructuresPresentation" parent="." instance=ExtResource("map_structures")]
 
