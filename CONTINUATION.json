@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-25",
+  "updated": "2026-10-27",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1844,6 +1844,20 @@
         {
           "path": "art-direction/gameplay-view-repairs/authority.json",
           "sha256": "6f6d9eebf43fd77950ff92b4a488f8c03612342dc5a8fa3ef44753909928580d"
+        }
+      ]
+    },
+    {
+      "id": "owner-gameplay-view-repairs-review-fixes-2026-10-25",
+      "owner_statement": "/fixall: address all issues identified in the code review of PR #470, then commit and push the changes into the PR. Owner reply on recording it: yes, record it please",
+      "scope_ids": [
+        "gameplay-view-repairs"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/gameplay-view-repairs/review-fixes.json",
+          "sha256": "f3027d6f3b5579b8446d62c1822523c5338ae4a8d7575267f0e31db223a3b8d5"
         }
       ]
     }
