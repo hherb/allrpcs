@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "timezone": "Australia/Sydney",
+  "question": "The only remaining step in the active slice (buildings-gameplay-integration) is your visual review of the building and cutaway boards in art-direction/buildings-gameplay-integration/ (building-review.png, cutaway-review.png). What is your result?",
+  "owner_reply": "Accept, then do sickhouse bed/patient",
+  "result": "accepted",
+  "accepted_group": [
+    "art-direction/buildings-gameplay-integration/building-review.png",
+    "art-direction/buildings-gameplay-integration/cutaway-review.png"
+  ],
+  "observations_shown_before_reply": [
+    "Sickhouse cutaway bed/patient is a small grey-blue placeholder rectangle, not artwork.",
+    "Other greybox object/actor markers remain visible; outside the buildings scope.",
+    "The boards predate the PR #470 crossing repair, so they show the old crossing block."
+  ],
+  "follow_on_request": "Replace the sickhouse bed/patient placeholder with existing artwork as a new slice."
+}

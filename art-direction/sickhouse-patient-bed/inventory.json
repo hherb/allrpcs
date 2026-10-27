@@ -1,0 +1,109 @@
+{
+  "status": "owner approved sickbed-01",
+  "generator": "Codex CLI 0.162.0-alpha.17.2 built-in image_gen",
+  "prompt": "prompt.txt",
+  "source_sha256": "2d862add8e7df08f54341435702e4cf7cca75b37e3932c84d08058ce92296c0f",
+  "references": [
+    "art-direction/representative-scene/previews/selected-direction-a-refinement.png",
+    "art-direction/woodland-environment-batch/review/trees.png",
+    "art-direction/characters-batch/exports/mira-dormant-01.png"
+  ],
+  "mira_pose2_registration_offset": [
+    4,
+    -3
+  ],
+  "patient_on_bed_offset": [
+    20,
+    -18
+  ],
+  "notes": "Original source paint retained; raster ORA correction layers blank; scale and pivot provisional.",
+  "assets": [
+    {
+      "id": "sickbed-01",
+      "name": "Linen pallet on timber frame",
+      "source": "sources/bed-sheet.png",
+      "source_cell": [
+        0,
+        0,
+        655,
+        808
+      ],
+      "source_alpha_bounds_in_cell": [
+        35,
+        176,
+        644,
+        663
+      ],
+      "master": "masters/sickbed-01.ora",
+      "export": "exports/sickbed-01.png",
+      "size": [
+        200,
+        160
+      ],
+      "proposed_pivot": [
+        100,
+        80
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5f4f6ce414c44af8d29fdf3188299e7973f40170e90c849b010b00b67fc1b858"
+    },
+    {
+      "id": "sickbed-02",
+      "name": "Rope-strung cot",
+      "source": "sources/bed-sheet.png",
+      "source_cell": [
+        655,
+        0,
+        1287,
+        808
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        176,
+        617,
+        650
+      ],
+      "master": "masters/sickbed-02.ora",
+      "export": "exports/sickbed-02.png",
+      "size": [
+        200,
+        159
+      ],
+      "proposed_pivot": [
+        100,
+        79
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f0c57c74e4644932ece175af23fcb56fd687cb30926ee33af52b77f2c20ca7d8"
+    },
+    {
+      "id": "sickbed-03",
+      "name": "Kerbed straw pallet with herb sachet",
+      "source": "sources/bed-sheet.png",
+      "source_cell": [
+        1287,
+        0,
+        1945,
+        808
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        213,
+        628,
+        680
+      ],
+      "master": "masters/sickbed-03.ora",
+      "export": "exports/sickbed-03.png",
+      "size": [
+        200,
+        151
+      ],
+      "proposed_pivot": [
+        100,
+        75
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b7fa83b4cbb0ecc024963cc2218989b0ae27151cbecec88f1364970a8b360cd4"
+    }
+  ]
+}

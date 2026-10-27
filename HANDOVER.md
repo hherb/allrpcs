@@ -46,39 +46,32 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**buildings-gameplay-integration — Fit existing building artwork into gameplay** (in_progress).
+**sickhouse-patient-bed — Replace the sickhouse bed/patient placeholder with artwork** (in_progress).
 
-Roadmap item: - [ ] Fit existing building artwork into ordinary gameplay at the opening-region
-structure sites.
+Roadmap item: - [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved
+breathing dormant poses.
 
-Missing deliverable: The five-site building implementation and the two requested screenshot repairs
-are verified. The current full root gate passed 218 stages, 6181 solution tests and 370 smoke checks
-(3 existing quarantines). Twelve building runtime captures and eight normal-UI repair captures are
-retained. Only owner runtime visual acceptance of the complete building exterior/cutaway group
-remains; do not repeat source-art approval or the passing gate for prose alone.
+Missing deliverable: One new Codex image_gen bed/pallet module (prompt, source, 2x ORA master,
+export, review board) and runtime integration of it plus Mira dormant poses 1/2 as a breathing loop
+under the existing sickhouse cutaway.
 
-Present the complete building and cutaway review group in art-direction/buildings-gameplay-
-integration. The implementation, expanded native player/companion/presence checks and full quality
-gate are complete. Record a whole-slice owner visual result when supplied; revise only specifically
-requested building presentation, and rerun affected checks/full quality only for changed product
-inputs. Preserve all accepted art, routes, physical owners, clue/gameplay state and the deferred
-Phase 4 owner playtest. Publish reviewed branch changes under standing authority; no merge or
-release.
+Generate and package the bed in the structures-batch style; present it to the owner. Install bed and
+unchanged Mira dormant exports under OpeningRegionFirstPatientSceneSource without moving that node
+or changing interaction ranges, collision, navigation, clue/disease state or saves. Keep cutaway
+visibility via SelfModulate. Update the building native check, capture the cutaway and run affected
+checks plus the full gate.
 
-Done when: The five building sites and party-aware cutaways are implemented, current native and full
-quality checks pass with retained evidence, the owner accepts the complete runtime visual group, and
-the reviewed branch is committed/pushed.
+Done when: The bed module is owner-approved, the sickhouse cutaway shows the bed and breathing Mira
+in ordinary Main, native and full quality checks pass with retained evidence, and the branch is
+committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/buildings-gameplay-integration/README.md`
-- `art-direction/buildings-gameplay-integration/verification.json`
-- `art-direction/buildings-gameplay-integration/building-review.png`
-- `art-direction/buildings-gameplay-integration/cutaway-review.png`
+- `art-direction/sickhouse-patient-bed/README.md`
+- `art-direction/sickhouse-patient-bed/verification.json`
 
-Boundary: Buildings presentation and dependent verification/documentation/publication only. No new
-art generation, terrain replacement, actor animation, effects/UI integration, new geography, merge
-or release.
+Boundary: Sickhouse bed/patient presentation, the one new bed module and dependent
+verification/documentation/publication only. No other placeholder replacement, merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

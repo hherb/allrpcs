@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "timezone": "Australia/Sydney",
+  "base_commit": "5c99c7c4",
+  "owner_statements": [
+    {
+      "question": "Building/cutaway visual review result?",
+      "reply": "Accept, then do sickhouse bed/patient"
+    },
+    {
+      "question": "Which approved dormant artwork should stand in for the sickhouse's 'first sleeping patient'?",
+      "reply": "Mira, poses 1↔2 breathing"
+    },
+    {
+      "question": "No bed/cot/pallet artwork exists. How should the bed be handled?",
+      "reply": "Generate a new bed/pallet"
+    },
+    {
+      "question": "How should the new bed art be produced?",
+      "reply": "Run Codex CLI image_gen"
+    }
+  ],
+  "scope": "Replace the two greybox Polygon2D placeholders (Bed, Patient) under OpeningRegionFirstPatientSceneSource in Main with (a) one newly generated straw-pallet/cot bed module, produced with Codex image_gen in the structures-batch style, packaged with prompt, source, 2x OpenRaster master and export for owner review, and (b) the owner-approved Mira dormant poses 1 and 2 (characters-batch, unchanged bytes) alternating as a slow breathing loop. Visibility stays driven by the existing sickhouse cutaway.",
+  "boundary": "Sickhouse bed/patient presentation, the one new bed module and dependent verification/documentation/publication only. The OpeningRegionFirstPatientSceneSource node position, first-patient interaction ranges, collision, navigation, clue/disease state and saves stay unchanged. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}
