@@ -6,13 +6,16 @@ and terminal acceptance take precedence. Preserve every persistent closure.
 
 ## Current checkpoint
 
-The owner requested both screenshot repairs: fitted settings and removal of retained Stream
-crossing/cap placeholders. [The current successor](art-direction/gameplay-view-repairs/README.md)
-keeps provider/input/physics ownership and predecessor art evidence unchanged. Current
-focused checks and eight UI-visible captures pass. The complete root gate passed all 218
-stages with 0 retries: 6,181 solution tests and 370 smoke checks
-(3 existing quarantines). The two-defect repair is closed; building visual acceptance
-remains the existing owner-review boundary.
+The owner accepted the five-site [building group](art-direction/buildings-gameplay-integration/README.md)
+and the two screenshot repairs (both closed). The current
+[sickhouse bed/patient slice](art-direction/sickhouse-patient-bed/README.md) installs a new
+owner-picked Codex `image_gen` bed (sickbed-01) and Mira's approved dormant poses 1↔2 as a
+breathing loop, on PR #473. Its native check, validator and captures pass; the PR review fixes
+(check watchdog, capture failure exit, import-settings check) are in. The full root gate result
+goes into its `verification.json`. #471 is addressed on PR #473 (closes on merge): the accepted
+building/view-repair whole-tree validator replays in `quality.py` at `5c99c7c4`, and live smoke
+fences only those packages' accepted files.
+Other greybox object/actor markers remain; replacing them needs a new owner request.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -22,14 +25,6 @@ owner playthrough to an ending on local Ollama remains unfinished
 owner prioritises fitting existing artwork into gameplay, starting with buildings.
 Do not infer playtest acceptance from automated checks. A fresh profile removes both
 `user://save-v1.json` and `user://seeker-profile-v1.json`; preserve real user saves.
-
-The [building integration](art-direction/buildings-gameplay-integration/README.md) reuses
-six approved structure exports and three existing derived assets from `cfed60a8`, fitted
-to current Main at five sites. Current room layouts drive cutaways, collision segments
-drive low walls, and existing gameplay/geometry remains intact. Full root quality passed all 218 stages with no retries on 2026-10-24; 6,181 solution
-tests and 369 smoke checks pass (3 existing quarantines). Twelve runtime captures and
-grouped review boards are retained with the verification record. Owner runtime visual acceptance remains
-explicit; historical candidate wording never reopens accepted source artwork.
 
 Live OpenAI #417 capture and the already requested Keychain save result remain
 [owner-deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json). Phase 2 and
@@ -51,15 +46,17 @@ It authorizes review-branch publication; no merge or release is authorized here.
 Roadmap item: - [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved
 breathing dormant poses.
 
-Missing deliverable: One new Codex image_gen bed/pallet module (prompt, source, 2x ORA master,
-export, review board) and runtime integration of it plus Mira dormant poses 1/2 as a breathing loop
-under the existing sickhouse cutaway.
+Missing deliverable: The owner-approved sickbed-01 module and the runtime bed plus Mira dormant
+poses 1/2 breathing loop are installed with their native check, validator and captures, and the PR
+#473 review fixes are applied. Missing: the full root gate on the reviewed branch head recorded in
+verification.json, and its publication on PR #473.
 
-Generate and package the bed in the structures-batch style; present it to the owner. Install bed and
+Do not regenerate or re-present the bed; sickbed-01 is owner-approved. Keep the installed bed and
 unchanged Mira dormant exports under OpeningRegionFirstPatientSceneSource without moving that node
-or changing interaction ranges, collision, navigation, clue/disease state or saves. Keep cutaway
-visibility via SelfModulate. Update the building native check, capture the cutaway and run affected
-checks plus the full gate.
+or changing interaction ranges, collision, navigation, clue/disease state or saves; cutaway
+visibility stays via SelfModulate. The native proof is scripts/check-sickhouse-patient-bed.gd
+(check-building-gameplay.gd is unchanged). Run the full gate on the branch head, record it in
+verification.json and publish under standing authority; no merge or release.
 
 Done when: The bed module is owner-approved, the sickhouse cutaway shows the bed and breathing Mira
 in ordinary Main, native and full quality checks pass with retained evidence, and the branch is

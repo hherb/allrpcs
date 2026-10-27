@@ -140,7 +140,7 @@ fits existing exteriors and cutaway paint to five opening-region sites, preservi
 their physical and interaction owners. The owner accepted the runtime group on 2026-10-27
 and requested the sickhouse bed/patient next: a new Codex-generated bed/pallet plus Mira's
 approved dormant poses 1↔2 as a breathing loop
-([package](art-direction/sickhouse-patient-bed/authority.json)).
+([package](art-direction/sickhouse-patient-bed/README.md)).
 
 Residual terrain studies and repeatable material/transition artwork are accepted; global
 terrain suitability and integration remain unfinished. A new terrain scope must name the
