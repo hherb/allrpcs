@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "timezone": "Australia/Sydney",
+  "question": "Which bed should go into the sickhouse? (See art-direction/sickhouse-patient-bed/review/sickbed-candidates.png. Your pick becomes the approved module; the other two stay in the package as alternatives.)",
+  "owner_reply": "sickbed-01 linen pallet",
+  "approved": "sickbed-01",
+  "bindings": {
+    "source": {
+      "path": "sources/bed-sheet.png",
+      "sha256": "2d862add8e7df08f54341435702e4cf7cca75b37e3932c84d08058ce92296c0f"
+    },
+    "master": {
+      "path": "masters/sickbed-01.ora",
+      "sha256": "9f6fe49688e9a53cd611d84059f6508254c3c2c4053c6a1721e732577835cb6b"
+    },
+    "export": {
+      "path": "exports/sickbed-01.png",
+      "sha256": "5f4f6ce414c44af8d29fdf3188299e7973f40170e90c849b010b00b67fc1b858"
+    },
+    "review": {
+      "path": "review/sickbed-candidates.png",
+      "sha256": "7467c2d05479fc7eb9925b37ca12543ec97c87aa18fd5b7d51f2f51ea481361e"
+    }
+  },
+  "alternatives_retained": [
+    "sickbed-02",
+    "sickbed-03"
+  ],
+  "runtime_promotion": true
+}

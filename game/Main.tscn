@@ -1,4 +1,4 @@
-[gd_scene load_steps=246 format=3]
+[gd_scene load_steps=251 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -444,6 +444,9 @@
 
 [ext_resource type="Script" path="res://GameplaySettingsLayout.cs" id="gameplay_settings_layout"]
 [ext_resource type="Script" path="res://RetainedStreamCrossingPresentation.cs" id="retained_stream_presentation"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/sickbed-01.png" id="sickbed"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -525,6 +528,40 @@ size = Vector2(8, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_bottom_left"]
 size = Vector2(144, 8)
+
+[sub_resource type="Animation" id="Animation_patient_breathing"]
+resource_name = "breathing"
+length = 3.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("mira_dormant_01"), ExtResource("mira_dormant_02")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(4, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_patient"]
+_data = {
+&"breathing": SubResource("Animation_patient_breathing")
+}
 
 
 
@@ -1959,13 +1996,18 @@ position = Vector2(0, 112)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Bottom"]
 shape = SubResource("RectangleShape2D_sickhouse_bottom")
 
-[node name="Bed" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
-polygon = PackedVector2Array(-30, -22, 30, -22, 30, 22, -30, 22)
-color = Color(0.498, 0.42, 0.314, 1)
+[node name="Bed" type="Sprite2D" parent="OpeningRegionFirstPatientSceneSource"]
+position = Vector2(-20, 18)
+texture = ExtResource("sickbed")
 
-[node name="Patient" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
-polygon = PackedVector2Array(-22, -10, 22, -10, 22, 10, -22, 10)
-color = Color(0.58, 0.659, 0.69, 1)
+[node name="Patient" type="Sprite2D" parent="OpeningRegionFirstPatientSceneSource"]
+texture = ExtResource("mira_dormant_01")
+
+[node name="Breathing" type="AnimationPlayer" parent="OpeningRegionFirstPatientSceneSource/Patient"]
+libraries = {
+&"": SubResource("AnimationLibrary_patient")
+}
+autoplay = &"breathing"
 
 [node name="Label" type="Label" parent="OpeningRegionFirstPatientSceneSource"]
 offset_left = -88.0

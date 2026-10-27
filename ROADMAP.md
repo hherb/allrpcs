@@ -137,8 +137,10 @@ external UI artwork remain separate implementation boundaries.
 The owner requested building integration on 2026-10-24. The
 [current building package](art-direction/buildings-gameplay-integration/README.md)
 fits existing exteriors and cutaway paint to five opening-region sites, preserving
-their physical and interaction owners. Its runtime visual acceptance remains separate
-from the approved source-art collections.
+their physical and interaction owners. The owner accepted the runtime group on 2026-10-27
+and requested the sickhouse bed/patient next: a new Codex-generated bed/pallet plus Mira's
+approved dormant poses 1↔2 as a breathing loop
+([package](art-direction/sickhouse-patient-bed/authority.json)).
 
 Residual terrain studies and repeatable material/transition artwork are accepted; global
 terrain suitability and integration remain unfinished. A new terrain scope must name the
@@ -159,7 +161,8 @@ promotions and their runtime visual checkpoints require the applicable authority
 the same session without repeating unchanged approval gates.
 
 - [x] Fit settings within the gameplay viewport and replace retained Stream crossing placeholders.
-- [ ] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
+- [x] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
+- [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved breathing dormant poses.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

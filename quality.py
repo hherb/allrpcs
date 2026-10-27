@@ -54,6 +54,9 @@ DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
 PLAYER_ASR_REVISION = 'ad10fcd34eab0520492591bef78c1fea1ea62572'
 EDITOR_REVISION = 'a55e9e8dae73e9ec65472cb6a631a350d2ef1aba'
+# The accepted building/gameplay-view slices fence the whole tree against their base, so their
+# validator replays at its accepted revision instead of in live smoke (#471).
+VIEW_REPAIRS_REVISION = '5c99c7c42668a3cf565d996a94387772659c142a'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
 
@@ -393,6 +396,7 @@ def resume_prefix(prior, directory, art, product, metadata, finish_interior=Fals
     plan += [('boundary-hand-tool-current', [sys.executable, 'scripts/validate-hand-tool-runtime.py', '--reviewed'], HAND_TOOL_REVISION),
              ('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], HEALER_REVISION),
              ('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], FOLIAGE_REVISION),
+             ('boundary-view-repairs', [sys.executable, 'scripts/validate-gameplay-view-repairs.py'], VIEW_REPAIRS_REVISION),
              ('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
     count = 19 if finish_interior else 9
     plan += [(f'product-{index}', ['sh', '-c', command], None) for index, command in enumerate(product[:count], 1)]
@@ -480,6 +484,8 @@ def main(resume_smoke=False, finish_interior=False):
                 run.stage('boundary-healer-current', [sys.executable, 'scripts/validate-healer-footstep-runtime.py', '--reviewed'], tree, env, HEALER_REVISION)
             with snapshot(FOLIAGE_REVISION, editor=True) as (tree, env):
                 run.stage('boundary-foliage-current', [sys.executable, 'scripts/validate-foliage-runtime.py', '--reviewed'], tree, env, FOLIAGE_REVISION)
+            with snapshot(VIEW_REPAIRS_REVISION) as (tree, env):
+                run.stage('boundary-view-repairs', [sys.executable, 'scripts/validate-gameplay-view-repairs.py'], tree, env, VIEW_REPAIRS_REVISION)
             run.stage('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'])
         else:
             print(f'REUSE: {len(reused)} completed stages with unchanged commands and verified logs', flush=True)
@@ -1489,6 +1495,8 @@ class ContractTests(unittest.TestCase):
                           ('foliage', FOLIAGE_REVISION, 'scripts/validate-foliage-runtime.py')]
             plan += [('boundary-' + name + '-current', [sys.executable, script, '--reviewed'], rev)
                      for name, rev, script in boundaries]
+            plan += [('boundary-view-repairs', [sys.executable, 'scripts/validate-gameplay-view-repairs.py'],
+                      VIEW_REPAIRS_REVISION)]
             plan += [('current-art-imports', [sys.executable, 'scripts/validate-direction-a-import-proof.py'], None)]
             plan += [(f'product-{i}', ['sh', '-c', cmd], None) for i, cmd in enumerate(product[:9], 1)]
             plan += [('boundary-' + name + '-resume', [sys.executable, script, '--reviewed'], rev)
