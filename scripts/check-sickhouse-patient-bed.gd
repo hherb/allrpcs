@@ -12,6 +12,8 @@ const PATIENT_POSITION := Vector2(2640, 1390)
 
 
 func _initialize() -> void:
+	# A GDScript error ends the coroutine without quitting; fail instead of hanging the smoke run.
+	create_timer(120).timeout.connect(_fail.bind("Sickhouse bed check did not finish within 120 seconds"))
 	call_deferred("_check")
 
 
@@ -44,6 +46,10 @@ func _check() -> void:
 	if breathing.get_animation("breathing").loop_mode != Animation.LOOP_LINEAR:
 		_fail("The patient breathing loop does not repeat")
 		return
+	# The frames above ran the game's own processing; the loop must have advanced by itself.
+	if breathing.current_animation_position <= 0.0:
+		_fail("The patient breathing loop does not advance during ordinary play")
+		return
 	# Play forward as the game does: pose 1, the registered pose 2, then back to pose 1 after
 	# the loop wraps. (Seeking backwards over a discrete key would not re-apply it.)
 	breathing.seek(0.0, true)
@@ -54,6 +60,9 @@ func _check() -> void:
 			_fail("Breathing pose %d shows the wrong texture or registration" % (pose + 1))
 			return
 	# The bed and patient appear only inside the cut-away sickhouse, like the old placeholders.
+	if not bed.is_visible_in_tree() or not patient.is_visible_in_tree():
+		_fail("The sickhouse bed or patient is hidden outright")
+		return
 	for visit in [[Vector2(2640, 1450), 1.0], [Vector2(3000, 1700), 0.0]]:
 		seeker.global_position = visit[0]
 		await process_frame
