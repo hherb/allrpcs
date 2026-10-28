@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "timezone": "Australia/Sydney",
+  "base_commit": "fcf538b4",
+  "owner_statements": [
+    {
+      "question": "PR #473 merged at 08f036bf before its review fixes; once the gate passes on the cherry-picked fixes, how should the ledger treat the sickhouse bed/patient slice, and what comes next?",
+      "reply": "Close it, more placeholders"
+    },
+    {
+      "question": "Which remaining greybox placeholders should the next slice replace? (All candidate art is owner-approved since 2026-10-04 but not yet installed at runtime.)",
+      "reply": "Healer + Sage characters"
+    }
+  ],
+  "scope": "Replace the Healer greybox body (Healer/Body and Healer/Satchel Polygon2D) and the Village Sage greybox body (SageHearingPosition/Body Polygon2D) in Main with the owner-approved characters-batch artwork: healer-* and orin-* directional idle, walk and inspect frames, copied byte-unchanged into game/art/runtime/characters/, wired the way the Seeker's runtime walk animations are.",
+  "boundary": "Healer and Sage presentation, their runtime art copies and dependent checks/verification/documentation/publication only. Character positions, movement, navigation, collision, interaction ranges, dialogue, party/command behaviour and saves stay unchanged. Walking must follow art-direction/reference-gait-model.md. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

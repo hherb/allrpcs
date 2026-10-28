@@ -140,7 +140,8 @@ fits existing exteriors and cutaway paint to five opening-region sites, preservi
 their physical and interaction owners. The owner accepted the runtime group on 2026-10-27
 and requested the sickhouse bed/patient next: a new Codex-generated bed/pallet plus Mira's
 approved dormant poses 1↔2 as a breathing loop
-([package](art-direction/sickhouse-patient-bed/README.md)).
+([package](art-direction/sickhouse-patient-bed/README.md)), closed on 2026-10-28. Next, the owner
+requested the Healer and Village Sage (Orin) characters ([authority](art-direction/healer-sage-runtime/authority.json)).
 
 Residual terrain studies and repeatable material/transition artwork are accepted; global
 terrain suitability and integration remain unfinished. A new terrain scope must name the
@@ -162,7 +163,8 @@ the same session without repeating unchanged approval gates.
 
 - [x] Fit settings within the gameplay viewport and replace retained Stream crossing placeholders.
 - [x] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
-- [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved breathing dormant poses.
+- [x] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved breathing dormant poses.
+- [ ] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

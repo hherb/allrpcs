@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "status": "implementation_verified",
+  "product_revision": "06fa1f30ac07664bea1d4581ea1ee5eca9c6e6d9",
+  "inputs": {
+    "game/Main.tscn": "6efb915de48872a276550ac8fd578aa97ff29521ee2aaf195c2c104673bd23c7",
+    "game/art/runtime/objects/sickbed-01.png": "5f4f6ce414c44af8d29fdf3188299e7973f40170e90c849b010b00b67fc1b858",
+    "game/art/runtime/characters/mira/dormant-01.png": "03f5b0532efdb92fd9d9c162385023fc01791c3a6fa5f4d6c6571b2af841d8ff",
+    "game/art/runtime/characters/mira/dormant-02.png": "7ebfddccf64da30adf3dc1c4e310b07ca3c6def7e6204dcb630a6b3b241eadab",
+    "scripts/check-sickhouse-patient-bed.gd": "311bfa0c39b656282e778b5c20b26b39264751722a60d150eaa314c887631439",
+    "scripts/validate-sickhouse-patient-bed.py": "2feb29d7e84bc55ffe5bf00cc5c8df367bc78178e5069d91e353090c3b1d8068",
+    "scripts/capture-sickhouse-patient-bed.gd": "ed23b45373ec5dd318541ba2f74ee09e49346db205e6aaeb09f00bba7c9c0934",
+    "scripts/smoke-godot.sh": "4658cd44fda476db3d45b1e2075c473ebb412e24740e116593b0ff8c1df58218",
+    "quality.py": "eac862add2023297ed63fb5f2ebdef8049f0d1cd5992b18c0c3dac588a2ec606"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "solution_tests": 6181,
+    "smoke": "371 passed, 3 existing quarantines",
+    "new_stage": "boundary-view-repairs replays validate-gameplay-view-repairs.py unchanged at 5c99c7c4 (#471)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "PR #473 merged at 08f036bf (gate passed there); this run is on the cherry-picked review fixes."
+  },
+  "focused_checks": {
+    "check-sickhouse-patient-bed.gd": "passed; fails against the pre-slice Main.tscn",
+    "validate-sickhouse-patient-bed.py": "passed; tampered runtime pose rejected",
+    "check-building-gameplay.gd": "passed unchanged",
+    "runtime-terrain-ground": "passed unchanged",
+    "quality.py --self-test": "passed",
+    "capture-sickhouse-patient-bed.gd": "passed; captures byte-identical after the review fixes",
+    "smoke evidence fence": "passed; building/view-repair packages unchanged from 5c99c7c4"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "Captures are fixed camera views with the loop paused per pose; no live owner playthrough is claimed.",
+    "Other greybox object/actor markers are outside this slice."
+  ]
+}

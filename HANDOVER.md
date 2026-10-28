@@ -7,15 +7,14 @@ and terminal acceptance take precedence. Preserve every persistent closure.
 ## Current checkpoint
 
 The owner accepted the five-site [building group](art-direction/buildings-gameplay-integration/README.md)
-and the two screenshot repairs (both closed). The current
-[sickhouse bed/patient slice](art-direction/sickhouse-patient-bed/README.md) installs a new
-owner-picked Codex `image_gen` bed (sickbed-01) and Mira's approved dormant poses 1↔2 as a
-breathing loop, on PR #473. Its native check, validator and captures pass; the PR review fixes
-(check watchdog, capture failure exit, import-settings check) are in. The full root gate result
-goes into its `verification.json`. #471 is addressed on PR #473 (closes on merge): the accepted
-building/view-repair whole-tree validator replays in `quality.py` at `5c99c7c4`, and live smoke
-fences only those packages' accepted files.
-Other greybox object/actor markers remain; replacing them needs a new owner request.
+and closed the [sickhouse bed/patient slice](art-direction/sickhouse-patient-bed/README.md)
+(sickbed-01 plus Mira's breathing dormant poses). PR #473 merged at `08f036bf` before its review
+fixes; those, with the full gate on the reviewed head (219 stages, 0 retries), land on their own
+PR. #471 is addressed there. The owner then requested the Healer and Village Sage (Orin)
+characters next ([authority](art-direction/healer-sage-runtime/authority.json)): approved
+characters-batch idle/walk/inspect frames exist for both but are not yet in `game/art/runtime/`.
+Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,
+exit markers) remain; replacing them needs a new owner request.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -41,33 +40,31 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**sickhouse-patient-bed — Replace the sickhouse bed/patient placeholder with artwork** (in_progress).
+**healer-sage-runtime — Replace the Healer and Sage greybox bodies with approved character art** (ready).
 
-Roadmap item: - [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved
-breathing dormant poses.
+Roadmap item: - [ ] Replace the Healer and Village Sage greybox bodies with their approved
+characters-batch artwork.
 
-Missing deliverable: The owner-approved sickbed-01 module and the runtime bed plus Mira dormant
-poses 1/2 breathing loop are installed with their native check, validator and captures, and the PR
-#473 review fixes are applied. Missing: the full root gate on the reviewed branch head recorded in
-verification.json, and its publication on PR #473.
+Missing deliverable: Runtime copies of the approved healer-* and orin-* idle/walk/inspect frames,
+their animation wiring on the Healer and SageHearingPosition nodes in Main, a native check, a
+validator binding runtime bytes to the characters-batch acceptance, and captures.
 
-Do not regenerate or re-present the bed; sickbed-01 is owner-approved. Keep the installed bed and
-unchanged Mira dormant exports under OpeningRegionFirstPatientSceneSource without moving that node
-or changing interaction ranges, collision, navigation, clue/disease state or saves; cutaway
-visibility stays via SelfModulate. The native proof is scripts/check-sickhouse-patient-bed.gd
-(check-building-gameplay.gd is unchanged). Run the full gate on the branch head, record it in
-verification.json and publish under standing authority; no merge or release.
+Copy approved characters-batch exports byte-unchanged into game/art/runtime/characters/ and wire
+them like the Seeker (walk-animations.tres, AnimatedSprite2D), following art-direction/reference-
+gait-model.md. Remove only the Healer Body/Satchel and Sage Body Polygon2D placeholders; keep
+positions, movement, navigation, collision, interaction ranges, dialogue, party/command behaviour
+and saves unchanged. Add a native check to scripts/smoke-godot.sh, a byte-identity validator and
+captures, then run the affected checks and the full gate.
 
-Done when: The bed module is owner-approved, the sickhouse cutaway shows the bed and breathing Mira
-in ordinary Main, native and full quality checks pass with retained evidence, and the branch is
-committed/pushed with a PR.
+Done when: Healer and Sage show their approved directional art in ordinary Main, native and full
+quality checks pass with retained evidence, and the branch is committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/sickhouse-patient-bed/README.md`
-- `art-direction/sickhouse-patient-bed/verification.json`
+- `art-direction/healer-sage-runtime/README.md`
+- `art-direction/healer-sage-runtime/verification.json`
 
-Boundary: Sickhouse bed/patient presentation, the one new bed module and dependent
+Boundary: Healer and Sage presentation, their runtime art copies and dependent
 verification/documentation/publication only. No other placeholder replacement, merge or release.
 <!-- active-slice:end -->
 
