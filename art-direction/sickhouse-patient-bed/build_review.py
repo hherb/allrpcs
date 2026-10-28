@@ -29,7 +29,7 @@ FONT, SMALL = HELPERS.FONT, HELPERS.SMALL
 NAMES = ['Linen pallet on timber frame', 'Rope-strung cot', 'Kerbed straw pallet with herb sachet']
 # Each candidate occupies one column of the 1945x808 sheet; the gaps are fully transparent.
 CELLS = [(0, 0, 655, 808), (655, 0, 1287, 808), (1287, 0, 1945, 808)]
-# Runtime width (approved with sickbed-01): Mira's sleeping body (about 131x107 px at scale 1) fits on the
+# Runtime width (approved with sickbed-01; inventory.json's "provisional" predates that): Mira's sleeping body (about 131x107 px at scale 1) fits on the
 # mattress with a margin, and the bed stays inside the 320x192 px sickhouse room.
 EXPORT_WIDTH = 200
 MIRA = [REPO / f'art-direction/characters-batch/exports/mira-dormant-0{n}.png' for n in (1, 2)]
@@ -74,7 +74,8 @@ def floor_tile(size):
 
 
 def scene(bed, pose):
-    """Compose one bed with Mira placed on it at PATIENT_ON_BED, both at runtime scale, on the floor."""
+    """Compose one bed with Mira offset from the room centre by PATIENT_ON_BED (plus POSE2_OFFSET
+    for pose 2), both at runtime scale, on the floor."""
     room = floor_tile((320, 192))
     room.alpha_composite(bed, ((320 - bed.width) // 2, (192 - bed.height) // 2))
     mira = Image.open(MIRA[pose]).convert('RGBA')

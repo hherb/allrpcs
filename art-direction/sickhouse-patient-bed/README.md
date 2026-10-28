@@ -14,7 +14,8 @@ approved dormant poses 1↔2 as a breathing loop. The four replies are in
 scene, the woodland tree board and Mira's dormant pose 1. The sheet is kept unchanged in
 `sources/`. [build_review.py](build_review.py) reuses the structures-batch helpers to separate
 the three candidates, write editable 2x OpenRaster masters and 200 px wide exports, and build
-the review board. The board's lower row is the game scale enlarged 1.5x (its caption says 2x). The owner picked **sickbed-01 (linen pallet)**. That pick is bound by hash in
+the review board. The board's lower rows are the game scale enlarged 1.5x (its caption says 2x).
+The owner picked **sickbed-01 (linen pallet)**. That pick is bound by hash in
 [owner-acceptance.json](owner-acceptance.json); sickbed-02 and sickbed-03 stay as alternatives.
 
 ## Runtime
@@ -47,5 +48,6 @@ Issue #471: the whole-tree fence `validate-gameplay-view-repairs.py` of the acce
 and repair slices no longer runs in live smoke. `quality.py` replays it unchanged at its accepted
 revision `5c99c7c4` (stage `boundary-view-repairs`). Live smoke instead requires those two
 packages' accepted files to be unchanged from `5c99c7c4`. Results are in
-[verification.json](verification.json): the full gate passed on the reviewed head `06fa1f30`
-(PR #473 merged at `08f036bf` before the review fixes, which land separately). Closed 2026-10-28.
+[verification.json](verification.json): the full gate passed on the review-fix head. PR #473
+(head `08f036bf`) merged as `fcf538b4` before its gate was recorded; the review fixes land
+separately. Closed 2026-10-28.

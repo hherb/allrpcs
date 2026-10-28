@@ -10,6 +10,8 @@ const SEEKER_AWAY := Vector2(3000, 1700)
 
 
 func _initialize() -> void:
+	# A GDScript error ends the coroutine without quitting; fail instead of hanging.
+	create_timer(120).timeout.connect(_fail.bind("Sickhouse capture did not finish within 120 seconds"))
 	call_deferred("_capture")
 
 
@@ -44,6 +46,9 @@ func _capture() -> void:
 		"res://art/runtime/objects/sickbed-01.png", "res://art/runtime/characters/mira/dormant-01.png",
 		"res://art/runtime/characters/mira/dormant-02.png", "res://../scripts/capture-sickhouse-patient-bed.gd"]:
 		record.inputs[path] = FileAccess.get_sha256(path)
+		if record.inputs[path].is_empty():
+			_fail("Sickhouse capture input could not be hashed: " + path)
+			return
 	seeker.global_position = SEEKER_AWAY
 	seeker.visible = false
 	if not await _save(viewport, output, "sickhouse-exterior", record):
@@ -61,7 +66,10 @@ func _capture() -> void:
 	if file == null:
 		_fail("Sickhouse capture evidence could not be written")
 		return
-	file.store_string(JSON.stringify(record, "\t") + "\n")
+	if not file.store_string(JSON.stringify(record, "\t") + "\n"):
+		_fail("Sickhouse capture evidence write failed: " + error_string(file.get_error()))
+		return
+	file.close()
 	print("PASS: Main sickhouse captures: closed exterior and cutaway with both breathing poses")
 	quit()
 

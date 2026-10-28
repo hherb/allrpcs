@@ -17,9 +17,9 @@ RUNTIME = {
     'game/art/runtime/characters/mira/dormant-01.png': ('exports/mira-dormant-01.png', CHARACTERS),
     'game/art/runtime/characters/mira/dormant-02.png': ('exports/mira-dormant-02.png', CHARACTERS),
 }
-# Import settings that change what renders: lossless, no mipmaps, straight alpha with border fix.
+# Import settings that change what renders: lossless, full size, no mipmaps, straight alpha with border fix.
 IMPORT_SETTINGS = ('compress/mode=0', 'mipmaps/generate=false', 'process/fix_alpha_border=true',
-                   'process/premult_alpha=false')
+                   'process/premult_alpha=false', 'process/size_limit=0')
 
 
 def require(condition, message):
@@ -41,7 +41,9 @@ def approved_hashes():
     require('export' in bindings, 'Bed acceptance no longer binds an export')
     for name, binding in bindings.items():
         require(sha(PACKAGE / binding['path']) == binding['sha256'], 'Approved bed file changed: ' + name)
-    characters = json.loads((CHARACTERS / 'owner-acceptance.json').read_text()).get('active_assets', {})
+    characters = json.loads((CHARACTERS / 'owner-acceptance.json').read_text())
+    require('active_assets' in characters, 'Characters acceptance record has no active_assets')
+    characters = characters['active_assets']
     hashes = {bindings['export']['path']: bindings['export']['sha256']}
     for key in ('mira-dormant-01', 'mira-dormant-02'):
         require(key in characters, 'Mira dormant pose is no longer an active approved asset: ' + key)

@@ -21,8 +21,10 @@ python3 "$script_dir/check-shipping-policy.py"
 python3 "$script_dir/validate-sickhouse-patient-bed.py"
 # The accepted building/view-repair evidence stays as accepted; quality.py replays their whole-tree
 # validator at this revision (VIEW_REPAIRS_REVISION, #471), so only their own files are fenced here.
-git -C "$repository_root" diff --exit-code --stat --diff-filter=DMT 5c99c7c42668a3cf565d996a94387772659c142a -- \
-    art-direction/gameplay-view-repairs art-direction/buildings-gameplay-integration
+# Renames count as deletions; added files (later owner records) are allowed.
+git -C "$repository_root" diff --no-renames --exit-code --stat --diff-filter=DMT 5c99c7c42668a3cf565d996a94387772659c142a -- \
+    art-direction/gameplay-view-repairs art-direction/buildings-gameplay-integration ||
+    { echo "FAIL: accepted building/view-repair evidence changed since 5c99c7c4"; exit 1; }
 run_check - godot --headless --editor --path "$repository_root/game" \
     --script "$script_dir/check-shipping-scene.gd"
 # Prove the wrapper itself (pass, hang, throw and async-throw probes) before trusting any check

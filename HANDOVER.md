@@ -8,9 +8,9 @@ and terminal acceptance take precedence. Preserve every persistent closure.
 
 The owner accepted the five-site [building group](art-direction/buildings-gameplay-integration/README.md)
 and closed the [sickhouse bed/patient slice](art-direction/sickhouse-patient-bed/README.md)
-(sickbed-01 plus Mira's breathing dormant poses). PR #473 merged at `08f036bf` before its review
-fixes; those, with the full gate on the reviewed head (219 stages, 0 retries), land on their own
-PR. #471 is addressed there. The owner then requested the Healer and Village Sage (Orin)
+(sickbed-01 plus Mira's breathing dormant poses). PR #473 (head `08f036bf`) merged as `fcf538b4`
+before its review fixes and gate; those, with the full gate on the review-fix head, land on their
+own PR. #471 is addressed there. The owner then requested the Healer and Village Sage (Orin)
 characters next ([authority](art-direction/healer-sage-runtime/authority.json)): approved
 characters-batch idle/walk/inspect frames exist for both but are not yet in `game/art/runtime/`.
 Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,

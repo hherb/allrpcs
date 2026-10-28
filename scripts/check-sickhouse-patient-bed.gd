@@ -59,10 +59,10 @@ func _check() -> void:
 		if patient.texture.resource_path != POSE_TEXTURES[pose] or patient.offset != POSE_OFFSETS[pose]:
 			_fail("Breathing pose %d shows the wrong texture or registration" % (pose + 1))
 			return
-	# The bed and patient appear only inside the cut-away sickhouse, like the old placeholders.
 	if not bed.is_visible_in_tree() or not patient.is_visible_in_tree():
 		_fail("The sickhouse bed or patient is hidden outright")
 		return
+	# The bed and patient appear only inside the cut-away sickhouse, like the old placeholders.
 	for visit in [[Vector2(2640, 1450), 1.0], [Vector2(3000, 1700), 0.0]]:
 		seeker.global_position = visit[0]
 		await process_frame
