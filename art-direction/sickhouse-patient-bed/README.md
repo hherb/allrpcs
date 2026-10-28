@@ -48,6 +48,9 @@ Issue #471: the whole-tree fence `validate-gameplay-view-repairs.py` of the acce
 and repair slices no longer runs in live smoke. `quality.py` replays it unchanged at its accepted
 revision `5c99c7c4` (stage `boundary-view-repairs`). Live smoke instead requires those two
 packages' accepted files to be unchanged from `5c99c7c4`. Results are in
-[verification.json](verification.json): the full gate passed on the review-fix head. PR #473
-(head `08f036bf`) merged as `fcf538b4` before its gate was recorded; the review fixes land
-separately. Closed 2026-10-28.
+[verification.json](verification.json): the full gate passed on the review-fix head `06fa1f30`.
+PR #473 (head `08f036bf`) merged as `fcf538b4` before its gate was recorded; the review fixes land
+separately. Closed 2026-10-28. The PR #475 review fixes (rename-proof smoke fence, checked
+capture write, `size_limit` import check) passed the full gate again on `3ee69352`; see
+[review-fixes-verification.json](review-fixes-verification.json), which also corrects the merge
+note in the unchanged closure record.
