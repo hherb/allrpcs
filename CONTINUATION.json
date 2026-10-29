@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1172,6 +1172,20 @@
           "sha256": "d08abf92235b11c9b92f5952dbb0e558fd7ae765a13f106ebb5a80419527f8d9"
         }
       ]
+    },
+    {
+      "id": "sickhouse-patient-bed",
+      "reason": "The owner merged PR #473 (sickbed-01 plus Mira dormant poses 1/2 breathing loop) on 2026-10-27 and on 2026-10-28 chose to close the slice after its review fixes passed the full root gate (219 stages, 0 retries). No other placeholder replacement is inferred.",
+      "evidence": [
+        {
+          "path": "art-direction/sickhouse-patient-bed/owner-acceptance.json",
+          "sha256": "6c61df6e1249727bd6d78cb767bfddd44fd14c8d6e1d0eddb4b5ccd6d7f4ebb4"
+        },
+        {
+          "path": "art-direction/sickhouse-patient-bed/verification.json",
+          "sha256": "eb88f5e3f737cbca02baf68962129396b5a63b616ed3397d74993f11e27489a5"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1638,6 +1652,20 @@
           "sha256": "d08abf92235b11c9b92f5952dbb0e558fd7ae765a13f106ebb5a80419527f8d9"
         }
       ]
+    },
+    {
+      "id": "sickhouse-patient-bed",
+      "reason": "The sickhouse bed/patient is installed and closed. Do not regenerate the bed or audit the unchanged sickhouse presentation; Healer and Sage characters follow as their own slice.",
+      "evidence": [
+        {
+          "path": "art-direction/sickhouse-patient-bed/owner-acceptance.json",
+          "sha256": "6c61df6e1249727bd6d78cb767bfddd44fd14c8d6e1d0eddb4b5ccd6d7f4ebb4"
+        },
+        {
+          "path": "art-direction/sickhouse-patient-bed/verification.json",
+          "sha256": "eb88f5e3f737cbca02baf68962129396b5a63b616ed3397d74993f11e27489a5"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1900,24 +1928,36 @@
           "sha256": "0ff5ba15f2e78edd167092279704264e968778039ebc9fe27bded2378aaa5208"
         }
       ]
+    },
+    {
+      "id": "owner-healer-sage-runtime-2026-10-28",
+      "owner_statement": "Close it, more placeholders. Healer + Sage characters.",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/healer-sage-runtime/authority.json",
+          "sha256": "aecfe70c35bfd4a9952516b3d8c4c21edf6574e238f141673a5d7fc409d6a090"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "sickhouse-patient-bed",
-    "title": "Replace the sickhouse bed/patient placeholder with artwork",
-    "status": "in_progress",
-    "workstream": "sickhouse-patient-bed",
-    "reopening_id": "owner-sickhouse-patient-bed-2026-10-27",
-    "authority_status": "owner_requested_sickhouse_patient_bed_2026-10-27",
-    "roadmap_item": "- [ ] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved breathing dormant poses.",
-    "missing_deliverable": "One new Codex image_gen bed/pallet module (prompt, source, 2x ORA master, export, review board) and runtime integration of it plus Mira dormant poses 1/2 as a breathing loop under the existing sickhouse cutaway.",
-    "instructions": "Generate and package the bed in the structures-batch style; present it to the owner. Install bed and unchanged Mira dormant exports under OpeningRegionFirstPatientSceneSource without moving that node or changing interaction ranges, collision, navigation, clue/disease state or saves. Keep cutaway visibility via SelfModulate. Update the building native check, capture the cutaway and run affected checks plus the full gate.",
-    "completion_condition": "The bed module is owner-approved, the sickhouse cutaway shows the bed and breathing Mira in ordinary Main, native and full quality checks pass with retained evidence, and the branch is committed/pushed with a PR.",
+    "id": "healer-sage-runtime",
+    "title": "Replace the Healer and Sage greybox bodies with approved character art",
+    "status": "ready",
+    "workstream": "healer-sage-runtime",
+    "reopening_id": "owner-healer-sage-runtime-2026-10-28",
+    "authority_status": "owner_requested_healer_sage_runtime_2026-10-28",
+    "roadmap_item": "- [ ] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.",
+    "missing_deliverable": "Runtime copies of the approved healer-* and orin-* idle/walk/inspect frames, their animation wiring on the Healer and SageHearingPosition nodes in Main, a native check, a validator binding runtime bytes to the characters-batch acceptance, and captures.",
+    "instructions": "Copy approved characters-batch exports byte-unchanged into game/art/runtime/characters/ and wire them like the Seeker (walk-animations.tres, AnimatedSprite2D), following art-direction/reference-gait-model.md. Remove only the Healer Body/Satchel and Sage Body Polygon2D placeholders; keep positions, movement, navigation, collision, interaction ranges, dialogue, party/command behaviour and saves unchanged. Add a native check to scripts/smoke-godot.sh, a byte-identity validator and captures, then run the affected checks and the full gate.",
+    "completion_condition": "Healer and Sage show their approved directional art in ordinary Main, native and full quality checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
-      "art-direction/sickhouse-patient-bed/README.md",
-      "art-direction/sickhouse-patient-bed/verification.json"
+      "art-direction/healer-sage-runtime/README.md",
+      "art-direction/healer-sage-runtime/verification.json"
     ],
-    "boundary": "Sickhouse bed/patient presentation, the one new bed module and dependent verification/documentation/publication only. No other placeholder replacement, merge or release."
+    "boundary": "Healer and Sage presentation, their runtime art copies and dependent verification/documentation/publication only. No other placeholder replacement, merge or release."
   },
   "deferred_slices": [
     {

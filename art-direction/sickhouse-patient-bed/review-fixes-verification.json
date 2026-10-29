@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "status": "implementation_verified",
+  "product_revision": "3ee6935271700d3e1cf6fe20f722ea54a9f20604",
+  "amends": {
+    "path": "verification.json",
+    "sha256": "eb88f5e3f737cbca02baf68962129396b5a63b616ed3397d74993f11e27489a5",
+    "correction": "Its note \"PR #473 merged at 08f036bf (gate passed there)\" is wrong: 08f036bf was the PR head, the merge commit is fcf538b4, and no gate was recorded before the merge. That record stays unchanged as closure evidence."
+  },
+  "inputs": {
+    "game/Main.tscn": "6efb915de48872a276550ac8fd578aa97ff29521ee2aaf195c2c104673bd23c7",
+    "game/art/runtime/objects/sickbed-01.png": "5f4f6ce414c44af8d29fdf3188299e7973f40170e90c849b010b00b67fc1b858",
+    "game/art/runtime/characters/mira/dormant-01.png": "03f5b0532efdb92fd9d9c162385023fc01791c3a6fa5f4d6c6571b2af841d8ff",
+    "game/art/runtime/characters/mira/dormant-02.png": "7ebfddccf64da30adf3dc1c4e310b07ca3c6def7e6204dcb630a6b3b241eadab",
+    "scripts/check-sickhouse-patient-bed.gd": "c354fe6bb3dd7d95378db0e0f31189270be1345c71e53c9be58013ad8b33d4ae",
+    "scripts/validate-sickhouse-patient-bed.py": "9f28528fd798759b8e0a93536ee9f22e0ee47917ce2496ac66734a7bbd70afe1",
+    "scripts/capture-sickhouse-patient-bed.gd": "2a15638e38f06e31583643865614733e66a585822c1157afca7e12affb520e30",
+    "scripts/smoke-godot.sh": "80794ccc763b1fe656b3a68644e22bbc6cd2f12fd0b70a0fe16356c623a6852a",
+    "quality.py": "542beffa6984270b8e3f8957a75d222067d9e3b65ed6e84317b7c206c60b8289"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "solution_tests": 6181,
+    "smoke": "371 passed, 3 existing quarantines",
+    "new_stage": "boundary-view-repairs replays validate-gameplay-view-repairs.py unchanged at 5c99c7c4 (#471)",
+    "summary": "checks/review-fixes-quality-summary.json.gz",
+    "note": "PR #475 review fixes (3ee69352) on top of the gate recorded in verification.json."
+  },
+  "focused_checks": {
+    "check-sickhouse-patient-bed.gd": "passed; fails against the pre-slice Main.tscn",
+    "validate-sickhouse-patient-bed.py": "passed; tampered runtime pose and non-zero size_limit rejected",
+    "check-building-gameplay.gd": "passed unchanged",
+    "runtime-terrain-ground": "passed unchanged",
+    "quality.py --self-test": "passed",
+    "capture-sickhouse-patient-bed.gd": "passed; captures byte-identical after the review fixes",
+    "smoke evidence fence": "passed; building/view-repair packages unchanged from 5c99c7c4; a committed rename is rejected"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "Captures are fixed camera views with the loop paused per pose; no live owner playthrough is claimed.",
+    "Other greybox object/actor markers are outside this slice."
+  ]
+}

@@ -1,7 +1,8 @@
 extends SceneTree
 
 # Captures the ordinary Main sickhouse: closed exterior, then the cutaway with each breathing pose.
-# No replacement textures or scene packing; only UI and autonomous motion are suppressed.
+# No replacement textures or scene packing; only UI, autonomous motion and the follow camera are
+# suppressed, and the Seeker and breathing pose are placed for each shot.
 const OUTPUT := "../art-direction/sickhouse-patient-bed"
 const CENTER := Vector2(2640, 1350)
 const SEEKER_INSIDE := Vector2(2528, 1410)
@@ -9,6 +10,8 @@ const SEEKER_AWAY := Vector2(3000, 1700)
 
 
 func _initialize() -> void:
+	# A GDScript error ends the coroutine without quitting; fail instead of hanging.
+	create_timer(120).timeout.connect(_fail.bind("Sickhouse capture did not finish within 120 seconds"))
 	call_deferred("_capture")
 
 
@@ -43,9 +46,13 @@ func _capture() -> void:
 		"res://art/runtime/objects/sickbed-01.png", "res://art/runtime/characters/mira/dormant-01.png",
 		"res://art/runtime/characters/mira/dormant-02.png", "res://../scripts/capture-sickhouse-patient-bed.gd"]:
 		record.inputs[path] = FileAccess.get_sha256(path)
+		if record.inputs[path].is_empty():
+			_fail("Sickhouse capture input could not be hashed: " + path)
+			return
 	seeker.global_position = SEEKER_AWAY
 	seeker.visible = false
-	await _save(viewport, output, "sickhouse-exterior", record)
+	if not await _save(viewport, output, "sickhouse-exterior", record):
+		return
 	seeker.global_position = SEEKER_INSIDE
 	seeker.visible = true
 	# Hold each pose still so the capture is deterministic.
@@ -53,14 +60,21 @@ func _capture() -> void:
 		breathing.seek(0.0, true)
 		breathing.advance(pose[0])
 		breathing.pause()
-		await _save(viewport, output, "sickhouse-cutaway-" + pose[1], record)
+		if not await _save(viewport, output, "sickhouse-cutaway-" + pose[1], record):
+			return
 	var file := FileAccess.open(output.path_join("capture-evidence.json"), FileAccess.WRITE)
-	file.store_string(JSON.stringify(record, "\t") + "\n")
+	if file == null:
+		_fail("Sickhouse capture evidence could not be written")
+		return
+	if not file.store_string(JSON.stringify(record, "\t") + "\n"):
+		_fail("Sickhouse capture evidence write failed: " + error_string(file.get_error()))
+		return
+	file.close()
 	print("PASS: Main sickhouse captures: closed exterior and cutaway with both breathing poses")
 	quit()
 
 
-func _save(viewport: SubViewport, output: String, name: String, record: Dictionary) -> void:
+func _save(viewport: SubViewport, output: String, name: String, record: Dictionary) -> bool:
 	for _frame in range(8):
 		await process_frame
 	# UI controllers can show themselves after readiness; suppress only in this capture.
@@ -70,8 +84,14 @@ func _save(viewport: SubViewport, output: String, name: String, record: Dictiona
 	var picture := viewport.get_texture().get_image()
 	var relative := "captures/" + name + ".png"
 	if picture == null or picture.save_png(output.path_join(relative)) != OK:
-		push_error("Sickhouse capture failed: " + relative)
-		quit(1)
-		return
+		_fail("Sickhouse capture failed: " + relative)
+		return false
 	record.captures[relative] = FileAccess.get_sha256(output.path_join(relative))
 	print("Captured ", relative)
+	return true
+
+
+func _fail(message: String) -> void:
+	push_error(message)
+	print("FAIL: " + message)
+	quit(1)

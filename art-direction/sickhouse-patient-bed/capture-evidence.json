@@ -6,7 +6,7 @@
 	},
 	"engine": "4.6.3-stable (official)",
 	"inputs": {
-		"res://../scripts/capture-sickhouse-patient-bed.gd": "87d71dca56d3c11af4d9f1ae10b07cf05f823840dde8bc7cb7cd91aa489f4a79",
+		"res://../scripts/capture-sickhouse-patient-bed.gd": "2a15638e38f06e31583643865614733e66a585822c1157afca7e12affb520e30",
 		"res://Main.tscn": "6efb915de48872a276550ac8fd578aa97ff29521ee2aaf195c2c104673bd23c7",
 		"res://MapStructuresPresentation.cs": "f77707deec3fb3a367d3b393ec6b54addc2b70c3cb5ffbd756d4604f6e8a86c8",
 		"res://art/runtime/characters/mira/dormant-01.png": "03f5b0532efdb92fd9d9c162385023fc01791c3a6fa5f4d6c6571b2af841d8ff",

@@ -54,8 +54,8 @@ DIALOGUE_REVISION = 'e7b17575479be3f9061979c3269168f956782566'
 DIALOGUE_SPEECH_REVISION = '07bd7a487fa52af992f47481e6b8a3eccad84bb4'
 PLAYER_ASR_REVISION = 'ad10fcd34eab0520492591bef78c1fea1ea62572'
 EDITOR_REVISION = 'a55e9e8dae73e9ec65472cb6a631a350d2ef1aba'
-# The accepted building/gameplay-view slices fence the whole tree against their base, so their
-# validator replays at its accepted revision instead of in live smoke (#471).
+# The accepted building/gameplay-view validator fences the whole tree against its base, so it replays
+# unchanged at its accepted revision instead of in live smoke (#471); smoke fences only the two packages' files.
 VIEW_REPAIRS_REVISION = '5c99c7c42668a3cf565d996a94387772659c142a'
 EDITOR_SHA = '36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca'
 
