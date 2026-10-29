@@ -4,10 +4,11 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Draws the tall figures in the village square in depth order: whichever stands further south
-/// (nearer the viewer) is drawn in front (#479), so the water cask no longer covers the Sage (#477).
-/// Main has no y-sort; enabling it on Main would reorder every child drawn at origin Y (for example
-/// the sickhouse floor would cover the Seeker inside the cutaway), so only these four are ranked.
+/// Draws the Village Sage, water cask, Healer and Seeker in depth order: whichever stands further
+/// south (nearer the viewer) is drawn in front (#479), so the water cask no longer covers the Sage (#477).
+/// Main has no y-sort; enabling it would reorder every z-0 child of Main by its origin Y (the sickhouse
+/// scene source sits at y 1390, so its bed and patient could draw over the Seeker in the cutaway),
+/// so only these four are ranked.
 /// </summary>
 public partial class CharacterDepthOrderPresentation : Node
 {
@@ -41,8 +42,9 @@ public partial class CharacterDepthOrderPresentation : Node
         int[] ranks = DepthDrawOrder.Ranks(footY);
         for (int i = 0; i < items.Length; i++)
         {
-            // Every other world drawing in Main is at z <= 0, so starting at 1 keeps all four above
-            // it, as Healer and Seeker already were by tree order; only their order among each other changes.
+            // Every other world drawing in Main is at z <= 0, so starting at 1 keeps all four above it
+            // (the Sage and cask now also above later z-0 scene props). The Sage's name label is absolute
+            // z 5 in Main.tscn so a character ranked up to 4 never covers it.
             items[i].ZIndex = 1 + ranks[i];
         }
     }

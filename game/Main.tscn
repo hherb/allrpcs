@@ -717,7 +717,8 @@ animation = &"idle_south"
 autoplay = "idle_south"
 
 [node name="Label" type="Label" parent="SageHearingPosition"]
-z_index = 2
+z_index = 5
+z_as_relative = false
 offset_left = -84.0
 offset_top = 24.0
 offset_right = 84.0

@@ -7,7 +7,8 @@ public sealed class DepthDrawOrderTests
     [Fact]
     public void RanksFurtherSouthFeetInFront()
     {
-        // Sage, cask, Healer, Seeker at the village square start positions (cask north of the Sage).
+        // Sage and cask at their authored Y (cask north of the Sage); Healer south of the Sage, Seeker
+        // north of the cask.
         int[] ranks = DepthDrawOrder.Ranks([950.0f, 900.0f, 1010.0f, 880.0f]);
 
         Assert.Equal([2, 1, 3, 0], ranks);

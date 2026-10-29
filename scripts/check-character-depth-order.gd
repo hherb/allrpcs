@@ -57,7 +57,16 @@ func _check() -> void:
 	if seeker.z_index >= sage.z_index:
 		_fail("The Seeker standing north of the Sage still draws over the Sage")
 		return
-	print("PASS: Sage, water cask, Healer and Seeker draw in depth order; the nearer one is in front")
+	# Both characters just south of the Sage, where its name label hangs: the label stays on top.
+	seeker.global_position = Vector2(2240, 1010)
+	healer.global_position = Vector2(2240, 1082)
+	await _settle()
+	var label: Label = sage.get_node("Label")
+	var label_z := label.z_index + (sage.z_index if label.z_as_relative else 0)
+	if label_z <= maxi(seeker.z_index, healer.z_index):
+		_fail("A character south of the Sage draws over the Sage's name label")
+		return
+	print("PASS: Sage, water cask, Healer and Seeker draw in depth order; the nearer one is in front; the Sage's label stays on top")
 	quit(0)
 
 
