@@ -97,7 +97,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         Marker2D sageMarker = GetNode<Marker2D>("../SageHearingPosition");
-        Polygon2D sageBody = GetNode<Polygon2D>("../SageHearingPosition/Body");
+        AnimatedSprite2D sageBody = GetNode<AnimatedSprite2D>("../SageHearingPosition/Figure");
         Label sageLabel = GetNode<Label>("../SageHearingPosition/Label");
         Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         RetainedUnrelatedState unrelated = CaptureUnrelatedState();

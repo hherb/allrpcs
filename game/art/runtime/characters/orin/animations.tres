@@ -1,0 +1,113 @@
+[gd_resource type="SpriteFrames" load_steps=49 format=3]
+
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/idle-01.png" id="1_si1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/idle-02.png" id="2_si2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/idle-01.png" id="3_wi1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/idle-02.png" id="4_wi2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/idle-01.png" id="5_ei1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/idle-02.png" id="6_ei2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/idle-01.png" id="7_ni1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/idle-02.png" id="8_ni2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/inspect-01.png" id="9_si1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/inspect-02.png" id="10_si2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/inspect-01.png" id="11_wi1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/inspect-02.png" id="12_wi2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/inspect-01.png" id="13_ei1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/inspect-02.png" id="14_ei2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/inspect-01.png" id="15_ni1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/inspect-02.png" id="16_ni2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-01.png" id="17_sw1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-02.png" id="18_sw2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-03.png" id="19_sw3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-04.png" id="20_sw4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-05.png" id="21_sw5"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-06.png" id="22_sw6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-07.png" id="23_sw7"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/south/walk-08.png" id="24_sw8"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-01.png" id="25_ww1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-02.png" id="26_ww2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-03.png" id="27_ww3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-04.png" id="28_ww4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-05.png" id="29_ww5"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-06.png" id="30_ww6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-07.png" id="31_ww7"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/west/walk-08.png" id="32_ww8"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-01.png" id="33_ew1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-02.png" id="34_ew2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-03.png" id="35_ew3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-04.png" id="36_ew4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-05.png" id="37_ew5"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-06.png" id="38_ew6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-07.png" id="39_ew7"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/east/walk-08.png" id="40_ew8"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-01.png" id="41_nw1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-02.png" id="42_nw2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-03.png" id="43_nw3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-04.png" id="44_nw4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-05.png" id="45_nw5"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-06.png" id="46_nw6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-07.png" id="47_nw7"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/orin/north/walk-08.png" id="48_nw8"]
+
+[resource]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("1_si1")}, {"duration": 1.0, "texture": ExtResource("2_si2")}],
+"loop": true,
+"name": &"idle_south",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("3_wi1")}, {"duration": 1.0, "texture": ExtResource("4_wi2")}],
+"loop": true,
+"name": &"idle_west",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("5_ei1")}, {"duration": 1.0, "texture": ExtResource("6_ei2")}],
+"loop": true,
+"name": &"idle_east",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("7_ni1")}, {"duration": 1.0, "texture": ExtResource("8_ni2")}],
+"loop": true,
+"name": &"idle_north",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("9_si1")}, {"duration": 1.0, "texture": ExtResource("10_si2")}],
+"loop": false,
+"name": &"interact_south",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("11_wi1")}, {"duration": 1.0, "texture": ExtResource("12_wi2")}],
+"loop": false,
+"name": &"interact_west",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("13_ei1")}, {"duration": 1.0, "texture": ExtResource("14_ei2")}],
+"loop": false,
+"name": &"interact_east",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("15_ni1")}, {"duration": 1.0, "texture": ExtResource("16_ni2")}],
+"loop": false,
+"name": &"interact_north",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("17_sw1")}, {"duration": 1.0, "texture": ExtResource("18_sw2")}, {"duration": 1.0, "texture": ExtResource("19_sw3")}, {"duration": 1.0, "texture": ExtResource("20_sw4")}, {"duration": 1.0, "texture": ExtResource("21_sw5")}, {"duration": 1.0, "texture": ExtResource("22_sw6")}, {"duration": 1.0, "texture": ExtResource("23_sw7")}, {"duration": 1.0, "texture": ExtResource("24_sw8")}],
+"loop": true,
+"name": &"walk_south",
+"speed": 11.111111
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("25_ww1")}, {"duration": 1.0, "texture": ExtResource("26_ww2")}, {"duration": 1.0, "texture": ExtResource("27_ww3")}, {"duration": 1.0, "texture": ExtResource("28_ww4")}, {"duration": 1.0, "texture": ExtResource("29_ww5")}, {"duration": 1.0, "texture": ExtResource("30_ww6")}, {"duration": 1.0, "texture": ExtResource("31_ww7")}, {"duration": 1.0, "texture": ExtResource("32_ww8")}],
+"loop": true,
+"name": &"walk_west",
+"speed": 11.111111
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("33_ew1")}, {"duration": 1.0, "texture": ExtResource("34_ew2")}, {"duration": 1.0, "texture": ExtResource("35_ew3")}, {"duration": 1.0, "texture": ExtResource("36_ew4")}, {"duration": 1.0, "texture": ExtResource("37_ew5")}, {"duration": 1.0, "texture": ExtResource("38_ew6")}, {"duration": 1.0, "texture": ExtResource("39_ew7")}, {"duration": 1.0, "texture": ExtResource("40_ew8")}],
+"loop": true,
+"name": &"walk_east",
+"speed": 11.111111
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("41_nw1")}, {"duration": 1.0, "texture": ExtResource("42_nw2")}, {"duration": 1.0, "texture": ExtResource("43_nw3")}, {"duration": 1.0, "texture": ExtResource("44_nw4")}, {"duration": 1.0, "texture": ExtResource("45_nw5")}, {"duration": 1.0, "texture": ExtResource("46_nw6")}, {"duration": 1.0, "texture": ExtResource("47_nw7")}, {"duration": 1.0, "texture": ExtResource("48_nw8")}],
+"loop": true,
+"name": &"walk_north",
+"speed": 11.111111
+}]
