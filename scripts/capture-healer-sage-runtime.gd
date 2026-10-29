@@ -54,14 +54,29 @@ func _capture() -> void:
 		if record.inputs[path].is_empty():
 			_fail("Healer/Sage capture input could not be hashed: " + path)
 			return
+	# Render every shot before writing any, so a failed run leaves the retained package untouched.
+	var pictures := {}
 	for shot in [["idle_south", 0, "village-square-at-rest"], ["walk_east", 2, "healer-walking-east"]]:
 		healer_art.play(shot[0])
 		healer_art.pause()
 		healer_art.frame = shot[1]
 		sage_art.pause()
 		sage_art.frame = 0
-		if not await _save(viewport, output, shot[2], record):
+		var picture := await _render(viewport)
+		if picture == null:
+			_fail("Healer/Sage capture rendered no full-size image: " + shot[2])
 			return
+		pictures["captures/" + shot[2] + ".png"] = picture
+	for relative in pictures:
+		var path := output.path_join(relative)
+		if pictures[relative].save_png(path) != OK:
+			_fail("Healer/Sage capture failed: " + relative)
+			return
+		record.captures[relative] = FileAccess.get_sha256(path)
+		if record.captures[relative].is_empty():
+			_fail("Healer/Sage capture could not be hashed: " + relative)
+			return
+		print("Captured ", relative)
 	var file := FileAccess.open(output.path_join("capture-evidence.json"), FileAccess.WRITE)
 	if file == null:
 		_fail("Healer/Sage capture evidence could not be written")
@@ -74,7 +89,8 @@ func _capture() -> void:
 	quit()
 
 
-func _save(viewport: SubViewport, output: String, name: String, record: Dictionary) -> bool:
+## Returns the viewport image, or null when nothing full-size was rendered (e.g. under --headless).
+func _render(viewport: SubViewport) -> Image:
 	for _frame in range(8):
 		await process_frame
 	# UI controllers can show themselves after readiness; suppress only in this capture.
@@ -82,13 +98,9 @@ func _save(viewport: SubViewport, output: String, name: String, record: Dictiona
 		control.visible = false
 	RenderingServer.force_draw()
 	var picture := viewport.get_texture().get_image()
-	var relative := "captures/" + name + ".png"
-	if picture == null or picture.save_png(output.path_join(relative)) != OK:
-		_fail("Healer/Sage capture failed: " + relative)
-		return false
-	record.captures[relative] = FileAccess.get_sha256(output.path_join(relative))
-	print("Captured ", relative)
-	return true
+	if picture == null or picture.is_empty() or picture.get_size() != viewport.size:
+		return null
+	return picture
 
 
 func _fail(message: String) -> void:

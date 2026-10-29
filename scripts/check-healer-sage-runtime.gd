@@ -84,7 +84,8 @@ func _check() -> void:
 	quit(0)
 
 
-## Returns "" when the sprite shows exactly the role's twelve runtime animations.
+## Returns "" when the sprite is anchored with its feet on the node origin and shows exactly the
+## role's twelve runtime animations.
 func _frames_problem(sprite: AnimatedSprite2D, role: String) -> String:
 	if sprite.offset != OFFSET or not sprite.centered or sprite.position != Vector2.ZERO:
 		return role + " art is not anchored with its feet on the node origin"

@@ -13,7 +13,8 @@ merged). The owner then requested the Healer and Village Sage (Orin) characters
 `claude/healer-sage-runtime` ([package](art-direction/healer-sage-runtime/README.md)) and awaits owner
 review of PR #478. The water-cask marker overlapping the Sage is [#477](https://github.com/hherb/allrpcs/issues/477);
 tree-order drawing of the tall sprites is [#479](https://github.com/hherb/allrpcs/issues/479); the walks are not
-re-authored to the reference gait model and await owner sign-off ([#480](https://github.com/hherb/allrpcs/issues/480)).
+re-authored to the reference gait model and await owner sign-off ([#480](https://github.com/hherb/allrpcs/issues/480)); the Healer's inspect gesture is
+wired but untriggered ([#481](https://github.com/hherb/allrpcs/issues/481)).
 Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,
 exit markers) remain; replacing them needs a new owner request.
 
@@ -57,7 +58,8 @@ and validator in smoke, captures retained in the package. The walks follow the r
 model's 720 ms timing but are not re-authored to its poses (art-direction/reference-gait-model.md
 still governs walking); that deviation awaits owner sign-off (#480). Remaining: owner review of the
 PR; then close the scope on owner direction. Do not replace other placeholders without owner
-direction (the water-cask overlap is #477, tree-order drawing of tall sprites #479).
+direction (the water-cask overlap is #477, tree-order drawing of tall sprites #479, the untriggered
+Healer inspect gesture #481).
 
 Done when: Healer and Sage show their approved directional art in ordinary Main, native and full
 quality checks pass with retained evidence, and the branch is committed/pushed with a PR.

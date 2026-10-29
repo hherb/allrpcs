@@ -97,7 +97,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         Marker2D sageMarker = GetNode<Marker2D>("../SageHearingPosition");
-        AnimatedSprite2D sageBody = GetNode<AnimatedSprite2D>("../SageHearingPosition/Figure");
+        AnimatedSprite2D sageFigure = GetNode<AnimatedSprite2D>("../SageHearingPosition/Figure");
         Label sageLabel = GetNode<Label>("../SageHearingPosition/Label");
         Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         RetainedUnrelatedState unrelated = CaptureUnrelatedState();
@@ -106,7 +106,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
         Character rebuiltSage = RepresentativeSageCharacterSource.Create();
         DialogueEvent rebuiltTestimony = new(testimony.Delivery, testimony.Audience);
 
-        if (!sageBody.Visible
+        if (!sageFigure.Visible
             || !sageLabel.Visible
             || sageLabel.Text != SageLabelText
             || sageMarker.Position != new Vector2(2240.0f, 950.0f))

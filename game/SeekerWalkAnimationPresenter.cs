@@ -2,7 +2,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Projects Seeker or Healer movement into bounded four-direction walk and idle presentation.</summary>
+/// <summary>Projects a character's movement into bounded four-direction walk and idle presentation.</summary>
 public partial class SeekerWalkAnimationPresenter : AnimatedSprite2D
 {
     private static readonly StringName IdleSouth = new("idle_south");

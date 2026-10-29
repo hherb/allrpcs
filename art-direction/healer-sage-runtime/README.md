@@ -1,7 +1,8 @@
 # Healer and Village Sage runtime art
 
-29 October 2026 (Australia/Sydney). After closing the sickhouse bed/patient slice, the owner
+On 28 October 2026 (Australia/Sydney), after closing the sickhouse bed/patient slice, the owner
 asked for the Healer and Village Sage (Orin) characters next ([authority.json](authority.json)).
+Implemented 29 October 2026.
 This slice installs their owner-approved characters-batch artwork in ordinary Main. No new art
 was generated.
 
@@ -25,7 +26,10 @@ Each role has an `animations.tres` SpriteFrames with the twelve animations the S
 `idle_*` (600 ms per frame, looping), `interact_*` (the inspect frames, 160 ms, not looping)
 and `walk_*` (90 ms, looping). The walks' 8 × 90 ms gives the
 [reference gait model](../reference-gait-model.md)'s 720 ms cycle (the same cycle as the
-Seeker's runtime walk). The frames themselves stay the approved 8-phase cutout gait. This slice
+Seeker's runtime walk). That re-times the walk from the 100 ms per frame (800 ms loop) at which
+the [polished walk](../characters-batch/walk-rig-polish/README.md) was reviewed. The batch
+acceptance excludes runtime timing, so the authority for the change is
+[authority.json](authority.json). The frames themselves stay the approved 8-phase cutout gait. This slice
 did not re-author them to the reference model's 16 side poses, because that would be new art the
 owner did not request. That deviation from the gait model awaits owner sign-off
 ([#480](https://github.com/hherb/allrpcs/issues/480)).
@@ -41,8 +45,9 @@ owner did not request. That deviation from the gait model awaits owner sign-off
   dialogue, commands and saves are unchanged. The Healer still starts the game hidden, away on
   its authored task.
 
-The interaction gesture is not triggered for the Healer: nothing in the game signals a Healer
-interaction yet, and adding one would be new behaviour.
+The inspect gesture is wired as `interact_*` animations but never triggered for the Healer.
+The natural trigger, the herb examination's `HerbExaminationActionController.Examined`, would be
+new behaviour outside this slice, so it is tracked as [#481](https://github.com/hherb/allrpcs/issues/481).
 
 ![Healer walking east](captures/healer-walking-east.png)
 
