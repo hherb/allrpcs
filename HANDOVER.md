@@ -11,7 +11,7 @@ and closed the [sickhouse bed/patient slice](art-direction/sickhouse-patient-bed
 merged). The owner then requested the Healer and Village Sage (Orin) characters
 ([authority](art-direction/healer-sage-runtime/authority.json)). That slice is implemented on branch
 `claude/healer-sage-runtime` ([package](art-direction/healer-sage-runtime/README.md)) and awaits owner
-review of its PR. The water-cask marker overlapping the Sage is [#477](https://github.com/hherb/allrpcs/issues/477).
+review of PR #478. The water-cask marker overlapping the Sage is [#477](https://github.com/hherb/allrpcs/issues/477).
 Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,
 exit markers) remain; replacing them needs a new owner request.
 
