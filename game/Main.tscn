@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=3]
+[gd_scene load_steps=252 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -444,6 +444,7 @@
 
 [ext_resource type="Script" path="res://GameplaySettingsLayout.cs" id="gameplay_settings_layout"]
 [ext_resource type="Script" path="res://RetainedStreamCrossingPresentation.cs" id="retained_stream_presentation"]
+[ext_resource type="Script" path="res://CharacterDepthOrderPresentation.cs" id="character_depth_order"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/sickbed-01.png" id="sickbed"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
@@ -716,7 +717,8 @@ animation = &"idle_south"
 autoplay = "idle_south"
 
 [node name="Label" type="Label" parent="SageHearingPosition"]
-z_index = 2
+z_index = 5
+z_as_relative = false
 offset_left = -84.0
 offset_top = 24.0
 offset_right = 84.0
@@ -3801,6 +3803,9 @@ text = "RETURN TO TITLE"
 
 [node name="RetainedStreamCrossingPresentation" type="Node" parent="."]
 script = ExtResource("retained_stream_presentation")
+
+[node name="CharacterDepthOrderPresentation" type="Node" parent="."]
+script = ExtResource("character_depth_order")
 
 [node name="MapStructuresPresentation" parent="." instance=ExtResource("map_structures")]
 

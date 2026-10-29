@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 478,
+    "merge_commit": "c059ef4980ff9b758c933813940e3b82950747d4",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-29T10:18:25Z"
+  },
+  "question": "You merged PR #478 (Healer/Sage art). Should I record that merge as acceptance and close the healer-sage-runtime slice? The walks still use the older cutout gait retimed to 720 ms rather than being re-authored to the reference gait; that is issue #480.",
+  "owner_reply": "Close; #480 stays open",
+  "accepted": "healer-sage-runtime",
+  "not_accepted": "The walk frames' deviation from the reference gait model is not signed off; it stays open as #480."
+}

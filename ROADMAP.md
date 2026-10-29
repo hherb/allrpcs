@@ -165,7 +165,8 @@ the same session without repeating unchanged approval gates.
 - [x] Fit settings within the gameplay viewport and replace retained Stream crossing placeholders.
 - [x] Fit existing building artwork into ordinary gameplay at the opening-region structure sites.
 - [x] Replace the sickhouse bed/patient placeholder with a new bed and Mira's approved breathing dormant poses.
-- [ ] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.
+- [x] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.
+- [ ] Draw the Sage, Healer, Seeker and water cask in depth order in Main (#479, #477).
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

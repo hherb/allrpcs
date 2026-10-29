@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "timezone": "Australia/Sydney",
+  "base_commit": "c059ef49",
+  "owner_statements": [
+    {
+      "question": "Which bounded slice should I queue and work on next? (Recommended: #479 Y-sort the tall character sprites in Main, plus #477 so the water-cask marker no longer covers the Sage.)",
+      "reply": "Depth/overlap fixes (Recommended)"
+    }
+  ],
+  "scope": "Draw the Village Sage, Healer, Seeker and the village water cask in depth order (by foot Y) in ordinary Main, so the nearer one draws in front (#479) and the water cask no longer covers the Sage standing south of it (#477).",
+  "boundary": "Draw order of those four only, plus dependent checks/verification/documentation/publication. Positions, movement, navigation, collision, interaction ranges, dialogue, saves and all other draw order stay unchanged. No placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

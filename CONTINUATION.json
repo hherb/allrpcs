@@ -1186,6 +1186,20 @@
           "sha256": "eb88f5e3f737cbca02baf68962129396b5a63b616ed3397d74993f11e27489a5"
         }
       ]
+    },
+    {
+      "id": "healer-sage-runtime",
+      "reason": "The owner merged PR #478 (Healer and Village Sage approved art in Main) on 2026-10-29 and chose to close the slice. The walks' deviation from the reference gait model is not signed off and stays open as #480; the untriggered inspect gesture is #481.",
+      "evidence": [
+        {
+          "path": "art-direction/healer-sage-runtime/owner-acceptance.json",
+          "sha256": "239008570863d902a32d8e19c4c960a5a0ae0adfa4c17c627fbd578317947900"
+        },
+        {
+          "path": "art-direction/healer-sage-runtime/verification.json",
+          "sha256": "b0985ee29381af95ece36f62015afc286cbb798397d061e716e0d47beaa7c004"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1666,6 +1680,20 @@
           "sha256": "eb88f5e3f737cbca02baf68962129396b5a63b616ed3397d74993f11e27489a5"
         }
       ]
+    },
+    {
+      "id": "healer-sage-runtime",
+      "reason": "The Healer and Sage art is installed and closed. Do not re-audit the unchanged Healer/Sage presentation; their draw order is the character-depth-order slice, gait re-authoring is #480.",
+      "evidence": [
+        {
+          "path": "art-direction/healer-sage-runtime/owner-acceptance.json",
+          "sha256": "239008570863d902a32d8e19c4c960a5a0ae0adfa4c17c627fbd578317947900"
+        },
+        {
+          "path": "art-direction/healer-sage-runtime/verification.json",
+          "sha256": "b0985ee29381af95ece36f62015afc286cbb798397d061e716e0d47beaa7c004"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -1940,24 +1968,36 @@
           "sha256": "aecfe70c35bfd4a9952516b3d8c4c21edf6574e238f141673a5d7fc409d6a090"
         }
       ]
+    },
+    {
+      "id": "owner-character-depth-order-2026-10-29",
+      "owner_statement": "Depth/overlap fixes (Recommended)",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/character-depth-order/authority.json",
+          "sha256": "5a64a2cec419c6226dea5026e0992dd5f92333d1753c6a33a5b3e894e541f37b"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "healer-sage-runtime",
-    "title": "Replace the Healer and Sage greybox bodies with approved character art",
+    "id": "character-depth-order",
+    "title": "Draw the Sage, Healer, Seeker and water cask in depth order",
     "status": "in_progress",
-    "workstream": "healer-sage-runtime",
-    "reopening_id": "owner-healer-sage-runtime-2026-10-28",
-    "authority_status": "owner_requested_healer_sage_runtime_2026-10-28",
-    "roadmap_item": "- [ ] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.",
-    "missing_deliverable": "Runtime copies of the approved healer-* and orin-* idle/walk/inspect frames, their animation wiring on the Healer and SageHearingPosition nodes in Main, a native check, a validator binding runtime bytes to the characters-batch acceptance, and captures.",
-    "instructions": "Implemented on branch claude/healer-sage-runtime (2026-10-29): 96 approved frames copied byte-unchanged (idle/inspect from characters-batch/exports, walks from walk-rig-polish, timed to the reference gait's 720 ms cycle), Healer/WalkAnimation and SageHearingPosition/Figure in Main, check and validator in smoke, captures retained in the package. The walks follow the reference gait model's 720 ms timing but are not re-authored to its poses (art-direction/reference-gait-model.md still governs walking); that deviation awaits owner sign-off (#480). Remaining: owner review of the PR; then close the scope on owner direction. Do not replace other placeholders without owner direction (the water-cask overlap is #477, tree-order drawing of tall sprites #479, the untriggered Healer inspect gesture #481).",
-    "completion_condition": "Healer and Sage show their approved directional art in ordinary Main, native and full quality checks pass with retained evidence, and the branch is committed/pushed with a PR.",
+    "workstream": "character-depth-order",
+    "reopening_id": "owner-character-depth-order-2026-10-29",
+    "authority_status": "owner_requested_character_depth_order_2026-10-29",
+    "roadmap_item": "- [ ] Draw the Sage, Healer, Seeker and water cask in depth order in Main (#479, #477).",
+    "missing_deliverable": "A pure depth-rank function with unit tests, a Main presenter that orders the four by foot Y each frame, a native check proving the nearer one draws in front and the cask no longer covers the Sage, and captures.",
+    "instructions": "Implemented on branch claude/character-depth-sort (2026-10-29): DepthDrawOrder (Application, unit-tested) ranks SageHearingPosition, InteractionCandidates/WaterCask, Healer and Seeker by global Y, and CharacterDepthOrderPresentation in Main sets their z_index to 1 + rank each frame; native check in smoke, captures and full gate (219 stages, 0 retries) retained in the package. Root y_sort was rejected (the sickhouse scene source at y 1390 would draw its bed and patient over the Seeker in the cutaway) and reparenting was rejected (about 280 files address these nodes by path). Remaining: owner review of PR #482; then close the scope on owner direction. Other open items (#480 gait, #481 inspect gesture) need their own owner direction.",
+    "completion_condition": "In ordinary Main the nearer of the four draws in front, the Sage's legs are no longer covered by the cask, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
-      "art-direction/healer-sage-runtime/README.md",
-      "art-direction/healer-sage-runtime/verification.json"
+      "art-direction/character-depth-order/README.md",
+      "art-direction/character-depth-order/verification.json"
     ],
-    "boundary": "Healer and Sage presentation, their runtime art copies and dependent verification/documentation/publication only. No other placeholder replacement, merge or release."
+    "boundary": "Draw order of the Sage, Healer, Seeker and water cask and dependent verification/documentation/publication only. No placeholder replacement, merge or release."
   },
   "deferred_slices": [
     {

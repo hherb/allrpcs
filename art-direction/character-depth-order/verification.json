@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "status": "implementation_verified",
+  "product_revision": "uncommitted working tree on c059ef49 (committed as the slice commit on claude/character-depth-sort)",
+  "inputs": {
+    "game/Main.tscn": "1cf02a1fae31a0d7d2e8517ca2e87c4d8f17466c6a7e59ad2fb8160b73ed9cab",
+    "game/CharacterDepthOrderPresentation.cs": "367f7a51b85b5ef569d63852cbbffe331cb1a8b75a3ea72d3a06a325d4320e6e",
+    "src/Application/Presentation/DepthDrawOrder.cs": "3ef30750ea999d2888e4d46515330f6d5e5ab79bf3c457ab91d6badc3c311b3f",
+    "tests/Application.Tests/DepthDrawOrderTests.cs": "b4fcf10a33bb6baf1b55c7ce30030416ac838d631310c1ea4e7332bee046e060",
+    "scripts/check-character-depth-order.gd": "d45863f3ed85b7a3da465bce801071e24fc7bfa59fbff646d8885e627d60dd8f",
+    "scripts/capture-character-depth-order.gd": "1f9e328ac4e1e792093cb2d70a716392dde9fc5f028a7d2dbf5a8ce60dd2f768",
+    "scripts/smoke-godot.sh": "be5abdd121cb08ac8fd967205004f13aa77581e521f116adcfbd96809a74aa56"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "373 passed, 3 existing quarantines (smoke stage product-10 log; includes check-character-depth-order.gd)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the uncommitted working tree (summary product_revision shows its parent c059ef49). Only prose and ledger records changed afterwards. Review fixes afterwards made the Sage's name label absolute z 5 in Main.tscn (as relative z 2 it sank under a character standing south of the Sage), added that case to check-character-depth-order.gd (fails with the old label) and corrected comments and prose; dotnet format/build/test (6184 tests), check-character-depth-order.gd, check-healer-sage-runtime.gd, validate-healer-sage-runtime.py and the Sage consultation and optional-overlay smokes were rerun and passed, and the captures reproduced byte-identically."
+  },
+  "focused_checks": {
+    "DepthDrawOrderTests": "3 passed; written first and failed to compile before DepthDrawOrder existed",
+    "check-character-depth-order.gd": "passed; fails on Main without the presenter node ([0, 0, 0, 0]) and with the Sage label at its former relative z 2",
+    "dotnet format/build/test": "passed (6184 tests)",
+    "validate-healer-sage-runtime.py, validate-sickhouse-patient-bed.py": "passed unchanged",
+    "capture-character-depth-order.gd": "passed; two captures"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "Only the Sage, water cask, Healer and Seeker are depth-ordered; other markers, scene-source props and buildings keep their order.",
+    "The cask is ranked by its centre (y 900), not its base (y 922).",
+    "Captures are fixed camera views with paused frames; no live owner playthrough is claimed."
+  ]
+}
