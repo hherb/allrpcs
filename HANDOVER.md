@@ -56,8 +56,10 @@ Implemented on branch claude/stone-marker-art (2026-10-30): the StoneMarker Mark
 a byte copy of inscriptions-01 whose foot stands on the old polygon's base line (y +18); the node
 position (1080, 350) is unchanged. CharacterDepthOrderPresentation sets the marker's z to 1 +
 DepthDrawOrder.CountNorthOf (unit-tested), keeping the four figures at z 1..4 so the accepted depth
-check still passes unchanged. Remaining: full gate, PR, owner review. Other greybox markers (herb
-patch, water cask, wagon clue, forest gate, exit markers) need their own owner request.
+check still passes unchanged. Full gate passed on 088ae9f4 (219 stages, 0 retries;
+verification.json). Remaining: owner review of PR #483; then close the scope on owner direction.
+Other greybox markers (herb patch, water cask, wagon clue, forest gate, exit markers) need their own
+owner request.
 
 Done when: Ordinary Main shows the approved tablet at the unchanged stone marker point in correct
 depth order with the Seeker, affected checks pass with retained evidence, and the branch is
