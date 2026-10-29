@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "status": "implementation_verified",
+  "product_revision": "uncommitted working tree on c059ef49 (committed as the slice commit on claude/character-depth-sort)",
+  "inputs": {
+    "game/Main.tscn": "968a2e35291dba3cab0c28f3923bac36893c724e35c1535bc74a931cc888ebec",
+    "game/CharacterDepthOrderPresentation.cs": "29bd8e65782b4f7b78ee986a650bcecb55548116e5978f30ffa6179fae48009a",
+    "src/Application/Presentation/DepthDrawOrder.cs": "3ef30750ea999d2888e4d46515330f6d5e5ab79bf3c457ab91d6badc3c311b3f",
+    "tests/Application.Tests/DepthDrawOrderTests.cs": "ded4636944b57fb31fed1b9c651ddded49713c9a93d684a48b0901f7e7c5ace1",
+    "scripts/check-character-depth-order.gd": "646307703a831879c96e22196f53bb94c1f62b1ce7c7c9faa7b5e27783465148",
+    "scripts/capture-character-depth-order.gd": "1f9e328ac4e1e792093cb2d70a716392dde9fc5f028a7d2dbf5a8ce60dd2f768",
+    "scripts/smoke-godot.sh": "be5abdd121cb08ac8fd967205004f13aa77581e521f116adcfbd96809a74aa56"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "373 passed, 3 existing quarantines (smoke stage product-10 log; includes check-character-depth-order.gd)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the uncommitted working tree (summary product_revision shows its parent c059ef49). Only prose and ledger records changed afterwards."
+  },
+  "focused_checks": {
+    "DepthDrawOrderTests": "3 passed; written first and failed to compile before DepthDrawOrder existed",
+    "check-character-depth-order.gd": "passed; fails on Main without the presenter node ([0, 0, 0, 0])",
+    "dotnet format/build/test": "passed (6184 tests)",
+    "validate-healer-sage-runtime.py, validate-sickhouse-patient-bed.py": "passed unchanged",
+    "capture-character-depth-order.gd": "passed; two captures"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "Only the Sage, water cask, Healer and Seeker are depth-ordered; other markers, scene-source props and buildings keep their order.",
+    "The cask is ranked by its centre (y 900), not its base (y 922).",
+    "Captures are fixed camera views with paused frames; no live owner playthrough is claimed."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+	"captures": {
+		"captures/seeker-behind-healer.png": "f5d199973897f20f769091d08c9818d18e6649cd01dcf4786800b709a012657b",
+		"captures/seeker-behind-sage-at-cask.png": "f96a1ae066b8a0ec67072185be2ebee6033beaec6a524147b4645f6770efe5e8"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inputs": {
+		"res://../scripts/capture-character-depth-order.gd": "1f9e328ac4e1e792093cb2d70a716392dde9fc5f028a7d2dbf5a8ce60dd2f768",
+		"res://../src/Application/Presentation/DepthDrawOrder.cs": "3ef30750ea999d2888e4d46515330f6d5e5ab79bf3c457ab91d6badc3c311b3f",
+		"res://CharacterDepthOrderPresentation.cs": "29bd8e65782b4f7b78ee986a650bcecb55548116e5978f30ffa6179fae48009a",
+		"res://Main.tscn": "968a2e35291dba3cab0c28f3923bac36893c724e35c1535bc74a931cc888ebec"
+	},
+	"schema_version": 1
+}

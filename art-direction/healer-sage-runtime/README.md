@@ -31,8 +31,9 @@ the [polished walk](../characters-batch/walk-rig-polish/README.md) was reviewed.
 acceptance excludes runtime timing, so the authority for the change is
 [authority.json](authority.json). The frames themselves stay the approved 8-phase cutout gait. This slice
 did not re-author them to the reference model's 16 side poses, because that would be new art the
-owner did not request. That deviation from the gait model awaits owner sign-off
-([#480](https://github.com/hherb/allrpcs/issues/480)).
+owner did not request. The owner merged PR #478 and closed this slice on 2026-10-29
+([owner-acceptance.json](owner-acceptance.json)); the deviation from the gait model is not
+signed off and stays open as [#480](https://github.com/hherb/allrpcs/issues/480).
 
 - `Healer/WalkAnimation` replaces the `Body` and `Satchel` polygons. It reuses
   `SeekerWalkAnimationPresenter`. `Healer.cs` passes it the chosen `Velocity` before

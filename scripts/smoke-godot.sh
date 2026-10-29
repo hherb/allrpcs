@@ -52,6 +52,8 @@ run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-sickhouse-patient-bed.gd"
 run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-healer-sage-runtime.gd"
+run_check - godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-character-depth-order.gd"
 run_check - ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-gameplay-view-repairs.gd"
 run_check 30 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
