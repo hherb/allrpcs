@@ -141,7 +141,8 @@ their physical and interaction owners. The owner accepted the runtime group on 2
 and requested the sickhouse bed/patient next: a new Codex-generated bed/pallet plus Mira's
 approved dormant poses 1↔2 as a breathing loop
 ([package](art-direction/sickhouse-patient-bed/README.md)), closed on 2026-10-28. Next, the owner
-requested the Healer and Village Sage (Orin) characters ([authority](art-direction/healer-sage-runtime/authority.json)).
+requested the Healer and Village Sage (Orin) characters ([package](art-direction/healer-sage-runtime/README.md)),
+implemented on 2026-10-29 and awaiting owner review.
 
 Residual terrain studies and repeatable material/transition artwork are accepted; global
 terrain suitability and integration remain unfinished. A new terrain scope must name the
