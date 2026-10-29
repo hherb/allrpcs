@@ -1,0 +1,13 @@
+{
+	"captures": {
+		"captures/stone-marker-seeker-north.png": "ec5e22731c8ed1ade882f2f0df26accc8591be24304e8f3962dc446a743175c1",
+		"captures/stone-marker-seeker-south.png": "304081c6a3c7e3a17f1441b97643b89097047a32f7266ea956e3c93857d32958"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inputs": {
+		"res://../scripts/capture-stone-marker-art.gd": "0eb9e7540eb16529d94aa8711b210acc3c0ef4be2732103ed0781aa3ad3c9139",
+		"res://Main.tscn": "8257840989e6373d1bbb8f803b3f81ebb59044aaa80905b10d3f4950dc7f1f6f",
+		"res://art/runtime/objects/inscriptions-01.png": "68a3adf3dd409cb060f39923ca118db0e228cc1063610f9041f5bf67f86c9766"
+	},
+	"schema_version": 1
+}

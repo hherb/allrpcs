@@ -26,4 +26,17 @@ public static class DepthDrawOrder
 
         return ranks;
     }
+
+    /// <summary>
+    /// Counts the ranked items whose feet are strictly north of a fixed prop's foot, i.e. the items
+    /// the prop must be drawn in front of. Ranked items at z <c>1 + rank</c> leave the prop at z
+    /// <c>1 + count</c>: above every item north of it, level with the first item south of it.
+    /// </summary>
+    /// <param name="footY">The ranked items' foot Y in world pixels.</param>
+    /// <param name="propFootY">The prop's foot Y; an item level with it counts as in front of it.</param>
+    public static int CountNorthOf(IReadOnlyList<float> footY, float propFootY)
+    {
+        ArgumentNullException.ThrowIfNull(footY);
+        return footY.Count(y => y < propFootY);
+    }
 }

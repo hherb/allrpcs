@@ -446,6 +446,7 @@
 [ext_resource type="Script" path="res://RetainedStreamCrossingPresentation.cs" id="retained_stream_presentation"]
 [ext_resource type="Script" path="res://CharacterDepthOrderPresentation.cs" id="character_depth_order"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/sickbed-01.png" id="sickbed"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/inscriptions-01.png" id="stone_marker_tablet"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
 [ext_resource type="SpriteFrames" path="res://art/runtime/characters/healer/animations.tres" id="healer_animations"]
@@ -792,9 +793,9 @@ position = Vector2(1080, 350)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "stone-marker"
 
-[node name="Marker" type="Polygon2D" parent="InteractionCandidates/StoneMarker"]
-polygon = PackedVector2Array(-14, -22, 14, -22, 20, 18, -20, 18)
-color = Color(0.682, 0.714, 0.588, 1)
+[node name="Marker" type="Sprite2D" parent="InteractionCandidates/StoneMarker"]
+position = Vector2(0, -17)
+texture = ExtResource("stone_marker_tablet")
 
 [node name="Label" type="Label" parent="InteractionCandidates/StoneMarker"]
 offset_left = -64.0

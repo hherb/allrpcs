@@ -27,4 +27,18 @@ public sealed class DepthDrawOrderTests
     {
         Assert.Empty(DepthDrawOrder.Ranks([]));
     }
+
+    [Fact]
+    public void CountsOnlyItemsStrictlyNorthOfAFixedProp()
+    {
+        // Stone marker foot at 368: the Seeker at 345 is north (behind it); the Healer level with it
+        // and the Sage and cask south of it are not.
+        Assert.Equal(1, DepthDrawOrder.CountNorthOf([950.0f, 900.0f, 368.0f, 345.0f], 368.0f));
+    }
+
+    [Fact]
+    public void CountsNothingNorthOfAPropWithNoItems()
+    {
+        Assert.Equal(0, DepthDrawOrder.CountNorthOf([], 368.0f));
+    }
 }

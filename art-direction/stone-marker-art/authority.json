@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "base_commit": "b7b4e754",
+  "owner_statements": [
+    {
+      "question": "Which slice should this session work on next?",
+      "reply": "Replace greybox markers"
+    },
+    {
+      "question": "Which greybox marker should I replace with accepted art first? (Only the stone marker has an exact match in the accepted batches.)",
+      "reply": "Stone marker (Recommended)"
+    },
+    {
+      "question": "With the new 80 px tablet art in place, a Seeker standing just north of (behind) the stone marker draws over the tablet and looks as if it is standing on it. Should this slice also add the stone marker to the depth ranking from #482?",
+      "reply": "Yes, include it (Recommended)"
+    }
+  ],
+  "scope": "Replace the greybox Polygon2D Marker of InteractionCandidates/StoneMarker in Main with the owner-approved objects-batch export inscriptions-01 (standing tablet, unchanged bytes), and draw the stone marker in depth order with the Sage, water cask, Healer and Seeker.",
+  "boundary": "Stone marker presentation, its draw order and dependent verification/documentation/publication only. The StoneMarker node position, interaction ranges, perception, labels, collision, navigation, saves and the four figures' accepted ranks z 1..4 stay unchanged. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}
