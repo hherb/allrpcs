@@ -14,7 +14,7 @@ re-authored to the reference gait ([#480](https://github.com/hherb/allrpcs/issue
 untriggered Healer inspect gesture ([#481](https://github.com/hherb/allrpcs/issues/481)). The owner then chose
 the depth/overlap fixes ([authority](art-direction/character-depth-order/authority.json)): #479 and #477,
 implemented on branch `claude/character-depth-sort` ([package](art-direction/character-depth-order/README.md))
-and awaiting owner review of its PR.
+and awaiting owner review of PR #482.
 Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,
 exit markers) remain; replacing them needs a new owner request.
 
@@ -57,7 +57,7 @@ and CharacterDepthOrderPresentation in Main sets their z_index to 1 + rank each 
 in smoke, captures and full gate (219 stages, 0 retries) retained in the package. Root y_sort was
 rejected (the sickhouse scene source at y 1390 would draw its bed and patient over the Seeker in the
 cutaway) and reparenting was rejected (about 280 files address these nodes by path). Remaining:
-owner review of the PR; then close the scope on owner direction. Other open items (#480 gait, #481
+owner review of PR #482; then close the scope on owner direction. Other open items (#480 gait, #481
 inspect gesture) need their own owner direction.
 
 Done when: In ordinary Main the nearer of the four draws in front, the Sage's legs are no longer
