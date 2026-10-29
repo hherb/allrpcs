@@ -447,6 +447,8 @@
 [ext_resource type="Texture2D" path="res://art/runtime/objects/sickbed-01.png" id="sickbed"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
+[ext_resource type="SpriteFrames" path="res://art/runtime/characters/healer/animations.tres" id="healer_animations"]
+[ext_resource type="SpriteFrames" path="res://art/runtime/characters/orin/animations.tres" id="orin_animations"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -707,9 +709,11 @@ position = Vector2(1800, 500)
 [node name="SageHearingPosition" type="Marker2D" parent="."]
 position = Vector2(2240, 950)
 
-[node name="Body" type="Polygon2D" parent="SageHearingPosition"]
-polygon = PackedVector2Array(0, -20, 15, -9, 12, 18, -12, 18, -15, -9)
-color = Color(0.706, 0.498, 0.831, 1)
+[node name="Figure" type="AnimatedSprite2D" parent="SageHearingPosition"]
+offset = Vector2(0, -96)
+sprite_frames = ExtResource("orin_animations")
+animation = &"idle_south"
+autoplay = "idle_south"
 
 [node name="Label" type="Label" parent="SageHearingPosition"]
 z_index = 2
@@ -2842,13 +2846,11 @@ script = ExtResource("83_character_turn_completion_controller")
 position = Vector2(2000, 950)
 script = ExtResource("6_healer")
 
-[node name="Body" type="Polygon2D" parent="Healer"]
-polygon = PackedVector2Array(0, -18, 12.728, -12.728, 18, 0, 12.728, 12.728, 0, 18, -12.728, 12.728, -18, 0, -12.728, -12.728)
-color = Color(0.302, 0.788, 0.737, 1)
-
-[node name="Satchel" type="Polygon2D" parent="Healer"]
-polygon = PackedVector2Array(5, -2, 15, 2, 13, 13, 3, 10)
-color = Color(0.353, 0.231, 0.137, 1)
+[node name="WalkAnimation" type="AnimatedSprite2D" parent="Healer"]
+offset = Vector2(0, -96)
+sprite_frames = ExtResource("healer_animations")
+animation = &"idle_south"
+script = ExtResource("417_seeker_walk_presenter")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Healer"]
 shape = SubResource("CircleShape2D_healer")

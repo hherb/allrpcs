@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "status": "implementation_verified",
+  "product_revision": "f0d360195938728ad698f0c3209f282041ec62b8",
+  "inputs": {
+    "game/Main.tscn": "c18de441538fdcfbae8095e6fa827a9676196ef7e265d9dbddeb7edc075efb97",
+    "game/Healer.cs": "7b16977e1bd5c8ad0c9214314e21978e5b46e61cde5bc0ee4b760de35dd1eaef",
+    "game/SeekerWalkAnimationPresenter.cs": "cc7743cdb8c1318914ca720805266dcd04ae5bdcb216f23c8c5d17da8e1d1205",
+    "game/OpeningRegionSageConsultationInputSmokeCheck.cs": "7839dc4aad68d3819d4dd8d3e9874d9b8e32d4b3eff58a2a0318ba923d5ddb22",
+    "game/art/runtime/characters/healer/animations.tres": "58cd53459c70846765efaf5d4a9c31a6148e7be8676d5ebdc467fff373ebf3d8",
+    "game/art/runtime/characters/orin/animations.tres": "f6e6bd5640ea40e6fe5838de31de3b34ce89fba4c2f14d005edf3af46591d5b1",
+    "scripts/check-healer-sage-runtime.gd": "98228653b800b288eacc06482b6c2e96493395d52ed24920ceda6b7707f408fd",
+    "scripts/validate-healer-sage-runtime.py": "a7b1584d837abbc11cba0526502234c06ddc70b55628abf01882681739816ec2",
+    "scripts/capture-healer-sage-runtime.gd": "748bfb59893ee6cfd3273a917bd4e1eceeca81374dba14b926a937fdc8c28d10",
+    "scripts/smoke-godot.sh": "75af5a04a0089e3bfbab122c4e00b2c0453103b4d85f5f8224ac77c39820505a",
+    "quality.py": "542beffa6984270b8e3f8957a75d222067d9e3b65ed6e84317b7c206c60b8289"
+  },
+  "runtime_frames": "96 PNGs bound by scripts/validate-healer-sage-runtime.py to art-direction/characters-batch/owner-acceptance.json active_assets",
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "372 passed, 3 existing quarantines (counted from that run's console log, which is not retained; the summary records the stage results only)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the uncommitted working tree that became f0d36019 (summary product_revision shows its parent 52e1250f); only prose changed afterwards. Review fixes afterwards changed only the check, the validator docstring, a capture comment (captures reproduced byte-identically) and prose; the affected checks were rerun. A second review round renamed a local in OpeningRegionSageConsultationInputSmokeCheck.cs, made the presenter summary role-neutral, and made the capture render every shot and reject empty or wrong-size images before writing any (captures again reproduced byte-identically); dotnet format/build, the validator, check-healer-sage-runtime.gd and the Sage consultation smoke were rerun."
+  },
+  "focused_checks": {
+    "check-healer-sage-runtime.gd": "passed; fails against the pre-slice Main.tscn, when the Healer.cs presenter call is removed, when either sprite is hidden, and when the Sage loop is frozen (speed_scale 0); the Healer is held in Wait first so the walk is proved from rest",
+    "validate-healer-sage-runtime.py": "passed (96 frames); fails before the runtime copies exist",
+    "OpeningRegionSageConsultationInputSmokeCheck": "passed with the Figure sprite",
+    "HealerCommand, HealerFootstep, Navigation, RuntimeSeekerWalk, check-sickhouse-patient-bed.gd": "passed unchanged",
+    "dotnet format/build/test": "passed (6181 tests, counted from the session's test output)",
+    "capture-healer-sage-runtime.gd": "passed; two captures; under --headless it now fails without writing (no full-size image)"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "Walks are the approved 8-phase cutout gait timed to the reference 720 ms cycle, not re-authored to its 16 side poses; awaiting owner sign-off (#480).",
+    "The Healer inspect gesture is wired but not triggered; hooking it to HerbExaminationActionController.Examined is new behaviour (#481).",
+    "The greybox water-cask marker draws over the Sage's legs (#477).",
+    "Characters draw in tree order, not by depth, so the Seeker draws over the taller Healer/Sage when behind them (#479).",
+    "Captures are fixed camera views with paused frames; no live owner playthrough is claimed."
+  ]
+}

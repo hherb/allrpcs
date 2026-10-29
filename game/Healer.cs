@@ -43,6 +43,7 @@ public partial class Healer : CharacterBody2D
     private NavigationAgent2D navigationAgent = null!;
     private NavigationRegion2D navigationRegion = null!;
     private CharacterBody2D followedTarget = null!;
+    private SeekerWalkAnimationPresenter walkAnimationPresenter = null!;
 
     /// <summary>
     /// Gets or sets the healer's maximum movement speed in world pixels per second.
@@ -71,6 +72,7 @@ public partial class Healer : CharacterBody2D
     public override void _Ready()
     {
         navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        walkAnimationPresenter = GetNode<SeekerWalkAnimationPresenter>("WalkAnimation");
         navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         followedTarget = GetNode<CharacterBody2D>("../Seeker");
         AddCollisionExceptionWith(followedTarget);
@@ -195,6 +197,8 @@ public partial class Healer : CharacterBody2D
 
     private void CompleteMovement(double delta)
     {
+        // Presentation only, as for the Seeker: the chosen velocity picks the facing and walk/idle loop.
+        walkAnimationPresenter.PresentMovement(Velocity);
         Vector2 start = GlobalPosition;
         MoveAndSlide();
         if (motionTick == long.MaxValue) { LastMotion = null; return; }

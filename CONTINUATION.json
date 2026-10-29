@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1945,13 +1945,13 @@
   "active_slice": {
     "id": "healer-sage-runtime",
     "title": "Replace the Healer and Sage greybox bodies with approved character art",
-    "status": "ready",
+    "status": "in_progress",
     "workstream": "healer-sage-runtime",
     "reopening_id": "owner-healer-sage-runtime-2026-10-28",
     "authority_status": "owner_requested_healer_sage_runtime_2026-10-28",
     "roadmap_item": "- [ ] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.",
     "missing_deliverable": "Runtime copies of the approved healer-* and orin-* idle/walk/inspect frames, their animation wiring on the Healer and SageHearingPosition nodes in Main, a native check, a validator binding runtime bytes to the characters-batch acceptance, and captures.",
-    "instructions": "Copy approved characters-batch exports byte-unchanged into game/art/runtime/characters/ and wire them like the Seeker (walk-animations.tres, AnimatedSprite2D), following art-direction/reference-gait-model.md. Remove only the Healer Body/Satchel and Sage Body Polygon2D placeholders; keep positions, movement, navigation, collision, interaction ranges, dialogue, party/command behaviour and saves unchanged. Add a native check to scripts/smoke-godot.sh, a byte-identity validator and captures, then run the affected checks and the full gate.",
+    "instructions": "Implemented on branch claude/healer-sage-runtime (2026-10-29): 96 approved frames copied byte-unchanged (idle/inspect from characters-batch/exports, walks from walk-rig-polish, timed to the reference gait's 720 ms cycle), Healer/WalkAnimation and SageHearingPosition/Figure in Main, check and validator in smoke, captures retained in the package. The walks follow the reference gait model's 720 ms timing but are not re-authored to its poses (art-direction/reference-gait-model.md still governs walking); that deviation awaits owner sign-off (#480). Remaining: owner review of the PR; then close the scope on owner direction. Do not replace other placeholders without owner direction (the water-cask overlap is #477, tree-order drawing of tall sprites #479, the untriggered Healer inspect gesture #481).",
     "completion_condition": "Healer and Sage show their approved directional art in ordinary Main, native and full quality checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
       "art-direction/healer-sage-runtime/README.md",
