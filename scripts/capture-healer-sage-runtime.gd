@@ -1,8 +1,9 @@
 extends SceneTree
 
 # Captures ordinary Main at the village square: the Healer and Sage at rest, then the Healer
-# mid-stride walking east. No replacement textures or scene packing; only UI, autonomous motion
-# and the follow camera are suppressed, and each animation is paused on a fixed frame.
+# mid-stride walking east. No replacement textures or scene packing; UI, autonomous motion and the
+# follow camera are suppressed, the Seeker is hidden off-shot, the away Healer is shown, and each
+# animation is paused on a fixed frame.
 const OUTPUT := "../art-direction/healer-sage-runtime"
 const CENTER := Vector2(2120, 900)
 const SEEKER_AWAY := Vector2(2120, 1150)

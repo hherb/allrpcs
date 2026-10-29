@@ -3,7 +3,7 @@
 
 Each runtime frame must be byte-identical to the export that the characters-batch acceptance
 record binds (idle/inspect from the initial batch, walks from the polished 8-phase rig), with
-lossless imports, and the runtime folders must hold nothing else. Checks only these files, so
+lossless imports, and the runtime folders must hold no other PNGs. Checks only these files, so
 unrelated changes elsewhere cannot trip it (see issue #471).
 """
 import hashlib

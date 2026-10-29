@@ -5,7 +5,7 @@ extends SceneTree
 
 const DIRECTIONS := ["south", "west", "east", "north"]
 # Animation -> [runtime file stem, frame count, frames per second, loops].
-# Walks run the reference gait's 720 ms cycle (8 x 90 ms); idle/inspect match the Seeker.
+# Walks run the reference gait's 720 ms cycle (8 x 90 ms); idle/inspect use the Seeker's per-frame timing.
 const ANIMATIONS := {
 	"idle": ["idle", 2, 1000.0 / 600.0, true],
 	"walk": ["walk", 8, 1000.0 / 90.0, true],
@@ -49,13 +49,29 @@ func _check() -> void:
 	if not sage.get_node("Label").visible:
 		_fail("The Sage label is hidden")
 		return
+	# The Healer body starts hidden (away on its task); its art must not be hidden on its own.
+	if not sage_art.is_visible_in_tree() or not healer_art.visible \
+			or sage_art.self_modulate.a <= 0.0 or healer_art.self_modulate.a <= 0.0:
+		_fail("The Healer or Sage art is hidden outright")
+		return
+	# Hold the Healer first: the Seeker starts beyond its follow distance, so following would
+	# already be walking east before this check moves anything.
+	seeker.set_physics_process(false)
+	healer.call("CommandWait")
 	for _frame in range(12):
 		await process_frame
 	if sage_art.animation != "idle_south" or not sage_art.is_playing():
 		_fail("The Sage is not breathing in the south-facing idle loop")
 		return
-	# The Healer follows the Seeker; its own movement must choose the walk, and arrival the idle.
-	seeker.set_physics_process(false)
+	# The frames above ran the game's own processing; the loop must have advanced by itself.
+	if sage_art.frame == 0 and sage_art.frame_progress <= 0.0:
+		_fail("The Sage breathing loop does not advance during ordinary play")
+		return
+	if not await _await_animation(healer_art, "idle_south"):
+		_fail("The waiting Healer is not at rest in the south-facing idle loop")
+		return
+	# Following, its own movement must choose the walk, and arrival the idle.
+	healer.call("CommandFollow")
 	seeker.global_position = healer.global_position + Vector2(240, 0)
 	if not await _await_animation(healer_art, "walk_east"):
 		_fail("The following Healer did not walk east toward the Seeker")

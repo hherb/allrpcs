@@ -11,7 +11,9 @@ and closed the [sickhouse bed/patient slice](art-direction/sickhouse-patient-bed
 merged). The owner then requested the Healer and Village Sage (Orin) characters
 ([authority](art-direction/healer-sage-runtime/authority.json)). That slice is implemented on branch
 `claude/healer-sage-runtime` ([package](art-direction/healer-sage-runtime/README.md)) and awaits owner
-review of PR #478. The water-cask marker overlapping the Sage is [#477](https://github.com/hherb/allrpcs/issues/477).
+review of PR #478. The water-cask marker overlapping the Sage is [#477](https://github.com/hherb/allrpcs/issues/477);
+tree-order drawing of the tall sprites is [#479](https://github.com/hherb/allrpcs/issues/479); the walks are not
+re-authored to the reference gait model and await owner sign-off ([#480](https://github.com/hherb/allrpcs/issues/480)).
 Other greybox markers (herb patch, stone marker, water cask, wagon clue, closed forest gate,
 exit markers) remain; replacing them needs a new owner request.
 
@@ -50,10 +52,12 @@ validator binding runtime bytes to the characters-batch acceptance, and captures
 
 Implemented on branch claude/healer-sage-runtime (2026-10-29): 96 approved frames copied byte-
 unchanged (idle/inspect from characters-batch/exports, walks from walk-rig-polish, timed to the
-reference gait's 720 ms cycle), Healer/WalkAnimation and SageHearingPosition/Figure in Main,
-check/validator/captures in smoke. Remaining: owner review of the PR and its review fixes; then
-close the scope on owner direction. Do not re-author the walks or replace other placeholders (the
-water-cask overlap is #477).
+reference gait's 720 ms cycle), Healer/WalkAnimation and SageHearingPosition/Figure in Main, check
+and validator in smoke, captures retained in the package. The walks follow the reference gait
+model's 720 ms timing but are not re-authored to its poses (art-direction/reference-gait-model.md
+still governs walking); that deviation awaits owner sign-off (#480). Remaining: owner review of the
+PR; then close the scope on owner direction. Do not replace other placeholders without owner
+direction (the water-cask overlap is #477, tree-order drawing of tall sprites #479).
 
 Done when: Healer and Sage show their approved directional art in ordinary Main, native and full
 quality checks pass with retained evidence, and the branch is committed/pushed with a PR.

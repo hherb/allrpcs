@@ -5,7 +5,7 @@
 	},
 	"engine": "4.6.3-stable (official)",
 	"inputs": {
-		"res://../scripts/capture-healer-sage-runtime.gd": "91f62c47710afee6e03d0ebb8d1bcac89447f2e4744544d889130c1c99a49c82",
+		"res://../scripts/capture-healer-sage-runtime.gd": "db6cef8461bce3e8910a450a4ad5af18657cee12b804696a12570438e6311dec",
 		"res://Healer.cs": "7b16977e1bd5c8ad0c9214314e21978e5b46e61cde5bc0ee4b760de35dd1eaef",
 		"res://Main.tscn": "c18de441538fdcfbae8095e6fa827a9676196ef7e265d9dbddeb7edc075efb97",
 		"res://SeekerWalkAnimationPresenter.cs": "d3019b0f9d614d22c3182744726888cd218c5e103d47382b8c139da51a7ea187",

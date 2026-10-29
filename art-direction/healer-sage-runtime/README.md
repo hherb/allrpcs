@@ -15,18 +15,20 @@ lists in `active_assets`. For each role and each of south/west/east/north there 
 
 - `idle-01..02` and `inspect-01..02` from `characters-batch/exports/` (approved 2026-10-04);
 - `walk-01..08` from `characters-batch/walk-rig-polish/exports/`, the approved 8-phase polished
-  walk. The 4-frame `*-walk-*` studies in `characters-batch/exports/` are **not** used: that
-  README records they keep the same foot leading and must not be promoted.
+  walk. The 4-frame `*-walk-*` studies in `characters-batch/exports/` are **not** used: the
+  [characters-batch README](../characters-batch/README.md) records they keep the same foot
+  leading and must not be promoted.
 
 ## Wiring
 
 Each role has an `animations.tres` SpriteFrames with the twelve animations the Seeker uses:
-`idle_*` (600 ms per frame, looping), `walk_*` and `interact_*` (the inspect frames, 160 ms,
-not looping). Walks run 90 ms per frame, giving the
+`idle_*` (600 ms per frame, looping), `interact_*` (the inspect frames, 160 ms, not looping)
+and `walk_*` (90 ms, looping). The walks' 8 × 90 ms gives the
 [reference gait model](../reference-gait-model.md)'s 720 ms cycle (the same cycle as the
 Seeker's runtime walk). The frames themselves stay the approved 8-phase cutout gait. This slice
 did not re-author them to the reference model's 16 side poses, because that would be new art the
-owner did not request.
+owner did not request. That deviation from the gait model awaits owner sign-off
+([#480](https://github.com/hherb/allrpcs/issues/480)).
 
 - `Healer/WalkAnimation` replaces the `Body` and `Satchel` polygons. It reuses
   `SeekerWalkAnimationPresenter`. `Healer.cs` passes it the chosen `Velocity` before
@@ -50,9 +52,11 @@ interaction yet, and adding one would be new behaviour.
   characters acceptance record, checks their lossless import settings, and fails on any extra
   frame under the two runtime folders. It checks only these files (#471).
 - `scripts/check-healer-sage-runtime.gd` checks that the placeholders are gone and both nodes
-  are unmoved. It checks every animation's frames, timing and looping, and that the Sage is
-  breathing. It moves the Seeker away so the Healer walks east, then back so it idles east. It
-  fails on the pre-slice Main and when the `Healer.cs` presenter call is removed.
+  are unmoved, that neither sprite is hidden, every animation's frames, timing and looping, and
+  that the Sage's breathing loop advances. It holds the Healer in Wait and checks it rests
+  facing south, then lets it follow the Seeker moved away so it walks east, then back so it
+  idles east. It fails on the pre-slice Main, when the `Healer.cs` presenter call is removed,
+  when either sprite is hidden, and when the Sage loop is frozen.
 - `OpeningRegionSageConsultationInputSmokeCheck` now checks that `Figure` is visible instead of
   the removed `Body` polygon.
 - `scripts/capture-healer-sage-runtime.gd` writes the two `captures/` and
@@ -60,8 +64,12 @@ interaction yet, and adding one would be new behaviour.
 
 Results are in [verification.json](verification.json).
 
-## Known limit
+## Known limits
 
 The greybox water-cask marker at (2200, 900) draws over the Sage's legs, because the new art is
 much taller than the old polygon. Replacing that marker is outside this slice; it is tracked as
 [#477](https://github.com/hherb/allrpcs/issues/477).
+
+Main draws its characters in tree order, not by depth, so the Seeker draws over the taller
+Healer or Sage when it stands behind them. Depth sorting would reorder everything Main draws, so
+it is tracked separately as [#479](https://github.com/hherb/allrpcs/issues/479).
