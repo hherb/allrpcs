@@ -22,19 +22,22 @@ drawn over it and looked as if it stood on the stone. `CharacterDepthOrderPresen
 the marker z `1 + DepthDrawOrder.CountNorthOf(...)`, the number of ranked figures whose feet are
 north of the tablet's foot. The Sage, water cask, Healer and Seeker keep their accepted ranks
 z 1..4, so the accepted depth-order check passes unchanged. When the marker ties with the first
-figure south of it, Godot draws in tree order. That figure is always the cask, Healer or Seeker
-(the cask at y 900 always lies between the marker and the Sage), and all three come after the
-marker in `Main.tscn`, so they draw in front.
+figure south of it, Godot draws in tree order. The cask, Healer and Seeker all come after the
+marker in `Main.tscn`, so they draw in front. The fixed Sage comes before it, but a tie with the
+Sage (possible only once the cask has been moved south of it) never shows, because the two are
+far apart.
 
 ## Checks
 
 - `scripts/validate-stone-marker-art.py` checks the objects-batch acceptance binding, that the
-  runtime PNG is byte-identical to the approved export and that its import is lossless. It checks only
-  those bytes, never the whole tree (#471).
+  runtime PNG is byte-identical to the approved export and that its import is lossless. It also checks
+  the captures and their art and script inputs against [capture-evidence.json](capture-evidence.json).
+  It checks only those bytes, never the whole tree (#471).
 - `scripts/check-stone-marker-art.gd` checks the texture, the foot placement and the unchanged
-  interaction point. It also checks that a Seeker south of the tablet draws in front of it and one
-  north of it draws behind it.
-- `DepthDrawOrderTests` unit-tests `CountNorthOf`.
+  interaction point. It checks that the cask, Healer and Seeker come after the marker in the tree.
+  It also checks that a Seeker level with the tablet's foot draws in front of it and one 1 px north
+  of it draws behind it, which ties the presentation's foot offset to the sprite's foot.
+- `DepthDrawOrderTests` unit-tests `CountNorthOf`, including that it splits the `Ranks` exactly.
 - `scripts/capture-stone-marker-art.gd` writes the two `captures/` and
   [capture-evidence.json](capture-evidence.json).
 

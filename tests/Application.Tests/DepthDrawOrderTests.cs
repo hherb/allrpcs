@@ -37,6 +37,29 @@ public sealed class DepthDrawOrderTests
     }
 
     [Fact]
+    public void CountsExactlyTheItemsRankedBelowTheProp()
+    {
+        // The prop's z 1 + count sits between the ranks: every item north of it has rank < count and
+        // every other item has rank >= count, ties included.
+        (float[] FootY, float PropFootY)[] cases =
+        [
+            ([950.0f, 900.0f, 368.0f, 368.0f, 345.0f], 368.0f),
+            ([400.0f, 400.0f], 400.0f),
+            ([100.0f, 500.0f, 100.0f], 300.0f),
+        ];
+        foreach ((float[] footY, float propFootY) in cases)
+        {
+            int[] ranks = DepthDrawOrder.Ranks(footY);
+            int count = DepthDrawOrder.CountNorthOf(footY, propFootY);
+
+            for (int i = 0; i < footY.Length; i++)
+            {
+                Assert.Equal(footY[i] < propFootY, ranks[i] < count);
+            }
+        }
+    }
+
+    [Fact]
     public void CountsNothingNorthOfAPropWithNoItems()
     {
         Assert.Equal(0, DepthDrawOrder.CountNorthOf([], 368.0f));

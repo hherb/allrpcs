@@ -17,7 +17,9 @@ func _initialize() -> void:
 
 func _capture() -> void:
 	var output := ProjectSettings.globalize_path("res://").path_join(OUTPUT).simplify_path()
-	DirAccess.make_dir_recursive_absolute(output.path_join("captures"))
+	if DirAccess.make_dir_recursive_absolute(output.path_join("captures")) != OK:
+		_fail("Stone marker capture directory could not be created")
+		return
 	var viewport := SubViewport.new()
 	viewport.size = Vector2i(1280, 720)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -30,7 +32,7 @@ func _capture() -> void:
 	healer.set_physics_process(false)
 	seeker.get_node("FollowCamera").enabled = false
 	var camera := Camera2D.new()
-	# Keep the 3200x1800 map filling the frame, as the building captures do; zoom in on the marker.
+	# Zoom 2 on the marker; the 640x360 world view stays inside the 3200x1800 map.
 	camera.zoom = Vector2(2, 2)
 	camera.position = CENTER
 	viewport.add_child(camera)
@@ -73,10 +75,17 @@ func _save(viewport: SubViewport, output: String, name: String, record: Dictiona
 	RenderingServer.force_draw()
 	var picture := viewport.get_texture().get_image()
 	var relative := "captures/" + name + ".png"
-	if picture == null or picture.save_png(output.path_join(relative)) != OK:
+	if picture == null:
 		_fail("Stone marker capture failed: " + relative)
 		return false
+	var saved := picture.save_png(output.path_join(relative))
+	if saved != OK:
+		_fail("Stone marker capture failed: " + relative + ": " + error_string(saved))
+		return false
 	record.captures[relative] = FileAccess.get_sha256(output.path_join(relative))
+	if record.captures[relative].is_empty():
+		_fail("Stone marker capture could not be hashed: " + relative)
+		return false
 	print("Captured ", relative)
 	return true
 

@@ -42,12 +42,23 @@ func _check() -> void:
 	if tablet.z_index != 0 or not tablet.z_as_relative:
 		_fail("The tablet gained its own draw order")
 		return
-	# Depth: the Seeker in front of the tablet when its feet are south of the tablet's foot (y 368),
-	# behind it when north. Hold both characters so only this check moves them.
+	# At equal z the presentation relies on these coming after the marker in the tree, and on the
+	# marker's own z being its effective z.
 	var seeker: CharacterBody2D = scene.get_node("Seeker")
+	for figure in [scene.get_node("InteractionCandidates/WaterCask"), scene.get_node("Healer"), seeker]:
+		if not figure.is_greater_than(marker):
+			_fail("%s no longer comes after the stone marker in Main.tscn" % figure.name)
+			return
+	if not marker.z_as_relative or marker.get_parent().z_index != 0:
+		_fail("The stone marker's z is no longer its effective draw order")
+		return
+	# Depth: the Seeker in front of the tablet when its feet are level with or south of the tablet's
+	# foot, behind it 1 px north, so the presentation's foot offset must match the sprite's foot.
+	# Hold both characters so only this check moves them.
+	var foot_y := marker.global_position.y + FOOT_Y
 	seeker.set_physics_process(false)
 	scene.get_node("Healer").call("CommandWait")
-	for visit in [[Vector2(1080, 470), true], [Vector2(1080, 345), false]]:
+	for visit in [[Vector2(1080, foot_y), true], [Vector2(1080, foot_y - 1.0), false]]:
 		seeker.global_position = visit[0]
 		for _frame in range(3):
 			await process_frame
