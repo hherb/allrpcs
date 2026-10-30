@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 483,
+    "merge_commit": "5632c86e7195545fcbc83bb1b08887b61c9b16ed",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-30T04:25:40Z"
+  },
+  "question": "You merged PR #483 (the stone marker now shows the approved inscriptions-01 tablet, in depth order). Should I record that as owner acceptance and close the stone-marker-art slice in the ledger, as I did for the depth-order slice after PR #482?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "stone-marker-art"
+}

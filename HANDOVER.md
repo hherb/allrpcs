@@ -13,11 +13,12 @@ PR #478, closed the [Healer/Sage art slice](art-direction/healer-sage-runtime/RE
 re-authored to the reference gait ([#480](https://github.com/hherb/allrpcs/issues/480), not signed off) and the
 untriggered Healer inspect gesture ([#481](https://github.com/hherb/allrpcs/issues/481)). The
 [depth-order slice](art-direction/character-depth-order/README.md) (#479, #477) merged as PR #482 and was closed
-on 2026-10-30 ([acceptance](art-direction/character-depth-order/owner-acceptance.json)). The owner then asked to
-replace greybox markers, starting with the stone marker ([authority](art-direction/stone-marker-art/authority.json)):
-see the active slice below. Remaining greybox markers (herb patch, water cask, wagon clue, closed forest gate,
-exit markers) need their own owner request. Of those, only the herb patch (herbs-01..06 sprigs) and the wagon
-clue (clue-objects) have accepted near-matches; no cask art exists.
+on 2026-10-30 ([acceptance](art-direction/character-depth-order/owner-acceptance.json)). The owner is replacing
+greybox markers one at a time: the stone marker tablet merged as PR #483 and was closed on 2026-10-30
+([acceptance](art-direction/stone-marker-art/owner-acceptance.json)); the herb patch is the active slice below
+([authority](art-direction/herb-patch-art/authority.json)). Remaining greybox markers (water cask, wagon clue,
+closed forest gate, exit markers) need their own owner request. Of those, only the wagon clue (clue-objects) has
+accepted near-matches; no cask art exists.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -43,37 +44,37 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**stone-marker-art — Replace the stone marker placeholder with the approved standing tablet** (in_progress).
+**herb-patch-art — Replace the herb patch placeholder with approved herb sprigs** (in_progress).
 
-Roadmap item: - [ ] Replace the stone marker placeholder with the approved standing tablet, in depth
+Roadmap item: - [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth
 order.
 
-Missing deliverable: The stone marker in Main shows the approved objects-batch inscriptions-01
-tablet instead of a grey polygon, drawn behind a Seeker south of it and in front of one north of it,
-with a byte/import validator, a native check, captures and a package.
+Missing deliverable: The herb patch in Main shows a cluster of the approved objects-batch sprigs
+herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north
+of it, with a byte/import validator, a native check, captures and a package.
 
-Implemented on branch claude/stone-marker-art (2026-10-30): the StoneMarker Marker is a Sprite2D of
-a byte copy of inscriptions-01 whose foot stands on the old polygon's base line (y +18); the node
-position (1080, 350) is unchanged. CharacterDepthOrderPresentation sets the marker's z to 1 +
-DepthDrawOrder.CountNorthOf (unit-tested), keeping the four figures at z 1..4 so the accepted depth
-check still passes unchanged. Review fixes in 5cd1deb1; full gate passed on it (219 stages, 0
-retries; verification.json). Remaining: owner review of PR #483; then close the scope on owner
-direction. Other greybox markers (herb patch, water cask, wagon clue, forest gate, exit markers)
-need their own owner request.
+Implemented on branch claude/herb-patch-art (2026-10-30): the HerbPatch Marker is a Node2D holding
+three uncentred Sprite2D byte copies of herbs-01, herbs-03 and herbs-02 (front) whose feet stand on
+the old polygon's base line (y +16); the node position (920, 350) is unchanged.
+CharacterDepthOrderPresentation now places a list of fixed props (herb patch +16, stone marker +18)
+at z 1 + DepthDrawOrder.CountNorthOf, keeping the four figures at z 1..4 and the stone marker
+unchanged. Full gate passed on 32b3e25a (219 stages, 0 retries; verification.json). Remaining: owner
+review of PR #484; then close the scope on owner direction. Other greybox markers (water cask, wagon
+clue, forest gate, exit markers) need their own owner request.
 
-Done when: Ordinary Main shows the approved tablet at the unchanged stone marker point in correct
+Done when: Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct
 depth order with the Seeker, affected checks pass with retained evidence, and the branch is
 committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/stone-marker-art/README.md`
-- `art-direction/stone-marker-art/verification.json`
+- `art-direction/herb-patch-art/README.md`
+- `art-direction/herb-patch-art/verification.json`
 
-Boundary: Stone marker presentation, its draw order and dependent
-verification/documentation/publication only. Interaction point, ranges, perception, collision,
-navigation, saves and the four figures' ranks stay unchanged. No other placeholder replacement,
-merge or release.
+Boundary: Herb patch presentation, its draw order and dependent
+verification/documentation/publication only. Interaction point, ranges, perception, collection,
+collision, navigation, saves, the stone marker and the four figures' ranks stay unchanged. No other
+placeholder replacement, merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

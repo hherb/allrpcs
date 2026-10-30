@@ -447,6 +447,9 @@
 [ext_resource type="Script" path="res://CharacterDepthOrderPresentation.cs" id="character_depth_order"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/sickbed-01.png" id="sickbed"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/inscriptions-01.png" id="stone_marker_tablet"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/herbs-01.png" id="herb_patch_sprig_01"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/herbs-02.png" id="herb_patch_sprig_02"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/herbs-03.png" id="herb_patch_sprig_03"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
 [ext_resource type="SpriteFrames" path="res://art/runtime/characters/healer/animations.tres" id="healer_animations"]
@@ -748,9 +751,25 @@ position = Vector2(920, 350)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "herb-patch"
 
-[node name="Marker" type="Polygon2D" parent="InteractionCandidates/HerbPatch"]
-polygon = PackedVector2Array(0, -18, 16, -8, 12, 16, -12, 16, -16, -8)
-color = Color(0.431, 0.776, 0.353, 1)
+[node name="Marker" type="Node2D" parent="InteractionCandidates/HerbPatch"]
+
+[node name="Herbs01" type="Sprite2D" parent="InteractionCandidates/HerbPatch/Marker"]
+position = Vector2(-18, 16)
+texture = ExtResource("herb_patch_sprig_01")
+centered = false
+offset = Vector2(-23, -41)
+
+[node name="Herbs03" type="Sprite2D" parent="InteractionCandidates/HerbPatch/Marker"]
+position = Vector2(18, 16)
+texture = ExtResource("herb_patch_sprig_03")
+centered = false
+offset = Vector2(-28, -49)
+
+[node name="Herbs02" type="Sprite2D" parent="InteractionCandidates/HerbPatch/Marker"]
+position = Vector2(0, 16)
+texture = ExtResource("herb_patch_sprig_02")
+centered = false
+offset = Vector2(-31, -55)
 
 [node name="Label" type="Label" parent="InteractionCandidates/HerbPatch"]
 offset_left = -52.0
