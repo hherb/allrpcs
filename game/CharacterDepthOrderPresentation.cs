@@ -56,8 +56,8 @@ public partial class CharacterDepthOrderPresentation : Node
         {
             // Every other world drawing in Main except the fixed props (placed below) is at z <= 0, so
             // starting at 1 keeps all four above it (the Sage and cask now also above later z-0 scene
-            // props). The Sage's name label is absolute z 5 in Main.tscn so nothing ranked up to 4,
-            // the props included, covers it.
+            // props). The Sage's name label is absolute z 5 in Main.tscn so nothing ranked up to 4
+            // covers it; the props stay at 4 or below only because the fixed Sage is south of both.
             items[i].ZIndex = 1 + ranks[i];
         }
 
@@ -65,8 +65,9 @@ public partial class CharacterDepthOrderPresentation : Node
         // of it, level with the first one south of it. At equal z Godot draws in tree order. The cask,
         // Healer and Seeker come after both props in Main.tscn, so they draw in front; the fixed Sage
         // comes before them, but the Sage is far from both, so a tie with it never shows (the cask can
-        // be moved south of the Sage, which makes that tie possible). The two props are 160 px apart
-        // and never overlap, so their order between themselves does not matter.
+        // be moved south of the Sage, which makes that tie possible). The two props stand on one row
+        // (x 920 and 1080, 160 px apart) and their art never overlaps, so their order between
+        // themselves does not matter; nothing checks this, so recheck it if either moves.
         for (int i = 0; i < props.Length; i++)
         {
             props[i].ZIndex = 1 + DepthDrawOrder.CountNorthOf(footY, props[i].GlobalPosition.Y + FixedProps[i].FootOffset);

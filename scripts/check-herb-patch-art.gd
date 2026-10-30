@@ -32,7 +32,8 @@ func _check() -> void:
 		_fail("The herb patch interaction point moved")
 		return
 	var marker := patch.get_node_or_null("Marker")
-	if marker == null or marker.get_class() != "Node2D" or marker.position != Vector2.ZERO:
+	if marker == null or marker.get_class() != "Node2D" or marker.position != Vector2.ZERO \
+			or marker.scale != Vector2.ONE or marker.rotation != 0.0:
 		_fail("The herb patch Marker is not an unmoved Node2D holding the sprigs")
 		return
 	if marker.get_children().map(func(child): return String(child.name)) != SPRIGS.keys():
@@ -44,10 +45,11 @@ func _check() -> void:
 		if sprig == null or sprig.texture == null or sprig.texture.resource_path != expected[0]:
 			_fail("%s is not the approved %s artwork" % [sprig_name, expected[0]])
 			return
-		# An uncentred sprite's texture pixel p sits at position + offset + p.
+		# An unscaled, unrotated, unflipped uncentred sprite's texture pixel p sits at position + offset + p.
 		var foot: Vector2 = sprig.position + sprig.offset + expected[1]
-		if sprig.centered or foot != Vector2(expected[2], FOOT_Y):
-			_fail("%s's foot is not on the old placeholder's base line: %s" % [sprig_name, foot])
+		if sprig.centered or sprig.scale != Vector2.ONE or sprig.rotation != 0.0 or sprig.flip_h or sprig.flip_v \
+				or foot != Vector2(expected[2], FOOT_Y):
+			_fail("%s is centred, transformed or flipped, or its foot is not on the old placeholder's base line: %s" % [sprig_name, foot])
 			return
 		if not sprig.is_visible_in_tree() or sprig.z_index != 0 or not sprig.z_as_relative:
 			_fail("%s is hidden or gained its own draw order" % sprig_name)
@@ -63,7 +65,7 @@ func _check() -> void:
 			_fail("%s no longer comes after the herb patch in Main.tscn" % figure.name)
 			return
 	if not patch.z_as_relative or patch.get_parent().z_index != 0:
-		_fail("The herb patch's z is no longer its effective draw order")
+		_fail("The herb patch's z is no longer relative to a z-0 parent")
 		return
 	# Depth: the Seeker in front of the sprigs when its feet are level with or south of their feet,
 	# behind them 1 px north, so the presentation's foot offset must match the sprites' feet.

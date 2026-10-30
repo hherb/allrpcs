@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the herb patch runtime art against its owner-approved objects-batch exports.
 
-Checks only the bytes this slice reuses, never the whole tree, so later unrelated changes do not
+Checks only the bytes this slice reuses or produces, never the whole tree, so later unrelated changes do not
 trip it (see issue #471).
 """
 import hashlib

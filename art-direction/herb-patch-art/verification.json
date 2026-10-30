@@ -5,7 +5,7 @@
   "product_revision": "32b3e25a on claude/herb-patch-art",
   "inputs": {
     "game/Main.tscn": "6e43427aba128b3295f44fa05ec7ca146b185686c5cf03b36d91e9507c8b7d32",
-    "game/CharacterDepthOrderPresentation.cs": "59ae6695a8dc46025f00b8ffb7d30f8d0bd8b57bbd452839ddf9ed988da1cd28",
+    "game/CharacterDepthOrderPresentation.cs": "a1f9b747ee9b43936eddd2629bcc3b510765f6870d8e5d7e12ef768983557afb",
     "src/Application/Presentation/DepthDrawOrder.cs": "0d3a1c84d39f84e3b409cb205aceeaba70b2be5b8ecc900ba6171f325bb16a4d",
     "game/art/runtime/objects/herbs-01.png": "d46639439bf4f33c753348c626e91c16d29225226cca48de2ffe1841aa7ee740",
     "game/art/runtime/objects/herbs-01.png.import": "6494533384b20d4cb822575aafe802287b78a2fbdd0f6b265b8ffea90653894a",
@@ -13,8 +13,8 @@
     "game/art/runtime/objects/herbs-02.png.import": "b846eec5fd012abe7f621f730749ecbcb43d1898f6fdf909326762331019f71d",
     "game/art/runtime/objects/herbs-03.png": "0881f49a739f6634e77ad117dd89d3f87f2c2531f9b63ef5f9396aea755df015",
     "game/art/runtime/objects/herbs-03.png.import": "ee95492a0cf73b5f13c9fc431b25b537e92bb15ab620a8dd75adc83bf4b268b8",
-    "scripts/validate-herb-patch-art.py": "89194ba1b327ac2fe00f746a1d674591c7cf043c81c65f1fa512e5756ef3cc17",
-    "scripts/check-herb-patch-art.gd": "c8bbcc9c5c9a45dcbdb410e4f3b4cfb66805b12d7cbaff16d2ea33a2e999aad8",
+    "scripts/validate-herb-patch-art.py": "64597a7ab22c6325e71061d1b16024f9261f5b4d70d97087656ce7d4983d1954",
+    "scripts/check-herb-patch-art.gd": "ba5464dfaba3668a58c272ee16dd7c05192989475e6e3313efc5dcf0120a6397",
     "scripts/capture-herb-patch-art.gd": "70c5049619233df633fde834d91bc04da2b6edd3523a60f389346987f2862dca",
     "scripts/smoke-godot.sh": "78c8ee0fc563f03f697cabd6573c6ee8f66b14732abb06f7abf1c1f3aee89a82"
   },
@@ -41,5 +41,6 @@
     "The Healer's herb-patch trip ends north of the sprigs' foot line, so the sprigs correctly draw over its legs there; no capture shows the Healer at the patch.",
     "Captures are fixed camera views; no live owner playthrough is claimed."
   ],
-  "review": "Pre-PR read-only review of 32b3e25a found no defects; its notes (Healer behind the sprigs, focus ring over a Seeker north of the patch as with the stone marker, ledger re-encoding) are recorded here or fixed."
+  "review": "Pre-PR read-only review of 32b3e25a found no defects; its notes (Healer behind the sprigs, focus ring over a Seeker north of the patch as with the stone marker, ledger re-encoding) are recorded here or fixed.",
+  "review_fixes": "PR #484 review: comment-only edits to CharacterDepthOrderPresentation.cs (prop z cap relies on the Sage being south of both; the two props' non-overlap is unchecked) and the validator docstring; README corrections (Healer trip ends 16 px north; captures hide every Control); check-herb-patch-art.gd also rejects a scaled, rotated or flipped Marker or sprig (fails with Herbs02 scaled 1.2). The capture script and captures are unchanged. Re-run: dotnet format/build, validate-herb-patch-art.py, check-herb-patch-art.gd, check-stone-marker-art.gd, check-character-depth-order.gd all passed; the full gate above was not re-run for these comment and check-only changes."
 }

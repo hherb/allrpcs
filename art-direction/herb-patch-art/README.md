@@ -29,7 +29,7 @@ their accepted ranks z 1..4, and the stone marker behaves as before. The cask, H
 come after the herb patch in `Main.tscn`, so at equal z they draw in front of it. Because all three
 sprigs share one foot line, one depth foot is exact for the whole patch.
 
-The Healer's herb trip ends a few pixels north of that line, so there the sprigs draw over its
+The Healer's herb trip ends at the patch's node point, 16 px north of that line, so there the sprigs draw over its
 legs, as the depth rule requires; the old polygon at z 0 never covered it. No capture shows this.
 
 ## Checks
@@ -43,6 +43,7 @@ legs, as the depth rule requires; the old polygon at z 0 never covered it. No ca
   the tree. It also checks that a Seeker level with the sprigs' feet draws in front of them and one
   1 px north draws behind, which ties the presentation's foot offset to the sprites' feet.
 - `scripts/capture-herb-patch-art.gd` writes the two `captures/` and
-  [capture-evidence.json](capture-evidence.json).
+  [capture-evidence.json](capture-evidence.json). It hides every Control, so the captures show
+  neither the UI nor the world labels such as `HERB PATCH`.
 
 Results are in [verification.json](verification.json).
