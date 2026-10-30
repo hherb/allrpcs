@@ -335,7 +335,7 @@
     },
     {
       "id": "phase9-material-audio-runtime-integration",
-      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01\u2013B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
+      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01–B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
       "evidence": [
         {
           "path": "audio-direction/material-runtime-authority.json",
@@ -2081,7 +2081,7 @@
     "authority_status": "owner_requested_herb_patch_art_2026-10-30",
     "roadmap_item": "- [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth order.",
     "missing_deliverable": "The herb patch in Main shows a cluster of the approved objects-batch sprigs herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north of it, with a byte/import validator, a native check, captures and a package.",
-    "instructions": "Work on branch claude/herb-patch-art: replace the HerbPatch Marker polygon with three Sprite2D byte copies of herbs-01, herbs-02 and herbs-03 whose feet stand on the old polygon's base line (y +16); keep the node position (920, 350). Place the patch in CharacterDepthOrderPresentation like the stone marker (z 1 + DepthDrawOrder.CountNorthOf), keeping the four figures at z 1..4 and the stone marker unchanged. Other greybox markers (water cask, wagon clue, forest gate, exit markers) need their own owner request.",
+    "instructions": "Implemented on branch claude/herb-patch-art (2026-10-30): the HerbPatch Marker is a Node2D holding three uncentred Sprite2D byte copies of herbs-01, herbs-03 and herbs-02 (front) whose feet stand on the old polygon's base line (y +16); the node position (920, 350) is unchanged. CharacterDepthOrderPresentation now places a list of fixed props (herb patch +16, stone marker +18) at z 1 + DepthDrawOrder.CountNorthOf, keeping the four figures at z 1..4 and the stone marker unchanged. Full gate passed on 32b3e25a (219 stages, 0 retries; verification.json). Remaining: owner review of the PR; then close the scope on owner direction. Other greybox markers (water cask, wagon clue, forest gate, exit markers) need their own owner request.",
     "completion_condition": "Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
       "art-direction/herb-patch-art/README.md",
@@ -2097,7 +2097,7 @@
       "workstream": "code-health-program",
       "reopening_id": "owner-playable-phase4-2026-10-19",
       "authority_status": "owner_requested_playable_continuation_2026-10-19",
-      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1\u20139 and reaches an ending on local Ollama.",
+      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
       "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
       "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
       "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",

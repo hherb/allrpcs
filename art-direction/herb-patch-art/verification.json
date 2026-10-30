@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "status": "implementation_verified",
+  "product_revision": "32b3e25a on claude/herb-patch-art",
+  "inputs": {
+    "game/Main.tscn": "6e43427aba128b3295f44fa05ec7ca146b185686c5cf03b36d91e9507c8b7d32",
+    "game/CharacterDepthOrderPresentation.cs": "59ae6695a8dc46025f00b8ffb7d30f8d0bd8b57bbd452839ddf9ed988da1cd28",
+    "src/Application/Presentation/DepthDrawOrder.cs": "0d3a1c84d39f84e3b409cb205aceeaba70b2be5b8ecc900ba6171f325bb16a4d",
+    "game/art/runtime/objects/herbs-01.png": "d46639439bf4f33c753348c626e91c16d29225226cca48de2ffe1841aa7ee740",
+    "game/art/runtime/objects/herbs-01.png.import": "6494533384b20d4cb822575aafe802287b78a2fbdd0f6b265b8ffea90653894a",
+    "game/art/runtime/objects/herbs-02.png": "1fddb1442657cbeb7066cc8414e28c86ecccef4da921f3654ad39382defbf47c",
+    "game/art/runtime/objects/herbs-02.png.import": "b846eec5fd012abe7f621f730749ecbcb43d1898f6fdf909326762331019f71d",
+    "game/art/runtime/objects/herbs-03.png": "0881f49a739f6634e77ad117dd89d3f87f2c2531f9b63ef5f9396aea755df015",
+    "game/art/runtime/objects/herbs-03.png.import": "ee95492a0cf73b5f13c9fc431b25b537e92bb15ab620a8dd75adc83bf4b268b8",
+    "scripts/validate-herb-patch-art.py": "89194ba1b327ac2fe00f746a1d674591c7cf043c81c65f1fa512e5756ef3cc17",
+    "scripts/check-herb-patch-art.gd": "c8bbcc9c5c9a45dcbdb410e4f3b4cfb66805b12d7cbaff16d2ea33a2e999aad8",
+    "scripts/capture-herb-patch-art.gd": "70c5049619233df633fde834d91bc04da2b6edd3523a60f389346987f2862dca",
+    "scripts/smoke-godot.sh": "78c8ee0fc563f03f697cabd6573c6ee8f66b14732abb06f7abf1c1f3aee89a82"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "375 passed, 3 existing quarantines (smoke stage product-10 log; includes validate-herb-patch-art.py and check-herb-patch-art.gd)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the committed head 32b3e25a; afterwards only this record, the retained summary, prose and a byte-only re-encoding of CONTINUATION.json (same parsed ledger) changed."
+  },
+  "focused_checks": {
+    "check-herb-patch-art.gd": "passed; fails on the previous Main.tscn (greybox polygon), and fails with the herb patch foot offset changed to 15 or 17 (Seeker 1 px north of / level with the foot)",
+    "check-stone-marker-art.gd, check-character-depth-order.gd, check-healer-sage-runtime.gd": "passed unchanged",
+    "validate-herb-patch-art.py": "passed; also re-checks the captures and their art/script inputs against capture-evidence.json",
+    "dotnet format/build/test": "passed (6187 tests)",
+    "capture-herb-patch-art.gd": "passed (windowed; headless has no renderer); two captures"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "The sprigs' feet use the objects-batch proposed (provisional) pivots.",
+    "The patch is placed between the four ranked figures by one foot Y shared by all three sprigs; other props and buildings keep their order.",
+    "The Healer's herb-patch trip ends north of the sprigs' foot line, so the sprigs correctly draw over its legs there; no capture shows the Healer at the patch.",
+    "Captures are fixed camera views; no live owner playthrough is claimed."
+  ],
+  "review": "Pre-PR read-only review of 32b3e25a found no defects; its notes (Healer behind the sprigs, focus ring over a Seeker north of the patch as with the stone marker, ledger re-encoding) are recorded here or fixed."
+}
