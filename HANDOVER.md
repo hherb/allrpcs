@@ -58,7 +58,7 @@ Sprite2D byte copy of clue-objects-05 (broken strap) whose foot stands on the ol
 point (y +12); the node position (1900, 1640) is unchanged. CharacterDepthOrderPresentation adds it
 to its fixed props (foot +12), keeping the four figures at z 1..4 and the herb patch and stone
 marker unchanged. Full gate passed on c018d642 (219 stages, 0 retries; verification.json).
-Remaining: owner review of the PR; then close the scope on owner direction. Other greybox markers
+Remaining: owner review of PR #485; then close the scope on owner direction. Other greybox markers
 (water cask, forest gate, exit markers) need their own owner request.
 
 Done when: Ordinary Main shows the approved broken strap at the unchanged wagon clue point in
