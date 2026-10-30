@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 482,
+    "merge_commit": "b7b4e754a98f00299526f16381704ac8bebfac02",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-29T12:43:37Z"
+  },
+  "question": "You merged PR #482 (Sage, Healer, Seeker and water cask now draw in depth order) today. Should I record that as owner acceptance and close the character-depth-order slice in the ledger, the same way the Healer/Sage slice was closed after PR #478?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "character-depth-order"
+}
