@@ -8,7 +8,7 @@ namespace Allrpcs.Game;
 /// south (nearer the viewer) is drawn in front (#479), so the water cask no longer covers the Sage (#477).
 /// Main has no y-sort; enabling it would reorder every z-0 child of Main by its origin Y (the sickhouse
 /// scene source sits at y 1390, so its bed and patient could draw over the Seeker in the cutaway),
-/// so only these four are ranked. The fixed herb patch and stone marker are placed between them by their foot Y.
+/// so only these four are ranked. The fixed herb patch, stone marker and wagon clue are placed between them by their foot Y.
 /// </summary>
 public partial class CharacterDepthOrderPresentation : Node
 {
@@ -22,13 +22,14 @@ public partial class CharacterDepthOrderPresentation : Node
     ];
 
     // Fixed props and how far below their node (the interaction point) their art's feet stand:
-    // the herb sprigs' positions y 16, and the tablet's y -17 + pivot 75 - half height 40, in
-    // Main.tscn. check-herb-patch-art.gd and check-stone-marker-art.gd tie each offset to its art
-    // by checking the depth swap at exactly this foot.
+    // the herb sprigs' positions y 16, the tablet's y -17 + pivot 75 - half height 40, and the strap's
+    // position y 12, in Main.tscn. check-herb-patch-art.gd, check-stone-marker-art.gd and
+    // check-wagon-clue-art.gd tie each offset to its art by checking the depth swap at exactly this foot.
     private static readonly (string Path, float FootOffset)[] FixedProps =
     [
         ("../InteractionCandidates/HerbPatch", 16.0f),
         ("../InteractionCandidates/StoneMarker", 18.0f),
+        ("../InteractionCandidates/WagonClue", 12.0f),
     ];
 
     private Node2D[] items = [];
@@ -57,17 +58,20 @@ public partial class CharacterDepthOrderPresentation : Node
             // Every other world drawing in Main except the fixed props (placed below) is at z <= 0, so
             // starting at 1 keeps all four above it (the Sage and cask now also above later z-0 scene
             // props). The Sage's name label is absolute z 5 in Main.tscn so nothing ranked up to 4
-            // covers it; the props stay at 4 or below only because the fixed Sage is south of both.
+            // covers it. The herb patch and stone marker stay at 4 or below because the fixed Sage is
+            // south of both; the wagon clue, far south of the Sage, can reach z 5, level with the label,
+            // but the two are about 800 px apart and never overlap.
             items[i].ZIndex = 1 + ranks[i];
         }
 
         // Each fixed prop goes between the four without changing their 1..4: in front of those north
-        // of it, level with the first one south of it. At equal z Godot draws in tree order. The cask,
-        // Healer and Seeker come after both props in Main.tscn, so they draw in front; the fixed Sage
-        // comes before them, but the Sage is far from both, so a tie with it never shows (the cask can
-        // be moved south of the Sage, which makes that tie possible). The two props stand on one row
-        // (x 920 and 1080, 160 px apart) and their art never overlaps, so their order between
-        // themselves does not matter; nothing checks this, so recheck it if either moves.
+        // of it, level with the first one south of it. At equal z Godot draws in tree order. The Healer
+        // and Seeker come after every prop in Main.tscn, so they draw in front; the cask comes after the
+        // herb patch and stone marker but before the wagon clue, which is far from it. The fixed Sage
+        // comes before the props, but the Sage is far from all of them, so a tie with it never shows (the
+        // cask can be moved south of the Sage, which makes that tie possible). No two props' art overlaps (the
+        // herb patch and stone marker stand 160 px apart on one row, the wagon clue far south), so their
+        // order between themselves does not matter; nothing checks this, so recheck it if one moves.
         for (int i = 0; i < props.Length; i++)
         {
             props[i].ZIndex = 1 + DepthDrawOrder.CountNorthOf(footY, props[i].GlobalPosition.Y + FixedProps[i].FootOffset);

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "status": "implementation_verified",
+  "product_revision": "c018d642 on claude/wagon-clue-art",
+  "inputs": {
+    "game/Main.tscn": "097b3ea6cb41c25da221b87ebce89a1793569a4bc163f999be90b423110acacf",
+    "game/CharacterDepthOrderPresentation.cs": "2e048906063e4816e2f0ad7a30272f58d336df61bbc9bbf337c582441aed1f4c",
+    "src/Application/Presentation/DepthDrawOrder.cs": "0d3a1c84d39f84e3b409cb205aceeaba70b2be5b8ecc900ba6171f325bb16a4d",
+    "game/art/runtime/objects/clue-objects-05.png": "ecee0f7009ca2e58af861a4d9d8bc84ef277616c0014f553f5d225153bbf5eb4",
+    "game/art/runtime/objects/clue-objects-05.png.import": "03952ac272f4269f531039e0d14409302d6007f0ff862ff9de522561a879e3dc",
+    "scripts/validate-wagon-clue-art.py": "3d66e790156168857e50a1f99110a1cee7c96e06d0399b5d9237b974abf97e37",
+    "scripts/check-wagon-clue-art.gd": "ef77457fa8834ede8fa01659f359dc7165186a27c510c18929bcc3e64be2ea64",
+    "scripts/capture-wagon-clue-art.gd": "fad1ec81606a63cb4dcf20317403bc52f188a0cd5e4a9b6f33ca8fc1601bf6f4",
+    "scripts/smoke-godot.sh": "bea59300dd4987c12fc6a6c274b54698a873fb4fc26bdbf7b155a91fbee23c81"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "376 passed, 3 existing quarantines (smoke stage product-10 log; includes validate-wagon-clue-art.py and check-wagon-clue-art.gd)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the committed head c018d642; afterwards this record, the retained summary, prose and (after the PR review) check-wagon-clue-art.gd changed. The check now tests the visible painted wagon instead of the hidden greybox shell; it was rerun alone, not the full gate."
+  },
+  "focused_checks": {
+    "check-wagon-clue-art.gd": "passed; fails on the previous Main.tscn (greybox polygon, no Sprite2D Marker), and fails with the wagon clue foot offset changed to 0 (Seeker 1 px north of the foot drew in front); after the PR review it compares against the visible MapStructuresPresentation/Wagon and passes, and fails with that wagon's z_index raised to 6",
+    "check-herb-patch-art.gd, check-stone-marker-art.gd, check-character-depth-order.gd": "passed unchanged",
+    "validate-wagon-clue-art.py": "passed; also re-checks the captures and their art/script inputs against capture-evidence.json",
+    "dotnet format/build/test": "passed (6187 tests)",
+    "capture-wagon-clue-art.gd": "passed (windowed; headless has no renderer); two captures"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "The strap's foot uses the objects-batch proposed (provisional) pivot.",
+    "The strap is small (33 x 32 px, the approved scale) and low in contrast on the wagon's wood; that suits a clue needing close inspection, but no readability review is claimed.",
+    "The clue is placed between the four ranked figures by one foot Y; the wagon artwork, other props and buildings keep their order.",
+    "Captures are fixed camera views with the Seeker placed by script; no live owner playthrough is claimed."
+  ]
+}

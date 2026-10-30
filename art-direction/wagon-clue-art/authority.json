@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "base_commit": "ab0f43ac",
+  "owner_statements": [
+    {
+      "question": "What should the next slice be? Each remaining greybox marker needs your request. Only the wagon clue has accepted art that comes close (clue-objects). No art exists yet for the water cask.",
+      "reply": "Wagon clue art"
+    },
+    {
+      "question": "Which approved objects-batch clue object should replace the wagon clue's greybox marker? The domain only calls it \"a small clue on the abandoned wagon that needs close inspection\" (revealed with the field lens). I'll show one object at the unchanged interaction point, in depth order with the Seeker.",
+      "reply": "Broken strap (Recommended)"
+    }
+  ],
+  "scope": "Replace the greybox Polygon2D Marker of InteractionCandidates/WagonClue in Main with the owner-approved objects-batch clue-objects-05 \"Broken strap\" (unchanged bytes), and draw the wagon clue in depth order with the Sage, water cask, Healer and Seeker, as the herb patch and stone marker are.",
+  "boundary": "Wagon clue presentation, its draw order and dependent verification/documentation/publication only. The WagonClue node position, interaction ranges, perception, labels, focused search, tool gating, the wagon shell, collision, navigation, saves, the herb patch, the stone marker and the four figures' accepted ranks z 1..4 stay unchanged. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

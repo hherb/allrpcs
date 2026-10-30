@@ -1,0 +1,13 @@
+{
+	"captures": {
+		"captures/wagon-clue-seeker-north.png": "cdc17c726f33873e04f32a5d1dea6dfe92365f10cbde74a56c433e226a161592",
+		"captures/wagon-clue-seeker-south.png": "98f5444ca2a4d6a4a9d69dbdee6cef2dadb8b2ad8972408c89d94c4f7f31d4b5"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inputs": {
+		"res://../scripts/capture-wagon-clue-art.gd": "fad1ec81606a63cb4dcf20317403bc52f188a0cd5e4a9b6f33ca8fc1601bf6f4",
+		"res://Main.tscn": "097b3ea6cb41c25da221b87ebce89a1793569a4bc163f999be90b423110acacf",
+		"res://art/runtime/objects/clue-objects-05.png": "ecee0f7009ca2e58af861a4d9d8bc84ef277616c0014f553f5d225153bbf5eb4"
+	},
+	"schema_version": 1
+}

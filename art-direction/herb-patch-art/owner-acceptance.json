@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 484,
+    "merge_commit": "ab0f43ac99426473e80d16896fd86c24580c331a",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-30T08:37:27Z"
+  },
+  "question": "You merged PR #484 (the herb patch now shows the approved herbs-01..03 sprigs, in depth order). Should I record that as owner acceptance and close the herb-patch-art slice in the ledger, like I did for the stone marker after PR #483?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "herb-patch-art"
+}
