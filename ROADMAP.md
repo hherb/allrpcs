@@ -106,6 +106,7 @@ packaging, and accessibility claims remain limited to their recorded evidence.
   - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama (exit gate passed
     2026-10-23; playtest in progress, findings in `docs/superpowers/evidence/phase4-owner-playtest.md`).
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
+- [ ] Smoke checks that reload Main stop logging "Handle is not initialized" (#486).
 
 ## Phase 9 — Production art and audio
 
@@ -169,7 +170,7 @@ the same session without repeating unchanged approval gates.
 - [x] Draw the Sage, Healer, Seeker and water cask in depth order in Main (#479, #477).
 - [x] Replace the stone marker placeholder with the approved standing tablet, in depth order.
 - [x] Replace the herb patch placeholder with the approved herb sprigs, in depth order.
-- [ ] Replace the wagon clue placeholder with the approved broken strap, in depth order.
+- [x] Replace the wagon clue placeholder with the approved broken strap, in depth order.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

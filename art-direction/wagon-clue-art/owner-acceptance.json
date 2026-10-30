@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 485,
+    "merge_commit": "af507e1ce5fae54ad1c7457a581b77d0a6dbec6c",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-30T21:33:07Z"
+  },
+  "question": "You merged PR #485, so the wagon clue now shows the approved clue-objects-05 broken strap in depth order. Should I record that as your acceptance and close the wagon-clue-art slice in the ledger, as I did after PRs #483 and #484?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "wagon-clue-art"
+}
