@@ -57,8 +57,9 @@ a scene whose C# wrapper was already collected and the smoke harness fails on th
 Implemented on branch claude/fix-ci-flake-486 (2026-10-31): each of the four checks holds Main's
 PackedScene in a field for the whole run. A temporary harness that stalled the finalizer thread and
 collected right before the reload reproduced the exceptions in 4 of 6 SliceStakes runs before the
-fix and 0 of 6 after (verification record). Remaining: owner review of the PR; then close the scope
-on owner direction.
+fix and 0 of 6 after; full gate passed on d79c1519 (219 stages, 0 retries;
+docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json). Remaining: owner review of PR
+#487; then close the scope on owner direction.
 
 Done when: The four reloading checks hold Main's scene, their smoke launches pass with no C#
 exceptions, the forced-race reproduction no longer fails, and the branch is committed/pushed with a
