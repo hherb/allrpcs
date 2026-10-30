@@ -27,10 +27,10 @@ installed wagon artwork.
 so it gets z `1 + DepthDrawOrder.CountNorthOf(...)` like the herb patch and stone marker. The Sage,
 water cask, Healer and Seeker keep their accepted ranks z 1..4; the herb patch and stone marker are
 unchanged. The clue is far south of the Sage, so it can reach z 5, level with the Sage's name label,
-but the two are about 800 px apart. Its z is always at least 1, so it draws over the greybox wagon
-shell (z 0, later in the tree), which the old polygon at z 0 did not. The Healer and Seeker come
-after the clue in `Main.tscn`, so at equal z they draw in front of it. The water cask comes before
-it, but the two are far apart.
+but the two are about 800 px apart. Its z is always at least 1, so it draws over the painted wagon
+(`MapStructuresPresentation/Wagon`, z -2, later in the tree); the greybox wagon shell is hidden in
+ordinary Main. The Healer and Seeker come after the clue in `Main.tscn`, so at equal z they draw in
+front of it. The water cask comes before it, but the two are far apart.
 
 ## Checks
 
@@ -39,10 +39,10 @@ it, but the two are far apart.
   captures and their art and script inputs against [capture-evidence.json](capture-evidence.json).
   It checks only those bytes, never the whole tree (#471).
 - `scripts/check-wagon-clue-art.gd` checks the texture, the foot, that the sprite is untransformed,
-  the unchanged interaction point, that the clue draws over the wagon shell, and that the Healer and
-  Seeker come after it in the tree. It also checks that a Seeker level with the strap's foot draws in
-  front of it and one 1 px north draws behind, which ties the presentation's foot offset to the
-  sprite's foot.
+  the unchanged interaction point, that the clue draws over the visible painted wagon (at a relative
+  z under a z-0 parent), and that the Healer and Seeker come after it in the tree. It also checks
+  that a Seeker level with the strap's foot draws in front of it and one 1 px north draws behind,
+  which ties the presentation's foot offset to the sprite's foot.
 - `scripts/capture-wagon-clue-art.gd` writes the two `captures/` and
   [capture-evidence.json](capture-evidence.json). It hides every Control, so the captures show
   neither the UI nor the world labels such as `TOOL-GATED CLUE`. The yellow ring is the clue's own

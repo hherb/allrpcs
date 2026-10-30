@@ -1,6 +1,6 @@
 extends SceneTree
 ## Proves ordinary Main shows the approved broken strap for the wagon clue, standing on the old
-## placeholder's base line, above the greybox wagon shell and in depth order with the Seeker,
+## placeholder's base line, above the painted wagon and in depth order with the Seeker,
 ## without moving the wagon clue's interaction point.
 
 # The interaction ranges, perception and focused search measure from this node; the art must not move it.
@@ -43,10 +43,14 @@ func _check() -> void:
 	if not clue.z_as_relative or clue.get_parent().z_index != 0:
 		_fail("The wagon clue's z is no longer relative to a z-0 parent")
 		return
-	# The greybox wagon shell comes later in the tree at z 0; the clue's depth z (at least 1) keeps it on top.
-	var shell: Node2D = scene.get_node("OpeningRegionSouthernRoadWagonSceneSource/WagonShell")
-	if not _draws_in_front(clue, shell):
-		_fail("The wagon shell draws over the wagon clue")
+	# The strap lies on the painted wagon (the greybox WagonShell is hidden in ordinary Main), which comes
+	# later in the tree; the clue's depth z (at least 1) keeps the strap on top.
+	var wagon: Node2D = scene.get_node("MapStructuresPresentation/Wagon")
+	if not wagon.is_visible_in_tree() or not wagon.z_as_relative or wagon.get_parent().z_index != 0:
+		_fail("The painted wagon is hidden or its z is no longer relative to a z-0 parent")
+		return
+	if not _draws_in_front(clue, wagon):
+		_fail("The painted wagon draws over the wagon clue")
 		return
 	# At equal z the presentation relies on the Healer and Seeker coming after the clue in the tree.
 	var seeker: CharacterBody2D = scene.get_node("Seeker")

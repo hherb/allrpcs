@@ -10,7 +10,7 @@
     "game/art/runtime/objects/clue-objects-05.png": "ecee0f7009ca2e58af861a4d9d8bc84ef277616c0014f553f5d225153bbf5eb4",
     "game/art/runtime/objects/clue-objects-05.png.import": "03952ac272f4269f531039e0d14409302d6007f0ff862ff9de522561a879e3dc",
     "scripts/validate-wagon-clue-art.py": "3d66e790156168857e50a1f99110a1cee7c96e06d0399b5d9237b974abf97e37",
-    "scripts/check-wagon-clue-art.gd": "ddb4f1cc6ea73e3a594bebed8f0315982301fd2f5d8455b0b297cb893fa0ca2f",
+    "scripts/check-wagon-clue-art.gd": "ef77457fa8834ede8fa01659f359dc7165186a27c510c18929bcc3e64be2ea64",
     "scripts/capture-wagon-clue-art.gd": "fad1ec81606a63cb4dcf20317403bc52f188a0cd5e4a9b6f33ca8fc1601bf6f4",
     "scripts/smoke-godot.sh": "bea59300dd4987c12fc6a6c274b54698a873fb4fc26bdbf7b155a91fbee23c81"
   },
@@ -21,10 +21,10 @@
     "retries": 0,
     "smoke": "376 passed, 3 existing quarantines (smoke stage product-10 log; includes validate-wagon-clue-art.py and check-wagon-clue-art.gd)",
     "summary": "checks/quality-summary.json.gz",
-    "note": "Run on the committed head c018d642; afterwards only this record, the retained summary and prose changed."
+    "note": "Run on the committed head c018d642; afterwards this record, the retained summary, prose and (after the PR review) check-wagon-clue-art.gd changed. The check now tests the visible painted wagon instead of the hidden greybox shell; it was rerun alone, not the full gate."
   },
   "focused_checks": {
-    "check-wagon-clue-art.gd": "passed; fails on the previous Main.tscn (greybox polygon, no Sprite2D Marker), and fails with the wagon clue foot offset changed to 0 (Seeker 1 px north of the foot drew in front)",
+    "check-wagon-clue-art.gd": "passed; fails on the previous Main.tscn (greybox polygon, no Sprite2D Marker), and fails with the wagon clue foot offset changed to 0 (Seeker 1 px north of the foot drew in front); after the PR review it compares against the visible MapStructuresPresentation/Wagon and passes, and fails with that wagon's z_index raised to 6",
     "check-herb-patch-art.gd, check-stone-marker-art.gd, check-character-depth-order.gd": "passed unchanged",
     "validate-wagon-clue-art.py": "passed; also re-checks the captures and their art/script inputs against capture-evidence.json",
     "dotnet format/build/test": "passed (6187 tests)",
