@@ -1,0 +1,15 @@
+{
+	"captures": {
+		"captures/herb-patch-seeker-north.png": "4fa277922d1c85868a6cfd3a9789b727e073778cb6a56841c82c52af97612ef5",
+		"captures/herb-patch-seeker-south.png": "008c9a3594625d083368e2d4664bd118bf77bb2b4ab72a4ff859aebad1b4672a"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inputs": {
+		"res://../scripts/capture-herb-patch-art.gd": "70c5049619233df633fde834d91bc04da2b6edd3523a60f389346987f2862dca",
+		"res://Main.tscn": "6e43427aba128b3295f44fa05ec7ca146b185686c5cf03b36d91e9507c8b7d32",
+		"res://art/runtime/objects/herbs-01.png": "d46639439bf4f33c753348c626e91c16d29225226cca48de2ffe1841aa7ee740",
+		"res://art/runtime/objects/herbs-02.png": "1fddb1442657cbeb7066cc8414e28c86ecccef4da921f3654ad39382defbf47c",
+		"res://art/runtime/objects/herbs-03.png": "0881f49a739f6634e77ad117dd89d3f87f2c2531f9b63ef5f9396aea755df015"
+	},
+	"schema_version": 1
+}

@@ -43,37 +43,35 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**stone-marker-art — Replace the stone marker placeholder with the approved standing tablet** (in_progress).
+**herb-patch-art — Replace the herb patch placeholder with approved herb sprigs** (in_progress).
 
-Roadmap item: - [ ] Replace the stone marker placeholder with the approved standing tablet, in depth
+Roadmap item: - [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth
 order.
 
-Missing deliverable: The stone marker in Main shows the approved objects-batch inscriptions-01
-tablet instead of a grey polygon, drawn behind a Seeker south of it and in front of one north of it,
-with a byte/import validator, a native check, captures and a package.
+Missing deliverable: The herb patch in Main shows a cluster of the approved objects-batch sprigs
+herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north
+of it, with a byte/import validator, a native check, captures and a package.
 
-Implemented on branch claude/stone-marker-art (2026-10-30): the StoneMarker Marker is a Sprite2D of
-a byte copy of inscriptions-01 whose foot stands on the old polygon's base line (y +18); the node
-position (1080, 350) is unchanged. CharacterDepthOrderPresentation sets the marker's z to 1 +
-DepthDrawOrder.CountNorthOf (unit-tested), keeping the four figures at z 1..4 so the accepted depth
-check still passes unchanged. Review fixes in 5cd1deb1; full gate passed on it (219 stages, 0
-retries; verification.json). Remaining: owner review of PR #483; then close the scope on owner
-direction. Other greybox markers (herb patch, water cask, wagon clue, forest gate, exit markers)
-need their own owner request.
+Work on branch claude/herb-patch-art: replace the HerbPatch Marker polygon with three Sprite2D byte
+copies of herbs-01, herbs-02 and herbs-03 whose feet stand on the old polygon's base line (y +16);
+keep the node position (920, 350). Place the patch in CharacterDepthOrderPresentation like the stone
+marker (z 1 + DepthDrawOrder.CountNorthOf), keeping the four figures at z 1..4 and the stone marker
+unchanged. Other greybox markers (water cask, wagon clue, forest gate, exit markers) need their own
+owner request.
 
-Done when: Ordinary Main shows the approved tablet at the unchanged stone marker point in correct
+Done when: Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct
 depth order with the Seeker, affected checks pass with retained evidence, and the branch is
 committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/stone-marker-art/README.md`
-- `art-direction/stone-marker-art/verification.json`
+- `art-direction/herb-patch-art/README.md`
+- `art-direction/herb-patch-art/verification.json`
 
-Boundary: Stone marker presentation, its draw order and dependent
-verification/documentation/publication only. Interaction point, ranges, perception, collision,
-navigation, saves and the four figures' ranks stay unchanged. No other placeholder replacement,
-merge or release.
+Boundary: Herb patch presentation, its draw order and dependent
+verification/documentation/publication only. Interaction point, ranges, perception, collection,
+collision, navigation, saves, the stone marker and the four figures' ranks stay unchanged. No other
+placeholder replacement, merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

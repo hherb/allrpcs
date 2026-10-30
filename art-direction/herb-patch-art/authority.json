@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-30",
+  "timezone": "Australia/Sydney",
+  "base_commit": "5632c86e",
+  "owner_statements": [
+    {
+      "question": "After that, which slice should come next? Each remaining greybox marker needs its own request from you. Only the herb patch (herbs-01..06 sprigs) and the wagon clue (clue-objects) have approved art that comes close. No water cask art exists.",
+      "reply": "Herb patch art (Recommended)"
+    }
+  ],
+  "scope": "Replace the greybox Polygon2D Marker of InteractionCandidates/HerbPatch in Main with a cluster of the owner-approved objects-batch growing sprigs herbs-01, herbs-02 and herbs-03 (unchanged bytes), and draw the herb patch in depth order with the Sage, water cask, Healer and Seeker, as the stone marker is.",
+  "boundary": "Herb patch presentation, its draw order and dependent verification/documentation/publication only. The HerbPatch node position, interaction ranges, perception, labels, collection, collision, navigation, saves, the stone marker and the four figures' accepted ranks z 1..4 stay unchanged. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

@@ -335,7 +335,7 @@
     },
     {
       "id": "phase9-material-audio-runtime-integration",
-      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01–B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
+      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01\u2013B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
       "evidence": [
         {
           "path": "audio-direction/material-runtime-authority.json",
@@ -1214,6 +1214,20 @@
           "sha256": "946d3e2f39c2a53726c2a43b49a27833f5affe894187ad173c97f647620d9552"
         }
       ]
+    },
+    {
+      "id": "stone-marker-art",
+      "reason": "The owner merged PR #483 (the stone marker shows the approved inscriptions-01 tablet in depth order in Main) on 2026-10-30 and chose to close the slice the same day.",
+      "evidence": [
+        {
+          "path": "art-direction/stone-marker-art/owner-acceptance.json",
+          "sha256": "f27ea01a422787d53978d9b12f76b92e202e78db47678534851f0a0066645dcf"
+        },
+        {
+          "path": "art-direction/stone-marker-art/verification.json",
+          "sha256": "48ebff9ab06ece0011d780e80c5515d4d7fbc46679098d2b04412b36756d7794"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1722,6 +1736,20 @@
           "sha256": "946d3e2f39c2a53726c2a43b49a27833f5affe894187ad173c97f647620d9552"
         }
       ]
+    },
+    {
+      "id": "stone-marker-art",
+      "reason": "The stone marker tablet and its place in the depth order are installed and closed. Do not re-audit them; the herb patch joining that order is the owner's narrow reopening owner-herb-patch-art-2026-10-30, which keeps the stone marker and the four figures unchanged.",
+      "evidence": [
+        {
+          "path": "art-direction/stone-marker-art/owner-acceptance.json",
+          "sha256": "f27ea01a422787d53978d9b12f76b92e202e78db47678534851f0a0066645dcf"
+        },
+        {
+          "path": "art-direction/stone-marker-art/verification.json",
+          "sha256": "48ebff9ab06ece0011d780e80c5515d4d7fbc46679098d2b04412b36756d7794"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2024,24 +2052,42 @@
           "sha256": "cd93e25fea55001a5781aef72d9eed7eb10fd52b34778aa88f87775277783c65"
         }
       ]
+    },
+    {
+      "id": "owner-herb-patch-art-2026-10-30",
+      "owner_statement": "Close stone-marker-art: Yes, close it (Recommended); next slice: Herb patch art (Recommended)",
+      "scope_ids": [
+        "character-depth-order",
+        "stone-marker-art"
+      ],
+      "workstream_ids": [
+        "character-depth-order",
+        "stone-marker-art"
+      ],
+      "evidence": [
+        {
+          "path": "art-direction/herb-patch-art/authority.json",
+          "sha256": "bc1c1c5ab528afd70e10cb812b2c6b9a78edda14925bf81b965857f43188dfdb"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "stone-marker-art",
-    "title": "Replace the stone marker placeholder with the approved standing tablet",
+    "id": "herb-patch-art",
+    "title": "Replace the herb patch placeholder with approved herb sprigs",
     "status": "in_progress",
-    "workstream": "stone-marker-art",
-    "reopening_id": "owner-stone-marker-art-2026-10-30",
-    "authority_status": "owner_requested_stone_marker_art_2026-10-30",
-    "roadmap_item": "- [ ] Replace the stone marker placeholder with the approved standing tablet, in depth order.",
-    "missing_deliverable": "The stone marker in Main shows the approved objects-batch inscriptions-01 tablet instead of a grey polygon, drawn behind a Seeker south of it and in front of one north of it, with a byte/import validator, a native check, captures and a package.",
-    "instructions": "Implemented on branch claude/stone-marker-art (2026-10-30): the StoneMarker Marker is a Sprite2D of a byte copy of inscriptions-01 whose foot stands on the old polygon's base line (y +18); the node position (1080, 350) is unchanged. CharacterDepthOrderPresentation sets the marker's z to 1 + DepthDrawOrder.CountNorthOf (unit-tested), keeping the four figures at z 1..4 so the accepted depth check still passes unchanged. Review fixes in 5cd1deb1; full gate passed on it (219 stages, 0 retries; verification.json). Remaining: owner review of PR #483; then close the scope on owner direction. Other greybox markers (herb patch, water cask, wagon clue, forest gate, exit markers) need their own owner request.",
-    "completion_condition": "Ordinary Main shows the approved tablet at the unchanged stone marker point in correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
+    "workstream": "herb-patch-art",
+    "reopening_id": "owner-herb-patch-art-2026-10-30",
+    "authority_status": "owner_requested_herb_patch_art_2026-10-30",
+    "roadmap_item": "- [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth order.",
+    "missing_deliverable": "The herb patch in Main shows a cluster of the approved objects-batch sprigs herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north of it, with a byte/import validator, a native check, captures and a package.",
+    "instructions": "Work on branch claude/herb-patch-art: replace the HerbPatch Marker polygon with three Sprite2D byte copies of herbs-01, herbs-02 and herbs-03 whose feet stand on the old polygon's base line (y +16); keep the node position (920, 350). Place the patch in CharacterDepthOrderPresentation like the stone marker (z 1 + DepthDrawOrder.CountNorthOf), keeping the four figures at z 1..4 and the stone marker unchanged. Other greybox markers (water cask, wagon clue, forest gate, exit markers) need their own owner request.",
+    "completion_condition": "Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
-      "art-direction/stone-marker-art/README.md",
-      "art-direction/stone-marker-art/verification.json"
+      "art-direction/herb-patch-art/README.md",
+      "art-direction/herb-patch-art/verification.json"
     ],
-    "boundary": "Stone marker presentation, its draw order and dependent verification/documentation/publication only. Interaction point, ranges, perception, collision, navigation, saves and the four figures' ranks stay unchanged. No other placeholder replacement, merge or release."
+    "boundary": "Herb patch presentation, its draw order and dependent verification/documentation/publication only. Interaction point, ranges, perception, collection, collision, navigation, saves, the stone marker and the four figures' ranks stay unchanged. No other placeholder replacement, merge or release."
   },
   "deferred_slices": [
     {
@@ -2051,7 +2097,7 @@
       "workstream": "code-health-program",
       "reopening_id": "owner-playable-phase4-2026-10-19",
       "authority_status": "owner_requested_playable_continuation_2026-10-19",
-      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
+      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1\u20139 and reaches an ending on local Ollama.",
       "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
       "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
       "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",
