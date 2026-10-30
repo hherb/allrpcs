@@ -59,7 +59,7 @@ the old polygon's base line (y +16); the node position (920, 350) is unchanged.
 CharacterDepthOrderPresentation now places a list of fixed props (herb patch +16, stone marker +18)
 at z 1 + DepthDrawOrder.CountNorthOf, keeping the four figures at z 1..4 and the stone marker
 unchanged. Full gate passed on 32b3e25a (219 stages, 0 retries; verification.json). Remaining: owner
-review of the PR; then close the scope on owner direction. Other greybox markers (water cask, wagon
+review of PR #484; then close the scope on owner direction. Other greybox markers (water cask, wagon
 clue, forest gate, exit markers) need their own owner request.
 
 Done when: Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct
