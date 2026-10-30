@@ -335,7 +335,7 @@
     },
     {
       "id": "phase9-material-audio-runtime-integration",
-      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01–B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
+      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01\u2013B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
       "evidence": [
         {
           "path": "audio-direction/material-runtime-authority.json",
@@ -1228,6 +1228,20 @@
           "sha256": "48ebff9ab06ece0011d780e80c5515d4d7fbc46679098d2b04412b36756d7794"
         }
       ]
+    },
+    {
+      "id": "herb-patch-art",
+      "reason": "The owner merged PR #484 (the herb patch shows the approved herbs-01..03 sprigs in depth order in Main) on 2026-10-30 and chose to close the slice the same day.",
+      "evidence": [
+        {
+          "path": "art-direction/herb-patch-art/owner-acceptance.json",
+          "sha256": "5d7b8dacd5cadd5a76c45bf31e9d87de526ef7000e6d8d94cb11d5d1e68c98e2"
+        },
+        {
+          "path": "art-direction/herb-patch-art/verification.json",
+          "sha256": "bbaeb3529c3ccbe7f3770c28b812d06802954653f1e72b19cd9cda3d1a5a5be5"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1750,6 +1764,20 @@
           "sha256": "48ebff9ab06ece0011d780e80c5515d4d7fbc46679098d2b04412b36756d7794"
         }
       ]
+    },
+    {
+      "id": "herb-patch-art",
+      "reason": "The herb patch sprigs and their place in the depth order are installed and closed. Do not re-audit them; the wagon clue joining that order is the owner's narrow reopening owner-wagon-clue-art-2026-10-30, which keeps the herb patch, the stone marker and the four figures unchanged.",
+      "evidence": [
+        {
+          "path": "art-direction/herb-patch-art/owner-acceptance.json",
+          "sha256": "5d7b8dacd5cadd5a76c45bf31e9d87de526ef7000e6d8d94cb11d5d1e68c98e2"
+        },
+        {
+          "path": "art-direction/herb-patch-art/verification.json",
+          "sha256": "bbaeb3529c3ccbe7f3770c28b812d06802954653f1e72b19cd9cda3d1a5a5be5"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2070,24 +2098,42 @@
           "sha256": "bc1c1c5ab528afd70e10cb812b2c6b9a78edda14925bf81b965857f43188dfdb"
         }
       ]
+    },
+    {
+      "id": "owner-wagon-clue-art-2026-10-30",
+      "owner_statement": "Close herb-patch-art: Yes, close it (Recommended); next slice: Wagon clue art; clue object: Broken strap (Recommended)",
+      "scope_ids": [
+        "character-depth-order",
+        "herb-patch-art"
+      ],
+      "workstream_ids": [
+        "character-depth-order",
+        "herb-patch-art"
+      ],
+      "evidence": [
+        {
+          "path": "art-direction/wagon-clue-art/authority.json",
+          "sha256": "07768716d25ce124fcf3bc969469ae9806de3c4c9a85f62b80825bbbf37586b6"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "herb-patch-art",
-    "title": "Replace the herb patch placeholder with approved herb sprigs",
+    "id": "wagon-clue-art",
+    "title": "Replace the wagon clue placeholder with the approved broken strap",
     "status": "in_progress",
-    "workstream": "herb-patch-art",
-    "reopening_id": "owner-herb-patch-art-2026-10-30",
-    "authority_status": "owner_requested_herb_patch_art_2026-10-30",
-    "roadmap_item": "- [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth order.",
-    "missing_deliverable": "The herb patch in Main shows a cluster of the approved objects-batch sprigs herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north of it, with a byte/import validator, a native check, captures and a package.",
-    "instructions": "Implemented on branch claude/herb-patch-art (2026-10-30): the HerbPatch Marker is a Node2D holding three uncentred Sprite2D byte copies of herbs-01, herbs-03 and herbs-02 (front) whose feet stand on the old polygon's base line (y +16); the node position (920, 350) is unchanged. CharacterDepthOrderPresentation now places a list of fixed props (herb patch +16, stone marker +18) at z 1 + DepthDrawOrder.CountNorthOf, keeping the four figures at z 1..4 and the stone marker unchanged. Full gate passed on 32b3e25a (219 stages, 0 retries; verification.json). Remaining: owner review of PR #484; then close the scope on owner direction. Other greybox markers (water cask, wagon clue, forest gate, exit markers) need their own owner request.",
-    "completion_condition": "Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
+    "workstream": "wagon-clue-art",
+    "reopening_id": "owner-wagon-clue-art-2026-10-30",
+    "authority_status": "owner_requested_wagon_clue_art_2026-10-30",
+    "roadmap_item": "- [ ] Replace the wagon clue placeholder with the approved broken strap, in depth order.",
+    "missing_deliverable": "The wagon clue in Main shows the approved objects-batch clue-objects-05 broken strap instead of a tan polygon, drawn behind a Seeker south of it and in front of one north of it, with a byte/import validator, a native check, captures and a package.",
+    "instructions": "Work on branch claude/wagon-clue-art: replace the WagonClue Marker polygon with a Sprite2D byte copy of clue-objects-05 whose foot stands on the old polygon's base line; keep the node position (1900, 1640). Add the clue to CharacterDepthOrderPresentation's fixed props, keeping the four figures at z 1..4 and the herb patch and stone marker unchanged. Other greybox markers (water cask, forest gate, exit markers) need their own owner request.",
+    "completion_condition": "Ordinary Main shows the approved broken strap at the unchanged wagon clue point in correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is committed/pushed with a PR.",
     "outputs": [
-      "art-direction/herb-patch-art/README.md",
-      "art-direction/herb-patch-art/verification.json"
+      "art-direction/wagon-clue-art/README.md",
+      "art-direction/wagon-clue-art/verification.json"
     ],
-    "boundary": "Herb patch presentation, its draw order and dependent verification/documentation/publication only. Interaction point, ranges, perception, collection, collision, navigation, saves, the stone marker and the four figures' ranks stay unchanged. No other placeholder replacement, merge or release."
+    "boundary": "Wagon clue presentation, its draw order and dependent verification/documentation/publication only. Interaction point, ranges, perception, focused search, tool gating, the wagon shell, collision, navigation, saves, the herb patch, the stone marker and the four figures' ranks stay unchanged. No other placeholder replacement, merge or release."
   },
   "deferred_slices": [
     {
@@ -2097,7 +2143,7 @@
       "workstream": "code-health-program",
       "reopening_id": "owner-playable-phase4-2026-10-19",
       "authority_status": "owner_requested_playable_continuation_2026-10-19",
-      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1–9 and reaches an ending on local Ollama.",
+      "roadmap_item": "- [ ] Phase 4: a new player completes slice steps 1\u20139 and reaches an ending on local Ollama.",
       "missing_deliverable": "Program Phase 4 item 7: the Phase 4 exit full quality gate passed on 2026-10-23 (218 stages, no retries; docs/superpowers/evidence/2026-10-23-phase4-exit-quality.json), but no owner playthrough from a fresh profile to the ending on local Ollama is recorded.",
       "instructions": "Ask the owner to play from a fresh profile to the ending on local Ollama (gemma4:e4b) and record the result in docs/superpowers/evidence/phase4-owner-playtest.md. Fix blocking defects the playtest finds as bounded commits with tests, then rerun the affected checks (and the full root ./quality.sh if product code changes). Tick ROADMAP 4.7 and the Phase 4 line only after the owner accepts. Commit/push reviewed work; no merge or release.",
       "completion_condition": "The Phase 4 exit quality gate passes and is recorded, the owner's playtest result is recorded, and ROADMAP Phase 4 is ticked or its remaining blocking defects are listed, with continuation evidence synced and review-branch publication.",

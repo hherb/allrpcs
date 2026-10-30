@@ -168,7 +168,8 @@ the same session without repeating unchanged approval gates.
 - [x] Replace the Healer and Village Sage greybox bodies with their approved characters-batch artwork.
 - [x] Draw the Sage, Healer, Seeker and water cask in depth order in Main (#479, #477).
 - [x] Replace the stone marker placeholder with the approved standing tablet, in depth order.
-- [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth order.
+- [x] Replace the herb patch placeholder with the approved herb sprigs, in depth order.
+- [ ] Replace the wagon clue placeholder with the approved broken strap, in depth order.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

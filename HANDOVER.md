@@ -44,37 +44,34 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**herb-patch-art — Replace the herb patch placeholder with approved herb sprigs** (in_progress).
+**wagon-clue-art — Replace the wagon clue placeholder with the approved broken strap** (in_progress).
 
-Roadmap item: - [ ] Replace the herb patch placeholder with the approved herb sprigs, in depth
+Roadmap item: - [ ] Replace the wagon clue placeholder with the approved broken strap, in depth
 order.
 
-Missing deliverable: The herb patch in Main shows a cluster of the approved objects-batch sprigs
-herbs-01..03 instead of a green polygon, drawn behind a Seeker south of it and in front of one north
-of it, with a byte/import validator, a native check, captures and a package.
+Missing deliverable: The wagon clue in Main shows the approved objects-batch clue-objects-05 broken
+strap instead of a tan polygon, drawn behind a Seeker south of it and in front of one north of it,
+with a byte/import validator, a native check, captures and a package.
 
-Implemented on branch claude/herb-patch-art (2026-10-30): the HerbPatch Marker is a Node2D holding
-three uncentred Sprite2D byte copies of herbs-01, herbs-03 and herbs-02 (front) whose feet stand on
-the old polygon's base line (y +16); the node position (920, 350) is unchanged.
-CharacterDepthOrderPresentation now places a list of fixed props (herb patch +16, stone marker +18)
-at z 1 + DepthDrawOrder.CountNorthOf, keeping the four figures at z 1..4 and the stone marker
-unchanged. Full gate passed on 32b3e25a (219 stages, 0 retries; verification.json). Remaining: owner
-review of PR #484; then close the scope on owner direction. Other greybox markers (water cask, wagon
-clue, forest gate, exit markers) need their own owner request.
+Work on branch claude/wagon-clue-art: replace the WagonClue Marker polygon with a Sprite2D byte copy
+of clue-objects-05 whose foot stands on the old polygon's base line; keep the node position (1900,
+1640). Add the clue to CharacterDepthOrderPresentation's fixed props, keeping the four figures at z
+1..4 and the herb patch and stone marker unchanged. Other greybox markers (water cask, forest gate,
+exit markers) need their own owner request.
 
-Done when: Ordinary Main shows the approved sprigs at the unchanged herb patch point in correct
-depth order with the Seeker, affected checks pass with retained evidence, and the branch is
+Done when: Ordinary Main shows the approved broken strap at the unchanged wagon clue point in
+correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is
 committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/herb-patch-art/README.md`
-- `art-direction/herb-patch-art/verification.json`
+- `art-direction/wagon-clue-art/README.md`
+- `art-direction/wagon-clue-art/verification.json`
 
-Boundary: Herb patch presentation, its draw order and dependent
-verification/documentation/publication only. Interaction point, ranges, perception, collection,
-collision, navigation, saves, the stone marker and the four figures' ranks stay unchanged. No other
-placeholder replacement, merge or release.
+Boundary: Wagon clue presentation, its draw order and dependent
+verification/documentation/publication only. Interaction point, ranges, perception, focused search,
+tool gating, the wagon shell, collision, navigation, saves, the herb patch, the stone marker and the
+four figures' ranks stay unchanged. No other placeholder replacement, merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
