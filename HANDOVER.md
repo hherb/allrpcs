@@ -14,11 +14,11 @@ re-authored to the reference gait ([#480](https://github.com/hherb/allrpcs/issue
 untriggered Healer inspect gesture ([#481](https://github.com/hherb/allrpcs/issues/481)). The
 [depth-order slice](art-direction/character-depth-order/README.md) (#479, #477) merged as PR #482 and was closed
 on 2026-10-30 ([acceptance](art-direction/character-depth-order/owner-acceptance.json)). The owner is replacing
-greybox markers one at a time: the stone marker tablet merged as PR #483 and was closed on 2026-10-30
-([acceptance](art-direction/stone-marker-art/owner-acceptance.json)); the herb patch is the active slice below
-([authority](art-direction/herb-patch-art/authority.json)). Remaining greybox markers (water cask, wagon clue,
-closed forest gate, exit markers) need their own owner request. Of those, only the wagon clue (clue-objects) has
-accepted near-matches; no cask art exists.
+greybox markers one at a time: the stone marker tablet (PR #483) and herb patch sprigs (PR #484) merged and were
+closed on 2026-10-30 ([stone](art-direction/stone-marker-art/owner-acceptance.json),
+[herb](art-direction/herb-patch-art/owner-acceptance.json)); the wagon clue's broken strap is the active slice below
+([authority](art-direction/wagon-clue-art/authority.json)). Remaining greybox markers (water cask, closed forest
+gate, exit markers) need their own owner request; no accepted art matches them closely (no cask art exists).
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -53,11 +53,13 @@ Missing deliverable: The wagon clue in Main shows the approved objects-batch clu
 strap instead of a tan polygon, drawn behind a Seeker south of it and in front of one north of it,
 with a byte/import validator, a native check, captures and a package.
 
-Work on branch claude/wagon-clue-art: replace the WagonClue Marker polygon with a Sprite2D byte copy
-of clue-objects-05 whose foot stands on the old polygon's base line; keep the node position (1900,
-1640). Add the clue to CharacterDepthOrderPresentation's fixed props, keeping the four figures at z
-1..4 and the herb patch and stone marker unchanged. Other greybox markers (water cask, forest gate,
-exit markers) need their own owner request.
+Implemented on branch claude/wagon-clue-art (2026-10-30): the WagonClue Marker is an uncentred
+Sprite2D byte copy of clue-objects-05 (broken strap) whose foot stands on the old polygon's lowest
+point (y +12); the node position (1900, 1640) is unchanged. CharacterDepthOrderPresentation adds it
+to its fixed props (foot +12), keeping the four figures at z 1..4 and the herb patch and stone
+marker unchanged. Full gate passed on c018d642 (219 stages, 0 retries; verification.json).
+Remaining: owner review of the PR; then close the scope on owner direction. Other greybox markers
+(water cask, forest gate, exit markers) need their own owner request.
 
 Done when: Ordinary Main shows the approved broken strap at the unchanged wagon clue point in
 correct depth order with the Seeker, affected checks pass with retained evidence, and the branch is
