@@ -23,6 +23,11 @@ public partial class IngredientRemedyFlowCheck : Node
     private const string EnvironmentVariable = "ALLRPCS_INGREDIENT_REMEDY_CHECK";
     private const string Request = "Healer, examine the herb patch and gather the herbs if they are safe.";
     private const string Reply = "I will look closely, and gather them only if they are safe.";
+
+    // Held for the whole run because Main is reloaded: a dropped PackedScene wrapper can be collected while
+    // Godot's cache still hands the scene back, logging "Handle is not initialized" (godot#124587, #486).
+    private PackedScene? mainScene;
+
     // Known-good open ground beside the herb patch (also used by the herb-collection audio check).
     private static readonly Vector2 HealerBesidePatch = new(952, 350);
     private static readonly Vector2 SeekerBesidePatch = new(920, 350);
@@ -198,7 +203,8 @@ public partial class IngredientRemedyFlowCheck : Node
 
     private async Task<Node> Launch()
     {
-        Node main = GD.Load<PackedScene>("res://Main.tscn").Instantiate();
+        mainScene ??= GD.Load<PackedScene>("res://Main.tscn");
+        Node main = mainScene.Instantiate();
         AddChild(main);
         await Frames(4);
         return main;

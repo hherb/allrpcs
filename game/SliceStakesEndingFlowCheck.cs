@@ -21,6 +21,10 @@ public partial class SliceStakesEndingFlowCheck : Node
     private const string EnvironmentVariable = "ALLRPCS_SLICE_STAKES_CHECK";
     private const string Weakened = "Patient: Appears severely weakened.";
 
+    // Held for the whole run because Main is reloaded: a dropped PackedScene wrapper can be collected while
+    // Godot's cache still hands the scene back, logging "Handle is not initialized" (godot#124587, #486).
+    private PackedScene? mainScene;
+
     /// <inheritdoc />
     public override async void _Ready()
     {
@@ -161,7 +165,8 @@ public partial class SliceStakesEndingFlowCheck : Node
     // Launches Main with the stakes on, then either customizes a new Seeker or Continues the save.
     private async Task<Node> Launch(bool fresh)
     {
-        Node main = GD.Load<PackedScene>("res://Main.tscn").Instantiate();
+        mainScene ??= GD.Load<PackedScene>("res://Main.tscn");
+        Node main = mainScene.Instantiate();
         AddChild(main);
         await Frames(4);
         if (fresh)

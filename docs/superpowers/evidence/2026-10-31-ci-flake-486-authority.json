@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "timezone": "Australia/Sydney",
+  "base_commit": "af507e1c",
+  "owner_statements": [
+    {
+      "question": "What should be the next active slice? Each remaining greybox marker needs its own request. No existing art closely matches the water cask, the closed forest gate or the exit markers, and no cask art exists at all.",
+      "reply": "Fix CI flake #486"
+    }
+  ],
+  "scope": "Stop the intermittent 'Handle is not initialized' exceptions (#486) that the smoke harness reports when a check reloads Main: the checks that load Main more than once hold its PackedScene for the whole run instead of dropping it (Godot .NET bug godot#112067 / godot#124587).",
+  "boundary": "Test-check scene loading in SliceStakesEndingFlowCheck, IngredientRemedyFlowCheck, HypothesisTestFlowCheck and SaveContinueRelaunchCheck, plus dependent verification/documentation/publication only. Product code, the checks' assertions and their accepted behaviour stay unchanged. No merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

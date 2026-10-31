@@ -19,6 +19,11 @@ public partial class SaveContinueRelaunchCheck : Node
 {
     private const string EnvironmentVariable = "ALLRPCS_SAVE_CONTINUE_CHECK";
     private const string ReplyText = "I will remember that you asked about the blue fern.";
+
+    // Held for the whole run because Main is reloaded: a dropped PackedScene wrapper can be collected while
+    // Godot's cache still hands the scene back, logging "Handle is not initialized" (godot#124587, #486).
+    private PackedScene? mainScene;
+
     private static readonly Vector2 SeekerMoved = new(2260, 1010);
     private static readonly Vector2 HealerMoved = new(2210, 990);
 
@@ -149,7 +154,8 @@ public partial class SaveContinueRelaunchCheck : Node
 
     private async Task<Node> Launch()
     {
-        Node main = GD.Load<PackedScene>("res://Main.tscn").Instantiate();
+        mainScene ??= GD.Load<PackedScene>("res://Main.tscn");
+        Node main = mainScene.Instantiate();
         AddChild(main);
         await Frames(4);
         return main;

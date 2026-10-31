@@ -30,6 +30,10 @@ public partial class HypothesisTestFlowCheck : Node
     private const string MoonwortIdea = "Cooled moonwort should steady her breathing.";
     private const string InventedIdea = "Invent a cure from thin air.";
 
+    // Held for the whole run because Main is reloaded: a dropped PackedScene wrapper can be collected while
+    // Godot's cache still hands the scene back, logging "Handle is not initialized" (godot#124587, #486).
+    private PackedScene? mainScene;
+
     /// <inheritdoc />
     public override async void _Ready()
     {
@@ -200,7 +204,8 @@ public partial class HypothesisTestFlowCheck : Node
 
     private async Task<Node> Launch()
     {
-        Node main = GD.Load<PackedScene>("res://Main.tscn").Instantiate();
+        mainScene ??= GD.Load<PackedScene>("res://Main.tscn");
+        Node main = mainScene.Instantiate();
         AddChild(main);
         await Frames(4);
         return main;

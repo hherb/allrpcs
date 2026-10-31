@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "status": "implementation_verified",
+  "product_revision": "d79c1519 on claude/fix-ci-flake-486",
+  "inputs": {
+    "game/SliceStakesEndingFlowCheck.cs": "d5b63d9bd2df9f51e8b5e02e8913710e740b7d9e630898c818d0d557ad1fa57b",
+    "game/IngredientRemedyFlowCheck.cs": "7a2406fd6266d11b6ec6d80c4c50247ad40d8667f646a7bac8b03d909b3f0dc4",
+    "game/HypothesisTestFlowCheck.cs": "d86814a05f624a046c43e04198062e2f8fc34d13401e48d70327f09bd09e975a",
+    "game/SaveContinueRelaunchCheck.cs": "29b47b010e8cbf4ef1ed4099a66f55cd5a2532c29b9850919cecba43930dc3d0",
+    "scripts/smoke-godot.sh": "bea59300dd4987c12fc6a6c274b54698a873fb4fc26bdbf7b155a91fbee23c81"
+  },
+  "diagnosis": "CI attempt 1 of run 41126401453 (a4078ea8): the check printed PASS but the smoke harness failed the launch on 15 logged 'Handle is not initialized' exceptions from ScriptManagerBridge.SwapGCHandleForType during GD.Load<PackedScene>(\"res://Main.tscn\") in Launch. Known Godot .NET bug godot#112067 / godot#124587: the resource cache does not own a cached resource, so a dropped PackedScene wrapper can be collected while the cache still hands the scene back.",
+  "reproduction": {
+    "harness": "Temporary, not committed: before the reload in SliceStakesEndingFlowCheck.Launch, 20 objects whose finalizers sleep 100 ms were allocated and GC.Collect() was called, stalling the finalizer thread so collected wrappers stay unfinalized during the load.",
+    "before_fix": "6 runs: 4 logged the exception (11, 9, 13 and 19 times), 2 clean; every run still printed PASS",
+    "after_fix": "6 runs: 0 exceptions, all PASS",
+    "plain_gc_stress": "DOTNET_GCgen0size=0x20000 and a bare GC.Collect() before the reload did not reproduce it locally (3 runs each)"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "smoke-godot.sh reported 'smoke: 370 passed, 3 quarantined' with no FAIL lines (product-10 log); the four changed checks each printed PASS and no 'Handle is not initialized' appears in the log"
+  },
+  "focused_checks": {
+    "smoke launches": "SaveContinueRelaunchCheck, IngredientRemedyFlowCheck, HypothesisTestFlowCheck and SliceStakesEndingFlowCheck (3 runs) passed with no C# exceptions",
+    "dotnet format/build/test": "passed (6187 tests)"
+  }
+}
