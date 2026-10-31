@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 487,
+    "merge_commit": "042394aaa3ca06c3256d4a3c2764ac6a04caf91b",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-31T02:13:35Z"
+  },
+  "question": "You merged PR #487 (the four checks that reload Main now hold its scene, which fixes the #486 'Handle is not initialized' smoke flake), and #486 is closed. Should I record that as your acceptance and close the ci-flake-486 slice in the ledger, as I did after PRs #483–#485?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "ci-flake-486"
+}

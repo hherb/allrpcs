@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "timezone": "Australia/Sydney",
+  "base_commit": "042394aa",
+  "owner_statements": [
+    {
+      "question": "Which slice should come next? Nothing is queued after #486. The remaining greybox markers (water cask, forest gate, exit markers) have no matching accepted art.",
+      "reply": "Fix shutdown abort #476 (Recommended)"
+    }
+  ],
+  "scope": "End the intermittent Godot .NET shutdown abort (#476: 'Leaked unsafe reference' lines, then the script_bindings FATAL, exit 134, after a passing check). The fix already merged with PR #475 (c35d8b64, CheckDeadline._ExitTree drains finalizers and starts a no-GC region); this slice verifies it against CI and closes the issue, or fixes what remains.",
+  "boundary": "Verification of the merged CheckDeadline shutdown guard against CI history, plus dependent documentation/publication; a code change only if CI still shows the signature. Accepted behaviour and check assertions stay unchanged. No merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

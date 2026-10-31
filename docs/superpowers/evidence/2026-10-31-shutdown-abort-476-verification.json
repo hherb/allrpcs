@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "status": "verified_in_ci",
+  "fix": {
+    "commit": "c35d8b64",
+    "merged_with": "PR #475 (52e1250f, 2026-10-29T03:47:37Z)",
+    "file": "game/CheckDeadline.cs",
+    "sha256": "c334f05deb321fbf602abf1d078c8a7b40bb521894b38094a3e890dd1c1dfdd7",
+    "mechanism": "The armed CheckDeadline autoload leaves the tree only at shutdown, after the scene and before native teardown. Its _ExitTree drains pending finalizers and starts a 64 MB no-GC region, so no wrapper is collected-but-unfinalized when CSharpLanguage::finalize runs: Godot's DisposablesTracker disposes every live wrapper, and no late finalizer reaches the CRASH_COND in _instance_binding_free_callback (godot 4.6 modules/mono/csharp_script.cpp).",
+    "local_reproduction": "From the fix commit: finalizer thread blocked and large-object GCs forced through teardown; unguarded 6/6 runs leaked, guarded 0/6, all passing."
+  },
+  "ci_field_evidence": {
+    "method": "Downloaded the full log of every non-cancelled CI run (workflow ci.yml) and counted 'Leaked unsafe reference' and 'script_bindings' lines; for re-run 41126401453 the attempt-1 smoke job was checked separately.",
+    "before_fix": "26 non-cancelled runs from 39773233546 (2026-10-22) to 40699568979 (2026-10-28): 4 had the signature (39773233546, 39850792412, 40414585461, 40699568979; listed in #476).",
+    "after_fix": "23 non-cancelled runs from 40813137488 (the fix commit, 2026-10-29) to 41159015965 (main at 042394aa, 2026-10-31), plus attempt 1 of 41126401453: 0 'Leaked unsafe reference' and 0 'script_bindings' lines; every run printed its smoke summary. The two smoke failures in this window (41002834276 and attempt 1 of 41126401453) are the separate #486 'Handle is not initialized' flake, fixed by PR #487.",
+    "attempt_1_log": "gh run view --log returns only the latest attempt; the attempt-1 log of 41126401453 was read from the attempts API (repos/hherb/allrpcs/actions/runs/41126401453/attempts/1/logs): 0 'Leaked unsafe reference', 0 'script_bindings' and 15 'Handle is not initialized' lines, matching the #486 diagnosis in docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json.",
+    "significance": "At the pre-fix rate (4/26) 23 clean runs in a row would occur by chance about 2% of the time ((22/26)^23 = 0.021)."
+  },
+  "residual": "Launches with no deadline ('-': editor import and --script launches) do not arm CheckDeadline and are not guarded; none of the recorded occurrences was such a launch.",
+  "checks": {
+    "product_inputs": "unchanged since main 042394aa; its CI run 41159015965 passed",
+    "continuation": "python3 scripts/check-continuation.py and --self-test passed"
+  }
+}

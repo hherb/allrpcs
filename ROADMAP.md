@@ -106,7 +106,8 @@ packaging, and accessibility claims remain limited to their recorded evidence.
   - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama (exit gate passed
     2026-10-23; playtest in progress, findings in `docs/superpowers/evidence/phase4-owner-playtest.md`).
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
-- [ ] Smoke checks that reload Main stop logging "Handle is not initialized" (#486).
+- [x] Smoke checks that reload Main stop logging "Handle is not initialized" (#486).
+- [ ] Smoke launches stop aborting at .NET shutdown after a passing check (#476).
 
 ## Phase 9 — Production art and audio
 
