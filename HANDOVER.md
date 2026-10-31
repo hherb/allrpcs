@@ -18,8 +18,10 @@ greybox markers one at a time: the stone marker tablet (PR #483), herb patch spr
 broken strap (PR #485) merged and were closed ([stone](art-direction/stone-marker-art/owner-acceptance.json),
 [herb](art-direction/herb-patch-art/owner-acceptance.json), [wagon](art-direction/wagon-clue-art/owner-acceptance.json)).
 Remaining greybox markers (water cask, closed forest gate, exit markers) need their own owner request; no accepted
-art matches them closely (no cask art exists). The active slice below fixes the #486 smoke flake
-([authority](docs/superpowers/evidence/2026-10-31-ci-flake-486-authority.json)).
+art matches them closely (no cask art exists). The #486 smoke flake fix merged as PR #487 and was closed on
+2026-10-31 ([acceptance](docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json)). The active
+slice below verifies the already-merged #476 shutdown guard against CI
+([authority](docs/superpowers/evidence/2026-10-31-shutdown-abort-476-authority.json)).
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -45,33 +47,29 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**ci-flake-486 — Stop the intermittent GCHandle smoke failure when checks reload Main** (in_progress).
+**shutdown-abort-476 — End the intermittent .NET shutdown abort after passing smoke launches** (in_progress).
 
-Roadmap item: - [ ] Smoke checks that reload Main stop logging "Handle is not initialized" (#486).
+Roadmap item: - [ ] Smoke launches stop aborting at .NET shutdown after a passing check (#476).
 
-Missing deliverable: The four checks that load Main more than once (slice stakes, ingredient remedy,
-hypothesis test, save continue) drop the PackedScene after each load, so Godot's cache can hand back
-a scene whose C# wrapper was already collected and the smoke harness fails on the logged exceptions
-(godot#112067/#124587).
+Missing deliverable: The CheckDeadline shutdown guard (c35d8b64, merged with PR #475 on 2026-10-29)
+was never verified against CI, so #476 stayed open.
 
-Implemented on branch claude/fix-ci-flake-486 (2026-10-31): each of the four checks holds Main's
-PackedScene in a field for the whole run. A temporary harness that stalled the finalizer thread and
-collected right before the reload reproduced the exceptions in 4 of 6 SliceStakes runs before the
-fix and 0 of 6 after; full gate passed on d79c1519 (219 stages, 0 retries;
-docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json). Remaining: owner review of PR
-#487; then close the scope on owner direction.
+Verified on branch claude/fix-shutdown-abort-476 (2026-10-31): 0 'Leaked unsafe
+reference'/'script_bindings' lines in 22 CI runs and 1 hidden attempt since the fix, against 4 of 26
+runs before it (docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json). No code
+change. Remaining: owner review of the PR (it closes #476 on merge); then close the scope on owner
+direction.
 
-Done when: The four reloading checks hold Main's scene, their smoke launches pass with no C#
-exceptions, the forced-race reproduction no longer fails, and the branch is committed/pushed with a
-PR.
+Done when: CI history since the fix shows no shutdown-abort signature, the verification record is
+committed, and the branch is pushed with a PR that closes #476 on merge.
 
 Expected outputs:
 
-- `docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json`
+- `docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json`
 
-Boundary: Test-check scene loading in the four reloading checks and dependent
-verification/documentation/publication only. Product code, check assertions and accepted behaviour
-stay unchanged. No merge or release.
+Boundary: Verification of the merged CheckDeadline shutdown guard plus dependent
+documentation/publication only. Product code, check assertions and accepted behaviour stay
+unchanged. No merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

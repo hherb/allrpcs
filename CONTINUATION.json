@@ -1256,6 +1256,20 @@
           "sha256": "a8dd0f0407e44b5f806d188fce66e56be9b732ae4d3cdf6fc77f15fa5a00fe0d"
         }
       ]
+    },
+    {
+      "id": "ci-flake-486",
+      "reason": "The owner merged PR #487 (the four checks that reload Main hold its PackedScene, ending the #486 'Handle is not initialized' smoke flake) on 2026-10-31, closed #486 and chose to close the slice the same day.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json",
+          "sha256": "51140955ac09d645ecb1ada91afb148c605e903f188f7b8cbfb69327d22b0b92"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json",
+          "sha256": "319cbfb1cae879f5d67659c43d5770e59aca0ca2411bf1ee9ba803e0983c873d"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1806,6 +1820,20 @@
           "sha256": "a8dd0f0407e44b5f806d188fce66e56be9b732ae4d3cdf6fc77f15fa5a00fe0d"
         }
       ]
+    },
+    {
+      "id": "ci-flake-486",
+      "reason": "The four reloading checks hold Main's scene and #486 is closed. Do not re-audit them; the next slice (#476) is a separate shutdown-time abort.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json",
+          "sha256": "51140955ac09d645ecb1ada91afb148c605e903f188f7b8cbfb69327d22b0b92"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json",
+          "sha256": "319cbfb1cae879f5d67659c43d5770e59aca0ca2411bf1ee9ba803e0983c873d"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2161,23 +2189,35 @@
           "sha256": "1907da843b913f90ab5f0269a0925ee24a000d36c3f02e5a997c0fa7c276f188"
         }
       ]
+    },
+    {
+      "id": "owner-shutdown-abort-476-2026-10-31",
+      "owner_statement": "Close ci-flake-486: Yes, close it (Recommended); next slice: Fix shutdown abort #476 (Recommended)",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-shutdown-abort-476-authority.json",
+          "sha256": "f724a24b50d7c4312a7e0c2829a82cf888581f9c7a2859e0a7b6b944468410e0"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "ci-flake-486",
-    "title": "Stop the intermittent GCHandle smoke failure when checks reload Main",
+    "id": "shutdown-abort-476",
+    "title": "End the intermittent .NET shutdown abort after passing smoke launches",
     "status": "in_progress",
-    "workstream": "ci-flake-486",
-    "reopening_id": "owner-ci-flake-486-2026-10-31",
-    "authority_status": "owner_requested_ci_flake_486_2026-10-31",
-    "roadmap_item": "- [ ] Smoke checks that reload Main stop logging \"Handle is not initialized\" (#486).",
-    "missing_deliverable": "The four checks that load Main more than once (slice stakes, ingredient remedy, hypothesis test, save continue) drop the PackedScene after each load, so Godot's cache can hand back a scene whose C# wrapper was already collected and the smoke harness fails on the logged exceptions (godot#112067/#124587).",
-    "instructions": "Implemented on branch claude/fix-ci-flake-486 (2026-10-31): each of the four checks holds Main's PackedScene in a field for the whole run. A temporary harness that stalled the finalizer thread and collected right before the reload reproduced the exceptions in 4 of 6 SliceStakes runs before the fix and 0 of 6 after; full gate passed on d79c1519 (219 stages, 0 retries; docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json). Remaining: owner review of PR #487; then close the scope on owner direction.",
-    "completion_condition": "The four reloading checks hold Main's scene, their smoke launches pass with no C# exceptions, the forced-race reproduction no longer fails, and the branch is committed/pushed with a PR.",
+    "workstream": "shutdown-abort-476",
+    "reopening_id": "owner-shutdown-abort-476-2026-10-31",
+    "authority_status": "owner_requested_shutdown_abort_476_2026-10-31",
+    "roadmap_item": "- [ ] Smoke launches stop aborting at .NET shutdown after a passing check (#476).",
+    "missing_deliverable": "The CheckDeadline shutdown guard (c35d8b64, merged with PR #475 on 2026-10-29) was never verified against CI, so #476 stayed open.",
+    "instructions": "Verified on branch claude/fix-shutdown-abort-476 (2026-10-31): 0 'Leaked unsafe reference'/'script_bindings' lines in 22 CI runs and 1 hidden attempt since the fix, against 4 of 26 runs before it (docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json). No code change. Remaining: owner review of the PR (it closes #476 on merge); then close the scope on owner direction.",
+    "completion_condition": "CI history since the fix shows no shutdown-abort signature, the verification record is committed, and the branch is pushed with a PR that closes #476 on merge.",
     "outputs": [
-      "docs/superpowers/evidence/2026-10-31-ci-flake-486-verification.json"
+      "docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json"
     ],
-    "boundary": "Test-check scene loading in the four reloading checks and dependent verification/documentation/publication only. Product code, check assertions and accepted behaviour stay unchanged. No merge or release."
+    "boundary": "Verification of the merged CheckDeadline shutdown guard plus dependent documentation/publication only. Product code, check assertions and accepted behaviour stay unchanged. No merge or release."
   },
   "deferred_slices": [
     {
