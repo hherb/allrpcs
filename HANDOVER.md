@@ -57,7 +57,7 @@ was never verified against CI, so #476 stayed open.
 Verified on branch claude/fix-shutdown-abort-476 (2026-10-31): 0 'Leaked unsafe
 reference'/'script_bindings' lines in 22 CI runs and 1 hidden attempt since the fix, against 4 of 26
 runs before it (docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json). No code
-change. Remaining: owner review of the PR (it closes #476 on merge); then close the scope on owner
+change. Remaining: owner review of PR #488 (it closes #476 on merge); then close the scope on owner
 direction.
 
 Done when: CI history since the fix shows no shutdown-abort signature, the verification record is
