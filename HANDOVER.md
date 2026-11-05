@@ -32,7 +32,8 @@ owner playthrough to an ending on local Ollama remains unfinished
 ([findings](docs/superpowers/evidence/phase4-owner-playtest.md)); it is deferred while the
 owner prioritises fitting existing artwork into gameplay, starting with buildings.
 Do not infer playtest acceptance from automated checks. A fresh profile removes both
-`user://save-v1.json` and `user://seeker-profile-v1.json`; preserve real user saves.
+`user://save-v1.json` and `user://seeker-profile-v1.json` (their `.bak` backups do not affect
+launch); preserve real user saves.
 
 Live OpenAI #417 capture and the already requested Keychain save result remain
 [owner-deferred](docs/superpowers/evidence/2026-10-18-phase3-authority.json). Phase 2 and
@@ -57,10 +58,11 @@ Missing deliverable: FileSaveDocumentStore.Save replaces the document with no ba
 with destinationBackupFileName: null), so one save after New game destroys a long playthrough
 unrecoverably.
 
-TDD: add a FileSaveDocumentStore test that the previous document survives as <file>.bak after an
-overwrite, then pass File.Replace a backup path. Delete any .bak that smoke checks leave in the temp
-directory where they already delete the save. Run dotnet format/build/test plus the affected save
-smoke launches; no full gate unless CI inputs change.
+Implemented and verified on branch claude/save-backup-467 (2026-11-06): an overwrite keeps the
+previous document as <file>.bak (unit test), the six save-overwriting smoke checks delete the
+backup, full gate passed (219 stages, no retries; docs/superpowers/evidence/2026-11-06-save-
+backup-467-verification.json). Remaining: owner review of the PR (it closes #467 on merge); then
+close the scope on owner direction.
 
 Done when: An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test;
 affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes
@@ -70,6 +72,7 @@ Expected outputs:
 
 - `src/Infrastructure/Persistence/FileSaveDocumentStore.cs`
 - `tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs`
+- `docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json`
 
 Boundary: FileSaveDocumentStore backup generation, its unit test, smoke-check backup cleanup and
 dependent documentation/publication only. No restore UI, overwrite confirmation or save schema
