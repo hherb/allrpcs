@@ -152,7 +152,7 @@ public partial class DialogueOwnershipMainSmokeCheck : Node
                 typeof(SeekerMapOpenCloseInputController).GetMethod("TryOpen", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(map, null);
                 GetNode<Button>("../CommandOverlay/SaveLoadPanel/Save").EmitSignal(Button.SignalName.Pressed);
                 Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText, "Save after failure failed");
-                File.Delete(SaveDocumentStorageController.CurrentFilePath());
+                MainFlowCheckSteps.DeleteSave(SaveDocumentStorageController.CurrentFilePath());
                 Submit("retry after provider failure");
                 Require(!ReferenceEquals(first, input.LastSubmittedDelivery), "Failure retained busy ownership");
             }

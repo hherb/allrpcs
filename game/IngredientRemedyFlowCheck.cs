@@ -40,7 +40,7 @@ public partial class IngredientRemedyFlowCheck : Node
         try
         {
             Engine.MaxFps = 60;
-            File.Delete(path);
+            DeleteSave(path);
             Node first = await Launch();
             Customize(first);
             CharacterId seekerId = Seeker(first);
@@ -189,14 +189,14 @@ public partial class IngredientRemedyFlowCheck : Node
                 "The restored station stays closed after the cure: " + Status(third));
             third.QueueFree();
             await Frames(2);
-            File.Delete(path);
+            DeleteSave(path);
             GD.Print("PASS: ingredient remedy flow");
             GetTree().Quit();
         }
         catch (Exception error)
         {
             GD.PushError(error.ToString());
-            File.Delete(path);
+            DeleteSave(path);
             GetTree().Quit(1);
         }
     }

@@ -1,4 +1,5 @@
 using Allrpcs.Application.Navigation;
+using Allrpcs.Infrastructure.Persistence;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -6,6 +7,13 @@ namespace Allrpcs.Game;
 /// <summary>Shared steps for flow checks that drive a real Main through slice play.</summary>
 internal static class MainFlowCheckSteps
 {
+    // Overwriting a save keeps a backup beside it (#467), so a check removes both or leaks a temp file.
+    internal static void DeleteSave(string path)
+    {
+        File.Delete(path);
+        File.Delete(FileSaveDocumentStore.BackupPathFor(path));
+    }
+
     // A saved profile lets Continue resume play instead of reopening customization.
     internal static void Customize(Node main)
     {

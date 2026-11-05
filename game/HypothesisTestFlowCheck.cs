@@ -42,7 +42,7 @@ public partial class HypothesisTestFlowCheck : Node
         try
         {
             Engine.MaxFps = 60;
-            File.Delete(path);
+            DeleteSave(path);
             using NetHttpClient http = new(new ScriptedOllama());
             IInvestigationHypothesisInterpreter interpreter = StructuredInvestigationHypothesisInterpreter.Create(
                 new CharacterModelSettings(CharacterModelProvider.Ollama, "gemma4:e4b"), http,
@@ -154,14 +154,14 @@ public partial class HypothesisTestFlowCheck : Node
                 "With the question answered there is nothing left to propose.");
             second.QueueFree();
             await Frames(2);
-            File.Delete(path);
+            DeleteSave(path);
             GD.Print("PASS: hypothesis test flow");
             GetTree().Quit();
         }
         catch (Exception error)
         {
             GD.PushError(error.ToString());
-            File.Delete(path);
+            DeleteSave(path);
             GetTree().Quit(1);
         }
     }

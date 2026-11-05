@@ -70,7 +70,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         load = GetNode<Button>("../CommandOverlay/SaveLoadPanel/Load");
         status = GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status");
 
-        File.Delete(StoragePath());
+        MainFlowCheckSteps.DeleteSave(StoragePath());
     }
 
     /// <inheritdoc />
@@ -85,7 +85,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
         finally
         {
-            File.Delete(StoragePath());
+            MainFlowCheckSteps.DeleteSave(StoragePath());
         }
     }
 
@@ -130,7 +130,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         save.EmitSignal(BaseButton.SignalName.Pressed);
         if (save.HasFocus()) { Fail("Save before the map retained GUI focus."); return; }
 
-        File.Delete(StoragePath());
+        MainFlowCheckSteps.DeleteSave(StoragePath());
         input._UnhandledInput(Action(LoadAction, pressed: true));
         if (status.Text != SaveLoadInputController.MissingStatusText)
         {
@@ -235,7 +235,7 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
-        File.Delete(StoragePath());
+        MainFlowCheckSteps.DeleteSave(StoragePath());
         load.GrabFocus();
         load.EmitSignal(BaseButton.SignalName.Pressed);
         if (load.HasFocus()) { Fail("Load activation retained GUI focus."); return; }

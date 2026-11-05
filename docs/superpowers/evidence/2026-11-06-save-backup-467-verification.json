@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "status": "implementation_verified",
+  "product_revision": "9f8df6e3 on claude/save-backup-467",
+  "inputs": {
+    "src/Infrastructure/Persistence/FileSaveDocumentStore.cs": "c94e7fdd18a87450501b07ec8dc757a540183a52eb30f3208f747a609e46d78e",
+    "tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs": "028dd2610d82ff3641084f9c425cad4b1c0974e1c1f63b8185fd4ffe97f88fc2",
+    "game/MainFlowCheckSteps.cs": "37d076f6f79d392fec68f043fee2e80318c04d22c8261c6d47ca8db8a2916bae",
+    "game/SaveContinueRelaunchCheck.cs": "76d29488b611a041bb9e8e8bf8641df9f837019f1d8e464835ca9d19d99a82d8",
+    "game/IngredientRemedyFlowCheck.cs": "d5b01e2abbacdac76a5db92c72961bf9877313fec3178513e9e1506ad2ccd678",
+    "game/HypothesisTestFlowCheck.cs": "6636bd00acf0c79cb26f6e46893c17d40befd4a0dd3ed82d732b06dc99b385aa",
+    "game/SliceStakesEndingFlowCheck.cs": "fc5e498c90525eee46db02426f5704df315977d93d3a83c579daa646b60ce369",
+    "game/SaveLoadInputSmokeCheck.cs": "1e62692207eeab9ea388c84c5dbe4bb3fc24a119f37c3f96c9d3364792e9585e",
+    "game/SaveDocumentStorageControllerSmokeCheck.cs": "15fc55dd23eaa91bd6532a22b6c40d114773b53925cc2f6d2a4f022363db41f0"
+  },
+  "change": "FileSaveDocumentStore.Save passes File.Replace a backup path (FileSaveDocumentStore.BackupPathFor: <file>.bak), keeping one generation of the replaced document. The six smoke checks that overwrite their temporary save delete the backup with it (MainFlowCheckSteps.DeleteSave).",
+  "tdd": "KeepsThePreviousDocumentAsOneBackupGenerationWhenOverwriting failed to compile before the change (no BackupPathFor) and passes after it.",
+  "focused_checks": {
+    "dotnet format/build/test": "passed (6188 tests)",
+    "save smoke launches": "NEW_GAME_CUSTOMIZATION (2 modes), SAVE_CONTINUE, INGREDIENT_REMEDY, HYPOTHESIS_TEST, SLICE_STAKES, SAVE_DOCUMENT_STORAGE_CONTROLLER, SAVE_LOAD_INPUT, DIALOGUE_OWNERSHIP=once: 9 passed with an isolated TMPDIR; before the cleanup they left 4 .bak files, after it none",
+    "not_run_at_head": "ALLRPCS_CONTROLS_MAIN_CHECK fails 'Rows incomplete' at HEAD with or without this change; quality.py runs it only in its historical snapshot (known #432)"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "smoke-godot.sh reported 'smoke: 376 passed, 3 quarantined' (36-product-10-1.log)"
+  },
+  "review_followup": {
+    "date": "2026-11-06",
+    "source": "PR #489 review suggestions",
+    "change": "ControlSettingsMainSmokeCheck and DialogueOwnershipMainSmokeCheck also delete the save through MainFlowCheckSteps.DeleteSave (each saves once today, so no backup leaked; this keeps a later second save from leaking one). README notes the remembered Seeker profile gets the same .bak and that a locked or read-only backup reports a failed save (accepted: the failure is visible, not silent).",
+    "inputs": {
+      "game/ControlSettingsMainSmokeCheck.cs": "82427ac0d2ad6c7d16c408d0b5a6701397f8d8db3d25603731c58ba90e5eb7bf",
+      "game/DialogueOwnershipMainSmokeCheck.cs": "771a02b6485be0707277e658f394d939746e1f05e38e46edc1e2a5e053094a9b"
+    },
+    "checks": {
+      "dotnet format/build": "passed, 0 warnings",
+      "smoke": "DIALOGUE_OWNERSHIP=unavailable and =invalid (the modes that reach the changed delete) passed with an isolated TMPDIR and left no files behind",
+      "not_run": "ALLRPCS_CONTROLS_MAIN_CHECK still fails 'Rows incomplete' at HEAD independently of this change (known #432)",
+      "full_quality": "not rerun: one-line check cleanup and prose; the gate above stands for product code at 9f8df6e3"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-31",
+  "updated": "2026-11-06",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1270,6 +1270,20 @@
           "sha256": "319cbfb1cae879f5d67659c43d5770e59aca0ca2411bf1ee9ba803e0983c873d"
         }
       ]
+    },
+    {
+      "id": "shutdown-abort-476",
+      "reason": "The owner merged PR #488 (CI history shows no shutdown-abort signature since the CheckDeadline guard, c35d8b64) on 2026-10-31, which closed #476, and chose to close the slice on 2026-11-05.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json",
+          "sha256": "e9c637ce2a3e76113ee9a78d5113d110e92a4be276b65b98485b7db68f7100f6"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json",
+          "sha256": "a3d7f373ccbc85dedf7b88c11cf3d0b03e2c5006844af20c5ec2bfefb2bbb1da"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1834,6 +1848,20 @@
           "sha256": "319cbfb1cae879f5d67659c43d5770e59aca0ca2411bf1ee9ba803e0983c873d"
         }
       ]
+    },
+    {
+      "id": "shutdown-abort-476",
+      "reason": "The CheckDeadline shutdown guard is verified against CI and #476 is closed. Do not re-audit it; reopen only if CI shows the 'Leaked unsafe reference'/script_bindings signature again.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json",
+          "sha256": "e9c637ce2a3e76113ee9a78d5113d110e92a4be276b65b98485b7db68f7100f6"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json",
+          "sha256": "a3d7f373ccbc85dedf7b88c11cf3d0b03e2c5006844af20c5ec2bfefb2bbb1da"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2201,23 +2229,37 @@
           "sha256": "f724a24b50d7c4312a7e0c2829a82cf888581f9c7a2859e0a7b6b944468410e0"
         }
       ]
+    },
+    {
+      "id": "owner-save-backup-467-2026-11-05",
+      "owner_statement": "Close shutdown-abort-476: Yes, close it (Recommended); next slice: #467 save backup (Recommended)",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-05-save-backup-467-authority.json",
+          "sha256": "be618cb58e0511dcd9a7d30299ef840c3c6df1bb2cad6dc3435876cd0a4d3b23"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "shutdown-abort-476",
-    "title": "End the intermittent .NET shutdown abort after passing smoke launches",
+    "id": "save-backup-467",
+    "title": "Keep one backup when a save overwrites an existing save",
     "status": "in_progress",
-    "workstream": "shutdown-abort-476",
-    "reopening_id": "owner-shutdown-abort-476-2026-10-31",
-    "authority_status": "owner_requested_shutdown_abort_476_2026-10-31",
-    "roadmap_item": "- [ ] Smoke launches stop aborting at .NET shutdown after a passing check (#476).",
-    "missing_deliverable": "The CheckDeadline shutdown guard (c35d8b64, merged with PR #475 on 2026-10-29) was never verified against CI, so #476 stayed open.",
-    "instructions": "Verified on branch claude/fix-shutdown-abort-476 (2026-10-31): 0 'Leaked unsafe reference'/'script_bindings' lines in 23 CI runs and 1 superseded re-run attempt since the fix, against 4 of 26 runs before it (docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json). No code change. Remaining: owner review of PR #488 (it closes #476 on merge); then close the scope on owner direction.",
-    "completion_condition": "CI history since the fix shows no shutdown-abort signature, the verification record is committed, and the branch is pushed with a PR that closes #476 on merge.",
+    "workstream": "save-backup-467",
+    "reopening_id": "owner-save-backup-467-2026-11-05",
+    "authority_status": "owner_requested_save_backup_467_2026-11-05",
+    "roadmap_item": "- [ ] Saving over an existing save keeps the previous document as a backup (#467).",
+    "missing_deliverable": "FileSaveDocumentStore.Save replaces the document with no backup (File.Replace with destinationBackupFileName: null), so one save after New game destroys a long playthrough unrecoverably.",
+    "instructions": "Implemented and verified on branch claude/save-backup-467 (2026-11-06): an overwrite keeps the previous document as <file>.bak (unit test), the save-overwriting smoke checks delete the backup (two more after PR #489 review), full gate passed (219 stages, no retries; docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json). Remaining: owner review of the PR (it closes #467 on merge); then close the scope on owner direction.",
+    "completion_condition": "An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test; affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes #467 on merge.",
     "outputs": [
-      "docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json"
+      "src/Infrastructure/Persistence/FileSaveDocumentStore.cs",
+      "tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs",
+      "docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json"
     ],
-    "boundary": "Verification of the merged CheckDeadline shutdown guard plus dependent documentation/publication only. Product code, check assertions and accepted behaviour stay unchanged. No merge or release."
+    "boundary": "FileSaveDocumentStore backup generation, its unit test, smoke-check backup cleanup and dependent documentation/publication only. No restore UI, overwrite confirmation or save schema change. No merge or release."
   },
   "deferred_slices": [
     {

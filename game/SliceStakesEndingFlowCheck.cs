@@ -33,7 +33,7 @@ public partial class SliceStakesEndingFlowCheck : Node
         try
         {
             Engine.MaxFps = 60;
-            File.Delete(path);
+            DeleteSave(path);
 
             // Three time-advancing events (identification, the Healer's errand, a wrong dose): the
             // patient weakens from deep sleep to wasting.
@@ -97,7 +97,7 @@ public partial class SliceStakesEndingFlowCheck : Node
             await Frames(4);
 
             // Completion: the remedy stabilizes, the patient testifies and the sage is consulted.
-            File.Delete(path);
+            DeleteSave(path);
             Node fourth = await Launch(fresh: true);
             CharacterId seekerId = fourth.GetNode<TemporarySeekerCharacterSource>(
                 "TemporarySeekerCharacterSource").Character.Identity.Id;
@@ -150,14 +150,14 @@ public partial class SliceStakesEndingFlowCheck : Node
                 "Continue re-presented the completed slice.");
             fifth.QueueFree();
             await Frames(2);
-            File.Delete(path);
+            DeleteSave(path);
             GD.Print("PASS: slice stakes and ending flow");
             GetTree().Quit();
         }
         catch (Exception error)
         {
             GD.PushError(error.ToString());
-            File.Delete(path);
+            DeleteSave(path);
             GetTree().Quit(1);
         }
     }

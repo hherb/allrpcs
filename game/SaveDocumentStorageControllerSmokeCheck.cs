@@ -67,7 +67,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         focusStatus = GetNode<Label>("../CommandOverlay/Panel/FocusStatus");
         focusedSearchResult = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
 
-        File.Delete(StoragePath());
+        MainFlowCheckSteps.DeleteSave(StoragePath());
     }
 
     /// <inheritdoc />
@@ -82,7 +82,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         }
         finally
         {
-            File.Delete(StoragePath());
+            MainFlowCheckSteps.DeleteSave(StoragePath());
         }
     }
 
@@ -152,7 +152,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
             return;
         }
 
-        File.Delete(StoragePath());
+        MainFlowCheckSteps.DeleteSave(StoragePath());
         if (controller.LoadCurrent() != SaveDocumentReadStatus.Missing
             || !HasExpectedState(initial)
             || !ReferenceEquals(worldObjectController.WorldObjects, worldObjects)
