@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-05",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 488,
+    "merge_commit": "91efcba798d1ffdb5c3a84da9bfb9cc394f2bea6",
+    "merged_by": "hherb",
+    "merged_at": "2026-10-31T10:50:39Z"
+  },
+  "question": "You merged PR #488 (CI verification of the #476 shutdown guard: 0 abort signatures in 23 runs after the fix vs 4 of 26 before), and #476 is closed. Should I record that as your acceptance and close the shutdown-abort-476 slice in the ledger, as with #486?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "shutdown-abort-476"
+}

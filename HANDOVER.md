@@ -19,9 +19,11 @@ broken strap (PR #485) merged and were closed ([stone](art-direction/stone-marke
 [herb](art-direction/herb-patch-art/owner-acceptance.json), [wagon](art-direction/wagon-clue-art/owner-acceptance.json)).
 Remaining greybox markers (water cask, closed forest gate, exit markers) need their own owner request; no accepted
 art matches them closely (no cask art exists). The #486 smoke flake fix merged as PR #487 and was closed on
-2026-10-31 ([acceptance](docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json)). The active
-slice below verifies the already-merged #476 shutdown guard against CI
-([authority](docs/superpowers/evidence/2026-10-31-shutdown-abort-476-authority.json)).
+2026-10-31 ([acceptance](docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json)). The #476
+shutdown guard was verified against CI, merged as PR #488 and closed on 2026-11-05
+([acceptance](docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json)). The active
+slice below keeps one backup when a save overwrites an existing one (#467,
+[authority](docs/superpowers/evidence/2026-11-05-save-backup-467-authority.json)).
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -47,29 +49,31 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**shutdown-abort-476 — End the intermittent .NET shutdown abort after passing smoke launches** (in_progress).
+**save-backup-467 — Keep one backup when a save overwrites an existing save** (in_progress).
 
-Roadmap item: - [ ] Smoke launches stop aborting at .NET shutdown after a passing check (#476).
+Roadmap item: - [ ] Saving over an existing save keeps the previous document as a backup (#467).
 
-Missing deliverable: The CheckDeadline shutdown guard (c35d8b64, merged with PR #475 on 2026-10-29)
-was never verified against CI, so #476 stayed open.
+Missing deliverable: FileSaveDocumentStore.Save replaces the document with no backup (File.Replace
+with destinationBackupFileName: null), so one save after New game destroys a long playthrough
+unrecoverably.
 
-Verified on branch claude/fix-shutdown-abort-476 (2026-10-31): 0 'Leaked unsafe
-reference'/'script_bindings' lines in 23 CI runs and 1 superseded re-run attempt since the fix,
-against 4 of 26 runs before it (docs/superpowers/evidence/2026-10-31-shutdown-
-abort-476-verification.json). No code change. Remaining: owner review of PR #488 (it closes #476 on
-merge); then close the scope on owner direction.
+TDD: add a FileSaveDocumentStore test that the previous document survives as <file>.bak after an
+overwrite, then pass File.Replace a backup path. Delete any .bak that smoke checks leave in the temp
+directory where they already delete the save. Run dotnet format/build/test plus the affected save
+smoke launches; no full gate unless CI inputs change.
 
-Done when: CI history since the fix shows no shutdown-abort signature, the verification record is
-committed, and the branch is pushed with a PR that closes #476 on merge.
+Done when: An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test;
+affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes
+#467 on merge.
 
 Expected outputs:
 
-- `docs/superpowers/evidence/2026-10-31-shutdown-abort-476-verification.json`
+- `src/Infrastructure/Persistence/FileSaveDocumentStore.cs`
+- `tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs`
 
-Boundary: Verification of the merged CheckDeadline shutdown guard plus dependent
-documentation/publication only. Product code, check assertions and accepted behaviour stay
-unchanged. No merge or release.
+Boundary: FileSaveDocumentStore backup generation, its unit test, smoke-check backup cleanup and
+dependent documentation/publication only. No restore UI, overwrite confirmation or save schema
+change. No merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

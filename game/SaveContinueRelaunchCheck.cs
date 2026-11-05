@@ -34,7 +34,7 @@ public partial class SaveContinueRelaunchCheck : Node
         string path = SaveDocumentStorageController.CurrentFilePath();
         try
         {
-            File.Delete(path);
+            MainFlowCheckSteps.DeleteSave(path);
             Node first = await Launch();
             Customize(first);
             CompleteTurn(first);
@@ -131,7 +131,7 @@ public partial class SaveContinueRelaunchCheck : Node
             await Frames(2);
 
             // Without a save, a remembered Seeker this build cannot rebuild opens the form, not Start as.
-            File.Delete(path);
+            MainFlowCheckSteps.DeleteSave(path);
             Node unusable = await Launch();
             (start, menu, seeker) = StartPanel(unusable);
             start.Begin();
@@ -146,7 +146,7 @@ public partial class SaveContinueRelaunchCheck : Node
         catch (Exception error)
         {
             GD.PushError(error.ToString());
-            File.Delete(path);
+            MainFlowCheckSteps.DeleteSave(path);
             File.Delete(NewGameStartPanelController.RememberedProfilePath());
             GetTree().Quit(1);
         }

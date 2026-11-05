@@ -27,6 +27,12 @@ public sealed class FileSaveDocumentStore : ISaveDocumentStore
         this.filePath = filePath;
     }
 
+    /// <summary>
+    /// Returns where the previous document is kept after an overwrite: one generation, beside
+    /// the document, so a player can recover an accidentally overwritten save by renaming it.
+    /// </summary>
+    public static string BackupPathFor(string filePath) => filePath + ".bak";
+
     /// <inheritdoc />
     public SaveDocumentWriteResult Save(string serializedDocument)
     {
@@ -61,7 +67,8 @@ public sealed class FileSaveDocumentStore : ISaveDocumentStore
 
             if (File.Exists(filePath))
             {
-                File.Replace(temporaryPath, filePath, destinationBackupFileName: null);
+                // Replacing (rather than deleting) the old document keeps it recoverable (#467).
+                File.Replace(temporaryPath, filePath, BackupPathFor(filePath));
             }
             else
             {

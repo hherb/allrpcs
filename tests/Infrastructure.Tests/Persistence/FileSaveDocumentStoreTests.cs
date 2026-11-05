@@ -30,6 +30,28 @@ public sealed class FileSaveDocumentStoreTests
     }
 
     [Fact]
+    public void KeepsThePreviousDocumentAsOneBackupGenerationWhenOverwriting()
+    {
+        // #467: a save right after New game must not destroy the earlier playthrough.
+        using TemporaryDirectory temporaryDirectory = new();
+        string path = temporaryDirectory.File("save.json");
+        string backupPath = FileSaveDocumentStore.BackupPathFor(path);
+        FileSaveDocumentStore store = new(path);
+
+        _ = store.Save("{\"state\":\"first\"}");
+        Assert.False(File.Exists(backupPath), "A first save has nothing to back up.");
+
+        _ = store.Save("{\"state\":\"second\"}");
+        Assert.Equal("{\"state\":\"first\"}", File.ReadAllText(backupPath));
+
+        // Only one generation is kept: the backup always holds the document just replaced.
+        _ = store.Save("{\"state\":\"third\"}");
+        Assert.Equal("{\"state\":\"second\"}", File.ReadAllText(backupPath));
+        Assert.Equal("{\"state\":\"third\"}", store.Load().SerializedDocument);
+        Assert.Equal(path + ".bak", backupPath);
+    }
+
+    [Fact]
     public void ReportsMissingDocumentExplicitly()
     {
         using TemporaryDirectory temporaryDirectory = new();

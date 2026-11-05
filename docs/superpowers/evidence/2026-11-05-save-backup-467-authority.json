@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-05",
+  "timezone": "Australia/Sydney",
+  "base_commit": "91efcba7",
+  "owner_statements": [
+    {
+      "question": "Nothing is queued after #476. Which slice should come next?",
+      "reply": "#467 save backup (Recommended)"
+    }
+  ],
+  "scope": "Saving over an existing save keeps no backup (#467): FileSaveDocumentStore.Save replaces the document with File.Replace(..., destinationBackupFileName: null), so one save after New game destroys a long playthrough. Keep one backup generation beside the document and pin it with a test.",
+  "boundary": "FileSaveDocumentStore backup generation, its unit test, cleanup of backups that smoke checks leave in the temp directory, and dependent documentation/publication. No restore UI, no overwrite confirmation, no save schema change. No merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}
