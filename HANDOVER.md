@@ -59,10 +59,10 @@ with destinationBackupFileName: null), so one save after New game destroys a lon
 unrecoverably.
 
 Implemented and verified on branch claude/save-backup-467 (2026-11-06): an overwrite keeps the
-previous document as <file>.bak (unit test), the six save-overwriting smoke checks delete the
-backup, full gate passed (219 stages, no retries; docs/superpowers/evidence/2026-11-06-save-
-backup-467-verification.json). Remaining: owner review of the PR (it closes #467 on merge); then
-close the scope on owner direction.
+previous document as <file>.bak (unit test), the save-overwriting smoke checks delete the backup
+(two more after PR #489 review), full gate passed (219 stages, no retries;
+docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json). Remaining: owner review of
+the PR (it closes #467 on merge); then close the scope on owner direction.
 
 Done when: An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test;
 affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes

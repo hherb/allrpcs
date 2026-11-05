@@ -27,5 +27,20 @@
     "stages": 219,
     "retries": 0,
     "smoke": "smoke-godot.sh reported 'smoke: 376 passed, 3 quarantined' (36-product-10-1.log)"
+  },
+  "review_followup": {
+    "date": "2026-11-06",
+    "source": "PR #489 review suggestions",
+    "change": "ControlSettingsMainSmokeCheck and DialogueOwnershipMainSmokeCheck also delete the save through MainFlowCheckSteps.DeleteSave (each saves once today, so no backup leaked; this keeps a later second save from leaking one). README notes the remembered Seeker profile gets the same .bak and that a locked or read-only backup reports a failed save (accepted: the failure is visible, not silent).",
+    "inputs": {
+      "game/ControlSettingsMainSmokeCheck.cs": "82427ac0d2ad6c7d16c408d0b5a6701397f8d8db3d25603731c58ba90e5eb7bf",
+      "game/DialogueOwnershipMainSmokeCheck.cs": "771a02b6485be0707277e658f394d939746e1f05e38e46edc1e2a5e053094a9b"
+    },
+    "checks": {
+      "dotnet format/build": "passed, 0 warnings",
+      "smoke": "DIALOGUE_OWNERSHIP=unavailable and =invalid (the modes that reach the changed delete) passed with an isolated TMPDIR and left no files behind",
+      "not_run": "ALLRPCS_CONTROLS_MAIN_CHECK still fails 'Rows incomplete' at HEAD independently of this change (known #432)",
+      "full_quality": "not rerun: one-line check cleanup and prose; the gate above stands for product code at 9f8df6e3"
+    }
   }
 }

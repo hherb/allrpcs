@@ -1029,8 +1029,9 @@ type.
 `FileSaveDocumentStore` is the local Infrastructure adapter. It requires one trusted absolute path,
 writes strict UTF-8 without a byte-order mark to a unique sibling temporary file, flushes it before
 same-directory replacement that keeps the replaced document as one `<file>.bak` backup generation
-(#467; rename it back to recover an overwritten save), and reports expected I/O, access, encoding, and platform failures
-without treating empty or invalid UTF-8 data as a loaded save. `SaveDocumentStorageController`
+(#467; rename it back to recover an overwritten save; the remembered Seeker profile gets the same
+`user://seeker-profile-v1.json.bak`, and a locked or read-only backup reports a failed save), and
+reports expected I/O, access, encoding, and platform failures without treating empty or invalid UTF-8 data as a loaded save. `SaveDocumentStorageController`
 composes that adapter at the fixed Godot `user://save-v1.json` path with exact capture and complete
 preflighted restoration. The ordinary `SaveLoadInputController` delegates only to those operations.
 Once explicit map and route state exists, an explicit Q or Save-button action may initialize the same

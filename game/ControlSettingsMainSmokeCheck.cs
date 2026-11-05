@@ -129,7 +129,7 @@ public partial class ControlSettingsMainSmokeCheck : Node
         save._UnhandledInput(KeyEvent(Key.Q, true));
         Require(GetNode<Label>("../CommandOverlay/SaveLoadPanel/Status").Text == SaveLoadInputController.SavedStatusText
             && File.Exists(SaveDocumentStorageController.CurrentFilePath()), "Save binding did not save");
-        File.Delete(SaveDocumentStorageController.CurrentFilePath());
+        MainFlowCheckSteps.DeleteSave(SaveDocumentStorageController.CurrentFilePath());
         // A successful save names no key, so the remap is checked against the failure prompt that does.
         ControlSettingsController.SetGuidance(GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus"), SaveLoadInputController.SaveFailedRecoveryText);
         ControlPreferences newSave = ControlBindingEdit.Set(defaults, "save_current", new("key", (int)Key.F12, "physical"), 0); controller.Apply(newSave);
