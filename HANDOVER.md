@@ -21,9 +21,12 @@ Remaining greybox markers (water cask, closed forest gate, exit markers) need th
 art matches them closely (no cask art exists). The #486 smoke flake fix merged as PR #487 and was closed on
 2026-10-31 ([acceptance](docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json)). The #476
 shutdown guard was verified against CI, merged as PR #488 and closed on 2026-11-05
-([acceptance](docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json)). The active
-slice below keeps one backup when a save overwrites an existing one (#467,
-[authority](docs/superpowers/evidence/2026-11-05-save-backup-467-authority.json)).
+([acceptance](docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json)). The
+#467 save backup merged as PR #489 and was closed on 2026-11-06
+([acceptance](docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json)). The active
+slice below plays the accepted Seeker reference gait in Main's walk (#462,
+[authority](art-direction/seeker-reference-gait-runtime/authority.json)); it is implemented and awaits
+owner review of PR #490.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
