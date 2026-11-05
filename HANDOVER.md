@@ -58,10 +58,12 @@ Missing deliverable: Main's Seeker walk still plays the older 6-frame-per-direct
 always leading); the owner-accepted 48-frame reference gait was never installed in ordinary
 gameplay.
 
-Byte-copy the 48 accepted frames into game/art/runtime/characters/seeker/<direction>/walk-NN.png,
-point the runtime walk_* animations at them at 90 ms front/back and 45 ms sides (720 ms cycle), keep
-the 180 px side frames' feet on the idle ground line, update the runtime walk smoke check, capture
-Main, then publish a review PR that closes #462.
+Implemented and verified on branch claude/seeker-reference-gait-462 (2026-11-06): the 48 accepted
+frames are byte-copied into game/art/runtime/characters/seeker/<direction>/walk-NN.png and play at
+90/45 ms (720 ms); the presenter keeps the 180 px side walks on the idle ground line; the runtime
+walk smoke check pins both; full gate passed (219 stages, no retries; art-direction/seeker-
+reference-gait-runtime/verification.json). Remaining: owner review of PR #490 (it closes #462 on
+merge); then close the scope on owner direction.
 
 Done when: Main's four walk animations play the accepted reference-gait frames byte for byte in
 their phase order and timing, feet stay on the idle/interaction ground line, the runtime walk smoke
@@ -74,6 +76,7 @@ Expected outputs:
 - `game/SeekerWalkAnimationPresenter.cs`
 - `game/RuntimeSeekerWalkSmokeCheck.cs`
 - `art-direction/seeker-reference-gait-runtime/README.md`
+- `art-direction/seeker-reference-gait-runtime/verification.json`
 
 Boundary: Runtime Seeker walk frames, their SpriteFrames entries, presenter frame anchoring, the
 runtime walk smoke check and dependent documentation/publication only. No new or edited artwork, no

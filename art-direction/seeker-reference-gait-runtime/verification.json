@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "status": "implementation_verified",
+  "product_revision": "f44369ab on claude/seeker-reference-gait-462",
+  "inputs": {
+    "game/RuntimeSeekerWalkSmokeCheck.cs": "99ee5f0f4998896e961b962c9ad27c65cacac316f71a9869899f2860bf6cc78d",
+    "game/SeekerWalkAnimationPresenter.cs": "9e0b1a30248e3c446cc489f852e3e1e55b27a2731bfeafddf236e36fc97acb31",
+    "game/art/runtime/characters/seeker/walk-animations.tres": "565170be9aa108353f0bf15b96e87c8de305ece18d42c0a9bb7018d78076a5e2",
+    "scripts/capture-seeker-reference-gait-runtime.gd": "3d0795aaa5ac6afdd1b64e12159553d39a932819f772a48bb6289895fbe5d748",
+    "art-direction/seeker-reference-gait-runtime/capture-evidence.json": "fa7174dcf8896def6af180b673fae17e6a3b02ac04fa80bb8862748e407fcf69"
+  },
+  "change": "The runtime walk_* animations play byte copies of the 48 accepted reference-gait frames (8 x 90 ms front/back, 16 x 45 ms sides, 720 ms cycle). SeekerWalkAnimationPresenter keeps each animation's bottom edge at the scene-authored one, so the 180 px side walks draw at (0, -78) with feet on the idle ground line.",
+  "tdd": "The rewritten ALLRPCS_RUNTIME_SEEKER_WALK_CHECK failed on the old art ('walk_south is not the reference gait's 8-pose 720 ms loop') and passes after the change.",
+  "focused_checks": {
+    "dotnet format": "clean",
+    "smoke launches": "RUNTIME_SEEKER_WALK, check-healer-sage-runtime.gd, check-character-depth-order.gd, FOCUSED_SEARCH_WORLD_EVENT, DirectionAImportProof.tscn: passed",
+    "capture": "scripts/capture-seeker-reference-gait-runtime.gd rendered ordinary Main; feet share one ground line across idle and walk poses in all four directions"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "smoke-godot.sh reported 'smoke: 376 passed, 3 quarantined' (36-product-10-1.log)"
+  },
+  "superseded_validator": "scripts/validate-runtime-seeker-walk.py (frozen, e5762031 6-frame promotion) reports 'lost manifest/source parity' at HEAD by design; nothing runs it at HEAD and it is unchanged."
+}
