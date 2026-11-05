@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "timezone": "Australia/Sydney",
+  "base_commit": "224ae460",
+  "owner_statements": [
+    {
+      "question": "Nothing is queued after #467. Which slice should come next?",
+      "option": "#462 Seeker gait (Recommended): Replace the old 6-frame runtime walk with the accepted Seeker reference gait frames (the playtest's 'same leg always forward' complaint). Fits your art-into-gameplay priority; needs your art-integration authority, which this answer grants.",
+      "reply": "#462 Seeker gait (Recommended)"
+    }
+  ],
+  "scope": "Integrate the owner-accepted Seeker cloak reference gait (art-direction/reference-gait-model.md, 2026-10-07) into ordinary Main: the runtime walk_* animations play its 48 accepted frames (8 x 90 ms front/back, 16 x 45 ms sides, 720 ms cycle) in its phase order, with feet kept on the same ground line as idle and interaction.",
+  "boundary": "Runtime Seeker walk frames, their SpriteFrames entries, the presenter's frame anchoring, the runtime walk smoke check and dependent documentation/publication only. No new or edited artwork, no idle/interaction change, no Healer/Sage walk re-authoring (#480), no movement or collision change. No merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

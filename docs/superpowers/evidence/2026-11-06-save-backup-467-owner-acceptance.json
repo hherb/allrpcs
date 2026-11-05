@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 489,
+    "merge_commit": "224ae4604ddc2ae85ac0fa84796c547c75c9526b",
+    "merged_by": "hherb",
+    "merged_at": "2026-11-05T14:44:43Z"
+  },
+  "question": "You merged PR #489 (an overwrite now keeps the previous save as <file>.bak; full gate passed, 219 stages), and #467 is closed. Should I record that as your acceptance and close the save-backup-467 slice in the ledger, as with #476 and #486?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "save-backup-467"
+}

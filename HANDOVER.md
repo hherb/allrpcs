@@ -50,33 +50,35 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**save-backup-467 — Keep one backup when a save overwrites an existing save** (in_progress).
+**seeker-reference-gait-462 — Play the accepted Seeker reference gait in Main's runtime walk** (in_progress).
 
-Roadmap item: - [ ] Saving over an existing save keeps the previous document as a backup (#467).
+Roadmap item: - [ ] Play the accepted Seeker reference gait in Main's runtime walk (#462).
 
-Missing deliverable: FileSaveDocumentStore.Save replaces the document with no backup (File.Replace
-with destinationBackupFileName: null), so one save after New game destroys a long playthrough
-unrecoverably.
+Missing deliverable: Main's Seeker walk still plays the older 6-frame-per-direction cycle (same leg
+always leading); the owner-accepted 48-frame reference gait was never installed in ordinary
+gameplay.
 
-Implemented and verified on branch claude/save-backup-467 (2026-11-06): an overwrite keeps the
-previous document as <file>.bak (unit test), the save-overwriting smoke checks delete the backup
-(two more after PR #489 review), full gate passed (219 stages, no retries;
-docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json). Remaining: owner review of
-the PR (it closes #467 on merge); then close the scope on owner direction.
+Byte-copy the 48 accepted frames into game/art/runtime/characters/seeker/<direction>/walk-NN.png,
+point the runtime walk_* animations at them at 90 ms front/back and 45 ms sides (720 ms cycle), keep
+the 180 px side frames' feet on the idle ground line, update the runtime walk smoke check, capture
+Main, then publish a review PR that closes #462.
 
-Done when: An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test;
-affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes
-#467 on merge.
+Done when: Main's four walk animations play the accepted reference-gait frames byte for byte in
+their phase order and timing, feet stay on the idle/interaction ground line, the runtime walk smoke
+check pins this and passes with the affected smoke launches, and the branch is pushed with a PR that
+closes #462 on merge.
 
 Expected outputs:
 
-- `src/Infrastructure/Persistence/FileSaveDocumentStore.cs`
-- `tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs`
-- `docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json`
+- `game/art/runtime/characters/seeker/walk-animations.tres`
+- `game/SeekerWalkAnimationPresenter.cs`
+- `game/RuntimeSeekerWalkSmokeCheck.cs`
+- `art-direction/seeker-reference-gait-runtime/README.md`
 
-Boundary: FileSaveDocumentStore backup generation, its unit test, smoke-check backup cleanup and
-dependent documentation/publication only. No restore UI, overwrite confirmation or save schema
-change. No merge or release.
+Boundary: Runtime Seeker walk frames, their SpriteFrames entries, presenter frame anchoring, the
+runtime walk smoke check and dependent documentation/publication only. No new or edited artwork, no
+idle/interaction change, no Healer/Sage walk re-authoring (#480), no movement or collision change.
+No merge or release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

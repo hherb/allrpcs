@@ -1,29 +1,53 @@
-[gd_resource type="SpriteFrames" load_steps=49 format=3]
+[gd_resource type="SpriteFrames" load_steps=73 format=3]
 
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-01.png" id="1_s1"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-02.png" id="2_s2"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-03.png" id="3_s3"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-04.png" id="4_s4"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-05.png" id="5_s5"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-06.png" id="6_s6"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-01.png" id="7_w1"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-02.png" id="8_w2"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-03.png" id="9_w3"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-04.png" id="10_w4"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-05.png" id="11_w5"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-06.png" id="12_w6"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-01.png" id="13_e1"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-02.png" id="14_e2"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-03.png" id="15_e3"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-04.png" id="16_e4"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-05.png" id="17_e5"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-06.png" id="18_e6"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-01.png" id="19_n1"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-02.png" id="20_n2"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-03.png" id="21_n3"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-04.png" id="22_n4"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-05.png" id="23_n5"]
-[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-06.png" id="24_n6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-01.png" id="walk_s01"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-02.png" id="walk_s02"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-03.png" id="walk_s03"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-04.png" id="walk_s04"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-05.png" id="walk_s05"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-06.png" id="walk_s06"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-07.png" id="walk_s07"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-08.png" id="walk_s08"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-01.png" id="walk_w01"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-02.png" id="walk_w02"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-03.png" id="walk_w03"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-04.png" id="walk_w04"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-05.png" id="walk_w05"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-06.png" id="walk_w06"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-07.png" id="walk_w07"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-08.png" id="walk_w08"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-09.png" id="walk_w09"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-10.png" id="walk_w10"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-11.png" id="walk_w11"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-12.png" id="walk_w12"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-13.png" id="walk_w13"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-14.png" id="walk_w14"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-15.png" id="walk_w15"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/walk-16.png" id="walk_w16"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-01.png" id="walk_e01"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-02.png" id="walk_e02"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-03.png" id="walk_e03"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-04.png" id="walk_e04"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-05.png" id="walk_e05"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-06.png" id="walk_e06"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-07.png" id="walk_e07"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-08.png" id="walk_e08"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-09.png" id="walk_e09"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-10.png" id="walk_e10"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-11.png" id="walk_e11"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-12.png" id="walk_e12"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-13.png" id="walk_e13"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-14.png" id="walk_e14"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-15.png" id="walk_e15"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/walk-16.png" id="walk_e16"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-01.png" id="walk_n01"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-02.png" id="walk_n02"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-03.png" id="walk_n03"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-04.png" id="walk_n04"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-05.png" id="walk_n05"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-06.png" id="walk_n06"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-07.png" id="walk_n07"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-08.png" id="walk_n08"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/idle-breathe-01.png" id="25_si1"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/idle-breathe-02.png" id="26_si2"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/idle-breathe-01.png" id="27_wi1"]
@@ -91,23 +115,23 @@ animations = [{
 "name": &"interact_west",
 "speed": 6.25
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("13_e1")}, {"duration": 1.0, "texture": ExtResource("14_e2")}, {"duration": 1.0, "texture": ExtResource("15_e3")}, {"duration": 1.0, "texture": ExtResource("16_e4")}, {"duration": 1.0, "texture": ExtResource("17_e5")}, {"duration": 1.0, "texture": ExtResource("18_e6")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("walk_e01")}, {"duration": 1.0, "texture": ExtResource("walk_e02")}, {"duration": 1.0, "texture": ExtResource("walk_e03")}, {"duration": 1.0, "texture": ExtResource("walk_e04")}, {"duration": 1.0, "texture": ExtResource("walk_e05")}, {"duration": 1.0, "texture": ExtResource("walk_e06")}, {"duration": 1.0, "texture": ExtResource("walk_e07")}, {"duration": 1.0, "texture": ExtResource("walk_e08")}, {"duration": 1.0, "texture": ExtResource("walk_e09")}, {"duration": 1.0, "texture": ExtResource("walk_e10")}, {"duration": 1.0, "texture": ExtResource("walk_e11")}, {"duration": 1.0, "texture": ExtResource("walk_e12")}, {"duration": 1.0, "texture": ExtResource("walk_e13")}, {"duration": 1.0, "texture": ExtResource("walk_e14")}, {"duration": 1.0, "texture": ExtResource("walk_e15")}, {"duration": 1.0, "texture": ExtResource("walk_e16")}],
 "loop": true,
 "name": &"walk_east",
-"speed": 8.333333
+"speed": 22.222222
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("19_n1")}, {"duration": 1.0, "texture": ExtResource("20_n2")}, {"duration": 1.0, "texture": ExtResource("21_n3")}, {"duration": 1.0, "texture": ExtResource("22_n4")}, {"duration": 1.0, "texture": ExtResource("23_n5")}, {"duration": 1.0, "texture": ExtResource("24_n6")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("walk_n01")}, {"duration": 1.0, "texture": ExtResource("walk_n02")}, {"duration": 1.0, "texture": ExtResource("walk_n03")}, {"duration": 1.0, "texture": ExtResource("walk_n04")}, {"duration": 1.0, "texture": ExtResource("walk_n05")}, {"duration": 1.0, "texture": ExtResource("walk_n06")}, {"duration": 1.0, "texture": ExtResource("walk_n07")}, {"duration": 1.0, "texture": ExtResource("walk_n08")}],
 "loop": true,
 "name": &"walk_north",
-"speed": 8.333333
+"speed": 11.111111
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("1_s1")}, {"duration": 1.0, "texture": ExtResource("2_s2")}, {"duration": 1.0, "texture": ExtResource("3_s3")}, {"duration": 1.0, "texture": ExtResource("4_s4")}, {"duration": 1.0, "texture": ExtResource("5_s5")}, {"duration": 1.0, "texture": ExtResource("6_s6")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("walk_s01")}, {"duration": 1.0, "texture": ExtResource("walk_s02")}, {"duration": 1.0, "texture": ExtResource("walk_s03")}, {"duration": 1.0, "texture": ExtResource("walk_s04")}, {"duration": 1.0, "texture": ExtResource("walk_s05")}, {"duration": 1.0, "texture": ExtResource("walk_s06")}, {"duration": 1.0, "texture": ExtResource("walk_s07")}, {"duration": 1.0, "texture": ExtResource("walk_s08")}],
 "loop": true,
 "name": &"walk_south",
-"speed": 8.333333
+"speed": 11.111111
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("7_w1")}, {"duration": 1.0, "texture": ExtResource("8_w2")}, {"duration": 1.0, "texture": ExtResource("9_w3")}, {"duration": 1.0, "texture": ExtResource("10_w4")}, {"duration": 1.0, "texture": ExtResource("11_w5")}, {"duration": 1.0, "texture": ExtResource("12_w6")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("walk_w01")}, {"duration": 1.0, "texture": ExtResource("walk_w02")}, {"duration": 1.0, "texture": ExtResource("walk_w03")}, {"duration": 1.0, "texture": ExtResource("walk_w04")}, {"duration": 1.0, "texture": ExtResource("walk_w05")}, {"duration": 1.0, "texture": ExtResource("walk_w06")}, {"duration": 1.0, "texture": ExtResource("walk_w07")}, {"duration": 1.0, "texture": ExtResource("walk_w08")}, {"duration": 1.0, "texture": ExtResource("walk_w09")}, {"duration": 1.0, "texture": ExtResource("walk_w10")}, {"duration": 1.0, "texture": ExtResource("walk_w11")}, {"duration": 1.0, "texture": ExtResource("walk_w12")}, {"duration": 1.0, "texture": ExtResource("walk_w13")}, {"duration": 1.0, "texture": ExtResource("walk_w14")}, {"duration": 1.0, "texture": ExtResource("walk_w15")}, {"duration": 1.0, "texture": ExtResource("walk_w16")}],
 "loop": true,
 "name": &"walk_west",
-"speed": 8.333333
+"speed": 22.222222
 }]
