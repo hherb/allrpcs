@@ -23,10 +23,13 @@ art matches them closely (no cask art exists). The #486 smoke flake fix merged a
 shutdown guard was verified against CI, merged as PR #488 and closed on 2026-11-05
 ([acceptance](docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json)). The
 #467 save backup merged as PR #489 and was closed on 2026-11-06
-([acceptance](docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json)). The active
-slice below plays the accepted Seeker reference gait in Main's walk (#462,
-[authority](art-direction/seeker-reference-gait-runtime/authority.json)); it is implemented and awaits
-owner review of PR #490.
+([acceptance](docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json)). The
+#462 Seeker reference gait merged as PR #490 and was closed on 2026-11-06
+([acceptance](docs/superpowers/evidence/2026-11-06-seeker-reference-gait-462-owner-acceptance.json));
+pinning its accepted frames at HEAD is filed as #491. The active slice below re-authors the
+Healer's side walks to the reference gait (#480, Healer only,
+[package](art-direction/healer-reference-gait/README.md)); the owner accepted the artwork, it plays in
+Main, and it awaits owner review of PR #492. The Sage half of #480 is deferred (the Sage never walks).
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -62,10 +65,13 @@ Missing deliverable: The Healer's runtime walk is the 2026-10-04 8-phase cutout 
 no heel-to-toe roll or double support), not the reference gait model the walking-animation rule
 requires.
 
-Code-rig the Healer's approved characters-batch paint (no image generation) into sixteen 45 ms side
-poses per the reference gait model; carry the approved front/back 8 x 90 ms walks forward unchanged.
-Present the candidate for owner visual review, then install the accepted frames in Main's Healer
-walk with a pinning check. The Sage half of #480 is deferred (the Sage never walks in Main).
+Implemented and verified on branch claude/healer-reference-gait-480 (2026-11-06): the owner accepted
+the code-rigged Healer side-gait candidate (art-direction/healer-reference-gait/owner-
+acceptance.json); Main's Healer walk_west/walk_east play its sixteen poses at 45 ms, front/back
+unchanged; validate-healer-sage-runtime.py and check-healer-sage-runtime.gd pin frames and timing;
+full gate passed (219 stages, no retries; art-direction/healer-reference-gait/verification.json).
+Remaining: owner review of PR #492; then close the scope on owner direction. The Sage half of #480
+stays deferred (the Sage never walks in Main).
 
 Done when: The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play
 its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing
@@ -77,6 +83,7 @@ Expected outputs:
 - `art-direction/healer-reference-gait/check_gait.py`
 - `art-direction/healer-reference-gait/README.md`
 - `game/art/runtime/characters/healer/animations.tres`
+- `art-direction/healer-reference-gait/verification.json`
 
 Boundary: Healer walk frames, their build/check scripts, review package, runtime SpriteFrames
 entries and walk checks, and dependent documentation/publication only. No image generation, no Sage

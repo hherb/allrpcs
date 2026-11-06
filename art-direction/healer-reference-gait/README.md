@@ -5,6 +5,14 @@ The owner chose the Healer half of [#480](https://github.com/hherb/allrpcs/issue
 [reference gait model](../reference-gait-model.md) by code-rigging her approved paint. There is no
 image generation and no new painted detail. The Sage never walks in Main, so his walk is deferred.
 
+**Accepted by the owner on 2026-11-06** ([owner-acceptance.json](owner-acceptance.json) binds the
+candidate, exports and review files). Main's Healer `walk_west`/`walk_east` play the sixteen
+exports byte for byte at 45 ms from `game/art/runtime/characters/healer/<side>/walk-01…16.png`.
+The frames keep the 128 x 192 canvas, so the sprite offset and presenter are unchanged.
+`scripts/validate-healer-sage-runtime.py` pins the runtime bytes to this acceptance record, and
+`scripts/check-healer-sage-runtime.gd` pins the 16 x 45 ms timing in Main. Both run in
+`scripts/smoke-godot.sh`.
+
 ## What changes
 
 - **West and east** get sixteen 45 ms poses each (720 ms cycle), replacing the 8 x 90 ms cutout

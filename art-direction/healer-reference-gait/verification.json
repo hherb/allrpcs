@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "status": "implementation_verified",
+  "product_revision": "511cfff8 on claude/healer-reference-gait-480",
+  "inputs": {
+    "game/art/runtime/characters/healer/animations.tres": "89103e75b0821038f4f7cdb591d57bb32754ee2d2725f6de9787b823a7ddfb77",
+    "scripts/validate-healer-sage-runtime.py": "f9e83b58c92141f2034fdf9e960d20552760dd8a8534cfa2dab44a64ebccece6",
+    "scripts/check-healer-sage-runtime.gd": "d323acc0ccaf2cce007e8108dd0ca924dd68e2bd5c503e11554a442e988fceec",
+    "art-direction/healer-reference-gait/build.py": "894e0701beb2dd354d5057a4d0e49bd66f6cd74d6be802b45058650208c778fd",
+    "art-direction/healer-reference-gait/check_gait.py": "4092aea7d323a7a0cfb7729ba3ee2d96aa6a66fbabea4bd563c55a00c43608bb",
+    "art-direction/healer-reference-gait/candidate.json": "842dc948fd97c69ae0853bb4c7f5e2317f8d7aba910f2f8d1440ceba0a9cafd7",
+    "art-direction/healer-reference-gait/owner-acceptance.json": "25856c0f5bb6498673756fbe7c60bad4ca2bc26d1e834714775274ad06d0c5e0"
+  },
+  "change": "Main's Healer walk_west/walk_east play the sixteen owner-accepted reference-gait poses byte for byte at 45 ms (720 ms cycle); walk_south/walk_north keep their approved 8 x 90 ms frames. Same 128 x 192 canvas, so the sprite offset and presenter are unchanged.",
+  "tdd": "check_gait.py was written first and failed on the first render (east stance soles 1-3 rows off the floor from boot clipping before rotation); it passes after the fix. The validator fails on a swapped runtime frame ('Runtime art differs from its approved export: healer/east/walk-12.png') and the Godot check fails on the old 90 ms walk_east timing; both pass with the accepted install.",
+  "focused_checks": {
+    "check_gait.py": "passed",
+    "validate-healer-sage-runtime.py": "passed (112 frames)",
+    "check-healer-sage-runtime.gd": "passed",
+    "check-character-depth-order.gd": "passed",
+    "dotnet format": "clean",
+    "dotnet build": "passed"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "started": "2026-11-06T12:35:07Z",
+    "finished": "2026-11-06T13:30:42Z",
+    "smoke": "smoke-godot.sh reported 'smoke: 376 passed, 3 quarantined' (36-product-10-1.log)",
+    "healer_motion_modes": 7,
+    "healer_contacts": 4
+  },
+  "not_verified": [
+    "No live (windowed) playthrough of the Healer walking was observed; checks are headless."
+  ],
+  "deferred": "The Sage half of #480: the Sage never walks in Main (owner chose Healer only on 2026-11-06)."
+}

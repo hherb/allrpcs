@@ -2332,13 +2332,14 @@
     "authority_status": "owner_requested_healer_reference_gait_480_2026-11-06",
     "roadmap_item": "- [ ] Re-author the Healer's walk to the reference gait model and play it in Main (#480).",
     "missing_deliverable": "The Healer's runtime walk is the 2026-10-04 8-phase cutout gait (rigid boots, no heel-to-toe roll or double support), not the reference gait model the walking-animation rule requires.",
-    "instructions": "Code-rig the Healer's approved characters-batch paint (no image generation) into sixteen 45 ms side poses per the reference gait model; carry the approved front/back 8 x 90 ms walks forward unchanged. Present the candidate for owner visual review, then install the accepted frames in Main's Healer walk with a pinning check. The Sage half of #480 is deferred (the Sage never walks in Main).",
+    "instructions": "Implemented and verified on branch claude/healer-reference-gait-480 (2026-11-06): the owner accepted the code-rigged Healer side-gait candidate (art-direction/healer-reference-gait/owner-acceptance.json); Main's Healer walk_west/walk_east play its sixteen poses at 45 ms, front/back unchanged; validate-healer-sage-runtime.py and check-healer-sage-runtime.gd pin frames and timing; full gate passed (219 stages, no retries; art-direction/healer-reference-gait/verification.json). Remaining: owner review of PR #492; then close the scope on owner direction. The Sage half of #480 stays deferred (the Sage never walks in Main).",
     "completion_condition": "The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing and passes with the affected smoke launches; the branch is pushed with a PR that references #480.",
     "outputs": [
       "art-direction/healer-reference-gait/build.py",
       "art-direction/healer-reference-gait/check_gait.py",
       "art-direction/healer-reference-gait/README.md",
-      "game/art/runtime/characters/healer/animations.tres"
+      "game/art/runtime/characters/healer/animations.tres",
+      "art-direction/healer-reference-gait/verification.json"
     ],
     "boundary": "Healer walk frames, their build/check scripts, review package, runtime SpriteFrames entries and walk checks, and dependent documentation/publication only. No image generation, no Sage walk change (deferred), no idle/inspect change, no movement or collision change. No merge or release."
   },
