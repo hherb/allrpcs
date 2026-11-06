@@ -53,38 +53,35 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**seeker-reference-gait-462 — Play the accepted Seeker reference gait in Main's runtime walk** (in_progress).
+**healer-reference-gait-480 — Re-author the Healer's walk to the reference gait model** (in_progress).
 
-Roadmap item: - [ ] Play the accepted Seeker reference gait in Main's runtime walk (#462).
+Roadmap item: - [ ] Re-author the Healer's walk to the reference gait model and play it in Main
+(#480).
 
-Missing deliverable: Main's Seeker walk still plays the older 6-frame-per-direction cycle (same leg
-always leading); the owner-accepted 48-frame reference gait was never installed in ordinary
-gameplay.
+Missing deliverable: The Healer's runtime walk is the 2026-10-04 8-phase cutout gait (rigid boots,
+no heel-to-toe roll or double support), not the reference gait model the walking-animation rule
+requires.
 
-Implemented and verified on branch claude/seeker-reference-gait-462 (2026-11-06): the 48 accepted
-frames are byte-copied into game/art/runtime/characters/seeker/<direction>/walk-NN.png and play at
-90/45 ms (720 ms); the presenter keeps the 180 px side walks on the idle ground line; the runtime
-walk smoke check pins both; full gate passed (219 stages, no retries; art-direction/seeker-
-reference-gait-runtime/verification.json). Remaining: owner review of PR #490 (it closes #462 on
-merge); then close the scope on owner direction.
+Code-rig the Healer's approved characters-batch paint (no image generation) into sixteen 45 ms side
+poses per the reference gait model; carry the approved front/back 8 x 90 ms walks forward unchanged.
+Present the candidate for owner visual review, then install the accepted frames in Main's Healer
+walk with a pinning check. The Sage half of #480 is deferred (the Sage never walks in Main).
 
-Done when: Main's four walk animations play the accepted reference-gait frames byte for byte in
-their phase order and timing, feet stay on the idle/interaction ground line, the runtime walk smoke
-check pins this and passes with the affected smoke launches, and the branch is pushed with a PR that
-closes #462 on merge.
+Done when: The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play
+its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing
+and passes with the affected smoke launches; the branch is pushed with a PR that references #480.
 
 Expected outputs:
 
-- `game/art/runtime/characters/seeker/walk-animations.tres`
-- `game/SeekerWalkAnimationPresenter.cs`
-- `game/RuntimeSeekerWalkSmokeCheck.cs`
-- `art-direction/seeker-reference-gait-runtime/README.md`
-- `art-direction/seeker-reference-gait-runtime/verification.json`
+- `art-direction/healer-reference-gait/build.py`
+- `art-direction/healer-reference-gait/check_gait.py`
+- `art-direction/healer-reference-gait/README.md`
+- `game/art/runtime/characters/healer/animations.tres`
 
-Boundary: Runtime Seeker walk frames, their SpriteFrames entries, presenter frame anchoring, the
-runtime walk smoke check and dependent documentation/publication only. No new or edited artwork, no
-idle/interaction change, no Healer/Sage walk re-authoring (#480), no movement or collision change.
-No merge or release.
+Boundary: Healer walk frames, their build/check scripts, review package, runtime SpriteFrames
+entries and walk checks, and dependent documentation/publication only. No image generation, no Sage
+walk change (deferred), no idle/inspect change, no movement or collision change. No merge or
+release.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
