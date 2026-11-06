@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Validate the Healer and Sage (Orin) runtime art against the owner-approved characters batch.
 
-Each runtime frame must be byte-identical to the export that the characters-batch acceptance
-record binds (idle/inspect from the initial batch, walks from the polished 8-phase rig), with
-lossless imports, and the runtime folders must hold no other PNGs. Checks only these files, so
+Each runtime frame must be byte-identical to the export that its acceptance record binds, with
+lossless imports, and the runtime folders must hold no other PNGs. Idle/inspect come from the
+initial characters batch and walks from its polished 8-phase rig, except the Healer's west/east
+walks: sixteen reference-gait poses each, accepted on 2026-11-06 (#480,
+art-direction/healer-reference-gait). Checks only these files, so
 unrelated changes elsewhere cannot trip it (see issue #471).
 """
 import hashlib
@@ -13,6 +15,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CHARACTERS = ROOT / 'art-direction/characters-batch'
 RUNTIME = ROOT / 'game/art/runtime/characters'
+GAIT = ROOT / 'art-direction/healer-reference-gait'
+# Walks re-authored to the reference gait model: (role, direction) -> frame count.
+GAIT_WALKS = {('healer', 'west'): 16, ('healer', 'east'): 16}
 ROLES = ('healer', 'orin')
 DIRECTIONS = ('south', 'west', 'east', 'north')
 FRAME_COUNTS = {'idle': 2, 'walk': 8, 'inspect': 2}
@@ -32,11 +37,26 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def frame_count(role, direction, kind):
+    """Frames in one animation: the reference-gait walks have their own count."""
+    return GAIT_WALKS.get((role, direction), FRAME_COUNTS[kind]) if kind == 'walk' else FRAME_COUNTS[kind]
+
+
 def expected_frames():
     """Return {acceptance key: runtime path relative to RUNTIME} for every frame this slice owns."""
     return {f'{role}-{direction}-{kind}-{index:02}': f'{role}/{direction}/{kind}-{index:02}.png'
             for role in ROLES for direction in DIRECTIONS
-            for kind, count in FRAME_COUNTS.items() for index in range(1, count + 1)}
+            for kind in FRAME_COUNTS for index in range(1, frame_count(role, direction, kind) + 1)}
+
+
+def approved_export(key, characters, gait):
+    """Return (approved export path, accepted sha256) for one runtime frame key."""
+    role, direction = key.split('-')[:2]
+    if (role, direction) in GAIT_WALKS and '-walk-' in key:
+        require(key + '.png' in gait['exports'], 'Frame is not in the accepted Healer gait: ' + key)
+        return GAIT / 'exports' / (key + '.png'), gait['exports'][key + '.png']
+    require(key in characters, 'Frame is no longer an active approved asset: ' + key)
+    return CHARACTERS / characters[key]['export'], characters[key]['sha256']
 
 
 def validate():
@@ -44,11 +64,11 @@ def validate():
     acceptance = json.loads((CHARACTERS / 'owner-acceptance.json').read_text())
     require('active_assets' in acceptance, 'Characters acceptance record has no active_assets')
     assets = acceptance['active_assets']
+    gait = json.loads((GAIT / 'owner-acceptance.json').read_text())
     frames = expected_frames()
     for key, runtime in frames.items():
-        require(key in assets, 'Frame is no longer an active approved asset: ' + key)
-        export = CHARACTERS / assets[key]['export']
-        require(sha(export) == assets[key]['sha256'], 'Approved export changed: ' + key)
+        export, digest = approved_export(key, assets, gait)
+        require(sha(export) == digest, 'Approved export changed: ' + key)
         require((RUNTIME / runtime).read_bytes() == export.read_bytes(),
                 'Runtime art differs from its approved export: ' + runtime)
         lines = (RUNTIME / (runtime + '.import')).read_text().splitlines()
