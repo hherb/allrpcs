@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=49 format=3]
+[gd_resource type="SpriteFrames" load_steps=65 format=3]
 
 [ext_resource type="Texture2D" path="res://art/runtime/characters/healer/south/idle-01.png" id="1_si1"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/healer/south/idle-02.png" id="2_si2"]
@@ -48,6 +48,22 @@
 [ext_resource type="Texture2D" path="res://art/runtime/characters/healer/north/walk-06.png" id="46_nw6"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/healer/north/walk-07.png" id="47_nw7"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/healer/north/walk-08.png" id="48_nw8"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-09.png" id="49_ww9"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-10.png" id="50_ww10"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-11.png" id="51_ww11"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-12.png" id="52_ww12"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-13.png" id="53_ww13"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-14.png" id="54_ww14"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-15.png" id="55_ww15"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/west/walk-16.png" id="56_ww16"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-09.png" id="57_ew9"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-10.png" id="58_ew10"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-11.png" id="59_ew11"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-12.png" id="60_ew12"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-13.png" id="61_ew13"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-14.png" id="62_ew14"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-15.png" id="63_ew15"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/healer/east/walk-16.png" id="64_ew16"]
 
 [resource]
 animations = [{
@@ -96,15 +112,15 @@ animations = [{
 "name": &"walk_south",
 "speed": 11.111111
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("25_ww1")}, {"duration": 1.0, "texture": ExtResource("26_ww2")}, {"duration": 1.0, "texture": ExtResource("27_ww3")}, {"duration": 1.0, "texture": ExtResource("28_ww4")}, {"duration": 1.0, "texture": ExtResource("29_ww5")}, {"duration": 1.0, "texture": ExtResource("30_ww6")}, {"duration": 1.0, "texture": ExtResource("31_ww7")}, {"duration": 1.0, "texture": ExtResource("32_ww8")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("25_ww1")}, {"duration": 1.0, "texture": ExtResource("26_ww2")}, {"duration": 1.0, "texture": ExtResource("27_ww3")}, {"duration": 1.0, "texture": ExtResource("28_ww4")}, {"duration": 1.0, "texture": ExtResource("29_ww5")}, {"duration": 1.0, "texture": ExtResource("30_ww6")}, {"duration": 1.0, "texture": ExtResource("31_ww7")}, {"duration": 1.0, "texture": ExtResource("32_ww8")}, {"duration": 1.0, "texture": ExtResource("49_ww9")}, {"duration": 1.0, "texture": ExtResource("50_ww10")}, {"duration": 1.0, "texture": ExtResource("51_ww11")}, {"duration": 1.0, "texture": ExtResource("52_ww12")}, {"duration": 1.0, "texture": ExtResource("53_ww13")}, {"duration": 1.0, "texture": ExtResource("54_ww14")}, {"duration": 1.0, "texture": ExtResource("55_ww15")}, {"duration": 1.0, "texture": ExtResource("56_ww16")}],
 "loop": true,
 "name": &"walk_west",
-"speed": 11.111111
+"speed": 22.222222
 }, {
-"frames": [{"duration": 1.0, "texture": ExtResource("33_ew1")}, {"duration": 1.0, "texture": ExtResource("34_ew2")}, {"duration": 1.0, "texture": ExtResource("35_ew3")}, {"duration": 1.0, "texture": ExtResource("36_ew4")}, {"duration": 1.0, "texture": ExtResource("37_ew5")}, {"duration": 1.0, "texture": ExtResource("38_ew6")}, {"duration": 1.0, "texture": ExtResource("39_ew7")}, {"duration": 1.0, "texture": ExtResource("40_ew8")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("33_ew1")}, {"duration": 1.0, "texture": ExtResource("34_ew2")}, {"duration": 1.0, "texture": ExtResource("35_ew3")}, {"duration": 1.0, "texture": ExtResource("36_ew4")}, {"duration": 1.0, "texture": ExtResource("37_ew5")}, {"duration": 1.0, "texture": ExtResource("38_ew6")}, {"duration": 1.0, "texture": ExtResource("39_ew7")}, {"duration": 1.0, "texture": ExtResource("40_ew8")}, {"duration": 1.0, "texture": ExtResource("57_ew9")}, {"duration": 1.0, "texture": ExtResource("58_ew10")}, {"duration": 1.0, "texture": ExtResource("59_ew11")}, {"duration": 1.0, "texture": ExtResource("60_ew12")}, {"duration": 1.0, "texture": ExtResource("61_ew13")}, {"duration": 1.0, "texture": ExtResource("62_ew14")}, {"duration": 1.0, "texture": ExtResource("63_ew15")}, {"duration": 1.0, "texture": ExtResource("64_ew16")}],
 "loop": true,
 "name": &"walk_east",
-"speed": 11.111111
+"speed": 22.222222
 }, {
 "frames": [{"duration": 1.0, "texture": ExtResource("41_nw1")}, {"duration": 1.0, "texture": ExtResource("42_nw2")}, {"duration": 1.0, "texture": ExtResource("43_nw3")}, {"duration": 1.0, "texture": ExtResource("44_nw4")}, {"duration": 1.0, "texture": ExtResource("45_nw5")}, {"duration": 1.0, "texture": ExtResource("46_nw6")}, {"duration": 1.0, "texture": ExtResource("47_nw7")}, {"duration": 1.0, "texture": ExtResource("48_nw8")}],
 "loop": true,

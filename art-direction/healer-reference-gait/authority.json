@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "timezone": "Australia/Sydney",
+  "base_commit": "5b937ae7",
+  "owner_statements": [
+    {
+      "question": "Which slice should come next?",
+      "option": "#480 Healer/Sage gait: Re-author the Healer and Sage walks to the reference gait model.",
+      "reply": "#480 Healer/Sage gait"
+    },
+    {
+      "question": "For #480: the Sage (Orin) never walks in Main (he only plays idle_south), so a new Sage walk would never be seen. The Healer does walk, but her long skirt hides her thighs and knees. Which scope do you want?",
+      "option": "Healer only (Recommended): Re-author the Healer's walk, the only one players see. Keep the Sage's walk frames as they are and record that #480's Sage half is deferred until the Sage has a reason to walk.",
+      "reply": "Healer only (Recommended)"
+    },
+    {
+      "question": "How should the new Healer walk frames be made?",
+      "option": "Code rig, approved paint (Recommended): Same method as the accepted Seeker gait: re-pose the Healer's existing approved boots and skirt paint with a script that follows the reference gait model. No image generation and no new painted detail. Comes to you as a candidate for visual review before anything goes into Main.",
+      "reply": "Code rig, approved paint (Recommended)"
+    }
+  ],
+  "scope": "Re-author the Healer's side walks (west/east) to the reference gait model (art-direction/reference-gait-model.md) by code-rigging her approved characters-batch paint: sixteen 45 ms poses per side (720 ms cycle), grounded heel-to-toe stance, lifted swing, brief double support, fixed leg identity and backward-only knees. The approved front/back 8 x 90 ms walks carry forward unchanged. After owner visual acceptance, install the frames in Main's Healer walk.",
+  "boundary": "Healer walk frames, their build/check scripts, review package, runtime SpriteFrames entries and walk checks, and dependent documentation/publication only. No image generation, no Sage walk change (deferred), no idle/inspect change, no movement or collision change. No merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

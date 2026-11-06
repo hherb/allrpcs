@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 490,
+    "merge_commit": "5b937ae73219acc3d6f6c55102e0a3e2ad0594c6",
+    "merged_by": "hherb",
+    "merged_at": "2026-11-06T11:33:33Z"
+  },
+  "question": "You merged PR #490 (Main's Seeker walk now plays the 48 accepted reference-gait frames at 90/45 ms; full gate passed, 219 stages), and #462 is closed. Should I record that as your acceptance and close the seeker-reference-gait-462 slice in the ledger, as with #467?",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "seeker-reference-gait-462"
+}

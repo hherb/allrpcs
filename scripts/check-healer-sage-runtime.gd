@@ -11,6 +11,9 @@ const ANIMATIONS := {
 	"walk": ["walk", 8, 1000.0 / 90.0, true],
 	"interact": ["inspect", 2, 1000.0 / 160.0, false],
 }
+# The Healer's side walks follow the reference gait model: sixteen 45 ms poses (#480).
+const GAIT_WALKS := {"healer": ["west", "east"]}
+const GAIT_WALK := ["walk", 16, 1000.0 / 45.0, true]
 # Feet sit on the bottom row of the 128x192 frames; this keeps them on the node origin.
 const OFFSET := Vector2(0, -96)
 const HEALER_START := Vector2(2000, 950)
@@ -95,6 +98,8 @@ func _frames_problem(sprite: AnimatedSprite2D, role: String) -> String:
 	for direction in DIRECTIONS:
 		for animation in ANIMATIONS:
 			var spec: Array = ANIMATIONS[animation]
+			if animation == "walk" and direction in GAIT_WALKS.get(role, []):
+				spec = GAIT_WALK
 			var name: String = animation + "_" + direction
 			if not frames.has_animation(name) or frames.get_frame_count(name) != spec[1]:
 				return role + " " + name + " is missing or has the wrong frame count"

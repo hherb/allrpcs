@@ -1,0 +1,2008 @@
+{
+  "date": "2026-11-06",
+  "status": "candidate for owner visual review",
+  "model": "art-direction/reference-gait-model.md",
+  "method": "code rig of approved characters-batch paint",
+  "frames_per_direction": {
+    "south": 8,
+    "west": 16,
+    "east": 16,
+    "north": 8
+  },
+  "frame_ms": {
+    "south": 90,
+    "west": 45,
+    "east": 45,
+    "north": 90
+  },
+  "cycle_ms": 720,
+  "rig_2x": {
+    "pelvis_x": 128.0,
+    "thigh": 41.0,
+    "shin": 41.0,
+    "contact_forward": 22.0,
+    "toe_off_forward": -26.0,
+    "swing_lift": 12.0,
+    "stance_end": 0.6,
+    "pitch_knots": [
+      [
+        0.0,
+        12.0
+      ],
+      [
+        0.1,
+        0.0
+      ],
+      [
+        0.4,
+        0.0
+      ],
+      [
+        0.6,
+        -12.0
+      ],
+      [
+        0.72,
+        -8.0
+      ],
+      [
+        0.86,
+        0.0
+      ],
+      [
+        1.0,
+        12.0
+      ]
+    ]
+  },
+  "exports": {
+    "healer-west-walk-01.png": "7035d084d1eae6d7bcd314f6b648c86f82e49c89d2163ebcab83841237365c54",
+    "healer-west-walk-02.png": "6b668c56bf776ecd512f6a5cd334388e53203f6c033116d0344c8be422e7596c",
+    "healer-west-walk-03.png": "1a86b8fccf2c9d46fac82c12349dde5757ce5dc60d715162adc044543acb1133",
+    "healer-west-walk-04.png": "a4c3580647e368ea44b12b0f92b4b30faeb3a3bb8934e280ba9bb947cccd9114",
+    "healer-west-walk-05.png": "39490484d58f03ceda0b9c49169ff2969782247a44dfaeec55de6773749855ac",
+    "healer-west-walk-06.png": "44c7f26018605ec6a6b5d223a5140071ef80687ce9f1e5484c72cc48e63eadad",
+    "healer-west-walk-07.png": "cf9c144d596e20ec9b667beaf542f4dc94b28c6932a55a482ca9bcf2e68303e5",
+    "healer-west-walk-08.png": "a82c46a30d07434388b8f22555ca9f56a5985a90ed03e9ae8b818cd9d9b9145e",
+    "healer-west-walk-09.png": "586710f896fa2476e4b995fec6b4bf18c05d734aba6d01ddeaf2f7fc4be61fd6",
+    "healer-west-walk-10.png": "93174ae9599ac26eb421dfa63f99bc5e12e767533eb729ad5056a11a60456b46",
+    "healer-west-walk-11.png": "43636c6d57973b9ca0ea8ab6b865a7c7e935fd3961d38a9aa0b239b05cb9c7ef",
+    "healer-west-walk-12.png": "34cafaaae484d362a386d1cb18901e321784375243136c062483a0edc5faf486",
+    "healer-west-walk-13.png": "8b08f973488278942a27aa86090ff165ba5a5ee296c2dea484efdb003f1b8083",
+    "healer-west-walk-14.png": "8884962f3a0d90bc4b8b497e5db6bb34dc4952af57467f6f0fe3ee782600adff",
+    "healer-west-walk-15.png": "0a0c00d2a7ab58cec374436fbfd8544385550151268c8600289b155008973580",
+    "healer-west-walk-16.png": "79db81147f7a7c3b779f4b7818b23425fd6f92adb3687fb0abf9303cf60253bc",
+    "healer-east-walk-01.png": "d44f5da1a240ba19b9ec4d2d6c16d2fd5d0d1b6f473bdb9ea57705dd92758230",
+    "healer-east-walk-02.png": "8d3aa085403d64f8e0d3ae73d6fb0868e1b1ac2aa4ddc80ed9878e51b9b29ee2",
+    "healer-east-walk-03.png": "65aabd15cca0e51debbcbb50a7343a481ba62428522b2a3c42ec29863828aac9",
+    "healer-east-walk-04.png": "8631189f0df6d5561473bf97e33b733821c04f2a2291d0965d36ba1e27750f92",
+    "healer-east-walk-05.png": "ab6a711a0734ab072858f6a0ffa8bf42af7b5cd880069eff08b363da3130ceb0",
+    "healer-east-walk-06.png": "fcce966416dc88ced57c6b8d1da36b66bc46b1db455510fa0637d98a54463c5d",
+    "healer-east-walk-07.png": "0ef0240233a7b742506f3fcca3c57d420236ab3e223d76a0fb1f8a68d2fb151a",
+    "healer-east-walk-08.png": "b77add6eb5a2556471a8147faea75ae115a93489caad98929294d50c12e72181",
+    "healer-east-walk-09.png": "4bed84c528fd175b187bf8719b167434265cebb829dcd8d557c2636e92966a63",
+    "healer-east-walk-10.png": "bfd7637d0b2e4a39008c91b60ef2269fbfcaf49f27734e578f406a618085d516",
+    "healer-east-walk-11.png": "3d0ec8a9fc16ce9aed1beb84879674c58d9aa0a5c741c7d1dae67573a37162ba",
+    "healer-east-walk-12.png": "b758b5408f6eacf46e2cc3e71d340ca58ccf6d8ff684f97b2fc847d0d0923eec",
+    "healer-east-walk-13.png": "88936436e95f7ceddd2731acd1cbd397bc4c416290765424390576bedd6e4695",
+    "healer-east-walk-14.png": "47aba885dd7f5f522aa5db9c09bd1c3876bee8ee2e18e6c1077d4c26d250fd30",
+    "healer-east-walk-15.png": "eab343e99c03353681b8a7cbc47cde4f72611ff0058e7285a1f3bea58f6f4510",
+    "healer-east-walk-16.png": "baaf95f0cb1d858d3ae42d3fcd4357aaa2b51a10880ef45775d80698ec71c2ce"
+  },
+  "carried_forward": {
+    "game/art/runtime/characters/healer/south/walk-01.png": "a2d0b55dfae3ef44d9fb65608c51f9c84d65bf86f0fbc3e9312418f7b0e77968",
+    "game/art/runtime/characters/healer/south/walk-02.png": "0af26e79d7e14758e542a7affa69552229f82550639047cf76e2d0ffc5e8a540",
+    "game/art/runtime/characters/healer/south/walk-03.png": "64b8b8e78529de32477ebf4ea92a2362a650ed985194d618b16dc6af22fac847",
+    "game/art/runtime/characters/healer/south/walk-04.png": "03b6c8db3e5f6ceaced1ebb37c2f16a02ba2a9d27930f5f60da78ee3d3f11eee",
+    "game/art/runtime/characters/healer/south/walk-05.png": "e419c66fe5f779ac0d6a7f038f5cfe76787cd36913d4b4475f3b7675ef40da55",
+    "game/art/runtime/characters/healer/south/walk-06.png": "836797e2a86abf8fa6b150386196f82ee72ed903efda41c5c85a12a9fb83de43",
+    "game/art/runtime/characters/healer/south/walk-07.png": "9501a839dbabe71f80aebfdba3b0b6db45db83c1de58b6912f07980cd2df2949",
+    "game/art/runtime/characters/healer/south/walk-08.png": "6f5d7fbde2cd11dace1536aedb9f91a4bfeaebbe22336ab5022a23efc2cd72b6",
+    "game/art/runtime/characters/healer/north/walk-01.png": "ccb528ce99e39019a69efa9785b6f6b0c129cf0c21480df1a548d5a32aa6f629",
+    "game/art/runtime/characters/healer/north/walk-02.png": "073a998a0ccc5a25114d2be69dcd737ff0d9511b2af9dff314facdb0cf73b960",
+    "game/art/runtime/characters/healer/north/walk-03.png": "8d9994b76fc566c5c04cac1c541500eb7ce7553ed8200b0ab6cac0a067fdcbde",
+    "game/art/runtime/characters/healer/north/walk-04.png": "d9fc48ada00d22ee2096c9b76b747b5b2f87b2b0fc704d5a3a651d8cb04df503",
+    "game/art/runtime/characters/healer/north/walk-05.png": "ce4437ca75a10b9ab0e9f3b243f9d9da14a94c6d492484181cd5dfa4c0187b8e",
+    "game/art/runtime/characters/healer/north/walk-06.png": "83f250373529f4a002a65695019b06c7608ea7f15d74658e10e2650f932e4692",
+    "game/art/runtime/characters/healer/north/walk-07.png": "c37bc8f11e250f09344dfc588175731e1367e76bb6d4ced53a2b7380e91ea822",
+    "game/art/runtime/characters/healer/north/walk-08.png": "9eff3a0ba32fbaa18551669db944a096595a0abb1cd4e035336c5210c7fc89a0"
+  },
+  "rigs": {
+    "west": [
+      {
+        "index": 1,
+        "phase_degrees": 0.0,
+        "body_bob_2x": 5,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.0,
+            "supporting": true,
+            "forward_2x": 22.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 12.0,
+            "hip_2x": [
+              128.0,
+              278.0
+            ],
+            "knee_2x": [
+              110.98950369990573,
+              315.30473181279393
+            ],
+            "ankle_2x": [
+              105.99999999999999,
+              356.0
+            ],
+            "knee_flexion_degrees": 17.52245092838926,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.5,
+            "supporting": true,
+            "forward_2x": -18.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -6.0,
+            "hip_2x": [
+              128.0,
+              278.0
+            ],
+            "knee_2x": [
+              126.43360191024983,
+              318.9700670859156
+            ],
+            "ankle_2x": [
+              146.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 30.694102395461616,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "phase_degrees": 22.5,
+        "body_bob_2x": 3,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.0625,
+            "supporting": true,
+            "forward_2x": 17.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 4.5,
+            "hip_2x": [
+              128.0,
+              276.0
+            ],
+            "knee_2x": [
+              116.60656709871245,
+              315.3851455084764
+            ],
+            "ankle_2x": [
+              111.0,
+              356.0
+            ],
+            "knee_flexion_degrees": 8.274662449126017,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.5625,
+            "supporting": true,
+            "forward_2x": -23.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -9.750000000000002,
+            "hip_2x": [
+              128.0,
+              276.0
+            ],
+            "knee_2x": [
+              134.44726135138552,
+              316.48991011433503
+            ],
+            "ankle_2x": [
+              151.0,
+              354.0
+            ],
+            "knee_flexion_degrees": 14.763946247497302,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "phase_degrees": 45.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.125,
+            "supporting": true,
+            "forward_2x": 12.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              119.84408103649946,
+              314.18060459799995
+            ],
+            "ankle_2x": [
+              116.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 6.094250748244714,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.625,
+            "supporting": false,
+            "forward_2x": -25.4609375,
+            "lift_2x": 4.1479591209576,
+            "foot_pitch_degrees": -11.166666666666666,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              132.221928683361,
+              314.7820465179546
+            ],
+            "ankle_2x": [
+              153.4609375,
+              349.8520408790424
+            ],
+            "knee_flexion_degrees": 25.28939389061655,
+            "sole_row_2x": 374
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "phase_degrees": 67.5,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.1875,
+            "supporting": true,
+            "forward_2x": 7.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              119.18128500498621,
+              314.0403579633939
+            ],
+            "ankle_2x": [
+              121.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 14.963255366616075,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.6875,
+            "supporting": false,
+            "forward_2x": -20.114257812499996,
+            "lift_2x": 8.927180603468507,
+            "foot_pitch_degrees": -9.083333333333332,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              121.90442486892283,
+              314.5443456454953
+            ],
+            "ankle_2x": [
+              148.1142578125,
+              346.0728193965315
+            ],
+            "knee_flexion_degrees": 48.28698350371986,
+            "sole_row_2x": 369
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "phase_degrees": 90.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.25,
+            "supporting": true,
+            "forward_2x": 2.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              120.69716090519607,
+              314.3443743433382
+            ],
+            "ankle_2x": [
+              126.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.691472245636074,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.75,
+            "supporting": false,
+            "forward_2x": -10.812499999999995,
+            "lift_2x": 11.39806740379474,
+            "foot_pitch_degrees": -6.285714285714285,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              112.66302778815606,
+              312.02337811627376
+            ],
+            "ankle_2x": [
+              138.8125,
+              343.60193259620524
+            ],
+            "knee_flexion_degrees": 61.59437007426001,
+            "sole_row_2x": 367
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "phase_degrees": 112.5,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.3125,
+            "supporting": true,
+            "forward_2x": -3.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              123.29941452167839,
+              314.7296513140119
+            ],
+            "ankle_2x": [
+              131.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.408887270322225,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.8125,
+            "supporting": false,
+            "forward_2x": 0.2470703125,
+            "lift_2x": 11.962409149206724,
+            "foot_pitch_degrees": -2.7142857142857135,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              105.75337209036772,
+              308.4396217553325
+            ],
+            "ankle_2x": [
+              127.75292968749999,
+              343.03759085079326
+            ],
+            "knee_flexion_degrees": 65.31161294013445,
+            "sole_row_2x": 366
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "phase_degrees": 135.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.375,
+            "supporting": true,
+            "forward_2x": -8.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              127.04915101620163,
+              314.9889727391406
+            ],
+            "ankle_2x": [
+              136.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 13.938880253987888,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.875,
+            "supporting": false,
+            "forward_2x": 10.8671875,
+            "lift_2x": 9.503057815729566,
+            "foot_pitch_degrees": 1.285714285714287,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              103.45911940308332,
+              306.8442564161206
+            ],
+            "ankle_2x": [
+              117.1328125,
+              345.49694218427044
+            ],
+            "knee_flexion_degrees": 56.2483319328818,
+            "sole_row_2x": 368
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "phase_degrees": 157.5,
+        "body_bob_2x": 2,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.4375,
+            "supporting": true,
+            "forward_2x": -13.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -2.249999999999999,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              128.35564627800588,
+              315.998457479824
+            ],
+            "ankle_2x": [
+              141.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.46575852269058,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.9375,
+            "supporting": false,
+            "forward_2x": 18.8505859375,
+            "lift_2x": 3.285749870265356,
+            "foot_pitch_degrees": 6.642857142857143,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              109.759085745663,
+              311.7187833018188
+            ],
+            "ankle_2x": [
+              109.14941406249999,
+              352.71425012973464
+            ],
+            "knee_flexion_degrees": 25.564941220437937,
+            "sole_row_2x": 375
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "phase_degrees": 180.0,
+        "body_bob_2x": 5,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.5,
+            "supporting": true,
+            "forward_2x": -18.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -6.0,
+            "hip_2x": [
+              128.0,
+              278.0
+            ],
+            "knee_2x": [
+              126.43360191024983,
+              318.9700670859156
+            ],
+            "ankle_2x": [
+              146.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 30.694102395461616,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.0,
+            "supporting": true,
+            "forward_2x": 22.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 12.0,
+            "hip_2x": [
+              128.0,
+              278.0
+            ],
+            "knee_2x": [
+              110.98950369990573,
+              315.30473181279393
+            ],
+            "ankle_2x": [
+              105.99999999999999,
+              356.0
+            ],
+            "knee_flexion_degrees": 17.52245092838926,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "phase_degrees": 202.5,
+        "body_bob_2x": 3,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.5625,
+            "supporting": true,
+            "forward_2x": -23.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -9.750000000000002,
+            "hip_2x": [
+              128.0,
+              276.0
+            ],
+            "knee_2x": [
+              134.44726135138552,
+              316.48991011433503
+            ],
+            "ankle_2x": [
+              151.0,
+              354.0
+            ],
+            "knee_flexion_degrees": 14.763946247497302,
+            "sole_row_2x": 378
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.0625,
+            "supporting": true,
+            "forward_2x": 17.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 4.5,
+            "hip_2x": [
+              128.0,
+              276.0
+            ],
+            "knee_2x": [
+              116.60656709871245,
+              315.3851455084764
+            ],
+            "ankle_2x": [
+              111.0,
+              356.0
+            ],
+            "knee_flexion_degrees": 8.274662449126017,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "phase_degrees": 225.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.625,
+            "supporting": false,
+            "forward_2x": -25.4609375,
+            "lift_2x": 4.1479591209576,
+            "foot_pitch_degrees": -11.166666666666666,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              132.221928683361,
+              314.7820465179546
+            ],
+            "ankle_2x": [
+              153.4609375,
+              349.8520408790424
+            ],
+            "knee_flexion_degrees": 25.28939389061655,
+            "sole_row_2x": 374
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.125,
+            "supporting": true,
+            "forward_2x": 12.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              119.84408103649946,
+              314.18060459799995
+            ],
+            "ankle_2x": [
+              116.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 6.094250748244714,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 12,
+        "phase_degrees": 247.5,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.6875,
+            "supporting": false,
+            "forward_2x": -20.114257812499996,
+            "lift_2x": 8.927180603468507,
+            "foot_pitch_degrees": -9.083333333333332,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              121.90442486892283,
+              314.5443456454953
+            ],
+            "ankle_2x": [
+              148.1142578125,
+              346.0728193965315
+            ],
+            "knee_flexion_degrees": 48.28698350371986,
+            "sole_row_2x": 369
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.1875,
+            "supporting": true,
+            "forward_2x": 7.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              119.18128500498621,
+              314.0403579633939
+            ],
+            "ankle_2x": [
+              121.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 14.963255366616075,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 13,
+        "phase_degrees": 270.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.75,
+            "supporting": false,
+            "forward_2x": -10.812499999999995,
+            "lift_2x": 11.39806740379474,
+            "foot_pitch_degrees": -6.285714285714285,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              112.66302778815606,
+              312.02337811627376
+            ],
+            "ankle_2x": [
+              138.8125,
+              343.60193259620524
+            ],
+            "knee_flexion_degrees": 61.59437007426001,
+            "sole_row_2x": 367
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.25,
+            "supporting": true,
+            "forward_2x": 2.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              120.69716090519607,
+              314.3443743433382
+            ],
+            "ankle_2x": [
+              126.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.691472245636074,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 14,
+        "phase_degrees": 292.5,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.8125,
+            "supporting": false,
+            "forward_2x": 0.2470703125,
+            "lift_2x": 11.962409149206724,
+            "foot_pitch_degrees": -2.7142857142857135,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              105.75337209036772,
+              308.4396217553325
+            ],
+            "ankle_2x": [
+              127.75292968749999,
+              343.03759085079326
+            ],
+            "knee_flexion_degrees": 65.31161294013445,
+            "sole_row_2x": 366
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.3125,
+            "supporting": true,
+            "forward_2x": -3.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              123.29941452167839,
+              314.7296513140119
+            ],
+            "ankle_2x": [
+              131.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.408887270322225,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "phase_degrees": 315.0,
+        "body_bob_2x": 1,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.875,
+            "supporting": false,
+            "forward_2x": 10.8671875,
+            "lift_2x": 9.503057815729566,
+            "foot_pitch_degrees": 1.285714285714287,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              103.45911940308332,
+              306.8442564161206
+            ],
+            "ankle_2x": [
+              117.1328125,
+              345.49694218427044
+            ],
+            "knee_flexion_degrees": 56.2483319328818,
+            "sole_row_2x": 368
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.375,
+            "supporting": true,
+            "forward_2x": -8.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              274.0
+            ],
+            "knee_2x": [
+              127.04915101620163,
+              314.9889727391406
+            ],
+            "ankle_2x": [
+              136.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 13.938880253987888,
+            "sole_row_2x": 378
+          }
+        ]
+      },
+      {
+        "index": 16,
+        "phase_degrees": 337.5,
+        "body_bob_2x": 2,
+        "floor_2x": 378,
+        "hem_2x": 340,
+        "layer_order": [
+          1,
+          0
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.9375,
+            "supporting": false,
+            "forward_2x": 18.8505859375,
+            "lift_2x": 3.285749870265356,
+            "foot_pitch_degrees": 6.642857142857143,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              109.759085745663,
+              311.7187833018188
+            ],
+            "ankle_2x": [
+              109.14941406249999,
+              352.71425012973464
+            ],
+            "knee_flexion_degrees": 25.564941220437937,
+            "sole_row_2x": 375
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.4375,
+            "supporting": true,
+            "forward_2x": -13.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -2.249999999999999,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              128.35564627800588,
+              315.998457479824
+            ],
+            "ankle_2x": [
+              141.0,
+              355.0
+            ],
+            "knee_flexion_degrees": 17.46575852269058,
+            "sole_row_2x": 378
+          }
+        ]
+      }
+    ],
+    "east": [
+      {
+        "index": 1,
+        "phase_degrees": 0.0,
+        "body_bob_2x": 4,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.0,
+            "supporting": true,
+            "forward_2x": 22.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 12.0,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              145.01049630009427,
+              312.30473181279393
+            ],
+            "ankle_2x": [
+              150.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.52245092838926,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.5,
+            "supporting": true,
+            "forward_2x": -18.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -6.0,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              127.66057838585436,
+              315.99859501212023
+            ],
+            "ankle_2x": [
+              110.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 25.040567822342616,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "phase_degrees": 22.5,
+        "body_bob_2x": 4,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.0625,
+            "supporting": true,
+            "forward_2x": 17.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 4.5,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              145.65263632011826,
+              312.0051946481793
+            ],
+            "ankle_2x": [
+              145.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 26.41467362687417,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.5625,
+            "supporting": true,
+            "forward_2x": -23.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -9.750000000000002,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              121.55273864861448,
+              315.48991011433503
+            ],
+            "ankle_2x": [
+              105.00000000000001,
+              353.0
+            ],
+            "knee_flexion_degrees": 14.763946247497302,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "phase_degrees": 45.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.125,
+            "supporting": true,
+            "forward_2x": 12.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              136.15591896350054,
+              312.18060459799995
+            ],
+            "ankle_2x": [
+              140.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 6.094250748244714,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.625,
+            "supporting": false,
+            "forward_2x": -25.4609375,
+            "lift_2x": 4.1479591209576,
+            "foot_pitch_degrees": -11.166666666666666,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              121.44893194055209,
+              312.4732443384575
+            ],
+            "ankle_2x": [
+              102.5390625,
+              348.8520408790424
+            ],
+            "knee_flexion_degrees": 18.271371270293052,
+            "sole_row_2x": 375
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "phase_degrees": 67.5,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.1875,
+            "supporting": true,
+            "forward_2x": 7.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              136.8187149950138,
+              312.0403579633939
+            ],
+            "ankle_2x": [
+              135.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 14.963255366616075,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.6875,
+            "supporting": false,
+            "forward_2x": -20.114257812499996,
+            "lift_2x": 8.927180603468507,
+            "foot_pitch_degrees": -9.083333333333332,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              134.09557513107717,
+              312.5443456454953
+            ],
+            "ankle_2x": [
+              107.8857421875,
+              344.0728193965315
+            ],
+            "knee_flexion_degrees": 48.28698350371986,
+            "sole_row_2x": 370
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "phase_degrees": 90.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.25,
+            "supporting": true,
+            "forward_2x": 2.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              135.30283909480391,
+              312.3443743433382
+            ],
+            "ankle_2x": [
+              130.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.691472245636074,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.75,
+            "supporting": false,
+            "forward_2x": -10.812499999999995,
+            "lift_2x": 11.39806740379474,
+            "foot_pitch_degrees": -6.285714285714285,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              143.33697221184394,
+              310.02337811627376
+            ],
+            "ankle_2x": [
+              117.18749999999999,
+              341.60193259620524
+            ],
+            "knee_flexion_degrees": 61.59437007426001,
+            "sole_row_2x": 368
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "phase_degrees": 112.5,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.3125,
+            "supporting": true,
+            "forward_2x": -3.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              132.7005854783216,
+              312.7296513140119
+            ],
+            "ankle_2x": [
+              125.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.408887270322225,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.8125,
+            "supporting": false,
+            "forward_2x": 0.2470703125,
+            "lift_2x": 11.962409149206724,
+            "foot_pitch_degrees": -2.7142857142857135,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              150.24662790963228,
+              306.4396217553325
+            ],
+            "ankle_2x": [
+              128.2470703125,
+              341.03759085079326
+            ],
+            "knee_flexion_degrees": 65.31161294013445,
+            "sole_row_2x": 367
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "phase_degrees": 135.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.375,
+            "supporting": true,
+            "forward_2x": -8.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              128.95084898379838,
+              312.9889727391406
+            ],
+            "ankle_2x": [
+              120.00000000000001,
+              353.0
+            ],
+            "knee_flexion_degrees": 13.938880253987888,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.875,
+            "supporting": false,
+            "forward_2x": 10.8671875,
+            "lift_2x": 9.503057815729566,
+            "foot_pitch_degrees": 1.285714285714287,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              152.54088059691668,
+              304.8442564161206
+            ],
+            "ankle_2x": [
+              138.8671875,
+              343.49694218427044
+            ],
+            "knee_flexion_degrees": 56.2483319328818,
+            "sole_row_2x": 369
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "phase_degrees": 157.5,
+        "body_bob_2x": 2,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.4375,
+            "supporting": true,
+            "forward_2x": -13.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -2.249999999999999,
+            "hip_2x": [
+              128.0,
+              273.0
+            ],
+            "knee_2x": [
+              127.64435372199414,
+              313.998457479824
+            ],
+            "ankle_2x": [
+              115.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.46575852269058,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.9375,
+            "supporting": false,
+            "forward_2x": 18.8505859375,
+            "lift_2x": 3.285749870265356,
+            "foot_pitch_degrees": 6.642857142857143,
+            "hip_2x": [
+              128.0,
+              273.0
+            ],
+            "knee_2x": [
+              148.102875446226,
+              308.73337933632257
+            ],
+            "ankle_2x": [
+              146.85058593750003,
+              349.71425012973464
+            ],
+            "knee_flexion_degrees": 31.11151854692412,
+            "sole_row_2x": 376
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "phase_degrees": 180.0,
+        "body_bob_2x": 4,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.5,
+            "supporting": true,
+            "forward_2x": -18.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -6.0,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              127.66057838585436,
+              315.99859501212023
+            ],
+            "ankle_2x": [
+              110.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 25.040567822342616,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.0,
+            "supporting": true,
+            "forward_2x": 22.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 12.0,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              145.01049630009427,
+              312.30473181279393
+            ],
+            "ankle_2x": [
+              150.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.52245092838926,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "phase_degrees": 202.5,
+        "body_bob_2x": 4,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.5625,
+            "supporting": true,
+            "forward_2x": -23.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -9.750000000000002,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              121.55273864861448,
+              315.48991011433503
+            ],
+            "ankle_2x": [
+              105.00000000000001,
+              353.0
+            ],
+            "knee_flexion_degrees": 14.763946247497302,
+            "sole_row_2x": 379
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.0625,
+            "supporting": true,
+            "forward_2x": 17.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 4.5,
+            "hip_2x": [
+              128.0,
+              275.0
+            ],
+            "knee_2x": [
+              145.65263632011826,
+              312.0051946481793
+            ],
+            "ankle_2x": [
+              145.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 26.41467362687417,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "phase_degrees": 225.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.625,
+            "supporting": false,
+            "forward_2x": -25.4609375,
+            "lift_2x": 4.1479591209576,
+            "foot_pitch_degrees": -11.166666666666666,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              121.44893194055209,
+              312.4732443384575
+            ],
+            "ankle_2x": [
+              102.5390625,
+              348.8520408790424
+            ],
+            "knee_flexion_degrees": 18.271371270293052,
+            "sole_row_2x": 375
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.125,
+            "supporting": true,
+            "forward_2x": 12.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              136.15591896350054,
+              312.18060459799995
+            ],
+            "ankle_2x": [
+              140.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 6.094250748244714,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 12,
+        "phase_degrees": 247.5,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.6875,
+            "supporting": false,
+            "forward_2x": -20.114257812499996,
+            "lift_2x": 8.927180603468507,
+            "foot_pitch_degrees": -9.083333333333332,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              134.09557513107717,
+              312.5443456454953
+            ],
+            "ankle_2x": [
+              107.8857421875,
+              344.0728193965315
+            ],
+            "knee_flexion_degrees": 48.28698350371986,
+            "sole_row_2x": 370
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.1875,
+            "supporting": true,
+            "forward_2x": 7.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              136.8187149950138,
+              312.0403579633939
+            ],
+            "ankle_2x": [
+              135.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 14.963255366616075,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 13,
+        "phase_degrees": 270.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.75,
+            "supporting": false,
+            "forward_2x": -10.812499999999995,
+            "lift_2x": 11.39806740379474,
+            "foot_pitch_degrees": -6.285714285714285,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              143.33697221184394,
+              310.02337811627376
+            ],
+            "ankle_2x": [
+              117.18749999999999,
+              341.60193259620524
+            ],
+            "knee_flexion_degrees": 61.59437007426001,
+            "sole_row_2x": 368
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.25,
+            "supporting": true,
+            "forward_2x": 2.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              135.30283909480391,
+              312.3443743433382
+            ],
+            "ankle_2x": [
+              130.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.691472245636074,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 14,
+        "phase_degrees": 292.5,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.8125,
+            "supporting": false,
+            "forward_2x": 0.2470703125,
+            "lift_2x": 11.962409149206724,
+            "foot_pitch_degrees": -2.7142857142857135,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              150.24662790963228,
+              306.4396217553325
+            ],
+            "ankle_2x": [
+              128.2470703125,
+              341.03759085079326
+            ],
+            "knee_flexion_degrees": 65.31161294013445,
+            "sole_row_2x": 367
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.3125,
+            "supporting": true,
+            "forward_2x": -3.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              132.7005854783216,
+              312.7296513140119
+            ],
+            "ankle_2x": [
+              125.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.408887270322225,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "phase_degrees": 315.0,
+        "body_bob_2x": 1,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.875,
+            "supporting": false,
+            "forward_2x": 10.8671875,
+            "lift_2x": 9.503057815729566,
+            "foot_pitch_degrees": 1.285714285714287,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              152.54088059691668,
+              304.8442564161206
+            ],
+            "ankle_2x": [
+              138.8671875,
+              343.49694218427044
+            ],
+            "knee_flexion_degrees": 56.2483319328818,
+            "sole_row_2x": 369
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.375,
+            "supporting": true,
+            "forward_2x": -8.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": 0.0,
+            "hip_2x": [
+              128.0,
+              272.0
+            ],
+            "knee_2x": [
+              128.95084898379838,
+              312.9889727391406
+            ],
+            "ankle_2x": [
+              120.00000000000001,
+              353.0
+            ],
+            "knee_flexion_degrees": 13.938880253987888,
+            "sole_row_2x": 379
+          }
+        ]
+      },
+      {
+        "index": 16,
+        "phase_degrees": 337.5,
+        "body_bob_2x": 2,
+        "floor_2x": 379,
+        "hem_2x": 340,
+        "layer_order": [
+          0,
+          1
+        ],
+        "legs": [
+          {
+            "leg": "A",
+            "anatomical_side": "left",
+            "leg_phase": 0.9375,
+            "supporting": false,
+            "forward_2x": 18.8505859375,
+            "lift_2x": 3.285749870265356,
+            "foot_pitch_degrees": 6.642857142857143,
+            "hip_2x": [
+              128.0,
+              273.0
+            ],
+            "knee_2x": [
+              148.102875446226,
+              308.73337933632257
+            ],
+            "ankle_2x": [
+              146.85058593750003,
+              349.71425012973464
+            ],
+            "knee_flexion_degrees": 31.11151854692412,
+            "sole_row_2x": 376
+          },
+          {
+            "leg": "B",
+            "anatomical_side": "right",
+            "leg_phase": 0.4375,
+            "supporting": true,
+            "forward_2x": -13.0,
+            "lift_2x": 0.0,
+            "foot_pitch_degrees": -2.249999999999999,
+            "hip_2x": [
+              128.0,
+              273.0
+            ],
+            "knee_2x": [
+              127.64435372199414,
+              313.998457479824
+            ],
+            "ankle_2x": [
+              115.0,
+              353.0
+            ],
+            "knee_flexion_degrees": 17.46575852269058,
+            "sole_row_2x": 379
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Cutout paint: rigid upper body, arms and skirt; only the body height moves",
+    "Thighs and knees are hidden by the skirt; the shin is the approved leather patch"
+  ]
+}
