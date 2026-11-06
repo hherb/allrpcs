@@ -1,0 +1,13 @@
+{
+  "captures": {
+    "captures/seeker-idle-and-walk-poses.png": "ad6b99346c063cbe76737410a9c669468afebf4c6fd4708916d97c9f3b9e1088"
+  },
+  "engine": "4.6.3-stable (official)",
+  "inputs": {
+    "res://../scripts/capture-seeker-reference-gait-runtime.gd": "20c4bbf8b6d418f923fa7fc378973b27ab21828a88597124cfb863b8958906e4",
+    "res://Main.tscn": "097b3ea6cb41c25da221b87ebce89a1793569a4bc163f999be90b423110acacf",
+    "res://SeekerWalkAnimationPresenter.cs": "a404cbb27c04aa3d41d91111f78bd4b7132999af8022cbbdc70bda7071cd71e5",
+    "res://art/runtime/characters/seeker/walk-animations.tres": "565170be9aa108353f0bf15b96e87c8de305ece18d42c0a9bb7018d78076a5e2"
+  },
+  "schema_version": 1
+}

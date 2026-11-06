@@ -1284,6 +1284,20 @@
           "sha256": "a3d7f373ccbc85dedf7b88c11cf3d0b03e2c5006844af20c5ec2bfefb2bbb1da"
         }
       ]
+    },
+    {
+      "id": "save-backup-467",
+      "reason": "The owner merged PR #489 (an overwrite keeps the previous save as <file>.bak; full gate 219 stages) on 2026-11-05, which closed #467, and chose to close the slice on 2026-11-06.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json",
+          "sha256": "68f642b4bdfd87ac32d7c092db513fd993f29731049bdbc8298917ccfc1364df"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json",
+          "sha256": "07b6b3d93c75cb1b566f0546bad3e22b452b3eb58d5e84c74b81be4809af55af"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1862,6 +1876,20 @@
           "sha256": "a3d7f373ccbc85dedf7b88c11cf3d0b03e2c5006844af20c5ec2bfefb2bbb1da"
         }
       ]
+    },
+    {
+      "id": "save-backup-467",
+      "reason": "One backup generation per save document is implemented, tested and merged. No restore UI or overwrite confirmation was requested; those need a new owner request.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json",
+          "sha256": "68f642b4bdfd87ac32d7c092db513fd993f29731049bdbc8298917ccfc1364df"
+        },
+        {
+          "path": "docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json",
+          "sha256": "07b6b3d93c75cb1b566f0546bad3e22b452b3eb58d5e84c74b81be4809af55af"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2241,25 +2269,39 @@
           "sha256": "be618cb58e0511dcd9a7d30299ef840c3c6df1bb2cad6dc3435876cd0a4d3b23"
         }
       ]
+    },
+    {
+      "id": "owner-seeker-reference-gait-462-2026-11-06",
+      "owner_statement": "Close save-backup-467: Yes, close it (Recommended); next slice: #462 Seeker gait (Recommended)",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-reference-gait-runtime/authority.json",
+          "sha256": "06efb1cffefa8854f896806476760080ed9d8c0643046fd0e3d4fabf03357fa8"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "save-backup-467",
-    "title": "Keep one backup when a save overwrites an existing save",
+    "id": "seeker-reference-gait-462",
+    "title": "Play the accepted Seeker reference gait in Main's runtime walk",
     "status": "in_progress",
-    "workstream": "save-backup-467",
-    "reopening_id": "owner-save-backup-467-2026-11-05",
-    "authority_status": "owner_requested_save_backup_467_2026-11-05",
-    "roadmap_item": "- [ ] Saving over an existing save keeps the previous document as a backup (#467).",
-    "missing_deliverable": "FileSaveDocumentStore.Save replaces the document with no backup (File.Replace with destinationBackupFileName: null), so one save after New game destroys a long playthrough unrecoverably.",
-    "instructions": "Implemented and verified on branch claude/save-backup-467 (2026-11-06): an overwrite keeps the previous document as <file>.bak (unit test), the save-overwriting smoke checks delete the backup (two more after PR #489 review), full gate passed (219 stages, no retries; docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json). Remaining: owner review of the PR (it closes #467 on merge); then close the scope on owner direction.",
-    "completion_condition": "An overwrite keeps the previous document as <file>.bak, pinned by a passing unit test; affected smoke launches pass and leave no backup behind; the branch is pushed with a PR that closes #467 on merge.",
+    "workstream": "seeker-reference-gait-462",
+    "reopening_id": "owner-seeker-reference-gait-462-2026-11-06",
+    "authority_status": "owner_requested_seeker_reference_gait_462_2026-11-06",
+    "roadmap_item": "- [ ] Play the accepted Seeker reference gait in Main's runtime walk (#462).",
+    "missing_deliverable": "Main's Seeker walk still plays the older 6-frame-per-direction cycle (same leg always leading); the owner-accepted 48-frame reference gait was never installed in ordinary gameplay.",
+    "instructions": "Implemented and verified on branch claude/seeker-reference-gait-462 (2026-11-06): the 48 accepted frames are byte-copied into game/art/runtime/characters/seeker/<direction>/walk-NN.png and play at 90/45 ms (720 ms); the presenter keeps the 180 px side walks on the idle ground line; the runtime walk smoke check pins both; full gate passed (219 stages, no retries; art-direction/seeker-reference-gait-runtime/verification.json). Remaining: owner review of PR #490 (it closes #462 on merge); then close the scope on owner direction.",
+    "completion_condition": "Main's four walk animations play the accepted reference-gait frames byte for byte in their phase order and timing, feet stay on the idle/interaction ground line, the runtime walk smoke check pins this and passes with the affected smoke launches, and the branch is pushed with a PR that closes #462 on merge.",
     "outputs": [
-      "src/Infrastructure/Persistence/FileSaveDocumentStore.cs",
-      "tests/Infrastructure.Tests/Persistence/FileSaveDocumentStoreTests.cs",
-      "docs/superpowers/evidence/2026-11-06-save-backup-467-verification.json"
+      "game/art/runtime/characters/seeker/walk-animations.tres",
+      "game/SeekerWalkAnimationPresenter.cs",
+      "game/RuntimeSeekerWalkSmokeCheck.cs",
+      "art-direction/seeker-reference-gait-runtime/README.md",
+      "art-direction/seeker-reference-gait-runtime/verification.json"
     ],
-    "boundary": "FileSaveDocumentStore backup generation, its unit test, smoke-check backup cleanup and dependent documentation/publication only. No restore UI, overwrite confirmation or save schema change. No merge or release."
+    "boundary": "Runtime Seeker walk frames, their SpriteFrames entries, presenter frame anchoring, the runtime walk smoke check and dependent documentation/publication only. No new or edited artwork, no idle/interaction change, no Healer/Sage walk re-authoring (#480), no movement or collision change. No merge or release."
   },
   "deferred_slices": [
     {

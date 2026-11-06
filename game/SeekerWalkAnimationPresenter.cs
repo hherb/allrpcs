@@ -20,12 +20,25 @@ public partial class SeekerWalkAnimationPresenter : AnimatedSprite2D
     private StringName idleAnimation = IdleSouth;
     private StringName interactionAnimation = InteractionSouth;
     private bool interactionPlaying;
+    private Vector2 authoredOffset;
+    private float authoredBottom;
 
     /// <inheritdoc />
     public override void _Ready()
     {
         AnimationFinished += OnAnimationFinished;
+
+        // The scene's Offset places the starting animation's feet on the character's origin.
+        // Pinning each animation's bottom edge to the starting one keeps the feet grounded when
+        // frames are taller: the reference-gait side walks carry 12 px more head-room than idle
+        // with the same space below the feet.
+        authoredOffset = Offset;
+        authoredBottom = Offset.Y + (FrameHeight(Animation) / 2.0f);
+        AnimationChanged += AnchorFeet;
     }
+
+    /// <summary>Returns the vertical offset that puts a centered frame's bottom edge at <paramref name="bottom"/>.</summary>
+    private static float BottomAnchoredOffsetY(float bottom, int frameHeight) => bottom - (frameHeight / 2.0f);
 
     /// <summary>Shows the non-authoritative interaction gesture for the retained facing.</summary>
     public void PresentSuccessfulInteraction()
@@ -77,6 +90,13 @@ public partial class SeekerWalkAnimationPresenter : AnimatedSprite2D
             ? (WalkNorth, IdleNorth, InteractionNorth)
             : (WalkSouth, IdleSouth, InteractionSouth);
     }
+
+    private int FrameHeight(StringName animation) =>
+        SpriteFrames.GetFrameTexture(animation, 0).GetHeight();
+
+    private void AnchorFeet() =>
+        Offset = new Vector2(
+            authoredOffset.X, BottomAnchoredOffsetY(authoredBottom, FrameHeight(Animation)));
 
     private void OnAnimationFinished()
     {

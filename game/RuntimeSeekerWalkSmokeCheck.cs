@@ -2,22 +2,26 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Proves the bounded manifest-owned Seeker walk and idle presentation.</summary>
+/// <summary>Proves Main's Seeker walks with the accepted reference gait and keeps its idle/interaction presentation.</summary>
 public partial class RuntimeSeekerWalkSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_RUNTIME_SEEKER_WALK_CHECK";
     private const string EnabledEnvironmentValue = "1";
-    private const float ExpectedWalkFramesPerSecond = 1000.0f / 120.0f;
     private const float ExpectedIdleFramesPerSecond = 1000.0f / 600.0f;
     private const float ExpectedInteractionFramesPerSecond = 1000.0f / 160.0f;
     private const float TimingTolerance = 0.001f;
-    private static readonly (Vector2 Movement, string Walk, string Idle, string Interaction, int Width)[]
-        ExpectedDirections =
+    private static readonly Vector2 RestOffset = new(0.0f, -72.0f);
+
+    // The accepted reference gait (art-direction/reference-gait-model.md) is one 720 ms cycle:
+    // eight 90 ms front/back poses and sixteen 45 ms side poses. Side poses are 12 px taller
+    // (head-room above), so their offset is 6 px higher to keep the feet on the idle ground line.
+    private static readonly (Vector2 Movement, string Direction, int Width, int WalkFrames,
+        int WalkHeight, float WalkOffsetY)[] ExpectedDirections =
     [
-        (Vector2.Down, "walk_south", "idle_south", "interact_south", 108),
-        (Vector2.Left, "walk_west", "idle_west", "interact_west", 144),
-        (Vector2.Right, "walk_east", "idle_east", "interact_east", 144),
-        (Vector2.Up, "walk_north", "idle_north", "interact_north", 108),
+        (Vector2.Down, "south", 108, 8, 168, -72.0f),
+        (Vector2.Left, "west", 144, 16, 180, -78.0f),
+        (Vector2.Right, "east", 144, 16, 180, -78.0f),
+        (Vector2.Up, "north", 108, 8, 168, -72.0f),
     ];
 
     /// <inheritdoc />
@@ -42,7 +46,7 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
         if (seeker.GetNodeOrNull("Body") is not null
             || seeker.GetNodeOrNull("Facing") is not null
             || presenter.Centered is false
-            || presenter.Offset != new Vector2(0.0f, -72.0f)
+            || presenter.Offset != RestOffset
             || presenter.Position != Vector2.Zero
             || presenter.Scale != Vector2.One
             || presenter.Rotation != 0.0f
@@ -71,38 +75,50 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
         }
 
         foreach (
-            (Vector2 movement, string walkName, string idleName, string interactionName, int width)
-            in ExpectedDirections)
+            (Vector2 movement, string direction, int width, int walkFrames, int walkHeight,
+                float walkOffsetY) in ExpectedDirections)
         {
-            StringName walk = walkName;
+            StringName walk = $"walk_{direction}";
             presenter.PresentMovement(movement);
             if (presenter.Animation != walk
                 || !presenter.IsPlaying()
-                || frames.GetFrameCount(walk) != 6
+                || frames.GetFrameCount(walk) != walkFrames
                 || !frames.GetAnimationLoop(walk)
-                || Mathf.Abs((float)frames.GetAnimationSpeed(walk) - ExpectedWalkFramesPerSecond)
+                || Mathf.Abs((float)(walkFrames / frames.GetAnimationSpeed(walk)) - 0.72f)
                     > TimingTolerance)
             {
-                Fail("Runtime Seeker walk lost its four exact 120 ms loops.");
+                Fail($"Runtime Seeker {walk} is not the reference gait's {walkFrames}-pose 720 ms loop.");
                 return;
             }
 
-            for (int index = 0; index < 6; index++)
+            if (presenter.Offset != new Vector2(0.0f, walkOffsetY))
+            {
+                Fail($"Runtime Seeker {walk} feet left the idle ground line (offset {presenter.Offset}).");
+                return;
+            }
+
+            for (int index = 0; index < walkFrames; index++)
             {
                 Texture2D texture = frames.GetFrameTexture(walk, index);
-                if (texture.GetWidth() != width
-                    || texture.GetHeight() != 168
-                    || !texture.ResourcePath.StartsWith(
-                        "res://art/runtime/characters/seeker/",
-                        StringComparison.Ordinal)
+                string runtimePath =
+                    $"res://art/runtime/characters/seeker/{direction}/walk-{index + 1:00}.png";
+                string acceptedPath = "res://art/seeker-cloak-reference-gait-revision/frames/"
+                    + $"seeker-cloak-{direction}-walk-{index + 1:00}.png";
+                // The 720 ms cycle check above assumes every pose holds one beat.
+                if (frames.GetFrameDuration(walk, index) != 1.0f
+                    || texture.GetWidth() != width
+                    || texture.GetHeight() != walkHeight
+                    || texture.ResourcePath != runtimePath
+                    || Godot.FileAccess.GetSha256(runtimePath)
+                        != Godot.FileAccess.GetSha256(acceptedPath)
                     || !textureRids.Add(texture.GetRid()))
                 {
-                    Fail("Runtime Seeker walk lost its 24 unique runtime textures.");
+                    Fail($"Runtime Seeker {walk} pose {index + 1} is not the accepted reference-gait frame.");
                     return;
                 }
             }
 
-            StringName idle = idleName;
+            StringName idle = $"idle_{direction}";
             presenter.PresentMovement(Vector2.Zero);
             if (presenter.Animation != idle
                 || !presenter.IsPlaying()
@@ -112,6 +128,12 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
                     > TimingTolerance)
             {
                 Fail("Stationary Seeker did not play the matching two-frame 600 ms idle loop.");
+                return;
+            }
+
+            if (presenter.Offset != RestOffset)
+            {
+                Fail("Stationary Seeker idle did not return to its authored ground-line offset.");
                 return;
             }
 
@@ -130,7 +152,7 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
                 }
             }
 
-            StringName interaction = interactionName;
+            StringName interaction = $"interact_{direction}";
             presenter.PresentSuccessfulInteraction();
             if (presenter.Animation != interaction
                 || !presenter.IsPlaying()
@@ -183,10 +205,10 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
         }
 
         GD.Print(
-            "Runtime Seeker animation smoke passed: 24 walk, eight idle/breathe, and 16 interaction "
-            + "frames form direction-matched 120 ms walk, 600 ms idle, and interruptible 160 ms "
-            + "non-looping interaction animations while leaving movement and collision authority "
-            + "unchanged.");
+            "Runtime Seeker animation smoke passed: the 48 accepted reference-gait poses form "
+            + "direction-matched 720 ms walks on the idle ground line, with eight idle/breathe and "
+            + "16 interaction frames as 600 ms idle and interruptible 160 ms non-looping "
+            + "interaction animations, leaving movement and collision authority unchanged.");
         GetTree().Quit();
     }
 
