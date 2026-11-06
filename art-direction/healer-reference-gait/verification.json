@@ -33,8 +33,9 @@
     "healer_motion_modes": 7,
     "healer_contacts": 4
   },
-  "not_verified": [
-    "No live (windowed) playthrough of the Healer walking was observed; checks are headless."
-  ],
-  "deferred": "The Sage half of #480: the Sage never walks in Main (owner chose Healer only on 2026-11-06)."
+  "deferred": "The Sage half of #480: the Sage never walks in Main (owner chose Healer only on 2026-11-06).",
+  "owner_live_check": {
+    "date": "2026-11-07",
+    "observation": "The owner ran Main from the PR branch, watched the Healer walk and replied: 'looks right'."
+  }
 }
