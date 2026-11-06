@@ -29,9 +29,9 @@ public partial class SeekerWalkAnimationPresenter : AnimatedSprite2D
         AnimationFinished += OnAnimationFinished;
 
         // The scene's Offset places the starting animation's feet on the character's origin.
-        // Every frame keeps its feet the same distance above its bottom edge, so pinning the
-        // bottom edge keeps the feet grounded when an animation's frames are taller (the
-        // reference-gait side walks carry 12 px more head-room than idle).
+        // Pinning each animation's bottom edge to the starting one keeps the feet grounded when
+        // frames are taller: the reference-gait side walks carry 12 px more head-room than idle
+        // with the same space below the feet.
         authoredOffset = Offset;
         authoredBottom = Offset.Y + (FrameHeight(Animation) / 2.0f);
         AnimationChanged += AnchorFeet;

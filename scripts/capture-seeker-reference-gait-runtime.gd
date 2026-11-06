@@ -61,6 +61,9 @@ func _capture() -> void:
 		var direction: String = DIRECTIONS[row]
 		var walk := "walk_" + direction
 		var count := art.sprite_frames.get_frame_count(walk)
+		if count < 4:
+			_fail("Seeker gait capture found %d %s poses" % [count, walk])
+			return
 		var shots := [["idle_" + direction, 0]]
 		for quarter in 4:
 			shots.append([walk, quarter * count / 4])
@@ -69,6 +72,10 @@ func _capture() -> void:
 			art.play(shots[column][0])
 			art.pause()
 			art.frame = shots[column][1]
+			# play() of a missing animation only logs and keeps the previous pose.
+			if art.animation != StringName(shots[column][0]) or art.frame != shots[column][1]:
+				_fail("Seeker gait capture could not pose %s %d" % shots[column])
+				return
 			var picture := await _render(viewport)
 			if picture == null:
 				_fail("Seeker gait capture rendered no full-size image: %s %d" % shots[column])

@@ -104,7 +104,9 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
                     $"res://art/runtime/characters/seeker/{direction}/walk-{index + 1:00}.png";
                 string acceptedPath = "res://art/seeker-cloak-reference-gait-revision/frames/"
                     + $"seeker-cloak-{direction}-walk-{index + 1:00}.png";
-                if (texture.GetWidth() != width
+                // The 720 ms cycle check above assumes every pose holds one beat.
+                if (frames.GetFrameDuration(walk, index) != 1.0f
+                    || texture.GetWidth() != width
                     || texture.GetHeight() != walkHeight
                     || texture.ResourcePath != runtimePath
                     || Godot.FileAccess.GetSha256(runtimePath)

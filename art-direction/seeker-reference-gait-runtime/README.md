@@ -36,9 +36,9 @@ frames are unchanged. Import settings match the other runtime Seeker frames.
 ## Checks
 
 `ALLRPCS_RUNTIME_SEEKER_WALK_CHECK` (`RuntimeSeekerWalkSmokeCheck`) now requires the 48 runtime
-walk frames to match the accepted frames' SHA-256, the 8/16-pose 720 ms loops, the side frames'
-size, and the walk/idle offsets that keep the feet on one ground line. Before the art change it
-failed (`walk_south is not the reference gait's 8-pose 720 ms loop`); after it, it passes.
+walk frames to match the accepted frames' SHA-256, the 8/16-pose 720 ms loops with one beat per
+pose, the side frames' size, and the walk/idle offsets that keep the feet on one ground line.
+Before the art change it failed (`walk_south is not the reference gait's 8-pose 720 ms loop`); after it, it passes.
 
 `scripts/validate-runtime-seeker-walk.py` is the frozen validator of the superseded 6-frame
 promotion (`e5762031`). It now reports `lost manifest/source parity` at HEAD by design; nothing
