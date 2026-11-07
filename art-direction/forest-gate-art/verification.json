@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "status": "implementation_verified",
+  "product_revision": "2f481ced on claude/forest-gate-art",
+  "inputs": {
+    "game/Main.tscn": "054cc9326971b239d78fec9fc32a650964c201ea580c55b3ac88d7ec12abc02c",
+    "game/OpeningRegionClosedForestPathSceneSource.cs": "ec6753560eacfced5fda5e47a16d6d4166ac25d3fa693835b5fa6012d722dab4",
+    "game/art/runtime/structures/woodland-04.png": "e79e3e3155e6ba7e1b54df7359021377ab2a3360952052e10653550ee709476f",
+    "game/art/runtime/structures/woodland-04.png.import": "6ce493035503cd35fa82856b5db75855eecf106aa737d2ad5f75c575bbe6b7b8",
+    "scripts/validate-forest-gate-art.py": "0706454a5522c2f686a314a520096fce6e9e46affc00f0c21fe1988864577bb1",
+    "scripts/check-forest-gate-art.gd": "2ddfa89f1476ee025888a240e7c593eec6b5437a515b5982f0e4d91eadd83267",
+    "scripts/capture-forest-gate-art.gd": "d2a7f8ade6878e65e32781264bb07cfd66fb42c1b6285ce978cd63d3e7a16d21",
+    "scripts/smoke-godot.sh": "656cb8170e4f4641b34fdbad6022a0062f2d01e9f8b7e098255ba92c0303677b"
+  },
+  "full_quality": {
+    "command": "./quality.sh",
+    "result": "passed",
+    "stages": 219,
+    "retries": 0,
+    "smoke": "377 passed, 3 existing quarantines (smoke stage product-10 log; includes validate-forest-gate-art.py and check-forest-gate-art.gd)",
+    "summary": "checks/quality-summary.json.gz",
+    "note": "Run on the committed head 2f481ced; afterwards only this record, the retained summary, the README and the handover prose changed."
+  },
+  "focused_checks": {
+    "check-forest-gate-art.gd": "passed; fails on the previous Main.tscn (red greybox line, no GateArt sprite)",
+    "check-closed-forest-runtime.gd, OPENING_REGION_CLOSED_FOREST_PATH_CHECK, SeekerBackgroundRouteVariationSceneSmokeCheck": "passed unchanged in the smoke stage (the line stays visible while closed and is hidden, with the art, once access opens the gate)",
+    "validate-forest-gate-art.py": "passed; fails when the runtime PNG differs from the approved export; also re-checks the captures and their inputs against capture-evidence.json",
+    "capture-forest-gate-art.gd": "passed (windowed; headless has no renderer); two captures"
+  },
+  "captures": "capture-evidence.json",
+  "limits": [
+    "The art keeps the batch's high-oblique angle, so the gate reads slightly diagonal over a horizontal collision segment (right post foot about 21 px below the left).",
+    "The approach-boundary lines and opening polygons near the gate are still greybox, and the accepted terrain's dirt path leaves the clearing a little west of the gate opening; both are outside this slice.",
+    "Captures are fixed camera views with the Seeker placed by script; no live owner playthrough is claimed."
+  ]
+}

@@ -2374,11 +2374,12 @@
     "authority_status": "owner_requested_forest_gate_art_2026-11-07",
     "roadmap_item": "- [ ] Replace the closed forest gate placeholder with the approved forest gate.",
     "missing_deliverable": "The closed deeper-forest gate in Main is a red greybox line; the approved structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native check, captures or package for it.",
-    "instructions": "Work on branch claude/forest-gate-art: byte-copy woodland-04 into game/art/runtime/structures/, show it as a Sprite2D child of ClosedGate/Line2D scaled so its post feet sit on the gate ends (696, 200) and (792, 200), and hide only the line's own stroke, so TryInstallAccess hides line and art together. Keep collision, approach boundaries, marker, label and the accepted forest-path terrain unchanged. Remaining greybox markers (water cask, exit markers) need their own owner request.",
+    "instructions": "Implemented and verified on branch claude/forest-gate-art (2026-11-07): GateArt, a byte copy of structures-batch woodland-04 scaled 3/7, is a child of ClosedGate/Line2D whose own stroke is hidden by self_modulate, so TryInstallAccess hides line and art together; post feet stand on (696, 200) and (792, 200). validate-forest-gate-art.py and check-forest-gate-art.gd run in smoke; full gate passed on 2f481ced (219 stages, no retries; art-direction/forest-gate-art/verification.json). Remaining: owner review of the PR; then close the scope on owner direction. Remaining greybox markers (water cask, exit markers) need their own owner request.",
     "completion_condition": "Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once Forester access opens it; affected checks pass with retained evidence; the branch is committed/pushed with a PR.",
     "outputs": [
       "art-direction/forest-gate-art/README.md",
-      "art-direction/forest-gate-art/verification.json"
+      "art-direction/forest-gate-art/verification.json",
+      "art-direction/forest-gate-art/capture-evidence.json"
     ],
     "boundary": "Closed-gate presentation and dependent verification/documentation/publication only. Gate collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or release."
   },
