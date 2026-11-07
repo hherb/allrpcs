@@ -174,7 +174,8 @@ the same session without repeating unchanged approval gates.
 - [x] Replace the herb patch placeholder with the approved herb sprigs, in depth order.
 - [x] Replace the wagon clue placeholder with the approved broken strap, in depth order.
 - [x] Play the accepted Seeker reference gait in Main's runtime walk (#462).
-- [ ] Re-author the Healer's walk to the reference gait model and play it in Main (#480).
+- [x] Re-author the Healer's walk to the reference gait model and play it in Main (#480).
+- [ ] Replace the closed forest gate placeholder with the approved forest gate.
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

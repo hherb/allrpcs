@@ -9,27 +9,21 @@ and terminal acceptance take precedence. Preserve every persistent closure.
 The owner accepted the five-site [building group](art-direction/buildings-gameplay-integration/README.md),
 closed the [sickhouse bed/patient slice](art-direction/sickhouse-patient-bed/README.md) and, after merging
 PR #478, closed the [Healer/Sage art slice](art-direction/healer-sage-runtime/README.md) on 2026-10-29
-([acceptance](art-direction/healer-sage-runtime/owner-acceptance.json)). Still open from it: walks not
-re-authored to the reference gait ([#480](https://github.com/hherb/allrpcs/issues/480), not signed off) and the
+([acceptance](art-direction/healer-sage-runtime/owner-acceptance.json)). Still open from it: the Sage's walk
+on the reference gait ([#480](https://github.com/hherb/allrpcs/issues/480), deferred) and the
 untriggered Healer inspect gesture ([#481](https://github.com/hherb/allrpcs/issues/481)). The
 [depth-order slice](art-direction/character-depth-order/README.md) (#479, #477) merged as PR #482 and was closed
 on 2026-10-30 ([acceptance](art-direction/character-depth-order/owner-acceptance.json)). The owner is replacing
 greybox markers one at a time: the stone marker tablet (PR #483), herb patch sprigs (PR #484) and wagon clue
 broken strap (PR #485) merged and were closed ([stone](art-direction/stone-marker-art/owner-acceptance.json),
-[herb](art-direction/herb-patch-art/owner-acceptance.json), [wagon](art-direction/wagon-clue-art/owner-acceptance.json)).
-Remaining greybox markers (water cask, closed forest gate, exit markers) need their own owner request; no accepted
-art matches them closely (no cask art exists). The #486 smoke flake fix merged as PR #487 and was closed on
+[herb](art-direction/herb-patch-art/owner-acceptance.json), [wagon](art-direction/wagon-clue-art/owner-acceptance.json)). The #486 smoke flake fix merged as PR #487 and was closed on
 2026-10-31 ([acceptance](docs/superpowers/evidence/2026-10-31-ci-flake-486-owner-acceptance.json)). The #476
-shutdown guard was verified against CI, merged as PR #488 and closed on 2026-11-05
-([acceptance](docs/superpowers/evidence/2026-11-05-shutdown-abort-476-owner-acceptance.json)). The
-#467 save backup merged as PR #489 and was closed on 2026-11-06
-([acceptance](docs/superpowers/evidence/2026-11-06-save-backup-467-owner-acceptance.json)). The
-#462 Seeker reference gait merged as PR #490 and was closed on 2026-11-06
-([acceptance](docs/superpowers/evidence/2026-11-06-seeker-reference-gait-462-owner-acceptance.json));
-pinning its accepted frames at HEAD is filed as #491. The active slice below re-authors the
-Healer's side walks to the reference gait (#480, Healer only,
-[package](art-direction/healer-reference-gait/README.md)); the owner accepted the artwork, it plays in
-Main, and it awaits owner review of PR #492. The Sage half of #480 is deferred (the Sage never walks).
+shutdown guard (PR #488), #467 save backup (PR #489), #462 Seeker reference gait (PR #490) and the Healer half of
+#480 (PR #492) merged and were closed ([Healer acceptance](docs/superpowers/evidence/2026-11-07-healer-reference-gait-480-owner-acceptance.json));
+the Sage half of #480 is deferred (the Sage never walks), and pinning the Seeker's accepted frames at HEAD is #491.
+The active slice below shows the approved structures-batch Forest gate at the closed deeper-forest gate
+([package](art-direction/forest-gate-art/README.md)); it awaits owner review of its PR. The water cask (no
+approved art) and exit markers still need their own owner request.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -56,38 +50,35 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**healer-reference-gait-480 — Re-author the Healer's walk to the reference gait model** (in_progress).
+**forest-gate-art — Replace the closed forest gate placeholder with the approved forest gate** (in_progress).
 
-Roadmap item: - [ ] Re-author the Healer's walk to the reference gait model and play it in Main
-(#480).
+Roadmap item: - [ ] Replace the closed forest gate placeholder with the approved forest gate.
 
-Missing deliverable: The Healer's runtime walk is the 2026-10-04 8-phase cutout gait (rigid boots,
-no heel-to-toe roll or double support), not the reference gait model the walking-animation rule
-requires.
+Missing deliverable: The closed deeper-forest gate in Main is a red greybox line; the approved
+structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native
+check, captures or package for it.
 
-Implemented and verified on branch claude/healer-reference-gait-480 (2026-11-06): the owner accepted
-the code-rigged Healer side-gait candidate (art-direction/healer-reference-gait/owner-
-acceptance.json); Main's Healer walk_west/walk_east play its sixteen poses at 45 ms, front/back
-unchanged; validate-healer-sage-runtime.py and check-healer-sage-runtime.gd pin frames and timing;
-full gate passed (219 stages, no retries; art-direction/healer-reference-gait/verification.json).
-Remaining: owner review of PR #492; then close the scope on owner direction. The Sage half of #480
-stays deferred (the Sage never walks in Main).
+Implemented and verified on branch claude/forest-gate-art (2026-11-07): GateArt, a byte copy of
+structures-batch woodland-04 scaled 3/7, is a child of ClosedGate/Line2D whose own stroke is hidden
+by self_modulate, so TryInstallAccess hides line and art together; post feet stand on (696, 200) and
+(792, 200). validate-forest-gate-art.py and check-forest-gate-art.gd run in smoke; full gate passed
+on 2f481ced (219 stages, no retries; art-direction/forest-gate-art/verification.json). Remaining:
+owner review of the PR; then close the scope on owner direction. Remaining greybox markers (water
+cask, exit markers) need their own owner request.
 
-Done when: The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play
-its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing
-and passes with the affected smoke launches; the branch is pushed with a PR that references #480.
+Done when: Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once
+Forester access opens it; affected checks pass with retained evidence; the branch is
+committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/healer-reference-gait/build.py`
-- `art-direction/healer-reference-gait/check_gait.py`
-- `art-direction/healer-reference-gait/README.md`
-- `game/art/runtime/characters/healer/animations.tres`
-- `art-direction/healer-reference-gait/verification.json`
+- `art-direction/forest-gate-art/README.md`
+- `art-direction/forest-gate-art/verification.json`
+- `art-direction/forest-gate-art/capture-evidence.json`
 
-Boundary: Healer walk frames, their build/check scripts, review package, runtime SpriteFrames
-entries and walk checks, and dependent documentation/publication only. No image generation, no Sage
-walk change (deferred), no idle/inspect change, no movement or collision change. No merge or
+Boundary: Closed-gate presentation and dependent verification/documentation/publication only. Gate
+collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves
+and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or
 release.
 <!-- active-slice:end -->
 
