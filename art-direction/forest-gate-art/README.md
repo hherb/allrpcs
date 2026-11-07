@@ -29,16 +29,20 @@ No new artwork was made.
 
 Seen in the captures and left unchanged (outside this slice): the dark-green approach-boundary lines and yellow
 opening polygons are still greybox. The accepted terrain's dirt path leaves the clearing a little west of the
-gate's collision opening; the art makes that older offset visible.
+gate's collision opening; the art makes that older offset visible. Tracked in #494.
 
 ## Checks
 
 - `scripts/validate-forest-gate-art.py` checks the structures-batch acceptance binding, that the runtime PNG is
-  byte-identical to its approved export and that its import is lossless, plus the captures and their inputs
-  against [capture-evidence.json](capture-evidence.json). It checks only those bytes (#471).
+  byte-identical to its approved export and that its import is lossless, plus the captures, the capture script and
+  the gate PNG against [capture-evidence.json](capture-evidence.json). It does not check the `Main.tscn` hash
+  recorded there, because Main keeps changing after this slice; [verification.json](verification.json) pins it
+  instead. It checks only those bytes (#471).
 - `scripts/check-forest-gate-art.gd` checks the unchanged collision segment, the texture, that the line draws
   nothing while visible, that the post feet stand on the gate ends, no own draw order, that the Seeker at the
-  gate draws in front, and that hiding the line hides the art.
+  gate draws in front, and that hiding the line by hand hides the art. The real opening path (Forester access
+  through `TryInstallAccess`) is driven by `SeekerBackgroundRouteVariationSceneSmokeCheck`, which asserts the line
+  is hidden afterwards; since the art is the line's child, that covers the art too.
 - `scripts/capture-forest-gate-art.gd` writes the two `captures/` and [capture-evidence.json](capture-evidence.json)
   (needs a renderer; run without `--headless`). It hides every Control, so world labels are not shown.
 
