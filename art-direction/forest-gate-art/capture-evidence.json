@@ -1,0 +1,13 @@
+{
+	"captures": {
+		"captures/forest-gate-seeker-at-gate.png": "821c28035137f5cdbcf3cf848267bc02718c0c2b13588bf2a73c52dec178e55f",
+		"captures/forest-gate-seeker-away.png": "96c4cc5e58c928b1c3314ca6da63e5b6f7e96d4eceee8eb477b714849060eeb4"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inputs": {
+		"res://../scripts/capture-forest-gate-art.gd": "d2a7f8ade6878e65e32781264bb07cfd66fb42c1b6285ce978cd63d3e7a16d21",
+		"res://Main.tscn": "054cc9326971b239d78fec9fc32a650964c201ea580c55b3ac88d7ec12abc02c",
+		"res://art/runtime/structures/woodland-04.png": "e79e3e3155e6ba7e1b54df7359021377ab2a3360952052e10653550ee709476f"
+	},
+	"schema_version": 1
+}

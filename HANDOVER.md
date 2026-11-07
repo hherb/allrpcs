@@ -56,38 +56,32 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**healer-reference-gait-480 — Re-author the Healer's walk to the reference gait model** (in_progress).
+**forest-gate-art — Replace the closed forest gate placeholder with the approved forest gate** (in_progress).
 
-Roadmap item: - [ ] Re-author the Healer's walk to the reference gait model and play it in Main
-(#480).
+Roadmap item: - [ ] Replace the closed forest gate placeholder with the approved forest gate.
 
-Missing deliverable: The Healer's runtime walk is the 2026-10-04 8-phase cutout gait (rigid boots,
-no heel-to-toe roll or double support), not the reference gait model the walking-animation rule
-requires.
+Missing deliverable: The closed deeper-forest gate in Main is a red greybox line; the approved
+structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native
+check, captures or package for it.
 
-Implemented and verified on branch claude/healer-reference-gait-480 (2026-11-06): the owner accepted
-the code-rigged Healer side-gait candidate (art-direction/healer-reference-gait/owner-
-acceptance.json); Main's Healer walk_west/walk_east play its sixteen poses at 45 ms, front/back
-unchanged; validate-healer-sage-runtime.py and check-healer-sage-runtime.gd pin frames and timing;
-full gate passed (219 stages, no retries; art-direction/healer-reference-gait/verification.json).
-Remaining: owner review of PR #492; then close the scope on owner direction. The Sage half of #480
-stays deferred (the Sage never walks in Main).
+Work on branch claude/forest-gate-art: byte-copy woodland-04 into game/art/runtime/structures/, show
+it as a Sprite2D child of ClosedGate/Line2D scaled so its post feet sit on the gate ends (696, 200)
+and (792, 200), and hide only the line's own stroke, so TryInstallAccess hides line and art
+together. Keep collision, approach boundaries, marker, label and the accepted forest-path terrain
+unchanged. Remaining greybox markers (water cask, exit markers) need their own owner request.
 
-Done when: The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play
-its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing
-and passes with the affected smoke launches; the branch is pushed with a PR that references #480.
+Done when: Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once
+Forester access opens it; affected checks pass with retained evidence; the branch is
+committed/pushed with a PR.
 
 Expected outputs:
 
-- `art-direction/healer-reference-gait/build.py`
-- `art-direction/healer-reference-gait/check_gait.py`
-- `art-direction/healer-reference-gait/README.md`
-- `game/art/runtime/characters/healer/animations.tres`
-- `art-direction/healer-reference-gait/verification.json`
+- `art-direction/forest-gate-art/README.md`
+- `art-direction/forest-gate-art/verification.json`
 
-Boundary: Healer walk frames, their build/check scripts, review package, runtime SpriteFrames
-entries and walk checks, and dependent documentation/publication only. No image generation, no Sage
-walk change (deferred), no idle/inspect change, no movement or collision change. No merge or
+Boundary: Closed-gate presentation and dependent verification/documentation/publication only. Gate
+collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves
+and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or
 release.
 <!-- active-slice:end -->
 

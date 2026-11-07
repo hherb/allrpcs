@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "timezone": "Australia/Sydney",
+  "base_commit": "3027c760",
+  "owner_statements": [
+    {
+      "question": "Which slice should come next? Each one needs your explicit request before I can open it in the ledger.",
+      "reply": "Next greybox marker"
+    },
+    {
+      "question": "Which greybox marker should I replace next? The approved structures-batch \"Forest gate\" (woodland-04, a closed timber gate between two posts) fits the closed deeper-forest gate. It would replace only the red barrier line, be scaled so its posts sit on the 96 px opening, and hide when the Forester's access opens the path, exactly as the line does now. Collision and navigation stay unchanged.",
+      "reply": "Closed forest gate (Recommended)"
+    }
+  ],
+  "scope": "Show the owner-approved structures-batch woodland-04 \"Forest gate\" (unchanged bytes) in place of the red greybox line of OpeningRegionClosedForestPathSceneSource/ClosedGate in Main, its posts on the ends of the 96 px gate opening, hidden together with the line when the Forester's access opens the path.",
+  "boundary": "Closed-gate presentation and dependent verification/documentation/publication only. Gate collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or release.",
+  "publication": "Standing owner authority: ALWAYS commit and push when you finish a task. Review branch only."
+}

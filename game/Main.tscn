@@ -451,6 +451,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/objects/herbs-02.png" id="herb_patch_sprig_02"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/herbs-03.png" id="herb_patch_sprig_03"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/clue-objects-05.png" id="wagon_clue_strap"]
+[ext_resource type="Texture2D" path="res://art/runtime/structures/woodland-04.png" id="forest_gate_art"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-01.png" id="mira_dormant_01"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/mira/dormant-02.png" id="mira_dormant_02"]
 [ext_resource type="SpriteFrames" path="res://art/runtime/characters/healer/animations.tres" id="healer_animations"]
@@ -2707,7 +2708,15 @@ default_color = Color(0.145, 0.239, 0.157, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionClosedForestPathSceneSource/ClosedGate"]
 
 [node name="Line2D" type="Line2D" parent="OpeningRegionClosedForestPathSceneSource/ClosedGate"]
+self_modulate = Color(1, 1, 1, 0)
 default_color = Color(0.58, 0.18, 0.12, 1)
+
+[node name="GateArt" type="Sprite2D" parent="OpeningRegionClosedForestPathSceneSource/ClosedGate/Line2D"]
+position = Vector2(744, 200)
+scale = Vector2(0.428571, 0.428571)
+texture = ExtResource("forest_gate_art")
+centered = false
+offset = Vector2(-166, -205)
 
 [node name="ClosedGateMarker" type="Marker2D" parent="OpeningRegionClosedForestPathSceneSource"]
 position = Vector2(744, 200)

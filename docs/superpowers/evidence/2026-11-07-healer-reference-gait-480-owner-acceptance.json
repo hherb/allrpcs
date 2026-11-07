@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "timezone": "Australia/Sydney",
+  "merge": {
+    "pull_request": 492,
+    "merge_commit": "3027c760aa4e334ca76f5d277d2dfbecd2338ce0",
+    "merged_by": "hherb",
+    "merged_at": "2026-11-06T14:34:55Z"
+  },
+  "question": "You merged PR #492 (the Healer's side walks now play the 16 accepted reference-gait poses at 45 ms; full gate passed, 219 stages). Should I record that as your acceptance and close the healer-reference-gait-480 slice in the ledger? #480 itself stays open for the deferred Sage half.",
+  "owner_reply": "Yes, close it (Recommended)",
+  "accepted": "healer-reference-gait-480"
+}

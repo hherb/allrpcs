@@ -23,6 +23,7 @@ python3 "$script_dir/validate-healer-sage-runtime.py"
 python3 "$script_dir/validate-stone-marker-art.py"
 python3 "$script_dir/validate-herb-patch-art.py"
 python3 "$script_dir/validate-wagon-clue-art.py"
+python3 "$script_dir/validate-forest-gate-art.py"
 # The accepted building/view-repair evidence stays as accepted; quality.py replays their whole-tree
 # validator at this revision (VIEW_REPAIRS_REVISION, #471), so only their own files are fenced here.
 # Renames count as deletions; added files (later owner records) are allowed.
@@ -63,6 +64,8 @@ run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-herb-patch-art.gd"
 run_check - godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-wagon-clue-art.gd"
+run_check - godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-forest-gate-art.gd"
 run_check - ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-gameplay-view-repairs.gd"
 run_check 30 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \

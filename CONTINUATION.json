@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1312,6 +1312,20 @@
           "sha256": "ff406c44298743880b46ec5c6f0a2e30ef4ada3e35844cba6dc16567ec07f8d6"
         }
       ]
+    },
+    {
+      "id": "healer-reference-gait-480",
+      "reason": "The owner merged PR #492 (Main's Healer walk_west/walk_east play the 16 accepted reference-gait poses at 45 ms; full gate 219 stages) on 2026-11-06 and chose to close the slice on 2026-11-07. #480 stays open for the deferred Sage half.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-07-healer-reference-gait-480-owner-acceptance.json",
+          "sha256": "3580aa7a4adafb8d8681c1f74acf7b13be871ff6e3ed58602865d1c4deb33e7a"
+        },
+        {
+          "path": "art-direction/healer-reference-gait/verification.json",
+          "sha256": "948fc60083e09d694f7dcfe76edfc4070828e7d6f8d1fa22884e5f1cccf86d68"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1918,6 +1932,20 @@
           "sha256": "ff406c44298743880b46ec5c6f0a2e30ef4ada3e35844cba6dc16567ec07f8d6"
         }
       ]
+    },
+    {
+      "id": "healer-reference-gait-480",
+      "reason": "The Healer's side walks play the accepted reference gait and are merged. The Sage's walk (rest of #480) and the Healer inspect gesture (#481) need a new owner request.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-07-healer-reference-gait-480-owner-acceptance.json",
+          "sha256": "3580aa7a4adafb8d8681c1f74acf7b13be871ff6e3ed58602865d1c4deb33e7a"
+        },
+        {
+          "path": "art-direction/healer-reference-gait/verification.json",
+          "sha256": "948fc60083e09d694f7dcfe76edfc4070828e7d6f8d1fa22884e5f1cccf86d68"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2321,27 +2349,38 @@
           "sha256": "40adbd6e5494df3508c132f05463ba5394c40d9f1e07aa6222188cd18c586d21"
         }
       ]
+    },
+    {
+      "id": "owner-forest-gate-art-2026-11-07",
+      "owner_statement": "Close healer-reference-gait-480: Yes, close it (Recommended); next slice: Next greybox marker; marker: Closed forest gate (Recommended)",
+      "scope_ids": [
+        "forest-path-runtime"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/forest-gate-art/authority.json",
+          "sha256": "5ce266bcbec8174a3a4b6b3d139f50c0ed42efbcd8c8e34cdbc3c57fe592e878"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "healer-reference-gait-480",
-    "title": "Re-author the Healer's walk to the reference gait model",
+    "id": "forest-gate-art",
+    "title": "Replace the closed forest gate placeholder with the approved forest gate",
     "status": "in_progress",
-    "workstream": "healer-reference-gait-480",
-    "reopening_id": "owner-healer-reference-gait-480-2026-11-06",
-    "authority_status": "owner_requested_healer_reference_gait_480_2026-11-06",
-    "roadmap_item": "- [ ] Re-author the Healer's walk to the reference gait model and play it in Main (#480).",
-    "missing_deliverable": "The Healer's runtime walk is the 2026-10-04 8-phase cutout gait (rigid boots, no heel-to-toe roll or double support), not the reference gait model the walking-animation rule requires.",
-    "instructions": "Implemented and verified on branch claude/healer-reference-gait-480 (2026-11-06): the owner accepted the code-rigged Healer side-gait candidate (art-direction/healer-reference-gait/owner-acceptance.json); Main's Healer walk_west/walk_east play its sixteen poses at 45 ms, front/back unchanged; validate-healer-sage-runtime.py and check-healer-sage-runtime.gd pin frames and timing; full gate passed (219 stages, no retries; art-direction/healer-reference-gait/verification.json). Remaining: owner review of PR #492; then close the scope on owner direction. The Sage half of #480 stays deferred (the Sage never walks in Main).",
-    "completion_condition": "The owner accepts the Healer side-gait candidate; Main's Healer walk_west/walk_east play its sixteen frames at 45 ms and walk_south/walk_north are unchanged; a check pins frames and timing and passes with the affected smoke launches; the branch is pushed with a PR that references #480.",
+    "workstream": "forest-gate-art",
+    "reopening_id": "owner-forest-gate-art-2026-11-07",
+    "authority_status": "owner_requested_forest_gate_art_2026-11-07",
+    "roadmap_item": "- [ ] Replace the closed forest gate placeholder with the approved forest gate.",
+    "missing_deliverable": "The closed deeper-forest gate in Main is a red greybox line; the approved structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native check, captures or package for it.",
+    "instructions": "Work on branch claude/forest-gate-art: byte-copy woodland-04 into game/art/runtime/structures/, show it as a Sprite2D child of ClosedGate/Line2D scaled so its post feet sit on the gate ends (696, 200) and (792, 200), and hide only the line's own stroke, so TryInstallAccess hides line and art together. Keep collision, approach boundaries, marker, label and the accepted forest-path terrain unchanged. Remaining greybox markers (water cask, exit markers) need their own owner request.",
+    "completion_condition": "Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once Forester access opens it; affected checks pass with retained evidence; the branch is committed/pushed with a PR.",
     "outputs": [
-      "art-direction/healer-reference-gait/build.py",
-      "art-direction/healer-reference-gait/check_gait.py",
-      "art-direction/healer-reference-gait/README.md",
-      "game/art/runtime/characters/healer/animations.tres",
-      "art-direction/healer-reference-gait/verification.json"
+      "art-direction/forest-gate-art/README.md",
+      "art-direction/forest-gate-art/verification.json"
     ],
-    "boundary": "Healer walk frames, their build/check scripts, review package, runtime SpriteFrames entries and walk checks, and dependent documentation/publication only. No image generation, no Sage walk change (deferred), no idle/inspect change, no movement or collision change. No merge or release."
+    "boundary": "Closed-gate presentation and dependent verification/documentation/publication only. Gate collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or release."
   },
   "deferred_slices": [
     {
