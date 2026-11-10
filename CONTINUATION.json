@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-07",
+  "updated": "2026-11-10",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -1326,6 +1326,20 @@
           "sha256": "948fc60083e09d694f7dcfe76edfc4070828e7d6f8d1fa22884e5f1cccf86d68"
         }
       ]
+    },
+    {
+      "id": "forest-gate-art",
+      "reason": "The owner merged PR #493 and asked to continue toward playability. The approved gate is integrated on main with passing product and hosted checks.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-10-playability-continuation.json",
+          "sha256": "b159ff932c8a760982b7cdc6e0efb9ab3832ceaf56c582ced190129c27fa39d9"
+        },
+        {
+          "path": "art-direction/forest-gate-art/verification.json",
+          "sha256": "a66a9a47bd1d6c1aa780c6ad6756aa9b11adf77d58642de55b89ff443dd1a31b"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -1946,6 +1960,20 @@
           "sha256": "948fc60083e09d694f7dcfe76edfc4070828e7d6f8d1fa22884e5f1cccf86d68"
         }
       ]
+    },
+    {
+      "id": "forest-gate-art",
+      "reason": "The closed-gate artwork replacement is complete on main. Gate approach overlays and terrain alignment (#494) are separate.",
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-10-playability-continuation.json",
+          "sha256": "b159ff932c8a760982b7cdc6e0efb9ab3832ceaf56c582ced190129c27fa39d9"
+        },
+        {
+          "path": "art-direction/forest-gate-art/verification.json",
+          "sha256": "a66a9a47bd1d6c1aa780c6ad6756aa9b11adf77d58642de55b89ff443dd1a31b"
+        }
+      ]
     }
   ],
   "reopenings": [
@@ -2363,25 +2391,35 @@
           "sha256": "5ce266bcbec8174a3a4b6b3d139f50c0ed42efbcd8c8e34cdbc3c57fe592e878"
         }
       ]
+    },
+    {
+      "id": "owner-playability-continuation-2026-11-10",
+      "owner_statement": "please continue working on this game towards making it playable",
+      "scope_ids": [],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "docs/superpowers/evidence/2026-11-10-playability-continuation.json",
+          "sha256": "b159ff932c8a760982b7cdc6e0efb9ab3832ceaf56c582ced190129c27fa39d9"
+        }
+      ]
     }
   ],
   "active_slice": {
-    "id": "forest-gate-art",
-    "title": "Replace the closed forest gate placeholder with the approved forest gate",
+    "id": "ending-screen-458",
+    "title": "Make the ending screen safe to navigate and return to title",
     "status": "in_progress",
-    "workstream": "forest-gate-art",
-    "reopening_id": "owner-forest-gate-art-2026-11-07",
-    "authority_status": "owner_requested_forest_gate_art_2026-11-07",
-    "roadmap_item": "- [ ] Replace the closed forest gate placeholder with the approved forest gate.",
-    "missing_deliverable": "The closed deeper-forest gate in Main is a red greybox line; the approved structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native check, captures or package for it.",
-    "instructions": "Implemented and verified on branch claude/forest-gate-art (2026-11-07): GateArt, a byte copy of structures-batch woodland-04 scaled 3/7, is a child of ClosedGate/Line2D whose own stroke is hidden by self_modulate, so TryInstallAccess hides line and art together; post feet stand on (696, 200) and (792, 200). validate-forest-gate-art.py and check-forest-gate-art.gd run in smoke; full gate passed on 2f481ced (219 stages, no retries; art-direction/forest-gate-art/verification.json). Remaining: owner review of the PR; then close the scope on owner direction. Remaining greybox markers (water cask, exit markers) need their own owner request.",
-    "completion_condition": "Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once Forester access opens it; affected checks pass with retained evidence; the branch is committed/pushed with a PR.",
+    "workstream": "ending-screen-458",
+    "reopening_id": "owner-playability-continuation-2026-11-10",
+    "authority_status": "owner_requested_playable_continuation_2026-11-10",
+    "roadmap_item": "- [ ] Make the ending screen safe to navigate and return to title (#458).",
+    "missing_deliverable": "The ending screen has no isolated focus route or guard against Space bringing dialogue above it. Return to title and restoration after an ending need coverage in ordinary Main.",
+    "instructions": "Implemented and verified on codex/ending-screen-458. The ending contains keyboard focus, keeps Space holds out of dialogue, and guards the save buttons. Return to title reloads Main and Enter on Continue restores the pre-loss save. The Main-hosted regression also covers an in-session restore. Solution format/build, 6,188 tests and nine affected Godot launches passed. The older controls qualification runs against its frozen snapshot and still expects 29 rows when invoked against current Main (30). Remaining: review the ending-screen PR.",
+    "completion_condition": "A Main-hosted smoke check exercises the ending input boundary, Return to title and in-session restoration. The affected checks pass and the review branch is published.",
     "outputs": [
-      "art-direction/forest-gate-art/README.md",
-      "art-direction/forest-gate-art/verification.json",
-      "art-direction/forest-gate-art/capture-evidence.json"
+      "game/SliceEndScreenSmokeCheck.cs"
     ],
-    "boundary": "Closed-gate presentation and dependent verification/documentation/publication only. Gate collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or release."
+    "boundary": "The separate #458 ending interaction follow-up, including the Enter conflict on the reloaded title. Disease progression, outcomes, save format, artwork and the owner playthrough requirement stay as before."
   },
   "deferred_slices": [
     {

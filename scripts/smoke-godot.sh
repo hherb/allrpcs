@@ -133,6 +133,8 @@ run_check 600 ALLRPCS_HYPOTHESIS_TEST_CHECK=1 \
 # Five Main launches with no model or errand waits; 900 frames at 60 fps is about 15 s.
 run_check 900 ALLRPCS_SLICE_STAKES_CHECK=1 \
     godot --headless --path "$repository_root/game" res://SliceStakesEndingFlowCheck.tscn
+run_check 600 ALLRPCS_SLICE_END_SCREEN_CHECK=1 ALLRPCS_PLAYER_SPEECH_CONFIG=/dev/null/disabled \
+    godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game"
 run_check 120 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \

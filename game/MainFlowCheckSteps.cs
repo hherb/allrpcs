@@ -19,7 +19,7 @@ internal static class MainFlowCheckSteps
     {
         SeekerCustomizationMenuController menu =
             main.GetNode<SeekerCustomizationMenuController>("SeekerCustomizationOverlay/Panel");
-        Require(menu.TryOpen(), "The first session opened customization.");
+        Require(menu.Visible || menu.TryOpen(), "The first session opened customization.");
         menu.GetNode<LineEdit>("DisplayName").Text = "Ren";
         menu.GetNode<LineEdit>("Subject").Text = "they";
         menu.GetNode<LineEdit>("Objective").Text = "them";

@@ -22,6 +22,8 @@ public partial class SpaceHoldSpeechController : Node
     private ulong stopVersion;
     private int originalLayer;
     private bool raised, replaying, replayScheduled, ownsHold, focused = true;
+    // A press owned by the ending stays out of speech even if the panel closes during the hold.
+    private bool endingOwnsPress;
     internal int Holds { get; private set; }
 
     /// <inheritdoc />
@@ -54,6 +56,7 @@ public partial class SpaceHoldSpeechController : Node
             {
                 if (!key.Echo && !gesture.Active)
                 {
+                    endingOwnsPress = SliceEndPanelController.IsOpenFor(this);
                     gesture.Press(Time.GetTicksMsec()); pressViewport = viewport; pressFocus = viewport.GuiGetFocusOwner();
                     stopVersion = mic.StopVersion; Queue(pending, value, viewport);
                 }
@@ -129,6 +132,7 @@ public partial class SpaceHoldSpeechController : Node
     {
         Commit(false); Replay();
         if (stopVersion != mic.StopVersion) { gesture.Cancel(); stopVersion = mic.StopVersion; return; }
+        if (endingOwnsPress) { return; }
         foreach (Window window in routed.Where(window => GodotObject.IsInstanceValid(window) && window.Visible && window.HasFocus()).ToArray()) { window.Hide(); }
         GetWindow().GrabFocus();
         if (!dialogue.Visible) { entry.EmitSignal(BaseButton.SignalName.Pressed); }
@@ -136,6 +140,12 @@ public partial class SpaceHoldSpeechController : Node
         dialogue.Layer = Math.Max(originalLayer, GetParent().GetChildren().OfType<CanvasLayer>()
             .Where(layer => layer != dialogue && layer.Visible).Select(layer => layer.Layer + 1).DefaultIfEmpty(originalLayer).Max());
         raised = true; mic.BeginSpaceHold(); stopVersion = mic.StopVersion; ownsHold = true; Holds++;
+    }
+    internal void OnEndingPresented()
+    {
+        endingOwnsPress = true;
+        if (raised) { RestoreLayer(); }
+        if (ownsHold || mic.Listening) { mic.StopCapture("slice-ended"); }
     }
     /// <inheritdoc />
     public override void _Process(double delta)

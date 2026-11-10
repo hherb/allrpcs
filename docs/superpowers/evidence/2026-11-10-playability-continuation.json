@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-10",
+  "owner_request": "please continue working on this game towards making it playable",
+  "previous_slice": {
+    "id": "forest-gate-art",
+    "pull_request": "https://github.com/hherb/allrpcs/pull/493",
+    "merged_by": "hherb",
+    "merge_commit": "42e793180ac83866f8ea45b2d58dd6798850aadf",
+    "merged_at_utc": "2026-11-07T11:12:17Z"
+  },
+  "selection": "Address the separate ending-screen interaction follow-up #458 under the playability continuation. Keep the Phase 4 owner playthrough outstanding and carry forward the merged forest-gate work."
+}

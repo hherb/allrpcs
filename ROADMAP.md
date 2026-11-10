@@ -105,6 +105,7 @@ packaging, and accessibility claims remain limited to their recorded evidence.
   - [x] 4.6 No evidence resolves at boot; residue is noticed on arrival, the dose tests the conclusion.
   - [ ] 4.7 Owner playtest from a fresh profile to the ending on local Ollama (exit gate passed
     2026-10-23; playtest in progress, findings in `docs/superpowers/evidence/phase4-owner-playtest.md`).
+- [ ] Make the ending screen safe to navigate and return to title (#458).
 - [ ] Phase 5: game/ is organised by feature and Temporary* scaffolding is resolved.
 - [x] Smoke checks that reload Main stop logging "Handle is not initialized" (#486).
 - [x] Smoke launches stop aborting at .NET shutdown after a passing check (#476).
@@ -175,7 +176,7 @@ the same session without repeating unchanged approval gates.
 - [x] Replace the wagon clue placeholder with the approved broken strap, in depth order.
 - [x] Play the accepted Seeker reference gait in Main's runtime walk (#462).
 - [x] Re-author the Healer's walk to the reference gait model and play it in Main (#480).
-- [ ] Replace the closed forest gate placeholder with the approved forest gate.
+- [x] Replace the closed forest gate placeholder with the approved forest gate (PR #493).
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.
