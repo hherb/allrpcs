@@ -68,14 +68,10 @@ public partial class SaveLoadInputController : Node
 
     private void Activate(Button button, Action action)
     {
-        // The keys are gated by ControlInputContext; the buttons must not save over a game not yet chosen.
-        try { if (!LaunchChoiceOpen()) { action(); } }
+        // ControlInputContext gates the shortcuts. Apply the same modal guard to the buttons.
+        try { if (!ControlInputContext.LaunchChoiceOpenFor(this) && !SliceEndPanelController.IsOpenFor(this)) { action(); } }
         finally { button.ReleaseFocus(); }
     }
-
-    private bool LaunchChoiceOpen() =>
-        GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
-        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true;
 
     private void Save()
     {

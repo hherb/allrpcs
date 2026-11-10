@@ -16,6 +16,7 @@ public partial class SliceEndPanelController : Control
     private Button keepExploring = null!;
     private Button returnToTitle = null!;
     private Seeker seeker = null!;
+    private SpaceHoldSpeechController spaceHold = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -25,6 +26,7 @@ public partial class SliceEndPanelController : Control
         keepExploring = GetNode<Button>("Box/KeepExploring");
         returnToTitle = GetNode<Button>("Box/ReturnToTitle");
         seeker = GetNode<Seeker>("../../Seeker");
+        spaceHold = GetNode<SpaceHoldSpeechController>("../../SpaceHoldSpeechController");
         keepExploring.Pressed += Close;
         returnToTitle.Pressed += ReturnToTitle;
         Hide();
@@ -33,6 +35,9 @@ public partial class SliceEndPanelController : Control
     /// <summary>Gets the ending shown now, or null while the panel is closed.</summary>
     internal FirstPatientSliceOutcome? Shown { get; private set; }
 
+    internal static bool IsOpenFor(Node mainChild) =>
+        mainChild.GetNodeOrNull<SliceEndPanelController>("../SliceEndOverlay/Panel")?.Visible == true;
+
     /// <summary>Shows one ending and holds the Seeker while it is open.</summary>
     internal void Present(FirstPatientSliceOutcome outcome)
     {
@@ -40,10 +45,25 @@ public partial class SliceEndPanelController : Control
         title.Text = titleText;
         body.Text = bodyText;
         keepExploring.Visible = outcome == FirstPatientSliceOutcome.Completed;
+        WireFocus(keepExploring, returnToTitle);
+        WireFocus(returnToTitle, keepExploring.Visible ? keepExploring : returnToTitle);
         if (Shown is null) { seeker.SuspendForModal(this); }
         Shown = outcome;
         Show();
+        spaceHold.OnEndingPresented();
         (keepExploring.Visible ? keepExploring : returnToTitle).GrabFocus();
+    }
+
+    private static void WireFocus(Button button, Button next)
+    {
+        NodePath across = button.GetPathTo(next);
+        NodePath self = button.GetPathTo(button);
+        button.FocusNext = across;
+        button.FocusPrevious = across;
+        button.FocusNeighborLeft = across;
+        button.FocusNeighborRight = across;
+        button.FocusNeighborTop = self;
+        button.FocusNeighborBottom = self;
     }
 
     /// <summary>Closes the panel and releases the Seeker; closing a closed panel does nothing.</summary>
@@ -57,11 +77,10 @@ public partial class SliceEndPanelController : Control
         seeker.ResumeAfterModal(this);
     }
 
-    // Releases the panel only once the reload is under way, so a failed reload never exposes Save on a lost game.
+    // A successful reload detaches Main immediately. Leave the ending in place until that happens.
     private void ReturnToTitle()
     {
         Error error = GetTree().ReloadCurrentScene();
-        if (error == Error.Ok) { Close(); }
-        else { GD.PushError($"Return to title failed: {error}."); }
+        if (error != Error.Ok) { GD.PushError($"Return to title failed: {error}."); }
     }
 }

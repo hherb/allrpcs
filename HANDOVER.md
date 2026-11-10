@@ -21,9 +21,8 @@ broken strap (PR #485) merged and were closed ([stone](art-direction/stone-marke
 shutdown guard (PR #488), #467 save backup (PR #489), #462 Seeker reference gait (PR #490) and the Healer half of
 #480 (PR #492) merged and were closed ([Healer acceptance](docs/superpowers/evidence/2026-11-07-healer-reference-gait-480-owner-acceptance.json));
 the Sage half of #480 is deferred (the Sage never walks), and pinning the Seeker's accepted frames at HEAD is #491.
-The active slice below shows the approved structures-batch Forest gate at the closed deeper-forest gate
-([package](art-direction/forest-gate-art/README.md)); it awaits owner review of its PR. The water cask (no
-approved art) and exit markers still need their own owner request.
+The approved [Forest gate](art-direction/forest-gate-art/README.md) merged as PR #493. Gate approach
+presentation (#494), the water cask and exit markers are separate scopes.
 
 Phase 3 and Phase 4 implementation items 1–6 are closed on main. The Phase 4 exit full
 quality gate passed on 2026-10-23 (218 stages, no retries;
@@ -50,36 +49,30 @@ It authorizes review-branch publication; no merge or release is authorized here.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**forest-gate-art — Replace the closed forest gate placeholder with the approved forest gate** (in_progress).
+**ending-screen-458 — Make the ending screen safe to navigate and return to title** (in_progress).
 
-Roadmap item: - [ ] Replace the closed forest gate placeholder with the approved forest gate.
+Roadmap item: - [ ] Make the ending screen safe to navigate and return to title (#458).
 
-Missing deliverable: The closed deeper-forest gate in Main is a red greybox line; the approved
-structures-batch woodland-04 Forest gate is not shown, and there is no byte/import validator, native
-check, captures or package for it.
+Missing deliverable: The ending screen has no isolated focus route or guard against Space bringing
+dialogue above it. Return to title and restoration after an ending need coverage in ordinary Main.
 
-Implemented and verified on branch claude/forest-gate-art (2026-11-07): GateArt, a byte copy of
-structures-batch woodland-04 scaled 3/7, is a child of ClosedGate/Line2D whose own stroke is hidden
-by self_modulate, so TryInstallAccess hides line and art together; post feet stand on (696, 200) and
-(792, 200). validate-forest-gate-art.py and check-forest-gate-art.gd run in smoke; full gate passed
-on 2f481ced (219 stages, no retries; art-direction/forest-gate-art/verification.json). Remaining:
-owner review of the PR; then close the scope on owner direction. Remaining greybox markers (water
-cask, exit markers) need their own owner request.
+Implemented and verified on codex/ending-screen-458. The ending contains keyboard focus, keeps Space
+holds out of dialogue, and guards the save buttons. Return to title reloads Main and Enter on
+Continue restores the pre-loss save. The Main-hosted regression also covers an in-session restore.
+Solution format/build, 6,188 tests and nine affected Godot launches passed. The older controls
+qualification runs against its frozen snapshot and still expects 29 rows when invoked against
+current Main (30). Remaining: review the ending-screen PR.
 
-Done when: Ordinary Main shows the approved forest gate at the unchanged closed gate, hidden once
-Forester access opens it; affected checks pass with retained evidence; the branch is
-committed/pushed with a PR.
+Done when: A Main-hosted smoke check exercises the ending input boundary, Return to title and in-
+session restoration. The affected checks pass and the review branch is published.
 
 Expected outputs:
 
-- `art-direction/forest-gate-art/README.md`
-- `art-direction/forest-gate-art/verification.json`
-- `art-direction/forest-gate-art/capture-evidence.json`
+- `game/SliceEndScreenSmokeCheck.cs`
 
-Boundary: Closed-gate presentation and dependent verification/documentation/publication only. Gate
-collision, the approach boundaries, the gate marker and label, the access rule, navigation, saves
-and the accepted forest-path terrain stay unchanged. No other placeholder replacement, merge or
-release.
+Boundary: The separate #458 ending interaction follow-up, including the Enter conflict on the
+reloaded title. Disease progression, outcomes, save format, artwork and the owner playthrough
+requirement stay as before.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions

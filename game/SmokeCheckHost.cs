@@ -467,6 +467,7 @@ internal static class SmokeCheckHost
         Check<PlayerSpeechMainSmokeCheck>("PlayerSpeechController", "ALLRPCS_PLAYER_ASR_CHECK"),
         Check<SpaceHoldSpeechSmokeCheck>("SpaceHoldSpeechController", "ALLRPCS_SPACE_HOLD_CHECK"),
         Check<DialogueOwnershipMainSmokeCheck>("SpaceHoldSpeechController", "ALLRPCS_DIALOGUE_OWNERSHIP_CHECK"),
+        Check<SliceEndScreenSmokeCheck>("SliceEndOverlay", "ALLRPCS_SLICE_END_SCREEN_CHECK"),
     ];
 
     /// <summary>Called from <see cref="Main._EnterTree"/>, while Main's children are not yet ready.</summary>
@@ -506,14 +507,14 @@ internal static class SmokeCheckHost
 
     /// <summary>
     /// True when a requested check needs Main's ordinary start state, so a new game must not open
-    /// the customization menu. The new-game check itself is the one gate that keeps it. Like
+    /// the customization menu. The new-game and ending checks use the real launch flow. Like
     /// <see cref="Attach"/>, any non-empty value counts, so the suppressing gate is printed.
     /// </summary>
     internal static bool SuppressesNewGameStart()
     {
         if (OS.HasFeature("template")) { return false; }
         string? gate = Entries
-            .Where(entry => entry.Name != nameof(NewGameCustomizationStartSmokeCheck))
+            .Where(entry => entry.Name is not (nameof(NewGameCustomizationStartSmokeCheck) or nameof(SliceEndScreenSmokeCheck)))
             .SelectMany(entry => entry.Gates)
             .FirstOrDefault(name => OS.GetEnvironment(name).Length > 0);
         if (gate is null) { return false; }

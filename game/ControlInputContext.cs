@@ -17,17 +17,21 @@ public partial class ControlInputContext : Node
         || GetNodeOrNull<AudioSettingsPanel>("../AudioSettingsPanel")?.IsReading == true
         || GetNodeOrNull<CanvasLayer>("../SeekerMapPanel")?.Visible == true
         || GetNodeOrNull<CanvasLayer>("../JournalSectionPanel")?.Visible == true
-        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true
-        || GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
-        || GetNodeOrNull<Control>("../SliceEndOverlay/Panel")?.Visible == true;
+        || LaunchChoiceOpenFor(this)
+        || SliceEndPanelController.IsOpenFor(this);
+    internal static bool LaunchChoiceOpenFor(Node mainChild) =>
+        mainChild.GetNodeOrNull<Control>("../SeekerCustomizationOverlay/StartPanel")?.Visible == true
+        || mainChild.GetNodeOrNull<Control>("../SeekerCustomizationOverlay/Panel")?.Visible == true;
     /// <inheritdoc />
     public override void _Ready() { Current = this; }
     /// <summary>Standalone predecessor scenes without this new owner retain their exact routing.</summary>
     public static bool WorldAllowed(Node owner) => Current is null || !GodotObject.IsInstanceValid(Current)
         || !Current.IsInsideTree() || Current.GetTree() != owner.GetTree() || !Current.Blocked;
-    /// <summary>Other views can toggle themselves unless the new Controls view owns navigation.</summary>
+    /// <summary>Views can toggle themselves unless Controls, launch or the ending screen owns navigation.</summary>
     public static bool TogglesAllowed(Node owner) => Current is null || Current.GetTree() != owner.GetTree()
-        || Current.GetNodeOrNull<ControlSettingsPanel>("../ControlSettingsPanel")?.Visible != true;
+        || (Current.GetNodeOrNull<ControlSettingsPanel>("../ControlSettingsPanel")?.Visible != true
+            && !LaunchChoiceOpenFor(Current)
+            && !SliceEndPanelController.IsOpenFor(Current));
     /// <summary>Releases only the approved gameplay action states, leaving text/GUI actions untouched.</summary>
     public static void ReleaseOwnedActions()
     { foreach (ControlActionDefinition action in ControlActionCatalog.Actions.Where(a => a.Context == "gameplay")) { Input.ActionRelease(action.Id); } }
